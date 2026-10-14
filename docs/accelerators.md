@@ -4,6 +4,10 @@ The continuous arena currently runs its ecological sensors and recurrent control
 
 On 14 October 2026, SSH to `hbox` worked. Vulkan enumerated **AMD Radeon RX 6750 XT**, with 12,868,124,672 bytes of VRAM reported by sysfs, and GPU activity was 0% at inspection. The host has an i9-12900, 24 logical CPUs and 123 GiB RAM. It was busy (load about 26, swap nearly full), so its CPU is not spare capacity to assume. Julia was absent from PATH and the usual install locations; no ROCm/HIP libraries were registered with ldconfig. The historical H1 Python environment still has a library directory but its Python executable is gone. Historical successful ROCm runs do not establish a working runtime today. Vulkan enumeration establishes hardware presence, not Julia compute availability.
 
+The subsequent isolated bootstrap restored Julia/ROCm compute without system changes. A native gfx1031 HIP arithmetic kernel passed exact readback; AMDGPU.jl 2.8.0 then reported `functional() == true` with HIP 6.4. AMDGPU automatically applies its gfx1030 compatibility setting for this Navi 22 device. See [the hbox runtime record](hbox-runtime.md) and `scripts/bootstrap_hbox_probe.sh` for the exact fresh directory, resource controls and Interior parity outcome. The minimal runtime omits optional BLAS/FFT libraries, so this does not provide a GPU FFT solver.
+
+The first Interior probe failed before parity/timing: AMDGPU could not compile the tuple-valued `extrema` reduction used by `Excitable` validation (`InvalidIRError` in `partial_mapreduce_device`). The runtime and native arithmetic kernel passed; the dense Interior Julia path needs that reduction repaired. `docs/hbox-accelerator-results.json` records the actual failure and leaves simulation timings null.
+
 Keep new hbox artifacts under `/tank` or a fresh project-specific directory in `/othersys`; respect the existing `swarm-build` resource controls for builds. Do not replace its H1 environments, remove caches, or alter system packages to establish a benchmark. At inspection, `/tank` had 423 GiB free and `/othersys` had 97 GiB free.
 
 ## Bounded Julia probe

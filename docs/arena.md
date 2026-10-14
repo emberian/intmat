@@ -128,3 +128,24 @@ Resource and film slices use material per cell; organism boundary exposure is th
 mean over its cell and adjacent cells. Live scalar chemostat feed controls apply
 to the original model; metabolic per-species feed rates and finite budgets are
 set in the profile.
+
+`examples/arena/metabolic-3d.toml` is an optional 32³ prototype with physical
+extent 16³ (cell spacing 0.5), 1,024 founders and capacity 12,000. It retains the
+2D profile's chemical rules, rates and finite budgets. A bounded CPU run on
+2026-10-14 completed 64 steps to time 6.400000095 in 13.30 seconds measured around
+`run_arena!`, including its first-call compilation and snapshot/checkpoint writes;
+package loading and construction were outside that timing. Population reached
+1,536, all inspected chemical/film/phase/controller arrays were finite, material
+residual was −0.00218 and energy residual −0.00243. Actual central slices, full
+checkpoint and source fingerprints are in
+`outputs/arena/metabolic-3d-smoke-20261014`. This checks 3D composition and restart
+plumbing over a short interval; it does not establish long-term diversity or
+persistent compartments.
+
+```sh
+julia --project examples/arena.jl --profile examples/arena/metabolic-3d.toml --steps 64 --output outputs/arena/my-metabolic-3d
+```
+
+## Develop beside a running arena
+
+Loaded Julia modules keep evolving under their captured source hashes. Editing the checkout does not hot-reload that process. The two local running studies retain source snapshots at `outputs/arena/runtime-source-a2dd363` (original) and `outputs/arena/runtime-source-8765769` (metabolic). Both snapshots strictly restored their corresponding live checkpoints after later checkout edits. To recover a run, invoke its pinned `examples/arena.jl` with that snapshot as `--project`, its profile, the owned output directory, and the checkpoint named in `checkpoint.json`. Do not start a second writer while the existing process is alive. Reviewed migrations remain an explicit opt-in; ordinary development is not permission to reinterpret stored state.

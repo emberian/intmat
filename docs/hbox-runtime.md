@@ -40,12 +40,16 @@ runtime. The isolated extraction also provides ROCm device libraries.
 [Installation tips](https://amdgpu.juliagpu.org/stable/install_tips) describe the
 architecture override. The previous hbox training environment used
 `HSA_OVERRIDE_GFX_VERSION=10.3.0`; the HIP memory probe above succeeded without
-that override. Interior dispatch must be tested separately, first natively.
+that override. AMDGPU 2.8.0 itself detects `navy_flounder` in Linux KFD topology
+and sets `HSA_OVERRIDE_GFX_VERSION=10.3.0` during initialization, so its Julia
+device report uses `gfx1030`. The separate HIPRTC test used native `gfx1031`.
 
 ## Resource controls and replay
 
 `scripts/bootstrap_hbox_probe.sh` runs install, diagnose, and the bounded
-`amd 32 10` parity benchmark. Set and export `PROBE_ROOT` to the isolated
+`amd 32 10` parity benchmark. Its `verify` mode prints AMDGPU runtime details and
+runs parity in one Julia process, avoiding two uncached module loads. Set and
+export `PROBE_ROOT` to the isolated
 directory before invoking it. It requires the already provisioned Julia/ROCm
 files and copied source tree.
 
@@ -59,5 +63,18 @@ quota failure. Existing jobs were not modified.
 
 ## Interior result
 
-Pending Julia package installation and bounded parity launch; do not interpret
-successful HIP arithmetic operations as an Interior accelerator result.
+Julia 1.11.7 with AMDGPU 2.8.0 installed successfully. `AMDGPU.versioninfo()`
+found HIP 6.4.43484 and the Radeon device with 11.984 GiB; `AMDGPU.functional()`
+returned true. Optional rocBLAS, rocSOLVER, rocSPARSE, rocRAND, rocFFT, hipTENSOR,
+and MIOpen libraries are absent from this minimal runtime. In particular, this
+setup does not enable an implicit GPU FFT solver.
+
+The bounded `amd 32 10` Interior probe failed before parity or timing in the
+validation call `extrema(w.fields.activity)` for `Excitable`. AMDGPU's tuple
+extrema reduction generated an `InvalidIRError` in
+`AMDGPU.partial_mapreduce_device`, with unsupported dynamic `pointerset` and
+`pointerref` invocations through GPU hostcall allocation/boxing. This is a Julia
+GPU reduction/compiler failure, not evidence that the GPU or HIP runtime is
+unavailable. No Interior throughput number was produced. Full remote logs are
+`install.log`, `diagnose.log`, and `probe.log` in the isolated directory; structured
+results are in `docs/hbox-accelerator-results.json`.

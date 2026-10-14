@@ -28,5 +28,8 @@ case "${1:-probe}" in
     probe)
         run "$PROBE_ROOT/source/scripts/benchmark_accelerator.jl" amd 32 10
         ;;
-    *) echo 'usage: bootstrap_hbox_probe.sh install|diagnose|probe' >&2; exit 2 ;;
+    verify)
+        run -e 'using AMDGPU; AMDGPU.versioninfo(); append!(ARGS, ["amd", "32", "10"]); include(ENV["PROBE_ROOT"] * "/source/scripts/benchmark_accelerator.jl")'
+        ;;
+    *) echo 'usage: bootstrap_hbox_probe.sh install|diagnose|probe|verify' >&2; exit 2 ;;
 esac

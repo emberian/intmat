@@ -39,5 +39,13 @@ is required; CPU fallback raises an error. The six-hundred-second platform cap
 bounds compilation and measurement together. Report separates initial transfer,
 first compilation/execution, warm component dispatch, and warm fused scan time.
 
-On 2026-10-14, version 1 was accepted and initially queued. Acceptance does not
-establish TPU availability or performance; retrieve the actual results first.
+On 2026-10-14, version 1 was accepted with the explicit `TpuV5E8` request and
+600-second execution cap. Latest observed status at 21:24 UTC was
+`KernelWorkerStatus.QUEUED`. The job remains submitted; there are no real TPU
+timings yet. Acceptance does not establish TPU availability or performance;
+retrieve the actual results first. Local JAX CPU checks at 64 and 1024 agents
+had maximum output errors of `1.19e-7` and `1.49e-7`; hidden errors were below
+`3e-8`, and gathered sensors and positions agreed exactly. Julia versus the
+same NumPy sequential fixture at 64 agents differed by at most `5.96e-8`.
+A separate 100-step recurrent CPU check differed by at most `1.19e-7` in hidden
+state and `9.54e-7` in position, with exact gathered sensors.

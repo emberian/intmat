@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-14",
+  "host": "hbox",
+  "gpu": "AMD Radeon RX 6750 XT",
+  "native_architecture": "gfx1031",
+  "julia_reported_architecture": "gfx1030",
+  "architecture_note": "AMDGPU 2.8.0 automatically sets HSA_OVERRIDE_GFX_VERSION=10.3.0 for navy_flounder",
+  "julia": "1.11.7",
+  "amdgpu": "2.8.0",
+  "hip": "6.4.43484",
+  "rocm_distribution": "6.4.3",
+  "memory_gib": 11.984,
+  "runtime_functional": true,
+  "hip_memory_roundtrip": {"bytes": 4096, "passed": true},
+  "native_hiprtc_kernel": {"elements": 256, "operation": "Float32(2*i+1)", "compile_status": 0, "launch_status": 0, "exact_readback": true},
+  "interior": {
+    "backend": "amd",
+    "requested_grid": [32, 32, 32],
+    "requested_timed_steps": 10,
+    "status": "failed_before_parity",
+    "error": "InvalidIRError in AMDGPU.partial_mapreduce_device(Base.ExtremaMap(identity), Base._extrema_rf): unsupported dynamic pointerset/pointerref invocation through hostcall malloc/boxing",
+    "trigger": "extrema(ROCArray{Float32,3}) in Interior.validate(World, Excitable), src/fields.jl:30",
+    "seconds": null,
+    "cells_per_second": null,
+    "parity_max_absolute_errors": null
+  },
+  "missing_optional_libraries": ["rocBLAS", "rocSOLVER", "rocSPARSE", "rocRAND", "rocFFT", "hipTENSOR", "MIOpen"],
+  "isolation": {"root": "/othersys/tmp/intmat-probe-20261014", "memory_max_gib": 8, "swap_max": 0, "pinned_cpus": [0, 1], "julia_threads": 2, "nice": 15, "command_timeout_seconds": 900, "shared_slice": "swarm.slice"}
+}

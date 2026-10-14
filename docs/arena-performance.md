@@ -116,3 +116,5 @@ one pending transfer and explicit ownership until writing finishes. Checkpoints
 must serialize a completed step including RNG/event counters and active IDs.
 These stages describe remaining implementation work, not an existing full GPU
 arena. The CPU workspace is the implemented array/interface foundation.
+
+Runtime guards are also part of the execution contract. Current `step!` and individual `advance!` preflights can repeat validation; GPU reductions that return extrema to the host synchronize execution. A resident backend must retain the numerical checks while eliminating redundant scans and unnecessary host round trips—for example, device error flags at explicit synchronization points. Disabling checks without a replacement would change the contract rather than optimize it.

@@ -31,7 +31,7 @@ def preview(state, side):
                 agent[key] = [round(x, 4) if isinstance(x, float) else x for x in value]
     result['preview'] = {'kind': 'recorded actual snapshots', 'field_sampling': 'stride',
                          'maximum_field_side': side, 'display_decimal_places': 4,
-                         'note': 'Source state, simulation clock, identities and metrics are unchanged.'}
+                         'note': 'Simulation clock, identities and metrics are retained; display fields and agent floats are sampled or rounded.'}
     return result
 
 
