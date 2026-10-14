@@ -36,3 +36,7 @@
 8. **Photographic series:** track the same evolving specimen across time, material mappings and camera views. Export a small curated public subset; retain raw state and scene provenance locally.
 
 See `docs/process-atlas.md` for the broader artistic/research map, `docs/fraser-experiments.md` for primary-source research, and `docs/bigruns.md` for measured scaling and concrete run profiles. These next directions remain part of the project, rather than being reduced to the initial specimens.
+
+## Active convergence: compartments and continuous arena
+
+The current swarm is implementing a conservative semi-implicit phase solver; active boundaries with permeability, signals and chemical-potential remodeling; inherited recurrent inhabitants with separate plastic memory and funded actions; and a continuously running local arena with explicit environmental resource budgets, restartable checkpoints and a live inspector. Matched feedback/plasticity/inheritance ablations and independent composition audits will determine what the coupled system actually does. Existing specimens and their measurements remain valid; this section records work in progress, not completed capabilities.

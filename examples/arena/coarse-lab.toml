@@ -1,0 +1,29 @@
+# Coarse interactive configuration; short enough to watch several lifetimes.
+seed = 11
+dt = 0.2
+initial_modes = 4
+snapshot_seconds = 1.0
+checkpoint_seconds = 60.0
+checkpoint_slots = 3
+batch = 10
+sleep_seconds = 0.005
+[grid]
+shape = [32, 32, 1]
+extent = [32.0, 32.0, 1.0]
+[phase]
+mean = -0.12
+noise = 0.08
+[ecology]
+population = 32
+capacity = 240
+hidden = 8
+birth_energy = 0.3
+lifespan = 35.0
+plasticity_rate = 0.03
+mutation = 0.08
+[chemostat]
+source_rate = 0.015
+sink_rate = 0.01
+[medium]
+nutrient_diffusion = 0.03
+signal_diffusion = 0.02

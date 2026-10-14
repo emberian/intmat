@@ -1,0 +1,25 @@
+seed = 17
+dt = 0.1
+initial_modes = 12
+snapshot_seconds = 1.0
+checkpoint_seconds = 60.0
+checkpoint_slots = 3
+batch = 5
+sleep_seconds = 0.005
+[grid]
+shape = [96, 96, 1]
+extent = [96.0, 96.0, 1.0]
+[ecology]
+population = 1000
+capacity = 2400
+hidden = 8
+birth_energy = 0.3
+lifespan = 120.0
+plasticity_rate = 0.03
+mutation = 0.08
+[chemostat]
+source_rate = 0.01
+sink_rate = 0.01
+[medium]
+nutrient_diffusion = 0.03
+signal_diffusion = 0.02

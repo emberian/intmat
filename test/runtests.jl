@@ -19,3 +19,9 @@ include("experiments.jl")
 include("process_composition.jl")
 
 include("grin.jl")
+
+include("implicit_phase.jl")
+include("compartments.jl")
+include("neural_ecology.jl")
+include("arena.jl")
+include("arena_composition.jl")

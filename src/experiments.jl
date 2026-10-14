@@ -142,3 +142,9 @@ function run!(e::Experiment;steps::Integer,capture_every::Integer=1,
               ports=map(process_ports,e.processes))
     ExperimentReport(metadata,samples)
 end
+
+# Arena processes share the same composition and inventory interfaces.
+process_ports(::ImplicitPhaseSeparation)=ProcessPorts(reads=(:deposit,:nutrient,:activity),writes=(:nutrient,:activity),owned=(:phi,:chemical_potential,:interface,:chemical_forcing),memory="conserved composition and external chemical-potential bias",law="constant-mobility semi-implicit periodic Cahn–Hilliard with the finite-difference Laplacian spectrum")
+process_ports(::ActiveMedium)=ProcessPorts(reads=(:nutrient,:deposit),writes=(:nutrient,),owned=(:permeability,:signal,:signal_source,:remodeling,:forcing),memory="diffusing signals and decaying remodeling bias",law="conservative face transport through active permeability; drives phase chemical potential")
+process_ports(::NeuralEcology)=ProcessPorts(reads=(:nutrient,:deposit),writes=(:nutrient,:deposit),owned=(:positions,:hidden,:storage,:energy,:weights,:plastic_marks,:ids,:lineages),drives="chemical uptake funds abstract energy",memory="inherited recurrent genotype and separate local plastic memory",law="funded neural actions and material exchange in a sensed compartment environment")
+owned_material_mass(p::NeuralEcology)=sum(Float64,p.storage;init=0.0)+p.waste
