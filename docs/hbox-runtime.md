@@ -7,7 +7,10 @@ status zero, and every copied byte matched. HIPRTC then compiled a native
 `gfx1031` kernel assigning `x[i] = 2*i + 1` to 256 Float32 elements. Module load,
 kernel launch, synchronization, and readback all succeeded; all 256 results
 matched exactly. No architecture override was used. This establishes real GPU
-compute, but does not yet establish Interior kernel parity or a speedup.
+compute. The tested Julia AMDGPU environments did not establish Interior parity
+or throughput: the released stack failed reductions, and a newer upstream stack
+failed a minimal KernelAbstractions arithmetic kernel before Interior. The
+Interior AMD path is not verified usable on hbox.
 
 ## Runtime and isolation
 
@@ -16,7 +19,8 @@ Host: Ubuntu 24.10, Intel i9-12900 (24 logical CPUs), about 123 GiB RAM, RX 6750
 `/dev/kfd` and the DRM render devices. No Julia was found in the original host
 PATH, and the system library cache did not contain HIP/HSA/rocFFT.
 
-The new directory `/othersys/tmp/intmat-probe-20261014` contains Julia 1.11.7, a
+The new directory `/othersys/tmp/intmat-probe-20261014` contains Julia 1.11.7 and
+1.12.4, a
 copied Interior source tree, an isolated Julia depot/environment, and extracted
 official ROCm packages. It is outside the root filesystem. Nothing was installed
 with apt, no kernel/driver settings were changed, and previous environments and
@@ -53,6 +57,23 @@ export `PROBE_ROOT` to the isolated
 directory before invoking it. It requires the already provisioned Julia/ROCm
 files and copied source tree.
 
+The default reproduces the released Julia 1.11.7 diagnostic baseline. For the
+retained upstream environment, set `PROBE_JULIA_VERSION=1.12.4` and
+`PROBE_PROJECT=$PROBE_ROOT/environment112`. Its exact AMDGPU source commit is
+`c77460e860b35f21277d8f1253e37304bd8b8993`, chosen because it retains KA 0.9 while
+using LLVM 10. `install` explicitly pins the released baseline and should not be
+used to replace the upstream environment. `prefetch` installs the declared
+LLVMDowngrader lazy artifact without importing the affected JLL. During the probe,
+that 2.47 MB artifact was downloaded and SHA256-verified before extraction; no JLL
+source was changed.
+
+Replay now uses `JULIA_DEPOT_PATH=$PROBE_ROOT/depot:`: the trailing colon includes
+bundled system depots while excluding the normal user depot. The earlier probes
+used only the fresh depot and consequently rebuilt/JIT-loaded standard libraries.
+Normal compiled modules are the replay default; `PROBE_COMPILED_MODULES=existing`
+reproduces the earlier uncached-loading policy. One controlled normal Pkg cache
+precompile completed in 128.875 seconds. Writes stay in the isolated first depot.
+
 Each Julia command uses hbox's existing `/home/hbox/bin/swarm-build`, 8 GiB RAM
 limit, no swap, nice 15, two pinned CPUs (0,1), two Julia threads, one precompile
 task, and a 900-second timeout. The existing shared slice remains the aggregate
@@ -60,6 +81,9 @@ memory boundary. The host is busy: sampled cores 0–15 were 98–100% occupied.
 Both the probe scope and shared slice reported unlimited CPU quota with zero
 throttled periods, so slow startup compilation reflects contention, not a new
 quota failure. Existing jobs were not modified.
+Setup-plus-compile pipelines used a 1200-second cap; replay can select that with
+`PROBE_TIMEOUT_SECONDS=1200`. No Julia probe jobs remain, and the retained directory
+occupies approximately 2.0 GiB.
 
 ## Interior result
 
@@ -73,8 +97,28 @@ The bounded `amd 32 10` Interior probe failed before parity or timing in the
 validation call `extrema(w.fields.activity)` for `Excitable`. AMDGPU's tuple
 extrema reduction generated an `InvalidIRError` in
 `AMDGPU.partial_mapreduce_device`, with unsupported dynamic `pointerset` and
-`pointerref` invocations through GPU hostcall allocation/boxing. This is a Julia
-GPU reduction/compiler failure, not evidence that the GPU or HIP runtime is
-unavailable. No Interior throughput number was produced. Full remote logs are
-`install.log`, `diagnose.log`, and `probe.log` in the isolated directory; structured
-results are in `docs/hbox-accelerator-results.json`.
+`pointerref` invocations through GPU hostcall allocation/boxing. Separate scalar
+`minimum`/`maximum` reductions failed too. Their temporary source change passed
+26 CPU core checks, finite/nonnegative state guards, and Metal parity, but did not
+repair AMD compilation, so the original `Excitable` source was restored.
+
+Julia 1.12.4 with the same released AMDGPU/GPUCompiler 2.6/LLVM 9 stack also failed
+`minimum(vec(ROCArray))`. The latest upstream commit required KA 0.10 and could not
+resolve with Interior's KA 0.9 constraint. The compatible commit above resolved
+with GPUCompiler 2.14.1, LLVM 10.2.1, and backend JLL 23.1.3. After fixing its lazy
+artifact bootstrap, its runtime initialized, but a tiny KA arithmetic kernel
+failed with `InvalidIRError` in `_pointerset`, boxing and hostcall allocation,
+before reductions or Interior. This broader failure means an extrema-only patch
+or a custom KA reduction is not demonstrated to solve the problem.
+
+The final normal-cache control requesting released AMDGPU 2.8.0 plus GPUCompiler
+2.10.0 and LLVM 9.13.2 was rejected by the resolver: GPUCompiler requires backend
+JLL 23.1.1+, while released AMDGPU requires 22.1.8. GPUCompiler 2.10 never executed
+a kernel in that control. No further version permutations were attempted.
+
+No Interior throughput or parity number was produced. Remote logs include
+`probe.log`, `probe-after.log`, `probe112.log`, `probe-upstream.log`,
+`probe-compatible.log`, `probe-final.log`, and `probe-stable.log`. Structured
+results, exact package versions, source/tree hashes, and both retained manifest
+SHA256 hashes are in `docs/hbox-accelerator-results.json`. No physics source change
+remains from this investigation.
