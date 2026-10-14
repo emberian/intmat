@@ -1,0 +1,136 @@
+{
+  "source": "structure.f32",
+  "source_shape": [
+    32,
+    32,
+    32
+  ],
+  "source_order": "F",
+  "isosurface": 0.82,
+  "smoothing": {
+    "passes": 1,
+    "separable_periodic_weights": [
+      0.125,
+      0.75,
+      0.125
+    ]
+  },
+  "crop_indices": [
+    [
+      4,
+      28
+    ],
+    [
+      9,
+      23
+    ],
+    [
+      4,
+      28
+    ]
+  ],
+  "closure": "zero padding closes selected phase at rectangular crop; cut faces are display geometry",
+  "mesh_vertices": 2746,
+  "mesh_polygons": 2738,
+  "optical": {
+    "base_color": [
+      0.55,
+      0.73,
+      0.66
+    ],
+    "roughness": 0.27,
+    "ior": 1.38,
+    "transmission": 0.7,
+    "metallic": 0,
+    "volume_absorption_density": 0.1,
+    "exposure": -0.3,
+    "carrier": {
+      "virtual_display_matrix": true,
+      "half_dimensions": [
+        0.8,
+        0.5,
+        0.8
+      ],
+      "ior": 1.46,
+      "transmission": 1,
+      "roughness": 0.045,
+      "absorption": 1.0,
+      "absorption_color": [
+        0.94,
+        0.58,
+        0.18
+      ]
+    },
+    "emission": 0
+  },
+  "interpretation": "Phase-rich structure=0.82 display contour; not the 0.5 demixing boundary. Carrier and optical properties are display choices, not measured material or mechanical claims.",
+  "settings": {
+    "directory": "outputs/art/phase-window/source",
+    "output": "outputs/art/phase-window/interior.png",
+    "samples": 64,
+    "size": 1200
+  },
+  "source_sha256": "bdda7bcf3e42c8f6db6ca8d05e1c5d2e0277079ff72ff0cbaa88767965d64a60",
+  "camera": {
+    "position": [
+      1.899999976158142,
+      -6.0,
+      1.899999976158142
+    ],
+    "target": [
+      0,
+      0,
+      0.86
+    ],
+    "projection": "orthographic",
+    "scale": 2.9
+  },
+  "lighting": [
+    {
+      "name": "Warm silk key",
+      "position": [
+        -3.0,
+        -4.0,
+        2.0
+      ],
+      "power_watts": 250.0,
+      "size": 3.0,
+      "color": [
+        1.0,
+        0.9200000166893005,
+        0.800000011920929
+      ]
+    },
+    {
+      "name": "Cool edge",
+      "position": [
+        3.0,
+        1.0,
+        2.0
+      ],
+      "power_watts": 180.0,
+      "size": 3.0,
+      "color": [
+        0.6499999761581421,
+        0.8500000238418579,
+        1.0
+      ]
+    },
+    {
+      "name": "Transmitted rear",
+      "position": [
+        -1.0,
+        3.0,
+        3.0
+      ],
+      "power_watts": 600.0,
+      "size": 3.0,
+      "color": [
+        1.0,
+        0.8799999952316284,
+        0.6499999761581421
+      ]
+    }
+  ],
+  "source_original": "outputs/phase"
+}

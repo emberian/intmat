@@ -32,3 +32,9 @@ If Pages already exists, use `--method PUT` to update its build type. The workfl
 ## Metabolic arena recording
 
 `site/metabolic/` publishes eight evenly spaced actual snapshots from the sixteen-frame `outputs/arena/replay-metabolic-96-20261014/` recording, including both endpoints. All 96² spatial fields and all captured agents in each selected frame are preserved. Arena snapshots can cap the captured/displayed agent list (3,000 agents in this recording), while the measured population may be larger; the viewer reports both counts. `public_curation` metadata records original snapshot indices and the selection policy. `latest.json` is the final retained frame. This is recorded playback with resource, boundary and metabolic measurements; no live backend is connected. The original 25-frame neural arena remains available separately.
+
+## Material photographs
+
+The collection opens with **Amber window**, a selected 0.82 composition contour from a recorded 32³ demixed field, photographed inside a transparent amber display matrix. Its small provenance and optical metadata accompany the approved image; raw fields and Blender scenes stay outside the public bundle.
+
+**Metabolic gel** follows a recorded 96² arena at simulation time 1698, using a shallow optical extrusion of the phase and shared-film fields. The image includes the 3,000 captured agents from a measured population of 5,599. Public assets contain the approved photograph and small provenance/optical metadata; the exact observation and Blender scene remain local. Both arena replays remain available.

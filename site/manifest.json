@@ -142,5 +142,23 @@
       "run.json",
       "profile.toml"
     ]
+  },
+  {
+    "id": "art/amber-interior",
+    "source": "art/phase-window",
+    "files": [
+      "interior.png",
+      "provenance.json",
+      "interior.png.optical.json"
+    ]
+  },
+  {
+    "id": "art/metabolic-gel",
+    "source": "art/metabolic-section-1698",
+    "files": [
+      "shared-film.png",
+      "provenance.json",
+      "shared-film.optical.json"
+    ]
   }
 ]

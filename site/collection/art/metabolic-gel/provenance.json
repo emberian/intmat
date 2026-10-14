@@ -1,0 +1,18 @@
+{
+  "source": "latest.json",
+  "sha256": "87ca73dd8395082b7b1a69814d7032360d0fd074313521ddbe6ddf4b11e6fb66",
+  "captured_at": "2026-10-14T21:33:53.262018+00:00",
+  "simulation_time": 1698.0000253021717,
+  "source_kind": "atomic JSON observation",
+  "dimension": 2,
+  "snapshot_bytes": 3550064,
+  "source_shape": [
+    96,
+    96
+  ],
+  "captured_agents": 3000,
+  "total_population": 5599,
+  "lineages_observed": 8,
+  "interpretation": "Two-dimensional recorded fields and point observations, optically extruded into a thin polished section; no depth dynamics or inferred organism geometry.",
+  "captured_state": "captured-state.json"
+}

@@ -1,0 +1,54 @@
+{
+  "title": "Phase window",
+  "description": "Pale phase-rich ribbons inside a transparent amber display matrix.",
+  "model": "Cahn\u2013Hilliard saved composition field",
+  "dimension": "true 3D",
+  "source_shape": [
+    32,
+    32,
+    32
+  ],
+  "source_snapshot": "Recorded 32\u00b3 composition; raw fields retained locally, not included in gallery.",
+  "source_sha256": {
+    "volume.json": "06339acf4738cfbd2cb10a0b573331f8b17b18e131d87ca9fd36e704ec1fd0ae",
+    "structure.f32": "bdda7bcf3e42c8f6db6ca8d05e1c5d2e0277079ff72ff0cbaa88767965d64a60",
+    "activity.f32": "07747d6de05fc9fc5c89bad441612a09c9e5eafb366211ca1524dffdbbb0a037",
+    "density.f32": "1a7f087fa397f1d29f42e929d2b9d8114bcb76ed05d62cdb4df9a66d73ddc629"
+  },
+  "contour": {
+    "field": "structure",
+    "value": 0.82,
+    "meaning": "phase-rich display contour; equal-fraction demixing interface is 0.5"
+  },
+  "crop_indices": [
+    [
+      4,
+      28
+    ],
+    [
+      9,
+      23
+    ],
+    [
+      4,
+      28
+    ]
+  ],
+  "smoothing": {
+    "passes": 1,
+    "separable_periodic_weights": [
+      0.125,
+      0.75,
+      0.125
+    ]
+  },
+  "optical_interpretation": "Transparent amber containing matrix and pale opalescent inclusions are chosen display optics. Actual inclusion geometry comes from the saved 3D field.",
+  "image": "interior.png",
+  "settings": "interior.png.optical.json",
+  "resolution": [
+    1200,
+    1200
+  ],
+  "cycles_samples": 64,
+  "emission": 0
+}

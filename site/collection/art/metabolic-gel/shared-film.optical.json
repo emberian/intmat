@@ -1,0 +1,57 @@
+{
+  "title": "A shared film / amber and jade",
+  "source_snapshot": "captured-state.json",
+  "snapshot_sha256": "87ca73dd8395082b7b1a69814d7032360d0fd074313521ddbe6ddf4b11e6fb66",
+  "simulation_time": 1698.0000253021717,
+  "simulation_dimension": 2,
+  "grid_shape": [
+    96,
+    96,
+    1
+  ],
+  "grid_extent": [
+    48.0,
+    48.0,
+    1.0
+  ],
+  "captured_agents": 3000,
+  "total_population": 5599,
+  "lineages_observed": [
+    64,
+    66,
+    87,
+    152,
+    262,
+    349,
+    443,
+    559
+  ],
+  "optical_thickness": 0.08,
+  "observed_agent_radius": 0.004,
+  "agent_geometry": "Point observation glyphs at actual x/y positions, displayed at z=0; no inferred cell shape or added connectivity",
+  "optical_mapping": {
+    "phase": "fraction=(phi+1)/2 clipped to[0,1], jade-to-amber absorption colors",
+    "film": "asinh(film/.001)/asinh(.005/.001) clipped to[0,1], copper tint and optical density",
+    "resources": "substrate_a+substrate_b normalized by .7, locally clears absorption",
+    "density": "22+12*interface+35*film_transfer+10*(1-resource_transfer)",
+    "thickness": "Chosen shallow optical extrusion; no 3D dynamics",
+    "emission": "No simulated-field emission; diffused physical staging backlight .8"
+  },
+  "surface": {
+    "ior": 1.34,
+    "roughness": 0.03,
+    "shader": "Principled transmission"
+  },
+  "agent_material": "Diffuse lineage-color observation glyphs",
+  "camera": {
+    "position": [
+      1.8,
+      -2.2,
+      3.0
+    ],
+    "lens_mm": 48
+  },
+  "size": 1200,
+  "samples": 64,
+  "renderer_note": "Blender5.0.1 reports Maximum number of closures exceeded:76>64 during preparation. Source fields, agent coordinates and material ownership were checked; image visually inspected. This photograph is an artistic optical interpretation, not a quantitative transport measurement."
+}
