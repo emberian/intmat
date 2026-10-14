@@ -1,0 +1,27 @@
+{
+  "budget": {
+    "kind": "dense",
+    "resolution": 128,
+    "backend": "metal",
+    "extent": [
+      2,
+      2,
+      2
+    ],
+    "dt": 0.0029296875,
+    "initial_stability_limit": 0.003662109375,
+    "planned_steps": 3414,
+    "actual_step_cap": 3414,
+    "scheduled_duration": 10.001953125,
+    "resident_field_bytes": 134217728,
+    "capture_bytes": 25165824,
+    "estimated_raw_output_bytes": 570425344,
+    "note": "Timestep fixed after construction and checked every step; state growth can reject it. Raw disk budget excludes metadata, optional optics and renderer. Observations are exports, not restart checkpoints.",
+    "dry_run": false,
+    "dry_run_spacing_exact": true
+  },
+  "elapsed_seconds": 100.923472416,
+  "final_world_time": 10.001953125,
+  "final_scheduled_time": 10.001953125,
+  "completed_steps": 3414
+}

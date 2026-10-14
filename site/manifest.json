@@ -133,5 +133,14 @@
       "run.json",
       "config.toml"
     ]
+  },
+  {
+    "id": "dense-128",
+    "source": "bigruns/dense-128-study",
+    "files": [
+      "photograph-1200.png",
+      "run.json",
+      "profile.toml"
+    ]
   }
 ]
