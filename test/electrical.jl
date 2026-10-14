@@ -36,3 +36,29 @@ isdefined(Interior,:DielectricGrowth) || Base.include(Interior,joinpath(@__DIR__
  @test_throws ArgumentError Interior.DielectricGrowth(World(Grid(8,8,8));event_interval=0)
  @test_throws ArgumentError Interior.DielectricGrowth(World(Grid(8,8,8));root=(1,3,3))
 end
+@testset "Electrical harmonic benchmark and controls" begin
+ w=World(Grid(5,5,5));p=Interior.DielectricGrowth(w;tolerance=2e-6)
+ # Independently solve the free-cell linear system around the held central seed.
+ free=[I for I in CartesianIndices(p.potential) if !Interior.electrical_boundary(I,size(p.potential)) && !p.occupied[I]]
+ lookup=Dict(I=>i for (i,I) in enumerate(free));A=zeros(Float64,length(free),length(free));b=zeros(Float64,length(free))
+ for (i,I) in enumerate(free)
+  A[i,i]=6
+  for J in Interior.electrical_neighbors(I)
+   if p.occupied[J];b[i]+=1
+   elseif haskey(lookup,J);A[i,lookup[J]]-=1
+   end
+  end
+ end
+ exact=A\b
+ @test maximum(abs.([p.potential[I] for I in free].-exact))<2e-5
+ olddeposit=copy(w.fields.deposit);oldclock=w.time;p.event_interval=NaN
+ @test_throws ArgumentError step!(w,(WaveForcing(),p),.02f0)
+ @test w.fields.deposit==olddeposit && w.time==oldclock
+ @test all(iszero,w.fields.pressure)
+ p.event_interval=.05;p.frontier=falses(6,6,6)
+ @test_throws DimensionMismatch step!(w,p,.02f0)
+ # Failed initialization leaves the world untouched.
+ badw=World(Grid(15,15,15));before=copy(badw.fields.nutrient)
+ @test_throws ErrorException Interior.DielectricGrowth(badw;max_iterations=1,tolerance=1e-12)
+ @test badw.fields.nutrient==before && all(iszero,badw.fields.deposit)
+end

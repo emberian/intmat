@@ -1,9 +1,8 @@
 using Interior, JSON3, Printf
-# Standalone inclusion permits use before the shared module registration lands.
-isdefined(Interior,:DielectricGrowth) || Base.include(Interior,joinpath(@__DIR__,"..","src","electrical.jl"))
 out=length(ARGS)>0 ? abspath(ARGS[1]) : joinpath(@__DIR__,"..","outputs","electrical")
 n=length(ARGS)>1 ? parse(Int,ARGS[2]) : 40
 requested_events=length(ARGS)>2 ? parse(Int,ARGS[3]) : 280
+ispath(joinpath(out,"state")) && error("Choose a fresh output directory; this one already contains a state recording")
 mkpath(out);w=World(Grid(n,n,n);seed=29)
 p=Interior.DielectricGrowth(w;seed=29,eta=3.0,event_interval=.05,tolerance=2e-5)
 initial_mass=Float64(sum(Float64,w.fields.nutrient)+sum(Float64,w.fields.deposit))
@@ -23,6 +22,20 @@ elapsed=@elapsed for i in 1:requested_events
   capture();@printf("event %d / %d occupied=%d residual=%.3g reached_ground=%s\n",p.events,requested_events,count(p.occupied),p.last_residual,p.reached_ground)
  end
  p.reached_ground && break
+end
+record_state(w,(p,),joinpath(out,"state");step=p.events)
+# Exact lattice conductor connectivity, for sharp optical tube interpretation.
+occupied_sites=findall(p.occupied);site_ids=Dict(I=>i for (i,I) in enumerate(occupied_sites))
+open(joinpath(out,"channels.obj"),"w") do io
+ println(io,"# Conductive occupied-cell centers and all occupied face adjacencies; not growth lineage")
+ for I in occupied_sites
+  xyz=ntuple(d->(I[d]-.5)*w.grid.spacing[d]-w.grid.extent[d]/2,3)
+  println(io,"v ",join(xyz," "))
+ end
+ for (i,I) in enumerate(occupied_sites),axis in 1:3
+  J=I+CartesianIndex(ntuple(d->d==axis ? 1 : 0,3))
+  haskey(site_ids,J) && println(io,"l ",i," ",site_ids[J])
+ end
 end
 fields=Interior.electrical_optical_fields(w,p)
 export_volume(fields,joinpath(out,"volume"))

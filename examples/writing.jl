@@ -1,7 +1,12 @@
 using Interior, Printf
 using Interior: JSON3
 # Standalone experiment; fresh worlds receive identical beam paths.
-out=length(ARGS)>0 ? abspath(ARGS[1]) : joinpath(@__DIR__,"..","outputs","writing")
+out=if length(ARGS)>0
+    abspath(ARGS[1])
+else
+    root=joinpath(@__DIR__,"..","outputs","writing");mkpath(root)
+    mktempdir(root;prefix="run-",cleanup=false)
+end
 function specimen(living)
     name=living ? "living" : "scaffold"; directory=joinpath(out,name);mkpath(directory)
     w=World(Grid(48,48,48);seed=91)

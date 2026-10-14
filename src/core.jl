@@ -77,7 +77,7 @@ function check_dt(w,p,dt)
     isfinite(dt) && dt>0 || throw(ArgumentError("dt must be positive and finite"))
     isfinite(Float32(dt)) && Float32(dt)>0 || throw(ArgumentError("dt must remain positive and finite in Float32"))
     validate(w,p)
-    dt<=stability_limit(w,p) || throw(ArgumentError("dt=$dt exceeds explicit stability limit $(stability_limit(w,p)) for $(typeof(p))"))
+    Float32(dt)<=stability_limit(w,p) || throw(ArgumentError("dt=$(Float32(dt)) exceeds explicit stability limit $(stability_limit(w,p)) for $(typeof(p))"))
 end
 function launch!(w,kernel,args...)
     kernel(w.backend,256)(args...; ndrange=w.grid.size)

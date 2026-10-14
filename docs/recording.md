@@ -2,7 +2,7 @@
 
 `record_state(world, processes, directory; step)` captures the simulation between
 complete steps. It transfers arrays to the host and writes a fresh directory with
-`state.json` and Float32 binaries. Recording has no camera, transfer function,
+`state.json` and native-precision floating binaries. Recording has no camera, transfer function,
 render exposure, or integration timestep. Change capture cadence while keeping
 the same `step!` schedule and the final world and persistent process state are
 identical. The test exercises this with recurrent fields and moving carriers.
@@ -12,7 +12,10 @@ physical extents and spacing, cell-center coordinates, backend, world seed, Juli
 version, and SHA-256 hashes of the implementation sources. Binaries use the
 manifest's byte order and Julia column-major layout (x varies fastest for grid
 arrays). Each binary has its shape and source element type in the manifest.
-Float32 conversion is explicit; higher precision process arrays lose precision.
+Schema version 2 preserves Float16, Float32 and Float64 arrays exactly, using
+`.f16`, `.f32` and `.f64` filenames and corresponding dtype metadata. Other
+floating types fail explicitly. Version 1 always converted arrays to Float32;
+existing version 1 records retain that conversion.
 Particle IDs remain exact integers in JSON.
 
 Neural records include both persistent latent channels, scratch arrays, effective

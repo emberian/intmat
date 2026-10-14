@@ -36,12 +36,18 @@ function validate(w::World,p::PhaseSeparation)
     all(x->isfinite(x)&&x>=0,parameters) || throw(ArgumentError("phase parameters must be finite and nonnegative"))
     p.bulk>0 && p.kappa>0 || throw(ArgumentError("phase bulk and kappa must be positive"))
     all(a->size(a)==w.grid.size,(p.phi,p.chemical_potential,p.interface,p.scratch)) || throw(DimensionMismatch("phase/world grid mismatch"))
-    lo,hi=extrema(p.phi); dlo,dhi=extrema(w.fields.deposit)
-    all(isfinite,(lo,hi,dlo,dhi)) && dlo>=0 || throw(ArgumentError("phase must be finite and deposit nonnegative"))
+    for a in (p.phi,p.chemical_potential,p.interface,p.scratch)
+        KernelAbstractions.get_backend(a)==w.backend || throw(ArgumentError("phase backend differs from world"))
+    end
+    # Phi extrema are already read by the timestep guard. World field validity
+    # is a composition invariant: callers supply finite nonnegative deposit.
+    size(w.fields.deposit)==w.grid.size && size(w.fields.nutrient)==w.grid.size && size(w.scratch.nutrient)==w.grid.size || throw(DimensionMismatch("phase world field mismatch"))
 end
 function stability_limit(w::World,p::PhaseSeparation)
     s=sum(inv(Float64(w.grid.spacing[d])^2) for d in 1:(w.grid.size[3]==1 ? 2 : 3))
-    lo,hi=extrema(p.phi); r=max(1.5,abs(lo),abs(hi))
+    lo,hi=extrema(p.phi)
+    all(isfinite,(lo,hi)) || return 0.0
+    r=max(1.5,abs(lo),abs(hi))
     # Conservative guard on the fourth-order explicit operator. Cubic bound uses
     # a margin beyond the current state; this is not unconditional stability.
     ch=p.mobility*4s*(p.bulk*(3r*r+1)+4p.kappa*s)

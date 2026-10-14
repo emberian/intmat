@@ -2,7 +2,30 @@
 
 A Julia studio for matter with an interior life. Local activity moves through fields and particles, spends feedstock to leave deposits, and encounters the changed material on its next update. The intended toolbox extends to waves, electrochemistry, phase change, mechanics, changing interaction graphs and optical feedback.
 
-This checkout contains a working first composition, not all those solvers. The supplied `interior-living-materials.md` and `interior-living-lab.html` are preserved historical design/playback artifacts. Their earlier Python implementation was not supplied.
+This checkout contains an executable family of exploratory models. They share state, recording and observation infrastructure, while retaining distinct numerical laws. The supplied `interior-living-materials.md` and `interior-living-lab.html` are preserved historical design/playback artifacts. Their earlier Python implementation was not supplied.
+
+## Explore the studio
+
+Open `outputs/index.html` for the generated gallery. The local preview server, when running from this checkout, serves it at `http://localhost:8769/outputs/index.html`.
+
+| Direction | Executable experiment | What is implemented |
+|---|---|---|
+| Active material | `examples/run.jl examples/choir.toml outputs/choir` | Excitable fields, mobile recurrent particles, bounded deposition |
+| Neural constitution | `examples/run.jl examples/neural.toml outputs/neural` | Persistent recurrent field, configurable rules, two-way material sensing |
+| Electrical growth | `examples/electrical.jl` | Harmonic potential solve, screened stochastic branching, material conversion |
+| Beam writing | `examples/writing.jl` | Moving Gaussian heating, diffusion, irreversible dose and written scaffold; living/passive pair |
+| Acoustics | `examples/acoustic.jl` | Heterogeneous damped wave propagation, intensity envelope, mineral feedback |
+| Phase separation | `examples/phase.jl` | Conservative Cahn–Hilliard demixing, interface activity, phase-dependent nutrient flux |
+| Deformation/fracture | `examples/mechanics.jl` | Persistent spring graph, driven deformation, irreversible bond breakage and energy ledgers |
+| Evolving ecology | `examples/ecology.jl` | Individual inherited neural rules, birth-only mutations, funded actions, material/energy ledgers |
+| Curved-path optics | `examples/grin.jl` | Eikonal rays through baked spatial index; constant-index comparison and refinement |
+| Coupled experiments | `examples/compositions.jl` | Thermal/neural/material and acoustic/neural/material ablations |
+
+Run Julia examples with `julia --project=. --threads=4 ...`. Individual examples record finite experiments, not calibrated predictions of physical specimens. Check their documentation for output arguments; full-state records refuse silent replacement, so use a fresh output directory for reruns.
+
+The [composition guide](docs/composition.md) introduces named `Experiment` stages, explicit field publishers, fixed-step observation-independent scheduling, `OpticalMap`, and material diagnostics including carrier-held inventory. [Recording](docs/recording.md) preserves owned neural, particle and geometric state as well as world fields. Records are view-independent samples with source hashes, not a promised restart format.
+
+The [Fraser research](docs/fraser-experiments.md) identifies The MOld, links original posts, and distinguishes author descriptions from observations of the downloaded video. Its compartmental structures suggest an especially useful next synthesis: active boundaries that alter permeability and optics.
 
 ## Run a specimen
 
@@ -58,4 +81,4 @@ julia --project=. --threads=4 examples/verify.jl
 
 Tests cover conservation, positivity, identity under particle reordering, physical movement under grid refinement, transport integration and composition. The verification script records matched ablations and timestep refinement separately from unit tests. See [computing](docs/computing.md) for the optional Metal environment and measured grid throughput; particle exchange is currently CPU-only.
 
-[Process atlas](docs/process-atlas.md) develops seven potential artworks with specific representations, exchange contracts, numerical limits and primary sources. [Project tracker](TRACKER.md) records actual outstanding capabilities. Current recurrent rules are supplied dynamical systems: no learning, evolution or self-reproduction is claimed.
+[Process atlas](docs/process-atlas.md) develops seven potential artworks with specific representations, exchange contracts, numerical limits and primary sources. [Project tracker](TRACKER.md) records actual outstanding capabilities. The fixed-rule choir and neural scenes have no online learning or evolution. `Ecology` is a separate evolutionary model with explicit birth, inheritance and mutation; its outcomes do not establish open-ended intelligence or biological organization.

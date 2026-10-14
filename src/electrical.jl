@@ -33,7 +33,7 @@ function DielectricGrowth(w::World; seed=w.seed, root=ntuple(d->cld(w.grid.size[
     all(d->1<root[d]<w.grid.size[d],1:3) || throw(ArgumentError("root must lie inside the grounded box"))
     event_interval>0 && isfinite(event_interval) || throw(ArgumentError("positive finite event_interval required"))
     eta>0 && isfinite(eta) || throw(ArgumentError("positive finite eta required"))
-    0<deposit_per_cell<=minimum(w.fields.nutrient) || throw(ArgumentError("deposit_per_cell exceeds available nutrient"))
+    isfinite(deposit_per_cell) && 0<deposit_per_cell<=w.fields.nutrient[CartesianIndex(root)] || throw(ArgumentError("deposit_per_cell exceeds available nutrient"))
     tolerance>0 && isfinite(tolerance) && max_iterations>0 && 0<relaxation<2 || throw(ArgumentError("invalid Laplace solver controls"))
     p=DielectricGrowth(zeros(Float32,w.grid.size),falses(w.grid.size),falses(w.grid.size),
         reinterpret(UInt64,Int64(seed)),0,0.,Float64(event_interval),Float64(eta),Float32(deposit_per_cell),
@@ -146,7 +146,6 @@ end
 function validate(w::World,p::DielectricGrowth)
     w.backend isa CPU || throw(ArgumentError("DielectricGrowth requires CPU"))
     all(a->size(a)==w.grid.size,(p.potential,p.occupied,p.frontier)) || throw(DimensionMismatch("electrical state and world grid differ"))
-    all(isfinite,p.potential) || throw(ArgumentError("nonfinite electrical potential"))
     isfinite(p.elapsed) && p.elapsed>=0 && p.events>=0 || throw(ArgumentError("invalid electrical event clock"))
     isfinite(p.event_interval) && p.event_interval>0 || throw(ArgumentError("invalid electrical event interval"))
     isfinite(p.eta) && p.eta>0 || throw(ArgumentError("invalid field exponent"))
@@ -176,4 +175,10 @@ function electrical_optical_fields(w::World,p::DielectricGrowth; halo=0.18f0,car
         r=sqrt(sum(x->x*x,xyz));mask[I]=clamp((.94f0-r)*30f0,0f0,1f0)
     end
     (density=carrier.+0.35f0.*glow,activity=2.5f0.*glow,structure=deposit,mask=mask)
+end
+
+function record_process_fields(p::DielectricGrowth)
+    names=fieldnames(typeof(p))
+    merge(NamedTuple{names}(Tuple(getfield(p,n) for n in names)),
+        (boundary_condition="Dirichlet occupied conductor1 / external grounded box0; not periodic",random_algorithm="SplitMix64 stateless seed + event counter"))
 end

@@ -31,7 +31,16 @@ parser.add_argument("--emission-field", default="activity", help="Actual exporte
 parser.add_argument("--palette", choices=("amber-cyan", "amber-gold", "glass-ice", "acoustic-pearl"), default="amber-cyan")
 parser.add_argument("--absorption", type=float, default=1.5)
 parser.add_argument("--scattering", type=float, default=.28)
+parser.add_argument("--scattering-field", default="density")
+parser.add_argument("--polished-carrier", action="store_true", help="Optical cut-and-polished ellipsoid fitted to the viewing mask")
+parser.add_argument("--ior", type=float, default=1.48)
+parser.add_argument("--surface-roughness", type=float, default=.035)
 parser.add_argument("--density-scale", type=float, default=1.0)
+parser.add_argument("--light-power", type=float, default=1.0)
+parser.add_argument("--conductive-graph", action="store_true", help="Render face adjacency of binary structure as thin optical filaments")
+parser.add_argument("--graph-radius", type=float, default=.008)
+parser.add_argument("--bond-graph", help="Actual OBJ vertices and line segments, e.g. deformed surviving bonds")
+parser.add_argument("--carrier-shape", choices=("ellipsoid", "box"), default="ellipsoid")
 parser.add_argument("--activity-threshold", type=float, default=0.0)
 parser.add_argument("--activity-power", type=float, default=1.0)
 parser.add_argument("--interfaces", action="store_true", help="Artistic activity/deposit gradient transfer; retains simulation data")
@@ -127,15 +136,115 @@ links.new(multiply(attribute("density"), args.absorption), absorb.inputs["Densit
 scatter = nodes.new("ShaderNodeVolumeScatter")
 scatter.inputs["Color"].default_value = scattering_color
 scatter.inputs["Anisotropy"].default_value = 0.25
-links.new(multiply(attribute("density"), args.scattering), scatter.inputs["Density"])
+links.new(multiply(attribute(args.scattering_field), args.scattering), scatter.inputs["Density"])
 emission = nodes.new("ShaderNodeEmission")
 emission.inputs["Color"].default_value = emission_color
-if "activity" in arrays:
+if "activity" in arrays and not (args.conductive_graph or args.bond_graph):
     links.new(multiply(attribute("activity"), args.emission), emission.inputs["Strength"])
 else:
     emission.inputs["Strength"].default_value = 0
 links.new(add_shader(add_shader(absorb.outputs[0], scatter.outputs[0]), emission.outputs[0]), output.inputs["Volume"])
 obj.data.materials.append(material)
+if args.conductive_graph or args.bond_graph:
+    graph_edges = []
+    if args.bond_graph:
+        graph_points = []
+        with open(args.bond_graph) as stream:
+            for line in stream:
+                parts = line.split()
+                if parts and parts[0] == "v":
+                    graph_points.append(Vector(tuple(float(value) for value in parts[1:4])))
+                elif parts and parts[0] == "l":
+                    ids = [int(value.split("/")[0]) - 1 for value in parts[1:]]
+                    for left, right in zip(ids, ids[1:]):
+                        graph_edges.append((graph_points[left], graph_points[right]))
+    else:
+        if "structure" not in arrays:
+            raise ValueError("Conductive graph requires the actual binary conductor structure field")
+        occupied = arrays["structure"] > .5
+        for index in np.argwhere(occupied):
+            for axis in range(3):
+                neighbor = index.copy()
+                neighbor[axis] += 1
+                if neighbor[axis] >= shape[axis] or not occupied[tuple(neighbor)]:
+                    continue
+                p = Vector(tuple(-1 + 2 * (index[d] + .5) / shape[d] for d in range(3)))
+                q = Vector(tuple(-1 + 2 * (neighbor[d] + .5) / shape[d] for d in range(3)))
+                graph_edges.append((p, q))
+    vertices, faces = [], []
+    for p, q in graph_edges:
+        direction = (q - p).normalized()
+        reference = Vector((0, 1, 0) if abs(direction.y) < .9 else (1, 0, 0))
+        u = direction.cross(reference).normalized()
+        v = direction.cross(u)
+        start = len(vertices)
+        for center in (p, q):
+            for side in range(8):
+                angle = 2 * math.pi * side / 8
+                point = center + args.graph_radius * (math.cos(angle) * u + math.sin(angle) * v)
+                vertices.append(tuple(point))
+        for side in range(8):
+            following = (side + 1) % 8
+            faces.append((start + side, start + following, start + 8 + following, start + 8 + side))
+        faces.extend((tuple(start + side for side in reversed(range(8))), tuple(start + 8 + side for side in range(8))))
+    mesh = bpy.data.meshes.new("Actual conductive face adjacency")
+    mesh.from_pydata(vertices, [], faces)
+    filament = bpy.data.objects.new("Conductive lattice optical filaments", mesh)
+    bpy.context.collection.objects.link(filament)
+    filament_material = bpy.data.materials.new("Gold conductor optical surface")
+    filament_material.diffuse_color = emission_color
+    filament_material.use_nodes = True
+    shader = filament_material.node_tree.nodes.get("Principled BSDF")
+    shader.inputs["Base Color"].default_value = emission_color
+    shader.inputs["Metallic"].default_value = .25
+    shader.inputs["Roughness"].default_value = .28
+    shader.inputs["Emission Color"].default_value = emission_color
+    shader.inputs["Emission Strength"].default_value = .2 * args.emission
+    filament.data.materials.append(filament_material)
+    for polygon in mesh.polygons:
+        polygon.use_smooth = True
+
+if args.polished_carrier:
+    selected = np.argwhere(mask > .01)
+    if selected.size == 0:
+        raise ValueError("Cannot cut a polished carrier from an empty viewing mask")
+    axes = tuple(max(abs(-1 + 2 * (selected[:, d].min() + .5) / shape[d]), abs(-1 + 2 * (selected[:, d].max() + .5) / shape[d])) + 1 / shape[d] for d in range(3))
+    if args.carrier_shape == "ellipsoid":
+        bpy.ops.mesh.primitive_uv_sphere_add(segments=96, ring_count=64, radius=1)
+    else:
+        bpy.ops.mesh.primitive_cube_add(size=2)
+    shell = bpy.context.object
+    shell.name = "Optically cut polished specimen"
+    shell.scale = axes
+    if args.carrier_shape == "box":
+        bevel = shell.modifiers.new("Polished edge bevel", "BEVEL")
+        bevel.width = .025
+        bevel.segments = 4
+        shell.modifiers.new("Face normals", "WEIGHTED_NORMAL")
+    for polygon in shell.data.polygons:
+        polygon.use_smooth = args.carrier_shape == "ellipsoid"
+    shell_material = bpy.data.materials.new("Polished refractive optical cut")
+    shell_material.use_nodes = True
+    shader = shell_material.node_tree.nodes.get("Principled BSDF")
+    shader.inputs["Base Color"].default_value = (.98, .975, .96, 1)
+    shader.inputs["Roughness"].default_value = args.surface_roughness
+    shader.inputs["IOR"].default_value = args.ior
+    shader.inputs["Transmission Weight"].default_value = 1
+    shell.data.materials.append(shell_material)
+    bpy.ops.mesh.primitive_plane_add(size=200, location=(0,0,-axes[2]-.04))
+    ground = bpy.context.object
+    ground.name = "Dark studio ground"
+    ground_material = bpy.data.materials.new("Studio charcoal")
+    ground_material.use_nodes = True
+    shader = ground_material.node_tree.nodes.get("Principled BSDF")
+    shader.inputs["Base Color"].default_value = (.012,.016,.023,1)
+    shader.inputs["Roughness"].default_value = .3
+    shader.inputs["Metallic"].default_value = .15
+    ground.data.materials.append(ground_material)
+    optical_mapping["polished_cut_axes"] = list(axes)
+    for mapping_path in (os.path.join(directory, "optical-mapping.json"), output_path + ".optical.json"):
+        with open(mapping_path, "w") as stream:
+            json.dump(optical_mapping, stream, indent=2)
 
 def point_at(obj, target):
     obj.rotation_euler = (Vector(target) - obj.location).to_track_quat("-Z", "Y").to_euler()
@@ -147,7 +256,7 @@ bpy.context.scene.camera = camera
 for location, energy, size, color in [((-3, -2, 4), 650, 4, (1, .74, .4)), ((2, 2, 3), 950, 3, (.45, .72, 1))]:
     bpy.ops.object.light_add(type="AREA", location=location)
     light = bpy.context.object
-    light.data.energy = energy
+    light.data.energy = energy * args.light_power
     light.data.shape = "DISK"
     light.data.size = size
     light.data.color = color
@@ -158,6 +267,9 @@ scene.cycles.samples = args.samples
 scene.cycles.use_denoising = True
 scene.cycles.volume_step_rate = 0.25
 scene.cycles.volume_max_steps = 2048
+scene.cycles.max_bounces = 12
+scene.cycles.transmission_bounces = 8
+scene.cycles.volume_bounces = 4
 scene.render.resolution_x = args.size
 scene.render.resolution_y = args.size
 scene.render.resolution_percentage = 100

@@ -19,6 +19,7 @@ every>0 && steps>=0 || error("positive capture_every and nonnegative steps requi
 processes=scene.processes
 mass()=Float64(sum(Float64,Array(w.fields.nutrient))+sum(Float64,Array(w.fields.deposit)))+(scene.particles===nothing ? 0.0 : sum(Float64,scene.particles.storage))
 initial_mass=mass();frames=Any[]
+state_dir=mktempdir(out;prefix="states-",cleanup=false)
 function capture(index)
     name=@sprintf("frame-%04d",index)
     for field in (:deposit,:activity,:nutrient)
@@ -26,7 +27,8 @@ function capture(index)
             write(io,Array(getproperty(w.fields,field)))
         end
     end
-    push!(frames,Dict("name"=>name,"time"=>w.time,"mass"=>mass(),"solid"=>sum(Float64,Array(w.fields.deposit)),"activity_min"=>minimum(w.fields.activity),"activity_max"=>maximum(w.fields.activity)))
+    state_path=record_state(w,processes,joinpath(state_dir,name);step=index)
+    push!(frames,Dict("state"=>relpath(joinpath(state_dir,name,"state.json"),out),"name"=>name,"time"=>w.time,"mass"=>mass(),"solid"=>sum(Float64,Array(w.fields.deposit)),"activity_min"=>minimum(w.fields.activity),"activity_max"=>maximum(w.fields.activity)))
 end
 capture(0)
 elapsed=@elapsed for i in 1:steps
@@ -37,7 +39,7 @@ elapsed=@elapsed for i in 1:steps
         @printf("step %d/%d  t=%.3f  solid=%.3f  mass residual=%.3g\n",i,steps,w.time,sum(w.fields.deposit),mass()-initial_mass)
     end
 end
-metadata=Dict("title"=>get(config,"title","Interior"),"shape"=>collect(w.grid.size),"extent"=>collect(w.grid.extent),"axis_order"=>"x fastest; cell-centered; periodic domain","frames"=>frames,"config"=>config,"elapsed_seconds"=>elapsed,"initial_mass"=>initial_mass,"final_mass"=>mass(),"relative_mass_error"=>(mass()-initial_mass)/initial_mass,"julia_version"=>string(VERSION),"backend"=>backendname,"model"=>"Excitable grid plus fixed recurrent particle policies; no training or evolution")
+metadata=Dict("title"=>get(config,"title","Interior"),"shape"=>collect(w.grid.size),"extent"=>collect(w.grid.extent),"axis_order"=>"x fastest; cell-centered; periodic domain","frames"=>frames,"config"=>config,"state_directory"=>relpath(state_dir,out),"elapsed_seconds"=>elapsed,"initial_mass"=>initial_mass,"final_mass"=>mass(),"relative_mass_error"=>(mass()-initial_mass)/initial_mass,"julia_version"=>string(VERSION),"backend"=>backendname,"model"=>"Excitable grid plus fixed recurrent particle policies; no training or evolution")
 open(joinpath(out,"run.json"),"w") do io;JSON3.pretty(io,metadata);end
 cp(configpath,joinpath(out,"config.toml");force=true)
 fields=optical_fields(w)

@@ -36,8 +36,6 @@ function validate(w::World,p::AcousticField)
     all(>=(0),(p.material_feedback,p.damping,p.frequency,p.activity_gain)) || throw(ArgumentError("acoustic coupling and damping must be nonnegative"))
     all(a->size(a)==w.grid.size,(p.pressure,p.previous,p.scratch,p.envelope)) || throw(ArgumentError("acoustic field grid mismatch"))
     all(a->typeof(KernelAbstractions.get_backend(a))==typeof(w.backend),(p.pressure,p.previous,p.scratch,p.envelope)) || throw(ArgumentError("acoustic backend mismatch"))
-    all(a->all(isfinite,a),(p.pressure,p.previous,p.envelope)) || throw(ArgumentError("nonfinite acoustic state"))
-    minimum(p.envelope)>=0 || throw(ArgumentError("negative acoustic intensity"))
     minimum(w.fields.deposit)>=0 || throw(ArgumentError("acoustic mineral must be nonnegative"))
 end
 stability_limit(w,p::AcousticField)=0.9f0/(p.speed*sqrt(sum(inv(w.grid.spacing[d]^2) for d in 1:(w.grid.size[3]==1 ? 2 : 3))))

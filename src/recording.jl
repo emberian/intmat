@@ -2,12 +2,15 @@
 # or modifies a world/process. Captures must occur between complete step! calls.
 function _record_value(value, key, dir, arrays)
     if value isa AbstractArray{<:AbstractFloat}
-        host = Float32.(Array(value))
-        filename = key * ".f32"
+        T = eltype(value)
+        T in (Float16,Float32,Float64) || throw(ArgumentError("unsupported floating element type $T at $key"))
+        host = Array(value)
+        bits = 8sizeof(T)
+        filename = key * ".f" * string(bits)
         open(joinpath(dir, filename), "w") do io
             write(io, host)
         end
-        entry = Dict("file"=>filename, "dtype"=>"float32", "shape"=>collect(size(host)),
+        entry = Dict("file"=>filename, "dtype"=>"float"*string(bits), "shape"=>collect(size(host)),
                      "source_dtype"=>string(eltype(value)))
         arrays[key] = entry
         return entry
@@ -64,7 +67,8 @@ end
 Write a view-independent state observation to a new directory, returning its
 manifest. Includes all world fields, process state and effective rules, physical
 cell-center coordinates, simulation time, and implementation SHA-256 hashes.
-Floating arrays are host Float32 binaries in Julia column-major order; integer
+Floating arrays preserve native Float16/32/64 precision in host binaries in
+Julia column-major order; integer
 IDs remain exact in JSON. Call between complete simulation steps. This is an
 inspection/export format, not a restart checkpoint or a concurrent snapshot.
 The destination must not exist; failure removes only the temporary export.
@@ -86,7 +90,7 @@ function record_state(w::World, processes::Tuple, dir::AbstractString; step::Int
             for d in 1:3)
         sources = Dict(basename(path)=>bytes2hex(SHA.sha256(read(path)))
                        for path in sort(filter(p->endswith(p,".jl"),readdir(@__DIR__;join=true))))
-        manifest = Dict("schema"=>"interior-state", "schema_version"=>1,
+        manifest = Dict("schema"=>"interior-state", "schema_version"=>2,
             "step"=>step,"time"=>w.time,"seed"=>w.seed,
             "julia_version"=>string(VERSION),"backend"=>string(typeof(w.backend)),
             "byte_order"=>(ENDIAN_BOM==0x04030201 ? "little" : "big"),

@@ -20,7 +20,16 @@ include("writing.jl")
 export ThermalWriter, beam_position
 include("electrical.jl")
 export DielectricGrowth, solve_potential!, potential_residual, electrical_optical_fields
+include("phase.jl")
+export PhaseSeparation, phase_energy, phase_optical_fields
+include("mechanics.jl")
+export BondNetwork, bond_forces, mechanical_energy, break_bonds!, mechanical_optical_fields, export_bond_graph
+include("ecology.jl")
+export Ecology, ecology_mass, reorder_ecology!, ecology_step!, ecology_statistics
+include("experiments.jl")
+export Experiment, ExperimentReport, ProcessPorts, process_ports, OpticalMap, run!, experiment_diagnostics, owned_material_mass
 include("render.jl")
+include("grin.jl")
 include("scenes.jl")
 export RenderSettings, render_volume, export_volume, volume_sample, transport_segment, build_scene, optical_fields
 end

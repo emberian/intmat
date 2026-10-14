@@ -1,6 +1,6 @@
 using Interior: JSON3
-struct RecordingTestProcess
-    memory::Vector{Float32}
+struct RecordingTestProcess{T}
+    memory::Vector{T}
     rate::Float32
 end
 Interior.record_process_fields(p::RecordingTestProcess) = (memory=p.memory,rate=p.rate)
@@ -59,6 +59,20 @@ Interior.record_process_fields(p::RecordingTestProcess) = (memory=p.memory,rate=
         cm=record_state(dense,(custom,),joinpath(dir,"custom");step=5)
         @test cm["processes"][1]["state"]["rate"]==custom.rate
         @test reinterpret(Float32,read(joinpath(dir,"custom","process-1-memory.f32")))==custom.memory
+        for T in (Float16,Float64)
+            memory=T[one(T),nextfloat(one(T)),-zero(T)]
+            precise=RecordingTestProcess(memory,0.3f0)
+            dest=joinpath(dir,string(T))
+            pm=record_state(dense,(precise,),dest;step=5)
+            descriptor=pm["processes"][1]["state"]["memory"]
+            @test pm["schema_version"]==2
+            @test descriptor["dtype"]=="float"*string(8sizeof(T))
+            @test descriptor["source_dtype"]==string(T)
+            @test read(joinpath(dest,descriptor["file"]))==reinterpret(UInt8,memory)
+        end
+        exotic=RecordingTestProcess(BigFloat[1],0.3f0)
+        @test_throws ArgumentError record_state(dense,(exotic,),joinpath(dir,"exotic");step=5)
+        @test !ispath(joinpath(dir,"exotic"))
         @test_throws ArgumentError record_state(dense,p,joinpath(dir,"negative");step=-1)
     end
 end

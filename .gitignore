@@ -1,2 +1,5 @@
-outputs
-.playwright-mcp
+/outputs/
+/.playwright-mcp/
+.DS_Store
+*.blend1
+__pycache__/
