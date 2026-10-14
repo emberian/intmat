@@ -1,3 +1,4 @@
+using Random, Serialization
 @testset "Metabolic ecology finite fuel, specialization and inherited traits" begin
     function metabolic_fixture(; initial=(1,0), allocation=Float32[1 0;0 1],kwargs...)
         w=World(Grid(3,3)); r=ResourcePool(w;names=(:a,:b),potentials=(4,4),initial,diffusion=(0,0))
@@ -41,6 +42,38 @@
     ecology_step!(wa,pa,.2); ecology_step!(we,pe,.2)
     @test pa.consumed[1]>pe.consumed[1]
     @test pe.controller.energy[1]>pa.controller.energy[1]
+end
+@testset "Reused neural frames preserve lifecycle and reset scratch" begin
+    for dims in ((2,2,1),(7,6,4))
+        w=World(Grid(dims...)); v=deepcopy(w)
+        positions=rand(MersenneTwister(31),Float32,3,12)
+        for d in 1:3; positions[d,:].*=dims[d]; end
+        p=NeuralEcology(positions;storage=2,energy=5,capacity=30,mutation=.1,neighbor_radius=2)
+        h=size(p.hidden,1); p.weights[h+8,:,:].=0; p.weights[h+8,end,:].=3
+        q=deepcopy(p); ws=Interior.NeuralWorkspace(v,q)
+        for _ in 1:3
+            ecology_step!(w,p,.1); ecology_step!(v,q,.1;workspace=ws)
+            @test p.ids==q.ids && p.parents==q.parents && p.generations==q.generations
+            @test p.weights==q.weights && isapprox(p.positions,q.positions;atol=2e-6)
+            @test isapprox(p.hidden,q.hidden;atol=2e-6) && isapprox(p.plastic_marks,q.plastic_marks;atol=2e-6)
+            @test isapprox(p.storage,q.storage;atol=2e-6) && isapprox(p.energy,q.energy;atol=2e-6)
+            @test isapprox(w.fields.nutrient,v.fields.nutrient;atol=2e-6) && isapprox(w.fields.deposit,v.fields.deposit;atol=2e-6)
+        end
+    end
+    w=World(Grid(3,3)); resources=ResourcePool(w)
+    p=MetabolicEcology(zeros(Float32,3,2),resources;storage=2,energy=5,capacity=8)
+    ecology_step!(w,p,.1); buffer=IOBuffer(); serialize(buffer,p); seekstart(buffer)
+    q=deserialize(buffer); v=deepcopy(w)
+    # Scratch is optional serialized state, and can be explicitly rebuilt.
+    q.workspace=nothing
+    ecology_step!(w,p,.1); ecology_step!(v,q,.1)
+    @test p.controller.weights==q.controller.weights && p.controller.positions==q.controller.positions
+    @test p.resources.fields==q.resources.fields && p.allocation==q.allocation
+    q.contributed_material[q.controller.ids[1]]=2.
+    q.contributed_work[q.controller.ids[1]]=3.
+    q.controller.age.=q.controller.lifespan
+    ecology_step!(v,q,.1)
+    @test isempty(q.contributed_material) && isempty(q.contributed_work) && isempty(q.recent_contributions)
 end
 @testset "Crossfeeding retains finite chemical potential" begin
     w=World(Grid(2,2)); r=ResourcePool(w;initial=(1,0,0),potentials=(4,3,1),diffusion=(0,0,0))

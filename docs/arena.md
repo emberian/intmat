@@ -104,7 +104,7 @@ the same masks; these imposed opportunities do not establish emergent specializa
 Sources and sinks have finite total mass budgets, separate from their per-cell-time
 rates. Exhausting a source budget stops its feed. Chemical potentials fund work;
 structural nutrient and deposit provide material without becoming fresh chemical fuel.
-The profile's zero-potential third species begins empty. Species, potentials,
+The profile's lower-potential third species begins empty and can receive exported byproduct. Species, potentials,
 initial levels, diffusion, source/sink rates and budgets are configured in
 `[resources]`; `spatial_niches=false` selects uniform initial levels and masks.
 

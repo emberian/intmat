@@ -1,0 +1,3376 @@
+{
+  "scope": "Two seeded finite CPU mechanism pilots, 80 simulation units; not evolutionary evidence",
+  "settings": {
+    "dims": [
+      24,
+      24,
+      1
+    ],
+    "founders": 24,
+    "capacity": 180,
+    "uptake_rate": 0.7,
+    "lifespan": 80,
+    "source_rates": [
+      0.015,
+      0.015,
+      0
+    ],
+    "source_budgets": [
+      2000,
+      2000,
+      0
+    ]
+  },
+  "runs": [
+    {
+      "seed": 11,
+      "condition": "niches",
+      "steps": 400,
+      "dt": 0.2,
+      "wall_seconds": 6.55162787437439,
+      "model": "finite-multisubstrate-funded-film-v1",
+      "sources": {
+        "compartments.jl": "8eec60b56379a3d366cd789ad62e4c7690a0c10ce5af8a485f66b670c8448751",
+        "arena.jl": "8fd826aa3b48ac05542b7e94bf7294b82c803f882d504173bd8f10d0b64999ef",
+        "metabolic_ecology.jl": "c0cd14f8fd9c227d5503d815c8930a64573300484c01f1dfa9d269a8e565b499",
+        "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+        "implicit_phase.jl": "c9f69ad8d2ab00bd18d678d51956effe9c52bf415d5388d5305c56b4bb351fe7",
+        "neural_ecology.jl": "7c2ba7a66184818aa0b07d0dd691339f5e99a61c82777726bae9961d544a0fcb",
+        "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26"
+      },
+      "source_unchanged": true,
+      "summary": {
+        "late_duration": 40.00000059604645,
+        "late_births": 9,
+        "late_deaths": 14,
+        "late_population_change": -5,
+        "late_birth_rate": 0.22499999664723877,
+        "late_death_rate": 0.34999999478459365,
+        "final": {
+          "time": 80.0000011920929,
+          "population": 9,
+          "births": 45,
+          "deaths": 60,
+          "finite": true,
+          "material_error": -0.00016146932694027782,
+          "founder_effective_count": 1.8898815748423097,
+          "controller_variance": 0.026141105,
+          "allocation_mean": [
+            0.5678855,
+            0.3095091,
+            0.12260543
+          ],
+          "allocation_variance": [
+            0.09625729,
+            0.080585614,
+            0.001208612
+          ],
+          "generalism_mean": 0.6696439177218984,
+          "efficiency_mean": 0.63468343,
+          "efficiency_variance": 0.00146656,
+          "assimilation_mean": 0.37583712,
+          "cooperation_mean": 0.34086972,
+          "cooperation_variance": 0.0025116252,
+          "byproduct_fraction_mean": 0.18387486,
+          "byproduct_fraction_variance": 0.0006061147,
+          "uptake_by_resource": [
+            59.54864842724054,
+            47.05278305150565,
+            4.702293655667746
+          ],
+          "exported_by_resource": [
+            0.0,
+            0.0,
+            12.504726842744276
+          ],
+          "resource_mass": [
+            919.6400389522314,
+            932.1357244104147,
+            7.802433343167195
+          ],
+          "supplied": [
+            691.1886839065701,
+            691.1885285265744,
+            0.0
+          ],
+          "patch_population": [
+            6,
+            3
+          ],
+          "patch_a_allocation": [
+            0.77436996,
+            0.15491652
+          ],
+          "inhabited_cells": 8,
+          "positive_phase_residents": 9,
+          "boundary_exposure_mean": 0.029055632062308077,
+          "contributor_population": 9,
+          "withholding_population": 0,
+          "contributor_exposure": 0.029055632062308077,
+          "withholding_exposure": 0.0,
+          "maintenance_material": 6.925629235804081,
+          "maintenance_work": 4.1553777066023185,
+          "film_mass": 2.48088743747212,
+          "chemical_heat": 267.7159117106588,
+          "morphology": {
+            "occupancy": 0.4322916666666667,
+            "components": 1,
+            "largest_component_share": 1.0,
+            "component_size_cv": 0.0,
+            "phi_mean": -0.11999998081066426,
+            "phi_variance": 0.5707522
+          }
+        }
+      }
+    },
+    {
+      "seed": 11,
+      "condition": "no_crossfeed",
+      "steps": 400,
+      "dt": 0.2,
+      "wall_seconds": 0.6274890899658203,
+      "model": "finite-multisubstrate-funded-film-v1",
+      "sources": {
+        "compartments.jl": "8eec60b56379a3d366cd789ad62e4c7690a0c10ce5af8a485f66b670c8448751",
+        "arena.jl": "8fd826aa3b48ac05542b7e94bf7294b82c803f882d504173bd8f10d0b64999ef",
+        "metabolic_ecology.jl": "c0cd14f8fd9c227d5503d815c8930a64573300484c01f1dfa9d269a8e565b499",
+        "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+        "implicit_phase.jl": "c9f69ad8d2ab00bd18d678d51956effe9c52bf415d5388d5305c56b4bb351fe7",
+        "neural_ecology.jl": "7c2ba7a66184818aa0b07d0dd691339f5e99a61c82777726bae9961d544a0fcb",
+        "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26"
+      },
+      "source_unchanged": true,
+      "summary": {
+        "late_duration": 40.00000059604645,
+        "late_births": 27,
+        "late_deaths": 21,
+        "late_population_change": 6,
+        "late_birth_rate": 0.6749999899417164,
+        "late_death_rate": 0.5249999921768905,
+        "final": {
+          "time": 80.0000011920929,
+          "population": 25,
+          "births": 68,
+          "deaths": 67,
+          "finite": true,
+          "material_error": -0.00013744064062848338,
+          "founder_effective_count": 1.3215025329299093,
+          "controller_variance": 0.0176529,
+          "allocation_mean": [
+            0.17658459,
+            0.6918177,
+            0.13159767
+          ],
+          "allocation_variance": [
+            0.035766147,
+            0.02540882,
+            0.0033807105
+          ],
+          "generalism_mean": 0.6648949319177261,
+          "efficiency_mean": 0.64894813,
+          "efficiency_variance": 0.0014741607,
+          "assimilation_mean": 0.34424916,
+          "cooperation_mean": 0.35290077,
+          "cooperation_variance": 0.0047320304,
+          "byproduct_fraction_mean": 0.0,
+          "byproduct_fraction_variance": 0.0,
+          "uptake_by_resource": [
+            69.20516471751037,
+            81.10687545128161,
+            0.0
+          ],
+          "exported_by_resource": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "resource_mass": [
+            909.9837440215051,
+            898.081918425858,
+            0.0
+          ],
+          "supplied": [
+            691.188918935135,
+            691.1887826835737,
+            0.0
+          ],
+          "patch_population": [
+            2,
+            23
+          ],
+          "patch_a_allocation": [
+            0.7930601,
+            0.12297802
+          ],
+          "inhabited_cells": 16,
+          "positive_phase_residents": 25,
+          "boundary_exposure_mean": 0.05034953462518752,
+          "contributor_population": 25,
+          "withholding_population": 0,
+          "contributor_exposure": 0.05034953462518752,
+          "withholding_exposure": 0.0,
+          "maintenance_material": 8.749272280256264,
+          "maintenance_work": 5.249563576752672,
+          "film_mass": 3.617484785267152,
+          "chemical_heat": 371.9654690103322,
+          "morphology": {
+            "occupancy": 0.4322916666666667,
+            "components": 1,
+            "largest_component_share": 1.0,
+            "component_size_cv": 0.0,
+            "phi_mean": -0.11999997646429013,
+            "phi_variance": 0.5694798
+          }
+        }
+      }
+    },
+    {
+      "seed": 11,
+      "condition": "no_mutation",
+      "steps": 400,
+      "dt": 0.2,
+      "wall_seconds": 0.5104398727416992,
+      "model": "finite-multisubstrate-funded-film-v1",
+      "sources": {
+        "compartments.jl": "8eec60b56379a3d366cd789ad62e4c7690a0c10ce5af8a485f66b670c8448751",
+        "arena.jl": "8fd826aa3b48ac05542b7e94bf7294b82c803f882d504173bd8f10d0b64999ef",
+        "metabolic_ecology.jl": "c0cd14f8fd9c227d5503d815c8930a64573300484c01f1dfa9d269a8e565b499",
+        "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+        "implicit_phase.jl": "c9f69ad8d2ab00bd18d678d51956effe9c52bf415d5388d5305c56b4bb351fe7",
+        "neural_ecology.jl": "7c2ba7a66184818aa0b07d0dd691339f5e99a61c82777726bae9961d544a0fcb",
+        "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26"
+      },
+      "source_unchanged": true,
+      "summary": {
+        "late_duration": 40.00000059604645,
+        "late_births": 30,
+        "late_deaths": 19,
+        "late_population_change": 11,
+        "late_birth_rate": 0.7499999888241292,
+        "late_death_rate": 0.47499999292194856,
+        "final": {
+          "time": 80.0000011920929,
+          "population": 22,
+          "births": 67,
+          "deaths": 69,
+          "finite": true,
+          "material_error": -0.0001550039214635035,
+          "founder_effective_count": 1.0,
+          "controller_variance": 1.3148302e-15,
+          "allocation_mean": [
+            0.75,
+            0.15000002,
+            0.099999994
+          ],
+          "allocation_variance": [
+            0.0,
+            2.3261817e-16,
+            5.815454e-17
+          ],
+          "generalism_mean": 0.6650099818100572,
+          "efficiency_mean": 0.6000001,
+          "efficiency_variance": 3.7218907e-15,
+          "assimilation_mean": 0.39999998,
+          "cooperation_mean": 0.35,
+          "cooperation_variance": 0.0,
+          "byproduct_fraction_mean": 0.19999999,
+          "byproduct_fraction_variance": 2.3261817e-16,
+          "uptake_by_resource": [
+            91.79118007374919,
+            48.21758037433031,
+            6.912787770867002
+          ],
+          "exported_by_resource": [
+            0.0,
+            0.0,
+            16.80099611555488
+          ],
+          "resource_mass": [
+            887.3977452144027,
+            930.9708951190114,
+            9.888208300958922
+          ],
+          "supplied": [
+            691.1889181379229,
+            691.1884705536067,
+            0.0
+          ],
+          "patch_population": [
+            22,
+            0
+          ],
+          "patch_a_allocation": [
+            0.75,
+            0.0
+          ],
+          "inhabited_cells": 15,
+          "positive_phase_residents": 22,
+          "boundary_exposure_mean": 0.044885106488469655,
+          "contributor_population": 22,
+          "withholding_population": 0,
+          "contributor_exposure": 0.044885106488469655,
+          "withholding_exposure": 0.0,
+          "maintenance_material": 8.496242854045704,
+          "maintenance_work": 5.0977459149936335,
+          "film_mass": 3.756510460632853,
+          "chemical_heat": 356.12619665427746,
+          "morphology": {
+            "occupancy": 0.4322916666666667,
+            "components": 1,
+            "largest_component_share": 1.0,
+            "component_size_cv": 0.0,
+            "phi_mean": -0.11999998365071304,
+            "phi_variance": 0.5698554
+          }
+        }
+      }
+    },
+    {
+      "seed": 11,
+      "condition": "uniform",
+      "steps": 400,
+      "dt": 0.2,
+      "wall_seconds": 0.5118799209594727,
+      "model": "finite-multisubstrate-funded-film-v1",
+      "sources": {
+        "compartments.jl": "8eec60b56379a3d366cd789ad62e4c7690a0c10ce5af8a485f66b670c8448751",
+        "arena.jl": "8fd826aa3b48ac05542b7e94bf7294b82c803f882d504173bd8f10d0b64999ef",
+        "metabolic_ecology.jl": "c0cd14f8fd9c227d5503d815c8930a64573300484c01f1dfa9d269a8e565b499",
+        "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+        "implicit_phase.jl": "c9f69ad8d2ab00bd18d678d51956effe9c52bf415d5388d5305c56b4bb351fe7",
+        "neural_ecology.jl": "7c2ba7a66184818aa0b07d0dd691339f5e99a61c82777726bae9961d544a0fcb",
+        "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26"
+      },
+      "source_unchanged": true,
+      "summary": {
+        "late_duration": 40.00000059604645,
+        "late_births": 11,
+        "late_deaths": 4,
+        "late_population_change": 7,
+        "late_birth_rate": 0.2749999959021807,
+        "late_death_rate": 0.0999999985098839,
+        "final": {
+          "time": 80.0000011920929,
+          "population": 10,
+          "births": 41,
+          "deaths": 55,
+          "finite": true,
+          "material_error": -0.00012403374057612382,
+          "founder_effective_count": 1.6493848884661177,
+          "controller_variance": 0.019704778,
+          "allocation_mean": [
+            0.29482135,
+            0.6393947,
+            0.06578399
+          ],
+          "allocation_variance": [
+            0.083885595,
+            0.07542243,
+            0.0009695367
+          ],
+          "generalism_mean": 0.5822384377044639,
+          "efficiency_mean": 0.6286399,
+          "efficiency_variance": 0.001192363,
+          "assimilation_mean": 0.34997368,
+          "cooperation_mean": 0.3624962,
+          "cooperation_variance": 0.0029469,
+          "byproduct_fraction_mean": 0.16911046,
+          "byproduct_fraction_variance": 0.0014779366,
+          "uptake_by_resource": [
+            49.337430614978096,
+            43.79862259048972,
+            3.727468641569431
+          ],
+          "exported_by_resource": [
+            0.0,
+            0.0,
+            11.144603942564572
+          ],
+          "resource_mass": [
+            929.8465071991086,
+            935.385164257139,
+            7.417135864233387
+          ],
+          "supplied": [
+            691.1839120890945,
+            691.1838032817468,
+            0.0
+          ],
+          "patch_population": [
+            2,
+            8
+          ],
+          "patch_a_allocation": [
+            0.83170015,
+            0.16060165
+          ],
+          "inhabited_cells": 9,
+          "positive_phase_residents": 10,
+          "boundary_exposure_mean": 0.022509563900530334,
+          "contributor_population": 10,
+          "withholding_population": 0,
+          "contributor_exposure": 0.022509563900530334,
+          "withholding_exposure": 0.0,
+          "maintenance_material": 5.942861780349631,
+          "maintenance_work": 3.5657172098986414,
+          "film_mass": 1.9880100537557155,
+          "chemical_heat": 232.38799733175517,
+          "morphology": {
+            "occupancy": 0.4305555555555556,
+            "components": 1,
+            "largest_component_share": 1.0,
+            "component_size_cv": 0.0,
+            "phi_mean": -0.11999999912384535,
+            "phi_variance": 0.5704881
+          }
+        }
+      }
+    },
+    {
+      "seed": 11,
+      "condition": "withhold",
+      "steps": 400,
+      "dt": 0.2,
+      "wall_seconds": 0.5362000465393066,
+      "model": "finite-multisubstrate-funded-film-v1",
+      "sources": {
+        "compartments.jl": "8eec60b56379a3d366cd789ad62e4c7690a0c10ce5af8a485f66b670c8448751",
+        "arena.jl": "8fd826aa3b48ac05542b7e94bf7294b82c803f882d504173bd8f10d0b64999ef",
+        "metabolic_ecology.jl": "c0cd14f8fd9c227d5503d815c8930a64573300484c01f1dfa9d269a8e565b499",
+        "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+        "implicit_phase.jl": "c9f69ad8d2ab00bd18d678d51956effe9c52bf415d5388d5305c56b4bb351fe7",
+        "neural_ecology.jl": "7c2ba7a66184818aa0b07d0dd691339f5e99a61c82777726bae9961d544a0fcb",
+        "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26"
+      },
+      "source_unchanged": true,
+      "summary": {
+        "late_duration": 40.00000059604645,
+        "late_births": 42,
+        "late_deaths": 34,
+        "late_population_change": 8,
+        "late_birth_rate": 1.049999984353781,
+        "late_death_rate": 0.8499999873340132,
+        "final": {
+          "time": 80.0000011920929,
+          "population": 25,
+          "births": 88,
+          "deaths": 87,
+          "finite": true,
+          "material_error": -7.94947222857445e-05,
+          "founder_effective_count": 1.9856172048699803,
+          "controller_variance": 0.037027378,
+          "allocation_mean": [
+            0.76440984,
+            0.09202233,
+            0.14356774
+          ],
+          "allocation_variance": [
+            0.0036889352,
+            0.0024248944,
+            0.0035739858
+          ],
+          "generalism_mean": 0.6111785966695701,
+          "efficiency_mean": 0.5598372,
+          "efficiency_variance": 0.011407911,
+          "assimilation_mean": 0.39693692,
+          "cooperation_mean": 0.06252436,
+          "cooperation_variance": 0.0019345158,
+          "byproduct_fraction_mean": 0.22111723,
+          "byproduct_fraction_variance": 0.0026102837,
+          "uptake_by_resource": [
+            123.86473951209342,
+            54.347136215772466,
+            9.600137671513943
+          ],
+          "exported_by_resource": [
+            0.0,
+            0.0,
+            21.816041682090145
+          ],
+          "resource_mass": [
+            855.3245817422867,
+            924.8414526432753,
+            12.21590398720491
+          ],
+          "supplied": [
+            691.1893065059558,
+            691.1885964903049,
+            0.0
+          ],
+          "patch_population": [
+            23,
+            2
+          ],
+          "patch_a_allocation": [
+            0.7669722,
+            0.73494446
+          ],
+          "inhabited_cells": 20,
+          "positive_phase_residents": 11,
+          "boundary_exposure_mean": 0.0,
+          "contributor_population": 0,
+          "withholding_population": 25,
+          "contributor_exposure": 0.0,
+          "withholding_exposure": 0.0,
+          "maintenance_material": 0.0,
+          "maintenance_work": 0.0,
+          "film_mass": 0.0,
+          "chemical_heat": 459.840097191597,
+          "morphology": {
+            "occupancy": 0.4288194444444444,
+            "components": 1,
+            "largest_component_share": 1.0,
+            "component_size_cv": 0.0,
+            "phi_mean": -0.12000000487296347,
+            "phi_variance": 0.5718569
+          }
+        }
+      }
+    },
+    {
+      "seed": 29,
+      "condition": "niches",
+      "steps": 400,
+      "dt": 0.2,
+      "wall_seconds": 0.427929162979126,
+      "model": "finite-multisubstrate-funded-film-v1",
+      "sources": {
+        "compartments.jl": "8eec60b56379a3d366cd789ad62e4c7690a0c10ce5af8a485f66b670c8448751",
+        "arena.jl": "8fd826aa3b48ac05542b7e94bf7294b82c803f882d504173bd8f10d0b64999ef",
+        "metabolic_ecology.jl": "c0cd14f8fd9c227d5503d815c8930a64573300484c01f1dfa9d269a8e565b499",
+        "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+        "implicit_phase.jl": "c9f69ad8d2ab00bd18d678d51956effe9c52bf415d5388d5305c56b4bb351fe7",
+        "neural_ecology.jl": "7c2ba7a66184818aa0b07d0dd691339f5e99a61c82777726bae9961d544a0fcb",
+        "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26"
+      },
+      "source_unchanged": true,
+      "summary": {
+        "late_duration": 40.00000059604645,
+        "late_births": 5,
+        "late_deaths": 10,
+        "late_population_change": -5,
+        "late_birth_rate": 0.12499999813735488,
+        "late_death_rate": 0.24999999627470976,
+        "final": {
+          "time": 80.0000011920929,
+          "population": 0,
+          "births": 36,
+          "deaths": 60,
+          "finite": true,
+          "material_error": -0.00013065080656815553,
+          "founder_effective_count": 0.0,
+          "controller_variance": 0.0,
+          "allocation_mean": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "allocation_variance": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "generalism_mean": 0.0,
+          "efficiency_mean": 0.0,
+          "efficiency_variance": 0.0,
+          "assimilation_mean": 0.0,
+          "cooperation_mean": 0.0,
+          "cooperation_variance": 0.0,
+          "byproduct_fraction_mean": 0.0,
+          "byproduct_fraction_variance": 0.0,
+          "uptake_by_resource": [
+            30.196511663496494,
+            42.82755706273017,
+            2.8809468495455803
+          ],
+          "exported_by_resource": [
+            0.0,
+            0.0,
+            8.222673268275685
+          ],
+          "resource_mass": [
+            948.9916960895061,
+            936.3610094487667,
+            5.341726184035451
+          ],
+          "supplied": [
+            691.1882127895951,
+            691.1885641198605,
+            0.0
+          ],
+          "patch_population": [
+            0,
+            0
+          ],
+          "patch_a_allocation": [
+            0.0,
+            0.0
+          ],
+          "inhabited_cells": 0,
+          "positive_phase_residents": 0,
+          "boundary_exposure_mean": 0.0,
+          "contributor_population": 0,
+          "withholding_population": 0,
+          "contributor_exposure": 0.0,
+          "withholding_exposure": 0.0,
+          "maintenance_material": 5.633795785950497,
+          "maintenance_work": 3.3802776058904542,
+          "film_mass": 1.6935506989830174,
+          "chemical_heat": 188.7577964284925,
+          "morphology": {
+            "occupancy": 0.4010416666666667,
+            "components": 4,
+            "largest_component_share": 0.4935064935064935,
+            "component_size_cv": 0.6534932792420325,
+            "phi_mean": -0.11999999995330451,
+            "phi_variance": 0.5093357
+          }
+        }
+      }
+    },
+    {
+      "seed": 29,
+      "condition": "no_crossfeed",
+      "steps": 400,
+      "dt": 0.2,
+      "wall_seconds": 0.3053889274597168,
+      "model": "finite-multisubstrate-funded-film-v1",
+      "sources": {
+        "compartments.jl": "8eec60b56379a3d366cd789ad62e4c7690a0c10ce5af8a485f66b670c8448751",
+        "arena.jl": "8fd826aa3b48ac05542b7e94bf7294b82c803f882d504173bd8f10d0b64999ef",
+        "metabolic_ecology.jl": "c0cd14f8fd9c227d5503d815c8930a64573300484c01f1dfa9d269a8e565b499",
+        "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+        "implicit_phase.jl": "c9f69ad8d2ab00bd18d678d51956effe9c52bf415d5388d5305c56b4bb351fe7",
+        "neural_ecology.jl": "7c2ba7a66184818aa0b07d0dd691339f5e99a61c82777726bae9961d544a0fcb",
+        "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26"
+      },
+      "source_unchanged": true,
+      "summary": {
+        "late_duration": 40.00000059604645,
+        "late_births": 11,
+        "late_deaths": 9,
+        "late_population_change": 2,
+        "late_birth_rate": 0.2749999959021807,
+        "late_death_rate": 0.22499999664723877,
+        "final": {
+          "time": 80.0000011920929,
+          "population": 8,
+          "births": 43,
+          "deaths": 59,
+          "finite": true,
+          "material_error": -0.00011483961270641885,
+          "founder_effective_count": 1.0,
+          "controller_variance": 0.008424737,
+          "allocation_mean": [
+            0.76934195,
+            0.11626342,
+            0.11439468
+          ],
+          "allocation_variance": [
+            0.0023110874,
+            0.0024966965,
+            0.0011027636
+          ],
+          "generalism_mean": 0.6222351077437335,
+          "efficiency_mean": 0.5337394,
+          "efficiency_variance": 0.00058306806,
+          "assimilation_mean": 0.3612124,
+          "cooperation_mean": 0.28509423,
+          "cooperation_variance": 0.00016941655,
+          "byproduct_fraction_mean": 0.0,
+          "byproduct_fraction_variance": 0.0,
+          "uptake_by_resource": [
+            52.20270257163791,
+            48.69447129406034,
+            0.0
+          ],
+          "exported_by_resource": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "resource_mass": [
+            926.9856888651848,
+            930.4942004531622,
+            0.0
+          ],
+          "supplied": [
+            691.1883798614144,
+            691.1886726245284,
+            0.0
+          ],
+          "patch_population": [
+            8,
+            0
+          ],
+          "patch_a_allocation": [
+            0.76934195,
+            0.0
+          ],
+          "inhabited_cells": 7,
+          "positive_phase_residents": 8,
+          "boundary_exposure_mean": 0.02558198731567245,
+          "contributor_population": 8,
+          "withholding_population": 0,
+          "contributor_exposure": 0.02558198731567245,
+          "withholding_exposure": 0.0,
+          "maintenance_material": 7.046926393697504,
+          "maintenance_work": 4.228156004230314,
+          "film_mass": 2.4172507651383057,
+          "chemical_heat": 261.76652299836957,
+          "morphology": {
+            "occupancy": 0.4114583333333333,
+            "components": 4,
+            "largest_component_share": 0.48945147679324896,
+            "component_size_cv": 0.6417017320771367,
+            "phi_mean": -0.1199999890138012,
+            "phi_variance": 0.50870264
+          }
+        }
+      }
+    },
+    {
+      "seed": 29,
+      "condition": "no_mutation",
+      "steps": 400,
+      "dt": 0.2,
+      "wall_seconds": 0.3241269588470459,
+      "model": "finite-multisubstrate-funded-film-v1",
+      "sources": {
+        "compartments.jl": "8eec60b56379a3d366cd789ad62e4c7690a0c10ce5af8a485f66b670c8448751",
+        "arena.jl": "8fd826aa3b48ac05542b7e94bf7294b82c803f882d504173bd8f10d0b64999ef",
+        "metabolic_ecology.jl": "c0cd14f8fd9c227d5503d815c8930a64573300484c01f1dfa9d269a8e565b499",
+        "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+        "implicit_phase.jl": "c9f69ad8d2ab00bd18d678d51956effe9c52bf415d5388d5305c56b4bb351fe7",
+        "neural_ecology.jl": "7c2ba7a66184818aa0b07d0dd691339f5e99a61c82777726bae9961d544a0fcb",
+        "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26"
+      },
+      "source_unchanged": true,
+      "summary": {
+        "late_duration": 40.00000059604645,
+        "late_births": 8,
+        "late_deaths": 11,
+        "late_population_change": -3,
+        "late_birth_rate": 0.1999999970197678,
+        "late_death_rate": 0.2749999959021807,
+        "final": {
+          "time": 80.0000011920929,
+          "population": 0,
+          "births": 35,
+          "deaths": 59,
+          "finite": true,
+          "material_error": -0.00011645039558061399,
+          "founder_effective_count": 0.0,
+          "controller_variance": 0.0,
+          "allocation_mean": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "allocation_variance": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "generalism_mean": 0.0,
+          "efficiency_mean": 0.0,
+          "efficiency_variance": 0.0,
+          "assimilation_mean": 0.0,
+          "cooperation_mean": 0.0,
+          "cooperation_variance": 0.0,
+          "byproduct_fraction_mean": 0.0,
+          "byproduct_fraction_variance": 0.0,
+          "uptake_by_resource": [
+            31.999417675659064,
+            48.3786348355934,
+            3.535658799883092
+          ],
+          "exported_by_resource": [
+            0.0,
+            0.0,
+            9.645340748174931
+          ],
+          "resource_mass": [
+            947.18885011971,
+            930.8099851459265,
+            6.109682304585931
+          ],
+          "supplied": [
+            691.1882418580353,
+            691.1886309552938,
+            0.0
+          ],
+          "patch_population": [
+            0,
+            0
+          ],
+          "patch_a_allocation": [
+            0.0,
+            0.0
+          ],
+          "inhabited_cells": 0,
+          "positive_phase_residents": 0,
+          "boundary_exposure_mean": 0.0,
+          "contributor_population": 0,
+          "withholding_population": 0,
+          "contributor_exposure": 0.0,
+          "withholding_exposure": 0.0,
+          "maintenance_material": 6.115921474003699,
+          "maintenance_work": 3.669553030217143,
+          "film_mass": 1.993042332411278,
+          "chemical_heat": 204.17249069173064,
+          "morphology": {
+            "occupancy": 0.4131944444444444,
+            "components": 3,
+            "largest_component_share": 0.680672268907563,
+            "component_size_cv": 0.9038204813276474,
+            "phi_mean": -0.11999997536218467,
+            "phi_variance": 0.50975204
+          }
+        }
+      }
+    },
+    {
+      "seed": 29,
+      "condition": "uniform",
+      "steps": 400,
+      "dt": 0.2,
+      "wall_seconds": 0.4174070358276367,
+      "model": "finite-multisubstrate-funded-film-v1",
+      "sources": {
+        "compartments.jl": "8eec60b56379a3d366cd789ad62e4c7690a0c10ce5af8a485f66b670c8448751",
+        "arena.jl": "8fd826aa3b48ac05542b7e94bf7294b82c803f882d504173bd8f10d0b64999ef",
+        "metabolic_ecology.jl": "c0cd14f8fd9c227d5503d815c8930a64573300484c01f1dfa9d269a8e565b499",
+        "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+        "implicit_phase.jl": "c9f69ad8d2ab00bd18d678d51956effe9c52bf415d5388d5305c56b4bb351fe7",
+        "neural_ecology.jl": "7c2ba7a66184818aa0b07d0dd691339f5e99a61c82777726bae9961d544a0fcb",
+        "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26"
+      },
+      "source_unchanged": true,
+      "summary": {
+        "late_duration": 40.00000059604645,
+        "late_births": 6,
+        "late_deaths": 9,
+        "late_population_change": -3,
+        "late_birth_rate": 0.14999999776482587,
+        "late_death_rate": 0.22499999664723877,
+        "final": {
+          "time": 80.0000011920929,
+          "population": 2,
+          "births": 39,
+          "deaths": 61,
+          "finite": true,
+          "material_error": -0.00016631422795398976,
+          "founder_effective_count": 1.0,
+          "controller_variance": 0.013152183,
+          "allocation_mean": [
+            0.7692826,
+            0.1624251,
+            0.06829232
+          ],
+          "allocation_variance": [
+            0.0019375954,
+            0.00011022549,
+            0.0011235441
+          ],
+          "generalism_mean": 0.6146741619168374,
+          "efficiency_mean": 0.6199657,
+          "efficiency_variance": 0.0039653224,
+          "assimilation_mean": 0.3739927,
+          "cooperation_mean": 0.4138732,
+          "cooperation_variance": 0.00046695003,
+          "byproduct_fraction_mean": 0.08977635,
+          "byproduct_fraction_variance": 0.016119586,
+          "uptake_by_resource": [
+            48.926245826296466,
+            38.36699244193742,
+            3.312544499196523
+          ],
+          "exported_by_resource": [
+            0.0,
+            0.0,
+            9.762182896367449
+          ],
+          "resource_mass": [
+            930.257706463337,
+            940.8168317079544,
+            6.449638307677105
+          ],
+          "supplied": [
+            691.1839492945,
+            691.183834483847,
+            0.0
+          ],
+          "patch_population": [
+            0,
+            2
+          ],
+          "patch_a_allocation": [
+            0.0,
+            0.7692826
+          ],
+          "inhabited_cells": 2,
+          "positive_phase_residents": 0,
+          "boundary_exposure_mean": 0.03839746043086052,
+          "contributor_population": 2,
+          "withholding_population": 0,
+          "contributor_exposure": 0.03839746043086052,
+          "withholding_exposure": 0.0,
+          "maintenance_material": 6.499150891584577,
+          "maintenance_work": 3.8994906899025725,
+          "film_mass": 2.070046190696303,
+          "chemical_heat": 217.99401107632565,
+          "morphology": {
+            "occupancy": 0.4114583333333333,
+            "components": 3,
+            "largest_component_share": 0.48523206751054854,
+            "component_size_cv": 0.5304386541710624,
+            "phi_mean": -0.11999998260994794,
+            "phi_variance": 0.5099623
+          }
+        }
+      }
+    },
+    {
+      "seed": 29,
+      "condition": "withhold",
+      "steps": 400,
+      "dt": 0.2,
+      "wall_seconds": 0.3963601589202881,
+      "model": "finite-multisubstrate-funded-film-v1",
+      "sources": {
+        "compartments.jl": "8eec60b56379a3d366cd789ad62e4c7690a0c10ce5af8a485f66b670c8448751",
+        "arena.jl": "8fd826aa3b48ac05542b7e94bf7294b82c803f882d504173bd8f10d0b64999ef",
+        "metabolic_ecology.jl": "c0cd14f8fd9c227d5503d815c8930a64573300484c01f1dfa9d269a8e565b499",
+        "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+        "implicit_phase.jl": "c9f69ad8d2ab00bd18d678d51956effe9c52bf415d5388d5305c56b4bb351fe7",
+        "neural_ecology.jl": "7c2ba7a66184818aa0b07d0dd691339f5e99a61c82777726bae9961d544a0fcb",
+        "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26"
+      },
+      "source_unchanged": true,
+      "summary": {
+        "late_duration": 40.00000059604645,
+        "late_births": 17,
+        "late_deaths": 14,
+        "late_population_change": 3,
+        "late_birth_rate": 0.4249999936670066,
+        "late_death_rate": 0.34999999478459365,
+        "final": {
+          "time": 80.0000011920929,
+          "population": 12,
+          "births": 54,
+          "deaths": 66,
+          "finite": true,
+          "material_error": -8.193620033125626e-05,
+          "founder_effective_count": 1.7547653506033232,
+          "controller_variance": 0.023606937,
+          "allocation_mean": [
+            0.1862093,
+            0.71238905,
+            0.101401605
+          ],
+          "allocation_variance": [
+            0.0019931325,
+            0.0036187454,
+            0.0017136467
+          ],
+          "generalism_mean": 0.6986679682583029,
+          "efficiency_mean": 0.6265683,
+          "efficiency_variance": 0.0017281909,
+          "assimilation_mean": 0.39640415,
+          "cooperation_mean": 0.020527693,
+          "cooperation_variance": 0.0006742258,
+          "byproduct_fraction_mean": 0.1682539,
+          "byproduct_fraction_variance": 0.0036203058,
+          "uptake_by_resource": [
+            39.526516604237266,
+            76.12948216125369,
+            5.883232517320723
+          ],
+          "exported_by_resource": [
+            0.0,
+            0.0,
+            13.595514300257491
+          ],
+          "resource_mass": [
+            939.6617388091981,
+            903.0593805983663,
+            7.712282176064491
+          ],
+          "supplied": [
+            691.1882723458111,
+            691.1888908073306,
+            0.0
+          ],
+          "patch_population": [
+            2,
+            10
+          ],
+          "patch_a_allocation": [
+            0.1606611,
+            0.19131893
+          ],
+          "inhabited_cells": 11,
+          "positive_phase_residents": 1,
+          "boundary_exposure_mean": 0.0,
+          "contributor_population": 0,
+          "withholding_population": 12,
+          "contributor_exposure": 0.0,
+          "withholding_exposure": 0.0,
+          "maintenance_material": 0.0,
+          "maintenance_work": 0.0,
+          "film_mass": 0.0,
+          "chemical_heat": 290.97383377905487,
+          "morphology": {
+            "occupancy": 0.4131944444444444,
+            "components": 3,
+            "largest_component_share": 0.6932773109243697,
+            "component_size_cv": 0.9362019648875922,
+            "phi_mean": -0.12000002367656432,
+            "phi_variance": 0.51296383
+          }
+        }
+      }
+    }
+  ],
+  "affordability_smoke": [
+    {
+      "seed": 11,
+      "condition": "niches",
+      "steps": 400,
+      "dt": 0.2,
+      "settings": {
+        "capacity": 180,
+        "lifespan": 160.0,
+        "uptake_rate": 1.4,
+        "founders": 24
+      },
+      "sources": {
+        "compartments.jl": "8eec60b56379a3d366cd789ad62e4c7690a0c10ce5af8a485f66b670c8448751",
+        "arena.jl": "8fd826aa3b48ac05542b7e94bf7294b82c803f882d504173bd8f10d0b64999ef",
+        "metabolic_ecology.jl": "c0cd14f8fd9c227d5503d815c8930a64573300484c01f1dfa9d269a8e565b499",
+        "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+        "implicit_phase.jl": "c9f69ad8d2ab00bd18d678d51956effe9c52bf415d5388d5305c56b4bb351fe7",
+        "neural_ecology.jl": "7c2ba7a66184818aa0b07d0dd691339f5e99a61c82777726bae9961d544a0fcb",
+        "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26"
+      },
+      "source_unchanged": true,
+      "summary": {
+        "late_duration": 40.00000059604645,
+        "late_births": 68,
+        "late_deaths": 58,
+        "late_population_change": 10,
+        "late_birth_rate": 1.6999999746680263,
+        "late_death_rate": 1.4499999783933166,
+        "final": {
+          "time": 80.0000011920929,
+          "population": 39,
+          "births": 163,
+          "deaths": 148,
+          "finite": true,
+          "material_error": -0.00010135335378436139,
+          "founder_effective_count": 3.6917721827352565,
+          "controller_variance": 0.05461432,
+          "allocation_mean": [
+            0.4529071,
+            0.44723037,
+            0.09986255
+          ],
+          "allocation_variance": [
+            0.06833198,
+            0.06428005,
+            0.007946907
+          ],
+          "generalism_mean": 0.6750593468395192,
+          "efficiency_mean": 0.6205016,
+          "efficiency_variance": 0.0055658654,
+          "assimilation_mean": 0.34928614,
+          "cooperation_mean": 0.3780889,
+          "cooperation_variance": 0.005171518,
+          "byproduct_fraction_mean": 0.17646582,
+          "byproduct_fraction_variance": 0.003159071,
+          "uptake_by_resource": [
+            162.51308306760578,
+            133.48377853079032,
+            19.082851029088456
+          ],
+          "exported_by_resource": [
+            0.0,
+            0.0,
+            34.16508373297984
+          ],
+          "resource_mass": [
+            816.6769824456424,
+            845.705582082388,
+            15.08223279035792
+          ],
+          "supplied": [
+            691.1900565144606,
+            691.1893352176994,
+            0.0
+          ],
+          "patch_population": [
+            28,
+            11
+          ],
+          "patch_a_allocation": [
+            0.49669817,
+            0.34143868
+          ],
+          "inhabited_cells": 23,
+          "positive_phase_residents": 31,
+          "boundary_exposure_mean": 0.059799595082847344,
+          "contributor_population": 39,
+          "withholding_population": 0,
+          "contributor_exposure": 0.059799595082847344,
+          "withholding_exposure": 0.0,
+          "maintenance_material": 15.572604126806254,
+          "maintenance_work": 9.343562847363534,
+          "film_mass": 7.204024654231034,
+          "chemical_heat": 741.3910836931034,
+          "morphology": {
+            "occupancy": 0.4340277777777778,
+            "components": 1,
+            "largest_component_share": 1.0,
+            "component_size_cv": 0.0,
+            "phi_mean": -0.1200000054065337,
+            "phi_variance": 0.5675989
+          }
+        }
+      }
+    },
+    {
+      "seed": 29,
+      "condition": "niches",
+      "steps": 400,
+      "dt": 0.2,
+      "settings": {
+        "capacity": 180,
+        "lifespan": 160.0,
+        "uptake_rate": 1.4,
+        "founders": 24
+      },
+      "sources": {
+        "compartments.jl": "8eec60b56379a3d366cd789ad62e4c7690a0c10ce5af8a485f66b670c8448751",
+        "arena.jl": "8fd826aa3b48ac05542b7e94bf7294b82c803f882d504173bd8f10d0b64999ef",
+        "metabolic_ecology.jl": "c0cd14f8fd9c227d5503d815c8930a64573300484c01f1dfa9d269a8e565b499",
+        "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+        "implicit_phase.jl": "c9f69ad8d2ab00bd18d678d51956effe9c52bf415d5388d5305c56b4bb351fe7",
+        "neural_ecology.jl": "7c2ba7a66184818aa0b07d0dd691339f5e99a61c82777726bae9961d544a0fcb",
+        "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26"
+      },
+      "source_unchanged": true,
+      "summary": {
+        "late_duration": 40.00000059604645,
+        "late_births": 59,
+        "late_deaths": 51,
+        "late_population_change": 8,
+        "late_birth_rate": 1.4749999780207876,
+        "late_death_rate": 1.2749999810010197,
+        "final": {
+          "time": 80.0000011920929,
+          "population": 24,
+          "births": 130,
+          "deaths": 130,
+          "finite": true,
+          "material_error": -0.0001051886792993173,
+          "founder_effective_count": 3.0335008063925875,
+          "controller_variance": 0.046891525,
+          "allocation_mean": [
+            0.7668739,
+            0.15499072,
+            0.078135334
+          ],
+          "allocation_variance": [
+            0.008586935,
+            0.0032414717,
+            0.003509052
+          ],
+          "generalism_mean": 0.5894173616468126,
+          "efficiency_mean": 0.57138234,
+          "efficiency_variance": 0.0062447055,
+          "assimilation_mean": 0.39871275,
+          "cooperation_mean": 0.27985755,
+          "cooperation_variance": 0.0015205923,
+          "byproduct_fraction_mean": 0.23826092,
+          "byproduct_fraction_variance": 0.005925233,
+          "uptake_by_resource": [
+            161.8522320629855,
+            82.75532416813061,
+            15.842508442750821
+          ],
+          "exported_by_resource": [
+            0.0,
+            0.0,
+            35.0704511409931
+          ],
+          "resource_mass": [
+            817.3374606017023,
+            896.4337409622967,
+            19.227944166131692
+          ],
+          "supplied": [
+            691.189678395167,
+            691.1890662629157,
+            0.0
+          ],
+          "patch_population": [
+            24,
+            0
+          ],
+          "patch_a_allocation": [
+            0.7668739,
+            0.0
+          ],
+          "inhabited_cells": 15,
+          "positive_phase_residents": 18,
+          "boundary_exposure_mean": 0.042467390973373154,
+          "contributor_population": 23,
+          "withholding_population": 1,
+          "contributor_exposure": 0.04241326099069303,
+          "withholding_exposure": 0.04371238057501614,
+          "maintenance_material": 11.911230194673408,
+          "maintenance_work": 7.146738400789876,
+          "film_mass": 4.809095059201354,
+          "chemical_heat": 633.904751913123,
+          "morphology": {
+            "occupancy": 0.40625,
+            "components": 4,
+            "largest_component_share": 0.49572649572649574,
+            "component_size_cv": 0.657397761471091,
+            "phi_mean": -0.11999997849882978,
+            "phi_variance": 0.5066866
+          }
+        }
+      }
+    },
+    {
+      "seed": 47,
+      "condition": "niches",
+      "steps": 400,
+      "dt": 0.2,
+      "settings": {
+        "capacity": 180,
+        "lifespan": 160.0,
+        "uptake_rate": 1.4,
+        "founders": 24
+      },
+      "sources": {
+        "compartments.jl": "8eec60b56379a3d366cd789ad62e4c7690a0c10ce5af8a485f66b670c8448751",
+        "arena.jl": "8fd826aa3b48ac05542b7e94bf7294b82c803f882d504173bd8f10d0b64999ef",
+        "metabolic_ecology.jl": "c0cd14f8fd9c227d5503d815c8930a64573300484c01f1dfa9d269a8e565b499",
+        "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+        "implicit_phase.jl": "c9f69ad8d2ab00bd18d678d51956effe9c52bf415d5388d5305c56b4bb351fe7",
+        "neural_ecology.jl": "7c2ba7a66184818aa0b07d0dd691339f5e99a61c82777726bae9961d544a0fcb",
+        "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26"
+      },
+      "source_unchanged": true,
+      "summary": {
+        "late_duration": 40.00000059604645,
+        "late_births": 51,
+        "late_deaths": 28,
+        "late_population_change": 23,
+        "late_birth_rate": 1.2749999810010197,
+        "late_death_rate": 0.6999999895691873,
+        "final": {
+          "time": 80.0000011920929,
+          "population": 41,
+          "births": 109,
+          "deaths": 92,
+          "finite": true,
+          "material_error": -0.00012040404089930234,
+          "founder_effective_count": 3.2193123801010217,
+          "controller_variance": 0.03727948,
+          "allocation_mean": [
+            0.76507854,
+            0.16101263,
+            0.07390884
+          ],
+          "allocation_variance": [
+            0.026921522,
+            0.019058034,
+            0.0024952865
+          ],
+          "generalism_mean": 0.555409951581451,
+          "efficiency_mean": 0.69518644,
+          "efficiency_variance": 0.005054421,
+          "assimilation_mean": 0.40874666,
+          "cooperation_mean": 0.44383752,
+          "cooperation_variance": 0.0045846035,
+          "byproduct_fraction_mean": 0.18706737,
+          "byproduct_fraction_variance": 0.0036570951,
+          "uptake_by_resource": [
+            155.80472740484382,
+            56.89807077439029,
+            11.137719222533642
+          ],
+          "exported_by_resource": [
+            0.0,
+            0.0,
+            25.618697509446065
+          ],
+          "resource_mass": [
+            823.385119301267,
+            922.2900217175484,
+            14.480978467193381
+          ],
+          "supplied": [
+            691.1898366529495,
+            691.1880776099861,
+            0.0
+          ],
+          "patch_population": [
+            40,
+            1
+          ],
+          "patch_a_allocation": [
+            0.7804984,
+            0.14828269
+          ],
+          "inhabited_cells": 23,
+          "positive_phase_residents": 6,
+          "boundary_exposure_mean": 0.06141246088394306,
+          "contributor_population": 39,
+          "withholding_population": 2,
+          "contributor_exposure": 0.06157985778334433,
+          "withholding_exposure": 0.05814822134561837,
+          "maintenance_material": 14.18993795471033,
+          "maintenance_work": 8.513963111140699,
+          "film_mass": 6.8020045060548,
+          "chemical_heat": 526.237306171679,
+          "morphology": {
+            "occupancy": 0.4010416666666667,
+            "components": 3,
+            "largest_component_share": 0.35064935064935066,
+            "component_size_cv": 0.04498833266412668,
+            "phi_mean": -0.12000000054225286,
+            "phi_variance": 0.4493729
+          }
+        }
+      }
+    }
+  ],
+  "long_affordability": {
+    "settings_note": "uptake1.4 lifespan160; isolated274ce2e physics; 600secondbudget",
+    "runs": [
+      {
+        "seed": 11,
+        "condition": "niches",
+        "steps": 12000,
+        "dt": 0.2,
+        "settings": {
+          "capacity": 180,
+          "lifespan": 160.0,
+          "uptake_rate": 1.4,
+          "founders": 24
+        },
+        "sources": {
+          "core.jl": "3ef44008f6a9ce8399bc60352da94dc19e670e67677944369934138042718bad",
+          "writing.jl": "08abd6abb423ef077b86e70eb47fb9f0ad6d27e597ca3dd2464a6369ae002eb0",
+          "Interior.jl": "c0cae375b71bb1a8d3d1fa59f901e5e8011f70704dcf6bc687461fd8342fc760",
+          "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+          "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26",
+          "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+          "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+          "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+          "experiments.jl": "c93f9e7a3a59ae842e5d6051f661958b1ad7ead6d6300e83e3198a3233668529",
+          "metabolic_ecology.jl": "c0cd14f8fd9c227d5503d815c8930a64573300484c01f1dfa9d269a8e565b499",
+          "mechanics.jl": "81001af879163392dde498534c9f099bcc79a16b8dac5104d527da7cc9f4fdac",
+          "neural_ecology.jl": "7c2ba7a66184818aa0b07d0dd691339f5e99a61c82777726bae9961d544a0fcb",
+          "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+          "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+          "compartments.jl": "8eec60b56379a3d366cd789ad62e4c7690a0c10ce5af8a485f66b670c8448751",
+          "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+          "arena.jl": "8fd826aa3b48ac05542b7e94bf7294b82c803f882d504173bd8f10d0b64999ef",
+          "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+          "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+          "implicit_phase.jl": "c9f69ad8d2ab00bd18d678d51956effe9c52bf415d5388d5305c56b4bb351fe7",
+          "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+          "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+          "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+          "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+        },
+        "migrated_checkpoint_sources": {
+          "compartments.jl": "8eec60b56379a3d366cd789ad62e4c7690a0c10ce5af8a485f66b670c8448751",
+          "arena.jl": "ebc9547b52d3452e3871b31ad78032c3dbee51cc387da154443104a278d3fadc",
+          "metabolic_ecology.jl": "c0cd14f8fd9c227d5503d815c8930a64573300484c01f1dfa9d269a8e565b499",
+          "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+          "implicit_phase.jl": "c9f69ad8d2ab00bd18d678d51956effe9c52bf415d5388d5305c56b4bb351fe7",
+          "neural_ecology.jl": "7c2ba7a66184818aa0b07d0dd691339f5e99a61c82777726bae9961d544a0fcb",
+          "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26"
+        },
+        "summary": {
+          "late_duration": 1200.0000178813934,
+          "late_births": 0,
+          "late_deaths": 0,
+          "late_population_change": 0,
+          "late_birth_rate": 0.0,
+          "late_death_rate": 0.0,
+          "final": {
+            "time": 2400.000035762787,
+            "population": 0,
+            "births": 1470,
+            "deaths": 1494,
+            "finite": true,
+            "material_error": 0.0005290293006510183,
+            "founder_effective_count": 0.0,
+            "controller_variance": 0.0,
+            "allocation_mean": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "allocation_variance": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "generalism_mean": 0.0,
+            "efficiency_mean": 0.0,
+            "efficiency_variance": 0.0,
+            "assimilation_mean": 0.0,
+            "cooperation_mean": 0.0,
+            "cooperation_variance": 0.0,
+            "byproduct_fraction_mean": 0.0,
+            "byproduct_fraction_variance": 0.0,
+            "uptake_by_resource": [
+              2267.4453327276974,
+              1607.836857238719,
+              340.4823631828544
+            ],
+            "exported_by_resource": [
+              0.0,
+              0.0,
+              419.8781573053566
+            ],
+            "resource_mass": [
+              20.554618932306767,
+              680.1622255444527,
+              79.39560331404209
+            ],
+            "supplied": [
+              1999.9999999999438,
+              1999.9999999316153,
+              0.0
+            ],
+            "patch_population": [
+              0,
+              0
+            ],
+            "patch_a_allocation": [
+              0.0,
+              0.0
+            ],
+            "inhabited_cells": 0,
+            "positive_phase_residents": 0,
+            "boundary_exposure_mean": 0.0,
+            "contributor_population": 0,
+            "withholding_population": 0,
+            "contributor_exposure": 0.0,
+            "withholding_exposure": 0.0,
+            "maintenance_material": 189.41356677494787,
+            "maintenance_work": 113.64814458094023,
+            "film_mass": 1.9400502534085208e-16,
+            "chemical_heat": 8785.34382758571,
+            "energy_input": 6660.3891381575595,
+            "stored_energy": 0.0,
+            "controller_heat": 6660.383637725307,
+            "energy_error": -0.005500432252119936,
+            "movement_work": 1439.4923636751191,
+            "signal_work": 614.1852537727503,
+            "remodeling_work": 2631.1990170377994,
+            "reproduction_work": 441.00003,
+            "morphology": {
+              "occupancy": 0.4184027777777778,
+              "components": 1,
+              "largest_component_share": 1.0,
+              "component_size_cv": 0.0,
+              "phi_mean": -0.12000123425645547,
+              "phi_variance": 0.759777
+            }
+          }
+        },
+        "first_sampled_extinction_time": 592.0000088214874,
+        "peak_sampled_population": 180,
+        "maximum_absolute_material_error": 0.011728786731055152,
+        "maximum_absolute_energy_error": 0.0055005334006636986
+      },
+      {
+        "seed": 11,
+        "condition": "no_crossfeed",
+        "steps": 12000,
+        "dt": 0.2,
+        "settings": {
+          "capacity": 180,
+          "lifespan": 160.0,
+          "uptake_rate": 1.4,
+          "founders": 24
+        },
+        "sources": {
+          "core.jl": "3ef44008f6a9ce8399bc60352da94dc19e670e67677944369934138042718bad",
+          "writing.jl": "08abd6abb423ef077b86e70eb47fb9f0ad6d27e597ca3dd2464a6369ae002eb0",
+          "Interior.jl": "c0cae375b71bb1a8d3d1fa59f901e5e8011f70704dcf6bc687461fd8342fc760",
+          "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+          "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26",
+          "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+          "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+          "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+          "experiments.jl": "c93f9e7a3a59ae842e5d6051f661958b1ad7ead6d6300e83e3198a3233668529",
+          "metabolic_ecology.jl": "c0cd14f8fd9c227d5503d815c8930a64573300484c01f1dfa9d269a8e565b499",
+          "mechanics.jl": "81001af879163392dde498534c9f099bcc79a16b8dac5104d527da7cc9f4fdac",
+          "neural_ecology.jl": "7c2ba7a66184818aa0b07d0dd691339f5e99a61c82777726bae9961d544a0fcb",
+          "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+          "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+          "compartments.jl": "8eec60b56379a3d366cd789ad62e4c7690a0c10ce5af8a485f66b670c8448751",
+          "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+          "arena.jl": "8fd826aa3b48ac05542b7e94bf7294b82c803f882d504173bd8f10d0b64999ef",
+          "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+          "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+          "implicit_phase.jl": "c9f69ad8d2ab00bd18d678d51956effe9c52bf415d5388d5305c56b4bb351fe7",
+          "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+          "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+          "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+          "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+        },
+        "migrated_checkpoint_sources": null,
+        "summary": {
+          "late_duration": 1200.0000178813934,
+          "late_births": 0,
+          "late_deaths": 0,
+          "late_population_change": 0,
+          "late_birth_rate": 0.0,
+          "late_death_rate": 0.0,
+          "final": {
+            "time": 2400.000035762787,
+            "population": 0,
+            "births": 1761,
+            "deaths": 1785,
+            "finite": true,
+            "material_error": -0.0018457050628057914,
+            "founder_effective_count": 0.0,
+            "controller_variance": 0.0,
+            "allocation_mean": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "allocation_variance": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "generalism_mean": 0.0,
+            "efficiency_mean": 0.0,
+            "efficiency_variance": 0.0,
+            "assimilation_mean": 0.0,
+            "cooperation_mean": 0.0,
+            "cooperation_variance": 0.0,
+            "byproduct_fraction_mean": 0.0,
+            "byproduct_fraction_variance": 0.0,
+            "uptake_by_resource": [
+              2255.281256641138,
+              2236.6792517113595,
+              0.0
+            ],
+            "exported_by_resource": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "resource_mass": [
+              32.71884325519204,
+              51.32079442590475,
+              0.0
+            ],
+            "supplied": [
+              1999.9999999952133,
+              1999.999999999981,
+              0.0
+            ],
+            "patch_population": [
+              0,
+              0
+            ],
+            "patch_a_allocation": [
+              0.0,
+              0.0
+            ],
+            "inhabited_cells": 0,
+            "positive_phase_residents": 0,
+            "boundary_exposure_mean": 0.0,
+            "contributor_population": 0,
+            "withholding_population": 0,
+            "contributor_exposure": 0.0,
+            "withholding_exposure": 0.0,
+            "maintenance_material": 178.45772969599852,
+            "maintenance_work": 107.0746420723637,
+            "film_mass": 8.966219021466045e-17,
+            "chemical_heat": 10161.357468541855,
+            "energy_input": 7830.484564867903,
+            "stored_energy": 0.0,
+            "controller_heat": 7830.479052642012,
+            "energy_error": -0.005512225890925038,
+            "movement_work": 1241.582884900071,
+            "signal_work": 1214.7348865845297,
+            "remodeling_work": 3100.2161789127767,
+            "reproduction_work": 528.30005,
+            "morphology": {
+              "occupancy": 0.4184027777777778,
+              "components": 1,
+              "largest_component_share": 1.0,
+              "component_size_cv": 0.0,
+              "phi_mean": -0.12000106212993462,
+              "phi_variance": 0.7597775
+            }
+          }
+        },
+        "first_sampled_extinction_time": 504.00000751018524,
+        "peak_sampled_population": 180,
+        "maximum_absolute_material_error": 0.014450455510996107,
+        "maximum_absolute_energy_error": 0.0055130535874923225
+      },
+      {
+        "seed": 11,
+        "condition": "no_mutation",
+        "steps": 12000,
+        "dt": 0.2,
+        "settings": {
+          "capacity": 180,
+          "lifespan": 160.0,
+          "uptake_rate": 1.4,
+          "founders": 24
+        },
+        "sources": {
+          "core.jl": "3ef44008f6a9ce8399bc60352da94dc19e670e67677944369934138042718bad",
+          "writing.jl": "08abd6abb423ef077b86e70eb47fb9f0ad6d27e597ca3dd2464a6369ae002eb0",
+          "Interior.jl": "c0cae375b71bb1a8d3d1fa59f901e5e8011f70704dcf6bc687461fd8342fc760",
+          "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+          "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26",
+          "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+          "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+          "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+          "experiments.jl": "c93f9e7a3a59ae842e5d6051f661958b1ad7ead6d6300e83e3198a3233668529",
+          "metabolic_ecology.jl": "c0cd14f8fd9c227d5503d815c8930a64573300484c01f1dfa9d269a8e565b499",
+          "mechanics.jl": "81001af879163392dde498534c9f099bcc79a16b8dac5104d527da7cc9f4fdac",
+          "neural_ecology.jl": "7c2ba7a66184818aa0b07d0dd691339f5e99a61c82777726bae9961d544a0fcb",
+          "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+          "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+          "compartments.jl": "8eec60b56379a3d366cd789ad62e4c7690a0c10ce5af8a485f66b670c8448751",
+          "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+          "arena.jl": "8fd826aa3b48ac05542b7e94bf7294b82c803f882d504173bd8f10d0b64999ef",
+          "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+          "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+          "implicit_phase.jl": "c9f69ad8d2ab00bd18d678d51956effe9c52bf415d5388d5305c56b4bb351fe7",
+          "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+          "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+          "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+          "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+        },
+        "migrated_checkpoint_sources": null,
+        "summary": {
+          "late_duration": 1200.0000178813934,
+          "late_births": 0,
+          "late_deaths": 0,
+          "late_population_change": 0,
+          "late_birth_rate": 0.0,
+          "late_death_rate": 0.0,
+          "final": {
+            "time": 2400.000035762787,
+            "population": 0,
+            "births": 1629,
+            "deaths": 1653,
+            "finite": true,
+            "material_error": -0.00689138622237806,
+            "founder_effective_count": 0.0,
+            "controller_variance": 0.0,
+            "allocation_mean": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "allocation_variance": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "generalism_mean": 0.0,
+            "efficiency_mean": 0.0,
+            "efficiency_variance": 0.0,
+            "assimilation_mean": 0.0,
+            "cooperation_mean": 0.0,
+            "cooperation_variance": 0.0,
+            "byproduct_fraction_mean": 0.0,
+            "byproduct_fraction_variance": 0.0,
+            "uptake_by_resource": [
+              2101.6657786526935,
+              915.584540256246,
+              305.848715689817
+            ],
+            "exported_by_resource": [
+              0.0,
+              0.0,
+              362.0683182735811
+            ],
+            "resource_mass": [
+              186.3342866897583,
+              1372.4156844615936,
+              56.21970804780722
+            ],
+            "supplied": [
+              1999.9999999832426,
+              1999.9999989539901,
+              0.0
+            ],
+            "patch_population": [
+              0,
+              0
+            ],
+            "patch_a_allocation": [
+              0.0,
+              0.0
+            ],
+            "inhabited_cells": 0,
+            "positive_phase_residents": 0,
+            "boundary_exposure_mean": 0.0,
+            "contributor_population": 0,
+            "withholding_population": 0,
+            "contributor_exposure": 0.0,
+            "withholding_exposure": 0.0,
+            "maintenance_material": 174.70314668139326,
+            "maintenance_work": 104.82189217408386,
+            "film_mass": 1.7822067921432357e-17,
+            "chemical_heat": 7775.076321724062,
+            "energy_input": 4261.705351328021,
+            "stored_energy": 0.0,
+            "controller_heat": 4261.704868777011,
+            "energy_error": -0.0004825510095542995,
+            "movement_work": 594.8133821024494,
+            "signal_work": 653.4110351488489,
+            "remodeling_work": 1626.734746708942,
+            "reproduction_work": 488.7,
+            "morphology": {
+              "occupancy": 0.421875,
+              "components": 1,
+              "largest_component_share": 1.0,
+              "component_size_cv": 0.0,
+              "phi_mean": -0.11999692987511582,
+              "phi_variance": 0.7597857
+            }
+          }
+        },
+        "first_sampled_extinction_time": 384.0000057220459,
+        "peak_sampled_population": 180,
+        "maximum_absolute_material_error": 0.01234470259896625,
+        "maximum_absolute_energy_error": 0.0005621885293294326
+      },
+      {
+        "seed": 11,
+        "condition": "uniform",
+        "steps": 12000,
+        "dt": 0.2,
+        "settings": {
+          "capacity": 180,
+          "lifespan": 160.0,
+          "uptake_rate": 1.4,
+          "founders": 24
+        },
+        "sources": {
+          "core.jl": "3ef44008f6a9ce8399bc60352da94dc19e670e67677944369934138042718bad",
+          "writing.jl": "08abd6abb423ef077b86e70eb47fb9f0ad6d27e597ca3dd2464a6369ae002eb0",
+          "Interior.jl": "c0cae375b71bb1a8d3d1fa59f901e5e8011f70704dcf6bc687461fd8342fc760",
+          "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+          "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26",
+          "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+          "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+          "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+          "experiments.jl": "c93f9e7a3a59ae842e5d6051f661958b1ad7ead6d6300e83e3198a3233668529",
+          "metabolic_ecology.jl": "c0cd14f8fd9c227d5503d815c8930a64573300484c01f1dfa9d269a8e565b499",
+          "mechanics.jl": "81001af879163392dde498534c9f099bcc79a16b8dac5104d527da7cc9f4fdac",
+          "neural_ecology.jl": "7c2ba7a66184818aa0b07d0dd691339f5e99a61c82777726bae9961d544a0fcb",
+          "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+          "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+          "compartments.jl": "8eec60b56379a3d366cd789ad62e4c7690a0c10ce5af8a485f66b670c8448751",
+          "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+          "arena.jl": "8fd826aa3b48ac05542b7e94bf7294b82c803f882d504173bd8f10d0b64999ef",
+          "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+          "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+          "implicit_phase.jl": "c9f69ad8d2ab00bd18d678d51956effe9c52bf415d5388d5305c56b4bb351fe7",
+          "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+          "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+          "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+          "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+        },
+        "migrated_checkpoint_sources": null,
+        "summary": {
+          "late_duration": 1200.0000178813934,
+          "late_births": 0,
+          "late_deaths": 0,
+          "late_population_change": 0,
+          "late_birth_rate": 0.0,
+          "late_death_rate": 0.0,
+          "final": {
+            "time": 2400.000035762787,
+            "population": 0,
+            "births": 1339,
+            "deaths": 1363,
+            "finite": true,
+            "material_error": -0.017015021121096652,
+            "founder_effective_count": 0.0,
+            "controller_variance": 0.0,
+            "allocation_mean": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "allocation_variance": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "generalism_mean": 0.0,
+            "efficiency_mean": 0.0,
+            "efficiency_variance": 0.0,
+            "assimilation_mean": 0.0,
+            "cooperation_mean": 0.0,
+            "cooperation_variance": 0.0,
+            "byproduct_fraction_mean": 0.0,
+            "byproduct_fraction_variance": 0.0,
+            "uptake_by_resource": [
+              2285.09514963914,
+              2013.8907772086327,
+              652.101251171797
+            ],
+            "exported_by_resource": [
+              0.0,
+              0.0,
+              919.3368268077029
+            ],
+            "resource_mass": [
+              2.90490710712038,
+              274.1093382835388,
+              267.23499166965485
+            ],
+            "supplied": [
+              1999.9999999999277,
+              1999.9999996662373,
+              0.0
+            ],
+            "patch_population": [
+              0,
+              0
+            ],
+            "patch_a_allocation": [
+              0.0,
+              0.0
+            ],
+            "inhabited_cells": 0,
+            "positive_phase_residents": 0,
+            "boundary_exposure_mean": 0.0,
+            "contributor_population": 0,
+            "withholding_population": 0,
+            "contributor_exposure": 0.0,
+            "withholding_exposure": 0.0,
+            "maintenance_material": 224.68522196200956,
+            "maintenance_work": 134.8111385341146,
+            "film_mass": 6.522755005393409e-13,
+            "chemical_heat": 7898.56082663841,
+            "energy_input": 9054.147305116898,
+            "stored_energy": 0.0,
+            "controller_heat": 9054.140288240718,
+            "energy_error": -0.007016876179477549,
+            "movement_work": 1441.2450099998978,
+            "signal_work": 1043.1947914625637,
+            "remodeling_work": 3903.807298266527,
+            "reproduction_work": 401.7,
+            "morphology": {
+              "occupancy": 0.421875,
+              "components": 1,
+              "largest_component_share": 1.0,
+              "component_size_cv": 0.0,
+              "phi_mean": -0.11999928328845676,
+              "phi_variance": 0.7598073
+            }
+          }
+        },
+        "first_sampled_extinction_time": 1048.000015616417,
+        "peak_sampled_population": 180,
+        "maximum_absolute_material_error": 0.017015021121096652,
+        "maximum_absolute_energy_error": 0.007017601812549401
+      },
+      {
+        "seed": 11,
+        "condition": "withhold",
+        "steps": 12000,
+        "dt": 0.2,
+        "settings": {
+          "capacity": 180,
+          "lifespan": 160.0,
+          "uptake_rate": 1.4,
+          "founders": 24
+        },
+        "sources": {
+          "core.jl": "3ef44008f6a9ce8399bc60352da94dc19e670e67677944369934138042718bad",
+          "writing.jl": "08abd6abb423ef077b86e70eb47fb9f0ad6d27e597ca3dd2464a6369ae002eb0",
+          "Interior.jl": "c0cae375b71bb1a8d3d1fa59f901e5e8011f70704dcf6bc687461fd8342fc760",
+          "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+          "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26",
+          "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+          "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+          "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+          "experiments.jl": "c93f9e7a3a59ae842e5d6051f661958b1ad7ead6d6300e83e3198a3233668529",
+          "metabolic_ecology.jl": "c0cd14f8fd9c227d5503d815c8930a64573300484c01f1dfa9d269a8e565b499",
+          "mechanics.jl": "81001af879163392dde498534c9f099bcc79a16b8dac5104d527da7cc9f4fdac",
+          "neural_ecology.jl": "7c2ba7a66184818aa0b07d0dd691339f5e99a61c82777726bae9961d544a0fcb",
+          "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+          "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+          "compartments.jl": "8eec60b56379a3d366cd789ad62e4c7690a0c10ce5af8a485f66b670c8448751",
+          "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+          "arena.jl": "8fd826aa3b48ac05542b7e94bf7294b82c803f882d504173bd8f10d0b64999ef",
+          "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+          "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+          "implicit_phase.jl": "c9f69ad8d2ab00bd18d678d51956effe9c52bf415d5388d5305c56b4bb351fe7",
+          "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+          "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+          "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+          "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+        },
+        "migrated_checkpoint_sources": null,
+        "summary": {
+          "late_duration": 1200.0000178813934,
+          "late_births": 0,
+          "late_deaths": 0,
+          "late_population_change": 0,
+          "late_birth_rate": 0.0,
+          "late_death_rate": 0.0,
+          "final": {
+            "time": 2400.000035762787,
+            "population": 0,
+            "births": 1572,
+            "deaths": 1596,
+            "finite": true,
+            "material_error": 0.025728104203153634,
+            "founder_effective_count": 0.0,
+            "controller_variance": 0.0,
+            "allocation_mean": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "allocation_variance": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "generalism_mean": 0.0,
+            "efficiency_mean": 0.0,
+            "efficiency_variance": 0.0,
+            "assimilation_mean": 0.0,
+            "cooperation_mean": 0.0,
+            "cooperation_variance": 0.0,
+            "byproduct_fraction_mean": 0.0,
+            "byproduct_fraction_variance": 0.0,
+            "uptake_by_resource": [
+              2258.2995529430254,
+              2217.314922296242,
+              330.31418293027696
+            ],
+            "exported_by_resource": [
+              0.0,
+              0.0,
+              411.61358643136737
+            ],
+            "resource_mass": [
+              29.700420279055834,
+              70.68528835475445,
+              81.29894821345806
+            ],
+            "supplied": [
+              1999.999999996746,
+              1999.9999999995116,
+              0.0
+            ],
+            "patch_population": [
+              0,
+              0
+            ],
+            "patch_a_allocation": [
+              0.0,
+              0.0
+            ],
+            "inhabited_cells": 0,
+            "positive_phase_residents": 0,
+            "boundary_exposure_mean": 0.0,
+            "contributor_population": 0,
+            "withholding_population": 0,
+            "contributor_exposure": 0.0,
+            "withholding_exposure": 0.0,
+            "maintenance_material": 0.0,
+            "maintenance_work": 0.0,
+            "film_mass": 0.0,
+            "chemical_heat": 10407.750507968132,
+            "energy_input": 7437.407989488024,
+            "stored_energy": 0.0,
+            "controller_heat": 7437.402672141761,
+            "energy_error": -0.005317346262927458,
+            "movement_work": 1072.4124904166392,
+            "signal_work": 1189.2996928646835,
+            "remodeling_work": 3155.6731385146923,
+            "reproduction_work": 471.6,
+            "morphology": {
+              "occupancy": 0.4236111111111111,
+              "components": 1,
+              "largest_component_share": 1.0,
+              "component_size_cv": 0.0,
+              "phi_mean": -0.11999958439506979,
+              "phi_variance": 0.7598059
+            }
+          }
+        },
+        "first_sampled_extinction_time": 400.0000059604645,
+        "peak_sampled_population": 180,
+        "maximum_absolute_material_error": 0.025728104203153634,
+        "maximum_absolute_energy_error": 0.005320229228345852
+      },
+      {
+        "seed": 29,
+        "condition": "niches",
+        "steps": 12000,
+        "dt": 0.2,
+        "settings": {
+          "capacity": 180,
+          "lifespan": 160.0,
+          "uptake_rate": 1.4,
+          "founders": 24
+        },
+        "sources": {
+          "core.jl": "3ef44008f6a9ce8399bc60352da94dc19e670e67677944369934138042718bad",
+          "writing.jl": "08abd6abb423ef077b86e70eb47fb9f0ad6d27e597ca3dd2464a6369ae002eb0",
+          "Interior.jl": "c0cae375b71bb1a8d3d1fa59f901e5e8011f70704dcf6bc687461fd8342fc760",
+          "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+          "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26",
+          "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+          "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+          "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+          "experiments.jl": "c93f9e7a3a59ae842e5d6051f661958b1ad7ead6d6300e83e3198a3233668529",
+          "metabolic_ecology.jl": "c0cd14f8fd9c227d5503d815c8930a64573300484c01f1dfa9d269a8e565b499",
+          "mechanics.jl": "81001af879163392dde498534c9f099bcc79a16b8dac5104d527da7cc9f4fdac",
+          "neural_ecology.jl": "7c2ba7a66184818aa0b07d0dd691339f5e99a61c82777726bae9961d544a0fcb",
+          "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+          "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+          "compartments.jl": "8eec60b56379a3d366cd789ad62e4c7690a0c10ce5af8a485f66b670c8448751",
+          "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+          "arena.jl": "8fd826aa3b48ac05542b7e94bf7294b82c803f882d504173bd8f10d0b64999ef",
+          "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+          "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+          "implicit_phase.jl": "c9f69ad8d2ab00bd18d678d51956effe9c52bf415d5388d5305c56b4bb351fe7",
+          "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+          "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+          "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+          "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+        },
+        "migrated_checkpoint_sources": null,
+        "summary": {
+          "late_duration": 1200.0000178813934,
+          "late_births": 0,
+          "late_deaths": 0,
+          "late_population_change": 0,
+          "late_birth_rate": 0.0,
+          "late_death_rate": 0.0,
+          "final": {
+            "time": 2400.000035762787,
+            "population": 0,
+            "births": 1306,
+            "deaths": 1330,
+            "finite": true,
+            "material_error": -0.012230816611918272,
+            "founder_effective_count": 0.0,
+            "controller_variance": 0.0,
+            "allocation_mean": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "allocation_variance": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "generalism_mean": 0.0,
+            "efficiency_mean": 0.0,
+            "efficiency_variance": 0.0,
+            "assimilation_mean": 0.0,
+            "cooperation_mean": 0.0,
+            "cooperation_variance": 0.0,
+            "byproduct_fraction_mean": 0.0,
+            "byproduct_fraction_variance": 0.0,
+            "uptake_by_resource": [
+              2195.555764672272,
+              1075.8468532725783,
+              229.6036898731172
+            ],
+            "exported_by_resource": [
+              0.0,
+              0.0,
+              335.59717492212803
+            ],
+            "resource_mass": [
+              92.44442194700241,
+              1212.1547553539276,
+              105.99261991679668
+            ],
+            "supplied": [
+              1999.9999999996376,
+              1999.9999989645607,
+              0.0
+            ],
+            "patch_population": [
+              0,
+              0
+            ],
+            "patch_a_allocation": [
+              0.0,
+              0.0
+            ],
+            "inhabited_cells": 0,
+            "positive_phase_residents": 0,
+            "boundary_exposure_mean": 0.0,
+            "contributor_population": 0,
+            "withholding_population": 0,
+            "contributor_exposure": 0.0,
+            "withholding_exposure": 0.0,
+            "maintenance_material": 178.24581933058562,
+            "maintenance_work": 106.94749584806377,
+            "film_mass": 2.3805342831061904e-16,
+            "chemical_heat": 7541.8572980712,
+            "energy_input": 5461.759688659033,
+            "stored_energy": 0.0,
+            "controller_heat": 5461.75648077338,
+            "energy_error": -0.003207885652955156,
+            "movement_work": 915.8498717786335,
+            "signal_work": 1142.102783964786,
+            "remodeling_work": 2028.2783728893462,
+            "reproduction_work": 391.80002,
+            "morphology": {
+              "occupancy": 0.4253472222222222,
+              "components": 1,
+              "largest_component_share": 1.0,
+              "component_size_cv": 0.0,
+              "phi_mean": -0.11999542040697027,
+              "phi_variance": 0.7598069
+            }
+          }
+        },
+        "first_sampled_extinction_time": 568.0000084638596,
+        "peak_sampled_population": 180,
+        "maximum_absolute_material_error": 0.013584691414507688,
+        "maximum_absolute_energy_error": 0.003211158840713324
+      },
+      {
+        "seed": 29,
+        "condition": "no_crossfeed",
+        "steps": 12000,
+        "dt": 0.2,
+        "settings": {
+          "capacity": 180,
+          "lifespan": 160.0,
+          "uptake_rate": 1.4,
+          "founders": 24
+        },
+        "sources": {
+          "core.jl": "3ef44008f6a9ce8399bc60352da94dc19e670e67677944369934138042718bad",
+          "writing.jl": "08abd6abb423ef077b86e70eb47fb9f0ad6d27e597ca3dd2464a6369ae002eb0",
+          "Interior.jl": "c0cae375b71bb1a8d3d1fa59f901e5e8011f70704dcf6bc687461fd8342fc760",
+          "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+          "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26",
+          "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+          "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+          "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+          "experiments.jl": "c93f9e7a3a59ae842e5d6051f661958b1ad7ead6d6300e83e3198a3233668529",
+          "metabolic_ecology.jl": "c0cd14f8fd9c227d5503d815c8930a64573300484c01f1dfa9d269a8e565b499",
+          "mechanics.jl": "81001af879163392dde498534c9f099bcc79a16b8dac5104d527da7cc9f4fdac",
+          "neural_ecology.jl": "7c2ba7a66184818aa0b07d0dd691339f5e99a61c82777726bae9961d544a0fcb",
+          "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+          "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+          "compartments.jl": "8eec60b56379a3d366cd789ad62e4c7690a0c10ce5af8a485f66b670c8448751",
+          "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+          "arena.jl": "8fd826aa3b48ac05542b7e94bf7294b82c803f882d504173bd8f10d0b64999ef",
+          "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+          "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+          "implicit_phase.jl": "c9f69ad8d2ab00bd18d678d51956effe9c52bf415d5388d5305c56b4bb351fe7",
+          "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+          "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+          "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+          "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+        },
+        "migrated_checkpoint_sources": null,
+        "summary": {
+          "late_duration": 1200.0000178813934,
+          "late_births": 0,
+          "late_deaths": 0,
+          "late_population_change": 0,
+          "late_birth_rate": 0.0,
+          "late_death_rate": 0.0,
+          "final": {
+            "time": 2400.000035762787,
+            "population": 0,
+            "births": 1344,
+            "deaths": 1368,
+            "finite": true,
+            "material_error": -0.05145957405329682,
+            "founder_effective_count": 0.0,
+            "controller_variance": 0.0,
+            "allocation_mean": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "allocation_variance": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "generalism_mean": 0.0,
+            "efficiency_mean": 0.0,
+            "efficiency_variance": 0.0,
+            "assimilation_mean": 0.0,
+            "cooperation_mean": 0.0,
+            "cooperation_variance": 0.0,
+            "byproduct_fraction_mean": 0.0,
+            "byproduct_fraction_variance": 0.0,
+            "uptake_by_resource": [
+              2236.1671591697636,
+              2222.692771922451,
+              0.0
+            ],
+            "exported_by_resource": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "resource_mass": [
+              51.83271536976099,
+              65.30724596232176,
+              0.0
+            ],
+            "supplied": [
+              1999.999999998324,
+              1999.9999999989373,
+              0.0
+            ],
+            "patch_population": [
+              0,
+              0
+            ],
+            "patch_a_allocation": [
+              0.0,
+              0.0
+            ],
+            "inhabited_cells": 0,
+            "positive_phase_residents": 0,
+            "boundary_exposure_mean": 0.0,
+            "contributor_population": 0,
+            "withholding_population": 0,
+            "contributor_exposure": 0.0,
+            "withholding_exposure": 0.0,
+            "maintenance_material": 182.24821662727663,
+            "maintenance_work": 109.34893432150163,
+            "film_mass": 6.375685237610491e-17,
+            "chemical_heat": 10545.326381671315,
+            "energy_input": 7314.113342697615,
+            "stored_energy": 0.0,
+            "controller_heat": 7314.109570433531,
+            "energy_error": -0.0037722640836364008,
+            "movement_work": 1260.9217097649953,
+            "signal_work": 1273.2644501386717,
+            "remodeling_work": 2387.132767686337,
+            "reproduction_work": 403.2,
+            "morphology": {
+              "occupancy": 0.4253472222222222,
+              "components": 1,
+              "largest_component_share": 1.0,
+              "component_size_cv": 0.0,
+              "phi_mean": -0.11999794953953824,
+              "phi_variance": 0.75980693
+            }
+          }
+        },
+        "first_sampled_extinction_time": 448.0000066757202,
+        "peak_sampled_population": 180,
+        "maximum_absolute_material_error": 0.05145957405329682,
+        "maximum_absolute_energy_error": 0.0037725143774878234
+      },
+      {
+        "seed": 29,
+        "condition": "no_mutation",
+        "steps": 12000,
+        "dt": 0.2,
+        "settings": {
+          "capacity": 180,
+          "lifespan": 160.0,
+          "uptake_rate": 1.4,
+          "founders": 24
+        },
+        "sources": {
+          "core.jl": "3ef44008f6a9ce8399bc60352da94dc19e670e67677944369934138042718bad",
+          "writing.jl": "08abd6abb423ef077b86e70eb47fb9f0ad6d27e597ca3dd2464a6369ae002eb0",
+          "Interior.jl": "c0cae375b71bb1a8d3d1fa59f901e5e8011f70704dcf6bc687461fd8342fc760",
+          "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+          "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26",
+          "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+          "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+          "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+          "experiments.jl": "c93f9e7a3a59ae842e5d6051f661958b1ad7ead6d6300e83e3198a3233668529",
+          "metabolic_ecology.jl": "c0cd14f8fd9c227d5503d815c8930a64573300484c01f1dfa9d269a8e565b499",
+          "mechanics.jl": "81001af879163392dde498534c9f099bcc79a16b8dac5104d527da7cc9f4fdac",
+          "neural_ecology.jl": "7c2ba7a66184818aa0b07d0dd691339f5e99a61c82777726bae9961d544a0fcb",
+          "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+          "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+          "compartments.jl": "8eec60b56379a3d366cd789ad62e4c7690a0c10ce5af8a485f66b670c8448751",
+          "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+          "arena.jl": "8fd826aa3b48ac05542b7e94bf7294b82c803f882d504173bd8f10d0b64999ef",
+          "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+          "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+          "implicit_phase.jl": "c9f69ad8d2ab00bd18d678d51956effe9c52bf415d5388d5305c56b4bb351fe7",
+          "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+          "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+          "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+          "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+        },
+        "migrated_checkpoint_sources": null,
+        "summary": {
+          "late_duration": 1200.0000178813934,
+          "late_births": 0,
+          "late_deaths": 0,
+          "late_population_change": 0,
+          "late_birth_rate": 0.0,
+          "late_death_rate": 0.0,
+          "final": {
+            "time": 2400.000035762787,
+            "population": 0,
+            "births": 1784,
+            "deaths": 1808,
+            "finite": true,
+            "material_error": -0.01151230918821966,
+            "founder_effective_count": 0.0,
+            "controller_variance": 0.0,
+            "allocation_mean": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "allocation_variance": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "generalism_mean": 0.0,
+            "efficiency_mean": 0.0,
+            "efficiency_variance": 0.0,
+            "assimilation_mean": 0.0,
+            "cooperation_mean": 0.0,
+            "cooperation_variance": 0.0,
+            "byproduct_fraction_mean": 0.0,
+            "byproduct_fraction_variance": 0.0,
+            "uptake_by_resource": [
+              2097.1334070380794,
+              532.6985803022228,
+              283.2630274750307
+            ],
+            "exported_by_resource": [
+              0.0,
+              0.0,
+              315.5786291140321
+            ],
+            "resource_mass": [
+              190.865222543478,
+              1755.302877664566,
+              32.315616108477116
+            ],
+            "supplied": [
+              1999.9999999999234,
+              1999.999979763059,
+              0.0
+            ],
+            "patch_population": [
+              0,
+              0
+            ],
+            "patch_a_allocation": [
+              0.0,
+              0.0
+            ],
+            "inhabited_cells": 0,
+            "positive_phase_residents": 0,
+            "boundary_exposure_mean": 0.0,
+            "contributor_population": 0,
+            "withholding_population": 0,
+            "contributor_exposure": 0.0,
+            "withholding_exposure": 0.0,
+            "maintenance_material": 127.73383047516108,
+            "maintenance_work": 76.64030133050807,
+            "film_mass": 3.5469857813462744e-17,
+            "chemical_heat": 6787.426471989001,
+            "energy_input": 3723.5858757333476,
+            "stored_energy": 0.0,
+            "controller_heat": 3723.586050238535,
+            "energy_error": 0.00017450518726036535,
+            "movement_work": 642.3529872654417,
+            "signal_work": 722.4770167637639,
+            "remodeling_work": 1196.5317931434556,
+            "reproduction_work": 535.2,
+            "morphology": {
+              "occupancy": 0.4270833333333333,
+              "components": 1,
+              "largest_component_share": 1.0,
+              "component_size_cv": 0.0,
+              "phi_mean": -0.11999957318847818,
+              "phi_variance": 0.7598116
+            }
+          }
+        },
+        "first_sampled_extinction_time": 472.0000070333481,
+        "peak_sampled_population": 180,
+        "maximum_absolute_material_error": 0.011532112831446284,
+        "maximum_absolute_energy_error": 0.00023244899784913287
+      },
+      {
+        "seed": 29,
+        "condition": "uniform",
+        "steps": 12000,
+        "dt": 0.2,
+        "settings": {
+          "capacity": 180,
+          "lifespan": 160.0,
+          "uptake_rate": 1.4,
+          "founders": 24
+        },
+        "sources": {
+          "core.jl": "3ef44008f6a9ce8399bc60352da94dc19e670e67677944369934138042718bad",
+          "writing.jl": "08abd6abb423ef077b86e70eb47fb9f0ad6d27e597ca3dd2464a6369ae002eb0",
+          "Interior.jl": "c0cae375b71bb1a8d3d1fa59f901e5e8011f70704dcf6bc687461fd8342fc760",
+          "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+          "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26",
+          "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+          "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+          "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+          "experiments.jl": "c93f9e7a3a59ae842e5d6051f661958b1ad7ead6d6300e83e3198a3233668529",
+          "metabolic_ecology.jl": "c0cd14f8fd9c227d5503d815c8930a64573300484c01f1dfa9d269a8e565b499",
+          "mechanics.jl": "81001af879163392dde498534c9f099bcc79a16b8dac5104d527da7cc9f4fdac",
+          "neural_ecology.jl": "7c2ba7a66184818aa0b07d0dd691339f5e99a61c82777726bae9961d544a0fcb",
+          "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+          "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+          "compartments.jl": "8eec60b56379a3d366cd789ad62e4c7690a0c10ce5af8a485f66b670c8448751",
+          "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+          "arena.jl": "8fd826aa3b48ac05542b7e94bf7294b82c803f882d504173bd8f10d0b64999ef",
+          "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+          "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+          "implicit_phase.jl": "c9f69ad8d2ab00bd18d678d51956effe9c52bf415d5388d5305c56b4bb351fe7",
+          "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+          "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+          "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+          "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+        },
+        "migrated_checkpoint_sources": null,
+        "summary": {
+          "late_duration": 1200.0000178813934,
+          "late_births": 0,
+          "late_deaths": 0,
+          "late_population_change": 0,
+          "late_birth_rate": 0.0,
+          "late_death_rate": 0.0,
+          "final": {
+            "time": 2400.000035762787,
+            "population": 0,
+            "births": 1314,
+            "deaths": 1338,
+            "finite": true,
+            "material_error": 0.02786438825796722,
+            "founder_effective_count": 0.0,
+            "controller_variance": 0.0,
+            "allocation_mean": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "allocation_variance": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "generalism_mean": 0.0,
+            "efficiency_mean": 0.0,
+            "efficiency_variance": 0.0,
+            "assimilation_mean": 0.0,
+            "cooperation_mean": 0.0,
+            "cooperation_variance": 0.0,
+            "byproduct_fraction_mean": 0.0,
+            "byproduct_fraction_variance": 0.0,
+            "uptake_by_resource": [
+              1938.3069478018624,
+              2272.004486043158,
+              566.6801325936017
+            ],
+            "exported_by_resource": [
+              0.0,
+              0.0,
+              764.6365209405558
+            ],
+            "resource_mass": [
+              349.6945260167122,
+              15.995581550523639,
+              197.95619121193886
+            ],
+            "supplied": [
+              1999.9999996441975,
+              1999.9999999997494,
+              0.0
+            ],
+            "patch_population": [
+              0,
+              0
+            ],
+            "patch_a_allocation": [
+              0.0,
+              0.0
+            ],
+            "inhabited_cells": 0,
+            "positive_phase_residents": 0,
+            "boundary_exposure_mean": 0.0,
+            "contributor_population": 0,
+            "withholding_population": 0,
+            "contributor_exposure": 0.0,
+            "withholding_exposure": 0.0,
+            "maintenance_material": 276.31587794022926,
+            "maintenance_work": 165.7895333520224,
+            "film_mass": 1.4546379598349962e-16,
+            "chemical_heat": 9927.464310598483,
+            "energy_input": 6739.825036434468,
+            "stored_energy": 0.0,
+            "controller_heat": 6739.818486253565,
+            "energy_error": -0.0065501809021952795,
+            "movement_work": 1296.070771880036,
+            "signal_work": 843.913438218158,
+            "remodeling_work": 2690.1407985260466,
+            "reproduction_work": 394.2,
+            "morphology": {
+              "occupancy": 0.4270833333333333,
+              "components": 1,
+              "largest_component_share": 1.0,
+              "component_size_cv": 0.0,
+              "phi_mean": -0.1200000457433311,
+              "phi_variance": 0.7598114
+            }
+          }
+        },
+        "first_sampled_extinction_time": 464.0000069141388,
+        "peak_sampled_population": 180,
+        "maximum_absolute_material_error": 0.02786438825796722,
+        "maximum_absolute_energy_error": 0.006699056721117813
+      },
+      {
+        "seed": 29,
+        "condition": "withhold",
+        "steps": 12000,
+        "dt": 0.2,
+        "settings": {
+          "capacity": 180,
+          "lifespan": 160.0,
+          "uptake_rate": 1.4,
+          "founders": 24
+        },
+        "sources": {
+          "core.jl": "3ef44008f6a9ce8399bc60352da94dc19e670e67677944369934138042718bad",
+          "writing.jl": "08abd6abb423ef077b86e70eb47fb9f0ad6d27e597ca3dd2464a6369ae002eb0",
+          "Interior.jl": "c0cae375b71bb1a8d3d1fa59f901e5e8011f70704dcf6bc687461fd8342fc760",
+          "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+          "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26",
+          "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+          "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+          "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+          "experiments.jl": "c93f9e7a3a59ae842e5d6051f661958b1ad7ead6d6300e83e3198a3233668529",
+          "metabolic_ecology.jl": "c0cd14f8fd9c227d5503d815c8930a64573300484c01f1dfa9d269a8e565b499",
+          "mechanics.jl": "81001af879163392dde498534c9f099bcc79a16b8dac5104d527da7cc9f4fdac",
+          "neural_ecology.jl": "7c2ba7a66184818aa0b07d0dd691339f5e99a61c82777726bae9961d544a0fcb",
+          "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+          "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+          "compartments.jl": "8eec60b56379a3d366cd789ad62e4c7690a0c10ce5af8a485f66b670c8448751",
+          "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+          "arena.jl": "8fd826aa3b48ac05542b7e94bf7294b82c803f882d504173bd8f10d0b64999ef",
+          "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+          "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+          "implicit_phase.jl": "c9f69ad8d2ab00bd18d678d51956effe9c52bf415d5388d5305c56b4bb351fe7",
+          "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+          "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+          "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+          "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+        },
+        "migrated_checkpoint_sources": null,
+        "summary": {
+          "late_duration": 1200.0000178813934,
+          "late_births": 0,
+          "late_deaths": 0,
+          "late_population_change": 0,
+          "late_birth_rate": 0.0,
+          "late_death_rate": 0.0,
+          "final": {
+            "time": 2400.000035762787,
+            "population": 0,
+            "births": 1578,
+            "deaths": 1602,
+            "finite": true,
+            "material_error": 0.0003555889106792165,
+            "founder_effective_count": 0.0,
+            "controller_variance": 0.0,
+            "allocation_mean": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "allocation_variance": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "generalism_mean": 0.0,
+            "efficiency_mean": 0.0,
+            "efficiency_variance": 0.0,
+            "assimilation_mean": 0.0,
+            "cooperation_mean": 0.0,
+            "cooperation_variance": 0.0,
+            "byproduct_fraction_mean": 0.0,
+            "byproduct_fraction_variance": 0.0,
+            "uptake_by_resource": [
+              2209.2931312319774,
+              2232.2627201356922,
+              396.28619391101677
+            ],
+            "exported_by_resource": [
+              0.0,
+              0.0,
+              428.2871669121123
+            ],
+            "resource_mass": [
+              78.70677396655083,
+              55.737354546785355,
+              32.000972751528025
+            ],
+            "supplied": [
+              1999.9999999998472,
+              1999.9999999992897,
+              0.0
+            ],
+            "patch_population": [
+              0,
+              0
+            ],
+            "patch_a_allocation": [
+              0.0,
+              0.0
+            ],
+            "inhabited_cells": 0,
+            "positive_phase_residents": 0,
+            "boundary_exposure_mean": 0.0,
+            "contributor_population": 0,
+            "withholding_population": 0,
+            "contributor_exposure": 0.0,
+            "withholding_exposure": 0.0,
+            "maintenance_material": 0.0,
+            "maintenance_work": 0.0,
+            "film_mass": 0.0,
+            "chemical_heat": 11354.27597908321,
+            "energy_input": 6403.9464533864475,
+            "stored_energy": 0.0,
+            "controller_heat": 6403.943414047506,
+            "energy_error": -0.003039338941562164,
+            "movement_work": 1138.4683879733416,
+            "signal_work": 886.2670526683355,
+            "remodeling_work": 2639.59656027028,
+            "reproduction_work": 473.40002,
+            "morphology": {
+              "occupancy": 0.4270833333333333,
+              "components": 1,
+              "largest_component_share": 1.0,
+              "component_size_cv": 0.0,
+              "phi_mean": -0.11999306653271763,
+              "phi_variance": 0.75980836
+            }
+          }
+        },
+        "first_sampled_extinction_time": 520.0000077486038,
+        "peak_sampled_population": 180,
+        "maximum_absolute_material_error": 0.0008893099748092936,
+        "maximum_absolute_energy_error": 0.0031417388454428874
+      },
+      {
+        "seed": 47,
+        "condition": "niches",
+        "steps": 12000,
+        "dt": 0.2,
+        "settings": {
+          "capacity": 180,
+          "lifespan": 160.0,
+          "uptake_rate": 1.4,
+          "founders": 24
+        },
+        "sources": {
+          "core.jl": "3ef44008f6a9ce8399bc60352da94dc19e670e67677944369934138042718bad",
+          "writing.jl": "08abd6abb423ef077b86e70eb47fb9f0ad6d27e597ca3dd2464a6369ae002eb0",
+          "Interior.jl": "c0cae375b71bb1a8d3d1fa59f901e5e8011f70704dcf6bc687461fd8342fc760",
+          "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+          "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26",
+          "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+          "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+          "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+          "experiments.jl": "c93f9e7a3a59ae842e5d6051f661958b1ad7ead6d6300e83e3198a3233668529",
+          "metabolic_ecology.jl": "c0cd14f8fd9c227d5503d815c8930a64573300484c01f1dfa9d269a8e565b499",
+          "mechanics.jl": "81001af879163392dde498534c9f099bcc79a16b8dac5104d527da7cc9f4fdac",
+          "neural_ecology.jl": "7c2ba7a66184818aa0b07d0dd691339f5e99a61c82777726bae9961d544a0fcb",
+          "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+          "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+          "compartments.jl": "8eec60b56379a3d366cd789ad62e4c7690a0c10ce5af8a485f66b670c8448751",
+          "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+          "arena.jl": "8fd826aa3b48ac05542b7e94bf7294b82c803f882d504173bd8f10d0b64999ef",
+          "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+          "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+          "implicit_phase.jl": "c9f69ad8d2ab00bd18d678d51956effe9c52bf415d5388d5305c56b4bb351fe7",
+          "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+          "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+          "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+          "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+        },
+        "migrated_checkpoint_sources": null,
+        "summary": {
+          "late_duration": 1200.0000178813934,
+          "late_births": 0,
+          "late_deaths": 0,
+          "late_population_change": 0,
+          "late_birth_rate": 0.0,
+          "late_death_rate": 0.0,
+          "final": {
+            "time": 2400.000035762787,
+            "population": 0,
+            "births": 1612,
+            "deaths": 1636,
+            "finite": true,
+            "material_error": -0.014907344970652048,
+            "founder_effective_count": 0.0,
+            "controller_variance": 0.0,
+            "allocation_mean": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "allocation_variance": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "generalism_mean": 0.0,
+            "efficiency_mean": 0.0,
+            "efficiency_variance": 0.0,
+            "assimilation_mean": 0.0,
+            "cooperation_mean": 0.0,
+            "cooperation_variance": 0.0,
+            "byproduct_fraction_mean": 0.0,
+            "byproduct_fraction_variance": 0.0,
+            "uptake_by_resource": [
+              2249.929625888344,
+              1754.756840767035,
+              288.76856799594054
+            ],
+            "exported_by_resource": [
+              0.0,
+              0.0,
+              371.4754469925974
+            ],
+            "resource_mass": [
+              38.07051680982113,
+              533.242673933506,
+              82.7074065208435
+            ],
+            "supplied": [
+              1999.9999999990082,
+              1999.9999994970858,
+              0.0
+            ],
+            "patch_population": [
+              0,
+              0
+            ],
+            "patch_a_allocation": [
+              0.0,
+              0.0
+            ],
+            "inhabited_cells": 0,
+            "positive_phase_residents": 0,
+            "boundary_exposure_mean": 0.0,
+            "contributor_population": 0,
+            "withholding_population": 0,
+            "contributor_exposure": 0.0,
+            "withholding_exposure": 0.0,
+            "maintenance_material": 297.4475596729317,
+            "maintenance_work": 178.46854289545917,
+            "film_mass": 1.932739674687666e-14,
+            "chemical_heat": 9151.933049367864,
+            "energy_input": 6808.10593825728,
+            "stored_energy": 0.0,
+            "controller_heat": 6808.1024227962525,
+            "energy_error": -0.003515461027745914,
+            "movement_work": 980.2018232303835,
+            "signal_work": 880.9288938979043,
+            "remodeling_work": 2911.7550743155552,
+            "reproduction_work": 483.6,
+            "morphology": {
+              "occupancy": 0.4409722222222222,
+              "components": 1,
+              "largest_component_share": 1.0,
+              "component_size_cv": 0.0,
+              "phi_mean": -0.11995735814465054,
+              "phi_variance": 0.80109674
+            }
+          }
+        },
+        "first_sampled_extinction_time": 840.0000125169754,
+        "peak_sampled_population": 180,
+        "maximum_absolute_material_error": 0.014907344970652048,
+        "maximum_absolute_energy_error": 0.0036679185277535
+      },
+      {
+        "seed": 47,
+        "condition": "no_crossfeed",
+        "steps": 12000,
+        "dt": 0.2,
+        "settings": {
+          "capacity": 180,
+          "lifespan": 160.0,
+          "uptake_rate": 1.4,
+          "founders": 24
+        },
+        "sources": {
+          "core.jl": "3ef44008f6a9ce8399bc60352da94dc19e670e67677944369934138042718bad",
+          "writing.jl": "08abd6abb423ef077b86e70eb47fb9f0ad6d27e597ca3dd2464a6369ae002eb0",
+          "Interior.jl": "c0cae375b71bb1a8d3d1fa59f901e5e8011f70704dcf6bc687461fd8342fc760",
+          "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+          "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26",
+          "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+          "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+          "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+          "experiments.jl": "c93f9e7a3a59ae842e5d6051f661958b1ad7ead6d6300e83e3198a3233668529",
+          "metabolic_ecology.jl": "c0cd14f8fd9c227d5503d815c8930a64573300484c01f1dfa9d269a8e565b499",
+          "mechanics.jl": "81001af879163392dde498534c9f099bcc79a16b8dac5104d527da7cc9f4fdac",
+          "neural_ecology.jl": "7c2ba7a66184818aa0b07d0dd691339f5e99a61c82777726bae9961d544a0fcb",
+          "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+          "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+          "compartments.jl": "8eec60b56379a3d366cd789ad62e4c7690a0c10ce5af8a485f66b670c8448751",
+          "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+          "arena.jl": "8fd826aa3b48ac05542b7e94bf7294b82c803f882d504173bd8f10d0b64999ef",
+          "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+          "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+          "implicit_phase.jl": "c9f69ad8d2ab00bd18d678d51956effe9c52bf415d5388d5305c56b4bb351fe7",
+          "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+          "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+          "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+          "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+        },
+        "migrated_checkpoint_sources": null,
+        "summary": {
+          "late_duration": 1200.0000178813934,
+          "late_births": 0,
+          "late_deaths": 0,
+          "late_population_change": 0,
+          "late_birth_rate": 0.0,
+          "late_death_rate": 0.0,
+          "final": {
+            "time": 2400.000035762787,
+            "population": 0,
+            "births": 1555,
+            "deaths": 1579,
+            "finite": true,
+            "material_error": -0.018684604732243315,
+            "founder_effective_count": 0.0,
+            "controller_variance": 0.0,
+            "allocation_mean": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "allocation_variance": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "generalism_mean": 0.0,
+            "efficiency_mean": 0.0,
+            "efficiency_variance": 0.0,
+            "assimilation_mean": 0.0,
+            "cooperation_mean": 0.0,
+            "cooperation_variance": 0.0,
+            "byproduct_fraction_mean": 0.0,
+            "byproduct_fraction_variance": 0.0,
+            "uptake_by_resource": [
+              2275.340477107233,
+              2112.0515903018377,
+              0.0
+            ],
+            "exported_by_resource": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "resource_mass": [
+              12.659531434066594,
+              175.9475051164627,
+              0.0
+            ],
+            "supplied": [
+              1999.999999999567,
+              1999.9999999912284,
+              0.0
+            ],
+            "patch_population": [
+              0,
+              0
+            ],
+            "patch_a_allocation": [
+              0.0,
+              0.0
+            ],
+            "inhabited_cells": 0,
+            "positive_phase_residents": 0,
+            "boundary_exposure_mean": 0.0,
+            "contributor_population": 0,
+            "withholding_population": 0,
+            "contributor_exposure": 0.0,
+            "withholding_exposure": 0.0,
+            "maintenance_material": 148.3433190049018,
+            "maintenance_work": 89.00599493972183,
+            "film_mass": 1.0427360465244421e-16,
+            "chemical_heat": 10183.076207542164,
+            "energy_input": 7390.492062093807,
+            "stored_energy": 0.0,
+            "controller_heat": 7390.486253874109,
+            "energy_error": -0.00580821969833778,
+            "movement_work": 1150.8938117532507,
+            "signal_work": 1143.4098989468966,
+            "remodeling_work": 2836.86322853608,
+            "reproduction_work": 466.50003,
+            "morphology": {
+              "occupancy": 0.4409722222222222,
+              "components": 1,
+              "largest_component_share": 1.0,
+              "component_size_cv": 0.0,
+              "phi_mean": -0.12002659384678635,
+              "phi_variance": 0.80108035
+            }
+          }
+        },
+        "first_sampled_extinction_time": 504.00000751018524,
+        "peak_sampled_population": 180,
+        "maximum_absolute_material_error": 0.018702038159517542,
+        "maximum_absolute_energy_error": 0.005810075472254539
+      },
+      {
+        "seed": 47,
+        "condition": "no_mutation",
+        "steps": 12000,
+        "dt": 0.2,
+        "settings": {
+          "capacity": 180,
+          "lifespan": 160.0,
+          "uptake_rate": 1.4,
+          "founders": 24
+        },
+        "sources": {
+          "core.jl": "3ef44008f6a9ce8399bc60352da94dc19e670e67677944369934138042718bad",
+          "writing.jl": "08abd6abb423ef077b86e70eb47fb9f0ad6d27e597ca3dd2464a6369ae002eb0",
+          "Interior.jl": "c0cae375b71bb1a8d3d1fa59f901e5e8011f70704dcf6bc687461fd8342fc760",
+          "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+          "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26",
+          "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+          "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+          "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+          "experiments.jl": "c93f9e7a3a59ae842e5d6051f661958b1ad7ead6d6300e83e3198a3233668529",
+          "metabolic_ecology.jl": "c0cd14f8fd9c227d5503d815c8930a64573300484c01f1dfa9d269a8e565b499",
+          "mechanics.jl": "81001af879163392dde498534c9f099bcc79a16b8dac5104d527da7cc9f4fdac",
+          "neural_ecology.jl": "7c2ba7a66184818aa0b07d0dd691339f5e99a61c82777726bae9961d544a0fcb",
+          "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+          "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+          "compartments.jl": "8eec60b56379a3d366cd789ad62e4c7690a0c10ce5af8a485f66b670c8448751",
+          "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+          "arena.jl": "8fd826aa3b48ac05542b7e94bf7294b82c803f882d504173bd8f10d0b64999ef",
+          "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+          "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+          "implicit_phase.jl": "c9f69ad8d2ab00bd18d678d51956effe9c52bf415d5388d5305c56b4bb351fe7",
+          "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+          "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+          "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+          "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+        },
+        "migrated_checkpoint_sources": null,
+        "summary": {
+          "late_duration": 1200.0000178813934,
+          "late_births": 0,
+          "late_deaths": 0,
+          "late_population_change": 0,
+          "late_birth_rate": 0.0,
+          "late_death_rate": 0.0,
+          "final": {
+            "time": 2400.000035762787,
+            "population": 0,
+            "births": 1665,
+            "deaths": 1689,
+            "finite": true,
+            "material_error": -0.009012221609282278,
+            "founder_effective_count": 0.0,
+            "controller_variance": 0.0,
+            "allocation_mean": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "allocation_variance": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "generalism_mean": 0.0,
+            "efficiency_mean": 0.0,
+            "efficiency_variance": 0.0,
+            "assimilation_mean": 0.0,
+            "cooperation_mean": 0.0,
+            "cooperation_variance": 0.0,
+            "byproduct_fraction_mean": 0.0,
+            "byproduct_fraction_variance": 0.0,
+            "uptake_by_resource": [
+              2060.649371966214,
+              668.9875619974605,
+              287.8750749927294
+            ],
+            "exported_by_resource": [
+              0.0,
+              0.0,
+              327.5547856725898
+            ],
+            "resource_mass": [
+              227.35001945495605,
+              1619.012286901474,
+              39.67996482923627
+            ],
+            "supplied": [
+              1999.9999999998158,
+              1999.9999765669927,
+              0.0
+            ],
+            "patch_population": [
+              0,
+              0
+            ],
+            "patch_a_allocation": [
+              0.0,
+              0.0
+            ],
+            "inhabited_cells": 0,
+            "positive_phase_residents": 0,
+            "boundary_exposure_mean": 0.0,
+            "contributor_population": 0,
+            "withholding_population": 0,
+            "contributor_exposure": 0.0,
+            "withholding_exposure": 0.0,
+            "maintenance_material": 175.420622044825,
+            "maintenance_work": 105.25237740924891,
+            "film_mass": 3.5760064343244504e-17,
+            "chemical_heat": 7041.088371864492,
+            "energy_input": 3861.7796533103337,
+            "stored_energy": 0.0,
+            "controller_heat": 3861.7793033847256,
+            "energy_error": -0.0003499256081340718,
+            "movement_work": 417.0921938932122,
+            "signal_work": 546.8766286923683,
+            "remodeling_work": 1520.2213517565847,
+            "reproduction_work": 499.50003,
+            "morphology": {
+              "occupancy": 0.4201388888888889,
+              "components": 1,
+              "largest_component_share": 1.0,
+              "component_size_cv": 0.0,
+              "phi_mean": -0.11999504976706198,
+              "phi_variance": 0.7597845
+            }
+          }
+        },
+        "first_sampled_extinction_time": 440.0000065565109,
+        "peak_sampled_population": 180,
+        "maximum_absolute_material_error": 0.009563369211264217,
+        "maximum_absolute_energy_error": 0.00046863978559485986
+      },
+      {
+        "seed": 47,
+        "condition": "uniform",
+        "steps": 12000,
+        "dt": 0.2,
+        "settings": {
+          "capacity": 180,
+          "lifespan": 160.0,
+          "uptake_rate": 1.4,
+          "founders": 24
+        },
+        "sources": {
+          "core.jl": "3ef44008f6a9ce8399bc60352da94dc19e670e67677944369934138042718bad",
+          "writing.jl": "08abd6abb423ef077b86e70eb47fb9f0ad6d27e597ca3dd2464a6369ae002eb0",
+          "Interior.jl": "c0cae375b71bb1a8d3d1fa59f901e5e8011f70704dcf6bc687461fd8342fc760",
+          "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+          "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26",
+          "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+          "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+          "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+          "experiments.jl": "c93f9e7a3a59ae842e5d6051f661958b1ad7ead6d6300e83e3198a3233668529",
+          "metabolic_ecology.jl": "c0cd14f8fd9c227d5503d815c8930a64573300484c01f1dfa9d269a8e565b499",
+          "mechanics.jl": "81001af879163392dde498534c9f099bcc79a16b8dac5104d527da7cc9f4fdac",
+          "neural_ecology.jl": "7c2ba7a66184818aa0b07d0dd691339f5e99a61c82777726bae9961d544a0fcb",
+          "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+          "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+          "compartments.jl": "8eec60b56379a3d366cd789ad62e4c7690a0c10ce5af8a485f66b670c8448751",
+          "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+          "arena.jl": "8fd826aa3b48ac05542b7e94bf7294b82c803f882d504173bd8f10d0b64999ef",
+          "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+          "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+          "implicit_phase.jl": "c9f69ad8d2ab00bd18d678d51956effe9c52bf415d5388d5305c56b4bb351fe7",
+          "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+          "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+          "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+          "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+        },
+        "migrated_checkpoint_sources": null,
+        "summary": {
+          "late_duration": 1200.0000178813934,
+          "late_births": 0,
+          "late_deaths": 0,
+          "late_population_change": 0,
+          "late_birth_rate": 0.0,
+          "late_death_rate": 0.0,
+          "final": {
+            "time": 2400.000035762787,
+            "population": 0,
+            "births": 1165,
+            "deaths": 1189,
+            "finite": true,
+            "material_error": -0.013670481705048587,
+            "founder_effective_count": 0.0,
+            "controller_variance": 0.0,
+            "allocation_mean": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "allocation_variance": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "generalism_mean": 0.0,
+            "efficiency_mean": 0.0,
+            "efficiency_variance": 0.0,
+            "assimilation_mean": 0.0,
+            "cooperation_mean": 0.0,
+            "cooperation_variance": 0.0,
+            "byproduct_fraction_mean": 0.0,
+            "byproduct_fraction_variance": 0.0,
+            "uptake_by_resource": [
+              2282.8683042974185,
+              2071.7849873445207,
+              479.5631013160243
+            ],
+            "exported_by_resource": [
+              0.0,
+              0.0,
+              566.7010727905872
+            ],
+            "resource_mass": [
+              5.13173144031316,
+              216.2150092124939,
+              87.13782440125942
+            ],
+            "supplied": [
+              1999.9999999999327,
+              1999.9999999500733,
+              0.0
+            ],
+            "patch_population": [
+              0,
+              0
+            ],
+            "patch_a_allocation": [
+              0.0,
+              0.0
+            ],
+            "inhabited_cells": 0,
+            "positive_phase_residents": 0,
+            "boundary_exposure_mean": 0.0,
+            "contributor_population": 0,
+            "withholding_population": 0,
+            "contributor_exposure": 0.0,
+            "withholding_exposure": 0.0,
+            "maintenance_material": 304.8730042685893,
+            "maintenance_work": 182.9238098298931,
+            "film_mass": 1.6672802567755797e-16,
+            "chemical_heat": 9892.826664996644,
+            "energy_input": 7462.648530097075,
+            "stored_energy": 0.0,
+            "controller_heat": 7462.6463008714445,
+            "energy_error": -0.002229225630799192,
+            "movement_work": 1372.9909797425685,
+            "signal_work": 734.1898417608236,
+            "remodeling_work": 2880.0387632915663,
+            "reproduction_work": 349.5,
+            "morphology": {
+              "occupancy": 0.4409722222222222,
+              "components": 1,
+              "largest_component_share": 1.0,
+              "component_size_cv": 0.0,
+              "phi_mean": -0.12001819051026057,
+              "phi_variance": 0.80108255
+            }
+          }
+        },
+        "first_sampled_extinction_time": 432.00000643730164,
+        "peak_sampled_population": 180,
+        "maximum_absolute_material_error": 0.01518514285908168,
+        "maximum_absolute_energy_error": 0.0022356330900947796
+      },
+      {
+        "seed": 47,
+        "condition": "withhold",
+        "steps": 12000,
+        "dt": 0.2,
+        "settings": {
+          "capacity": 180,
+          "lifespan": 160.0,
+          "uptake_rate": 1.4,
+          "founders": 24
+        },
+        "sources": {
+          "core.jl": "3ef44008f6a9ce8399bc60352da94dc19e670e67677944369934138042718bad",
+          "writing.jl": "08abd6abb423ef077b86e70eb47fb9f0ad6d27e597ca3dd2464a6369ae002eb0",
+          "Interior.jl": "c0cae375b71bb1a8d3d1fa59f901e5e8011f70704dcf6bc687461fd8342fc760",
+          "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+          "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26",
+          "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+          "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+          "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+          "experiments.jl": "c93f9e7a3a59ae842e5d6051f661958b1ad7ead6d6300e83e3198a3233668529",
+          "metabolic_ecology.jl": "c0cd14f8fd9c227d5503d815c8930a64573300484c01f1dfa9d269a8e565b499",
+          "mechanics.jl": "81001af879163392dde498534c9f099bcc79a16b8dac5104d527da7cc9f4fdac",
+          "neural_ecology.jl": "7c2ba7a66184818aa0b07d0dd691339f5e99a61c82777726bae9961d544a0fcb",
+          "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+          "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+          "compartments.jl": "8eec60b56379a3d366cd789ad62e4c7690a0c10ce5af8a485f66b670c8448751",
+          "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+          "arena.jl": "8fd826aa3b48ac05542b7e94bf7294b82c803f882d504173bd8f10d0b64999ef",
+          "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+          "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+          "implicit_phase.jl": "c9f69ad8d2ab00bd18d678d51956effe9c52bf415d5388d5305c56b4bb351fe7",
+          "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+          "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+          "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+          "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+        },
+        "migrated_checkpoint_sources": null,
+        "summary": {
+          "late_duration": 1200.0000178813934,
+          "late_births": 0,
+          "late_deaths": 0,
+          "late_population_change": 0,
+          "late_birth_rate": 0.0,
+          "late_death_rate": 0.0,
+          "final": {
+            "time": 2400.000035762787,
+            "population": 0,
+            "births": 1345,
+            "deaths": 1369,
+            "finite": true,
+            "material_error": -0.0035238901218690444,
+            "founder_effective_count": 0.0,
+            "controller_variance": 0.0,
+            "allocation_mean": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "allocation_variance": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "generalism_mean": 0.0,
+            "efficiency_mean": 0.0,
+            "efficiency_variance": 0.0,
+            "assimilation_mean": 0.0,
+            "cooperation_mean": 0.0,
+            "cooperation_variance": 0.0,
+            "byproduct_fraction_mean": 0.0,
+            "byproduct_fraction_variance": 0.0,
+            "uptake_by_resource": [
+              2281.3305596578707,
+              2116.7140852179123,
+              504.3511740925
+            ],
+            "exported_by_resource": [
+              0.0,
+              0.0,
+              633.2553846916089
+            ],
+            "resource_mass": [
+              6.669450679793954,
+              171.28590194880962,
+              128.90340481698513
+            ],
+            "supplied": [
+              1999.9999999999156,
+              1999.9999999967536,
+              0.0
+            ],
+            "patch_population": [
+              0,
+              0
+            ],
+            "patch_a_allocation": [
+              0.0,
+              0.0
+            ],
+            "inhabited_cells": 0,
+            "positive_phase_residents": 0,
+            "boundary_exposure_mean": 0.0,
+            "contributor_population": 0,
+            "withholding_population": 0,
+            "contributor_exposure": 0.0,
+            "withholding_exposure": 0.0,
+            "maintenance_material": 0.0,
+            "maintenance_work": 0.0,
+            "film_mass": 0.0,
+            "chemical_heat": 10224.86151626779,
+            "energy_input": 7262.41285263633,
+            "stored_energy": 0.0,
+            "controller_heat": 7262.405700088682,
+            "energy_error": -0.007152547647820029,
+            "movement_work": 1003.7258064675557,
+            "signal_work": 1166.688569198352,
+            "remodeling_work": 3089.025499722982,
+            "reproduction_work": 403.50003,
+            "morphology": {
+              "occupancy": 0.4409722222222222,
+              "components": 1,
+              "largest_component_share": 1.0,
+              "component_size_cv": 0.0,
+              "phi_mean": -0.12002246149475265,
+              "phi_variance": 0.80108136
+            }
+          }
+        },
+        "first_sampled_extinction_time": 416.00000619888306,
+        "peak_sampled_population": 180,
+        "maximum_absolute_material_error": 0.0035238901218690444,
+        "maximum_absolute_energy_error": 0.007155165211770509
+      }
+    ]
+  }
+}

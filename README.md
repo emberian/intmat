@@ -7,7 +7,7 @@ pressure and damage. Its inhabitants have state: recurrent brains, plastic memor
 inherited metabolism, ancestry and finite inventories. Each changes what the other
 encounters next.
 
-[Gallery](https://emberian.github.io/intmat/) · [Recorded arena](https://emberian.github.io/intmat/arena/arena.html) · [Working state](TRACKER.md)
+[Gallery](https://emberian.github.io/intmat/) · [Metabolic replay](https://emberian.github.io/intmat/metabolic/arena.html) · [Working state](TRACKER.md)
 
 ## Run
 
@@ -24,7 +24,7 @@ directory; [resume explicitly](docs/arena.md). One writer per run. Checkpoints r
 full state and check Julia/source versions. The runner is not a reboot service.
 
 `active-2d.toml` selects the earlier single-resource ecology. `metabolic-2d.toml`
-selects the new multispecies model; these are different experiments.
+selects the multispecies model. `metabolic-96.toml` enlarges the domain at the same cell spacing; these are distinct experiments.
 
 ## What evolves
 
@@ -64,13 +64,15 @@ The semi-implicit constant-mobility solver completed a **64³, t=10** phase run 
 **19 s**; measured timings imply **84×** explicit throughput over equal simulated
 time. This is neither an accuracy guarantee nor a variable-mobility solver.
 
-At **2,400 inhabitants**, one measured CPU arena step cost **49.8 ms / 90.4 MB allocated**.
-Sensing dominates. The fused controller reduced its isolated cost **8.28→3.54 ms**;
-that is not a whole-arena speedup. [Profiling](docs/arena-performance.md)
+At **2,400 inhabitants**, reusable neighborhood/controller buffers reduced matched
+complete neural steps **19.13→11.20 ms**, allocations **28.42→4.32 MB**. Complete
+metabolic steps measured **12.74 ms / 5.10 MB**. Births resize once per step; dead
+individual histories are pruned. [Profiling](docs/arena-performance.md)
 
 Metal supports several dense grid processes. The evolving population remains a CPU
-implementation; a backend-native controller kernel is one component of a GPU port.
-[Larger-run budgets](docs/bigruns.md) · [Computing](docs/computing.md)
+implementation. Device-resident controllers beat CPU; per-tick transfers reverse
+that result. A real Kaggle T4 ran the dense-field probe; TPU and hbox work have
+separate status. [Accelerators](docs/accelerators.md) · [Larger-run budgets](docs/bigruns.md)
 
 Small runs establish mechanisms and expose failures. They do not bound long-run
 behavior. Sustained turnover is not open-ended evolution; founder loss is not loss

@@ -9,6 +9,7 @@ mutable struct MetabolicEcology
     controller::NeuralEcology
     resources::ResourcePool
     boundary::Any
+    workspace::Union{Nothing,NeuralWorkspace}
     allocation::Matrix{Float32}
     assimilation::Vector{Float32}
     efficiency::Vector{Float32}
@@ -24,7 +25,7 @@ mutable struct MetabolicEcology
     recent_contributions::Dict{Int,Float64}
 end
 function MetabolicEcology(positions::AbstractMatrix,resources::ResourcePool;
-        boundary=nothing,allocation=nothing,assimilation=.4f0,efficiency=.6f0,
+        boundary=nothing,workspace=nothing,allocation=nothing,assimilation=.4f0,efficiency=.6f0,
         cooperation=.25f0,byproduct_fraction=.2f0,trait_mutation=.04f0,uptake_rate=.5f0,
         boundary_rate=.04f0,kwargs...)
     n=size(positions,2); k=length(resources.names)
@@ -33,7 +34,7 @@ function MetabolicEcology(positions::AbstractMatrix,resources::ResourcePool;
     a./=sum(a;dims=1)
     all(x->isfinite(x)&&0<=x<=1,(assimilation,efficiency,cooperation,byproduct_fraction)) && all(x->isfinite(x)&&x>=0,(trait_mutation,uptake_rate,boundary_rate)) || throw(ArgumentError("invalid metabolic traits/rates"))
     c=NeuralEcology(positions;uptake_rate=0,kwargs...)
-    MetabolicEcology(c,resources,boundary,a,fill(Float32(assimilation),n),fill(Float32(efficiency),n),fill(Float32(cooperation),n),fill(Float32(byproduct_fraction),n),Float32(trait_mutation),Float32(uptake_rate),Float32(boundary_rate),0.,zeros(k),Dict{Int,Float64}(),Dict{Int,Float64}(),Dict{Int,Float64}())
+    MetabolicEcology(c,resources,boundary,workspace,a,fill(Float32(assimilation),n),fill(Float32(efficiency),n),fill(Float32(cooperation),n),fill(Float32(byproduct_fraction),n),Float32(trait_mutation),Float32(uptake_rate),Float32(boundary_rate),0.,zeros(k),Dict{Int,Float64}(),Dict{Int,Float64}(),Dict{Int,Float64}())
 end
 function reorder_ecology!(p::MetabolicEcology,order)
     reorder_ecology!(p.controller,order)
@@ -55,17 +56,16 @@ stability_limit(w,p::MetabolicEcology)=min(1f0,stability_limit(w,p.resources))
 # Keep 32-sensor recurrent architecture/checkpoint unchanged. The first two local
 # channels and gradients become individual species; additional species enter a
 # trait-weighted resource channel. Other medium/social sensors retain meaning.
-function _metabolic_inputs(w,p,cells,bins,snapshot)
+function _metabolic_inputs!(w,p,cells,inputs)
     c=p.controller; h=size(c.hidden,1); dims=w.grid.size; k=length(p.resources.names)
-    inputs=[_neural_input(w,c,i,cells[i],bins,snapshot) for i in eachindex(c.ids)]
     for i in eachindex(c.ids)
         for channel in 1:2
             concentration(q)=p.resources.fields[channel][q] + (channel==1 ? sum((p.allocation[s,i]*p.resources.fields[s][q] for s in 3:k);init=0f0) : 0f0)
-            inputs[i][h+channel]=_neural_squash(concentration(cells[i]))
+            inputs[h+channel,i]=_neural_squash(concentration(cells[i]))
             for d in 1:3
                 lo=CartesianIndex(ntuple(j->j==d ? mod1(cells[i][j]-1,dims[j]) : cells[i][j],3))
                 hi=CartesianIndex(ntuple(j->j==d ? mod1(cells[i][j]+1,dims[j]) : cells[i][j],3))
-                inputs[i][h+9+(channel-1)*3+d]=dims[d]==1 ? 0f0 : _neural_squash((concentration(hi)-concentration(lo))/2)
+                inputs[h+9+(channel-1)*3+d,i]=dims[d]==1 ? 0f0 : _neural_squash((concentration(hi)-concentration(lo))/2)
             end
         end
     end
@@ -74,18 +74,19 @@ end
 
 function ecology_step!(w::World,p::MetabolicEcology,dt::Real)
     validate(w,p); isfinite(dt)&&0<=dt<=1 || throw(ArgumentError("ecology dt must lie in [0,1]")); dt==0 && return p
-    reorder_ecology!(p,sortperm(p.controller.ids)); c=p.controller; n=length(c.ids); h=size(c.hidden,1)
-    cells=[_neural_cell(view(c.positions,:,i),w.grid.size) for i in 1:n]
-    bins=Dict{CartesianIndex{3},Vector{Int}}()
-    for i in 1:n; push!(get!(bins,cells[i],Int[]),i); end
-    inputs=_metabolic_inputs(w,p,cells,bins,copy(c.positions))
-    outputs=neural_controller_outputs(c.weights,c.plastic_marks,inputs)
+    issorted(p.controller.ids) || reorder_ecology!(p,sortperm(p.controller.ids))
+    c=p.controller; n=length(c.ids); h=size(c.hidden,1)
+    for i in 1:n,d in 1:3; c.positions[d,i]=w.grid.size[d]==1 ? 0f0 : mod(c.positions[d,i],Float32(w.grid.size[d])); end
+    p.workspace===nothing && (p.workspace=NeuralWorkspace(w,c))
+    frame=neural_frame!(p.workspace,w,c;evaluate=false)
+    cells=frame.cells; inputs=_metabolic_inputs!(w,p,cells,frame.inputs); outputs=frame.outputs
+    neural_controller!(outputs,c.weights,c.plastic_marks,inputs)
     requests=zeros(Float32,length(p.resources.names),n)
     for i in 1:n,s in axes(requests,1)
         stock=p.resources.fields[s][cells[i]]
         # High efficiency has an explicit throughput cost; bounded allocation
         # and saturating availability prevent arbitrary uptake capacity.
-        requests[s,i]=Float32(dt)*p.uptake_rate*p.allocation[s,i]*(1f0-.7f0*p.efficiency[i])*stock/(.2f0+stock)*((outputs[i][h+4]+1f0)/2)*_neural_medium(c,:permeability,cells[i],1f0)
+        requests[s,i]=Float32(dt)*p.uptake_rate*p.allocation[s,i]*(1f0-.7f0*p.efficiency[i])*stock/(.2f0+stock)*((outputs[h+4,i]+1f0)/2)*_neural_medium(c,:permeability,cells[i],1f0)
     end
     amounts=allocate_resources!(p.resources,cells,requests)
     credit=zeros(Float32,n)
@@ -109,7 +110,7 @@ function ecology_step!(w::World,p::MetabolicEcology,dt::Real)
         c.energy[i]+=Float32(useful); c.energy_input+=useful; p.chemical_heat+=potential-retained-useful
         p.consumed.+=view(amounts,:,i)
         if p.boundary!==nothing
-            gate=(outputs[i][h+5]+1f0)/2
+            gate=(outputs[h+5,i]+1f0)/2
             funded=maintain_boundary!(p.boundary,Tuple(cells[i]),c.storage[i],c.energy[i],Float32(dt)*p.boundary_rate*p.cooperation[i]*gate)
             id=c.ids[i]
             p.contributed_material[id]=get(p.contributed_material,id,0.)+funded.material
@@ -118,13 +119,22 @@ function ecology_step!(w::World,p::MetabolicEcology,dt::Real)
             c.storage[i]-=funded.material; c.energy[i]-=funded.work; c.heat+=funded.work
         end
     end
-    oldids=copy(c.ids); oldtraits=Dict(id=>(copy(p.allocation[:,i]),p.assimilation[i],p.efficiency[i],p.cooperation[i],p.byproduct_fraction[i]) for (i,id) in enumerate(oldids))
-    ecology_step!(w,c,dt;inputs_override=inputs,reward_credit=credit)
+    oldids=copy(c.ids)
+    oldallocation=p.allocation; oldassimilation=p.assimilation; oldefficiency=p.efficiency
+    oldcooperation=p.cooperation; oldbyproduct=p.byproduct_fraction
+    ecology_step!(w,c,dt;frame=frame,reward_credit=credit)
+    c.ids==oldids && return p
+    living=Set(c.ids)
+    for history in (p.contributed_material,p.contributed_work,p.recent_contributions)
+        for id in collect(keys(history)); id in living || delete!(history,id); end
+    end
+    oldindices=Dict(id=>i for (i,id) in enumerate(oldids))
     k=length(p.resources.names); p.allocation=zeros(Float32,k,length(c.ids))
     p.assimilation=zeros(Float32,length(c.ids)); p.efficiency=similar(p.assimilation); p.cooperation=similar(p.assimilation); p.byproduct_fraction=similar(p.assimilation)
     for (i,id) in enumerate(c.ids)
-        born=!haskey(oldtraits,id); parent=born ? c.parents[i] : id
-        a,assim,eff,coop,byproduct=oldtraits[parent]
+        born=!haskey(oldindices,id); parent=born ? c.parents[i] : id; j=oldindices[parent]
+        a=view(oldallocation,:,j); assim=oldassimilation[j]; eff=oldefficiency[j]
+        coop=oldcooperation[j]; byproduct=oldbyproduct[j]
         if born
             rng=MersenneTwister(string(c.seed,":metabolic:",id,":",parent))
             a=max.(0f0,a.+p.trait_mutation.*randn(rng,Float32,k)); sum(a)==0 && (a.=1f0); a./=sum(a)

@@ -27,6 +27,7 @@ include("arena.jl")
 include("arena_composition.jl")
 
 include("neural_batch.jl")
+include("neural_workspace.jl")
 include("resources.jl")
 include("cooperative_boundaries.jl")
 include("metabolic_ecology.jl")

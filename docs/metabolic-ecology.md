@@ -6,7 +6,7 @@ state format. Agents have inherited enzyme allocation simplexes, assimilation,
 chemical efficiency, cooperative investment and partial oxidation export. All scalar traits stay in
 [0,1]; mutation renormalizes the enzyme budget. Birth inherits the parent's
 traits and neural genotype, with seeded mutation. Hidden state and plastic marks
-reset at birth. Contribution histories belong to individual IDs, not descendants.
+reset at birth. Contribution histories belong to living individual IDs, not descendants; death removes individual entries while the boundary retains cumulative totals.
 
 An enzyme share invested in one substrate cannot be used on another. Efficiency
 also reduces catalytic throughput by `1 - 0.7 * efficiency`, so higher energy

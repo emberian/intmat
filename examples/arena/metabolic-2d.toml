@@ -16,12 +16,12 @@ population = 256
 capacity = 3000
 hidden = 8
 birth_energy = 0.3
-lifespan = 80.0
+lifespan = 160.0
 plasticity_rate = 0.03
 mutation = 0.08
 [resources]
 names = ["substrate_a", "substrate_b", "byproduct"]
-potentials = [4.0, 3.0, 0.0]
+potentials = [4.0, 3.0, 1.0]
 initial = [1.0, 1.0, 0.0]
 diffusion = [0.03, 0.02, 0.01]
 source_rates = [0.02, 0.02, 0.0]
@@ -30,12 +30,12 @@ source_budgets = [1000000.0, 1000000.0, 0.0]
 sink_budgets = [0.0, 0.0, 1000000.0]
 spatial_niches = true
 [metabolism]
-allocation = [0.5, 0.5, 0.0]
+allocation = [0.45, 0.45, 0.1]
 assimilation = 0.4
 efficiency = 0.6
 cooperation = 0.25
 trait_mutation = 0.04
-uptake_rate = 0.7
+uptake_rate = 1.4
 boundary_rate = 0.04
 [boundary]
 work_per_mass = 1.0

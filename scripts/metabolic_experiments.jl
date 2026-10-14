@@ -3,7 +3,7 @@
 using Interior, Random, Statistics, JSON3, SHA, Serialization
 include(joinpath(@__DIR__, "arena_experiments.jl"))
 
-function metabolic_experiment(;seed=11,condition="niches",dims=(24,24,1),capacity=180,founders=24)
+function metabolic_experiment(;seed=11,condition="niches",dims=(24,24,1),capacity=180,founders=24,uptake_rate=.7f0,lifespan=80f0)
     w=World(Grid(dims...;extent=Float32.(dims));seed)
     phase=ImplicitPhaseSeparation(w;mean=-.12f0,noise=0f0,mineral_pinning=0f0,nutrient_diffusion=0f0,activity_relaxation=0f0)
     copyto!(phase.phi,mode_initial_state(dims;seed)); Interior.phase_observe!(w,phase)
@@ -23,8 +23,8 @@ function metabolic_experiment(;seed=11,condition="niches",dims=(24,24,1),capacit
     allocation=fill(1f0/3,3,founders)
     # Same heterogeneous founders in each matched arm; not a claim of evolved specialization.
     for i in 1:founders; allocation[:,i].=isodd(i) ? Float32[.75,.15,.1] : Float32[.15,.75,.1]; end
-    p=MetabolicEcology(positions,resources;boundary,allocation,medium,seed,capacity,lifespan=80f0,
-        uptake_rate=.7f0,trait_mutation=condition=="no_mutation" ? 0f0 : .04f0,
+    p=MetabolicEcology(positions,resources;boundary,allocation,medium,seed,capacity,lifespan,
+        uptake_rate,trait_mutation=condition=="no_mutation" ? 0f0 : .04f0,
         byproduct_fraction=condition=="no_crossfeed" ? 0f0 : .2f0,
         cooperation=condition=="withhold" ? 0f0 : .35f0,boundary_rate=condition=="withhold" ? 0f0 : .04f0,
         mutation=condition=="no_mutation" ? 0f0 : .08f0,secretion_rate=0f0)
@@ -54,18 +54,22 @@ function metabolic_measure(a,phase,medium,p,b)
         patch_population=[length(left),length(right)],patch_a_allocation=[avg(p.allocation[1,left]),avg(p.allocation[1,right])],
         inhabited_cells=length(unique(cells)),positive_phase_residents=count(cell->phase.phi[cell]>0,cells),
         boundary_exposure_mean=avg(exposure),contributor_population=length(contributors),withholding_population=length(withholding),contributor_exposure=avg(exposure[contributors]),withholding_exposure=avg(exposure[withholding]),maintenance_material=b.contributed_material,maintenance_work=b.spent_work,film_mass=boundary_material_mass(b),
-        chemical_heat=p.chemical_heat,morphology=morphology_metrics(phase.phi))
+        chemical_heat=p.chemical_heat,energy_input=c.energy_input,stored_energy=sum(Float64,c.energy;init=0.),controller_heat=c.heat,energy_error=sum(Float64,c.energy;init=0.)+c.heat-c.energy_input,movement_work=c.movement_work,signal_work=c.signal_work,remodeling_work=c.remodeling_work,reproduction_work=c.births*c.birth_energy,morphology=morphology_metrics(phase.phi))
 end
 function metabolic_sources()
-    Dict(f=>bytes2hex(sha256(read(joinpath(@__DIR__,"..","src",f)))) for f in ("resources.jl","metabolic_ecology.jl","cooperative_boundaries.jl","neural_ecology.jl","implicit_phase.jl","compartments.jl","arena.jl"))
+    Interior.arena_sources()
 end
 function run_metabolic(;seed,condition,steps=400,capture_every=40,checkpoint=nothing,kwargs...)
     sources=metabolic_sources()
     a,phase,m,p,b=metabolic_experiment(;seed,condition,kwargs...)
-    samples=[metabolic_measure(a,phase,m,p,b)]; first_step=1; prior_wall=0.
+    samples=[metabolic_measure(a,phase,m,p,b)]; first_step=1; prior_wall=0.; migrated_sources=nothing
     if checkpoint!==nothing && isfile(checkpoint)
         state=deserialize(checkpoint)
-        state.sources==sources || error("Checkpoint source differs; use a fresh output directory")
+        mismatches=[k for (k,v) in state.sources if get(sources,k,nothing)!=v]
+        if !isempty(mismatches)
+            get(ENV,"METABOLIC_ALLOW_ARENA_METADATA_MIGRATION","0")=="1" && mismatches==["arena.jl"] || error("Checkpoint source differs; use a fresh output directory")
+            migrated_sources=state.sources
+        end
         state.seed==seed && state.condition==condition || error("Checkpoint comparison differs")
         a,phase,m,p,b=state.state; samples=state.samples; first_step=state.step+1; prior_wall=state.wall_seconds
     end
@@ -82,7 +86,7 @@ function run_metabolic(;seed,condition,steps=400,capture_every=40,checkpoint=not
             println((seed=seed,condition=condition,step=step,population=length(p.controller.ids)));flush(stdout)
         end
     end
-    (seed=seed,condition=condition,steps=steps,dt=a.dt,wall_seconds=prior_wall+time()-started,model="finite-multisubstrate-funded-film-v1",sources=sources,source_unchanged=sources==metabolic_sources(),summary=summarize_windows(samples),samples=samples)
+    (seed=seed,condition=condition,steps=steps,dt=a.dt,wall_seconds=prior_wall+time()-started,model="finite-multisubstrate-funded-film-v1",settings=(capacity=p.controller.capacity,lifespan=p.controller.lifespan,uptake_rate=p.uptake_rate,founders=first(samples).population),sources=sources,migrated_checkpoint_sources=migrated_sources,source_unchanged=sources==metabolic_sources(),summary=summarize_windows(samples),samples=samples)
 end
 function metabolic_main()
     out=isempty(ARGS) ? "outputs/metabolic-$(Dates.format(Dates.now(), "yyyymmdd-HHMMSS"))" : first(ARGS)
@@ -94,7 +98,7 @@ function metabolic_main()
     for seed in seeds,condition in conditions
         path=joinpath(out,"seed-$seed-$condition.json")
         if isfile(path); push!(results,JSON3.read(read(path,String))); continue; end
-        r=run_metabolic(;seed,condition,steps,checkpoint=path*".checkpoint")
+        r=run_metabolic(;seed,condition,steps,checkpoint=path*".checkpoint",uptake_rate=parse(Float32,get(ENV,"METABOLIC_UPTAKE","0.7")),lifespan=parse(Float32,get(ENV,"METABOLIC_LIFESPAN","80")))
         open(path,"w") do io; JSON3.write(io,r); end
         push!(results,r)
         open(joinpath(out,"summary.json"),"w") do io; JSON3.write(io,results); end

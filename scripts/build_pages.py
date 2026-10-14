@@ -67,6 +67,7 @@ def main():
     destination.mkdir(parents=True, exist_ok=True)
     shutil.copytree(SOURCE, destination, dirs_exist_ok=True)
     shutil.copytree(REPO / 'site' / 'arena', destination / 'arena', dirs_exist_ok=True)
+    shutil.copytree(REPO / 'site' / 'metabolic', destination / 'metabolic', dirs_exist_ok=True)
     subprocess.run([sys.executable, str(REPO / 'scripts/build_gallery.py'), str(destination)], check=True)
     index = destination / 'index.html'
     text = index.read_text()
@@ -74,14 +75,15 @@ def main():
     text = text.replace('../docs/', GITHUB + 'docs/').replace('local collection', 'recorded material collection')
     text = text.replace('</header>', '<a href="https://github.com/emberian/intmat">Source &amp; simulation code ↗</a></header>')
     text = text.replace('</header>', '<a class="primary" href="arena/arena.html">Recorded neural arena ↗</a></header>')
+    text = text.replace('</header>', '<a class="primary" href="metabolic/arena.html">Metabolic arena · 96² ↗</a></header>')
     index.write_text(text)
     for file in destination.rglob('*'):
         if file.is_file() and file.suffix in ('.html', '.json', '.toml'):
             if re.search(r'/Users/|/home/|file://|localhost:|127\.0\.0\.1:', file.read_text()):
                 raise ValueError(f'Private/local reference in {file.relative_to(destination)}')
     size = sum(p.stat().st_size for p in destination.rglob('*') if p.is_file())
-    if size > 50_000_000:
-        raise ValueError(f'Gallery exceeds 50 MB budget: {size}')
+    if size > 80_000_000:
+        raise ValueError(f'Gallery exceeds 80 MB budget: {size}')
     print(f'Staged {size / 1_000_000:.2f} MB at {destination}')
 
 if __name__ == '__main__':

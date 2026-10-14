@@ -1,0 +1,126 @@
+{
+  "kernel": "https://www.kaggle.com/code/emberian64/intmat-julia-cuda-bounded-probe",
+  "kernel_version": 1,
+  "date": "2026-10-14",
+  "device": "Tesla T4",
+  "visible_devices": 2,
+  "used_devices": 1,
+  "device_memory_gib": 15,
+  "julia": "1.12.4",
+  "cuda_runtime": "12.8.0",
+  "cuda_core": "6.4.2",
+  "installation_seconds": 425.7080144882202,
+  "measurements": [
+    {
+      "backend": "cpu",
+      "julia": "1.12.4",
+      "grid": [
+        32,
+        32,
+        32
+      ],
+      "timed_steps": 10,
+      "dt": 0.004999999888241291,
+      "seconds": 0.054477383,
+      "cells_per_second": 6014973.222924457,
+      "parity_max_absolute_errors": {
+        "vx": 0.0,
+        "recovery": 0.0,
+        "nutrient": 0.0,
+        "pressure": 0.0,
+        "vy": 0.0,
+        "activity": 0.0,
+        "vz": 0.0,
+        "deposit": 0.0
+      },
+      "workload": "dense fields; excludes continuous arena ecology and implicit FFT phase"
+    },
+    {
+      "backend": "cpu",
+      "julia": "1.12.4",
+      "grid": [
+        64,
+        64,
+        64
+      ],
+      "timed_steps": 10,
+      "dt": 0.004999999888241291,
+      "seconds": 0.355775028,
+      "cells_per_second": 7368251.826825799,
+      "parity_max_absolute_errors": {
+        "vx": 0.0,
+        "recovery": 0.0,
+        "nutrient": 0.0,
+        "pressure": 0.0,
+        "vy": 0.0,
+        "activity": 0.0,
+        "vz": 0.0,
+        "deposit": 0.0
+      },
+      "workload": "dense fields; excludes continuous arena ecology and implicit FFT phase"
+    },
+    {
+      "backend": "cuda",
+      "julia": "1.12.4",
+      "grid": [
+        32,
+        32,
+        32
+      ],
+      "timed_steps": 10,
+      "dt": 0.004999999888241291,
+      "seconds": 0.008208413,
+      "cells_per_second": 39920018.64428605,
+      "parity_max_absolute_errors": {
+        "vx": 1.8626451e-09,
+        "recovery": 1.1641532e-10,
+        "nutrient": 0.0,
+        "pressure": 3.7252903e-09,
+        "vy": 1.8626451e-09,
+        "activity": 9.313226e-10,
+        "vz": 0.0,
+        "deposit": 0.0
+      },
+      "workload": "dense fields; excludes continuous arena ecology and implicit FFT phase"
+    },
+    {
+      "backend": "cuda",
+      "julia": "1.12.4",
+      "grid": [
+        64,
+        64,
+        64
+      ],
+      "timed_steps": 10,
+      "dt": 0.004999999888241291,
+      "seconds": 0.01444443,
+      "cells_per_second": 181484489.17679688,
+      "parity_max_absolute_errors": {
+        "vx": 1.8626451e-09,
+        "recovery": 1.1641532e-10,
+        "nutrient": 0.0,
+        "pressure": 3.7252903e-09,
+        "vy": 1.8626451e-09,
+        "activity": 9.313226e-10,
+        "vz": 0.0,
+        "deposit": 0.0
+      },
+      "workload": "dense fields; excludes continuous arena ecology and implicit FFT phase"
+    }
+  ],
+  "scope": "dense fields only; excludes continuous arena sensors/controllers/ecology/implicit FFT",
+  "local_metal_comparison": {
+    "device": "Apple M2 Max 38 GPU cores",
+    "julia": "1.12.4",
+    "grid": [
+      64,
+      64,
+      64
+    ],
+    "timed_steps": 10,
+    "seconds": 0.312879584,
+    "max_absolute_parity_error": 3.7252903e-09,
+    "metal_seconds_over_t4_seconds": 21.660915937839015,
+    "note": "single bounded sequential comparison on different hosts; shared machine load not controlled"
+  }
+}

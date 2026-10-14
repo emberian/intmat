@@ -11,14 +11,16 @@ import time
 def preview(state, side):
     result = copy.deepcopy(state)
     fields = {}
-    for name in ('nutrient', 'deposit', 'phi', 'interface', 'signal', 'permeability'):
+    for name in state['fields']:
+        if name in ('vx', 'vy', 'vz', 'activity', 'recovery', 'pressure'):
+            continue
         if name not in state['fields']:
             continue
         field = state['fields'][name]
         nx, ny = field['shape']
         stride = max(1, (max(nx, ny) + side - 1) // side)
         xs, ys = list(range(0, nx, stride)), list(range(0, ny, stride))
-        fields[name] = {'shape': [len(xs), len(ys)],
+        fields[name] = {**{key: value for key, value in field.items() if key not in ('shape', 'values')}, 'shape': [len(xs), len(ys)],
                         'values': [round(field['values'][x + nx * y], 4) for y in ys for x in xs]}
     result['fields'] = fields
     for agent in result['agents']:

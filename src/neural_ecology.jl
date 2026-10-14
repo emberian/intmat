@@ -198,31 +198,57 @@ function _neural_budget(p,actions,delta,energy,active_dims)
     funded=request>0 ? paid/request : 0f0
     (;gates,basal,movement,signaling,remodeling,constructing,demand,paid,funded)
 end
-function ecology_step!(w::World,p::NeuralEcology,dt::Real;inputs_override=nothing,reward_credit=nothing)
+@inline _neural_column(a::AbstractVector,i)=a[i]
+@inline _neural_column(a::AbstractMatrix,i)=view(a,:,i)
+function ecology_step!(w::World,p::NeuralEcology,dt::Real;inputs_override=nothing,reward_credit=nothing,frame=nothing,workspace=nothing)
     validate(w,p); isfinite(dt)&&0<=dt<=1 || throw(ArgumentError("ecology dt must lie in [0,1]")); dt==0 && return p
-    reorder_ecology!(p,sortperm(p.ids)); delta=Float32(dt); dims=w.grid.size; n=length(p.ids); h=size(p.hidden,1)
-    for i in 1:n,d in 1:3; p.positions[d,i]=dims[d]==1 ? 0f0 : mod(p.positions[d,i],Float32(dims[d])); end
-    snapshot=copy(p.positions); cells=[_neural_cell(view(snapshot,:,i),dims) for i in 1:n]
-    bins=Dict{CartesianIndex{3},Vector{Int}}()
-    for i in 1:n; push!(get!(bins,cells[i],Int[]),i); end
-    # Observe all environmental cues before exchange: no sensor-order artifacts.
-    inputs=inputs_override===nothing ? [_neural_input(w,p,i,cells[i],bins,snapshot) for i in 1:n] : inputs_override
-    length(inputs)==n && all(v->length(v)==h+NEURAL_ECOLOGY_SENSORS&&all(isfinite,v),inputs) || throw(ArgumentError("invalid overridden neural inputs; supply vectors in sorted ID order"))
+    issorted(p.ids) || reorder_ecology!(p,sortperm(p.ids))
+    delta=Float32(dt); dims=w.grid.size; n=length(p.ids); h=size(p.hidden,1)
+    if frame===nothing
+        for i in 1:n,d in 1:3; p.positions[d,i]=dims[d]==1 ? 0f0 : mod(p.positions[d,i],Float32(dims[d])); end
+        if workspace===nothing
+            snapshot=copy(p.positions); cells=[_neural_cell(view(snapshot,:,i),dims) for i in 1:n]
+            bins=Dict{CartesianIndex{3},Vector{Int}}()
+            for i in 1:n; push!(get!(bins,cells[i],Int[]),i); end
+            inputs=inputs_override===nothing ? [_neural_input(w,p,i,cells[i],bins,snapshot) for i in 1:n] : inputs_override
+        else
+            frame=neural_frame!(workspace,w,p;evaluate=false)
+            cells=frame.cells; bins=frame.bins; inputs=inputs_override===nothing ? frame.inputs : inputs_override
+        end
+        if inputs isa AbstractMatrix
+            size(inputs)==(h+NEURAL_ECOLOGY_SENSORS,n) && all(isfinite,inputs) || throw(ArgumentError("invalid overridden neural input matrix"))
+            outputs=workspace===nothing ? Matrix{Float32}(undef,h+9,n) : frame.outputs
+            neural_controller!(outputs,p.weights,p.plastic_marks,inputs)
+        else
+            length(inputs)==n && all(v->length(v)==h+NEURAL_ECOLOGY_SENSORS&&all(isfinite,v),inputs) || throw(ArgumentError("invalid overridden neural inputs; supply vectors in sorted ID order"))
+            outputs=neural_controller_outputs(p.weights,p.plastic_marks,inputs)
+        end
+    else
+        length(frame.ids)==n && frame.ids==p.ids || throw(ArgumentError("neural frame IDs changed; rebuild before stepping"))
+        cells=frame.cells; bins=frame.bins; inputs=frame.inputs; outputs=frame.outputs
+        size(inputs)==(h+NEURAL_ECOLOGY_SENSORS,n) && size(outputs)==(h+9,n) && all(isfinite,inputs) && all(isfinite,outputs) || throw(ArgumentError("invalid neural frame"))
+    end
     credit=reward_credit===nothing ? zeros(Float32,n) : reward_credit
     length(credit)==n && all(isfinite,credit) || throw(ArgumentError("invalid metabolic reward credits"))
-    outputs=neural_controller_outputs(p.weights,p.plastic_marks,inputs)
-    uptake_requests=Float32[delta*p.uptake_rate*((outputs[i][h+4]+1f0)/2)*_neural_medium(p,:permeability,cells[i],1f0) for i in 1:n]
+    _neural_exchange!(w,p,delta,dims,n,h,cells,bins,inputs,outputs,credit)
+end
+
+# A function barrier specializes the hot lifecycle on the actual frame columns;
+# optional vector/reference and matrix/workspace paths do not box scalar work.
+function _neural_exchange!(w,p,delta,dims,n,h,cells,bins,inputs,outputs,credit)
+    uptake_requests=Float32[delta*p.uptake_rate*((_neural_column(outputs,i)[h+4]+1f0)/2)*_neural_medium(p,:permeability,cells[i],1f0) for i in 1:n]
     uptakes=_neural_allocate!(w.fields.nutrient,bins,uptake_requests)
     active_dims=dims[3]==1 ? 2 : 3
-    budgets=[_neural_budget(p,outputs[i][h+1:h+9],delta,
+    budgets=[_neural_budget(p,view(_neural_column(outputs,i),h+1:h+9),delta,
         p.energy[i]+(uptakes[i]*p.catabolic_fraction)*p.energy_yield,active_dims) for i in 1:n]
     erosion_requests=Float32[delta*p.secretion_rate*budgets[i].gates[6]*budgets[i].funded for i in 1:n]
     erosions=_neural_allocate!(w.fields.deposit,bins,erosion_requests)
     children=Int[]; dead=Int[]
     for i in 1:n
-        c=cells[i]; input=inputs[i]; out=outputs[i]; budget=budgets[i]
-        alpha=Float32(-expm1(-Float64(delta)/p.response_time)); p.hidden[:,i].+=(out[1:h].-p.hidden[:,i]).*alpha
-        actions=out[h+1:h+9]; p.last_actions[:,i].=actions; gates=budget.gates
+        c=cells[i]; input=_neural_column(inputs,i); out=_neural_column(outputs,i); budget=budgets[i]
+        alpha=Float32(-expm1(-Float64(delta)/p.response_time))
+        for j in 1:h; p.hidden[j,i]+=(out[j]-p.hidden[j,i])*alpha; end
+        actions=view(out,h+1:h+9); p.last_actions[:,i].=actions; gates=budget.gates
         uptake=uptakes[i]
         # Catabolism spends finite chemical fuel into inert, accounted waste.
         # Structural recycling can recover matter but cannot recover spent work.
@@ -262,7 +288,10 @@ function ecology_step!(w::World,p::NeuralEcology,dt::Real;inputs_override=nothin
         # Reward-modulated bounded local Hebbian marks; genotype is untouched.
         reward=clamp(chemical_work+credit[i]-basal-paid,-1f0,1f0)
         decay=exp(-delta*p.plasticity_decay)
-        p.plastic_marks[:,:,i].=clamp.(decay.*p.plastic_marks[:,:,i].+delta*p.plasticity_rate*reward.*(out*input'),-.5f0,.5f0)
+        factor=delta*p.plasticity_rate*reward
+        for column in eachindex(input),row in eachindex(out)
+            p.plastic_marks[row,column,i]=clamp(decay*p.plastic_marks[row,column,i]+factor*(out[row]*input[column]),-.5f0,.5f0)
+        end
         p.age[i]+=delta
         if p.energy[i]<=0 || p.age[i]>=p.lifespan
             occupied=_neural_cell(view(p.positions,:,i),dims)
@@ -275,17 +304,26 @@ function ecology_step!(w::World,p::NeuralEcology,dt::Real;inputs_override=nothin
             end
         end
     end
-    for i in children
-        p.events+=1
-        rng=MersenneTwister(string(p.seed,":",p.events,":",p.ids[i]))
-        child=p.weights[:,:,i]+p.mutation.*randn(rng,Float32,h+9,h+NEURAL_ECOLOGY_SENSORS)
-        p.weights=cat(p.weights,reshape(child,size(child)...,1);dims=3)
-        p.plastic_marks=cat(p.plastic_marks,zeros(Float32,size(child)...,1);dims=3)
-        pos=copy(view(p.positions,:,i))
-        for d in 1:3; pos[d]=dims[d]==1 ? 0f0 : mod(pos[d]+.35f0*randn(rng,Float32),Float32(dims[d])); end
-        p.positions=hcat(p.positions,pos); p.hidden=hcat(p.hidden,zeros(Float32,h)); p.last_actions=hcat(p.last_actions,zeros(Float32,9))
-        push!(p.ids,p.next_id); p.next_id+=1; push!(p.parents,p.ids[i]); push!(p.lineages,p.lineages[i]); push!(p.generations,p.generations[i]+1)
-        push!(p.storage,p.storage[i]); push!(p.energy,p.energy[i]); push!(p.age,0f0); p.births+=1
+    # Grow each state array once per birth batch, while retaining the original
+    # event order and RNG draw order for each child.
+    births=length(children)
+    if births>0
+        weights=Array{Float32}(undef,h+9,h+NEURAL_ECOLOGY_SENSORS,n+births); weights[:,:,1:n].=p.weights
+        marks=zeros(Float32,h+9,h+NEURAL_ECOLOGY_SENSORS,n+births); marks[:,:,1:n].=p.plastic_marks
+        positions=Matrix{Float32}(undef,3,n+births); positions[:,1:n].=p.positions
+        hidden=zeros(Float32,h,n+births); hidden[:,1:n].=p.hidden
+        actions=zeros(Float32,9,n+births); actions[:,1:n].=p.last_actions
+        for (j,i) in enumerate(children)
+            child_index=n+j; p.events+=1
+            rng=MersenneTwister(string(p.seed,":",p.events,":",p.ids[i]))
+            weights[:,:,child_index].=p.weights[:,:,i]+p.mutation.*randn(rng,Float32,h+9,h+NEURAL_ECOLOGY_SENSORS)
+            for d in 1:3
+                positions[d,child_index]=dims[d]==1 ? 0f0 : mod(p.positions[d,i]+.35f0*randn(rng,Float32),Float32(dims[d]))
+            end
+            push!(p.ids,p.next_id); p.next_id+=1; push!(p.parents,p.ids[i]); push!(p.lineages,p.lineages[i]); push!(p.generations,p.generations[i]+1)
+            push!(p.storage,p.storage[i]); push!(p.energy,p.energy[i]); push!(p.age,0f0); p.births+=1
+        end
+        p.weights=weights; p.plastic_marks=marks; p.positions=positions; p.hidden=hidden; p.last_actions=actions
     end
     !isempty(dead) && _neural_select!(p,setdiff(collect(eachindex(p.ids)),dead))
     p

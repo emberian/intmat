@@ -21,7 +21,9 @@ with tarfile.open(fileobj=buffer, mode="w:gz") as archive:
 payload = base64.b64encode(buffer.getvalue()).decode()
 runner = '''import base64, json, os, pathlib, subprocess, tarfile, time, urllib.request
 start=time.time()
-work=pathlib.Path('/kaggle/working')
+output=pathlib.Path('/kaggle/working')
+work=pathlib.Path('/tmp/intmat-probe')
+work.mkdir(parents=True,exist_ok=True)
 os.chdir(work)
 subprocess.run(['nvidia-smi'],check=True)
 (work/'source.tar.gz').write_bytes(base64.b64decode(PAYLOAD))
@@ -31,11 +33,11 @@ urllib.request.urlretrieve(url,work/'julia.tar.gz')
 with tarfile.open(work/'julia.tar.gz') as f: f.extractall(work,filter='data')
 julia=str(work/'julia-1.12.4/bin/julia')
 env=dict(os.environ,JULIA_NUM_THREADS='2',JULIA_NUM_PRECOMPILE_TASKS='2',OPENBLAS_NUM_THREADS='1')
-install='using Pkg; Pkg.activate("/kaggle/working/probe-env"); Pkg.develop(path="/kaggle/working/intmat"); Pkg.add("CUDA"); Pkg.precompile()'
+install='using Pkg; Pkg.activate("/tmp/intmat-probe/probe-env"); Pkg.develop(path="/tmp/intmat-probe/intmat"); Pkg.add("CUDA"); Pkg.precompile()'
 subprocess.run([julia,'--startup-file=no','-e',install],env=env,check=True,timeout=1000)
 print('INSTALL_SECONDS',time.time()-start,flush=True)
 subprocess.run([julia,'--project=probe-env','-e','using CUDA; CUDA.versioninfo()'],env=env,check=True,timeout=90)
-with open('measurements.jsonl','w') as result:
+with open(output/'measurements.jsonl','w') as result:
  for backend in ['cpu','cuda']:
   for n in [32,64]:
    run=subprocess.run([julia,'--project=probe-env','intmat/scripts/benchmark_accelerator.jl',backend,str(n),'10'],env=env,check=True,timeout=150,text=True,capture_output=True)

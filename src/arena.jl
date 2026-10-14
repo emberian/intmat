@@ -114,7 +114,7 @@ function arena_snapshot(a::Arena;max_side=96,max_agents=3000)
     w=a.world; dims=w.grid.size; k=cld(dims[3],2)
     xs=collect(1:max(1,cld(dims[1],max_side)):dims[1]); ys=collect(1:max(1,cld(dims[2],max_side)):dims[2])
     fields=Dict{String,Any}()
-    addfield(name,arr)= fields[string(name)]=Dict("shape"=>[length(xs),length(ys)],"values"=>vec(Array(arr[xs,ys,k:k])))
+    addfield(name,arr)= fields[string(name)]=Dict{String,Any}("shape"=>[length(xs),length(ys)],"values"=>vec(Array(arr[xs,ys,k:k])))
     for name in propertynames(w.fields); addfield(name,getproperty(w.fields,name)); end
     agents=Any[]; metrics=Dict{String,Any}("material"=>arena_inventory(w,a.processes),"nutrient_total"=>sum(Float64,w.fields.nutrient))
     supplied=0.0; removed=0.0

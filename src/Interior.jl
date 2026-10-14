@@ -36,6 +36,8 @@ include("neural_batch.jl")
 export neural_controller!, neural_controller_backend!
 include("neural_ecology.jl")
 export NeuralEcology
+include("neural_workspace.jl")
+export NeuralWorkspace
 include("resources.jl")
 export ResourcePool, allocate_resources!, resource_add!, resource_convert!, resource_mass, resource_potential, resource_statistics
 include("cooperative_boundaries.jl")
