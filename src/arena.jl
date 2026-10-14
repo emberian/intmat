@@ -38,17 +38,41 @@ mutable struct Arena
     last_command::String
     config::Dict{String,Any}
 end
+# Follow references once: wrappers borrow pools/media, they do not own copies.
 function arena_inventory(w,processes)
     total=sum(Float64,w.fields.nutrient)+sum(Float64,w.fields.deposit)
+    seen=IdDict{Any,Bool}()
+    function visit(p)
+        haskey(seen,p) && return 0.0
+        seen[p]=true
+        mass=p isa MetabolicEcology ? 0.0 : owned_material_mass(p)
+        for name in (:controller,:resources,:boundary)
+            hasproperty(p,name) || continue
+            child=getproperty(p,name)
+            child===nothing || (mass+=visit(child))
+        end
+        mass
+    end
+    total+sum(visit(p) for p in processes;init=0.0)
+end
+function arena_energy(processes)
+    seen=IdDict{Any,Bool}(); total=0.0
     for p in processes
-        hasproperty(p,:storage) && (total+=sum(Float64,p.storage;init=0.0))
-        hasproperty(p,:waste) && (total+=Float64(p.waste))
+        if p isa ResourcePool && !haskey(seen,p)
+            seen[p]=true; total+=resource_potential(p)
+        elseif p isa MetabolicEcology
+            c=p.controller
+            total+=sum(Float64,c.energy;init=0.0)+c.heat+p.chemical_heat
+        end
     end
     total
 end
 function Arena(w::World,processes::Tuple;dt=0.05,config=Dict{String,Any}())
+    validate_composition(processes)
     foreach(p->check_dt(w,p,dt),processes)
-    Arena(w,processes,Float64(dt),0,false,false,arena_inventory(w,processes),"",Dict{String,Any}(config))
+    cfg=Dict{String,Any}(config)
+    cfg["_initial_energy"]=arena_energy(processes)
+    Arena(w,processes,Float64(dt),0,false,false,arena_inventory(w,processes),"",cfg)
 end
 function arena_step!(a::Arena)
     a.paused || a.stopped || (step!(a.world,a.processes,a.dt); a.steps+=1)
@@ -96,6 +120,27 @@ function arena_snapshot(a::Arena;max_side=96,max_agents=3000)
     supplied=0.0; removed=0.0
     for p in a.processes
         if p isa Chemostat; supplied+=p.supplied; removed+=p.removed; end
+        if p isa ResourcePool
+            for (name,arr) in zip(p.names,p.fields)
+                addfield(name,arr); fields[string(name)]["units"]="material / cell"
+            end
+            stats=resource_statistics(p)
+            metrics["resources"]=Dict(string(k)=>v for (k,v) in pairs(stats))
+            supplied+=sum(p.supplied); removed+=sum(p.removed)
+        end
+        if p isa BoundaryMaintenance
+            addfield(:film,p.film); fields["film"]["units"]="material / cell"
+            metrics["boundary_material"]=boundary_material_mass(p)
+            for name in (:contributed_material,:spent_work,:recycled_material)
+                metrics["boundary_"*string(name)]=getproperty(p,name)
+            end
+            p=p.medium
+        end
+        metabolic=p isa MetabolicEcology ? p : nothing
+        if metabolic!==nothing
+            for (key,value) in pairs(ecology_statistics(metabolic)); metrics[string(key)]=value; end
+            p=metabolic.controller
+        end
         for name in (:permeability,:signal,:temperature,:phi,:interface)
             hasproperty(p,name) && getproperty(p,name) isa AbstractArray{<:Real,3} && addfield(name,getproperty(p,name))
         end
@@ -111,6 +156,17 @@ function arena_snapshot(a::Arena;max_side=96,max_agents=3000)
                 end
                 hasproperty(p,:weights) && (ag["genome_signature"]=bytes2hex(SHA.sha256(reinterpret(UInt8,vec(p.weights[:,:,i]))))[1:12])
                 hasproperty(p,:plastic_marks) && (ag["plastic_norm"]=sqrt(sum(abs2,p.plastic_marks[:,:,i])))
+                if metabolic!==nothing
+                    ag["metabolism"]=Dict("allocation"=>metabolic.allocation[:,i],
+                        "assimilation"=>metabolic.assimilation[i],"efficiency"=>metabolic.efficiency[i],"cooperation"=>metabolic.cooperation[i])
+                    hasproperty(metabolic,:byproduct_fraction) && (ag["metabolism"]["byproduct_fraction"]=metabolic.byproduct_fraction[i])
+                    for name in (:contributed_material,:contributed_work,:recent_contributions)
+                        hasproperty(metabolic,name) && (ag[string(name)]=get(getproperty(metabolic,name),p.ids[i],0.0))
+                    end
+                    if metabolic.boundary!==nothing
+                        ag["boundary_exposure"]=local_boundary_benefit(metabolic.boundary,Tuple(_neural_cell(view(p.positions,:,i),w.grid.size)))
+                    end
+                end
                 push!(agents,ag)
             end
             if p isa Union{Ecology,NeuralEcology}
@@ -130,6 +186,11 @@ function arena_snapshot(a::Arena;max_side=96,max_agents=3000)
     end
     metrics["supplied_material"]=supplied; metrics["removed_material"]=removed
     metrics["material_error"]=metrics["material"]-a.initial_mass-supplied+removed
+    if haskey(metrics,"resources")
+        r=metrics["resources"]
+        metrics["chemical_energy_accounted"]=arena_energy(a.processes)
+        metrics["chemical_energy_error"]=metrics["chemical_energy_accounted"]-get(a.config,"_initial_energy",0.0)-r["supplied_potential"]+r["removed_potential"]
+    end
     dep=Array(w.fields.deposit); metrics["deposit_occupancy"]=count(>(0.05f0),dep)/length(dep)
     metrics["deposit_range"]=[minimum(dep),maximum(dep)]
     Dict("schema"=>"interior-arena-live","schema_version"=>1,"generated_at_unix"=>time(),"step"=>a.steps,"time"=>w.time,"paused"=>a.paused,"stopped"=>a.stopped,
@@ -149,6 +210,9 @@ function arena_command!(a::Arena,c)
         all(v->v isa Real && isfinite(v) && v>=0,Base.values(values)) || throw(ArgumentError("settings must be finite nonnegative numbers"))
         haskey(values,"dt") && foreach(p->check_dt(a.world,p,values["dt"]),a.processes)
         for name in ("snapshot_seconds","checkpoint_seconds"); haskey(values,name) && values[name]<=0 && throw(ArgumentError("cadence must be positive")); end
+        if any(p->p isa ResourcePool,a.processes) && any(k->haskey(values,k),("source_rate","sink_rate"))
+            throw(ArgumentError("metabolic sources require per-species rates and finite budgets; use the profile"))
+        end
         for p in a.processes
             if p isa Chemostat
                 candidate=Chemostat(source_rate=get(values,"source_rate",p.source_rate),sink_rate=get(values,"sink_rate",p.sink_rate))
@@ -270,6 +334,8 @@ function build_arena(config::AbstractDict=Dict{String,Any}())
     grid=get(cfg,"grid",Dict()); dims=Tuple(Int.(get(grid,"shape",[96,96,1])))
     length(dims)==3 || throw(ArgumentError("grid.shape needs three dimensions"))
     extent=Tuple(get(grid,"extent",Float32.(dims)))
+    model=get(cfg,"model","neural")
+    model in ("neural","metabolic") || throw(ArgumentError("unknown arena model $model"))
     seed=Int(get(cfg,"seed",17)); w=World(Grid(dims...;extent);seed)
     phasecfg=Dict{Symbol,Any}(Symbol(k)=>v for (k,v) in get(cfg,"phase",Dict()))
     defaults=(mineral_pinning=0,nutrient_diffusion=0,interface_activity=0,activity_relaxation=0)
@@ -298,6 +364,31 @@ function build_arena(config::AbstractDict=Dict{String,Any}())
     n=Int(pop!(ecfg,:population,1000))
     positions=rand(rng,Float32,3,n).*reshape(Float32.(collect(dims)),3,1)
     dims[3]==1 && (positions[3,:].=0)
+    if model=="metabolic"
+        rcfg=Dict{Symbol,Any}(Symbol(k)=>v for (k,v) in get(cfg,"resources",Dict()))
+        names=Symbol.(pop!(rcfg,:names,["substrate_a","substrate_b","byproduct"]))
+        spatial=Bool(pop!(rcfg,:spatial_niches,true))
+        # Complementary periodic masks establish different local opportunities.
+        # They are initial/boundary conditions, not an ecological conclusion.
+        masks=[ones(Float32,dims) for _ in names]
+        if spatial
+            for I in CartesianIndices(masks[1])
+                value=Float32(.5+.45*cos(2pi*(I[1]-1)/dims[1]))
+                masks[1][I]=value
+                length(masks)>1 && (masks[2][I]=1-value)
+            end
+        end
+        resources=ResourcePool(w;names,medium,source_masks=masks,rcfg...)
+        spatial && foreach(i->resources.fields[i].*=masks[i],eachindex(names))
+        bcfg=Dict{Symbol,Any}(Symbol(k)=>v for (k,v) in get(cfg,"boundary",Dict()))
+        boundary=BoundaryMaintenance(w,medium;bcfg...)
+        mcfg=Dict{Symbol,Any}(Symbol(k)=>v for (k,v) in get(cfg,"metabolism",Dict()))
+        if haskey(mcfg,:allocation)
+            mcfg[:allocation]=repeat(reshape(Float32.(mcfg[:allocation]),:,1),1,n)
+        end
+        ecology=MetabolicEcology(positions,resources;boundary,medium,seed,mcfg...,ecfg...)
+        return Arena(w,(resources,ecology,boundary,phase);dt=get(cfg,"dt",0.1),config=cfg)
+    end
     ecology=NeuralEcology(positions;medium,seed,ecfg...)
     sourcecfg=Dict{Symbol,Any}(Symbol(k)=>v for (k,v) in get(cfg,"chemostat",Dict()))
     source=Chemostat(;sourcecfg...)

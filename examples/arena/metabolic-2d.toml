@@ -1,0 +1,45 @@
+# Finite chemical reservoirs and explicit funded boundary maintenance.
+model = "metabolic"
+seed = 47
+dt = 0.1
+initial_modes = 6
+snapshot_seconds = 1.0
+checkpoint_seconds = 60.0
+checkpoint_slots = 3
+batch = 5
+sleep_seconds = 0.005
+[grid]
+shape = [64, 64, 1]
+extent = [32.0, 32.0, 1.0]
+[ecology]
+population = 256
+capacity = 3000
+hidden = 8
+birth_energy = 0.3
+lifespan = 80.0
+plasticity_rate = 0.03
+mutation = 0.08
+[resources]
+names = ["substrate_a", "substrate_b", "byproduct"]
+potentials = [4.0, 3.0, 0.0]
+initial = [1.0, 1.0, 0.0]
+diffusion = [0.03, 0.02, 0.01]
+source_rates = [0.02, 0.02, 0.0]
+sink_rates = [0.0, 0.0, 0.01]
+source_budgets = [1000000.0, 1000000.0, 0.0]
+sink_budgets = [0.0, 0.0, 1000000.0]
+spatial_niches = true
+[metabolism]
+allocation = [0.5, 0.5, 0.0]
+assimilation = 0.4
+efficiency = 0.6
+cooperation = 0.25
+trait_mutation = 0.04
+uptake_rate = 0.7
+boundary_rate = 0.04
+[boundary]
+work_per_mass = 1.0
+decay = 0.05
+[medium]
+nutrient_diffusion = 0.03
+signal_diffusion = 0.02

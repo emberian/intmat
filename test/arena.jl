@@ -96,3 +96,43 @@ end
         @test c.processes[4].phi==a.processes[4].phi
     end
 end
+
+@testset "Metabolic arena composition and exact restart" begin
+    cfg=Dict{String,Any}("model"=>"metabolic","grid"=>Dict("shape"=>[8,8,1],"extent"=>[8,8,1]),
+        "ecology"=>Dict("population"=>8,"capacity"=>20),
+        "resources"=>Dict("potentials"=>[4,3,0],"source_rates"=>[.02,.01,0],"source_budgets"=>[2,1,0]),
+        "metabolism"=>Dict("allocation"=>[.5,.5,0]))
+    a=build_arena(cfg)
+    pool,eco,boundary,phase=a.processes
+    @test pool.medium===boundary.medium===eco.controller.medium
+    @test eco.resources===pool
+    @test eco.boundary===boundary
+    @test boundary.medium.phase===phase
+    @test boundary.medium.membrane===a.world.fields.deposit
+    expected=sum(Float64,a.world.fields.nutrient)+sum(Float64,a.world.fields.deposit)+
+        sum(Float64,eco.controller.storage)+eco.controller.waste+resource_mass(pool)+boundary_material_mass(boundary)
+    @test Interior.arena_inventory(a.world,a.processes)≈expected
+    @test pool.fields[1][1,1,1]>pool.fields[1][5,1,1]
+    @test pool.fields[2][1,1,1]<pool.fields[2][5,1,1]
+    for _ in 1:3; arena_step!(a); end
+    snap=arena_snapshot(a)
+    @test haskey(snap["fields"],"substrate_a") && haskey(snap["fields"],"film")
+    @test haskey(snap["metrics"],"resources")
+    @test haskey(first(snap["agents"]),"metabolism")
+    @test abs(snap["metrics"]["material_error"])<1e-4
+    mktempdir() do dir
+        path=joinpath(dir,"metabolic.jls"); checkpoint!(a,path); b=restore_arena(path)
+        bp,be,bb,bf=b.processes
+        @test be.resources===bp && be.boundary===bb
+        @test bp.medium===be.controller.medium===bb.medium
+        @test bb.medium.phase===bf && bb.medium.membrane===b.world.fields.deposit
+        for _ in 1:3; arena_step!(a); arena_step!(b); end
+        @test a.world.fields==b.world.fields
+        @test pool.fields==bp.fields
+        @test eco.controller.weights==be.controller.weights
+        @test eco.allocation==be.allocation
+        @test boundary.film==bb.film
+        @test pool.source_remaining==bp.source_remaining
+        @test phase.phi==bf.phi
+    end
+end

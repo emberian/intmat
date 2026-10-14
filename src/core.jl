@@ -29,11 +29,35 @@ function World(grid::Grid; seed=17, backend=CPU())
     scratch = map(_->KernelAbstractions.zeros(backend,Float32,grid.size...),names)
     World(grid,backend,NamedTuple{names}(arrays),NamedTuple{names}(scratch),0.0,Int(seed))
 end
+"""Stages advanced internally by this process; borrowed reservoir references are excluded."""
+process_children(p)=()
+function validate_composition(processes::Tuple)
+    seen=IdDict{Any,Bool}()
+    owned=IdDict{Any,Bool}()
+    function collect_owned(p)
+        for child in process_children(p)
+            haskey(owned,child) && continue
+            owned[child]=true
+            collect_owned(child)
+        end
+    end
+    foreach(collect_owned,processes)
+    function visit(p)
+        if ismutabletype(typeof(p)) || haskey(owned,p) || !isempty(process_children(p))
+            haskey(seen,p) && throw(ArgumentError("process stage $(typeof(p)) would advance more than once"))
+            seen[p]=true
+        end
+        foreach(visit,process_children(p))
+    end
+    foreach(visit,processes)
+    nothing
+end
 """Advance processes in tuple order. Time advances once, after all processes.
 The Float64 clock accumulates the actual Float32 integration timestep, preserving
 long-run scheduling precision without changing field or kernel precision.
 """
 function step!(w::World, processes::Tuple, dt::Real)
+    validate_composition(processes)
     isfinite(dt) && dt>0 || throw(ArgumentError("dt must be positive and finite"))
     isfinite(Float32(dt)) && Float32(dt)>0 || throw(ArgumentError("dt must remain positive and finite in Float32"))
     for p in processes

@@ -148,3 +148,10 @@ process_ports(::ImplicitPhaseSeparation)=ProcessPorts(reads=(:deposit,:nutrient,
 process_ports(::ActiveMedium)=ProcessPorts(reads=(:nutrient,:deposit),writes=(:nutrient,),owned=(:permeability,:signal,:signal_source,:remodeling,:forcing),memory="diffusing signals and decaying remodeling bias",law="conservative face transport through active permeability; drives phase chemical potential")
 process_ports(::NeuralEcology)=ProcessPorts(reads=(:nutrient,:deposit),writes=(:nutrient,:deposit),owned=(:positions,:hidden,:storage,:energy,:weights,:plastic_marks,:ids,:lineages),drives="chemical uptake funds abstract energy",memory="inherited recurrent genotype and separate local plastic memory",law="funded neural actions and material exchange in a sensed compartment environment")
 owned_material_mass(p::NeuralEcology)=sum(Float64,p.storage;init=0.0)+p.waste
+
+process_ports(::ResourcePool)=ProcessPorts(reads=(:permeability,),owned=(:fields,),drives="explicit species supply and outflow",memory="finite chemical inventories and potentials",law="conservative positive species transport and proportional allocation")
+process_ports(::BoundaryMaintenance)=ProcessPorts(reads=(:nutrient,:deposit),writes=(:nutrient,),owned=(:film,:permeability,:signal),memory="paid shared film with decay and medium state",law="funded film modifies permeability and chemical forcing; decay returns structural matter")
+process_ports(::MetabolicEcology)=ProcessPorts(reads=(:resources,:permeability,:signal,:deposit),writes=(:resources,:nutrient,:deposit,:film),owned=(:controller,:allocation,:assimilation,:efficiency,:cooperation),memory="inherited metabolic allocation and neural genotype, separate lifetime plastic memory",law="finite chemical potential funds work; enzyme allocation and yield-throughput tradeoffs")
+owned_material_mass(p::ResourcePool)=resource_mass(p)
+owned_material_mass(p::BoundaryMaintenance)=boundary_material_mass(p)
+owned_material_mass(p::MetabolicEcology)=owned_material_mass(p.controller)

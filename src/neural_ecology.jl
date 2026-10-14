@@ -198,7 +198,7 @@ function _neural_budget(p,actions,delta,energy,active_dims)
     funded=request>0 ? paid/request : 0f0
     (;gates,basal,movement,signaling,remodeling,constructing,demand,paid,funded)
 end
-function ecology_step!(w::World,p::NeuralEcology,dt::Real)
+function ecology_step!(w::World,p::NeuralEcology,dt::Real;inputs_override=nothing,reward_credit=nothing)
     validate(w,p); isfinite(dt)&&0<=dt<=1 || throw(ArgumentError("ecology dt must lie in [0,1]")); dt==0 && return p
     reorder_ecology!(p,sortperm(p.ids)); delta=Float32(dt); dims=w.grid.size; n=length(p.ids); h=size(p.hidden,1)
     for i in 1:n,d in 1:3; p.positions[d,i]=dims[d]==1 ? 0f0 : mod(p.positions[d,i],Float32(dims[d])); end
@@ -206,8 +206,11 @@ function ecology_step!(w::World,p::NeuralEcology,dt::Real)
     bins=Dict{CartesianIndex{3},Vector{Int}}()
     for i in 1:n; push!(get!(bins,cells[i],Int[]),i); end
     # Observe all environmental cues before exchange: no sensor-order artifacts.
-    inputs=[_neural_input(w,p,i,cells[i],bins,snapshot) for i in 1:n]
-    outputs=[tanh.((p.weights[:,:,i].+p.plastic_marks[:,:,i])*inputs[i]) for i in 1:n]
+    inputs=inputs_override===nothing ? [_neural_input(w,p,i,cells[i],bins,snapshot) for i in 1:n] : inputs_override
+    length(inputs)==n && all(v->length(v)==h+NEURAL_ECOLOGY_SENSORS&&all(isfinite,v),inputs) || throw(ArgumentError("invalid overridden neural inputs; supply vectors in sorted ID order"))
+    credit=reward_credit===nothing ? zeros(Float32,n) : reward_credit
+    length(credit)==n && all(isfinite,credit) || throw(ArgumentError("invalid metabolic reward credits"))
+    outputs=neural_controller_outputs(p.weights,p.plastic_marks,inputs)
     uptake_requests=Float32[delta*p.uptake_rate*((outputs[i][h+4]+1f0)/2)*_neural_medium(p,:permeability,cells[i],1f0) for i in 1:n]
     uptakes=_neural_allocate!(w.fields.nutrient,bins,uptake_requests)
     active_dims=dims[3]==1 ? 2 : 3
@@ -257,7 +260,7 @@ function ecology_step!(w::World,p::NeuralEcology,dt::Real)
             p.positions[d,i]=mod(p.positions[d,i]+clamp(active*permeability+flow,-.45f0,.45f0),Float32(dims[d]))
         end
         # Reward-modulated bounded local Hebbian marks; genotype is untouched.
-        reward=clamp(chemical_work-basal-paid,-1f0,1f0)
+        reward=clamp(chemical_work+credit[i]-basal-paid,-1f0,1f0)
         decay=exp(-delta*p.plasticity_decay)
         p.plastic_marks[:,:,i].=clamp.(decay.*p.plastic_marks[:,:,i].+delta*p.plasticity_rate*reward.*(out*input'),-.5f0,.5f0)
         p.age[i]+=delta

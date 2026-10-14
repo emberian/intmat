@@ -87,3 +87,44 @@ This permits changed source hashes while keeping the checkpoint's saved fields,
 controllers, coupling aliases, clocks and ledgers. The profile's initializer is
 not rerun during restoration. Source validation remains strict without this flag;
 Julia-version and checkpoint-schema checks remain strict with it.
+
+The opt-in `model = "metabolic"` profile composes a `ResourcePool`,
+`MetabolicEcology`, `BoundaryMaintenance`, and phase separation. The boundary
+wrapper advances its referenced `ActiveMedium` exactly once. The original neural
+constructor remains the default. Start the richer arena alongside an existing
+run in a fresh output directory:
+
+```sh
+julia --project examples/arena.jl --profile examples/arena/metabolic-2d.toml --continuous --output outputs/arena/metabolic-2d
+```
+
+The profile uses 256 founders on 64² cells with capacity 3,000. Two independent
+chemical substrates begin in complementary smooth periodic niches and feed through
+the same masks; these imposed opportunities do not establish emergent specialization.
+Sources and sinks have finite total mass budgets, separate from their per-cell-time
+rates. Exhausting a source budget stops its feed. Chemical potentials fund work;
+structural nutrient and deposit provide material without becoming fresh chemical fuel.
+The profile's zero-potential third species begins empty. Species, potentials,
+initial levels, diffusion, source/sink rates and budgets are configured in
+`[resources]`; `spatial_niches=false` selects uniform initial levels and masks.
+
+Snapshots publish every resource species, separate boundary `film`, pool mass and
+potential ledgers under `metrics.resources`, and boundary contributed material,
+spent work, and recycled material. Organism `metabolism` contains the inherited
+species allocation simplex, assimilation, efficiency and cooperation traits.
+`boundary_exposure` is local neighboring film, an exposure measure rather than a
+fitness result. The material residual includes world fields, organism cargo/waste,
+chemical species and film once each despite their shared references. Exact local
+restart preserves those shared references and all finite source budgets; source
+hash checks cover every Julia module, including the added processes.
+
+Metabolic snapshots report `chemical_energy_accounted` (remaining chemical
+potential, stored organism work, dissipated controller heat and metabolic heat)
+and `chemical_energy_error` relative to initial energy plus external supply minus
+outflow. Boundary work is already dissipated controller heat. The inherited
+`byproduct_fraction` exports a share of unassimilated material to a lower-potential
+species, permitting measured local reuse without restoring spent potential.
+Resource and film slices use material per cell; organism boundary exposure is the
+mean over its cell and adjacent cells. Live scalar chemostat feed controls apply
+to the original model; metabolic per-species feed rates and finite budgets are
+set in the profile.

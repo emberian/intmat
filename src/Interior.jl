@@ -32,8 +32,16 @@ include("mechanics.jl")
 export BondNetwork, bond_forces, mechanical_energy, break_bonds!, mechanical_optical_fields, export_bond_graph
 include("ecology.jl")
 export Ecology, ecology_mass, reorder_ecology!, ecology_step!, ecology_statistics
+include("neural_batch.jl")
+export neural_controller!, neural_controller_backend!
 include("neural_ecology.jl")
 export NeuralEcology
+include("resources.jl")
+export ResourcePool, allocate_resources!, resource_add!, resource_convert!, resource_mass, resource_potential, resource_statistics
+include("cooperative_boundaries.jl")
+export BoundaryMaintenance, maintain_boundary!, boundary_material_mass, local_boundary_benefit
+include("metabolic_ecology.jl")
+export MetabolicEcology
 include("experiments.jl")
 export Experiment, ExperimentReport, ProcessPorts, process_ports, OpticalMap, run!, experiment_diagnostics, owned_material_mass
 include("render.jl")
