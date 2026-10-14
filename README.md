@@ -4,6 +4,21 @@ A Julia studio for matter with an interior life. Local activity moves through fi
 
 This checkout contains an executable family of exploratory models. They share state, recording and observation infrastructure, while retaining distinct numerical laws. The supplied `interior-living-materials.md` and `interior-living-lab.html` are preserved historical design/playback artifacts. Their earlier Python implementation was not supplied.
 
+## Continuous active-compartment arena
+
+The live arena couples inherited recurrent inhabitants, separate lifetime plasticity, conserved phase boundaries, signal-controlled permeability, and paid deposition/erosion/remodeling. Food splits into structural cargo and spent inert fuel; energy comes from catabolism. A chemostat supplies and removes material with explicit budgets. The earlier `Ecology` example remains available as a separate simpler model.
+
+Start the simulation, then run the viewer server in a second terminal:
+
+```sh
+julia --project=. --threads=4 examples/arena.jl --profile examples/arena/active-2d.toml --output outputs/arena/active-2d --continuous
+python3 scripts/serve_arena.py outputs/arena/active-2d --port 8780
+```
+
+Open <http://127.0.0.1:8780/arena.html>. The live inspector exposes actual fields, identities, inherited genome signatures, plastic memory, actions and budgets. Pause, resume and checkpoint controls act on the local runtime. Checkpoints occupy a bounded ring; a run directory has an owner marker and a single writer. Restart instructions and limitations are in [the arena guide](docs/arena.md). A published replay will be explicitly recorded playback, since GitHub Pages does not execute Julia.
+
+[The neural ecology](docs/neural-ecology.md), [active medium](docs/compartments.md), [semi-implicit solver](docs/implicit-phase.md), and [matched experiments](docs/arena-experiments.md) describe the laws and observations. Sustained turnover, extinction and loss of lineage diversity are outcomes to study; this system does not establish open-ended evolution.
+
 ## Explore the studio
 
 Visit the [published material gallery](https://emberian.github.io/intmat/) for recorded volumes and rendered studies. See [publishing](docs/publishing.md) to refresh its curated assets. Open `outputs/index.html` for the generated local gallery. The local preview server, when running from this checkout, serves it at `http://localhost:8769/outputs/index.html`.

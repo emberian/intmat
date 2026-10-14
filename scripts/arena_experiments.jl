@@ -61,8 +61,8 @@ function summarize_windows(samples)
 end
 
 function experiment_arena(;seed=11,dims=(32,32,1),condition="full",capacity=240,founders=32,
-        source_rate=.015,sink_rate=.01,lifespan=35f0,uptake_rate=.5f0,dt=.2)
-    w=World(Grid(dims...;extent=Float32.(dims));seed)
+        source_rate=.015,sink_rate=.01,lifespan=35f0,uptake_rate=.5f0,dt=.2,extent=Float32.(dims))
+    w=World(Grid(dims...;extent);seed)
     phase=ImplicitPhaseSeparation(w;mean=-.12f0,noise=0f0,mineral_pinning=0f0,
         nutrient_diffusion=0f0,activity_relaxation=0f0)
     copyto!(phase.phi,mode_initial_state(dims;seed)); Interior.phase_observe!(w,phase)
@@ -77,7 +77,7 @@ function experiment_arena(;seed=11,dims=(32,32,1),condition="full",capacity=240,
         secretion_rate=feedback ? .025f0 : 0f0,
         signal_rate=feedback ? .1f0 : 0f0,remodeling_rate=feedback ? .03f0 : 0f0)
     flux=Chemostat(;source_rate,sink_rate)
-    arena=Arena(w,(flux,cells,medium,phase);dt)
+    arena=Arena(w,(flux,cells,medium,phase);dt,config=Dict("initial_energy"=>cells.energy_input))
     arena,phase,medium,cells,flux
 end
 function arena_measure(a,phase,m,c,flux)
@@ -85,7 +85,9 @@ function arena_measure(a,phase,m,c,flux)
     finite=all(x->all(isfinite,x),(phase.phi,m.signal,m.permeability,c.weights,c.plastic_marks,a.world.fields.nutrient))
     mass=Interior.arena_inventory(a.world,a.processes)
     merge((time=a.world.time,finite=finite,material_error=mass-a.initial_mass-flux.supplied+flux.removed,
-        supplied=flux.supplied,removed=flux.removed,founder_effective_count=founder_effective_count(c.lineages),
+        supplied=flux.supplied,removed=flux.removed,
+        fuel_work_error=hasproperty(c,:energy_yield) ? c.energy_input-a.config["initial_energy"]-c.energy_yield*c.waste : nothing,
+        founder_effective_count=founder_effective_count(c.lineages),
         genotype_variance=controller_diversity(c.weights),plastic_rms=isempty(c.plastic_marks) ? 0.0 : sqrt(sum(abs2,c.plastic_marks)/length(c.plastic_marks)),
         signal_variance=var(vec(m.signal)),signal_max=maximum(m.signal),
         inhabited_cells=length(unique(Interior._neural_cell(c.positions[:,i],a.world.grid.size) for i in eachindex(c.ids)))),s,morphology)
@@ -97,20 +99,21 @@ function run_comparison(;seed,dims,condition,steps=800,capture_every=40,kwargs..
         arena_step!(a)
         (k%capture_every==0 || k==steps) && push!(samples,arena_measure(a,phase,m,c,flux))
     end
-    (seed=seed,dims=dims,condition=condition,steps=steps,dt=a.dt,wall_seconds=time()-started,
-     settings=(capacity=c.capacity,founders=first(samples).population,source_rate=flux.source_rate,sink_rate=flux.sink_rate,lifespan=c.lifespan,uptake_rate=c.uptake_rate),
+    (seed=seed,dims=dims,condition=condition,steps=steps,dt=a.dt,model_version=isdefined(Interior,:_neural_allocate!) ? "catabolic-fuel-fairshare-v2" : hasproperty(c,:catabolic_fraction) ? "catabolic-sequential-allocation-v1" : "legacy-uptake-work-recycled-material",
+     sources=Interior.arena_sources(),wall_seconds=time()-started,extent=a.world.grid.extent,julia_version=string(VERSION),
+     settings=(capacity=c.capacity,founders=first(samples).population,source_rate=flux.source_rate,sink_rate=flux.sink_rate,lifespan=c.lifespan,uptake_rate=c.uptake_rate,catabolic_fraction=hasproperty(c,:catabolic_fraction) ? c.catabolic_fraction : nothing,energy_yield=hasproperty(c,:energy_yield) ? c.energy_yield : nothing),
      summary=summarize_windows(samples),samples=samples)
 end
 function main()
-    out=length(ARGS)>0 ? ARGS[1] : "outputs/arena-experiments"; mkpath(out)
-    steps=parse(Int,get(ENV,"ARENA_EXPERIMENT_STEPS","800")); results=Any[]
+    out=length(ARGS)>0 ? ARGS[1] : "outputs/arena-experiments-fairshare"; mkpath(out)
+    steps=parse(Int,get(ENV,"ARENA_EXPERIMENT_STEPS","1600")); results=Any[]
     for seed in (11,29), condition in ("full","no_feedback","no_plasticity","no_mutation")
-        r=run_comparison(;seed,dims=(32,32,1),condition,steps)
+        r=run_comparison(;seed,dims=(32,32,1),condition,steps,dt=.1,lifespan=50f0,uptake_rate=.7f0)
         push!(results,r)
         open(joinpath(out,"seed-$seed-$condition.json"),"w") do io; JSON3.write(io,r); end
         println((seed=seed,condition=condition,summary=r.summary,wall_seconds=r.wall_seconds)); flush(stdout)
     end
-    r=run_comparison(;seed=11,dims=(16,16,16),condition="full",steps,capacity=160,founders=24)
+    r=run_comparison(;seed=11,dims=(16,16,16),condition="full",steps,dt=.1,lifespan=50f0,uptake_rate=.7f0,capacity=160,founders=24)
     push!(results,r)
     open(joinpath(out,"small-3d.json"),"w") do io; JSON3.write(io,r); end
     open(joinpath(out,"summary.json"),"w") do io; JSON3.write(io,results); end

@@ -16,6 +16,11 @@ ALLOWED = {'dt': (1e-7, 10), 'source_rate': (0, 100), 'sink_rate': (0, 100),
 class ArenaHandler(SimpleHTTPRequestHandler):
     command_lock = threading.Lock()
 
+    def log_request(self, code='-', size='-'):
+        # Polling is unbounded; routine GET traffic must not grow server logs.
+        if self.command != 'GET':
+            super().log_request(code, size)
+
     def end_headers(self):
         self.send_header('Cache-Control', 'no-store')
         super().end_headers()
@@ -31,6 +36,12 @@ class ArenaHandler(SimpleHTTPRequestHandler):
     def do_GET(self):
         if self.path.split('?')[0] == '/api/status':
             self.reply(200, {'live_server': True, 'controls': list(ALLOWED)})
+        elif self.path.split('?')[0] == '/api/ack':
+            path = Path(self.directory) / 'control.json'
+            try:
+                self.reply(200, json.loads(path.read_text()) if path.exists() else {})
+            except (OSError, ValueError):
+                self.reply(503, {'error': 'Acknowledgement unavailable'})
         else:
             super().do_GET()
 
@@ -67,8 +78,12 @@ class ArenaHandler(SimpleHTTPRequestHandler):
                     ack = json.loads(ack_file.read_text()) if ack_file.exists() else {}
                     if previous.get('id') != ack.get('id'):
                         return self.reply(409, {'error': 'A previous command is awaiting runtime acknowledgement'})
-                with (root / 'control-requests.jsonl').open('a') as journal:
-                    journal.write(json.dumps(command) + '\n')
+                journal_path = root / 'control-requests.jsonl'
+                line = json.dumps(command) + '\n'
+                if journal_path.exists() and journal_path.stat().st_size + len(line.encode()) > 1024 * 1024:
+                    journal_path.replace(root / 'control-requests.previous.jsonl')
+                with journal_path.open('a') as journal:
+                    journal.write(line)
                 with tempfile.NamedTemporaryFile('w', dir=root, prefix='.command-', delete=False) as handle:
                     json.dump(command, handle)
                     temporary = Path(handle.name)
@@ -79,8 +94,8 @@ class ArenaHandler(SimpleHTTPRequestHandler):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('run_directory', type=Path)
-    parser.add_argument('--port', type=int, default=8791)
+    parser.add_argument('run_directory', type=Path, nargs='?', default=Path('outputs/arena/active-2d'))
+    parser.add_argument('--port', type=int, default=8780)
     args = parser.parse_args()
     root = args.run_directory.resolve()
     if not root.is_dir():

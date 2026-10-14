@@ -116,3 +116,39 @@ end
     @test ecology_mass(w,p)==mass
     @test abs(ecology_statistics(p).energy_error)<1e-6
 end
+
+@testset "closed fuel bounds cumulative work through reproduction and death" begin
+    w=World(Grid(1,1,1)); fill!(w.fields.nutrient,4)
+    p=Interior.NeuralEcology(zeros(Float32,3,1);storage=1,energy=3,capacity=8,
+        uptake_rate=4,basal_cost=.2,work_rate=.1,secretion_rate=.1,speed=0,
+        birth_material=.15,birth_energy=.1,mutation=0,lifespan=.8,
+        catabolic_fraction=.5,energy_yield=2,plasticity_rate=0)
+    fill!(p.weights,0); h=size(p.hidden,1)
+    p.weights[h+4,end,:].=3; p.weights[h+8,end,:].=3
+    initial_mass=ecology_mass(w,p); initial_work=p.energy_input
+    errors=zeros(Float64,4)
+    for _ in 1:500
+        step!(w,p,.05f0)
+        errors[1]=max(errors[1],abs(ecology_mass(w,p)-initial_mass))
+        errors[2]=max(errors[2],abs(p.energy_input-initial_work-p.energy_yield*p.waste))
+        errors[3]=max(errors[3],abs(sum(Float64,p.energy;init=0.)+p.heat-p.energy_input))
+        errors[4]=max(errors[4],p.energy_input-initial_work-p.energy_yield*initial_mass)
+    end
+    @test errors[1]<3e-5
+    @test errors[2]<3e-5
+    @test errors[3]<3e-5
+    @test errors[4]<3e-5
+    @test p.births>0 && p.deaths>0
+    @test isempty(p.ids)
+    exhausted_work=p.energy_input; exhausted_heat=p.heat
+    for _ in 1:20; step!(w,p,.05f0); end
+    @test p.energy_input==exhausted_work && p.heat==exhausted_heat
+    # Pure assimilation cannot power work, even while uptake stores matter.
+    v=World(Grid(1,1,1))
+    q=Interior.NeuralEcology(zeros(Float32,3,1);storage=0,energy=0,
+        catabolic_fraction=0,energy_yield=100,basal_cost=0,work_rate=.1)
+    before=ecology_mass(v,q); step!(v,q,.1f0)
+    @test q.energy_input==q.heat==q.waste==0
+    @test isempty(q.ids)
+    @test ecology_mass(v,q)≈before atol=1e-6
+end

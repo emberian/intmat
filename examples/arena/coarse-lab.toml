@@ -1,6 +1,6 @@
 # Coarse interactive configuration; short enough to watch several lifetimes.
 seed = 11
-dt = 0.2
+dt = 0.1
 initial_modes = 4
 snapshot_seconds = 1.0
 checkpoint_seconds = 60.0
@@ -18,7 +18,8 @@ population = 32
 capacity = 240
 hidden = 8
 birth_energy = 0.3
-lifespan = 35.0
+lifespan = 50.0
+uptake_rate = 0.7
 plasticity_rate = 0.03
 mutation = 0.08
 [chemostat]

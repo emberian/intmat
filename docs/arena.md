@@ -9,9 +9,9 @@ physical extent are independent decisions; profile coefficients are not rescaled
 silently.
 
 ```sh
-julia --project examples/arena.jl --continuous --output runs/arena
-julia --project examples/arena.jl --profile examples/arena/active-3d.toml --steps 100 --output runs/arena-3d
-julia --project examples/arena.jl --resume runs/arena/checkpoint-1.jls --continuous --output runs/arena
+julia --project examples/arena.jl --continuous --output outputs/arena/active-2d
+julia --project examples/arena.jl --profile examples/arena/active-3d.toml --steps 100 --output outputs/arena/active-3d
+julia --project examples/arena.jl --resume outputs/arena/active-2d/checkpoint-1.jls --continuous --output outputs/arena/active-2d
 ```
 
 `latest.json` contains downsampled central field slices, a bounded organism sample,
@@ -24,6 +24,12 @@ version and source hashes by default. They are not a portable archival format.
 `restore_arena(path; allow_source_change=true)` explicitly permits an implementation
 migration, without promising identical subsequent evolution. `checkpoint.json`
 names the latest completed slot. Ctrl-C and the stop command save before exit.
+
+A fresh output directory must be empty. The runner creates `arena-owner.json`
+and acquires an atomic `.arena-writer` lock recording its PID. Existing owned
+output requires explicit `resume=true` (the CLI forwards `--resume`). A second
+live writer is refused. A recognized stale lock is recovered only after its PID
+is confirmed absent; unknown lock contents require manual inspection.
 
 The runner owns only `latest.json`, `control.json`, `checkpoint.json`, and its fixed
 ring of checkpoint slots within the chosen output directory. These paths are

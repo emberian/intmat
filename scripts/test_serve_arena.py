@@ -35,6 +35,14 @@ class ControlsTest(unittest.TestCase):
         saved = json.loads((Path(self.directory.name) / 'command.json').read_text())
         self.assertEqual(saved, result)
         self.assertEqual(saved['values'], {'source_rate': 0.25})
+    def test_journal_rotation(self):
+        root = Path(self.directory.name)
+        journal = root / 'control-requests.jsonl'
+        journal.write_text('x' * (1024 * 1024))
+        self.assertEqual(self.post({'action': 'pause'})[0], 202)
+        self.assertEqual((root / 'control-requests.previous.jsonl').stat().st_size, 1024 * 1024)
+        self.assertLess(journal.stat().st_size, 4096)
+
     def test_pending_command_is_not_overwritten(self):
         status, first = self.post({'action': 'pause'})
         self.assertEqual(status, 202)

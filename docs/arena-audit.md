@@ -5,8 +5,13 @@ inhabitant's cargo and waste. These are inventories rather than continuum
 concentrations: grid refinement changes total material unless initial inventory
 is rescaled. Phase composition is a separate signed conserved quantity. Signal
 and remodeling fields are information and chemical-potential cues; they do not
-add material. Chemical work enters the ecology's energy ledger explicitly, and
-spent work becomes heat. Chemostat supply and removal are external material
+add material. The neural ecology converts `catabolic_fraction` of each uptake into inert
+waste and earns `energy_yield` work per catabolized inventory unit; only the
+remainder becomes cargo. Spent work becomes heat. Waste participates in material
+mass but cannot be eaten again. Death returns cargo, while waste remains inert.
+Consequently, in a closed arena cumulative chemical work is bounded by initial
+work plus energy yield times initial usable material. Recycling cargo cannot
+create unlimited work. Chemostat supply and removal are external material
 flows and must be subtracted from the observed inventory change.
 
 `test/arena_composition.jl` exercises coupled transport and forced phase on a 3D
@@ -18,7 +23,7 @@ membrane/world-deposit alias and its reference to the very same phase process;
 subsequent fields, IDs, inherited weights, plastic marks, recurrent state,
 positions, and phase must agree. Physical-time cue refinement and zero work
 funding are checked independently. A periodic boundary crossing immediately
-before death returns cargo to the final occupied cell, preserving the budget. The focused suite passes 47 assertions. An independent writer/reader run in
+before death returns cargo to the final occupied cell, preserving the budget. The focused suite passes 57 assertions. An independent writer/reader run in
 separate Julia processes also reproduced exact fields, inherited weights,
 plastic marks, hidden state, and phase after eight resumed steps. FFTW native
 plans are rebuilt by execution rather than serialized as persistent state.
@@ -52,3 +57,11 @@ version or implementation-hash mismatch by default, and is a trusted local
 artifact. Checkpointing must preserve controller inheritance, within-lifetime
 plasticity, hidden state, event counters, and random state independently;
 recording effective controller weights alone cannot recover that distinction.
+
+The closed-fuel counterexample runs 500 steps with reproduction, death and cargo
+recycling, checks the largest material/energy discrepancies over the trajectory,
+and requires extinction followed by a plateau of cumulative work and heat. It
+also tests zero catabolic fraction: assimilation retains material but grants no
+energy. This refutes the previous retained-matter uptake rule, which recycled
+fuel while earning fresh work on every pass. The corrected ledger ties earned
+energy exactly to cumulative inert waste rather than repeated uptake totals.

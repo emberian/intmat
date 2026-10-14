@@ -54,9 +54,12 @@ function arena_step!(a::Arena)
     a.paused || a.stopped || (step!(a.world,a.processes,a.dt); a.steps+=1)
     a
 end
-function arena_sources()
-    Dict(basename(p)=>bytes2hex(SHA.sha256(read(p))) for p in sort(readdir(@__DIR__;join=true)) if endswith(p,".jl"))
-end
+# Capture the implementation that this module loaded, rather than mutable disk
+# contents at checkpoint time. Julia invalidates included source dependencies on
+# the next module load, while a running arena keeps its original fingerprint.
+const ARENA_LOADED_SOURCES = Dict(basename(p)=>bytes2hex(SHA.sha256(read(p)))
+    for p in sort(readdir(@__DIR__;join=true)) if endswith(p,".jl"))
+arena_sources() = copy(ARENA_LOADED_SOURCES)
 function arena_atomic(f,path)
     mkpath(dirname(abspath(path)))
     temp,io=mktemp(dirname(abspath(path)))
@@ -110,6 +113,9 @@ function arena_snapshot(a::Arena;max_side=96,max_agents=3000)
                 hasproperty(p,:plastic_marks) && (ag["plastic_norm"]=sqrt(sum(abs2,p.plastic_marks[:,:,i])))
                 push!(agents,ag)
             end
+            if p isa Union{Ecology,NeuralEcology}
+                for (key,value) in pairs(ecology_statistics(p)); metrics[string(key)]=value; end
+            end
             metrics["population"]=length(p.ids)
             for name in (:births,:deaths,:blocked_births,:heat,:energy_input,:signal_work,:remodeling_work,:movement_work)
                 hasproperty(p,name) && (metrics[string(name)]=getproperty(p,name))
@@ -160,13 +166,66 @@ function arena_command!(a::Arena,c)
     end
     nothing
 end
+# Atomic mkdir excludes competing writers. PID liveness uses POSIX kill(pid,0);
+# an EPERM result still means alive. Lock contents are only our own protocol files.
+function arena_pid_alive(pid::Integer)
+    pid>0 || return true
+    ccall(:kill,Cint,(Cint,Cint),pid,0)==0 || Base.Libc.errno()!=3
+end
+function arena_lock(dir;resume=false)
+    mkpath(dir)
+    marker=joinpath(dir,"arena-owner.json"); lock=joinpath(dir,".arena-writer")
+    if isdir(lock)
+        pidfile=joinpath(lock,"pid.json")
+        isfile(pidfile) || throw(ArgumentError("arena lock has no PID; inspect it manually"))
+        info=JSON3.read(read(pidfile,String),Dict{String,Any})
+        get(info,"schema","")=="interior-arena-lock" || throw(ArgumentError("unrecognized arena lock"))
+        arena_pid_alive(Int(info["pid"])) && throw(ArgumentError("arena already has a live writer PID $(info["pid"])"))
+        readdir(lock)==["pid.json"] || throw(ArgumentError("arena lock contains unknown files; inspect it manually"))
+        # Atomically claim stale directory before removing only protocol-owned contents.
+        stale=lock*".stale-"*string(getpid())
+        ispath(stale) && throw(ArgumentError("stale recovery destination exists"))
+        mv(lock,stale)
+        rm(joinpath(stale,"pid.json")); rm(stale)
+    end
+    try
+        mkdir(lock)
+    catch
+        throw(ArgumentError("arena writer lock is already held"))
+    end
+    try
+        arena_atomic(io->JSON3.write(io,Dict("schema"=>"interior-arena-lock","pid"=>getpid())),joinpath(lock,"pid.json"))
+        if isfile(marker)
+            info=JSON3.read(read(marker,String),Dict{String,Any})
+            get(info,"schema","")=="interior-arena-output" || throw(ArgumentError("unrecognized arena ownership marker"))
+            resume || throw(ArgumentError("existing arena output requires explicit resume=true / CLI --resume"))
+        else
+            isempty(filter(!=(".arena-writer"),readdir(dir))) || throw(ArgumentError("refusing nonempty unowned arena output directory"))
+            arena_atomic(io->JSON3.write(io,Dict("schema"=>"interior-arena-output","version"=>1)),marker)
+        end
+    catch
+        arena_unlock(lock); rethrow()
+    end
+    lock
+end
+function arena_unlock(lock)
+    pidfile=joinpath(lock,"pid.json")
+    if isfile(pidfile)
+        info=JSON3.read(read(pidfile,String),Dict{String,Any})
+        Int(info["pid"])==getpid() || return
+        rm(pidfile)
+    end
+    isdir(lock) && isempty(readdir(lock)) && rm(lock)
+    nothing
+end
 """Run until a requested number of additional steps, stop command, or interrupt.
 Owns latest.json, control.json and a fixed ring of checkpoint-N.jls files in `dir`.
 Physics timestep and wall-clock publication cadence are independent."""
-function run_arena!(a::Arena,dir;steps=nothing,snapshot_seconds=1.0,checkpoint_seconds=60.0,checkpoint_slots=3,batch=5,sleep_seconds=0.001)
+function run_arena!(a::Arena,dir;steps=nothing,snapshot_seconds=1.0,checkpoint_seconds=60.0,checkpoint_slots=3,batch=5,sleep_seconds=0.001,resume=false)
     all(isfinite,(snapshot_seconds,checkpoint_seconds,sleep_seconds)) && sleep_seconds>=0 && checkpoint_slots>=1 && batch>=1 && snapshot_seconds>0 && checkpoint_seconds>0 || throw(ArgumentError("invalid runner cadence"))
     steps===nothing || steps>=0 || throw(ArgumentError("steps must be nonnegative"))
-    mkpath(dir); a.config["snapshot_seconds"]=snapshot_seconds; a.config["checkpoint_seconds"]=checkpoint_seconds
+    lock=arena_lock(dir;resume)
+    a.config["snapshot_seconds"]=snapshot_seconds; a.config["checkpoint_seconds"]=checkpoint_seconds
     target=steps===nothing ? typemax(Int) : a.steps+steps
     lastview=-Inf; lastsave=time(); slot=0
     save()=(slot=mod(slot,checkpoint_slots)+1;checkpoint!(a,joinpath(dir,"checkpoint-$slot.jls"));arena_atomic(io->JSON3.write(io,Dict("file"=>"checkpoint-$slot.jls","step"=>a.steps)),joinpath(dir,"checkpoint.json")))
@@ -195,8 +254,12 @@ function run_arena!(a::Arena,dir;steps=nothing,snapshot_seconds=1.0,checkpoint_s
     catch e
         e isa InterruptException || rethrow()
     finally
-        save()
-        arena_atomic(io->JSON3.write(io,arena_snapshot(a)),joinpath(dir,"latest.json"))
+        try
+            save()
+            arena_atomic(io->JSON3.write(io,arena_snapshot(a)),joinpath(dir,"latest.json"))
+        finally
+            arena_unlock(lock)
+        end
     end
     a
 end
