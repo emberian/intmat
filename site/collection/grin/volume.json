@@ -1,0 +1,22 @@
+{
+  "shape": [
+    64,
+    64,
+    64
+  ],
+  "bounds": [
+    -1,
+    -1,
+    -1,
+    1,
+    1,
+    1
+  ],
+  "dtype": "little-endian float32",
+  "order": "F",
+  "fields": [
+    "temperature",
+    "refractive_index",
+    "deposit"
+  ]
+}

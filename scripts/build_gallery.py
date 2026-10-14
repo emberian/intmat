@@ -40,7 +40,7 @@ for directory in directories:
     try:run=json.loads(manifest.read_text()) if manifest.exists() else json.loads(volume.read_text())
     except (ValueError,OSError):continue
     images=[]
-    preferred=['cycles-interfaces.png','cycles.png','cycles-fronts.png','cycles-mid.png','cycles-above.png','specimen.png','projection.png','gallery-preview.png']
+    preferred=['phase-glass.png','polished-network.png','polished-inclusion.png','polished-wave.png','polished.png','cycles-pressure.png','cycles-interfaces.png','cycles.png','cycles-fronts.png','cycles-mid.png','cycles-above.png','specimen.png','projection.png','gallery-preview.png']
     candidates=list(directory.glob('*.png'))+list(directory.glob('*.jpg'))+list(directory.glob('*.webp'))
     candidates=[x for x in candidates if not any(word in x.name for word in ['check','screenshot','test'])]
     if not candidates and (directory/'specimen.ppm').exists():
@@ -48,7 +48,7 @@ for directory in directories:
         if ppm_png(directory/'specimen.ppm',out):candidates=[out]
     candidates.sort(key=lambda x:(preferred.index(x.name) if x.name in preferred else len(preferred),x.name))
     for image in candidates:
-        label='Optical volume' if image.name.startswith('cycles') else 'Recorded field projection'
+        label='Rendered material' if image.name.startswith(('cycles','polished','phase-glass')) else 'Recorded field projection'
         if 'above' in image.name:label+=' / above'
         elif 'interfaces' in image.name:label+=' / interfaces'
         elif 'fronts' in image.name:label+=' / activity fronts'

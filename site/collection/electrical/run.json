@@ -1,0 +1,139 @@
+{
+  "deposit_per_cell": 0.8,
+  "model": "Quasi-static lattice dielectric-breakdown; driven conductor at1, grounded box at0; fixed eta; no learned rule or calibrated voltage",
+  "events": 280,
+  "shape": [
+    40,
+    40,
+    40
+  ],
+  "final_mass": 64000,
+  "random_state": {
+    "event_counter": 280,
+    "algorithm": "SplitMix64 hash of seed + event * golden ratio constant",
+    "seed_u64": "29"
+  },
+  "extent": [
+    2,
+    2,
+    2
+  ],
+  "reached_ground": false,
+  "elapsed_seconds": 15.946636625,
+  "solver_max_iterations": 1200,
+  "initial_mass": 64000,
+  "optics": "Spherical viewing crop, dilute amber carrier, direct deposited-channel emission with one-cell six-neighbor halo",
+  "solver_tolerance": 2e-05,
+  "eta": 3,
+  "event_interval": 0.05,
+  "frames": [
+    {
+      "events": 0,
+      "name": "frame-0000",
+      "time": 0,
+      "potential_residual": 2.344449361146861e-06,
+      "occupied": 1,
+      "reached_ground": false
+    },
+    {
+      "events": 25,
+      "name": "frame-0025",
+      "time": 1.2499999,
+      "potential_residual": 1.579458148626145e-05,
+      "occupied": 26,
+      "reached_ground": false
+    },
+    {
+      "events": 50,
+      "name": "frame-0050",
+      "time": 2.4999988,
+      "potential_residual": 1.501167813936985e-05,
+      "occupied": 51,
+      "reached_ground": false
+    },
+    {
+      "events": 75,
+      "name": "frame-0075",
+      "time": 3.7499976,
+      "potential_residual": 4.6813220251351595e-06,
+      "occupied": 76,
+      "reached_ground": false
+    },
+    {
+      "events": 100,
+      "name": "frame-0100",
+      "time": 5.000001,
+      "potential_residual": 1.0830660661063918e-05,
+      "occupied": 101,
+      "reached_ground": false
+    },
+    {
+      "events": 125,
+      "name": "frame-0125",
+      "time": 6.2500057,
+      "potential_residual": 1.6819743905216455e-05,
+      "occupied": 126,
+      "reached_ground": false
+    },
+    {
+      "events": 150,
+      "name": "frame-0150",
+      "time": 7.5000105,
+      "potential_residual": 6.554299034178257e-06,
+      "occupied": 151,
+      "reached_ground": false
+    },
+    {
+      "events": 175,
+      "name": "frame-0175",
+      "time": 8.750015,
+      "potential_residual": 9.657330034921747e-07,
+      "occupied": 176,
+      "reached_ground": false
+    },
+    {
+      "events": 200,
+      "name": "frame-0200",
+      "time": 10.00002,
+      "potential_residual": 1.0244684138645765e-05,
+      "occupied": 201,
+      "reached_ground": false
+    },
+    {
+      "events": 225,
+      "name": "frame-0225",
+      "time": 11.250025,
+      "potential_residual": 9.266271566350966e-06,
+      "occupied": 226,
+      "reached_ground": false
+    },
+    {
+      "events": 250,
+      "name": "frame-0250",
+      "time": 12.50003,
+      "potential_residual": 1.5530424813428936e-05,
+      "occupied": 251,
+      "reached_ground": false
+    },
+    {
+      "events": 275,
+      "name": "frame-0275",
+      "time": 13.750034,
+      "potential_residual": 1.8997428317865314e-05,
+      "occupied": 276,
+      "reached_ground": false
+    },
+    {
+      "events": 280,
+      "name": "frame-0280",
+      "time": 14.000035,
+      "potential_residual": 1.1074977616468487e-05,
+      "occupied": 281,
+      "reached_ground": false
+    }
+  ],
+  "requested_events": 280,
+  "title": "A field writes a tree / dielectric breakdown surrogate",
+  "seed": 29,
+  "potential_residual": 1.1074977616468487e-05
+}

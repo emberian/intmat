@@ -1,0 +1,52 @@
+{
+  "title": "Acoustic amber: waves writing mineral",
+  "shape": [
+    48,
+    48,
+    48
+  ],
+  "dt": 0.01,
+  "steps": 600,
+  "time": 6.0000424,
+  "elapsed_seconds": 46.281511916,
+  "initial_mass": 110592,
+  "final_mass": 110592,
+  "frames": [
+    {
+      "step": 200,
+      "time": 1.9999985,
+      "deposit": 80.51318,
+      "pressure_max": 0.3000813
+    },
+    {
+      "step": 400,
+      "time": 3.9999967,
+      "deposit": 5190.702,
+      "pressure_max": 1.1463419
+    },
+    {
+      "step": 600,
+      "time": 6.0000424,
+      "deposit": 33218.22,
+      "pressure_max": 0.5173368
+    }
+  ],
+  "parameters": {
+    "speed": 0.36,
+    "frequency": 0.9,
+    "source_amplitude": 22,
+    "source_radius": 0.065,
+    "source_center": [
+      -0.3,
+      0.0,
+      0.0
+    ],
+    "material_feedback": 10,
+    "damping": 0.055,
+    "activity_gain": 0.28,
+    "intensity_scale": 0.00015,
+    "envelope_time": 0.4
+  },
+  "model": "Damped scalar wave with mineral-dependent face coefficients; intensity stimulates excitable deposition; periodic domain, external transducer power",
+  "mass_accumulation": "Float32 inventory sums in this recorded run; targeted conservation tests separately use tolerance"
+}

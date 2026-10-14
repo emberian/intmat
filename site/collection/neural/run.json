@@ -1,0 +1,212 @@
+{
+  "model": "Excitable grid plus fixed recurrent particle policies; no training or evolution",
+  "backend": "CPU",
+  "shape": [
+    40,
+    40,
+    40
+  ],
+  "relative_mass_error": -1.364856346522073e-07,
+  "final_mass": 48909.987519830465,
+  "julia_version": "1.12.4",
+  "extent": [
+    2,
+    2,
+    2
+  ],
+  "elapsed_seconds": 10.208813958,
+  "initial_mass": 48909.994195342064,
+  "config": {
+    "transport": {
+      "rate": 0.002
+    },
+    "particles": {
+      "count": 0
+    },
+    "neural": {
+      "material_feedback": 0.7,
+      "pressure_feedback": 0.4,
+      "response_time": 0.5,
+      "diffusion": 0.003,
+      "mode": "oscillator",
+      "enabled": true,
+      "nutrient_feedback": 0.3,
+      "gain": 1.2,
+      "initial_noise": 0.04
+    },
+    "deposition": {
+      "threshold": 0.25,
+      "rate": 0.6,
+      "dissolution": 0.002
+    },
+    "simulation": {
+      "resolution": 40,
+      "steps": 900,
+      "dimension": 3,
+      "seed": 31,
+      "dt": 0.01
+    },
+    "wave": {
+      "enabled": true
+    },
+    "excitable": {
+      "enabled": false
+    }
+  },
+  "frames": [
+    {
+      "name": "frame-0000",
+      "time": 0,
+      "solid": 0,
+      "mass": 48909.994195342064,
+      "activity_min": -0.0039999345,
+      "activity_max": 0.95079684
+    },
+    {
+      "name": "frame-0050",
+      "time": 0.4999998,
+      "solid": 82.96073091887811,
+      "mass": 48909.98967326545,
+      "activity_min": 0.17747504,
+      "activity_max": 0.6814929
+    },
+    {
+      "name": "frame-0100",
+      "time": 0.99999934,
+      "solid": 2114.1809240207076,
+      "mass": 48909.989565990865,
+      "activity_min": 0.0437495,
+      "activity_max": 0.5307315
+    },
+    {
+      "name": "frame-0150",
+      "time": 1.4999989,
+      "solid": 3941.8628530688584,
+      "mass": 48909.98968215659,
+      "activity_min": -0.56461465,
+      "activity_max": 0.33371356
+    },
+    {
+      "name": "frame-0200",
+      "time": 1.9999985,
+      "solid": 3939.1446225345135,
+      "mass": 48909.98986402154,
+      "activity_min": -0.83620274,
+      "activity_max": -0.36767927
+    },
+    {
+      "name": "frame-0250",
+      "time": 2.499998,
+      "solid": 3935.207451708615,
+      "mass": 48909.990046449006,
+      "activity_min": -0.8413172,
+      "activity_max": -0.74811524
+    },
+    {
+      "name": "frame-0300",
+      "time": 2.9999976,
+      "solid": 3931.274198498577,
+      "mass": 48909.98991366848,
+      "activity_min": -0.8147613,
+      "activity_max": -0.12625435
+    },
+    {
+      "name": "frame-0350",
+      "time": 3.4999971,
+      "solid": 3954.8344331607223,
+      "mass": 48909.98958905786,
+      "activity_min": -0.18584102,
+      "activity_max": 0.5984442
+    },
+    {
+      "name": "frame-0400",
+      "time": 3.9999967,
+      "solid": 6720.670180648565,
+      "mass": 48909.98955872655,
+      "activity_min": 0.6061932,
+      "activity_max": 0.9208022
+    },
+    {
+      "name": "frame-0450",
+      "time": 4.500008,
+      "solid": 13912.249388560653,
+      "mass": 48909.989500924945,
+      "activity_min": 0.9160542,
+      "activity_max": 0.9888572
+    },
+    {
+      "name": "frame-0500",
+      "time": 5.0000196,
+      "solid": 20571.108067542315,
+      "mass": 48909.98956224322,
+      "activity_min": 0.38309053,
+      "activity_max": 0.9308039
+    },
+    {
+      "name": "frame-0550",
+      "time": 5.500031,
+      "solid": 23193.991172373295,
+      "mass": 48909.98957142234,
+      "activity_min": -0.44216925,
+      "activity_max": 0.3602621
+    },
+    {
+      "name": "frame-0600",
+      "time": 6.0000424,
+      "solid": 23172.842354893684,
+      "mass": 48909.98954603076,
+      "activity_min": -0.8732345,
+      "activity_max": -0.51287186
+    },
+    {
+      "name": "frame-0650",
+      "time": 6.500054,
+      "solid": 23149.680947482586,
+      "mass": 48909.98944449425,
+      "activity_min": -1.0361698,
+      "activity_max": -0.9184701
+    },
+    {
+      "name": "frame-0700",
+      "time": 7.0000653,
+      "solid": 23126.542751163244,
+      "mass": 48909.98914143443,
+      "activity_min": -1.038897,
+      "activity_max": -0.9723583
+    },
+    {
+      "name": "frame-0750",
+      "time": 7.500077,
+      "solid": 23103.42746320367,
+      "mass": 48909.988692998886,
+      "activity_min": -0.8987651,
+      "activity_max": -0.5671309
+    },
+    {
+      "name": "frame-0800",
+      "time": 8.000088,
+      "solid": 23080.335353910923,
+      "mass": 48909.988016694784,
+      "activity_min": -0.28765753,
+      "activity_max": 0.21889809
+    },
+    {
+      "name": "frame-0850",
+      "time": 8.500099,
+      "solid": 23836.80100762844,
+      "mass": 48909.987436145544,
+      "activity_min": 0.50398666,
+      "activity_max": 0.76153606
+    },
+    {
+      "name": "frame-0900",
+      "time": 9.000111,
+      "solid": 27507.956259787083,
+      "mass": 48909.987519830465,
+      "activity_min": 0.8740274,
+      "activity_max": 0.93038166
+    }
+  ],
+  "axis_order": "x fastest; cell-centered; periodic domain",
+  "title": "Interior"
+}

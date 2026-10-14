@@ -1,0 +1,171 @@
+{
+  "fracture_reservoir": 2.4796584213971826,
+  "loading": {
+    "shear_speed": 0.035,
+    "stretch_speed": 0.19
+  },
+  "model": "disordered central-force graph, irreversible strain fracture; no continuum calibration or repair",
+  "dt": 0.0005,
+  "bonds": 10476,
+  "damping_reservoir": 5.2239569657766305,
+  "external_work": 8.154689810033899,
+  "nodes": 1000,
+  "frames": [
+    {
+      "name": "frame-0000",
+      "time": 0,
+      "broken": 0,
+      "energy": {
+        "elastic": 0,
+        "kinetic": 0,
+        "damage": 0,
+        "damping": 0,
+        "external_work": 0,
+        "total": 0
+      },
+      "energy_balance_error": 0
+    },
+    {
+      "name": "frame-0001",
+      "time": 0.17499952,
+      "broken": 0,
+      "energy": {
+        "elastic": 0.1566203091982621,
+        "kinetic": 0.035349792086061,
+        "damage": 0,
+        "damping": 0.10580472572699424,
+        "external_work": 0.2977837027532237,
+        "total": 0.2977748270113173
+      },
+      "energy_balance_error": -8.875741906388956e-06
+    },
+    {
+      "name": "frame-0002",
+      "time": 0.34999728,
+      "broken": 25,
+      "energy": {
+        "elastic": 0.5856283692717082,
+        "kinetic": 0.02942278166763917,
+        "damage": 0.004899882808997341,
+        "damping": 0.22924664611420242,
+        "external_work": 0.8492040928692604,
+        "total": 0.8491976798625471
+      },
+      "energy_balance_error": -6.413006713223979e-06
+    },
+    {
+      "name": "frame-0003",
+      "time": 0.5249965,
+      "broken": 60,
+      "energy": {
+        "elastic": 1.3085063100739844,
+        "kinetic": 0.027384350315115123,
+        "damage": 0.013751704930943933,
+        "damping": 0.35286595139873494,
+        "external_work": 1.7025082966714908,
+        "total": 1.7025083167187784
+      },
+      "energy_balance_error": 2.004728760773844e-08
+    },
+    {
+      "name": "frame-0004",
+      "time": 0.7000047,
+      "broken": 390,
+      "energy": {
+        "elastic": 1.8028401696865037,
+        "kinetic": 0.1815625450093702,
+        "damage": 0.1927952163944638,
+        "damping": 0.6662873352521469,
+        "external_work": 2.842478007862216,
+        "total": 2.8434852663424848
+      },
+      "energy_balance_error": 0.0010072584802687246
+    },
+    {
+      "name": "frame-0005",
+      "time": 0.8750129,
+      "broken": 485,
+      "energy": {
+        "elastic": 2.112125933742335,
+        "kinetic": 0.09723840101886494,
+        "damage": 0.34904095038123856,
+        "damping": 1.3688152990924902,
+        "external_work": 3.925963015616761,
+        "total": 3.927220584234929
+      },
+      "energy_balance_error": 0.001257568618167948
+    },
+    {
+      "name": "frame-0006",
+      "time": 1.0500151,
+      "broken": 621,
+      "energy": {
+        "elastic": 2.492935992442692,
+        "kinetic": 0.11940015605152973,
+        "damage": 0.6942260644756145,
+        "damping": 1.7291944843969973,
+        "external_work": 5.033688488680847,
+        "total": 5.035756697366834
+      },
+      "energy_balance_error": 0.0020682086859871163
+    },
+    {
+      "name": "frame-0007",
+      "time": 1.2250024,
+      "broken": 803,
+      "energy": {
+        "elastic": 2.3029942306761666,
+        "kinetic": 0.1843324726398569,
+        "damage": 1.2783131990261338,
+        "damping": 2.3688706704479165,
+        "external_work": 6.13030317530325,
+        "total": 6.134510572790074
+      },
+      "energy_balance_error": 0.004207397486823972
+    },
+    {
+      "name": "frame-0008",
+      "time": 1.3999897,
+      "broken": 971,
+      "energy": {
+        "elastic": 1.783826277634531,
+        "kinetic": 0.22108113709924793,
+        "damage": 1.886436156426187,
+        "damping": 3.169169315247605,
+        "external_work": 7.053634201496778,
+        "total": 7.060512886407571
+      },
+      "energy_balance_error": 0.006878684910792465
+    },
+    {
+      "name": "frame-0009",
+      "time": 1.574977,
+      "broken": 1101,
+      "energy": {
+        "elastic": 0.7589229601379076,
+        "kinetic": 0.29332837677984774,
+        "damage": 2.38406000420564,
+        "damping": 4.314607861780025,
+        "external_work": 7.741230086735948,
+        "total": 7.75091920290342
+      },
+      "energy_balance_error": 0.009689116167471923
+    },
+    {
+      "name": "frame-0010",
+      "time": 1.7499644,
+      "broken": 1133,
+      "energy": {
+        "elastic": 0.3095296164635309,
+        "kinetic": 0.15174698194821207,
+        "damage": 2.4796584213971826,
+        "damping": 5.2239569657766305,
+        "external_work": 8.154689810033899,
+        "total": 8.164891985585555
+      },
+      "energy_balance_error": 0.010202175551656367
+    }
+  ],
+  "title": "A yielding web remembers its tear",
+  "seed": 77
+}

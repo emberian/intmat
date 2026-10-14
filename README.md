@@ -6,7 +6,7 @@ This checkout contains an executable family of exploratory models. They share st
 
 ## Explore the studio
 
-Open `outputs/index.html` for the generated gallery. The local preview server, when running from this checkout, serves it at `http://localhost:8769/outputs/index.html`.
+Visit the [published material gallery](https://emberian.github.io/intmat/) for recorded volumes and rendered studies. See [publishing](docs/publishing.md) to refresh its curated assets. Open `outputs/index.html` for the generated local gallery. The local preview server, when running from this checkout, serves it at `http://localhost:8769/outputs/index.html`.
 
 | Direction | Executable experiment | What is implemented |
 |---|---|---|

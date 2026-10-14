@@ -1,0 +1,133 @@
+[
+  {
+    "id": "choir",
+    "source": "choir",
+    "files": [
+      "cycles-fronts.png",
+      "cycles-interfaces.png",
+      "cycles-mid.png",
+      "cycles.png",
+      "specimen.png",
+      "run.json",
+      "config.toml",
+      "viewer.html"
+    ]
+  },
+  {
+    "id": "lace-fine",
+    "source": "lace-fine",
+    "files": [
+      "cycles-above.png",
+      "cycles.png",
+      "run.json",
+      "config.toml"
+    ]
+  },
+  {
+    "id": "neural",
+    "source": "neural",
+    "files": [
+      "gallery-preview.png",
+      "run.json",
+      "config.toml",
+      "viewer.html"
+    ]
+  },
+  {
+    "id": "electrical",
+    "source": "electrical",
+    "files": [
+      "gallery-preview.png",
+      "projection.png",
+      "run.json",
+      "viewer.html"
+    ]
+  },
+  {
+    "id": "electrical-tree",
+    "source": "electrical/tree",
+    "files": [
+      "cycles-filaments-above.png",
+      "cycles-filaments.png",
+      "cycles-side.png",
+      "cycles.png",
+      "polished.png",
+      "projection.png",
+      "specimen.png",
+      "run.json"
+    ]
+  },
+  {
+    "id": "acoustic",
+    "source": "acoustic",
+    "files": [
+      "cycles-energy.png",
+      "cycles-pressure.png",
+      "cycles.png",
+      "gallery-preview.png",
+      "specimen.png",
+      "run.json",
+      "polished-wave.png"
+    ]
+  },
+  {
+    "id": "writing/scaffold",
+    "source": "writing/scaffold",
+    "files": [
+      "cycles.png",
+      "run.json"
+    ]
+  },
+  {
+    "id": "writing/living",
+    "source": "writing/living",
+    "files": [
+      "cycles-above.png",
+      "cycles.png",
+      "polished-inclusion.png",
+      "polished.png",
+      "specimen.png",
+      "run.json"
+    ]
+  },
+  {
+    "id": "phase",
+    "source": "phase",
+    "files": [
+      "cycles.png",
+      "phase-glass.png",
+      "phase.png"
+    ]
+  },
+  {
+    "id": "mechanics",
+    "source": "mechanics",
+    "files": [
+      "fracture-preview.png",
+      "polished-network.png",
+      "run.json"
+    ]
+  },
+  {
+    "id": "ecology",
+    "source": "ecology",
+    "files": []
+  },
+  {
+    "id": "grin",
+    "source": "grin",
+    "files": [
+      "constant-index.png",
+      "thermal-index.png"
+    ]
+  },
+  {
+    "id": "neural-metal-smoke",
+    "source": "neural-metal-smoke",
+    "files": [
+      "gallery-preview.png",
+      "run.json",
+      "config.toml"
+    ]
+  }
+]

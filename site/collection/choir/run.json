@@ -1,0 +1,240 @@
+{
+  "model": "Excitable grid plus fixed recurrent particle policies; no training or evolution",
+  "backend": "CPU",
+  "shape": [
+    40,
+    40,
+    40
+  ],
+  "relative_mass_error": -1.3069140823398524e-07,
+  "final_mass": 48909.987803226046,
+  "julia_version": "1.12.4",
+  "extent": [
+    2,
+    2,
+    2
+  ],
+  "elapsed_seconds": 15.380907458,
+  "initial_mass": 48909.994195342064,
+  "config": {
+    "transport": {
+      "material_feedback": 3,
+      "rate": 0.002
+    },
+    "particles": {
+      "secretion_rate": 0.55,
+      "uptake_rate": 0.35,
+      "speed": 0.035,
+      "relaxation": 1.2,
+      "count": 600
+    },
+    "deposition": {
+      "threshold": 0.22,
+      "rate": 0.55,
+      "dissolution": 0.003
+    },
+    "simulation": {
+      "resolution": 40,
+      "steps": 1000,
+      "capture_every": 50,
+      "dimension": 3,
+      "seed": 17,
+      "dt": 0.02
+    },
+    "title": "Choir / a material remembers",
+    "render": {
+      "height": 640,
+      "steps": 160,
+      "absorption": 1.1,
+      "scattering": 0.45,
+      "width": 640,
+      "exposure": 1.6,
+      "emission": 1.3
+    },
+    "wave": {
+      "activity_gain": 0.16,
+      "wavenumber": 6.283185,
+      "frequency": 0.4,
+      "amplitude": 0.07
+    },
+    "excitable": {
+      "material_feedback": 0.25,
+      "diffusion": 0.003,
+      "threshold": 0.09,
+      "recovery_rate": 0.055,
+      "gain": 4
+    }
+  },
+  "frames": [
+    {
+      "name": "frame-0000",
+      "time": 0,
+      "solid": 0,
+      "mass": 48909.994195342064,
+      "activity_min": -0.0039999494,
+      "activity_max": 0.94921994
+    },
+    {
+      "name": "frame-0050",
+      "time": 0.9999996,
+      "solid": 98.7178253046929,
+      "mass": 48909.99309199674,
+      "activity_min": -0.0015038468,
+      "activity_max": 0.8547968
+    },
+    {
+      "name": "frame-0100",
+      "time": 1.9999987,
+      "solid": 257.5796113089755,
+      "mass": 48909.992375664515,
+      "activity_min": -0.00404587,
+      "activity_max": 0.89705336
+    },
+    {
+      "name": "frame-0150",
+      "time": 2.9999979,
+      "solid": 494.59797065349085,
+      "mass": 48909.99269093962,
+      "activity_min": -0.004019858,
+      "activity_max": 0.92266256
+    },
+    {
+      "name": "frame-0200",
+      "time": 3.999997,
+      "solid": 849.3954193631666,
+      "mass": 48909.99292990961,
+      "activity_min": -0.0032455823,
+      "activity_max": 0.9274884
+    },
+    {
+      "name": "frame-0250",
+      "time": 4.999996,
+      "solid": 1367.4814322641419,
+      "mass": 48909.99302143364,
+      "activity_min": -0.0008097806,
+      "activity_max": 0.941789
+    },
+    {
+      "name": "frame-0300",
+      "time": 5.999995,
+      "solid": 2097.454333272008,
+      "mass": 48909.99246444943,
+      "activity_min": -0.0016685977,
+      "activity_max": 0.94649374
+    },
+    {
+      "name": "frame-0350",
+      "time": 6.9999943,
+      "solid": 3103.496740469514,
+      "mass": 48909.99166485461,
+      "activity_min": -0.0036654351,
+      "activity_max": 0.94673896
+    },
+    {
+      "name": "frame-0400",
+      "time": 7.9999933,
+      "solid": 4380.851419971876,
+      "mass": 48909.99092038869,
+      "activity_min": -0.004199657,
+      "activity_max": 0.96510226
+    },
+    {
+      "name": "frame-0450",
+      "time": 9.000016,
+      "solid": 5870.561719442663,
+      "mass": 48909.99020100798,
+      "activity_min": -0.0031477227,
+      "activity_max": 0.9632519
+    },
+    {
+      "name": "frame-0500",
+      "time": 10.000039,
+      "solid": 7567.20869051299,
+      "mass": 48909.989641074855,
+      "activity_min": -0.0008842042,
+      "activity_max": 0.95625144
+    },
+    {
+      "name": "frame-0550",
+      "time": 11.000062,
+      "solid": 9490.584952453592,
+      "mass": 48909.989202912926,
+      "activity_min": -0.0017070462,
+      "activity_max": 0.95199573
+    },
+    {
+      "name": "frame-0600",
+      "time": 12.000085,
+      "solid": 11667.404022013461,
+      "mass": 48909.9888126857,
+      "activity_min": -0.0036361485,
+      "activity_max": 0.9502484
+    },
+    {
+      "name": "frame-0650",
+      "time": 13.000108,
+      "solid": 14140.24151286701,
+      "mass": 48909.988544168504,
+      "activity_min": -0.0042059235,
+      "activity_max": 0.94801706
+    },
+    {
+      "name": "frame-0700",
+      "time": 14.000131,
+      "solid": 16975.39801187732,
+      "mass": 48909.98832490976,
+      "activity_min": -0.0031263058,
+      "activity_max": 0.95368516
+    },
+    {
+      "name": "frame-0750",
+      "time": 15.000154,
+      "solid": 20145.54394933326,
+      "mass": 48909.98815315095,
+      "activity_min": -0.00085990486,
+      "activity_max": 0.9668971
+    },
+    {
+      "name": "frame-0800",
+      "time": 16.000175,
+      "solid": 23570.981977530726,
+      "mass": 48909.98797892654,
+      "activity_min": -0.0016365802,
+      "activity_max": 0.96398354
+    },
+    {
+      "name": "frame-0850",
+      "time": 17.000198,
+      "solid": 27139.570282769353,
+      "mass": 48909.98782392422,
+      "activity_min": -0.0033758355,
+      "activity_max": 0.96786046
+    },
+    {
+      "name": "frame-0900",
+      "time": 18.000221,
+      "solid": 30694.506729164976,
+      "mass": 48909.98776452664,
+      "activity_min": -0.115691826,
+      "activity_max": 0.9677993
+    },
+    {
+      "name": "frame-0950",
+      "time": 19.000244,
+      "solid": 34104.742950436055,
+      "mass": 48909.98782862616,
+      "activity_min": -0.20306042,
+      "activity_max": 0.9672361
+    },
+    {
+      "name": "frame-1000",
+      "time": 20.000267,
+      "solid": 37276.09070333978,
+      "mass": 48909.987803226046,
+      "activity_min": -0.20811689,
+      "activity_max": 0.9642641
+    }
+  ],
+  "axis_order": "x fastest; cell-centered; periodic domain",
+  "title": "Choir / a material remembers"
+}

@@ -1,0 +1,54 @@
+{
+  "shape": [
+    48,
+    48,
+    48
+  ],
+  "extent": [
+    2,
+    2,
+    2
+  ],
+  "dt": 0.01,
+  "steps": 500,
+  "seed": 91,
+  "living": true,
+  "source": "Prescribed 3D Lissajous Gaussian heating; phenomenological threshold writing",
+  "fields": "Little-endian Float32, x fastest; initial, beam and final snapshots",
+  "writer": {
+    "path": "lissajous",
+    "width": 0.038,
+    "heat": 22,
+    "threshold": 0.08,
+    "conversion": 16,
+    "period": 4,
+    "stop": 4
+  },
+  "captures": [
+    {
+      "label": "initial",
+      "time": 0,
+      "solid": 0,
+      "max_temperature": 0,
+      "max_dose": 0
+    },
+    {
+      "label": "beam",
+      "time": 2.499998,
+      "solid": 586.2596,
+      "max_temperature": 0.74338406,
+      "max_dose": 0.5604095
+    },
+    {
+      "label": "final",
+      "time": 5.0000196,
+      "solid": 971.44025,
+      "max_temperature": 0.007194758,
+      "max_dose": 0.5604095
+    }
+  ],
+  "elapsed_seconds": 11.466050375,
+  "initial_mass": 110592,
+  "final_mass": 110592,
+  "relative_mass_error": 0
+}
