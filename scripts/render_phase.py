@@ -1,7 +1,7 @@
 """Photograph a geometric 0.5 phase interface from the actual exported scalar grid.
 Run: Blender -b --python scripts/render_phase.py -- outputs/phase outputs/phase/phase-glass.png
 """
-import argparse, json, os, sys, math
+import argparse, hashlib, json, os, sys
 import numpy as np
 import bpy, openvdb
 from mathutils import Vector
@@ -34,6 +34,7 @@ for name,loc,energy,size,color in [('Warm silk key',(-3,-4,5),1000,3,(1,.88,.71)
 scene=bpy.context.scene; scene.render.engine='CYCLES'; scene.cycles.samples=a.samples; scene.cycles.use_denoising=True; scene.cycles.max_bounces=16; scene.cycles.transmission_bounces=12; scene.cycles.transparent_max_bounces=12
 scene.world.color=(.12,.12,.12); scene.render.resolution_x=a.size; scene.render.resolution_y=a.size; scene.render.resolution_percentage=100; scene.view_settings.view_transform='AgX'; scene.view_settings.exposure=-.45; scene.render.image_settings.file_format='PNG'; scene.render.filepath=output
 mapping={'source':os.path.join(directory,'structure.f32'),'source_shape':shape,'source_order':'F','isosurface':.5,'smoothing':{'passes':1,'separable_periodic_weights':[.125,.75,.125]},'crop_indices':crop,'closure':'zero padding closes selected phase at rectangular crop; cut faces are display geometry','mesh_vertices':len(vertices),'mesh_polygons':len(triangles)+len(quads),'optical':{'base_color':[.85,.52,.17],'roughness':.08,'ior':1.46,'transmission':.94,'metallic':0,'volume_absorption_density':1.3,'exposure':-.45,'emission':0},'interpretation':'Geometric demixing interface, not a measured material, fracture, or mechanical boundary','settings':vars(a)}
+mapping['source_sha256']=hashlib.sha256(open(mapping['source'],'rb').read()).hexdigest()
 mapping['camera']={'position':list(camera.location),'target':[0,0,.98],'projection':'orthographic','scale':3.65}
 mapping['lighting']=[{'name':o.name,'position':list(o.location),'power_watts':o.data.energy,'size':o.data.size,'color':list(o.data.color)} for o in scene.objects if o.type=='LIGHT']
 json.dump(mapping,open(output+'.optical.json','w'),indent=2); bpy.ops.wm.save_as_mainfile(filepath=os.path.splitext(output)[0]+'.blend'); bpy.ops.render.render(write_still=True)

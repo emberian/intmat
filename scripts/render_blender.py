@@ -34,6 +34,8 @@ parser.add_argument("--scattering", type=float, default=.28)
 parser.add_argument("--scattering-field", default="density")
 parser.add_argument("--polished-carrier", action="store_true", help="Optical cut-and-polished ellipsoid fitted to the viewing mask")
 parser.add_argument("--ior", type=float, default=1.48)
+parser.add_argument("--inclusion-surface", help="Actual exported scalar to mesh as a frosted inclusion")
+parser.add_argument("--inclusion-isovalue", type=float, default=.25)
 parser.add_argument("--surface-roughness", type=float, default=.035)
 parser.add_argument("--density-scale", type=float, default=1.0)
 parser.add_argument("--light-power", type=float, default=1.0)
@@ -88,8 +90,11 @@ for name in ("density", "activity", "structure"):
             values = np.maximum((values - args.activity_threshold) / max(1e-6, 1 - args.activity_threshold), 0) ** args.activity_power
         grid.copyFromArray(np.ascontiguousarray(values * mask))
         grids.append(grid)
-vdb_path = os.path.join(directory, "specimen.vdb")
+output_path = os.path.abspath(args.output)
+os.makedirs(os.path.dirname(output_path), exist_ok=True)
+vdb_path = os.path.splitext(output_path)[0] + ".vdb"
 vdb.write(vdb_path, grids=grids)
+optical_mapping["volume_file"] = vdb_path
 output_path = os.path.abspath(args.output)
 os.makedirs(os.path.dirname(output_path), exist_ok=True)
 for mapping_path in (os.path.join(directory, "optical-mapping.json"), output_path + ".optical.json"):
@@ -145,6 +150,29 @@ else:
     emission.inputs["Strength"].default_value = 0
 links.new(add_shader(add_shader(absorb.outputs[0], scatter.outputs[0]), emission.outputs[0]), output.inputs["Volume"])
 obj.data.materials.append(material)
+if args.inclusion_surface:
+    if args.inclusion_surface not in arrays:
+        raise ValueError("Requested inclusion scalar absent from exported arrays")
+    surface_grid = vdb.FloatGrid()
+    surface_grid.copyFromArray(np.ascontiguousarray(arrays[args.inclusion_surface] * mask))
+    points, triangles, quads = surface_grid.convertToPolygons(isovalue=args.inclusion_isovalue, adaptivity=.05)
+    points = 2 * (points + .5) / np.array(shape) - 1
+    mesh = bpy.data.meshes.new("Actual deposited inclusion isosurface")
+    mesh.from_pydata(points.tolist(), [], triangles.tolist() + quads.tolist())
+    inclusion = bpy.data.objects.new("Baked field inclusion", mesh)
+    bpy.context.collection.objects.link(inclusion)
+    inclusion_material = bpy.data.materials.new("Pale frosted deposited phase")
+    inclusion_material.use_nodes = True
+    shader = inclusion_material.node_tree.nodes.get("Principled BSDF")
+    shader.inputs["Base Color"].default_value = (.85,.93,.98,1)
+    shader.inputs["Roughness"].default_value = .18
+    shader.inputs["IOR"].default_value = 1.2
+    shader.inputs["Transmission Weight"].default_value = .3
+    inclusion.data.materials.append(inclusion_material)
+    for polygon in mesh.polygons:
+        polygon.use_smooth = True
+    optical_mapping["inclusion_mesh"] = {"vertices": len(points), "triangles": len(triangles), "quads": len(quads), "isovalue": args.inclusion_isovalue}
+
 if args.conductive_graph or args.bond_graph:
     graph_edges = []
     if args.bond_graph:
@@ -280,5 +308,6 @@ background.inputs["Strength"].default_value = 0.3
 scene.render.image_settings.file_format = "PNG"
 scene.render.filepath = os.path.abspath(args.output)
 os.makedirs(os.path.dirname(scene.render.filepath), exist_ok=True)
+obj.data.filepath = "//" + os.path.basename(vdb_path)
 bpy.ops.wm.save_as_mainfile(filepath=os.path.splitext(output_path)[0] + ".blend")
 bpy.ops.render.render(write_still=True)
