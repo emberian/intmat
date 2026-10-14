@@ -21,7 +21,14 @@ positional,step_cap,render_enabled=parse_run_args(ARGS)
 length(positional)<=3 || error("run accepts PROFILE OUTPUT BACKEND")
 configpath=length(positional)>0 ? abspath(positional[1]) : joinpath(@__DIR__,"..","..","experiments","materials","choir.toml")
 out=length(positional)>1 ? abspath(positional[2]) : joinpath(@__DIR__,"..","..","outputs","choir")
-config=TOML.parsefile(configpath);mkpath(out)
+# Refuse old recordings before parsing a recipe, loading a backend or allocating.
+# Empty precreated directories are accepted; existing files and symlinks are not.
+if ispath(out) || islink(out)
+    isdir(out) && !islink(out) && isempty(readdir(out)) ||
+        error("output must be a fresh or empty directory: $out")
+end
+config=TOML.parsefile(configpath)
+mkpath(out)
 backendname=length(positional)>2 ? positional[3] : "cpu"
 backend=if backendname=="metal"
     @eval using Metal

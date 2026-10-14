@@ -21,7 +21,7 @@ Use COMMAND --help for command details. Outputs default under the repository's o
     elseif command=="arena"
         println("arena [--profile TOML] [--output DIR] [--steps N | --continuous] [--resume CHECKPOINT] [--allow-source-change]\nDefault recipe: experiments/arena/active-2d.toml. Fresh output must be empty. Resuming requires an explicit checkpoint. Source migration requires --allow-source-change.")
     elseif command=="run"
-        println("run [PROFILE [OUTPUT [cpu|metal]]] [--steps N] [--no-render]\nDefault recipe: experiments/materials/choir.toml. --steps overrides recipe duration; --no-render skips optical export and rendering.")
+        println("run [PROFILE [OUTPUT [cpu|metal]]] [--steps N] [--no-render]\nDefault recipe: experiments/materials/choir.toml. Requires a fresh or empty output directory. --steps overrides recipe duration; --no-render skips optical export and rendering.")
     elseif command=="bigrun"
         println("bigrun PROFILE OUTPUT [--backend cpu|metal] [--steps N] [--dry-run]\nRequires a fresh output directory. --dry-run estimates stability and memory with a small grid at the requested spacing.")
     elseif command=="study"
