@@ -40,7 +40,7 @@ blend arbitrary latent arrays or advance a simulation. Recording can use the
 same boundary: `observe=(w,ps,k)->record_state(w,ps,joinpath(out,"step-$k");step=k)`.
 Each destination must be new; repeated runs need separate output roots.
 
-Run `julia --project examples/compositions.jl` for writing → neural → deposition
+Run `julia --project bin/interior.jl study compositions` for writing → neural → deposition
 → nutrient transport and acoustic → neural → deposition → transport. Each
 example includes a coupling ablation. Writing uses deposit feedback to change
 persistent neural state; acoustics uses pressure feedback. Those differences are

@@ -41,7 +41,7 @@ first step. `phase_optical_fields` derives density from a smooth positive-phase
 fraction and emission from actual interface gradients. Optical tanh changes only
 the observation, never the conserved composition.
 
-Run `julia --project examples/phase.jl` (set `INTERIOR_PHASE_OUTPUT` to a fresh
+Run `julia --project bin/interior.jl study phase` (set `INTERIOR_PHASE_OUTPUT` to a fresh
 directory when repeating). It records initial, demixed, and coarsened
 32³ states, metrics and a rendered view, rather than representing depth by
 stacking a 2D pattern. This model lacks hydrodynamics, elasticity, thermal noise,

@@ -5,7 +5,7 @@ The arena explorer displays the runtime's actual `latest.json`: central 2D slice
 Start the simulation, then serve it from a second terminal:
 
 ```sh
-julia --project=. examples/arena.jl --continuous
+julia --project=. bin/interior.jl arena --continuous
 python3 scripts/serve_arena.py
 ```
 

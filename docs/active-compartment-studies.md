@@ -52,7 +52,7 @@ below .00017 resource units; fuel-ledger residuals were zero in the reported
 measurement. The entire sweep took about 104 seconds of simulation execution,
 including first-run compilation overhead, plus snapshot preparation.
 
-`examples/arena/active-boundaries.toml` selects the strong settings for an
+`experiments/arena/active-boundaries.toml` selects the strong settings for an
 exploratory live arena. It uses the normal arena initializer: twelve larger
 modes, max wave number four, mean zero. That initializer differs from this matched
 study, so the profile is a candidate for exploration, not a reproduction of the

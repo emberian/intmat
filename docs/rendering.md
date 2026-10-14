@@ -6,12 +6,12 @@ Density and structural deposit increase spectrally colored absorption. Positive 
 
 ## Blender / Cycles
 
-`export_volume(fields, "examples/volume")` exports each three-dimensional field as Mitsuba VOL v3 and raw float32, with a `volume.json` manifest. The raw layout is x fastest (Fortran order), little endian; bounds and shape are explicit. On a little-endian Julia host, no extra Julia packages are needed.
+`export_volume(fields, "outputs/my-volume")` exports each three-dimensional field as Mitsuba VOL v3 and raw float32, with a `volume.json` manifest. The raw layout is x fastest (Fortran order), little endian; bounds and shape are explicit. On a little-endian Julia host, no extra Julia packages are needed.
 
 Run:
 
 ```sh
-/Applications/Blender.app/Contents/MacOS/Blender --background --python scripts/render_blender.py -- examples/volume examples/cycles.png --samples 64 --size 640
+/Applications/Blender.app/Contents/MacOS/Blender --background --python scripts/render_blender.py -- outputs/my-volume outputs/my-volume/cycles.png --samples 64 --size 640
 ```
 
 The script requires `numpy` and `openvdb` or `pyopenvdb` inside Blender's Python. Blender 5.0.1 on this workstation supplies both numpy and openvdb. Other installations may need a compatible OpenVDB Python build. The script reads actual exported grids, masks them, writes `specimen.vdb`, saves `scene.blend`, and renders absorption, scattering and activity emission with Cycles. No external generated imagery is used. Cycles' shader coefficients differ from the native preview; these are two artistic optical interpretations of the same simulation state, rather than a renderer equivalence test.

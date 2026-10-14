@@ -17,7 +17,7 @@ The index array must be a finite positive CPU strided array with nonempty dimens
 
 ## The first frozen specimen
 
-Run `julia --threads=4 --project=. examples/grin.jl` from the project. It advances a 64³ `ThermalWriter` for 140 steps of 0.01, then freezes temperature and deposit. The optical interpreter maps temperature to an exaggerated positive index perturbation, multiplied by a taper that reaches ambient index 1 near every box boundary. The background is a fixed luminous grid/check/circle chart; an orthographic camera observes it through the slab.
+Run `julia --threads=4 --project=. bin/interior.jl study grin` from the project. It advances a 64³ `ThermalWriter` for 140 steps of 0.01, then freezes temperature and deposit. The optical interpreter maps temperature to an exaggerated positive index perturbation, multiplied by a taper that reaches ambient index 1 near every box boundary. The background is a fixed luminous grid/check/circle chart; an orthographic camera observes it through the slab.
 
 This thermo-optic law is invented and deliberately strong so the bend is visible. It is not a calibrated glass or amber coefficient. The taper is consequential: there is no unimplemented Snell/Fresnel index jump at the bounding box. Supplying arbitrary nonambient values on a boundary does not add a valid physical interface. The `GradedIndex` constructor cannot know whether the caller intends an infinite medium or a physical specimen; the caller must choose a smooth ambient transition for this observer.
 

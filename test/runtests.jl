@@ -32,3 +32,5 @@ include("resources.jl")
 include("cooperative_boundaries.jl")
 include("metabolic_ecology.jl")
 include("metabolic_composition.jl")
+
+include("cli.jl")

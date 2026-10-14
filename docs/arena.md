@@ -9,9 +9,9 @@ physical extent are independent decisions; profile coefficients are not rescaled
 silently.
 
 ```sh
-julia --project examples/arena.jl --continuous --output outputs/arena/active-2d
-julia --project examples/arena.jl --profile examples/arena/active-3d.toml --steps 100 --output outputs/arena/active-3d
-julia --project examples/arena.jl --resume outputs/arena/active-2d/checkpoint-1.jls --continuous --output outputs/arena/active-2d
+julia --project bin/interior.jl arena --continuous --output outputs/arena/active-2d
+julia --project bin/interior.jl arena --profile experiments/arena/active-3d.toml --steps 100 --output outputs/arena/active-3d
+julia --project bin/interior.jl arena --resume outputs/arena/active-2d/checkpoint-1.jls --continuous --output outputs/arena/active-2d
 ```
 
 `latest.json` contains downsampled central field slices, a bounded organism sample,
@@ -80,7 +80,7 @@ Existing defaults preserve the original arena initialization exactly.
 An implementation migration requires an explicit CLI opt-in:
 
 ```sh
-julia --project examples/arena.jl --resume outputs/arena/active-2d/checkpoint-1.jls --allow-source-change --continuous --output outputs/arena/active-2d
+julia --project bin/interior.jl arena --resume outputs/arena/active-2d/checkpoint-1.jls --allow-source-change --continuous --output outputs/arena/active-2d
 ```
 
 This permits changed source hashes while keeping the checkpoint's saved fields,
@@ -95,7 +95,7 @@ constructor remains the default. Start the richer arena alongside an existing
 run in a fresh output directory:
 
 ```sh
-julia --project examples/arena.jl --profile examples/arena/metabolic-2d.toml --continuous --output outputs/arena/metabolic-2d
+julia --project bin/interior.jl arena --profile experiments/arena/metabolic-2d.toml --continuous --output outputs/arena/metabolic-2d
 ```
 
 The profile uses 256 founders on 64² cells with capacity 3,000. Two independent
@@ -129,7 +129,7 @@ mean over its cell and adjacent cells. Live scalar chemostat feed controls apply
 to the original model; metabolic per-species feed rates and finite budgets are
 set in the profile.
 
-`examples/arena/metabolic-3d.toml` is an optional 32³ prototype with physical
+`experiments/arena/metabolic-3d.toml` is an optional 32³ prototype with physical
 extent 16³ (cell spacing 0.5), 1,024 founders and capacity 12,000. It retains the
 2D profile's chemical rules, rates and finite budgets. A bounded CPU run on
 2026-10-14 completed 64 steps to time 6.400000095 in 13.30 seconds measured around
@@ -143,7 +143,7 @@ plumbing over a short interval; it does not establish long-term diversity or
 persistent compartments.
 
 ```sh
-julia --project examples/arena.jl --profile examples/arena/metabolic-3d.toml --steps 64 --output outputs/arena/my-metabolic-3d
+julia --project bin/interior.jl arena --profile experiments/arena/metabolic-3d.toml --steps 64 --output outputs/arena/my-metabolic-3d
 ```
 
 ## Develop beside a running arena

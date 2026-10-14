@@ -1,4 +1,4 @@
-include(joinpath(@__DIR__,"..","examples","verify.jl"))
+include(joinpath(@__DIR__,"..","studies","verify.jl"))
 
 @testset "composed scenes" begin
     for dimension in (2,3)

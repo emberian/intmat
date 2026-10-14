@@ -13,8 +13,8 @@ encounters next.
 
 ```sh
 julia --project=. -e 'using Pkg; Pkg.instantiate()'
-julia --project=. --threads=4 examples/arena.jl \
-  --profile examples/arena/metabolic-2d.toml --output outputs/my-arena --continuous
+julia --project=. --threads=4 bin/interior.jl arena \
+  --profile experiments/arena/metabolic-2d.toml --output outputs/my-arena --continuous
 python3 scripts/serve_arena.py outputs/my-arena --port 8781
 ```
 
@@ -45,15 +45,23 @@ causal order; `advance!` advances one process, `step!` advances the tuple.
 [Experiments](docs/composition.md) add declared ports, timestep checks and observations.
 Borrowed references do not confer ownership of a second inventory.
 
-| Process | Entry point |
+Commands below follow `julia --project=. bin/interior.jl`; `--help` lists them.
+
+| Process | Command |
 |---|---|
-| Excitable / recurrent material | `examples/run.jl`, `examples/neural.toml` |
-| Thermal writing / acoustics | `examples/writing.jl`, `examples/acoustic.jl` |
-| Dielectric branching | `examples/electrical.jl` |
-| Conserved phase separation | `examples/phase.jl`; [semi-implicit solver](docs/implicit-phase.md) |
-| Deformation / fracture | `examples/mechanics.jl` |
-| Evolving inhabitants | `examples/ecology.jl`, `examples/arena.jl` |
-| Graded-index light transport | `examples/grin.jl` |
+| Excitable / recurrent material | `run experiments/materials/neural.toml outputs/neural` |
+| Thermal writing / acoustics | `study writing`, `study acoustic` |
+| Dielectric branching | `study electrical` |
+| Conserved phase separation | `study phase`; [semi-implicit solver](docs/implicit-phase.md) |
+| Deformation / fracture | `study mechanics` |
+| Evolving inhabitants | `arena`, `study ecology` |
+| Graded-index light transport | `study grin` |
+| Budgeted larger runs | `bigrun experiments/bigruns/dense-128.toml outputs/dense-128` |
+
+`src/` is the engine; `bin/` is its command interface; `experiments/` holds recipes;
+`studies/` holds reproducible investigations; `scripts/` handles measurement,
+rendering and publishing. `outputs/` holds generated state and art. `examples/`
+retains compatibility forwards, not the primary interface.
 
 [Process atlas](docs/process-atlas.md) describes the larger toolbox. The supplied
 `interior-living-*` files preserve the original design context.

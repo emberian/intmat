@@ -58,6 +58,6 @@ rest lattice. Fine bonds can alias on coarse grids; `radius` is an optical sampl
 width. `export_bond_graph` writes current OBJ vertices and live `l` segments for
 a cylinder-based external renderer. Example graph JSON retains broken edges too.
 
-Run `julia --project examples/mechanics.jl`. The example saves eleven actual
+Run `julia --project bin/interior.jl study mechanics`. The example saves eleven actual
 simulation snapshots, graph geometry, volume fields and renders under
 `outputs/mechanics`, with energy and fracture counts in `run.json`.

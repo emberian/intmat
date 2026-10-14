@@ -4,16 +4,16 @@ The repository now has executable 128³ and 256³ profiles for the dense field s
 
 ```sh
 # Inspect timestep, step count, memory and raw storage without allocating the big grid.
-julia --project=gpu examples/bigrun.jl examples/bigruns/dense-128.toml outputs/bigruns/dense-128-study --dry-run
+julia --project=gpu bin/interior.jl bigrun experiments/bigruns/dense-128.toml outputs/bigruns/dense-128-study --dry-run
 
 # A bounded pilot, with an explicit fresh output directory.
-julia --project=gpu examples/bigrun.jl examples/bigruns/dense-128.toml outputs/bigruns/dense-128-pilot --steps 100
+julia --project=gpu bin/interior.jl bigrun experiments/bigruns/dense-128.toml outputs/bigruns/dense-128-pilot --steps 100
 
 # The complete requested physical interval, when ready.
-julia --project=gpu examples/bigrun.jl examples/bigruns/dense-128.toml outputs/bigruns/dense-128-study
+julia --project=gpu bin/interior.jl bigrun experiments/bigruns/dense-128.toml outputs/bigruns/dense-128-study
 
 # CPU override works for either profile.
-julia --project=. examples/bigrun.jl examples/bigruns/phase-128.toml outputs/bigruns/phase-cpu-pilot --backend cpu --steps 20
+julia --project=. bin/interior.jl bigrun experiments/bigruns/phase-128.toml outputs/bigruns/phase-cpu-pilot --backend cpu --steps 20
 ```
 
 Output directories must be new. The runner prints progress at fifteen-second wall intervals even when the next physical-time capture is distant. It streams frame metadata to JSONL and selected raw Float32 fields at the first completed step crossing each capture time. Initial, periodic, and final `record_state` observations retain effective rules and process state. These observations are inspection exports, not restart checkpoints. The runner never accumulates all captured volumes in memory. `--steps` caps work explicitly; omitted, it advances through the configured `t_end`, with at most one timestep of overshoot.
