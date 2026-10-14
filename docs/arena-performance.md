@@ -1,5 +1,22 @@
 # Arena throughput and accelerator placement
 
+## Current complete-step comparison
+
+Matched 2,400-agent CPU runs after workspace integration:
+
+| Path | Step | Allocation/step |
+|---|---:|---:|
+| Neural, default | 19.13 ms | 28.42 MB |
+| Neural, reusable workspace | 11.20 ms | 4.32 MB |
+| Composed metabolic arena | 12.74 ms | 5.10 MB |
+
+The workspace shares one synchronous sensing/controller frame between metabolism
+and ecology. Birth arrays grow once per step; dead contribution entries are
+pruned. These are bounded warm measurements, not sustained live-arena throughput.
+The metabolic row adds mechanisms and is not a matched speedup comparison.
+
+## Original allocation baseline
+
 Measured on the local Mac, Julia 1.12.4, one OpenBLAS thread, 64×64×1,
 seed 11, fixed founder populations, warmed functions, median of eight calls.
 Run `OPENBLAS_NUM_THREADS=1 julia --project scripts/profile_arena.jl results.json`.
@@ -13,17 +30,16 @@ short samples. Births are suppressed using zero initial storage and ample energy
 | 1000 | 17.06 ms | 37.19 MB | 15.49 ms | 2.14 ms | 0.40 ms | 31.88 ms |
 | 2400 | 49.77 ms | 90.40 MB | 22.87 ms | 7.01 ms | 0.40 ms | 84.00 ms |
 
-The current bottleneck is population-dependent CPU ecology and allocation, not
-64² FFT execution. Each sensor creates many temporary vectors and a set of nearby
-cells; each original controller slices two genome arrays and adds them into a
-third. A GPU FFT port alone therefore has a very small ceiling at this size.
+This baseline identified population-dependent CPU ecology and allocation, not
+64² FFT execution, as the bottleneck. Its sensors created temporary vectors and
+sets of nearby cells; its controllers sliced genome arrays and added copies. A GPU FFT port alone therefore has a very small ceiling at this size.
 `src/neural_batch.jl` supplies allocation-reduced CPU controller evaluation and a
 KernelAbstractions backend-native controller kernel. The backend entry point
 requires all arrays already on the same backend; it does not hide transfers.
 CPU tests compare both paths with the original matrix-vector expression.
 The existence of a kernel is not an end-to-end accelerator speed claim.
 
-At the measured baseline, 2400 cells sustain about 20 steps/s, or roughly
+The original measured baseline implies about 20 steps/s for 2400 cells, or roughly
 1.74 million steps/day before output and ecology population changes. At dt=.05,
 a million steps represent 50,000 model-time units and take about 14 hours.
 Use a bounded warm run on the actual chosen settings before committing a day:
