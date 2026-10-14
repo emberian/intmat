@@ -1,0 +1,1 @@
+{"backend":"Metal","comparison_grid":[12,12,12],"comparison_steps":21,"max_absolute_errors":{"vx":1.4901161e-8,"recovery":2.910383e-11,"nutrient":0.0,"pressure":3.7252903e-9,"vy":1.4901161e-8,"activity":3.7252903e-9,"vz":0.0,"deposit":0.0},"benchmark_grid":[64,64,64],"timed_steps":50,"cpu_seconds":2.230956416,"gpu_seconds":0.909479541,"speedup":2.453003410661659}

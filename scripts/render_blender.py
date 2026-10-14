@@ -1,0 +1,172 @@
+"""Blender background entry point: blender -b --python scripts/render_blender.py -- EXPORT_DIR OUTPUT.png [--samples 64] [--size 640] [--orbit 0.55].
+
+Consumes Julia export_volume's real scalar grids; requires Blender's openvdb
+(or pyopenvdb) and numpy. Converts to VDB, saves scene.blend, renders Cycles.
+"""
+import argparse
+import json
+import math
+import os
+import sys
+import numpy as np
+import bpy
+from mathutils import Vector
+try:
+    import openvdb as vdb
+except ImportError:
+    try:
+        import pyopenvdb as vdb
+    except ImportError as exc:
+        raise RuntimeError("This Blender Python needs openvdb or pyopenvdb for grid conversion.") from exc
+
+parser = argparse.ArgumentParser()
+parser.add_argument("directory")
+parser.add_argument("output")
+parser.add_argument("--samples", type=int, default=64)
+parser.add_argument("--size", type=int, default=640)
+parser.add_argument("--orbit", type=float, default=0.55)
+parser.add_argument("--elevation", type=float, default=0.4)
+parser.add_argument("--emission", type=float, default=1.2)
+parser.add_argument("--emission-field", default="activity", help="Actual exported scalar driving emission")
+parser.add_argument("--palette", choices=("amber-cyan", "amber-gold", "glass-ice", "acoustic-pearl"), default="amber-cyan")
+parser.add_argument("--absorption", type=float, default=1.5)
+parser.add_argument("--scattering", type=float, default=.28)
+parser.add_argument("--density-scale", type=float, default=1.0)
+parser.add_argument("--activity-threshold", type=float, default=0.0)
+parser.add_argument("--activity-power", type=float, default=1.0)
+parser.add_argument("--interfaces", action="store_true", help="Artistic activity/deposit gradient transfer; retains simulation data")
+parser.add_argument("--smooth", type=int, default=0, help="Optical three-tap smoothing passes before interface derivatives")
+args = parser.parse_args(sys.argv[sys.argv.index("--") + 1:])
+directory = os.path.abspath(args.directory)
+with open(os.path.join(directory, "volume.json")) as stream:
+    manifest = json.load(stream)
+shape = tuple(manifest["shape"])
+arrays = {}
+for name in manifest["fields"]:
+    arrays[name] = np.fromfile(os.path.join(directory, name + ".f32"), dtype="<f4").reshape(shape, order="F")
+if "density" not in arrays:
+    raise ValueError("Export a density field (carrier + mineral), plus optional activity, structure, mask.")
+optical_mapping = {"settings": vars(args).copy(), "gradient_scales": {}}
+if args.emission_field in arrays:
+    arrays["activity"] = arrays[args.emission_field].copy()
+elif args.emission_field != "activity":
+    raise ValueError(f"Emission source {args.emission_field!r} is absent from the export")
+mask = np.clip(arrays.get("mask", np.ones(shape)), 0, 1)
+if args.interfaces:
+    def edge_strength(field, name):
+        for _ in range(args.smooth):
+            for axis in range(3):
+                before = np.take(field, np.maximum(np.arange(shape[axis]) - 1, 0), axis=axis)
+                after = np.take(field, np.minimum(np.arange(shape[axis]) + 1, shape[axis] - 1), axis=axis)
+                field = .25 * before + .5 * field + .25 * after
+        gradient = np.gradient(field, *(2 / n for n in shape))
+        magnitude = np.sqrt(sum(component * component for component in gradient))
+        scale = max(float(np.quantile(magnitude[mask > .5], .98)), 1e-6)
+        optical_mapping["gradient_scales"][name] = scale
+        return np.minimum(magnitude / scale, 1.5) ** 1.4
+    if "activity" in arrays:
+        arrays["activity"] = edge_strength(arrays["activity"], "activity")
+    if "structure" in arrays:
+        arrays["density"] = .025 + .7 * edge_strength(arrays["structure"], "structure")
+arrays["density"] *= args.density_scale
+grids = []
+for name in ("density", "activity", "structure"):
+    if name in arrays:
+        grid = vdb.FloatGrid()
+        grid.name = name
+        values = np.maximum(arrays[name], 0)
+        if name == "activity":
+            values = np.maximum((values - args.activity_threshold) / max(1e-6, 1 - args.activity_threshold), 0) ** args.activity_power
+        grid.copyFromArray(np.ascontiguousarray(values * mask))
+        grids.append(grid)
+vdb_path = os.path.join(directory, "specimen.vdb")
+vdb.write(vdb_path, grids=grids)
+output_path = os.path.abspath(args.output)
+os.makedirs(os.path.dirname(output_path), exist_ok=True)
+for mapping_path in (os.path.join(directory, "optical-mapping.json"), output_path + ".optical.json"):
+    with open(mapping_path, "w") as stream:
+        json.dump(optical_mapping, stream, indent=2)
+
+bpy.ops.object.select_all(action="SELECT")
+bpy.ops.object.delete(use_global=False)
+bpy.ops.object.volume_import(filepath=vdb_path)
+obj = bpy.context.object
+obj.name = "Simulated specimen"
+obj.scale = tuple(2 / n for n in shape)
+obj.location = tuple(-1 + 1 / n for n in shape)
+palettes = {
+    "amber-cyan": ((.82,.38,.055,1), (1,.64,.26,1), (.025,.72,1,1)),
+    "amber-gold": ((.82,.38,.055,1), (1,.78,.45,1), (1,.56,.13,1)),
+    "glass-ice": ((.72,.88,.96,1), (.72,.86,1,1), (.56,.85,1,1)),
+    "acoustic-pearl": ((.74,.56,.26,1), (.95,.89,.73,1), (.67,.86,1,1)),
+}
+absorption_color, scattering_color, emission_color = palettes[args.palette]
+material = bpy.data.materials.new(args.palette + " optical interpretation")
+material.use_nodes = True
+nodes = material.node_tree.nodes
+nodes.clear()
+links = material.node_tree.links
+output = nodes.new("ShaderNodeOutputMaterial")
+def attribute(name):
+    node = nodes.new("ShaderNodeAttribute")
+    node.attribute_name = name
+    return node.outputs["Fac"]
+def multiply(value, scale):
+    node = nodes.new("ShaderNodeMath")
+    node.operation = "MULTIPLY"
+    links.new(value, node.inputs[0])
+    node.inputs[1].default_value = scale
+    return node.outputs[0]
+def add_shader(a, b):
+    node = nodes.new("ShaderNodeAddShader")
+    links.new(a, node.inputs[0]); links.new(b, node.inputs[1])
+    return node.outputs[0]
+absorb = nodes.new("ShaderNodeVolumeAbsorption")
+absorb.inputs["Color"].default_value = absorption_color
+links.new(multiply(attribute("density"), args.absorption), absorb.inputs["Density"])
+scatter = nodes.new("ShaderNodeVolumeScatter")
+scatter.inputs["Color"].default_value = scattering_color
+scatter.inputs["Anisotropy"].default_value = 0.25
+links.new(multiply(attribute("density"), args.scattering), scatter.inputs["Density"])
+emission = nodes.new("ShaderNodeEmission")
+emission.inputs["Color"].default_value = emission_color
+if "activity" in arrays:
+    links.new(multiply(attribute("activity"), args.emission), emission.inputs["Strength"])
+else:
+    emission.inputs["Strength"].default_value = 0
+links.new(add_shader(add_shader(absorb.outputs[0], scatter.outputs[0]), emission.outputs[0]), output.inputs["Volume"])
+obj.data.materials.append(material)
+
+def point_at(obj, target):
+    obj.rotation_euler = (Vector(target) - obj.location).to_track_quat("-Z", "Y").to_euler()
+bpy.ops.object.camera_add(location=(4.65 * math.cos(args.elevation) * math.sin(args.orbit), -4.65 * math.cos(args.elevation) * math.cos(args.orbit), 4.65 * math.sin(args.elevation)))
+camera = bpy.context.object
+point_at(camera, (0, 0, 0))
+camera.data.lens = 52
+bpy.context.scene.camera = camera
+for location, energy, size, color in [((-3, -2, 4), 650, 4, (1, .74, .4)), ((2, 2, 3), 950, 3, (.45, .72, 1))]:
+    bpy.ops.object.light_add(type="AREA", location=location)
+    light = bpy.context.object
+    light.data.energy = energy
+    light.data.shape = "DISK"
+    light.data.size = size
+    light.data.color = color
+    point_at(light, (0, 0, 0))
+scene = bpy.context.scene
+scene.render.engine = "CYCLES"
+scene.cycles.samples = args.samples
+scene.cycles.use_denoising = True
+scene.cycles.volume_step_rate = 0.25
+scene.cycles.volume_max_steps = 2048
+scene.render.resolution_x = args.size
+scene.render.resolution_y = args.size
+scene.render.resolution_percentage = 100
+scene.world.use_nodes = True
+background = scene.world.node_tree.nodes.get("Background")
+background.inputs["Color"].default_value = (0.008, 0.014, 0.025, 1)
+background.inputs["Strength"].default_value = 0.3
+scene.render.image_settings.file_format = "PNG"
+scene.render.filepath = os.path.abspath(args.output)
+os.makedirs(os.path.dirname(scene.render.filepath), exist_ok=True)
+bpy.ops.wm.save_as_mainfile(filepath=os.path.splitext(output_path)[0] + ".blend")
+bpy.ops.render.render(write_still=True)
