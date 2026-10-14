@@ -16,7 +16,7 @@
 
 ## Evidence and boundaries
 
-- The integrated suite passed 638 assertions before the long-run clock precision change; subsequent checks are recorded in the work session and test output.
+- The integrated suite passes 648 assertions after the Float64 long-run clock change, including recording fidelity and composition. Small Metal checks cover wave/acoustic source phase and pulsed thermal writing with the new host clock.
 - A completed 32³ phase run evolved to t=54: energy 8210.76 → 5549.54, phase standard deviation 0.06894 → 0.66403, relative conserved-mass drift 4.92e-5. No mean correction or clipping was applied.
 - The ecology example produced births, deaths, mutation and surviving lineages with explicit material and energy ledgers. These observations do not establish multicellularity or open-ended evolution.
 - The 96³ lace study improved spatial artifacts from the coarser recording. Larger optical image dimensions alone do not improve simulation resolution.

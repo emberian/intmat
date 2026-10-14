@@ -69,7 +69,7 @@ function advance!(w::World,p::AcousticField,dt::Real)
     p.timestep==0 || Float32(dt)==p.timestep || throw(ArgumentError("AcousticField requires a fixed timestep; rebuild state to change dt"))
     p.timestep=Float32(dt)
     launch!(w,acoustic_kernel!,p.scratch,p.pressure,p.previous,p.envelope,w.fields.activity,w.fields.deposit,
-        w.grid.spacing,w.grid.extent,w.time,Float32(dt),p.speed,p.material_feedback,p.damping,p.source_amplitude,
+        w.grid.spacing,w.grid.extent,Float32(p.frequency>0 ? mod(w.time,1.0/Float64(p.frequency)) : 0.0),Float32(dt),p.speed,p.material_feedback,p.damping,p.source_amplitude,
         p.frequency,p.source_radius,p.source_center,p.activity_gain,p.intensity_scale,p.envelope_time)
     p.previous,p.pressure,p.scratch=p.pressure,p.scratch,p.previous
     copyto!(w.fields.pressure,p.pressure)

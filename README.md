@@ -47,6 +47,16 @@ The run saves Float32 fields for every captured frame, full configuration and ma
 
 See [rendering](docs/rendering.md) for the optical model, exports, and Blender/OpenVDB requirements. Native and browser previews use straight-ray transport. Cycles supplies the separate volumetric rendering route; exporting density does not itself implement refractive-index gradients or polarization.
 
+## Larger experiments
+
+[Measured bigrun profiles](docs/bigruns.md) cover 128³ and 256³ with fixed physical extents, stable timesteps, streamed captures and explicit memory/disk budgets. Preview a budget before allocating the volume:
+
+```sh
+julia --project=gpu examples/bigrun.jl examples/bigruns/dense-128.toml outputs/bigruns/my-study --dry-run
+```
+
+Remove `--dry-run` for the full configured interval, or add `--steps 100` for a capped pilot. These dense profiles use analytic excitation; neural and particle workloads have separate costs.
+
 ## Compose processes
 
 ```julia

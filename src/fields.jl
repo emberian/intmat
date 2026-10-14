@@ -130,7 +130,7 @@ end
 function advance!(w::World,p::WaveForcing,dt::Real)
     check_dt(w,p,dt)
     f=w.fields
-    launch!(w,wave_kernel!,f.pressure,f.vx,f.vy,f.vz,f.activity,f.deposit,w.grid.spacing,w.grid.extent,w.time,Float32(dt),p)
+    launch!(w,wave_kernel!,f.pressure,f.vx,f.vy,f.vz,f.activity,f.deposit,w.grid.spacing,w.grid.extent,Float32(p.frequency!=0 ? mod(w.time,1.0/abs(Float64(p.frequency))) : 0.0),Float32(dt),p)
     w
 end
 

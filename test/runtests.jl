@@ -6,6 +6,7 @@ isfile(joinpath(@__DIR__,"scenes.jl")) && include("scenes.jl")
 
 include("neural.jl")
 include("audit.jl")
+include("clock.jl")
 
 include("recording.jl")
 include("acoustics.jl")

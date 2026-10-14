@@ -30,7 +30,7 @@ Interior.record_process_fields(p::RecordingTestProcess) = (memory=p.memory,rate=
         snapshot=joinpath(dir,"dense-5")
         m=JSON3.read(read(joinpath(snapshot,"state.json"),String))
         @test length(m.fields)==8
-        @test m.step==5 && Float32(m.time)==dense.time
+        @test m.step==5 && Float64(m.time)==dense.time
         @test collect(m.grid.coordinates.x)==[-1.5,-0.5,0.5,1.5]
         @test collect(m.grid.coordinates.z)==[0.0]
         @test m.processes[3].state.ids.values[1]==2^25+1

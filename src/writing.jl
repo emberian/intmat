@@ -73,9 +73,9 @@ end
 end
 function advance!(w::World,p::ThermalWriter,dt::Real)
     check_dt(w,p,dt)
-    t=w.time+Float32(dt)/2
+    t=w.time+Float64(dt)/2
     active=p.start<=t<p.stop
-    envelope=p.pulse_rate==0 ? 1f0 : .5f0*(1f0+cos(2f0*Float32(pi)*p.pulse_rate*t))
+    envelope=p.pulse_rate==0 ? 1f0 : Float32(.5*(1+cos(2pi*Float64(p.pulse_rate)*t)))
     power=active ? p.heat*envelope : 0f0
     launch!(w,write_heat_kernel!,p.scratch,p.temperature,p.dose,w.fields.nutrient,w.fields.deposit,w.grid.spacing,w.grid.extent,Float32(dt),beam_position(p,t),p.width,power,p.diffusion,p.cooling,p.threshold,p.conversion)
     copyto!(p.temperature,p.scratch)

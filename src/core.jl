@@ -16,7 +16,7 @@ mutable struct World{B,F,S}
     backend::B
     fields::F
     scratch::S
-    time::Float32
+    time::Float64
     seed::Int
 end
 function World(grid::Grid; seed=17, backend=CPU())
@@ -27,9 +27,12 @@ function World(grid::Grid; seed=17, backend=CPU())
         a
     end
     scratch = map(_->KernelAbstractions.zeros(backend,Float32,grid.size...),names)
-    World(grid,backend,NamedTuple{names}(arrays),NamedTuple{names}(scratch),0f0,Int(seed))
+    World(grid,backend,NamedTuple{names}(arrays),NamedTuple{names}(scratch),0.0,Int(seed))
 end
-"""Advance processes in tuple order. Time advances once, after all processes."""
+"""Advance processes in tuple order. Time advances once, after all processes.
+The Float64 clock accumulates the actual Float32 integration timestep, preserving
+long-run scheduling precision without changing field or kernel precision.
+"""
 function step!(w::World, processes::Tuple, dt::Real)
     isfinite(dt) && dt>0 || throw(ArgumentError("dt must be positive and finite"))
     isfinite(Float32(dt)) && Float32(dt)>0 || throw(ArgumentError("dt must remain positive and finite in Float32"))
@@ -39,7 +42,7 @@ function step!(w::World, processes::Tuple, dt::Real)
     for p in processes
         advance!(w,p,Float32(dt))
     end
-    w.time += Float32(dt)
+    w.time += Float64(Float32(dt))
     w
 end
 step!(w::World,p,dt::Real) = step!(w,(p,),dt)
