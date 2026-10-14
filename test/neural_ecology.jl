@@ -74,6 +74,10 @@ end
     fast=neural_fixed_controller(reshape(Float32[2.2,2.2,0],3,1);speed=1e5)
     fast.weights[h+1,end,1]=3; step!(w,fast,1)
     @test fast.positions[1,1]-2.2f0<=.45001f0
+    slow=neural_fixed_controller(reshape(Float32[2.2,2.2,0],3,1);speed=1e5,
+        medium=neural_test_medium(w.grid.size;permeability=.1))
+    slow.weights[h+1,end,1]=3; step!(w,slow,1)
+    @test slow.positions[1,1]-2.2f0<=.04501f0
 end
 @testset "NeuralEcology membrane deposition erosion and funded signaling" begin
     w=World(Grid(4,4;extent=(4,4,1))); med=neural_test_medium(w.grid.size)
@@ -105,11 +109,11 @@ end
         for _ in 1:steps; step!(w,p,dt); end
         med.signal_source[1,1,1],med.remodeling[1,1,1]
     end
-    @test emit(.2,1)≈emit(.1,2)
+    @test collect(emit(.2,1))≈collect(emit(.1,2))
     @test emit(.2,1;work_rate=0)==(0f0,0f0)
 end
 @testset "NeuralEcology actual membrane-to-permeability feedback" begin
-    w=World(Grid(6,6;extent=(6,6,1))); phase=PhaseSeparation(w)
+    w=World(Grid(6,6;extent=(6,6,1))); phase=ImplicitPhaseSeparation(w)
     fill!(phase.phi,0); fill!(phase.interface,0)
     medium=ActiveMedium(w,phase;interface_barrier=0,signal_opening=0)
     p=NeuralEcology(reshape(Float32[2.2,2.2,0],3,1);medium,energy=5,storage=2,
@@ -129,4 +133,82 @@ end
     p.weights[h+5,end,1]=-10; p.weights[h+6,end,1]=5
     step!(w,p,.2); medium_observe!(medium)
     @test w.fields.deposit[3,3,1]<before
+end
+@testset "NeuralEcology catabolism spends finite fuel into inert matter" begin
+    for fraction in (0f0,.5f0,1f0)
+        w=World(Grid(2,2)); p=NeuralEcology(zeros(Float32,3,1);storage=.4,energy=1,
+            catabolic_fraction=fraction,energy_yield=3,uptake_rate=1,basal_cost=0,
+            work_rate=0,secretion_rate=0,plasticity_rate=0,speed=0)
+        h=size(p.hidden,1); fill!(p.weights,0)
+        p.weights[h+4,end,1]=4; p.weights[h+8,end,1]=-4
+        initial_mass=ecology_mass(w,p); initial_energy=p.energy_input
+        nutrient=w.fields.nutrient[1,1,1]; structural=p.storage[1]
+        step!(w,p,.2); taken=nutrient-w.fields.nutrient[1,1,1]
+        @test p.storage[1]-structural≈taken*(1-fraction) atol=1e-7
+        @test p.waste≈taken*fraction atol=1e-7
+        @test p.energy_input-initial_energy≈taken*fraction*3 atol=1e-7
+        @test ecology_mass(w,p)≈initial_mass rtol=1e-6
+        @test abs(ecology_statistics(p).energy_error)<1e-6
+        fraction==0 && @test p.energy[1]==1
+    end
+    @test_throws ArgumentError NeuralEcology(zeros(Float32,3,1);catabolic_fraction=1.1)
+    @test_throws ArgumentError NeuralEcology(zeros(Float32,3,1);catabolic_fraction=-.1)
+    @test_throws ArgumentError NeuralEcology(zeros(Float32,3,1);energy_yield=-1)
+    w=World(Grid(4,4;extent=(4,4,1))); fill!(w.fields.nutrient,.4)
+    p=NeuralEcology(Float32[0 1 2 3;0 1 2 3;0 0 0 0];storage=1,energy=.8,
+        capacity=16,lifespan=1,uptake_rate=4,basal_cost=.15,work_rate=.1,
+        secretion_rate=0,speed=0,plasticity_rate=0,mutation=0)
+    h=size(p.hidden,1); fill!(p.weights,0)
+    p.weights[h+4,end,:].=4; p.weights[h+8,end,:].=4
+    initial_mass=ecology_mass(w,p); initial_energy=p.energy_input
+    for _ in 1:500; step!(w,p,.1); end
+    @test p.births>0 && p.deaths>4 && isempty(p.ids)
+    @test p.waste>0
+    @test p.energy_input-initial_energy≈p.energy_yield*p.waste rtol=1e-6
+    @test p.energy_input-initial_energy<=p.energy_yield*initial_mass+1e-5
+    @test ecology_mass(w,p)≈initial_mass rtol=1e-6
+    @test abs(ecology_statistics(p).energy_error)<1e-5
+end
+@testset "NeuralEcology proportional competition has no feeding-ID priority" begin
+    function compete(swapped=false;equal=false,erosion=false)
+        w=World(Grid(2,2)); fill!(w.fields.nutrient,0)
+        if erosion; w.fields.deposit[1,1,1]=.6
+        else; w.fields.nutrient[1,1,1]=.6; end
+        p=NeuralEcology(zeros(Float32,3,2);storage=0,energy=1,uptake_rate=erosion ? 0 : 4,
+            basal_cost=0,work_rate=erosion ? .1 : 0,secretion_rate=erosion ? 4 : 0,
+            speed=0,plasticity_rate=0,catabolic_fraction=.5)
+        h=size(p.hidden,1); fill!(p.weights,0); p.weights[h+8,end,:].=-5
+        p.weights[h+5,end,:].=-10 # suppress builds while testing contested erosion
+        channel=erosion ? h+6 : h+4
+        p.weights[channel,end,1]=atanh(-.5f0)
+        p.weights[channel,end,2]=equal ? atanh(-.5f0) : atanh(.5f0)
+        swapped && (p.ids=reverse(p.ids))
+        mass=ecology_mass(w,p); step!(w,p,1)
+        @test ecology_mass(w,p)≈mass rtol=1e-6
+        @test abs(ecology_statistics(p).energy_error)<1e-6
+        @test all(x->x>=0,w.fields.nutrient) && all(x->x>=0,w.fields.deposit)
+        if equal
+            @test p.storage[1]==p.storage[2]
+            return p.storage
+        end
+        low=findfirst(x->x<0,p.last_actions[erosion ? 6 : 4,:]); high=3-low
+        expected=erosion ? Float32[.15,.45] : Float32[.075,.225]
+        @test p.storage[[low,high]]≈expected atol=1e-7
+        p.storage[[low,high]],p.energy[[low,high]]
+    end
+    @test compete(false)==compete(true)
+    @test compete(false;erosion=true)==compete(true;erosion=true)
+    compete(;equal=true); compete(;equal=true,erosion=true)
+    # Fuel returned by an earlier ID's death is unavailable until the next step.
+    w=World(Grid(2,2)); fill!(w.fields.nutrient,0)
+    p=NeuralEcology(zeros(Float32,3,2);uptake_rate=4,storage=0,energy=1,
+        basal_cost=0,work_rate=0,secretion_rate=0,plasticity_rate=0,speed=0)
+    h=size(p.hidden,1); fill!(p.weights,0); p.weights[h+8,end,:].=-5
+    p.storage[1]=2; p.age[1]=p.lifespan
+    before=ecology_mass(w,p); step!(w,p,.1)
+    @test p.ids==[2] && p.storage==[0f0] && p.energy==[1f0]
+    @test w.fields.nutrient[1,1,1]==2
+    @test ecology_mass(w,p)≈before rtol=1e-6
+    step!(w,p,.1)
+    @test p.storage[1]>0 && p.energy[1]>1
 end

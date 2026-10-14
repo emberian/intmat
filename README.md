@@ -15,7 +15,7 @@ julia --project=. --threads=4 examples/arena.jl --profile examples/arena/active-
 python3 scripts/serve_arena.py outputs/arena/active-2d --port 8780
 ```
 
-Open <http://127.0.0.1:8780/arena.html>. The live inspector exposes actual fields, identities, inherited genome signatures, plastic memory, actions and budgets. Pause, resume and checkpoint controls act on the local runtime. Checkpoints occupy a bounded ring; a run directory has an owner marker and a single writer. Restart instructions and limitations are in [the arena guide](docs/arena.md). A published replay will be explicitly recorded playback, since GitHub Pages does not execute Julia.
+Open <http://127.0.0.1:8780/arena.html>. The live inspector exposes actual fields, identities, inherited genome signatures, plastic memory, actions and budgets. Pause, resume and checkpoint controls act on the local runtime. Checkpoints occupy a bounded ring; a run directory has an owner marker and a single writer. Restart instructions and limitations are in [the arena guide](docs/arena.md). The [published arena replay](https://emberian.github.io/intmat/arena/arena.html) contains 25 actual captured states. It is recorded playback; GitHub Pages does not execute Julia.
 
 [The neural ecology](docs/neural-ecology.md), [active medium](docs/compartments.md), [semi-implicit solver](docs/implicit-phase.md), and [matched experiments](docs/arena-experiments.md) describe the laws and observations. Sustained turnover, extinction and loss of lineage diversity are outcomes to study; this system does not establish open-ended evolution.
 
@@ -40,7 +40,7 @@ Run Julia examples with `julia --project=. --threads=4 ...`. Individual examples
 
 The [composition guide](docs/composition.md) introduces named `Experiment` stages, explicit field publishers, fixed-step observation-independent scheduling, `OpticalMap`, and material diagnostics including carrier-held inventory. [Recording](docs/recording.md) preserves owned neural, particle and geometric state as well as world fields. Records are view-independent samples with source hashes, not a promised restart format.
 
-The [Fraser research](docs/fraser-experiments.md) identifies The MOld, links original posts, and distinguishes author descriptions from observations of the downloaded video. Its compartmental structures suggest an especially useful next synthesis: active boundaries that alter permeability and optics.
+The [Fraser research](docs/fraser-experiments.md) identifies The MOld, links original posts, and distinguishes author descriptions from observations of the downloaded video. Its compartmental structures inspired the active arena above; persistent compartment maintenance and evolving collective organization remain research directions.
 
 ## Run a specimen
 

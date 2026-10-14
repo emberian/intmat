@@ -82,6 +82,7 @@ function experiment_arena(;seed=11,dims=(32,32,1),condition="full",capacity=240,
 end
 function arena_measure(a,phase,m,c,flux)
     s=ecology_statistics(c); morphology=morphology_metrics(phase.phi)
+    negative=morphology_metrics(-phase.phi)
     finite=all(x->all(isfinite,x),(phase.phi,m.signal,m.permeability,c.weights,c.plastic_marks,a.world.fields.nutrient))
     mass=Interior.arena_inventory(a.world,a.processes)
     merge((time=a.world.time,finite=finite,material_error=mass-a.initial_mass-flux.supplied+flux.removed,
@@ -90,6 +91,8 @@ function arena_measure(a,phase,m,c,flux)
         founder_effective_count=founder_effective_count(c.lineages),
         genotype_variance=controller_diversity(c.weights),plastic_rms=isempty(c.plastic_marks) ? 0.0 : sqrt(sum(abs2,c.plastic_marks)/length(c.plastic_marks)),
         signal_variance=var(vec(m.signal)),signal_max=maximum(m.signal),
+        negative_occupancy=negative.occupancy,negative_components=negative.components,
+        negative_largest_component_share=negative.largest_component_share,negative_component_size_cv=negative.component_size_cv,
         inhabited_cells=length(unique(Interior._neural_cell(c.positions[:,i],a.world.grid.size) for i in eachindex(c.ids)))),s,morphology)
 end
 function run_comparison(;seed,dims,condition,steps=800,capture_every=40,kwargs...)
@@ -108,12 +111,12 @@ function main()
     out=length(ARGS)>0 ? ARGS[1] : "outputs/arena-experiments-fairshare"; mkpath(out)
     steps=parse(Int,get(ENV,"ARENA_EXPERIMENT_STEPS","1600")); results=Any[]
     for seed in (11,29), condition in ("full","no_feedback","no_plasticity","no_mutation")
-        r=run_comparison(;seed,dims=(32,32,1),condition,steps,dt=.1,lifespan=50f0,uptake_rate=.7f0)
+        r=run_comparison(;seed,dims=(32,32,1),condition,steps,dt=.1,lifespan=80f0,uptake_rate=.7f0,source_rate=.023,capacity=600)
         push!(results,r)
         open(joinpath(out,"seed-$seed-$condition.json"),"w") do io; JSON3.write(io,r); end
         println((seed=seed,condition=condition,summary=r.summary,wall_seconds=r.wall_seconds)); flush(stdout)
     end
-    r=run_comparison(;seed=11,dims=(16,16,16),condition="full",steps,dt=.1,lifespan=50f0,uptake_rate=.7f0,capacity=160,founders=24)
+    r=run_comparison(;seed=11,dims=(16,16,16),condition="full",steps,dt=.1,lifespan=80f0,uptake_rate=.7f0,source_rate=.023,capacity=600,founders=24)
     push!(results,r)
     open(joinpath(out,"small-3d.json"),"w") do io; JSON3.write(io,r); end
     open(joinpath(out,"summary.json"),"w") do io; JSON3.write(io,results); end

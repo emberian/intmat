@@ -68,3 +68,31 @@ end
     @test Interior.arena_sources()==original
     @test edited!=original
 end
+
+@testset "Arena initialization contract and explicit source migration" begin
+    base=Dict{String,Any}("grid"=>Dict("shape"=>[8,8,1],"extent"=>[8,8,1]),"ecology"=>Dict("population"=>2))
+    a=build_arena(base)
+    explicit=merge(base,Dict("initial_mode_count"=>12,"initial_amplitude"=>0.12f0,"phase"=>Dict("mean"=>0)))
+    b=build_arena(explicit)
+    @test a.processes[4].phi==b.processes[4].phi
+    @test a.processes[2].positions==b.processes[2].positions
+    shifted=build_arena(merge(base,Dict("phase"=>Dict("mean"=>-0.12))))
+    @test sum(Float64,shifted.processes[4].phi)/length(shifted.processes[4].phi)≈-0.12 atol=2e-8
+    flat=build_arena(merge(base,Dict("initial_mode_count"=>24,"initial_amplitude"=>0,"phase"=>Dict("mean"=>0.2))))
+    @test all(==(0.2f0),flat.processes[4].phi)
+    @test_throws ArgumentError build_arena(merge(base,Dict("initial_mode_count"=>0)))
+    @test_throws ArgumentError build_arena(merge(base,Dict("initial_amplitude"=>Inf)))
+    mktempdir() do dir
+        path=joinpath(dir,"migration.jls");checkpoint!(a,path)
+        e=open(Interior.Serialization.deserialize,path)
+        hashes=copy(e.sources);hashes["arena.jl"]="older constructor implementation"
+        open(io->Interior.Serialization.serialize(io,merge(e,(sources=hashes,))),path,"w")
+        @test_throws ArgumentError restore_arena(path)
+        c=restore_arena(path;allow_source_change=true)
+        @test c.world.fields==a.world.fields
+        @test c.processes[2].weights==a.processes[2].weights
+        arena_step!(a);arena_step!(c)
+        @test c.world.fields==a.world.fields
+        @test c.processes[4].phi==a.processes[4].phi
+    end
+end

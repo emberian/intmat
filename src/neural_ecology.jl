@@ -3,8 +3,9 @@
 Coordinates are periodic grid-cell coordinates. `weights` are the genotype;
 `plastic_marks` and recurrent `hidden` state are reset at birth. Nine outputs are
 movement xyz, uptake, membrane deposition, membrane erosion, signaling, division,
-and signed phase remodeling. All active outputs share a paid work budget. Uptake
-supplies an explicit abstract chemical-work input while retaining its matter.
+and signed phase remodeling. All active outputs share a paid work budget. A configurable uptake fraction
+is catabolized to inert waste and supplies abstract chemical work; the remainder
+is retained as structural storage. Recycling spent fuel cannot supply fresh work.
 Attach an `ActiveMedium` through `medium` for phase, permeability and signal cues.
 """
 mutable struct NeuralEcology
@@ -50,6 +51,8 @@ mutable struct NeuralEcology
     plasticity_decay::Float32
     signal_rate::Float32
     remodeling_rate::Float32
+    catabolic_fraction::Float32
+    energy_yield::Float32
     neighbor_radius::Int
 end
 const NEURAL_ECOLOGY_SENSORS = 32
@@ -58,12 +61,12 @@ function NeuralEcology(positions::AbstractMatrix; medium=nothing, seed=17, capac
         work_rate=.05f0, secretion_rate=.025f0, birth_material=.7f0, birth_energy=.3f0,
         mutation=.08f0, lifespan=80f0, speed=.3f0, response_time=1f0,
         plasticity_rate=.03f0, plasticity_decay=.02f0, signal_rate=.1f0,
-        remodeling_rate=.03f0, neighbor_radius=2)
+        remodeling_rate=.03f0, catabolic_fraction=.5f0, energy_yield=2f0, neighbor_radius=2)
     n=size(positions,2); h=Int(hidden)
     size(positions,1)==3 || throw(DimensionMismatch("positions require three rows"))
     0<=n<=capacity && h>=2 && neighbor_radius>=1 || throw(ArgumentError("invalid capacity, hidden size or neighbor radius"))
-    rates=Float32.((uptake_rate,basal_cost,work_rate,secretion_rate,birth_material,birth_energy,mutation,lifespan,speed,response_time,plasticity_rate,plasticity_decay,signal_rate,remodeling_rate))
-    all(x->isfinite(x)&&x>=0,rates) && birth_material>0 && birth_energy>0 && lifespan>0 && response_time>0 && all(isfinite,positions) && all(x->isfinite(x)&&x>=0,(storage,energy)) || throw(ArgumentError("invalid neural ecology parameters"))
+    rates=Float32.((uptake_rate,basal_cost,work_rate,secretion_rate,birth_material,birth_energy,mutation,lifespan,speed,response_time,plasticity_rate,plasticity_decay,signal_rate,remodeling_rate,catabolic_fraction,energy_yield))
+    all(x->isfinite(x)&&x>=0,rates) && 0<=catabolic_fraction<=1 && birth_material>0 && birth_energy>0 && lifespan>0 && response_time>0 && all(isfinite,positions) && all(x->isfinite(x)&&x>=0,(storage,energy)) || throw(ArgumentError("invalid neural ecology parameters"))
     rng=MersenneTwister(seed)
     weights=.18f0.*randn(rng,Float32,h+9,h+NEURAL_ECOLOGY_SENSORS,n)
     # Evolvable founder priors encourage feeding, turnover and directional food sensing.
@@ -107,8 +110,8 @@ function validate(w::World,p::NeuralEcology)
     n<=p.capacity && p.neighbor_radius>=1 && length(unique(p.ids))==n && all(<(p.next_id),p.ids) || throw(ArgumentError("invalid population IDs/capacity"))
     all(v->length(v)==n,(p.parents,p.lineages,p.generations,p.storage,p.energy,p.age)) || throw(DimensionMismatch("neural ecology vectors"))
     all(a->all(isfinite,a),(p.positions,p.hidden,p.weights,p.plastic_marks,p.last_actions)) && all(a->all(x->isfinite(x)&&x>=0,a),(p.storage,p.energy,p.age)) || throw(ArgumentError("invalid neural state"))
-    rates=(p.uptake_rate,p.basal_cost,p.work_rate,p.secretion_rate,p.birth_material,p.birth_energy,p.mutation,p.lifespan,p.speed,p.response_time,p.plasticity_rate,p.plasticity_decay,p.signal_rate,p.remodeling_rate)
-    all(x->isfinite(x)&&x>=0,rates) && p.birth_material>0 && p.birth_energy>0 && p.lifespan>0 && p.response_time>0 || throw(ArgumentError("invalid neural rates"))
+    rates=(p.uptake_rate,p.basal_cost,p.work_rate,p.secretion_rate,p.birth_material,p.birth_energy,p.mutation,p.lifespan,p.speed,p.response_time,p.plasticity_rate,p.plasticity_decay,p.signal_rate,p.remodeling_rate,p.catabolic_fraction,p.energy_yield)
+    all(x->isfinite(x)&&x>=0,rates) && 0<=p.catabolic_fraction<=1 && p.birth_material>0 && p.birth_energy>0 && p.lifespan>0 && p.response_time>0 || throw(ArgumentError("invalid neural rates"))
     all(a->a isa Array{Float32,3}&&size(a)==w.grid.size,(w.fields.nutrient,w.fields.deposit)) || throw(ArgumentError("NeuralEcology requires matching CPU fields"))
     if p.medium!==nothing
         all(a->size(a)==w.grid.size,(_neural_medium_field(p,:phi),_neural_medium_field(p,:interface),p.medium.permeability,p.medium.signal,p.medium.signal_source,p.medium.remodeling)) || throw(DimensionMismatch("medium grids"))
@@ -166,6 +169,35 @@ function _neural_input(w,p,i,c,bins,snapshot)
     push!(senses,_neural_squash(count)); append!(senses,displacement./Float32(max(count,1)*r)); push!(senses,1f0)
     vcat(p.hidden[:,i],senses)
 end
+# Proportional competition for pre-stage stock. Round each scarce share downward
+# so no residual correction can favor a particular ID or overdraw the resource.
+function _neural_allocate!(field,bins,requests)
+    allocated=zeros(Float32,length(requests))
+    for (c,occupants) in bins
+        total=sum(i->Float64(requests[i]),occupants;init=0.)
+        available=Float64(field[c]); total==0 && continue
+        spent=0.
+        for i in occupants
+            exact=total<=available ? Float64(requests[i]) : available*(Float64(requests[i])/total)
+            amount=Float32(exact)
+            Float64(amount)>exact && (amount=prevfloat(amount))
+            allocated[i]=amount; spent+=Float64(amount)
+        end
+        field[c]=Float32(max(0.,available-spent))
+    end
+    allocated
+end
+function _neural_budget(p,actions,delta,energy,active_dims)
+    gates=(actions.+1f0)./2
+    basal=min(energy,delta*p.basal_cost)
+    remaining=energy-basal
+    movement=sum(abs,actions[1:active_dims])/active_dims
+    signaling=gates[7]; remodeling=abs(actions[9]); constructing=gates[5]+gates[6]
+    demand=movement+signaling+remodeling+constructing
+    request=delta*p.work_rate*demand; paid=min(remaining,request)
+    funded=request>0 ? paid/request : 0f0
+    (;gates,basal,movement,signaling,remodeling,constructing,demand,paid,funded)
+end
 function ecology_step!(w::World,p::NeuralEcology,dt::Real)
     validate(w,p); isfinite(dt)&&0<=dt<=1 || throw(ArgumentError("ecology dt must lie in [0,1]")); dt==0 && return p
     reorder_ecology!(p,sortperm(p.ids)); delta=Float32(dt); dims=w.grid.size; n=length(p.ids); h=size(p.hidden,1)
@@ -175,26 +207,38 @@ function ecology_step!(w::World,p::NeuralEcology,dt::Real)
     for i in 1:n; push!(get!(bins,cells[i],Int[]),i); end
     # Observe all environmental cues before exchange: no sensor-order artifacts.
     inputs=[_neural_input(w,p,i,cells[i],bins,snapshot) for i in 1:n]
+    outputs=[tanh.((p.weights[:,:,i].+p.plastic_marks[:,:,i])*inputs[i]) for i in 1:n]
+    uptake_requests=Float32[delta*p.uptake_rate*((outputs[i][h+4]+1f0)/2)*_neural_medium(p,:permeability,cells[i],1f0) for i in 1:n]
+    uptakes=_neural_allocate!(w.fields.nutrient,bins,uptake_requests)
+    active_dims=dims[3]==1 ? 2 : 3
+    budgets=[_neural_budget(p,outputs[i][h+1:h+9],delta,
+        p.energy[i]+(uptakes[i]*p.catabolic_fraction)*p.energy_yield,active_dims) for i in 1:n]
+    erosion_requests=Float32[delta*p.secretion_rate*budgets[i].gates[6]*budgets[i].funded for i in 1:n]
+    erosions=_neural_allocate!(w.fields.deposit,bins,erosion_requests)
     children=Int[]; dead=Int[]
     for i in 1:n
-        c=cells[i]; input=inputs[i]; out=tanh.((p.weights[:,:,i].+p.plastic_marks[:,:,i])*input)
+        c=cells[i]; input=inputs[i]; out=outputs[i]; budget=budgets[i]
         alpha=Float32(-expm1(-Float64(delta)/p.response_time)); p.hidden[:,i].+=(out[1:h].-p.hidden[:,i]).*alpha
-        actions=out[h+1:h+9]; p.last_actions[:,i].=actions; gates=(actions.+1f0)./2
-        uptake=min(w.fields.nutrient[c],delta*p.uptake_rate*gates[4]*_neural_medium(p,:permeability,c,1f0))
-        w.fields.nutrient[c]-=uptake; p.storage[i]+=uptake; p.energy[i]+=uptake; p.energy_input+=uptake
-        basal=min(p.energy[i],delta*p.basal_cost); p.energy[i]-=basal; p.heat+=basal
-        active_dims=dims[3]==1 ? 2 : 3
-        movement=sum(abs,actions[1:active_dims])/active_dims; signaling=gates[7]; remodeling=abs(actions[9]); constructing=gates[5]+gates[6]
-        demand=movement+signaling+remodeling+constructing
-        request=delta*p.work_rate*demand; paid=min(p.energy[i],request); p.energy[i]-=paid; p.heat+=paid
-        funded=request>0 ? paid/request : 0f0
+        actions=out[h+1:h+9]; p.last_actions[:,i].=actions; gates=budget.gates
+        uptake=uptakes[i]
+        # Catabolism spends finite chemical fuel into inert, accounted waste.
+        # Structural recycling can recover matter but cannot recover spent work.
+        catabolized=uptake*p.catabolic_fraction
+        assimilated=uptake-catabolized
+        chemical_work=catabolized*p.energy_yield
+        p.storage[i]+=assimilated; p.waste+=catabolized
+        p.energy[i]+=chemical_work; p.energy_input+=chemical_work
+        basal=budget.basal; paid=budget.paid; funded=budget.funded
+        movement=budget.movement; signaling=budget.signaling; remodeling=budget.remodeling
+        constructing=budget.constructing; demand=budget.demand
+        p.energy[i]-=basal; p.heat+=basal; p.energy[i]-=paid; p.heat+=paid
         if demand>0
             p.movement_work+=paid*movement/demand; p.signal_work+=paid*signaling/demand; p.remodeling_work+=paid*(remodeling+constructing)/demand
         end
         deposit=min(p.storage[i],delta*p.secretion_rate*gates[5]*funded)
         p.storage[i]-=deposit; w.fields.deposit[c]+=deposit; p.deposited+=deposit
-        erode=min(w.fields.deposit[c],delta*p.secretion_rate*gates[6]*funded)
-        w.fields.deposit[c]-=erode; p.storage[i]+=erode; p.eroded+=erode
+        erode=erosions[i]
+        p.storage[i]+=erode; p.eroded+=erode
         if p.medium!==nothing
             p.medium.signal_source[c]+=delta*p.signal_rate*signaling*funded
             p.medium.remodeling[c]+=delta*p.remodeling_rate*actions[9]*funded
@@ -208,10 +252,12 @@ function ecology_step!(w::World,p::NeuralEcology,dt::Real)
         for d in 1:3
             dims[d]==1 && continue
             drift=getproperty(w.fields,(:vx,:vy,:vz)[d])[c]
-            p.positions[d,i]=mod(p.positions[d,i]+clamp(delta*(p.speed*actions[d]*funded*permeability+drift)/w.grid.spacing[d],-.45f0,.45f0),Float32(dims[d]))
+            active=clamp(delta*p.speed*actions[d]*funded/w.grid.spacing[d],-.45f0,.45f0)
+            flow=delta*drift/w.grid.spacing[d]
+            p.positions[d,i]=mod(p.positions[d,i]+clamp(active*permeability+flow,-.45f0,.45f0),Float32(dims[d]))
         end
         # Reward-modulated bounded local Hebbian marks; genotype is untouched.
-        reward=clamp(uptake-basal-paid,-1f0,1f0)
+        reward=clamp(chemical_work-basal-paid,-1f0,1f0)
         decay=exp(-delta*p.plasticity_decay)
         p.plastic_marks[:,:,i].=clamp.(decay.*p.plastic_marks[:,:,i].+delta*p.plasticity_rate*reward.*(out*input'),-.5f0,.5f0)
         p.age[i]+=delta

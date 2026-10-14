@@ -277,15 +277,20 @@ function build_arena(config::AbstractDict=Dict{String,Any}())
     rng=MersenneTwister(seed+31)
     # Low modes create many independently interacting interfaces immediately.
     maxwave=Int(get(cfg,"initial_modes",max(2,round(Int,dims[1]/8))))
+    modecount=Int(get(cfg,"initial_mode_count",12))
+    initial_amplitude=Float32(get(cfg,"initial_amplitude",0.12f0))
+    initial_mean=Float32(get(phasecfg,:mean,0f0))
+    maxwave>=0 && modecount>0 && isfinite(initial_amplitude) && initial_amplitude>=0 && isfinite(initial_mean) || throw(ArgumentError("invalid arena initialization settings"))
     fill!(phase.phi,0)
-    for _ in 1:12
+    for _ in 1:modecount
         wave=ntuple(d->dims[d]==1 ? 0 : rand(rng,-maxwave:maxwave),3)
-        amplitude=0.12f0*randn(rng,Float32); offset=2pi*rand(rng)
+        amplitude=initial_amplitude*randn(rng,Float32); offset=2pi*rand(rng)
         for I in CartesianIndices(phase.phi)
             phase.phi[I]+=amplitude*cos(2pi*sum(wave[d]*(I[d]-1)/dims[d] for d in 1:3)+offset)
         end
     end
     phase.phi .-= sum(phase.phi)/length(phase.phi)
+    initial_mean==0 || (phase.phi .+= initial_mean)
     phase_observe!(w,phase)
     mediumcfg=Dict{Symbol,Any}(Symbol(k)=>v for (k,v) in get(cfg,"medium",Dict()))
     medium=ActiveMedium(w,phase;mediumcfg...)

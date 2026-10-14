@@ -20,7 +20,9 @@ observation; `checkpoint-N.jls` stores all future-determining state, including
 controller weights, plastic marks, organism IDs, deterministic mutation counters,
 full 3D fields, coupling aliases, simulation clock and source ledgers. Checkpoints
 use Julia Serialization and are trusted local files, requiring the exact Julia
-version and source hashes by default. They are not a portable archival format.
+version and loaded-module source hashes by default. Fingerprints are captured when
+Interior loads, so editing files while a process runs cannot relabel its compiled
+implementation. They are not a portable archival format.
 `restore_arena(path; allow_source_change=true)` explicitly permits an implementation
 migration, without promising identical subsequent evolution. `checkpoint.json`
 names the latest completed slot. Ctrl-C and the stop command save before exit.
@@ -66,3 +68,22 @@ deposit and organism storage/waste with initial inventory plus supply minus
 outflow. Chemical work input and dissipated heat are a separate ecology ledger.
 Founder storage is included in initial inventory. No automatic reseeding occurs
 on extinction: a fresh run is a distinct experiment with its own seed and ledger.
+
+The arena constructor seeds low Fourier modes rather than the phase process's
+standalone white noise initializer. `initial_modes` is the maximum absolute wave
+number, `initial_mode_count` defaults to 12, and `initial_amplitude` defaults to
+0.12 (the standard deviation of each mode's coefficient, not total field RMS).
+The constructor recenters that field to `[phase].mean`, default zero; `[phase].noise`
+pertains to the standalone constructor and is superseded by the arena mode field.
+Existing defaults preserve the original arena initialization exactly.
+
+An implementation migration requires an explicit CLI opt-in:
+
+```sh
+julia --project examples/arena.jl --resume outputs/arena/active-2d/checkpoint-1.jls --allow-source-change --continuous --output outputs/arena/active-2d
+```
+
+This permits changed source hashes while keeping the checkpoint's saved fields,
+controllers, coupling aliases, clocks and ledgers. The profile's initializer is
+not rerun during restoration. Source validation remains strict without this flag;
+Julia-version and checkpoint-schema checks remain strict with it.

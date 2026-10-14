@@ -16,7 +16,7 @@
 
 ## Evidence and boundaries
 
-- The integrated suite passes 648 assertions after the Float64 long-run clock change, including recording fidelity and composition. Small Metal checks cover wave/acoustic source phase and pulsed thermal writing with the new host clock.
+- The integrated suite passes 1,049 assertions (1,038 in the integrated run, plus 11 additional initializer/migration checks) after the active-arena convergence, including recording fidelity and composition. Small Metal checks cover wave/acoustic source phase and pulsed thermal writing with the new host clock.
 - A completed 32³ phase run evolved to t=54: energy 8210.76 → 5549.54, phase standard deviation 0.06894 → 0.66403, relative conserved-mass drift 4.92e-5. No mean correction or clipping was applied.
 - The ecology example produced births, deaths, mutation and surviving lineages with explicit material and energy ledgers. These observations do not establish multicellularity or open-ended evolution.
 - The 96³ lace study improved spatial artifacts from the coarser recording. Larger optical image dimensions alone do not improve simulation resolution.
@@ -26,17 +26,23 @@
 
 ## Next substantial work
 
-1. **Active compartments:** combine phase boundaries, neural activity, permeability, resource-funded populations and optical interfaces in one 3D specimen. Establish explicit conservative surface/volume exchanges and compare isolated versus coupled runs.
-2. **Long phase runs:** add a semi-implicit/spectral or equivalent tested integrator. With fixed physical extent/interface parameters, explicit phase timestep scales roughly as h⁴; increasing cubic resolution therefore grows work roughly as n⁷. Preserve the material law when optimizing it.
-3. **More neural constitutions:** add local plasticity separately from inheritance; behavioral descriptors and matched perturbation sweeps; investigate organism-scale structure without programming it into rendering.
-4. **GPU carriers:** compact-support neighborhoods and conservative particle-grid exchange; then persistent evolving bonds and 3D ecology. Keep exact identity and material ledgers through birth/death/reordering.
+1. **Persistent active compartments:** stronger funded feedback changes phase topology in a matched five-run study, but coarsening continues. Test more seeds, longer lifetimes, local interfacial agents, explicit conserved surface/volume exchange, and heritable boundary maintenance. Count connected regions in both phase signs.
+2. **Ecological differentiation:** multiple resources, heritable metabolic tradeoffs and spatial niches; compare diversity and extinction against simpler controls. Current long runs sustain turnover but lose founder lineages. Mutation within surviving lineages remains substantial.
+3. **Evolving organization:** conservative persistent bonds, division and organism-scale behavioral descriptors; investigate cooperative transport and collective structures without imposing their appearance in rendering.
+4. **GPU carriers and 3D:** port conservative fair allocation, local neighborhoods and mutable populations while retaining exact identities and ledgers. The continuous neural arena currently runs on CPU; small 3D tests run, but are not evidence of resolution-independent chemistry.
 5. **Material deformation:** couple mechanics to transport, damage, growth and healing through documented work/material exchanges. The present spring graph is a carrier, not a solved continuum gel.
 6. **Optics as a participant:** absorbed light as a thermal/chemical input; interface refraction alongside graded-index transport; specialized wave/polarization optics where a specimen warrants it.
-7. **Sustained experiments:** tested restart loader, interrupted-run recovery, multi-seed ensembles, compressed/chunked state output and temporal morphology metrics. Make expensive runs recoverable before routinely running overnight.
-8. **Photographic series:** track the same evolving specimen across time, material mappings and camera views. Export a small curated public subset; retain raw state and scene provenance locally.
+7. **Long studies:** use the tested bounded checkpoint ring, source-aware restore and single-writer ownership for multi-seed ensembles. Add chunked trajectory output, lineage sampling, and physical cell-volume normalization before comparing resolutions.
+8. **Photographic series:** use the semi-implicit solver for longer 3D boundary dynamics and photograph actual evolving interfaces/inclusions across time. Keep simulation resolution distinct from optical image dimensions.
 
 See `docs/process-atlas.md` for the broader artistic/research map, `docs/fraser-experiments.md` for primary-source research, and `docs/bigruns.md` for measured scaling and concrete run profiles. These next directions remain part of the project, rather than being reduced to the initial specimens.
 
 ## Active convergence: compartments and continuous arena
 
-The current swarm is implementing a conservative semi-implicit phase solver; active boundaries with permeability, signals and chemical-potential remodeling; inherited recurrent inhabitants with separate plastic memory and funded actions; and a continuously running local arena with explicit environmental resource budgets, restartable checkpoints and a live inspector. Matched feedback/plasticity/inheritance ablations and independent composition audits will determine what the coupled system actually does. Existing specimens and their measurements remain valid; this section records work in progress, not completed capabilities.
+Implemented and integrated: `ImplicitPhaseSeparation`, `ActiveMedium`, `NeuralEcology`, and restartable `Arena`. Inhabitants have inherited recurrent controllers, separate bounded lifetime plasticity, fair proportional resource access, catabolic fuel use, paid signaling/deposition/erosion/remodeling, persistent ancestry and mutation. A closed-fuel test demonstrates extinction and a work plateau rather than free-energy recycling.
+
+The constant-mobility semi-implicit phase solver completed a 64³ t=10 run in 19 seconds; measured per-step timings imply about 84× equal-physical-time throughput versus the explicit reference at its stability limit. Mean composition drift stayed below 2e-10. This is not a guarantee of nonlinear stability or timestep-independent trajectories.
+
+A continuous 64² arena is running locally at `http://127.0.0.1:8780/arena.html`, with measured fields, individual selection, genome/plastic-state inspection, live controls and bounded checkpoints. It is an ordinary local process, not an installed reboot service. The curated Pages replay contains 25 actual snapshots with display fields sampled to 32² and displayed agent floats rounded; it is explicitly recorded playback.
+
+Two coarse fair-share runs reached t=1000 with populations 383/398, no blocked births, and continued birth/death turnover, but only 1/3 surviving founder lineages. Feedback ablation also persisted; this does not establish a diversity benefit from feedback. In the boundary sweep, strong funded feedback retained two substantial positive domains at t=160, while both controls had one component in each phase; interface length still decreased. See `docs/arena-experiments.md`, `docs/arena-experiment-results.json`, and `docs/active-compartment-studies.md` for settings and counterexamples.
