@@ -12,7 +12,7 @@
 - Schema-v2 immutable state observations preserve native floating precision, owned process arrays, exact IDs, source hashes and parameters. This is an observation format, not yet an executable restart format.
 - Offline WebGL2 recorded-volume viewers, straight-ray previews, and Blender/Cycles photographs of exported fields, actual interfaces and surviving graph geometry. Finished studies include an amber branching conductor, a phase-interface labyrinth, a written inclusion and a fractured network.
 - Curated GitHub Pages collection and automated deployment from `dev`. Generated raw output and third-party reference footage stay outside Git. Snapshot commits are pushed as work converges.
-- Bounded 32³/64³/128³ CPU/Metal scaling measurements, explicit larger-run profiles and a streaming runner. Full 256³ runs remain a future experiment; small-step benchmarks are not completed long runs.
+- Bounded 32³/64³/128³ CPU/Metal scaling measurements, explicit larger-run profiles and a streaming runner. The full dense128 study completed 3,414 steps to t=10.001953125 in 100.92 seconds of loop time, with 11 captures and maximum relative material drift 3.51e-07. Full 256³ runs remain a future experiment.
 
 ## Evidence and boundaries
 

@@ -62,3 +62,9 @@ For convergence, use a staged 48³/96³/192³ family at common physical paramete
 | GRIN observer | CPU observation | Transfer fields to host explicitly |
 
 A four-step 16³ phase runner smoke test completed with streamed captures and all full-state exports. Its raw files occupied 1,081,344 bytes, below the printed conservative 1,671,168-byte budget. A separate four-step dense16³ Metal runner smoke also passed, including nonzero periodic forcing and exact agreement of scheduled and Float64 world time. The test used a temporary fresh directory; it did not launch either full-resolution profile.
+
+## Completed 128³ study
+
+The full dense profile completed 3,414 steps to t=10.001953125 on Metal, with 11 captured frames and initial/midpoint/final state observations. Its integration loop including scheduled capture/export work took 100.92 seconds; startup compilation and initial/final observations are outside that timer. Maximum relative material-mass drift across captures was 3.51e-07. The Float64 world clock exactly matched the scheduled final time. [Measured run summary](../benchmarks/2026-10-14-dense-128-study.json).
+
+The full local recording lives in `outputs/bigruns/dense-128-study`. After completion, run `python3 scripts/build_viewer.py outputs/bigruns/dense-128-study` to build its volume viewer. Preview files use global 8-bit channel quantization; the source captures retain Float32. The full viewer stays local because it exceeds the curated Pages asset budget.
