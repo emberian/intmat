@@ -48,8 +48,11 @@ def refresh():
             else:
                 shutil.copyfile(source, dest)
         # Optical-only recordings use volume metadata as their gallery manifest.
-        if not (target / 'run.json').exists() and (origin / 'volume.json').exists():
-            (target / 'volume.json').write_text(json.dumps(public(json.loads((origin / 'volume.json').read_text())), indent=2) + '\n')
+        volume = origin / 'volume.json'
+        if not volume.exists():
+            volume = origin / 'volume' / 'volume.json'
+        if not (target / 'run.json').exists() and volume.exists():
+            (target / 'volume.json').write_text(json.dumps(public(json.loads(volume.read_text())), indent=2) + '\n')
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)

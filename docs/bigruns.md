@@ -20,7 +20,7 @@ Output directories must be new. The runner prints progress at fifteen-second wal
 
 The timestep is computed as 0.8 times the minimum current process stability limit, then fixed and checked at every step. State-dependent bounds can reject it later; such a failure is reported rather than silently changing the schedule or coefficients. The dry run builds an 8³ prototype at the requested cell spacing, so it avoids allocating 256³ arrays. It reports the initial bound, not a promise about future nonlinear state. World time is Float64 while kernels and timesteps remain Float32; the recorder also reports the exact scheduled time `step × Float64(dt)`. Periodic forcing phases are reduced on the host before transfer to GPU Float32 kernels.
 
-Run `julia --project=gpu scripts/benchmark_scaling.jl` to repeat the bounded measurements. It performs twenty warmed steps per workload/resolution, two warm-up steps, CPU comparisons through 64³, and Metal comparisons through 128³. The measured results are in `outputs/bigruns/scaling.json`.
+Run `julia --project=gpu scripts/benchmark_scaling.jl` to repeat the bounded measurements. It performs twenty warmed steps per workload/resolution, two warm-up steps, CPU comparisons through 64³, and Metal comparisons through 128³. The measured results are in `outputs/bigruns/scaling.json`; a checked-in snapshot is in [the benchmark record](../benchmarks/2026-10-14-m2max-scaling.json).
 
 | Workload | Grid | Metal seconds/step | Initial dt | Estimated interval duration |
 |---|---:|---:|---:|---:|

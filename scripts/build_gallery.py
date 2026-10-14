@@ -27,7 +27,7 @@ names={
 'writing/living':('Living trace','A scaffold meets a changing medium','A written scaffold interacts with an active material field. Compare this recording with the scaffold specimen.'),
 'phase':('Phase separation','Domains take shape','A phase field develops spatial domains. Inspect how their interfaces change during the recording.'),
 'mechanics':('Material mechanics','Stress changes an interior','Explore the recorded mechanical fields and the structures that emerge from their interaction.'),
-'ecology':('Material ecology','Growth meets a shared resource','Explore population and resource fields within the same material environment.'),
+'ecology':('Material ecology','Growth meets a shared resource','Inherited neural rules share a finite resource. The colored points mark surviving lineages on a shallow slide; the population dynamics are two-dimensional.'),
 'grin':('Graded optics','An interior bends light','Explore the optical paths through a spatially varying refractive medium.'),
 'writing':('Material writing','A travelling trace','A moving process writes into a material field. Its path becomes part of the environment that it encounters next.')}
 items=[]
@@ -40,7 +40,7 @@ for directory in directories:
     try:run=json.loads(manifest.read_text()) if manifest.exists() else json.loads(volume.read_text())
     except (ValueError,OSError):continue
     images=[]
-    preferred=['phase-glass.png','polished-network.png','polished-inclusion.png','polished-wave.png','polished.png','cycles-pressure.png','cycles-interfaces.png','cycles.png','cycles-fronts.png','cycles-mid.png','cycles-above.png','specimen.png','projection.png','gallery-preview.png']
+    preferred=['phase-glass.png','polished-network.png','population-glass.png','polished-inclusion.png','polished-wave.png','polished.png','cycles-pressure.png','cycles-interfaces.png','cycles.png','cycles-fronts.png','cycles-mid.png','cycles-above.png','specimen.png','projection.png','gallery-preview.png']
     candidates=list(directory.glob('*.png'))+list(directory.glob('*.jpg'))+list(directory.glob('*.webp'))
     candidates=[x for x in candidates if not any(word in x.name for word in ['check','screenshot','test'])]
     if not candidates and (directory/'specimen.ppm').exists():
@@ -48,7 +48,7 @@ for directory in directories:
         if ppm_png(directory/'specimen.ppm',out):candidates=[out]
     candidates.sort(key=lambda x:(preferred.index(x.name) if x.name in preferred else len(preferred),x.name))
     for image in candidates:
-        label='Rendered material' if image.name.startswith(('cycles','polished','phase-glass')) else 'Recorded field projection'
+        label='Rendered material' if image.name.startswith(('cycles','polished','phase-glass','population-glass')) else 'Recorded field projection'
         if 'above' in image.name:label+=' / above'
         elif 'interfaces' in image.name:label+=' / interfaces'
         elif 'fronts' in image.name:label+=' / activity fronts'

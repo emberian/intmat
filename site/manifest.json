@@ -54,7 +54,8 @@
       "polished.png",
       "projection.png",
       "specimen.png",
-      "run.json"
+      "run.json",
+      "polished-above.png"
     ]
   },
   {
@@ -111,7 +112,10 @@
   {
     "id": "ecology",
     "source": "ecology",
-    "files": []
+    "files": [
+      "population-glass.png",
+      "statistics.json"
+    ]
   },
   {
     "id": "grin",

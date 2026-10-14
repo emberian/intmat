@@ -39,6 +39,9 @@ parser.add_argument("--inclusion-isovalue", type=float, default=.25)
 parser.add_argument("--surface-roughness", type=float, default=.035)
 parser.add_argument("--density-scale", type=float, default=1.0)
 parser.add_argument("--light-power", type=float, default=1.0)
+parser.add_argument("--z-scale", type=float, default=1.0, help="Declared shallow optical extrusion scale")
+parser.add_argument("--population", help="Actual JSON point population with positions and lineages")
+parser.add_argument("--population-radius", type=float, default=.015)
 parser.add_argument("--conductive-graph", action="store_true", help="Render face adjacency of binary structure as thin optical filaments")
 parser.add_argument("--graph-radius", type=float, default=.008)
 parser.add_argument("--bond-graph", help="Actual OBJ vertices and line segments, e.g. deformed surviving bonds")
@@ -70,7 +73,7 @@ if args.interfaces:
                 before = np.take(field, np.maximum(np.arange(shape[axis]) - 1, 0), axis=axis)
                 after = np.take(field, np.minimum(np.arange(shape[axis]) + 1, shape[axis] - 1), axis=axis)
                 field = .25 * before + .5 * field + .25 * after
-        gradient = np.gradient(field, *(2 / n for n in shape))
+        gradient = [np.gradient(field, 2 / shape[d], axis=d) if shape[d] > 1 else np.zeros_like(field) for d in range(3)]
         magnitude = np.sqrt(sum(component * component for component in gradient))
         scale = max(float(np.quantile(magnitude[mask > .5], .98)), 1e-6)
         optical_mapping["gradient_scales"][name] = scale
@@ -81,7 +84,9 @@ if args.interfaces:
         arrays["density"] = .025 + .7 * edge_strength(arrays["structure"], "structure")
 arrays["density"] *= args.density_scale
 grids = []
-for name in ("density", "activity", "structure"):
+if args.scattering_field not in arrays:
+    raise ValueError("Scattering source absent from exported arrays")
+for name in dict.fromkeys(("density", "activity", "structure", args.scattering_field)):
     if name in arrays:
         grid = vdb.FloatGrid()
         grid.name = name
@@ -106,8 +111,8 @@ bpy.ops.object.delete(use_global=False)
 bpy.ops.object.volume_import(filepath=vdb_path)
 obj = bpy.context.object
 obj.name = "Simulated specimen"
-obj.scale = tuple(2 / n for n in shape)
-obj.location = tuple(-1 + 1 / n for n in shape)
+obj.scale = tuple((args.z_scale if d == 2 else 1) * 2 / n for d, n in enumerate(shape))
+obj.location = tuple((args.z_scale if d == 2 else 1) * (-1 + 1 / n) for d, n in enumerate(shape))
 palettes = {
     "amber-cyan": ((.82,.38,.055,1), (1,.64,.26,1), (.025,.72,1,1)),
     "amber-gold": ((.82,.38,.055,1), (1,.78,.45,1), (1,.56,.13,1)),
@@ -157,6 +162,7 @@ if args.inclusion_surface:
     surface_grid.copyFromArray(np.ascontiguousarray(arrays[args.inclusion_surface] * mask))
     points, triangles, quads = surface_grid.convertToPolygons(isovalue=args.inclusion_isovalue, adaptivity=.05)
     points = 2 * (points + .5) / np.array(shape) - 1
+    points[:, 2] *= args.z_scale
     mesh = bpy.data.meshes.new("Actual deposited inclusion isosurface")
     mesh.from_pydata(points.tolist(), [], triangles.tolist() + quads.tolist())
     inclusion = bpy.data.objects.new("Baked field inclusion", mesh)
@@ -232,6 +238,34 @@ if args.conductive_graph or args.bond_graph:
     for polygon in mesh.polygons:
         polygon.use_smooth = True
 
+if args.population:
+    with open(args.population) as stream:
+        population = json.load(stream)
+    lineages = sorted(set(population["lineages"]))
+    colors = [(1,.48,.08,1), (.06,.68,.78,1), (.65,.2,.35,1), (.25,.58,.24,1), (.47,.25,.75,1), (.82,.75,.43,1)]
+    bpy.ops.mesh.primitive_ico_sphere_add(subdivisions=2, radius=1)
+    template = bpy.context.object
+    base_mesh = template.data
+    bpy.data.objects.remove(template, do_unlink=True)
+    marker_meshes = {}
+    for rank, lineage in enumerate(lineages):
+        mesh = base_mesh.copy()
+        marker_material = bpy.data.materials.new("Recorded lineage " + str(lineage))
+        marker_material.diffuse_color = colors[rank % len(colors)]
+        marker_material.use_nodes = True
+        shader = marker_material.node_tree.nodes.get("Principled BSDF")
+        shader.inputs["Base Color"].default_value = colors[rank % len(colors)]
+        shader.inputs["Roughness"].default_value = .28
+        shader.inputs["Metallic"].default_value = .2
+        mesh.materials.append(marker_material)
+        marker_meshes[lineage] = mesh
+    for identity, position, lineage in zip(population["ids"], population["positions"], population["lineages"]):
+        marker = bpy.data.objects.new("Recorded agent " + str(identity), marker_meshes[lineage])
+        bpy.context.collection.objects.link(marker)
+        marker.location = (2 * position[0] / shape[0] - 1, 2 * position[1] / shape[1] - 1, 0)
+        marker.scale = (args.population_radius,) * 3
+    optical_mapping["population_observation"] = {"count": len(population["ids"]), "lineages": lineages, "marker_radius": args.population_radius, "source": args.population, "dimension": 2, "optical_extrusion_z_scale": args.z_scale}
+
 if args.polished_carrier:
     selected = np.argwhere(mask > .01)
     if selected.size == 0:
@@ -243,6 +277,7 @@ if args.polished_carrier:
         bpy.ops.mesh.primitive_cube_add(size=2)
     shell = bpy.context.object
     shell.name = "Optically cut polished specimen"
+    axes = (axes[0], axes[1], axes[2] * args.z_scale)
     shell.scale = axes
     if args.carrier_shape == "box":
         bevel = shell.modifiers.new("Polished edge bevel", "BEVEL")
@@ -308,6 +343,9 @@ background.inputs["Strength"].default_value = 0.3
 scene.render.image_settings.file_format = "PNG"
 scene.render.filepath = os.path.abspath(args.output)
 os.makedirs(os.path.dirname(scene.render.filepath), exist_ok=True)
+for mapping_path in (os.path.join(directory, "optical-mapping.json"), output_path + ".optical.json"):
+    with open(mapping_path, "w") as stream:
+        json.dump(optical_mapping, stream, indent=2)
 obj.data.filepath = "//" + os.path.basename(vdb_path)
 bpy.ops.wm.save_as_mainfile(filepath=os.path.splitext(output_path)[0] + ".blend")
 bpy.ops.render.render(write_still=True)

@@ -1,0 +1,243 @@
+{
+    "julia": "1.12.4",
+    "device": "Apple M2 Max 38 GPU cores",
+    "phase_parity": {
+        "phi": 0,
+        "interface": 0,
+        "activity": 0,
+        "nutrient": 0
+    },
+    "measurements": [
+        {
+            "kind": "dense",
+            "backend": "CPU",
+            "resolution": 32,
+            "extent": [
+                2,
+                2,
+                2
+            ],
+            "stable_limit": 0.05000000074505806,
+            "dt": 0.04,
+            "measured_steps": 20,
+            "seconds": 0.084552708,
+            "seconds_per_step": 0.0042276354000000006,
+            "resident_scalar_buffers": 16,
+            "resident_field_bytes": 2097152,
+            "capture_fields": 3,
+            "capture_bytes": 393216,
+            "estimated_target_time": 10,
+            "estimated_steps": 251,
+            "estimated_seconds": 1.0611364854,
+            "estimate_basis": "same measured step cost and current-state timestep bound; future nonlinear restrictions and storage overhead excluded"
+        },
+        {
+            "kind": "dense",
+            "backend": "Metal",
+            "resolution": 32,
+            "extent": [
+                2,
+                2,
+                2
+            ],
+            "stable_limit": 0.05000000074505806,
+            "dt": 0.04,
+            "measured_steps": 20,
+            "seconds": 0.127059625,
+            "seconds_per_step": 0.0063529812500000005,
+            "resident_scalar_buffers": 16,
+            "resident_field_bytes": 2097152,
+            "capture_fields": 3,
+            "capture_bytes": 393216,
+            "estimated_target_time": 10,
+            "estimated_steps": 251,
+            "estimated_seconds": 1.59459829375,
+            "estimate_basis": "same measured step cost and current-state timestep bound; future nonlinear restrictions and storage overhead excluded"
+        },
+        {
+            "kind": "dense",
+            "backend": "CPU",
+            "resolution": 64,
+            "extent": [
+                2,
+                2,
+                2
+            ],
+            "stable_limit": 0.0146484375,
+            "dt": 0.01171875,
+            "measured_steps": 20,
+            "seconds": 0.728101125,
+            "seconds_per_step": 0.03640505625,
+            "resident_scalar_buffers": 16,
+            "resident_field_bytes": 16777216,
+            "capture_fields": 3,
+            "capture_bytes": 3145728,
+            "estimated_target_time": 10,
+            "estimated_steps": 854,
+            "estimated_seconds": 31.0899180375,
+            "estimate_basis": "same measured step cost and current-state timestep bound; future nonlinear restrictions and storage overhead excluded"
+        },
+        {
+            "kind": "dense",
+            "backend": "Metal",
+            "resolution": 64,
+            "extent": [
+                2,
+                2,
+                2
+            ],
+            "stable_limit": 0.0146484375,
+            "dt": 0.01171875,
+            "measured_steps": 20,
+            "seconds": 0.157849917,
+            "seconds_per_step": 0.00789249585,
+            "resident_scalar_buffers": 16,
+            "resident_field_bytes": 16777216,
+            "capture_fields": 3,
+            "capture_bytes": 3145728,
+            "estimated_target_time": 10,
+            "estimated_steps": 854,
+            "estimated_seconds": 6.740191455900001,
+            "estimate_basis": "same measured step cost and current-state timestep bound; future nonlinear restrictions and storage overhead excluded"
+        },
+        {
+            "kind": "dense",
+            "backend": "Metal",
+            "resolution": 128,
+            "extent": [
+                2,
+                2,
+                2
+            ],
+            "stable_limit": 0.003662109375,
+            "dt": 0.0029296875,
+            "measured_steps": 20,
+            "seconds": 0.418260958,
+            "seconds_per_step": 0.020913047900000002,
+            "resident_scalar_buffers": 16,
+            "resident_field_bytes": 134217728,
+            "capture_fields": 3,
+            "capture_bytes": 25165824,
+            "estimated_target_time": 10,
+            "estimated_steps": 3414,
+            "estimated_seconds": 71.39714553060001,
+            "estimate_basis": "same measured step cost and current-state timestep bound; future nonlinear restrictions and storage overhead excluded"
+        },
+        {
+            "kind": "phase",
+            "backend": "CPU",
+            "resolution": 32,
+            "extent": [
+                32,
+                32,
+                32
+            ],
+            "stable_limit": 0.0036119711362247644,
+            "dt": 0.0028895768,
+            "measured_steps": 20,
+            "seconds": 0.096824042,
+            "seconds_per_step": 0.0048412021,
+            "resident_scalar_buffers": 20,
+            "resident_field_bytes": 2621440,
+            "capture_fields": 6,
+            "capture_bytes": 786432,
+            "estimated_target_time": 30,
+            "estimated_steps": 10383,
+            "estimated_seconds": 50.2662014043,
+            "estimate_basis": "same measured step cost and current-state timestep bound; future nonlinear restrictions and storage overhead excluded"
+        },
+        {
+            "kind": "phase",
+            "backend": "Metal",
+            "resolution": 32,
+            "extent": [
+                32,
+                32,
+                32
+            ],
+            "stable_limit": 0.0036119711362247644,
+            "dt": 0.0028895768,
+            "measured_steps": 20,
+            "seconds": 0.053503084,
+            "seconds_per_step": 0.0026751542,
+            "resident_scalar_buffers": 20,
+            "resident_field_bytes": 2621440,
+            "capture_fields": 6,
+            "capture_bytes": 786432,
+            "estimated_target_time": 30,
+            "estimated_steps": 10383,
+            "estimated_seconds": 27.7761260586,
+            "estimate_basis": "same measured step cost and current-state timestep bound; future nonlinear restrictions and storage overhead excluded"
+        },
+        {
+            "kind": "phase",
+            "backend": "CPU",
+            "resolution": 64,
+            "extent": [
+                32,
+                32,
+                32
+            ],
+            "stable_limit": 0.00035268037569863753,
+            "dt": 0.0002821443,
+            "measured_steps": 20,
+            "seconds": 0.811543375,
+            "seconds_per_step": 0.040577168749999996,
+            "resident_scalar_buffers": 20,
+            "resident_field_bytes": 20971520,
+            "capture_fields": 6,
+            "capture_bytes": 6291456,
+            "estimated_target_time": 30,
+            "estimated_steps": 106329,
+            "estimated_seconds": 4314.5297760187495,
+            "estimate_basis": "same measured step cost and current-state timestep bound; future nonlinear restrictions and storage overhead excluded"
+        },
+        {
+            "kind": "phase",
+            "backend": "Metal",
+            "resolution": 64,
+            "extent": [
+                32,
+                32,
+                32
+            ],
+            "stable_limit": 0.00035268037569863753,
+            "dt": 0.0002821443,
+            "measured_steps": 20,
+            "seconds": 0.200111708,
+            "seconds_per_step": 0.0100055854,
+            "resident_scalar_buffers": 20,
+            "resident_field_bytes": 20971520,
+            "capture_fields": 6,
+            "capture_bytes": 6291456,
+            "estimated_target_time": 30,
+            "estimated_steps": 106329,
+            "estimated_seconds": 1063.8838899966,
+            "estimate_basis": "same measured step cost and current-state timestep bound; future nonlinear restrictions and storage overhead excluded"
+        },
+        {
+            "kind": "phase",
+            "backend": "Metal",
+            "resolution": 128,
+            "extent": [
+                32,
+                32,
+                32
+            ],
+            "stable_limit": 2.564779030627131e-5,
+            "dt": 2.0518231e-5,
+            "measured_steps": 20,
+            "seconds": 0.246622875,
+            "seconds_per_step": 0.012331143749999999,
+            "resident_scalar_buffers": 20,
+            "resident_field_bytes": 167772160,
+            "capture_fields": 6,
+            "capture_bytes": 50331648,
+            "estimated_target_time": 30,
+            "estimated_steps": 1462115,
+            "estimated_seconds": 18029.55024403125,
+            "estimate_basis": "same measured step cost and current-state timestep bound; future nonlinear restrictions and storage overhead excluded"
+        }
+    ],
+    "note": "Buffers count explicit World and process Float32 arrays, excluding Julia/driver/runtime overhead; time predictions are estimates, not completed runs"
+}
