@@ -1,0 +1,38 @@
+[
+  {
+    "label": "Broad \u00b7 early contact network",
+    "file": "broad-early.json",
+    "frames": 100,
+    "note": "Faithful continuation from an original saved checkpoint, with unchanged Julia code and parameters. These frames were reconstructed later; they were not recorded during the live soak."
+  },
+  {
+    "label": "Broad \u00b7 later moving groups",
+    "file": "broad-mature.json",
+    "frames": 80,
+    "note": "Faithful continuation from an original saved checkpoint, with unchanged Julia code and parameters. These frames were reconstructed later; they were not recorded during the live soak."
+  },
+  {
+    "label": "Broad \u00b7 archived long trajectory",
+    "file": "broad-history.json",
+    "frames": 9,
+    "note": "Actual archived states from the live soak. Large gaps between frames omit intervening movement and contact changes."
+  },
+  {
+    "label": "Mosaic \u00b7 early contact network",
+    "file": "mosaic-early.json",
+    "frames": 100,
+    "note": "Faithful continuation from an original saved checkpoint, with unchanged Julia code and parameters. These frames were reconstructed later; they were not recorded during the live soak."
+  },
+  {
+    "label": "Mosaic \u00b7 later moving groups",
+    "file": "mosaic-mature.json",
+    "frames": 80,
+    "note": "Faithful continuation from an original saved checkpoint, with unchanged Julia code and parameters. These frames were reconstructed later; they were not recorded during the live soak."
+  },
+  {
+    "label": "Mosaic \u00b7 archived long trajectory",
+    "file": "mosaic-history.json",
+    "frames": 9,
+    "note": "Actual archived states from the live soak. Large gaps between frames omit intervening movement and contact changes."
+  }
+]

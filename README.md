@@ -7,7 +7,7 @@ pressure and damage. Its inhabitants have state: recurrent brains, plastic memor
 inherited metabolism, ancestry and finite inventories. Each changes what the other
 encounters next.
 
-[Gallery](https://emberian.github.io/intmat/) · [Cellular architecture](docs/cellular.md) · [Metabolic replay](https://emberian.github.io/intmat/metabolic/arena.html) · [Working state](TRACKER.md)
+[Gallery](https://emberian.github.io/intmat/) · [Living cells in motion](https://emberian.github.io/intmat/cellular/) · [Cellular architecture](docs/cellular.md) · [Metabolic replay](https://emberian.github.io/intmat/metabolic/arena.html) · [Working state](TRACKER.md)
 
 ## Material collection
 

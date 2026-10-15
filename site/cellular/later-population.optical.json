@@ -1,0 +1,18 @@
+{
+  "snapshot_sha256": "5861ceda03edb8014a627aa8ecc7fe86de415f97eb39f2d28efdc4da2d7f0e4a",
+  "step": 188805,
+  "time": 18880.500281341374,
+  "cells": 217,
+  "bonds": 8,
+  "drawn_bond_segments": 8,
+  "geometry": "Recorded physical xy positions and radii; periodic boundary copies. Lens height .32 radius is optical staging, not simulated 3D anatomy.",
+  "colors": "Teal to amber encodes relative import-A versus import-B enzyme allocation, not lineage.",
+  "medium": "Recorded precursor concentrations; hue A/B ratio, brightness total divided by its 98th percentile. Bilinear texture interpolation.",
+  "resource_contrast": 0.23119159877300255,
+  "bond_radius": 0.002,
+  "size": 2000,
+  "samples": 96,
+  "reviewed_by": "root",
+  "review": "Viewed final: measured bodies and real junctions legible; relief and optics declared.",
+  "source_image_sha256": "a6cdee45c91c1a3fa267d625b515cbeb61faf865eaff34e0e8cf5a455864fcd8"
+}

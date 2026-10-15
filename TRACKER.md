@@ -58,6 +58,20 @@ The integrated Julia suite passed 1707 assertions across 97 testsets, including 
 
 The sub-Astra read the coupled implementation and delivered the cellular substrate above. Its analytical bet is that inherited development, persistent physical contacts and exchange between distinct intracellular states open paths to organization that isolated controller particles express poorly. This is a design hypothesis worth developing, not an impossibility theorem about the older models. Short pilots establish working mechanisms and suggest directions; they do not veto longer or differently structured explorations. Historical source-pinned arenas and evidence remain separate.
 
+## Perspective and throughput reset
+
+The original prompts call for neural activity inside, remodeling and constituting
+material, with many composable processes and rich 3D interiors. A sparse cell
+ecology and polished diagnostic images do not fulfill that ambition. Work now
+pairs whole-step cellular optimization (10× target) with GPU-resident multichannel
+recurrent material and consequential deposition feedback. Useful hardware
+throughput is a design constraint from the outset; all simulation remains Julia.
+
+The [cellular observation exhibit](docs/cellular-observation.md) preserves what the
+current runs actually do: early connected assemblies and later renewing, mostly
+sparse populations. It includes actual archive states, labeled faithful checkpoint
+continuations and two reviewed material photographs. Existing soaks remain pinned.
+
 ## Outstanding work
 
 1. Native1152³ simulation, export validation and reviewed amber photograph are complete. Follow the hbox soaks through their wall bounds; retain longitudinal states and investigate any failures without reseeding or silently migrating source.
