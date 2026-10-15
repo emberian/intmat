@@ -7,6 +7,8 @@ repaired-source runs under `outputs/constructed-food-fixed-20261015` and
 finite-precision material transfers; it was followed by fresh-founder restarts,
 not migration of this trajectory. The identities, figure and source hashes below
 have not been replaced with results from those new runs.
+Their completed comparison is reported separately in
+[Developmental regimes on the repaired source](constructed-food-fixed-development.md).
 
 The baseline raw-food-only run already contains strong repeated switching within
 recorded cell identities, despite high population-level hidden-state saturation.

@@ -1,0 +1,5445 @@
+{
+  "kind": "descriptive comparison of developmental regimes on the repaired pinned source",
+  "source_manifest_sha256": "c299506dbfe07009f411773f250ac28f6e89ebc36ccaf2c7f8d5c2e25ac1ab71",
+  "source_manifest": {
+    "base_commit": "2d683806506dbefa885f19bb43692894cc78394c",
+    "source_overrides": {
+      "src/cellular.jl": "ac6633c645e14a63126031dd5d34bc9ddddc18a46332839482e2a9524840acdf",
+      "src/cellular_transport.jl": "fc8bfb0df1948b3869afae0a06fb5cc23bb87778452a31ffc3d27954eeb87aa2",
+      "src/catalytic_habitat.jl": "9a69b5ec394bc6dcee988d68f6463fc7c72bfa273e89bbd6e46513d392468eb1",
+      "src/constructive_cells.jl": "c7aef86045d7639d2b6beb37d9ddc41564b374a046298cc1565bed4f01a71764"
+    },
+    "drivers": {
+      "run_dependency.jl": "be6cf0fbb5bb4ed24beab626ff13eb695ca5f7cc36a188180bf4d27510547f4d",
+      "run_feedback.jl": "967d116d444349fc8186bc03c73737e19405c9bd18a17c1131057930d15b2f59",
+      "studies/sorptive_garden.jl": "efe64dd7078d02353e0eea1beb2179abff3b6afafdd5900358f150f66f07b4d5"
+    },
+    "reason": "Fresh-founder matched restart after reproduced negative subnormal precursor / unbounded catalytic-deposit correction at step622 of original conversion_off control. Endpoint-funded degradation, bounded deposits and finite corrections.",
+    "prior_output_preserved": "outputs/constructed-food-20261015",
+    "prior_source_preserved": "outputs/constructed-food-20261015-source",
+    "focused_test_log_sha256": "c96bfa6012a6356e10b1b82176cd86333d88686ea68849aca078471f49f3fd98",
+    "focused_assertions": 582,
+    "threads": 2,
+    "gc_threads": 1
+  },
+  "loaded_physics_hashes": {
+    "writing.jl": "78fba7cd46f03749bdc56547b7ce5622f7ba3ea42cc34801829345dae3975e05",
+    "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+    "cellular.jl": "ac6633c645e14a63126031dd5d34bc9ddddc18a46332839482e2a9524840acdf",
+    "cellular_transport.jl": "fc8bfb0df1948b3869afae0a06fb5cc23bb87778452a31ffc3d27954eeb87aa2",
+    "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+    "cellular_arena.jl": "2ef965717c99cd0c46a8acd9ceb7da26232201cb18547bd23712e989688429e2",
+    "experiments.jl": "5697958abac5f36713418d5f9d94f274fb0a51b86ed1a84b3f58b68cba1e42d1",
+    "metabolic_ecology.jl": "2f599a1d6ea0a5552a594113d57e238e4c6ff3c1fd8d74de5a51f83a77179bb1",
+    "neural_ecology.jl": "ed0496adb31ce4511f8bc0d5343ff843c410c39c51d30c165b3cf5eac1135df2",
+    "compartments.jl": "e7c55ce4e0f4a8548c078c9d160815b5eaeb846a3765aad89a875f166b5005e5",
+    "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+    "catalytic_habitat.jl": "9a69b5ec394bc6dcee988d68f6463fc7c72bfa273e89bbd6e46513d392468eb1",
+    "device_cellular_support.jl": "727709b1dc15dcd6567ec63fc07816a61238a95a5963e118302806a67627e0ab",
+    "arena.jl": "75acccd7b144e1512984c8ececb368d5fa3f03db08daa40e4b8f8f027198c16f",
+    "catalytic_arena.jl": "2b304e79e11f1d38b4cbd63994a1637cad2067d9f9a515f141b38ea5acb8ec8c",
+    "recurrent_material.jl": "e9457d0d6e31f74950fa4be8ef84b138b020c0de7fc4b95c9a7f3cd5db148347",
+    "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+    "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+    "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b",
+    "Interior.jl": "8b981d05f1f2ad77364d66fb6f4afc4da572602400f53f34fc03ed80753f44f0",
+    "resources.jl": "859f6e04b456ceee051fd83214b37ca18418af09126960997b7d62d83c2dcab0",
+    "cellular_initialization.jl": "d76e4c791a2c56bc7fd651b1836e6879b9e27013566ce6d94a1d2f677f62e633",
+    "constructive_cells.jl": "c7aef86045d7639d2b6beb37d9ddc41564b374a046298cc1565bed4f01a71764",
+    "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+    "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+    "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+    "implicit_phase.jl": "1fb617707591f89784b95171e0558065101b3d992f7b3eabd16a7bf01dca4ceb",
+    "device_cellular_protocol.jl": "095c40b8e42baca3688abe902289377da49e8f352017733ce92728729fb40be5",
+    "core.jl": "b4302b90eaeba213360e8a15ce8b7e4cb4c491606657e3e500d2fb8507753a52",
+    "neural_workspace.jl": "ecdd45856bc0b3c61708de90814d1abb33bc1232a0f9ff5785b32b9bc39a9139",
+    "device_habitat_kernels.jl": "ee2a1c13ac99a2d69a36a3aec25c6ed55072a578cff82094329263500c8090b9",
+    "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+    "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+    "device_cellular_initialization.jl": "1484f9c00e3aa438f2557d12af1b29be2247e3b27dd5e4bcfd64d603785e6dc9",
+    "cellular_storage.jl": "735c3281aca69158609392ef161397bec166d4a1698d7e741cd95b5a426cfaff",
+    "device_cellular_kernels.jl": "a85cf1f8e0739373572e9029deb46415ab5d16669f3513b0fbf020b289ad0b27",
+    "device_cellular.jl": "72ecaccee6a0968b00b43fc2c9dfb7fee074a5f4e9fa95d2bc646640860e3e6d",
+    "device_cellular_checkpoint.jl": "77f943195ef1ae0466d57fc57c051595f3f363c822e8d9f6d4dbc1b9d5a6a9b0",
+    "cellular_contacts.jl": "616f0da88cd137cae29019b970e8c1a4d1f67728d9207b6a5a3513357792228a",
+    "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+    "dose_writer.jl": "b8d1b4013921a3c82388ee87a7ede00b97964a1894062f2a07339f2c6be197eb",
+    "device_habitat.jl": "f08c0ea979ab9a4dbdb3ffbf3f9c07c00ff71667df2d27807da4ad534e87f53a",
+    "mechanics.jl": "a0370e4028aa859fb344829f0d387a62dd8defb77b25f4651f7c08b386324e45",
+    "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+    "device_habitat_sorption.jl": "f135e74e59959187e72725a45665ac5c67293b8305298c8d3ac4bdbb81e6ac93",
+    "sorptive_matrix.jl": "f5643e0c951c983a7d5864676156123db3181e05510335fcd618de105ff1f036"
+  },
+  "source_report_sha256": {
+    "baseline": "66e0b48e58a86c743f038cf6c097c0168865c2a846f6a460cf143f8b16b179e6",
+    "stronger_feedback": "4e2b6443b69de729399725226a7655b51fc2d8a029602bd3fffa1c147838b6a8"
+  },
+  "actual_configurations": {
+    "baseline": {
+      "211": {
+        "batch": 5,
+        "cellular": {
+          "hidden": 8,
+          "capacity": 1536,
+          "population": 48,
+          "mutation": 0.08,
+          "mutation_probability": 0.03,
+          "exchange_radius": 1.0,
+          "speed": 0.3,
+          "junction_rate": 0.8,
+          "basal_rate": 0.025
+        },
+        "catalysis": {
+          "secretion_work": 0.2,
+          "investment_bias": -0.8,
+          "allocation_exponent": 2.0,
+          "half_saturation": 0.2,
+          "shared_anabolism": true,
+          "catalytic_rate": 6.0,
+          "allocation_bias_scale": 1.2,
+          "secretion_rate": 0.12,
+          "decay_rate": 0.008,
+          "mutation": 0.08,
+          "mutation_probability": 0.03,
+          "regulation": true
+        },
+        "model": "catalytic",
+        "dt": 0.1,
+        "snapshot_seconds": 2.0,
+        "sleep_seconds": 0.001,
+        "feedstock": {
+          "names": [
+            "bound_a",
+            "bound_b"
+          ],
+          "diffusion": [
+            0.0,
+            0.0
+          ],
+          "initial": [
+            2.0,
+            2.0
+          ],
+          "source_rates": [
+            0.006,
+            0.006
+          ],
+          "source_budgets": [
+            100000.0,
+            100000.0
+          ],
+          "potentials": [
+            4.0,
+            4.0
+          ]
+        },
+        "matrix": {
+          "capacity_per_enzyme": 6.0,
+          "transport_barrier": 20.0,
+          "desorption_rate": 0.12,
+          "cross_binding": 0.0,
+          "adsorption_rate": 4.0
+        },
+        "grid": {
+          "shape": [
+            32,
+            32,
+            1
+          ],
+          "extent": [
+            16.0,
+            16.0,
+            1.0
+          ]
+        },
+        "resources": {
+          "source_budgets": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "niche_contrast": 0.8,
+          "names": [
+            "precursor_a",
+            "precursor_b",
+            "waste"
+          ],
+          "spatial_niches": true,
+          "sink_budgets": [
+            100000.0,
+            100000.0,
+            100000.0
+          ],
+          "niche_waves": [
+            1,
+            2,
+            0
+          ],
+          "diffusion": [
+            0.2,
+            0.2,
+            0.03
+          ],
+          "sink_rates": [
+            0.0008,
+            0.0008,
+            0.01
+          ],
+          "initial": [
+            0.3,
+            0.3,
+            0.0
+          ],
+          "source_rates": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "potentials": [
+            4.0,
+            4.0,
+            0.0
+          ]
+        },
+        "checkpoint_seconds": 90.0,
+        "seed": 211
+      },
+      "307": {
+        "batch": 5,
+        "cellular": {
+          "hidden": 8,
+          "capacity": 1536,
+          "population": 48,
+          "mutation": 0.08,
+          "mutation_probability": 0.03,
+          "exchange_radius": 1.0,
+          "speed": 0.3,
+          "junction_rate": 0.8,
+          "basal_rate": 0.025
+        },
+        "catalysis": {
+          "secretion_work": 0.2,
+          "investment_bias": -0.8,
+          "allocation_exponent": 2.0,
+          "half_saturation": 0.2,
+          "shared_anabolism": true,
+          "catalytic_rate": 6.0,
+          "allocation_bias_scale": 1.2,
+          "secretion_rate": 0.12,
+          "decay_rate": 0.008,
+          "mutation": 0.08,
+          "mutation_probability": 0.03,
+          "regulation": true
+        },
+        "model": "catalytic",
+        "dt": 0.1,
+        "snapshot_seconds": 2.0,
+        "sleep_seconds": 0.001,
+        "feedstock": {
+          "names": [
+            "bound_a",
+            "bound_b"
+          ],
+          "diffusion": [
+            0.0,
+            0.0
+          ],
+          "initial": [
+            2.0,
+            2.0
+          ],
+          "source_rates": [
+            0.006,
+            0.006
+          ],
+          "source_budgets": [
+            100000.0,
+            100000.0
+          ],
+          "potentials": [
+            4.0,
+            4.0
+          ]
+        },
+        "matrix": {
+          "capacity_per_enzyme": 6.0,
+          "transport_barrier": 20.0,
+          "desorption_rate": 0.12,
+          "cross_binding": 0.0,
+          "adsorption_rate": 4.0
+        },
+        "grid": {
+          "shape": [
+            32,
+            32,
+            1
+          ],
+          "extent": [
+            16.0,
+            16.0,
+            1.0
+          ]
+        },
+        "resources": {
+          "source_budgets": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "niche_contrast": 0.8,
+          "names": [
+            "precursor_a",
+            "precursor_b",
+            "waste"
+          ],
+          "spatial_niches": true,
+          "sink_budgets": [
+            100000.0,
+            100000.0,
+            100000.0
+          ],
+          "niche_waves": [
+            1,
+            2,
+            0
+          ],
+          "diffusion": [
+            0.2,
+            0.2,
+            0.03
+          ],
+          "sink_rates": [
+            0.0008,
+            0.0008,
+            0.01
+          ],
+          "initial": [
+            0.3,
+            0.3,
+            0.0
+          ],
+          "source_rates": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "potentials": [
+            4.0,
+            4.0,
+            0.0
+          ]
+        },
+        "checkpoint_seconds": 90.0,
+        "seed": 307
+      }
+    },
+    "stronger_feedback": {
+      "211": {
+        "batch": 5,
+        "cellular": {
+          "hidden": 8,
+          "capacity": 1536,
+          "adaptation_strength": 1.5,
+          "adaptation_time": 8.0,
+          "exchange_radius": 1.0,
+          "population": 48,
+          "mutation": 0.08,
+          "mutation_probability": 0.03,
+          "speed": 0.3,
+          "junction_rate": 0.8,
+          "basal_rate": 0.025
+        },
+        "catalysis": {
+          "secretion_work": 0.2,
+          "investment_bias": -0.8,
+          "allocation_exponent": 2.0,
+          "half_saturation": 0.2,
+          "shared_anabolism": true,
+          "catalytic_rate": 6.0,
+          "allocation_bias_scale": 1.2,
+          "secretion_rate": 0.12,
+          "decay_rate": 0.008,
+          "mutation": 0.08,
+          "mutation_probability": 0.03,
+          "regulation": true
+        },
+        "model": "catalytic",
+        "dt": 0.1,
+        "snapshot_seconds": 2.0,
+        "sleep_seconds": 0.001,
+        "feedstock": {
+          "names": [
+            "bound_a",
+            "bound_b"
+          ],
+          "diffusion": [
+            0.0,
+            0.0
+          ],
+          "initial": [
+            2.0,
+            2.0
+          ],
+          "source_rates": [
+            0.006,
+            0.006
+          ],
+          "source_budgets": [
+            100000.0,
+            100000.0
+          ],
+          "potentials": [
+            4.0,
+            4.0
+          ]
+        },
+        "matrix": {
+          "capacity_per_enzyme": 6.0,
+          "transport_barrier": 20.0,
+          "desorption_rate": 0.12,
+          "cross_binding": 0.0,
+          "adsorption_rate": 4.0
+        },
+        "grid": {
+          "shape": [
+            32,
+            32,
+            1
+          ],
+          "extent": [
+            16.0,
+            16.0,
+            1.0
+          ]
+        },
+        "resources": {
+          "source_budgets": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "niche_contrast": 0.8,
+          "names": [
+            "precursor_a",
+            "precursor_b",
+            "waste"
+          ],
+          "spatial_niches": true,
+          "sink_budgets": [
+            100000.0,
+            100000.0,
+            100000.0
+          ],
+          "niche_waves": [
+            1,
+            2,
+            0
+          ],
+          "diffusion": [
+            0.2,
+            0.2,
+            0.03
+          ],
+          "sink_rates": [
+            0.0008,
+            0.0008,
+            0.01
+          ],
+          "initial": [
+            0.3,
+            0.3,
+            0.0
+          ],
+          "source_rates": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "potentials": [
+            4.0,
+            4.0,
+            0.0
+          ]
+        },
+        "checkpoint_seconds": 90.0,
+        "seed": 211
+      },
+      "307": {
+        "batch": 5,
+        "cellular": {
+          "hidden": 8,
+          "capacity": 1536,
+          "adaptation_strength": 1.5,
+          "adaptation_time": 8.0,
+          "exchange_radius": 1.0,
+          "population": 48,
+          "mutation": 0.08,
+          "mutation_probability": 0.03,
+          "speed": 0.3,
+          "junction_rate": 0.8,
+          "basal_rate": 0.025
+        },
+        "catalysis": {
+          "secretion_work": 0.2,
+          "investment_bias": -0.8,
+          "allocation_exponent": 2.0,
+          "half_saturation": 0.2,
+          "shared_anabolism": true,
+          "catalytic_rate": 6.0,
+          "allocation_bias_scale": 1.2,
+          "secretion_rate": 0.12,
+          "decay_rate": 0.008,
+          "mutation": 0.08,
+          "mutation_probability": 0.03,
+          "regulation": true
+        },
+        "model": "catalytic",
+        "dt": 0.1,
+        "snapshot_seconds": 2.0,
+        "sleep_seconds": 0.001,
+        "feedstock": {
+          "names": [
+            "bound_a",
+            "bound_b"
+          ],
+          "diffusion": [
+            0.0,
+            0.0
+          ],
+          "initial": [
+            2.0,
+            2.0
+          ],
+          "source_rates": [
+            0.006,
+            0.006
+          ],
+          "source_budgets": [
+            100000.0,
+            100000.0
+          ],
+          "potentials": [
+            4.0,
+            4.0
+          ]
+        },
+        "matrix": {
+          "capacity_per_enzyme": 6.0,
+          "transport_barrier": 20.0,
+          "desorption_rate": 0.12,
+          "cross_binding": 0.0,
+          "adsorption_rate": 4.0
+        },
+        "grid": {
+          "shape": [
+            32,
+            32,
+            1
+          ],
+          "extent": [
+            16.0,
+            16.0,
+            1.0
+          ]
+        },
+        "resources": {
+          "source_budgets": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "niche_contrast": 0.8,
+          "names": [
+            "precursor_a",
+            "precursor_b",
+            "waste"
+          ],
+          "spatial_niches": true,
+          "sink_budgets": [
+            100000.0,
+            100000.0,
+            100000.0
+          ],
+          "niche_waves": [
+            1,
+            2,
+            0
+          ],
+          "diffusion": [
+            0.2,
+            0.2,
+            0.03
+          ],
+          "sink_rates": [
+            0.0008,
+            0.0008,
+            0.01
+          ],
+          "initial": [
+            0.3,
+            0.3,
+            0.0
+          ],
+          "source_rates": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "potentials": [
+            4.0,
+            4.0,
+            0.0
+          ]
+        },
+        "checkpoint_seconds": 90.0,
+        "seed": 307
+      }
+    }
+  },
+  "regimes": {
+    "baseline": {
+      "adaptation_strength": 0.3,
+      "adaptation_time": 6.0
+    },
+    "stronger_feedback": {
+      "adaptation_strength": 1.5,
+      "adaptation_time": 8.0
+    }
+  },
+  "analysis_window": "within-ID statistics at time>=1000, minimum50observations; late sign-change counters at time>=1600",
+  "sampling": "dense traces sample up to32oldestliving IDs; coarse snapshots contain alllivingcells and are25timeunitsapart",
+  "limits": "two seeds, descriptive; sampled-ID counts are not independent evolutionary replicates; altered gain and timescale are one combined regime; division and environmental forcing contribute to variation; output shares are not realized fluxes; coarse cadence aliases fast modes; extinction limits observation exposure",
+  "arms": [
+    {
+      "regime": "baseline",
+      "seed": 211,
+      "complete": true,
+      "trace_time_bounds": [
+        0.0,
+        3000.0000447034836
+      ],
+      "trace_complete_prefix_sha256": "1cd26bcf41ae0e5aba86f59bf4b134148e4c5d988bfb9e08dc564ee82701038b",
+      "eligible_sampled_ids": 71,
+      "ever_observed_ids_after_1000": 89,
+      "qualifying_ids_with_hidden_sign_changes": 2,
+      "median_within_id_rms_channel_std": {
+        "hidden": 0.0014564476513773677,
+        "adaptation": 0.0013024370118846905,
+        "actions": 0.02931472774773775,
+        "metabolic_allocation": 0.013463678405184618
+      },
+      "median_hidden_saturation_fraction": 1.0,
+      "late_dense_trace": {
+        "start": 1600,
+        "consecutive_id_pairs": 4199,
+        "hidden_channel_sign_changes": 0
+      },
+      "late_coarse_full_population": {
+        "start": 1600.0,
+        "pair_counts": {
+          "all_cells": {
+            "consecutive_id_pairs": 188,
+            "hidden_channel_sign_changes": 0,
+            "changed_ids": []
+          },
+          "outside_oldest32_at_both_times": {
+            "consecutive_id_pairs": 36,
+            "hidden_channel_sign_changes": 0,
+            "changed_ids": []
+          }
+        },
+        "limitations": "25-time-unit cadence can alias fast cycles; consecutive snapshots do not recover events between them; variability can include environment and division partition; not an adaptation or autonomous-oscillation assay"
+      },
+      "final": {
+        "time": 3000.0000447034836,
+        "population": 0,
+        "full_population": true,
+        "founder_lineages_represented": 0,
+        "shannon_effective_founder_lineages": 0
+      },
+      "final_lineages": [],
+      "snapshot_hashes": [
+        {
+          "file": "frame-0000000.json",
+          "sha256": "5047ff046e91a6b1554f89110227da4482e786f16fbb660df1cbc6707368618a",
+          "time": 0.0
+        },
+        {
+          "file": "frame-0000250.json",
+          "sha256": "ab24fdb3025ab369494eecd12bd39f04556d4579ffaa37462440ba9e3f93f2d9",
+          "time": 25.00000037252903
+        },
+        {
+          "file": "frame-0000500.json",
+          "sha256": "9363453dad0eb6905f8465f553a7ed437d87eed5493fa8c504a5257b2cfcd38b",
+          "time": 50.00000074505806
+        },
+        {
+          "file": "frame-0000750.json",
+          "sha256": "c5005e478429d00b566167073c21ed16ac9b12ebd94ab532a73d17b71a917d64",
+          "time": 75.00000111758709
+        },
+        {
+          "file": "frame-0001000.json",
+          "sha256": "796c47ac791cfafde79409da1ff9acacd168733fc2b390db198bd1c45b60a130",
+          "time": 100.00000149011612
+        },
+        {
+          "file": "frame-0001250.json",
+          "sha256": "0ee4bbae2d949ab68cda72923d7452e9209dc3d9b6f45324fd147cc75a30b13b",
+          "time": 125.00000186264515
+        },
+        {
+          "file": "frame-0001500.json",
+          "sha256": "9f67f86907f33c5e2e9d3f229a4a30a02ecbe4e69db6a98f720ae1aa01f5e333",
+          "time": 150.00000223517418
+        },
+        {
+          "file": "frame-0001750.json",
+          "sha256": "7aa50e677feb03bd7e030dfd9aa104fd3e53fa6ea9dceb384b7714770fc0b81e",
+          "time": 175.0000026077032
+        },
+        {
+          "file": "frame-0002000.json",
+          "sha256": "f21e108fdc697d47cd3713502c86811d3fdad2de778e6d8ad5e500f498c5b587",
+          "time": 200.00000298023224
+        },
+        {
+          "file": "frame-0002250.json",
+          "sha256": "ce8955fb184c7f21c9a2729c2d149494cc40cf88cf652f2ddecc4eab2fc3c0e6",
+          "time": 225.00000335276127
+        },
+        {
+          "file": "frame-0002500.json",
+          "sha256": "b9d4004573b44868154c00291d80ecde194a5edffea028e09b8dea1ed24b067a",
+          "time": 250.0000037252903
+        },
+        {
+          "file": "frame-0002750.json",
+          "sha256": "cc2e7d703d2a9c4de36bfaeaf0678642679a7c65bca58c336250aaa0fd820526",
+          "time": 275.0000040978193
+        },
+        {
+          "file": "frame-0003000.json",
+          "sha256": "58910a7a2506a94cf54e1a922f81438851acf731b9c57aa0976d82a7e7a700a4",
+          "time": 300.00000447034836
+        },
+        {
+          "file": "frame-0003250.json",
+          "sha256": "974646645bf7639a59cf832088d45f9babb02cf33d1d19164b723b158e797252",
+          "time": 325.0000048428774
+        },
+        {
+          "file": "frame-0003500.json",
+          "sha256": "898d815189adda895a4009881e1c7cc70afcf3d11715de4a98dca3520bbad62a",
+          "time": 350.0000052154064
+        },
+        {
+          "file": "frame-0003750.json",
+          "sha256": "63610c90d6d33b9afb4488921b79a6f6eb710c2a01c481943e776ffb513d96a3",
+          "time": 375.00000558793545
+        },
+        {
+          "file": "frame-0004000.json",
+          "sha256": "172c89c8266f343866313f631f19cd862e5d2475999590b98a736e72aea73918",
+          "time": 400.0000059604645
+        },
+        {
+          "file": "frame-0004250.json",
+          "sha256": "823dbb87f365317e1621202dae9b21bbf8ba4c76de427943f08950edb0b9c441",
+          "time": 425.0000063329935
+        },
+        {
+          "file": "frame-0004500.json",
+          "sha256": "d687a9fde56c013a0a540a1f686a924c053cb42bc791bff5b303927896afc67f",
+          "time": 450.00000670552254
+        },
+        {
+          "file": "frame-0004750.json",
+          "sha256": "813759ec7071e0dcf549be6e6af6f9f7f61672c25f89178c48a9ac77e418e2eb",
+          "time": 475.00000707805157
+        },
+        {
+          "file": "frame-0005000.json",
+          "sha256": "a3bc0afeb3d174921722ac9587112ff73eec93733d97e35b687431e6546cf49b",
+          "time": 500.0000074505806
+        },
+        {
+          "file": "frame-0005250.json",
+          "sha256": "3f5b22f0580ab7acab13b503d649e055eebd3c3712db82e5ea350e4dcbab30cb",
+          "time": 525.0000078231096
+        },
+        {
+          "file": "frame-0005500.json",
+          "sha256": "4b343565732bf6742f4a38fb770c7d802c6b5c301e9054aa943db72ec2bf32bd",
+          "time": 550.0000081956387
+        },
+        {
+          "file": "frame-0005750.json",
+          "sha256": "f3a8caaebe55261f3b549ead5aac64178c0b9af3e40d7949449c67154c484818",
+          "time": 575.0000085681677
+        },
+        {
+          "file": "frame-0006000.json",
+          "sha256": "8d69a2ae512dbef6b26095c87acf58a8ee0bc5a5c50d7b6f58ff9d7267da1bcc",
+          "time": 600.0000089406967
+        },
+        {
+          "file": "frame-0006250.json",
+          "sha256": "3280f904fba91e7af909a70a2ab55bed1ecc5c41e1ffe8d381ded5678f545399",
+          "time": 625.0000093132257
+        },
+        {
+          "file": "frame-0006500.json",
+          "sha256": "0fd9f50a5f998e22caa01ccafbd15dfe8ce3902c6c586e9aef40d05c65637aaa",
+          "time": 650.0000096857548
+        },
+        {
+          "file": "frame-0006750.json",
+          "sha256": "cf2d544f329ba76ae919463225d4d948dd1a901288ba449471d781bb8b52f379",
+          "time": 675.0000100582838
+        },
+        {
+          "file": "frame-0007000.json",
+          "sha256": "363c2837695af3af63b75670b3dd64bf09520dcc7a1000ae54f9447c4700167e",
+          "time": 700.0000104308128
+        },
+        {
+          "file": "frame-0007250.json",
+          "sha256": "59a7ea5060c851d3940eaf454bb02cf62b1d99dc07f834e27d0622ba97633fbf",
+          "time": 725.0000108033419
+        },
+        {
+          "file": "frame-0007500.json",
+          "sha256": "1ceedf546ac560c9b86d3592f35e344f88fbc4e5fb229278a99732696ee27046",
+          "time": 750.0000111758709
+        },
+        {
+          "file": "frame-0007750.json",
+          "sha256": "9a250336d18ac1e57f2ce6062c282776f087eecd6d982d1efa7652f3f4e0e617",
+          "time": 775.0000115483999
+        },
+        {
+          "file": "frame-0008000.json",
+          "sha256": "d5cdb280860baa7785a545794328d7d283f6d3a0c75232c68af19c9735728d5e",
+          "time": 800.000011920929
+        },
+        {
+          "file": "frame-0008250.json",
+          "sha256": "2a30056a0fd465ce1357ca1ebc7c37b6b4ca64fd07c6f61868f250609ad6a9ec",
+          "time": 825.000012293458
+        },
+        {
+          "file": "frame-0008500.json",
+          "sha256": "82aa0be578b027c98a55778a6bd0a579d91dbcd06ddaebc5c9fd11af4036a5d3",
+          "time": 850.000012665987
+        },
+        {
+          "file": "frame-0008750.json",
+          "sha256": "ba6dc764e576ff373d2804fd65106f8f4c39684f40100b4ffe5153cde8d09821",
+          "time": 875.000013038516
+        },
+        {
+          "file": "frame-0009000.json",
+          "sha256": "025b7b336ebbb5cec3f3392b0ffbb57fae90b379aa3062ce402e7e5d961089e1",
+          "time": 900.0000134110451
+        },
+        {
+          "file": "frame-0009250.json",
+          "sha256": "3bfd5596060e93e38fc1791cba0a540679a2f23254444b62fe7f5f5549b833ca",
+          "time": 925.0000137835741
+        },
+        {
+          "file": "frame-0009500.json",
+          "sha256": "ee641ce79b3550c326a29248e1f1f2e16d801a68db592e0132472cd204e4739d",
+          "time": 950.0000141561031
+        },
+        {
+          "file": "frame-0009750.json",
+          "sha256": "0f5295540db7a9f76ffad9a0461723337f142104440f78a03cbbd923a5b38422",
+          "time": 975.0000145286322
+        },
+        {
+          "file": "frame-0010000.json",
+          "sha256": "766bffee9fdb7596a489bbf9d9678c4a26414f0627e74e3c4b11f03e2705fb92",
+          "time": 1000.0000149011612
+        },
+        {
+          "file": "frame-0010250.json",
+          "sha256": "e308e8a5205244d9f08140b3a8fc8fd9ce449bca982d2bb51a2b248ca8707759",
+          "time": 1025.0000152736902
+        },
+        {
+          "file": "frame-0010500.json",
+          "sha256": "77bcc0d05d265083e26474d5888bd324babe299d02c33c0f076c292dd05e5648",
+          "time": 1050.0000156462193
+        },
+        {
+          "file": "frame-0010750.json",
+          "sha256": "6c93e20a4217fa067e59ea42d5fd3f3dae56347fc81669be463968cb94c5ec93",
+          "time": 1075.0000160187483
+        },
+        {
+          "file": "frame-0011000.json",
+          "sha256": "7de69bcb1d862c5dcfbb2fa657d9c4bc8873a2f8cd296280bd8a59ac2b4e1353",
+          "time": 1100.0000163912773
+        },
+        {
+          "file": "frame-0011250.json",
+          "sha256": "63b46a428dea4bf033b0c303e8afebda6cd296af2e9167cb705a5983a2277cae",
+          "time": 1125.0000167638063
+        },
+        {
+          "file": "frame-0011500.json",
+          "sha256": "8144e86777f3d4da3a3cabed2d0f35285eeb6e56ec9018b3b68471e3620f18fa",
+          "time": 1150.0000171363354
+        },
+        {
+          "file": "frame-0011750.json",
+          "sha256": "f93eccc1c8c66528437108c4a3d125760ffcc450924a56b175cf04a059a68e91",
+          "time": 1175.0000175088644
+        },
+        {
+          "file": "frame-0012000.json",
+          "sha256": "cac6da889101ad65f369d6ff14589e0c6952e732888f98033be271a8c308f7af",
+          "time": 1200.0000178813934
+        },
+        {
+          "file": "frame-0012250.json",
+          "sha256": "0ebb889d81772cbc7fe211235539feacc6cdb1b95d7ebc4d5926342e6d59a87a",
+          "time": 1225.0000182539225
+        },
+        {
+          "file": "frame-0012500.json",
+          "sha256": "a18ee4133305764e28e843424b8649d3d0761d14ec357416c5cc1748b668ea36",
+          "time": 1250.0000186264515
+        },
+        {
+          "file": "frame-0012750.json",
+          "sha256": "0d60c9eb71d7addede3d484702412adf958896616958bff3c1483762491a8395",
+          "time": 1275.0000189989805
+        },
+        {
+          "file": "frame-0013000.json",
+          "sha256": "b49cde567b0d7326a569c4ff7fa96984330f3c77ea2171270f0ba4d294aadb58",
+          "time": 1300.0000193715096
+        },
+        {
+          "file": "frame-0013250.json",
+          "sha256": "35640cea7cf1514e4cd82a35c686240241d1eb47abdad1874370389663f86f3f",
+          "time": 1325.0000197440386
+        },
+        {
+          "file": "frame-0013500.json",
+          "sha256": "b04ab0e5097f412f992ca476b093508fd274d6179ef6101f6b21ee06a7dba1f4",
+          "time": 1350.0000201165676
+        },
+        {
+          "file": "frame-0013750.json",
+          "sha256": "b432625fd1e0f95b515c44aa61184e201ad67225e0ca5a4f764f28ab9ee8ee3c",
+          "time": 1375.0000204890966
+        },
+        {
+          "file": "frame-0014000.json",
+          "sha256": "486a930e2bedb421106a35fba0712987d66154cd3e2956a2f751de361be421a6",
+          "time": 1400.0000208616257
+        },
+        {
+          "file": "frame-0014250.json",
+          "sha256": "2139dfa75499a7453e51aaf68210afd4caa9a6565f4c899bcea3429232ab72a8",
+          "time": 1425.0000212341547
+        },
+        {
+          "file": "frame-0014500.json",
+          "sha256": "585ad5e0e7610290e64d24153f7e1f09a107a4170e6b1cf93d8ccaa7027214dc",
+          "time": 1450.0000216066837
+        },
+        {
+          "file": "frame-0014750.json",
+          "sha256": "5ab71feb087db3958f0a4eeab154fbefddb3974868912d949a6a7995bc986b84",
+          "time": 1475.0000219792128
+        },
+        {
+          "file": "frame-0015000.json",
+          "sha256": "4c35a2745f6271850a099bd5ed69bc0c05bd1e7b825e4c4924e88764d2e75938",
+          "time": 1500.0000223517418
+        },
+        {
+          "file": "frame-0015250.json",
+          "sha256": "f0492d387d5e4a79f165a8b0a3143c000d1efe9d1fec9e33f0818ff20e912200",
+          "time": 1525.0000227242708
+        },
+        {
+          "file": "frame-0015500.json",
+          "sha256": "eb500bdd7000c11ba4855c712bb211fa725f61891e64027dcf9afa00a11eecc6",
+          "time": 1550.0000230967999
+        },
+        {
+          "file": "frame-0015750.json",
+          "sha256": "97d1bf7278a86c3faa67198f9772cb65c6c50acc9bf60fae7e97abe13b3d8d41",
+          "time": 1575.0000234693289
+        },
+        {
+          "file": "frame-0016000.json",
+          "sha256": "ebeb30337211822d1bc9712b800b196c931b7bb2bd9ec58ad6093c6af6679a6b",
+          "time": 1600.000023841858
+        },
+        {
+          "file": "frame-0016250.json",
+          "sha256": "d05a7f0355ea3d3880447072fd3add67cdd18a1f44df3cf763802840c937fc52",
+          "time": 1625.000024214387
+        },
+        {
+          "file": "frame-0016500.json",
+          "sha256": "c2b3f28f3e388ea564323510be0d02508b861d56f99b195b5b2606b69a8ee8c5",
+          "time": 1650.000024586916
+        },
+        {
+          "file": "frame-0016750.json",
+          "sha256": "ab79f03648bb1102de606ac336015392c8d5808175d2bcbf9cae112b00e15fe3",
+          "time": 1675.000024959445
+        },
+        {
+          "file": "frame-0017000.json",
+          "sha256": "0f58bd7d7a59f70eea29aa76f45fe5091b54d6f527754110ede891466bc29655",
+          "time": 1700.000025331974
+        },
+        {
+          "file": "frame-0017250.json",
+          "sha256": "a967d7e6c0229f3a2a0a3990918ff1187f39fd21eab040008e993d10e3207239",
+          "time": 1725.000025704503
+        },
+        {
+          "file": "frame-0017500.json",
+          "sha256": "272c44c8eb4981884db563c713eb5f6c8cc59039ddb141cb89475ab275f491fa",
+          "time": 1750.000026077032
+        },
+        {
+          "file": "frame-0017750.json",
+          "sha256": "e6d5b8b22209a9703a8b2bc22da58db0c8ae40c14c981431bc2bed5fb19f16f8",
+          "time": 1775.0000264495611
+        },
+        {
+          "file": "frame-0018000.json",
+          "sha256": "a6a5811d0ba5ed2a0cf3f0aab0007c57e229ac28984827a429e9f82e75a5587d",
+          "time": 1800.0000268220901
+        },
+        {
+          "file": "frame-0018250.json",
+          "sha256": "e9b5688b2f082af8da1a06435e7a58395dc23b9410667821f4bc535037251b69",
+          "time": 1825.0000271946192
+        },
+        {
+          "file": "frame-0018500.json",
+          "sha256": "c4ab3abff90faefec22dc0825d16b2e655a07e4c8e769c1e3708d8a79c879205",
+          "time": 1850.0000275671482
+        },
+        {
+          "file": "frame-0018750.json",
+          "sha256": "78450f7e8053117a88b86a7bac6238160e522730585fd73f41409027fcb46d65",
+          "time": 1875.0000279396772
+        },
+        {
+          "file": "frame-0019000.json",
+          "sha256": "e900fe7a89825b1cebad1a6c68d286407e1c116e40b904fba16f422b6f4cc982",
+          "time": 1900.0000283122063
+        },
+        {
+          "file": "frame-0019250.json",
+          "sha256": "54a75d9f010fcd17e04b086a3ef7b9112cb0defa5f9881dcdca88824e9f4131e",
+          "time": 1925.0000286847353
+        },
+        {
+          "file": "frame-0019500.json",
+          "sha256": "9e7a69130267f82df4da74810470ea5dde1bc33532aac1a8414d6839c8b949df",
+          "time": 1950.0000290572643
+        },
+        {
+          "file": "frame-0019750.json",
+          "sha256": "3b11c80f907707745ee3f7570511cf131a3c0cf59824df34df556be435e79c6a",
+          "time": 1975.0000294297934
+        },
+        {
+          "file": "frame-0020000.json",
+          "sha256": "2b2c6db8780ff66d6cbb3dccf7546058b18629c9303ab854a5af7ec42da1ec7f",
+          "time": 2000.0000298023224
+        },
+        {
+          "file": "frame-0020250.json",
+          "sha256": "61c06ecb3aab44dfa0d8868b1f92a5d5dccabe81d5690f8e0a7a3014e5d33bd6",
+          "time": 2025.0000301748514
+        },
+        {
+          "file": "frame-0020500.json",
+          "sha256": "ed841823f9aa626df6ff762ba59c795b541980767b457e6a9aa6868649a39073",
+          "time": 2050.0000305473804
+        },
+        {
+          "file": "frame-0020750.json",
+          "sha256": "8d19dd8c54b79a9a135ec98f1564acee3a74303c93f0bbb7efee372910ce5085",
+          "time": 2075.0000309199095
+        },
+        {
+          "file": "frame-0021000.json",
+          "sha256": "560443d8a0acc0839cb22c6403efc6fe3354870cf4c55024eb49a027d0090ce1",
+          "time": 2100.0000312924385
+        },
+        {
+          "file": "frame-0021250.json",
+          "sha256": "02633379f78a8b94842d7188f36b7b943f77a694f1815a42834650258d7571d2",
+          "time": 2125.0000316649675
+        },
+        {
+          "file": "frame-0021500.json",
+          "sha256": "004642ce6b8f72bddee2f7d66005426fc6a406abda2aa694cc94da24fe5a0770",
+          "time": 2150.0000320374966
+        },
+        {
+          "file": "frame-0021750.json",
+          "sha256": "454334a1c032ba463952eb3543bccc6474c27aed15c921212fedfd36b4d978ce",
+          "time": 2175.0000324100256
+        },
+        {
+          "file": "frame-0022000.json",
+          "sha256": "ad4a06bae94e0c64b1472d7616828c79d55521ddabeef2ee53e727f05a894de7",
+          "time": 2200.0000327825546
+        },
+        {
+          "file": "frame-0022250.json",
+          "sha256": "8d3a3a19e02d7c0af3bb8a270b723fbb6b4e336baf3bc293612fb8e9123ae384",
+          "time": 2225.0000331550837
+        },
+        {
+          "file": "frame-0022500.json",
+          "sha256": "21eb37c559bfd0bb2f94ef3c1092a759068f7cd97229e8c39b83ab509cb31517",
+          "time": 2250.0000335276127
+        },
+        {
+          "file": "frame-0022750.json",
+          "sha256": "7be3af4e255615c682112268497677a775cf696ee71e9b9ff15184e3fd41342e",
+          "time": 2275.0000339001417
+        },
+        {
+          "file": "frame-0023000.json",
+          "sha256": "381f93087d87618cc71a33ce8e23183670c99ebad4b4cf87c1e6bd0668019c75",
+          "time": 2300.0000342726707
+        },
+        {
+          "file": "frame-0023250.json",
+          "sha256": "ee2be2ae3f64e488005c9efc72a2cc0a5756f89c2eeb2c4ef8e445a60f6e4dd8",
+          "time": 2325.0000346452
+        },
+        {
+          "file": "frame-0023500.json",
+          "sha256": "e0c88d8045dc9589078038e660a37ee50140c39cf0bd6895796be2b576665fda",
+          "time": 2350.000035017729
+        },
+        {
+          "file": "frame-0023750.json",
+          "sha256": "94875e8b27a4d4155269f911029104ecef2550d5052cbdf5771dbbf101992c19",
+          "time": 2375.000035390258
+        },
+        {
+          "file": "frame-0024000.json",
+          "sha256": "7bf57a5466e576f1cbf839463c92e819d381a01e0033fdb800f20f8498173b10",
+          "time": 2400.000035762787
+        },
+        {
+          "file": "frame-0024250.json",
+          "sha256": "ed6d922c9ddb7219db51b5c125d87ab605613392d9facd767ab3e87dfd633290",
+          "time": 2425.000036135316
+        },
+        {
+          "file": "frame-0024500.json",
+          "sha256": "25dc3d398006159e2a6f353d5c3eddeae5a521c825636bee8081c0a9aed78d7e",
+          "time": 2450.000036507845
+        },
+        {
+          "file": "frame-0024750.json",
+          "sha256": "1644411f13f7b5bd49a69f5f4699b0d1bee2eb1c15256f7df47b40cf5281a567",
+          "time": 2475.000036880374
+        },
+        {
+          "file": "frame-0025000.json",
+          "sha256": "37d741584d7f00da721dcd53bddf18c601de8d12c4c06b894fefcdfc90844994",
+          "time": 2500.000037252903
+        },
+        {
+          "file": "frame-0025250.json",
+          "sha256": "7b75156cc4dbf23096c754ed2e4f8e5dffd97452688092c7aed5a040ab082a76",
+          "time": 2525.000037625432
+        },
+        {
+          "file": "frame-0025500.json",
+          "sha256": "6af66f4dced5ddd6cb4f9834845fb3261971ba85a86df084a6de3308627d0f61",
+          "time": 2550.000037997961
+        },
+        {
+          "file": "frame-0025750.json",
+          "sha256": "8cdb5efad600d2d5bb0668bce6ac53a29a560b5541d88a06280822623e45ef08",
+          "time": 2575.00003837049
+        },
+        {
+          "file": "frame-0026000.json",
+          "sha256": "12c124b9d28820dea3665ff38c9b037bdafd997ec25dcf84d4e7fd3886049679",
+          "time": 2600.000038743019
+        },
+        {
+          "file": "frame-0026250.json",
+          "sha256": "90c364949e0a5c8bc482245b3befe053d95ac3d9aec94500f1c2cfb3b3775387",
+          "time": 2625.000039115548
+        },
+        {
+          "file": "frame-0026500.json",
+          "sha256": "6f90f0cf2bb6e0496b3d5e8aa8a1a23cf62dc0451f2826365b3784f0d0be22ba",
+          "time": 2650.000039488077
+        },
+        {
+          "file": "frame-0026750.json",
+          "sha256": "a6fc77bd13cb8091dcaf77717c9c6a983d3e7bdaf2898a426f482819256aa530",
+          "time": 2675.000039860606
+        },
+        {
+          "file": "frame-0027000.json",
+          "sha256": "44501ed1290bd9fab3c5a7f22d01b4ecea639088b40fa9fabe870f178d820d0f",
+          "time": 2700.000040233135
+        },
+        {
+          "file": "frame-0027250.json",
+          "sha256": "a4d5b0ca0fc92749cbb8fed258537bcb206931de5a9316647726b79e08a16b62",
+          "time": 2725.0000406056643
+        },
+        {
+          "file": "frame-0027500.json",
+          "sha256": "e6ab0f08e012e9e088577c843417e5dd842fc0db4634a8c05ad56b913db1b35e",
+          "time": 2750.0000409781933
+        },
+        {
+          "file": "frame-0027750.json",
+          "sha256": "2533da34ef484c5249640fd6d193e1e5571f54df29046521a05c890be82026af",
+          "time": 2775.0000413507223
+        },
+        {
+          "file": "frame-0028000.json",
+          "sha256": "6b9caf7850cf057617b34e558737971c2427b381f2fe6d0753f41ff1a9a25d6d",
+          "time": 2800.0000417232513
+        },
+        {
+          "file": "frame-0028250.json",
+          "sha256": "c12a8f0299466b022ea763fa45236e100cf9dbbac59409bf9a97b317a2c8a64c",
+          "time": 2825.0000420957804
+        },
+        {
+          "file": "frame-0028500.json",
+          "sha256": "aff79821ac17d420b51db43708030b5d7ece8aaa3de4cb0ccff133a6f7658b3e",
+          "time": 2850.0000424683094
+        },
+        {
+          "file": "frame-0028750.json",
+          "sha256": "e4b08459565c9a7fa80f1cdcdc857c14a9cab8efa7bb9968247e2ee03ca4490f",
+          "time": 2875.0000428408384
+        },
+        {
+          "file": "frame-0029000.json",
+          "sha256": "751c45b4c46ebc6aa2475edf915e03f2478086a73bd4f4f9ad9703ad2fd0cb6f",
+          "time": 2900.0000432133675
+        },
+        {
+          "file": "frame-0029250.json",
+          "sha256": "7ab60acd88a169c54441309d815bfaced9d34680f3dd2a91bd9f4bc7caa54570",
+          "time": 2925.0000435858965
+        },
+        {
+          "file": "frame-0029500.json",
+          "sha256": "ed77d94a7597e3de0179b90cf7af9a4ba2014e35bc7bce5917ca5dd6ad644cbc",
+          "time": 2950.0000439584255
+        },
+        {
+          "file": "frame-0029750.json",
+          "sha256": "02c90dec57fa4c78ed1916e437015a3837e3bfa26801b0b8ba40679285e5c450",
+          "time": 2975.0000443309546
+        },
+        {
+          "file": "frame-0030000.json",
+          "sha256": "8cf97fea2e2dfaf6996462dc26ac94036101eb72f319c078c7cdbaab3f2f56fc",
+          "time": 3000.0000447034836
+        }
+      ]
+    },
+    {
+      "regime": "baseline",
+      "seed": 307,
+      "complete": true,
+      "trace_time_bounds": [
+        0.0,
+        3000.0000447034836
+      ],
+      "trace_complete_prefix_sha256": "40a4ca26086d6fc3b29a39606a81bdc36f183a08949c3f3386f4548468f2a775",
+      "eligible_sampled_ids": 91,
+      "ever_observed_ids_after_1000": 101,
+      "qualifying_ids_with_hidden_sign_changes": 1,
+      "median_within_id_rms_channel_std": {
+        "hidden": 0.0017884100563571848,
+        "adaptation": 0.001714148810682837,
+        "actions": 0.025422615328983995,
+        "metabolic_allocation": 0.00975555521962007
+      },
+      "median_hidden_saturation_fraction": 0.9692289272030651,
+      "late_dense_trace": {
+        "start": 1600,
+        "consecutive_id_pairs": 44789,
+        "hidden_channel_sign_changes": 0
+      },
+      "late_coarse_full_population": {
+        "start": 1600.0,
+        "pair_counts": {
+          "all_cells": {
+            "consecutive_id_pairs": 10167,
+            "hidden_channel_sign_changes": 0,
+            "changed_ids": []
+          },
+          "outside_oldest32_at_both_times": {
+            "consecutive_id_pairs": 8375,
+            "hidden_channel_sign_changes": 0,
+            "changed_ids": []
+          }
+        },
+        "limitations": "25-time-unit cadence can alias fast cycles; consecutive snapshots do not recover events between them; variability can include environment and division partition; not an adaptation or autonomous-oscillation assay"
+      },
+      "final": {
+        "time": 3000.0000447034836,
+        "population": 176,
+        "full_population": true,
+        "founder_lineages_represented": 8,
+        "shannon_effective_founder_lineages": 1.9460241944054333
+      },
+      "final_lineages": [
+        {
+          "lineage": 7,
+          "living": 2,
+          "biomass": 1.7861430151248339,
+          "body_and_stored_material": 1.7861742061188521,
+          "fraction_of_represented_cells": 0.011363636363636364,
+          "max_generation": 3,
+          "evaluated_catalytic_readouts": 2,
+          "catalytic_allocation_a_mean": 0.003621274625807935,
+          "catalytic_allocation_a_p10": 0.003487914615466931,
+          "catalytic_allocation_a_p90": 0.003754634636148939,
+          "investment_mean": 0.4564223891268956,
+          "investment_biomass_weighted_mean": 0.455044523380468,
+          "metabolic_allocation_mean": [
+            0.202015425,
+            0.57987447,
+            0.047753995,
+            0.17035617
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.20506312142699062,
+            0.5806644679810218,
+            0.04806024241096009,
+            0.16621220336312428
+          ],
+          "actual_last_secretion": [
+            3.5499760954200293e-10,
+            2.455358236163295e-05
+          ],
+          "cellular_genome_signature_count": 2,
+          "catalytic_genome_signature_count": 2
+        },
+        {
+          "lineage": 22,
+          "living": 6,
+          "biomass": 8.108855724748956,
+          "body_and_stored_material": 8.12351327121108,
+          "fraction_of_represented_cells": 0.03409090909090909,
+          "max_generation": 9,
+          "evaluated_catalytic_readouts": 6,
+          "catalytic_allocation_a_mean": 0.9814831734342346,
+          "catalytic_allocation_a_p10": 0.9802940297701208,
+          "catalytic_allocation_a_p90": 0.9825833589351523,
+          "investment_mean": 0.16907574387019939,
+          "investment_biomass_weighted_mean": 0.16928004335517363,
+          "metabolic_allocation_mean": [
+            0.43574372166666664,
+            0.32609435166666667,
+            0.08210985433333334,
+            0.15605206766666666
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.4389295781622041,
+            0.32613457603234836,
+            0.08118380250791833,
+            0.15375204218117744
+          ],
+          "actual_last_secretion": [
+            0.00042480509120765785,
+            1.461519439418255e-07
+          ],
+          "cellular_genome_signature_count": 6,
+          "catalytic_genome_signature_count": 6
+        },
+        {
+          "lineage": 23,
+          "living": 1,
+          "biomass": 1.1617736239949954,
+          "body_and_stored_material": 1.1617736239949954,
+          "fraction_of_represented_cells": 0.005681818181818182,
+          "max_generation": 3,
+          "evaluated_catalytic_readouts": 1,
+          "catalytic_allocation_a_mean": 0.7755189873101583,
+          "catalytic_allocation_a_p10": 0.7755189873101583,
+          "catalytic_allocation_a_p90": 0.7755189873101583,
+          "investment_mean": 0.23538805138414062,
+          "investment_biomass_weighted_mean": 0.23538805138414062,
+          "metabolic_allocation_mean": [
+            0.08814461,
+            0.34841582,
+            0.47022146,
+            0.0932181
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.08814461,
+            0.34841582,
+            0.47022146,
+            0.0932181
+          ],
+          "actual_last_secretion": [
+            0.0,
+            0.0
+          ],
+          "cellular_genome_signature_count": 1,
+          "catalytic_genome_signature_count": 1
+        },
+        {
+          "lineage": 31,
+          "living": 10,
+          "biomass": 10.971341642176789,
+          "body_and_stored_material": 10.977847603326474,
+          "fraction_of_represented_cells": 0.056818181818181816,
+          "max_generation": 9,
+          "evaluated_catalytic_readouts": 10,
+          "catalytic_allocation_a_mean": 0.9143499959709195,
+          "catalytic_allocation_a_p10": 0.9052836704184238,
+          "catalytic_allocation_a_p90": 0.9218640036728283,
+          "investment_mean": 0.24789776928125254,
+          "investment_biomass_weighted_mean": 0.24411476868819207,
+          "metabolic_allocation_mean": [
+            0.297913271,
+            0.38089439,
+            0.241415913,
+            0.0797764064
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.2914447954574649,
+            0.3722603289760993,
+            0.25679260017538746,
+            0.07950225908155784
+          ],
+          "actual_last_secretion": [
+            0.00011837121352481068,
+            9.017437724330034e-07
+          ],
+          "cellular_genome_signature_count": 10,
+          "catalytic_genome_signature_count": 7
+        },
+        {
+          "lineage": 34,
+          "living": 3,
+          "biomass": 2.134774303921909,
+          "body_and_stored_material": 2.134774303921909,
+          "fraction_of_represented_cells": 0.017045454545454544,
+          "max_generation": 3,
+          "evaluated_catalytic_readouts": 3,
+          "catalytic_allocation_a_mean": 0.020070001592972855,
+          "catalytic_allocation_a_p10": 0.018212204938264892,
+          "catalytic_allocation_a_p90": 0.02245141567038743,
+          "investment_mean": 0.323491742958321,
+          "investment_biomass_weighted_mean": 0.32796557793219416,
+          "metabolic_allocation_mean": [
+            0.22905204,
+            0.54562188,
+            0.14976514333333335,
+            0.07556089333333334
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.22169154230594587,
+            0.5470538316224164,
+            0.1535013603938633,
+            0.07775322072666721
+          ],
+          "actual_last_secretion": [
+            0.0,
+            0.0
+          ],
+          "cellular_genome_signature_count": 3,
+          "catalytic_genome_signature_count": 3
+        },
+        {
+          "lineage": 40,
+          "living": 2,
+          "biomass": 1.9503659555009802,
+          "body_and_stored_material": 1.9559766760812771,
+          "fraction_of_represented_cells": 0.011363636363636364,
+          "max_generation": 6,
+          "evaluated_catalytic_readouts": 2,
+          "catalytic_allocation_a_mean": 0.2073468536296954,
+          "catalytic_allocation_a_p10": 0.19280767243589178,
+          "catalytic_allocation_a_p90": 0.22188603482349906,
+          "investment_mean": 0.14491466631672456,
+          "investment_biomass_weighted_mean": 0.14491877941495343,
+          "metabolic_allocation_mean": [
+            0.55419273,
+            0.24488724500000003,
+            0.102254332,
+            0.09866569
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.5541584427933267,
+            0.24490219299947077,
+            0.10226957713100092,
+            0.09866978402457392
+          ],
+          "actual_last_secretion": [
+            8.223061601845877e-06,
+            0.00015106795182805418
+          ],
+          "cellular_genome_signature_count": 2,
+          "catalytic_genome_signature_count": 2
+        },
+        {
+          "lineage": 43,
+          "living": 2,
+          "biomass": 1.4281296614624819,
+          "body_and_stored_material": 1.4281296614624819,
+          "fraction_of_represented_cells": 0.011363636363636364,
+          "max_generation": 6,
+          "evaluated_catalytic_readouts": 2,
+          "catalytic_allocation_a_mean": 0.81753253609074,
+          "catalytic_allocation_a_p10": 0.8101302451372395,
+          "catalytic_allocation_a_p90": 0.8249348270442403,
+          "investment_mean": 0.35369164973511624,
+          "investment_biomass_weighted_mean": 0.34817719018145815,
+          "metabolic_allocation_mean": [
+            0.15849254499999998,
+            0.422688375,
+            0.24367966,
+            0.175139415
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.1627458720574367,
+            0.41119311788009827,
+            0.25157254355137915,
+            0.17448844701142685
+          ],
+          "actual_last_secretion": [
+            0.0,
+            0.0
+          ],
+          "cellular_genome_signature_count": 2,
+          "catalytic_genome_signature_count": 2
+        },
+        {
+          "lineage": 46,
+          "living": 150,
+          "biomass": 168.2960588252795,
+          "body_and_stored_material": 168.7523910017088,
+          "fraction_of_represented_cells": 0.8522727272727273,
+          "max_generation": 19,
+          "evaluated_catalytic_readouts": 150,
+          "catalytic_allocation_a_mean": 0.2640765820355942,
+          "catalytic_allocation_a_p10": 0.22176233341974963,
+          "catalytic_allocation_a_p90": 0.2989382486821609,
+          "investment_mean": 0.28101726501716523,
+          "investment_biomass_weighted_mean": 0.28181984683344774,
+          "metabolic_allocation_mean": [
+            0.46934111893333336,
+            0.371785999,
+            0.11232141929333334,
+            0.04655146294
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.4726215569893732,
+            0.3723981339885186,
+            0.10957519678864093,
+            0.04540511123218994
+          ],
+          "actual_last_secretion": [
+            0.0008195771514910844,
+            0.005796575434751522
+          ],
+          "cellular_genome_signature_count": 150,
+          "catalytic_genome_signature_count": 125
+        }
+      ],
+      "snapshot_hashes": [
+        {
+          "file": "frame-0000000.json",
+          "sha256": "d8c0822fc4e19b2b6e7c8d801e56513ec0ac9cbfe41bd1c8246112e2d5873194",
+          "time": 0.0
+        },
+        {
+          "file": "frame-0000250.json",
+          "sha256": "a7e1cc67882fd1fc4d37636b0bc6f57030ac9fa67ceab590068f05f87b133a8a",
+          "time": 25.00000037252903
+        },
+        {
+          "file": "frame-0000500.json",
+          "sha256": "4621002c71c2e3ef285be752f1a8563ed610d31607e0bf07cd9b5ae4d94ec445",
+          "time": 50.00000074505806
+        },
+        {
+          "file": "frame-0000750.json",
+          "sha256": "56f9cfdd4d34ec84a3c42c4e4aafec178d5806c3e1c856232e671c1f7616da20",
+          "time": 75.00000111758709
+        },
+        {
+          "file": "frame-0001000.json",
+          "sha256": "927b1b53ab528515558fc0aab28589abde3c05875519e4dfdd721f3aa6d9e648",
+          "time": 100.00000149011612
+        },
+        {
+          "file": "frame-0001250.json",
+          "sha256": "3a31c8feb18f01508e1716119ceeb3d2bef10a5dec62373b18d22a83f0b34a24",
+          "time": 125.00000186264515
+        },
+        {
+          "file": "frame-0001500.json",
+          "sha256": "988d26ebf46de9c5d14afa944959cc7e597ca798a5aa549f248b863d55a406e2",
+          "time": 150.00000223517418
+        },
+        {
+          "file": "frame-0001750.json",
+          "sha256": "f47114645673d9d57813448d4a1d4d2d8a3e3e549eeaa4fca02540ea7863ba29",
+          "time": 175.0000026077032
+        },
+        {
+          "file": "frame-0002000.json",
+          "sha256": "e651c067799d47e1447d9ca964bd7dbb72ede3452f5dc5ed4dea29fabff7319e",
+          "time": 200.00000298023224
+        },
+        {
+          "file": "frame-0002250.json",
+          "sha256": "4d7c13e5e6ef9f7312704ece7afc67973cd58a08b0961cc34a84169a3d880c19",
+          "time": 225.00000335276127
+        },
+        {
+          "file": "frame-0002500.json",
+          "sha256": "5def57a91d4f544eafdee18d4f1248e964db6a26c687efa8b105ae8fab5474ce",
+          "time": 250.0000037252903
+        },
+        {
+          "file": "frame-0002750.json",
+          "sha256": "9a7b27266c4af36ceba21f5c6db5538245bfd6a7e7b1a28cae87276a22b849e1",
+          "time": 275.0000040978193
+        },
+        {
+          "file": "frame-0003000.json",
+          "sha256": "6d81c741f0da297d15a006f801f2db386fa04a00c19cea9d8674b3bd159d6173",
+          "time": 300.00000447034836
+        },
+        {
+          "file": "frame-0003250.json",
+          "sha256": "9ba98c199f527ac847087730bc6c8dcfa0d1963fdd0d2e6bac9b0a110b4e3802",
+          "time": 325.0000048428774
+        },
+        {
+          "file": "frame-0003500.json",
+          "sha256": "a2ede624f0ee38caae5e15cb41965eaf80940e1c5f016d1fdfe711ee0bdd3db8",
+          "time": 350.0000052154064
+        },
+        {
+          "file": "frame-0003750.json",
+          "sha256": "f9e1a6450ec6ac5c683a1a35833a572bbc5c4ed819fad43eab5fae8004c4f236",
+          "time": 375.00000558793545
+        },
+        {
+          "file": "frame-0004000.json",
+          "sha256": "260db801bff276b17453f5ef00ef1013a8fe5cbbe70d15dd977517970e6c9381",
+          "time": 400.0000059604645
+        },
+        {
+          "file": "frame-0004250.json",
+          "sha256": "efb85b26cac4658e47c494687b62095cde3dfa0de8e39c91b2993b7c2e24d6d0",
+          "time": 425.0000063329935
+        },
+        {
+          "file": "frame-0004500.json",
+          "sha256": "2f1705b86d2b61cc5a9885a0903d2e2422c500820efaeb60a58d1b45e6b6ed8c",
+          "time": 450.00000670552254
+        },
+        {
+          "file": "frame-0004750.json",
+          "sha256": "4184f74c044892d3505afc5ae08c42b1a1e3ff1ed4e5a92cfbefa52b97fbd185",
+          "time": 475.00000707805157
+        },
+        {
+          "file": "frame-0005000.json",
+          "sha256": "3a4d4a02d2f7b4ffe229c03a36bd03fc56f507666a3b485e878e15a2129f10e2",
+          "time": 500.0000074505806
+        },
+        {
+          "file": "frame-0005250.json",
+          "sha256": "302c590efbf0e7c2b00b5f996b515f7b88ed1ddd0f95bf5d8e2a396025e16791",
+          "time": 525.0000078231096
+        },
+        {
+          "file": "frame-0005500.json",
+          "sha256": "9fe176049ecaa7e39d6995cac8c93d638ea861dd5156b0b7b29d1f0c5937dc0e",
+          "time": 550.0000081956387
+        },
+        {
+          "file": "frame-0005750.json",
+          "sha256": "40264a1c92f3dbb717524d1914be6cdc1c4511dce1376205edd774d037ef0061",
+          "time": 575.0000085681677
+        },
+        {
+          "file": "frame-0006000.json",
+          "sha256": "25cde2288884d22fa49859acc94269bc91867d61b97a451fa9c97edfac84d645",
+          "time": 600.0000089406967
+        },
+        {
+          "file": "frame-0006250.json",
+          "sha256": "ca9b270b54e85cfc2adf08af44ee7ee48a1d4d047227b4ade8d116bab6c06cbc",
+          "time": 625.0000093132257
+        },
+        {
+          "file": "frame-0006500.json",
+          "sha256": "91f62bd4253b94b423ce1b5dfcdb6dc9241a96324a9cabfa491caf20713bf96b",
+          "time": 650.0000096857548
+        },
+        {
+          "file": "frame-0006750.json",
+          "sha256": "86f0bbdab7ddd99d353df09d6951f784936e63199f0935ef4cf356849aec0e03",
+          "time": 675.0000100582838
+        },
+        {
+          "file": "frame-0007000.json",
+          "sha256": "72ddfb0c63327c51987823e6fa781dd147d9df604d8de48fe65dc123ede9bbc0",
+          "time": 700.0000104308128
+        },
+        {
+          "file": "frame-0007250.json",
+          "sha256": "61a4e5b4ecac533e03b8059dd9953343afa3a3fb8bb2f8226f4558846cc613b5",
+          "time": 725.0000108033419
+        },
+        {
+          "file": "frame-0007500.json",
+          "sha256": "f5aac3d7961c7ad8052b24d2496c7a8523cb8f5c5fbaa89bdc0cc6b2d9b2e5fd",
+          "time": 750.0000111758709
+        },
+        {
+          "file": "frame-0007750.json",
+          "sha256": "4de973fd3026ff3f12e465de3b2117e7974eab112d07ee3057c0a29545d3fed9",
+          "time": 775.0000115483999
+        },
+        {
+          "file": "frame-0008000.json",
+          "sha256": "54cfb735279c579fe8dbe998ea03a55c317dfbc7b8cb2aff595fb24ba4fc54c7",
+          "time": 800.000011920929
+        },
+        {
+          "file": "frame-0008250.json",
+          "sha256": "21b21ed3369a11f74305cb953a0483ab929229fc228627d5ea386d2673b2019c",
+          "time": 825.000012293458
+        },
+        {
+          "file": "frame-0008500.json",
+          "sha256": "f422a25feeec0b1dfe51fe1f904e6e4c20eaba0452198ffe3e1e99c25bd83ba8",
+          "time": 850.000012665987
+        },
+        {
+          "file": "frame-0008750.json",
+          "sha256": "ae2f8c0692854916dff5a77eaf9f8a643793923f8203fdc38e045a4095064381",
+          "time": 875.000013038516
+        },
+        {
+          "file": "frame-0009000.json",
+          "sha256": "f7d42a22d7699b93bfe93670fd66ab0aefdbc32af09219e300f48a190dd4bd0f",
+          "time": 900.0000134110451
+        },
+        {
+          "file": "frame-0009250.json",
+          "sha256": "0bfea986615ebccb8f5dedcc7c366c3afd9c3db5f2e834956cdc9ec7fb5bb343",
+          "time": 925.0000137835741
+        },
+        {
+          "file": "frame-0009500.json",
+          "sha256": "2c5156ade6f6af8491ffa370d514aa912220533d4bb6161548e880d8b5b169a3",
+          "time": 950.0000141561031
+        },
+        {
+          "file": "frame-0009750.json",
+          "sha256": "633fd71c0e7ec0c12194abc1ef4057b09f778ecc52cdc820bd92516614b5c119",
+          "time": 975.0000145286322
+        },
+        {
+          "file": "frame-0010000.json",
+          "sha256": "f5b666b1d5458228903eb09076104e42df8f298d7558e3a3a71ff93c6fe17332",
+          "time": 1000.0000149011612
+        },
+        {
+          "file": "frame-0010250.json",
+          "sha256": "d0456cd279583732a19dcc67991e0004b25d90d27410cdf4b99ad85a86f45fd9",
+          "time": 1025.0000152736902
+        },
+        {
+          "file": "frame-0010500.json",
+          "sha256": "ba162b46fb5e21a721ed4906680cc402f5e0344eb10e1a68ff8601a139cfff65",
+          "time": 1050.0000156462193
+        },
+        {
+          "file": "frame-0010750.json",
+          "sha256": "2eb702ec94b700a17bdb9f13970bd8b6fe9929d4c679fd1d964e896db68aa51e",
+          "time": 1075.0000160187483
+        },
+        {
+          "file": "frame-0011000.json",
+          "sha256": "d56c35b28d92cf9eba4ce3d9cd2a71a6b2638300c887f364c04843eaafd84572",
+          "time": 1100.0000163912773
+        },
+        {
+          "file": "frame-0011250.json",
+          "sha256": "5a33d7ee2abc4606065f215757bf2f69eab5692f102e118aaf31c02ed06a026c",
+          "time": 1125.0000167638063
+        },
+        {
+          "file": "frame-0011500.json",
+          "sha256": "277471e9a0a9305b8be951b71ab3724d20fecfec2c19bdad4e5ae9fedf6ea786",
+          "time": 1150.0000171363354
+        },
+        {
+          "file": "frame-0011750.json",
+          "sha256": "aa28a2dfcb3f71671ee9266656e3c839dfa5e7e09bf4f852848823f1cf096423",
+          "time": 1175.0000175088644
+        },
+        {
+          "file": "frame-0012000.json",
+          "sha256": "fa7c81adaf88919e27a316e1b9479b5ed32d782ce011cddfcc31a2378f8dd068",
+          "time": 1200.0000178813934
+        },
+        {
+          "file": "frame-0012250.json",
+          "sha256": "ff9f7d06d0710f8fe829e0a453822a53243c70c308ba9d7245ab69357705db00",
+          "time": 1225.0000182539225
+        },
+        {
+          "file": "frame-0012500.json",
+          "sha256": "93313dc4516a07ec8e70e5ce353b1bcafd9627e9534faf40a5f751f29a6f6d5a",
+          "time": 1250.0000186264515
+        },
+        {
+          "file": "frame-0012750.json",
+          "sha256": "af573886f64d35ef49c0f273f7fae0af422565e936acdd1ffb2a0cdc55698bde",
+          "time": 1275.0000189989805
+        },
+        {
+          "file": "frame-0013000.json",
+          "sha256": "194f2be7dd9e780eb4bb9bb62e3abcb2436706e9d91ad533b7bac1465b8ca4d7",
+          "time": 1300.0000193715096
+        },
+        {
+          "file": "frame-0013250.json",
+          "sha256": "7ca6b2ed47f83ddc3c2c8fa45807419efe2700841244796c65badb6dc10c6d5b",
+          "time": 1325.0000197440386
+        },
+        {
+          "file": "frame-0013500.json",
+          "sha256": "3937f745857612ab39aae538536602f74438b7d591b47824bbd1f9a08d7a3725",
+          "time": 1350.0000201165676
+        },
+        {
+          "file": "frame-0013750.json",
+          "sha256": "a472f516d84e4c7a4858368b2e1811bfed5b30d5f1c9274e33942883ee92895f",
+          "time": 1375.0000204890966
+        },
+        {
+          "file": "frame-0014000.json",
+          "sha256": "fd0b78eefaa62c35bccdc340d3e2988b7ef701958e4071c50f7ae76ea94519e0",
+          "time": 1400.0000208616257
+        },
+        {
+          "file": "frame-0014250.json",
+          "sha256": "9947ad476f8b81d96a179823c4849e83675cd41658f8f54d7db366deb98c1a86",
+          "time": 1425.0000212341547
+        },
+        {
+          "file": "frame-0014500.json",
+          "sha256": "61cfd30e4fa7922b66a57fbfa6b45bb3911c0b84d849bdd0785576904bdc1ac7",
+          "time": 1450.0000216066837
+        },
+        {
+          "file": "frame-0014750.json",
+          "sha256": "326637cc345b82b584336acd2c1bb0f97de07be5fcf33ef894a5076dfeed9ef8",
+          "time": 1475.0000219792128
+        },
+        {
+          "file": "frame-0015000.json",
+          "sha256": "65772861884db661e7cdf263a0ecdc9cdb495278379f06ca9afec37f4fadfaea",
+          "time": 1500.0000223517418
+        },
+        {
+          "file": "frame-0015250.json",
+          "sha256": "b8f385f1f14e2ba68fba3d49b216c5a7d32b1b98c0ab533f52c8daeff5b3113a",
+          "time": 1525.0000227242708
+        },
+        {
+          "file": "frame-0015500.json",
+          "sha256": "f091a01191df0606d98287a8f27b4ff7077a2b1aabc7fb63e12fd8aa4d560918",
+          "time": 1550.0000230967999
+        },
+        {
+          "file": "frame-0015750.json",
+          "sha256": "39cd09ca1a316219d29a2661372f912c2f91ae34bac361bbf632f088234a4a66",
+          "time": 1575.0000234693289
+        },
+        {
+          "file": "frame-0016000.json",
+          "sha256": "cbbef695510b9050b90f6711b52fe102691d91e89bc327bd55817d3b596f0e24",
+          "time": 1600.000023841858
+        },
+        {
+          "file": "frame-0016250.json",
+          "sha256": "f54feb80b405d42991f349b7fe0ee22e69d08d05734e03990fdf7251d9e36933",
+          "time": 1625.000024214387
+        },
+        {
+          "file": "frame-0016500.json",
+          "sha256": "ee890c41defc855616a1335b90a17369dc8098b4d22810dcca74c8c7282ddcc1",
+          "time": 1650.000024586916
+        },
+        {
+          "file": "frame-0016750.json",
+          "sha256": "b47f57d2e06eb9b54e49eaee1c2327cccba18397a8f1d491c1759845a6354283",
+          "time": 1675.000024959445
+        },
+        {
+          "file": "frame-0017000.json",
+          "sha256": "28814ad6f11259f94d191cd330ac95c680bd9032db758ecbedc53de00ec63745",
+          "time": 1700.000025331974
+        },
+        {
+          "file": "frame-0017250.json",
+          "sha256": "55f92482374b6af6d28cb850c003ac78c608bec0aab583a4f8527935e6e893a0",
+          "time": 1725.000025704503
+        },
+        {
+          "file": "frame-0017500.json",
+          "sha256": "46b268aa0eb9c138c75cce6fc095f319f535ba1e9cd438f95756eebf9880ed8a",
+          "time": 1750.000026077032
+        },
+        {
+          "file": "frame-0017750.json",
+          "sha256": "caf66d82bc3bf7096294da58149ec0ddb7c078042739ade066c758455ca9f8c2",
+          "time": 1775.0000264495611
+        },
+        {
+          "file": "frame-0018000.json",
+          "sha256": "00d29d56314d11b8de60c963c3126aa349dc4ea6a616348ba6fa68cb7c167074",
+          "time": 1800.0000268220901
+        },
+        {
+          "file": "frame-0018250.json",
+          "sha256": "b23098f70cb8a025185e6c741a82b13e5abbded4f36366290dd195b258d47bc1",
+          "time": 1825.0000271946192
+        },
+        {
+          "file": "frame-0018500.json",
+          "sha256": "6e74f118e53e80b5bff8f7ae6139afab5244c41bd2a7ef52e932490ec32a8e35",
+          "time": 1850.0000275671482
+        },
+        {
+          "file": "frame-0018750.json",
+          "sha256": "9c09b3a7ed589063440175f97521c348d082ed0dda1a068f1599d2053ac934bf",
+          "time": 1875.0000279396772
+        },
+        {
+          "file": "frame-0019000.json",
+          "sha256": "97bf3c576ac2f81dcaee35dab85d99b7c4b090da23817e7a5a87352af74e5fdf",
+          "time": 1900.0000283122063
+        },
+        {
+          "file": "frame-0019250.json",
+          "sha256": "0f4f110f0023a37cdde69032a51433a93cf4cd6749bf2ef4f347f42fcdf29fe3",
+          "time": 1925.0000286847353
+        },
+        {
+          "file": "frame-0019500.json",
+          "sha256": "2c50349439fe5e25ba20d47a44c9fdb9dda9dec22c27d3d6da5ab10563cf0d45",
+          "time": 1950.0000290572643
+        },
+        {
+          "file": "frame-0019750.json",
+          "sha256": "2aa61d7511260267434498ef2da67e100424f118b8eee231370e2f61d4ce341d",
+          "time": 1975.0000294297934
+        },
+        {
+          "file": "frame-0020000.json",
+          "sha256": "0815f27e0d04ac75309feee29df5acf5d6ac68170fe73a9008063d6e1561ef8d",
+          "time": 2000.0000298023224
+        },
+        {
+          "file": "frame-0020250.json",
+          "sha256": "e26c50e05c6eace199ec70e446ca444ef1b5f226ac63e8694112f7fe1f06d5ba",
+          "time": 2025.0000301748514
+        },
+        {
+          "file": "frame-0020500.json",
+          "sha256": "d1172a3fa5900679a4ee44bf40b99e6ee9f58bf84924d24b9a832a4b3b1d24ae",
+          "time": 2050.0000305473804
+        },
+        {
+          "file": "frame-0020750.json",
+          "sha256": "237f46f76d4b0d27319a1e6353f95bf5b9e8291472f17652cfbe45cbb1546ea3",
+          "time": 2075.0000309199095
+        },
+        {
+          "file": "frame-0021000.json",
+          "sha256": "3164b236e1b7648f101c72710a4c3e60fb2a8e370dea6d8df4dfa895e30113a4",
+          "time": 2100.0000312924385
+        },
+        {
+          "file": "frame-0021250.json",
+          "sha256": "1e49f8def613956fb0cfcee75a0c078f76582ce4d848ecb1889ed5ddebd6e491",
+          "time": 2125.0000316649675
+        },
+        {
+          "file": "frame-0021500.json",
+          "sha256": "1d5d91daa12baf1c5e4345bf500bc077c1b725db206cbfb379fd7b501276b08f",
+          "time": 2150.0000320374966
+        },
+        {
+          "file": "frame-0021750.json",
+          "sha256": "90e14d76c0dd254f7c679c305d45f0663fbc03feee71e1b2255aa69aaf232892",
+          "time": 2175.0000324100256
+        },
+        {
+          "file": "frame-0022000.json",
+          "sha256": "2f40bff1001e2f7cdfcb15f449e824eeef2b367ee9bb1d415fa1886d920a20e3",
+          "time": 2200.0000327825546
+        },
+        {
+          "file": "frame-0022250.json",
+          "sha256": "7e32fe1658d7b33d43f0d6138933d43a17ac1184e387ef86fd5bfd0264f359e1",
+          "time": 2225.0000331550837
+        },
+        {
+          "file": "frame-0022500.json",
+          "sha256": "e57562de95a060e6c8adc11fdfba5c8be98f290ffcddbea88a5e59540f0e78dd",
+          "time": 2250.0000335276127
+        },
+        {
+          "file": "frame-0022750.json",
+          "sha256": "1cfb24d7deb9d8f54df245f505e6f6de8c5a8110bef1f883e117f183d6890618",
+          "time": 2275.0000339001417
+        },
+        {
+          "file": "frame-0023000.json",
+          "sha256": "30b35e9ccd4eb3685ed7f0c5edf1aeaacf6985775f4f67bc4fac42ba409d80c2",
+          "time": 2300.0000342726707
+        },
+        {
+          "file": "frame-0023250.json",
+          "sha256": "8ded5e5d10c01da1468d2254f4e7169232c31960a8252be4cf9cba6ae4274b83",
+          "time": 2325.0000346452
+        },
+        {
+          "file": "frame-0023500.json",
+          "sha256": "c5a899907c0d3062ff2a7afcccad9a6cca5173f325c907c2b2b5a6560d08d2a2",
+          "time": 2350.000035017729
+        },
+        {
+          "file": "frame-0023750.json",
+          "sha256": "724a7618a6fe389f959626f35845d3702ee3bfbf87ba226d9d0721138e2d80c5",
+          "time": 2375.000035390258
+        },
+        {
+          "file": "frame-0024000.json",
+          "sha256": "ad37962c22d33b51db6be058396a39765ef7917924b2f05922d0d213697fd98a",
+          "time": 2400.000035762787
+        },
+        {
+          "file": "frame-0024250.json",
+          "sha256": "ba751c51ebab5754474bf535285a7a365749196c190ddcd5f61384e264a3b266",
+          "time": 2425.000036135316
+        },
+        {
+          "file": "frame-0024500.json",
+          "sha256": "3c888f4e89695b36bcf539b459cce3ac4dc5ffe6062eafbc97cb9c3e20d209cc",
+          "time": 2450.000036507845
+        },
+        {
+          "file": "frame-0024750.json",
+          "sha256": "818342a105843975c4d75e642b10af2913cabc67e4c54bb2f07f2cfef69ee023",
+          "time": 2475.000036880374
+        },
+        {
+          "file": "frame-0025000.json",
+          "sha256": "43a202a6caaa2426b915717606686b505d606310796ffc77a3d3bb4a7789d675",
+          "time": 2500.000037252903
+        },
+        {
+          "file": "frame-0025250.json",
+          "sha256": "6f369e28959e42bbef22d2bfa45807208edefb7f5153acb15e7f46bd40810e39",
+          "time": 2525.000037625432
+        },
+        {
+          "file": "frame-0025500.json",
+          "sha256": "4bbcb24fd1a83e14c715c9a8993eccb85b982f9f1f2bebf929c21127e66af35b",
+          "time": 2550.000037997961
+        },
+        {
+          "file": "frame-0025750.json",
+          "sha256": "237700ec7c605ef944761fcd939a3e783b132c471eab25f8605c0da2c09d9aed",
+          "time": 2575.00003837049
+        },
+        {
+          "file": "frame-0026000.json",
+          "sha256": "805b14cebb0ff3372bd8d4c124346ed1dd83fb3fe47b9cb841acb70fa34bf5d3",
+          "time": 2600.000038743019
+        },
+        {
+          "file": "frame-0026250.json",
+          "sha256": "41f9c6fab3c2c66f598d041dc4ac8120ac70c0dc38ec09ff2abd0e57bb74ded4",
+          "time": 2625.000039115548
+        },
+        {
+          "file": "frame-0026500.json",
+          "sha256": "20f39a8d7b946342559aa719fa3ab5df5489495aba01088b6e46f6fbbf1bb37e",
+          "time": 2650.000039488077
+        },
+        {
+          "file": "frame-0026750.json",
+          "sha256": "b7a7ddbb8f0a2a6b1374247f44f52a586434deb65d526810fa8dcee93c8fdb9b",
+          "time": 2675.000039860606
+        },
+        {
+          "file": "frame-0027000.json",
+          "sha256": "1e38979f3618ec4cc5e01d0e91ff438cdbe4cb2ff0b04c55120e1caccf2f75b8",
+          "time": 2700.000040233135
+        },
+        {
+          "file": "frame-0027250.json",
+          "sha256": "958070bdfc201fa77251f7b87e7ab95af23c7d4548acbbf9978595bc4cd3539d",
+          "time": 2725.0000406056643
+        },
+        {
+          "file": "frame-0027500.json",
+          "sha256": "9c65993d0d293c134c46281f2071af7e838f68d151bd5e3cef5bc3a9a7442e82",
+          "time": 2750.0000409781933
+        },
+        {
+          "file": "frame-0027750.json",
+          "sha256": "6ce7d9c181ec7d7c0bef2ff170176e61bc02c670375fdde5e4613423c42d51b3",
+          "time": 2775.0000413507223
+        },
+        {
+          "file": "frame-0028000.json",
+          "sha256": "2f6ce41e1e9033b8e4f12094e4e7d568cee9661532f860a241cdbed6f328fd6f",
+          "time": 2800.0000417232513
+        },
+        {
+          "file": "frame-0028250.json",
+          "sha256": "5c4a494ae235db1590b3b3a8ca31603468a3e06fe5df498f7813b8d281d2e432",
+          "time": 2825.0000420957804
+        },
+        {
+          "file": "frame-0028500.json",
+          "sha256": "e42288346966cdee2ecf1136c4ff11ae01dc1b8acf6cedc395421ec0996b0066",
+          "time": 2850.0000424683094
+        },
+        {
+          "file": "frame-0028750.json",
+          "sha256": "e7f342c24c2b7e0872056151c858baeac7a57fcd872c419e9957ce3e10b9de8a",
+          "time": 2875.0000428408384
+        },
+        {
+          "file": "frame-0029000.json",
+          "sha256": "0c11ea6e5ad1e51cbfe0fc47d4ca7a9b605096a3710b21d51b5c0a7e6f9f9f1c",
+          "time": 2900.0000432133675
+        },
+        {
+          "file": "frame-0029250.json",
+          "sha256": "457ef044c1036ce87aab3585d2d9fae7bada447292ccb0c8b3933e389dc0c22f",
+          "time": 2925.0000435858965
+        },
+        {
+          "file": "frame-0029500.json",
+          "sha256": "a9fad3118f481079e1b657723ffda573cad72a4995574f685955939bd5c8e165",
+          "time": 2950.0000439584255
+        },
+        {
+          "file": "frame-0029750.json",
+          "sha256": "eb22d6cb57346a2684fcf8859974608b809bf70467abae607e3941898676771c",
+          "time": 2975.0000443309546
+        },
+        {
+          "file": "frame-0030000.json",
+          "sha256": "14cc7edfe7521f4295b1f3fb8dade90d9fdabf6ec08e3a2a43cbfe621fee0d3d",
+          "time": 3000.0000447034836
+        }
+      ]
+    },
+    {
+      "regime": "stronger_feedback",
+      "seed": 211,
+      "complete": true,
+      "trace_time_bounds": [
+        0.0,
+        3000.0000447034836
+      ],
+      "trace_complete_prefix_sha256": "6a91ecd52c53529ca49181650fb499218327de657758b7cde3f2d22f38fe080d",
+      "eligible_sampled_ids": 117,
+      "ever_observed_ids_after_1000": 132,
+      "qualifying_ids_with_hidden_sign_changes": 105,
+      "median_within_id_rms_channel_std": {
+        "hidden": 0.7881398229065808,
+        "adaptation": 0.3945237365107917,
+        "actions": 0.22272966441245026,
+        "metabolic_allocation": 0.08487295210798006
+      },
+      "median_hidden_saturation_fraction": 0.2254566210045662,
+      "late_dense_trace": {
+        "start": 1600,
+        "consecutive_id_pairs": 44768,
+        "hidden_channel_sign_changes": 23342
+      },
+      "late_coarse_full_population": {
+        "start": 1600.0,
+        "pair_counts": {
+          "all_cells": {
+            "consecutive_id_pairs": 9147,
+            "hidden_channel_sign_changes": 30952,
+            "changed_ids": [
+              63,
+              85,
+              102,
+              113,
+              171,
+              186,
+              192,
+              202,
+              214,
+              267,
+              273,
+              317,
+              380,
+              392,
+              412,
+              416,
+              420,
+              422,
+              428,
+              429,
+              430,
+              441,
+              444,
+              445,
+              447,
+              452,
+              455,
+              460,
+              463,
+              464,
+              468,
+              469,
+              475,
+              479,
+              482,
+              483,
+              485,
+              487,
+              488,
+              498,
+              502,
+              516,
+              519,
+              520,
+              521,
+              522,
+              526,
+              528,
+              529,
+              532,
+              534,
+              536,
+              538,
+              539,
+              542,
+              544,
+              550,
+              551,
+              552,
+              553,
+              554,
+              557,
+              558,
+              564,
+              567,
+              569,
+              570,
+              571,
+              575,
+              577,
+              578,
+              580,
+              583,
+              585,
+              586,
+              588,
+              590,
+              592,
+              593,
+              594,
+              595,
+              596,
+              600,
+              602,
+              603,
+              604,
+              605,
+              606,
+              608,
+              609,
+              613,
+              614,
+              616,
+              618,
+              620,
+              624,
+              625,
+              627,
+              628,
+              631,
+              632,
+              633,
+              634,
+              635,
+              636,
+              637,
+              639,
+              640,
+              641,
+              642,
+              643,
+              644,
+              645,
+              646,
+              647,
+              648,
+              649,
+              650,
+              651,
+              652,
+              653,
+              654,
+              655,
+              656,
+              657,
+              659,
+              660,
+              661,
+              662,
+              663,
+              665,
+              666,
+              667,
+              668,
+              669,
+              670,
+              672,
+              673,
+              674,
+              677,
+              678,
+              679,
+              680,
+              681,
+              682,
+              683,
+              684,
+              685,
+              686,
+              687,
+              688,
+              689,
+              691,
+              692,
+              693,
+              694,
+              695,
+              696,
+              697,
+              698,
+              699,
+              700,
+              701,
+              703,
+              704,
+              705,
+              706,
+              707,
+              708,
+              709,
+              710,
+              711,
+              712,
+              713,
+              714,
+              715,
+              716,
+              717,
+              718,
+              719,
+              720,
+              721,
+              722,
+              723,
+              724,
+              725,
+              726,
+              727,
+              728,
+              729,
+              730,
+              731,
+              732,
+              733,
+              734,
+              735,
+              736,
+              737,
+              738,
+              739,
+              740,
+              741,
+              743,
+              744,
+              745,
+              747,
+              748,
+              749,
+              750,
+              751,
+              752,
+              753,
+              754,
+              755,
+              756,
+              757,
+              758,
+              759,
+              760,
+              761,
+              762,
+              763,
+              764,
+              765,
+              766,
+              767,
+              768,
+              770,
+              771,
+              772,
+              773,
+              774,
+              775,
+              777,
+              778,
+              779,
+              780,
+              781,
+              782,
+              783,
+              784,
+              785,
+              786,
+              787,
+              788,
+              789,
+              790,
+              791,
+              792,
+              793,
+              794,
+              796,
+              797,
+              799,
+              800,
+              801,
+              802,
+              803,
+              805,
+              806,
+              807,
+              808,
+              809,
+              810,
+              811,
+              812,
+              813,
+              816,
+              817,
+              818,
+              819,
+              820,
+              821,
+              823,
+              824,
+              825,
+              826,
+              827,
+              828,
+              830,
+              831,
+              832,
+              833,
+              834,
+              835,
+              836,
+              837,
+              838,
+              839,
+              840,
+              841,
+              842,
+              843,
+              844,
+              845,
+              846,
+              847,
+              848,
+              849,
+              850,
+              851,
+              852,
+              853,
+              854,
+              855,
+              856,
+              858,
+              859,
+              861,
+              862,
+              863,
+              864,
+              865,
+              866,
+              867,
+              868,
+              869,
+              870,
+              871,
+              873,
+              874,
+              876,
+              877,
+              878,
+              879,
+              880,
+              881,
+              882,
+              883,
+              884,
+              886,
+              887,
+              890,
+              891,
+              892,
+              894,
+              895,
+              897,
+              898,
+              899,
+              900
+            ]
+          },
+          "outside_oldest32_at_both_times": {
+            "consecutive_id_pairs": 7355,
+            "hidden_channel_sign_changes": 24045,
+            "changed_ids": [
+              468,
+              469,
+              475,
+              479,
+              482,
+              483,
+              485,
+              487,
+              488,
+              498,
+              502,
+              516,
+              519,
+              520,
+              521,
+              522,
+              526,
+              528,
+              529,
+              532,
+              536,
+              538,
+              539,
+              542,
+              544,
+              550,
+              551,
+              552,
+              553,
+              557,
+              558,
+              564,
+              567,
+              569,
+              570,
+              571,
+              575,
+              577,
+              578,
+              580,
+              583,
+              585,
+              586,
+              588,
+              590,
+              592,
+              593,
+              594,
+              595,
+              596,
+              600,
+              602,
+              603,
+              604,
+              605,
+              606,
+              608,
+              609,
+              613,
+              614,
+              616,
+              618,
+              620,
+              624,
+              625,
+              627,
+              628,
+              631,
+              632,
+              633,
+              634,
+              635,
+              636,
+              637,
+              639,
+              640,
+              641,
+              642,
+              643,
+              644,
+              645,
+              646,
+              647,
+              648,
+              649,
+              650,
+              651,
+              652,
+              653,
+              654,
+              655,
+              656,
+              657,
+              659,
+              660,
+              661,
+              662,
+              663,
+              665,
+              666,
+              667,
+              668,
+              669,
+              670,
+              672,
+              673,
+              674,
+              677,
+              678,
+              679,
+              680,
+              681,
+              682,
+              683,
+              684,
+              685,
+              686,
+              687,
+              688,
+              689,
+              691,
+              692,
+              693,
+              694,
+              695,
+              696,
+              697,
+              698,
+              699,
+              700,
+              701,
+              703,
+              704,
+              705,
+              706,
+              707,
+              708,
+              709,
+              710,
+              711,
+              712,
+              713,
+              714,
+              715,
+              716,
+              717,
+              718,
+              719,
+              720,
+              721,
+              722,
+              723,
+              724,
+              725,
+              726,
+              727,
+              728,
+              729,
+              730,
+              731,
+              732,
+              733,
+              734,
+              735,
+              736,
+              737,
+              738,
+              739,
+              740,
+              741,
+              743,
+              744,
+              745,
+              747,
+              748,
+              749,
+              750,
+              751,
+              752,
+              753,
+              754,
+              755,
+              756,
+              757,
+              758,
+              759,
+              760,
+              761,
+              762,
+              763,
+              764,
+              765,
+              766,
+              767,
+              768,
+              770,
+              771,
+              772,
+              773,
+              774,
+              775,
+              777,
+              778,
+              779,
+              780,
+              781,
+              782,
+              783,
+              784,
+              785,
+              786,
+              787,
+              788,
+              789,
+              790,
+              791,
+              792,
+              793,
+              794,
+              796,
+              797,
+              799,
+              800,
+              801,
+              802,
+              803,
+              805,
+              806,
+              807,
+              808,
+              809,
+              810,
+              811,
+              812,
+              813,
+              816,
+              817,
+              818,
+              819,
+              820,
+              821,
+              823,
+              824,
+              825,
+              826,
+              827,
+              828,
+              830,
+              831,
+              832,
+              833,
+              834,
+              835,
+              836,
+              837,
+              838,
+              839,
+              840,
+              841,
+              842,
+              843,
+              844,
+              845,
+              846,
+              847,
+              848,
+              849,
+              850,
+              851,
+              852,
+              853,
+              854,
+              855,
+              856,
+              858,
+              859,
+              861,
+              862,
+              863,
+              864,
+              865,
+              866,
+              867,
+              868,
+              869,
+              870,
+              871,
+              873,
+              874,
+              876,
+              877,
+              878,
+              879,
+              880,
+              881,
+              882,
+              883,
+              884,
+              886,
+              887,
+              890,
+              891,
+              892,
+              894,
+              895,
+              897,
+              898,
+              899,
+              900
+            ]
+          }
+        },
+        "limitations": "25-time-unit cadence can alias fast cycles; consecutive snapshots do not recover events between them; variability can include environment and division partition; not an adaptation or autonomous-oscillation assay"
+      },
+      "final": {
+        "time": 3000.0000447034836,
+        "population": 138,
+        "full_population": true,
+        "founder_lineages_represented": 7,
+        "shannon_effective_founder_lineages": 3.5182706106462955
+      },
+      "final_lineages": [
+        {
+          "lineage": 4,
+          "living": 1,
+          "biomass": 1.2642834120192894,
+          "body_and_stored_material": 1.2642834120192894,
+          "fraction_of_represented_cells": 0.007246376811594203,
+          "max_generation": 4,
+          "evaluated_catalytic_readouts": 1,
+          "catalytic_allocation_a_mean": 0.8333512489689054,
+          "catalytic_allocation_a_p10": 0.8333512489689054,
+          "catalytic_allocation_a_p90": 0.8333512489689054,
+          "investment_mean": 0.3122566224193105,
+          "investment_biomass_weighted_mean": 0.3122566224193105,
+          "metabolic_allocation_mean": [
+            0.5397411,
+            0.22093852,
+            0.09945372,
+            0.13986671
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.5397411,
+            0.22093852000000003,
+            0.09945372,
+            0.13986671
+          ],
+          "actual_last_secretion": [
+            0.0,
+            0.0
+          ],
+          "cellular_genome_signature_count": 1,
+          "catalytic_genome_signature_count": 1
+        },
+        {
+          "lineage": 9,
+          "living": 1,
+          "biomass": 1.2981743486594146,
+          "body_and_stored_material": 1.2981743486594146,
+          "fraction_of_represented_cells": 0.007246376811594203,
+          "max_generation": 5,
+          "evaluated_catalytic_readouts": 1,
+          "catalytic_allocation_a_mean": 0.8402384853370096,
+          "catalytic_allocation_a_p10": 0.8402384853370096,
+          "catalytic_allocation_a_p90": 0.8402384853370096,
+          "investment_mean": 0.274873393745418,
+          "investment_biomass_weighted_mean": 0.274873393745418,
+          "metabolic_allocation_mean": [
+            0.2473493,
+            0.22799855,
+            0.31889746,
+            0.20575477
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.24734929999999997,
+            0.22799855,
+            0.31889746,
+            0.20575477000000003
+          ],
+          "actual_last_secretion": [
+            0.0,
+            0.0
+          ],
+          "cellular_genome_signature_count": 1,
+          "catalytic_genome_signature_count": 1
+        },
+        {
+          "lineage": 20,
+          "living": 70,
+          "biomass": 83.35975999917544,
+          "body_and_stored_material": 83.6580328610976,
+          "fraction_of_represented_cells": 0.5072463768115942,
+          "max_generation": 12,
+          "evaluated_catalytic_readouts": 70,
+          "catalytic_allocation_a_mean": 0.9891186155095251,
+          "catalytic_allocation_a_p10": 0.9878306103686703,
+          "catalytic_allocation_a_p90": 0.9905681750549298,
+          "investment_mean": 0.3346441959642062,
+          "investment_biomass_weighted_mean": 0.3356434437288897,
+          "metabolic_allocation_mean": [
+            0.2827217988571429,
+            0.26783955428571427,
+            0.2720788332,
+            0.17735981381428573
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.28278083935152654,
+            0.26902628837619075,
+            0.27641545340921914,
+            0.17177742006994784
+          ],
+          "actual_last_secretion": [
+            0.004307535070539591,
+            4.933119826897708e-07
+          ],
+          "cellular_genome_signature_count": 70,
+          "catalytic_genome_signature_count": 56
+        },
+        {
+          "lineage": 25,
+          "living": 38,
+          "biomass": 45.23290744483997,
+          "body_and_stored_material": 45.43649727997727,
+          "fraction_of_represented_cells": 0.2753623188405797,
+          "max_generation": 15,
+          "evaluated_catalytic_readouts": 38,
+          "catalytic_allocation_a_mean": 0.22021985810288924,
+          "catalytic_allocation_a_p10": 0.1010707014720231,
+          "catalytic_allocation_a_p90": 0.3344639322377069,
+          "investment_mean": 0.3987782509449456,
+          "investment_biomass_weighted_mean": 0.39960563113245384,
+          "metabolic_allocation_mean": [
+            0.17343166660526316,
+            0.33563907447368424,
+            0.27611683578947366,
+            0.2148124094736842
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.17588749301082085,
+            0.3386885727960246,
+            0.27109733465723984,
+            0.21432658822991413
+          ],
+          "actual_last_secretion": [
+            3.680343135549113e-05,
+            0.0015927465191144896
+          ],
+          "cellular_genome_signature_count": 38,
+          "catalytic_genome_signature_count": 30
+        },
+        {
+          "lineage": 39,
+          "living": 16,
+          "biomass": 17.24018533981694,
+          "body_and_stored_material": 17.378000598616083,
+          "fraction_of_represented_cells": 0.11594202898550725,
+          "max_generation": 6,
+          "evaluated_catalytic_readouts": 16,
+          "catalytic_allocation_a_mean": 0.8317355981374983,
+          "catalytic_allocation_a_p10": 0.8076482362483988,
+          "catalytic_allocation_a_p90": 0.8553379311053385,
+          "investment_mean": 0.32358635793904467,
+          "investment_biomass_weighted_mean": 0.32358128961502414,
+          "metabolic_allocation_mean": [
+            0.311412895625,
+            0.20372778375,
+            0.261926885,
+            0.22293241625
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.31405606025168,
+            0.20009874280160986,
+            0.2595547207806301,
+            0.22629045825232405
+          ],
+          "actual_last_secretion": [
+            0.0005777714351909962,
+            2.614911062368187e-05
+          ],
+          "cellular_genome_signature_count": 16,
+          "catalytic_genome_signature_count": 11
+        },
+        {
+          "lineage": 42,
+          "living": 11,
+          "biomass": 9.750648290216647,
+          "body_and_stored_material": 9.798095064160611,
+          "fraction_of_represented_cells": 0.07971014492753623,
+          "max_generation": 6,
+          "evaluated_catalytic_readouts": 11,
+          "catalytic_allocation_a_mean": 0.009545194501520205,
+          "catalytic_allocation_a_p10": 0.005293006669266907,
+          "catalytic_allocation_a_p90": 0.012982412893614416,
+          "investment_mean": 0.3452837477902821,
+          "investment_biomass_weighted_mean": 0.33773681552389145,
+          "metabolic_allocation_mean": [
+            0.24411014454545454,
+            0.25152174636363633,
+            0.1844843718181818,
+            0.3198837469090909
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.25677786459938384,
+            0.25087955158470515,
+            0.18359460621338197,
+            0.3087479890993609
+          ],
+          "actual_last_secretion": [
+            9.010886265880397e-09,
+            0.00016142148270789245
+          ],
+          "cellular_genome_signature_count": 11,
+          "catalytic_genome_signature_count": 9
+        },
+        {
+          "lineage": 45,
+          "living": 1,
+          "biomass": 0.6592418773436013,
+          "body_and_stored_material": 0.6592418773436013,
+          "fraction_of_represented_cells": 0.007246376811594203,
+          "max_generation": 4,
+          "evaluated_catalytic_readouts": 1,
+          "catalytic_allocation_a_mean": 0.8629699064216027,
+          "catalytic_allocation_a_p10": 0.8629699064216027,
+          "catalytic_allocation_a_p90": 0.8629699064216027,
+          "investment_mean": 0.4435600868862129,
+          "investment_biomass_weighted_mean": 0.4435600868862129,
+          "metabolic_allocation_mean": [
+            0.4959686,
+            0.12692966,
+            0.13719283,
+            0.23990892
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.4959686,
+            0.12692966,
+            0.13719283,
+            0.23990892
+          ],
+          "actual_last_secretion": [
+            0.0,
+            0.0
+          ],
+          "cellular_genome_signature_count": 1,
+          "catalytic_genome_signature_count": 1
+        }
+      ],
+      "snapshot_hashes": [
+        {
+          "file": "frame-0000000.json",
+          "sha256": "02d048fc87a86ac527fb689d3566cc362d89f9f00e93b428697f3ff7316cd56d",
+          "time": 0.0
+        },
+        {
+          "file": "frame-0000250.json",
+          "sha256": "a82d538d84b967e200b394ff6188872d04ab971192d36b2c01995191b09e64b4",
+          "time": 25.00000037252903
+        },
+        {
+          "file": "frame-0000500.json",
+          "sha256": "a83f85eb1ff4682c4b56b5a9ff5297462c7fdb5b7fe79efc34434d2e4033ae9c",
+          "time": 50.00000074505806
+        },
+        {
+          "file": "frame-0000750.json",
+          "sha256": "68f835d6eac5038f913a267e5fe9c3f78fa3e50c213ddaef90e34b210237b6ba",
+          "time": 75.00000111758709
+        },
+        {
+          "file": "frame-0001000.json",
+          "sha256": "1b5fe74d0dbccf393f9cc8321e9808c81267489e8112237071963c18b759a21c",
+          "time": 100.00000149011612
+        },
+        {
+          "file": "frame-0001250.json",
+          "sha256": "25f58b7e71aa7adad7f5cb9763208cdfca39a4d44ac60c3b7769e5d0ad910fad",
+          "time": 125.00000186264515
+        },
+        {
+          "file": "frame-0001500.json",
+          "sha256": "b44ca44f2b8035da44750e44b916c6e043fbee033a74547341bc00b6fef84c43",
+          "time": 150.00000223517418
+        },
+        {
+          "file": "frame-0001750.json",
+          "sha256": "4e95bdc5ac3703aa3e7f9c65969060a14e1df317af4b003ecb10df5d90b49a07",
+          "time": 175.0000026077032
+        },
+        {
+          "file": "frame-0002000.json",
+          "sha256": "a57791736a809593e29a8759f9a93fac6fda0587e45945f31b9b3b3bde7cf7a7",
+          "time": 200.00000298023224
+        },
+        {
+          "file": "frame-0002250.json",
+          "sha256": "db6e9a285766f9cecceeb8e29869a3d57816a83f900cbcc4bf423ab022cd597c",
+          "time": 225.00000335276127
+        },
+        {
+          "file": "frame-0002500.json",
+          "sha256": "f9749bb565b050790db1b087c7d183a28f7b1f2c08f62023f6f6066eba398bd9",
+          "time": 250.0000037252903
+        },
+        {
+          "file": "frame-0002750.json",
+          "sha256": "6ce59638025a57700cf7351d2e86a9998c26033d57ce81e10789ccbe053708c2",
+          "time": 275.0000040978193
+        },
+        {
+          "file": "frame-0003000.json",
+          "sha256": "8a8da2e61afa088c408ef223d4b8eea273194bc0c9c47787900004397445071d",
+          "time": 300.00000447034836
+        },
+        {
+          "file": "frame-0003250.json",
+          "sha256": "83a595107c4938fc8eb8f240a7fc70b9c29d469b7c6dd9be48f05fa269581895",
+          "time": 325.0000048428774
+        },
+        {
+          "file": "frame-0003500.json",
+          "sha256": "6606f5da78e4d3400f47456642fd8d7ebdf5608afc671f86cf12410d519926cb",
+          "time": 350.0000052154064
+        },
+        {
+          "file": "frame-0003750.json",
+          "sha256": "7bff208d97aa5e11827c510aa173907deab9e7ca15c2d5b6b832e730ffd553dc",
+          "time": 375.00000558793545
+        },
+        {
+          "file": "frame-0004000.json",
+          "sha256": "639fe5da54844e43bf90b92cbbca47c6f2f3a574366eee098ca2aa3792effb65",
+          "time": 400.0000059604645
+        },
+        {
+          "file": "frame-0004250.json",
+          "sha256": "5c5c4a80747a179c47e6c011b289120d1301fc337b6f6b17fb343ededbd3b114",
+          "time": 425.0000063329935
+        },
+        {
+          "file": "frame-0004500.json",
+          "sha256": "20f25a610e19517973b5b1813703a3c6f36403cc658f43ba6d63bd91d6d92167",
+          "time": 450.00000670552254
+        },
+        {
+          "file": "frame-0004750.json",
+          "sha256": "77c9d3eef57d10c997031a1308a896dea4c9c32d0507487729104cb1a7ebfcb4",
+          "time": 475.00000707805157
+        },
+        {
+          "file": "frame-0005000.json",
+          "sha256": "58cd22e0cf6d3d8791577c86b9cc1be5affeff07b0aaf724ca6c9dd613bd8e57",
+          "time": 500.0000074505806
+        },
+        {
+          "file": "frame-0005250.json",
+          "sha256": "670b82fe6ab4873996975f89551c754aee4e1306c49adac0a25520b444ad9b0f",
+          "time": 525.0000078231096
+        },
+        {
+          "file": "frame-0005500.json",
+          "sha256": "061ef3e5d1f0971c30fca0a9d02f0880639d20387fd17d32e4949bfdb1068b42",
+          "time": 550.0000081956387
+        },
+        {
+          "file": "frame-0005750.json",
+          "sha256": "790c972ff7df3b5bd469f76e596275e0fece2b326ec3b0f319e42468e1aa4e03",
+          "time": 575.0000085681677
+        },
+        {
+          "file": "frame-0006000.json",
+          "sha256": "6fd1802935e2d3830152e41253f188c3cf29f06465e560b3b024d1ad794f57ca",
+          "time": 600.0000089406967
+        },
+        {
+          "file": "frame-0006250.json",
+          "sha256": "1f29d997687099c59144d5d0af44fedacb585fcc784b2f69be57c08f97285f76",
+          "time": 625.0000093132257
+        },
+        {
+          "file": "frame-0006500.json",
+          "sha256": "2941eadc0a2a2e35560cfafb27b4d3b5bd3b115494715135c0cec52aaf02bd59",
+          "time": 650.0000096857548
+        },
+        {
+          "file": "frame-0006750.json",
+          "sha256": "38d1fd33175f8ea5e114de046bb52a6be1468ac2b97422f0b34108e7d5b678bd",
+          "time": 675.0000100582838
+        },
+        {
+          "file": "frame-0007000.json",
+          "sha256": "a67982c03b1a0295031da910239446673950727179eb15632189ceea9dab8dd6",
+          "time": 700.0000104308128
+        },
+        {
+          "file": "frame-0007250.json",
+          "sha256": "0ebb56750a15f42d67816b52d5d7b6a15f6a7a1caee4412a2b65287ccf2eea6c",
+          "time": 725.0000108033419
+        },
+        {
+          "file": "frame-0007500.json",
+          "sha256": "ceebe89576b650b11a43fd8b09be981869ae06e0b1bc230e6a6b4e4eeddeb7ca",
+          "time": 750.0000111758709
+        },
+        {
+          "file": "frame-0007750.json",
+          "sha256": "e00645755b6316087f17bdd93eadda68a7ad27bd9ecec843c974f0843eec40c8",
+          "time": 775.0000115483999
+        },
+        {
+          "file": "frame-0008000.json",
+          "sha256": "089424eed73817517b6a493c10f5f6a9dc32e9a6663860a48e5559d96de15951",
+          "time": 800.000011920929
+        },
+        {
+          "file": "frame-0008250.json",
+          "sha256": "988027ecf2b5b347d0b823b198fba5cbfcfc4037d32d9072ec8fa35aaae13e0e",
+          "time": 825.000012293458
+        },
+        {
+          "file": "frame-0008500.json",
+          "sha256": "061e73fd379d3ccbaae13e738f29467113a6e00480f625272a3d1da41a64169f",
+          "time": 850.000012665987
+        },
+        {
+          "file": "frame-0008750.json",
+          "sha256": "1445f2588d9d106409d048750652bc95aa6dfd214adaad237bb895e9fb519c44",
+          "time": 875.000013038516
+        },
+        {
+          "file": "frame-0009000.json",
+          "sha256": "a854aed4e0f62cbb55598ef7495abccf04b08784dbdcf6cd441204a3fbb2f66f",
+          "time": 900.0000134110451
+        },
+        {
+          "file": "frame-0009250.json",
+          "sha256": "4b91086604fce066169784ee213568cb354b70a427c92fb09009fc791c5ec580",
+          "time": 925.0000137835741
+        },
+        {
+          "file": "frame-0009500.json",
+          "sha256": "f6695f4d6a66d2d047996be79b5356c2e9fd6cc2a1d286aa9f5f435d0a2554ba",
+          "time": 950.0000141561031
+        },
+        {
+          "file": "frame-0009750.json",
+          "sha256": "d9e962282474779c70077372cb17b87263b8cc32528d76c3700cc7cd6d9694e2",
+          "time": 975.0000145286322
+        },
+        {
+          "file": "frame-0010000.json",
+          "sha256": "f96fcbd647bf0cfc7f6dfb03a342616e8078e37e1416f5abe6b8534a80378c6b",
+          "time": 1000.0000149011612
+        },
+        {
+          "file": "frame-0010250.json",
+          "sha256": "e0e585f8ffafde4b9347f49f52d4f4a5ca1f154eb73e4600ae91f4f97a628694",
+          "time": 1025.0000152736902
+        },
+        {
+          "file": "frame-0010500.json",
+          "sha256": "fcc55804cb2b1e281045a350664e9d281cd77aa60225f4bc4eeac9cb6d4cee71",
+          "time": 1050.0000156462193
+        },
+        {
+          "file": "frame-0010750.json",
+          "sha256": "31c22006bc95b1d351a7dbd30da27ce280dee079996373d2889796f0e86d1b94",
+          "time": 1075.0000160187483
+        },
+        {
+          "file": "frame-0011000.json",
+          "sha256": "b92b24df9e93ed3f3aaf42fe44cb2f2bd42894a830704afc23886065a00c7c64",
+          "time": 1100.0000163912773
+        },
+        {
+          "file": "frame-0011250.json",
+          "sha256": "a4b6b41eee4bbff103555287c98bac8f66854a5ea9b5fee94faca22879a7fe9b",
+          "time": 1125.0000167638063
+        },
+        {
+          "file": "frame-0011500.json",
+          "sha256": "c6fd07e7307d9bdf772dbc8d637c77ad4355d3335f7bbd149bc13047fa3847ea",
+          "time": 1150.0000171363354
+        },
+        {
+          "file": "frame-0011750.json",
+          "sha256": "e805974078577ca7b8e15cf71db6a89a5bb3edcf391770d5d57092a519fab8e0",
+          "time": 1175.0000175088644
+        },
+        {
+          "file": "frame-0012000.json",
+          "sha256": "9f0dfb566474709083c48be063d148e4f628c0ea5d51682439056db191a1df90",
+          "time": 1200.0000178813934
+        },
+        {
+          "file": "frame-0012250.json",
+          "sha256": "a4e64da2f9ef329f7f6070ce50a25c5e775a5cd14eab506b67ffacff84c61935",
+          "time": 1225.0000182539225
+        },
+        {
+          "file": "frame-0012500.json",
+          "sha256": "00001fe1c2a2e424b6dc3ac0d9682d1c8d71db821cf0b8206690df131bffac2b",
+          "time": 1250.0000186264515
+        },
+        {
+          "file": "frame-0012750.json",
+          "sha256": "7bf99c846ba1f19b8347e12d221a08c36f93c540a799c4325c059fd5e3a48b97",
+          "time": 1275.0000189989805
+        },
+        {
+          "file": "frame-0013000.json",
+          "sha256": "4b4e08cff06e84cbaeb255a594efa3d1b4c1b47f817d35aa118457d59ce51baa",
+          "time": 1300.0000193715096
+        },
+        {
+          "file": "frame-0013250.json",
+          "sha256": "ae89ca8fc680c65fb830433ad081ce83cc6566bd344e90a8534cd4c20a5e16bb",
+          "time": 1325.0000197440386
+        },
+        {
+          "file": "frame-0013500.json",
+          "sha256": "8e31c71831edde59dd62f9f65ddb9319f95011356ac47ed668a401f41e9e7f0c",
+          "time": 1350.0000201165676
+        },
+        {
+          "file": "frame-0013750.json",
+          "sha256": "a633a334ff0efcf16fc4433bf0827f777a714da8e3d1f38b577ba76a97fc75d3",
+          "time": 1375.0000204890966
+        },
+        {
+          "file": "frame-0014000.json",
+          "sha256": "a1a568fd71fa4a87229fd11553c8fa8d894299ca3b29beef9a5dcb818c303220",
+          "time": 1400.0000208616257
+        },
+        {
+          "file": "frame-0014250.json",
+          "sha256": "24ab2e7cd01ea5cccb07ae0e5a0dd4df019265e14e9e1c2cddc577f51477203f",
+          "time": 1425.0000212341547
+        },
+        {
+          "file": "frame-0014500.json",
+          "sha256": "ecef2a9c48baad1900636507be092274cec5528fbf03d75b494bc66c2144e1d5",
+          "time": 1450.0000216066837
+        },
+        {
+          "file": "frame-0014750.json",
+          "sha256": "a9ba8097c1891deddcd58a76e4dded068b3c9a4034e264bc03d4c796e07000ce",
+          "time": 1475.0000219792128
+        },
+        {
+          "file": "frame-0015000.json",
+          "sha256": "81503499133ae67df1e378b34ad42547b41b9eb6c1b6cdb3b46010eb17cc972d",
+          "time": 1500.0000223517418
+        },
+        {
+          "file": "frame-0015250.json",
+          "sha256": "3b5865ae5f21c65507ff289989a89d815a209f71d71c26abaf8145931408b080",
+          "time": 1525.0000227242708
+        },
+        {
+          "file": "frame-0015500.json",
+          "sha256": "c603fc37cecfaa23d81c1d406010db72afb424ec87cff58e9fd7b5fea79b3ff3",
+          "time": 1550.0000230967999
+        },
+        {
+          "file": "frame-0015750.json",
+          "sha256": "2bf6bcdd41a66b6a6475db792ce57a919008f6eccd118159007503ca60cde63b",
+          "time": 1575.0000234693289
+        },
+        {
+          "file": "frame-0016000.json",
+          "sha256": "f6c97805f1c2aa4855c8a4a61abd6180f4ad3c68531a13ba1198bc2d6e851091",
+          "time": 1600.000023841858
+        },
+        {
+          "file": "frame-0016250.json",
+          "sha256": "b07a0ce489b7e330a0816dfac6199e5f841024acdd603948f35ca66d31850f0b",
+          "time": 1625.000024214387
+        },
+        {
+          "file": "frame-0016500.json",
+          "sha256": "7491900a9dc8de99e7d61e7a071f27342a08f9e5d4c86d208f4d1372e8b53061",
+          "time": 1650.000024586916
+        },
+        {
+          "file": "frame-0016750.json",
+          "sha256": "ed18509482c872406b2f67d19ba7db9619044bb014a330da2ee45292b512ede1",
+          "time": 1675.000024959445
+        },
+        {
+          "file": "frame-0017000.json",
+          "sha256": "48df725349d6c429608c00eb398f742b5fff84d29d47e31244d698ab03f47156",
+          "time": 1700.000025331974
+        },
+        {
+          "file": "frame-0017250.json",
+          "sha256": "2a05c45a6b3a197455c7ea15303524431ed5d60a19ec0d3e76b2918e443117c6",
+          "time": 1725.000025704503
+        },
+        {
+          "file": "frame-0017500.json",
+          "sha256": "d567ddfcc9a5e26d2bf43ca6bb40c3499c53f8e821eefd94dafc1381c7dd4226",
+          "time": 1750.000026077032
+        },
+        {
+          "file": "frame-0017750.json",
+          "sha256": "82c0d5dedb4fecb3eebfe3e36d5f74ff7f202a5f1dcd5a6edfaa3ba00ac52dad",
+          "time": 1775.0000264495611
+        },
+        {
+          "file": "frame-0018000.json",
+          "sha256": "110eda2ac0acfb9f92b136c15ad915117504b6356dde943d0341f295c73f78e9",
+          "time": 1800.0000268220901
+        },
+        {
+          "file": "frame-0018250.json",
+          "sha256": "d3a5e53efa5457dfc0832bbf158c1fa606781e3b9c2f6a1187c17f3a3a2e5c31",
+          "time": 1825.0000271946192
+        },
+        {
+          "file": "frame-0018500.json",
+          "sha256": "dbb3f788daba6deb73d8db12531d9b2f47d3104d7d361d8d19a91690c9df451e",
+          "time": 1850.0000275671482
+        },
+        {
+          "file": "frame-0018750.json",
+          "sha256": "628e6d35869aa28ef02b57faa8c28846f7712a7d2d8ea087657643370a2f2963",
+          "time": 1875.0000279396772
+        },
+        {
+          "file": "frame-0019000.json",
+          "sha256": "0dbe92fa378d9bf8137dac612d43b5fede43d126da5d10af1d59f78a232719b9",
+          "time": 1900.0000283122063
+        },
+        {
+          "file": "frame-0019250.json",
+          "sha256": "ee05811328030a6e391ffd8bffc5f6eb053d94be6da1502641a4fabde5bca826",
+          "time": 1925.0000286847353
+        },
+        {
+          "file": "frame-0019500.json",
+          "sha256": "d1bbdcc8121c2d5ba748511cfd69149b94beab9355038984de503deec7c7ee03",
+          "time": 1950.0000290572643
+        },
+        {
+          "file": "frame-0019750.json",
+          "sha256": "abd4b40b712268bab0e309989c8ebd4a2f27bd17b7dca3a0b0bb205d90a6cfe3",
+          "time": 1975.0000294297934
+        },
+        {
+          "file": "frame-0020000.json",
+          "sha256": "dfc4eeacf8c2e67340ae18bb7260722fd1f1ef47058277c294afefb26f03f7c2",
+          "time": 2000.0000298023224
+        },
+        {
+          "file": "frame-0020250.json",
+          "sha256": "9ffdddd5b97e37c121e88625dbd7de4275d13525e8f978786e15b04ef07df96a",
+          "time": 2025.0000301748514
+        },
+        {
+          "file": "frame-0020500.json",
+          "sha256": "7f0914ca36140df646f4c1fa431cc037a32d0b0d31463a64cc040b9627f80ea4",
+          "time": 2050.0000305473804
+        },
+        {
+          "file": "frame-0020750.json",
+          "sha256": "d1371bea1641ed75c13c61eb51b56acf169e4d15884ecd5edb109ac40d9a8579",
+          "time": 2075.0000309199095
+        },
+        {
+          "file": "frame-0021000.json",
+          "sha256": "147d83043290ccdcad6f8dff2ecf821d88f09ec10efcb520d6255482b08b6664",
+          "time": 2100.0000312924385
+        },
+        {
+          "file": "frame-0021250.json",
+          "sha256": "0b89c9bd8ca4f28ea28a0e0edbca5cdc71acf9e930d55f68a8f4c684ac74c4d2",
+          "time": 2125.0000316649675
+        },
+        {
+          "file": "frame-0021500.json",
+          "sha256": "a35a7e5c3ecb1fc0d713e3ae73c41352f5fe8e085a6be2ee32256b435dc9497d",
+          "time": 2150.0000320374966
+        },
+        {
+          "file": "frame-0021750.json",
+          "sha256": "ccf2d37c9dfbf14f53e1ee179eefaf72483666dd27709113bb00fc2480083315",
+          "time": 2175.0000324100256
+        },
+        {
+          "file": "frame-0022000.json",
+          "sha256": "882c2c6f2c0f6836bd39087f43a00ffc5793a3fcb8b157c0e7058ec611f95dba",
+          "time": 2200.0000327825546
+        },
+        {
+          "file": "frame-0022250.json",
+          "sha256": "84a139d3148b69cbb949546f2bb0d1c7d312fae61984aa558bfc93590b51449e",
+          "time": 2225.0000331550837
+        },
+        {
+          "file": "frame-0022500.json",
+          "sha256": "68bd46e6a5f56b4661f6c64756b30e0a0c94aee83bca9c17115d1fe2da2e64a0",
+          "time": 2250.0000335276127
+        },
+        {
+          "file": "frame-0022750.json",
+          "sha256": "2ed10cb49424538734a02d0befa739c2445b92f5be2d6893087815390e10de5a",
+          "time": 2275.0000339001417
+        },
+        {
+          "file": "frame-0023000.json",
+          "sha256": "85b9c263138a4dd538f4869999910eb26f9d315fb1c2d3f831cf46f30a5c85aa",
+          "time": 2300.0000342726707
+        },
+        {
+          "file": "frame-0023250.json",
+          "sha256": "dba3e13e6a431535f8f894b7b1e11570299f309fc83cdf6529634ad916b77eaf",
+          "time": 2325.0000346452
+        },
+        {
+          "file": "frame-0023500.json",
+          "sha256": "af00cef5e4a7ca20a1b36a5a779e3d9bf660f9e55ffcdb368ff1d58a5aac5946",
+          "time": 2350.000035017729
+        },
+        {
+          "file": "frame-0023750.json",
+          "sha256": "71a9052f864194ba1949aeada68f0f569d8660b211a7a9bf7089f54e444f3250",
+          "time": 2375.000035390258
+        },
+        {
+          "file": "frame-0024000.json",
+          "sha256": "5544263f7cc0de4788caccff8beb44aa0529891aa25b9230713df349ccfdbc4f",
+          "time": 2400.000035762787
+        },
+        {
+          "file": "frame-0024250.json",
+          "sha256": "21b242eaf3e2f694418932d88c4f957660e953a421778af070a52a28aead0fe5",
+          "time": 2425.000036135316
+        },
+        {
+          "file": "frame-0024500.json",
+          "sha256": "a2bca795660d93afa5ffd0935cad198540f10260abcb239c04df7c4361a301c6",
+          "time": 2450.000036507845
+        },
+        {
+          "file": "frame-0024750.json",
+          "sha256": "c66c98d8db912b49d2a4334100e1e192084a26d008e726bd25739c2856da6b57",
+          "time": 2475.000036880374
+        },
+        {
+          "file": "frame-0025000.json",
+          "sha256": "63dabd3ba18e2939a4b1cbec9c8a97e6ab5c8842f02993c2218b6b05af530fdc",
+          "time": 2500.000037252903
+        },
+        {
+          "file": "frame-0025250.json",
+          "sha256": "76102c8aa0fb1147332ec9c6e442593ee1311d7a307ca75b5af8e13d308dc7f2",
+          "time": 2525.000037625432
+        },
+        {
+          "file": "frame-0025500.json",
+          "sha256": "49b0ac86df64833007a92dc1a63cd15916a82c564ac3eac4dc7a458432952bd2",
+          "time": 2550.000037997961
+        },
+        {
+          "file": "frame-0025750.json",
+          "sha256": "650b07741db4b54beef281b4f4bc0e198abda72fdff1233d654314863a6d331b",
+          "time": 2575.00003837049
+        },
+        {
+          "file": "frame-0026000.json",
+          "sha256": "e2e52148ceda4abf6ff838e8d9568c9e11300e8f28248301fd526235721be14f",
+          "time": 2600.000038743019
+        },
+        {
+          "file": "frame-0026250.json",
+          "sha256": "9e39dda69e053cf18a4338e6a3d20398655937086d07412960bf6b51f0d0d092",
+          "time": 2625.000039115548
+        },
+        {
+          "file": "frame-0026500.json",
+          "sha256": "5168a0a754feaa76cf740ad9d75e0e9316fb39d6eefa8d53e66dac8dc924179f",
+          "time": 2650.000039488077
+        },
+        {
+          "file": "frame-0026750.json",
+          "sha256": "4a34333a200ab1bd40a737a41260ea198b5baaaaba0762f2598ccc3e0eef9f14",
+          "time": 2675.000039860606
+        },
+        {
+          "file": "frame-0027000.json",
+          "sha256": "181de53e79cd7a3be87bfa8c55d23cbc97107abc5afb3e2be69497bcc7195e9a",
+          "time": 2700.000040233135
+        },
+        {
+          "file": "frame-0027250.json",
+          "sha256": "22ee8695d5aa549cf7a4190c7c95703d5b00ecabfd85caf73ba75313651ac2e3",
+          "time": 2725.0000406056643
+        },
+        {
+          "file": "frame-0027500.json",
+          "sha256": "841272f85a30a8f2fba6d99c218ff63c610283f642fc43d10afb196b834ae9bc",
+          "time": 2750.0000409781933
+        },
+        {
+          "file": "frame-0027750.json",
+          "sha256": "59fea20c139fb5896d1323538dcb06356631e09ebee8f4e86dd0017ffa876b8c",
+          "time": 2775.0000413507223
+        },
+        {
+          "file": "frame-0028000.json",
+          "sha256": "64f535ca9c30b2275d44e3f3c18c1509e693273fcf6dd2c0a5e1fc7971620b2b",
+          "time": 2800.0000417232513
+        },
+        {
+          "file": "frame-0028250.json",
+          "sha256": "4ba1a97b85b46747ae629d40e4dda7c89667dd190ee3f90d555fd5a497c60c8f",
+          "time": 2825.0000420957804
+        },
+        {
+          "file": "frame-0028500.json",
+          "sha256": "b3fe9c9799fc1feebd232fa294ff6469352cc83eff73c03f3e09149499828591",
+          "time": 2850.0000424683094
+        },
+        {
+          "file": "frame-0028750.json",
+          "sha256": "ea29f21a0044a7daed7add45626b821bdc3a5d9a05e7393957978c6d2d449069",
+          "time": 2875.0000428408384
+        },
+        {
+          "file": "frame-0029000.json",
+          "sha256": "d4636f71c98697466a86c50890f243e40222440e779f8f7f55cf46849ef19f07",
+          "time": 2900.0000432133675
+        },
+        {
+          "file": "frame-0029250.json",
+          "sha256": "f3a91fa025a1567d5e88f2f79826ecb768bbfb4cdafd04a329946d3a882e70ed",
+          "time": 2925.0000435858965
+        },
+        {
+          "file": "frame-0029500.json",
+          "sha256": "7c8c31c137dce0cec83736c46ae6fe1861049814b736b447b098c7b4ab2af842",
+          "time": 2950.0000439584255
+        },
+        {
+          "file": "frame-0029750.json",
+          "sha256": "29adcdda5fc167bb0c678cdc805640a765e0b29fdd24f659e83d5baba54bc3fd",
+          "time": 2975.0000443309546
+        },
+        {
+          "file": "frame-0030000.json",
+          "sha256": "0c3691a2218eb03f1612549a4ddad8ae14891e04b165e695c3ca3455087b3e2e",
+          "time": 3000.0000447034836
+        }
+      ]
+    },
+    {
+      "regime": "stronger_feedback",
+      "seed": 307,
+      "complete": true,
+      "trace_time_bounds": [
+        0.0,
+        3000.0000447034836
+      ],
+      "trace_complete_prefix_sha256": "85c230cba242ba8cb666b214625446f849dd3d2c540fdf82091eb48f6833480c",
+      "eligible_sampled_ids": 126,
+      "ever_observed_ids_after_1000": 150,
+      "qualifying_ids_with_hidden_sign_changes": 123,
+      "median_within_id_rms_channel_std": {
+        "hidden": 0.7611327602120213,
+        "adaptation": 0.19390906391322915,
+        "actions": 0.2079083966726387,
+        "metabolic_allocation": 0.08243111479731371
+      },
+      "median_hidden_saturation_fraction": 0.10996995818381758,
+      "late_dense_trace": {
+        "start": 1600,
+        "consecutive_id_pairs": 44742,
+        "hidden_channel_sign_changes": 39078
+      },
+      "late_coarse_full_population": {
+        "start": 1600.0,
+        "pair_counts": {
+          "all_cells": {
+            "consecutive_id_pairs": 8793,
+            "hidden_channel_sign_changes": 24488,
+            "changed_ids": [
+              70,
+              99,
+              108,
+              126,
+              147,
+              164,
+              201,
+              206,
+              244,
+              246,
+              271,
+              296,
+              322,
+              326,
+              373,
+              379,
+              416,
+              429,
+              430,
+              452,
+              460,
+              472,
+              476,
+              487,
+              489,
+              504,
+              509,
+              512,
+              521,
+              523,
+              524,
+              527,
+              530,
+              532,
+              533,
+              535,
+              536,
+              538,
+              539,
+              540,
+              541,
+              542,
+              544,
+              549,
+              550,
+              553,
+              556,
+              558,
+              561,
+              563,
+              567,
+              569,
+              571,
+              572,
+              575,
+              577,
+              579,
+              580,
+              582,
+              584,
+              586,
+              587,
+              588,
+              589,
+              591,
+              592,
+              594,
+              595,
+              596,
+              597,
+              598,
+              599,
+              600,
+              601,
+              602,
+              603,
+              605,
+              606,
+              608,
+              609,
+              610,
+              611,
+              612,
+              613,
+              614,
+              615,
+              616,
+              617,
+              618,
+              619,
+              620,
+              621,
+              622,
+              623,
+              624,
+              625,
+              626,
+              627,
+              628,
+              629,
+              630,
+              631,
+              632,
+              633,
+              634,
+              635,
+              636,
+              637,
+              638,
+              639,
+              640,
+              641,
+              642,
+              643,
+              644,
+              645,
+              646,
+              647,
+              648,
+              649,
+              650,
+              651,
+              652,
+              653,
+              654,
+              655,
+              656,
+              657,
+              658,
+              659,
+              660,
+              661,
+              662,
+              663,
+              664,
+              665,
+              666,
+              667,
+              668,
+              669,
+              670,
+              671,
+              672,
+              673,
+              674,
+              675,
+              676,
+              677,
+              678,
+              679,
+              680,
+              681,
+              682,
+              683,
+              684,
+              685,
+              686,
+              687,
+              688,
+              689,
+              690,
+              691,
+              692,
+              693,
+              694,
+              695,
+              696,
+              697,
+              698,
+              699,
+              700,
+              701,
+              702,
+              703,
+              704,
+              705,
+              706,
+              707,
+              708,
+              709,
+              710,
+              711,
+              712,
+              713,
+              714,
+              715,
+              716,
+              717,
+              718,
+              719,
+              720,
+              721,
+              722,
+              723,
+              724,
+              725,
+              726,
+              727,
+              728,
+              729,
+              730,
+              731,
+              732,
+              733,
+              734,
+              735,
+              736,
+              737,
+              738,
+              739,
+              740,
+              741,
+              742,
+              743,
+              744,
+              745,
+              746,
+              747,
+              748,
+              749,
+              750,
+              751,
+              752,
+              753,
+              754,
+              755,
+              756,
+              757,
+              758,
+              759,
+              760,
+              761,
+              762,
+              763,
+              764,
+              765,
+              766,
+              767,
+              768,
+              769,
+              770,
+              771,
+              772,
+              773,
+              774,
+              775,
+              776,
+              777,
+              778,
+              779,
+              780,
+              781,
+              782,
+              783,
+              784,
+              785,
+              786,
+              787,
+              788,
+              789,
+              790,
+              791,
+              792,
+              793,
+              794,
+              795,
+              796,
+              797,
+              798,
+              799,
+              800,
+              801,
+              802,
+              803,
+              804,
+              805,
+              806,
+              807,
+              808,
+              809,
+              810,
+              811,
+              812,
+              813,
+              814,
+              815,
+              816,
+              817,
+              818,
+              819,
+              820,
+              821,
+              822,
+              823,
+              824,
+              825,
+              826,
+              827,
+              828,
+              829,
+              830,
+              831,
+              832,
+              833,
+              834,
+              835,
+              836,
+              837,
+              838,
+              839,
+              840,
+              841,
+              842,
+              843,
+              844,
+              845,
+              846,
+              847,
+              848,
+              849,
+              850,
+              851,
+              852,
+              853,
+              854,
+              855,
+              856,
+              857,
+              858,
+              859,
+              860,
+              861,
+              862,
+              863,
+              864,
+              865,
+              866,
+              867,
+              868,
+              869,
+              870,
+              871,
+              872,
+              873,
+              874,
+              875,
+              876,
+              877,
+              878,
+              879,
+              880,
+              881,
+              882,
+              883,
+              884,
+              885,
+              886,
+              887,
+              888,
+              889,
+              890,
+              891,
+              892,
+              893,
+              894,
+              895,
+              896,
+              897,
+              898,
+              899,
+              900,
+              901,
+              902,
+              903,
+              904,
+              905,
+              906,
+              907,
+              908,
+              909,
+              910,
+              911,
+              912,
+              913,
+              914,
+              915,
+              916,
+              917,
+              918,
+              919,
+              920,
+              921,
+              922,
+              923,
+              924,
+              925,
+              926,
+              927,
+              928,
+              929,
+              930,
+              931,
+              932,
+              933,
+              934,
+              935,
+              936,
+              937,
+              938,
+              939,
+              940,
+              941,
+              942,
+              943,
+              944,
+              946,
+              947,
+              948,
+              949,
+              950,
+              951,
+              952,
+              953,
+              954,
+              955,
+              956,
+              957,
+              958,
+              959,
+              960,
+              961,
+              962,
+              963,
+              964,
+              965,
+              966,
+              967,
+              968,
+              969,
+              970,
+              971,
+              972,
+              973,
+              974,
+              975,
+              976,
+              977,
+              978,
+              979,
+              980,
+              981,
+              982,
+              983,
+              984,
+              985,
+              986,
+              987,
+              988,
+              989,
+              990,
+              991,
+              992,
+              993,
+              994,
+              995,
+              996,
+              997,
+              998,
+              999
+            ]
+          },
+          "outside_oldest32_at_both_times": {
+            "consecutive_id_pairs": 7001,
+            "hidden_channel_sign_changes": 19081,
+            "changed_ids": [
+              521,
+              523,
+              524,
+              527,
+              530,
+              532,
+              533,
+              535,
+              536,
+              538,
+              539,
+              540,
+              541,
+              542,
+              544,
+              549,
+              550,
+              553,
+              556,
+              558,
+              561,
+              563,
+              567,
+              569,
+              571,
+              572,
+              575,
+              577,
+              579,
+              580,
+              582,
+              584,
+              586,
+              587,
+              588,
+              589,
+              591,
+              592,
+              594,
+              595,
+              596,
+              597,
+              598,
+              599,
+              600,
+              601,
+              602,
+              603,
+              605,
+              606,
+              608,
+              609,
+              610,
+              611,
+              612,
+              613,
+              614,
+              615,
+              616,
+              617,
+              618,
+              619,
+              620,
+              621,
+              622,
+              623,
+              624,
+              625,
+              626,
+              627,
+              628,
+              629,
+              630,
+              631,
+              632,
+              633,
+              634,
+              635,
+              636,
+              637,
+              638,
+              639,
+              640,
+              641,
+              642,
+              643,
+              644,
+              645,
+              646,
+              647,
+              648,
+              649,
+              650,
+              651,
+              652,
+              653,
+              654,
+              655,
+              656,
+              657,
+              658,
+              659,
+              660,
+              661,
+              662,
+              663,
+              664,
+              665,
+              666,
+              667,
+              668,
+              669,
+              670,
+              671,
+              672,
+              673,
+              674,
+              675,
+              676,
+              677,
+              678,
+              679,
+              680,
+              681,
+              682,
+              683,
+              684,
+              685,
+              686,
+              687,
+              688,
+              689,
+              690,
+              691,
+              692,
+              693,
+              694,
+              695,
+              696,
+              697,
+              698,
+              699,
+              700,
+              701,
+              702,
+              703,
+              704,
+              705,
+              706,
+              707,
+              708,
+              709,
+              710,
+              711,
+              712,
+              713,
+              714,
+              715,
+              716,
+              717,
+              718,
+              719,
+              720,
+              721,
+              722,
+              723,
+              724,
+              725,
+              726,
+              727,
+              728,
+              729,
+              730,
+              731,
+              732,
+              733,
+              734,
+              735,
+              736,
+              737,
+              738,
+              739,
+              740,
+              741,
+              742,
+              743,
+              744,
+              745,
+              746,
+              747,
+              748,
+              749,
+              750,
+              751,
+              752,
+              753,
+              754,
+              755,
+              756,
+              757,
+              758,
+              759,
+              760,
+              761,
+              762,
+              763,
+              764,
+              765,
+              766,
+              767,
+              768,
+              769,
+              770,
+              771,
+              772,
+              773,
+              774,
+              775,
+              776,
+              777,
+              778,
+              779,
+              780,
+              781,
+              782,
+              783,
+              784,
+              785,
+              786,
+              787,
+              788,
+              789,
+              790,
+              791,
+              792,
+              793,
+              794,
+              795,
+              796,
+              797,
+              798,
+              799,
+              800,
+              801,
+              802,
+              803,
+              804,
+              805,
+              806,
+              807,
+              808,
+              809,
+              810,
+              811,
+              812,
+              813,
+              814,
+              815,
+              816,
+              817,
+              818,
+              819,
+              820,
+              821,
+              822,
+              823,
+              824,
+              825,
+              826,
+              827,
+              828,
+              829,
+              830,
+              831,
+              832,
+              833,
+              834,
+              835,
+              836,
+              837,
+              838,
+              839,
+              840,
+              841,
+              842,
+              843,
+              844,
+              845,
+              846,
+              847,
+              848,
+              849,
+              850,
+              851,
+              852,
+              853,
+              854,
+              855,
+              856,
+              857,
+              858,
+              859,
+              860,
+              861,
+              862,
+              863,
+              864,
+              865,
+              866,
+              867,
+              868,
+              869,
+              870,
+              871,
+              872,
+              873,
+              874,
+              875,
+              876,
+              877,
+              878,
+              879,
+              880,
+              881,
+              882,
+              883,
+              884,
+              885,
+              886,
+              887,
+              888,
+              889,
+              890,
+              891,
+              892,
+              893,
+              894,
+              895,
+              896,
+              897,
+              898,
+              899,
+              900,
+              901,
+              902,
+              903,
+              904,
+              905,
+              906,
+              907,
+              908,
+              909,
+              910,
+              911,
+              912,
+              913,
+              914,
+              915,
+              916,
+              917,
+              918,
+              919,
+              920,
+              921,
+              922,
+              923,
+              924,
+              925,
+              926,
+              927,
+              928,
+              929,
+              930,
+              931,
+              932,
+              933,
+              934,
+              935,
+              936,
+              937,
+              938,
+              939,
+              940,
+              941,
+              942,
+              943,
+              944,
+              946,
+              947,
+              948,
+              949,
+              950,
+              951,
+              952,
+              953,
+              954,
+              955,
+              956,
+              957,
+              958,
+              959,
+              960,
+              961,
+              962,
+              963,
+              964,
+              965,
+              966,
+              967,
+              968,
+              969,
+              970,
+              971,
+              972,
+              973,
+              974,
+              975,
+              976,
+              977,
+              978,
+              979,
+              980,
+              981,
+              982,
+              983,
+              984,
+              985,
+              986,
+              987,
+              988,
+              989,
+              990,
+              991,
+              992,
+              993,
+              994,
+              995,
+              996,
+              997,
+              998,
+              999
+            ]
+          }
+        },
+        "limitations": "25-time-unit cadence can alias fast cycles; consecutive snapshots do not recover events between them; variability can include environment and division partition; not an adaptation or autonomous-oscillation assay"
+      },
+      "final": {
+        "time": 3000.0000447034836,
+        "population": 123,
+        "full_population": true,
+        "founder_lineages_represented": 5,
+        "shannon_effective_founder_lineages": 2.306668267788594
+      },
+      "final_lineages": [
+        {
+          "lineage": 11,
+          "living": 1,
+          "biomass": 0.5990863693625861,
+          "body_and_stored_material": 0.5990863693625861,
+          "fraction_of_represented_cells": 0.008130081300813009,
+          "max_generation": 1,
+          "evaluated_catalytic_readouts": 1,
+          "catalytic_allocation_a_mean": 0.44680376647329095,
+          "catalytic_allocation_a_p10": 0.44680376647329095,
+          "catalytic_allocation_a_p90": 0.44680376647329095,
+          "investment_mean": 0.23578392133566156,
+          "investment_biomass_weighted_mean": 0.23578392133566156,
+          "metabolic_allocation_mean": [
+            0.13899224,
+            0.24484137,
+            0.23127791,
+            0.3848885
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.13899224,
+            0.24484137,
+            0.23127791,
+            0.3848885
+          ],
+          "actual_last_secretion": [
+            0.0,
+            0.0
+          ],
+          "cellular_genome_signature_count": 1,
+          "catalytic_genome_signature_count": 1
+        },
+        {
+          "lineage": 12,
+          "living": 2,
+          "biomass": 1.0623756678876066,
+          "body_and_stored_material": 1.0623756678876066,
+          "fraction_of_represented_cells": 0.016260162601626018,
+          "max_generation": 6,
+          "evaluated_catalytic_readouts": 2,
+          "catalytic_allocation_a_mean": 0.692618148145794,
+          "catalytic_allocation_a_p10": 0.6310597741506861,
+          "catalytic_allocation_a_p90": 0.754176522140902,
+          "investment_mean": 0.3333647011324111,
+          "investment_biomass_weighted_mean": 0.3582088735168129,
+          "metabolic_allocation_mean": [
+            0.20921802,
+            0.301464475,
+            0.223157455,
+            0.26616006999999997
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.19009940713865228,
+            0.2967491814907081,
+            0.21379558080833005,
+            0.29935585724399927
+          ],
+          "actual_last_secretion": [
+            0.0,
+            0.0
+          ],
+          "cellular_genome_signature_count": 2,
+          "catalytic_genome_signature_count": 2
+        },
+        {
+          "lineage": 17,
+          "living": 85,
+          "biomass": 91.2159419646013,
+          "body_and_stored_material": 91.22104921181442,
+          "fraction_of_represented_cells": 0.6910569105691057,
+          "max_generation": 11,
+          "evaluated_catalytic_readouts": 85,
+          "catalytic_allocation_a_mean": 0.4840452294046133,
+          "catalytic_allocation_a_p10": 0.336507969173049,
+          "catalytic_allocation_a_p90": 0.6461734447088551,
+          "investment_mean": 0.31952323790710785,
+          "investment_biomass_weighted_mean": 0.31741775573683806,
+          "metabolic_allocation_mean": [
+            0.1799664198,
+            0.3070620145882353,
+            0.22068940705882353,
+            0.29228215423529413
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.18009240716762775,
+            0.3030379523780072,
+            0.21881239676358177,
+            0.29805723938191897
+          ],
+          "actual_last_secretion": [
+            4.7422458143717145e-05,
+            9.525345406777357e-05
+          ],
+          "cellular_genome_signature_count": 85,
+          "catalytic_genome_signature_count": 78
+        },
+        {
+          "lineage": 23,
+          "living": 5,
+          "biomass": 6.54115213363575,
+          "body_and_stored_material": 6.54115213363575,
+          "fraction_of_represented_cells": 0.04065040650406504,
+          "max_generation": 6,
+          "evaluated_catalytic_readouts": 5,
+          "catalytic_allocation_a_mean": 0.7488315788305964,
+          "catalytic_allocation_a_p10": 0.6910213341333871,
+          "catalytic_allocation_a_p90": 0.7998997552899685,
+          "investment_mean": 0.27231901973030276,
+          "investment_biomass_weighted_mean": 0.2713570060504031,
+          "metabolic_allocation_mean": [
+            0.22950568,
+            0.336820008,
+            0.27665571,
+            0.1570186112
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.23055626673497992,
+            0.33453853563925545,
+            0.27990234338405817,
+            0.15500286130812868
+          ],
+          "actual_last_secretion": [
+            0.0,
+            0.0
+          ],
+          "cellular_genome_signature_count": 5,
+          "catalytic_genome_signature_count": 3
+        },
+        {
+          "lineage": 40,
+          "living": 30,
+          "biomass": 33.96377236465683,
+          "body_and_stored_material": 33.9904580935751,
+          "fraction_of_represented_cells": 0.24390243902439024,
+          "max_generation": 10,
+          "evaluated_catalytic_readouts": 30,
+          "catalytic_allocation_a_mean": 0.36539596381065337,
+          "catalytic_allocation_a_p10": 0.21720099782545002,
+          "catalytic_allocation_a_p90": 0.6064105137769419,
+          "investment_mean": 0.27319387714394733,
+          "investment_biomass_weighted_mean": 0.27947738358848423,
+          "metabolic_allocation_mean": [
+            0.36351703766666665,
+            0.23390982033333332,
+            0.15546581966666667,
+            0.247107311
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.35737465007099584,
+            0.22957402650448125,
+            0.154882496420041,
+            0.2581688156022656
+          ],
+          "actual_last_secretion": [
+            4.326633841025731e-05,
+            7.778986777100207e-05
+          ],
+          "cellular_genome_signature_count": 30,
+          "catalytic_genome_signature_count": 28
+        }
+      ],
+      "snapshot_hashes": [
+        {
+          "file": "frame-0000000.json",
+          "sha256": "9ef72d461f4b839a2d044725874196393b9368890aab93a3115e5753b850a2fa",
+          "time": 0.0
+        },
+        {
+          "file": "frame-0000250.json",
+          "sha256": "7da64db5b90827f7b92a4223be838ec5d7d6896c98bb030e8e5ebd5d10d5bf71",
+          "time": 25.00000037252903
+        },
+        {
+          "file": "frame-0000500.json",
+          "sha256": "da811ef2e773c62d60f7fa4fb3cc593a93c0b3a8c2312de2ace9f90c429fbeca",
+          "time": 50.00000074505806
+        },
+        {
+          "file": "frame-0000750.json",
+          "sha256": "dffaf501627b8a6a33215608a7788d502ad2ee12ed90694b8c2c2a5af29fee40",
+          "time": 75.00000111758709
+        },
+        {
+          "file": "frame-0001000.json",
+          "sha256": "deca9b2282c9abcc72a09f2aaddea80e3e32b85691e59b0d653de946ad2685bc",
+          "time": 100.00000149011612
+        },
+        {
+          "file": "frame-0001250.json",
+          "sha256": "5481042308d4c6915ac776798a87bec58349ffda9ca96320f87114bc78b15154",
+          "time": 125.00000186264515
+        },
+        {
+          "file": "frame-0001500.json",
+          "sha256": "df414786a5022811b8b8239bb2903a31b2aaf155d11075f4ba1556d371df33db",
+          "time": 150.00000223517418
+        },
+        {
+          "file": "frame-0001750.json",
+          "sha256": "e044958da6b3c64da0372bd2bd93dfd3fc09ba63004f12caee7d11c7dab002bf",
+          "time": 175.0000026077032
+        },
+        {
+          "file": "frame-0002000.json",
+          "sha256": "54aaa087af1d41bb68404de4a44f5ad4ca9270fffb234bfcfaf23f98b4a0d215",
+          "time": 200.00000298023224
+        },
+        {
+          "file": "frame-0002250.json",
+          "sha256": "5e5ae79386d2b63533a74738de6212b8c54140903a80cd01f9cb3ad259338373",
+          "time": 225.00000335276127
+        },
+        {
+          "file": "frame-0002500.json",
+          "sha256": "dd27a5ec126b2821d93719a915b6bea814d6a50ccf7d7e0ba1a03412c2df07d7",
+          "time": 250.0000037252903
+        },
+        {
+          "file": "frame-0002750.json",
+          "sha256": "dc93453e429722002ed4518cf0b3aa42497fe89133628c18bf90b77251441538",
+          "time": 275.0000040978193
+        },
+        {
+          "file": "frame-0003000.json",
+          "sha256": "a654f0107b93bbcfdab99cfe13870c8a51625eff50ac53b4dbe319229a70a1a2",
+          "time": 300.00000447034836
+        },
+        {
+          "file": "frame-0003250.json",
+          "sha256": "c83a3b4ad6243be2f1059f2357113a84106bc0b4d8c9372cf02dae4e88067c6c",
+          "time": 325.0000048428774
+        },
+        {
+          "file": "frame-0003500.json",
+          "sha256": "79fbaf883ba693c7dd1ca5326e695c94980632a2b99afbe6a5f39e7bbfba8f74",
+          "time": 350.0000052154064
+        },
+        {
+          "file": "frame-0003750.json",
+          "sha256": "9c0f2838e1a2e0bcdb388650ff676aa1ad543c80e7b28fc78f8abf0e4cd267c1",
+          "time": 375.00000558793545
+        },
+        {
+          "file": "frame-0004000.json",
+          "sha256": "9dbdcf3d66632f5f680bc0f360d211a351c479c7d30e65132e42aaaf906db3c0",
+          "time": 400.0000059604645
+        },
+        {
+          "file": "frame-0004250.json",
+          "sha256": "298cd1553ed72d550f84a2c7c2fa018cec7bf31b0a5ad04a87516b333a1bce02",
+          "time": 425.0000063329935
+        },
+        {
+          "file": "frame-0004500.json",
+          "sha256": "85bd9989555a8943c0d22f093cebd2a560f5b83e23cc3780537ca3cc116c0159",
+          "time": 450.00000670552254
+        },
+        {
+          "file": "frame-0004750.json",
+          "sha256": "7bc82f125c31f190093f18317930d8b11b8f95b32a0fe08b01ce447711786ef1",
+          "time": 475.00000707805157
+        },
+        {
+          "file": "frame-0005000.json",
+          "sha256": "cf0e502336cdf73bcdaa10bc15c368edc3d37c5bc35c217911e4f8bc5a26eaca",
+          "time": 500.0000074505806
+        },
+        {
+          "file": "frame-0005250.json",
+          "sha256": "2ec0aac95822ae07753635dd086ae56c8e0f1078f9aaa080b0c4164bcc37c849",
+          "time": 525.0000078231096
+        },
+        {
+          "file": "frame-0005500.json",
+          "sha256": "55cdbf127fa4e77275b6fc63cb927ca58d7a530a7fe64c543d8fea38fbfa13df",
+          "time": 550.0000081956387
+        },
+        {
+          "file": "frame-0005750.json",
+          "sha256": "9c89c729547425387684649da672322a3ed342c235c803167ceaeb15a3ade274",
+          "time": 575.0000085681677
+        },
+        {
+          "file": "frame-0006000.json",
+          "sha256": "002edcd52912ab5ad6462970c73caa7e9e5e0e8168a290d2e1bd8df2aad92b7c",
+          "time": 600.0000089406967
+        },
+        {
+          "file": "frame-0006250.json",
+          "sha256": "3a6240a83e41cd0327b494c3069ea67fb88fda8e03feb4feb5fa5923d5ec4f68",
+          "time": 625.0000093132257
+        },
+        {
+          "file": "frame-0006500.json",
+          "sha256": "d046eab6b6f4b315f13a5b52beb56ff8da82667f1fa387f7c5d4159d91bee601",
+          "time": 650.0000096857548
+        },
+        {
+          "file": "frame-0006750.json",
+          "sha256": "6e40afed3fd61d2c13accca54cd511eb714fac3f4136a615d1f97d812a2b7578",
+          "time": 675.0000100582838
+        },
+        {
+          "file": "frame-0007000.json",
+          "sha256": "199223a2d3e67f4dfca20bb3814b0f48464aeb27dd4f57f53a007f793a3e0b0e",
+          "time": 700.0000104308128
+        },
+        {
+          "file": "frame-0007250.json",
+          "sha256": "5d87cd2900d95938c7c2294f5edc4ee652b903ed35654b4003990e71830641ac",
+          "time": 725.0000108033419
+        },
+        {
+          "file": "frame-0007500.json",
+          "sha256": "775bae6967ae076ae0d6fe4c8873b4b0620d237d0ff99e8e234cb96fdd3cc293",
+          "time": 750.0000111758709
+        },
+        {
+          "file": "frame-0007750.json",
+          "sha256": "e113d6c3ec614772d9728e40aee38626cf01ab5a2c293f07f8e8778addb99d62",
+          "time": 775.0000115483999
+        },
+        {
+          "file": "frame-0008000.json",
+          "sha256": "ae65efe6499f3908eb9934569fbaa731a3b20b706301a646ee284a17e5b7a009",
+          "time": 800.000011920929
+        },
+        {
+          "file": "frame-0008250.json",
+          "sha256": "a52538f9a2c6d90e2b98bc6a7ed5829701878e1994989aa6c72d1c2069c1c96d",
+          "time": 825.000012293458
+        },
+        {
+          "file": "frame-0008500.json",
+          "sha256": "edc9da3584c107e3148ca7f59f9c41cff0cf1a4200d60467a744b6dd541d63cd",
+          "time": 850.000012665987
+        },
+        {
+          "file": "frame-0008750.json",
+          "sha256": "563f2573387d34802372809d0a2d1b6f059e11b8acd20f4b90b377e0d2a6bfb0",
+          "time": 875.000013038516
+        },
+        {
+          "file": "frame-0009000.json",
+          "sha256": "28dc118384ae81fad6f57b32fb21fff682ddeb374c29744ed8beb0243a53d94a",
+          "time": 900.0000134110451
+        },
+        {
+          "file": "frame-0009250.json",
+          "sha256": "25a402dc86421ff3526e7e0dabd50da2af387aa45d74810c82ad328c337c1180",
+          "time": 925.0000137835741
+        },
+        {
+          "file": "frame-0009500.json",
+          "sha256": "b263229e49a3d27c7a822164436894229e4bb3e9dcc9bd836d8ffd5058bc0425",
+          "time": 950.0000141561031
+        },
+        {
+          "file": "frame-0009750.json",
+          "sha256": "a45949b90b6da6e39e84f8509d7781628c84d983c03f2d70c95865543f8faba9",
+          "time": 975.0000145286322
+        },
+        {
+          "file": "frame-0010000.json",
+          "sha256": "613e341ae59139fb6984109bf85facbb6f9668d7b65330b8d87c149897a38b40",
+          "time": 1000.0000149011612
+        },
+        {
+          "file": "frame-0010250.json",
+          "sha256": "0eedc0f52d48a5c561a4d64914d2bbc5105cbb14537e03db77eb20e945193994",
+          "time": 1025.0000152736902
+        },
+        {
+          "file": "frame-0010500.json",
+          "sha256": "0ffc2083d259174618ea0dacdfc7f43e3b0dd2b6def0080a2caa91feff15a91d",
+          "time": 1050.0000156462193
+        },
+        {
+          "file": "frame-0010750.json",
+          "sha256": "b99aff1e38c5b445442848a77aae86548f3f62b64f697f29acbbacfddbfb71e2",
+          "time": 1075.0000160187483
+        },
+        {
+          "file": "frame-0011000.json",
+          "sha256": "002b88d3512ea44bd32db8270fa502798057a12344fcd707bf964eef3846f4c9",
+          "time": 1100.0000163912773
+        },
+        {
+          "file": "frame-0011250.json",
+          "sha256": "b543b800b199797fbdaae97e3fa98cf479988e53c218e85c198ad8ffee227a65",
+          "time": 1125.0000167638063
+        },
+        {
+          "file": "frame-0011500.json",
+          "sha256": "452fbe991f5654e68d81b2c9f24d3986ecd214d9be79f43f016969242efada1e",
+          "time": 1150.0000171363354
+        },
+        {
+          "file": "frame-0011750.json",
+          "sha256": "211000678be88ebdb39c61c9286f7644601e7bd06bb667234d2570e6116ec444",
+          "time": 1175.0000175088644
+        },
+        {
+          "file": "frame-0012000.json",
+          "sha256": "2c36733585e51a009906438222d0ac6a861c3f8a143480815a0aea95a03bd391",
+          "time": 1200.0000178813934
+        },
+        {
+          "file": "frame-0012250.json",
+          "sha256": "9dbf5eebb795c34cb14e1118a454bb4adc69f99c798f958a72627e884c7a5281",
+          "time": 1225.0000182539225
+        },
+        {
+          "file": "frame-0012500.json",
+          "sha256": "ace093ed6d3680020e3d575a6a6c642b7333b50618b4b27bdb6483f993cbd244",
+          "time": 1250.0000186264515
+        },
+        {
+          "file": "frame-0012750.json",
+          "sha256": "a5620205af8bcb31b2c42f07eb4feed7f0ad078f0bec832b29995f4d90d1775b",
+          "time": 1275.0000189989805
+        },
+        {
+          "file": "frame-0013000.json",
+          "sha256": "f81cfeb2afbbf24adee7143de455bb729a45540033c3f5316a94b7b9a9a2d0fc",
+          "time": 1300.0000193715096
+        },
+        {
+          "file": "frame-0013250.json",
+          "sha256": "c1ffa8a7d3ca8d0e374ec984ca151f46c2eeb45dd98b578debe0c8abd445105e",
+          "time": 1325.0000197440386
+        },
+        {
+          "file": "frame-0013500.json",
+          "sha256": "f472ec4acfc4b84e2b8b91a7d88868141b0fd861183f60168dc27617535235bc",
+          "time": 1350.0000201165676
+        },
+        {
+          "file": "frame-0013750.json",
+          "sha256": "c12cc3d65c6a3b8f7a42b540f2fb9454df8ffdf8f32efb31f6888f3ea0de09a9",
+          "time": 1375.0000204890966
+        },
+        {
+          "file": "frame-0014000.json",
+          "sha256": "b76536e3dc0fce37e3d8f6d7f7c217b35bfdc331a60099ed1ac19a60310d10aa",
+          "time": 1400.0000208616257
+        },
+        {
+          "file": "frame-0014250.json",
+          "sha256": "c37fc168edf4dd96b5336e0a5e14221e1163346361361daf7c8f7a6e7c7dc5be",
+          "time": 1425.0000212341547
+        },
+        {
+          "file": "frame-0014500.json",
+          "sha256": "ca9532d000c9be924cf3c6e83b6bc5928202a3d47b494e1928858b225deefefb",
+          "time": 1450.0000216066837
+        },
+        {
+          "file": "frame-0014750.json",
+          "sha256": "cdb181e4bc37e7e6ef0163caa26ebd8b456ef9486e800f1d1e7157ed55b9fa2a",
+          "time": 1475.0000219792128
+        },
+        {
+          "file": "frame-0015000.json",
+          "sha256": "dfec5ca49dd7439db6422ec8a1665e86dd3b2103045ed1c9a8191b525c27e383",
+          "time": 1500.0000223517418
+        },
+        {
+          "file": "frame-0015250.json",
+          "sha256": "560732a80a0a068e2f6735ac74259fcf1906d685d586d6e73fcd55db99b4d469",
+          "time": 1525.0000227242708
+        },
+        {
+          "file": "frame-0015500.json",
+          "sha256": "5424a76d849eb6ee13845bdb9deecf77f2bd8e2ddd510a9eecbbe1830f468cef",
+          "time": 1550.0000230967999
+        },
+        {
+          "file": "frame-0015750.json",
+          "sha256": "e27a9b4ae2d81218856a7711ed7cb86e012a45682ec522b27039bf6a78492f9d",
+          "time": 1575.0000234693289
+        },
+        {
+          "file": "frame-0016000.json",
+          "sha256": "941413240094738bd5694ef42f262fe4a152e711e40672c1686214298361c232",
+          "time": 1600.000023841858
+        },
+        {
+          "file": "frame-0016250.json",
+          "sha256": "3e049d04c8c91ae008cf1b9b7ea24e9060300e0d0a84717eaa58c179d636d760",
+          "time": 1625.000024214387
+        },
+        {
+          "file": "frame-0016500.json",
+          "sha256": "e9cfeee9b50089dd450cbee4ae4249a9c90f67937629310e9af75ab658b575b6",
+          "time": 1650.000024586916
+        },
+        {
+          "file": "frame-0016750.json",
+          "sha256": "f0e7cb2c265ed9b30acd2efe2f5634a6a09101e9f99f14d67f6c6a4407f1e2ac",
+          "time": 1675.000024959445
+        },
+        {
+          "file": "frame-0017000.json",
+          "sha256": "75bcceafc6ba3751b3494298930b7e4d4184e351cf6873f104f4937ff47f034e",
+          "time": 1700.000025331974
+        },
+        {
+          "file": "frame-0017250.json",
+          "sha256": "543ab6cb7e0f48e0200c17dc7bd31d593d573ff2238a00b0b959090115102992",
+          "time": 1725.000025704503
+        },
+        {
+          "file": "frame-0017500.json",
+          "sha256": "365febdde48c75e681e3b5c36512758d1191e24278402c54b867e6aa2b431665",
+          "time": 1750.000026077032
+        },
+        {
+          "file": "frame-0017750.json",
+          "sha256": "b38a833eb253407441b6a87f597eb2855f8ab5a854742444eefac4e977b2449b",
+          "time": 1775.0000264495611
+        },
+        {
+          "file": "frame-0018000.json",
+          "sha256": "f73794f0e5de84c2c089163201be39d8c7c825748688f6f1945879d2c6d0d55c",
+          "time": 1800.0000268220901
+        },
+        {
+          "file": "frame-0018250.json",
+          "sha256": "9a546c60cbdcec0fc90472431356d8de4fa52ce38dd4b6c9430ae7c7b31f0e0c",
+          "time": 1825.0000271946192
+        },
+        {
+          "file": "frame-0018500.json",
+          "sha256": "b58d984a814d9b45ac861d484a5d6c92c953e9aed3d719857bdf1efca8bab361",
+          "time": 1850.0000275671482
+        },
+        {
+          "file": "frame-0018750.json",
+          "sha256": "fb82f4b5a33fde556cf7bb73aaa6ac9dbc3d94f0776f983b4cf1195e5833447f",
+          "time": 1875.0000279396772
+        },
+        {
+          "file": "frame-0019000.json",
+          "sha256": "688e96a10319c6f334793ce949cb6e5ac189f805a79a1f1505cac58d985d6f3e",
+          "time": 1900.0000283122063
+        },
+        {
+          "file": "frame-0019250.json",
+          "sha256": "a25467c3bb9ba7779e17cc122157de3e8bc0a205acc1aa1322b06f552189c68e",
+          "time": 1925.0000286847353
+        },
+        {
+          "file": "frame-0019500.json",
+          "sha256": "da45d5fa02e1a8394abaf8170d495eac8edbde63701e47b9e968517b8386d631",
+          "time": 1950.0000290572643
+        },
+        {
+          "file": "frame-0019750.json",
+          "sha256": "74f1e9a4a4aab7deedf264f5fcfc0e145109aa65d8063df86bd66043caedd562",
+          "time": 1975.0000294297934
+        },
+        {
+          "file": "frame-0020000.json",
+          "sha256": "4896efd869a701f572e6c2c9895c87b29f7da785d3abd61bd2a77106d3098fc0",
+          "time": 2000.0000298023224
+        },
+        {
+          "file": "frame-0020250.json",
+          "sha256": "df6351bb77c38fed3d26bfdea3239d84951f242c68e12309982306a5a9a1fdb0",
+          "time": 2025.0000301748514
+        },
+        {
+          "file": "frame-0020500.json",
+          "sha256": "ba000256fc8d79a6e6d62ab87d478b0c95773b430d66cca0667516025d9b6f68",
+          "time": 2050.0000305473804
+        },
+        {
+          "file": "frame-0020750.json",
+          "sha256": "c9df2987dc59c6ca00cb61bca38fdc303ff6e4fdb91ed79f5778292077c13087",
+          "time": 2075.0000309199095
+        },
+        {
+          "file": "frame-0021000.json",
+          "sha256": "dfddd612233e0559371652b7f427472e7ff8f03becb5b753c8c3956923042bab",
+          "time": 2100.0000312924385
+        },
+        {
+          "file": "frame-0021250.json",
+          "sha256": "5368111a180bb716ba393f572cb1cee5e5edd032d27b007aa598b347705838f2",
+          "time": 2125.0000316649675
+        },
+        {
+          "file": "frame-0021500.json",
+          "sha256": "63058f915b7e35086b29cfd167d00e09c2294b95f81b84df6626fc92cea32f1e",
+          "time": 2150.0000320374966
+        },
+        {
+          "file": "frame-0021750.json",
+          "sha256": "019db80498e1a5e36b119e2dee1075ec60f9785a6fb03b9cffb771c417945158",
+          "time": 2175.0000324100256
+        },
+        {
+          "file": "frame-0022000.json",
+          "sha256": "e7c61cc96e84a37ecadce2d6b33571cd4d00d8bcfa931fae2f69064d060cc984",
+          "time": 2200.0000327825546
+        },
+        {
+          "file": "frame-0022250.json",
+          "sha256": "3a68ab71a37ee820485914d9902daa3846d9c63db62897dd786a92555f7af20a",
+          "time": 2225.0000331550837
+        },
+        {
+          "file": "frame-0022500.json",
+          "sha256": "2156cd44b98e6e82b40fd6f747755625a64b428f51073ad0da6fc1700b8b7061",
+          "time": 2250.0000335276127
+        },
+        {
+          "file": "frame-0022750.json",
+          "sha256": "cfe19bca5132c4b1d54272298739d8340a7fd53a477d6fc4fa459098b1549024",
+          "time": 2275.0000339001417
+        },
+        {
+          "file": "frame-0023000.json",
+          "sha256": "642cb04bf07f412c80c6137159f502d511101f741f97b2586e0bbf7715940510",
+          "time": 2300.0000342726707
+        },
+        {
+          "file": "frame-0023250.json",
+          "sha256": "ec1138b3ad42e9f9b0e711e1b14d33e693e1817727a0ffbc570ab5890de18087",
+          "time": 2325.0000346452
+        },
+        {
+          "file": "frame-0023500.json",
+          "sha256": "82c99a418f2ca55fdb8b6758264692148cc5f4c31651e45cab8627a6c3559f52",
+          "time": 2350.000035017729
+        },
+        {
+          "file": "frame-0023750.json",
+          "sha256": "aae25000cf3852168e864859268580a9f8e2fddf4050b860a9221dab853af8b7",
+          "time": 2375.000035390258
+        },
+        {
+          "file": "frame-0024000.json",
+          "sha256": "5f4f3da4ae3ea3eeca75164df16e9408c204963428ceb6450102ac4bd2e01b51",
+          "time": 2400.000035762787
+        },
+        {
+          "file": "frame-0024250.json",
+          "sha256": "e858ec9d01edbb23c4933acd5068c5829b2cc9ff687556d97547a63aa6b07347",
+          "time": 2425.000036135316
+        },
+        {
+          "file": "frame-0024500.json",
+          "sha256": "7da950ce9e531c82685ebf0453f4aa1c264c7c005ee9d8a20af3c5de0b137d7b",
+          "time": 2450.000036507845
+        },
+        {
+          "file": "frame-0024750.json",
+          "sha256": "f5da8d5ad2531ba77e040ba92f384d9e7909ff42f193353ad35c862c35775a75",
+          "time": 2475.000036880374
+        },
+        {
+          "file": "frame-0025000.json",
+          "sha256": "802e4cfd085dd2bab7f42adcaf925e23c82fedeb1cbb57c8805a779c71b223fa",
+          "time": 2500.000037252903
+        },
+        {
+          "file": "frame-0025250.json",
+          "sha256": "2f871c346c71630154f5ccb9b4d533ca44c7d25931125f2ef2be5719f5687271",
+          "time": 2525.000037625432
+        },
+        {
+          "file": "frame-0025500.json",
+          "sha256": "6439e4223e01fc95005b0fc542167b7bcac4c6a49cbe26245b20a8626c56dbc7",
+          "time": 2550.000037997961
+        },
+        {
+          "file": "frame-0025750.json",
+          "sha256": "dfc505a8288bc8df659e6be49ab4c6f1f968c1414f03f81d106e6be62046ed35",
+          "time": 2575.00003837049
+        },
+        {
+          "file": "frame-0026000.json",
+          "sha256": "3acbfed48b151c3f681c8333985d37c6c6234433822754206e332e557a1f56d3",
+          "time": 2600.000038743019
+        },
+        {
+          "file": "frame-0026250.json",
+          "sha256": "f010b6454f6cf77433ca210e15f531cd3733b55a820978448cb4d6afa212cb48",
+          "time": 2625.000039115548
+        },
+        {
+          "file": "frame-0026500.json",
+          "sha256": "7ac4fce4d997726599aef31e65f8d0feddfccd0293eff18faa377db1ff4edfca",
+          "time": 2650.000039488077
+        },
+        {
+          "file": "frame-0026750.json",
+          "sha256": "f99f22794e73688fbf7c26d1f4699b80c3938ceb1530a19055d3564e18b00767",
+          "time": 2675.000039860606
+        },
+        {
+          "file": "frame-0027000.json",
+          "sha256": "e27be4e60f684533314318b34337534936e4f2d5f7808f607f73287dfbb2a606",
+          "time": 2700.000040233135
+        },
+        {
+          "file": "frame-0027250.json",
+          "sha256": "53cb161a46a5f9d631ef9c7c7eb3d5e686759b011b625f36eac74eb94fcc6213",
+          "time": 2725.0000406056643
+        },
+        {
+          "file": "frame-0027500.json",
+          "sha256": "e56276de91f7e4544929557b6ad33221642214c723b8996649f40d7541329699",
+          "time": 2750.0000409781933
+        },
+        {
+          "file": "frame-0027750.json",
+          "sha256": "332929a706fc9adf48b31cdbc18e798cc3113b40e9ed106d035214e9d7ff73c7",
+          "time": 2775.0000413507223
+        },
+        {
+          "file": "frame-0028000.json",
+          "sha256": "31a6a9616892c4f899f81383502b7fe80bcd12b34ca386961c85e6bde81c1bc8",
+          "time": 2800.0000417232513
+        },
+        {
+          "file": "frame-0028250.json",
+          "sha256": "89fd8937599770fe7c420f034798b1456c534a83dbad2d6c8ab9e93cf02335e0",
+          "time": 2825.0000420957804
+        },
+        {
+          "file": "frame-0028500.json",
+          "sha256": "56a3ece413e220a3fc996e0feb3caecd978aa81626cba7711c97f021e4dd2380",
+          "time": 2850.0000424683094
+        },
+        {
+          "file": "frame-0028750.json",
+          "sha256": "e4728b7bcee5c51dc7acf9a56d86297020c8b71ff9e239c93381a715dd6163a4",
+          "time": 2875.0000428408384
+        },
+        {
+          "file": "frame-0029000.json",
+          "sha256": "7606bba6e0c1fd65c0927aa646d7bd7e6969b5f6eac32823d267c3490ec80163",
+          "time": 2900.0000432133675
+        },
+        {
+          "file": "frame-0029250.json",
+          "sha256": "a0b5b9bc12a871c07c8fe318d0d2d5d0d8b173679a783a68081bffdeb74d6b17",
+          "time": 2925.0000435858965
+        },
+        {
+          "file": "frame-0029500.json",
+          "sha256": "701432cb5eb3f29df032e1e2a0ea1b95949d4bce3e929d6d7cf550120c6c6ef4",
+          "time": 2950.0000439584255
+        },
+        {
+          "file": "frame-0029750.json",
+          "sha256": "3ff97ec7ad09a4b76fad55115d4ab070ea5b8ff3c243a1ecf66f4429ae6a4c24",
+          "time": 2975.0000443309546
+        },
+        {
+          "file": "frame-0030000.json",
+          "sha256": "de199a7877c622a53efa2329339c9ae6e6d48d3c529a6f31decdd939adce2002",
+          "time": 3000.0000447034836
+        }
+      ]
+    }
+  ]
+}

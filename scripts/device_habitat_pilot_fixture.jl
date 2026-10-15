@@ -1,6 +1,6 @@
 # Explicit paid 3D recipe. ResourcePool.initial below is MASS/voxel.
 function device_habitat_pilot_fixture(backend;size=128,founders=512,capacity=8192,
-        seed=911,variant="closed",source_budget=100.,source_rate=.5)
+        seed=911,variant="closed",source_budget=100.,source_rate=.5,support_strategy=:axis)
     variant in ("closed","finite_sources") || error("unknown habitat variant")
     side=ceil(Int,cbrt(founders));positions=zeros(3,founders)
     rng=MersenneTwister(seed+31)
@@ -24,6 +24,6 @@ function device_habitat_pilot_fixture(backend;size=128,founders=512,capacity=819
     matrix=SorptiveMatrix(cpu,habitat;capacity_per_enzyme=6.,adsorption_rate=4.,
         desorption_rate=.12,cross_binding=0.,transport_barrier=20.)
     world=World(grid,backend,NamedTuple(),NamedTuple(),0.,seed)
-    device=DeviceCellular(world,cells;capacity,support_strategy=:axis,mechanical_substeps=16)
+    device=DeviceCellular(world,cells;capacity,support_strategy,mechanical_substeps=16)
     world,DeviceConstructiveEcology(world,device,habitat;matrix)
 end

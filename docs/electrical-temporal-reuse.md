@@ -3,7 +3,8 @@
 A bounded native 257³ AMD study reduced 36 global V-cycles to 30 across nine
 recorded growth additions, with a 1.328× median paired harmonic-solve speedup.
 This is a candidate for a fresh producer, not a change to the amber artwork.
-Coupled growth parity and complete-event speedup remain unmeasured.
+Coupled histories differ at finite tolerance; tighter common-state references
+support the patch choice at the first divergence. Running art is unchanged.
 
 The active amber-confluence solver already keeps its potential and multigrid
 hierarchy between events. Each event adds one occupied Dirichlet cell and updates
@@ -21,7 +22,7 @@ A prior certified global residual bound remains valid for every stencil outside
 the patch plus its one-cell halo: no input to those stencils changed. Checking
 the affected stencils and taking their maximum with the previous bound therefore
 provides a global bound without an extra full-volume pass. This contract requires
-that the new occupied site and patch were the **only** fine potential/mask edits
+that the new occupied site and patch were the **only ** fine potential/mask edits
 since the previous constant-coefficient homogeneous harmonic solve. Coefficient,
 RHS, boundary or unknown field edits invalidate the certificate. Without a supplied
 certificate the helper checks the full residual. If the bound exceeds tolerance,
@@ -71,8 +72,8 @@ JULIA_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 julia --project --threads=1 studies/e
 
 Source hashes, captured study source and raw 32-event rows are retained under
 `outputs/electrical-local-correction-20261015`. The bounded native-size device experiment below includes patch dispatch cost,
-full-solve synchronization and independent residual checks. A coupled archive
-trajectory comparison remains the next gate before a producer opt-in.
+full-solve synchronization and independent residual checks. The native coupled trajectory comparison and common-state accuracy follow-up
+are recorded below.
 
 ## Single-workgroup device candidate
 
@@ -187,7 +188,7 @@ field differences, material budgets, residual checks and complete-event timings.
 The first 16 events are explicitly excluded from steady timing to avoid kernel-
 compilation bias; raw timings remain. No rescue or forced choice-matching occurs.
 The native 257³/1024-event bounded AMD gate below has completed. Producer recipe
-wiring remains deferred because its coupled history changed.
+wiring remains an opt-in engineering choice; the active artwork is unchanged.
 
 ## Native coupled outcome: finite-tolerance history changed
 
@@ -216,11 +217,10 @@ valid at its stated tolerance and scope.
 This rejects a claim that local correction preserves the existing deterministic
 coupled history at the current stopping tolerance. It does **not** establish that
 either arm is closer to a tighter harmonic reference; both passed the same
-residual criterion. Before producer wiring, a useful next accuracy experiment is
-to replay the common prefix through 84 and inspect event 85's cumulative growth
-weights against tighter common-state solves. Further trajectories should study
-sensitivity to tolerance rather than treating occupied overlap as an accuracy
-oracle. The optional wrapper remains unloaded; no production recipe selects it.
+residual criterion. The common-state follow-up below replays the common prefix
+through 84 and inspects event 85 against tighter solves. Occupied overlap alone is
+not an accuracy oracle. The optional wrapper remains unloaded; no production
+recipe selects it.
 
 Tracked raw rows, quality metrics and provenance are in
 `benchmarks/2026-10-15-electrical-temporal-coupling-native.json`. Logs, source copies,
@@ -231,3 +231,56 @@ The 683,228,034-byte final electrical/material array records remain remotely at
 SHA256 `894408677ec98f4b0524861fe786630ec83cc1691db28e3e320bb2df17d3be30`.
 They are observation arrays, not an executable archive checkpoint. No new GPU
 campaign is running from this lane.
+
+
+## Common-state accuracy: the patch choice agrees with tighter solves
+
+The targeted follow-up reloaded the unchanged `d2ae74f` numerical sources, with a
+single guarded driver injection to capture the state immediately before event 85.
+All 84 preceding baseline/candidate choices and both original event 85 choices were
+reproduced exactly. Occupied geometry and temperature, dose, food and solid fields
+were verified bitwise equal between the arms before either next choice. Both
+potential iterates and the exact common material inputs were saved before any
+reference refinement. This bounded 90-second job exited zero and handed the GPU
+directly to recovery's queued profiler.
+
+The diagnostic extracts the propensity calculation from the exact archived
+`choose_archive` source, retaining its candidate order, arithmetic, nutrient gate,
+dose multiplier and susceptibility envelope. It changes only the return value to
+inspect weights; there is no separately handwritten growth law. Ten focused CPU
+assertions cover the distribution/CDF audit. The stateless target at event 85 was
+**0.7641862771655998**.
+
+| Iterate | Selected site | Distance to nearest normalized CDF boundary |
+|---|---|---:|
+| Ordinary MG, original tolerance |(126,123,148)|2.936e-5|
+| Patch + MG, original tolerance |(127,123,148)|2.316e-6|
+| Refine ordinary iterate to 1e-6 |(127,123,148)|4.113e-5|
+| Then refine it to 3e-7 |(127,123,148)|4.329e-5|
+| Refine patch iterate to 1e-6 |(127,123,148)|3.849e-5|
+| Then refine it to 3e-7 |(127,123,148)|4.314e-5|
+
+The original distributions differed by total variation **8.723e-5** (about 0.009%).
+That small probability change moved the target across a neighboring site's CDF
+boundary. Both tighter starting paths selected the patch's original site, at both
+reference tolerances. The final tight CDFs differed by only **9.81e-7**, well below
+their roughly 4.3e-5 target margins. Independent residuals of those final references
+were 1.589e-7 and 2.384e-7. Against them, ordinary's original potential maximum
+difference was about 1.28e-4; patch's was about 6.1e-5.
+
+At this common state, the patch iterate is closer to the tighter references and
+selects their site. The ordinary tolerance-level iterate chooses differently.
+This directly refutes treating deterministic history divergence as a scientific
+disqualification of the patch. It is still one common-state experiment using
+finite-precision references, not exact PDE truth, universal superiority, or a
+proof that later histories should match. The method targets the same harmonic
+operator with the same public residual tolerance; a fresh producer may reasonably
+select it as a numerical recipe with explicitly different realizations. Existing
+source pins must retain their own solver semantics.
+
+Raw CDFs, intervals, refinement residuals and provenance are tracked in
+`benchmarks/2026-10-15-electrical-divergence-cdf.json`. Captured source/logs are under
+`outputs/electrical-local-correction-20261015/divergence-d2ae74f`. The 409,538,219-byte
+common-state input remains at
+`/othersys/tmp/intmat-electrical-cdf-d2ae74f-20261015/results-001/capture/divergence-input.jls`,
+SHA256 `9a46a7ea204c689b1df406f64404f6ce7713bad90ae9a1b825d1f7c5ef984ebe`.
