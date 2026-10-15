@@ -1,0 +1,140 @@
+{
+    "schema": "device-memory-specialization-cpu",
+    "prototype_sha": "2d09d4c5a446261ea7137f844dd954207557a8a6ab7fade706f57c0895c862ad",
+    "scope": "existing coupled numerical kernels and schedule; CPU1 storage-only",
+    "julia": "1.12.4",
+    "threads": 1,
+    "cellular_source": {
+        "model": "72ecaccee6a0968b00b43fc2c9dfb7fee074a5f4e9fa95d2bc646640860e3e6d",
+        "initialization": "1484f9c00e3aa438f2557d12af1b29be2247e3b27dd5e4bcfd64d603785e6dc9",
+        "founder_initialization": "d76e4c791a2c56bc7fd651b1836e6879b9e27013566ce6d94a1d2f677f62e633",
+        "support": "5a767b83c2c912d8706468ec7c5b86e56cf99430b2a23dfd3a7f3ee8f21bf55b",
+        "kernels": "a85cf1f8e0739373572e9029deb46415ab5d16669f3513b0fbf020b289ad0b27",
+        "checkpoint": "77f943195ef1ae0466d57fc57c051595f3f363c822e8d9f6d4dbc1b9d5a6a9b0",
+        "protocol": "095c40b8e42baca3688abe902289377da49e8f352017733ce92728729fb40be5"
+    },
+    "habitat_source": {
+        "helper": "f08c0ea979ab9a4dbdb3ffbf3f9c07c00ff71667df2d27807da4ad534e87f53a",
+        "kernels": "ee2a1c13ac99a2d69a36a3aec25c6ed55072a578cff82094329263500c8090b9",
+        "sorption": "f135e74e59959187e72725a45665ac5c67293b8305298c8d3ac4bdbb81e6ac93"
+    },
+    "gpu_validated": false,
+    "rows": [
+        {
+            "variant": "closed",
+            "pages": false,
+            "shape": [
+                16,
+                16,
+                16
+            ],
+            "capacity": 64,
+            "steps": 16,
+            "baseline_bytes": 1520372,
+            "specialized_initial_bytes": 1110772,
+            "specialized_final_bytes": 1110772,
+            "specialized_host_summary_bytes": 1119364,
+            "persistent_state_exact": true,
+            "ledger_page_coverage": 1,
+            "reference_median_seconds": 0.005411458,
+            "specialized_median_seconds": 0.005584458,
+            "base_voxel_bytes": 84,
+            "habitat_voxel_bytes": 132,
+            "feed_voxel_bytes": 52,
+            "transient_contents_excluded": [
+                "scratch",
+                "demand",
+                "scale",
+                "returns",
+                "occupancy"
+            ]
+        },
+        {
+            "variant": "closed",
+            "pages": true,
+            "shape": [
+                16,
+                16,
+                16
+            ],
+            "capacity": 64,
+            "steps": 16,
+            "baseline_bytes": 1520372,
+            "specialized_initial_bytes": 717556,
+            "specialized_final_bytes": 725748,
+            "specialized_host_summary_bytes": 736612,
+            "persistent_state_exact": true,
+            "ledger_page_coverage": 0.02734375,
+            "reference_median_seconds": 0.00721775,
+            "specialized_median_seconds": 0.012372667,
+            "base_voxel_bytes": 84,
+            "habitat_voxel_bytes": 132,
+            "feed_voxel_bytes": 52,
+            "transient_contents_excluded": [
+                "scratch",
+                "demand",
+                "scale",
+                "returns",
+                "occupancy"
+            ]
+        },
+        {
+            "variant": "finite_sources",
+            "pages": false,
+            "shape": [
+                16,
+                16,
+                16
+            ],
+            "capacity": 64,
+            "steps": 16,
+            "baseline_bytes": 1520372,
+            "specialized_initial_bytes": 1110772,
+            "specialized_final_bytes": 1110772,
+            "specialized_host_summary_bytes": 1119364,
+            "persistent_state_exact": true,
+            "ledger_page_coverage": 1,
+            "reference_median_seconds": 0.003977375,
+            "specialized_median_seconds": 0.003898375,
+            "base_voxel_bytes": 84,
+            "habitat_voxel_bytes": 132,
+            "feed_voxel_bytes": 52,
+            "transient_contents_excluded": [
+                "scratch",
+                "demand",
+                "scale",
+                "returns",
+                "occupancy"
+            ]
+        },
+        {
+            "variant": "finite_sources",
+            "pages": true,
+            "shape": [
+                16,
+                16,
+                16
+            ],
+            "capacity": 64,
+            "steps": 16,
+            "baseline_bytes": 1520372,
+            "specialized_initial_bytes": 717556,
+            "specialized_final_bytes": 725748,
+            "specialized_host_summary_bytes": 736612,
+            "persistent_state_exact": true,
+            "ledger_page_coverage": 0.02734375,
+            "reference_median_seconds": 0.003913709,
+            "specialized_median_seconds": 0.003721667,
+            "base_voxel_bytes": 84,
+            "habitat_voxel_bytes": 132,
+            "feed_voxel_bytes": 52,
+            "transient_contents_excluded": [
+                "scratch",
+                "demand",
+                "scale",
+                "returns",
+                "occupancy"
+            ]
+        }
+    ]
+}
