@@ -1,0 +1,706 @@
+{
+  "julia": "1.12.4",
+  "threads": 1,
+  "cpu": "apple-m2",
+  "sources": {
+    "studies/physical_support_prototype.jl": "40a28fc9debc06a00310441683bf47f5598bc13367206cb64c7021d45b4a717f",
+    "src/cellular_transport.jl": "d734d0c7b9b305a7543ad994c18e5a649163f34b5450a6542e44e7258ce45f35",
+    "src/device_cellular.jl": "e195a8b62cd82188af9945e6d799880aecbaab0da83bee34df3aff4e7598bcc3",
+    "src/device_cellular_kernels.jl": "e11be58bb9b25eb27819a123a97b1cd6661f7e015e821fc3eba987c7e3964628",
+    "scripts/benchmark_physical_support.jl": "48203e4b0a240bf1d96d2607ce7260280ef45dae779f0e8e15d8f02b13af6769"
+  },
+  "boundary": "physical-support construction and concentration+gradient sampling only; no arena/GPU speedup claim",
+  "measurements": [
+    {
+      "side": 64,
+      "extent": 4,
+      "radius": 0.18,
+      "cells": 2000,
+      "prototype_precision": "Float64",
+      "candidate_build": {
+        "seconds": 0.004754042,
+        "allocated_bytes": 622944
+      },
+      "reference_build": {
+        "seconds": 0.04078875,
+        "allocated_bytes": 33166432,
+        "logical_bytes": 16912920,
+        "edges": 200090
+      },
+      "candidate_storage_bytes": 608000,
+      "candidate_count": 200090,
+      "candidate_slots": 512,
+      "sampling": {
+        "candidate": {
+          "seconds": 0.061370958,
+          "samples": [
+            0.075956041,
+            0.061370958,
+            0.024123458
+          ],
+          "allocated_bytes": 0
+        },
+        "reference": {
+          "seconds": 0.025377333,
+          "samples": [
+            0.023702375,
+            0.029462709,
+            0.025377333
+          ],
+          "allocated_bytes": 196768
+        },
+        "errors": {
+          "concentration": 4.440892098500626e-16,
+          "gradient": 9.020562075079397e-17
+        },
+        "sampling_speedup": 0.4135071999364911
+      }
+    },
+    {
+      "side": 128,
+      "extent": 4,
+      "radius": 0.18,
+      "cells": 2000,
+      "prototype_precision": "Float64",
+      "candidate_build": {
+        "seconds": 0.024579917,
+        "allocated_bytes": 1065312
+      },
+      "reference_build": {
+        "seconds": 0.558747125,
+        "allocated_bytes": 309401600,
+        "logical_bytes": 139832080,
+        "edges": 1600872
+      },
+      "candidate_storage_bytes": 1040000,
+      "candidate_count": 1600872,
+      "candidate_slots": 2744,
+      "sampling": {
+        "candidate": {
+          "seconds": 0.163175917,
+          "samples": [
+            0.149253333,
+            0.163175917,
+            0.196473791
+          ],
+          "allocated_bytes": 0
+        },
+        "reference": {
+          "seconds": 0.219843625,
+          "samples": [
+            0.261862334,
+            0.219843625,
+            0.19749025
+          ],
+          "allocated_bytes": 196768
+        },
+        "errors": {
+          "concentration": 1.0547118733938987e-15,
+          "gradient": 1.8735013540549517e-16
+        },
+        "sampling_speedup": 1.347279850126413
+      }
+    },
+    {
+      "side": 256,
+      "extent": 4,
+      "radius": 0.18,
+      "cells": 2000,
+      "prototype_precision": "Float64",
+      "candidate_build": {
+        "seconds": 0.141662125,
+        "allocated_bytes": 1933664
+      },
+      "reference_build": {
+        "seconds": 3.967196916,
+        "allocated_bytes": 2543623072,
+        "logical_bytes": 1126028744,
+        "edges": 12808693
+      },
+      "candidate_storage_bytes": 1904000,
+      "candidate_count": 12808693,
+      "candidate_slots": 17576,
+      "sampling": {
+        "candidate": {
+          "seconds": 1.028879,
+          "samples": [
+            1.018650375,
+            1.034169459,
+            1.028879
+          ],
+          "allocated_bytes": 0
+        },
+        "reference": {
+          "seconds": 1.89147925,
+          "samples": [
+            1.89147925,
+            2.045311833,
+            1.801000708
+          ],
+          "allocated_bytes": 196768
+        },
+        "errors": {
+          "concentration": 2.942091015256665e-15,
+          "gradient": 5.134781488891349e-16
+        },
+        "sampling_speedup": 1.8383884305151528
+      }
+    },
+    {
+      "side": 64,
+      "extent": 4,
+      "radius": 0.18,
+      "cells": 20000,
+      "prototype_precision": "Float64",
+      "candidate_build": {
+        "seconds": 0.050484625,
+        "allocated_bytes": 6455648
+      },
+      "reference_build": null,
+      "candidate_storage_bytes": 6080000,
+      "candidate_count": 2001662,
+      "candidate_slots": 512,
+      "sampling": {
+        "candidate": {
+          "seconds": 0.280318625,
+          "samples": [
+            0.280318625,
+            0.251253708,
+            0.301777042
+          ],
+          "allocated_bytes": 0
+        },
+        "reference": null,
+        "errors": null,
+        "sampling_speedup": null
+      }
+    },
+    {
+      "side": 128,
+      "extent": 4,
+      "radius": 0.18,
+      "cells": 20000,
+      "prototype_precision": "Float64",
+      "candidate_build": {
+        "seconds": 0.267011833,
+        "allocated_bytes": 12435808
+      },
+      "reference_build": null,
+      "candidate_storage_bytes": 10400000,
+      "candidate_count": 16009485,
+      "candidate_slots": 2744,
+      "sampling": {
+        "candidate": {
+          "seconds": 2.481485584,
+          "samples": [
+            2.481485584,
+            2.159228709,
+            2.765064
+          ],
+          "allocated_bytes": 0
+        },
+        "reference": null,
+        "errors": null,
+        "sampling_speedup": null
+      }
+    },
+    {
+      "side": 256,
+      "extent": 4,
+      "radius": 0.18,
+      "cells": 20000,
+      "prototype_precision": "Float64",
+      "candidate_build": {
+        "seconds": 2.4843475,
+        "allocated_bytes": 21053792
+      },
+      "reference_build": null,
+      "candidate_storage_bytes": 19040000,
+      "candidate_count": 128081899,
+      "candidate_slots": 17576,
+      "sampling": {
+        "candidate": {
+          "seconds": 16.118987041,
+          "samples": [
+            19.275886791,
+            16.118987041,
+            14.560089209
+          ],
+          "allocated_bytes": 0
+        },
+        "reference": null,
+        "errors": null,
+        "sampling_speedup": null
+      }
+    }
+  ],
+  "forecasts": [
+    {
+      "side": 64,
+      "extent": 4,
+      "radius": 0.18,
+      "cells": 2000,
+      "capacity": 2000,
+      "candidate_box": 512,
+      "expected_live_edges_per_cell": 100.06128424679108,
+      "device_dense_support_bytes": 8192000,
+      "device_axis_geometry_bytes": 408000,
+      "cpu_edge_arrays_bytes_estimate": 8004902.739743286,
+      "device_base_grid_bytes": 22020096,
+      "axis_candidate_work_per_rebuild": 1024000,
+      "expected_live_edges": 200122.56849358216
+    },
+    {
+      "side": 64,
+      "extent": 4,
+      "radius": 0.18,
+      "cells": 2000,
+      "capacity": 4000,
+      "candidate_box": 512,
+      "expected_live_edges_per_cell": 100.06128424679108,
+      "device_dense_support_bytes": 16384000,
+      "device_axis_geometry_bytes": 816000,
+      "cpu_edge_arrays_bytes_estimate": 8004902.739743286,
+      "device_base_grid_bytes": 22020096,
+      "axis_candidate_work_per_rebuild": 1024000,
+      "expected_live_edges": 200122.56849358216
+    },
+    {
+      "side": 64,
+      "extent": 4,
+      "radius": 0.18,
+      "cells": 20000,
+      "capacity": 20000,
+      "candidate_box": 512,
+      "expected_live_edges_per_cell": 100.06128424679108,
+      "device_dense_support_bytes": 81920000,
+      "device_axis_geometry_bytes": 4080000,
+      "cpu_edge_arrays_bytes_estimate": 80049027.39743286,
+      "device_base_grid_bytes": 22020096,
+      "axis_candidate_work_per_rebuild": 10240000,
+      "expected_live_edges": 2001225.6849358215
+    },
+    {
+      "side": 64,
+      "extent": 4,
+      "radius": 0.18,
+      "cells": 20000,
+      "capacity": 40000,
+      "candidate_box": 512,
+      "expected_live_edges_per_cell": 100.06128424679108,
+      "device_dense_support_bytes": 163840000,
+      "device_axis_geometry_bytes": 8160000,
+      "cpu_edge_arrays_bytes_estimate": 80049027.39743286,
+      "device_base_grid_bytes": 22020096,
+      "axis_candidate_work_per_rebuild": 10240000,
+      "expected_live_edges": 2001225.6849358215
+    },
+    {
+      "side": 128,
+      "extent": 4,
+      "radius": 0.18,
+      "cells": 2000,
+      "capacity": 2000,
+      "candidate_box": 2744,
+      "expected_live_edges_per_cell": 800.4902739743286,
+      "device_dense_support_bytes": 43904000,
+      "device_axis_geometry_bytes": 696000,
+      "cpu_edge_arrays_bytes_estimate": 64039221.91794629,
+      "device_base_grid_bytes": 176160768,
+      "axis_candidate_work_per_rebuild": 5488000,
+      "expected_live_edges": 1600980.5479486573
+    },
+    {
+      "side": 128,
+      "extent": 4,
+      "radius": 0.18,
+      "cells": 2000,
+      "capacity": 4000,
+      "candidate_box": 2744,
+      "expected_live_edges_per_cell": 800.4902739743286,
+      "device_dense_support_bytes": 87808000,
+      "device_axis_geometry_bytes": 1392000,
+      "cpu_edge_arrays_bytes_estimate": 64039221.91794629,
+      "device_base_grid_bytes": 176160768,
+      "axis_candidate_work_per_rebuild": 5488000,
+      "expected_live_edges": 1600980.5479486573
+    },
+    {
+      "side": 128,
+      "extent": 4,
+      "radius": 0.18,
+      "cells": 20000,
+      "capacity": 20000,
+      "candidate_box": 2744,
+      "expected_live_edges_per_cell": 800.4902739743286,
+      "device_dense_support_bytes": 439040000,
+      "device_axis_geometry_bytes": 6960000,
+      "cpu_edge_arrays_bytes_estimate": 640392219.1794629,
+      "device_base_grid_bytes": 176160768,
+      "axis_candidate_work_per_rebuild": 54880000,
+      "expected_live_edges": 16009805.479486572
+    },
+    {
+      "side": 128,
+      "extent": 4,
+      "radius": 0.18,
+      "cells": 20000,
+      "capacity": 40000,
+      "candidate_box": 2744,
+      "expected_live_edges_per_cell": 800.4902739743286,
+      "device_dense_support_bytes": 878080000,
+      "device_axis_geometry_bytes": 13920000,
+      "cpu_edge_arrays_bytes_estimate": 640392219.1794629,
+      "device_base_grid_bytes": 176160768,
+      "axis_candidate_work_per_rebuild": 54880000,
+      "expected_live_edges": 16009805.479486572
+    },
+    {
+      "side": 256,
+      "extent": 4,
+      "radius": 0.18,
+      "cells": 2000,
+      "capacity": 2000,
+      "candidate_box": 17576,
+      "expected_live_edges_per_cell": 6403.922191794629,
+      "device_dense_support_bytes": 281216000,
+      "device_axis_geometry_bytes": 1272000,
+      "cpu_edge_arrays_bytes_estimate": 512313775.3435703,
+      "device_base_grid_bytes": 1409286144,
+      "axis_candidate_work_per_rebuild": 35152000,
+      "expected_live_edges": 12807844.383589258
+    },
+    {
+      "side": 256,
+      "extent": 4,
+      "radius": 0.18,
+      "cells": 2000,
+      "capacity": 4000,
+      "candidate_box": 17576,
+      "expected_live_edges_per_cell": 6403.922191794629,
+      "device_dense_support_bytes": 562432000,
+      "device_axis_geometry_bytes": 2544000,
+      "cpu_edge_arrays_bytes_estimate": 512313775.3435703,
+      "device_base_grid_bytes": 1409286144,
+      "axis_candidate_work_per_rebuild": 35152000,
+      "expected_live_edges": 12807844.383589258
+    },
+    {
+      "side": 256,
+      "extent": 4,
+      "radius": 0.18,
+      "cells": 20000,
+      "capacity": 20000,
+      "candidate_box": 17576,
+      "expected_live_edges_per_cell": 6403.922191794629,
+      "device_dense_support_bytes": 2812160000,
+      "device_axis_geometry_bytes": 12720000,
+      "cpu_edge_arrays_bytes_estimate": 5123137753.435703,
+      "device_base_grid_bytes": 1409286144,
+      "axis_candidate_work_per_rebuild": 351520000,
+      "expected_live_edges": 128078443.83589257
+    },
+    {
+      "side": 256,
+      "extent": 4,
+      "radius": 0.18,
+      "cells": 20000,
+      "capacity": 40000,
+      "candidate_box": 17576,
+      "expected_live_edges_per_cell": 6403.922191794629,
+      "device_dense_support_bytes": 5624320000,
+      "device_axis_geometry_bytes": 25440000,
+      "cpu_edge_arrays_bytes_estimate": 5123137753.435703,
+      "device_base_grid_bytes": 1409286144,
+      "axis_candidate_work_per_rebuild": 351520000,
+      "expected_live_edges": 128078443.83589257
+    },
+    {
+      "side": 64,
+      "extent": 16,
+      "radius": 1,
+      "cells": 2000,
+      "capacity": 2000,
+      "candidate_box": 1000,
+      "expected_live_edges_per_cell": 268.082573106329,
+      "device_dense_support_bytes": 16000000,
+      "device_axis_geometry_bytes": 504000,
+      "cpu_edge_arrays_bytes_estimate": 21446605.84850632,
+      "device_base_grid_bytes": 22020096,
+      "axis_candidate_work_per_rebuild": 2000000,
+      "expected_live_edges": 536165.146212658
+    },
+    {
+      "side": 64,
+      "extent": 16,
+      "radius": 1,
+      "cells": 2000,
+      "capacity": 4000,
+      "candidate_box": 1000,
+      "expected_live_edges_per_cell": 268.082573106329,
+      "device_dense_support_bytes": 32000000,
+      "device_axis_geometry_bytes": 1008000,
+      "cpu_edge_arrays_bytes_estimate": 21446605.84850632,
+      "device_base_grid_bytes": 22020096,
+      "axis_candidate_work_per_rebuild": 2000000,
+      "expected_live_edges": 536165.146212658
+    },
+    {
+      "side": 64,
+      "extent": 16,
+      "radius": 1,
+      "cells": 20000,
+      "capacity": 20000,
+      "candidate_box": 1000,
+      "expected_live_edges_per_cell": 268.082573106329,
+      "device_dense_support_bytes": 160000000,
+      "device_axis_geometry_bytes": 5040000,
+      "cpu_edge_arrays_bytes_estimate": 214466058.4850632,
+      "device_base_grid_bytes": 22020096,
+      "axis_candidate_work_per_rebuild": 20000000,
+      "expected_live_edges": 5361651.46212658
+    },
+    {
+      "side": 64,
+      "extent": 16,
+      "radius": 1,
+      "cells": 20000,
+      "capacity": 40000,
+      "candidate_box": 1000,
+      "expected_live_edges_per_cell": 268.082573106329,
+      "device_dense_support_bytes": 320000000,
+      "device_axis_geometry_bytes": 10080000,
+      "cpu_edge_arrays_bytes_estimate": 214466058.4850632,
+      "device_base_grid_bytes": 22020096,
+      "axis_candidate_work_per_rebuild": 20000000,
+      "expected_live_edges": 5361651.46212658
+    },
+    {
+      "side": 128,
+      "extent": 16,
+      "radius": 1,
+      "cells": 2000,
+      "capacity": 2000,
+      "candidate_box": 5832,
+      "expected_live_edges_per_cell": 2144.660584850632,
+      "device_dense_support_bytes": 93312000,
+      "device_axis_geometry_bytes": 888000,
+      "cpu_edge_arrays_bytes_estimate": 171572846.78805056,
+      "device_base_grid_bytes": 176160768,
+      "axis_candidate_work_per_rebuild": 11664000,
+      "expected_live_edges": 4289321.169701264
+    },
+    {
+      "side": 128,
+      "extent": 16,
+      "radius": 1,
+      "cells": 2000,
+      "capacity": 4000,
+      "candidate_box": 5832,
+      "expected_live_edges_per_cell": 2144.660584850632,
+      "device_dense_support_bytes": 186624000,
+      "device_axis_geometry_bytes": 1776000,
+      "cpu_edge_arrays_bytes_estimate": 171572846.78805056,
+      "device_base_grid_bytes": 176160768,
+      "axis_candidate_work_per_rebuild": 11664000,
+      "expected_live_edges": 4289321.169701264
+    },
+    {
+      "side": 128,
+      "extent": 16,
+      "radius": 1,
+      "cells": 20000,
+      "capacity": 20000,
+      "candidate_box": 5832,
+      "expected_live_edges_per_cell": 2144.660584850632,
+      "device_dense_support_bytes": 933120000,
+      "device_axis_geometry_bytes": 8880000,
+      "cpu_edge_arrays_bytes_estimate": 1715728467.8805056,
+      "device_base_grid_bytes": 176160768,
+      "axis_candidate_work_per_rebuild": 116640000,
+      "expected_live_edges": 42893211.69701264
+    },
+    {
+      "side": 128,
+      "extent": 16,
+      "radius": 1,
+      "cells": 20000,
+      "capacity": 40000,
+      "candidate_box": 5832,
+      "expected_live_edges_per_cell": 2144.660584850632,
+      "device_dense_support_bytes": 1866240000,
+      "device_axis_geometry_bytes": 17760000,
+      "cpu_edge_arrays_bytes_estimate": 1715728467.8805056,
+      "device_base_grid_bytes": 176160768,
+      "axis_candidate_work_per_rebuild": 116640000,
+      "expected_live_edges": 42893211.69701264
+    },
+    {
+      "side": 256,
+      "extent": 16,
+      "radius": 1,
+      "cells": 2000,
+      "capacity": 2000,
+      "candidate_box": 39304,
+      "expected_live_edges_per_cell": 17157.284678805056,
+      "device_dense_support_bytes": 628864000,
+      "device_axis_geometry_bytes": 1656000,
+      "cpu_edge_arrays_bytes_estimate": 1372582774.3044045,
+      "device_base_grid_bytes": 1409286144,
+      "axis_candidate_work_per_rebuild": 78608000,
+      "expected_live_edges": 34314569.357610114
+    },
+    {
+      "side": 256,
+      "extent": 16,
+      "radius": 1,
+      "cells": 2000,
+      "capacity": 4000,
+      "candidate_box": 39304,
+      "expected_live_edges_per_cell": 17157.284678805056,
+      "device_dense_support_bytes": 1257728000,
+      "device_axis_geometry_bytes": 3312000,
+      "cpu_edge_arrays_bytes_estimate": 1372582774.3044045,
+      "device_base_grid_bytes": 1409286144,
+      "axis_candidate_work_per_rebuild": 78608000,
+      "expected_live_edges": 34314569.357610114
+    },
+    {
+      "side": 256,
+      "extent": 16,
+      "radius": 1,
+      "cells": 20000,
+      "capacity": 20000,
+      "candidate_box": 39304,
+      "expected_live_edges_per_cell": 17157.284678805056,
+      "device_dense_support_bytes": 6288640000,
+      "device_axis_geometry_bytes": 16560000,
+      "cpu_edge_arrays_bytes_estimate": 13725827743.044044,
+      "device_base_grid_bytes": 1409286144,
+      "axis_candidate_work_per_rebuild": 786080000,
+      "expected_live_edges": 343145693.5761011
+    },
+    {
+      "side": 256,
+      "extent": 16,
+      "radius": 1,
+      "cells": 20000,
+      "capacity": 40000,
+      "candidate_box": 39304,
+      "expected_live_edges_per_cell": 17157.284678805056,
+      "device_dense_support_bytes": 12577280000,
+      "device_axis_geometry_bytes": 33120000,
+      "cpu_edge_arrays_bytes_estimate": 13725827743.044044,
+      "device_base_grid_bytes": 1409286144,
+      "axis_candidate_work_per_rebuild": 786080000,
+      "expected_live_edges": 343145693.5761011
+    }
+  ],
+  "allocation_measurements": [
+    {
+      "side": 64,
+      "cells": 2000,
+      "extent": 4,
+      "radius": 0.18,
+      "baseline_seconds": [
+        0.038948583,
+        0.051238166,
+        0.065878625
+      ],
+      "candidate_seconds": [
+        0.044395583,
+        0.067427209,
+        0.081373708
+      ],
+      "paired_speedup": 0.8095812101864646,
+      "max_grant_error": 4.336808689942018e-18,
+      "max_field_error": 0,
+      "grant_ledger_error": 3.552713678800501e-15,
+      "actual_withdrawn": 11.532872960807246,
+      "reference_stencil_logical_bytes": 16913528,
+      "candidate_geometry_bytes": 608000,
+      "candidate_workspace_bytes": 6291456
+    },
+    {
+      "side": 128,
+      "cells": 2000,
+      "extent": 4,
+      "radius": 0.18,
+      "baseline_seconds": [
+        0.371322541,
+        0.308462,
+        0.299738417
+      ],
+      "candidate_seconds": [
+        0.367008958,
+        0.331874542,
+        0.33259425
+      ],
+      "paired_speedup": 0.9294536367299906,
+      "max_grant_error": 1.0408340855860843e-17,
+      "max_field_error": 0,
+      "grant_ledger_error": 7.105427357601002e-15,
+      "actual_withdrawn": 11.532576165193635,
+      "reference_stencil_logical_bytes": 139832904,
+      "candidate_geometry_bytes": 1040000,
+      "candidate_workspace_bytes": 50331648
+    },
+    {
+      "side": 256,
+      "cells": 2000,
+      "extent": 4,
+      "radius": 0.18,
+      "baseline_seconds": [
+        1.947833042,
+        2.116768875,
+        3.868060792
+      ],
+      "candidate_seconds": [
+        1.489707917,
+        1.551476583,
+        3.048038541
+      ],
+      "paired_speedup": 1.3075268109755236,
+      "max_grant_error": 2.5153490401663703e-17,
+      "max_field_error": 6.776263578034403e-21,
+      "grant_ledger_error": 2.4868995751603507e-14,
+      "actual_withdrawn": 11.532962238674482,
+      "reference_stencil_logical_bytes": 1126018440,
+      "candidate_geometry_bytes": 1904000,
+      "candidate_workspace_bytes": 402653184
+    }
+  ],
+  "model": "unchanged normalized compact radial support max(0,1-distance\u00b2/radius\u00b2)\u00b2 with periodic distance and nearest-site fallback",
+  "test_summary": {
+    "physical_sample_gradient_allocation": 252,
+    "bitwise_float32_existing_KA_support": 99,
+    "total": 355,
+    "native_float32_grids": [
+      64,
+      128,
+      256
+    ],
+    "input_failure_tests": 4
+  },
+  "controls": {
+    "threads": 1,
+    "gpu_executed": false,
+    "shared_local_host": true,
+    "warning": "CPU timing samples are shared-host measurements, not isolated/core-pinned throughput guarantees."
+  },
+  "limits": [
+    "No complete cellular or constructive arena speedup is claimed.",
+    "20k baseline CSR was projected, not allocated.",
+    "Geometry compression does not remove O(cells*(radius/spacing)^3) physical exchange work.",
+    "CPU allocation prototype additionally needs three Float64 voxel buffers and an active-site list; geometry-only savings are not total-memory savings.",
+    "Default CSR/device files and checkpoint types were not modified."
+  ],
+  "cpu_allocation_workspace_upper_bytes_formula": "(3*8+4)*number_of_voxels; active-site vector storage capacity/slack is not reflected by sizeof(empty_vector) in raw rows",
+  "support_implementation_sources": {
+    "studies/physical_support_prototype.jl": "d551bd35e1ab790f1e5ef4f59e169f6ee84a6e1d508263f86732306db348a25e",
+    "scripts/benchmark_physical_support.jl": "48203e4b0a240bf1d96d2607ce7260280ef45dae779f0e8e15d8f02b13af6769",
+    "scripts/benchmark_support_allocation.jl": "7840a6b1c1727af0e95f055bd8261f958d4ebb831abfb342bd25f9aa60616ff9",
+    "test/physical_support_prototype.jl": "06e71fb36c8c142b2f8c2e2ca760c47ebc9a6af74e52fd318a463c691f03b78a"
+  },
+  "post_measurement_change": "Only finite selected-precision inputs and resource-grid shape preflights were added after timing; valid numeric loops are unchanged. Original measured sources remain in outputs/physical-support-20261015-v1/source, validated final sources in source-final-validated."
+}
