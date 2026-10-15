@@ -179,12 +179,21 @@ device_anabolic_prepare!(::Nothing,w,p,dt)=nothing
 device_anabolic_inherit!(::Nothing,w,p,step)=nothing
 device_anabolic_finish!(::Nothing,w,p,dt)=nothing
 function device_cellular_step!(w::World,p::DeviceCellular,dt::Real;check_status=true,execution=:projected,anabolism=nothing)
-    g=p.geometry;q=p.parameters;s=p.state;e=p.environment
     device_cellular_validate(w,p)
     execution in (:staged,:projected) || throw(ArgumentError("unknown device execution recipe"))
     delta=Float32(dt)
     isfinite(delta) && 0<delta<=device_cellular_timestep_limit(p) || throw(ArgumentError("invalid device cellular timestep"))
-    C=Int(g.capacity);V=prod(Int.(g.dims));p.attempted_steps+=1
+    p.attempted_steps+=1
+    device_cellular_enqueue!(w,p,delta,execution,anabolism,UInt32(p.attempted_steps))
+    check_status && device_cellular_status!(p)
+    p
+end
+# Internal fixed-capacity launch schedule. The checked ordinary entry point owns
+# host attempt bookkeeping. A captured queue may instead supply a device clock;
+# neither capture nor this function advances host counters or World time.
+function device_cellular_enqueue!(w,p,delta::Float32,execution::Symbol,anabolism,step_index)
+    g=p.geometry;q=p.parameters;s=p.state;e=p.environment
+    C=Int(g.capacity);V=prod(Int.(g.dims))
     # All arrays are fixed capacity. Latched failure causes subsequent kernels to no-op.
     device_anabolic_begin!(anabolism,w,p,delta)
     device_cellular_launch!(p,dc_resource_quota!,e,q,delta;ndrange=3)
@@ -226,9 +235,9 @@ function device_cellular_step!(w::World,p::DeviceCellular,dt::Real;check_status=
     end
     device_cellular_launch!(p,dc_propose_bonds!,s,e,q,g;ndrange=C)
     device_cellular_launch!(p,dc_commit_bonds!,s,e,q,g;ndrange=C)
-    device_cellular_launch!(p,dc_lifecycle!,s,e,q,g,UInt32(p.attempted_steps);ndrange=1)
-    device_cellular_launch!(p,dc_divide!,s,e,q,g,UInt32(p.attempted_steps);ndrange=C)
-    device_anabolic_inherit!(anabolism,w,p,UInt32(p.attempted_steps))
+    device_cellular_launch!(p,dc_lifecycle!,s,e,q,g,step_index;ndrange=1)
+    device_cellular_launch!(p,dc_divide!,s,e,q,g,step_index;ndrange=C)
+    device_anabolic_inherit!(anabolism,w,p,step_index)
     device_cellular_launch!(p,dc_clear_occupancy!,e;ndrange=V)
     device_cellular_launch!(p,dc_support!,s,e,q,g;ndrange=C)
     device_cellular_launch!(p,dc_porosity_scatter!,s,e,g;ndrange=C)
@@ -236,7 +245,6 @@ function device_cellular_step!(w::World,p::DeviceCellular,dt::Real;check_status=
     device_anabolic_finish!(anabolism,w,p,delta)
     device_cellular_launch!(p,dc_validate_complete!,s,e,g;ndrange=max(C,V))
     device_cellular_launch!(p,dc_complete_step!,e;ndrange=1)
-    check_status && device_cellular_status!(p)
     p
 end
 function device_cellular_mechanics!(p,delta,::Val{projected}) where {projected}
@@ -290,9 +298,9 @@ function device_cellular_audit(snapshot)
     ledger=Float64.(e.resource_ledger).+Float64.(e.resource_ledger_low)
     cellledger=Float64.(s.ledger).+Float64.(s.ledger_low)
     material=sum(Float64,e.fields)+sum(Float64,e.inert)+sum(Float64,e.inert_low)+
-        sum(Float64,s.mass[active])+sum(Float64,s.metabolites[active,:])
+        sum(Float64,s.mass[active];init=0.0)+sum(Float64,s.metabolites[active,:];init=0.0)
     potential=sum(sum(Float64,e.fields[:,k])*q.potentials[k] for k in 1:3)+
-        sum(sum(Float64,s.metabolites[active,k])*q.potentials[k] for k in 1:2)+sum(Float64,s.energy[active])
+        sum(sum(Float64,s.metabolites[active,k];init=0.0)*q.potentials[k] for k in 1:2)+sum(Float64,s.energy[active];init=0.0)
     (material=material,potential=potential,work=sum(cellledger[:,1]),heat=sum(cellledger[:,2]),
         supplied=sum(ledger[:,3]),removed=sum(ledger[:,4]),
         supplied_potential=sum(ledger[k,3]*q.potentials[k] for k in 1:3),
