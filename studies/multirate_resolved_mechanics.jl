@@ -45,36 +45,36 @@ function Interior.device_cellular_mechanics!(p::ResolvedCarrier,H,mode::Val)
     end
     nothing
 end
-function resolved_fixture(;size=16,founders=8,capacity=128,seed=911,ratio=4,fast_dt=.001,fast_controller=false)
+function resolved_fixture(;size=16,founders=8,capacity=128,seed=911,ratio=4,fast_dt=.001,fast_controller=false,backend=CPU(),energy_type=Float32)
     ratio>0||error("positive ratio required")
-    w,p=Shared.device_habitat_pilot_fixture(CPU();size,founders,capacity,seed,support_strategy=:materialized)
+    w,p=Shared.device_habitat_pilot_fixture(backend;size,founders,capacity,seed,support_strategy=:materialized,energy_type)
     delta=Float32(fast_dt);H=delta*ratio
     isfinite(delta)&&delta>0&&H<=stability_limit(w,p)||error("invalid clocks")
     (world=w,process=p,carrier=ResolvedCarrier(p.cells,delta,ratio,fast_controller),H=H)
 end
-function resolved_step!(r)
+function resolved_step!(r;check_status=true)
     p=r.process.cells
-    Interior.device_cellular_validate(r.world,p);Interior.device_cellular_status!(p)
+    Interior.device_cellular_validate(r.world,p);check_status&&Interior.device_cellular_status!(p)
     p.attempted_steps+=1
     Interior.device_cellular_enqueue!(r.world,r.carrier,r.H,:projected,r.process.habitat,UInt32(p.attempted_steps))
-    Interior.device_cellular_status!(p)
+    check_status&&Interior.device_cellular_status!(p)
     r
 end
-function resolved_comparison(;size=32,founders=32,capacity=128,fast_steps=32,fast_dt=.001,ratios=(1,2,4,8),seed=911,fast_controller=false)
+function resolved_comparison(;size=32,founders=32,capacity=128,fast_steps=32,fast_dt=.001,ratios=(1,2,4,8),seed=911,fast_controller=false,backend=CPU(),energy_type=Float32)
     fast_steps>0&&all(r->r>0&&fast_steps%r==0,ratios)||error("positive cadence-aligned duration required")
-    ww,pp=Shared.device_habitat_pilot_fixture(CPU();size,founders,capacity,seed,support_strategy=:materialized)
+    ww,pp=Shared.device_habitat_pilot_fixture(backend;size,founders,capacity,seed,support_strategy=:materialized,energy_type)
     Interior.device_cellular_step!(ww,pp.cells,fast_dt;anabolism=pp.habitat)
     pp=nothing;ww=nothing
     for ratio in ratios
-        r=resolved_fixture(;size,founders,capacity,seed,ratio,fast_dt,fast_controller);resolved_step!(r)
+        r=resolved_fixture(;size,founders,capacity,seed,ratio,fast_dt,fast_controller,backend,energy_type);resolved_step!(r)
     end
     GC.gc()
-    w,p=Shared.device_habitat_pilot_fixture(CPU();size,founders,capacity,seed,support_strategy=:materialized)
+    w,p=Shared.device_habitat_pilot_fixture(backend;size,founders,capacity,seed,support_strategy=:materialized,energy_type)
     initial=Interior.device_habitat_audit(Interior.device_habitat_snapshot(p))
     baseline_seconds=@elapsed for _ in 1:fast_steps;Interior.device_cellular_step!(w,p.cells,fast_dt;anabolism=p.habitat);end
     reference=Interior.device_habitat_snapshot(p);rows=NamedTuple[]
     for ratio in ratios
-        r=resolved_fixture(;size,founders,capacity,seed,ratio,fast_dt,fast_controller)
+        r=resolved_fixture(;size,founders,capacity,seed,ratio,fast_dt,fast_controller,backend,energy_type)
         seconds=@elapsed for _ in 1:fast_steps÷ratio;resolved_step!(r);end
         state=Interior.device_habitat_snapshot(r.process);audit=Interior.device_habitat_audit(state)
         exact=state.cells.state==reference.cells.state&&state.cells.environment==reference.cells.environment&&state.arrays==reference.arrays&&state.feedstock==reference.feedstock
