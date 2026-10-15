@@ -217,3 +217,31 @@ reconstructs preactivation through `atanh(clamp(tanh(raw)))` before subtracting
 adaptation, which caps strong inputs. A future explicit variant could use raw
 preactivation directly. This is an analytical possibility, not a silent change
 to the present developmental dynamics or a claim that they cannot be rich.
+
+## Finite-precision degradation and control-run recovery
+
+A later raw-food-only control with conversion disabled exposed an implementation
+failure at step 622. Proportional respiration used `amount * donor / stock`; its
+intermediate rounding could leave a negative subnormal donor. That propagated
+to a negative construction request, where an unbounded representable-deposit
+correction loop could not terminate. A fresh-founder diagnostic reproduced the
+failure. The interrupted control is incomplete numerical evidence, not an
+ecological outcome; its files and source are retained.
+
+Degradation now computes a bounded fraction before multiplying a donor, changes
+the intracellular endpoint, and uses the actual removed amount for both material
+and potential accounting. Actual degraded mass becomes representable waste plus
+explicit inert residue. In particular, a waste field that cannot represent a
+small increment no longer prevents oxidation: the residue carries that material
+while the corresponding potential pays useful work and heat. This is an explicit
+finite-precision transfer-law change. Waste deposition is capped by its remaining
+budget, invalid construction requests reject before mutation, and rounding
+correction loops have finite bounds. No negative stock is silently clipped away.
+
+The repaired fresh control passed 1000 steps with nonnegative donor and battery
+checks at every step, including the former failure. The new dependency and
+stronger-feedback comparisons restart all matched arms from founders under one
+fresh source pin. The earlier completed full-construction trajectory and its
+individual-cell figures remain separate observations of their recorded source;
+they are not silently substituted into the repaired comparison. Existing long
+soaks and the 64³ continuation keep their original sources.

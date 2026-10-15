@@ -13,29 +13,43 @@ end
 @inline device_support_edges(descriptor,i)=DeviceSupportEdges(descriptor,Int32(i))
 Base.IteratorSize(::Type{<:DeviceSupportEdges})=Base.SizeUnknown()
 Base.eltype(::Type{<:DeviceSupportEdges})=Tuple{Int32,Float32}
-@inline function Base.iterate(it::DeviceSupportEdges,cursor::Int32=Int32(1))
+# Dense edges advance linearly. Axis edges carry indices rather than dividing a
+# flattened cursor for every candidate; the x-fastest candidate order is identical.
+@inline function Base.iterate(it::DeviceSupportEdges)
+    hasproperty(it.descriptor,:sites) ? Base.iterate(it,Int32(1)) :
+        Base.iterate(it,(Int32(1),Int32(1),Int32(1)))
+end
+@inline function Base.iterate(it::DeviceSupportEdges,cursor::Int32)
     d=it.descriptor;i=it.cell
-    if hasproperty(d,:sites)
-        cursor>d.count[i] && return nothing
-        return ((d.sites[i,cursor],d.weights[i,cursor]),cursor+Int32(1))
-    end
+    cursor>d.count[i] && return nothing
+    ((d.sites[i,cursor],d.weights[i,cursor]),cursor+Int32(1))
+end
+@inline function Base.iterate(it::DeviceSupportEdges,state::NTuple{3,Int32})
+    d=it.descriptor;i=it.cell
     d.count[i]==0 && return nothing
     fallback=d.fallback[i]
     if fallback>0
-        return cursor==1 ? ((fallback,1f0),Int32(2)) : nothing
+        return state==(Int32(1),Int32(1),Int32(1)) ?
+            ((fallback,1f0),(Int32(1),Int32(1),Int32(2))) : nothing
     end
-    nx=d.candidates[1];ny=d.candidates[2];limit=nx*ny*d.candidates[3]
-    while cursor<=limit
-        offset=cursor-Int32(1);ix=rem(offset,nx)+Int32(1)
-        iy=rem(div(offset,nx),ny)+Int32(1);iz=div(offset,nx*ny)+Int32(1)
-        r2=(d.distance2[i,ix,1]+d.distance2[i,iy,2])+d.distance2[i,iz,3]
-        cursor+=Int32(1)
-        if r2<d.radius2
-            x=d.indices[i,ix,1];y=d.indices[i,iy,2];z=d.indices[i,iz,3]
-            site=x+d.dims[1]*((y-Int32(1))+d.dims[2]*(z-Int32(1)))
+    nx=d.candidates[1];ny=d.candidates[2];nz=d.candidates[3]
+    x,y,z=state
+    while z<=nz
+        r2=(d.distance2[i,x,1]+d.distance2[i,y,2])+d.distance2[i,z,3]
+        inside=r2<d.radius2;site=Int32(0);weight=0f0
+        if inside
+            ix=d.indices[i,x,1];iy=d.indices[i,y,2];iz=d.indices[i,z,3]
+            site=ix+d.dims[1]*((iy-Int32(1))+d.dims[2]*(iz-Int32(1)))
             weight=(1f0-r2/d.radius2)^2/d.normalization[i]
-            return ((site,weight),cursor)
         end
+        x+=Int32(1)
+        if x>nx
+            x=Int32(1);y+=Int32(1)
+            if y>ny
+                y=Int32(1);z+=Int32(1)
+            end
+        end
+        inside && return ((site,weight),(x,y,z))
     end
     nothing
 end

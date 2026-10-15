@@ -108,14 +108,20 @@ end
 # Deposit only representable material and never charge a cell for a requested
 # increment that the owned field did not receive.
 function _catalytic_deposit!(field,stencil,i,amount)
+    isfinite(amount) && amount>=0 || throw(ArgumentError("catalytic deposit must be finite nonnegative"))
+    amount==0 && return 0.
     actual=0.
     for e in stencil.offsets[i]:stencil.offsets[i+1]-1
         site=stencil.sites[e]; want=min(amount-actual,amount*stencil.weights[e]);before=field[site]
         after=before+want;after-before>want && (after=prevfloat(after))
         gained=max(0.,after-before)
-        while actual+gained>amount
+        for _ in 1:8
+            actual+gained<=amount && break
             after=max(before,prevfloat(after));gained=after-before
         end
+        # An unresolved increment remains in the donor, rather than spending
+        # unbounded time walking representable field values.
+        actual+gained>amount && (after=before;gained=0.)
         field[site]=after;actual+=gained
     end
     actual

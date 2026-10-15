@@ -47,6 +47,7 @@ include("recurrent_runner.jl")
 include("catalytic_habitat.jl")
 include("sorptive_matrix.jl")
 include("constructive_cells.jl")
+include("cellular_rounding_audit.jl")
 
 module ElectricalMultigridTests
 include("electrical_multigrid.jl")
@@ -54,6 +55,7 @@ end
 
 module DeviceCellularTests
 include("device_cellular.jl")
+include("device_support_carry.jl")
 include("cellular_initialization.jl")
 include("device_habitat.jl")
 include("device_habitat_sorption.jl")

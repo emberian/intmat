@@ -111,8 +111,8 @@ end
     mass=cellular_test_mass(p); chemical=cellular_test_energy(p)
     step!(w,p,.2)
     @test p.oxidized>0
-    @test sum(Float64,p.resources.fields[3])≈p.oxidized atol=1e-14
-    @test p.resources.returned[3]≈p.oxidized atol=1e-14
+    @test sum(Float64,p.resources.fields[3])+p.inert_residual≈p.oxidized atol=1e-14
+    @test p.resources.returned[3]+p.inert_residual≈p.oxidized atol=1e-14
     @test sum(p.metabolites)+p.oxidized≈.6 atol=1e-14
     @test 0<=p.energy[1]<=p.parameters.energy_capacity*p.biomass[1]
     @test p.energy[1]>.01 && p.chemical_heat>0

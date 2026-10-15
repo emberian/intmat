@@ -65,11 +65,17 @@ function _cellular_anabolic_build!(w,c,i,delta,growth_request,cq,a::CatalyticAna
     total=growth_request+request_a+request_b
     work=cq.growth_work*growth_request+q.secretion_work*(request_a+request_b)
     available=2minimum(view(c.metabolites,:,i))
+    all(x->isfinite(x)&&x>=0,(growth_request,request_a,request_b,total,work,available,c.energy[i])) ||
+        throw(ArgumentError("shared anabolism requires finite nonnegative requests and donors"))
     scale=min(1.,total>0 ? available/total : 1.,work>0 ? c.energy[i]/work : 1.)
     growth=growth_request*scale;first=request_a*scale;second=request_b*scale
     # Round the shared plan toward both donor budgets before any effector acts.
-    while growth+first+second>available || cq.growth_work*growth+q.secretion_work*(first+second)>c.energy[i]
+    for _ in 1:8
+        growth+first+second<=available && cq.growth_work*growth+q.secretion_work*(first+second)<=c.energy[i] && break
         scale=max(0.,prevfloat(scale));growth=growth_request*scale;first=request_a*scale;second=request_b*scale
+    end
+    if growth+first+second>available || cq.growth_work*growth+q.secretion_work*(first+second)>c.energy[i]
+        growth=first=second=0.
     end
     p.growth_requested+=growth_request;p.construction_requested[1]+=request_a;p.construction_requested[2]+=request_b
     p.growth_planned+=growth;p.construction_planned[1]+=first;p.construction_planned[2]+=second

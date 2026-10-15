@@ -200,7 +200,10 @@ function deposit_cell_resource!(pool::ResourcePool,species,st::CellStencil,cell:
     end
     actual=0.0
     for e in edges
-        actual+=resource_add!(pool,s,st.sites[e],mass*st.weights[e])
+        remaining=mass-actual
+        actual+remaining>mass && (remaining=prevfloat(remaining))
+        wanted=min(remaining,mass*st.weights[e])
+        actual+=resource_add!(pool,s,st.sites[e],wanted)
     end
     actual
 end

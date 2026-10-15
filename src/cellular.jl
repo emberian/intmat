@@ -194,6 +194,27 @@ function _cellular_waste!(p,i,amount)
     deposit_cell_resource!(p.resources,3,p.stencil,i,amount)
 end
 
+# Degradation is paid by actual intracellular endpoint changes. Computing
+# amount*donor/stock can overdraw a tiny donor (including a subnormal) by an ulp.
+# Form a bounded fraction first, then account what the stored endpoint lost.
+# Waste that its Float32 field cannot receive remains explicit inert inventory.
+function _cellular_degrade_precursors!(p,i,amount)
+    stock=sum(view(p.metabolites,:,i))
+    isfinite(stock) && isfinite(amount) && 0<=amount<=stock || throw(ArgumentError("invalid precursor degradation amount"))
+    all(x->isfinite(x)&&x>=0,view(p.metabolites,:,i)) || throw(ArgumentError("invalid precursor donor"))
+    amount==0 && return (;mass=0.,potential=0.)
+    fraction=amount/stock;mass=0.;potential=0.
+    for s in 1:2
+        before=p.metabolites[s,i]
+        after=before-min(before,fraction*before)
+        removed=before-after;p.metabolites[s,i]=after
+        mass+=removed;potential+=removed*p.resources.potentials[s]
+    end
+    deposited=_cellular_waste!(p,i,mass)
+    p.inert_residual+=mass-deposited
+    (;mass,potential)
+end
+
 cellular_porosity!(w,p) = cellular_porosity!(w,p,p.parameters,p.medium)
 
 function cellular_porosity!(w,p,q,medium)
@@ -281,13 +302,9 @@ function _ecology_step_storage!(w::World,p::CellularEcology,dt::Real,q,weights,m
         fuel_needed=stock>0 && q.efficiency*potential>0 ? demand*stock/(q.efficiency*potential) : 0.
         oxidize=min(stock,delta*q.catabolic_rate*p.biomass[i]*enzymes[4,i],fuel_needed)
         if oxidize>0
-            actual=_cellular_waste!(p,i,oxidize)
-            released=0.
-            for s in 1:2
-                amount=actual*p.metabolites[s,i]/stock
-                p.metabolites[s,i]-=amount; released+=amount*p.resources.potentials[s]
-            end
-            p.energy[i]+=q.efficiency*released; p.chemical_heat+=(1-q.efficiency)*released; p.oxidized+=actual
+            degraded=_cellular_degrade_precursors!(p,i,oxidize)
+            p.energy[i]+=q.efficiency*degraded.potential
+            p.chemical_heat+=(1-q.efficiency)*degraded.potential;p.oxidized+=degraded.mass
         end
         maintenance=delta*(q.basal_rate*p.biomass[i]+q.neural_cost*h)
         paid=min(p.energy[i],maintenance); p.energy[i]-=paid; p.work_spent+=paid
@@ -300,11 +317,8 @@ function _ecology_step_storage!(w::World,p::CellularEcology,dt::Real,q,weights,m
         stock=sum(view(p.metabolites,:,i))
         excess=max(0.,stock-q.store_capacity*p.biomass[i])
         if excess>0
-            actual=_cellular_waste!(p,i,excess); p.inert_residual+=excess-actual
-            for s in 1:2
-                lost=excess*p.metabolites[s,i]/stock
-                p.metabolites[s,i]-=lost; p.chemical_heat+=lost*p.resources.potentials[s]
-            end
+            degraded=_cellular_degrade_precursors!(p,i,excess)
+            p.chemical_heat+=degraded.potential
         end
         # Equal amounts of complementary precursors become material structure.
         # Their remaining potential is dissipated; synthesis additionally uses work.
