@@ -45,7 +45,7 @@ hbox now executes the original Julia kernels through AMDGPU with normal compiled
 
 ## Evidence and limits
 
-The integrated Julia suite passed 1707 assertions across 97 testsets, including the application interface and 335 cellular checks. A separate 11-assertion fault-injection regression checks the soak driver without replacing methods in the shared test process. The shared realFFT phase backend passes 355 focused/coupled assertions and matches the full old 96³ trajectory within 4.88e−17; a 192³ benchmark measured 1.85× speedup. Current Python tools pass 12 tests. Actual bake audits check finite fields, material/work ledgers, graph identity, source hashes and population accounting; photographs receive visual review.
+The integrated Julia suite passed 1783 assertions across 101 testsets, including 348 cellular checks and 63 recurrent-material/composition checks. A separate 25-assertion regression covers soak failures, explicit source forks and throughput mode without replacing methods in the shared test process. The shared realFFT phase backend passes 355 focused/coupled assertions and matches the full old 96³ trajectory within 4.88e−17; a 192³ benchmark measured 1.85× speedup. Current Python tools pass 12 tests. Actual bake audits check finite fields, material/work ledgers, graph identity, source hashes and population accounting; photographs receive visual review.
 
 - Small finite-supply metabolic experiments reached capacity 180 then died at sampled t=384–1048; controls varied by seed. [Results](docs/metabolic-experiments.md)
 - Strong funded phase feedback retained two substantial positive domains through t=160 versus one in controls; coarsening continued. Persistent compartments remain unproven. [Study](docs/active-compartment-studies.md)
@@ -71,6 +71,24 @@ The [cellular observation exhibit](docs/cellular-observation.md) preserves what 
 current runs actually do: early connected assemblies and later renewing, mostly
 sparse populations. It includes actual archive states, labeled faithful checkpoint
 continuations and two reviewed material photographs. Existing soaks remain pinned.
+
+**Whole-step acceleration:** concrete numerical dispatch, unboxed mechanics,
+linked spatial bins and conservative contact-list reuse reduce matched hbox steps
+from 29.598→2.585 ms (sparse), 21.228→1.658 ms (bonded), 29.862→3.185 ms
+(clustered), and 154.185→12.641 ms (1,024 initial cells). Speedups are
+11.45×/12.80×/9.38×/12.20×; every case retains an identical serialized Arena
+after 100 steps. Physics, integration bounds and arithmetic order are preserved.
+New explicit checkpoint forks can disable runner sleep while retaining resource
+controls and their original parent image. [Evidence](docs/cellular-performance.md)
+
+**Recurrent matter:** a fused Julia GPU kernel evolves eight latent channels,
+conservative nutrient transport and deposited solid. Solid changes future local
+thresholds and communication. Three 128³ compositions reached t60 on Metal and
+t150 on AMD; a native 256³ composition reached t60 on Metal. These use fixed
+designed rules, not trained/evolved weights. Warm throughput measured 695 million
+voxel-steps/s on AMD128³ and 244 million on Metal256³. Increasing this grid at unit
+spacing enlarges the domain. Zero-copy resource swaps have a pre-mutation guard
+against incompatible fixed aliases. [Model and retained trajectories](docs/recurrent-material.md)
 
 ## Outstanding work
 

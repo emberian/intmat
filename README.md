@@ -21,6 +21,11 @@ optics. Native 1152³ Julia writing completed in 56.9 minutes with 18.35 GB of s
 plus continuous agents; mechanics retains its actual deformed bond graph.
 [Recipes](docs/collection-20261015.md) · [Spatial refinement](docs/spatial-refinement.md)
 
+**Recurrent matter:** eight coupled internal channels per voxel write and erase
+solid; solid changes their communication and thresholds. Native 256³ trajectories
+now run entirely on the GPU in Julia. These are designed, untrained dynamics with
+material memory. [Model, runs and measured throughput](docs/recurrent-material.md)
+
 ## Run
 
 ```sh
@@ -96,6 +101,11 @@ retains compatibility forwards, not the primary interface.
 `interior-living-*` files preserve the original design context.
 
 ## Measure before scaling
+
+Complete cellular steps now run **9.38–12.80× faster** on four matched hbox workloads,
+including 1,024 cells. Numerical specialization and shared contact searches preserve
+bit-identical 100-step continuations. No timestep or physics was relaxed.
+[Measurements and reproduction](docs/cellular-performance.md)
 
 The semi-implicit constant-mobility solver completed a **64³, t=10** phase run in
 **19 s**; measured timings imply **84×** explicit throughput over equal simulated

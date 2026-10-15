@@ -31,7 +31,40 @@ function World(grid::Grid; seed=17, backend=CPU())
 end
 """Stages advanced internally by this process; borrowed reservoir references are excluded."""
 process_children(p)=()
+"""Arrays whose world-field bindings a stage rotates; empty for ordinary stages."""
+composition_rebound_arrays(p)=()
+"""Fixed array references that must survive all stages of a composition."""
+composition_borrowed_arrays(p)=()
+"""Referenced processes/reservoirs to inspect for fixed borrows, without advancing them."""
+composition_references(p)=process_children(p)
+composition_has_rebindings(p)=!isempty(composition_rebound_arrays(p)) || any(composition_has_rebindings,process_children(p))
+function validate_field_borrows(processes::Tuple)
+    # Ordinary compositions pay no graph allocation or array inspection.
+    any(composition_has_rebindings,processes) || return nothing
+    _validate_field_borrows(processes)
+end
+function _validate_field_borrows(processes::Tuple)
+    rotating=Any[]
+    function collect_rotating(p)
+        append!(rotating,composition_rebound_arrays(p))
+        foreach(collect_rotating,process_children(p))
+    end
+    foreach(collect_rotating,processes)
+    seen=IdDict{Any,Bool}()
+    function inspect(p)
+        haskey(seen,p) && return
+        seen[p]=true
+        for borrowed in composition_borrowed_arrays(p)
+            any(a->a===borrowed,rotating) && throw(ArgumentError(
+                "$(typeof(p)) holds a fixed world-field array reference that another stage rebinds"))
+        end
+        foreach(inspect,composition_references(p))
+    end
+    foreach(inspect,processes)
+    nothing
+end
 function validate_composition(processes::Tuple)
+    validate_field_borrows(processes)
     seen=IdDict{Any,Bool}()
     owned=IdDict{Any,Bool}()
     function collect_owned(p)

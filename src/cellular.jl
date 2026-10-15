@@ -132,8 +132,10 @@ function validate(w::World,p::CellularEcology)
 end
 stability_limit(w,p::CellularEcology)=min(.25,p.parameters.response_time/2)
 
-function cellular_radii(w,p)
-    volume=(p.biomass.+vec(sum(p.metabolites;dims=1)))./p.parameters.density
+cellular_radii(w,p) = cellular_radii(w,p,p.parameters.density)
+
+function cellular_radii(w,p,density)
+    volume=(p.biomass.+vec(sum(p.metabolites;dims=1)))./density
     w.grid.size[3]>1 ? cbrt.(volume.*(3/(4pi))) : sqrt.(volume./pi)
 end
 
@@ -154,7 +156,10 @@ function reorder_ecology!(p::CellularEcology,indices)
     p
 end
 
-function _cellular_inputs(w,p,concentrations,gradients,radii)
+_cellular_inputs(w,p,concentrations,gradients,radii) =
+    _cellular_inputs(w,p,concentrations,gradients,radii,p.parameters,p.medium)
+
+function _cellular_inputs(w,p,concentrations,gradients,radii,q,medium)
     n=length(p.ids); h=size(p.hidden,1); input=zeros(Float32,2h+CELLULAR_SENSORS,n)
     input[1:h,:].=p.hidden
     index=Dict(id=>i for (i,id) in enumerate(p.ids)); degree=zeros(Int,n); tension=zeros(n); pressure=zeros(n)
@@ -177,20 +182,20 @@ function _cellular_inputs(w,p,concentrations,gradients,radii)
         base=2h
         for s in 1:2
             input[base+s,i]=_neural_squash(concentrations[s,i])
-            for d in 1:3; input[base+2+3(s-1)+d,i]=_neural_squash(gradients[s,d,i]*p.parameters.exchange_radius); end
+            for d in 1:3; input[base+2+3(s-1)+d,i]=_neural_squash(gradients[s,d,i]*q.exchange_radius); end
         end
-        input[base+9,i]=Float32(p.metabolites[1,i]/max(p.biomass[i]*p.parameters.store_capacity,eps()))
-        input[base+10,i]=Float32(p.metabolites[2,i]/max(p.biomass[i]*p.parameters.store_capacity,eps()))
+        input[base+9,i]=Float32(p.metabolites[1,i]/max(p.biomass[i]*q.store_capacity,eps()))
+        input[base+10,i]=Float32(p.metabolites[2,i]/max(p.biomass[i]*q.store_capacity,eps()))
         input[base+11,i]=_neural_squash(p.energy[i]/max(p.biomass[i],eps()))
-        input[base+12,i]=_neural_squash(p.biomass[i]/p.parameters.division_mass)
-        input[base+13,i]=Float32(degree[i]/max(p.parameters.max_degree,1))
+        input[base+12,i]=_neural_squash(p.biomass[i]/q.division_mass)
+        input[base+13,i]=Float32(degree[i]/max(q.max_degree,1))
         input[base+14,i]=_neural_squash(tension[i])
         input[base+15,i]=_neural_squash(pressure[i])
-        if p.medium!==nothing
+        if medium!==nothing
             cell=CartesianIndex(ntuple(d->dimsafe(p.positions[d,i]/w.grid.spacing[d],w.grid.size[d]),3))
-            input[base+16,i]=_neural_squash(p.medium.phase.phi[cell])
-            input[base+17,i]=_neural_squash(p.medium.phase.interface[cell])
-            input[base+18,i]=_neural_squash(p.medium.signal[cell])
+            input[base+16,i]=_neural_squash(medium.phase.phi[cell])
+            input[base+17,i]=_neural_squash(medium.phase.interface[cell])
+            input[base+18,i]=_neural_squash(medium.signal[cell])
         end
         input[base+19,i]=_neural_squash(p.age[i]/20)
         input[base+20,i]=1
@@ -204,28 +209,34 @@ function _cellular_waste!(p,i,amount)
     deposit_cell_resource!(p.resources,3,p.stencil,i,amount)
 end
 
-function cellular_porosity!(w,p)
+cellular_porosity!(w,p) = cellular_porosity!(w,p,p.parameters,p.medium)
+
+function cellular_porosity!(w,p,q,medium)
     r=p.resources; fill!(r.permeability,0)
     s=p.stencil
     for i in eachindex(p.ids), edge in s.offsets[i]:s.offsets[i+1]-1
         r.permeability[s.sites[edge]]+=Float32((p.biomass[i]+sum(view(p.metabolites,:,i)))*s.weights[edge]/s.cell_volume)
     end
     for site in eachindex(r.permeability)
-        background=p.medium===nothing ? 1f0 : p.medium.permeability[site]
-        r.permeability[site]=Float32(background/(1+p.parameters.packing_barrier*r.permeability[site]))
+        background=medium===nothing ? 1f0 : medium.permeability[site]
+        r.permeability[site]=Float32(background/(1+q.packing_barrier*r.permeability[site]))
     end
     nothing
 end
 
-function ecology_step!(w::World,p::CellularEcology,dt::Real)
-    check_dt(w,p,dt); delta=Float64(Float32(dt)); q=p.parameters
+# Keep the checkpoint-compatible parameter field abstract, but specialize the
+# numerical loop on its concrete NamedTuple at this dispatch boundary.
+ecology_step!(w::World,p::CellularEcology,dt::Real) = _ecology_step!(w,p,dt,p.parameters)
+
+function _ecology_step!(w::World,p::CellularEcology,dt::Real,q)
+    check_dt(w,p,dt); delta=Float64(Float32(dt))
     # Stable order makes stochastic division reproducible under storage reorder.
     issorted(p.ids) || reorder_ecology!(p,sortperm(p.ids))
     n=length(p.ids); h=size(p.hidden,1)
     rebuild_cell_stencil!(p.stencil,p.positions)
     concentrations=sample_concentrations(p.resources,p.stencil)
     gradients=sample_concentration_gradients(p.resources,p.stencil)
-    radii=cellular_radii(w,p)
+    radii=cellular_radii(w,p,q.density)
     inputs=_cellular_inputs(w,p,concentrations,gradients,radii)
     outputs=zeros(Float32,h+CELLULAR_ACTIONS,n)
     neural_controller!(outputs,p.weights,p.plastic_marks,inputs)
@@ -329,7 +340,7 @@ function ecology_step!(w::World,p::CellularEcology,dt::Real)
         p.bonds.endpoints=p.bonds.endpoints[keep]; p.bonds.rest_lengths=p.bonds.rest_lengths[keep]
     end
     n=length(p.ids)
-    radii=cellular_radii(w,p)
+    radii=cellular_radii(w,p,q.density)
     motility=Float64.(p.last_actions[1:3,:]).*q.speed
     w.grid.size[3]==1 && (motility[3,:].=0)
     before=sum(p.energy)
@@ -361,9 +372,11 @@ function ecology_step!(w::World,p::CellularEcology,dt::Real)
     p
 end
 
-function _cellular_divide!(w,p,parents)
+_cellular_divide!(w,p,parents) = _cellular_divide!(w,p,parents,p.parameters)
+
+function _cellular_divide!(w,p,parents,q)
     isempty(parents) && return p
-    n=length(p.ids); births=length(parents); h=size(p.hidden,1); q=p.parameters
+    n=length(p.ids); births=length(parents); h=size(p.hidden,1)
     # One allocation per state array for the complete birth batch.
     for name in (:positions,:metabolites,:hidden,:adaptation,:last_actions)
         old=getfield(p,name); setfield!(p,name,hcat(old,zeros(eltype(old),size(old,1),births)))

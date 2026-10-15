@@ -1,0 +1,1148 @@
+{
+  "schema": "interior-cellular-performance-v1",
+  "date": "2026-10-15",
+  "host": "hbox",
+  "cpu": "12th Gen Intel(R) Core(TM) i9-12900",
+  "runtime": "Julia 1.12.4",
+  "controls": {
+    "wrapper": "/home/hbox/bin/swarm-build",
+    "memory_limit": "8G",
+    "swap_limit": 0,
+    "nice": 15,
+    "cpu_affinity": [
+      6,
+      7
+    ],
+    "julia_threads": 2,
+    "gc_threads": 1,
+    "blas_threads": 1,
+    "simulation_active_cpu_threads": 1,
+    "gpu_used": false,
+    "per_process_timeout_seconds": 180
+  },
+  "method": {
+    "operation": "complete arena_step!",
+    "samples": 5,
+    "steps_per_sample": 8,
+    "warmup_steps": 3,
+    "clone_and_gc_outside_measurement": true,
+    "parity_continuation_steps": 100,
+    "parity": "SHA256 of Julia-serialized complete Arena; same input and operation order",
+    "continuous_seconds": 3,
+    "continuous_note": "No artificial sleep; evolving populations make separate continuous rates descriptive, not matched-state speedup ratios."
+  },
+  "baseline": {
+    "pinned_commit": "606ca2e",
+    "source_root": "/othersys/tmp/intmat-soaks-20261015/source",
+    "source_sha256": {
+      "core.jl": "3ef44008f6a9ce8399bc60352da94dc19e670e67677944369934138042718bad",
+      "neural_workspace.jl": "ecdd45856bc0b3c61708de90814d1abb33bc1232a0f9ff5785b32b9bc39a9139",
+      "writing.jl": "78fba7cd46f03749bdc56547b7ce5622f7ba3ea42cc34801829345dae3975e05",
+      "Interior.jl": "21d8aa2885ecd8a709c54c9382631a42f37052a467b0ceda0452e37c6797c554",
+      "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+      "cellular.jl": "23952e4683db1b917cdf3d752f33a5ccc8fad3170ba6bcd1cfa10d40b5aff8b8",
+      "cellular_contacts.jl": "677e79d99e5f1aecee87eb9e042da51b0e96df3251722f627d556c8745bca663",
+      "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26",
+      "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+      "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+      "dose_writer.jl": "b8d1b4013921a3c82388ee87a7ede00b97964a1894062f2a07339f2c6be197eb",
+      "cellular_transport.jl": "a1fd389de2c9198c9886191ef1a54730e2cd7dd304c5ee1fcb823fbeb3b72300",
+      "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+      "cellular_arena.jl": "2ef965717c99cd0c46a8acd9ceb7da26232201cb18547bd23712e989688429e2",
+      "experiments.jl": "e2e513ac4bfb0af90b5d1c870c5f403705eddd0606316ee2f86c5f5bc83eb527",
+      "metabolic_ecology.jl": "2f599a1d6ea0a5552a594113d57e238e4c6ff3c1fd8d74de5a51f83a77179bb1",
+      "mechanics.jl": "81001af879163392dde498534c9f099bcc79a16b8dac5104d527da7cc9f4fdac",
+      "neural_ecology.jl": "ed0496adb31ce4511f8bc0d5343ff843c410c39c51d30c165b3cf5eac1135df2",
+      "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+      "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+      "compartments.jl": "8eec60b56379a3d366cd789ad62e4c7690a0c10ce5af8a485f66b670c8448751",
+      "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+      "arena.jl": "8ea2c2628cd7af71ea3e5ebe6f05a9a2d6758191bb17386d51e530401e5a9696",
+      "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+      "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+      "implicit_phase.jl": "1fb617707591f89784b95171e0558065101b3d992f7b3eabd16a7bf01dca4ceb",
+      "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+      "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+      "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+      "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+    }
+  },
+  "optimized": {
+    "snapshot_root": "/othersys/tmp/intmat-cellular-profile-20261015/candidate6-source",
+    "source_sha256": {
+      "core.jl": "3ef44008f6a9ce8399bc60352da94dc19e670e67677944369934138042718bad",
+      "neural_workspace.jl": "ecdd45856bc0b3c61708de90814d1abb33bc1232a0f9ff5785b32b9bc39a9139",
+      "writing.jl": "78fba7cd46f03749bdc56547b7ce5622f7ba3ea42cc34801829345dae3975e05",
+      "Interior.jl": "21d8aa2885ecd8a709c54c9382631a42f37052a467b0ceda0452e37c6797c554",
+      "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+      "cellular.jl": "44cb6fc4ff7e94b6b0e7f06dafa294f7b9964bb5c6801ba0a3a3378763869d3a",
+      "cellular_contacts.jl": "30a198bc801675ca062325cb7dbaea5af15e654f299f2aab3747762f15460654",
+      "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26",
+      "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+      "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+      "dose_writer.jl": "b8d1b4013921a3c82388ee87a7ede00b97964a1894062f2a07339f2c6be197eb",
+      "cellular_transport.jl": "a1fd389de2c9198c9886191ef1a54730e2cd7dd304c5ee1fcb823fbeb3b72300",
+      "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+      "cellular_arena.jl": "2ef965717c99cd0c46a8acd9ceb7da26232201cb18547bd23712e989688429e2",
+      "experiments.jl": "e2e513ac4bfb0af90b5d1c870c5f403705eddd0606316ee2f86c5f5bc83eb527",
+      "metabolic_ecology.jl": "2f599a1d6ea0a5552a594113d57e238e4c6ff3c1fd8d74de5a51f83a77179bb1",
+      "mechanics.jl": "81001af879163392dde498534c9f099bcc79a16b8dac5104d527da7cc9f4fdac",
+      "neural_ecology.jl": "ed0496adb31ce4511f8bc0d5343ff843c410c39c51d30c165b3cf5eac1135df2",
+      "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+      "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+      "compartments.jl": "8eec60b56379a3d366cd789ad62e4c7690a0c10ce5af8a485f66b670c8448751",
+      "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+      "arena.jl": "8ea2c2628cd7af71ea3e5ebe6f05a9a2d6758191bb17386d51e530401e5a9696",
+      "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+      "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+      "implicit_phase.jl": "1fb617707591f89784b95171e0558065101b3d992f7b3eabd16a7bf01dca4ceb",
+      "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+      "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+      "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+      "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+    },
+    "note": "Baseline source plus cellular.jl and cellular_contacts.jl only. Does not include later core.jl composition guard."
+  },
+  "cases": [
+    {
+      "case": "mature-sparse",
+      "initial": {
+        "step": 206665,
+        "time": 20666.500307954848,
+        "population": 207,
+        "bonds": 0,
+        "grid": [
+          64,
+          48,
+          1
+        ]
+      },
+      "checkpoint_sha256": "d7f81c4cbbf21b05ce1918a142764eb0d22e1d6b68565c012c66cd759a6f01de",
+      "derived_steps": 0,
+      "baseline": {
+        "median_step_seconds": 0.029598024625,
+        "bytes_per_step": 16512310.0,
+        "samples": [
+          {
+            "seconds": 0.248697671,
+            "bytes": 132098480,
+            "gc_seconds": 0.005065164
+          },
+          {
+            "seconds": 0.239582795,
+            "bytes": 132098480,
+            "gc_seconds": 0.005079576
+          },
+          {
+            "seconds": 0.236106732,
+            "bytes": 132098480,
+            "gc_seconds": 0.004990823
+          },
+          {
+            "seconds": 0.23509359,
+            "bytes": 132098480,
+            "gc_seconds": 0.005209194
+          },
+          {
+            "seconds": 0.236784197,
+            "bytes": 132098480,
+            "gc_seconds": 0.005074467
+          }
+        ],
+        "components": [
+          {
+            "stage": "validate_composition",
+            "result": {
+              "seconds": 5.458e-06,
+              "bytes": 928,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "check_dt/ResourcePool",
+            "result": {
+              "seconds": 2.5895e-05,
+              "bytes": 1232,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "check_dt/CellularEcology",
+            "result": {
+              "seconds": 0.000200895,
+              "bytes": 33336,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "advance/ResourcePool",
+            "result": {
+              "seconds": 0.000296304,
+              "bytes": 1520,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "advance/CellularEcology",
+            "result": {
+              "seconds": 0.027286205,
+              "bytes": 16539800,
+              "gc_seconds": 0.0
+            }
+          }
+        ],
+        "continuation_end": {
+          "step": 206765,
+          "time": 20676.50030810386,
+          "population": 208,
+          "bonds": 0,
+          "grid": [
+            64,
+            48,
+            1
+          ]
+        },
+        "after100_arena_sha256": "5ecc693f9ebd1415a607dde567c1e198a544814439c5655aea3c6719da47dd75"
+      },
+      "optimized": {
+        "median_step_seconds": 0.002585208625,
+        "bytes_per_step": 847818.0,
+        "samples": [
+          {
+            "seconds": 0.020540239,
+            "bytes": 6782544,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.020616861,
+            "bytes": 6782544,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.021024558,
+            "bytes": 6782544,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.021292378,
+            "bytes": 6782544,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.020681669,
+            "bytes": 6782544,
+            "gc_seconds": 0.0
+          }
+        ],
+        "components": [
+          {
+            "stage": "validate_composition",
+            "result": {
+              "seconds": 4.983e-06,
+              "bytes": 928,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "check_dt/ResourcePool",
+            "result": {
+              "seconds": 2.6766e-05,
+              "bytes": 1232,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "check_dt/CellularEcology",
+            "result": {
+              "seconds": 0.000175904,
+              "bytes": 33336,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "advance/ResourcePool",
+            "result": {
+              "seconds": 0.000288318,
+              "bytes": 1520,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "advance/CellularEcology",
+            "result": {
+              "seconds": 0.002181258,
+              "bytes": 807080,
+              "gc_seconds": 0.0
+            }
+          }
+        ],
+        "continuation_end": {
+          "step": 206765,
+          "time": 20676.50030810386,
+          "population": 208,
+          "bonds": 0,
+          "grid": [
+            64,
+            48,
+            1
+          ],
+          "mechanical_substeps": 8
+        },
+        "after100_arena_sha256": "5ecc693f9ebd1415a607dde567c1e198a544814439c5655aea3c6719da47dd75",
+        "continuous": {
+          "before": {
+            "step": 206665,
+            "time": 20666.500307954848,
+            "population": 207,
+            "bonds": 0,
+            "grid": [
+              64,
+              48,
+              1
+            ],
+            "mechanical_substeps": 6
+          },
+          "after": {
+            "step": 207752,
+            "time": 20775.200309574604,
+            "population": 205,
+            "bonds": 0,
+            "grid": [
+              64,
+              48,
+              1
+            ],
+            "mechanical_substeps": 6
+          },
+          "steps": 1087,
+          "wall_seconds": 3.00142668,
+          "cpu_seconds": 3.0011600000000023,
+          "steps_per_second": 362.1611039987157,
+          "bytes": 1070903080,
+          "gc_seconds": 0.08916485,
+          "artificial_sleep": false
+        }
+      },
+      "whole_step_speedup": 11.448988812266554,
+      "exact100step_serialized_arena_parity": true,
+      "raw_directories": [
+        "/othersys/tmp/intmat-cellular-profile-20261015/baseline-v2",
+        "/othersys/tmp/intmat-cellular-profile-20261015/candidate6"
+      ]
+    },
+    {
+      "case": "mature-bonded",
+      "initial": {
+        "step": 55965,
+        "time": 5596.500083394349,
+        "population": 148,
+        "bonds": 71,
+        "grid": [
+          64,
+          48,
+          1
+        ]
+      },
+      "checkpoint_sha256": "64b7091c67eb88c8e3d9fb985c4e36c262d867dab1ff9a327c67623384783a5b",
+      "derived_steps": 0,
+      "baseline": {
+        "median_step_seconds": 0.02122761025,
+        "bytes_per_step": 12075356.0,
+        "samples": [
+          {
+            "seconds": 0.16999426,
+            "bytes": 96602848,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.169040033,
+            "bytes": 96602848,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.170557686,
+            "bytes": 96602848,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.16891464,
+            "bytes": 96602848,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.169820882,
+            "bytes": 96602848,
+            "gc_seconds": 0.0
+          }
+        ],
+        "components": [
+          {
+            "stage": "validate_composition",
+            "result": {
+              "seconds": 3.596e-06,
+              "bytes": 928,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "check_dt/ResourcePool",
+            "result": {
+              "seconds": 2.5194e-05,
+              "bytes": 1232,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "check_dt/CellularEcology",
+            "result": {
+              "seconds": 0.000160133,
+              "bytes": 23984,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "advance/ResourcePool",
+            "result": {
+              "seconds": 0.000292565,
+              "bytes": 1520,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "advance/CellularEcology",
+            "result": {
+              "seconds": 0.019509147,
+              "bytes": 11962112,
+              "gc_seconds": 0.0
+            }
+          }
+        ],
+        "continuation_end": {
+          "step": 56065,
+          "time": 5606.50008354336,
+          "population": 144,
+          "bonds": 67,
+          "grid": [
+            64,
+            48,
+            1
+          ]
+        },
+        "after100_arena_sha256": "1baacca1b7e883c0a0504103845c927bd9b1d32d2bfd7b449ddfb80a5614c991"
+      },
+      "optimized": {
+        "median_step_seconds": 0.001658434125,
+        "bytes_per_step": 777318.0,
+        "samples": [
+          {
+            "seconds": 0.01358596,
+            "bytes": 6218544,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.013612987,
+            "bytes": 6218544,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.013267473,
+            "bytes": 6218544,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.013253543,
+            "bytes": 6218544,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.013150532,
+            "bytes": 6218544,
+            "gc_seconds": 0.0
+          }
+        ],
+        "components": [
+          {
+            "stage": "validate_composition",
+            "result": {
+              "seconds": 1.372e-06,
+              "bytes": 928,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "check_dt/ResourcePool",
+            "result": {
+              "seconds": 2.04e-05,
+              "bytes": 1232,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "check_dt/CellularEcology",
+            "result": {
+              "seconds": 0.000116139,
+              "bytes": 23984,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "advance/ResourcePool",
+            "result": {
+              "seconds": 0.000281078,
+              "bytes": 1520,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "advance/CellularEcology",
+            "result": {
+              "seconds": 0.001274227,
+              "bytes": 643824,
+              "gc_seconds": 0.0
+            }
+          }
+        ],
+        "continuation_end": {
+          "step": 56065,
+          "time": 5606.50008354336,
+          "population": 144,
+          "bonds": 67,
+          "grid": [
+            64,
+            48,
+            1
+          ],
+          "mechanical_substeps": 6
+        },
+        "after100_arena_sha256": "1baacca1b7e883c0a0504103845c927bd9b1d32d2bfd7b449ddfb80a5614c991",
+        "continuous": {
+          "before": {
+            "step": 55965,
+            "time": 5596.500083394349,
+            "population": 148,
+            "bonds": 71,
+            "grid": [
+              64,
+              48,
+              1
+            ],
+            "mechanical_substeps": 7
+          },
+          "after": {
+            "step": 57672,
+            "time": 5767.200085937977,
+            "population": 156,
+            "bonds": 77,
+            "grid": [
+              64,
+              48,
+              1
+            ],
+            "mechanical_substeps": 6
+          },
+          "steps": 1707,
+          "wall_seconds": 3.001622217,
+          "cpu_seconds": 3.0013959999999997,
+          "steps_per_second": 568.6924857939243,
+          "bytes": 1335498912,
+          "gc_seconds": 0.115616011,
+          "artificial_sleep": false
+        }
+      },
+      "whole_step_speedup": 12.799791037826118,
+      "exact100step_serialized_arena_parity": true,
+      "raw_directories": [
+        "/othersys/tmp/intmat-cellular-profile-20261015/baseline-v2",
+        "/othersys/tmp/intmat-cellular-profile-20261015/candidate6"
+      ]
+    },
+    {
+      "case": "early-clustered",
+      "initial": {
+        "step": 475,
+        "time": 47.50000070780516,
+        "population": 187,
+        "bonds": 345,
+        "grid": [
+          64,
+          48,
+          1
+        ]
+      },
+      "checkpoint_sha256": "62d99fcf63fc50e734d89c3c413c495dcf17440e289e04583b51798961beef55",
+      "derived_steps": 475,
+      "baseline": {
+        "median_step_seconds": 0.02986204425,
+        "bytes_per_step": 17467206.0,
+        "samples": [
+          {
+            "seconds": 0.239094486,
+            "bytes": 139737648,
+            "gc_seconds": 0.005502184
+          },
+          {
+            "seconds": 0.239371358,
+            "bytes": 139737648,
+            "gc_seconds": 0.004947298
+          },
+          {
+            "seconds": 0.238896354,
+            "bytes": 139737648,
+            "gc_seconds": 0.005453768
+          },
+          {
+            "seconds": 0.237559723,
+            "bytes": 139737648,
+            "gc_seconds": 0.005060742
+          },
+          {
+            "seconds": 0.238617107,
+            "bytes": 139737648,
+            "gc_seconds": 0.005350615
+          }
+        ],
+        "components": [
+          {
+            "stage": "validate_composition",
+            "result": {
+              "seconds": 4.073e-06,
+              "bytes": 928,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "check_dt/ResourcePool",
+            "result": {
+              "seconds": 2.2865e-05,
+              "bytes": 1232,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "check_dt/CellularEcology",
+            "result": {
+              "seconds": 0.000158301,
+              "bytes": 33336,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "advance/ResourcePool",
+            "result": {
+              "seconds": 0.000290476,
+              "bytes": 1520,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "advance/CellularEcology",
+            "result": {
+              "seconds": 0.030016474,
+              "bytes": 17350952,
+              "gc_seconds": 0.0
+            }
+          }
+        ],
+        "continuation_end": {
+          "step": 575,
+          "time": 57.50000085681677,
+          "population": 189,
+          "bonds": 330,
+          "grid": [
+            64,
+            48,
+            1
+          ]
+        },
+        "after100_arena_sha256": "7b74982eb605725cb42a3e026cd60d380950a3553409266b6516e712e8ee8e06"
+      },
+      "optimized": {
+        "median_step_seconds": 0.0031849655,
+        "bytes_per_step": 2010984.0,
+        "samples": [
+          {
+            "seconds": 0.025500361,
+            "bytes": 16087872,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.025733496,
+            "bytes": 16087872,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.025479724,
+            "bytes": 16087872,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.025445414,
+            "bytes": 16087872,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.025143183,
+            "bytes": 16087872,
+            "gc_seconds": 0.0
+          }
+        ],
+        "components": [
+          {
+            "stage": "validate_composition",
+            "result": {
+              "seconds": 1.859e-06,
+              "bytes": 928,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "check_dt/ResourcePool",
+            "result": {
+              "seconds": 2.1322e-05,
+              "bytes": 1232,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "check_dt/CellularEcology",
+            "result": {
+              "seconds": 0.000140535,
+              "bytes": 33336,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "advance/ResourcePool",
+            "result": {
+              "seconds": 0.000281351,
+              "bytes": 1520,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "advance/CellularEcology",
+            "result": {
+              "seconds": 0.002693996,
+              "bytes": 1897464,
+              "gc_seconds": 0.0
+            }
+          }
+        ],
+        "continuation_end": {
+          "step": 575,
+          "time": 57.50000085681677,
+          "population": 189,
+          "bonds": 330,
+          "grid": [
+            64,
+            48,
+            1
+          ],
+          "mechanical_substeps": 12
+        },
+        "after100_arena_sha256": "7b74982eb605725cb42a3e026cd60d380950a3553409266b6516e712e8ee8e06",
+        "continuous": {
+          "before": {
+            "step": 475,
+            "time": 47.50000070780516,
+            "population": 187,
+            "bonds": 345,
+            "grid": [
+              64,
+              48,
+              1
+            ],
+            "mechanical_substeps": 13
+          },
+          "after": {
+            "step": 1691,
+            "time": 169.10000251978636,
+            "population": 147,
+            "bonds": 164,
+            "grid": [
+              64,
+              48,
+              1
+            ],
+            "mechanical_substeps": 9
+          },
+          "steps": 1216,
+          "wall_seconds": 3.001922953,
+          "cpu_seconds": 3.0014390000000013,
+          "steps_per_second": 405.073687445835,
+          "bytes": 1858314040,
+          "gc_seconds": 0.175149099,
+          "artificial_sleep": false
+        }
+      },
+      "whole_step_speedup": 9.375939629487354,
+      "exact100step_serialized_arena_parity": true,
+      "raw_directories": [
+        "/othersys/tmp/intmat-cellular-profile-20261015/baseline-v2",
+        "/othersys/tmp/intmat-cellular-profile-20261015/candidate6"
+      ]
+    },
+    {
+      "case": "large1024",
+      "initial": {
+        "step": 0,
+        "time": 0.0,
+        "population": 1024,
+        "bonds": 0,
+        "grid": [
+          256,
+          192,
+          1
+        ],
+        "mechanical_substeps": 0
+      },
+      "checkpoint_sha256": "bfe296ea5d8a9347124303c5c561337fcf206cb2a8c617242765d7de5fee7c09",
+      "derived_steps": 0,
+      "baseline": {
+        "median_step_seconds": 0.154185368625,
+        "bytes_per_step": 87349479.0,
+        "samples": [
+          {
+            "seconds": 1.233482949,
+            "bytes": 698795832,
+            "gc_seconds": 0.037953543
+          },
+          {
+            "seconds": 1.227054067,
+            "bytes": 698795832,
+            "gc_seconds": 0.035914697
+          },
+          {
+            "seconds": 1.228280863,
+            "bytes": 698795832,
+            "gc_seconds": 0.034928624
+          },
+          {
+            "seconds": 1.25052925,
+            "bytes": 698795832,
+            "gc_seconds": 0.034275995
+          },
+          {
+            "seconds": 1.260789468,
+            "bytes": 698795832,
+            "gc_seconds": 0.035628187
+          }
+        ],
+        "components": [
+          {
+            "stage": "validate_composition",
+            "result": {
+              "seconds": 4.205e-06,
+              "bytes": 928,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "check_dt/ResourcePool",
+            "result": {
+              "seconds": 0.000308761,
+              "bytes": 1232,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "check_dt/CellularEcology",
+            "result": {
+              "seconds": 0.000633611,
+              "bytes": 81296,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "advance/ResourcePool",
+            "result": {
+              "seconds": 0.004170304,
+              "bytes": 1520,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "advance/CellularEcology",
+            "result": {
+              "seconds": 0.147398586,
+              "bytes": 91328064,
+              "gc_seconds": 0.002126035
+            }
+          }
+        ],
+        "continuation_end": {
+          "step": 100,
+          "time": 10.000000149011612,
+          "population": 1489,
+          "bonds": 1199,
+          "grid": [
+            256,
+            192,
+            1
+          ],
+          "mechanical_substeps": 13
+        },
+        "after100_arena_sha256": "724138b2e99b956afd52f1ec52b159c3b0851226909aabaf0f850e39c91c82b0",
+        "continuous": {
+          "before": {
+            "step": 0,
+            "time": 0.0,
+            "population": 1024,
+            "bonds": 0,
+            "grid": [
+              256,
+              192,
+              1
+            ],
+            "mechanical_substeps": 0
+          },
+          "after": {
+            "step": 20,
+            "time": 2.0000000298023224,
+            "population": 1024,
+            "bonds": 268,
+            "grid": [
+              256,
+              192,
+              1
+            ],
+            "mechanical_substeps": 9
+          },
+          "steps": 20,
+          "wall_seconds": 3.101987115,
+          "cpu_seconds": 3.1017439999999965,
+          "steps_per_second": 6.4474800373243975,
+          "bytes": 1769182136,
+          "gc_seconds": 0.121356499,
+          "artificial_sleep": false
+        }
+      },
+      "optimized": {
+        "median_step_seconds": 0.01264091375,
+        "bytes_per_step": 4271481.0,
+        "samples": [
+          {
+            "seconds": 0.107299966,
+            "bytes": 34171848,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.10112731,
+            "bytes": 34171848,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.099693271,
+            "bytes": 34171848,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.101274304,
+            "bytes": 34171848,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.100664311,
+            "bytes": 34171848,
+            "gc_seconds": 0.0
+          }
+        ],
+        "components": [
+          {
+            "stage": "validate_composition",
+            "result": {
+              "seconds": 5.423e-06,
+              "bytes": 928,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "check_dt/ResourcePool",
+            "result": {
+              "seconds": 0.000277461,
+              "bytes": 1232,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "check_dt/CellularEcology",
+            "result": {
+              "seconds": 0.000647558,
+              "bytes": 81296,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "advance/ResourcePool",
+            "result": {
+              "seconds": 0.004229053,
+              "bytes": 1520,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "advance/CellularEcology",
+            "result": {
+              "seconds": 0.008708086,
+              "bytes": 5859760,
+              "gc_seconds": 0.0
+            }
+          }
+        ],
+        "continuation_end": {
+          "step": 100,
+          "time": 10.000000149011612,
+          "population": 1489,
+          "bonds": 1199,
+          "grid": [
+            256,
+            192,
+            1
+          ],
+          "mechanical_substeps": 13
+        },
+        "after100_arena_sha256": "724138b2e99b956afd52f1ec52b159c3b0851226909aabaf0f850e39c91c82b0",
+        "continuous": {
+          "before": {
+            "step": 0,
+            "time": 0.0,
+            "population": 1024,
+            "bonds": 0,
+            "grid": [
+              256,
+              192,
+              1
+            ],
+            "mechanical_substeps": 0
+          },
+          "after": {
+            "step": 136,
+            "time": 13.600000202655792,
+            "population": 1745,
+            "bonds": 1734,
+            "grid": [
+              256,
+              192,
+              1
+            ],
+            "mechanical_substeps": 14
+          },
+          "steps": 136,
+          "wall_seconds": 3.009705027,
+          "cpu_seconds": 3.0095079999999985,
+          "steps_per_second": 45.187152488349156,
+          "bytes": 2034812976,
+          "gc_seconds": 0.20290583,
+          "artificial_sleep": false
+        }
+      },
+      "whole_step_speedup": 12.197327794044954,
+      "exact100step_serialized_arena_parity": true,
+      "raw_directories": [
+        "/othersys/tmp/intmat-cellular-profile-20261015/large-baseline",
+        "/othersys/tmp/intmat-cellular-profile-20261015/large-candidate6"
+      ]
+    }
+  ],
+  "large_fixture": {
+    "batch": 5,
+    "cellular": {
+      "hidden": 8,
+      "capacity": 4096,
+      "division_mass": 1.8,
+      "minimum_mass": 0.25,
+      "energy_capacity": 3.0,
+      "response_time": 0.8,
+      "adaptation_time": 6.0,
+      "exchange_radius": 1.0,
+      "population": 1024,
+      "plasticity_rate": 0.002,
+      "efficiency": 0.65,
+      "mutation": 0.08,
+      "plasticity_decay": 0.02,
+      "mutation_probability": 0.03,
+      "junction_rate": 0.8,
+      "store_capacity": 0.8,
+      "basal_rate": 0.035
+    },
+    "snapshot_seconds": 20.0,
+    "checkpoint_seconds": 90.0,
+    "model": "cellular",
+    "sleep_seconds": 0.001,
+    "seed": 401,
+    "dt": 0.1,
+    "grid": {
+      "shape": [
+        256,
+        192,
+        1
+      ],
+      "extent": [
+        128.0,
+        96.0,
+        1.0
+      ]
+    },
+    "resources": {
+      "source_budgets": [
+        1000000.0,
+        1000000.0,
+        0.0
+      ],
+      "niche_contrast": 0.9,
+      "names": [
+        "precursor_a",
+        "precursor_b",
+        "waste"
+      ],
+      "spatial_niches": true,
+      "sink_budgets": [
+        0.0,
+        0.0,
+        10000000.0
+      ],
+      "niche_waves": [
+        1,
+        0,
+        0
+      ],
+      "diffusion": [
+        0.06,
+        0.06,
+        0.03
+      ],
+      "sink_rates": [
+        0.0,
+        0.0,
+        0.006
+      ],
+      "initial": [
+        0.45,
+        0.45,
+        0.0
+      ],
+      "source_rates": [
+        0.0025,
+        0.0025,
+        0.0
+      ],
+      "potentials": [
+        4.0,
+        4.0,
+        0.0
+      ]
+    }
+  },
+  "large_fixture_note": "1024 founders in128x96 extent;16x area and founders relative to64 in32x24, same0.5 grid spacing, one broad niche stripe scaled with domain. Candidate restores baseline-created checkpoint.",
+  "live_soaks_modified": false,
+  "replay": {
+    "helper": "scripts/profile_cellular_step.jl",
+    "depot": "/othersys/tmp/intmat-soaks-20261015/depot:/othersys/tmp/intmat-probe-20261014/depot:",
+    "command": "SWARM_MEM_MAX=8G /home/hbox/bin/swarm-build taskset -c 6,7 timeout --signal=TERM --kill-after=15s 180 env JULIA_DEPOT_PATH=DEPOT JULIA_NUM_THREADS=2 JULIA_NUM_PRECOMPILE_TASKS=1 JULIA_PKG_PRECOMPILE_AUTO=0 OPENBLAS_NUM_THREADS=1 /othersys/tmp/intmat-probe-20261014/julia-1.12.4/bin/julia --startup-file=no --compiled-modules=yes --threads=2 --gcthreads=1 --project=SOURCE scripts/profile_cellular_step.jl OUTPUT --allow-source-change --sustain",
+    "large_flags": "--allow-source-change --sustain --large --quick",
+    "baseline_flags": "--quick (omit --allow-source-change; strict source restore)",
+    "input_files": "Copy immutable archived checkpoints into OUTPUT/mature-sparse.jls, OUTPUT/mature-bonded.jls, OUTPUT/early-initial.jls. For large, first generate baseline with --large then copy its large1024.jls into fresh candidate OUTPUT before replay.",
+    "verified_candidate_command": "SWARM_MEM_MAX=8G /home/hbox/bin/swarm-build taskset -c 6,7 timeout --signal=TERM --kill-after=15s 180 env JULIA_DEPOT_PATH=/othersys/tmp/intmat-soaks-20261015/depot:/othersys/tmp/intmat-probe-20261014/depot: JULIA_NUM_THREADS=2 JULIA_NUM_PRECOMPILE_TASKS=1 JULIA_PKG_PRECOMPILE_AUTO=0 OPENBLAS_NUM_THREADS=1 /othersys/tmp/intmat-probe-20261014/julia-1.12.4/bin/julia --startup-file=no --compiled-modules=yes --threads=2 --gcthreads=1 --project=/othersys/tmp/intmat-cellular-profile-20261015/candidate6-source /othersys/tmp/intmat-cellular-profile-20261015/profile-v3.jl /othersys/tmp/intmat-cellular-profile-20261015/candidate6 --allow-source-change --sustain",
+    "warning": "Use fresh output directories; archived outputs and live soaks are preserved. Recorded command names original completed outputs for provenance."
+  }
+}

@@ -23,6 +23,12 @@ args=("$julia" --startup-file=no --compiled-modules=yes --threads=2 --gcthreads=
       "$source_root/scripts/cellular_soak.jl" "$profile" "$output" --seconds "$seconds"
       --budget-bytes "${SOAK_ARTIFACT_BUDGET:-4000000000}" --metrics-seconds 20 --archive-seconds 600)
 if (( $# == 6 )); then args+=(--resume "$(realpath "$6")"); fi
+[[ ${SOAK_THROUGHPUT:-0} =~ ^[01]$ && ${SOAK_ALLOW_SOURCE_CHANGE:-0} =~ ^[01]$ ]] || { echo 'Soak mode environment values must be 0 or 1' >&2; exit 2; }
+if [[ ${SOAK_THROUGHPUT:-0} == 1 ]]; then args+=(--throughput); fi
+if [[ ${SOAK_ALLOW_SOURCE_CHANGE:-0} == 1 ]]; then
+  (( $# == 6 )) || { echo 'Source migration requires an explicit checkpoint' >&2; exit 2; }
+  args+=(--allow-source-change)
+fi
 # timeout is a secondary guard; the Julia driver exits and saves at its own wall
 # deadline. INT gives its finally block a chance to finish before the kill grace.
 nohup env SWARM_MEM_MAX="${SOAK_MEM_MAX:-8G}" /home/hbox/bin/swarm-build \

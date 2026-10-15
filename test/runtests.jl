@@ -38,3 +38,5 @@ include("cellular_contacts.jl")
 include("cellular.jl")
 
 include("cli.jl")
+
+include("recurrent_material.jl")

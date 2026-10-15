@@ -1,6 +1,15 @@
 using Test, Random
 using Interior: Grid, CellBonds, add_cell_bond!, cellular_pairs, cellular_mechanics!, exchange_cell_metabolites!
 
+@testset "Periodic displacement fast path matches general modulo" begin
+    rng=MersenneTwister(413)
+    for L in (Float64(Float32(.1)),1.,24.,32.,1e-30,1e30)
+        points=vcat((rand(rng,1000).*8 .-4).*L,
+            [-0.,0.,prevfloat(L),L,nextfloat(L),-L,prevfloat(-L),nextfloat(-L),2L,-2L])
+        @test all(isequal(Interior._cellular_mod_period(x,L),mod(x,L)) for x in points)
+    end
+end
+
 @testset "Physical periodic cell contacts" begin
     g=Grid(20,10;extent=(10.,4.,1.))
     x=[.05 9.95 5.; 2. 2. 2.; 0. 0. 0.];r=fill(.1,3)
@@ -9,12 +18,13 @@ using Interior: Grid, CellBonds, add_cell_bond!, cellular_pairs, cellular_mechan
     # Compare sparse physical bins to a direct oracle, including unequal radii
     # and grids whose periodic neighborhoods alias themselves.
     rng=MersenneTwister(591)
-    for extent in ((1.,1.,1.),(10.,2.,3.)), nz in (1,5)
+    for extent in ((1.,1.,1.),(10.,2.,3.)), nz in (1,5), scale in (1.,.001)
         grid=Grid(7,8,nz;extent)
-        points=rand(rng,3,45).*collect(extent); radii=.01 .+ .2rand(rng,45)
+        points=rand(rng,3,45).*collect(extent); radii=scale.*(.01 .+ .2rand(rng,45))
+        gap=.07scale
         expected=[(i,j) for i in 1:44 for j in i+1:45 if
-            sqrt(sum((mod(points[d,j]-points[d,i]+Float64(grid.extent[d])/2,Float64(grid.extent[d]))-Float64(grid.extent[d])/2)^2 for d in 1:(nz==1 ? 2 : 3)))<=radii[i]+radii[j]+.07]
-        @test cellular_pairs(grid,points,radii;range=.07)==expected
+            sqrt(sum((mod(points[d,j]-points[d,i]+Float64(grid.extent[d])/2,Float64(grid.extent[d]))-Float64(grid.extent[d])/2)^2 for d in 1:(nz==1 ? 2 : 3)))<=radii[i]+radii[j]+gap]
+        @test cellular_pairs(grid,points,radii;range=gap)==expected
     end
     ids=[11,42,6];b=CellBonds()
     initial=copy(x)
@@ -118,6 +128,24 @@ end
     @test abs(result.energy_residual)<1e-11
     @test all(energy.>=0)
 end
+@testset "Cached contact skin preserves bond formation" begin
+    rng=MersenneTwister(384)
+    grid=Grid(20,20;extent=(4.,4.,1.))
+    ids=randperm(rng,45); radii=.08 .+ .08rand(rng,45)
+    old=rand(rng,3,45).*reshape([4.,4.,0.],3,1)
+    skin=.4; gap=.07
+    candidates=cellular_pairs(grid,old,radii;range=skin+gap)
+    moved=copy(old)
+    moved[1:2,:].=mod.(moved[1:2,:] .+ .1 .* (rand(rng,2,45) .- .5),4.)
+    direct=CellBonds();cached=CellBonds();index=Dict(id=>i for (i,id) in enumerate(ids))
+    args=(grid,ids,moved,radii)
+    a=Interior._cellular_refresh_bonds!(args...,direct,index,ones(45),.5,.75,3,gap,2.)
+    b=Interior._cellular_refresh_bonds!(args...,cached,index,ones(45),.5,.75,3,gap,2.;pairs=candidates)
+    @test a==b
+    @test direct.endpoints==cached.endpoints
+    @test direct.rest_lengths==cached.rest_lengths
+end
+
 @testset "Low-precision junction exchange stays nonnegative" begin
     b=CellBonds(); add_cell_bond!(b,1,2,1.)
     amounts=Float32[1 9e-8]; before=sum(Float64,amounts)

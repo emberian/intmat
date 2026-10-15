@@ -132,3 +132,43 @@ untouched and writes `unsafe_in_memory_state=true` failure metadata; it does not
 serialize the partially mutated state. The standalone fault regression is
 `julia --project test/cellular_soak_faults.jl` (it deliberately replaces a method
 inside that test process, so it is excluded from the shared test harness).
+
+## Explicit optimized continuations
+
+The future driver accepts `--throughput` to omit the profile's batch sleep. This
+changes wall-clock pacing rather than the integration timestep or model rules.
+Session metadata records the mode, actual delay, initial step and elapsed wall
+time, allowing sustained runner throughput to include observation/checkpoint
+costs. The original jobs above retain their original pacing and source.
+
+`--allow-source-change` requires `--resume` and a **fresh empty output directory**.
+It creates a separate continuation: the exact input bytes are retained as
+`parent-checkpoint.jls`; the session records their SHA256, parent and loaded source
+hashes, and initial step. Provided profile values must still match the stored
+configuration. Ordinary resume remains strict. This flag cannot overwrite an
+old run or silently introduce a different recipe.
+
+One optimized long continuation is planned after the integrated source passes
+its final parity checks and is captured immutably. It will use the spare allowed
+CPU pair `6,7`, with two Julia threads, one GC/BLAS thread, an 8 GiB cgroup limit,
+no swap, nice 15, a 12-hour wall bound and the same 4 GB artifact cap. Temporary
+read-only work on those CPUs must finish first. The original CPU2–5 jobs continue
+unchanged. A bounded migrated trial and strict restoration of its completed
+checkpoint precede the long launch; a faster simulation clock does not establish
+a different ecological result.
+
+For a reviewed final snapshot at `$optimized/source`, an immutable mature parent
+at `$parent`, and a new output `$optimized/continuation`, the launcher protocol is:
+
+```sh
+SOAK_DEPOT="$optimized/depot" SOAK_THROUGHPUT=1 SOAK_ALLOW_SOURCE_CHANGE=1 \
+  "$optimized/source/scripts/launch_cellular_soak.sh" \
+  "$optimized/source" "$optimized/source/experiments/arena/cellular-soak-broad.toml" \
+  "$optimized/continuation" 6,7 43200 "$parent"
+```
+
+Use the parent's matching condition/profile. The launcher translates the two
+explicit environment switches into recorded driver flags. Both switches default
+to zero. Subsequent ordinary resumes of the new continuation use its pinned
+source and strict validation, without the migration switch. No older pin or
+running process needs to be modified.

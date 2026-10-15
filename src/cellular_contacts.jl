@@ -16,9 +16,24 @@ function add_cell_bond!(b::CellBonds, a::Integer, c::Integer, rest_length::Real)
 end
 
 @inline _cellular_ndim(grid) = grid.size[3] == 1 ? 2 : 3
+# Wrapped positions put the shifted displacement within one adjacent period.
+# Sterbenz subtraction is exact on [L,2L); the negative branch uses the same
+# r+L operation as Base.mod. Preserve the general path for unwrapped callers.
+@inline function _cellular_mod_period(u::Float64,L::Float64)
+    if 0<=u<L
+        u==0 ? 0.0 : u
+    elseif -L<u<0
+        u+L
+    elseif L<=u<2L
+        u-L
+    else
+        mod(u,L)
+    end
+end
+
 @inline function _cellular_delta(grid, x, i, j)
-    ntuple(d -> d > _cellular_ndim(grid) ? 0. :
-        mod(Float64(x[d,j])-Float64(x[d,i])+Float64(grid.extent[d])/2,
+    @inbounds ntuple(d -> d > _cellular_ndim(grid) ? 0. :
+        _cellular_mod_period(Float64(x[d,j])-Float64(x[d,i])+Float64(grid.extent[d])/2,
             Float64(grid.extent[d]))-Float64(grid.extent[d])/2, 3)
 end
 @inline _cellular_length(delta) = sqrt(sum(abs2, delta))
@@ -45,23 +60,45 @@ function cellular_pairs(grid, positions, radii; range::Real=0.)
     cutoff = 2maximum(radii)+range; nd = _cellular_ndim(grid)
     # Capping bin counts by n prevents integer overflow for tiny physical cells.
     dims = ntuple(d -> d > nd ? 1 : max(1,Int(floor(min(n,grid.extent[d]/cutoff)))),3)
-    bins = Dict{NTuple{3,Int},Vector{Int}}()
+    # Dense linked bin heads avoid a hash lookup per neighboring bin and a
+    # separately allocated vector per occupied bin. Bound the dense workspace
+    # for tiny interaction radii; the sparse fallback uses the same traversal.
+    dense=Float64(dims[1])*dims[2]*dims[3]<=max(4096,16n)
+    heads=dense ? zeros(Int,prod(dims)) : Dict{Int,Int}()
+    _cellular_pairs!(pairs,grid,positions,radii,range,dims,nd,heads)
+end
+
+@inline _cellular_bin_head(heads::Vector{Int},bin)=heads[bin]
+@inline _cellular_bin_head(heads::Dict{Int,Int},bin)=get(heads,bin,0)
+@inline _cellular_bin_linear(key,dims)=key[1]+dims[1]*((key[2]-1)+dims[2]*(key[3]-1))
+@inline function _cellular_bin_neighbor(key,offset,n)
+    value=key+offset
+    value<1 ? value+n : value>n ? value-n : value
+end
+
+function _cellular_pairs!(pairs,grid,positions,radii,range,dims,nd,heads)
+    n=length(radii); next=zeros(Int,n)
     keys = Vector{NTuple{3,Int}}(undef,n)
     for i in 1:n
         key = ntuple(d -> d > nd ? 1 : 1+min(dims[d]-1,
             floor(Int,mod(Float64(positions[d,i]),Float64(grid.extent[d]))/grid.extent[d]*dims[d])),3)
-        keys[i] = key; push!(get!(bins,key,Int[]),i)
+        keys[i]=key; bin=_cellular_bin_linear(key,dims)
+        next[i]=_cellular_bin_head(heads,bin); heads[bin]=i
     end
     # At most three unique offsets per axis; compute once, not per cell.
     offsets=ntuple(d -> dims[d]==1 ? (0:0) : dims[d]==2 ? (0:1) : (-1:1),3)
-    empty_bin=Int[]
     for i in 1:n
         key = keys[i]
         for dz in offsets[3], dy in offsets[2], dx in offsets[1]
-            neighbor=(mod1(key[1]+dx,dims[1]),mod1(key[2]+dy,dims[2]),mod1(key[3]+dz,dims[3]))
-            for j in get(bins,neighbor,empty_bin)
-                j > i || continue
-                _cellular_length(_cellular_delta(grid,positions,i,j)) <= radii[i]+radii[j]+range && push!(pairs,(i,j))
+            neighbor=(_cellular_bin_neighbor(key[1],dx,dims[1]),
+                _cellular_bin_neighbor(key[2],dy,dims[2]),
+                _cellular_bin_neighbor(key[3],dz,dims[3]))
+            j=_cellular_bin_head(heads,_cellular_bin_linear(neighbor,dims))
+            while j!=0
+                if j>i
+                    _cellular_length(_cellular_delta(grid,positions,i,j)) <= radii[i]+radii[j]+range && push!(pairs,(i,j))
+                end
+                j=next[j]
             end
         end
     end
@@ -75,11 +112,16 @@ function _cellular_validate_bonds(b)
     all(l -> isfinite(l) && l > 0,b.rest_lengths) || throw(ArgumentError("invalid bond rest length"))
 end
 
-function _cellular_energy_forces(grid, ids, x, radii, bonds, index, repulsion, stiffness; forces=false,pairs=nothing)
+@inline function _cellular_energy_forces(grid, ids, x, radii, bonds, index, repulsion, stiffness; forces=false,pairs=nothing)
+    _cellular_energy_forces(grid,ids,x,radii,bonds,index,repulsion,stiffness,Val(forces),pairs)
+end
+
+function _cellular_energy_forces(grid, ids, x, radii, bonds, index, repulsion, stiffness, ::Val{F}, pairs) where F
+    forces=F
     energy = 0.; f = forces ? zeros(Float64,size(x)) : nothing
     rows = forces ? zeros(Float64,length(ids)) : Float64[]; overlaps = 0
     candidates=pairs===nothing ? cellular_pairs(grid,x,radii) : pairs
-    for (i,j) in candidates
+    @inbounds for (i,j) in candidates
         delta = _cellular_delta(grid,x,i,j); distance = _cellular_length(delta)
         overlap = max(0.,radii[i]+radii[j]-distance)
         overlap > 0 || continue
@@ -94,7 +136,7 @@ function _cellular_energy_forces(grid, ids, x, radii, bonds, index, repulsion, s
             end
         end
     end
-    for e in eachindex(bonds.endpoints)
+    @inbounds for e in eachindex(bonds.endpoints)
         a,b = bonds.endpoints[e]; i = get(index,a,0); j = get(index,b,0)
         (i == 0 || j == 0) && continue
         delta = _cellular_delta(grid,x,i,j); distance = _cellular_length(delta)
@@ -120,7 +162,7 @@ function cellular_mechanical_energy(grid,ids,positions,radii,bonds::CellBonds;re
     _cellular_energy_forces(grid,ids,positions,radii,bonds,index,repulsion,stiffness).energy
 end
 
-function _cellular_refresh_bonds!(grid,ids,x,radii,bonds,index,adhesion,threshold,break_strain,max_degree,bond_range,stiffness)
+function _cellular_refresh_bonds!(grid,ids,x,radii,bonds,index,adhesion,threshold,break_strain,max_degree,bond_range,stiffness; pairs=nothing)
     keep = trues(length(bonds.endpoints)); broken = 0; loss = 0.
     degree = zeros(Int,length(ids))
     for e in eachindex(bonds.endpoints)
@@ -136,7 +178,8 @@ function _cellular_refresh_bonds!(grid,ids,x,radii,bonds,index,adhesion,threshol
     bonds.endpoints = bonds.endpoints[keep]; bonds.rest_lengths = bonds.rest_lengths[keep]
     existing = Set(bonds.endpoints); formed = 0
     max_degree==0 && return (;broken,formed,loss)
-    candidates = cellular_pairs(grid,x,radii;range=bond_range)
+    candidates = pairs===nothing ? cellular_pairs(grid,x,radii;range=bond_range) :
+        [(i,j) for (i,j) in pairs if _cellular_length(_cellular_delta(grid,x,i,j))<=radii[i]+radii[j]+bond_range]
     sort!(candidates;by=ij -> minmax(ids[ij[1]],ids[ij[2]]))
     for (i,j) in candidates
         edge=minmax(ids[i],ids[j])
@@ -187,9 +230,10 @@ function cellular_mechanics!(grid,ids,positions,radii,bonds::CellBonds,dt::Real;
     index=Dict(id=>i for (i,id) in enumerate(ids))
     x=Float64.(positions)
     for i in 1:n,d in 1:3; x[d,i]=d>nd ? 0. : mod(x[d,i],Float64(grid.extent[d])); end
-    potential_before=_cellular_energy_forces(grid,ids,x,radii,bonds,index,repulsion,stiffness).energy
+    initial_pairs=cellular_pairs(grid,x,radii;range=bond_range)
+    potential_before=_cellular_energy_forces(grid,ids,x,radii,bonds,index,repulsion,stiffness,Val(false),initial_pairs).energy
     broken=0;formed=0;topology_energy_loss=0.;motor_potential_work=0.;relaxation_energy_loss=0.;substeps=0
-    refresh=_cellular_refresh_bonds!(grid,ids,x,radii,bonds,index,adhesion,adhesion_threshold,break_strain,max_degree,bond_range,stiffness)
+    refresh=_cellular_refresh_bonds!(grid,ids,x,radii,bonds,index,adhesion,adhesion_threshold,break_strain,max_degree,bond_range,stiffness;pairs=initial_pairs)
     broken+=refresh.broken;formed+=refresh.formed;topology_energy_loss+=refresh.loss
     remaining=Float64(dt); travel_limit=n==0 ? Inf : .2minimum(radii)
     motors=Float64.(motility); nd==2 && (motors[3,:].=0.)
@@ -198,8 +242,8 @@ function cellular_mechanics!(grid,ids,positions,radii,bonds::CellBonds,dt::Real;
         # Every accepted motor and passive displacement is <= travel_limit.
         # A pair can close by at most 4travel_limit across both split moves.
         # This physical skin reuses one broadphase for all trial evaluations.
-        candidates=cellular_pairs(grid,x,radii;range=4travel_limit)
-        state=_cellular_energy_forces(grid,ids,x,radii,bonds,index,repulsion,stiffness;forces=true,pairs=candidates)
+        candidates=cellular_pairs(grid,x,radii;range=4travel_limit+bond_range)
+        state=_cellular_energy_forces(grid,ids,x,radii,bonds,index,repulsion,stiffness,Val(true),candidates)
         budget_motors=copy(motors)
         if energy !== nothing
             for i in 1:n
@@ -207,7 +251,11 @@ function cellular_mechanics!(grid,ids,positions,radii,bonds::CellBonds,dt::Real;
                 drag>energy[i] && (budget_motors[:,i].*=sqrt(energy[i]/drag))
             end
         end
-        speed=maximum(sqrt(sum(abs2,view(budget_motors,:,i)))+sqrt(sum(abs2,view(state.forces,:,i))) for i in 1:n)
+        # Snapshot loop-carried arrays before closure capture. Capturing the
+        # reassigned bindings boxes them and makes the numerical loop dynamic.
+        speed=let budget_motors=budget_motors, state=state
+            maximum(sqrt(sum(abs2,view(budget_motors,:,i)))+sqrt(sum(abs2,view(state.forces,:,i))) for i in 1:n)
+        end
         rate=maximum(state.rows)
         h=min(remaining,speed>0 ? travel_limit/speed : Inf,rate>0 ? .45/rate : Inf)
         accepted=false
@@ -224,8 +272,10 @@ function cellular_mechanics!(grid,ids,positions,radii,bonds::CellBonds,dt::Real;
             for budget_attempt in 1:80
                 motor_x=x .+ h.*velocity
                 for i in 1:n,d in 1:nd;motor_x[d,i]=mod(motor_x[d,i],Float64(grid.extent[d]));end
-                motor_state=_cellular_energy_forces(grid,ids,motor_x,radii,bonds,index,repulsion,stiffness;forces=true,pairs=candidates)
-                weights=[sum(abs2,view(velocity,:,i)) for i in 1:n]
+                motor_state=_cellular_energy_forces(grid,ids,motor_x,radii,bonds,index,repulsion,stiffness,Val(true),candidates)
+                weights=let velocity=velocity
+                    [sum(abs2,view(velocity,:,i)) for i in 1:n]
+                end
                 weight_sum=sum(weights)
                 potential_cost=max(0.,motor_state.energy-state.energy)
                 for i in 1:n
@@ -241,10 +291,12 @@ function cellular_mechanics!(grid,ids,positions,radii,bonds::CellBonds,dt::Real;
             funded || throw(ArgumentError("motor budget could not resolve displacement"))
             trial=motor_x .+ h.*motor_state.forces
             for i in 1:n,d in 1:nd;trial[d,i]=mod(trial[d,i],Float64(grid.extent[d]));end
-            passive_travel=h*maximum(sqrt(sum(abs2,view(motor_state.forces,:,i))) for i in 1:n)
+            passive_travel=let motor_state=motor_state
+                h*maximum(sqrt(sum(abs2,view(motor_state.forces,:,i))) for i in 1:n)
+            end
             # Reject out-of-skin moves before evaluating the cached pair list.
             trial_energy=passive_travel<=travel_limit ?
-                _cellular_energy_forces(grid,ids,trial,radii,bonds,index,repulsion,stiffness;pairs=candidates).energy : Inf
+                _cellular_energy_forces(grid,ids,trial,radii,bonds,index,repulsion,stiffness,Val(false),candidates).energy : Inf
             if trial_energy<=motor_state.energy && passive_travel<=travel_limit
                 motor_potential_work+=motor_state.energy-state.energy
                 relaxation_energy_loss+=motor_state.energy-trial_energy
@@ -260,7 +312,7 @@ function cellular_mechanics!(grid,ids,positions,radii,bonds::CellBonds,dt::Real;
         end
         accepted && h>0 && remaining-h<remaining || throw(ArgumentError("mechanical relaxation could not resolve timestep"))
         remaining=max(0.,remaining-h);substeps+=1
-        refresh=_cellular_refresh_bonds!(grid,ids,x,radii,bonds,index,adhesion,adhesion_threshold,break_strain,max_degree,bond_range,stiffness)
+        refresh=_cellular_refresh_bonds!(grid,ids,x,radii,bonds,index,adhesion,adhesion_threshold,break_strain,max_degree,bond_range,stiffness;pairs=candidates)
         broken+=refresh.broken;formed+=refresh.formed;topology_energy_loss+=refresh.loss
     end
     positions .= x
