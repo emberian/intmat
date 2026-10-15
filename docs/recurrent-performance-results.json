@@ -1,0 +1,212 @@
+{
+  "schema": "interior-recurrent-performance-summary-v1",
+  "measured_date": "2026-10-15",
+  "law": "Eight recurrent channels, conservative resource transport and persistent remodeling; fixed designed recurrence. Not the full ecology workload.",
+  "hardware_and_controls": {
+    "amd": "hbox pinned Julia1.12.4 AMDGPU runtime from docs/hbox-runtime.md; CPUs10,11; swarm-build8GiB; two Julia threads; GC1; BLAS1; nice15",
+    "metal": "Local Metal, short128cubed sample; possible preview render overlap"
+  },
+  "reference_kernel_sha256": "422a20258da82eac05db113f21025973395bf9e4053b961b87b4e7878277529f",
+  "benchmarks": [
+    {
+      "measurement": "benchmark-128.json",
+      "backend": "amd",
+      "side": 128,
+      "steps": 800,
+      "dt": 0.05,
+      "optimized_voxel_steps_per_second": 1412333962.8951688,
+      "reference_voxel_steps_per_second": 694143650.0920109,
+      "reference_over_optimized": 2.0346421993602615,
+      "host_bytes_per_step": 336.8,
+      "resident_array_bytes": 268435456,
+      "cpu_reference_errors": {
+        "latent": 2.682209e-07,
+        "nutrient": 5.9604645e-08,
+        "deposit": 5.9604645e-08
+      },
+      "model_source_sha256": "f70c237d7d9373eaa4d54f9e663288de3745180fdc0e70afc662ece178d326cf",
+      "raw_result_sha256": "1847caccabd4e0119a62c6bd6a2438aa4841a3e089b93caa92fe74bc6769c306",
+      "notes": "All synchronized batches retained, including GC/outliers; not filtered."
+    },
+    {
+      "measurement": "benchmark-256-advance.json",
+      "backend": "amd",
+      "side": 256,
+      "steps": 800,
+      "dt": 0.05,
+      "optimized_voxel_steps_per_second": 1395524399.1168206,
+      "reference_voxel_steps_per_second": 699827873.5240334,
+      "reference_over_optimized": 1.9940966227731936,
+      "host_bytes_per_step": 336.8,
+      "resident_array_bytes": 2147483648,
+      "cpu_reference_errors": {
+        "latent": 2.682209e-07,
+        "nutrient": 5.9604645e-08,
+        "deposit": 5.9604645e-08
+      },
+      "model_source_sha256": "f70c237d7d9373eaa4d54f9e663288de3745180fdc0e70afc662ece178d326cf",
+      "raw_result_sha256": "14628b02f0e9a76d99b62a2b225359a39b971ad2d3666233b27dca83966301a9",
+      "notes": "All synchronized batches retained, including GC/outliers; not filtered."
+    },
+    {
+      "measurement": "benchmark-128-inbounds.json",
+      "backend": "amd",
+      "side": 128,
+      "steps": 800,
+      "dt": 0.05,
+      "optimized_voxel_steps_per_second": 2015958209.6102018,
+      "reference_voxel_steps_per_second": 695145866.9452477,
+      "reference_over_optimized": 2.900050630336246,
+      "host_bytes_per_step": 336.8,
+      "resident_array_bytes": 268435456,
+      "cpu_reference_errors": {
+        "latent": 2.682209e-07,
+        "nutrient": 5.9604645e-08,
+        "deposit": 5.9604645e-08
+      },
+      "model_source_sha256": "d3113853959bc69baf5db25efd9970213c25d2c5c59be4732fe931f0c471d963",
+      "raw_result_sha256": "0c5e096e4bfe3d12c77272525cd3c588fc8bc8667fc9a32288171fb0694ae163",
+      "notes": "All synchronized batches retained, including GC/outliers; not filtered."
+    },
+    {
+      "measurement": "benchmark-256-inbounds.json",
+      "backend": "amd",
+      "side": 256,
+      "steps": 800,
+      "dt": 0.05,
+      "optimized_voxel_steps_per_second": 2132161821.59531,
+      "reference_voxel_steps_per_second": 664613188.0635735,
+      "reference_over_optimized": 3.2081244547788876,
+      "host_bytes_per_step": 336.8,
+      "resident_array_bytes": 2147483648,
+      "cpu_reference_errors": {
+        "latent": 2.682209e-07,
+        "nutrient": 5.9604645e-08,
+        "deposit": 5.9604645e-08
+      },
+      "model_source_sha256": "d3113853959bc69baf5db25efd9970213c25d2c5c59be4732fe931f0c471d963",
+      "raw_result_sha256": "4a5aea82c6d88ea6d7763165790649d822d9684ab2b242cbaa9fa53ee54e95c4",
+      "notes": "All synchronized batches retained, including GC/outliers; not filtered."
+    },
+    {
+      "measurement": "benchmark-final-owned-128.json",
+      "backend": "amd",
+      "side": 128,
+      "steps": 800,
+      "dt": 0.05,
+      "optimized_voxel_steps_per_second": 2016520633.5055816,
+      "reference_voxel_steps_per_second": 695245717.2149214,
+      "reference_over_optimized": 2.9004430859114727,
+      "host_bytes_per_step": 336.8,
+      "resident_array_bytes": 268435456,
+      "cpu_reference_errors": {
+        "latent": 2.682209e-07,
+        "nutrient": 5.9604645e-08,
+        "deposit": 5.9604645e-08
+      },
+      "model_source_sha256": "6d9aa46d74bd0b5302f5ca8fe4211bf2a3596826a218ed9f8c2cfaa5240871ac",
+      "raw_result_sha256": "683a1d0eb8cd485d4cf2049f0ec662bbf17f0ff47d2f97b3eab29569cabf13ce",
+      "notes": "All synchronized batches retained, including GC/outliers; not filtered."
+    },
+    {
+      "measurement": "metal-128-hoist.json",
+      "backend": "metal",
+      "side": 128,
+      "steps": 200,
+      "dt": 0.05,
+      "optimized_voxel_steps_per_second": 234632283.146274,
+      "reference_voxel_steps_per_second": 209480407.55110347,
+      "reference_over_optimized": 1.1200679141749075,
+      "host_bytes_per_step": 4100.8,
+      "resident_array_bytes": 268435456,
+      "cpu_reference_errors": {
+        "latent": 3.874302e-07,
+        "nutrient": 1.1920929e-07,
+        "deposit": 1.1920929e-07
+      },
+      "model_source_sha256": "f70c237d7d9373eaa4d54f9e663288de3745180fdc0e70afc662ece178d326cf",
+      "raw_result_sha256": "0a361204932d58133680f83f2e8b8464e1011d7303a6d9aeaddbded58fb22d92",
+      "notes": "Short Metal sample may overlap artistic preview; portability evidence, not exclusive speedup."
+    }
+  ],
+  "trajectories": [
+    {
+      "measurement": "trajectory-10000-metrics.json",
+      "backend": "amd",
+      "side": 128,
+      "steps": 10000,
+      "dt": 0.05,
+      "seconds_including_capture_and_checkpoint_io": 17.216911792755127,
+      "voxel_steps_per_second": 1218076752.2329302,
+      "final_sample": {
+        "step": 10000,
+        "time": 500.0000074505806,
+        "activity_std": 0.44808182,
+        "deposit_mean": 0.73941314,
+        "deposit_std": 0.10136224,
+        "latent_std": 0.43224773,
+        "material_error": 0.012888425961136818,
+        "finite": true
+      },
+      "capture_mode": "slices",
+      "capture_steps": [
+        2500,
+        5000,
+        7500,
+        10000
+      ],
+      "state_steps": [
+        10000
+      ],
+      "output_bytes": 135827206,
+      "model_source_sha256": "f70c237d7d9373eaa4d54f9e663288de3745180fdc0e70afc662ece178d326cf",
+      "raw_result_sha256": "9398fe82f436a364418d14850df3f29e148c1a7848c164d156384f7cf3e02328"
+    },
+    {
+      "measurement": "trajectory-final-owned-metrics.json",
+      "backend": "amd",
+      "side": 128,
+      "steps": 10000,
+      "dt": 0.05,
+      "seconds_including_capture_and_checkpoint_io": 13.119340896606445,
+      "voxel_steps_per_second": 1598519328.4690592,
+      "final_sample": {
+        "step": 10000,
+        "time": 500.0000074505806,
+        "activity_std": 0.44808182,
+        "deposit_mean": 0.73941314,
+        "deposit_std": 0.10136224,
+        "latent_std": 0.43224773,
+        "material_error": 0.012888425961136818,
+        "finite": true
+      },
+      "capture_mode": "slices",
+      "capture_steps": [
+        2500,
+        5000,
+        7500,
+        10000
+      ],
+      "state_steps": [
+        10000
+      ],
+      "output_bytes": null,
+      "model_source_sha256": "6d9aa46d74bd0b5302f5ca8fe4211bf2a3596826a218ed9f8c2cfaa5240871ac",
+      "raw_result_sha256": "dadf94614f699b2a793227cf6b9d6c4d56c63081ef5a6a8cc1b1656fb90f669d"
+    }
+  ],
+  "validation": {
+    "heterogeneous_cpu_reference_gate_steps": 101,
+    "focused_assertions_before_profile_cleanup": 91,
+    "long_run_sampled_statistics_match": true,
+    "metal_final_kernel_source_sha256": "6d9aa46d74bd0b5302f5ca8fe4211bf2a3596826a218ed9f8c2cfaa5240871ac",
+    "metal_final_kernel_evidence": "Artist source-pinned256cubed coupled study completed640steps; second production observations finite/positive."
+  },
+  "limits": [
+    "256cubed inbounds reference contains one GC/outlier batch; raw ratio3.21 versus steady-batch ratio about3.08.",
+    "Final owned-buffer source repeated128cubed benchmark; earlier256cubed source differs only by ownership metadata/preflight.",
+    "Short arithmetic parity does not imply indefinitely identical nonlinear trajectories.",
+    "Reported domains use unit cell spacing; larger side enlarges the domain, not fixed-domain refinement.",
+    "End-of-profile release/GC was added after measured trajectories; it does not change measured numerical law."
+  ]
+}

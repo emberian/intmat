@@ -45,6 +45,11 @@ chemistry and division-preserved developmental state. Bonds carry force,
 metabolites and regulatory context. There is no colony fitness bonus.
 [Design](docs/cellular.md) · [Long soaks](docs/cellular-soaks.md)
 
+`catalytic-mosaic.toml` adds paid, inherited construction of persistent catalysts.
+They unlock two inaccessible feedstocks into shared food. Cells can change what
+neighbors can eat; no group reward or exclusive access is imposed.
+[Mechanism and first trajectories](docs/catalytic-habitat.md)
+
 `active-2d.toml` selects the earlier single-resource ecology. `metabolic-2d.toml`
 selects the multispecies model. `metabolic-96.toml` enlarges the domain at the same cell spacing; these are distinct experiments.
 
@@ -106,6 +111,12 @@ Complete cellular steps now run **9.38–12.80× faster** on four matched hbox w
 including 1,024 cells. Numerical specialization and shared contact searches preserve
 bit-identical 100-step continuations. No timestep or physics was relaxed.
 [Measurements and reproduction](docs/cellular-performance.md)
+
+A second pass adds **1.08–1.27×** on 1,024–4,096-cell workloads and cuts allocated
+bytes **23–43%**. The dense recurrent GPU kernel separately improves **2.90×** on
+AMD128³: **2.02 billion voxel-steps/s** warm, **1.60 billion** over an actual
+10,000-step run including captures/export. These are distinct throughput measures.
+[Cellular follow-up](docs/cellular-performance-pass2.md) · [Dense runner](docs/recurrent-material.md)
 
 The semi-implicit constant-mobility solver completed a **64³, t=10** phase run in
 **19 s**; measured timings imply **84×** explicit throughput over equal simulated

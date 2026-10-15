@@ -21,8 +21,8 @@ nothing here was trained, selected or evolved genetically.
 ## Execution and representation
 
 ```
-julia --project=gpu scripts/run_recurrent_material.jl 128 1200 outputs/my-material
-RECURRENT_PROFILE=slow-memory julia --project=gpu scripts/run_recurrent_material.jl 256 1200 outputs/my-large-material
+julia --project=gpu scripts/run_recurrent_material.jl 128 1200 outputs/my-material --backend metal --capture-mode volumes
+julia --project=gpu scripts/run_recurrent_material.jl 256 1200 outputs/my-large-material --backend metal --profile slow-memory --capture-mode slices
 julia --project=gpu scripts/benchmark_recurrent_material.jl metal 256 400 outputs/my-benchmark.json
 ```
 
@@ -31,7 +31,8 @@ transport, remodeling and published activity in one launch. Latent and resource
 buffers ping-pong without whole-volume copies. GPU state remains resident between
 observations; there are no per-step host reductions. Driver launch allocations
 still occur: the measured Metal path allocated about 3.8KB of **host** memory per
-step and AMD about 17 bytes; this is not a claim of zero host allocation.
+step and AMD about 17 bytes in the initial experiment; current full ownership
+preflight measurements are recorded below. This is not a claim of zero host allocation.
 
 World nutrient/deposit array handles are **borrowed until the next advance**.
 Consumers must fetch current `world.fields` each stage; holding an earlier array
@@ -125,3 +126,98 @@ starts paused. The collection build includes the exhibit and header link. The
 staged 60-study site occupies 112.72 MB, below its 128 MB budget. The recorded
 motion shows changing wave bands and small active islands, while the designed
 spatial transition between constitutions remains visible.
+
+
+## Fused stencil optimization and bounded portable execution
+
+The compact tracked [measurement summary](recurrent-performance-results.json)
+retains timings, errors, source hashes and raw-result digests behind these claims.
+
+The recurrent kernel now computes six periodic neighbor indices and material
+face permeabilities once per voxel, sharing them across eight latent channels and
+nutrient transport. Food sensing and material terms are also shared. The proven
+array region uses `@inbounds`; construction checks for shared storage once, and
+cheap per-step checks enforce the owned latent pair, resource pairs, activity
+handle, shapes and backends. Replacing state/output arrays is rejected; modifying
+values in the owned latent arrays is supported. This removes repeated division
+and address/bounds work without changing the recurrent law.
+
+`test/recurrent_material_reference.jl` retains the previous kernel. Comparisons
+use identical heterogeneous nutrient and deposit fields over 101 steps, including
+singleton, thin and three-dimensional anisotropic grids. CPU-reference versus AMD
+maximum latent error was 2.68×10⁻⁷; resource errors were 5.96×10⁻⁸. A Metal hoist
+sample had errors 3.87×10⁻⁷ and 1.19×10⁻⁷. These are short arithmetic equivalence
+checks, not a promise that nonlinear trajectories remain pointwise identical
+indefinitely.
+
+Measured native AMDGPU results on hbox, two host threads on CPUs 10–11, 8GiB
+cgroup limit, one GC/BLAS thread, existing pinned runtime:
+
+| 800-step complete advance batches | Optimized voxel-steps/s | Preserved kernel | Measured ratio |
+|---|---:|---:|---:|
+| 128³, shared faces only | 1.412 billion | .694 billion | 2.03× |
+| 256³, shared faces only | 1.396 billion | .700 billion | 1.99× |
+| 128³, shared faces and proven bounds | 2.016 billion | .695 billion | 2.90× |
+| 256³, shared faces and proven bounds | 2.132 billion | .665 billion | 3.21× |
+
+Batches synchronize every 20 steps. Measurements include validation, launch and
+buffer rebinding; the final benchmark calls the actual production `advance!`.
+All recorded batches remain in the JSON, including a GC/outlier batch in one
+256³ reference run; its steady batch ratio was about 3.08× rather than 3.21×.
+The first 128³ shared-face sample manually reproduced the same advance wrapper;
+later samples use the production method directly. Host allocations were about
+337 bytes per AMD step, not volume-sized allocations. The 256³ arrays occupy
+2,147,483,648 resident bytes, excluding driver/compiler overhead.
+
+A short Metal 128³ shared-face sample measured 235 versus 209 million voxel-steps/s
+(1.12×). Artistic preview rendering may have overlapped this sample, so it is
+portability/arithmetic evidence, not a matched exclusive Metal speedup claim.
+The AMD gain must not be advertised as a universal GPU or full ecology speedup.
+
+The runner now selects CPU, Metal or AMDGPU without importing unused GPU packages:
+
+```
+julia --project scripts/run_recurrent_material.jl 16 200 outputs/cpu-study --backend cpu
+# Run in the verified AMD environment on hbox, under its resource controls:
+julia --project=AMD_ENV scripts/run_recurrent_material.jl 128 10000 outputs/amd-study --backend amd --profile slow-memory --captures 4 --capture-mode slices --states 1 --budget-mb 256
+```
+
+Defaults request twelve captures, one full state, a 1,536MB total capture budget,
+and an 8,192MB resident-array budget. Capture counts stay fixed as the simulation
+gets longer. `--capture-mode slices` writes three actual middle planes for
+activity/deposit, `volumes` writes both full fields, and `none` writes metrics only
+at the requested observation times. `--states 0` disables full observations.
+Both byte budgets are checked before creating the destination; the directory is
+claimed atomically. Source, runner and shared runtime helper are pinned beside
+`run-config.json`. Compilation uses a tiny separate world, avoiding a second
+full-sized world during warmup. Each completed profile releases its world,
+process and host capture arrays and performs full GC before the next profile
+allocates, so `--profile all` does not retain the previous profile's buffer pairs.
+Queue synchronization every `--batch 64` steps
+prevents arbitrarily long runs from accumulating unbounded queued launches.
+
+The executed 128³, 10,000-step AMD shared-face run reached time 500.00000745,
+remained finite, and delivered **1.218 billion voxel-steps/s including four
+observations and the final full state write**. Its output occupied 135,827,206
+bytes. The material drift was .0129 units out of 2,097,152. This is a complete
+recording trajectory measurement, distinct from the faster warm stencil tables.
+Raw benchmark evidence and compact trajectory metrics/config are retained under
+`outputs/recurrent-hoist-performance/`; full bounded trajectories remain in the
+isolated hbox recurrent-hoist directory. Existing soaks and prior source snapshots
+were not changed.
+
+The final owned-buffer/inbounds runner was also executed for the same 10,000
+steps and four-observation plan: **1.599 billion voxel-steps/s including I/O**.
+It preserved the reported terminal activity, material and latent statistics,
+with the same .0129 material residual. Its exact loaded source and run config
+are retained as `trajectory-final-owned-*` in the compact performance outputs.
+
+The final owned-buffer source was also exercised by the separate source-pinned
+256³ Metal interfacial-choir study (640 complete coupled steps); the following
+production run likewise compiled and passed its finite/positivity observations.
+Both use recurrent source SHA256
+`6d9aa46d74bd0b5302f5ca8fe4211bf2a3596826a218ed9f8c2cfaa5240871ac`.
+The same final source repeated the AMD128³ benchmark at 2.0165 billion versus
+.6952 billion voxel-steps/s, ratio 2.9004×; all four recorded trajectory samples
+matched the shared-face-only run's statistics exactly. These observations verify
+backend portability separately from speed claims.

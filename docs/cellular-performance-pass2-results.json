@@ -1,0 +1,2493 @@
+{
+  "schema": "interior-cellular-performance-pass2-v1",
+  "date": "2026-10-15",
+  "baseline_commit": "dc30e40617944edee429332d538c960f23d3dec0",
+  "remote_root": "/othersys/tmp/intmat-cellular-profile2-20261015",
+  "cpu": "12th Gen Intel(R) Core(TM) i9-12900",
+  "runtime": "Julia1.12.4",
+  "controls": {
+    "cpu_affinity": [
+      8,
+      9
+    ],
+    "physical_core": 4,
+    "memory": "8G",
+    "swap": 0,
+    "wrapper": "/home/hbox/bin/swarm-build",
+    "nice": 15,
+    "julia_threads": 2,
+    "gc_threads": 1,
+    "blas_threads": 1,
+    "timeout_seconds": 180,
+    "gpu_used": false
+  },
+  "method": {
+    "samples": 5,
+    "steps_per_sample": 8,
+    "full_step": "arena_step!",
+    "clones_outside_timing": true,
+    "profile_steps": 100,
+    "allocation_sampling_rate": 0.01,
+    "allocation_steps": 8,
+    "allocation_report": "*-allocations.txt; sampled bytes, not exact allocation totals",
+    "parity_export_steps": 100,
+    "large4096_profile": "quick mode; timings/components/100step export only"
+  },
+  "cases": {
+    "initial1024": {
+      "case": "initial1024",
+      "checkpoint": "/othersys/tmp/intmat-cellular-profile2-20261015/initial1024/input.jls",
+      "checkpoint_sha256": "bfe296ea5d8a9347124303c5c561337fcf206cb2a8c617242765d7de5fee7c09",
+      "derived_steps": 0,
+      "state": {
+        "step": 0,
+        "time": 0.0,
+        "population": 1024,
+        "bonds": 0,
+        "grid": [
+          256,
+          192,
+          1
+        ],
+        "processes": [
+          "ResourcePool",
+          "CellularEcology"
+        ],
+        "mechanical_substeps": 0,
+        "parameter_field_type": "NamedTuple",
+        "parameter_value_type": "@NamedTuple{exchange_radius::Float64, density::Float64, store_capacity::Float64, energy_capacity::Float64, uptake_rate::Float64, half_saturation::Float64, enzyme_exponent::Float64, growth_rate::Float64, catabolic_rate::Float64, growth_work::Float64, efficiency::Float64, basal_rate::Float64, neural_cost::Float64, starvation_rate::Float64, minimum_mass::Float64, division_mass::Float64, speed::Float64, motor_cost::Float64, junction_rate::Float64, repulsion::Float64, stiffness::Float64, break_strain::Float64, max_degree::Int64, response_time::Float64, adaptation_time::Float64, adaptation_strength::Float64, plasticity_rate::Float64, plasticity_decay::Float64, mutation::Float64, mutation_probability::Float64, developmental_partition::Float64, packing_barrier::Float64}"
+      },
+      "steps_per_sample": 8,
+      "measurements": [
+        {
+          "seconds": 0.111122735,
+          "bytes": 34171848,
+          "gc_seconds": 0.0
+        },
+        {
+          "seconds": 0.105919435,
+          "bytes": 34171848,
+          "gc_seconds": 0.0
+        },
+        {
+          "seconds": 0.107093746,
+          "bytes": 34171848,
+          "gc_seconds": 0.0
+        },
+        {
+          "seconds": 0.104285776,
+          "bytes": 34171848,
+          "gc_seconds": 0.0
+        },
+        {
+          "seconds": 0.104404807,
+          "bytes": 34171848,
+          "gc_seconds": 0.0
+        }
+      ],
+      "components": [
+        {
+          "stage": "validate_composition",
+          "result": {
+            "seconds": 5.678e-06,
+            "bytes": 928,
+            "gc_seconds": 0.0
+          }
+        },
+        {
+          "stage": "check_dt/ResourcePool",
+          "result": {
+            "seconds": 0.000287292,
+            "bytes": 1232,
+            "gc_seconds": 0.0
+          }
+        },
+        {
+          "stage": "check_dt/CellularEcology",
+          "result": {
+            "seconds": 0.00068442,
+            "bytes": 81296,
+            "gc_seconds": 0.0
+          }
+        },
+        {
+          "stage": "advance/ResourcePool",
+          "result": {
+            "seconds": 0.004410839,
+            "bytes": 1520,
+            "gc_seconds": 0.0
+          }
+        },
+        {
+          "stage": "advance/CellularEcology",
+          "result": {
+            "seconds": 0.009139652,
+            "bytes": 5859760,
+            "gc_seconds": 0.0
+          }
+        }
+      ],
+      "profile_steps": 100,
+      "continuation_steps": 100,
+      "continuation_end": {
+        "step": 100,
+        "time": 10.000000149011612,
+        "population": 1489,
+        "bonds": 1199,
+        "grid": [
+          256,
+          192,
+          1
+        ],
+        "processes": [
+          "ResourcePool",
+          "CellularEcology"
+        ],
+        "mechanical_substeps": 13,
+        "parameter_field_type": "NamedTuple",
+        "parameter_value_type": "@NamedTuple{exchange_radius::Float64, density::Float64, store_capacity::Float64, energy_capacity::Float64, uptake_rate::Float64, half_saturation::Float64, enzyme_exponent::Float64, growth_rate::Float64, catabolic_rate::Float64, growth_work::Float64, efficiency::Float64, basal_rate::Float64, neural_cost::Float64, starvation_rate::Float64, minimum_mass::Float64, division_mass::Float64, speed::Float64, motor_cost::Float64, junction_rate::Float64, repulsion::Float64, stiffness::Float64, break_strain::Float64, max_degree::Int64, response_time::Float64, adaptation_time::Float64, adaptation_strength::Float64, plasticity_rate::Float64, plasticity_decay::Float64, mutation::Float64, mutation_probability::Float64, developmental_partition::Float64, packing_barrier::Float64}"
+      },
+      "continuation_sha256": "175018bc370e8d51b27c82047d233c2e7527087a5138a77f2cff69a51ad6a7d9",
+      "allow_source_change": true,
+      "loaded_sources": {
+        "core.jl": "14e35f0ff39a67a55265d4d1046d470e6043140b663da00d5eda0e4179cc69b6",
+        "neural_workspace.jl": "ecdd45856bc0b3c61708de90814d1abb33bc1232a0f9ff5785b32b9bc39a9139",
+        "writing.jl": "78fba7cd46f03749bdc56547b7ce5622f7ba3ea42cc34801829345dae3975e05",
+        "Interior.jl": "97836dc9628d4b24cf54fe9696b9932fb3528cf613880013cd99a29cc6f63681",
+        "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+        "cellular.jl": "44cb6fc4ff7e94b6b0e7f06dafa294f7b9964bb5c6801ba0a3a3378763869d3a",
+        "cellular_contacts.jl": "30a198bc801675ca062325cb7dbaea5af15e654f299f2aab3747762f15460654",
+        "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26",
+        "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+        "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+        "dose_writer.jl": "b8d1b4013921a3c82388ee87a7ede00b97964a1894062f2a07339f2c6be197eb",
+        "cellular_transport.jl": "a1fd389de2c9198c9886191ef1a54730e2cd7dd304c5ee1fcb823fbeb3b72300",
+        "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+        "cellular_arena.jl": "2ef965717c99cd0c46a8acd9ceb7da26232201cb18547bd23712e989688429e2",
+        "experiments.jl": "e2e513ac4bfb0af90b5d1c870c5f403705eddd0606316ee2f86c5f5bc83eb527",
+        "metabolic_ecology.jl": "2f599a1d6ea0a5552a594113d57e238e4c6ff3c1fd8d74de5a51f83a77179bb1",
+        "mechanics.jl": "81001af879163392dde498534c9f099bcc79a16b8dac5104d527da7cc9f4fdac",
+        "neural_ecology.jl": "ed0496adb31ce4511f8bc0d5343ff843c410c39c51d30c165b3cf5eac1135df2",
+        "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+        "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+        "compartments.jl": "8eec60b56379a3d366cd789ad62e4c7690a0c10ce5af8a485f66b670c8448751",
+        "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+        "arena.jl": "8ea2c2628cd7af71ea3e5ebe6f05a9a2d6758191bb17386d51e530401e5a9696",
+        "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+        "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+        "implicit_phase.jl": "1fb617707591f89784b95171e0558065101b3d992f7b3eabd16a7bf01dca4ceb",
+        "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+        "recurrent_material.jl": "cc1d2b3a13e57c5fa8f2c85a9cb62fdde2d9193e6d202038e3a932ad9bf36d4d",
+        "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+        "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+        "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+      },
+      "throughput": null,
+      "median_step_seconds": 0.013239929375,
+      "bytes_per_step": 4271481.0,
+      "checkpoint_format": "arena-checkpoint-envelope"
+    },
+    "birth1489": {
+      "case": "birth1489",
+      "checkpoint": "/othersys/tmp/intmat-cellular-profile2-20261015/birth1489/input.jls",
+      "checkpoint_sha256": "724138b2e99b956afd52f1ec52b159c3b0851226909aabaf0f850e39c91c82b0",
+      "derived_steps": 0,
+      "state": {
+        "step": 100,
+        "time": 10.000000149011612,
+        "population": 1489,
+        "bonds": 1199,
+        "grid": [
+          256,
+          192,
+          1
+        ],
+        "processes": [
+          "ResourcePool",
+          "CellularEcology"
+        ],
+        "mechanical_substeps": 13,
+        "parameter_field_type": "NamedTuple",
+        "parameter_value_type": "@NamedTuple{exchange_radius::Float64, density::Float64, store_capacity::Float64, energy_capacity::Float64, uptake_rate::Float64, half_saturation::Float64, enzyme_exponent::Float64, growth_rate::Float64, catabolic_rate::Float64, growth_work::Float64, efficiency::Float64, basal_rate::Float64, neural_cost::Float64, starvation_rate::Float64, minimum_mass::Float64, division_mass::Float64, speed::Float64, motor_cost::Float64, junction_rate::Float64, repulsion::Float64, stiffness::Float64, break_strain::Float64, max_degree::Int64, response_time::Float64, adaptation_time::Float64, adaptation_strength::Float64, plasticity_rate::Float64, plasticity_decay::Float64, mutation::Float64, mutation_probability::Float64, developmental_partition::Float64, packing_barrier::Float64}"
+      },
+      "steps_per_sample": 8,
+      "measurements": [
+        {
+          "seconds": 0.220484348,
+          "bytes": 166313992,
+          "gc_seconds": 0.003563761
+        },
+        {
+          "seconds": 0.220022036,
+          "bytes": 166313992,
+          "gc_seconds": 0.002436646
+        },
+        {
+          "seconds": 0.221615015,
+          "bytes": 166313992,
+          "gc_seconds": 0.002584847
+        },
+        {
+          "seconds": 0.238554077,
+          "bytes": 166313992,
+          "gc_seconds": 0.002742873
+        },
+        {
+          "seconds": 0.213599202,
+          "bytes": 166313992,
+          "gc_seconds": 0.002379574
+        }
+      ],
+      "components": [
+        {
+          "stage": "validate_composition",
+          "result": {
+            "seconds": 5.494e-06,
+            "bytes": 928,
+            "gc_seconds": 0.0
+          }
+        },
+        {
+          "stage": "check_dt/ResourcePool",
+          "result": {
+            "seconds": 0.000292779,
+            "bytes": 1232,
+            "gc_seconds": 0.0
+          }
+        },
+        {
+          "stage": "check_dt/CellularEcology",
+          "result": {
+            "seconds": 0.000948125,
+            "bytes": 105976,
+            "gc_seconds": 0.0
+          }
+        },
+        {
+          "stage": "advance/ResourcePool",
+          "result": {
+            "seconds": 0.004747511,
+            "bytes": 1520,
+            "gc_seconds": 0.0
+          }
+        },
+        {
+          "stage": "advance/CellularEcology",
+          "result": {
+            "seconds": 0.028777802,
+            "bytes": 22343840,
+            "gc_seconds": 0.008760611
+          }
+        }
+      ],
+      "profile_steps": 100,
+      "continuation_steps": 100,
+      "continuation_end": {
+        "step": 200,
+        "time": 20.000000298023224,
+        "population": 2139,
+        "bonds": 2737,
+        "grid": [
+          256,
+          192,
+          1
+        ],
+        "processes": [
+          "ResourcePool",
+          "CellularEcology"
+        ],
+        "mechanical_substeps": 15,
+        "parameter_field_type": "NamedTuple",
+        "parameter_value_type": "@NamedTuple{exchange_radius::Float64, density::Float64, store_capacity::Float64, energy_capacity::Float64, uptake_rate::Float64, half_saturation::Float64, enzyme_exponent::Float64, growth_rate::Float64, catabolic_rate::Float64, growth_work::Float64, efficiency::Float64, basal_rate::Float64, neural_cost::Float64, starvation_rate::Float64, minimum_mass::Float64, division_mass::Float64, speed::Float64, motor_cost::Float64, junction_rate::Float64, repulsion::Float64, stiffness::Float64, break_strain::Float64, max_degree::Int64, response_time::Float64, adaptation_time::Float64, adaptation_strength::Float64, plasticity_rate::Float64, plasticity_decay::Float64, mutation::Float64, mutation_probability::Float64, developmental_partition::Float64, packing_barrier::Float64}"
+      },
+      "continuation_sha256": "3b5df2e31be0cbf5a609d5aab89848aa074f0be0d8aede7f87f2627b44c5f86b",
+      "allow_source_change": true,
+      "loaded_sources": {
+        "core.jl": "14e35f0ff39a67a55265d4d1046d470e6043140b663da00d5eda0e4179cc69b6",
+        "neural_workspace.jl": "ecdd45856bc0b3c61708de90814d1abb33bc1232a0f9ff5785b32b9bc39a9139",
+        "writing.jl": "78fba7cd46f03749bdc56547b7ce5622f7ba3ea42cc34801829345dae3975e05",
+        "Interior.jl": "97836dc9628d4b24cf54fe9696b9932fb3528cf613880013cd99a29cc6f63681",
+        "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+        "cellular.jl": "44cb6fc4ff7e94b6b0e7f06dafa294f7b9964bb5c6801ba0a3a3378763869d3a",
+        "cellular_contacts.jl": "30a198bc801675ca062325cb7dbaea5af15e654f299f2aab3747762f15460654",
+        "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26",
+        "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+        "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+        "dose_writer.jl": "b8d1b4013921a3c82388ee87a7ede00b97964a1894062f2a07339f2c6be197eb",
+        "cellular_transport.jl": "a1fd389de2c9198c9886191ef1a54730e2cd7dd304c5ee1fcb823fbeb3b72300",
+        "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+        "cellular_arena.jl": "2ef965717c99cd0c46a8acd9ceb7da26232201cb18547bd23712e989688429e2",
+        "experiments.jl": "e2e513ac4bfb0af90b5d1c870c5f403705eddd0606316ee2f86c5f5bc83eb527",
+        "metabolic_ecology.jl": "2f599a1d6ea0a5552a594113d57e238e4c6ff3c1fd8d74de5a51f83a77179bb1",
+        "mechanics.jl": "81001af879163392dde498534c9f099bcc79a16b8dac5104d527da7cc9f4fdac",
+        "neural_ecology.jl": "ed0496adb31ce4511f8bc0d5343ff843c410c39c51d30c165b3cf5eac1135df2",
+        "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+        "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+        "compartments.jl": "8eec60b56379a3d366cd789ad62e4c7690a0c10ce5af8a485f66b670c8448751",
+        "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+        "arena.jl": "8ea2c2628cd7af71ea3e5ebe6f05a9a2d6758191bb17386d51e530401e5a9696",
+        "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+        "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+        "implicit_phase.jl": "1fb617707591f89784b95171e0558065101b3d992f7b3eabd16a7bf01dca4ceb",
+        "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+        "recurrent_material.jl": "cc1d2b3a13e57c5fa8f2c85a9cb62fdde2d9193e6d202038e3a932ad9bf36d4d",
+        "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+        "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+        "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+      },
+      "throughput": null,
+      "median_step_seconds": 0.0275605435,
+      "bytes_per_step": 20789249.0,
+      "checkpoint_format": "bare-serialized-arena",
+      "input_provenance": "Exact unchanged large-candidate6/large1024-after100.jls from preceding benchmark; produced under candidate6-source, not this head. Deserialized directly without re-enveloping."
+    },
+    "large4096": {
+      "case": "large4096",
+      "checkpoint": "/othersys/tmp/intmat-cellular-profile2-20261015/initial4096/large4096.jls",
+      "checkpoint_sha256": "ffc7c8d745ea86ef7def01e20da1b4ec14f16f26fcb1a9f3975eb8a20ba187dd",
+      "derived_steps": 0,
+      "state": {
+        "step": 0,
+        "time": 0.0,
+        "population": 4096,
+        "bonds": 0,
+        "grid": [
+          512,
+          384,
+          1
+        ],
+        "processes": [
+          "ResourcePool",
+          "CellularEcology"
+        ],
+        "mechanical_substeps": 0,
+        "parameter_field_type": "NamedTuple",
+        "parameter_value_type": "@NamedTuple{exchange_radius::Float64, density::Float64, store_capacity::Float64, energy_capacity::Float64, uptake_rate::Float64, half_saturation::Float64, enzyme_exponent::Float64, growth_rate::Float64, catabolic_rate::Float64, growth_work::Float64, efficiency::Float64, basal_rate::Float64, neural_cost::Float64, starvation_rate::Float64, minimum_mass::Float64, division_mass::Float64, speed::Float64, motor_cost::Float64, junction_rate::Float64, repulsion::Float64, stiffness::Float64, break_strain::Float64, max_degree::Int64, response_time::Float64, adaptation_time::Float64, adaptation_strength::Float64, plasticity_rate::Float64, plasticity_decay::Float64, mutation::Float64, mutation_probability::Float64, developmental_partition::Float64, packing_barrier::Float64}"
+      },
+      "steps_per_sample": 8,
+      "measurements": [
+        {
+          "seconds": 0.448357588,
+          "bytes": 146404968,
+          "gc_seconds": 0.0
+        },
+        {
+          "seconds": 0.479911671,
+          "bytes": 146404968,
+          "gc_seconds": 0.002681858
+        },
+        {
+          "seconds": 0.480336654,
+          "bytes": 146404968,
+          "gc_seconds": 0.0
+        },
+        {
+          "seconds": 0.483272775,
+          "bytes": 146404968,
+          "gc_seconds": 0.0
+        },
+        {
+          "seconds": 0.466701534,
+          "bytes": 146404968,
+          "gc_seconds": 0.0
+        }
+      ],
+      "components": [
+        {
+          "stage": "validate_composition",
+          "result": {
+            "seconds": 5.448e-06,
+            "bytes": 928,
+            "gc_seconds": 0.0
+          }
+        },
+        {
+          "stage": "check_dt/ResourcePool",
+          "result": {
+            "seconds": 0.001126963,
+            "bytes": 1232,
+            "gc_seconds": 0.0
+          }
+        },
+        {
+          "stage": "check_dt/CellularEcology",
+          "result": {
+            "seconds": 0.002492955,
+            "bytes": 305872,
+            "gc_seconds": 0.0
+          }
+        },
+        {
+          "stage": "advance/ResourcePool",
+          "result": {
+            "seconds": 0.017854923,
+            "bytes": 1520,
+            "gc_seconds": 0.0
+          }
+        },
+        {
+          "stage": "advance/CellularEcology",
+          "result": {
+            "seconds": 0.037859766,
+            "bytes": 23647536,
+            "gc_seconds": 0.0
+          }
+        }
+      ],
+      "profile_steps": 0,
+      "continuation_steps": 100,
+      "continuation_end": {
+        "step": 100,
+        "time": 10.000000149011612,
+        "population": 4096,
+        "bonds": 2273,
+        "grid": [
+          512,
+          384,
+          1
+        ],
+        "processes": [
+          "ResourcePool",
+          "CellularEcology"
+        ],
+        "mechanical_substeps": 13,
+        "parameter_field_type": "NamedTuple",
+        "parameter_value_type": "@NamedTuple{exchange_radius::Float64, density::Float64, store_capacity::Float64, energy_capacity::Float64, uptake_rate::Float64, half_saturation::Float64, enzyme_exponent::Float64, growth_rate::Float64, catabolic_rate::Float64, growth_work::Float64, efficiency::Float64, basal_rate::Float64, neural_cost::Float64, starvation_rate::Float64, minimum_mass::Float64, division_mass::Float64, speed::Float64, motor_cost::Float64, junction_rate::Float64, repulsion::Float64, stiffness::Float64, break_strain::Float64, max_degree::Int64, response_time::Float64, adaptation_time::Float64, adaptation_strength::Float64, plasticity_rate::Float64, plasticity_decay::Float64, mutation::Float64, mutation_probability::Float64, developmental_partition::Float64, packing_barrier::Float64}"
+      },
+      "continuation_sha256": "7b62d352cf47d6edcebfea56d60b31a36c444f9d3443280399026c80e230b33b",
+      "allow_source_change": false,
+      "loaded_sources": {
+        "core.jl": "14e35f0ff39a67a55265d4d1046d470e6043140b663da00d5eda0e4179cc69b6",
+        "neural_workspace.jl": "ecdd45856bc0b3c61708de90814d1abb33bc1232a0f9ff5785b32b9bc39a9139",
+        "writing.jl": "78fba7cd46f03749bdc56547b7ce5622f7ba3ea42cc34801829345dae3975e05",
+        "Interior.jl": "97836dc9628d4b24cf54fe9696b9932fb3528cf613880013cd99a29cc6f63681",
+        "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+        "cellular.jl": "44cb6fc4ff7e94b6b0e7f06dafa294f7b9964bb5c6801ba0a3a3378763869d3a",
+        "cellular_contacts.jl": "30a198bc801675ca062325cb7dbaea5af15e654f299f2aab3747762f15460654",
+        "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26",
+        "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+        "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+        "dose_writer.jl": "b8d1b4013921a3c82388ee87a7ede00b97964a1894062f2a07339f2c6be197eb",
+        "cellular_transport.jl": "a1fd389de2c9198c9886191ef1a54730e2cd7dd304c5ee1fcb823fbeb3b72300",
+        "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+        "cellular_arena.jl": "2ef965717c99cd0c46a8acd9ceb7da26232201cb18547bd23712e989688429e2",
+        "experiments.jl": "e2e513ac4bfb0af90b5d1c870c5f403705eddd0606316ee2f86c5f5bc83eb527",
+        "metabolic_ecology.jl": "2f599a1d6ea0a5552a594113d57e238e4c6ff3c1fd8d74de5a51f83a77179bb1",
+        "mechanics.jl": "81001af879163392dde498534c9f099bcc79a16b8dac5104d527da7cc9f4fdac",
+        "neural_ecology.jl": "ed0496adb31ce4511f8bc0d5343ff843c410c39c51d30c165b3cf5eac1135df2",
+        "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+        "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+        "compartments.jl": "8eec60b56379a3d366cd789ad62e4c7690a0c10ce5af8a485f66b670c8448751",
+        "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+        "arena.jl": "8ea2c2628cd7af71ea3e5ebe6f05a9a2d6758191bb17386d51e530401e5a9696",
+        "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+        "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+        "implicit_phase.jl": "1fb617707591f89784b95171e0558065101b3d992f7b3eabd16a7bf01dca4ceb",
+        "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+        "recurrent_material.jl": "cc1d2b3a13e57c5fa8f2c85a9cb62fdde2d9193e6d202038e3a932ad9bf36d4d",
+        "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+        "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+        "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+      },
+      "throughput": null,
+      "median_step_seconds": 0.059988958875,
+      "bytes_per_step": 18300621.0,
+      "checkpoint_format": "arena-checkpoint-envelope"
+    }
+  },
+  "notes": [
+    "Live jobs/pinned source untouched. Fresh scoped snapshot only.",
+    "Initial1024 and birth1489 profiles evolve across100steps; component single-step samples differ from whole-step 8step windows and can includeGC.",
+    "Whole step allocations includecheckdt andallprocesses.",
+    "4096same density: grid512x384 extent256x192, population4096, broadstripe scaled withdomain; capacity4096 unchanged.",
+    "Source map ineachcase records exact loadedfiles; baseline source includescompositioncache guard added since priorpass."
+  ],
+  "replay": {
+    "helper": "scripts/profile_cellular_step.jl",
+    "depot": "/othersys/tmp/intmat-soaks-20261015/depot:/othersys/tmp/intmat-probe-20261014/depot:",
+    "base_command": "SWARM_MEM_MAX=8G /home/hbox/bin/swarm-build taskset -c 8,9 timeout --signal=TERM --kill-after=15s 180 env JULIA_DEPOT_PATH=DEPOT JULIA_NUM_THREADS=2 JULIA_NUM_PRECOMPILE_TASKS=1 JULIA_PKG_PRECOMPILE_AUTO=0 OPENBLAS_NUM_THREADS=1 /othersys/tmp/intmat-probe-20261014/julia-1.12.4/bin/julia --startup-file=no --compiled-modules=yes --threads=2 --gcthreads=1 --project=SOURCE HELPER FRESH_OUTPUT FLAGS",
+    "initial1024_flags": "--checkpoint --allow-source-change --allocations",
+    "birth1489_flags": "--checkpoint --allow-source-change --allocations --raw-arena",
+    "large4096_flags": "--scale4096 --quick",
+    "checkpoint_input": "For explicit checkpoints copy identical bytes to FRESH_OUTPUT/input.jls before running. Retain provenance. Never use a live soak output directory.",
+    "comparison": "julia --project=SOURCE scripts/compare_cellular_states.jl BASELINE_BARE_ARENA CANDIDATE_BARE_ARENA (under same host resource wrapper)"
+  },
+  "candidate1": {
+    "description": "Per-mechanics-call scratch arrays reused acrosssubsteps/trials; contacts only",
+    "cases": {
+      "initial1024": {
+        "case": "candidate1-initial1024",
+        "checkpoint": "/othersys/tmp/intmat-cellular-profile2-20261015/candidate1-initial1024/input.jls",
+        "checkpoint_sha256": "bfe296ea5d8a9347124303c5c561337fcf206cb2a8c617242765d7de5fee7c09",
+        "derived_steps": 0,
+        "state": {
+          "step": 0,
+          "time": 0.0,
+          "population": 1024,
+          "bonds": 0,
+          "grid": [
+            256,
+            192,
+            1
+          ],
+          "processes": [
+            "ResourcePool",
+            "CellularEcology"
+          ],
+          "mechanical_substeps": 0,
+          "parameter_field_type": "NamedTuple",
+          "parameter_value_type": "@NamedTuple{exchange_radius::Float64, density::Float64, store_capacity::Float64, energy_capacity::Float64, uptake_rate::Float64, half_saturation::Float64, enzyme_exponent::Float64, growth_rate::Float64, catabolic_rate::Float64, growth_work::Float64, efficiency::Float64, basal_rate::Float64, neural_cost::Float64, starvation_rate::Float64, minimum_mass::Float64, division_mass::Float64, speed::Float64, motor_cost::Float64, junction_rate::Float64, repulsion::Float64, stiffness::Float64, break_strain::Float64, max_degree::Int64, response_time::Float64, adaptation_time::Float64, adaptation_strength::Float64, plasticity_rate::Float64, plasticity_decay::Float64, mutation::Float64, mutation_probability::Float64, developmental_partition::Float64, packing_barrier::Float64}"
+        },
+        "steps_per_sample": 8,
+        "measurements": [
+          {
+            "seconds": 0.109210887,
+            "bytes": 23679128,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.104306024,
+            "bytes": 23679128,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.104300162,
+            "bytes": 23679128,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.104449958,
+            "bytes": 23679128,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.106434109,
+            "bytes": 23679128,
+            "gc_seconds": 0.0
+          }
+        ],
+        "components": [
+          {
+            "stage": "validate_composition",
+            "result": {
+              "seconds": 6.837e-06,
+              "bytes": 928,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "check_dt/ResourcePool",
+            "result": {
+              "seconds": 0.000306968,
+              "bytes": 1232,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "check_dt/CellularEcology",
+            "result": {
+              "seconds": 0.000742888,
+              "bytes": 81296,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "advance/ResourcePool",
+            "result": {
+              "seconds": 0.00453197,
+              "bytes": 1520,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "advance/CellularEcology",
+            "result": {
+              "seconds": 0.00883823,
+              "bytes": 4187880,
+              "gc_seconds": 0.0
+            }
+          }
+        ],
+        "profile_steps": 0,
+        "continuation_steps": 100,
+        "continuation_end": {
+          "step": 100,
+          "time": 10.000000149011612,
+          "population": 1489,
+          "bonds": 1199,
+          "grid": [
+            256,
+            192,
+            1
+          ],
+          "processes": [
+            "ResourcePool",
+            "CellularEcology"
+          ],
+          "mechanical_substeps": 13,
+          "parameter_field_type": "NamedTuple",
+          "parameter_value_type": "@NamedTuple{exchange_radius::Float64, density::Float64, store_capacity::Float64, energy_capacity::Float64, uptake_rate::Float64, half_saturation::Float64, enzyme_exponent::Float64, growth_rate::Float64, catabolic_rate::Float64, growth_work::Float64, efficiency::Float64, basal_rate::Float64, neural_cost::Float64, starvation_rate::Float64, minimum_mass::Float64, division_mass::Float64, speed::Float64, motor_cost::Float64, junction_rate::Float64, repulsion::Float64, stiffness::Float64, break_strain::Float64, max_degree::Int64, response_time::Float64, adaptation_time::Float64, adaptation_strength::Float64, plasticity_rate::Float64, plasticity_decay::Float64, mutation::Float64, mutation_probability::Float64, developmental_partition::Float64, packing_barrier::Float64}"
+        },
+        "continuation_sha256": "724138b2e99b956afd52f1ec52b159c3b0851226909aabaf0f850e39c91c82b0",
+        "allow_source_change": true,
+        "loaded_sources": {
+          "core.jl": "14e35f0ff39a67a55265d4d1046d470e6043140b663da00d5eda0e4179cc69b6",
+          "neural_workspace.jl": "ecdd45856bc0b3c61708de90814d1abb33bc1232a0f9ff5785b32b9bc39a9139",
+          "writing.jl": "78fba7cd46f03749bdc56547b7ce5622f7ba3ea42cc34801829345dae3975e05",
+          "Interior.jl": "97836dc9628d4b24cf54fe9696b9932fb3528cf613880013cd99a29cc6f63681",
+          "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+          "cellular.jl": "44cb6fc4ff7e94b6b0e7f06dafa294f7b9964bb5c6801ba0a3a3378763869d3a",
+          "cellular_contacts.jl": "64bdbe722556f77ec439485356fd08a6ee310c69b65bfe0b681d32d796fab3c6",
+          "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26",
+          "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+          "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+          "dose_writer.jl": "b8d1b4013921a3c82388ee87a7ede00b97964a1894062f2a07339f2c6be197eb",
+          "cellular_transport.jl": "a1fd389de2c9198c9886191ef1a54730e2cd7dd304c5ee1fcb823fbeb3b72300",
+          "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+          "cellular_arena.jl": "2ef965717c99cd0c46a8acd9ceb7da26232201cb18547bd23712e989688429e2",
+          "experiments.jl": "e2e513ac4bfb0af90b5d1c870c5f403705eddd0606316ee2f86c5f5bc83eb527",
+          "metabolic_ecology.jl": "2f599a1d6ea0a5552a594113d57e238e4c6ff3c1fd8d74de5a51f83a77179bb1",
+          "mechanics.jl": "81001af879163392dde498534c9f099bcc79a16b8dac5104d527da7cc9f4fdac",
+          "neural_ecology.jl": "ed0496adb31ce4511f8bc0d5343ff843c410c39c51d30c165b3cf5eac1135df2",
+          "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+          "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+          "compartments.jl": "8eec60b56379a3d366cd789ad62e4c7690a0c10ce5af8a485f66b670c8448751",
+          "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+          "arena.jl": "8ea2c2628cd7af71ea3e5ebe6f05a9a2d6758191bb17386d51e530401e5a9696",
+          "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+          "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+          "implicit_phase.jl": "1fb617707591f89784b95171e0558065101b3d992f7b3eabd16a7bf01dca4ceb",
+          "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+          "recurrent_material.jl": "cc1d2b3a13e57c5fa8f2c85a9cb62fdde2d9193e6d202038e3a932ad9bf36d4d",
+          "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+          "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+          "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+        },
+        "throughput": null,
+        "median_step_seconds": 0.01305624475,
+        "bytes_per_step": 2959891.0,
+        "whole_step_speedup": 1.0140687179596568,
+        "exact_semantic100step_parity": true,
+        "serialized_sha_equal": false
+      },
+      "birth1489": {
+        "case": "candidate1-birth1489",
+        "checkpoint": "/othersys/tmp/intmat-cellular-profile2-20261015/candidate1-birth1489/input.jls",
+        "checkpoint_sha256": "724138b2e99b956afd52f1ec52b159c3b0851226909aabaf0f850e39c91c82b0",
+        "derived_steps": 0,
+        "state": {
+          "step": 100,
+          "time": 10.000000149011612,
+          "population": 1489,
+          "bonds": 1199,
+          "grid": [
+            256,
+            192,
+            1
+          ],
+          "processes": [
+            "ResourcePool",
+            "CellularEcology"
+          ],
+          "mechanical_substeps": 13,
+          "parameter_field_type": "NamedTuple",
+          "parameter_value_type": "@NamedTuple{exchange_radius::Float64, density::Float64, store_capacity::Float64, energy_capacity::Float64, uptake_rate::Float64, half_saturation::Float64, enzyme_exponent::Float64, growth_rate::Float64, catabolic_rate::Float64, growth_work::Float64, efficiency::Float64, basal_rate::Float64, neural_cost::Float64, starvation_rate::Float64, minimum_mass::Float64, division_mass::Float64, speed::Float64, motor_cost::Float64, junction_rate::Float64, repulsion::Float64, stiffness::Float64, break_strain::Float64, max_degree::Int64, response_time::Float64, adaptation_time::Float64, adaptation_strength::Float64, plasticity_rate::Float64, plasticity_decay::Float64, mutation::Float64, mutation_probability::Float64, developmental_partition::Float64, packing_barrier::Float64}"
+        },
+        "steps_per_sample": 8,
+        "measurements": [
+          {
+            "seconds": 0.228486505,
+            "bytes": 135175624,
+            "gc_seconds": 0.002254003
+          },
+          {
+            "seconds": 0.218044583,
+            "bytes": 135175624,
+            "gc_seconds": 0.00250177
+          },
+          {
+            "seconds": 0.216613265,
+            "bytes": 135175624,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.212257207,
+            "bytes": 135175624,
+            "gc_seconds": 0.002695205
+          },
+          {
+            "seconds": 0.2163278,
+            "bytes": 135175624,
+            "gc_seconds": 0.002584404
+          }
+        ],
+        "components": [
+          {
+            "stage": "validate_composition",
+            "result": {
+              "seconds": 5.973e-06,
+              "bytes": 928,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "check_dt/ResourcePool",
+            "result": {
+              "seconds": 0.000293945,
+              "bytes": 1232,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "check_dt/CellularEcology",
+            "result": {
+              "seconds": 0.000967657,
+              "bytes": 105976,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "advance/ResourcePool",
+            "result": {
+              "seconds": 0.004772681,
+              "bytes": 1520,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "advance/CellularEcology",
+            "result": {
+              "seconds": 0.020131141,
+              "bytes": 18522168,
+              "gc_seconds": 0.0
+            }
+          }
+        ],
+        "profile_steps": 0,
+        "continuation_steps": 100,
+        "continuation_end": {
+          "step": 200,
+          "time": 20.000000298023224,
+          "population": 2139,
+          "bonds": 2737,
+          "grid": [
+            256,
+            192,
+            1
+          ],
+          "processes": [
+            "ResourcePool",
+            "CellularEcology"
+          ],
+          "mechanical_substeps": 15,
+          "parameter_field_type": "NamedTuple",
+          "parameter_value_type": "@NamedTuple{exchange_radius::Float64, density::Float64, store_capacity::Float64, energy_capacity::Float64, uptake_rate::Float64, half_saturation::Float64, enzyme_exponent::Float64, growth_rate::Float64, catabolic_rate::Float64, growth_work::Float64, efficiency::Float64, basal_rate::Float64, neural_cost::Float64, starvation_rate::Float64, minimum_mass::Float64, division_mass::Float64, speed::Float64, motor_cost::Float64, junction_rate::Float64, repulsion::Float64, stiffness::Float64, break_strain::Float64, max_degree::Int64, response_time::Float64, adaptation_time::Float64, adaptation_strength::Float64, plasticity_rate::Float64, plasticity_decay::Float64, mutation::Float64, mutation_probability::Float64, developmental_partition::Float64, packing_barrier::Float64}"
+        },
+        "continuation_sha256": "f3b1c35fe35040ed1969d841ca3fc534d811f28bc09ca263187b6f28fa265aa5",
+        "allow_source_change": true,
+        "loaded_sources": {
+          "core.jl": "14e35f0ff39a67a55265d4d1046d470e6043140b663da00d5eda0e4179cc69b6",
+          "neural_workspace.jl": "ecdd45856bc0b3c61708de90814d1abb33bc1232a0f9ff5785b32b9bc39a9139",
+          "writing.jl": "78fba7cd46f03749bdc56547b7ce5622f7ba3ea42cc34801829345dae3975e05",
+          "Interior.jl": "97836dc9628d4b24cf54fe9696b9932fb3528cf613880013cd99a29cc6f63681",
+          "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+          "cellular.jl": "44cb6fc4ff7e94b6b0e7f06dafa294f7b9964bb5c6801ba0a3a3378763869d3a",
+          "cellular_contacts.jl": "64bdbe722556f77ec439485356fd08a6ee310c69b65bfe0b681d32d796fab3c6",
+          "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26",
+          "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+          "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+          "dose_writer.jl": "b8d1b4013921a3c82388ee87a7ede00b97964a1894062f2a07339f2c6be197eb",
+          "cellular_transport.jl": "a1fd389de2c9198c9886191ef1a54730e2cd7dd304c5ee1fcb823fbeb3b72300",
+          "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+          "cellular_arena.jl": "2ef965717c99cd0c46a8acd9ceb7da26232201cb18547bd23712e989688429e2",
+          "experiments.jl": "e2e513ac4bfb0af90b5d1c870c5f403705eddd0606316ee2f86c5f5bc83eb527",
+          "metabolic_ecology.jl": "2f599a1d6ea0a5552a594113d57e238e4c6ff3c1fd8d74de5a51f83a77179bb1",
+          "mechanics.jl": "81001af879163392dde498534c9f099bcc79a16b8dac5104d527da7cc9f4fdac",
+          "neural_ecology.jl": "ed0496adb31ce4511f8bc0d5343ff843c410c39c51d30c165b3cf5eac1135df2",
+          "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+          "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+          "compartments.jl": "8eec60b56379a3d366cd789ad62e4c7690a0c10ce5af8a485f66b670c8448751",
+          "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+          "arena.jl": "8ea2c2628cd7af71ea3e5ebe6f05a9a2d6758191bb17386d51e530401e5a9696",
+          "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+          "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+          "implicit_phase.jl": "1fb617707591f89784b95171e0558065101b3d992f7b3eabd16a7bf01dca4ceb",
+          "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+          "recurrent_material.jl": "cc1d2b3a13e57c5fa8f2c85a9cb62fdde2d9193e6d202038e3a932ad9bf36d4d",
+          "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+          "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+          "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+        },
+        "throughput": null,
+        "median_step_seconds": 0.027076658125,
+        "bytes_per_step": 16896953.0,
+        "whole_step_speedup": 1.0178709415602964,
+        "exact_semantic100step_parity": true,
+        "serialized_sha_equal": false
+      },
+      "large4096": {
+        "case": "candidate1-initial4096",
+        "checkpoint": "/othersys/tmp/intmat-cellular-profile2-20261015/candidate1-initial4096/input.jls",
+        "checkpoint_sha256": "ffc7c8d745ea86ef7def01e20da1b4ec14f16f26fcb1a9f3975eb8a20ba187dd",
+        "derived_steps": 0,
+        "state": {
+          "step": 0,
+          "time": 0.0,
+          "population": 4096,
+          "bonds": 0,
+          "grid": [
+            512,
+            384,
+            1
+          ],
+          "processes": [
+            "ResourcePool",
+            "CellularEcology"
+          ],
+          "mechanical_substeps": 0,
+          "parameter_field_type": "NamedTuple",
+          "parameter_value_type": "@NamedTuple{exchange_radius::Float64, density::Float64, store_capacity::Float64, energy_capacity::Float64, uptake_rate::Float64, half_saturation::Float64, enzyme_exponent::Float64, growth_rate::Float64, catabolic_rate::Float64, growth_work::Float64, efficiency::Float64, basal_rate::Float64, neural_cost::Float64, starvation_rate::Float64, minimum_mass::Float64, division_mass::Float64, speed::Float64, motor_cost::Float64, junction_rate::Float64, repulsion::Float64, stiffness::Float64, break_strain::Float64, max_degree::Int64, response_time::Float64, adaptation_time::Float64, adaptation_strength::Float64, plasticity_rate::Float64, plasticity_decay::Float64, mutation::Float64, mutation_probability::Float64, developmental_partition::Float64, packing_barrier::Float64}"
+        },
+        "steps_per_sample": 8,
+        "measurements": [
+          {
+            "seconds": 0.637441329,
+            "bytes": 98703712,
+            "gc_seconds": 0.002959719
+          },
+          {
+            "seconds": 0.461628023,
+            "bytes": 98703712,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.459207112,
+            "bytes": 98703712,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.479986889,
+            "bytes": 98703712,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.486705382,
+            "bytes": 98703712,
+            "gc_seconds": 0.0
+          }
+        ],
+        "components": [
+          {
+            "stage": "validate_composition",
+            "result": {
+              "seconds": 4.579e-06,
+              "bytes": 928,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "check_dt/ResourcePool",
+            "result": {
+              "seconds": 0.001240352,
+              "bytes": 1232,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "check_dt/CellularEcology",
+            "result": {
+              "seconds": 0.002641582,
+              "bytes": 305872,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "advance/ResourcePool",
+            "result": {
+              "seconds": 0.01958719,
+              "bytes": 1520,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "advance/CellularEcology",
+            "result": {
+              "seconds": 0.040453895,
+              "bytes": 13568824,
+              "gc_seconds": 0.0
+            }
+          }
+        ],
+        "profile_steps": 0,
+        "continuation_steps": 100,
+        "continuation_end": {
+          "step": 100,
+          "time": 10.000000149011612,
+          "population": 4096,
+          "bonds": 2273,
+          "grid": [
+            512,
+            384,
+            1
+          ],
+          "processes": [
+            "ResourcePool",
+            "CellularEcology"
+          ],
+          "mechanical_substeps": 13,
+          "parameter_field_type": "NamedTuple",
+          "parameter_value_type": "@NamedTuple{exchange_radius::Float64, density::Float64, store_capacity::Float64, energy_capacity::Float64, uptake_rate::Float64, half_saturation::Float64, enzyme_exponent::Float64, growth_rate::Float64, catabolic_rate::Float64, growth_work::Float64, efficiency::Float64, basal_rate::Float64, neural_cost::Float64, starvation_rate::Float64, minimum_mass::Float64, division_mass::Float64, speed::Float64, motor_cost::Float64, junction_rate::Float64, repulsion::Float64, stiffness::Float64, break_strain::Float64, max_degree::Int64, response_time::Float64, adaptation_time::Float64, adaptation_strength::Float64, plasticity_rate::Float64, plasticity_decay::Float64, mutation::Float64, mutation_probability::Float64, developmental_partition::Float64, packing_barrier::Float64}"
+        },
+        "continuation_sha256": "7b62d352cf47d6edcebfea56d60b31a36c444f9d3443280399026c80e230b33b",
+        "allow_source_change": true,
+        "loaded_sources": {
+          "core.jl": "14e35f0ff39a67a55265d4d1046d470e6043140b663da00d5eda0e4179cc69b6",
+          "neural_workspace.jl": "ecdd45856bc0b3c61708de90814d1abb33bc1232a0f9ff5785b32b9bc39a9139",
+          "writing.jl": "78fba7cd46f03749bdc56547b7ce5622f7ba3ea42cc34801829345dae3975e05",
+          "Interior.jl": "97836dc9628d4b24cf54fe9696b9932fb3528cf613880013cd99a29cc6f63681",
+          "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+          "cellular.jl": "44cb6fc4ff7e94b6b0e7f06dafa294f7b9964bb5c6801ba0a3a3378763869d3a",
+          "cellular_contacts.jl": "64bdbe722556f77ec439485356fd08a6ee310c69b65bfe0b681d32d796fab3c6",
+          "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26",
+          "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+          "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+          "dose_writer.jl": "b8d1b4013921a3c82388ee87a7ede00b97964a1894062f2a07339f2c6be197eb",
+          "cellular_transport.jl": "a1fd389de2c9198c9886191ef1a54730e2cd7dd304c5ee1fcb823fbeb3b72300",
+          "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+          "cellular_arena.jl": "2ef965717c99cd0c46a8acd9ceb7da26232201cb18547bd23712e989688429e2",
+          "experiments.jl": "e2e513ac4bfb0af90b5d1c870c5f403705eddd0606316ee2f86c5f5bc83eb527",
+          "metabolic_ecology.jl": "2f599a1d6ea0a5552a594113d57e238e4c6ff3c1fd8d74de5a51f83a77179bb1",
+          "mechanics.jl": "81001af879163392dde498534c9f099bcc79a16b8dac5104d527da7cc9f4fdac",
+          "neural_ecology.jl": "ed0496adb31ce4511f8bc0d5343ff843c410c39c51d30c165b3cf5eac1135df2",
+          "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+          "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+          "compartments.jl": "8eec60b56379a3d366cd789ad62e4c7690a0c10ce5af8a485f66b670c8448751",
+          "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+          "arena.jl": "8ea2c2628cd7af71ea3e5ebe6f05a9a2d6758191bb17386d51e530401e5a9696",
+          "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+          "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+          "implicit_phase.jl": "1fb617707591f89784b95171e0558065101b3d992f7b3eabd16a7bf01dca4ceb",
+          "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+          "recurrent_material.jl": "cc1d2b3a13e57c5fa8f2c85a9cb62fdde2d9193e6d202038e3a932ad9bf36d4d",
+          "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+          "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+          "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+        },
+        "throughput": null,
+        "median_step_seconds": 0.059998361125,
+        "bytes_per_step": 12337964.0,
+        "whole_step_speedup": 0.9998432915529073,
+        "exact_semantic100step_parity": true,
+        "serialized_sha_equal": true
+      }
+    },
+    "parity_scope": "Recursive isequal on every Arena field/array/dict except CellStencil.proposals. That vector is resized afterbirth and undefined slots are overwritten before reads; allocation changes incidental scratch bytes. All other values exact after100steps for all3. No serializedbyteparity claim.",
+    "comparison_helper_remote": "/othersys/tmp/intmat-cellular-profile2-20261015/compare-ignore-proposals.jl",
+    "alias_graph_parity": true,
+    "alias_method": "Bijective object-ID mapping for every visited mutable object; both sharing and non-sharing must match, excludingonlyproposals."
+  },
+  "candidate2": {
+    "description": "Candidate1 plus exactCPUFloat32 directneighbor mediumdiffusion and initializedstencil.proposals",
+    "cases": {
+      "initial1024": {
+        "case": "candidate2-initial1024",
+        "checkpoint": "/othersys/tmp/intmat-cellular-profile2-20261015/candidate2-initial1024/input.jls",
+        "checkpoint_sha256": "bfe296ea5d8a9347124303c5c561337fcf206cb2a8c617242765d7de5fee7c09",
+        "derived_steps": 0,
+        "state": {
+          "step": 0,
+          "time": 0.0,
+          "population": 1024,
+          "bonds": 0,
+          "grid": [
+            256,
+            192,
+            1
+          ],
+          "processes": [
+            "ResourcePool",
+            "CellularEcology"
+          ],
+          "mechanical_substeps": 0,
+          "parameter_field_type": "NamedTuple",
+          "parameter_value_type": "@NamedTuple{exchange_radius::Float64, density::Float64, store_capacity::Float64, energy_capacity::Float64, uptake_rate::Float64, half_saturation::Float64, enzyme_exponent::Float64, growth_rate::Float64, catabolic_rate::Float64, growth_work::Float64, efficiency::Float64, basal_rate::Float64, neural_cost::Float64, starvation_rate::Float64, minimum_mass::Float64, division_mass::Float64, speed::Float64, motor_cost::Float64, junction_rate::Float64, repulsion::Float64, stiffness::Float64, break_strain::Float64, max_degree::Int64, response_time::Float64, adaptation_time::Float64, adaptation_strength::Float64, plasticity_rate::Float64, plasticity_decay::Float64, mutation::Float64, mutation_probability::Float64, developmental_partition::Float64, packing_barrier::Float64}"
+        },
+        "steps_per_sample": 8,
+        "measurements": [
+          {
+            "seconds": 0.099371776,
+            "bytes": 23676824,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.094609799,
+            "bytes": 23676824,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.096046589,
+            "bytes": 23676824,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.09978538,
+            "bytes": 23676824,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.094256602,
+            "bytes": 23676824,
+            "gc_seconds": 0.0
+          }
+        ],
+        "components": [
+          {
+            "stage": "validate_composition",
+            "result": {
+              "seconds": 5.375e-06,
+              "bytes": 928,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "check_dt/ResourcePool",
+            "result": {
+              "seconds": 0.000291485,
+              "bytes": 1232,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "check_dt/CellularEcology",
+            "result": {
+              "seconds": 0.000729724,
+              "bytes": 81296,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "advance/ResourcePool",
+            "result": {
+              "seconds": 0.003149449,
+              "bytes": 1232,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "advance/CellularEcology",
+            "result": {
+              "seconds": 0.009211414,
+              "bytes": 4187880,
+              "gc_seconds": 0.0
+            }
+          }
+        ],
+        "profile_steps": 0,
+        "continuation_steps": 100,
+        "continuation_end": {
+          "step": 100,
+          "time": 10.000000149011612,
+          "population": 1489,
+          "bonds": 1199,
+          "grid": [
+            256,
+            192,
+            1
+          ],
+          "processes": [
+            "ResourcePool",
+            "CellularEcology"
+          ],
+          "mechanical_substeps": 13,
+          "parameter_field_type": "NamedTuple",
+          "parameter_value_type": "@NamedTuple{exchange_radius::Float64, density::Float64, store_capacity::Float64, energy_capacity::Float64, uptake_rate::Float64, half_saturation::Float64, enzyme_exponent::Float64, growth_rate::Float64, catabolic_rate::Float64, growth_work::Float64, efficiency::Float64, basal_rate::Float64, neural_cost::Float64, starvation_rate::Float64, minimum_mass::Float64, division_mass::Float64, speed::Float64, motor_cost::Float64, junction_rate::Float64, repulsion::Float64, stiffness::Float64, break_strain::Float64, max_degree::Int64, response_time::Float64, adaptation_time::Float64, adaptation_strength::Float64, plasticity_rate::Float64, plasticity_decay::Float64, mutation::Float64, mutation_probability::Float64, developmental_partition::Float64, packing_barrier::Float64}"
+        },
+        "continuation_sha256": "724138b2e99b956afd52f1ec52b159c3b0851226909aabaf0f850e39c91c82b0",
+        "allow_source_change": true,
+        "loaded_sources": {
+          "core.jl": "14e35f0ff39a67a55265d4d1046d470e6043140b663da00d5eda0e4179cc69b6",
+          "neural_workspace.jl": "ecdd45856bc0b3c61708de90814d1abb33bc1232a0f9ff5785b32b9bc39a9139",
+          "writing.jl": "78fba7cd46f03749bdc56547b7ce5622f7ba3ea42cc34801829345dae3975e05",
+          "Interior.jl": "97836dc9628d4b24cf54fe9696b9932fb3528cf613880013cd99a29cc6f63681",
+          "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+          "cellular.jl": "44cb6fc4ff7e94b6b0e7f06dafa294f7b9964bb5c6801ba0a3a3378763869d3a",
+          "cellular_contacts.jl": "64bdbe722556f77ec439485356fd08a6ee310c69b65bfe0b681d32d796fab3c6",
+          "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26",
+          "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+          "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+          "dose_writer.jl": "b8d1b4013921a3c82388ee87a7ede00b97964a1894062f2a07339f2c6be197eb",
+          "cellular_transport.jl": "d734d0c7b9b305a7543ad994c18e5a649163f34b5450a6542e44e7258ce45f35",
+          "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+          "cellular_arena.jl": "2ef965717c99cd0c46a8acd9ceb7da26232201cb18547bd23712e989688429e2",
+          "experiments.jl": "e2e513ac4bfb0af90b5d1c870c5f403705eddd0606316ee2f86c5f5bc83eb527",
+          "metabolic_ecology.jl": "2f599a1d6ea0a5552a594113d57e238e4c6ff3c1fd8d74de5a51f83a77179bb1",
+          "mechanics.jl": "81001af879163392dde498534c9f099bcc79a16b8dac5104d527da7cc9f4fdac",
+          "neural_ecology.jl": "ed0496adb31ce4511f8bc0d5343ff843c410c39c51d30c165b3cf5eac1135df2",
+          "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+          "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+          "compartments.jl": "e7c55ce4e0f4a8548c078c9d160815b5eaeb846a3765aad89a875f166b5005e5",
+          "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+          "arena.jl": "8ea2c2628cd7af71ea3e5ebe6f05a9a2d6758191bb17386d51e530401e5a9696",
+          "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+          "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+          "implicit_phase.jl": "1fb617707591f89784b95171e0558065101b3d992f7b3eabd16a7bf01dca4ceb",
+          "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+          "recurrent_material.jl": "cc1d2b3a13e57c5fa8f2c85a9cb62fdde2d9193e6d202038e3a932ad9bf36d4d",
+          "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+          "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+          "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+        },
+        "throughput": null,
+        "median_step_seconds": 0.012005823625,
+        "bytes_per_step": 2959603.0,
+        "whole_step_speedup": 1.1027922605351452
+      },
+      "birth1489": {
+        "case": "candidate2-birth1489",
+        "checkpoint": "/othersys/tmp/intmat-cellular-profile2-20261015/candidate2-birth1489/input.jls",
+        "checkpoint_sha256": "724138b2e99b956afd52f1ec52b159c3b0851226909aabaf0f850e39c91c82b0",
+        "derived_steps": 0,
+        "state": {
+          "step": 100,
+          "time": 10.000000149011612,
+          "population": 1489,
+          "bonds": 1199,
+          "grid": [
+            256,
+            192,
+            1
+          ],
+          "processes": [
+            "ResourcePool",
+            "CellularEcology"
+          ],
+          "mechanical_substeps": 13,
+          "parameter_field_type": "NamedTuple",
+          "parameter_value_type": "@NamedTuple{exchange_radius::Float64, density::Float64, store_capacity::Float64, energy_capacity::Float64, uptake_rate::Float64, half_saturation::Float64, enzyme_exponent::Float64, growth_rate::Float64, catabolic_rate::Float64, growth_work::Float64, efficiency::Float64, basal_rate::Float64, neural_cost::Float64, starvation_rate::Float64, minimum_mass::Float64, division_mass::Float64, speed::Float64, motor_cost::Float64, junction_rate::Float64, repulsion::Float64, stiffness::Float64, break_strain::Float64, max_degree::Int64, response_time::Float64, adaptation_time::Float64, adaptation_strength::Float64, plasticity_rate::Float64, plasticity_decay::Float64, mutation::Float64, mutation_probability::Float64, developmental_partition::Float64, packing_barrier::Float64}"
+        },
+        "steps_per_sample": 8,
+        "measurements": [
+          {
+            "seconds": 0.221932403,
+            "bytes": 135173320,
+            "gc_seconds": 0.002554625
+          },
+          {
+            "seconds": 0.214380466,
+            "bytes": 135173320,
+            "gc_seconds": 0.002551333
+          },
+          {
+            "seconds": 0.214849258,
+            "bytes": 135173320,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.231242754,
+            "bytes": 135173320,
+            "gc_seconds": 0.002721272
+          },
+          {
+            "seconds": 0.215466758,
+            "bytes": 135173320,
+            "gc_seconds": 0.002694308
+          }
+        ],
+        "components": [
+          {
+            "stage": "validate_composition",
+            "result": {
+              "seconds": 5.219e-06,
+              "bytes": 928,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "check_dt/ResourcePool",
+            "result": {
+              "seconds": 0.000318776,
+              "bytes": 1232,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "check_dt/CellularEcology",
+            "result": {
+              "seconds": 0.001055068,
+              "bytes": 105976,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "advance/ResourcePool",
+            "result": {
+              "seconds": 0.003777097,
+              "bytes": 1232,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "advance/CellularEcology",
+            "result": {
+              "seconds": 0.021638491,
+              "bytes": 18522168,
+              "gc_seconds": 0.0
+            }
+          }
+        ],
+        "profile_steps": 0,
+        "continuation_steps": 100,
+        "continuation_end": {
+          "step": 200,
+          "time": 20.000000298023224,
+          "population": 2139,
+          "bonds": 2737,
+          "grid": [
+            256,
+            192,
+            1
+          ],
+          "processes": [
+            "ResourcePool",
+            "CellularEcology"
+          ],
+          "mechanical_substeps": 15,
+          "parameter_field_type": "NamedTuple",
+          "parameter_value_type": "@NamedTuple{exchange_radius::Float64, density::Float64, store_capacity::Float64, energy_capacity::Float64, uptake_rate::Float64, half_saturation::Float64, enzyme_exponent::Float64, growth_rate::Float64, catabolic_rate::Float64, growth_work::Float64, efficiency::Float64, basal_rate::Float64, neural_cost::Float64, starvation_rate::Float64, minimum_mass::Float64, division_mass::Float64, speed::Float64, motor_cost::Float64, junction_rate::Float64, repulsion::Float64, stiffness::Float64, break_strain::Float64, max_degree::Int64, response_time::Float64, adaptation_time::Float64, adaptation_strength::Float64, plasticity_rate::Float64, plasticity_decay::Float64, mutation::Float64, mutation_probability::Float64, developmental_partition::Float64, packing_barrier::Float64}"
+        },
+        "continuation_sha256": "f3b1c35fe35040ed1969d841ca3fc534d811f28bc09ca263187b6f28fa265aa5",
+        "allow_source_change": true,
+        "loaded_sources": {
+          "core.jl": "14e35f0ff39a67a55265d4d1046d470e6043140b663da00d5eda0e4179cc69b6",
+          "neural_workspace.jl": "ecdd45856bc0b3c61708de90814d1abb33bc1232a0f9ff5785b32b9bc39a9139",
+          "writing.jl": "78fba7cd46f03749bdc56547b7ce5622f7ba3ea42cc34801829345dae3975e05",
+          "Interior.jl": "97836dc9628d4b24cf54fe9696b9932fb3528cf613880013cd99a29cc6f63681",
+          "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+          "cellular.jl": "44cb6fc4ff7e94b6b0e7f06dafa294f7b9964bb5c6801ba0a3a3378763869d3a",
+          "cellular_contacts.jl": "64bdbe722556f77ec439485356fd08a6ee310c69b65bfe0b681d32d796fab3c6",
+          "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26",
+          "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+          "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+          "dose_writer.jl": "b8d1b4013921a3c82388ee87a7ede00b97964a1894062f2a07339f2c6be197eb",
+          "cellular_transport.jl": "d734d0c7b9b305a7543ad994c18e5a649163f34b5450a6542e44e7258ce45f35",
+          "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+          "cellular_arena.jl": "2ef965717c99cd0c46a8acd9ceb7da26232201cb18547bd23712e989688429e2",
+          "experiments.jl": "e2e513ac4bfb0af90b5d1c870c5f403705eddd0606316ee2f86c5f5bc83eb527",
+          "metabolic_ecology.jl": "2f599a1d6ea0a5552a594113d57e238e4c6ff3c1fd8d74de5a51f83a77179bb1",
+          "mechanics.jl": "81001af879163392dde498534c9f099bcc79a16b8dac5104d527da7cc9f4fdac",
+          "neural_ecology.jl": "ed0496adb31ce4511f8bc0d5343ff843c410c39c51d30c165b3cf5eac1135df2",
+          "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+          "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+          "compartments.jl": "e7c55ce4e0f4a8548c078c9d160815b5eaeb846a3765aad89a875f166b5005e5",
+          "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+          "arena.jl": "8ea2c2628cd7af71ea3e5ebe6f05a9a2d6758191bb17386d51e530401e5a9696",
+          "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+          "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+          "implicit_phase.jl": "1fb617707591f89784b95171e0558065101b3d992f7b3eabd16a7bf01dca4ceb",
+          "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+          "recurrent_material.jl": "cc1d2b3a13e57c5fa8f2c85a9cb62fdde2d9193e6d202038e3a932ad9bf36d4d",
+          "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+          "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+          "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+        },
+        "throughput": null,
+        "median_step_seconds": 0.02693334475,
+        "bytes_per_step": 16896665.0,
+        "whole_step_speedup": 1.0232870724309129
+      },
+      "large4096": {
+        "case": "candidate2-initial4096",
+        "checkpoint": "/othersys/tmp/intmat-cellular-profile2-20261015/candidate2-initial4096/input.jls",
+        "checkpoint_sha256": "ffc7c8d745ea86ef7def01e20da1b4ec14f16f26fcb1a9f3975eb8a20ba187dd",
+        "derived_steps": 0,
+        "state": {
+          "step": 0,
+          "time": 0.0,
+          "population": 4096,
+          "bonds": 0,
+          "grid": [
+            512,
+            384,
+            1
+          ],
+          "processes": [
+            "ResourcePool",
+            "CellularEcology"
+          ],
+          "mechanical_substeps": 0,
+          "parameter_field_type": "NamedTuple",
+          "parameter_value_type": "@NamedTuple{exchange_radius::Float64, density::Float64, store_capacity::Float64, energy_capacity::Float64, uptake_rate::Float64, half_saturation::Float64, enzyme_exponent::Float64, growth_rate::Float64, catabolic_rate::Float64, growth_work::Float64, efficiency::Float64, basal_rate::Float64, neural_cost::Float64, starvation_rate::Float64, minimum_mass::Float64, division_mass::Float64, speed::Float64, motor_cost::Float64, junction_rate::Float64, repulsion::Float64, stiffness::Float64, break_strain::Float64, max_degree::Int64, response_time::Float64, adaptation_time::Float64, adaptation_strength::Float64, plasticity_rate::Float64, plasticity_decay::Float64, mutation::Float64, mutation_probability::Float64, developmental_partition::Float64, packing_barrier::Float64}"
+        },
+        "steps_per_sample": 8,
+        "measurements": [
+          {
+            "seconds": 0.453204678,
+            "bytes": 98701408,
+            "gc_seconds": 0.00284623
+          },
+          {
+            "seconds": 0.444245615,
+            "bytes": 98701408,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.44408277,
+            "bytes": 98701408,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.442540057,
+            "bytes": 98701408,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.44390173,
+            "bytes": 98701408,
+            "gc_seconds": 0.0
+          }
+        ],
+        "components": [
+          {
+            "stage": "validate_composition",
+            "result": {
+              "seconds": 5.241e-06,
+              "bytes": 928,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "check_dt/ResourcePool",
+            "result": {
+              "seconds": 0.001211562,
+              "bytes": 1232,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "check_dt/CellularEcology",
+            "result": {
+              "seconds": 0.002609576,
+              "bytes": 305872,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "advance/ResourcePool",
+            "result": {
+              "seconds": 0.013756407,
+              "bytes": 1232,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "advance/CellularEcology",
+            "result": {
+              "seconds": 0.040316885,
+              "bytes": 13568824,
+              "gc_seconds": 0.0
+            }
+          }
+        ],
+        "profile_steps": 0,
+        "continuation_steps": 100,
+        "continuation_end": {
+          "step": 100,
+          "time": 10.000000149011612,
+          "population": 4096,
+          "bonds": 2273,
+          "grid": [
+            512,
+            384,
+            1
+          ],
+          "processes": [
+            "ResourcePool",
+            "CellularEcology"
+          ],
+          "mechanical_substeps": 13,
+          "parameter_field_type": "NamedTuple",
+          "parameter_value_type": "@NamedTuple{exchange_radius::Float64, density::Float64, store_capacity::Float64, energy_capacity::Float64, uptake_rate::Float64, half_saturation::Float64, enzyme_exponent::Float64, growth_rate::Float64, catabolic_rate::Float64, growth_work::Float64, efficiency::Float64, basal_rate::Float64, neural_cost::Float64, starvation_rate::Float64, minimum_mass::Float64, division_mass::Float64, speed::Float64, motor_cost::Float64, junction_rate::Float64, repulsion::Float64, stiffness::Float64, break_strain::Float64, max_degree::Int64, response_time::Float64, adaptation_time::Float64, adaptation_strength::Float64, plasticity_rate::Float64, plasticity_decay::Float64, mutation::Float64, mutation_probability::Float64, developmental_partition::Float64, packing_barrier::Float64}"
+        },
+        "continuation_sha256": "7b62d352cf47d6edcebfea56d60b31a36c444f9d3443280399026c80e230b33b",
+        "allow_source_change": true,
+        "loaded_sources": {
+          "core.jl": "14e35f0ff39a67a55265d4d1046d470e6043140b663da00d5eda0e4179cc69b6",
+          "neural_workspace.jl": "ecdd45856bc0b3c61708de90814d1abb33bc1232a0f9ff5785b32b9bc39a9139",
+          "writing.jl": "78fba7cd46f03749bdc56547b7ce5622f7ba3ea42cc34801829345dae3975e05",
+          "Interior.jl": "97836dc9628d4b24cf54fe9696b9932fb3528cf613880013cd99a29cc6f63681",
+          "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+          "cellular.jl": "44cb6fc4ff7e94b6b0e7f06dafa294f7b9964bb5c6801ba0a3a3378763869d3a",
+          "cellular_contacts.jl": "64bdbe722556f77ec439485356fd08a6ee310c69b65bfe0b681d32d796fab3c6",
+          "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26",
+          "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+          "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+          "dose_writer.jl": "b8d1b4013921a3c82388ee87a7ede00b97964a1894062f2a07339f2c6be197eb",
+          "cellular_transport.jl": "d734d0c7b9b305a7543ad994c18e5a649163f34b5450a6542e44e7258ce45f35",
+          "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+          "cellular_arena.jl": "2ef965717c99cd0c46a8acd9ceb7da26232201cb18547bd23712e989688429e2",
+          "experiments.jl": "e2e513ac4bfb0af90b5d1c870c5f403705eddd0606316ee2f86c5f5bc83eb527",
+          "metabolic_ecology.jl": "2f599a1d6ea0a5552a594113d57e238e4c6ff3c1fd8d74de5a51f83a77179bb1",
+          "mechanics.jl": "81001af879163392dde498534c9f099bcc79a16b8dac5104d527da7cc9f4fdac",
+          "neural_ecology.jl": "ed0496adb31ce4511f8bc0d5343ff843c410c39c51d30c165b3cf5eac1135df2",
+          "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+          "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+          "compartments.jl": "e7c55ce4e0f4a8548c078c9d160815b5eaeb846a3765aad89a875f166b5005e5",
+          "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+          "arena.jl": "8ea2c2628cd7af71ea3e5ebe6f05a9a2d6758191bb17386d51e530401e5a9696",
+          "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+          "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+          "implicit_phase.jl": "1fb617707591f89784b95171e0558065101b3d992f7b3eabd16a7bf01dca4ceb",
+          "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+          "recurrent_material.jl": "cc1d2b3a13e57c5fa8f2c85a9cb62fdde2d9193e6d202038e3a932ad9bf36d4d",
+          "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+          "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+          "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+        },
+        "throughput": null,
+        "median_step_seconds": 0.05551034625,
+        "bytes_per_step": 12337676.0,
+        "whole_step_speedup": 1.080680682567351
+      }
+    },
+    "parity_status": "PASS all3 after100steps: zeroonlystencil.proposals on deserializedcopies; allother Float32/Float64 rawbits, everyfield/array/dict entry and bidirectionalmutablealiasgraph exact.",
+    "comparison_helper_remote": "/othersys/tmp/intmat-cellular-profile2-20261015/compare-canonical.jl",
+    "comparison_helper": "scripts/compare_cellular_states.jl"
+  },
+  "candidate3": {
+    "description": "Candidate2 plus cached scalar resource ledger loop with alias-safe original-loop fallback",
+    "cases": {
+      "initial1024": {
+        "case": "candidate3-initial1024",
+        "checkpoint": "/othersys/tmp/intmat-cellular-profile2-20261015/candidate3-initial1024/input.jls",
+        "checkpoint_sha256": "bfe296ea5d8a9347124303c5c561337fcf206cb2a8c617242765d7de5fee7c09",
+        "derived_steps": 0,
+        "state": {
+          "step": 0,
+          "time": 0.0,
+          "population": 1024,
+          "bonds": 0,
+          "grid": [
+            256,
+            192,
+            1
+          ],
+          "processes": [
+            "ResourcePool",
+            "CellularEcology"
+          ],
+          "mechanical_substeps": 0,
+          "parameter_field_type": "NamedTuple",
+          "parameter_value_type": "@NamedTuple{exchange_radius::Float64, density::Float64, store_capacity::Float64, energy_capacity::Float64, uptake_rate::Float64, half_saturation::Float64, enzyme_exponent::Float64, growth_rate::Float64, catabolic_rate::Float64, growth_work::Float64, efficiency::Float64, basal_rate::Float64, neural_cost::Float64, starvation_rate::Float64, minimum_mass::Float64, division_mass::Float64, speed::Float64, motor_cost::Float64, junction_rate::Float64, repulsion::Float64, stiffness::Float64, break_strain::Float64, max_degree::Int64, response_time::Float64, adaptation_time::Float64, adaptation_strength::Float64, plasticity_rate::Float64, plasticity_decay::Float64, mutation::Float64, mutation_probability::Float64, developmental_partition::Float64, packing_barrier::Float64}"
+        },
+        "steps_per_sample": 8,
+        "measurements": [
+          {
+            "seconds": 0.095736406,
+            "bytes": 23676824,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.092152048,
+            "bytes": 23676824,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.096764433,
+            "bytes": 23676824,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.092721856,
+            "bytes": 23676824,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.092511628,
+            "bytes": 23676824,
+            "gc_seconds": 0.0
+          }
+        ],
+        "components": [
+          {
+            "stage": "validate_composition",
+            "result": {
+              "seconds": 5.409e-06,
+              "bytes": 928,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "check_dt/ResourcePool",
+            "result": {
+              "seconds": 0.000290409,
+              "bytes": 1232,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "check_dt/CellularEcology",
+            "result": {
+              "seconds": 0.000672243,
+              "bytes": 81296,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "advance/ResourcePool",
+            "result": {
+              "seconds": 0.002954323,
+              "bytes": 1232,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "advance/CellularEcology",
+            "result": {
+              "seconds": 0.008781816,
+              "bytes": 4187880,
+              "gc_seconds": 0.0
+            }
+          }
+        ],
+        "profile_steps": 0,
+        "continuation_steps": 100,
+        "continuation_end": {
+          "step": 100,
+          "time": 10.000000149011612,
+          "population": 1489,
+          "bonds": 1199,
+          "grid": [
+            256,
+            192,
+            1
+          ],
+          "processes": [
+            "ResourcePool",
+            "CellularEcology"
+          ],
+          "mechanical_substeps": 13,
+          "parameter_field_type": "NamedTuple",
+          "parameter_value_type": "@NamedTuple{exchange_radius::Float64, density::Float64, store_capacity::Float64, energy_capacity::Float64, uptake_rate::Float64, half_saturation::Float64, enzyme_exponent::Float64, growth_rate::Float64, catabolic_rate::Float64, growth_work::Float64, efficiency::Float64, basal_rate::Float64, neural_cost::Float64, starvation_rate::Float64, minimum_mass::Float64, division_mass::Float64, speed::Float64, motor_cost::Float64, junction_rate::Float64, repulsion::Float64, stiffness::Float64, break_strain::Float64, max_degree::Int64, response_time::Float64, adaptation_time::Float64, adaptation_strength::Float64, plasticity_rate::Float64, plasticity_decay::Float64, mutation::Float64, mutation_probability::Float64, developmental_partition::Float64, packing_barrier::Float64}"
+        },
+        "continuation_sha256": "724138b2e99b956afd52f1ec52b159c3b0851226909aabaf0f850e39c91c82b0",
+        "allow_source_change": true,
+        "loaded_sources": {
+          "core.jl": "14e35f0ff39a67a55265d4d1046d470e6043140b663da00d5eda0e4179cc69b6",
+          "neural_workspace.jl": "ecdd45856bc0b3c61708de90814d1abb33bc1232a0f9ff5785b32b9bc39a9139",
+          "writing.jl": "78fba7cd46f03749bdc56547b7ce5622f7ba3ea42cc34801829345dae3975e05",
+          "Interior.jl": "97836dc9628d4b24cf54fe9696b9932fb3528cf613880013cd99a29cc6f63681",
+          "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+          "cellular.jl": "44cb6fc4ff7e94b6b0e7f06dafa294f7b9964bb5c6801ba0a3a3378763869d3a",
+          "cellular_contacts.jl": "64bdbe722556f77ec439485356fd08a6ee310c69b65bfe0b681d32d796fab3c6",
+          "resources.jl": "859f6e04b456ceee051fd83214b37ca18418af09126960997b7d62d83c2dcab0",
+          "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+          "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+          "dose_writer.jl": "b8d1b4013921a3c82388ee87a7ede00b97964a1894062f2a07339f2c6be197eb",
+          "cellular_transport.jl": "d734d0c7b9b305a7543ad994c18e5a649163f34b5450a6542e44e7258ce45f35",
+          "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+          "cellular_arena.jl": "2ef965717c99cd0c46a8acd9ceb7da26232201cb18547bd23712e989688429e2",
+          "experiments.jl": "e2e513ac4bfb0af90b5d1c870c5f403705eddd0606316ee2f86c5f5bc83eb527",
+          "metabolic_ecology.jl": "2f599a1d6ea0a5552a594113d57e238e4c6ff3c1fd8d74de5a51f83a77179bb1",
+          "mechanics.jl": "81001af879163392dde498534c9f099bcc79a16b8dac5104d527da7cc9f4fdac",
+          "neural_ecology.jl": "ed0496adb31ce4511f8bc0d5343ff843c410c39c51d30c165b3cf5eac1135df2",
+          "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+          "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+          "compartments.jl": "e7c55ce4e0f4a8548c078c9d160815b5eaeb846a3765aad89a875f166b5005e5",
+          "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+          "arena.jl": "8ea2c2628cd7af71ea3e5ebe6f05a9a2d6758191bb17386d51e530401e5a9696",
+          "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+          "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+          "implicit_phase.jl": "1fb617707591f89784b95171e0558065101b3d992f7b3eabd16a7bf01dca4ceb",
+          "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+          "recurrent_material.jl": "cc1d2b3a13e57c5fa8f2c85a9cb62fdde2d9193e6d202038e3a932ad9bf36d4d",
+          "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+          "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+          "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+        },
+        "throughput": null,
+        "median_step_seconds": 0.011590232,
+        "bytes_per_step": 2959603.0,
+        "whole_step_speedup": 1.1423351469582317
+      },
+      "birth1489": {
+        "case": "candidate3-birth1489",
+        "checkpoint": "/othersys/tmp/intmat-cellular-profile2-20261015/candidate3-birth1489/input.jls",
+        "checkpoint_sha256": "724138b2e99b956afd52f1ec52b159c3b0851226909aabaf0f850e39c91c82b0",
+        "derived_steps": 0,
+        "state": {
+          "step": 100,
+          "time": 10.000000149011612,
+          "population": 1489,
+          "bonds": 1199,
+          "grid": [
+            256,
+            192,
+            1
+          ],
+          "processes": [
+            "ResourcePool",
+            "CellularEcology"
+          ],
+          "mechanical_substeps": 13,
+          "parameter_field_type": "NamedTuple",
+          "parameter_value_type": "@NamedTuple{exchange_radius::Float64, density::Float64, store_capacity::Float64, energy_capacity::Float64, uptake_rate::Float64, half_saturation::Float64, enzyme_exponent::Float64, growth_rate::Float64, catabolic_rate::Float64, growth_work::Float64, efficiency::Float64, basal_rate::Float64, neural_cost::Float64, starvation_rate::Float64, minimum_mass::Float64, division_mass::Float64, speed::Float64, motor_cost::Float64, junction_rate::Float64, repulsion::Float64, stiffness::Float64, break_strain::Float64, max_degree::Int64, response_time::Float64, adaptation_time::Float64, adaptation_strength::Float64, plasticity_rate::Float64, plasticity_decay::Float64, mutation::Float64, mutation_probability::Float64, developmental_partition::Float64, packing_barrier::Float64}"
+        },
+        "steps_per_sample": 8,
+        "measurements": [
+          {
+            "seconds": 0.217894495,
+            "bytes": 135173320,
+            "gc_seconds": 0.002351619
+          },
+          {
+            "seconds": 0.208316503,
+            "bytes": 135173320,
+            "gc_seconds": 0.002567524
+          },
+          {
+            "seconds": 0.204620281,
+            "bytes": 135173320,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.202165563,
+            "bytes": 135173320,
+            "gc_seconds": 0.002788483
+          },
+          {
+            "seconds": 0.20577759,
+            "bytes": 135173320,
+            "gc_seconds": 0.002600408
+          }
+        ],
+        "components": [
+          {
+            "stage": "validate_composition",
+            "result": {
+              "seconds": 6.082e-06,
+              "bytes": 928,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "check_dt/ResourcePool",
+            "result": {
+              "seconds": 0.000293276,
+              "bytes": 1232,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "check_dt/CellularEcology",
+            "result": {
+              "seconds": 0.000996705,
+              "bytes": 105976,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "advance/ResourcePool",
+            "result": {
+              "seconds": 0.003204564,
+              "bytes": 1232,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "advance/CellularEcology",
+            "result": {
+              "seconds": 0.020095789,
+              "bytes": 18522168,
+              "gc_seconds": 0.0
+            }
+          }
+        ],
+        "profile_steps": 0,
+        "continuation_steps": 100,
+        "continuation_end": {
+          "step": 200,
+          "time": 20.000000298023224,
+          "population": 2139,
+          "bonds": 2737,
+          "grid": [
+            256,
+            192,
+            1
+          ],
+          "processes": [
+            "ResourcePool",
+            "CellularEcology"
+          ],
+          "mechanical_substeps": 15,
+          "parameter_field_type": "NamedTuple",
+          "parameter_value_type": "@NamedTuple{exchange_radius::Float64, density::Float64, store_capacity::Float64, energy_capacity::Float64, uptake_rate::Float64, half_saturation::Float64, enzyme_exponent::Float64, growth_rate::Float64, catabolic_rate::Float64, growth_work::Float64, efficiency::Float64, basal_rate::Float64, neural_cost::Float64, starvation_rate::Float64, minimum_mass::Float64, division_mass::Float64, speed::Float64, motor_cost::Float64, junction_rate::Float64, repulsion::Float64, stiffness::Float64, break_strain::Float64, max_degree::Int64, response_time::Float64, adaptation_time::Float64, adaptation_strength::Float64, plasticity_rate::Float64, plasticity_decay::Float64, mutation::Float64, mutation_probability::Float64, developmental_partition::Float64, packing_barrier::Float64}"
+        },
+        "continuation_sha256": "f3b1c35fe35040ed1969d841ca3fc534d811f28bc09ca263187b6f28fa265aa5",
+        "allow_source_change": true,
+        "loaded_sources": {
+          "core.jl": "14e35f0ff39a67a55265d4d1046d470e6043140b663da00d5eda0e4179cc69b6",
+          "neural_workspace.jl": "ecdd45856bc0b3c61708de90814d1abb33bc1232a0f9ff5785b32b9bc39a9139",
+          "writing.jl": "78fba7cd46f03749bdc56547b7ce5622f7ba3ea42cc34801829345dae3975e05",
+          "Interior.jl": "97836dc9628d4b24cf54fe9696b9932fb3528cf613880013cd99a29cc6f63681",
+          "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+          "cellular.jl": "44cb6fc4ff7e94b6b0e7f06dafa294f7b9964bb5c6801ba0a3a3378763869d3a",
+          "cellular_contacts.jl": "64bdbe722556f77ec439485356fd08a6ee310c69b65bfe0b681d32d796fab3c6",
+          "resources.jl": "859f6e04b456ceee051fd83214b37ca18418af09126960997b7d62d83c2dcab0",
+          "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+          "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+          "dose_writer.jl": "b8d1b4013921a3c82388ee87a7ede00b97964a1894062f2a07339f2c6be197eb",
+          "cellular_transport.jl": "d734d0c7b9b305a7543ad994c18e5a649163f34b5450a6542e44e7258ce45f35",
+          "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+          "cellular_arena.jl": "2ef965717c99cd0c46a8acd9ceb7da26232201cb18547bd23712e989688429e2",
+          "experiments.jl": "e2e513ac4bfb0af90b5d1c870c5f403705eddd0606316ee2f86c5f5bc83eb527",
+          "metabolic_ecology.jl": "2f599a1d6ea0a5552a594113d57e238e4c6ff3c1fd8d74de5a51f83a77179bb1",
+          "mechanics.jl": "81001af879163392dde498534c9f099bcc79a16b8dac5104d527da7cc9f4fdac",
+          "neural_ecology.jl": "ed0496adb31ce4511f8bc0d5343ff843c410c39c51d30c165b3cf5eac1135df2",
+          "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+          "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+          "compartments.jl": "e7c55ce4e0f4a8548c078c9d160815b5eaeb846a3765aad89a875f166b5005e5",
+          "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+          "arena.jl": "8ea2c2628cd7af71ea3e5ebe6f05a9a2d6758191bb17386d51e530401e5a9696",
+          "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+          "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+          "implicit_phase.jl": "1fb617707591f89784b95171e0558065101b3d992f7b3eabd16a7bf01dca4ceb",
+          "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+          "recurrent_material.jl": "cc1d2b3a13e57c5fa8f2c85a9cb62fdde2d9193e6d202038e3a932ad9bf36d4d",
+          "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+          "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+          "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+        },
+        "throughput": null,
+        "median_step_seconds": 0.02572219875,
+        "bytes_per_step": 16896665.0,
+        "whole_step_speedup": 1.0714691915674588
+      },
+      "large4096": {
+        "case": "candidate3-initial4096",
+        "checkpoint": "/othersys/tmp/intmat-cellular-profile2-20261015/candidate3-initial4096/input.jls",
+        "checkpoint_sha256": "ffc7c8d745ea86ef7def01e20da1b4ec14f16f26fcb1a9f3975eb8a20ba187dd",
+        "derived_steps": 0,
+        "state": {
+          "step": 0,
+          "time": 0.0,
+          "population": 4096,
+          "bonds": 0,
+          "grid": [
+            512,
+            384,
+            1
+          ],
+          "processes": [
+            "ResourcePool",
+            "CellularEcology"
+          ],
+          "mechanical_substeps": 0,
+          "parameter_field_type": "NamedTuple",
+          "parameter_value_type": "@NamedTuple{exchange_radius::Float64, density::Float64, store_capacity::Float64, energy_capacity::Float64, uptake_rate::Float64, half_saturation::Float64, enzyme_exponent::Float64, growth_rate::Float64, catabolic_rate::Float64, growth_work::Float64, efficiency::Float64, basal_rate::Float64, neural_cost::Float64, starvation_rate::Float64, minimum_mass::Float64, division_mass::Float64, speed::Float64, motor_cost::Float64, junction_rate::Float64, repulsion::Float64, stiffness::Float64, break_strain::Float64, max_degree::Int64, response_time::Float64, adaptation_time::Float64, adaptation_strength::Float64, plasticity_rate::Float64, plasticity_decay::Float64, mutation::Float64, mutation_probability::Float64, developmental_partition::Float64, packing_barrier::Float64}"
+        },
+        "steps_per_sample": 8,
+        "measurements": [
+          {
+            "seconds": 0.453992879,
+            "bytes": 98701408,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.437792003,
+            "bytes": 98701408,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.437776778,
+            "bytes": 98701408,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.434419521,
+            "bytes": 98701408,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.409639448,
+            "bytes": 98701408,
+            "gc_seconds": 0.0
+          }
+        ],
+        "components": [
+          {
+            "stage": "validate_composition",
+            "result": {
+              "seconds": 6.77e-06,
+              "bytes": 928,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "check_dt/ResourcePool",
+            "result": {
+              "seconds": 0.001094859,
+              "bytes": 1232,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "check_dt/CellularEcology",
+            "result": {
+              "seconds": 0.002431496,
+              "bytes": 305872,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "advance/ResourcePool",
+            "result": {
+              "seconds": 0.01166391,
+              "bytes": 1232,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "advance/CellularEcology",
+            "result": {
+              "seconds": 0.036519217,
+              "bytes": 13568824,
+              "gc_seconds": 0.0
+            }
+          }
+        ],
+        "profile_steps": 0,
+        "continuation_steps": 100,
+        "continuation_end": {
+          "step": 100,
+          "time": 10.000000149011612,
+          "population": 4096,
+          "bonds": 2273,
+          "grid": [
+            512,
+            384,
+            1
+          ],
+          "processes": [
+            "ResourcePool",
+            "CellularEcology"
+          ],
+          "mechanical_substeps": 13,
+          "parameter_field_type": "NamedTuple",
+          "parameter_value_type": "@NamedTuple{exchange_radius::Float64, density::Float64, store_capacity::Float64, energy_capacity::Float64, uptake_rate::Float64, half_saturation::Float64, enzyme_exponent::Float64, growth_rate::Float64, catabolic_rate::Float64, growth_work::Float64, efficiency::Float64, basal_rate::Float64, neural_cost::Float64, starvation_rate::Float64, minimum_mass::Float64, division_mass::Float64, speed::Float64, motor_cost::Float64, junction_rate::Float64, repulsion::Float64, stiffness::Float64, break_strain::Float64, max_degree::Int64, response_time::Float64, adaptation_time::Float64, adaptation_strength::Float64, plasticity_rate::Float64, plasticity_decay::Float64, mutation::Float64, mutation_probability::Float64, developmental_partition::Float64, packing_barrier::Float64}"
+        },
+        "continuation_sha256": "7b62d352cf47d6edcebfea56d60b31a36c444f9d3443280399026c80e230b33b",
+        "allow_source_change": true,
+        "loaded_sources": {
+          "core.jl": "14e35f0ff39a67a55265d4d1046d470e6043140b663da00d5eda0e4179cc69b6",
+          "neural_workspace.jl": "ecdd45856bc0b3c61708de90814d1abb33bc1232a0f9ff5785b32b9bc39a9139",
+          "writing.jl": "78fba7cd46f03749bdc56547b7ce5622f7ba3ea42cc34801829345dae3975e05",
+          "Interior.jl": "97836dc9628d4b24cf54fe9696b9932fb3528cf613880013cd99a29cc6f63681",
+          "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+          "cellular.jl": "44cb6fc4ff7e94b6b0e7f06dafa294f7b9964bb5c6801ba0a3a3378763869d3a",
+          "cellular_contacts.jl": "64bdbe722556f77ec439485356fd08a6ee310c69b65bfe0b681d32d796fab3c6",
+          "resources.jl": "859f6e04b456ceee051fd83214b37ca18418af09126960997b7d62d83c2dcab0",
+          "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+          "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+          "dose_writer.jl": "b8d1b4013921a3c82388ee87a7ede00b97964a1894062f2a07339f2c6be197eb",
+          "cellular_transport.jl": "d734d0c7b9b305a7543ad994c18e5a649163f34b5450a6542e44e7258ce45f35",
+          "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+          "cellular_arena.jl": "2ef965717c99cd0c46a8acd9ceb7da26232201cb18547bd23712e989688429e2",
+          "experiments.jl": "e2e513ac4bfb0af90b5d1c870c5f403705eddd0606316ee2f86c5f5bc83eb527",
+          "metabolic_ecology.jl": "2f599a1d6ea0a5552a594113d57e238e4c6ff3c1fd8d74de5a51f83a77179bb1",
+          "mechanics.jl": "81001af879163392dde498534c9f099bcc79a16b8dac5104d527da7cc9f4fdac",
+          "neural_ecology.jl": "ed0496adb31ce4511f8bc0d5343ff843c410c39c51d30c165b3cf5eac1135df2",
+          "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+          "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+          "compartments.jl": "e7c55ce4e0f4a8548c078c9d160815b5eaeb846a3765aad89a875f166b5005e5",
+          "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+          "arena.jl": "8ea2c2628cd7af71ea3e5ebe6f05a9a2d6758191bb17386d51e530401e5a9696",
+          "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+          "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+          "implicit_phase.jl": "1fb617707591f89784b95171e0558065101b3d992f7b3eabd16a7bf01dca4ceb",
+          "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+          "recurrent_material.jl": "cc1d2b3a13e57c5fa8f2c85a9cb62fdde2d9193e6d202038e3a932ad9bf36d4d",
+          "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+          "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+          "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+        },
+        "throughput": null,
+        "median_step_seconds": 0.05472209725,
+        "bytes_per_step": 12337676.0,
+        "whole_step_speedup": 1.0962474373183861
+      }
+    },
+    "parity_status": "PASS all3 after100steps; onlyproposals zeroed on deserializedcopies, allotherfloatrawbits/values and fullmutablealiasgraph exact",
+    "canonical_comparisons": [
+      {
+        "baseline": "/othersys/tmp/intmat-cellular-profile2-20261015/initial1024/initial1024-after100.jls",
+        "candidate": "/othersys/tmp/intmat-cellular-profile2-20261015/candidate3-initial1024/candidate3-initial1024-after100.jls",
+        "exact": true,
+        "mismatch": null,
+        "compared_nodes": 3557873,
+        "compared_float_bits": 3458052,
+        "compared_arrays": 79,
+        "mutable_alias_pairs": 89,
+        "canonicalized_field": "CellularEcology.stencil.proposals",
+        "canonicalized_lengths": [
+          18787,
+          18787
+        ],
+        "canonicalization": "zero values on deserialized copies only; retain length/type/alias checks"
+      },
+      {
+        "baseline": "/othersys/tmp/intmat-cellular-profile2-20261015/birth1489/birth1489-after100.jls",
+        "candidate": "/othersys/tmp/intmat-cellular-profile2-20261015/candidate3-birth1489/candidate3-birth1489-after100.jls",
+        "exact": true,
+        "mismatch": null,
+        "compared_nodes": 4530428,
+        "compared_float_bits": 4389026,
+        "compared_arrays": 79,
+        "mutable_alias_pairs": 89,
+        "canonicalized_field": "CellularEcology.stencil.proposals",
+        "canonicalized_lengths": [
+          26878,
+          26878
+        ],
+        "canonicalization": "zero values on deserialized copies only; retain length/type/alias checks"
+      },
+      {
+        "baseline": "/othersys/tmp/intmat-cellular-profile2-20261015/initial4096/large4096-after100.jls",
+        "candidate": "/othersys/tmp/intmat-cellular-profile2-20261015/candidate3-initial4096/candidate3-initial4096-after100.jls",
+        "exact": true,
+        "mismatch": null,
+        "compared_nodes": 11450955,
+        "compared_float_bits": 11168639,
+        "compared_arrays": 79,
+        "mutable_alias_pairs": 89,
+        "canonicalized_field": "CellularEcology.stencil.proposals",
+        "canonicalized_lengths": [
+          51465,
+          51465
+        ],
+        "canonicalization": "zero values on deserialized copies only; retain length/type/alias checks"
+      }
+    ],
+    "comparison_helper": "scripts/compare_cellular_states.jl"
+  },
+  "candidate4": {
+    "description": "Candidate3 plus conservative cross-substep skin reuse with displacement-triggered reanchor",
+    "cases": {
+      "initial1024": {
+        "case": "candidate4-initial1024",
+        "checkpoint": "/othersys/tmp/intmat-cellular-profile2-20261015/candidate4-initial1024/input.jls",
+        "checkpoint_sha256": "bfe296ea5d8a9347124303c5c561337fcf206cb2a8c617242765d7de5fee7c09",
+        "derived_steps": 0,
+        "state": {
+          "step": 0,
+          "time": 0.0,
+          "population": 1024,
+          "bonds": 0,
+          "grid": [
+            256,
+            192,
+            1
+          ],
+          "processes": [
+            "ResourcePool",
+            "CellularEcology"
+          ],
+          "mechanical_substeps": 0,
+          "parameter_field_type": "NamedTuple",
+          "parameter_value_type": "@NamedTuple{exchange_radius::Float64, density::Float64, store_capacity::Float64, energy_capacity::Float64, uptake_rate::Float64, half_saturation::Float64, enzyme_exponent::Float64, growth_rate::Float64, catabolic_rate::Float64, growth_work::Float64, efficiency::Float64, basal_rate::Float64, neural_cost::Float64, starvation_rate::Float64, minimum_mass::Float64, division_mass::Float64, speed::Float64, motor_cost::Float64, junction_rate::Float64, repulsion::Float64, stiffness::Float64, break_strain::Float64, max_degree::Int64, response_time::Float64, adaptation_time::Float64, adaptation_strength::Float64, plasticity_rate::Float64, plasticity_decay::Float64, mutation::Float64, mutation_probability::Float64, developmental_partition::Float64, packing_barrier::Float64}"
+        },
+        "steps_per_sample": 8,
+        "measurements": [
+          {
+            "seconds": 0.088890995,
+            "bytes": 20885912,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.088712898,
+            "bytes": 20885912,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.089037208,
+            "bytes": 20885912,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.088853807,
+            "bytes": 20885912,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.08847524,
+            "bytes": 20885912,
+            "gc_seconds": 0.0
+          }
+        ],
+        "components": [
+          {
+            "stage": "validate_composition",
+            "result": {
+              "seconds": 6.554e-06,
+              "bytes": 928,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "check_dt/ResourcePool",
+            "result": {
+              "seconds": 0.000281414,
+              "bytes": 1232,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "check_dt/CellularEcology",
+            "result": {
+              "seconds": 0.000669962,
+              "bytes": 81296,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "advance/ResourcePool",
+            "result": {
+              "seconds": 0.002920918,
+              "bytes": 1232,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "advance/CellularEcology",
+            "result": {
+              "seconds": 0.00823507,
+              "bytes": 4068048,
+              "gc_seconds": 0.0
+            }
+          }
+        ],
+        "profile_steps": 0,
+        "continuation_steps": 100,
+        "continuation_end": {
+          "step": 100,
+          "time": 10.000000149011612,
+          "population": 1489,
+          "bonds": 1199,
+          "grid": [
+            256,
+            192,
+            1
+          ],
+          "processes": [
+            "ResourcePool",
+            "CellularEcology"
+          ],
+          "mechanical_substeps": 13,
+          "parameter_field_type": "NamedTuple",
+          "parameter_value_type": "@NamedTuple{exchange_radius::Float64, density::Float64, store_capacity::Float64, energy_capacity::Float64, uptake_rate::Float64, half_saturation::Float64, enzyme_exponent::Float64, growth_rate::Float64, catabolic_rate::Float64, growth_work::Float64, efficiency::Float64, basal_rate::Float64, neural_cost::Float64, starvation_rate::Float64, minimum_mass::Float64, division_mass::Float64, speed::Float64, motor_cost::Float64, junction_rate::Float64, repulsion::Float64, stiffness::Float64, break_strain::Float64, max_degree::Int64, response_time::Float64, adaptation_time::Float64, adaptation_strength::Float64, plasticity_rate::Float64, plasticity_decay::Float64, mutation::Float64, mutation_probability::Float64, developmental_partition::Float64, packing_barrier::Float64}"
+        },
+        "continuation_sha256": "724138b2e99b956afd52f1ec52b159c3b0851226909aabaf0f850e39c91c82b0",
+        "allow_source_change": true,
+        "loaded_sources": {
+          "core.jl": "14e35f0ff39a67a55265d4d1046d470e6043140b663da00d5eda0e4179cc69b6",
+          "neural_workspace.jl": "ecdd45856bc0b3c61708de90814d1abb33bc1232a0f9ff5785b32b9bc39a9139",
+          "writing.jl": "78fba7cd46f03749bdc56547b7ce5622f7ba3ea42cc34801829345dae3975e05",
+          "Interior.jl": "97836dc9628d4b24cf54fe9696b9932fb3528cf613880013cd99a29cc6f63681",
+          "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+          "cellular.jl": "44cb6fc4ff7e94b6b0e7f06dafa294f7b9964bb5c6801ba0a3a3378763869d3a",
+          "cellular_contacts.jl": "16a234cbd1a18bba85d4a69ddba00d8ca97f4baae01bf7e4b7687bce7a7c4828",
+          "resources.jl": "859f6e04b456ceee051fd83214b37ca18418af09126960997b7d62d83c2dcab0",
+          "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+          "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+          "dose_writer.jl": "b8d1b4013921a3c82388ee87a7ede00b97964a1894062f2a07339f2c6be197eb",
+          "cellular_transport.jl": "d734d0c7b9b305a7543ad994c18e5a649163f34b5450a6542e44e7258ce45f35",
+          "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+          "cellular_arena.jl": "2ef965717c99cd0c46a8acd9ceb7da26232201cb18547bd23712e989688429e2",
+          "experiments.jl": "e2e513ac4bfb0af90b5d1c870c5f403705eddd0606316ee2f86c5f5bc83eb527",
+          "metabolic_ecology.jl": "2f599a1d6ea0a5552a594113d57e238e4c6ff3c1fd8d74de5a51f83a77179bb1",
+          "mechanics.jl": "81001af879163392dde498534c9f099bcc79a16b8dac5104d527da7cc9f4fdac",
+          "neural_ecology.jl": "ed0496adb31ce4511f8bc0d5343ff843c410c39c51d30c165b3cf5eac1135df2",
+          "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+          "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+          "compartments.jl": "e7c55ce4e0f4a8548c078c9d160815b5eaeb846a3765aad89a875f166b5005e5",
+          "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+          "arena.jl": "8ea2c2628cd7af71ea3e5ebe6f05a9a2d6758191bb17386d51e530401e5a9696",
+          "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+          "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+          "implicit_phase.jl": "1fb617707591f89784b95171e0558065101b3d992f7b3eabd16a7bf01dca4ceb",
+          "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+          "recurrent_material.jl": "cc1d2b3a13e57c5fa8f2c85a9cb62fdde2d9193e6d202038e3a932ad9bf36d4d",
+          "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+          "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+          "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+        },
+        "throughput": null,
+        "median_step_seconds": 0.011106725875,
+        "bytes_per_step": 2610739.0,
+        "whole_step_speedup": 1.1920641171852095,
+        "allocation_reduction_fraction": 0.38879770271716063
+      },
+      "birth1489": {
+        "case": "candidate4-birth1489",
+        "checkpoint": "/othersys/tmp/intmat-cellular-profile2-20261015/candidate4-birth1489/input.jls",
+        "checkpoint_sha256": "724138b2e99b956afd52f1ec52b159c3b0851226909aabaf0f850e39c91c82b0",
+        "derived_steps": 0,
+        "state": {
+          "step": 100,
+          "time": 10.000000149011612,
+          "population": 1489,
+          "bonds": 1199,
+          "grid": [
+            256,
+            192,
+            1
+          ],
+          "processes": [
+            "ResourcePool",
+            "CellularEcology"
+          ],
+          "mechanical_substeps": 13,
+          "parameter_field_type": "NamedTuple",
+          "parameter_value_type": "@NamedTuple{exchange_radius::Float64, density::Float64, store_capacity::Float64, energy_capacity::Float64, uptake_rate::Float64, half_saturation::Float64, enzyme_exponent::Float64, growth_rate::Float64, catabolic_rate::Float64, growth_work::Float64, efficiency::Float64, basal_rate::Float64, neural_cost::Float64, starvation_rate::Float64, minimum_mass::Float64, division_mass::Float64, speed::Float64, motor_cost::Float64, junction_rate::Float64, repulsion::Float64, stiffness::Float64, break_strain::Float64, max_degree::Int64, response_time::Float64, adaptation_time::Float64, adaptation_strength::Float64, plasticity_rate::Float64, plasticity_decay::Float64, mutation::Float64, mutation_probability::Float64, developmental_partition::Float64, packing_barrier::Float64}"
+        },
+        "steps_per_sample": 8,
+        "measurements": [
+          {
+            "seconds": 0.213779775,
+            "bytes": 127319288,
+            "gc_seconds": 0.00231045
+          },
+          {
+            "seconds": 0.2057375,
+            "bytes": 127319288,
+            "gc_seconds": 0.00318939
+          },
+          {
+            "seconds": 0.204849837,
+            "bytes": 127319288,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.193413108,
+            "bytes": 127319288,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.186356718,
+            "bytes": 127319288,
+            "gc_seconds": 0.002597329
+          }
+        ],
+        "components": [
+          {
+            "stage": "validate_composition",
+            "result": {
+              "seconds": 4.055e-06,
+              "bytes": 928,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "check_dt/ResourcePool",
+            "result": {
+              "seconds": 0.000282203,
+              "bytes": 1232,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "check_dt/CellularEcology",
+            "result": {
+              "seconds": 0.000937211,
+              "bytes": 105976,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "advance/ResourcePool",
+            "result": {
+              "seconds": 0.003193383,
+              "bytes": 1232,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "advance/CellularEcology",
+            "result": {
+              "seconds": 0.018286583,
+              "bytes": 17777184,
+              "gc_seconds": 0.0
+            }
+          }
+        ],
+        "profile_steps": 0,
+        "continuation_steps": 100,
+        "continuation_end": {
+          "step": 200,
+          "time": 20.000000298023224,
+          "population": 2139,
+          "bonds": 2737,
+          "grid": [
+            256,
+            192,
+            1
+          ],
+          "processes": [
+            "ResourcePool",
+            "CellularEcology"
+          ],
+          "mechanical_substeps": 15,
+          "parameter_field_type": "NamedTuple",
+          "parameter_value_type": "@NamedTuple{exchange_radius::Float64, density::Float64, store_capacity::Float64, energy_capacity::Float64, uptake_rate::Float64, half_saturation::Float64, enzyme_exponent::Float64, growth_rate::Float64, catabolic_rate::Float64, growth_work::Float64, efficiency::Float64, basal_rate::Float64, neural_cost::Float64, starvation_rate::Float64, minimum_mass::Float64, division_mass::Float64, speed::Float64, motor_cost::Float64, junction_rate::Float64, repulsion::Float64, stiffness::Float64, break_strain::Float64, max_degree::Int64, response_time::Float64, adaptation_time::Float64, adaptation_strength::Float64, plasticity_rate::Float64, plasticity_decay::Float64, mutation::Float64, mutation_probability::Float64, developmental_partition::Float64, packing_barrier::Float64}"
+        },
+        "continuation_sha256": "f3b1c35fe35040ed1969d841ca3fc534d811f28bc09ca263187b6f28fa265aa5",
+        "allow_source_change": true,
+        "loaded_sources": {
+          "core.jl": "14e35f0ff39a67a55265d4d1046d470e6043140b663da00d5eda0e4179cc69b6",
+          "neural_workspace.jl": "ecdd45856bc0b3c61708de90814d1abb33bc1232a0f9ff5785b32b9bc39a9139",
+          "writing.jl": "78fba7cd46f03749bdc56547b7ce5622f7ba3ea42cc34801829345dae3975e05",
+          "Interior.jl": "97836dc9628d4b24cf54fe9696b9932fb3528cf613880013cd99a29cc6f63681",
+          "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+          "cellular.jl": "44cb6fc4ff7e94b6b0e7f06dafa294f7b9964bb5c6801ba0a3a3378763869d3a",
+          "cellular_contacts.jl": "16a234cbd1a18bba85d4a69ddba00d8ca97f4baae01bf7e4b7687bce7a7c4828",
+          "resources.jl": "859f6e04b456ceee051fd83214b37ca18418af09126960997b7d62d83c2dcab0",
+          "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+          "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+          "dose_writer.jl": "b8d1b4013921a3c82388ee87a7ede00b97964a1894062f2a07339f2c6be197eb",
+          "cellular_transport.jl": "d734d0c7b9b305a7543ad994c18e5a649163f34b5450a6542e44e7258ce45f35",
+          "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+          "cellular_arena.jl": "2ef965717c99cd0c46a8acd9ceb7da26232201cb18547bd23712e989688429e2",
+          "experiments.jl": "e2e513ac4bfb0af90b5d1c870c5f403705eddd0606316ee2f86c5f5bc83eb527",
+          "metabolic_ecology.jl": "2f599a1d6ea0a5552a594113d57e238e4c6ff3c1fd8d74de5a51f83a77179bb1",
+          "mechanics.jl": "81001af879163392dde498534c9f099bcc79a16b8dac5104d527da7cc9f4fdac",
+          "neural_ecology.jl": "ed0496adb31ce4511f8bc0d5343ff843c410c39c51d30c165b3cf5eac1135df2",
+          "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+          "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+          "compartments.jl": "e7c55ce4e0f4a8548c078c9d160815b5eaeb846a3765aad89a875f166b5005e5",
+          "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+          "arena.jl": "8ea2c2628cd7af71ea3e5ebe6f05a9a2d6758191bb17386d51e530401e5a9696",
+          "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+          "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+          "implicit_phase.jl": "1fb617707591f89784b95171e0558065101b3d992f7b3eabd16a7bf01dca4ceb",
+          "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+          "recurrent_material.jl": "cc1d2b3a13e57c5fa8f2c85a9cb62fdde2d9193e6d202038e3a932ad9bf36d4d",
+          "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+          "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+          "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+        },
+        "throughput": null,
+        "median_step_seconds": 0.025606229625,
+        "bytes_per_step": 15914911.0,
+        "whole_step_speedup": 1.0763218132314158,
+        "allocation_reduction_fraction": 0.23446436184395114
+      },
+      "large4096": {
+        "case": "candidate4-initial4096",
+        "checkpoint": "/othersys/tmp/intmat-cellular-profile2-20261015/candidate4-initial4096/input.jls",
+        "checkpoint_sha256": "ffc7c8d745ea86ef7def01e20da1b4ec14f16f26fcb1a9f3975eb8a20ba187dd",
+        "derived_steps": 0,
+        "state": {
+          "step": 0,
+          "time": 0.0,
+          "population": 4096,
+          "bonds": 0,
+          "grid": [
+            512,
+            384,
+            1
+          ],
+          "processes": [
+            "ResourcePool",
+            "CellularEcology"
+          ],
+          "mechanical_substeps": 0,
+          "parameter_field_type": "NamedTuple",
+          "parameter_value_type": "@NamedTuple{exchange_radius::Float64, density::Float64, store_capacity::Float64, energy_capacity::Float64, uptake_rate::Float64, half_saturation::Float64, enzyme_exponent::Float64, growth_rate::Float64, catabolic_rate::Float64, growth_work::Float64, efficiency::Float64, basal_rate::Float64, neural_cost::Float64, starvation_rate::Float64, minimum_mass::Float64, division_mass::Float64, speed::Float64, motor_cost::Float64, junction_rate::Float64, repulsion::Float64, stiffness::Float64, break_strain::Float64, max_degree::Int64, response_time::Float64, adaptation_time::Float64, adaptation_strength::Float64, plasticity_rate::Float64, plasticity_decay::Float64, mutation::Float64, mutation_probability::Float64, developmental_partition::Float64, packing_barrier::Float64}"
+        },
+        "steps_per_sample": 8,
+        "measurements": [
+          {
+            "seconds": 0.390603005,
+            "bytes": 83242968,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.374312024,
+            "bytes": 83242968,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.378506868,
+            "bytes": 83242968,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.376512745,
+            "bytes": 83242968,
+            "gc_seconds": 0.0
+          },
+          {
+            "seconds": 0.375132579,
+            "bytes": 83242968,
+            "gc_seconds": 0.0
+          }
+        ],
+        "components": [
+          {
+            "stage": "validate_composition",
+            "result": {
+              "seconds": 5.681e-06,
+              "bytes": 928,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "check_dt/ResourcePool",
+            "result": {
+              "seconds": 0.001106228,
+              "bytes": 1232,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "check_dt/CellularEcology",
+            "result": {
+              "seconds": 0.002441583,
+              "bytes": 305872,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "advance/ResourcePool",
+            "result": {
+              "seconds": 0.011629914,
+              "bytes": 1232,
+              "gc_seconds": 0.0
+            }
+          },
+          {
+            "stage": "advance/CellularEcology",
+            "result": {
+              "seconds": 0.036475985,
+              "bytes": 12650784,
+              "gc_seconds": 0.0
+            }
+          }
+        ],
+        "profile_steps": 0,
+        "continuation_steps": 100,
+        "continuation_end": {
+          "step": 100,
+          "time": 10.000000149011612,
+          "population": 4096,
+          "bonds": 2273,
+          "grid": [
+            512,
+            384,
+            1
+          ],
+          "processes": [
+            "ResourcePool",
+            "CellularEcology"
+          ],
+          "mechanical_substeps": 13,
+          "parameter_field_type": "NamedTuple",
+          "parameter_value_type": "@NamedTuple{exchange_radius::Float64, density::Float64, store_capacity::Float64, energy_capacity::Float64, uptake_rate::Float64, half_saturation::Float64, enzyme_exponent::Float64, growth_rate::Float64, catabolic_rate::Float64, growth_work::Float64, efficiency::Float64, basal_rate::Float64, neural_cost::Float64, starvation_rate::Float64, minimum_mass::Float64, division_mass::Float64, speed::Float64, motor_cost::Float64, junction_rate::Float64, repulsion::Float64, stiffness::Float64, break_strain::Float64, max_degree::Int64, response_time::Float64, adaptation_time::Float64, adaptation_strength::Float64, plasticity_rate::Float64, plasticity_decay::Float64, mutation::Float64, mutation_probability::Float64, developmental_partition::Float64, packing_barrier::Float64}"
+        },
+        "continuation_sha256": "7b62d352cf47d6edcebfea56d60b31a36c444f9d3443280399026c80e230b33b",
+        "allow_source_change": true,
+        "loaded_sources": {
+          "core.jl": "14e35f0ff39a67a55265d4d1046d470e6043140b663da00d5eda0e4179cc69b6",
+          "neural_workspace.jl": "ecdd45856bc0b3c61708de90814d1abb33bc1232a0f9ff5785b32b9bc39a9139",
+          "writing.jl": "78fba7cd46f03749bdc56547b7ce5622f7ba3ea42cc34801829345dae3975e05",
+          "Interior.jl": "97836dc9628d4b24cf54fe9696b9932fb3528cf613880013cd99a29cc6f63681",
+          "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+          "cellular.jl": "44cb6fc4ff7e94b6b0e7f06dafa294f7b9964bb5c6801ba0a3a3378763869d3a",
+          "cellular_contacts.jl": "16a234cbd1a18bba85d4a69ddba00d8ca97f4baae01bf7e4b7687bce7a7c4828",
+          "resources.jl": "859f6e04b456ceee051fd83214b37ca18418af09126960997b7d62d83c2dcab0",
+          "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+          "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+          "dose_writer.jl": "b8d1b4013921a3c82388ee87a7ede00b97964a1894062f2a07339f2c6be197eb",
+          "cellular_transport.jl": "d734d0c7b9b305a7543ad994c18e5a649163f34b5450a6542e44e7258ce45f35",
+          "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+          "cellular_arena.jl": "2ef965717c99cd0c46a8acd9ceb7da26232201cb18547bd23712e989688429e2",
+          "experiments.jl": "e2e513ac4bfb0af90b5d1c870c5f403705eddd0606316ee2f86c5f5bc83eb527",
+          "metabolic_ecology.jl": "2f599a1d6ea0a5552a594113d57e238e4c6ff3c1fd8d74de5a51f83a77179bb1",
+          "mechanics.jl": "81001af879163392dde498534c9f099bcc79a16b8dac5104d527da7cc9f4fdac",
+          "neural_ecology.jl": "ed0496adb31ce4511f8bc0d5343ff843c410c39c51d30c165b3cf5eac1135df2",
+          "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+          "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+          "compartments.jl": "e7c55ce4e0f4a8548c078c9d160815b5eaeb846a3765aad89a875f166b5005e5",
+          "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+          "arena.jl": "8ea2c2628cd7af71ea3e5ebe6f05a9a2d6758191bb17386d51e530401e5a9696",
+          "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+          "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+          "implicit_phase.jl": "1fb617707591f89784b95171e0558065101b3d992f7b3eabd16a7bf01dca4ceb",
+          "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+          "recurrent_material.jl": "cc1d2b3a13e57c5fa8f2c85a9cb62fdde2d9193e6d202038e3a932ad9bf36d4d",
+          "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+          "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+          "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+        },
+        "throughput": null,
+        "median_step_seconds": 0.047064093125,
+        "bytes_per_step": 10405371.0,
+        "whole_step_speedup": 1.274622645244054,
+        "allocation_reduction_fraction": 0.4314197862465978
+      }
+    },
+    "parity_status": "PASS all3 after100steps; onlyproposals zeroed on deserializedcopies, allotherfloatrawbits/values and fullmutablealiasgraph exact",
+    "canonical_comparisons": [
+      {
+        "baseline": "/othersys/tmp/intmat-cellular-profile2-20261015/initial1024/initial1024-after100.jls",
+        "candidate": "/othersys/tmp/intmat-cellular-profile2-20261015/candidate4-initial1024/candidate4-initial1024-after100.jls",
+        "exact": true,
+        "mismatch": null,
+        "compared_nodes": 3557873,
+        "compared_float_bits": 3458052,
+        "compared_arrays": 79,
+        "mutable_alias_pairs": 89,
+        "canonicalized_field": "CellularEcology.stencil.proposals",
+        "canonicalized_lengths": [
+          18787,
+          18787
+        ],
+        "canonicalization": "zero values on deserialized copies only; retain length/type/alias checks"
+      },
+      {
+        "baseline": "/othersys/tmp/intmat-cellular-profile2-20261015/birth1489/birth1489-after100.jls",
+        "candidate": "/othersys/tmp/intmat-cellular-profile2-20261015/candidate4-birth1489/candidate4-birth1489-after100.jls",
+        "exact": true,
+        "mismatch": null,
+        "compared_nodes": 4530428,
+        "compared_float_bits": 4389026,
+        "compared_arrays": 79,
+        "mutable_alias_pairs": 89,
+        "canonicalized_field": "CellularEcology.stencil.proposals",
+        "canonicalized_lengths": [
+          26878,
+          26878
+        ],
+        "canonicalization": "zero values on deserialized copies only; retain length/type/alias checks"
+      },
+      {
+        "baseline": "/othersys/tmp/intmat-cellular-profile2-20261015/initial4096/large4096-after100.jls",
+        "candidate": "/othersys/tmp/intmat-cellular-profile2-20261015/candidate4-initial4096/candidate4-initial4096-after100.jls",
+        "exact": true,
+        "mismatch": null,
+        "compared_nodes": 11450955,
+        "compared_float_bits": 11168639,
+        "compared_arrays": 79,
+        "mutable_alias_pairs": 89,
+        "canonicalized_field": "CellularEcology.stencil.proposals",
+        "canonicalized_lengths": [
+          51465,
+          51465
+        ],
+        "canonicalization": "zero values on deserialized copies only; retain length/type/alias checks"
+      }
+    ],
+    "comparison_helper": "scripts/compare_cellular_states.jl"
+  },
+  "final_candidate": "candidate4",
+  "freeze_status": "completed; no further algorithm versions or benchmark jobs"
+}

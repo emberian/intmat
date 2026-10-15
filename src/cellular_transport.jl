@@ -89,6 +89,9 @@ function rebuild_cell_stencil!(st::CellStencil, positions::AbstractMatrix)
         push!(st.offsets,length(st.sites)+1)
     end
     resize!(st.proposals,length(st.sites))
+    # Allocation overwrites this scratch before reading it. Initialize it here
+    # so a checkpoint never serializes allocator-dependent newly grown slots.
+    fill!(st.proposals,0.)
     st
 end
 

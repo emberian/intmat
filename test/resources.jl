@@ -50,3 +50,19 @@
     @test resource_mass(blocked)==1
     @test hasproperty(Interior.record_process_fields(blocked),:statistics)
 end
+
+@testset "Resource scalar ledgers preserve aliased storage" begin
+    w=World(Grid(2,2;extent=(2,2,1)))
+    p=ResourcePool(w;initial=(1,1,0),diffusion=(0,0,0),
+        source_rates=(.125,.125,0),sink_rates=(.0625,.0625,0),
+        source_budgets=(100,100,0),sink_budgets=(100,100,0))
+    aliased=deepcopy(p);aliased.removed=aliased.supplied
+    @test Interior._resource_ledgers_independent(p)
+    @test !Interior._resource_ledgers_independent(aliased)
+    advance!(w,p,1f0);advance!(w,aliased,1f0)
+    @test isequal(p.fields,aliased.fields)
+    @test aliased.supplied===aliased.removed
+    @test aliased.supplied==p.supplied+p.removed==[.75,.75,0.]
+    @test isequal(p.source_remaining,aliased.source_remaining)
+    @test isequal(p.sink_remaining,aliased.sink_remaining)
+end

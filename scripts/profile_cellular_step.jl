@@ -47,7 +47,7 @@ function sustained_run!(a,seconds)
       artificial_sleep=false)
 end
 function profile_case(name,path,out;advance=0,allow_source_change=false,quick=false,sustained=false)
-    base=restore_arena(path;allow_source_change)
+    base="--raw-arena" in ARGS ? open(deserialize,path) : restore_arena(path;allow_source_change)
     for _ in 1:advance;arena_step!(base);end
     before=state_summary(base)
     println(JSON3.write((;case=name,state=before,checkpoint=path)));flush(stdout)
@@ -80,6 +80,21 @@ function profile_case(name,path,out;advance=0,allow_source_change=false,quick=fa
             end
         end
     end
+    if "--allocations" in ARGS
+        a=deepcopy(base);GC.gc();Profile.Allocs.clear()
+        Profile.Allocs.@profile sample_rate=0.01 for _ in 1:8;arena_step!(a);end
+        counts=Dict{String,Tuple{Int,Int}}()
+        for alloc in Profile.Allocs.fetch().allocs
+            frame=findfirst(f->occursin("/src/",String(f.file)) && occursin("cellular",String(f.file)) || occursin("resources.jl",String(f.file)),alloc.stacktrace)
+            key=frame===nothing ? "other" : string(alloc.stacktrace[frame])
+            bytes,n=get(counts,key,(0,0));counts[key]=(bytes+alloc.size,n+1)
+        end
+        open(joinpath(out,name*"-allocations.txt"),"w") do io
+            for (key,(bytes,n)) in sort!(collect(counts);by=x->last(x)[1],rev=true)
+                println(io,bytes," sampled bytes / ",n," samples: ",key)
+            end
+        end
+    end
     # Separate, identical same-state continuation for baseline/candidate parity.
     a=deepcopy(base)
     for _ in 1:100;arena_step!(a);end
@@ -87,6 +102,7 @@ function profile_case(name,path,out;advance=0,allow_source_change=false,quick=fa
     open(io->serialize(io,a),statefile,"w")
     throughput=sustained ? sustained_run!(deepcopy(base),3.0) : nothing
     result=(;case=name,checkpoint=path,checkpoint_sha256=bytes2hex(sha256(read(path))),
+        checkpoint_format="--raw-arena" in ARGS ? "bare-serialized-arena" : "arena-checkpoint-envelope",
         derived_steps=advance,state=before,steps_per_sample=8,measurements,components,
         profile_steps=quick ? 0 : 100,continuation_steps=100,continuation_end=state_summary(a),
         continuation_sha256=bytes2hex(sha256(read(statefile))),allow_source_change,
@@ -95,25 +111,28 @@ function profile_case(name,path,out;advance=0,allow_source_change=false,quick=fa
     println(JSON3.write(result));flush(stdout)
 end
 
-1<=length(ARGS)<=5 || error("usage: profile_cellular_step.jl PROFILE_DIRECTORY [--quick] [--allow-source-change] [--sustain] [--large]")
+1<=length(ARGS)<=9 || error("usage: profile_cellular_step.jl PROFILE_DIRECTORY [--quick] [--allow-source-change] [--sustain] [--large|--scale4096|--checkpoint] [--allocations] [--raw-arena]")
 out=abspath(first(ARGS));mkpath(out)
 flags=ARGS[2:end]
-all(x->x in ("--quick","--allow-source-change","--sustain","--large"),flags) || error("unknown profiling flag")
+all(x->x in ("--quick","--allow-source-change","--sustain","--large","--checkpoint","--allocations","--scale4096","--raw-arena"),flags) || error("unknown profiling flag")
 Profile.init(n=5_000_000,delay=0.0005)
-cases=if "--large" in flags
-    path=joinpath(out,"large1024.jls")
+cases=if "--checkpoint" in flags
+    ((basename(out),"input.jls",0),)
+elseif "--large" in flags || "--scale4096" in flags
+    large="--scale4096" in flags ? "large4096" : "large1024"
+    path=joinpath(out,large*".jls")
     if !isfile(path)
         source=dirname(dirname(pathof(Interior)))
         config=TOML.parsefile(joinpath(source,"experiments/arena/cellular-soak-broad.toml"))
-        config["grid"]["shape"]=[256,192,1]
-        config["grid"]["extent"]=[128.,96.,1.]
-        config["cellular"]["population"]=1024
+        config["grid"]["shape"]="--scale4096" in flags ? [512,384,1] : [256,192,1]
+        config["grid"]["extent"]="--scale4096" in flags ? [256.,192.,1.] : [128.,96.,1.]
+        config["cellular"]["population"]="--scale4096" in flags ? 4096 : 1024
         # One broad stripe remains one stripe over the larger physical domain.
         config["resources"]["niche_waves"]=[1,0,0]
         checkpoint!(build_arena(config),path)
-        open(io->JSON3.write(io,config),joinpath(out,"large1024-config.json"),"w")
+        open(io->JSON3.write(io,config),joinpath(out,large*"-config.json"),"w")
     end
-    (("large1024","large1024.jls",0),)
+    ((large,large*".jls",0),)
 else
     (("mature-sparse","mature-sparse.jls",0),
                           ("mature-bonded","mature-bonded.jls",0),

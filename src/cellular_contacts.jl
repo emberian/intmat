@@ -117,9 +117,16 @@ end
 end
 
 function _cellular_energy_forces(grid, ids, x, radii, bonds, index, repulsion, stiffness, ::Val{F}, pairs) where F
+    f=F ? Matrix{Float64}(undef,size(x)) : nothing
+    rows=F ? Vector{Float64}(undef,length(ids)) : Float64[]
+    _cellular_energy_forces!(grid,ids,x,radii,bonds,index,repulsion,stiffness,Val(F),pairs,f,rows)
+end
+
+# Buffers live for one mechanics call; they are not persistent simulation state.
+function _cellular_energy_forces!(grid,ids,x,radii,bonds,index,repulsion,stiffness,::Val{F},pairs,f,rows) where F
     forces=F
-    energy = 0.; f = forces ? zeros(Float64,size(x)) : nothing
-    rows = forces ? zeros(Float64,length(ids)) : Float64[]; overlaps = 0
+    F && (fill!(f,0.);fill!(rows,0.))
+    energy=0.;overlaps=0
     candidates=pairs===nothing ? cellular_pairs(grid,x,radii) : pairs
     @inbounds for (i,j) in candidates
         delta = _cellular_delta(grid,x,i,j); distance = _cellular_length(delta)
@@ -211,10 +218,32 @@ backtracked until potential does not increase. Displacements are never clipped.
 mechanical model, not a claim of exact chemical/thermal conservation. Soft
 contacts can retain a small overlap under sustained forcing or crowding.
 """
+# The candidate skin allows each endpoint to move by 2travel_limit. Reanchor
+# already at travel_limit, leaving a full factor of two before completeness
+# could fail. This test only controls work reuse, never force arithmetic.
+function _cellular_inside_pair_skin(grid,x,origin,limit)
+    limit2=limit^2;nd=_cellular_ndim(grid)
+    @inbounds for i in axes(x,2)
+        distance2=0.
+        for d in 1:nd
+            L=Float64(grid.extent[d])
+            delta=_cellular_mod_period(x[d,i]-origin[d,i]+L/2,L)-L/2
+            distance2+=delta^2
+        end
+        distance2<=limit2 || return false
+    end
+    true
+end
+function _cellular_reanchor_pairs!(pairs,origin,grid,x,radii,range)
+    fresh=cellular_pairs(grid,x,radii;range)
+    empty!(pairs);append!(pairs,fresh);copyto!(origin,x)
+    nothing
+end
+
 function cellular_mechanics!(grid,ids,positions,radii,bonds::CellBonds,dt::Real;
     adhesion=ones(length(ids)),motility=zeros(3,length(ids)),repulsion=10.,stiffness=2.,
     break_strain=.75,max_degree::Integer=6,adhesion_threshold=.5,bond_range=0.,max_substeps::Integer=10000,
-    energy=nothing,motor_cost=1.)
+    energy=nothing,motor_cost=1.,reuse_candidates::Bool=true)
     _cellular_validate_geometry(grid,positions,radii); _cellular_validate_bonds(bonds)
     n=length(ids); nd=_cellular_ndim(grid)
     length(radii)==length(adhesion)==n && size(motility)==(3,n) || throw(DimensionMismatch("cell action dimensions differ"))
@@ -237,14 +266,23 @@ function cellular_mechanics!(grid,ids,positions,radii,bonds::CellBonds,dt::Real;
     broken+=refresh.broken;formed+=refresh.formed;topology_energy_loss+=refresh.loss
     remaining=Float64(dt); travel_limit=n==0 ? Inf : .2minimum(radii)
     motors=Float64.(motility); nd==2 && (motors[3,:].=0.)
+    # Reuse trial state across adaptive substeps and rejected budget attempts.
+    budget_motors=similar(motors);velocity=similar(motors)
+    motor_x=similar(x);trial=similar(x);motor_spend=zeros(n);weights=zeros(n)
+    state_forces=similar(x);state_rows=zeros(n)
+    motor_forces=similar(x);motor_rows=zeros(n)
+    candidates=Tuple{Int,Int}[];pair_origin=copy(x);pairs_ready=false
     while remaining>0 && n>0
         substeps < max_substeps || throw(ArgumentError("mechanics exceeded max_substeps; reduce dt or forcing"))
         # Every accepted motor and passive displacement is <= travel_limit.
         # A pair can close by at most 4travel_limit across both split moves.
         # This physical skin reuses one broadphase for all trial evaluations.
-        candidates=cellular_pairs(grid,x,radii;range=4travel_limit+bond_range)
-        state=_cellular_energy_forces(grid,ids,x,radii,bonds,index,repulsion,stiffness,Val(true),candidates)
-        budget_motors=copy(motors)
+        if !reuse_candidates || !pairs_ready || !_cellular_inside_pair_skin(grid,x,pair_origin,travel_limit)
+            _cellular_reanchor_pairs!(candidates,pair_origin,grid,x,radii,4travel_limit+bond_range)
+            pairs_ready=true
+        end
+        state=_cellular_energy_forces!(grid,ids,x,radii,bonds,index,repulsion,stiffness,Val(true),candidates,state_forces,state_rows)
+        copyto!(budget_motors,motors)
         if energy !== nothing
             for i in 1:n
                 drag=motor_cost*remaining*sum(abs2,view(budget_motors,:,i))
@@ -260,28 +298,31 @@ function cellular_mechanics!(grid,ids,positions,radii,bonds::CellBonds,dt::Real;
         h=min(remaining,speed>0 ? travel_limit/speed : Inf,rate>0 ? .45/rate : Inf)
         accepted=false
         for attempt in 1:60
-            velocity=copy(budget_motors)
+            copyto!(velocity,budget_motors)
             if energy !== nothing
                 for i in 1:n
                     drag=motor_cost*h*sum(abs2,view(velocity,:,i))
                     drag>energy[i] && (velocity[:,i].*=sqrt(energy[i]/drag))
                 end
             end
-            motor_spend=zeros(n); motor_x=copy(x); motor_state=state
+            motor_state=state
             funded=false
             for budget_attempt in 1:80
-                motor_x=x .+ h.*velocity
+                @. motor_x=x+h*velocity
                 for i in 1:n,d in 1:nd;motor_x[d,i]=mod(motor_x[d,i],Float64(grid.extent[d]));end
-                motor_state=_cellular_energy_forces(grid,ids,motor_x,radii,bonds,index,repulsion,stiffness,Val(true),candidates)
-                weights=let velocity=velocity
-                    [sum(abs2,view(velocity,:,i)) for i in 1:n]
+                if reuse_candidates && !_cellular_inside_pair_skin(grid,motor_x,pair_origin,travel_limit)
+                    _cellular_reanchor_pairs!(candidates,pair_origin,grid,x,radii,4travel_limit+bond_range)
+                end
+                motor_state=_cellular_energy_forces!(grid,ids,motor_x,radii,bonds,index,repulsion,stiffness,Val(true),candidates,motor_forces,motor_rows)
+                for i in 1:n
+                    weights[i]=sum(abs2,view(velocity,:,i))
                 end
                 weight_sum=sum(weights)
                 potential_cost=max(0.,motor_state.energy-state.energy)
                 for i in 1:n
                     motor_spend[i]=motor_cost*h*weights[i]+(weight_sum>0 ? potential_cost*weights[i]/weight_sum : 0.)
                 end
-                if energy === nothing || all(motor_spend .<= energy)
+                if energy === nothing || all(i->motor_spend[i]<=energy[i],eachindex(motor_spend))
                     funded=true;break
                 end
                 for i in 1:n
@@ -289,14 +330,19 @@ function cellular_mechanics!(grid,ids,positions,radii,bonds::CellBonds,dt::Real;
                 end
             end
             funded || throw(ArgumentError("motor budget could not resolve displacement"))
-            trial=motor_x .+ h.*motor_state.forces
+            @. trial=motor_x+h*motor_state.forces
             for i in 1:n,d in 1:nd;trial[d,i]=mod(trial[d,i],Float64(grid.extent[d]));end
             passive_travel=let motor_state=motor_state
                 h*maximum(sqrt(sum(abs2,view(motor_state.forces,:,i))) for i in 1:n)
             end
             # Reject out-of-skin moves before evaluating the cached pair list.
-            trial_energy=passive_travel<=travel_limit ?
-                _cellular_energy_forces(grid,ids,trial,radii,bonds,index,repulsion,stiffness,Val(false),candidates).energy : Inf
+            trial_energy=Inf
+            if passive_travel<=travel_limit
+                if reuse_candidates && !_cellular_inside_pair_skin(grid,trial,pair_origin,travel_limit)
+                    _cellular_reanchor_pairs!(candidates,pair_origin,grid,x,radii,4travel_limit+bond_range)
+                end
+                trial_energy=_cellular_energy_forces(grid,ids,trial,radii,bonds,index,repulsion,stiffness,Val(false),candidates).energy
+            end
             if trial_energy<=motor_state.energy && passive_travel<=travel_limit
                 motor_potential_work+=motor_state.energy-state.energy
                 relaxation_energy_loss+=motor_state.energy-trial_energy
@@ -306,7 +352,7 @@ function cellular_mechanics!(grid,ids,positions,radii,bonds::CellBonds,dt::Real;
                     energy !== nothing && (energy[i]-=motor_spend[i])
                 end
                 motor_drag_loss+=motor_cost*h*sum(abs2,velocity)
-                x=trial; accepted=true;break
+                copyto!(x,trial); accepted=true;break
             end
             h/=2
         end

@@ -153,3 +153,28 @@ end
     @test all(>=(0),amounts)
     @test sum(Float64,amounts)≈before atol=1e-14
 end
+
+@testset "Cross-substep skin reuse matches rebuilt contacts" begin
+    rng=MersenneTwister(918)
+    for nz in (1,6), funded in (false,true)
+        grid=Grid(12,12,nz;extent=(2,2,2));ids=randperm(rng,16)
+        x=2rand(rng,3,16);nz==1 && (x[3,:].=0.)
+        # Include a closing pair across the periodic seam.
+        x[:,1].=[.01,.7,nz==1 ? 0. : .6];x[:,2].=[1.99,.7,nz==1 ? 0. : .6]
+        y=copy(x);radii=.08 .+ .04rand(rng,16)
+        bonds=CellBonds();reference=CellBonds();adhesion=ones(16)
+        energy=funded ? fill(.04,16) : nothing
+        reference_energy=deepcopy(energy)
+        motility=randn(rng,3,16);nz==1 && (motility[3,:].=0.)
+        for _ in 1:8
+            a=cellular_mechanics!(grid,ids,x,radii,bonds,.04;motility,adhesion,energy,bond_range=.03)
+            b=cellular_mechanics!(grid,ids,y,radii,reference,.04;motility,adhesion,
+                energy=reference_energy,bond_range=.03,reuse_candidates=false)
+            @test isequal(x,y)
+            @test isequal(energy,reference_energy)
+            @test isequal(bonds.endpoints,reference.endpoints)
+            @test isequal(bonds.rest_lengths,reference.rest_lengths)
+            @test isequal(a,b)
+        end
+    end
+end

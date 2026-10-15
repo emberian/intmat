@@ -93,7 +93,19 @@
     sites=st.sites; weights=st.weights
     rebuild(st,reshape([1.,1.,0.],3,1))
     @test st.sites===sites && st.weights===weights
+    @test all(iszero,st.proposals)
     @test size(sample(pool,st))==(3,1)
+    fill!(st.proposals,NaN)
+    rebuild(st,hcat(reshape([1.,1.,0.],3,1),reshape([1.5,1.5,0.],3,1)))
+    @test length(st.proposals)==length(st.sites) && all(iszero,st.proposals)
+    # Proposals are write-before-read scratch, not an input to competition.
+    cleanpool=deepcopy(pool);poisonedpool=deepcopy(pool)
+    cleanst=deepcopy(st);poisonedst=deepcopy(st)
+    fill!(cleanst.proposals,0.);fill!(poisonedst.proposals,NaN)
+    requests=fill(.001,3,length(st.offsets)-1)
+    @test isequal(allocate(cleanpool,cleanst,requests),allocate(poisonedpool,poisonedst,requests))
+    @test isequal(cleanpool.fields,poisonedpool.fields)
+    @test isequal(cleanpool.withdrawn,poisonedpool.withdrawn)
     rebuild(st,zeros(3,0))
     @test isempty(st.sites) && isempty(st.site_heads)
     @test size(sample(pool,st))==(3,0)

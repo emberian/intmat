@@ -76,3 +76,23 @@
     w.fields.nutrient[1]=-1
     @test_throws ArgumentError advance!(w,m,.1)
 end
+
+@testset "CPU diffusion matches generic face order" begin
+    rng=MersenneTwister(321)
+    for dims in ((1,1,1),(1,7,3),(9,1,4),(8,9,1),(8,9,5),(2,2,2)), mode in (:separate,:inplace,:permeability_output)
+        grid=Grid(dims...;extent=(3,4,5))
+        original=rand(rng,Float32,dims);barrier=rand(rng,Float32,dims);barrier[1]=0
+        old=copy(original);new=copy(original);op=copy(barrier);np=copy(barrier)
+        outold=mode===:inplace ? old : mode===:permeability_output ? op : similar(old)
+        outnew=mode===:inplace ? new : mode===:permeability_output ? np : similar(new)
+        for _ in 1:7
+            invoke(Interior.medium_diffuse!,Tuple{Any,Any,Any,Any,Any,Any},outold,old,op,grid,.03f0,.01f0)
+            Interior.medium_diffuse!(outnew,new,np,grid,.03f0,.01f0)
+            @test reinterpret(UInt32,vec(old))==reinterpret(UInt32,vec(new))
+            @test reinterpret(UInt32,vec(outold))==reinterpret(UInt32,vec(outnew))
+        end
+    end
+    field=ones(Float32,2,2,1);out=zeros(Float32,2,2,1)
+    @test_throws DimensionMismatch Interior.medium_diffuse!(out,field,ones(Float32,1,2,1),Grid(2,2),.1f0,.1f0)
+    @test all(iszero,out)
+end

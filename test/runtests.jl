@@ -40,3 +40,6 @@ include("cellular.jl")
 include("cli.jl")
 
 include("recurrent_material.jl")
+include("recurrent_runner.jl")
+
+include("catalytic_habitat.jl")

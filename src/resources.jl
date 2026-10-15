@@ -98,9 +98,33 @@ function resource_convert!(p::ResourcePool,from,to,cell,amount::Real; efficiency
     a[cell]=newa; b[cell]=newb; p.released_energy+=release
     (mass=actual,energy=release*efficiency,heat=release*(1-efficiency))
 end
+# Ledger vectors are public mutable fields. Cache their scalar entries only
+# when separate storage guarantees that intermediate writes cannot alias.
+function _resource_ledgers_independent(p::ResourcePool)
+    ledgers=(p.supplied,p.removed,p.source_remaining,p.sink_remaining)
+    all(!Base.mightalias(ledgers[i],ledgers[j]) for i in 1:3 for j in i+1:4)
+end
+function _resource_exchange_local!(a,sm,km,source_scale,sink_scale,
+        source_remaining,sink_remaining,supplied_total,removed_total)
+    @inbounds for c in eachindex(a)
+        source=min(source_remaining,source_scale*sm[c]);sink=min(sink_remaining,sink_scale*km[c])
+        before=a[c]
+        next=Float32(Float64(before)+source)
+        Float64(next)-before>source && (next=prevfloat(next))
+        supplied=Float64(next)-before;a[c]=next
+        supplied_total+=supplied;source_remaining-=supplied
+        after=Float32(max(0.0,Float64(next)-min(Float64(next),sink)))
+        Float64(next)-after>sink && (after=nextfloat(after))
+        removed=Float64(next)-after;a[c]=after
+        removed_total+=removed;sink_remaining-=removed
+    end
+    (source_remaining,sink_remaining,supplied_total,removed_total)
+end
+
 function advance!(w::World,p::ResourcePool,dt::Real)
     check_dt(w,p,dt)
     perm=p.medium===nothing ? p.permeability : p.medium.permeability
+    independent=_resource_ledgers_independent(p)
     for s in eachindex(p.fields)
         a=p.fields[s]
         # Rates are per cell per time; budgets cap total external mass.
@@ -108,18 +132,25 @@ function advance!(w::World,p::ResourcePool,dt::Real)
         st=sum(Float64,sm); kt=sum(Float64,km)
         source_scale=st==0 ? 0.0 : min(p.source_remaining[s],Float64(dt)*p.source_rates[s]*st)/st
         sink_scale=kt==0 ? 0.0 : min(p.sink_remaining[s],Float64(dt)*p.sink_rates[s]*kt)/kt
-        for c in eachindex(a)
-            source=min(p.source_remaining[s],source_scale*sm[c]); sink=min(p.sink_remaining[s],sink_scale*km[c])
-            before=a[c]
-            # Round source toward the budget, never exceeding its finite amount.
-            next=Float32(Float64(before)+source)
-            Float64(next)-before>source && (next=prevfloat(next))
-            supplied=Float64(next)-before; a[c]=next
-            p.supplied[s]+=supplied; p.source_remaining[s]-=supplied
-            after=Float32(max(0.0,Float64(next)-min(Float64(next),sink)))
-            Float64(next)-after>sink && (after=nextfloat(after))
-            removed=Float64(next)-after; a[c]=after
-            p.removed[s]+=removed; p.sink_remaining[s]-=removed
+        if independent
+            p.source_remaining[s],p.sink_remaining[s],p.supplied[s],p.removed[s]=
+                _resource_exchange_local!(a,sm,km,source_scale,sink_scale,
+                    p.source_remaining[s],p.sink_remaining[s],p.supplied[s],p.removed[s])
+        else
+            # Preserve interleaved ledger writes for explicitly aliased fields.
+            for c in eachindex(a)
+                source=min(p.source_remaining[s],source_scale*sm[c]); sink=min(p.sink_remaining[s],sink_scale*km[c])
+                before=a[c]
+                # Round source toward the budget, never exceeding its finite amount.
+                next=Float32(Float64(before)+source)
+                Float64(next)-before>source && (next=prevfloat(next))
+                supplied=Float64(next)-before; a[c]=next
+                p.supplied[s]+=supplied; p.source_remaining[s]-=supplied
+                after=Float32(max(0.0,Float64(next)-min(Float64(next),sink)))
+                Float64(next)-after>sink && (after=nextfloat(after))
+                removed=Float64(next)-after; a[c]=after
+                p.removed[s]+=removed; p.sink_remaining[s]-=removed
+            end
         end
         D=p.diffusion[s]; D==0 && continue
         limit=diffusion_limit(w,D); steps=max(1,ceil(Int,Float64(dt)/limit))

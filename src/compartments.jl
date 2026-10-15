@@ -82,6 +82,40 @@ function medium_diffuse!(out,field,permeability,grid,D,dt)
     end
     copyto!(field,out)
 end
+
+@inline function _medium_face_flux(center,neighbor,a,b,D,h2)
+    face=(a+b)==0f0 ? 0f0 : 2f0*a*b/(a+b)
+    D*face*(neighbor-center)/h2
+end
+
+# Concrete CPU fields use direct periodic neighbors. The order of the six face
+# contributions is identical to the generic axis/side loop above.
+function medium_diffuse!(out::Array{Float32,3},field::Array{Float32,3},
+        permeability::Array{Float32,3},grid::Grid,D::Float32,dt::Float32)
+    dims=grid.size
+    size(out)==size(field)==size(permeability)==dims || throw(DimensionMismatch("medium diffusion grid"))
+    nx,ny,nz=dims;h2=grid.spacing.^2
+    @inbounds for k in 1:nz,j in 1:ny,i in 1:nx
+        center=field[i,j,k];a=permeability[i,j,k];flux=0f0
+        if nx>1
+            im=i==1 ? nx : i-1;ip=i==nx ? 1 : i+1
+            flux+=_medium_face_flux(center,field[im,j,k],a,permeability[im,j,k],D,h2[1])
+            flux+=_medium_face_flux(center,field[ip,j,k],a,permeability[ip,j,k],D,h2[1])
+        end
+        if ny>1
+            jm=j==1 ? ny : j-1;jp=j==ny ? 1 : j+1
+            flux+=_medium_face_flux(center,field[i,jm,k],a,permeability[i,jm,k],D,h2[2])
+            flux+=_medium_face_flux(center,field[i,jp,k],a,permeability[i,jp,k],D,h2[2])
+        end
+        if nz>1
+            km=k==1 ? nz : k-1;kp=k==nz ? 1 : k+1
+            flux+=_medium_face_flux(center,field[i,j,km],a,permeability[i,j,km],D,h2[3])
+            flux+=_medium_face_flux(center,field[i,j,kp],a,permeability[i,j,kp],D,h2[3])
+        end
+        out[i,j,k]=center+dt*flux
+    end
+    copyto!(field,out)
+end
 function advance!(w::World,m::ActiveMedium,dt::Real)
     check_dt(w,m,dt)
     @. m.signal+=m.signal_source

@@ -51,6 +51,8 @@ export CellularEcology, CellBonds, CellStencil, cellular_statistics, cellular_ra
 export add_cell_bond!, cellular_pairs, cellular_mechanics!, exchange_cell_metabolites!
 export rebuild_cell_stencil!, sample_concentrations, sample_concentration_gradients, allocate_cell_resources!, deposit_cell_resource!
 include("experiments.jl")
+include("catalytic_habitat.jl")
+export CatalyticHabitat, catalytic_statistics
 export Experiment, ExperimentReport, ProcessPorts, process_ports, OpticalMap, run!, experiment_diagnostics, owned_material_mass
 include("recurrent_material.jl")
 export RecurrentMaterial
@@ -61,6 +63,7 @@ include("grin.jl")
 include("scenes.jl")
 include("arena.jl")
 include("cellular_arena.jl")
+include("catalytic_arena.jl")
 export Arena, Chemostat, arena_step!, arena_snapshot, checkpoint!, restore_arena, run_arena!, build_arena
 export RenderSettings, render_volume, export_volume, volume_sample, transport_segment, build_scene, optical_fields
 end

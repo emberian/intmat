@@ -46,7 +46,7 @@ function arena_inventory(w,processes)
         haskey(seen,p) && return 0.0
         seen[p]=true
         mass=p isa MetabolicEcology ? 0.0 : owned_material_mass(p)
-        for name in (:controller,:resources,:boundary)
+        for name in (:controller,:resources,:boundary,:cells,:substrates)
             hasproperty(p,name) || continue
             child=getproperty(p,name)
             child===nothing || (mass+=visit(child))
@@ -68,6 +68,8 @@ function arena_energy(processes)
         elseif p isa CellularEcology
             return sum(p.energy)+p.work_spent+p.chemical_heat+
                 sum(p.metabolites[s,i]*p.resources.potentials[s] for s in 1:2,i in eachindex(p.ids);init=0.)+visit(p.resources)
+        elseif p isa CatalyticHabitat
+            return visit(p.cells)+visit(p.substrates)
         end
         0.0
     end
@@ -123,8 +125,12 @@ function arena_snapshot(a::Arena;max_side=96,max_agents=3000)
     addfield(name,arr)= fields[string(name)]=Dict{String,Any}("shape"=>[length(xs),length(ys)],"values"=>vec(Array(arr[xs,ys,k:k])))
     for name in propertynames(w.fields); addfield(name,getproperty(w.fields,name)); end
     agents=Any[]; metrics=Dict{String,Any}("material"=>arena_inventory(w,a.processes),"nutrient_total"=>sum(Float64,w.fields.nutrient))
-    supplied=0.0; removed=0.0
+    supplied=0.0; removed=0.0; supplied_potential=0.0; removed_potential=0.0
     for p in a.processes
+        if p isa CatalyticHabitat
+            catalytic_arena_snapshot!(fields,agents,metrics,p,w,xs,ys,k)
+            continue
+        end
         if p isa CellularEcology
             cellular_arena_snapshot!(fields,agents,metrics,p,w,xs,ys,k,max_agents)
             continue
@@ -137,6 +143,7 @@ function arena_snapshot(a::Arena;max_side=96,max_agents=3000)
             stats=resource_statistics(p)
             metrics["resources"]=Dict(string(k)=>v for (k,v) in pairs(stats))
             supplied+=sum(p.supplied); removed+=sum(p.removed)
+            supplied_potential+=stats.supplied_potential; removed_potential+=stats.removed_potential
         end
         if p isa BoundaryMaintenance
             addfield(:film,p.film); fields["film"]["units"]="material / cell"
@@ -197,9 +204,8 @@ function arena_snapshot(a::Arena;max_side=96,max_agents=3000)
     metrics["supplied_material"]=supplied; metrics["removed_material"]=removed
     metrics["material_error"]=metrics["material"]-a.initial_mass-supplied+removed
     if haskey(metrics,"resources")
-        r=metrics["resources"]
         metrics["chemical_energy_accounted"]=arena_energy(a.processes)
-        metrics["chemical_energy_error"]=metrics["chemical_energy_accounted"]-get(a.config,"_initial_energy",0.0)-r["supplied_potential"]+r["removed_potential"]
+        metrics["chemical_energy_error"]=metrics["chemical_energy_accounted"]-get(a.config,"_initial_energy",0.0)-supplied_potential+removed_potential
     end
     dep=Array(w.fields.deposit); metrics["deposit_occupancy"]=count(>(0.05f0),dep)/length(dep)
     metrics["deposit_range"]=[minimum(dep),maximum(dep)]
@@ -342,6 +348,7 @@ independent parameter, allowing grid refinement without changing domain physics.
 function build_arena(config::AbstractDict=Dict{String,Any}())
     cfg=Dict{String,Any}(config)
     get(cfg,"model","neural")=="cellular" && return build_cellular_arena(cfg)
+    get(cfg,"model","neural")=="catalytic" && return build_catalytic_arena(cfg)
     grid=get(cfg,"grid",Dict()); dims=Tuple(Int.(get(grid,"shape",[96,96,1])))
     length(dims)==3 || throw(ArgumentError("grid.shape needs three dimensions"))
     extent=Tuple(get(grid,"extent",Float32.(dims)))

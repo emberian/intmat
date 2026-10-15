@@ -66,3 +66,41 @@ Interior.process_children(p::RecurrentAuditWrapper)=(p.child,)
     @test w.time≈4Float64(.01f0)
     @test sum(Float64,w.fields.nutrient)+sum(Float64,w.fields.deposit)≈before atol=1e-5
 end
+
+isdefined(Interior,:recurrent_material_reference_kernel!) ||
+    Base.include(Interior,joinpath(@__DIR__,"recurrent_material_reference.jl"))
+@testset "hoisted recurrent stencil preserves the law" begin
+    for dims in ((1,1,1),(2,1,1),(6,5,3))
+        a=World(Grid(dims...;extent=Float32.(dims).*(.8,1.1,.9));seed=51)
+        b=World(a.grid;seed=51)
+        for I in CartesianIndices(a.fields.nutrient)
+            a.fields.nutrient[I]=.1f0+.7f0*isodd(sum(Tuple(I)))
+            a.fields.deposit[I]=.2f0+.4f0*iseven(sum(Tuple(I)))
+        end
+        copyto!(b.fields.nutrient,a.fields.nutrient);copyto!(b.fields.deposit,a.fields.deposit)
+        p=RecurrentMaterial(a;feedback=1.37);q=RecurrentMaterial(b;feedback=1.37)
+        for _ in 1:101
+            advance!(a,p,.05)
+            Interior.launch!(b,Interior.recurrent_material_reference_kernel!,q.scratch,q.state,
+                b.scratch.nutrient,b.scratch.deposit,b.fields.nutrient,b.fields.deposit,
+                b.fields.activity,b.grid.spacing,.05f0,q.coupling,q.feedback,q.writing,q.erosion,q.contrast)
+            q.state,q.scratch=q.scratch,q.state
+            oldn=b.fields.nutrient;oldd=b.fields.deposit
+            b.fields=merge(b.fields,(nutrient=b.scratch.nutrient,deposit=b.scratch.deposit))
+            b.scratch=merge(b.scratch,(nutrient=oldn,deposit=oldd))
+        end
+        @test maximum(abs.(p.state.-q.state))<2e-6
+        @test maximum(abs.(a.fields.nutrient.-b.fields.nutrient))<2e-6
+        @test maximum(abs.(a.fields.deposit.-b.fields.deposit))<2e-6
+    end
+    w=World(Grid(2,2,2));p=RecurrentMaterial(w)
+    w.fields=merge(w.fields,(activity=w.fields.nutrient,))
+    @test_throws ArgumentError advance!(w,p,.05)
+    @test_throws ArgumentError RecurrentMaterial(w)
+    w=World(Grid(2,2,2));p=RecurrentMaterial(w)
+    p.scratch=copy(p.scratch)
+    @test_throws ArgumentError advance!(w,p,.05)
+    w=World(Grid(2,2,2));p=RecurrentMaterial(w)
+    w.fields=merge(w.fields,(activity=w.scratch.deposit,))
+    @test_throws ArgumentError advance!(w,p,.05)
+end

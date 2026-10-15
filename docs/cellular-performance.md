@@ -114,3 +114,12 @@ birth/death compaction and the associated ledgers resident together. At these sm
 populations, transferring only controller inputs and outputs would address the
 wrong bottleneck. Batched independent replicas could improve aggregate accelerator
 occupancy, but their throughput is distinct from the speed of one trajectory.
+
+## Larger-workload follow-up
+
+The [second performance pass](cellular-performance-pass2.md) adds measured
+1.08–1.27× whole-step throughput over the already optimized `dc30e40` baseline
+on 1,024-, 1,489- and 4,096-cell workloads, with 23–43% fewer allocated bytes.
+It also fixes uninitialized proposal scratch and provides a replayable exact
+physical-state and alias comparator. These new measurements use their own
+matched baseline and should not be multiplied into the earlier ratios.
