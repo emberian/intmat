@@ -13,6 +13,8 @@ fixed physical extent. They do not enlarge a saved low-resolution volume.
 | Thermal writing | 768³ | 5; 1600 steps | 651.77 s, Metal | 453 million cells; all three native fields finite. |
 | Thermal writing | 384³ | 5; 500 steps | 26.41 s, Metal | Finite native deposit, temperature and dose. |
 | Acoustic deposition | 384³ | 6; 1500 steps | 207.75 s, Metal | Finite pressure, accumulated intensity and deposit. |
+| Crossed acoustic fronts | 384³ | 2.4; 600 steps | 76.4 s, Metal | Off-axis pulses, driven source and mineral membrane; finite native fields. |
+| Dielectric growth | 257³ | 800 growth events | 1001.88 s, Metal | 801 connected sites, 827 exact edges; final potential residual 4.371e−7. |
 | Conserved phase | 384³ | 60; 240 steps | 825.7 s, CPU | Mean drift 5.48e−13; energy 64263→45650. |
 
 Timings exclude compilation, allocation, export and photography. This shared
@@ -29,6 +31,13 @@ Phase at 96³ and 384³ uses identical physical modes and dt=.25. At t=60,
 matched-lattice composition differs by RMS .00794, maximum .0330; discrete
 energy differs .386%. These comparisons support this specimen's refinement;
 they do not establish convergence for every parameterization.
+
+The shared phase engine now uses a real FFT half-spectrum. Splitting its inverse
+avoids a full-volume planning copy: at 192³, interleaved warmed steps measured
+1.187→.643 s with about 14.5 KB allocated per step. The complete 96³ trajectory
+agrees with the old complex representation within 4.88e−17; 355 focused and
+coupled assertions pass. Old serialized phase checkpoints require their original
+source; new checkpoints preserve aliases and deterministic continuation.
 
 ## Memory is architecture
 
@@ -56,7 +65,7 @@ photographs extract the actual field first, then cut the mesh with analytic
 geometry. A controlled 96³ comparison changes only that operation and removes
 the rings: this improvement is independent of simulation refinement.
 
-Native 384³ phase meshes use a declared .01 surface-meshing adaptivity to remove
+Native 384³ phase meshes use declared .003–.01 surface-meshing adaptivity to remove
 redundant near-planar polygons. The scalar field is not downsampled or smoothed.
 Surface-only rendering loads the required native channel through a memory map,
 avoiding unrelated optical-array copies. The new target is 2400² photographs
@@ -83,10 +92,17 @@ agent uptake request still changed .12025→.06050. Comparable refinement needs:
 - Uptake and deposition over fixed physical supports.
 - Physical interaction radii and offspring offsets.
 
-Those changes remain outstanding. Mechanics already stores continuous node
-positions and actual bonds; increasing a display voxel grid would not refine
-its mechanical degrees of freedom. Dielectric growth is being moved to a
-residual-controlled multigrid solver for a fresh 257³ specimen; equal event
-counts at different lattice spacings do not represent equal physical growth.
+The new cellular substrate implements concentration sensing, fixed physical
+exchange supports, continuous bodies and physical contact radii; comparable
+long-run spatial refinement still needs investigation. Older ecology recipes
+retain their original semantics. Mechanics stores continuous nodes and actual
+bonds; increasing a display voxel grid would not refine its degrees of freedom.
+The fresh 257³ dielectric specimen completed using residual-controlled GPU
+multigrid. Equal event counts at different spacings do not mean equal physical growth.
 
-[Collection recipes](collection-20261015.md) · [Alife evidence](alife-adaptation-results.md)
+Six reviewed 2400² refinements are published: wax phase section, resin writing,
+bronze calligraphy, copper arbor, crossed frosted wave fronts and patinated phase
+section. The gallery now has 58 studies. A native 1152³ dose-writing run is active;
+its final fields and photograph remain pending.
+
+[Scaling beyond 768³](refinement-scaling.md) · [Collection recipes](collection-20261015.md) · [Alife evidence](alife-adaptation-results.md)

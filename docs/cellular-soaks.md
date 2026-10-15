@@ -67,3 +67,68 @@ lineage histories, resource turnover, and actual junction flux. Longitudinal
 checkpoints allow later assays without changing the overnight trajectory. A
 negative or quiet outcome concerns these founders and conditions; it cannot
 establish that the substrate lacks the corresponding potential.
+
+## Running hbox jobs (15 October 2026)
+
+Both 12-hour jobs run from the immutable source at
+`/othersys/tmp/intmat-soaks-20261015/source`. Its thirty Julia source files match
+commit `606ca2e`; the copied profiles, driver and launcher have independent SHA256
+fingerprints in `source/provenance.json` and `environment.json`. The resolved
+manifest retains the portable `Interior` path `.` and uses Julia 1.12.4. All new
+package writes use the isolated `depot/`, with the existing verified probe depot
+available as a read fallback.
+
+| Condition | Output | Julia PID at launch | CPU affinity |
+| --- | --- | --- | --- |
+| Broad | `/othersys/tmp/intmat-soaks-20261015/broad` | 3736521 | 2,3 |
+| Mosaic | `/othersys/tmp/intmat-soaks-20261015/mosaic` | 3736525 | 4,5 |
+
+Both actual cgroups enforce 8 GiB memory, zero swap and nice 15. The driver saves
+at its 12-hour wall deadline, with an external interrupt/kill guard 15 minutes
+later. `status.json` gives the actual deadline and progress; `checkpoint.json`
+names the latest completed restart slot. `metrics-SESSION-NNNN.jsonl` chunks keep
+longitudinal metrics. `state-STEP-SESSION.jls` files retain complete future state
+every ten minutes. `latest.json` is the bounded current observation. The 4 GB
+artifact cap reserves room for final checkpoints and stops without deleting
+history. A `STOP` file in a run directory requests a checkpointed stop between
+steps; rename that operator-created file before intentionally resuming.
+
+A short real hbox soak completed at step 415, then an independent Julia process
+strictly restored it, checked resource/grid aliases and advanced to 416. This
+validates restart machinery rather than any long-term ecological conclusion.
+
+To resume an interrupted **broad** job on hbox, first confirm its PID is absent,
+then read the current pointer and remaining wall budget:
+
+```sh
+root=/othersys/tmp/intmat-soaks-20261015
+checkpoint=$(python3 -c 'import json;from pathlib import Path;p=Path("/othersys/tmp/intmat-soaks-20261015/broad");print(p/json.loads((p/"checkpoint.json").read_text())["file"])')
+remaining=$(python3 -c 'import json,time;from pathlib import Path;p=Path("/othersys/tmp/intmat-soaks-20261015/broad/status.json");print(max(0,int(json.loads(p.read_text())["deadline_unix"]-time.time())))')
+test "$remaining" -gt 0 && SOAK_DEPOT="$root/depot" "$root/source/scripts/launch_cellular_soak.sh" "$root/source" "$root/source/experiments/arena/cellular-soak-broad.toml" "$root/broad" 2,3 "$remaining" "$checkpoint"
+```
+
+For mosaic, replace both occurrences of `broad` in the Python paths, the profile
+and output names, and use CPUs `4,5`. The launcher accepts an explicit seconds
+argument for a separately authorized extension. Strict source validation remains
+mandatory; there is no automatic source-migration or reseeding path. A live
+writer is refused by the output lock. The existing local arenas and their
+observers are separate and were left running.
+
+### Recovery boundary for the currently pinned jobs
+
+The two jobs launched above retain their original driver hash
+`cba3c8f41102aee0ebcd8dd4a2aa774dbb70377d0961bc57f37c92682e452aad`.
+Their normal wall-deadline and `STOP` shutdown paths save between completed steps.
+That first driver also attempts a final checkpoint after an exception. If a job
+fails or is interrupted during a physics step, do **not** automatically resume
+its final checkpoint pointer: inspect the log and use a rotating checkpoint or
+full-state archive completed before the error. Preserve the questionable state
+for diagnosis. This caveat does not require restarting a normally running job.
+
+The repository driver has since been hardened for future launches. It rejects a
+resume profile that differs from the stored configuration, and tracks complete
+step boundaries. A mid-step failure leaves the prior checkpoint and observation
+untouched and writes `unsafe_in_memory_state=true` failure metadata; it does not
+serialize the partially mutated state. The standalone fault regression is
+`julia --project test/cellular_soak_faults.jl` (it deliberately replaces a method
+inside that test process, so it is excluded from the shared test harness).

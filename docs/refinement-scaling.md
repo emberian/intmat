@@ -1,4 +1,4 @@
-# Beyond the completed 768³ writing specimen
+# Scaling native material simulations
 
 The next useful redesign is **localized thermal computation with dense output
 only when needed**, backed by an implicit or exact linear thermal propagator.
@@ -126,12 +126,10 @@ slabs or out-of-core GPU tiles remain useful when dense states are required:
 they need halo exchange, source ownership, overlap and synchronized output, and
 do not by themselves remove the explicit quadratic step-count cost.
 
-No additional large job was launched for this analysis. GPU time remains
-reserved for the branch work. Native 384/768 outputs and measured timing records
-remain under `outputs/refinement-20261015/`; the comparison includes smaller
+Native 384/768 outputs and measured timing records remain under `outputs/refinement-20261015/`; the comparison includes smaller
 timesteps at 768 and is not an isolated spatial convergence-order measurement.
 
-## Implemented opt-in optimization after this analysis
+## Implemented optimization and current run
 
 `DoseThermalWriter` now implements the three-array alternative: temperature,
 thermal scratch and dose. It shares the exact thermal/exposure helper with
@@ -141,16 +139,16 @@ material-writing process can coexist on its separate World reservoir; this does
 not exchange material with the private writer. Scheduling the same embedded
 thermal state twice is rejected through existing ownership preflight.
 
-Twenty-seven CPU assertions pass, including exact temperature/dose parity, pulsing,
+Thirty-four CPU assertions pass, including exact temperature/dose parity, pulsing,
 shutter stop, fractional conversion, private inventory accounting and slab
 readout. A 2000-step saturation test reached zero nutrient; maximum absolute
 nutrient difference from incremental exchange was 3.70e-12 and deposit difference
 1.02e-6. These are measured rounding differences, not an all-parameter error bound.
 A warm 96³ CPU comparison measured 49.13 ms original versus 35.50 ms dose-only
-(1.38×); A bounded12³/25-step Metal comparison also passed temperature, dose and
-material readout parity; throughput still awaits the reserved branch job. No 1152³ job has been launched.
+(1.38×). A bounded 12³/25-step Metal comparison also passed temperature, dose and
+material readout parity. Warm Metal throughput measurements appear below.
 
-`studies/refinement_dose.jl` and `dose-writing 1152.toml` prepare that future run:
+`studies/refinement_dose.jl` and `experiments/refinement/dose-writing1152.toml` drive the active run:
 three-array 18.35 GB base state,22 GB recipe ceiling, dt=5/3600 below .001497,
 and four-plane exports without allocating whole nutrient/deposit readout arrays.
 A five-step 16³ CPU smoke run actually exported the expected native fields.
@@ -176,11 +174,22 @@ or about 44 TB over 3600 steps, before cache effects. All future implementation
 paths described here are Julia work; diagnostic measurements from other stacks
 do not authorize a second algorithm implementation or production backend.
 
-The paired warm Julia Metal benchmark now measured96³ original1.887 ms versus
-three-array ping-pong1.423 ms (1.326×), and384³36.225 versus29.926 ms
+The paired warm Julia Metal benchmark now measured 96³ original 1.887 ms versus
+three-array ping-pong 1.423 ms (1.326×), and 384³ 36.225 versus 29.926 ms
 (1.210×), with exactly equal temperatures after matched steps. These are
-shared-host component measurements. The1152³ four-step allocation pilot also
-passed:18.346 GB state,907 ms median, all finite. The authorized3600-step
-production is now running at native1152³ with renderer overlap explicitly
-allowed below40GB combined working memory; no completed1152 specimen is
+shared-host component measurements. The 1152³ four-step allocation pilot also
+passed: 18.346 GB state, 907 ms median, all finite. The authorized 3600-step
+production is now running at native 1152³ with renderer overlap explicitly
+allowed below 40 GB combined working memory; no completed 1152 specimen is
 claimed until final fields and diagnostics exist.
+
+The native 1152³ run is recorded in `outputs/refinement-20261015/writing-1152/`;
+its loaded source and recipe are frozen there. It passed step 1440/3600 with a
+recent median of .966 s/step. This is progress, not a final runtime. The host has
+96 GiB RAM. At 1536³, three evolving arrays alone require 43.49 GB; feasibility
+depends on scratch, output staging and competing jobs, not a categorical size cap.
+
+Original Julia kernels now also execute on hbox through AMDGPU. The dose writer
+measured 3.707 ms/step at 384³ and 29.145 ms/step at 768³ in bounded warmed probes.
+These are component timings, not complete bake or cellular-arena throughput.
+[Runtime and pinned environment](hbox-runtime.md)

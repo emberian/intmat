@@ -45,6 +45,12 @@ selects the multispecies model. `metabolic-96.toml` enlarges the domain at the s
 
 ## What evolves
 
+The cellular model inherits recurrent development and slow memory through division;
+physical contacts carry forces and exchange precursors. Cells allocate work among
+synthesis, motion and maintenance, with starvation rather than a fixed age limit.
+
+The earlier metabolic model supplies a complementary set of mechanisms:
+
 | Mechanism | Contract |
 |---|---|
 | Recurrent controller | Heritable weights; separate bounded lifetime plasticity; newborn memory resets. |

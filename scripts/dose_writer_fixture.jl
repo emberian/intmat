@@ -19,5 +19,6 @@ for i in 1:25
 end
 n=similar(q.dose);d=similar(q.dose);writer_material!(n,d,p)
 open(io->write(io,n),joinpath(out,"final-nutrient.f32"),"w");open(io->write(io,d),joinpath(out,"final-deposit.f32"),"w")
-metadata=(;material_readout=(nutrient="final-nutrient.f32",deposit="final-deposit.f32"),schema="interior-dose-thermal-fixture",shape=w.grid.size,extent=w.grid.extent,spacing=w.grid.spacing,order="F",dtype="little-endian Float32",initial="zero temperature/dose",sources,frames,diffusion=q.diffusion,cooling=q.cooling,threshold=q.threshold,width=q.width,conversion=q.conversion,initial_nutrient=p.initial_nutrient,initial_deposit=p.initial_deposit,sources_sha=Interior.arena_sources())
+writer_parameters=Dict(string(name)=>getfield(q,name) for name in fieldnames(typeof(q)) if !(getfield(q,name) isa AbstractArray))
+metadata=(;writer_parameters,material_readout=(nutrient="final-nutrient.f32",deposit="final-deposit.f32"),schema="interior-dose-thermal-fixture",shape=w.grid.size,extent=w.grid.extent,spacing=w.grid.spacing,order="F",dtype="little-endian Float32",initial="zero temperature/dose",sources,frames,diffusion=q.diffusion,cooling=q.cooling,threshold=q.threshold,width=q.width,conversion=q.conversion,initial_nutrient=p.initial_nutrient,initial_deposit=p.initial_deposit,sources_sha=Interior.arena_sources())
 open(io->JSON3.pretty(io,metadata),joinpath(out,"fixture.json"),"w");println(abspath(out))
