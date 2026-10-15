@@ -37,9 +37,11 @@ catalysts bind food reversibly and alter permeability.
 Growth and construction share one complementary-material/work budget,
 including construction in respiratory demand. This removes a concrete scheduling
 bias: the former growth-first order often left a positive secretion request with
-zero precursor. A source-pinned ten-arm study is running separately. One actual
+zero precursor. A source-pinned ten-arm study completed both seeds through t3000. One actual
 trajectory has catalyst mass 0→55.13→2.69→12.35 at t0/75/500/1900, with 262 cells
-and 616 bonds at the last observation. These are exploratory dynamics, not an
+and 616 bonds at that observation. Across all eight shared-budget arms, late
+construction during t1500–3000 is 62.77–93.53, versus approximately zero in both
+growth-first controls; continuing soluble feeding remains present. These are exploratory dynamics, not an
 adaptation assay. Its fixed-exposure visual is under
 `outputs/constructive-refuges-20261015/visuals/rebuilding-contact.png`.
 
@@ -104,10 +106,25 @@ exported channels. [Details](docs/recurrent-material.md)
 with pressure waves in both directions on a fixed physical domain at native 256³.
 The 640-step bake records 65 full-volume states. Its reviewed 2000²/128-sample still
 and 960²/48-sample film use nacre glass, copper and refractive pressure fronts;
-seeded folds and optical mappings are explicit. Gallery: 61 still studies plus
+seeded folds and optical mappings are explicit. Gallery: 62 still studies plus
 recorded films. The companion catalytic-habitat film shows 121 actual field/body
 observations through t300. [Art and reproduction](docs/nacre-fault.md) ·
 [Film publication](docs/publishing.md)
+
+**New execution studies:** the ordinary device launch schedule is now factored
+without changing its scalar RNG clock. A separate HIP graph owner uses the device
+completed-step counter, preserves failed-state latches and rejects stale captured
+buffers; 227 CPU checks pass, native graph evidence is pending. A batched-world
+study shares kernel bodies across distinct seed streams. A separate seven-channel
+continuum tissue law trades individual contact mechanics for conservative field
+transport and paid remodeling; its 192² study produces changing connectivity.
+These alternatives remain distinct from the individual-cell law.
+[Graph replay](docs/device-graph-replay.md) · [Living tissue](docs/living-tissue.md)
+
+**Second seam:** the reviewed 2000² photograph is published, bringing the gallery
+to 62 stills. Its 5,472-node spring network made 1,075 funded repair connections;
+377 later broke. Copper panels mark surviving repair-supported triangles.
+A 193-state fixed-camera film is in preparation. [Study](docs/second-seam.md)
 
 **New ecology:** cells now pay to construct two persistent extracellular catalysts;
 heritable secretion readouts control investment and allocation. Catalysts unlock
@@ -159,6 +176,10 @@ The recorder exposed an original-arena Julia parallel-GC crash. Strict recovery 
 hbox now executes the original Julia kernels through AMDGPU with normal compiled modules/package images and a pinned standalone ROCm environment. Dose-writer probes measured 3.707 ms/step at 384³ and 29.145 ms at 768³; these are bounded component timings. Cellular populations still run on CPU. The submitted TPU component probe has no verified timing in this ledger. [Accelerators](docs/accelerators.md) · [Performance](docs/arena-performance.md) · [Budgets](docs/bigruns.md)
 
 ## Evidence and limits
+
+Public constructive integration at `7bfd402` additionally passes six focused
+API/recording/restore checks; the initially under-resolved fresh smoke correctly
+halted and was replaced with a resolved non-overlapping fixture.
 
 The integrated Julia suite through `037aa94` passed 3462 assertions across 141 testsets from an immutable source copy, including exact contact/diffusion oracles, compact-world trajectory parity, portable-runner guards, sorptive habitat and device protocol. Coverage combines the initial run with a successful tail rerun: the copy initially dereferenced compatibility symlinks, causing 11 CLI link checks to fail; restoring those links fixed the harness. Logs are retained under `/tmp/intmat-integration-device-20261015*.log`. A separate 25-assertion regression covers soak failures, explicit source forks and throughput mode without replacing methods in the shared test process. The shared realFFT phase backend passes 355 focused/coupled assertions and matches the full old 96³ trajectory within 4.88e−17; a 192³ benchmark measured 1.85× speedup. Current Python tools pass 23 tests, including actual movie encoding, video byte ranges and renderer source-cache invalidation, under the bundled Pillow runtime. Actual bake audits check finite fields, material/work ledgers, graph identity, source hashes and population accounting; photographs receive visual review.
 
