@@ -1,0 +1,31 @@
+# Growing material cells; resource values are physical concentrations/rate densities.
+model = "cellular"
+seed = 71
+dt = 0.1
+snapshot_seconds = 2.0
+checkpoint_seconds = 90.0
+batch = 2
+sleep_seconds = 0.01
+[grid]
+shape = [48, 48, 1]
+extent = [24.0, 24.0, 1.0]
+[cellular]
+population = 64
+capacity = 2048
+hidden = 8
+exchange_radius = 1.0
+division_mass = 1.8
+store_capacity = 0.8
+energy_capacity = 3.0
+junction_rate = 0.8
+mutation = 0.08
+mutation_probability = 0.03
+[resources]
+names = ["precursor_a", "precursor_b", "waste"]
+potentials = [4.0, 4.0, 0.0]
+initial = [0.8, 0.8, 0.0]
+diffusion = [0.06, 0.06, 0.015]
+source_rates = [0.02, 0.02, 0.0]
+source_budgets = [1000000.0, 1000000.0, 0.0]
+spatial_niches = true
+niche_contrast = 0.9

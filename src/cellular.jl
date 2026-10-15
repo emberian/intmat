@@ -1,0 +1,433 @@
+"""Growing material cells with an inherited regulatory network and open chemical ports.
+
+Positions are physical periodic coordinates in `[0, extent)`. Two imported
+precursors must meet locally to build biomass; either can instead be oxidized.
+Transporter, synthesis and oxidation capacities share one regulated enzyme
+budget. Persistent contacts carry force, metabolites and developmental cues.
+This is a deliberately synthetic physiology, not a calibrated biological model.
+
+Chemical work is an explicit reservoir. `work_spent` includes maintenance,
+synthesis and motor work; it is not all labelled heat. Mechanical potential has
+its own coarse overdamped diagnostics, rather than a false thermodynamic closure
+across changing cell radii. Division retains developmental state; only genotype
+mutation introduces new hereditary information.
+"""
+mutable struct CellularEcology
+    ids::Vector{Int}
+    parents::Vector{Int}
+    lineages::Vector{Int}
+    generations::Vector{Int}
+    positions::Matrix{Float64}
+    biomass::Vector{Float64}
+    metabolites::Matrix{Float64}
+    energy::Vector{Float64}
+    hidden::Matrix{Float32}
+    adaptation::Matrix{Float32}
+    weights::Array{Float32,3}
+    plastic_marks::Array{Float32,3}
+    last_actions::Matrix{Float32}
+    age::Vector{Float64}
+    resources::ResourcePool
+    medium::Any
+    bonds::CellBonds
+    stencil::CellStencil
+    seed::Int
+    next_id::Int
+    capacity::Int
+    births::Int
+    deaths::Int
+    blocked_births::Int
+    work_spent::Float64
+    chemical_heat::Float64
+    initial_energy::Float64
+    consumed::Vector{Float64}
+    junction_transferred::Float64
+    synthesized::Float64
+    oxidized::Float64
+    shed::Float64
+    inert_residual::Float64
+    mechanical::Any
+    parameters::NamedTuple
+end
+
+const CELLULAR_ACTIONS=11
+const CELLULAR_SENSORS=20
+
+function CellularEcology(w::World,positions::AbstractMatrix,resources::ResourcePool;
+        medium=nothing,seed=w.seed,capacity=4096,hidden=8,biomass=1.,energy=1.,
+        metabolites=.12,exchange_radius=1.,density=1.,store_capacity=.8,energy_capacity=3.,
+        uptake_rate=1.2,half_saturation=.2,enzyme_exponent=1.4,
+        growth_rate=.8,catabolic_rate=1.4,growth_work=.4,efficiency=.65,
+        basal_rate=.035,neural_cost=.0002,starvation_rate=.16,
+        minimum_mass=.25,division_mass=1.8,speed=.7,motor_cost=.5,
+        junction_rate=.8,repulsion=8.,stiffness=3.,break_strain=.8,max_degree=6,
+        response_time=.8,adaptation_time=6.,adaptation_strength=.3,
+        plasticity_rate=.002,plasticity_decay=.02,mutation=.08,
+        mutation_probability=.03,developmental_partition=.03,packing_barrier=.6)
+    n=size(positions,2); h=Int(hidden)
+    size(positions,1)==3 && all(isfinite,positions) || throw(ArgumentError("physical positions must be finite 3×N"))
+    0<=n<=capacity && h>=2 || throw(ArgumentError("invalid cellular capacity/hidden size"))
+    length(resources.fields)==3 && resources.potentials[3]==0 || throw(ArgumentError("cells require two energetic precursors and one zero-potential waste species"))
+    pars=(;exchange_radius=Float64(exchange_radius),density=Float64(density),store_capacity=Float64(store_capacity),energy_capacity=Float64(energy_capacity),
+        uptake_rate=Float64(uptake_rate),half_saturation=Float64(half_saturation),enzyme_exponent=Float64(enzyme_exponent),
+        growth_rate=Float64(growth_rate),catabolic_rate=Float64(catabolic_rate),growth_work=Float64(growth_work),efficiency=Float64(efficiency),
+        basal_rate=Float64(basal_rate),neural_cost=Float64(neural_cost),starvation_rate=Float64(starvation_rate),
+        minimum_mass=Float64(minimum_mass),division_mass=Float64(division_mass),speed=Float64(speed),motor_cost=Float64(motor_cost),
+        junction_rate=Float64(junction_rate),repulsion=Float64(repulsion),stiffness=Float64(stiffness),break_strain=Float64(break_strain),max_degree=Int(max_degree),
+        response_time=Float64(response_time),adaptation_time=Float64(adaptation_time),adaptation_strength=Float64(adaptation_strength),
+        plasticity_rate=Float64(plasticity_rate),plasticity_decay=Float64(plasticity_decay),mutation=Float64(mutation),
+        mutation_probability=Float64(mutation_probability),developmental_partition=Float64(developmental_partition),packing_barrier=Float64(packing_barrier))
+    all(x->isfinite(x)&&x>=0,values(pars)) && all(>(0),(density,store_capacity,energy_capacity,exchange_radius,half_saturation,response_time,adaptation_time,motor_cost,minimum_mass,division_mass)) || throw(ArgumentError("invalid cellular parameters"))
+    0<=efficiency<=1 && 0<=mutation_probability<=1 && minimum_mass<division_mass/2 || throw(ArgumentError("invalid yield, mutation probability or size scales"))
+    all(x->isfinite(x)&&x>=0,(biomass,energy,metabolites)) && biomass>=minimum_mass || throw(ArgumentError("invalid initial cell inventory"))
+    2metabolites<=store_capacity*biomass || throw(ArgumentError("initial metabolites exceed cell capacity"))
+    energy<=energy_capacity*biomass || throw(ArgumentError("initial energy exceeds cell capacity"))
+    rng=MersenneTwister(seed)
+    weights=.12f0.*randn(rng,Float32,h+CELLULAR_ACTIONS,2h+CELLULAR_SENSORS,n)
+    # A recurrent developmental substrate with a slow inhibitory adaptation.
+    # This prior makes temporal state available; it does not prescribe morphology.
+    for i in 1:n,j in 1:h
+        weights[j,j,i]+=1.2f0
+        weights[j,mod1(j+1,h),i]+=isodd(j) ? -.7f0 : .7f0
+    end
+    for d in 1:3
+        weights[h+d,2h+2+d,:].+=.7f0
+        weights[h+d,2h+5+d,:].+=.7f0
+    end
+    weights[h+8,end,:].+=.5f0 # adhesion is available, never compulsory
+    weights[h+9,end,:].+=.3f0
+    weights[h+10,end,:].+=.5f0
+    xyz=Float64.(positions)
+    for d in 1:3; xyz[d,:].=d==3 && w.grid.size[3]==1 ? 0. : mod.(xyz[d,:],Float64(w.grid.extent[d])); end
+    p=CellularEcology(collect(1:n),zeros(Int,n),collect(1:n),zeros(Int,n),xyz,
+        fill(Float64(biomass),n),fill(Float64(metabolites),2,n),fill(Float64(energy),n),
+        zeros(Float32,h,n),zeros(Float32,h,n),weights,zeros(Float32,size(weights)),
+        zeros(Float32,CELLULAR_ACTIONS,n),zeros(n),resources,medium,CellBonds(),
+        CellStencil(w.grid,xyz,exchange_radius),Int(seed),n+1,Int(capacity),0,0,0,
+        0.,0.,n*Float64(energy),zeros(2),0.,0.,0.,0.,0.,nothing,pars)
+    validate(w,p)
+    p
+end
+
+function validate(w::World,p::CellularEcology)
+    n=length(p.ids); h=size(p.hidden,1)
+    w.backend isa CPU || throw(ArgumentError("CellularEcology requires CPU fields"))
+    q=p.parameters
+    all(x->isfinite(x)&&x>=0,values(q)) && all(>(0),(q.exchange_radius,q.density,q.store_capacity,q.energy_capacity,
+        q.half_saturation,q.response_time,q.adaptation_time,q.motor_cost,q.minimum_mass,q.division_mass)) &&
+        0<=q.efficiency<=1 && 0<=q.mutation_probability<=1 && q.minimum_mass<q.division_mass/2 &&
+        q.max_degree isa Integer || throw(ArgumentError("invalid cellular parameters"))
+    length(p.resources.fields)==length(p.resources.potentials)==3 && p.resources.potentials[3]==0 &&
+        all(x->isfinite(x)&&x>=0,p.resources.potentials) && all(a->size(a)==w.grid.size,p.resources.fields) || throw(ArgumentError("invalid cellular resource ports"))
+    n<=p.capacity && length(unique(p.ids))==n && all(<(p.next_id),p.ids) || throw(ArgumentError("invalid cellular IDs/capacity"))
+    size(p.positions)==(3,n) && size(p.metabolites)==(2,n) && size(p.hidden)==size(p.adaptation)==(h,n) &&
+        size(p.weights)==size(p.plastic_marks)==(h+CELLULAR_ACTIONS,2h+CELLULAR_SENSORS,n) && size(p.last_actions)==(CELLULAR_ACTIONS,n) || throw(DimensionMismatch("cellular arrays"))
+    all(v->length(v)==n,(p.parents,p.lineages,p.generations,p.biomass,p.energy,p.age)) || throw(DimensionMismatch("cellular vectors"))
+    all(a->all(isfinite,a),(p.positions,p.hidden,p.adaptation,p.weights,p.plastic_marks,p.last_actions)) &&
+        all(a->all(x->isfinite(x)&&x>=0,a),(p.biomass,p.energy,p.metabolites,p.age)) || throw(ArgumentError("invalid cellular state"))
+    all(>(0),p.biomass) || throw(ArgumentError("living cells require positive biomass"))
+    p.resources.medium===nothing || throw(ArgumentError("cellular porosity requires ResourcePool.medium=nothing; pass the medium to CellularEcology instead"))
+    size(p.resources.permeability)==w.grid.size && p.stencil.grid.size==w.grid.size && p.stencil.grid.extent==w.grid.extent || throw(DimensionMismatch("cellular grid"))
+    nothing
+end
+stability_limit(w,p::CellularEcology)=min(.25,p.parameters.response_time/2)
+
+function cellular_radii(w,p)
+    volume=(p.biomass.+vec(sum(p.metabolites;dims=1)))./p.parameters.density
+    w.grid.size[3]>1 ? cbrt.(volume.*(3/(4pi))) : sqrt.(volume./pi)
+end
+
+function _cellular_select!(p,indices)
+    for name in (:ids,:parents,:lineages,:generations,:biomass,:energy,:age)
+        setfield!(p,name,getfield(p,name)[indices])
+    end
+    for name in (:positions,:metabolites,:hidden,:adaptation,:last_actions)
+        setfield!(p,name,getfield(p,name)[:,indices])
+    end
+    p.weights=p.weights[:,:,indices]; p.plastic_marks=p.plastic_marks[:,:,indices]
+    p
+end
+function reorder_ecology!(p::CellularEcology,indices)
+    sort(collect(indices))==collect(eachindex(p.ids)) || throw(ArgumentError("invalid cellular permutation"))
+    _cellular_select!(p,indices)
+    rebuild_cell_stencil!(p.stencil,p.positions)
+    p
+end
+
+function _cellular_inputs(w,p,concentrations,gradients,radii)
+    n=length(p.ids); h=size(p.hidden,1); input=zeros(Float32,2h+CELLULAR_SENSORS,n)
+    input[1:h,:].=p.hidden
+    index=Dict(id=>i for (i,id) in enumerate(p.ids)); degree=zeros(Int,n); tension=zeros(n); pressure=zeros(n)
+    for (i,j) in cellular_pairs(w.grid,p.positions,radii)
+        distance=_cellular_length(_cellular_delta(w.grid,p.positions,i,j))
+        overlap=max(0.,radii[i]+radii[j]-distance)
+        # Dimensionless contact compression is observable even without adhesion.
+        pressure[i]+=overlap/max(radii[i],eps()); pressure[j]+=overlap/max(radii[j],eps())
+    end
+    for (edge,rest) in zip(p.bonds.endpoints,p.bonds.rest_lengths)
+        i=get(index,edge[1],0); j=get(index,edge[2],0); (i==0||j==0) && continue
+        delta=_cellular_delta(w.grid,p.positions,i,j)
+        strain=max(0.,sqrt(sum(abs2,delta))/max(rest,eps())-1)
+        gate=((p.last_actions[9,i]+1)/2)*((p.last_actions[9,j]+1)/2)
+        input[h+1:2h,i].+=gate.*p.hidden[:,j]; input[h+1:2h,j].+=gate.*p.hidden[:,i]
+        degree[i]+=1; degree[j]+=1; tension[i]+=strain; tension[j]+=strain
+    end
+    for i in 1:n
+        degree[i]>0 && (input[h+1:2h,i]./=degree[i])
+        base=2h
+        for s in 1:2
+            input[base+s,i]=_neural_squash(concentrations[s,i])
+            for d in 1:3; input[base+2+3(s-1)+d,i]=_neural_squash(gradients[s,d,i]*p.parameters.exchange_radius); end
+        end
+        input[base+9,i]=Float32(p.metabolites[1,i]/max(p.biomass[i]*p.parameters.store_capacity,eps()))
+        input[base+10,i]=Float32(p.metabolites[2,i]/max(p.biomass[i]*p.parameters.store_capacity,eps()))
+        input[base+11,i]=_neural_squash(p.energy[i]/max(p.biomass[i],eps()))
+        input[base+12,i]=_neural_squash(p.biomass[i]/p.parameters.division_mass)
+        input[base+13,i]=Float32(degree[i]/max(p.parameters.max_degree,1))
+        input[base+14,i]=_neural_squash(tension[i])
+        input[base+15,i]=_neural_squash(pressure[i])
+        if p.medium!==nothing
+            cell=CartesianIndex(ntuple(d->dimsafe(p.positions[d,i]/w.grid.spacing[d],w.grid.size[d]),3))
+            input[base+16,i]=_neural_squash(p.medium.phase.phi[cell])
+            input[base+17,i]=_neural_squash(p.medium.phase.interface[cell])
+            input[base+18,i]=_neural_squash(p.medium.signal[cell])
+        end
+        input[base+19,i]=_neural_squash(p.age[i]/20)
+        input[base+20,i]=1
+    end
+    input
+end
+
+# Local additions return their unrepresentable remainder to the cell. Matter is
+# never charged for a Float32 field increment that did not actually occur.
+function _cellular_waste!(p,i,amount)
+    deposit_cell_resource!(p.resources,3,p.stencil,i,amount)
+end
+
+function cellular_porosity!(w,p)
+    r=p.resources; fill!(r.permeability,0)
+    s=p.stencil
+    for i in eachindex(p.ids), edge in s.offsets[i]:s.offsets[i+1]-1
+        r.permeability[s.sites[edge]]+=Float32((p.biomass[i]+sum(view(p.metabolites,:,i)))*s.weights[edge]/s.cell_volume)
+    end
+    for site in eachindex(r.permeability)
+        background=p.medium===nothing ? 1f0 : p.medium.permeability[site]
+        r.permeability[site]=Float32(background/(1+p.parameters.packing_barrier*r.permeability[site]))
+    end
+    nothing
+end
+
+function ecology_step!(w::World,p::CellularEcology,dt::Real)
+    check_dt(w,p,dt); delta=Float64(Float32(dt)); q=p.parameters
+    # Stable order makes stochastic division reproducible under storage reorder.
+    issorted(p.ids) || reorder_ecology!(p,sortperm(p.ids))
+    n=length(p.ids); h=size(p.hidden,1)
+    rebuild_cell_stencil!(p.stencil,p.positions)
+    concentrations=sample_concentrations(p.resources,p.stencil)
+    gradients=sample_concentration_gradients(p.resources,p.stencil)
+    radii=cellular_radii(w,p)
+    inputs=_cellular_inputs(w,p,concentrations,gradients,radii)
+    outputs=zeros(Float32,h+CELLULAR_ACTIONS,n)
+    neural_controller!(outputs,p.weights,p.plastic_marks,inputs)
+    enzymes=zeros(Float64,4,n); requests=zeros(Float64,3,n)
+    for i in 1:n
+        # Smooth regulatory allocation, with a finite total catalytic capacity.
+        for e in 1:4; enzymes[e,i]=exp(2Float64(outputs[h+3+e,i])); end
+        enzymes[:,i]./=sum(view(enzymes,:,i))
+        room=max(0.,q.store_capacity*p.biomass[i]-sum(view(p.metabolites,:,i)))
+        for s in 1:2
+            concentration=concentrations[s,i]
+            requests[s,i]=delta*q.uptake_rate*p.biomass[i]*enzymes[s,i]^q.enzyme_exponent*concentration/(q.half_saturation+concentration)
+        end
+        total=requests[1,i]+requests[2,i]
+        total>room && (requests[:,i].*=room/total)
+        alpha=-expm1(-delta/q.response_time); beta=-expm1(-delta/q.adaptation_time)
+        for j in 1:h
+            # Apply adaptation inside the activation, not as unbounded state drift.
+            target=tanh(atanh(clamp(outputs[j,i],-.999999f0,.999999f0))-q.adaptation_strength*p.adaptation[j,i])
+            p.hidden[j,i]+=Float32(alpha*(target-p.hidden[j,i]))
+            p.adaptation[j,i]+=Float32(beta*(p.hidden[j,i]-p.adaptation[j,i]))
+        end
+        p.last_actions[:,i].=view(outputs,h+1:h+CELLULAR_ACTIONS,i)
+        # Bounded, local developmental plasticity; no immediate-fitness reward is
+        # smuggled in. Its persistence and rates are part of the explicit model.
+        for col in axes(inputs,1),row in 1:h
+            mark=p.plastic_marks[row,col,i]; activity=p.hidden[row,i]
+            p.plastic_marks[row,col,i]=clamp(mark+Float32(delta*(q.plasticity_rate*(activity*inputs[col,i]-activity^2*mark)-q.plasticity_decay*mark)),-.3f0,.3f0)
+        end
+    end
+    grants=allocate_cell_resources!(p.resources,p.stencil,requests)
+    for i in 1:n,s in 1:2
+        p.metabolites[s,i]+=grants[s,i]; p.consumed[s]+=grants[s,i]
+    end
+    openness=Float64.((p.last_actions[9,:].+1)./2)
+    exchange=exchange_cell_metabolites!(p.metabolites,p.bonds,p.ids,p.biomass,delta;conductance=q.junction_rate,openness)
+    p.junction_transferred+=exchange.transferred
+    for i in 1:n
+        # Catabolism frees work from precursor potential; all spent precursor
+        # mass becomes the explicitly zero-potential environmental waste species.
+        stock=sum(view(p.metabolites,:,i))
+        potential=sum(p.metabolites[s,i]*p.resources.potentials[s] for s in 1:2)
+        # Respiratory capacity is not a command to burn every incoming molecule.
+        # Homeostasis draws toward an evolvable reserve target plus upcoming work.
+        reserve=q.energy_capacity*p.biomass[i]*(p.last_actions[11,i]+1)/2
+        planned=delta*((q.basal_rate+q.growth_work*q.growth_rate*enzymes[3,i])*p.biomass[i]+q.neural_cost*h+
+            q.motor_cost*q.speed^2*sum(abs2,view(p.last_actions,1:3,i)))
+        demand=max(0.,reserve+planned-p.energy[i])
+        fuel_needed=stock>0 && q.efficiency*potential>0 ? demand*stock/(q.efficiency*potential) : 0.
+        oxidize=min(stock,delta*q.catabolic_rate*p.biomass[i]*enzymes[4,i],fuel_needed)
+        if oxidize>0
+            actual=_cellular_waste!(p,i,oxidize)
+            released=0.
+            for s in 1:2
+                amount=actual*p.metabolites[s,i]/stock
+                p.metabolites[s,i]-=amount; released+=amount*p.resources.potentials[s]
+            end
+            p.energy[i]+=q.efficiency*released; p.chemical_heat+=(1-q.efficiency)*released; p.oxidized+=actual
+        end
+        maintenance=delta*(q.basal_rate*p.biomass[i]+q.neural_cost*h)
+        paid=min(p.energy[i],maintenance); p.energy[i]-=paid; p.work_spent+=paid
+        if paid<maintenance
+            damaged=min(p.biomass[i],delta*q.starvation_rate*p.biomass[i]*(1-paid/maintenance))
+            actual=_cellular_waste!(p,i,damaged); p.biomass[i]-=actual; p.shed+=actual
+        end
+        # Loss of body capacity degrades the excess stored precursor to inert
+        # residue; its potential is dissipated, never credited as useful work.
+        stock=sum(view(p.metabolites,:,i))
+        excess=max(0.,stock-q.store_capacity*p.biomass[i])
+        if excess>0
+            actual=_cellular_waste!(p,i,excess); p.inert_residual+=excess-actual
+            for s in 1:2
+                lost=excess*p.metabolites[s,i]/stock
+                p.metabolites[s,i]-=lost; p.chemical_heat+=lost*p.resources.potentials[s]
+            end
+        end
+        # Equal amounts of complementary precursors become material structure.
+        # Their remaining potential is dissipated; synthesis additionally uses work.
+        build=min(2minimum(view(p.metabolites,:,i)),delta*q.growth_rate*p.biomass[i]*enzymes[3,i])
+        q.growth_work>0 && (build=min(build,p.energy[i]/q.growth_work))
+        p.metabolites[:,i].-=build/2; p.biomass[i]+=build
+        work=build*q.growth_work; p.energy[i]-=work; p.work_spent+=work
+        p.chemical_heat+=build/2*sum(p.resources.potentials[1:2]); p.synthesized+=build
+        overflow=max(0.,p.energy[i]-q.energy_capacity*p.biomass[i])
+        p.energy[i]-=overflow; p.chemical_heat+=overflow
+        p.age[i]+=delta
+    end
+    # A terminal body leaves before mechanics: complete starvation may produce
+    # exactly zero radius, and dead cells cannot propel or transmit junctions.
+    dead=findall(<(q.minimum_mass),p.biomass)
+    for i in dead
+        mass=p.biomass[i]+sum(view(p.metabolites,:,i))
+        actual=_cellular_waste!(p,i,mass)
+        p.inert_residual+=mass-actual
+        p.chemical_heat+=sum(p.metabolites[s,i]*p.resources.potentials[s] for s in 1:2)+p.energy[i]
+        p.energy[i]=0; p.deaths+=1
+    end
+    if !isempty(dead)
+        _cellular_select!(p,setdiff(collect(eachindex(p.ids)),dead))
+        living=Set(p.ids); keep=[all(id->id in living,edge) for edge in p.bonds.endpoints]
+        p.bonds.endpoints=p.bonds.endpoints[keep]; p.bonds.rest_lengths=p.bonds.rest_lengths[keep]
+    end
+    n=length(p.ids)
+    radii=cellular_radii(w,p)
+    motility=Float64.(p.last_actions[1:3,:]).*q.speed
+    w.grid.size[3]==1 && (motility[3,:].=0)
+    before=sum(p.energy)
+    p.mechanical=cellular_mechanics!(w.grid,p.ids,p.positions,radii,p.bonds,delta;
+        adhesion=Float64.((p.last_actions[8,:].+1)./2),motility,
+        repulsion=q.repulsion,stiffness=q.stiffness,break_strain=q.break_strain,max_degree=q.max_degree,
+        energy=p.energy,motor_cost=q.motor_cost)
+    p.mechanical=merge(p.mechanical,(ids=copy(p.ids),))
+    p.work_spent+=before-sum(p.energy)
+    # All lifecycle deposits use the *new* occupied support.
+    rebuild_cell_stencil!(p.stencil,p.positions)
+    parents=Int[]
+    for i in 1:n
+        if p.biomass[i]>=q.division_mass && p.last_actions[10,i]>0
+            push!(parents,i)
+        end
+    end
+    # The cap is a computational guard. When reached, unbiased keyed priorities
+    # choose among simultaneously eligible parents; report every blocked event.
+    slots=max(0,p.capacity-n)
+    if length(parents)>slots
+        sort!(parents;by=i->electrical_uniform(UInt64(p.seed)⊻UInt64(p.ids[i]),floor(Int,w.time/delta)+1))
+        p.blocked_births+=length(parents)-slots; resize!(parents,slots)
+    end
+    sort!(parents;by=i->p.ids[i])
+    _cellular_divide!(w,p,parents)
+    rebuild_cell_stencil!(p.stencil,p.positions)
+    cellular_porosity!(w,p)
+    p
+end
+
+function _cellular_divide!(w,p,parents)
+    isempty(parents) && return p
+    n=length(p.ids); births=length(parents); h=size(p.hidden,1); q=p.parameters
+    # One allocation per state array for the complete birth batch.
+    for name in (:positions,:metabolites,:hidden,:adaptation,:last_actions)
+        old=getfield(p,name); setfield!(p,name,hcat(old,zeros(eltype(old),size(old,1),births)))
+    end
+    p.weights=cat(p.weights,zeros(Float32,size(p.weights,1),size(p.weights,2),births);dims=3)
+    p.plastic_marks=cat(p.plastic_marks,zeros(Float32,size(p.plastic_marks,1),size(p.plastic_marks,2),births);dims=3)
+    for (offset,i) in enumerate(parents)
+        j=n+offset; id=p.next_id; p.next_id+=1
+        rng=MersenneTwister(string(p.seed,":division:",id,":",p.ids[i]))
+        push!(p.ids,id); push!(p.parents,p.ids[i]); push!(p.lineages,p.lineages[i]); push!(p.generations,p.generations[i]+1)
+        p.biomass[i]/=2; p.energy[i]/=2; p.metabolites[:,i]./=2
+        push!(p.biomass,p.biomass[i]); push!(p.energy,p.energy[i]); p.metabolites[:,j].=p.metabolites[:,i]
+        p.age[i]=0; push!(p.age,0.)
+        p.weights[:,:,j].=p.weights[:,:,i]
+        for k in axes(p.weights,2),l in axes(p.weights,1)
+            rand(rng)<q.mutation_probability && (p.weights[l,k,j]+=Float32(q.mutation)*randn(rng,Float32))
+        end
+        p.hidden[:,j].=p.hidden[:,i]; p.adaptation[:,j].=p.adaptation[:,i]; p.plastic_marks[:,:,j].=p.plastic_marks[:,:,i]
+        # Symmetric partition perturbation preserves mean developmental state.
+        for k in 1:h
+            shift=Float32(q.developmental_partition)*randn(rng,Float32)
+            p.hidden[k,j]=clamp(p.hidden[k,j]+shift,-1f0,1f0); p.hidden[k,i]=clamp(p.hidden[k,i]-shift,-1f0,1f0)
+        end
+        p.last_actions[:,j].=p.last_actions[:,i]
+        direction=randn(rng,3)
+        w.grid.size[3]==1 && (direction[3]=0)
+        norm(direction)==0 && (direction[1]=1)
+        direction./=norm(direction)
+        # Daughter placement is a small symmetry break; passive expansion then
+        # creates space through physical contact rather than teleporting a cell.
+        separation=.1q.exchange_radius
+        for d in 1:3
+            center=p.positions[d,i]
+            p.positions[d,i]=d==3 && w.grid.size[3]==1 ? 0. : mod(center-separation*direction[d]/2,w.grid.extent[d])
+            p.positions[d,j]=d==3 && w.grid.size[3]==1 ? 0. : mod(center+separation*direction[d]/2,w.grid.extent[d])
+        end
+        volume=(p.biomass[i]+sum(view(p.metabolites,:,i)))/q.density
+        radius=w.grid.size[3]>1 ? cbrt(3volume/(4pi)) : sqrt(volume/pi)
+        degree=count(edge->p.ids[i] in edge,p.bonds.endpoints)
+        q.max_degree>degree && p.last_actions[8,i]>=0 && add_cell_bond!(p.bonds,p.ids[i],id,2radius)
+        p.births+=1
+    end
+    p
+end
+
+advance!(w::World,p::CellularEcology,dt)=ecology_step!(w,p,dt)
+function cellular_statistics(p::CellularEcology)
+    n=length(p.ids)
+    (population=n,births=p.births,deaths=p.deaths,blocked_births=p.blocked_births,
+     max_generation=maximum(p.generations;init=0),surviving_lineages=length(unique(p.lineages)),
+     biomass=sum(p.biomass),internal_material=sum(p.metabolites),stored_energy=sum(p.energy),
+     work_spent=p.work_spent,chemical_heat=p.chemical_heat,
+     internal_potential=sum(p.metabolites[s,i]*p.resources.potentials[s] for s in 1:2,i in 1:n;init=0.),
+     bonds=length(p.bonds.endpoints),junction_transferred=p.junction_transferred,
+     synthesized=p.synthesized,oxidized=p.oxidized,shed=p.shed,inert_residual=p.inert_residual,
+     mean_age=n==0 ? 0. : sum(p.age)/n)
+end
+ecology_statistics(p::CellularEcology)=cellular_statistics(p)
+function record_process_fields(p::CellularEcology)
+    names=(:ids,:parents,:lineages,:generations,:positions,:biomass,:metabolites,:energy,:hidden,:adaptation,:weights,:plastic_marks,:last_actions,:age)
+    merge(NamedTuple{names}(Tuple(copy(getfield(p,n)) for n in names)),
+        (bond_endpoints=isempty(p.bonds.endpoints) ? zeros(Int,2,0) : hcat(collect.(p.bonds.endpoints)...),
+         bond_rest_lengths=copy(p.bonds.rest_lengths),parameters=Tuple(values(p.parameters)),
+         parameter_names=Tuple(string.(keys(p.parameters))),statistics=Tuple(values(cellular_statistics(p))),
+         statistic_names=Tuple(string.(keys(cellular_statistics(p)))),
+         position_coordinates="physical periodic [0,extent); centered rendering subtracts extent/2"))
+end

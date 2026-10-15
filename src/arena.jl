@@ -56,16 +56,22 @@ function arena_inventory(w,processes)
     total+sum(visit(p) for p in processes;init=0.0)
 end
 function arena_energy(processes)
-    seen=IdDict{Any,Bool}(); total=0.0
-    for p in processes
-        if p isa ResourcePool && !haskey(seen,p)
-            seen[p]=true; total+=resource_potential(p)
+    seen=IdDict{Any,Bool}()
+    function visit(p)
+        haskey(seen,p) && return 0.0
+        seen[p]=true
+        if p isa ResourcePool
+            return resource_potential(p)
         elseif p isa MetabolicEcology
             c=p.controller
-            total+=sum(Float64,c.energy;init=0.0)+c.heat+p.chemical_heat
+            return sum(Float64,c.energy;init=0.0)+c.heat+p.chemical_heat+visit(p.resources)
+        elseif p isa CellularEcology
+            return sum(p.energy)+p.work_spent+p.chemical_heat+
+                sum(p.metabolites[s,i]*p.resources.potentials[s] for s in 1:2,i in eachindex(p.ids);init=0.)+visit(p.resources)
         end
+        0.0
     end
-    total
+    sum(visit(p) for p in processes;init=0.0)
 end
 function Arena(w::World,processes::Tuple;dt=0.05,config=Dict{String,Any}())
     validate_composition(processes)
@@ -119,6 +125,10 @@ function arena_snapshot(a::Arena;max_side=96,max_agents=3000)
     agents=Any[]; metrics=Dict{String,Any}("material"=>arena_inventory(w,a.processes),"nutrient_total"=>sum(Float64,w.fields.nutrient))
     supplied=0.0; removed=0.0
     for p in a.processes
+        if p isa CellularEcology
+            cellular_arena_snapshot!(fields,agents,metrics,p,w,xs,ys,k,max_agents)
+            continue
+        end
         if p isa Chemostat; supplied+=p.supplied; removed+=p.removed; end
         if p isa ResourcePool
             for (name,arr) in zip(p.names,p.fields)
@@ -331,6 +341,7 @@ end
 independent parameter, allowing grid refinement without changing domain physics."""
 function build_arena(config::AbstractDict=Dict{String,Any}())
     cfg=Dict{String,Any}(config)
+    get(cfg,"model","neural")=="cellular" && return build_cellular_arena(cfg)
     grid=get(cfg,"grid",Dict()); dims=Tuple(Int.(get(grid,"shape",[96,96,1])))
     length(dims)==3 || throw(ArgumentError("grid.shape needs three dimensions"))
     extent=Tuple(get(grid,"extent",Float32.(dims)))

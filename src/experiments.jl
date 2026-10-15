@@ -155,3 +155,5 @@ process_ports(::MetabolicEcology)=ProcessPorts(reads=(:resources,:permeability,:
 owned_material_mass(p::ResourcePool)=resource_mass(p)
 owned_material_mass(p::BoundaryMaintenance)=boundary_material_mass(p)
 owned_material_mass(p::MetabolicEcology)=owned_material_mass(p.controller)
+process_ports(::CellularEcology)=ProcessPorts(reads=(:resources,:permeability,:signal,:phi),writes=(:resources,:permeability),owned=(:positions,:biomass,:metabolites,:energy,:hidden,:adaptation,:weights,:bonds),memory="inherited regulation, division-preserved developmental state and persistent cell contacts",law="physical-support exchange, complementary precursor synthesis, finite chemical work, funded motors and conservative junction transport")
+owned_material_mass(p::CellularEcology)=sum(p.biomass)+sum(p.metabolites)+p.inert_residual
