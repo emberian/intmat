@@ -1,0 +1,51 @@
+{
+  "renderer_sha256": "54dfe45c8e4c5cc35c13a29d548d756b823e13b15e4db651c6f8d3609f67357e",
+  "settings": {
+    "run": "retained-garden",
+    "output": "retained-garden",
+    "steps": "300",
+    "size": 2000,
+    "samples": 128,
+    "device": "CPU",
+    "surface": "retained",
+    "surface_optics": "mixed",
+    "iso": 0.45,
+    "no_cells": false,
+    "no_cutaway": false,
+    "cut_x": -0.3,
+    "cut_y": 0.2,
+    "orbit": 0.62,
+    "elevation": 0.48,
+    "distance": 5.1,
+    "image_name": "final.png",
+    "save_scene": true
+  },
+  "source": {
+    "run_sha256": "5f73afaa2d3d5e7f139d2820b199e0ebda2ac888d48cff6d30467b9d06039b7f",
+    "step": 300,
+    "time": 30.000000447034836,
+    "files": {
+      "geometry.json": "5029d0ad24d18cc20e288d405add8a28acb63dab073ead1f9ddef0b7f3896562",
+      "volume.json": "6330268538189c436abe5848dce242817d3481926194dcd1c70f29f3b2a60923",
+      "retained_a.f32": "0afcb36675cafb9ded1f6a074687c2bb605c2aab3f0ee3e479ee61c9fdad3839",
+      "retained_b.f32": "9f49234140f65dd97fee8c7fd2f7d94c49ea3ad3f730ce4bbeb566072bc5cbf8",
+      "permeability.f32": "e187778a6d8eeb65c9459332333e0ed061dfaf6a4eb8be0f04d164380fee4234"
+    }
+  },
+  "camera": {
+    "fixed": true,
+    "location": [
+      2.628413677215576,
+      -3.6817209720611572,
+      2.3550736904144287
+    ],
+    "lens_mm": 55
+  },
+  "geometry": {
+    "physical_cells": 2085,
+    "periodic_cell_instances": 2526,
+    "bonds": 4313,
+    "surface_vertices": 100585
+  },
+  "interpretation": "Actual 3D cell centers and physical radii, including overlaps, with periodic copies clipped to the original domain. Minimum-image stable-ID bonds. Chosen concentration isosurface tinted by retained A/(A+B), not an anatomical membrane. Mixed optics assigns more opaque jade to A-rich material and clearer rose to B-rich material; this optical contrast is artistic. Front-right optical cutaway reveals the interior. Colors, faint glass skin, fibre radius, thin film and lighting are artistic; no forces, anatomy or temporal interpolation are added."
+}

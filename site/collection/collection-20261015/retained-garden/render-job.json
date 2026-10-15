@@ -1,0 +1,22 @@
+{
+  "id": "retained-garden",
+  "title": "The retained garden",
+  "description": "Living cells pay for catalysts that retain food and alter its transport. Jade and wine surfaces show the two retained chemistries around actual three-dimensional cells; an optical cutaway reveals the connected interior.",
+  "family": "ecologies",
+  "renderer": "constructive-volume",
+  "volume": "frame-0000300",
+  "size": 2000,
+  "samples": 128,
+  "args": [
+    "--steps",
+    "300",
+    "--cut-x=-.30",
+    "--cut-y=.20",
+    "--distance",
+    "5.1",
+    "--surface-optics",
+    "mixed",
+    "--save-scene"
+  ],
+  "image": "final.png"
+}

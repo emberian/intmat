@@ -515,5 +515,16 @@
       "render-job.json",
       "run.json"
     ]
+  },
+  {
+    "id": "collection-20261015/retained-garden",
+    "source_image_sha256": "f5f72b8f0c4e5955215f7482660307acbde3f1e7789f1d90a300de8bc073a8ed",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
   }
 ]

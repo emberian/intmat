@@ -30,13 +30,19 @@ The existing three source-pinned soaks remain separate. Their established
 observatory schedule outlives this session if necessary; its optimized soak has a
 21:54 UTC deadline. Do not extend, reseed or source-migrate those experiments.
 
-### Work in flight, 14:55 UTC
+### Work in flight, 15:02 UTC
 
-- GPU: recovery owns the bounded resource-zero atomic experiment, CPU10–11,
-  8GiB/no swap/nice15. Closed128³ preliminary full-step parity is exact with
-  1.308× throughput; await the fed cases and complete report before promotion.
-  Next: constructive-world batch composition gate, then the artist's separately
-  pinned hotter amber specimen. One GPU process at a time; explicit handoffs.
+- GPU: artist owns fresh `runtime-amber-commons-20261015`, native257³/8192
+  events/65 captures,900-second cap, CPU10–11,8GiB/no swap/nice15. Original513³
+  Metal specimen is independent. Next: recovery's staged actual-grant reduction,
+  then tissue's120-second128² spatial-refinement probe. Explicit handoffs.
+- Zero-resource atomic study completed: closed128³38.70→29.59ms (1.308×),
+  exact physical arrays. Positive supplied128³ exposes a separate~5s/step scalar
+  atomic contention problem; tree reduction prototype has508CPU checks, native
+  timing pending. No production source change yet. Evidence committed3222ef1.
+- Full constructive batching native gate completed at2.3168× aggregate throughput
+  (four64-founder16³ worlds with real secretion, binding and births); field
+  discrepancy≤5.96e−8, independent failure/restart gates pass. Integrateda080223.
 - Native128³ paid-turnover tissue completed4000 steps and41 captures. Measured
   loop12.377s includes40 noninitial captures; startup/finalization are separate.
   Actual early3D partitions coarsen later. Native fields are being copied and
@@ -48,7 +54,7 @@ observatory schedule outlives this session if necessary; its optimized soak has 
   independent mechanical checks; default100-step snapshot unchanged. Four fresh
   paired ecological arms continue under their own frozen source. Experimental
   constructive-world batching has CPU composition/checkpoint/failure gates;
-  native composition remains pending.
+  native composition is now independently measured above.
 - The materialized128³ timestep comparison completed11 trajectories. dt.002
   delivers1.86× simulated-time throughput versus.001, with2.97% bound-inventory
   and4.09% field-L2 discrepancy from the fine reference at time.256. No production
@@ -325,3 +331,11 @@ against incompatible fixed aliases. A reviewed native 256³ activity-contour pho
   - Optimized continuation first advanced checkpoint234995 (199cells) independently strict-restored with31source hashes and pool/grid aliases verified. Remaining precursor budgets954881.2693/954881.2505; material/chemical residuals0.000339/0.000806. Full inventories and ledgers preserved in `/othersys/tmp/intmat-soaks-optimized-20261015/long-checkpoint-verification.json`; original jobs unchanged.
 
 - 14:30 UTC integration: Amber confluence native257³ event11520 photograph reviewed at2000²/128 samples and curated; gallery63 stills,119.67MB. Its65-frame actual-state film runs on hbox CPU14–15,8GiB/no-swap/nice15, Blender5.2.2, sequential bounded8-frame batches. Runtime/film plan: `outputs/art/runtime-amber-render-hbox-20261015`; remote output `/tank/chreatures/probes/intmat-20261015/amber-confluence-film`. Local retained-garden final and immutable513³ Metal production continue.
+
+- 15:02 UTC publication: Retained garden reviewed at2000²/128 samples and curated
+  through the existing build workflow; gallery64 specimens,120.46MB. Original
+  source image SHA f5f72b8f…; actual64³ chemistry/cells/bonds at modeltime30. The
+  separate native128³ turnover-tissue ivory/plum optical sketch is promising;
+  artist preparing a closer composition. Neither contour art establishes evolved
+  organization. Completed stronger-feedback t3000–3100 continuations now retain
+  201 actual frames each with cells, actions, bonds and interval chemical flows.
