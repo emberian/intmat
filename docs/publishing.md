@@ -64,3 +64,36 @@ python3 scripts/build_pages.py
 ```
 
 The declared native grid must match the recorded source grid. Gallery facts distinguish that simulation grid from photograph pixels; newer refinements lead the gallery while earlier photographs remain browsable. Native solver resolution is never inferred from image dimensions or an enlarged render.
+
+## Recorded material films
+
+Render numbered PNG frames from actual sampled states. Keep a fixed optical setup
+when motion is intended to show the dynamics alone. In that output directory,
+write `sequence.json` with `id`, `title`, `description`, `fps`, `source` (grid,
+simulation/source hashes and optical interpretation), and ordered `frames`:
+`[{"file":"frame-0000.png","time":0.0,"sha256":"…"}, …]`.
+Times must be finite and strictly increasing; all frames must share dimensions.
+
+After inspecting the sequence, `art-reviewed.json` records `status: "approved"`,
+`reviewed_by`, and `sequence_sha256` matching the entire sequence manifest.
+The curator checks every frame hash, review, encoded frame count and duration:
+
+```sh
+python3 scripts/curate_animation.py outputs/my-film/sequence.json
+python3 scripts/build_pages.py
+```
+
+Use a Python environment with Pillow and system `ffmpeg`/`ffprobe`. The curator
+encodes H.264 MP4 at CRF18, up to1280px wide, with two encoder threads and a12MB
+per-film publication budget. `--max-width` and `--budget-bytes` are explicit
+overrides; the whole gallery budget still applies. Source PNGs stay untouched.
+One video frame corresponds to one simulation sample: no frame interpolation or
+invented dynamics. The film metadata maps each playback frame to its simulation
+time. The poster retains original render dimensions.
+
+Publication creates a fresh `site/animations/ID/` atomically, after all checks;
+an existing version is never overwritten. Commit that directory and the film
+viewer. The builder discovers its metadata and adds it to the material films
+catalog. Inspect playback and seeking locally, then publish through the ordinary
+gallery workflow. Optical animation and camera motion, when used, belong in the
+source interpretation rather than being described as simulation motion.

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="data:,"><title>Material films · Interior</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,sans-serif;background:#0c1012;color:#e7e5dc}*{box-sizing:border-box}body{max-width:1400px;margin:auto;padding:28px clamp(18px,4vw,60px) 70px}a{color:#dcb97b;text-underline-offset:4px}nav{display:flex;gap:26px;flex-wrap:wrap;margin-bottom:64px}.eyebrow{font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:#8da8a4}h1{font-weight:430;font-size:clamp(2.8rem,7vw,6rem);letter-spacing:-.055em;line-height:1;margin:18px 0 25px}header p{max-width:690px;color:#b6c0bc;line-height:1.7;font-size:1.13rem}article{padding-top:30px;margin-top:56px;border-top:1px solid #34403e;scroll-margin-top:25px}.heading{display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap}h2{font-size:clamp(1.7rem,4vw,3rem);font-weight:450;letter-spacing:-.035em;margin:8px 0 16px}.number{font-size:.8rem;letter-spacing:.15em;color:#87a09b}article p{max-width:850px;line-height:1.65;color:#bec5c0}video{display:block;width:100%;max-height:82vh;background:#050809;border:1px solid #25302e;object-fit:contain;margin-top:28px}video:focus-visible{outline:2px solid #dcb97b}.caption{display:flex;gap:20px;justify-content:space-between;flex-wrap:wrap;padding:14px 0;color:#9caeaa;font-size:.85rem;font-variant-numeric:tabular-nums}.links{display:flex;flex-wrap:wrap;gap:22px;margin:16px 0}details{font-size:.9rem;color:#b6c0bc;line-height:1.65;max-width:800px}summary{cursor:pointer}.error{color:#f1b6a0}footer{margin-top:70px;border-top:1px solid #34403e;padding-top:22px;color:#91a39c;font-size:.85rem}
+</style></head><body>
+<nav><a href="../">Interior / material studies</a><a href="../recurrent/">Recurrent matter</a><a href="../cellular/">Living cells</a></nav>
+<header><div class="eyebrow">Recorded evolving matter</div><h1>Time inside a material.</h1><p>Rhythms, growth and changing interfaces, photographed as they unfold. Each film follows recorded simulation states through a chosen optical treatment.</p></header>
+<main id="films" aria-live="polite"><p>Loading films…</p></main>
+<footer>Julia evolves the material. These films are recorded observations; playback does not run the simulation.</footer>
+<script>
+const main=document.getElementById('films');
+function el(tag,text,cls){const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(cls)node.className=cls;return node}
+function link(text,url){const node=el('a',text);node.href=url;return node}
+async function load(){
+ const response=await fetch('catalog.json');if(!response.ok)throw new Error('The film catalog is unavailable.');const films=await response.json();main.replaceChildren();
+ if(!films.length){main.append(el('p','The first film is being prepared.'));return}
+ films.forEach((film,index)=>{
+  const path=encodeURIComponent(film.directory)+'/';const article=el('article');article.id=film.id;
+  const heading=el('div',undefined,'heading');heading.append(el('h2',film.title),el('span',String(index+1).padStart(2,'0'), 'number'));article.append(heading,el('p',film.description));
+  const video=el('video');video.controls=true;video.playsInline=true;video.preload='none';video.poster=path+'poster.webp';video.src=path+'film.mp4';video.setAttribute('aria-label',film.title);video.style.aspectRatio=`${film.playback.width}/${film.playback.height}`;article.append(video);
+  const caption=el('div',undefined,'caption'),time=el('span'),facts=el('span',`${film.frames.length} recorded frames · ${film.playback.width} × ${film.playback.height} film`);
+  function update(){const i=Math.min(film.frames.length-1,Math.floor(video.currentTime*film.playback.fps+1e-5));time.textContent=`Simulation t = ${Number(film.frames[i].simulation_time).toFixed(3)} · frame ${i+1} / ${film.frames.length}`}
+  video.addEventListener('timeupdate',update);video.addEventListener('seeked',update);update();caption.append(time,facts);article.append(caption);
+  const links=el('div',undefined,'links');links.append(link('Open film ↗',path+'film.mp4'),link('Source & frame times',path+'film.json'));article.append(links);
+  const details=el('details');details.append(el('summary','Reading the motion'),el('p',`Each video frame corresponds to one recorded simulation sample. Playback is ${film.playback.fps} frames per second, without invented intermediate simulation states. The last frame ends the recording; replay starts the same sequence again.`));
+  if(film.source.interpretation)details.append(el('p',film.source.interpretation));article.append(details);main.append(article);
+ });
+ if(location.hash){document.getElementById(decodeURIComponent(location.hash.slice(1)))?.scrollIntoView()}
+}
+load().catch(error=>{main.replaceChildren(el('p',error.message,'error'))});
+</script></body></html>

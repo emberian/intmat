@@ -72,6 +72,12 @@ def main():
     if cellular.exists():shutil.copytree(cellular, destination / 'cellular', dirs_exist_ok=True)
     recurrent = REPO / 'site' / 'recurrent'
     if recurrent.exists():shutil.copytree(recurrent, destination / 'recurrent', dirs_exist_ok=True)
+    animations = REPO / 'site' / 'animations'
+    films = sorted(animations.glob('*/film.json')) if animations.exists() else []
+    if films:
+        shutil.copytree(animations, destination / 'animations', dirs_exist_ok=True)
+        catalog = [dict(json.loads(path.read_text()), directory=path.parent.name) for path in films]
+        (destination / 'animations' / 'catalog.json').write_text(json.dumps(catalog, indent=2) + '\n')
     notes = REPO / 'site' / 'notes'
     if notes.exists():shutil.copytree(notes, destination / 'notes', dirs_exist_ok=True)
     subprocess.run([sys.executable, str(REPO / 'scripts/build_gallery.py'), str(destination)], check=True)
@@ -83,6 +89,7 @@ def main():
     text = text.replace('</header>', '<a class="primary" href="arena/arena.html">Recorded neural arena ↗</a></header>')
     text = text.replace('</header>', '<a class="primary" href="metabolic/arena.html">Metabolic arena · 96² ↗</a></header>')
     if recurrent.exists():text = text.replace('</header>', '<a class="primary" href="recurrent/">Recurrent matter · rhythms &amp; memory ↗</a></header>')
+    if films:text = text.replace('</header>', '<a class="primary" href="animations/">Material films ↗</a></header>')
     if cellular.exists():text = text.replace('</header>', '<a class="primary" href="cellular/">Living cells · motion &amp; material ↗</a></header>')
     text = text.replace('</header>', '<a href="https://github.com/emberian/intmat/blob/dev/docs/alife-adaptation-results.md">Alife results ↗</a></header>')
     index.write_text(text)
