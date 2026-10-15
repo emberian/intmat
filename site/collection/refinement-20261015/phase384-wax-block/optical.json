@@ -1,0 +1,160 @@
+{
+  "settings": {
+    "directory": "volume",
+    "output": "final.png",
+    "samples": 128,
+    "size": 2400,
+    "orbit": 0.65,
+    "elevation": 0.32,
+    "emission": 1.2,
+    "emission_field": "activity",
+    "palette": "amber-cyan",
+    "absorption": 1.5,
+    "scattering": 0.28,
+    "scattering_field": "density",
+    "polished_carrier": false,
+    "ior": 1.48,
+    "inclusion_surface": "structure",
+    "inclusion_isovalue": 0.5,
+    "surface_roughness": 0.035,
+    "density_scale": 1.0,
+    "light_power": 1.0,
+    "z_scale": 1.0,
+    "population": null,
+    "population_radius": 0.015,
+    "conductive_graph": false,
+    "graph_radius": 0.008,
+    "bond_graph": null,
+    "carrier_shape": "ellipsoid",
+    "activity_threshold": 0.0,
+    "activity_power": 1.0,
+    "interfaces": false,
+    "smooth": 0,
+    "frame_content": true,
+    "surface_only": true,
+    "analytic_crop": true,
+    "crop_shape": "none",
+    "crop_radius": 0.88,
+    "crop_axes": [
+      0.87,
+      0.94,
+      0.8
+    ],
+    "mesh_adaptivity": 0.01,
+    "material_preset": "beeswax",
+    "carrier_material": null,
+    "population_mode": "scientific",
+    "write_source_mapping": false,
+    "inclusion_transmission": 0.3,
+    "surface_smooth": 0,
+    "inclusion_tint": "pearl",
+    "camera_distance": 4.65,
+    "device": "METAL",
+    "adaptive_threshold": 0.03,
+    "cutaway_axis": "y",
+    "cutaway_position": 0.3,
+    "studio_background": "slate",
+    "exposure": 0.0
+  },
+  "gradient_scales": {},
+  "volume_file": null,
+  "source_grid": {
+    "shape": [
+      384,
+      384,
+      384
+    ],
+    "dtype": "little-endian float32",
+    "order": "F",
+    "loaded_fields": [
+      "structure"
+    ],
+    "surface_only": true
+  },
+  "inclusion_mesh": {
+    "vertices": 732681,
+    "triangles": 120250,
+    "quads": 673170,
+    "isovalue": 0.5,
+    "field": "structure",
+    "source_shape": [
+      384,
+      384,
+      384
+    ],
+    "surface_smoothing_passes": 0,
+    "mesh_adaptivity": 0.01,
+    "post_crop_vertices": 473392,
+    "post_crop_polygons": 508102
+  },
+  "analytic_crop": {
+    "shape": "none",
+    "axes": null,
+    "plane_axis": "y",
+    "plane_position": 0.3,
+    "method": "unmasked continuous scalar surface followed by exact mesh intersection; observation crop only"
+  },
+  "specimen_material": {
+    "preset": "beeswax",
+    "resolved": {
+      "label": "Warm translucent wax",
+      "inputs": {
+        "Base Color": [
+          0.88,
+          0.62,
+          0.22,
+          1
+        ],
+        "Roughness": 0.42,
+        "IOR": 1.44,
+        "Transmission Weight": 0.025,
+        "Subsurface Weight": 0.42,
+        "Subsurface Radius": [
+          1,
+          0.5,
+          0.18
+        ],
+        "Subsurface Scale": 0.07,
+        "Coat Weight": 0.08,
+        "Coat Roughness": 0.3
+      }
+    },
+    "interpretation": "Optical display parameters, not measured material properties"
+  },
+  "camera_fit": {
+    "bounds": [
+      [
+        -0.9999287128448486,
+        -0.9999395608901978,
+        -0.9999415874481201
+      ],
+      [
+        0.9999327659606934,
+        0.2999999523162842,
+        0.9999411702156067
+      ]
+    ],
+    "distance": 4.874312392473221,
+    "target": [
+      2.0265579223632812e-06,
+      -0.3499698042869568,
+      -2.086162567138672e-07
+    ],
+    "margin": 0.08
+  },
+  "render_device": [
+    {
+      "name": "Apple M2 Max (GPU - 38 cores)",
+      "type": "METAL"
+    }
+  ],
+  "metal_kernel_settings": {
+    "CYCLES_METAL_ADAPTIVE_COMPILE": null,
+    "CYCLES_METAL_SPECIALIZATION_LEVEL": null
+  },
+  "adaptive_sampling": {
+    "maximum_samples": 128,
+    "minimum_samples": 16,
+    "noise_threshold": 0.03
+  }
+}

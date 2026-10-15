@@ -1,0 +1,40 @@
+{
+  "id": "writing768-resin-script",
+  "family": "writing",
+  "title": "A Script Held in Amber",
+  "description": "Native768\u00b3 thermal conversion along a prescribed tool path at fixed extent and physical duration. The measured deposit=.18 surface is displayed as pale porcelain inside a transparent amber-resin carrier; optical properties are interpretation.",
+  "volume": "volume",
+  "native_shape": [
+    768,
+    768,
+    768
+  ],
+  "size": 2400,
+  "samples": 128,
+  "args": [
+    "--surface-only",
+    "--inclusion-surface",
+    "deposit",
+    "--inclusion-isovalue",
+    ".18",
+    "--analytic-crop",
+    "--crop-shape",
+    "none",
+    "--mesh-adaptivity",
+    ".01",
+    "--material-preset",
+    "porcelain",
+    "--polished-carrier",
+    "--carrier-shape",
+    "box",
+    "--carrier-material",
+    "amber-resin",
+    "--studio-background",
+    "warm",
+    "--orbit",
+    ".35",
+    "--elevation",
+    ".28",
+    "--frame-content"
+  ]
+}

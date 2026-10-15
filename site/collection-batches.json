@@ -394,5 +394,27 @@
       "render-job.json",
       "run.json"
     ]
+  },
+  {
+    "id": "refinement-20261015/phase384-wax-block",
+    "source_image_sha256": "915a0db754527891d4c69fd6b51e6b448b9d872363a5e59a6034bef8bab113e0",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
+  },
+  {
+    "id": "refinement-20261015/writing768-resin-script",
+    "source_image_sha256": "d098a1ad7e1cd80269fee9585929638a747bc58465427152e82e54282ae1c0d2",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
   }
 ]

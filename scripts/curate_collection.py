@@ -90,19 +90,23 @@ def main():
         optical_path = checked_path(origin, record.get('optical', final.get('optical', 'final.png.optical.json')))
         if not optical_path.exists():
             raise ValueError(f'{slug}: optical metadata missing')
+        optical = public(read(optical_path))
+        settings = optical.get('settings', {})
+        if settings.get('samples') != samples or settings.get('size') != size:
+            raise ValueError(f'{slug}: optical render settings do not match selected job')
         with Image.open(image) as original:
             if original.width != size or original.height != size:
                 raise ValueError(f'{slug}: final dimensions do not match {size}px job')
             target = REPO / 'site' / 'collection' / batch.name / slug
             target.mkdir(parents=True, exist_ok=True)
             original.convert('RGB').save(target / 'photograph.webp', 'WEBP', quality=95, method=6)
-        optical = public(read(optical_path))
         run['family'] = job.get('family', run.get('family', 'Material studies'))
         if not run.get('shape') and (origin / 'volume' / 'volume.json').exists():
             volume = read(origin / 'volume' / 'volume.json')
             run['shape'] = volume.get('shape', [])
         run['title'] = job.get('title', run.get('title', slug))
-        run['description'] = job.get('description', run.get('description', ''))
+        run['description'] = re.sub(r'Native(?=\d)', 'Native ', job.get('description', run.get('description', ''))).replace('endtime', 'end time')
+        if run.get('comparison_notes'):run['comparison_notes'] = re.sub(r'Native(?=\d)', 'Native ', run['comparison_notes'])
         run['publication'] = dict(source_image_sha256=source_hash, webp_sha256=digest(target / 'photograph.webp'), quality=95, width=size, samples=samples, native_shape=native, original_retained=True, reviewed_by=review.get('reviewed_by', 'visual review'))
         for name, data in [('run.json', run), ('optical.json', optical)]:
             (target / name).write_text(json.dumps(data, indent=2) + '\n')

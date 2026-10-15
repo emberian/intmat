@@ -68,6 +68,8 @@ def main():
     shutil.copytree(SOURCE, destination, dirs_exist_ok=True)
     shutil.copytree(REPO / 'site' / 'arena', destination / 'arena', dirs_exist_ok=True)
     shutil.copytree(REPO / 'site' / 'metabolic', destination / 'metabolic', dirs_exist_ok=True)
+    notes = REPO / 'site' / 'notes'
+    if notes.exists():shutil.copytree(notes, destination / 'notes', dirs_exist_ok=True)
     subprocess.run([sys.executable, str(REPO / 'scripts/build_gallery.py'), str(destination)], check=True)
     index = destination / 'index.html'
     text = index.read_text()

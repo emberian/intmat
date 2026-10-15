@@ -1,0 +1,21 @@
+{
+  "title": "Crop extraction comparison",
+  "native_shape": [
+    96,
+    96,
+    96
+  ],
+  "photograph_panels": [
+    800,
+    800
+  ],
+  "image_size": [
+    1600,
+    840
+  ],
+  "caption": "The same native 96\u00b3 source and optical settings: voxel-mask extraction versus an analytic planar crop. Each pane is an 800px photograph; this comparison isolates the extraction artifact, not a change in simulation resolution.",
+  "settings_shared": {
+    "mesh_adaptivity": 0,
+    "surface_smoothing": 1
+  }
+}

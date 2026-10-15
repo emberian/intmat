@@ -1,0 +1,188 @@
+{
+  "settings": {
+    "directory": "volume",
+    "output": "final.png",
+    "samples": 128,
+    "size": 2400,
+    "orbit": 0.35,
+    "elevation": 0.28,
+    "emission": 1.2,
+    "emission_field": "activity",
+    "palette": "amber-cyan",
+    "absorption": 1.5,
+    "scattering": 0.28,
+    "scattering_field": "density",
+    "polished_carrier": true,
+    "ior": 1.48,
+    "inclusion_surface": "deposit",
+    "inclusion_isovalue": 0.18,
+    "surface_roughness": 0.035,
+    "density_scale": 1.0,
+    "light_power": 1.0,
+    "z_scale": 1.0,
+    "population": null,
+    "population_radius": 0.015,
+    "conductive_graph": false,
+    "graph_radius": 0.008,
+    "bond_graph": null,
+    "carrier_shape": "box",
+    "activity_threshold": 0.0,
+    "activity_power": 1.0,
+    "interfaces": false,
+    "smooth": 0,
+    "frame_content": true,
+    "surface_only": true,
+    "analytic_crop": true,
+    "crop_shape": "none",
+    "crop_radius": 0.88,
+    "crop_axes": [
+      0.87,
+      0.94,
+      0.8
+    ],
+    "mesh_adaptivity": 0.01,
+    "material_preset": "porcelain",
+    "carrier_material": "amber-resin",
+    "population_mode": "scientific",
+    "write_source_mapping": false,
+    "inclusion_transmission": 0.3,
+    "surface_smooth": 0,
+    "inclusion_tint": "pearl",
+    "camera_distance": 4.65,
+    "device": "METAL",
+    "adaptive_threshold": 0.03,
+    "cutaway_axis": null,
+    "cutaway_position": 0.0,
+    "studio_background": "warm",
+    "exposure": 0.0
+  },
+  "gradient_scales": {},
+  "volume_file": null,
+  "source_grid": {
+    "shape": [
+      768,
+      768,
+      768
+    ],
+    "dtype": "little-endian float32",
+    "order": "F",
+    "loaded_fields": [
+      "deposit"
+    ],
+    "surface_only": true
+  },
+  "inclusion_mesh": {
+    "vertices": 141460,
+    "triangles": 36484,
+    "quads": 123218,
+    "isovalue": 0.18,
+    "field": "deposit",
+    "source_shape": [
+      768,
+      768,
+      768
+    ],
+    "surface_smoothing_passes": 0,
+    "mesh_adaptivity": 0.01,
+    "post_crop_vertices": 141460,
+    "post_crop_polygons": 159702
+  },
+  "analytic_crop": {
+    "shape": "none",
+    "axes": null,
+    "plane_axis": null,
+    "plane_position": 0.0,
+    "method": "unmasked continuous scalar surface followed by exact mesh intersection; observation crop only"
+  },
+  "specimen_material": {
+    "preset": "porcelain",
+    "resolved": {
+      "label": "Glazed porcelain",
+      "inputs": {
+        "Base Color": [
+          0.9,
+          0.85,
+          0.73,
+          1
+        ],
+        "Roughness": 0.2,
+        "IOR": 1.5,
+        "Transmission Weight": 0,
+        "Subsurface Weight": 0.035,
+        "Subsurface Scale": 0.018,
+        "Coat Weight": 0.55,
+        "Coat Roughness": 0.1
+      }
+    },
+    "interpretation": "Optical display parameters, not measured material properties"
+  },
+  "carrier_material": {
+    "preset": "amber-resin",
+    "resolved": {
+      "label": "Amber resin",
+      "inputs": {
+        "Base Color": [
+          1,
+          0.9,
+          0.68,
+          1
+        ],
+        "Roughness": 0.065,
+        "IOR": 1.54,
+        "Transmission Weight": 0.96,
+        "Coat Weight": 0.3,
+        "Coat Roughness": 0.04
+      },
+      "absorption": {
+        "color": [
+          0.88,
+          0.34,
+          0.035,
+          1
+        ],
+        "density": 0.45
+      }
+    }
+  },
+  "polished_cut_axes": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "camera_fit": {
+    "bounds": [
+      [
+        -1.0,
+        -1.0,
+        -1.0
+      ],
+      [
+        1.0,
+        1.0,
+        1.0
+      ]
+    ],
+    "distance": 5.136560402512551,
+    "target": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "margin": 0.08
+  },
+  "render_device": [
+    {
+      "name": "Apple M2 Max (GPU - 38 cores)",
+      "type": "METAL"
+    }
+  ],
+  "metal_kernel_settings": {
+    "CYCLES_METAL_ADAPTIVE_COMPILE": null,
+    "CYCLES_METAL_SPECIALIZATION_LEVEL": null
+  },
+  "adaptive_sampling": {
+    "maximum_samples": 128,
+    "minimum_samples": 16,
+    "noise_threshold": 0.03
+  }
+}

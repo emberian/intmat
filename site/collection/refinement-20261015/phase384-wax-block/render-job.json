@@ -1,0 +1,41 @@
+{
+  "id": "phase384-wax-block",
+  "family": "phase",
+  "title": "The Wax Labyrinth",
+  "description": "Native384\u00b3 conserved phase evolution at fixed physical extent and endtime; a planar observation cut reveals the bicontinuous material. Warm wax is an optical interpretation.",
+  "volume": "volume",
+  "native_shape": [
+    384,
+    384,
+    384
+  ],
+  "args": [
+    "--surface-only",
+    "--inclusion-surface",
+    "structure",
+    "--inclusion-isovalue",
+    ".5",
+    "--surface-smooth",
+    "0",
+    "--analytic-crop",
+    "--crop-shape",
+    "none",
+    "--mesh-adaptivity",
+    ".01",
+    "--cutaway-axis",
+    "y",
+    "--cutaway-position",
+    ".3",
+    "--material-preset",
+    "beeswax",
+    "--studio-background",
+    "slate",
+    "--orbit",
+    ".65",
+    "--elevation",
+    ".32",
+    "--frame-content"
+  ],
+  "size": 2400,
+  "samples": 128
+}
