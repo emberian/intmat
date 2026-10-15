@@ -1,0 +1,14 @@
+name = "dose-writing1152"
+resolution = 1152
+extent = [2.0, 2.0, 2.0]
+duration = 5.0
+dt = 0.001388888888888889
+backend = "metal"
+seed = 91
+period = 4.0
+stop = 4.0
+width = 0.018
+heat = 30.0
+threshold = 0.05
+conversion = 18.0
+resident_budget_bytes = 22000000000

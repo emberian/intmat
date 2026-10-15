@@ -57,14 +57,18 @@ function stability_limit(w,p::ThermalWriter)
     rate=p.cooling+2f0*p.diffusion*sum(inv(w.grid.spacing[d]^2) for d in 1:(w.grid.size[3]==1 ? 2 : 3))
     rate==0 ? Inf32 : 0.9f0/rate
 end
-@kernel function write_heat_kernel!(out,temp,dose,nutrient,deposit,h,extent,dt,position,width,power,D,cooling,threshold,conversion)
-    i,j,k=@index(Global,NTuple)
+@inline function thermal_exposure(temp,i,j,k,h,extent,dt,position,width,power,D,cooling,threshold)
     x=(i-.5f0)*h[1]-extent[1]/2-position[1]
     y=(j-.5f0)*h[2]-extent[2]/2-position[2]
     z=size(temp,3)==1 ? 0f0 : (k-.5f0)*h[3]-extent[3]/2-position[3]
     source=power*exp(-(x*x+y*y+z*z)/(2f0*width*width))
     T=max(0f0,temp[i,j,k]+dt*(D*laplacian(temp,i,j,k,h)-cooling*temp[i,j,k]+source))
     exposure=dt*max(0f0,T-threshold)
+    T,exposure
+end
+@kernel function write_heat_kernel!(out,temp,dose,nutrient,deposit,h,extent,dt,position,width,power,D,cooling,threshold,conversion)
+    i,j,k=@index(Global,NTuple)
+    T,exposure=thermal_exposure(temp,i,j,k,h,extent,dt,position,width,power,D,cooling,threshold)
     dose[i,j,k]+=exposure
     food=nutrient[i,j,k]
     flux=food*(-expm1(-conversion*exposure))

@@ -46,6 +46,8 @@ include("metabolic_ecology.jl")
 export MetabolicEcology
 include("experiments.jl")
 export Experiment, ExperimentReport, ProcessPorts, process_ports, OpticalMap, run!, experiment_diagnostics, owned_material_mass
+include("dose_writer.jl")
+export DoseThermalWriter, writer_material!
 include("render.jl")
 include("grin.jl")
 include("scenes.jl")
