@@ -19,7 +19,13 @@ function build_catalytic_arena(cfg)
     for k in 1:2;feedstock.fields[k].*=feedstock.source_masks[k];end
     arguments=Dict{Symbol,Any}(Symbol(k)=>v for (k,v) in get(cfg,"catalysis",Dict()))
     habitat=CatalyticHabitat(w,c,feedstock;arguments...)
-    Arena(w,(feedstock,original.processes...,habitat);dt=get(cfg,"dt",.1),config=cfg)
+    processes=(feedstock,original.processes...,habitat)
+    if haskey(cfg,"matrix") && get(cfg["matrix"],"enabled",true)
+        arguments=Dict{Symbol,Any}(Symbol(k)=>v for (k,v) in cfg["matrix"] if k!="enabled")
+        matrix=SorptiveMatrix(w,habitat;arguments...)
+        processes=(processes...,matrix)
+    end
+    Arena(w,processes;dt=get(cfg,"dt",.1),config=cfg)
 end
 
 function catalytic_arena_snapshot!(fields,agents,metrics,p,w,xs,ys,k)

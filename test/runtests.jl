@@ -43,3 +43,4 @@ include("recurrent_material.jl")
 include("recurrent_runner.jl")
 
 include("catalytic_habitat.jl")
+include("sorptive_matrix.jl")

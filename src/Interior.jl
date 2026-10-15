@@ -53,6 +53,8 @@ export rebuild_cell_stencil!, sample_concentrations, sample_concentration_gradie
 include("experiments.jl")
 include("catalytic_habitat.jl")
 export CatalyticHabitat, catalytic_statistics
+include("sorptive_matrix.jl")
+export SorptiveMatrix, matrix_statistics
 export Experiment, ExperimentReport, ProcessPorts, process_ports, OpticalMap, run!, experiment_diagnostics, owned_material_mass
 include("recurrent_material.jl")
 export RecurrentMaterial

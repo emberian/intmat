@@ -46,7 +46,7 @@ function arena_inventory(w,processes)
         haskey(seen,p) && return 0.0
         seen[p]=true
         mass=p isa MetabolicEcology ? 0.0 : owned_material_mass(p)
-        for name in (:controller,:resources,:boundary,:cells,:substrates)
+        for name in (:controller,:resources,:boundary,:cells,:substrates,:habitat)
             hasproperty(p,name) || continue
             child=getproperty(p,name)
             child===nothing || (mass+=visit(child))
@@ -70,6 +70,8 @@ function arena_energy(processes)
                 sum(p.metabolites[s,i]*p.resources.potentials[s] for s in 1:2,i in eachindex(p.ids);init=0.)+visit(p.resources)
         elseif p isa CatalyticHabitat
             return visit(p.cells)+visit(p.substrates)
+        elseif p isa SorptiveMatrix
+            return matrix_potential(p)+visit(p.habitat)
         end
         0.0
     end
@@ -127,6 +129,10 @@ function arena_snapshot(a::Arena;max_side=96,max_agents=3000)
     agents=Any[]; metrics=Dict{String,Any}("material"=>arena_inventory(w,a.processes),"nutrient_total"=>sum(Float64,w.fields.nutrient))
     supplied=0.0; removed=0.0; supplied_potential=0.0; removed_potential=0.0
     for p in a.processes
+        if p isa SorptiveMatrix
+            sorptive_arena_snapshot!(fields,metrics,p,w,xs,ys,k)
+            continue
+        end
         if p isa CatalyticHabitat
             catalytic_arena_snapshot!(fields,agents,metrics,p,w,xs,ys,k)
             continue
