@@ -1,0 +1,216 @@
+{
+  "description": "Exact production64\u00b3 constructed-garden gate on45ce5ab. Sustained native step timing and strict native restart/failure gates; long production held pending potential-accounting drift investigation.",
+  "commit": "45ce5ab",
+  "stage": {
+    "commit": "45ce5ab",
+    "controls": "CPU10,11;8GiB/no swap/nice15;Julia2/GC1/BLAS1;300s cap;optlevel1",
+    "files": {
+      "src/device_cellular.jl": "427b8a77996ecfcf070547cbbc2140e7a4ecdda1c61b8d905f8ba213e9c7e88a",
+      "src/device_habitat.jl": "b6d760c2821bc8baab3ef9ebe273f310f691b09cd8fb23a7b290b4891213e528",
+      "src/device_resource_exchange.jl": "050991b42eceab1403c940e69b027d27106f966dfcc0cfbf215b5b5ff7221c18",
+      "scripts/gate_native_constructed_garden.jl": "8a15f7d49b346b5a62fba014f57e9c87ccf1fe2d5f68dbe8360466a319642920",
+      "scripts/native_constructed_garden.jl": "b5174d2a44c8f4c04f7e0a5c0f27a37599cd8c28cce46490cc9a5eb4e08b10b2",
+      "experiments/native/constructed-garden-64.toml": "89e8fedd1084a993e6918d9cc694e6ac4178674beac30ed3d1e388f28a47743c"
+    },
+    "vram_sampler": "/sys/class/drm/card2/device/mem_info_vram_used,0.5s system-wide including allocator/session baseline"
+  },
+  "exit_code": 0,
+  "gate": {
+    "source": {
+      "model": "427b8a77996ecfcf070547cbbc2140e7a4ecdda1c61b8d905f8ba213e9c7e88a",
+      "initialization": "1484f9c00e3aa438f2557d12af1b29be2247e3b27dd5e4bcfd64d603785e6dc9",
+      "founder_initialization": "d76e4c791a2c56bc7fd651b1836e6879b9e27013566ce6d94a1d2f677f62e633",
+      "support": "5a767b83c2c912d8706468ec7c5b86e56cf99430b2a23dfd3a7f3ee8f21bf55b",
+      "resource": "050991b42eceab1403c940e69b027d27106f966dfcc0cfbf215b5b5ff7221c18",
+      "kernels": "033903e62e56d69939707e1c4a54f58662729e372b11dcadc45cf34d4d65af34",
+      "checkpoint": "3c26f25b342c4c2fc8e97e109843f70598d10f1284a6e6800b5e5d1e32d4cc8d",
+      "protocol": "095c40b8e42baca3688abe902289377da49e8f352017733ce92728729fb40be5"
+    },
+    "habitat_source": {
+      "helper": "b6d760c2821bc8baab3ef9ebe273f310f691b09cd8fb23a7b290b4891213e528",
+      "kernels": "ee2a1c13ac99a2d69a36a3aec25c6ed55072a578cff82094329263500c8090b9",
+      "sorption": "f135e74e59959187e72725a45665ac5c67293b8305298c8d3ac4bdbb81e6ac93"
+    },
+    "runtime": {
+      "julia": "1.12.4",
+      "kernel": "Linux",
+      "architecture": "x86_64",
+      "launch_threads": 2,
+      "backend": "amd",
+      "device": "HIPDevice(id=1, name=AMD Radeon RX 6750 XT, gcn_arch=gfx1030)",
+      "backend_version": "2.8.0",
+      "actual_device_optlevel": 1,
+      "project_sha256": "284c920aebff70f466a40df21f7c83ae4c561857b046f940274b43a8feeaec6d",
+      "manifest_sha256": "294038b75ff6ea652a9bf4fd03415a9f71e33711fdd53e05c9cd8fc379825b8b"
+    },
+    "profile_sha256": "89e8fedd1084a993e6918d9cc694e6ac4178674beac30ed3d1e388f28a47743c",
+    "fixture_sha256": "b5174d2a44c8f4c04f7e0a5c0f27a37599cd8c28cce46490cc9a5eb4e08b10b2",
+    "runner_sha256": "8a15f7d49b346b5a62fba014f57e9c87ccf1fe2d5f68dbe8360466a319642920",
+    "funding": {
+      "initial": {
+        "material": 765.440006673336,
+        "potential": 1679.3600022792816,
+        "work": 0,
+        "heat": 0,
+        "supplied": 0,
+        "removed": 0,
+        "supplied_potential": 0,
+        "removed_potential": 0,
+        "population": 256,
+        "completed_steps": 0,
+        "secreted": [
+          0,
+          0
+        ],
+        "solubilized": [
+          0,
+          0
+        ],
+        "bound": [
+          0,
+          0
+        ],
+        "enzyme": [
+          0,
+          0
+        ],
+        "inert": 0,
+        "finite": true
+      },
+      "remaining_source_budget": 3000,
+      "funded_population_upper_bound": 15062,
+      "nominal_source_duration": 1500
+    },
+    "final": {
+      "material": 767.6282943224203,
+      "potential": 1507.263170587007,
+      "work": 13.948170911289521,
+      "heat": 166.940291921124,
+      "supplied": 2.188306481025524,
+      "removed": 0,
+      "supplied_potential": 8.753225924102097,
+      "removed_potential": 0,
+      "population": 256,
+      "completed_steps": 1100,
+      "secreted": [
+        1.5557746200597187,
+        1.5585679453001338
+      ],
+      "solubilized": [
+        4.080132672459803,
+        3.922764133580311
+      ],
+      "bound": [
+        0.8540571786942117,
+        0.8456025093433004
+      ],
+      "enzyme": [
+        1.543890958686954,
+        1.5467329923496322
+      ],
+      "inert": 0.00336223758819619,
+      "finite": true
+    },
+    "material_error": -1.8831941265062824e-05,
+    "potential_error": 0.03840521603670766,
+    "warm_steps": 100,
+    "sample_steps": 200,
+    "sample_seconds": [
+      2.059186997,
+      2.052740042,
+      2.052740985,
+      2.051684715,
+      2.053979917
+    ],
+    "median_ms_per_step": 10.263704924999999,
+    "steps_per_second": 97.43070434188267,
+    "strict_native_restore_exact": true,
+    "continuation_steps": 8,
+    "continuation_errors": {
+      "cells/exchange_scale": 0,
+      "cells/ledger": 0,
+      "cells/waste": 0,
+      "cells/rows": 0,
+      "cells/grants": 0,
+      "environment/scratch": 0,
+      "cells/metabolites": 0,
+      "environment/returns": 0,
+      "habitat/weights": 0,
+      "feedstock/scratch": 0,
+      "environment/demand": 0,
+      "cells/ledger_low": 0,
+      "cells/inputs": 0,
+      "feedstock/sink_masks": 0,
+      "cells/energy": 0,
+      "cells/requests": 0,
+      "environment/resource_ledger_low": 0,
+      "cells/radii": 0,
+      "habitat/last_secretion": 0,
+      "cells/mass": 0,
+      "cells/support": 0,
+      "habitat/release": 0,
+      "feedstock/permeability": 0,
+      "environment/inert_low": 0,
+      "habitat/permeability": 0,
+      "habitat/observation": 0,
+      "cells/force": 0,
+      "cells/rest": 0,
+      "cells/position": 0,
+      "habitat/grid_inert_low": 0,
+      "cells/adaptation": 0,
+      "cells/candidate_rest": 0,
+      "feedstock/source_masks": 0,
+      "environment/inert": 0,
+      "habitat/grid_ledger_low": 0,
+      "environment/permeability": 0,
+      "feedstock/resource_ledger_low": 0,
+      "habitat/grid_ledger": 0,
+      "habitat/bound": 0,
+      "cells/actions": 0,
+      "cells/weights": 0,
+      "feedstock/fields": 0,
+      "cells/enzymes": 0,
+      "environment/quota": 0,
+      "environment/source_masks": 0,
+      "habitat/grid_inert": 0,
+      "cells/hidden": 0,
+      "habitat/cell_inert": 0,
+      "cells/outputs": 0,
+      "environment/occupancy": 0,
+      "environment/resource_ledger": 0,
+      "habitat/enzyme": 0,
+      "habitat/cell_ledger": 0,
+      "feedstock/resource_ledger": 0,
+      "cells/age": 0,
+      "feedstock/quota": 0,
+      "cells/metabolites_next": 0,
+      "habitat/expression": 0,
+      "habitat/cell_ledger_low": 0,
+      "cells/position_next": 0,
+      "habitat/requests": 0,
+      "habitat/cell_inert_low": 0,
+      "environment/fields": 0,
+      "environment/scale": 0,
+      "environment/sink_masks": 0,
+      "environment/observation": 0,
+      "cells/marks": 0
+    },
+    "failure_latch_preserved": true,
+    "partial_checkpoint_rejected": true,
+    "checkpoint_bytes": 243685172
+  },
+  "memory": {
+    "system_vram_before_bytes": 1188020224,
+    "system_vram_peak_bytes": 1938718720,
+    "system_vram_last_bytes": 1938718720,
+    "sample_interval_seconds": 0.5,
+    "sample_count": 118,
+    "caveat": "System-wide usage includes allocator/session baseline and simultaneous original+restored worlds; not model-only live allocation.",
+    "reconstructible_resource_workspace_bytes": 6390576
+  },
+  "scope": [
+    "Population256 at1100steps;t\u22481.1. Not mature-population or ecological long-horizon evidence.",
+    "Potential residual+.0384052 passes recipe1e-4 relative threshold atthisendpoint but long-horizon behavior is not established.",
+    "Source-audit candidate: Float32 endpoint debit rounding in tiny motor substeps; not yet a confirmed full explanation."
+  ]
+}

@@ -105,8 +105,29 @@ This adaptation changes the authoritative resource source hash. The earlier AMD
 throughput numbers above refer to its retained v1 pin; they are not a measurement
 of the new resource-reduction composition.
 
-The shared-resource adapter passed 246 CPU assertions: 229 whole-composition and
-protocol regressions, 11 backing-storage/slice checks and six multi-level 3D
-checks. These include closed and fed inventories, failed-world isolation and
-healthy-member checkpoint recovery. A fresh native gate remains to be scheduled
-for this source version.
+The shared-resource adapter passed 249 CPU assertions: 229 whole-composition and
+protocol regressions, 11 backing-storage/slice checks, six multi-level 3D
+checks and three habitat/raw backing-parent alias checks. These include closed and fed inventories, failed-world isolation and
+healthy-member checkpoint recovery. The native composition gate below verifies this source version.
+
+
+### Shared-resource native gate (`d0e41d1`)
+
+The bounded v2 AMD gate passed on the same 4-world × 64-founder, 16³ fixture,
+including the actual-parent ownership guards. Three complete-workload samples
+(16 world-steps each) took serial `[0.173556, 0.201348, 0.203551]` seconds versus
+packed `[0.045500, 0.051979, 0.052393]` seconds. Median aggregate throughput was
+**79.46 versus 307.81 world-steps/s**, a **3.8736×** ratio. The smaller two-world
+fixture measured 1.9704×. These are the v2 serial-versus-packed comparisons;
+changes from the historical v1 timings are not an isolated resource-kernel study.
+
+All compared floating state differed by at most 5.96e-8 (the small fixture was
+exact); identities, counters and world ownership passed. Every moderate world
+again reached 128 cells with positive paid construction, raw conversion and
+binding. Maximum material residual was 8.40e-5 and potential/work/heat residual
+5.11e-4, both below the two-ppm gates. Independent failure, selected healthy-member
+checkpoint export, native restore and one complete post-restart step passed.
+No scratch is checkpointed. The source is archived from exact commit `d0e41d1` at
+`outputs/world-batches-20261015/constructive-gpu-v2-d0e41d1`, including the native
+log and raw JSON. The process exited successfully and released the GPU; no long
+ensemble was launched.

@@ -359,3 +359,15 @@ against incompatible fixed aliases. A reviewed native 256³ activity-contour pho
   empty after the already recorded finite-funding extinction; no reseed or
   deadline change. All source maps/checkpoints/host controls valid, no failure
   artifacts. Native garden is a separate fresh recipe, pending sustained gate.
+
+- Full immutable `8f502c2` integration completed: **18,258/18,258 assertions**,
+  no failures/errors,190.5s,Julia1.12.4 on hboxCPU8–9. Archive preserved all15
+  symlinks; log/provenance in outputs/integration-8f502c2-20261015. The separately
+  scoped batch backing guard is committed at d0e41d1 and passed3new checks.
+- Exact fresh64³/C16384 garden gate at `45ce5ab` completed:100warm +5×200timed
+  steps, median10.2637ms/step (97.43Hz), plus exact strict native restore and
+  eight-step continuation/failure checks. Population256; secretion3.1143,
+  catalytic release8.0029,bound1.6997. Material residual−1.883e−5; potential
+  residual+0.0384052 requires a source/accounting investigation before the
+  long launch. No production history has been started or altered. A possible
+  tiny motor debit / Float32 endpoint mismatch is under independent analysis.

@@ -1,0 +1,133 @@
+Capacity reserve versus active work: native full-step review, 2026-10-15
+
+Selected change: source-derived serial lifecycle prefix scan. This is an opt-in
+study, not a production mutation. It retains the exact birth/allocation law.
+
+The native enqueue has no per-stage backend synchronize: launches share the
+ordered stream; status sync is at the checked step boundary. Mechanics needs
+separate force/move/commit launches because every force must read the same old
+positions. Replacing that barrier with in-place writes changes the law. Earlier
+graph experiments already showed submission overhead was a small whole-step
+fraction. Therefore removing arbitrary launches is not the strongest target.
+
+Many cell kernels launch capacity-sized ranges, but branch immediately on active
+cells. Empty-slot GPU threads mostly perform an active/status load. In contrast,
+dc_lifecycle! is one thread that explicitly scans1:C and clears every new_parent,
+writes every free slot, and constructs the division heap. Existing fixed-N512
+profiles measured lifecycle1.37ms atC8192 and5.35ms atC32768, while most other
+categories changed little. This is direct evidence for a serial reserve-capacity
+penalty. Exact64³garden/C16384/N256 profiling is still pending; do not substitute
+the older fixture's total throughput for the actual garden's throughput.
+
+Prototype: studies/device_lifecycle_prefix.jl
+
+A study-owned one-element device buffer H records the highest slot ever occupied.
+It is initialized once from active/ID/new_parent arrays; IDs survive deaths, so
+reconstruction after a base checkpoint is conservative. There is no per-step host
+population observation and no capacity decrease or cell movement/compaction.
+
+The generated kernel differs from the pinned production source only in:
+1. Scan1:H rather than1:C, preserving ascending holes and clearing new_parent
+   on every previously writable slot.
+2. Append only min(candidate_count,C-H) ascending virgin-tail free slots.
+   This supplies every slot that could be allocated in this step. Materializing
+   all other unused tail free entries has no consumer.
+3. After successful allocation, update H=max(H,last_allocated_child).
+
+The heap keys, ID tie-breaks, heap operations, RNG, candidate order, identity
+limit check, capacity-exhaustion counter, selected child slots, metadata and
+birth/death schedule are unchanged. For each old prefix hole sequence followed
+by virgin tail, the first min(candidates,total_free) entries are identical to
+the original full free list. Thus all used free entries and division decisions
+match. Beyond H, new_parent remains zero by induction: those slots were never
+written; the first write that activates one also expands H before the next
+lifecycle scan. H never shrinks, so deaths cannot expose stale new_parent flags.
+
+Work becomes O(H + min(candidates,C-H) + heap work), rather than O(C + heap
+work). AtC16384/H256 the serial scan portion has64 times fewer iterations.
+This is a work-count improvement, not a claimed64-times whole-step speedup.
+If historical occupation reachesC, the optimization naturally loses its benefit.
+Birth capacity remainsC. A population plateau far below reserve capacity keeps
+the improvement even over long runs; no geometric growth bound expires it.
+
+The only deliberate snapshot difference is unused environment.free scratch.
+Only entries1:births are consumed in the same kernel; no other source consumer
+reads it. Full canonical cell state, all other environment arrays, habitat and
+feedstock must match exactly. A raw all-scratch snapshot equality claim would
+be false and is not used by the tests.
+
+The carrier uses the ordinary shared enqueue, replacing only dc_lifecycle!.
+It composes with the event profiler, so a subsequent GPU gate can compare the
+whole native coupled step, original lifecycle category and unchanged other
+categories. No extra launch or status synchronization is added. Source hashes
+are checked against the loaded base pin. Explicit snapshots/checkpoints remain
+ordinary deep copies. To resume the study, restore the strict base process,
+recreate the carrier, and pin this study hash in the driver provenance; no new
+physical checkpoint layout is needed.
+
+Ownership contract: the carrier exclusively controls lifecycle while in use.
+External active/ID/new_parent edits require reconstructing the carrier first.
+Unannounced mutation can invalidate H; no O(C) per-step mutation audit is added.
+This is an experimental API requirement, not a production-process restriction.
+
+Failure semantics are unchanged. The shared status latch prevents future queued
+launches from mutating state. An identity-overflow failure does not advance H.
+As in production, the current failed step may be diagnostically partial; this
+experiment claims no transactional rollback. Tests compare the subsequent
+latched launch against that partial state.
+
+Validation:383 assertions passed (357 direct checks plus26 complete-coupling
+checks). test/device_lifecycle_prefix.jl covers randomized capacities through
+C16384, empty
+populations, holes, exhausted capacity, candidates exceeding available slots,
+heap/free prefix exactness, twenty complete coupled steps including births,
+carrier reconstruction, identity overflow, and latched-state immutability.
+The complete trajectory ignores only unused free scratch and otherwise compares
+all arrays exactly. No GPU launch or throughput measurement has occurred.
+
+Deferred whole-grid architecture questions:
+* Diffusion is local but fields can start uniformly nonzero and chemostat masks
+  can act everywhere. Skipping 'empty support tiles' alone is incorrect.
+* A sparse causal frontier would need dense-background values plus perturbation
+  tiles, neighboring stencil halos and exact state for every source/sink region.
+  Binding/permeability updates also expand the causal region. This can change
+  storage radically, but must preserve Float32 background arithmetic explicitly.
+* Occupancy, uptake demand and waste-return scratch are more localized. A shared
+  touched-tile list could clear/allocate only those tiles, with a validated zero
+  invariant outside them. Atomic scatters must register all touched tiles before
+  consumption. This is a separate prototype, not an assumed free optimization.
+* Capacity-sized parallel controller/validation scans may matter once the serial
+  lifecycle penalty is removed; the actual garden event profile should decide.
+
+Run with one local CPU thread:
+julia --project --threads=1 --gcthreads=1 test/device_lifecycle_prefix.jl
+The narrow direct gate can omit the coupled compilation with
+INTMAT_PREFIX_DIRECT_ONLY=1 and the same command.
+
+Actual-recipe bounded paired runner:
+studies/gate_device_lifecycle_prefix.jl PROFILE FRESH_OUTPUT
+Defaults:10 warm steps, three alternating-order pairs of20 native full steps,
+eight strict-restart continuation steps,270-second internal deadline. A caller
+must also enforce an external300-second limit because a single first compilation
+cannot be interrupted by a between-batch deadline check. No GPU run is started
+by this file's inclusion or by the CPU unit tests.
+
+The runner uses scripts/native_constructed_garden.jl unchanged and records the
+exact profile, initialization fixture, loaded source pins, study/reconstruction
+source hash, runtime and runner hash. It first runs a separate disposable coupled
+fixture whose second founder dies in metabolism and whose slot is immediately
+reused by founder1's child. This forced fixture is not included in throughput or
+physical funding conclusions. The actual recipe's material and chemical funding
+ledgers are independently checked at the end.
+
+Native/prefix comparisons retain the ordinary native GPU gate's2e-5 maximum
+absolute tolerance across every floating role and enzyme value, and exact
+identities, contacts, new_parent and completed counters. Atomic scheduling already
+allows integer list/scratch order variation between ordinary native trajectories;
+unused free scratch is likewise excluded. CPU complete trajectories have the
+stronger exact comparison of all arrays except unused free scratch. A raw GPU
+bitwise-equality claim is not made. Throughput timing includes submission and
+completion/status synchronization for each whole batch, excludes deep snapshots,
+checkpoint serialization, initialization and compilation warmup, and alternates
+AB/BA order. The final checkpoint is strictly restored before reconstructing H;
+that reconstruction and subsequent continuation are checked explicitly.

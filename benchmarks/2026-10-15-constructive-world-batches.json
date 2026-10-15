@@ -1505,19 +1505,476 @@
     }
   },
   "shared_resource_adapter": {
-    "cpu_assertions": 246,
+    "cpu_assertions": 249,
     "whole_composition_and_protocol_regression": 229,
     "backing_storage_and_world_slice_assertions": 11,
     "multilevel_3d_assertions": 6,
-    "native_status": "awaiting_source_freeze_and_queue",
+    "native_status": "passed",
     "source_sha256": {
       "studies/cellular_world_batches.jl": "52917b3bce7e14cbbe6cf34fb19f3be78b8a520e729d07ee6b403ffe7e9a2b91",
-      "studies/constructive_world_batches.jl": "3c6fac852597fba42d08434e290425c37717a47e1fe2887cd9e246648fb3de67",
+      "studies/constructive_world_batches.jl": "085c29ef69eff28ca1de409230c43618f50c1ef37002c0f65ce16f50d7263bca",
       "src/device_resource_exchange.jl": "050991b42eceab1403c940e69b027d27106f966dfcc0cfbf215b5b5ff7221c18"
     },
     "logs": [
       "/tmp/intmat-batches-resource-v2-cpu-1.log",
-      "/tmp/intmat-batches-resource-v2-isolation.log"
-    ]
+      "/tmp/intmat-batches-resource-v2-isolation.log",
+      "/tmp/intmat-batches-habitat-parent-alias.log"
+    ],
+    "habitat_raw_parent_alias_assertions": 3,
+    "commit": "d0e41d1",
+    "native": {
+      "runtime": {
+        "julia": "1.12.4",
+        "kernel": "Linux",
+        "architecture": "x86_64",
+        "launch_threads": 2,
+        "backend": "amd",
+        "device": "HIPDevice(id=1, name=AMD Radeon RX 6750 XT, gcn_arch=gfx1030)",
+        "backend_version": "2.8.0",
+        "actual_device_optlevel": 1,
+        "project_sha256": "284c920aebff70f466a40df21f7c83ae4c561857b046f940274b43a8feeaec6d",
+        "manifest_sha256": "faf39cac4353fc7da542dfa1387dea2938c2348d3cd7024e7dbf2d092ed0b45b"
+      },
+      "source": {
+        "base": "52917b3bce7e14cbbe6cf34fb19f3be78b8a520e729d07ee6b403ffe7e9a2b91",
+        "composition": "085c29ef69eff28ca1de409230c43618f50c1ef37002c0f65ce16f50d7263bca",
+        "habitat": {
+          "helper": "b6d760c2821bc8baab3ef9ebe273f310f691b09cd8fb23a7b290b4891213e528",
+          "kernels": "ee2a1c13ac99a2d69a36a3aec25c6ed55072a578cff82094329263500c8090b9",
+          "sorption": "f135e74e59959187e72725a45665ac5c67293b8305298c8d3ac4bdbb81e6ac93"
+        }
+      },
+      "gpu": true,
+      "failure_isolation": true,
+      "healthy_member_checkpoint": true,
+      "small": {
+        "worlds": 2,
+        "cells_per_world": 2,
+        "capacity_per_world": 16,
+        "grid": [
+          6,
+          6,
+          6
+        ],
+        "extent": [
+          8,
+          8,
+          8
+        ],
+        "exchange_radius": 1,
+        "hidden": 2,
+        "mechanical_substeps": 16,
+        "cell_seeds": [
+          101,
+          102
+        ],
+        "habitat_seeds": [
+          1101,
+          1102
+        ],
+        "steps_per_sample": 1,
+        "serial_seconds": [
+          0.010764346
+        ],
+        "batch_seconds": [
+          0.005463012
+        ],
+        "aggregate_ratio": 1.9704049707377542,
+        "field_max_errors": {
+          ".cells.state.requests": 0,
+          ".cells.environment.inert_low": 0,
+          ".feedstock.source_masks": 0,
+          ".cells.state.grants": 0,
+          ".cells.state.rest": 0,
+          ".arrays.grid_inert_low": 0,
+          ".feedstock.resource_ledger": 0,
+          ".cells.state.mass": 0,
+          ".cells.state.weights": 0,
+          ".cells.environment.resource_ledger_low": 0,
+          ".cells.state.inputs": 0,
+          ".arrays.release": 0,
+          ".cells.state.adaptation": 0,
+          ".cells.state.metabolites_next": 0,
+          ".feedstock.resource_ledger_low": 0,
+          ".arrays.cell_inert_low": 0,
+          ".feedstock.fields": 0,
+          ".cells.state.ledger": 0,
+          ".cells.environment.observation": 0,
+          ".feedstock.permeability": 0,
+          ".cells.state.metabolites": 0,
+          ".cells.state.ledger_low": 0,
+          ".cells.state.waste": 0,
+          ".arrays.expression": 0,
+          ".cells.environment.permeability": 0,
+          ".arrays.requests": 0,
+          ".cells.state.enzymes": 0,
+          ".cells.state.candidate_rest": 0,
+          ".cells.state.rows": 0,
+          ".cells.state.age": 0,
+          ".cells.environment.quota": 0,
+          ".cells.state.support_normalization": 0,
+          ".feedstock.scratch": 0,
+          ".arrays.grid_ledger_low": 0,
+          ".cells.environment.source_masks": 0,
+          ".arrays.last_secretion": 0,
+          ".arrays.cell_inert": 0,
+          ".cells.environment.occupancy": 0,
+          ".arrays.cell_ledger_low": 0,
+          ".arrays.observation": 0,
+          ".cells.state.marks": 0,
+          ".cells.state.actions": 0,
+          ".cells.environment.fields": 0,
+          ".cells.environment.scratch": 0,
+          ".cells.state.position_next": 0,
+          ".cells.environment.returns": 0,
+          ".arrays.enzyme_bits[Float32]": 0,
+          ".cells.environment.inert": 0,
+          ".cells.environment.resource_ledger": 0,
+          ".cells.state.outputs": 0,
+          ".cells.state.radii": 0,
+          ".cells.state.energy": 0,
+          ".cells.state.hidden": 0,
+          ".arrays.weights": 0,
+          ".feedstock.quota": 0,
+          ".cells.state.axis_distance2": 0,
+          ".cells.environment.demand": 0,
+          ".cells.environment.sink_masks": 0,
+          ".arrays.permeability": 0,
+          ".arrays.grid_ledger": 0,
+          ".cells.environment.scale": 0,
+          ".cells.state.force": 0,
+          ".arrays.grid_inert": 0,
+          ".cells.environment.metadata.radius": 0,
+          ".cells.state.position": 0,
+          ".cells.state.exchange_scale": 0,
+          ".feedstock.sink_masks": 0,
+          ".arrays.cell_ledger": 0,
+          ".arrays.bound": 0
+        },
+        "material_errors": [
+          -7.4078343459405005e-09,
+          -2.1447704057209194e-08
+        ],
+        "potential_work_heat_errors": [
+          1.305028945353115e-06,
+          -3.155697413603775e-06
+        ],
+        "audits": [
+          {
+            "material": 148.985917510135,
+            "potential": 802.0337494164705,
+            "work": 0.019698407801852835,
+            "heat": 0.1561331273439367,
+            "supplied": 0.025911346077919006,
+            "removed": 0,
+            "supplied_potential": 0.1295490860939026,
+            "removed_potential": 0,
+            "population": 4,
+            "completed_steps": 2,
+            "secreted": [
+              0.0035792849957942963,
+              0.003906499594449997
+            ],
+            "solubilized": [
+              0.01388615369796753,
+              0.013886839151382446
+            ],
+            "bound": [
+              0.003471747972071171,
+              0.00347727257758379
+            ],
+            "enzyme": [
+              5.122042773291469,
+              5.122369909659028
+            ],
+            "inert": 4.03824197137137e-07,
+            "finite": true
+          },
+          {
+            "material": 148.98591749609514,
+            "potential": 802.0305238738656,
+            "work": 0.023284084597608196,
+            "heat": 0.15576853242674563,
+            "supplied": 0.025911346077919006,
+            "removed": 0,
+            "supplied_potential": 0.1295490860939026,
+            "removed_potential": 0,
+            "population": 4,
+            "completed_steps": 2,
+            "secreted": [
+              0.001493167132139206,
+              0.005973758175969124
+            ],
+            "solubilized": [
+              0.013881951570510864,
+              0.013891011476516724
+            ],
+            "bound": [
+              0.0034706471487879753,
+              0.0034784115850925446
+            ],
+            "enzyme": [
+              5.119957119226456,
+              5.12443670630455
+            ],
+            "inert": 4.429370167868818e-07,
+            "finite": true
+          }
+        ],
+        "serialized_checkpoint_bytes": 237467,
+        "restart_parity": true,
+        "timing": "complete coupled enqueue + endpoint status; excludes construction, JIT, snapshots, checkpoint and restart"
+      },
+      "moderate": {
+        "worlds": 4,
+        "cells_per_world": 64,
+        "capacity_per_world": 256,
+        "grid": [
+          16,
+          16,
+          16
+        ],
+        "extent": [
+          8,
+          8,
+          8
+        ],
+        "exchange_radius": 1,
+        "hidden": 8,
+        "mechanical_substeps": 16,
+        "cell_seeds": [
+          101,
+          102,
+          103,
+          104
+        ],
+        "habitat_seeds": [
+          1101,
+          1102,
+          1103,
+          1104
+        ],
+        "steps_per_sample": 4,
+        "serial_seconds": [
+          0.173556424,
+          0.201348329,
+          0.203550886
+        ],
+        "batch_seconds": [
+          0.04549999,
+          0.051979293,
+          0.052392559
+        ],
+        "aggregate_ratio": 3.8736257724782823,
+        "field_max_errors": {
+          ".cells.state.requests": 0,
+          ".cells.environment.inert_low": 0,
+          ".feedstock.source_masks": 0,
+          ".cells.state.grants": 0,
+          ".cells.state.rest": 0,
+          ".arrays.grid_inert_low": 0,
+          ".feedstock.resource_ledger": 0,
+          ".cells.state.mass": 0,
+          ".cells.state.weights": 0,
+          ".cells.environment.resource_ledger_low": 0,
+          ".cells.state.inputs": 0,
+          ".arrays.release": 0,
+          ".cells.state.adaptation": 0,
+          ".cells.state.metabolites_next": 0,
+          ".feedstock.resource_ledger_low": 0,
+          ".arrays.cell_inert_low": 0,
+          ".feedstock.fields": 0,
+          ".cells.state.ledger": 1.862645149230957e-09,
+          ".cells.environment.observation": 0,
+          ".feedstock.permeability": 0,
+          ".cells.state.metabolites": 0,
+          ".cells.state.ledger_low": 1.7462298274040222e-09,
+          ".cells.state.waste": 0,
+          ".arrays.expression": 0,
+          ".cells.environment.permeability": 5.960464477539063e-08,
+          ".arrays.requests": 0,
+          ".cells.state.enzymes": 0,
+          ".cells.state.candidate_rest": 0,
+          ".cells.state.rows": 0,
+          ".cells.state.age": 0,
+          ".cells.environment.quota": 0,
+          ".cells.state.support_normalization": 0,
+          ".feedstock.scratch": 0,
+          ".arrays.grid_ledger_low": 0,
+          ".cells.environment.source_masks": 0,
+          ".arrays.last_secretion": 0,
+          ".arrays.cell_inert": 3.4924596548080444e-10,
+          ".cells.environment.occupancy": 0,
+          ".arrays.cell_ledger_low": 8.149072527885437e-10,
+          ".arrays.observation": 0,
+          ".cells.state.marks": 0,
+          ".cells.state.actions": 0,
+          ".cells.environment.fields": 0,
+          ".cells.environment.scratch": 0,
+          ".cells.state.position_next": 0,
+          ".cells.environment.returns": 0,
+          ".arrays.enzyme_bits[Float32]": 4.656612873077393e-10,
+          ".cells.environment.inert": 1.8189894035458565e-12,
+          ".cells.environment.resource_ledger": 0,
+          ".cells.state.outputs": 0,
+          ".cells.state.radii": 0,
+          ".cells.state.energy": 0,
+          ".cells.state.hidden": 0,
+          ".arrays.weights": 0,
+          ".feedstock.quota": 0,
+          ".cells.state.axis_distance2": 0,
+          ".cells.environment.demand": 0,
+          ".cells.environment.sink_masks": 0,
+          ".arrays.permeability": 5.960464477539063e-08,
+          ".arrays.grid_ledger": 0,
+          ".cells.environment.scale": 0,
+          ".cells.state.force": 0,
+          ".arrays.grid_inert": 0,
+          ".cells.environment.metadata.radius": 0,
+          ".cells.state.position": 0,
+          ".cells.state.exchange_scale": 0,
+          ".feedstock.sink_masks": 0,
+          ".arrays.cell_ledger": 9.313225746154785e-10,
+          ".arrays.bound": 0
+        },
+        "material_errors": [
+          7.024770138741587e-05,
+          8.392571544391103e-05,
+          7.476988503185567e-05,
+          7.886114190114313e-05
+        ],
+        "potential_work_heat_errors": [
+          0.00041930400618639396,
+          0.0005102995417960443,
+          0.00044927770670533107,
+          0.00047478075640583484
+        ],
+        "audits": [
+          {
+            "material": 2705.7599886894736,
+            "potential": 15291.102874159813,
+            "work": 3.402035556913965,
+            "heat": 21.175036869994138,
+            "supplied": 2.399822235107422,
+            "removed": 0,
+            "supplied_potential": 11.998947143554688,
+            "removed_potential": 0,
+            "population": 128,
+            "completed_steps": 13,
+            "secreted": [
+              0.5606586735229939,
+              1.1337378692114726
+            ],
+            "solubilized": [
+              0.2267594337463379,
+              0.23969832062721252
+            ],
+            "bound": [
+              0.4394951621070504,
+              0.46658735536038876
+            ],
+            "enzyme": [
+              5.670094364555553,
+              6.242572820628993
+            ],
+            "inert": 2.578471675995786e-05,
+            "finite": true
+          },
+          {
+            "material": 2705.7600023674877,
+            "potential": 15290.882847294211,
+            "work": 3.351477659548246,
+            "heat": 21.445712628497006,
+            "supplied": 2.399822235107422,
+            "removed": 0,
+            "supplied_potential": 11.998947143554688,
+            "removed_potential": 0,
+            "population": 128,
+            "completed_steps": 13,
+            "secreted": [
+              0.7991522176889703,
+              1.0362753013614565
+            ],
+            "solubilized": [
+              0.23213592171669006,
+              0.23750171065330505
+            ],
+            "bound": [
+              0.4496560301631689,
+              0.46225063782185316
+            ],
+            "enzyme": [
+              5.908337999135256,
+              6.145212341332808
+            ],
+            "inert": 2.5872962700290714e-05,
+            "finite": true
+          },
+          {
+            "material": 2705.7599932116573,
+            "potential": 15291.118915360421,
+            "work": 3.436670282710063,
+            "heat": 21.124390917290544,
+            "supplied": 2.399822235107422,
+            "removed": 0,
+            "supplied_potential": 11.998947143554688,
+            "removed_potential": 0,
+            "population": 128,
+            "completed_steps": 13,
+            "secreted": [
+              0.9410442686639726,
+              0.8198377711232752
+            ],
+            "solubilized": [
+              0.2353452444076538,
+              0.23261284828186035
+            ],
+            "bound": [
+              0.45597821939736605,
+              0.45288221165537834
+            ],
+            "enzyme": [
+              6.050081197987311,
+              5.929001866839826
+            ],
+            "inert": 2.592095926523541e-05,
+            "finite": true
+          },
+          {
+            "material": 2705.759997302914,
+            "potential": 15290.69759201631,
+            "work": 3.557320399302554,
+            "heat": 21.425089647859195,
+            "supplied": 2.399822235107422,
+            "removed": 0,
+            "supplied_potential": 11.998947143554688,
+            "removed_potential": 0,
+            "population": 128,
+            "completed_steps": 13,
+            "secreted": [
+              0.964707070030272,
+              0.8760825898498297
+            ],
+            "solubilized": [
+              0.23589357733726501,
+              0.2338806390762329
+            ],
+            "bound": [
+              0.4571453807875514,
+              0.4551344932988286
+            ],
+            "enzyme": [
+              6.0737189368810505,
+              5.9851879180641845
+            ],
+            "inert": 2.6142476391655123e-05,
+            "finite": true
+          }
+        ],
+        "serialized_checkpoint_bytes": 11211033,
+        "restart_parity": true,
+        "timing": "complete coupled enqueue + endpoint status; excludes construction, JIT, snapshots, checkpoint and restart"
+      }
+    }
   }
 }

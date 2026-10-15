@@ -1,0 +1,15 @@
+# Native constructive garden gate, 2026-10-15
+
+The exact committed 64³ production fixture runs at **10.264 ms per complete step (97.43 steps/s)** after warmup. Strict native restore and eight continuation steps match every array exactly; prior failure leaves physical state unchanged and prevents a checkpoint. The long run is held while a potential-accounting drift is investigated.
+
+Source 45ce5ab uses the shared production compensated resource phase, materialized support,256 founders, capacity 16384, hidden width 8, extent 4³, radius .18,16 mechanics substeps, dt=.001 and basal rate .008. Opposed nonuniform raw-source masks each supply 1 world mass/time with finite 1500-unit budgets. Initial total material 765.440 and future source budgets 3000 imply the conservative funded population bound 15062, below capacity. These are initial-state throughput measurements, not mature ecology scaling.
+
+After 100 warm steps, five 200-step native batches took2.059187,2.052740,2.052741,2.051685 and2.053980seconds. Timings include the end-of-batch completion/status check and contain no artificial sleep or observation downloads. The checkpoint endpoint is step 1100, physical time≈1.1, population 256. Eight continuation steps follow outside the timing sample.
+
+At the checkpoint, paid cumulative secretion is 3.11434 mass, solubilization 8.00290, bound food 1.69966 and retained catalyst 3.09062. All audited state is finite. The material residual is −1.88319e-5. The potential/work/heat residual is **+0.0384052**, about 2.29e-5 of initial potential. Both pass the recipe's declared 1e-4 relative gate at this endpoint; this does not establish long-horizon closure. A source audit is checking Float32 requested-versus-actual energy debits, especially tiny motor costs repeated across 16 substeps. No long production launch was made from this result alone.
+
+The source-pinned checkpoint is 243,685,172 bytes. Reconstructible resource grants/tree scratch adds 6,390,576 bytes outside the checkpoint. A .5-second system-wide VRAM sampler observed 1,188,020,224 bytes before allocation and a peak 1,938,718,720 bytes. This includes the desktop/allocator baseline and two resident worlds during restart validation, so it is not a single-model live-allocation measurement.
+
+The controlled AMD process exited 0 within its 300-second cap, then released the GPU. It used CPUs 10,11, 8 GiB/no swap/nice15, two Julia threads, one GC/BLAS thread, Julia 1.12.4, AMDGPU 2.8.0, ROCm 6.4.3, gfx1030 override and process-local optlevel 1 on RX 6750 XT. [Raw gate, runtime/source pins and memory summary](../benchmarks/2026-10-15-native-constructed-garden-gate.json) preserve the exact evidence.
+
+The immutable stage is `/othersys/tmp/intmat-probe-20261014/native-garden-production-20261015`; its `results/checkpoint.jls` is retained there. Reproduce with `scripts/gate_native_constructed_garden.jl experiments/native/constructed-garden-64.toml FRESH_OUTPUT` under an exclusive controlled GPU slot. The separately bounded production runner remains unlaunched pending accounting review.
