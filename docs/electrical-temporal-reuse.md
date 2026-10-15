@@ -150,3 +150,41 @@ separately. Local logs, environment, immutable fixture and source copies are und
 `outputs/electrical-local-correction-20261015/native-a6ec1a8`.
 Tracked raw timings/provenance are in
 `benchmarks/2026-10-15-electrical-local-correction.json`.
+
+## Optional tracked wrapper and coupled gate
+
+`studies/electrical_temporal_solver.jl` provides `ElectricalTemporalSolver` for a
+fresh producer. `electrical_temporal_mark!` updates every hierarchy mask and tracks
+one known Dirichlet addition. `electrical_temporal_solve!` can patch only when the
+previous global certificate is valid and that addition was the only edit. Multiple
+additions force ordinary MG. A call with no intervening edits may return its
+cached global bound.
+
+Every external geometry, fine/coarse field, RHS, boundary or operator edit must
+call `electrical_temporal_invalidate!(solver, reason)`. This clears the certificate
+and disables local reuse. Direct writes to exposed Julia arrays cannot be detected
+without a scan; the wrapper makes this ownership contract explicit. To re-enable,
+`electrical_temporal_recertify!(solver; homogeneous_operator=true)` requires an
+explicit assertion that the supported homogeneous constant-coefficient grounded
+operator and all coarse masks have been restored. It rejects nonzero fine RHS and
+performs an ordinary global solve before enabling patches. It does not implement
+variable conductivity or make an incompatible operator correct by invalidation.
+Seventeen focused assertions cover this state machine and its fallback paths.
+
+A fresh pair of independent coupled histories used the actual amber-confluence
+recipe at overridden 33³ resolution for 256 events. Both arms performed thermal
+writing, material depletion, dose feedback and their own site selection. All 256
+choices matched; occupied Jaccard was 1; final solid totals were 68.524230659 in both,
+and relative material ledger errors were 3.95e-10. Independent harmonic residuals
+were below 1.50e-5. V-cycles decreased 1082→908. No local CPU timing claim follows;
+the workstation was contended. The narrow native heat width is underresolved on
+this coarse grid, so this is a composition check, not a native physical result or
+a guarantee of indefinite trajectory agreement.
+
+The new `scripts/study_electrical_temporal_coupling.jl` retains both independent
+histories after any changed choice, records the first choice divergence, overlap,
+field differences, material budgets, residual checks and complete-event timings.
+The first 16 events are explicitly excluded from steady timing to avoid kernel-
+compilation bias; raw timings remain. No rescue or forced choice-matching occurs.
+A native 257³/1024-event bounded AMD gate is prepared for the coordinated queue;
+it has not run. Producer recipe wiring remains deferred until that result.
