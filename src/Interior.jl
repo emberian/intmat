@@ -73,6 +73,9 @@ include("device_cellular_protocol.jl")
 export DeviceCellular, device_cellular_step!, device_cellular_status!, device_cellular_statistics
 export device_cellular_initialize, device_support_descriptor, device_support_edges
 export device_cellular_snapshot, device_cellular_audit, device_cellular_checkpoint, device_cellular_restore
+include("device_habitat.jl")
+export DeviceCatalyticHabitat, DeviceConstructiveEcology
+export device_habitat_snapshot, device_habitat_audit, device_habitat_checkpoint, device_habitat_restore
 export Arena, Chemostat, arena_step!, arena_snapshot, checkpoint!, restore_arena, run_arena!, build_arena
 export RenderSettings, render_volume, export_volume, volume_sample, transport_segment, build_scene, optical_fields
 end

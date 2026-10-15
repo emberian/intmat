@@ -1,0 +1,160 @@
+{
+    "runtime": {
+        "julia": "1.12.4",
+        "kernel": "Linux",
+        "architecture": "x86_64",
+        "launch_threads": 2,
+        "backend": "amd",
+        "device": "HIPDevice(id=1, name=AMD Radeon RX 6750 XT, gcn_arch=gfx1030)",
+        "backend_version": "2.8.0",
+        "actual_device_optlevel": 1,
+        "project_sha256": "284c920aebff70f466a40df21f7c83ae4c561857b046f940274b43a8feeaec6d",
+        "manifest_sha256": "314ef8467197c50ccc793237279e1367c4d193a8d8756869b43c345a35b03d9b"
+    },
+    "steps": 20,
+    "seconds_including_compilation": 24.649742734,
+    "timing_note": "This is a bounded correctness/compile probe, not a throughput measurement.",
+    "initial": {
+        "material": 44.480001509189606,
+        "potential": 242.72000908851624,
+        "work": 0,
+        "heat": 0,
+        "supplied": 0,
+        "removed": 0,
+        "supplied_potential": 0,
+        "removed_potential": 0,
+        "population": 2,
+        "completed_steps": 0,
+        "secreted": [
+            0,
+            0
+        ],
+        "solubilized": [
+            0,
+            0
+        ],
+        "bound": [
+            0,
+            0
+        ],
+        "enzyme": [
+            0,
+            0
+        ],
+        "inert": 0,
+        "finite": true
+    },
+    "final": {
+        "material": 44.48000155925017,
+        "potential": 241.77920737490058,
+        "work": 0.05268167720023487,
+        "heat": 0.8881204993336723,
+        "supplied": 0,
+        "removed": 0,
+        "supplied_potential": 0,
+        "removed_potential": 0,
+        "population": 4,
+        "completed_steps": 20,
+        "secreted": [
+            0.02952444867696613,
+            0.02952444867696613
+        ],
+        "solubilized": [
+            0.000645369291305542,
+            0.000645369291305542
+        ],
+        "bound": [
+            0.00023633986711502075,
+            0.0002305004745721817
+        ],
+        "enzyme": [
+            0.029478134121745825,
+            0.029478134121745825
+        ],
+        "inert": 1.325272023677826e-6,
+        "finite": true
+    },
+    "material_error": 5.006056369438738e-8,
+    "potential_error": 4.629182512871921e-7,
+    "array_errors": {
+        "cells/exchange_scale": 0,
+        "cells/ledger": 7.450580596923828e-9,
+        "cells/waste": 0,
+        "cells/rows": 0,
+        "cells/grants": 0,
+        "environment/scratch": 7.450580596923828e-9,
+        "cells/metabolites": 0,
+        "environment/returns": 0,
+        "habitat/weights": 0,
+        "feedstock/scratch": 0,
+        "environment/demand": 3.637978807091713e-12,
+        "cells/ledger_low": 6.752088665962219e-9,
+        "cells/inputs": 7.450580596923828e-9,
+        "feedstock/sink_masks": 0,
+        "cells/energy": 1.1920928955078125e-7,
+        "cells/requests": 7.275957614183426e-12,
+        "environment/resource_ledger_low": 0,
+        "cells/radii": 0,
+        "habitat/last_secretion": 0,
+        "cells/mass": 0,
+        "cells/support": 0,
+        "habitat/release": 0,
+        "feedstock/permeability": 0,
+        "environment/inert_low": 0,
+        "habitat/permeability": 1.1920928955078125e-7,
+        "habitat/observation": 0,
+        "cells/force": 0,
+        "cells/rest": 0,
+        "cells/position": 0,
+        "habitat/grid_inert_low": 0,
+        "cells/adaptation": 2.3283064365386963e-10,
+        "cells/candidate_rest": 0,
+        "feedstock/source_masks": 0,
+        "environment/inert": 1.1641532182693481e-9,
+        "habitat/grid_ledger_low": 0,
+        "environment/permeability": 1.1920928955078125e-7,
+        "feedstock/resource_ledger_low": 0,
+        "habitat/grid_ledger": 2.7794158086180687e-9,
+        "habitat/bound": 0,
+        "cells/actions": 2.9802322387695312e-8,
+        "cells/weights": 0,
+        "feedstock/fields": 0,
+        "cells/enzymes": 2.9802322387695312e-8,
+        "environment/quota": 0,
+        "environment/source_masks": 0,
+        "habitat/grid_inert": 4.045432433485985e-9,
+        "cells/hidden": 7.450580596923828e-9,
+        "habitat/cell_inert": 5.238689482212067e-10,
+        "cells/outputs": 2.9802322387695312e-8,
+        "environment/occupancy": 0,
+        "environment/resource_ledger": 0,
+        "habitat/enzyme": 2.7939677238464355e-9,
+        "habitat/cell_ledger": 4.656612873077393e-10,
+        "feedstock/resource_ledger": 0,
+        "cells/age": 0,
+        "feedstock/quota": 0,
+        "cells/metabolites_next": 0,
+        "habitat/expression": 0,
+        "habitat/cell_ledger_low": 2.6193447411060333e-10,
+        "cells/position_next": 0,
+        "habitat/requests": 0,
+        "habitat/cell_inert_low": 0,
+        "environment/fields": 7.450580596923828e-9,
+        "environment/scale": 1.1920928955078125e-7,
+        "environment/sink_masks": 0,
+        "environment/observation": 0,
+        "cells/marks": 1.8189894035458565e-12
+    },
+    "checkpoint_bitwise": true,
+    "source": {
+        "helper": "749087c52a361b2a626d105bc7c4ced2f1b5ac1a7cc71600d09ac21208c00d69",
+        "kernels": "ff7d1153931ee15fc87c86d1df2f7ef52573937e1ffafdf559a5079212501dd9",
+        "sorption": "6e53fbe869a0a19e39645ee7a86d4b298d4657ea9c6e2751076aa4b3535c583e"
+    },
+    "base_source": {
+        "model": "e195a8b62cd82188af9945e6d799880aecbaab0da83bee34df3aff4e7598bcc3",
+        "kernels": "e11be58bb9b25eb27819a123a97b1cd6661f7e015e821fc3eba987c7e3964628",
+        "checkpoint": "0888d1cadaf5200c554b23913fd0bffb5fd08cca5b975f47afbbaff1511cbae8",
+        "protocol": "095c40b8e42baca3688abe902289377da49e8f352017733ce92728729fb40be5"
+    }
+}
