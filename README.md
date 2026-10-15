@@ -94,7 +94,7 @@ separate status. [Accelerators](docs/accelerators.md) · [Larger-run budgets](do
 Small runs establish mechanisms and expose failures. They do not bound long-run
 behavior. Sustained turnover is not open-ended evolution; founder loss is not loss
 of all genotype variation. Compare seeds, timescales, capacities and resolutions.
-[Overnight observations](docs/alife-overnight.md) · [Adaptation protocol](docs/alife-adaptation-protocol.md)
+[Overnight observations](docs/alife-overnight.md) · [Controlled adaptation results](docs/alife-adaptation-results.md)
 
 ## Invariants and limits
 

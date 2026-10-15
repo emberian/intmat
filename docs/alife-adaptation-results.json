@@ -1,0 +1,2316 @@
+{
+  "completed_selection_runs": 12,
+  "selection_extinctions": 2,
+  "completed_assays": 80,
+  "completed_life_only_nulls": 12,
+  "descendant_effects": {
+    "n": 80,
+    "minimum": -6.621405651764134,
+    "median": 6.26134416241479,
+    "maximum": 6.928537818164665
+  },
+  "life_only_effects": {
+    "n": 12,
+    "minimum": -6.0844994130751715,
+    "median": -2.729380782316556,
+    "maximum": 3.382505248650003
+  },
+  "mutation_minus_no_mutation": {
+    "n": 32,
+    "minimum": 0.0739773812296054,
+    "median": 6.655387343644026,
+    "maximum": 13.34883737661499
+  },
+  "both_extinct_assays": 4,
+  "both_extinct_life_only_nulls": 2,
+  "largest_absolute_material_error": 0.3317194813898823,
+  "largest_absolute_chemical_energy_error": 1.3733489713195013,
+  "effects": [
+    {
+      "seed": 11,
+      "selection_environment": "niches",
+      "mutation": true,
+      "selection_extinct": false,
+      "selection_population": 180,
+      "max_living_generation": 33,
+      "assays": [
+        {
+          "environment": "niches",
+          "replicate": 1,
+          "plasticity": 0.03,
+          "living": [
+            381,
+            0
+          ],
+          "births": [
+            2907,
+            267
+          ],
+          "deaths": [
+            2558,
+            299
+          ],
+          "log_frequency_change": 6.637258031284457,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        },
+        {
+          "environment": "niches",
+          "replicate": 1,
+          "plasticity": 0.0,
+          "living": [
+            256,
+            0
+          ],
+          "births": [
+            2804,
+            239
+          ],
+          "deaths": [
+            2580,
+            271
+          ],
+          "log_frequency_change": 6.240275845170769,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        },
+        {
+          "environment": "niches",
+          "replicate": 2,
+          "plasticity": 0.03,
+          "living": [
+            300,
+            0
+          ],
+          "births": [
+            2779,
+            258
+          ],
+          "deaths": [
+            2511,
+            290
+          ],
+          "log_frequency_change": 6.398594934535208,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        },
+        {
+          "environment": "niches",
+          "replicate": 2,
+          "plasticity": 0.0,
+          "living": [
+            385,
+            0
+          ],
+          "births": [
+            2857,
+            179
+          ],
+          "deaths": [
+            2504,
+            211
+          ],
+          "log_frequency_change": 6.647688373563329,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        },
+        {
+          "environment": "uniform",
+          "replicate": 1,
+          "plasticity": 0.03,
+          "living": [
+            407,
+            0
+          ],
+          "births": [
+            3136,
+            94
+          ],
+          "deaths": [
+            2761,
+            126
+          ],
+          "log_frequency_change": 6.703188113240863,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        },
+        {
+          "environment": "uniform",
+          "replicate": 1,
+          "plasticity": 0.0,
+          "living": [
+            421,
+            0
+          ],
+          "births": [
+            3197,
+            136
+          ],
+          "deaths": [
+            2808,
+            168
+          ],
+          "log_frequency_change": 6.736966958001855,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        },
+        {
+          "environment": "uniform",
+          "replicate": 2,
+          "plasticity": 0.03,
+          "living": [
+            481,
+            0
+          ],
+          "births": [
+            3187,
+            102
+          ],
+          "deaths": [
+            2738,
+            134
+          ],
+          "log_frequency_change": 6.870053411798126,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        },
+        {
+          "environment": "uniform",
+          "replicate": 2,
+          "plasticity": 0.0,
+          "living": [
+            426,
+            0
+          ],
+          "births": [
+            3326,
+            105
+          ],
+          "deaths": [
+            2932,
+            137
+          ],
+          "log_frequency_change": 6.748759547491679,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        }
+      ]
+    },
+    {
+      "seed": 11,
+      "selection_environment": "niches",
+      "mutation": false,
+      "selection_extinct": false,
+      "selection_population": 180,
+      "max_living_generation": 115,
+      "assays": [
+        {
+          "environment": "niches",
+          "replicate": 1,
+          "plasticity": 0.03,
+          "living": [
+            141,
+            17
+          ],
+          "births": [
+            1340,
+            721
+          ],
+          "deaths": [
+            1231,
+            736
+          ],
+          "log_frequency_change": 2.0900988361538237,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": false
+        },
+        {
+          "environment": "niches",
+          "replicate": 1,
+          "plasticity": 0.0,
+          "living": [
+            0,
+            57
+          ],
+          "births": [
+            209,
+            1489
+          ],
+          "deaths": [
+            241,
+            1464
+          ],
+          "log_frequency_change": -4.74493212836325,
+          "both_extinct": false,
+          "descendant_extinct": true,
+          "founder_extinct": false
+        },
+        {
+          "environment": "niches",
+          "replicate": 2,
+          "plasticity": 0.03,
+          "living": [
+            38,
+            128
+          ],
+          "births": [
+            1356,
+            1467
+          ],
+          "deaths": [
+            1350,
+            1371
+          ],
+          "log_frequency_change": -1.205270663041536,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": false
+        },
+        {
+          "environment": "niches",
+          "replicate": 2,
+          "plasticity": 0.0,
+          "living": [
+            104,
+            125
+          ],
+          "births": [
+            1310,
+            1402
+          ],
+          "deaths": [
+            1238,
+            1309
+          ],
+          "log_frequency_change": -0.18311868716697283,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": false
+        },
+        {
+          "environment": "uniform",
+          "replicate": 1,
+          "plasticity": 0.03,
+          "living": [
+            101,
+            2
+          ],
+          "births": [
+            1968,
+            466
+          ],
+          "deaths": [
+            1899,
+            496
+          ],
+          "log_frequency_change": 3.703768066607687,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": false
+        },
+        {
+          "environment": "uniform",
+          "replicate": 1,
+          "plasticity": 0.0,
+          "living": [
+            41,
+            60
+          ],
+          "births": [
+            1035,
+            1257
+          ],
+          "deaths": [
+            1026,
+            1229
+          ],
+          "log_frequency_change": -0.3769499378001431,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": false
+        },
+        {
+          "environment": "uniform",
+          "replicate": 2,
+          "plasticity": 0.03,
+          "living": [
+            53,
+            88
+          ],
+          "births": [
+            1041,
+            1469
+          ],
+          "deaths": [
+            1020,
+            1413
+          ],
+          "log_frequency_change": -0.503320898111923,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": false
+        },
+        {
+          "environment": "uniform",
+          "replicate": 2,
+          "plasticity": 0.0,
+          "living": [
+            0,
+            64
+          ],
+          "births": [
+            98,
+            1820
+          ],
+          "deaths": [
+            130,
+            1788
+          ],
+          "log_frequency_change": -4.859812404361672,
+          "both_extinct": false,
+          "descendant_extinct": true,
+          "founder_extinct": false
+        }
+      ]
+    },
+    {
+      "seed": 11,
+      "selection_environment": "uniform",
+      "mutation": true,
+      "selection_extinct": false,
+      "selection_population": 180,
+      "max_living_generation": 32,
+      "assays": [
+        {
+          "environment": "niches",
+          "replicate": 1,
+          "plasticity": 0.03,
+          "living": [
+            371,
+            0
+          ],
+          "births": [
+            2147,
+            75
+          ],
+          "deaths": [
+            1808,
+            107
+          ],
+          "log_frequency_change": 6.610696044717759,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        },
+        {
+          "environment": "niches",
+          "replicate": 1,
+          "plasticity": 0.0,
+          "living": [
+            357,
+            0
+          ],
+          "births": [
+            1724,
+            328
+          ],
+          "deaths": [
+            1399,
+            360
+          ],
+          "log_frequency_change": 6.5722825426940075,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        },
+        {
+          "environment": "niches",
+          "replicate": 2,
+          "plasticity": 0.03,
+          "living": [
+            307,
+            0
+          ],
+          "births": [
+            1873,
+            254
+          ],
+          "deaths": [
+            1598,
+            286
+          ],
+          "log_frequency_change": 6.421622267806518,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        },
+        {
+          "environment": "niches",
+          "replicate": 2,
+          "plasticity": 0.0,
+          "living": [
+            510,
+            0
+          ],
+          "births": [
+            2094,
+            250
+          ],
+          "deaths": [
+            1616,
+            282
+          ],
+          "log_frequency_change": 6.928537818164665,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        },
+        {
+          "environment": "uniform",
+          "replicate": 1,
+          "plasticity": 0.03,
+          "living": [
+            324,
+            0
+          ],
+          "births": [
+            2371,
+            69
+          ],
+          "deaths": [
+            2079,
+            101
+          ],
+          "log_frequency_change": 6.47543271670409,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        },
+        {
+          "environment": "uniform",
+          "replicate": 1,
+          "plasticity": 0.0,
+          "living": [
+            381,
+            0
+          ],
+          "births": [
+            2386,
+            124
+          ],
+          "deaths": [
+            2037,
+            156
+          ],
+          "log_frequency_change": 6.637258031284457,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        },
+        {
+          "environment": "uniform",
+          "replicate": 2,
+          "plasticity": 0.03,
+          "living": [
+            441,
+            0
+          ],
+          "births": [
+            2673,
+            119
+          ],
+          "deaths": [
+            2264,
+            151
+          ],
+          "log_frequency_change": 6.78332520060396,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        },
+        {
+          "environment": "uniform",
+          "replicate": 2,
+          "plasticity": 0.0,
+          "living": [
+            454,
+            0
+          ],
+          "births": [
+            2524,
+            282
+          ],
+          "deaths": [
+            2102,
+            314
+          ],
+          "log_frequency_change": 6.812345094177479,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        }
+      ]
+    },
+    {
+      "seed": 11,
+      "selection_environment": "uniform",
+      "mutation": false,
+      "selection_extinct": false,
+      "selection_population": 180,
+      "max_living_generation": 53,
+      "assays": [
+        {
+          "environment": "niches",
+          "replicate": 1,
+          "plasticity": 0.03,
+          "living": [
+            5,
+            98
+          ],
+          "births": [
+            485,
+            1775
+          ],
+          "deaths": [
+            512,
+            1709
+          ],
+          "log_frequency_change": -2.885308455939618,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": false
+        },
+        {
+          "environment": "niches",
+          "replicate": 1,
+          "plasticity": 0.0,
+          "living": [
+            162,
+            11
+          ],
+          "births": [
+            1913,
+            329
+          ],
+          "deaths": [
+            1783,
+            350
+          ],
+          "log_frequency_change": 2.6483309664005876,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": false
+        },
+        {
+          "environment": "niches",
+          "replicate": 2,
+          "plasticity": 0.03,
+          "living": [
+            111,
+            68
+          ],
+          "births": [
+            1714,
+            823
+          ],
+          "deaths": [
+            1635,
+            787
+          ],
+          "log_frequency_change": 0.4871908456319938,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": false
+        },
+        {
+          "environment": "niches",
+          "replicate": 2,
+          "plasticity": 0.0,
+          "living": [
+            56,
+            127
+          ],
+          "births": [
+            503,
+            1689
+          ],
+          "deaths": [
+            479,
+            1594
+          ],
+          "log_frequency_change": -0.8138757264460856,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": false
+        },
+        {
+          "environment": "uniform",
+          "replicate": 1,
+          "plasticity": 0.03,
+          "living": [
+            52,
+            220
+          ],
+          "births": [
+            1060,
+            1589
+          ],
+          "deaths": [
+            1040,
+            1401
+          ],
+          "log_frequency_change": -1.4350845252893227,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": false
+        },
+        {
+          "environment": "uniform",
+          "replicate": 1,
+          "plasticity": 0.0,
+          "living": [
+            168,
+            0
+          ],
+          "births": [
+            2783,
+            221
+          ],
+          "deaths": [
+            2647,
+            253
+          ],
+          "log_frequency_change": 5.820082930352362,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        },
+        {
+          "environment": "uniform",
+          "replicate": 2,
+          "plasticity": 0.03,
+          "living": [
+            103,
+            72
+          ],
+          "births": [
+            1507,
+            1074
+          ],
+          "deaths": [
+            1436,
+            1034
+          ],
+          "log_frequency_change": 0.35598505084479465,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": false
+        },
+        {
+          "environment": "uniform",
+          "replicate": 2,
+          "plasticity": 0.0,
+          "living": [
+            309,
+            0
+          ],
+          "births": [
+            3200,
+            99
+          ],
+          "deaths": [
+            2923,
+            131
+          ],
+          "log_frequency_change": 6.428105272684596,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        }
+      ]
+    },
+    {
+      "seed": 29,
+      "selection_environment": "niches",
+      "mutation": true,
+      "selection_extinct": false,
+      "selection_population": 180,
+      "max_living_generation": 48,
+      "assays": [
+        {
+          "environment": "niches",
+          "replicate": 1,
+          "plasticity": 0.03,
+          "living": [
+            316,
+            0
+          ],
+          "births": [
+            2622,
+            118
+          ],
+          "deaths": [
+            2338,
+            150
+          ],
+          "log_frequency_change": 6.450470422144176,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        },
+        {
+          "environment": "niches",
+          "replicate": 1,
+          "plasticity": 0.0,
+          "living": [
+            305,
+            0
+          ],
+          "births": [
+            2647,
+            148
+          ],
+          "deaths": [
+            2374,
+            180
+          ],
+          "log_frequency_change": 6.415096959171596,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        },
+        {
+          "environment": "niches",
+          "replicate": 2,
+          "plasticity": 0.03,
+          "living": [
+            327,
+            0
+          ],
+          "births": [
+            2151,
+            178
+          ],
+          "deaths": [
+            1856,
+            210
+          ],
+          "log_frequency_change": 6.484635235635252,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        },
+        {
+          "environment": "niches",
+          "replicate": 2,
+          "plasticity": 0.0,
+          "living": [
+            257,
+            0
+          ],
+          "births": [
+            2380,
+            74
+          ],
+          "deaths": [
+            2155,
+            106
+          ],
+          "log_frequency_change": 6.244166900663736,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        },
+        {
+          "environment": "uniform",
+          "replicate": 1,
+          "plasticity": 0.03,
+          "living": [
+            415,
+            0
+          ],
+          "births": [
+            2602,
+            99
+          ],
+          "deaths": [
+            2219,
+            131
+          ],
+          "log_frequency_change": 6.7226297948554485,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        },
+        {
+          "environment": "uniform",
+          "replicate": 1,
+          "plasticity": 0.0,
+          "living": [
+            245,
+            0
+          ],
+          "births": [
+            2441,
+            90
+          ],
+          "deaths": [
+            2228,
+            122
+          ],
+          "log_frequency_change": 6.19644412779452,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        },
+        {
+          "environment": "uniform",
+          "replicate": 2,
+          "plasticity": 0.03,
+          "living": [
+            209,
+            0
+          ],
+          "births": [
+            2622,
+            175
+          ],
+          "deaths": [
+            2445,
+            207
+          ],
+          "log_frequency_change": 6.037870919922137,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        },
+        {
+          "environment": "uniform",
+          "replicate": 2,
+          "plasticity": 0.0,
+          "living": [
+            294,
+            0
+          ],
+          "births": [
+            2749,
+            81
+          ],
+          "deaths": [
+            2487,
+            113
+          ],
+          "log_frequency_change": 6.3784261836515865,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        }
+      ]
+    },
+    {
+      "seed": 29,
+      "selection_environment": "niches",
+      "mutation": false,
+      "selection_extinct": false,
+      "selection_population": 119,
+      "max_living_generation": 221,
+      "assays": [
+        {
+          "environment": "niches",
+          "replicate": 1,
+          "plasticity": 0.03,
+          "living": [
+            59,
+            0
+          ],
+          "births": [
+            1527,
+            178
+          ],
+          "deaths": [
+            1500,
+            210
+          ],
+          "log_frequency_change": 4.77912349311153,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        },
+        {
+          "environment": "niches",
+          "replicate": 1,
+          "plasticity": 0.0,
+          "living": [
+            32,
+            6
+          ],
+          "births": [
+            1189,
+            420
+          ],
+          "deaths": [
+            1189,
+            446
+          ],
+          "log_frequency_change": 1.6094379124341003,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": false
+        },
+        {
+          "environment": "niches",
+          "replicate": 2,
+          "plasticity": 0.03,
+          "living": [
+            48,
+            74
+          ],
+          "births": [
+            1693,
+            1056
+          ],
+          "deaths": [
+            1677,
+            1014
+          ],
+          "log_frequency_change": -0.4292353274420764,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": false
+        },
+        {
+          "environment": "niches",
+          "replicate": 2,
+          "plasticity": 0.0,
+          "living": [
+            68,
+            105
+          ],
+          "births": [
+            1625,
+            687
+          ],
+          "deaths": [
+            1589,
+            614
+          ],
+          "log_frequency_change": -0.4318772076479415,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": false
+        },
+        {
+          "environment": "uniform",
+          "replicate": 1,
+          "plasticity": 0.03,
+          "living": [
+            87,
+            0
+          ],
+          "births": [
+            2239,
+            61
+          ],
+          "deaths": [
+            2184,
+            93
+          ],
+          "log_frequency_change": 5.1647859739235145,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        },
+        {
+          "environment": "uniform",
+          "replicate": 1,
+          "plasticity": 0.0,
+          "living": [
+            60,
+            0
+          ],
+          "births": [
+            2150,
+            83
+          ],
+          "deaths": [
+            2122,
+            115
+          ],
+          "log_frequency_change": 4.795790545596741,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        },
+        {
+          "environment": "uniform",
+          "replicate": 2,
+          "plasticity": 0.03,
+          "living": [
+            0,
+            0
+          ],
+          "births": [
+            165,
+            70
+          ],
+          "deaths": [
+            197,
+            102
+          ],
+          "log_frequency_change": 0.0,
+          "both_extinct": true,
+          "descendant_extinct": true,
+          "founder_extinct": true
+        },
+        {
+          "environment": "uniform",
+          "replicate": 2,
+          "plasticity": 0.0,
+          "living": [
+            273,
+            0
+          ],
+          "births": [
+            2656,
+            215
+          ],
+          "deaths": [
+            2415,
+            247
+          ],
+          "log_frequency_change": 6.304448802421981,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        }
+      ]
+    },
+    {
+      "seed": 29,
+      "selection_environment": "uniform",
+      "mutation": true,
+      "selection_extinct": false,
+      "selection_population": 180,
+      "max_living_generation": 51,
+      "assays": [
+        {
+          "environment": "niches",
+          "replicate": 1,
+          "plasticity": 0.03,
+          "living": [
+            438,
+            0
+          ],
+          "births": [
+            2621,
+            51
+          ],
+          "deaths": [
+            2215,
+            83
+          ],
+          "log_frequency_change": 6.776506992372183,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        },
+        {
+          "environment": "niches",
+          "replicate": 1,
+          "plasticity": 0.0,
+          "living": [
+            307,
+            0
+          ],
+          "births": [
+            2633,
+            52
+          ],
+          "deaths": [
+            2358,
+            84
+          ],
+          "log_frequency_change": 6.421622267806518,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        },
+        {
+          "environment": "niches",
+          "replicate": 2,
+          "plasticity": 0.03,
+          "living": [
+            392,
+            0
+          ],
+          "births": [
+            2354,
+            87
+          ],
+          "deaths": [
+            1994,
+            119
+          ],
+          "log_frequency_change": 6.665683717782408,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        },
+        {
+          "environment": "niches",
+          "replicate": 2,
+          "plasticity": 0.0,
+          "living": [
+            417,
+            0
+          ],
+          "births": [
+            2288,
+            151
+          ],
+          "deaths": [
+            1903,
+            183
+          ],
+          "log_frequency_change": 6.727431724850855,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        },
+        {
+          "environment": "uniform",
+          "replicate": 1,
+          "plasticity": 0.03,
+          "living": [
+            362,
+            0
+          ],
+          "births": [
+            2682,
+            57
+          ],
+          "deaths": [
+            2352,
+            89
+          ],
+          "log_frequency_change": 6.586171654854675,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        },
+        {
+          "environment": "uniform",
+          "replicate": 1,
+          "plasticity": 0.0,
+          "living": [
+            348,
+            0
+          ],
+          "births": [
+            2593,
+            123
+          ],
+          "deaths": [
+            2277,
+            155
+          ],
+          "log_frequency_change": 6.546785410760524,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        },
+        {
+          "environment": "uniform",
+          "replicate": 2,
+          "plasticity": 0.03,
+          "living": [
+            382,
+            0
+          ],
+          "births": [
+            2522,
+            99
+          ],
+          "deaths": [
+            2172,
+            131
+          ],
+          "log_frequency_change": 6.639875833826536,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        },
+        {
+          "environment": "uniform",
+          "replicate": 2,
+          "plasticity": 0.0,
+          "living": [
+            384,
+            0
+          ],
+          "births": [
+            2449,
+            83
+          ],
+          "deaths": [
+            2097,
+            115
+          ],
+          "log_frequency_change": 6.645090969505644,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        }
+      ]
+    },
+    {
+      "seed": 29,
+      "selection_environment": "uniform",
+      "mutation": false,
+      "selection_extinct": false,
+      "selection_population": 118,
+      "max_living_generation": 148,
+      "assays": [
+        {
+          "environment": "niches",
+          "replicate": 1,
+          "plasticity": 0.03,
+          "living": [
+            0,
+            0
+          ],
+          "births": [
+            166,
+            60
+          ],
+          "deaths": [
+            198,
+            92
+          ],
+          "log_frequency_change": 0.0,
+          "both_extinct": true,
+          "descendant_extinct": true,
+          "founder_extinct": true
+        },
+        {
+          "environment": "niches",
+          "replicate": 1,
+          "plasticity": 0.0,
+          "living": [
+            0,
+            0
+          ],
+          "births": [
+            76,
+            52
+          ],
+          "deaths": [
+            108,
+            84
+          ],
+          "log_frequency_change": 0.0,
+          "both_extinct": true,
+          "descendant_extinct": true,
+          "founder_extinct": true
+        },
+        {
+          "environment": "niches",
+          "replicate": 2,
+          "plasticity": 0.03,
+          "living": [
+            135,
+            135
+          ],
+          "births": [
+            605,
+            938
+          ],
+          "deaths": [
+            502,
+            835
+          ],
+          "log_frequency_change": 0.0,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": false
+        },
+        {
+          "environment": "niches",
+          "replicate": 2,
+          "plasticity": 0.0,
+          "living": [
+            0,
+            375
+          ],
+          "births": [
+            152,
+            1533
+          ],
+          "deaths": [
+            184,
+            1190
+          ],
+          "log_frequency_change": -6.621405651764134,
+          "both_extinct": false,
+          "descendant_extinct": true,
+          "founder_extinct": false
+        },
+        {
+          "environment": "uniform",
+          "replicate": 1,
+          "plasticity": 0.03,
+          "living": [
+            0,
+            112
+          ],
+          "births": [
+            65,
+            2479
+          ],
+          "deaths": [
+            97,
+            2399
+          ],
+          "log_frequency_change": -5.41610040220442,
+          "both_extinct": false,
+          "descendant_extinct": true,
+          "founder_extinct": false
+        },
+        {
+          "environment": "uniform",
+          "replicate": 1,
+          "plasticity": 0.0,
+          "living": [
+            0,
+            149
+          ],
+          "births": [
+            71,
+            2632
+          ],
+          "deaths": [
+            103,
+            2515
+          ],
+          "log_frequency_change": -5.700443573390687,
+          "both_extinct": false,
+          "descendant_extinct": true,
+          "founder_extinct": false
+        },
+        {
+          "environment": "uniform",
+          "replicate": 2,
+          "plasticity": 0.03,
+          "living": [
+            116,
+            0
+          ],
+          "births": [
+            1520,
+            78
+          ],
+          "deaths": [
+            1436,
+            110
+          ],
+          "log_frequency_change": 5.4510384535657,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        },
+        {
+          "environment": "uniform",
+          "replicate": 2,
+          "plasticity": 0.0,
+          "living": [
+            0,
+            0
+          ],
+          "births": [
+            126,
+            74
+          ],
+          "deaths": [
+            158,
+            106
+          ],
+          "log_frequency_change": 0.0,
+          "both_extinct": true,
+          "descendant_extinct": true,
+          "founder_extinct": true
+        }
+      ]
+    },
+    {
+      "seed": 47,
+      "selection_environment": "niches",
+      "mutation": true,
+      "selection_extinct": false,
+      "selection_population": 180,
+      "max_living_generation": 36,
+      "assays": [
+        {
+          "environment": "niches",
+          "replicate": 1,
+          "plasticity": 0.03,
+          "living": [
+            214,
+            0
+          ],
+          "births": [
+            1779,
+            365
+          ],
+          "deaths": [
+            1597,
+            397
+          ],
+          "log_frequency_change": 6.061456918928017,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        },
+        {
+          "environment": "niches",
+          "replicate": 1,
+          "plasticity": 0.0,
+          "living": [
+            317,
+            2
+          ],
+          "births": [
+            1607,
+            576
+          ],
+          "deaths": [
+            1322,
+            606
+          ],
+          "log_frequency_change": 4.844187086458591,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": false
+        },
+        {
+          "environment": "niches",
+          "replicate": 2,
+          "plasticity": 0.03,
+          "living": [
+            267,
+            0
+          ],
+          "births": [
+            2307,
+            56
+          ],
+          "deaths": [
+            2072,
+            88
+          ],
+          "log_frequency_change": 6.282266746896006,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        },
+        {
+          "environment": "niches",
+          "replicate": 2,
+          "plasticity": 0.0,
+          "living": [
+            266,
+            0
+          ],
+          "births": [
+            2497,
+            144
+          ],
+          "deaths": [
+            2263,
+            176
+          ],
+          "log_frequency_change": 6.278521424165844,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        },
+        {
+          "environment": "uniform",
+          "replicate": 1,
+          "plasticity": 0.03,
+          "living": [
+            272,
+            0
+          ],
+          "births": [
+            2722,
+            221
+          ],
+          "deaths": [
+            2482,
+            253
+          ],
+          "log_frequency_change": 6.300785794663244,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        },
+        {
+          "environment": "uniform",
+          "replicate": 1,
+          "plasticity": 0.0,
+          "living": [
+            322,
+            0
+          ],
+          "births": [
+            2785,
+            89
+          ],
+          "deaths": [
+            2495,
+            121
+          ],
+          "log_frequency_change": 6.4692503167957724,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        },
+        {
+          "environment": "uniform",
+          "replicate": 2,
+          "plasticity": 0.03,
+          "living": [
+            306,
+            0
+          ],
+          "births": [
+            2383,
+            68
+          ],
+          "deaths": [
+            2109,
+            100
+          ],
+          "log_frequency_change": 6.418364935936212,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        },
+        {
+          "environment": "uniform",
+          "replicate": 2,
+          "plasticity": 0.0,
+          "living": [
+            331,
+            0
+          ],
+          "births": [
+            2533,
+            69
+          ],
+          "deaths": [
+            2234,
+            101
+          ],
+          "log_frequency_change": 6.4967749901858625,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        }
+      ]
+    },
+    {
+      "seed": 47,
+      "selection_environment": "niches",
+      "mutation": false,
+      "selection_extinct": true,
+      "selection_population": 0,
+      "max_living_generation": 0,
+      "assays": []
+    },
+    {
+      "seed": 47,
+      "selection_environment": "uniform",
+      "mutation": true,
+      "selection_extinct": false,
+      "selection_population": 180,
+      "max_living_generation": 34,
+      "assays": [
+        {
+          "environment": "niches",
+          "replicate": 1,
+          "plasticity": 0.03,
+          "living": [
+            200,
+            44
+          ],
+          "births": [
+            1577,
+            705
+          ],
+          "deaths": [
+            1409,
+            693
+          ],
+          "log_frequency_change": 1.5053250575744292,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": false
+        },
+        {
+          "environment": "niches",
+          "replicate": 1,
+          "plasticity": 0.0,
+          "living": [
+            175,
+            52
+          ],
+          "births": [
+            1652,
+            825
+          ],
+          "deaths": [
+            1509,
+            805
+          ],
+          "log_frequency_change": 1.2068258733083426,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": false
+        },
+        {
+          "environment": "niches",
+          "replicate": 2,
+          "plasticity": 0.03,
+          "living": [
+            246,
+            0
+          ],
+          "births": [
+            2877,
+            67
+          ],
+          "deaths": [
+            2663,
+            99
+          ],
+          "log_frequency_change": 6.20050917404269,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        },
+        {
+          "environment": "niches",
+          "replicate": 2,
+          "plasticity": 0.0,
+          "living": [
+            317,
+            0
+          ],
+          "births": [
+            3029,
+            100
+          ],
+          "deaths": [
+            2744,
+            132
+          ],
+          "log_frequency_change": 6.453624998892692,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        },
+        {
+          "environment": "uniform",
+          "replicate": 1,
+          "plasticity": 0.03,
+          "living": [
+            396,
+            1
+          ],
+          "births": [
+            2322,
+            336
+          ],
+          "deaths": [
+            1958,
+            367
+          ],
+          "log_frequency_change": 5.5772109329667385,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": false
+        },
+        {
+          "environment": "uniform",
+          "replicate": 1,
+          "plasticity": 0.0,
+          "living": [
+            356,
+            0
+          ],
+          "births": [
+            2148,
+            423
+          ],
+          "deaths": [
+            1824,
+            455
+          ],
+          "log_frequency_change": 6.569481420414296,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        },
+        {
+          "environment": "uniform",
+          "replicate": 2,
+          "plasticity": 0.03,
+          "living": [
+            329,
+            0
+          ],
+          "births": [
+            2650,
+            74
+          ],
+          "deaths": [
+            2353,
+            106
+          ],
+          "log_frequency_change": 6.490723534502507,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        },
+        {
+          "environment": "uniform",
+          "replicate": 2,
+          "plasticity": 0.0,
+          "living": [
+            419,
+            0
+          ],
+          "births": [
+            2822,
+            69
+          ],
+          "deaths": [
+            2435,
+            101
+          ],
+          "log_frequency_change": 6.732210706467206,
+          "both_extinct": false,
+          "descendant_extinct": false,
+          "founder_extinct": true
+        }
+      ]
+    },
+    {
+      "seed": 47,
+      "selection_environment": "uniform",
+      "mutation": false,
+      "selection_extinct": true,
+      "selection_population": 0,
+      "max_living_generation": 0,
+      "assays": []
+    }
+  ],
+  "paired_deltas": [
+    {
+      "seed": 11,
+      "selection_environment": "niches",
+      "assay_environment": "niches",
+      "replicate": 1,
+      "plasticity": 0.03,
+      "mutation_minus_no_mutation": 4.547159195130633
+    },
+    {
+      "seed": 11,
+      "selection_environment": "niches",
+      "assay_environment": "niches",
+      "replicate": 1,
+      "plasticity": 0.0,
+      "mutation_minus_no_mutation": 10.98520797353402
+    },
+    {
+      "seed": 11,
+      "selection_environment": "niches",
+      "assay_environment": "niches",
+      "replicate": 2,
+      "plasticity": 0.03,
+      "mutation_minus_no_mutation": 7.6038655975767435
+    },
+    {
+      "seed": 11,
+      "selection_environment": "niches",
+      "assay_environment": "niches",
+      "replicate": 2,
+      "plasticity": 0.0,
+      "mutation_minus_no_mutation": 6.830807060730302
+    },
+    {
+      "seed": 11,
+      "selection_environment": "niches",
+      "assay_environment": "uniform",
+      "replicate": 1,
+      "plasticity": 0.03,
+      "mutation_minus_no_mutation": 2.9994200466331757
+    },
+    {
+      "seed": 11,
+      "selection_environment": "niches",
+      "assay_environment": "uniform",
+      "replicate": 1,
+      "plasticity": 0.0,
+      "mutation_minus_no_mutation": 7.1139168958019985
+    },
+    {
+      "seed": 11,
+      "selection_environment": "niches",
+      "assay_environment": "uniform",
+      "replicate": 2,
+      "plasticity": 0.03,
+      "mutation_minus_no_mutation": 7.373374309910049
+    },
+    {
+      "seed": 11,
+      "selection_environment": "niches",
+      "assay_environment": "uniform",
+      "replicate": 2,
+      "plasticity": 0.0,
+      "mutation_minus_no_mutation": 11.608571951853351
+    },
+    {
+      "seed": 11,
+      "selection_environment": "uniform",
+      "assay_environment": "niches",
+      "replicate": 1,
+      "plasticity": 0.03,
+      "mutation_minus_no_mutation": 9.496004500657378
+    },
+    {
+      "seed": 11,
+      "selection_environment": "uniform",
+      "assay_environment": "niches",
+      "replicate": 1,
+      "plasticity": 0.0,
+      "mutation_minus_no_mutation": 3.92395157629342
+    },
+    {
+      "seed": 11,
+      "selection_environment": "uniform",
+      "assay_environment": "niches",
+      "replicate": 2,
+      "plasticity": 0.03,
+      "mutation_minus_no_mutation": 5.934431422174524
+    },
+    {
+      "seed": 11,
+      "selection_environment": "uniform",
+      "assay_environment": "niches",
+      "replicate": 2,
+      "plasticity": 0.0,
+      "mutation_minus_no_mutation": 7.742413544610751
+    },
+    {
+      "seed": 11,
+      "selection_environment": "uniform",
+      "assay_environment": "uniform",
+      "replicate": 1,
+      "plasticity": 0.03,
+      "mutation_minus_no_mutation": 7.910517241993413
+    },
+    {
+      "seed": 11,
+      "selection_environment": "uniform",
+      "assay_environment": "uniform",
+      "replicate": 1,
+      "plasticity": 0.0,
+      "mutation_minus_no_mutation": 0.8171751009320953
+    },
+    {
+      "seed": 11,
+      "selection_environment": "uniform",
+      "assay_environment": "uniform",
+      "replicate": 2,
+      "plasticity": 0.03,
+      "mutation_minus_no_mutation": 6.427340149759165
+    },
+    {
+      "seed": 11,
+      "selection_environment": "uniform",
+      "assay_environment": "uniform",
+      "replicate": 2,
+      "plasticity": 0.0,
+      "mutation_minus_no_mutation": 0.3842398214928826
+    },
+    {
+      "seed": 29,
+      "selection_environment": "niches",
+      "assay_environment": "niches",
+      "replicate": 1,
+      "plasticity": 0.03,
+      "mutation_minus_no_mutation": 1.6713469290326461
+    },
+    {
+      "seed": 29,
+      "selection_environment": "niches",
+      "assay_environment": "niches",
+      "replicate": 1,
+      "plasticity": 0.0,
+      "mutation_minus_no_mutation": 4.805659046737495
+    },
+    {
+      "seed": 29,
+      "selection_environment": "niches",
+      "assay_environment": "niches",
+      "replicate": 2,
+      "plasticity": 0.03,
+      "mutation_minus_no_mutation": 6.913870563077328
+    },
+    {
+      "seed": 29,
+      "selection_environment": "niches",
+      "assay_environment": "niches",
+      "replicate": 2,
+      "plasticity": 0.0,
+      "mutation_minus_no_mutation": 6.676044108311678
+    },
+    {
+      "seed": 29,
+      "selection_environment": "niches",
+      "assay_environment": "uniform",
+      "replicate": 1,
+      "plasticity": 0.03,
+      "mutation_minus_no_mutation": 1.557843820931934
+    },
+    {
+      "seed": 29,
+      "selection_environment": "niches",
+      "assay_environment": "uniform",
+      "replicate": 1,
+      "plasticity": 0.0,
+      "mutation_minus_no_mutation": 1.400653582197779
+    },
+    {
+      "seed": 29,
+      "selection_environment": "niches",
+      "assay_environment": "uniform",
+      "replicate": 2,
+      "plasticity": 0.03,
+      "mutation_minus_no_mutation": 6.037870919922137
+    },
+    {
+      "seed": 29,
+      "selection_environment": "niches",
+      "assay_environment": "uniform",
+      "replicate": 2,
+      "plasticity": 0.0,
+      "mutation_minus_no_mutation": 0.0739773812296054
+    },
+    {
+      "seed": 29,
+      "selection_environment": "uniform",
+      "assay_environment": "niches",
+      "replicate": 1,
+      "plasticity": 0.03,
+      "mutation_minus_no_mutation": 6.776506992372183
+    },
+    {
+      "seed": 29,
+      "selection_environment": "uniform",
+      "assay_environment": "niches",
+      "replicate": 1,
+      "plasticity": 0.0,
+      "mutation_minus_no_mutation": 6.421622267806518
+    },
+    {
+      "seed": 29,
+      "selection_environment": "uniform",
+      "assay_environment": "niches",
+      "replicate": 2,
+      "plasticity": 0.03,
+      "mutation_minus_no_mutation": 6.665683717782408
+    },
+    {
+      "seed": 29,
+      "selection_environment": "uniform",
+      "assay_environment": "niches",
+      "replicate": 2,
+      "plasticity": 0.0,
+      "mutation_minus_no_mutation": 13.34883737661499
+    },
+    {
+      "seed": 29,
+      "selection_environment": "uniform",
+      "assay_environment": "uniform",
+      "replicate": 1,
+      "plasticity": 0.03,
+      "mutation_minus_no_mutation": 12.002272057059095
+    },
+    {
+      "seed": 29,
+      "selection_environment": "uniform",
+      "assay_environment": "uniform",
+      "replicate": 1,
+      "plasticity": 0.0,
+      "mutation_minus_no_mutation": 12.24722898415121
+    },
+    {
+      "seed": 29,
+      "selection_environment": "uniform",
+      "assay_environment": "uniform",
+      "replicate": 2,
+      "plasticity": 0.03,
+      "mutation_minus_no_mutation": 1.1888373802608356
+    },
+    {
+      "seed": 29,
+      "selection_environment": "uniform",
+      "assay_environment": "uniform",
+      "replicate": 2,
+      "plasticity": 0.0,
+      "mutation_minus_no_mutation": 6.645090969505644
+    }
+  ],
+  "nulls": [
+    {
+      "seed": 11,
+      "environment": "niches",
+      "replicate": 1,
+      "living": [
+        132,
+        4
+      ],
+      "births": [
+        2021,
+        660
+      ],
+      "deaths": [
+        1921,
+        688
+      ],
+      "log_frequency_change": 3.382505248650003,
+      "both_extinct": false
+    },
+    {
+      "seed": 11,
+      "environment": "niches",
+      "replicate": 2,
+      "living": [
+        4,
+        130
+      ],
+      "births": [
+        588,
+        1272
+      ],
+      "deaths": [
+        616,
+        1174
+      ],
+      "log_frequency_change": -3.367295829986474,
+      "both_extinct": false
+    },
+    {
+      "seed": 11,
+      "environment": "uniform",
+      "replicate": 1,
+      "living": [
+        110,
+        152
+      ],
+      "births": [
+        1460,
+        1146
+      ],
+      "deaths": [
+        1382,
+        1026
+      ],
+      "log_frequency_change": -0.32214907508965884,
+      "both_extinct": false
+    },
+    {
+      "seed": 11,
+      "environment": "uniform",
+      "replicate": 2,
+      "living": [
+        15,
+        125
+      ],
+      "births": [
+        427,
+        2431
+      ],
+      "deaths": [
+        444,
+        2338
+      ],
+      "log_frequency_change": -2.0914657346466377,
+      "both_extinct": false
+    },
+    {
+      "seed": 29,
+      "environment": "niches",
+      "replicate": 1,
+      "living": [
+        0,
+        0
+      ],
+      "births": [
+        150,
+        55
+      ],
+      "deaths": [
+        182,
+        87
+      ],
+      "log_frequency_change": 0.0,
+      "both_extinct": true
+    },
+    {
+      "seed": 29,
+      "environment": "niches",
+      "replicate": 2,
+      "living": [
+        0,
+        0
+      ],
+      "births": [
+        80,
+        94
+      ],
+      "deaths": [
+        112,
+        126
+      ],
+      "log_frequency_change": 0.0,
+      "both_extinct": true
+    },
+    {
+      "seed": 29,
+      "environment": "uniform",
+      "replicate": 1,
+      "living": [
+        0,
+        82
+      ],
+      "births": [
+        105,
+        2684
+      ],
+      "deaths": [
+        137,
+        2634
+      ],
+      "log_frequency_change": -5.10594547390058,
+      "both_extinct": false
+    },
+    {
+      "seed": 29,
+      "environment": "uniform",
+      "replicate": 2,
+      "living": [
+        0,
+        132
+      ],
+      "births": [
+        75,
+        2663
+      ],
+      "deaths": [
+        107,
+        2563
+      ],
+      "log_frequency_change": -5.579729825986222,
+      "both_extinct": false
+    },
+    {
+      "seed": 47,
+      "environment": "niches",
+      "replicate": 1,
+      "living": [
+        0,
+        141
+      ],
+      "births": [
+        128,
+        1957
+      ],
+      "deaths": [
+        160,
+        1848
+      ],
+      "log_frequency_change": -5.645446897643238,
+      "both_extinct": false
+    },
+    {
+      "seed": 47,
+      "environment": "niches",
+      "replicate": 2,
+      "living": [
+        118,
+        95
+      ],
+      "births": [
+        998,
+        1613
+      ],
+      "deaths": [
+        912,
+        1550
+      ],
+      "log_frequency_change": 0.21578671308850125,
+      "both_extinct": false
+    },
+    {
+      "seed": 47,
+      "environment": "uniform",
+      "replicate": 1,
+      "living": [
+        0,
+        219
+      ],
+      "births": [
+        372,
+        2602
+      ],
+      "deaths": [
+        404,
+        2415
+      ],
+      "log_frequency_change": -6.0844994130751715,
+      "both_extinct": false
+    },
+    {
+      "seed": 47,
+      "environment": "uniform",
+      "replicate": 2,
+      "living": [
+        0,
+        132
+      ],
+      "births": [
+        114,
+        2260
+      ],
+      "deaths": [
+        146,
+        2160
+      ],
+      "log_frequency_change": -5.579729825986222,
+      "both_extinct": false
+    }
+  ]
+}

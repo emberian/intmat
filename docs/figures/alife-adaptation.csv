@@ -1,0 +1,93 @@
+seed,selection,condition,garden,replicate,plasticity,descendants,ancestors,descendant_births,ancestor_births,descendant_deaths,ancestor_deaths,log_frequency_change,both_extinct
+11,niches,Mutation,niches,1,0.03,381,0,2907,267,2558,299,6.637258031284457,False
+11,niches,Mutation,niches,1,0.0,256,0,2804,239,2580,271,6.240275845170769,False
+11,niches,Mutation,niches,2,0.03,300,0,2779,258,2511,290,6.398594934535208,False
+11,niches,Mutation,niches,2,0.0,385,0,2857,179,2504,211,6.647688373563329,False
+11,niches,Mutation,uniform,1,0.03,407,0,3136,94,2761,126,6.703188113240863,False
+11,niches,Mutation,uniform,1,0.0,421,0,3197,136,2808,168,6.736966958001855,False
+11,niches,Mutation,uniform,2,0.03,481,0,3187,102,2738,134,6.870053411798126,False
+11,niches,Mutation,uniform,2,0.0,426,0,3326,105,2932,137,6.748759547491679,False
+11,niches,Founder sorting,niches,1,0.03,141,17,1340,721,1231,736,2.0900988361538237,False
+11,niches,Founder sorting,niches,1,0.0,0,57,209,1489,241,1464,-4.74493212836325,False
+11,niches,Founder sorting,niches,2,0.03,38,128,1356,1467,1350,1371,-1.205270663041536,False
+11,niches,Founder sorting,niches,2,0.0,104,125,1310,1402,1238,1309,-0.18311868716697283,False
+11,niches,Founder sorting,uniform,1,0.03,101,2,1968,466,1899,496,3.703768066607687,False
+11,niches,Founder sorting,uniform,1,0.0,41,60,1035,1257,1026,1229,-0.3769499378001431,False
+11,niches,Founder sorting,uniform,2,0.03,53,88,1041,1469,1020,1413,-0.503320898111923,False
+11,niches,Founder sorting,uniform,2,0.0,0,64,98,1820,130,1788,-4.859812404361672,False
+11,uniform,Mutation,niches,1,0.03,371,0,2147,75,1808,107,6.610696044717759,False
+11,uniform,Mutation,niches,1,0.0,357,0,1724,328,1399,360,6.5722825426940075,False
+11,uniform,Mutation,niches,2,0.03,307,0,1873,254,1598,286,6.421622267806518,False
+11,uniform,Mutation,niches,2,0.0,510,0,2094,250,1616,282,6.928537818164665,False
+11,uniform,Mutation,uniform,1,0.03,324,0,2371,69,2079,101,6.47543271670409,False
+11,uniform,Mutation,uniform,1,0.0,381,0,2386,124,2037,156,6.637258031284457,False
+11,uniform,Mutation,uniform,2,0.03,441,0,2673,119,2264,151,6.78332520060396,False
+11,uniform,Mutation,uniform,2,0.0,454,0,2524,282,2102,314,6.812345094177479,False
+11,uniform,Founder sorting,niches,1,0.03,5,98,485,1775,512,1709,-2.885308455939618,False
+11,uniform,Founder sorting,niches,1,0.0,162,11,1913,329,1783,350,2.6483309664005876,False
+11,uniform,Founder sorting,niches,2,0.03,111,68,1714,823,1635,787,0.4871908456319938,False
+11,uniform,Founder sorting,niches,2,0.0,56,127,503,1689,479,1594,-0.8138757264460856,False
+11,uniform,Founder sorting,uniform,1,0.03,52,220,1060,1589,1040,1401,-1.4350845252893227,False
+11,uniform,Founder sorting,uniform,1,0.0,168,0,2783,221,2647,253,5.820082930352362,False
+11,uniform,Founder sorting,uniform,2,0.03,103,72,1507,1074,1436,1034,0.35598505084479465,False
+11,uniform,Founder sorting,uniform,2,0.0,309,0,3200,99,2923,131,6.428105272684596,False
+29,niches,Mutation,niches,1,0.03,316,0,2622,118,2338,150,6.450470422144176,False
+29,niches,Mutation,niches,1,0.0,305,0,2647,148,2374,180,6.415096959171596,False
+29,niches,Mutation,niches,2,0.03,327,0,2151,178,1856,210,6.484635235635252,False
+29,niches,Mutation,niches,2,0.0,257,0,2380,74,2155,106,6.244166900663736,False
+29,niches,Mutation,uniform,1,0.03,415,0,2602,99,2219,131,6.7226297948554485,False
+29,niches,Mutation,uniform,1,0.0,245,0,2441,90,2228,122,6.19644412779452,False
+29,niches,Mutation,uniform,2,0.03,209,0,2622,175,2445,207,6.037870919922137,False
+29,niches,Mutation,uniform,2,0.0,294,0,2749,81,2487,113,6.3784261836515865,False
+29,niches,Founder sorting,niches,1,0.03,59,0,1527,178,1500,210,4.77912349311153,False
+29,niches,Founder sorting,niches,1,0.0,32,6,1189,420,1189,446,1.6094379124341003,False
+29,niches,Founder sorting,niches,2,0.03,48,74,1693,1056,1677,1014,-0.4292353274420764,False
+29,niches,Founder sorting,niches,2,0.0,68,105,1625,687,1589,614,-0.4318772076479415,False
+29,niches,Founder sorting,uniform,1,0.03,87,0,2239,61,2184,93,5.1647859739235145,False
+29,niches,Founder sorting,uniform,1,0.0,60,0,2150,83,2122,115,4.795790545596741,False
+29,niches,Founder sorting,uniform,2,0.03,0,0,165,70,197,102,0.0,True
+29,niches,Founder sorting,uniform,2,0.0,273,0,2656,215,2415,247,6.304448802421981,False
+29,uniform,Mutation,niches,1,0.03,438,0,2621,51,2215,83,6.776506992372183,False
+29,uniform,Mutation,niches,1,0.0,307,0,2633,52,2358,84,6.421622267806518,False
+29,uniform,Mutation,niches,2,0.03,392,0,2354,87,1994,119,6.665683717782408,False
+29,uniform,Mutation,niches,2,0.0,417,0,2288,151,1903,183,6.727431724850855,False
+29,uniform,Mutation,uniform,1,0.03,362,0,2682,57,2352,89,6.586171654854675,False
+29,uniform,Mutation,uniform,1,0.0,348,0,2593,123,2277,155,6.546785410760524,False
+29,uniform,Mutation,uniform,2,0.03,382,0,2522,99,2172,131,6.639875833826536,False
+29,uniform,Mutation,uniform,2,0.0,384,0,2449,83,2097,115,6.645090969505644,False
+29,uniform,Founder sorting,niches,1,0.03,0,0,166,60,198,92,0.0,True
+29,uniform,Founder sorting,niches,1,0.0,0,0,76,52,108,84,0.0,True
+29,uniform,Founder sorting,niches,2,0.03,135,135,605,938,502,835,0.0,False
+29,uniform,Founder sorting,niches,2,0.0,0,375,152,1533,184,1190,-6.621405651764134,False
+29,uniform,Founder sorting,uniform,1,0.03,0,112,65,2479,97,2399,-5.41610040220442,False
+29,uniform,Founder sorting,uniform,1,0.0,0,149,71,2632,103,2515,-5.700443573390687,False
+29,uniform,Founder sorting,uniform,2,0.03,116,0,1520,78,1436,110,5.4510384535657,False
+29,uniform,Founder sorting,uniform,2,0.0,0,0,126,74,158,106,0.0,True
+47,niches,Mutation,niches,1,0.03,214,0,1779,365,1597,397,6.061456918928017,False
+47,niches,Mutation,niches,1,0.0,317,2,1607,576,1322,606,4.844187086458591,False
+47,niches,Mutation,niches,2,0.03,267,0,2307,56,2072,88,6.282266746896006,False
+47,niches,Mutation,niches,2,0.0,266,0,2497,144,2263,176,6.278521424165844,False
+47,niches,Mutation,uniform,1,0.03,272,0,2722,221,2482,253,6.300785794663244,False
+47,niches,Mutation,uniform,1,0.0,322,0,2785,89,2495,121,6.4692503167957724,False
+47,niches,Mutation,uniform,2,0.03,306,0,2383,68,2109,100,6.418364935936212,False
+47,niches,Mutation,uniform,2,0.0,331,0,2533,69,2234,101,6.4967749901858625,False
+47,uniform,Mutation,niches,1,0.03,200,44,1577,705,1409,693,1.5053250575744292,False
+47,uniform,Mutation,niches,1,0.0,175,52,1652,825,1509,805,1.2068258733083426,False
+47,uniform,Mutation,niches,2,0.03,246,0,2877,67,2663,99,6.20050917404269,False
+47,uniform,Mutation,niches,2,0.0,317,0,3029,100,2744,132,6.453624998892692,False
+47,uniform,Mutation,uniform,1,0.03,396,1,2322,336,1958,367,5.5772109329667385,False
+47,uniform,Mutation,uniform,1,0.0,356,0,2148,423,1824,455,6.569481420414296,False
+47,uniform,Mutation,uniform,2,0.03,329,0,2650,74,2353,106,6.490723534502507,False
+47,uniform,Mutation,uniform,2,0.0,419,0,2822,69,2435,101,6.732210706467206,False
+11,none,Same pool,niches,1,0.0,132,4,2021,660,1921,688,3.382505248650003,False
+11,none,Same pool,niches,2,0.0,4,130,588,1272,616,1174,-3.367295829986474,False
+11,none,Same pool,uniform,1,0.0,110,152,1460,1146,1382,1026,-0.32214907508965884,False
+11,none,Same pool,uniform,2,0.0,15,125,427,2431,444,2338,-2.0914657346466377,False
+29,none,Same pool,niches,1,0.0,0,0,150,55,182,87,0.0,True
+29,none,Same pool,niches,2,0.0,0,0,80,94,112,126,0.0,True
+29,none,Same pool,uniform,1,0.0,0,82,105,2684,137,2634,-5.10594547390058,False
+29,none,Same pool,uniform,2,0.0,0,132,75,2663,107,2563,-5.579729825986222,False
+47,none,Same pool,niches,1,0.0,0,141,128,1957,160,1848,-5.645446897643238,False
+47,none,Same pool,niches,2,0.0,118,95,998,1613,912,1550,0.21578671308850125,False
+47,none,Same pool,uniform,1,0.0,0,219,372,2602,404,2415,-6.0844994130751715,False
+47,none,Same pool,uniform,2,0.0,0,132,114,2260,146,2160,-5.579729825986222,False
