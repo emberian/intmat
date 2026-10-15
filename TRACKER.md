@@ -429,3 +429,23 @@ against incompatible fixed aliases. A reviewed native 256³ activity-contour pho
   or GPU-speedup result is claimed.
 - Read-only observation `outputs/observatory/20261015-1640.json` preserves all
   three old soak statuses. No intervention, reseed, or deadline extension.
+
+- 16:53 UTC: full immutable `4b74791` convergence passed **19,103 assertions**
+  (18,804 main +299 separate batch), no failures/errors. CPU8–9 is released.
+  The fresh native garden is now running from that exact source: Julia PID4182590,
+  supervisor4182572, output
+  `/tank/chreatures/probes/intmat-20261015/native-garden-4b747919ec56`.
+  Source/runtime stage is listed above; CPU10–11,8GiB host cap/noSwap/nice15,
+  Julia2/GC1/BLAS1, exclusive GPU. Hard cutoff20:50UTC,targett1200,4GB unchanged.
+  Initial completed checkpoint strict-restored exactly. First two scalar rows
+  advance t2.28→5.84 with256cells and0→44bonds; finite/no blocked births.
+  These are early contacts, not evidence of persistent organization. Compact
+  scalar inventories describe the base-cell carrier; whole-composition ledgers
+  are in checkpoint audits. Native64³t0 and32³t0/t5 frames are recorded.
+  Startup evidence: outputs/native-garden-launch-20261015.
+- Read-only local mirror/observatory launched with separate1GB budgets,45s
+  cadence and20:50UTC stop. URL:
+  http://127.0.0.1:8769/outputs/native-garden-observatory-4b747919ec56/ .
+  The heartbeat now monitors all four bounded histories, retaining its original
+  thirty-minute cadence and stop-after-completion policy. Optimized old CPU
+  continuation still has its own21:54UTC deadline after this ten-hour session.

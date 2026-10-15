@@ -110,3 +110,37 @@ native ensemble adapter passes the same source/ownership/restart gates and its
 measured aggregate throughput leaves a meaningful physical horizon. Smaller
 performance fixtures and unintegrated reservoir approximations are not
 substitutes for this recipe.
+
+## Launched source and observation
+
+The fresh garden launched on 2026-10-15 at approximately 16:50 UTC, from exact
+commit `4b747919ec56f535f7c37bc7c666bd423316162d`. It is independent of the three
+older CPU histories; their sources, states and deadlines remain unchanged.
+
+- Runtime/source stage: `/othersys/tmp/intmat-probe-20261014/native-garden-4b747919ec56`.
+- Output: `/tank/chreatures/probes/intmat-20261015/native-garden-4b747919ec56`.
+- Initial Julia PID: `4182590`; supervisor PID `4182572`.
+- Controls: CPUs 10–11, Julia 2 / GC 1 / BLAS 1, nice 15, 8 GiB host-memory cap,
+  no swap, AMD optlevel 1. This is a host-memory cap, not a VRAM reservation.
+- Bounds: model time 1200, hard 20:50 UTC, 4 GB artifacts; whichever comes first.
+
+The exact-source native gate completed 1,100 steps at 129.33 steps/s
+(7.732 ms/step), with 256 cells. Material residual was −1.892e−5 and potential
+residual −4.942e−5. Strict native restoration and eight future steps were exact;
+failure latching and rejection of partial checkpoints passed. Systemwide VRAM
+peaked at about 1.81 GiB during that gate. This is a warmed gate measurement;
+the long trajectory includes more frequent status checks and observations.
+
+The immutable integration archive passed 18,804 main-suite assertions and 299
+packed-world assertions. Local evidence is under
+`outputs/integration-4b74791-20261015` and
+`outputs/native-garden-launch-20261015`; the remote stage retains the gate,
+source hashes, launcher, cgroup evidence, `long.log` and its eventual exit code.
+
+Read `run.json`, append-only `metrics.jsonl`, and `checkpoint-audits.jsonl`.
+Only checkpoints named in a completed manifest entry with matching size/hash
+are candidates for strict same-source restoration. Never continue a failed
+partial state. A resumed experiment must write a fresh directory; retain the
+original output and parent checkpoint hash. No automatic reseed or rescue fuel.
+The [read-only observatory](native-garden-observatory.md) consumes completed
+frames and does not alter the simulation.

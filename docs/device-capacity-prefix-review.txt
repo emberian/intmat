@@ -240,6 +240,18 @@ regressions plus89 new ownership/precision/layout/dead-tail checks). BothFloat32
 andFloat64 energy,and materialized and axis support,have exact canonical dense
 oracle parity. The only excluded raw scratch is unused free-list entries.
 Existing base/protocol/energy consumers pass159 assertions,and packed-world
-gates pass278 assertions including failure isolation,reconstruction andFloat64
+gates pass299 assertions including failure isolation,reconstruction andFloat64
 prefix-versus-dense parity. Source is ready for the final integrated freeze.
 No integrated GPU claim or production longrun has been made from this change.
+
+
+Final composition ownership closure: DeviceConstructiveEcology.validate also
+checks lifecycle H against every habitat/feedstock array before any physical
+launch. Unlike resource grants,no H lease to feed scratch or any other role is
+legitimate. Twenty-four focused regressions use coherent H=2 reinterpret views
+backed by enzyme,bound and raw-feed inventory. They prove the base contract is
+valid,then require composite validation,sibling-step preflight and checkpointing
+to reject without changing complete state,clock or attempt counters. All24 pass;
+the batch owner's analogous actual-parent-storage regressions bring its total
+to299 passing assertions. This closes a cross-component ownership gap that the
+base state/environment/resource-only guard could not detect.
