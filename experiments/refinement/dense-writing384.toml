@@ -1,0 +1,13 @@
+name = "dense-writing384"
+mode = "writing"
+resolution = 384
+extent = [2.0, 2.0, 2.0]
+duration = 5.0
+dt = 0.01
+backend = "metal"
+seed = 91
+period = 4.0
+width = 0.018
+heat = 30.0
+threshold = 0.05
+conversion = 18.0
