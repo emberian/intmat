@@ -72,6 +72,8 @@ function arena_energy(processes)
             return visit(p.cells)+visit(p.substrates)
         elseif p isa SorptiveMatrix
             return matrix_potential(p)+visit(p.habitat)
+        elseif p isa ConstructiveEcology
+            return visit(p.cells)+visit(p.habitat)
         end
         0.0
     end
@@ -129,6 +131,12 @@ function arena_snapshot(a::Arena;max_side=96,max_agents=3000)
     agents=Any[]; metrics=Dict{String,Any}("material"=>arena_inventory(w,a.processes),"nutrient_total"=>sum(Float64,w.fields.nutrient))
     supplied=0.0; removed=0.0; supplied_potential=0.0; removed_potential=0.0
     for p in a.processes
+        if p isa ConstructiveEcology
+            cellular_arena_snapshot!(fields,agents,metrics,p.cells,w,xs,ys,k,max_agents)
+            catalytic_arena_snapshot!(fields,agents,metrics,p.habitat,w,xs,ys,k)
+            metrics["anabolism"]=Dict(string(key)=>value for (key,value) in pairs(anabolic_statistics(p)))
+            continue
+        end
         if p isa SorptiveMatrix
             sorptive_arena_snapshot!(fields,metrics,p,w,xs,ys,k)
             continue

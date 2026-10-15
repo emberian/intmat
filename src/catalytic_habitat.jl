@@ -75,7 +75,7 @@ function validate(w::World,p::CatalyticHabitat)
 end
 stability_limit(w,p::CatalyticHabitat)=Inf
 
-function _catalytic_sync!(p)
+function _catalytic_sync!(p;preserve_observation=false)
     c=p.cells; p.ids==c.ids && return p
     old=Dict(id=>i for (i,id) in enumerate(p.ids)); n=length(c.ids)
     weights=zeros(Float32,size(p.weights,1),size(p.weights,2),n)
@@ -93,7 +93,15 @@ function _catalytic_sync!(p)
             end
         end
     end
-    p.ids=copy(c.ids);p.weights=weights;p.expression=zeros(3,n);p.last_secretion=zeros(2,n)
+    expression=zeros(3,n);last_secretion=zeros(2,n)
+    if preserve_observation
+        for (j,id) in enumerate(c.ids)
+            previous=get(old,id,0);previous==0 && continue
+            expression[:,j].=view(p.expression,:,previous)
+            last_secretion[:,j].=view(p.last_secretion,:,previous)
+        end
+    end
+    p.ids=copy(c.ids);p.weights=weights;p.expression=expression;p.last_secretion=last_secretion
     p
 end
 
@@ -113,14 +121,10 @@ function _catalytic_deposit!(field,stencil,i,amount)
     actual
 end
 
-advance!(w::World,p::CatalyticHabitat,dt::Real)=_advance_catalytic!(w,p,dt,p.parameters,p.cells.parameters)
-function _advance_catalytic!(w,p,dt,q,cq)
-    check_dt(w,p,dt); delta=Float64(Float32(dt)); _catalytic_sync!(p)
-    c=p.cells;f=p.substrates;r=c.resources;s=c.stencil;n=length(c.ids);h=size(c.hidden,1)
-    fill!(p.last_secretion,0);foreach(a->fill!(a,0),p.release)
-    input=zeros(Float64,h+10)
-    for i in 1:n
-        input[1:h].=view(c.hidden,:,i)
+function _catalytic_readout!(p,i,input,q,cq,environment=nothing)
+    c=p.cells;f=p.substrates;s=c.stencil;h=size(c.hidden,1)
+    input[1:h].=view(c.hidden,:,i)
+    if environment===nothing
         fill!(view(input,h+1:h+4),0)
         for e in s.offsets[i]:s.offsets[i+1]-1
             site=s.sites[e];weight=s.weights[e]/s.cell_volume
@@ -130,37 +134,62 @@ function _advance_catalytic!(w,p,dt,q,cq)
             end
         end
         for j in h+1:h+4;input[j]=input[j]/(1+input[j]);end
-        input[h+5]=c.metabolites[1,i]/max(c.biomass[i]*cq.store_capacity,eps())
-        input[h+6]=c.metabolites[2,i]/max(c.biomass[i]*cq.store_capacity,eps())
-        input[h+7]=c.energy[i]/(c.biomass[i]+c.energy[i])
-        input[h+8]=c.biomass[i]/(cq.division_mass+c.biomass[i])
-        input[h+9]=c.age[i]/(20+c.age[i]);input[h+10]=1
-        if q.regulation
-            # Three bounded readouts; subtracting max keeps exponentials finite.
-            output=[sum(Float64(p.weights[j,k,i])*input[k] for k in eachindex(input)) for j in 1:3]
-            investment=1/(1+exp(-clamp(output[1],-40.,40.)))
-            difference=clamp(output[2]-output[3],-40.,40.)
-            allocation=1/(1+exp(-difference))
-        else
-            investment=1/(1+exp(-clamp(q.investment_bias,-40.,40.)));allocation=.5
-        end
-        p.expression[:,i].=(investment,allocation,1-allocation)
+    else
+        input[h+1:h+4].=view(environment,:,i)
+    end
+    input[h+5]=c.metabolites[1,i]/max(c.biomass[i]*cq.store_capacity,eps())
+    input[h+6]=c.metabolites[2,i]/max(c.biomass[i]*cq.store_capacity,eps())
+    input[h+7]=c.energy[i]/(c.biomass[i]+c.energy[i])
+    input[h+8]=c.biomass[i]/(cq.division_mass+c.biomass[i])
+    input[h+9]=c.age[i]/(20+c.age[i]);input[h+10]=1
+    if q.regulation
+        # Three bounded readouts; subtracting max keeps exponentials finite.
+        output=[sum(Float64(p.weights[j,k,i])*input[k] for k in eachindex(input)) for j in 1:3]
+        investment=1/(1+exp(-clamp(output[1],-40.,40.)))
+        difference=clamp(output[2]-output[3],-40.,40.)
+        allocation=1/(1+exp(-difference))
+    else
+        investment=1/(1+exp(-clamp(q.investment_bias,-40.,40.)));allocation=.5
+    end
+    p.expression[:,i].=(investment,allocation,1-allocation)
+    investment,allocation
+end
+
+function _catalytic_construct!(p,i,k,requested,q)
+    c=p.cells;r=c.resources;s=c.stencil
+    amount=min(requested,2minimum(view(c.metabolites,:,i)))
+    if q.secretion_work>0
+        affordable=c.energy[i]/q.secretion_work
+        affordable*q.secretion_work>c.energy[i] && (affordable=prevfloat(affordable))
+        amount=min(amount,max(0.,affordable))
+    end
+    actual=_catalytic_deposit!(p.enzymes[k],s,i,amount)
+    c.metabolites[:,i].-=actual/2
+    work=actual*q.secretion_work;c.energy[i]-=work;c.work_spent+=work;p.work_spent+=work
+    c.chemical_heat+=actual/2*sum(Float64,view(r.potentials,1:2))
+    p.secreted[k]+=actual;p.last_secretion[k,i]=actual
+    actual
+end
+
+advance!(w::World,p::CatalyticHabitat,dt::Real)=_advance_catalytic!(w,p,dt,p.parameters,p.cells.parameters)
+function _advance_catalytic!(w,p,dt,q,cq)
+    check_dt(w,p,dt);delta=Float64(Float32(dt));_catalytic_sync!(p)
+    c=p.cells;n=length(c.ids);h=size(c.hidden,1)
+    fill!(p.last_secretion,0);foreach(a->fill!(a,0),p.release)
+    input=zeros(Float64,h+10)
+    for i in 1:n
+        investment,allocation=_catalytic_readout!(p,i,input,q,cq)
         for k in 1:2
             fraction=k==1 ? allocation : 1-allocation
             requested=delta*q.secretion_rate*c.biomass[i]*investment*fraction^q.allocation_exponent
-            amount=min(requested,2minimum(view(c.metabolites,:,i)))
-            if q.secretion_work>0
-                affordable=c.energy[i]/q.secretion_work
-                affordable*q.secretion_work>c.energy[i] && (affordable=prevfloat(affordable))
-                amount=min(amount,max(0.,affordable))
-            end
-            actual=_catalytic_deposit!(p.enzymes[k],s,i,amount)
-            c.metabolites[:,i].-=actual/2
-            work=actual*q.secretion_work;c.energy[i]-=work;c.work_spent+=work;p.work_spent+=work
-            c.chemical_heat+=actual/2*sum(Float64,view(r.potentials,1:2))
-            p.secreted[k]+=actual;p.last_secretion[k,i]=actual
+            _catalytic_construct!(p,i,k,requested,q)
         end
     end
+    _catalytic_react!(w,p,delta,q)
+end
+
+function _catalytic_react!(w,p,delta,q)
+    c=p.cells;f=p.substrates;r=c.resources;s=c.stencil
     for k in 1:2,site in eachindex(p.enzymes[k])
         old=f.fields[k][site]
         requested=delta*q.catalytic_rate*p.enzymes[k][site]*Float64(old)/(q.half_saturation*s.cell_volume+Float64(old))

@@ -112,9 +112,52 @@ organism. The decline motivates a different ecological regime without rejecting
 the architectural possibility. Maximum absolute residuals across the eight arms
 were about 2.0e-5 material and 1.6e-5 chemical potential.
 
-The separate refuges study provides the next comparison with continued soluble
-input. No historical arena, garden trajectory or previous source pin is migrated
-or replaced.
+The eight separate refuges trajectories reached t3000 with 72–85 living cells
+and 304–480 cumulative births. Continued soluble input sustained populations,
+but it did not sustain much construction: seven endpoint enzyme inventories
+were below 0.00013 and the remaining one was 0.00483. In seed211/full, cumulative
+secretion stayed at approximately10.0312 from t100 through t1500, while cells
+continued growing and reproducing. Source and observations are retained under
+`outputs/sorptive-refuges-20261015` and its adjacent source directory. No historical
+arena, garden trajectory or previous source pin is migrated or replaced.
+
+That observation exposed a concrete scheduling asymmetry: the original cellular
+growth reaction consumes complementary precursors before the separately
+scheduled secretion effector receives them. A requested construction flux can
+therefore receive exactly zero, even when growth is active. It is not an
+impossibility result—mutations could alter growth demand—but it is a strong
+architectural priority that deserves an explicit alternative.
+
+## Shared growth and construction
+
+`ConstructiveEcology` is the opt-in alternative, selected with
+`[catalysis] shared_anabolism=true`. It owns the cells and their catalytic habitat;
+scheduling either child again is rejected. The old `(cells, habitat)` schedule
+remains the default and retains its original arithmetic.
+
+After the cellular controller and uptake/junction stages, the inherited
+construction readout proposes A/B secretion. Its work cost joins the respiratory
+forecast once; the same cached requests are used after maintenance. Growth and
+both construction requests then receive one common scale factor, bounded by
+available complementary precursor and available work. No reaction gets an
+unconditional first claim. Actual growth/deposition remains donor-bounded, and
+unrepresentable construction stays intracellular. Metrics distinguish requested
+amounts, planned allocations and actual secreted material.
+
+The construction readouts all observe the same pre-construction external fields;
+later cell IDs do not see material just deposited by earlier IDs in that sweep.
+Intracellular observations are taken before respiration. Death and division
+happen after anabolism; offspring inherit the correct parent readout, while
+per-step secretion observations remain attached to the cells that actually
+secreted. Catalytic release/decay follows the cellular step and sorption follows
+that. This is a new physiological scheduling law, not a migration of old runs.
+
+`experiments/arena/constructive-refuges.toml` combines the shared budget with the
+same funded environment as the refuges recipe. Matched mechanism toggles and a
+residual-allocation control can be run with `sorptive_study`'s `conditions` keyword
+(`full`, `sorption_only`, `transport_only`, `catalytic_only`, `residual_full`).
+These comparisons examine continuing material construction and its consequences;
+they do not establish evolutionary improvement.
 
 ## Checks
 
@@ -127,3 +170,14 @@ update against small-step RK4 found maximum normalized difference about 2.1e-15.
 A separate-process restore preserved the actual shared habitat/cell/pool aliases
 and resumed exactly under a frozen source snapshot. These checks establish the
 implemented contracts, not an ecological conclusion.
+
+Fifty-five additional shared-allocation checks cover simultaneous material/work
+scarcity, work forecasting, zero donors, simultaneous death/division with reordered identities, terminal-cell cleanup, duplicate-owner
+rejection, complete observations and exact restart. Independent comparison against
+the previous unrefactored catalytic loop preserves its observations exactly.
+
+One separate developmental-law question remains open: the existing controller
+reconstructs preactivation through `atanh(clamp(tanh(raw)))` before subtracting
+adaptation, which caps strong inputs. A future explicit variant could use raw
+preactivation directly. This is an analytical possibility, not a silent change
+to the present developmental dynamics or a claim that they cannot be rich.

@@ -36,6 +36,7 @@ include("metabolic_composition.jl")
 include("cellular_transport.jl")
 include("cellular_contacts.jl")
 include("cellular.jl")
+include("cellular_storage.jl")
 
 include("cli.jl")
 
@@ -44,3 +45,4 @@ include("recurrent_runner.jl")
 
 include("catalytic_habitat.jl")
 include("sorptive_matrix.jl")
+include("constructive_cells.jl")

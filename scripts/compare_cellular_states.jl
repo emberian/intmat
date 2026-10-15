@@ -2,6 +2,8 @@
 # Compare trusted, bare Julia-serialized Arenas produced by the checkpoint probe.
 # Both inputs are deserialized copies. Only proposal scratch values are zeroed;
 # sizes, types, all other values, and the complete mutable alias graph must agree.
+# Opt-in --materialize-genomes validates owned indexed banks and converts only
+# CellularGenomeView weights/marks to their logical dense values on these copies.
 using Interior, Serialization, JSON3
 const compared_nodes=Ref(0)
 const compared_float_bits=Ref(0)
@@ -36,27 +38,36 @@ function differences(a,b,path="arena",seen=Set{Tuple{UInt,UInt}}(),forward=Dict{
  end
  nothing
 end
-length(ARGS)>=2 && iseven(length(ARGS)) || error("usage: compare_cellular_states.jl BASELINE_ARENA CANDIDATE_ARENA [BASELINE_ARENA CANDIDATE_ARENA ...]")
+paths=filter(!=("--materialize-genomes"),ARGS)
+length(paths)>=2 && iseven(length(paths)) || error("usage: compare_cellular_states.jl BASELINE_ARENA CANDIDATE_ARENA [BASELINE_ARENA CANDIDATE_ARENA ...] [--materialize-genomes]")
 function main()
 failed=false
-for i in 1:2:length(ARGS)
- x=open(deserialize,ARGS[i]);y=open(deserialize,ARGS[i+1])
+for i in 1:2:length(paths)
+ x=open(deserialize,paths[i]);y=open(deserialize,paths[i+1])
  x isa Arena && y isa Arena || error("inputs must be bare serialized Arenas, not checkpoint envelopes")
  canonicalized_lengths=Int[]
  for arena in (x,y), p in arena.processes
   if p isa CellularEcology
    push!(canonicalized_lengths,length(p.stencil.proposals))
    fill!(p.stencil.proposals,0.0)
+   if "--materialize-genomes" in ARGS
+    if p.weights isa Interior.CellularGenomeView || p.plastic_marks isa Interior.CellularGenomeView
+     Interior._cellular_validate_storage(p) # Validate owned shared bank/unique slots before normalization.
+     p.weights isa Interior.CellularGenomeView && (p.weights=Array(p.weights))
+     p.plastic_marks isa Interior.CellularGenomeView && (p.plastic_marks=Array(p.plastic_marks))
+    end
+   end
   end
  end
  compared_nodes[]=0;compared_float_bits[]=0;compared_arrays[]=0
  seen=Set{Tuple{UInt,UInt}}();forward=Dict{UInt,UInt}();backward=Dict{UInt,UInt}()
  mismatch=differences(x,y,"arena",seen,forward,backward)
  failed |= mismatch!==nothing
- println(JSON3.write((;baseline=abspath(ARGS[i]),candidate=abspath(ARGS[i+1]),
+ println(JSON3.write((;baseline=abspath(paths[i]),candidate=abspath(paths[i+1]),
      exact=mismatch===nothing,mismatch,compared_nodes=compared_nodes[],
      compared_float_bits=compared_float_bits[],compared_arrays=compared_arrays[],
      mutable_alias_pairs=length(forward),canonicalized_field="CellularEcology.stencil.proposals",
+     genome_views_materialized="--materialize-genomes" in ARGS,
      canonicalized_lengths,canonicalization="zero values on deserialized copies only; retain length/type/alias checks")))
 end
 return failed ? 1 : 0

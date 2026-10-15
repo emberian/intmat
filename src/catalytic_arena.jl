@@ -18,8 +18,14 @@ function build_catalytic_arena(cfg)
     feedstock=ResourcePool(w;options...)
     for k in 1:2;feedstock.fields[k].*=feedstock.source_masks[k];end
     arguments=Dict{Symbol,Any}(Symbol(k)=>v for (k,v) in get(cfg,"catalysis",Dict()))
+    shared=Bool(pop!(arguments,:shared_anabolism,false))
     habitat=CatalyticHabitat(w,c,feedstock;arguments...)
-    processes=(feedstock,original.processes...,habitat)
+    processes=if shared
+        constructive=ConstructiveEcology(w,c,habitat)
+        (feedstock,map(p->p===c ? constructive : p,original.processes)...)
+    else
+        (feedstock,original.processes...,habitat)
+    end
     if haskey(cfg,"matrix") && get(cfg["matrix"],"enabled",true)
         arguments=Dict{Symbol,Any}(Symbol(k)=>v for (k,v) in cfg["matrix"] if k!="enabled")
         matrix=SorptiveMatrix(w,habitat;arguments...)

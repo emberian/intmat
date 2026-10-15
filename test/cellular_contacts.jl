@@ -178,3 +178,45 @@ end
         end
     end
 end
+
+@testset "Transient bond workspace matches allocating mechanics exactly" begin
+    rng=MersenneTwister(7509)
+    for nz in (1,5), sorted_ids in (false,true), funded in (false,true), degree in (0,4)
+        n=40;grid=Grid(12,12,nz;extent=(2.,2.,2.))
+        ids=sorted_ids ? collect(11:10+n) : 10 .+ randperm(rng,n)
+        x=2rand(rng,3,n);nz==1 && (x[3,:].=0.)
+        x[1,1]=.01;x[1,2]=1.99;x[2,2]=x[2,1];x[3,2]=x[3,1]
+        radii=.08 .+ .04rand(rng,n);motility=.5randn(rng,3,n)
+        adhesion=rand(rng,n);adhesion[1:5].=1.
+        bonds=CellBonds()
+        add_cell_bond!(bonds,ids[1],ids[2],.2)
+        add_cell_bond!(bonds,ids[3],9999,.2) # Dead endpoint.
+        reference=deepcopy(bonds);y=copy(x)
+        energy=funded ? .01rand(rng,n) : nothing;reference_energy=deepcopy(energy)
+        for _ in 1:4
+            old_edges=bonds.endpoints;old_rest=bonds.rest_lengths
+            edges_before=copy(old_edges);rest_before=copy(old_rest)
+            a=cellular_mechanics!(grid,ids,x,radii,bonds,.04;motility,adhesion,energy,max_degree=degree,bond_range=.04)
+            b=cellular_mechanics!(grid,ids,y,radii,reference,.04;motility,adhesion,energy=reference_energy,
+                max_degree=degree,bond_range=.04,reuse_contact_workspace=false)
+            @test isequal(x,y)
+            @test isequal(energy,reference_energy)
+            @test isequal(bonds.endpoints,reference.endpoints)
+            @test isequal(bonds.rest_lengths,reference.rest_lengths)
+            @test isequal(a,b)
+            @test old_edges==edges_before
+            @test old_rest==rest_before
+        end
+    end
+    # Preserve the original detachment when a caller deliberately funds motors
+    # from the vector that held the bonds' pre-call rest lengths.
+    grid=Grid(8,8;extent=(4.,4.,1.));ids=[3,1,2]
+    x=[1. 1.3 1.6;1. 1. 1.;0. 0. 0.];radii=fill(.1,3)
+    bonds=CellBonds([(1,3),(1,2),(2,3)],[.3,.3,.6]);reference=deepcopy(bonds)
+    energy=bonds.rest_lengths;reference_energy=reference.rest_lengths;y=copy(x)
+    a=cellular_mechanics!(grid,ids,x,radii,bonds,.04;energy,motility=fill(.1,3,3))
+    b=cellular_mechanics!(grid,ids,y,radii,reference,.04;energy=reference_energy,motility=fill(.1,3,3),reuse_contact_workspace=false)
+    @test isequal(x,y) && isequal(energy,reference_energy) && isequal(a,b)
+    @test bonds.rest_lengths!==energy && reference.rest_lengths!==reference_energy
+    @test isequal(bonds.rest_lengths,reference.rest_lengths)
+end

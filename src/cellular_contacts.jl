@@ -116,14 +116,14 @@ end
     _cellular_energy_forces(grid,ids,x,radii,bonds,index,repulsion,stiffness,Val(forces),pairs)
 end
 
-function _cellular_energy_forces(grid, ids, x, radii, bonds, index, repulsion, stiffness, ::Val{F}, pairs) where F
+function _cellular_energy_forces(grid, ids, x, radii, bonds, index, repulsion, stiffness, ::Val{F}, pairs,bond_columns=nothing) where F
     f=F ? Matrix{Float64}(undef,size(x)) : nothing
     rows=F ? Vector{Float64}(undef,length(ids)) : Float64[]
-    _cellular_energy_forces!(grid,ids,x,radii,bonds,index,repulsion,stiffness,Val(F),pairs,f,rows)
+    _cellular_energy_forces!(grid,ids,x,radii,bonds,index,repulsion,stiffness,Val(F),pairs,f,rows,bond_columns)
 end
 
 # Buffers live for one mechanics call; they are not persistent simulation state.
-function _cellular_energy_forces!(grid,ids,x,radii,bonds,index,repulsion,stiffness,::Val{F},pairs,f,rows) where F
+function _cellular_energy_forces!(grid,ids,x,radii,bonds,index,repulsion,stiffness,::Val{F},pairs,f,rows,bond_columns=nothing) where F
     forces=F
     F && (fill!(f,0.);fill!(rows,0.))
     energy=0.;overlaps=0
@@ -144,7 +144,11 @@ function _cellular_energy_forces!(grid,ids,x,radii,bonds,index,repulsion,stiffne
         end
     end
     @inbounds for e in eachindex(bonds.endpoints)
-        a,b = bonds.endpoints[e]; i = get(index,a,0); j = get(index,b,0)
+        i,j=if bond_columns===nothing
+            a,b=bonds.endpoints[e];(get(index,a,0),get(index,b,0))
+        else
+            bond_columns[e]
+        end
         (i == 0 || j == 0) && continue
         delta = _cellular_delta(grid,x,i,j); distance = _cellular_length(delta)
         extension = max(0.,distance-bonds.rest_lengths[e])
@@ -198,6 +202,82 @@ function _cellular_refresh_bonds!(grid,ids,x,radii,bonds,index,adhesion,threshol
     (;broken,formed,loss)
 end
 
+# Call-local contact state. No cache enters a checkpoint. The first refresh
+# writes private arrays, leaving the caller's pre-call vector references alone;
+# later refreshes alternate private buffers rather than allocate at each substep.
+struct _CellularBondBuffer
+    endpoints::Vector{Tuple{Int,Int}}
+    rest_lengths::Vector{Float64}
+    columns::Vector{Tuple{Int,Int}}
+end
+_CellularBondBuffer()=_CellularBondBuffer(Tuple{Int,Int}[],Float64[],Tuple{Int,Int}[])
+mutable struct _CellularContactWorkspace
+    first::_CellularBondBuffer
+    second::_CellularBondBuffer
+    columns::Vector{Tuple{Int,Int}}
+    degree::Vector{Int}
+    existing::Set{Tuple{Int,Int}}
+    order::Vector{Int}
+    ordered_ids::Bool
+    ordered_pairs::Vector{Tuple{Int,Int}}
+    order_ready::Bool
+end
+function _CellularContactWorkspace(ids,bonds,index)
+    columns=[(get(index,a,0),get(index,b,0)) for (a,b) in bonds.endpoints]
+    _CellularContactWorkspace(_CellularBondBuffer(),_CellularBondBuffer(),columns,
+        zeros(Int,length(ids)),Set{Tuple{Int,Int}}(),Int[],issorted(ids),Tuple{Int,Int}[],false)
+end
+@inline _cellular_bond_columns(::Nothing)=nothing
+@inline _cellular_bond_columns(w::_CellularContactWorkspace)=w.columns
+@inline _cellular_invalidate_order!(::Nothing)=nothing
+@inline _cellular_invalidate_order!(w::_CellularContactWorkspace)=(w.order_ready=false;nothing)
+function _cellular_bond_order!(w,ids,pairs)
+    w.ordered_ids && return eachindex(pairs)
+    if !w.order_ready || w.ordered_pairs!==pairs
+        resize!(w.order,length(pairs))
+        for i in eachindex(w.order);w.order[i]=i;end
+        sort!(w.order;by=i->minmax(ids[pairs[i][1]],ids[pairs[i][2]]))
+        w.ordered_pairs=pairs;w.order_ready=true
+    end
+    w.order
+end
+@inline function _cellular_refresh_workspace!(::Nothing,args...;pairs)
+    _cellular_refresh_bonds!(args...;pairs)
+end
+function _cellular_refresh_workspace!(w::_CellularContactWorkspace,grid,ids,x,radii,bonds,index,adhesion,threshold,break_strain,max_degree,bond_range,stiffness;pairs)
+    target=bonds.endpoints===w.first.endpoints ? w.second : w.first
+    empty!(target.endpoints);empty!(target.rest_lengths);empty!(target.columns)
+    fill!(w.degree,0);empty!(w.existing)
+    broken=0;formed=0;loss=0.
+    @inbounds for e in eachindex(bonds.endpoints)
+        i,j=w.columns[e];alive=i!=0 && j!=0
+        extension=alive ? max(0.,_cellular_length(_cellular_delta(grid,x,i,j))-bonds.rest_lengths[e]) : 0.
+        if !alive || adhesion[i]<threshold || adhesion[j]<threshold || extension>break_strain*bonds.rest_lengths[e]
+            broken+=1;loss+=.5stiffness*extension^2
+        else
+            edge=bonds.endpoints[e]
+            push!(target.endpoints,edge);push!(target.rest_lengths,bonds.rest_lengths[e]);push!(target.columns,(i,j))
+            push!(w.existing,edge);w.degree[i]+=1;w.degree[j]+=1
+        end
+    end
+    bonds.endpoints=target.endpoints;bonds.rest_lengths=target.rest_lengths;w.columns=target.columns
+    max_degree==0 && return (;broken,formed,loss)
+    for e in _cellular_bond_order!(w,ids,pairs)
+        @inbounds i,j=pairs[e]
+        edge=minmax(ids[i],ids[j])
+        (edge in w.existing || w.degree[i]>=max_degree || w.degree[j]>=max_degree || adhesion[i]<threshold || adhesion[j]<threshold) && continue
+        distance=_cellular_length(_cellular_delta(grid,x,i,j))
+        distance<=radii[i]+radii[j]+bond_range || continue
+        rest=max(Float64(radii[i]+radii[j]),distance)
+        # Membership was already established above. The public insertion helper
+        # repeats a linear duplicate scan, which is unnecessary here.
+        push!(bonds.endpoints,edge);push!(bonds.rest_lengths,rest)
+        push!(target.columns,ids[i]<ids[j] ? (i,j) : (j,i))
+        push!(w.existing,edge);w.degree[i]+=1;w.degree[j]+=1;formed+=1
+    end
+    (;broken,formed,loss)
+end
+
 """Advance physical periodic cell bodies using overdamped, unit-mobility mechanics.
 
 Repulsion is a soft overlap potential; bonds resist tension only. Both forces are
@@ -243,7 +323,7 @@ end
 function cellular_mechanics!(grid,ids,positions,radii,bonds::CellBonds,dt::Real;
     adhesion=ones(length(ids)),motility=zeros(3,length(ids)),repulsion=10.,stiffness=2.,
     break_strain=.75,max_degree::Integer=6,adhesion_threshold=.5,bond_range=0.,max_substeps::Integer=10000,
-    energy=nothing,motor_cost=1.,reuse_candidates::Bool=true)
+    energy=nothing,motor_cost=1.,reuse_candidates::Bool=true,reuse_contact_workspace::Bool=true)
     _cellular_validate_geometry(grid,positions,radii); _cellular_validate_bonds(bonds)
     n=length(ids); nd=_cellular_ndim(grid)
     length(radii)==length(adhesion)==n && size(motility)==(3,n) || throw(DimensionMismatch("cell action dimensions differ"))
@@ -259,10 +339,11 @@ function cellular_mechanics!(grid,ids,positions,radii,bonds::CellBonds,dt::Real;
     index=Dict(id=>i for (i,id) in enumerate(ids))
     x=Float64.(positions)
     for i in 1:n,d in 1:3; x[d,i]=d>nd ? 0. : mod(x[d,i],Float64(grid.extent[d])); end
+    contact_workspace=reuse_contact_workspace ? _CellularContactWorkspace(ids,bonds,index) : nothing
     initial_pairs=cellular_pairs(grid,x,radii;range=bond_range)
-    potential_before=_cellular_energy_forces(grid,ids,x,radii,bonds,index,repulsion,stiffness,Val(false),initial_pairs).energy
+    potential_before=_cellular_energy_forces(grid,ids,x,radii,bonds,index,repulsion,stiffness,Val(false),initial_pairs,_cellular_bond_columns(contact_workspace)).energy
     broken=0;formed=0;topology_energy_loss=0.;motor_potential_work=0.;relaxation_energy_loss=0.;substeps=0
-    refresh=_cellular_refresh_bonds!(grid,ids,x,radii,bonds,index,adhesion,adhesion_threshold,break_strain,max_degree,bond_range,stiffness;pairs=initial_pairs)
+    refresh=_cellular_refresh_workspace!(contact_workspace,grid,ids,x,radii,bonds,index,adhesion,adhesion_threshold,break_strain,max_degree,bond_range,stiffness;pairs=initial_pairs)
     broken+=refresh.broken;formed+=refresh.formed;topology_energy_loss+=refresh.loss
     remaining=Float64(dt); travel_limit=n==0 ? Inf : .2minimum(radii)
     motors=Float64.(motility); nd==2 && (motors[3,:].=0.)
@@ -279,9 +360,10 @@ function cellular_mechanics!(grid,ids,positions,radii,bonds::CellBonds,dt::Real;
         # This physical skin reuses one broadphase for all trial evaluations.
         if !reuse_candidates || !pairs_ready || !_cellular_inside_pair_skin(grid,x,pair_origin,travel_limit)
             _cellular_reanchor_pairs!(candidates,pair_origin,grid,x,radii,4travel_limit+bond_range)
+            _cellular_invalidate_order!(contact_workspace)
             pairs_ready=true
         end
-        state=_cellular_energy_forces!(grid,ids,x,radii,bonds,index,repulsion,stiffness,Val(true),candidates,state_forces,state_rows)
+        state=_cellular_energy_forces!(grid,ids,x,radii,bonds,index,repulsion,stiffness,Val(true),candidates,state_forces,state_rows,_cellular_bond_columns(contact_workspace))
         copyto!(budget_motors,motors)
         if energy !== nothing
             for i in 1:n
@@ -312,8 +394,9 @@ function cellular_mechanics!(grid,ids,positions,radii,bonds::CellBonds,dt::Real;
                 for i in 1:n,d in 1:nd;motor_x[d,i]=mod(motor_x[d,i],Float64(grid.extent[d]));end
                 if reuse_candidates && !_cellular_inside_pair_skin(grid,motor_x,pair_origin,travel_limit)
                     _cellular_reanchor_pairs!(candidates,pair_origin,grid,x,radii,4travel_limit+bond_range)
+                    _cellular_invalidate_order!(contact_workspace)
                 end
-                motor_state=_cellular_energy_forces!(grid,ids,motor_x,radii,bonds,index,repulsion,stiffness,Val(true),candidates,motor_forces,motor_rows)
+                motor_state=_cellular_energy_forces!(grid,ids,motor_x,radii,bonds,index,repulsion,stiffness,Val(true),candidates,motor_forces,motor_rows,_cellular_bond_columns(contact_workspace))
                 for i in 1:n
                     weights[i]=sum(abs2,view(velocity,:,i))
                 end
@@ -340,8 +423,9 @@ function cellular_mechanics!(grid,ids,positions,radii,bonds::CellBonds,dt::Real;
             if passive_travel<=travel_limit
                 if reuse_candidates && !_cellular_inside_pair_skin(grid,trial,pair_origin,travel_limit)
                     _cellular_reanchor_pairs!(candidates,pair_origin,grid,x,radii,4travel_limit+bond_range)
+                    _cellular_invalidate_order!(contact_workspace)
                 end
-                trial_energy=_cellular_energy_forces(grid,ids,trial,radii,bonds,index,repulsion,stiffness,Val(false),candidates).energy
+                trial_energy=_cellular_energy_forces(grid,ids,trial,radii,bonds,index,repulsion,stiffness,Val(false),candidates,_cellular_bond_columns(contact_workspace)).energy
             end
             if trial_energy<=motor_state.energy && passive_travel<=travel_limit
                 motor_potential_work+=motor_state.energy-state.energy
@@ -358,11 +442,11 @@ function cellular_mechanics!(grid,ids,positions,radii,bonds::CellBonds,dt::Real;
         end
         accepted && h>0 && remaining-h<remaining || throw(ArgumentError("mechanical relaxation could not resolve timestep"))
         remaining=max(0.,remaining-h);substeps+=1
-        refresh=_cellular_refresh_bonds!(grid,ids,x,radii,bonds,index,adhesion,adhesion_threshold,break_strain,max_degree,bond_range,stiffness;pairs=candidates)
+        refresh=_cellular_refresh_workspace!(contact_workspace,grid,ids,x,radii,bonds,index,adhesion,adhesion_threshold,break_strain,max_degree,bond_range,stiffness;pairs=candidates)
         broken+=refresh.broken;formed+=refresh.formed;topology_energy_loss+=refresh.loss
     end
     positions .= x
-    potential_after=_cellular_energy_forces(grid,ids,positions,radii,bonds,index,repulsion,stiffness).energy
+    potential_after=_cellular_energy_forces(grid,ids,positions,radii,bonds,index,repulsion,stiffness,Val(false),nothing,_cellular_bond_columns(contact_workspace)).energy
     # Includes final conversion to the caller's position precision.
     energy_residual=potential_after-potential_before-motor_potential_work+relaxation_energy_loss+topology_energy_loss
     (;potential_before,potential_after,motor_potential_work,relaxation_energy_loss,topology_energy_loss,

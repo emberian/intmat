@@ -14,7 +14,8 @@ function state_summary(a)
       grid=a.world.grid.size,processes=[string(nameof(typeof(p))) for p in a.processes],
       mechanical_substeps=p.mechanical===nothing ? 0 : p.mechanical.substeps,
       parameter_field_type=string(fieldtype(typeof(p),:parameters)),
-      parameter_value_type=string(typeof(p.parameters)))
+      parameter_value_type=string(typeof(p.parameters)),
+      storage=isdefined(Interior,:_cellular_storage_statistics) ? Interior._cellular_storage_statistics(p) : nothing)
 end
 function measure(f)
     t=@timed f()
@@ -48,6 +49,7 @@ function sustained_run!(a,seconds)
 end
 function profile_case(name,path,out;advance=0,allow_source_change=false,quick=false,sustained=false)
     base="--raw-arena" in ARGS ? open(deserialize,path) : restore_arena(path;allow_source_change)
+    "--indexed" in ARGS && Interior._cellular_enable_indexed_storage!(cellular(base))
     for _ in 1:advance;arena_step!(base);end
     before=state_summary(base)
     println(JSON3.write((;case=name,state=before,checkpoint=path)));flush(stdout)
@@ -99,22 +101,24 @@ function profile_case(name,path,out;advance=0,allow_source_change=false,quick=fa
     a=deepcopy(base)
     for _ in 1:100;arena_step!(a);end
     statefile=joinpath(out,name*"-after100.jls")
-    open(io->serialize(io,a),statefile,"w")
-    throughput=sustained ? sustained_run!(deepcopy(base),3.0) : nothing
+    serialization=@timed open(io->serialize(io,a),statefile,"w")
+    throughput=sustained ? sustained_run!(deepcopy(base),"--sustain5" in ARGS ? 5.0 : 3.0) : nothing
     result=(;case=name,checkpoint=path,checkpoint_sha256=bytes2hex(sha256(read(path))),
+        indexed_storage="--indexed" in ARGS,
         checkpoint_format="--raw-arena" in ARGS ? "bare-serialized-arena" : "arena-checkpoint-envelope",
         derived_steps=advance,state=before,steps_per_sample=8,measurements,components,
         profile_steps=quick ? 0 : 100,continuation_steps=100,continuation_end=state_summary(a),
         continuation_sha256=bytes2hex(sha256(read(statefile))),allow_source_change,
+        serialization_seconds=serialization.time,serialized_bytes=filesize(statefile),
         loaded_sources=Interior.arena_sources(),throughput)
     open(io->JSON3.write(io,result),joinpath(out,name*".json"),"w")
     println(JSON3.write(result));flush(stdout)
 end
 
-1<=length(ARGS)<=9 || error("usage: profile_cellular_step.jl PROFILE_DIRECTORY [--quick] [--allow-source-change] [--sustain] [--large|--scale4096|--checkpoint] [--allocations] [--raw-arena]")
+1<=length(ARGS)<=12 || error("usage: profile_cellular_step.jl PROFILE_DIRECTORY [--quick] [--allow-source-change] [--sustain] [--large|--scale4096|--checkpoint] [--allocations] [--raw-arena] [--capacity16384] [--sustain5] [--indexed]")
 out=abspath(first(ARGS));mkpath(out)
 flags=ARGS[2:end]
-all(x->x in ("--quick","--allow-source-change","--sustain","--large","--checkpoint","--allocations","--scale4096","--raw-arena"),flags) || error("unknown profiling flag")
+all(x->x in ("--quick","--allow-source-change","--sustain","--large","--checkpoint","--allocations","--scale4096","--raw-arena","--capacity16384","--sustain5","--indexed"),flags) || error("unknown profiling flag")
 Profile.init(n=5_000_000,delay=0.0005)
 cases=if "--checkpoint" in flags
     ((basename(out),"input.jls",0),)
@@ -127,6 +131,7 @@ elseif "--large" in flags || "--scale4096" in flags
         config["grid"]["shape"]="--scale4096" in flags ? [512,384,1] : [256,192,1]
         config["grid"]["extent"]="--scale4096" in flags ? [256.,192.,1.] : [128.,96.,1.]
         config["cellular"]["population"]="--scale4096" in flags ? 4096 : 1024
+        "--capacity16384" in flags && (config["cellular"]["capacity"]=16384)
         # One broad stripe remains one stripe over the larger physical domain.
         config["resources"]["niche_waves"]=[1,0,0]
         checkpoint!(build_arena(config),path)

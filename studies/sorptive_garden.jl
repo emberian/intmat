@@ -4,15 +4,20 @@ using Interior,TOML,JSON3
 """Matched mechanism toggles in two independently founded gardens.
 These are developmental/ecological trajectories, not adaptation assays.
 """
-function sorptive_study(profile,output;steps=10000,capture_every=100,seeds=(211,307))
+function sorptive_study(profile,output;steps=10000,capture_every=100,seeds=(211,307),
+        conditions=("full","sorption_only","transport_only","catalytic_only"))
     ispath(output) && error("use a fresh output directory")
     mkpath(output);config=TOML.parsefile(profile)
     report=Dict{String,Any}("kind"=>"sorptive matrix ecological exploration; no adaptation claim",
         "loaded_sources"=>Interior.arena_sources(),"steps"=>steps,"capture_every"=>capture_every,"arms"=>Dict())
-    for seed in seeds,condition in ("full","sorption_only","transport_only","catalytic_only")
+    for seed in seeds,condition in conditions
         cfg=deepcopy(config);cfg["seed"]=seed
-        condition in ("transport_only","catalytic_only") && (cfg["matrix"]["capacity_per_enzyme"]=0.)
-        condition in ("sorption_only","catalytic_only") && (cfg["matrix"]["transport_barrier"]=0.)
+        mechanism=replace(condition,r"^(residual_|shared_)"=>"")
+        startswith(condition,"residual_") && (cfg["catalysis"]["shared_anabolism"]=false)
+        startswith(condition,"shared_") && (cfg["catalysis"]["shared_anabolism"]=true)
+        mechanism in ("full","sorption_only","transport_only","catalytic_only") || error("unknown mechanism $condition")
+        mechanism in ("transport_only","catalytic_only") && (cfg["matrix"]["capacity_per_enzyme"]=0.)
+        mechanism in ("sorption_only","catalytic_only") && (cfg["matrix"]["transport_barrier"]=0.)
         a=build_arena(cfg);name="$seed-$condition";directory=joinpath(output,name);mkpath(directory)
         frames=Any[];maxmass=0.;maxenergy=0.;peakbound=0.;peakpopulation=0;peakfile=""
         function capture()

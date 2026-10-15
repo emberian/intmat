@@ -1,3 +1,5 @@
+include("cellular_storage.jl")
+
 """Growing material cells with an inherited regulatory network and open chemical ports.
 
 Positions are physical periodic coordinates in `[0, extent)`. Two imported
@@ -23,8 +25,8 @@ mutable struct CellularEcology
     energy::Vector{Float64}
     hidden::Matrix{Float32}
     adaptation::Matrix{Float32}
-    weights::Array{Float32,3}
-    plastic_marks::Array{Float32,3}
+    weights::AbstractArray{Float32,3}
+    plastic_marks::AbstractArray{Float32,3}
     last_actions::Matrix{Float32}
     age::Vector{Float64}
     resources::ResourcePool
@@ -54,7 +56,7 @@ const CELLULAR_ACTIONS=11
 const CELLULAR_SENSORS=20
 
 function CellularEcology(w::World,positions::AbstractMatrix,resources::ResourcePool;
-        medium=nothing,seed=w.seed,capacity=4096,hidden=8,biomass=1.,energy=1.,
+        medium=nothing,seed=w.seed,capacity=4096,hidden=8,biomass=1.,energy=1.,genome_storage=:dense,
         metabolites=.12,exchange_radius=1.,density=1.,store_capacity=.8,energy_capacity=3.,
         uptake_rate=1.2,half_saturation=.2,enzyme_exponent=1.4,
         growth_rate=.8,catabolic_rate=1.4,growth_work=.4,efficiency=.65,
@@ -105,12 +107,16 @@ function CellularEcology(w::World,positions::AbstractMatrix,resources::ResourceP
         zeros(Float32,CELLULAR_ACTIONS,n),zeros(n),resources,medium,CellBonds(),
         CellStencil(w.grid,xyz,exchange_radius),Int(seed),n+1,Int(capacity),0,0,0,
         0.,0.,n*Float64(energy),zeros(2),0.,0.,0.,0.,0.,nothing,pars)
+    storage=Symbol(genome_storage)
+    storage in (:dense,:indexed) || throw(ArgumentError("genome_storage must be dense or indexed"))
+    storage===:indexed && _cellular_enable_indexed_storage!(p)
     validate(w,p)
     p
 end
 
 function validate(w::World,p::CellularEcology)
     n=length(p.ids); h=size(p.hidden,1)
+    _cellular_validate_storage(p)
     w.backend isa CPU || throw(ArgumentError("CellularEcology requires CPU fields"))
     q=p.parameters
     all(x->isfinite(x)&&x>=0,values(q)) && all(>(0),(q.exchange_radius,q.density,q.store_capacity,q.energy_capacity,
@@ -146,7 +152,7 @@ function _cellular_select!(p,indices)
     for name in (:positions,:metabolites,:hidden,:adaptation,:last_actions)
         setfield!(p,name,getfield(p,name)[:,indices])
     end
-    p.weights=p.weights[:,:,indices]; p.plastic_marks=p.plastic_marks[:,:,indices]
+    _cellular_select_storage!(p,indices)
     p
 end
 function reorder_ecology!(p::CellularEcology,indices)
@@ -174,7 +180,10 @@ function _cellular_inputs(w,p,concentrations,gradients,radii,q,medium)
         delta=_cellular_delta(w.grid,p.positions,i,j)
         strain=max(0.,sqrt(sum(abs2,delta))/max(rest,eps())-1)
         gate=((p.last_actions[9,i]+1)/2)*((p.last_actions[9,j]+1)/2)
-        input[h+1:2h,i].+=gate.*p.hidden[:,j]; input[h+1:2h,j].+=gate.*p.hidden[:,i]
+        for row in 1:h
+            input[h+row,i]+=gate*p.hidden[row,j]
+            input[h+row,j]+=gate*p.hidden[row,i]
+        end
         degree[i]+=1; degree[j]+=1; tension[i]+=strain; tension[j]+=strain
     end
     for i in 1:n
@@ -226,12 +235,19 @@ end
 
 # Keep the checkpoint-compatible parameter field abstract, but specialize the
 # numerical loop on its concrete NamedTuple at this dispatch boundary.
-ecology_step!(w::World,p::CellularEcology,dt::Real) = _ecology_step!(w,p,dt,p.parameters)
+ecology_step!(w::World,p::CellularEcology,dt::Real;anabolism=nothing) =
+    _ecology_step!(w,p,dt,p.parameters,anabolism)
+_ecology_step!(w::World,p::CellularEcology,dt::Real,q) = _ecology_step!(w,p,dt,q,nothing)
 
-function _ecology_step!(w::World,p::CellularEcology,dt::Real,q)
-    check_dt(w,p,dt); delta=Float64(Float32(dt))
-    # Stable order makes stochastic division reproducible under storage reorder.
+function _ecology_step!(w::World,p::CellularEcology,dt::Real,q,anabolism)
+    check_dt(w,p,dt)
+    # Resolve storage only after a possible logical-cell permutation.
     issorted(p.ids) || reorder_ecology!(p,sortperm(p.ids))
+    _ecology_step_storage!(w,p,dt,q,p.weights,p.plastic_marks,anabolism)
+end
+
+function _ecology_step_storage!(w::World,p::CellularEcology,dt::Real,q,weights,marks,anabolism)
+    delta=Float64(Float32(dt))
     n=length(p.ids); h=size(p.hidden,1)
     rebuild_cell_stencil!(p.stencil,p.positions)
     concentrations=sample_concentrations(p.resources,p.stencil)
@@ -239,7 +255,7 @@ function _ecology_step!(w::World,p::CellularEcology,dt::Real,q)
     radii=cellular_radii(w,p,q.density)
     inputs=_cellular_inputs(w,p,concentrations,gradients,radii)
     outputs=zeros(Float32,h+CELLULAR_ACTIONS,n)
-    neural_controller!(outputs,p.weights,p.plastic_marks,inputs)
+    neural_controller!(outputs,weights,marks,inputs)
     enzymes=zeros(Float64,4,n); requests=zeros(Float64,3,n)
     for i in 1:n
         # Smooth regulatory allocation, with a finite total catalytic capacity.
@@ -262,9 +278,9 @@ function _ecology_step!(w::World,p::CellularEcology,dt::Real,q)
         p.last_actions[:,i].=view(outputs,h+1:h+CELLULAR_ACTIONS,i)
         # Bounded, local developmental plasticity; no immediate-fitness reward is
         # smuggled in. Its persistence and rates are part of the explicit model.
-        for col in axes(inputs,1),row in 1:h
-            mark=p.plastic_marks[row,col,i]; activity=p.hidden[row,i]
-            p.plastic_marks[row,col,i]=clamp(mark+Float32(delta*(q.plasticity_rate*(activity*inputs[col,i]-activity^2*mark)-q.plasticity_decay*mark)),-.3f0,.3f0)
+        @inbounds for col in axes(inputs,1),row in 1:h
+            mark=marks[row,col,i]; activity=p.hidden[row,i]
+            marks[row,col,i]=clamp(mark+Float32(delta*(q.plasticity_rate*(activity*inputs[col,i]-activity^2*mark)-q.plasticity_decay*mark)),-.3f0,.3f0)
         end
     end
     grants=allocate_cell_resources!(p.resources,p.stencil,requests)
@@ -284,6 +300,7 @@ function _ecology_step!(w::World,p::CellularEcology,dt::Real,q)
         reserve=q.energy_capacity*p.biomass[i]*(p.last_actions[11,i]+1)/2
         planned=delta*((q.basal_rate+q.growth_work*q.growth_rate*enzymes[3,i])*p.biomass[i]+q.neural_cost*h+
             q.motor_cost*q.speed^2*sum(abs2,view(p.last_actions,1:3,i)))
+        planned=_cellular_planned_work(planned,w,p,i,delta,q,anabolism)
         demand=max(0.,reserve+planned-p.energy[i])
         fuel_needed=stock>0 && q.efficiency*potential>0 ? demand*stock/(q.efficiency*potential) : 0.
         oxidize=min(stock,delta*q.catabolic_rate*p.biomass[i]*enzymes[4,i],fuel_needed)
@@ -315,11 +332,8 @@ function _ecology_step!(w::World,p::CellularEcology,dt::Real,q)
         end
         # Equal amounts of complementary precursors become material structure.
         # Their remaining potential is dissipated; synthesis additionally uses work.
-        build=min(2minimum(view(p.metabolites,:,i)),delta*q.growth_rate*p.biomass[i]*enzymes[3,i])
-        q.growth_work>0 && (build=min(build,p.energy[i]/q.growth_work))
-        p.metabolites[:,i].-=build/2; p.biomass[i]+=build
-        work=build*q.growth_work; p.energy[i]-=work; p.work_spent+=work
-        p.chemical_heat+=build/2*sum(p.resources.potentials[1:2]); p.synthesized+=build
+        _cellular_anabolic_build!(w,p,i,delta,
+            delta*q.growth_rate*p.biomass[i]*enzymes[3,i],q,anabolism)
         overflow=max(0.,p.energy[i]-q.energy_capacity*p.biomass[i])
         p.energy[i]-=overflow; p.chemical_heat+=overflow
         p.age[i]+=delta
@@ -372,6 +386,19 @@ function _ecology_step!(w::World,p::CellularEcology,dt::Real,q)
     p
 end
 
+# The ordinary law remains an exact, concrete dispatch path. Optional processes
+# may provide a separately explicit anabolic allocator without a global registry.
+_cellular_planned_work(planned,w,p,i,delta,q,::Nothing)=planned
+
+function _cellular_anabolic_build!(w,p,i,delta,requested_growth,q,::Nothing)
+    build=min(2minimum(view(p.metabolites,:,i)),requested_growth)
+    q.growth_work>0 && (build=min(build,p.energy[i]/q.growth_work))
+    p.metabolites[:,i].-=build/2; p.biomass[i]+=build
+    work=build*q.growth_work; p.energy[i]-=work; p.work_spent+=work
+    p.chemical_heat+=build/2*sum(p.resources.potentials[1:2]); p.synthesized+=build
+    nothing
+end
+
 _cellular_divide!(w,p,parents) = _cellular_divide!(w,p,parents,p.parameters)
 
 function _cellular_divide!(w,p,parents,q)
@@ -379,28 +406,29 @@ function _cellular_divide!(w,p,parents,q)
     n=length(p.ids); births=length(parents); h=size(p.hidden,1)
     # One allocation per state array for the complete birth batch.
     for name in (:positions,:metabolites,:hidden,:adaptation,:last_actions)
-        old=getfield(p,name); setfield!(p,name,hcat(old,zeros(eltype(old),size(old,1),births)))
+        old=getfield(p,name); setfield!(p,name,_cellular_append_slots(old,births))
     end
-    p.weights=cat(p.weights,zeros(Float32,size(p.weights,1),size(p.weights,2),births);dims=3)
-    p.plastic_marks=cat(p.plastic_marks,zeros(Float32,size(p.plastic_marks,1),size(p.plastic_marks,2),births);dims=3)
+    _cellular_grow_genomes!(p,births)
+    # Re-seeding restores the complete stream, including Gaussian caches. Keep
+    # one local generator per birth batch instead of allocating its large state
+    # for every daughter; the daughter-specific seed and draw order are unchanged.
+    rng=MersenneTwister(0)
     for (offset,i) in enumerate(parents)
         j=n+offset; id=p.next_id; p.next_id+=1
-        rng=MersenneTwister(string(p.seed,":division:",id,":",p.ids[i]))
+        Random.seed!(rng,string(p.seed,":division:",id,":",p.ids[i]))
         push!(p.ids,id); push!(p.parents,p.ids[i]); push!(p.lineages,p.lineages[i]); push!(p.generations,p.generations[i]+1)
         p.biomass[i]/=2; p.energy[i]/=2; p.metabolites[:,i]./=2
-        push!(p.biomass,p.biomass[i]); push!(p.energy,p.energy[i]); p.metabolites[:,j].=p.metabolites[:,i]
+        push!(p.biomass,p.biomass[i]); push!(p.energy,p.energy[i]); _cellular_copy_slot!(p.metabolites,j,i)
         p.age[i]=0; push!(p.age,0.)
-        p.weights[:,:,j].=p.weights[:,:,i]
-        for k in axes(p.weights,2),l in axes(p.weights,1)
-            rand(rng)<q.mutation_probability && (p.weights[l,k,j]+=Float32(q.mutation)*randn(rng,Float32))
-        end
-        p.hidden[:,j].=p.hidden[:,i]; p.adaptation[:,j].=p.adaptation[:,i]; p.plastic_marks[:,:,j].=p.plastic_marks[:,:,i]
+        _cellular_copy_slot!(p.weights,j,i)
+        _cellular_mutate_genome!(rng,p.weights,j,q.mutation,q.mutation_probability)
+        _cellular_copy_slot!(p.hidden,j,i); _cellular_copy_slot!(p.adaptation,j,i); _cellular_copy_slot!(p.plastic_marks,j,i)
         # Symmetric partition perturbation preserves mean developmental state.
         for k in 1:h
             shift=Float32(q.developmental_partition)*randn(rng,Float32)
             p.hidden[k,j]=clamp(p.hidden[k,j]+shift,-1f0,1f0); p.hidden[k,i]=clamp(p.hidden[k,i]-shift,-1f0,1f0)
         end
-        p.last_actions[:,j].=p.last_actions[:,i]
+        _cellular_copy_slot!(p.last_actions,j,i)
         direction=randn(rng,3)
         w.grid.size[3]==1 && (direction[3]=0)
         norm(direction)==0 && (direction[1]=1)

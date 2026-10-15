@@ -263,3 +263,28 @@ end
         @test Interior.arena_energy(b.processes)≈chemical atol=1e-11
     end
 end
+
+@testset "Contiguous lifecycle growth preserves borrowed old arrays" begin
+    w,p=cellular_fixture(positions=[2. 5.;2. 5.;0. 0.],biomass=2.,
+        mutation_probability=0.,developmental_partition=.03)
+    rng=MersenneTwister(842)
+    p.weights.=randn(rng,Float32,size(p.weights)).*.1f0
+    p.hidden.=rand(rng,Float32,size(p.hidden)).*.2f0
+    p.adaptation.=rand(rng,Float32,size(p.adaptation)).*.1f0
+    old=(positions=p.positions,metabolites=p.metabolites,hidden=p.hidden,
+        adaptation=p.adaptation,weights=p.weights,plastic_marks=p.plastic_marks,last_actions=p.last_actions)
+    saved=deepcopy(old)
+    Interior._cellular_divide!(w,p,[1,2])
+    @test length(p.ids)==4 && p.parents[3:4]==[1,2]
+    for name in keys(old)
+        @test isequal(getproperty(old,name),getproperty(saved,name))
+        @test getproperty(p,name)!==getproperty(old,name)
+    end
+    @test p.weights[:,:,1]==p.weights[:,:,3]
+    @test p.weights[:,:,2]==p.weights[:,:,4]
+    parent=p.weights[1,1,1]
+    p.weights[1,1,3]+=1f0
+    @test p.weights[1,1,1]==parent
+    @test all(isfinite,p.positions) && all(isfinite,p.hidden) && all(isfinite,p.adaptation)
+    @test size(p.weights,3)==size(p.plastic_marks,3)==length(p.ids)
+end
