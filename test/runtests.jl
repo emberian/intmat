@@ -15,6 +15,7 @@ include("dose_writer.jl")
 include("electrical.jl")
 include("phase.jl")
 include("mechanics.jl")
+include("mechanics_allocations.jl")
 include("ecology.jl")
 include("experiments.jl")
 include("process_composition.jl")
@@ -46,3 +47,7 @@ include("recurrent_runner.jl")
 include("catalytic_habitat.jl")
 include("sorptive_matrix.jl")
 include("constructive_cells.jl")
+
+module ElectricalMultigridTests
+include("electrical_multigrid.jl")
+end

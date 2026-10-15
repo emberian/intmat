@@ -1,0 +1,1789 @@
+{
+  "schema": "interior-electrical-multigrid-execution-v1",
+  "date": "2026-10-15",
+  "implementation": "Julia KernelAbstractions",
+  "backend": "AMDGPU ROCm6.4.3 RX6750XT",
+  "julia": "1.12.4",
+  "controls": {
+    "cpu_affinity": [
+      10,
+      11
+    ],
+    "julia_threads": 2,
+    "memory_max": "8GiB",
+    "swap": false,
+    "wrapper": "/home/hbox/bin/swarm-build",
+    "exclusive_gpu_windows_coordinated_with": "active_medium lane",
+    "project": "/othersys/tmp/intmat-probe-20261014/environment-dose-20261015",
+    "manifest_sha256": "19a74145cc443003999a5458b6055ed9c688494afba5bbe2a0699f722bac035a",
+    "package_electrical_sha256": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa"
+  },
+  "baseline_solver_sha256": "ffc12095ef94eb33171b7e8924bb341b9c33bc76764bf07fd7c19a696960d8f4",
+  "timing_protocol": "Complete converged solves with synchronization, per-grid JIT warmup excluded, same geometry, alternating order; setup/gather/parity transfers outside timers. Paired ratio median, with cycles separately recorded.",
+  "layout_only": {
+    "backend": "amd",
+    "julia": "1.12.4",
+    "sources": {
+      "scripts/benchmark_electrical_multigrid.jl": "74abb09b6307348d634ac60546efd2b5e1755cc6cb7db860762b4775314b346b",
+      "studies/branch_solver_prototype.jl": "23ffce8e17f9bef91c6ebfabf02f92374c3e9ee7658dc7cee6925a7950cb3aa0",
+      "studies/branch_metal_multigrid.jl": "a154af3b3ff29120820bd4479e0dade0e290bf094a8826c0c5996174d553e4de"
+    },
+    "results": [
+      {
+        "n": 513,
+        "events": 9,
+        "tolerance": 1.6e-05,
+        "workgroup": 256,
+        "variant": "layout",
+        "rbgroup": [
+          32,
+          4,
+          2
+        ],
+        "densegroup": [
+          32,
+          4,
+          2
+        ],
+        "cold_baseline": {
+          "seconds": 1.619049321,
+          "cycles": 12,
+          "residual": 1.2715657552083334e-05
+        },
+        "cold_candidate": {
+          "seconds": 1.3609403370000002,
+          "cycles": 12,
+          "residual": 1.2715657552083334e-05
+        },
+        "cold_speedup": 1.1896548856571953,
+        "cold_potential_difference": 0,
+        "final_potential_difference": 0,
+        "independent_residual": 6.93400700890745e-06,
+        "warm_samples": [
+          {
+            "event": 1,
+            "site": [
+              256,
+              332,
+              299
+            ],
+            "baseline": {
+              "seconds": 0.67811067,
+              "cycles": 5,
+              "residual": 9.457270304361979e-06
+            },
+            "candidate": {
+              "seconds": 0.5634914980000001,
+              "cycles": 5,
+              "residual": 9.457270304361979e-06
+            },
+            "speedup": 1.2034088755674535
+          },
+          {
+            "event": 2,
+            "site": [
+              257,
+              322,
+              300
+            ],
+            "baseline": {
+              "seconds": 0.538791311,
+              "cycles": 4,
+              "residual": 8.980433146158854e-06
+            },
+            "candidate": {
+              "seconds": 0.458150292,
+              "cycles": 4,
+              "residual": 8.980433146158854e-06
+            },
+            "speedup": 1.1760143350514332
+          },
+          {
+            "event": 3,
+            "site": [
+              258,
+              257,
+              383
+            ],
+            "baseline": {
+              "seconds": 0.6757806980000001,
+              "cycles": 5,
+              "residual": 9.775161743164062e-06
+            },
+            "candidate": {
+              "seconds": 0.5633882490000001,
+              "cycles": 5,
+              "residual": 9.775161743164062e-06
+            },
+            "speedup": 1.1994937757390107
+          },
+          {
+            "event": 4,
+            "site": [
+              272,
+              258,
+              299
+            ],
+            "baseline": {
+              "seconds": 0.539023048,
+              "cycles": 4,
+              "residual": 1.0569890340169271e-05
+            },
+            "candidate": {
+              "seconds": 0.45800846700000003,
+              "cycles": 4,
+              "residual": 1.0569890340169271e-05
+            },
+            "speedup": 1.1768844613957758
+          },
+          {
+            "event": 5,
+            "site": [
+              274,
+              258,
+              299
+            ],
+            "baseline": {
+              "seconds": 1.605146838,
+              "cycles": 4,
+              "residual": 1.1205673217773438e-05
+            },
+            "candidate": {
+              "seconds": 0.450698533,
+              "cycles": 4,
+              "residual": 1.1205673217773438e-05
+            },
+            "speedup": 3.5614645277755983
+          },
+          {
+            "event": 6,
+            "site": [
+              257,
+              339,
+              300
+            ],
+            "baseline": {
+              "seconds": 0.5493016740000001,
+              "cycles": 4,
+              "residual": 1.1960665384928385e-05
+            },
+            "candidate": {
+              "seconds": 0.45890053100000006,
+              "cycles": 4,
+              "residual": 1.1960665384928385e-05
+            },
+            "speedup": 1.1969950716836282
+          },
+          {
+            "event": 7,
+            "site": [
+              258,
+              257,
+              360
+            ],
+            "baseline": {
+              "seconds": 0.6761392850000001,
+              "cycles": 5,
+              "residual": 6.516774495442708e-06
+            },
+            "candidate": {
+              "seconds": 0.563589506,
+              "cycles": 5,
+              "residual": 6.516774495442708e-06
+            },
+            "speedup": 1.1997016938778844
+          },
+          {
+            "event": 8,
+            "site": [
+              258,
+              297,
+              299
+            ],
+            "baseline": {
+              "seconds": 0.54066272,
+              "cycles": 4,
+              "residual": 1.3987223307291666e-05
+            },
+            "candidate": {
+              "seconds": 0.459161937,
+              "cycles": 4,
+              "residual": 1.3987223307291666e-05
+            },
+            "speedup": 1.177498996394381
+          },
+          {
+            "event": 9,
+            "site": [
+              190,
+              256,
+              299
+            ],
+            "baseline": {
+              "seconds": 0.674549233,
+              "cycles": 5,
+              "residual": 6.9141387939453125e-06
+            },
+            "candidate": {
+              "seconds": 0.5635879100000001,
+              "cycles": 5,
+              "residual": 6.9141387939453125e-06
+            },
+            "speedup": 1.1968837887242825
+          }
+        ],
+        "warm_baseline_median": 0.674549233,
+        "warm_candidate_median": 0.459161937,
+        "warm_speedup": 1.1969950716836282,
+        "baseline_seconds_per_cycle": 0.13516568,
+        "candidate_seconds_per_cycle": 0.1127179012
+      }
+    ]
+  },
+  "fused_norm_additional": {
+    "backend": "amd",
+    "julia": "1.12.4",
+    "sources": {
+      "scripts/benchmark_electrical_multigrid.jl": "4757b5db83ca35225518af0bcea564c84a35cf184d15d663f7b87445c72a1d01",
+      "studies/branch_solver_prototype.jl": "23ffce8e17f9bef91c6ebfabf02f92374c3e9ee7658dc7cee6925a7950cb3aa0",
+      "studies/branch_metal_multigrid.jl": "92b8ede5460f0b5d1fc09f3589b9ba1e00c77d96002ab8d2de4814989205aad2"
+    },
+    "results": [
+      {
+        "n": 513,
+        "events": 9,
+        "tolerance": 1.6e-05,
+        "workgroup": 256,
+        "variant": "layout",
+        "fused_norm": true,
+        "baseline_group": [
+          32,
+          4,
+          2
+        ],
+        "rbgroup": [
+          32,
+          4,
+          2
+        ],
+        "densegroup": [
+          32,
+          4,
+          2
+        ],
+        "cold_baseline": {
+          "seconds": 1.357385619,
+          "cycles": 12,
+          "residual": 1.2715657552083334e-05
+        },
+        "cold_candidate": {
+          "seconds": 1.244858285,
+          "cycles": 12,
+          "residual": 1.2715657552083334e-05
+        },
+        "cold_speedup": 1.0903936900737259,
+        "cold_potential_difference": 0,
+        "final_potential_difference": 0,
+        "independent_residual": 6.93400700890745e-06,
+        "warm_samples": [
+          {
+            "event": 1,
+            "site": [
+              256,
+              332,
+              299
+            ],
+            "baseline": {
+              "seconds": 0.56516586,
+              "cycles": 5,
+              "residual": 9.457270304361979e-06
+            },
+            "candidate": {
+              "seconds": 0.51820876,
+              "cycles": 5,
+              "residual": 9.457270304361979e-06
+            },
+            "speedup": 1.0906142536069825
+          },
+          {
+            "event": 2,
+            "site": [
+              257,
+              322,
+              300
+            ],
+            "baseline": {
+              "seconds": 0.44943458100000006,
+              "cycles": 4,
+              "residual": 8.980433146158854e-06
+            },
+            "candidate": {
+              "seconds": 0.41534532300000004,
+              "cycles": 4,
+              "residual": 8.980433146158854e-06
+            },
+            "speedup": 1.0820744958767718
+          },
+          {
+            "event": 3,
+            "site": [
+              258,
+              257,
+              383
+            ],
+            "baseline": {
+              "seconds": 0.562779808,
+              "cycles": 5,
+              "residual": 9.775161743164062e-06
+            },
+            "candidate": {
+              "seconds": 0.518193283,
+              "cycles": 5,
+              "residual": 9.775161743164062e-06
+            },
+            "speedup": 1.0860422673599188
+          },
+          {
+            "event": 4,
+            "site": [
+              272,
+              258,
+              299
+            ],
+            "baseline": {
+              "seconds": 0.44942193700000005,
+              "cycles": 4,
+              "residual": 1.0569890340169271e-05
+            },
+            "candidate": {
+              "seconds": 0.41555993100000005,
+              "cycles": 4,
+              "residual": 1.0569890340169271e-05
+            },
+            "speedup": 1.081485252725196
+          },
+          {
+            "event": 5,
+            "site": [
+              274,
+              258,
+              299
+            ],
+            "baseline": {
+              "seconds": 0.45166237000000004,
+              "cycles": 4,
+              "residual": 1.1205673217773438e-05
+            },
+            "candidate": {
+              "seconds": 0.414564091,
+              "cycles": 4,
+              "residual": 1.1205673217773438e-05
+            },
+            "speedup": 1.0894874394704872
+          },
+          {
+            "event": 6,
+            "site": [
+              257,
+              339,
+              300
+            ],
+            "baseline": {
+              "seconds": 0.449577029,
+              "cycles": 4,
+              "residual": 1.1960665384928385e-05
+            },
+            "candidate": {
+              "seconds": 0.417176786,
+              "cycles": 4,
+              "residual": 1.1960665384928385e-05
+            },
+            "speedup": 1.077665498386576
+          },
+          {
+            "event": 7,
+            "site": [
+              258,
+              257,
+              360
+            ],
+            "baseline": {
+              "seconds": 0.5658555660000001,
+              "cycles": 5,
+              "residual": 6.516774495442708e-06
+            },
+            "candidate": {
+              "seconds": 0.518388163,
+              "cycles": 5,
+              "residual": 6.516774495442708e-06
+            },
+            "speedup": 1.091567297226268
+          },
+          {
+            "event": 8,
+            "site": [
+              258,
+              297,
+              299
+            ],
+            "baseline": {
+              "seconds": 0.44963947200000004,
+              "cycles": 4,
+              "residual": 1.3987223307291666e-05
+            },
+            "candidate": {
+              "seconds": 0.419778474,
+              "cycles": 4,
+              "residual": 1.3987223307291666e-05
+            },
+            "speedup": 1.0711351340040367
+          },
+          {
+            "event": 9,
+            "site": [
+              190,
+              256,
+              299
+            ],
+            "baseline": {
+              "seconds": 0.5695912430000001,
+              "cycles": 5,
+              "residual": 6.9141387939453125e-06
+            },
+            "candidate": {
+              "seconds": 0.519301923,
+              "cycles": 5,
+              "residual": 6.9141387939453125e-06
+            },
+            "speedup": 1.09684023450073
+          }
+        ],
+        "warm_baseline_median": 0.45166237000000004,
+        "warm_candidate_median": 0.419778474,
+        "warm_speedup": 1.0860422673599188,
+        "baseline_seconds_per_cycle": 0.1125559616,
+        "candidate_seconds_per_cycle": 0.10383633075000001
+      }
+    ]
+  },
+  "combined": {
+    "backend": "amd",
+    "julia": "1.12.4",
+    "sources": {
+      "scripts/benchmark_electrical_multigrid.jl": "4757b5db83ca35225518af0bcea564c84a35cf184d15d663f7b87445c72a1d01",
+      "studies/branch_solver_prototype.jl": "23ffce8e17f9bef91c6ebfabf02f92374c3e9ee7658dc7cee6925a7950cb3aa0",
+      "studies/branch_metal_multigrid.jl": "92b8ede5460f0b5d1fc09f3589b9ba1e00c77d96002ab8d2de4814989205aad2"
+    },
+    "results": [
+      {
+        "n": 513,
+        "events": 9,
+        "tolerance": 1.6e-05,
+        "workgroup": 256,
+        "variant": "layout",
+        "fused_norm": true,
+        "baseline_group": [
+          8,
+          8,
+          4
+        ],
+        "rbgroup": [
+          32,
+          4,
+          2
+        ],
+        "densegroup": [
+          32,
+          4,
+          2
+        ],
+        "cold_baseline": {
+          "seconds": 1.617216425,
+          "cycles": 12,
+          "residual": 1.2715657552083334e-05
+        },
+        "cold_candidate": {
+          "seconds": 1.243182366,
+          "cycles": 12,
+          "residual": 1.2715657552083334e-05
+        },
+        "cold_speedup": 1.3008682146960246,
+        "cold_potential_difference": 0,
+        "final_potential_difference": 0,
+        "independent_residual": 6.93400700890745e-06,
+        "warm_samples": [
+          {
+            "event": 1,
+            "site": [
+              256,
+              332,
+              299
+            ],
+            "baseline": {
+              "seconds": 0.676248858,
+              "cycles": 5,
+              "residual": 9.457270304361979e-06
+            },
+            "candidate": {
+              "seconds": 0.5180299700000001,
+              "cycles": 5,
+              "residual": 9.457270304361979e-06
+            },
+            "speedup": 1.305424197754427
+          },
+          {
+            "event": 2,
+            "site": [
+              257,
+              322,
+              300
+            ],
+            "baseline": {
+              "seconds": 0.539119262,
+              "cycles": 4,
+              "residual": 8.980433146158854e-06
+            },
+            "candidate": {
+              "seconds": 0.41534906800000004,
+              "cycles": 4,
+              "residual": 8.980433146158854e-06
+            },
+            "speedup": 1.297990783020127
+          },
+          {
+            "event": 3,
+            "site": [
+              258,
+              257,
+              383
+            ],
+            "baseline": {
+              "seconds": 0.676064859,
+              "cycles": 5,
+              "residual": 9.775161743164062e-06
+            },
+            "candidate": {
+              "seconds": 0.5182412630000001,
+              "cycles": 5,
+              "residual": 9.775161743164062e-06
+            },
+            "speedup": 1.3045369160425189
+          },
+          {
+            "event": 4,
+            "site": [
+              272,
+              258,
+              299
+            ],
+            "baseline": {
+              "seconds": 0.5390689470000001,
+              "cycles": 4,
+              "residual": 1.0569890340169271e-05
+            },
+            "candidate": {
+              "seconds": 0.417408331,
+              "cycles": 4,
+              "residual": 1.0569890340169271e-05
+            },
+            "speedup": 1.2914666693607513
+          },
+          {
+            "event": 5,
+            "site": [
+              274,
+              258,
+              299
+            ],
+            "baseline": {
+              "seconds": 0.541331621,
+              "cycles": 4,
+              "residual": 1.1205673217773438e-05
+            },
+            "candidate": {
+              "seconds": 0.414544856,
+              "cycles": 4,
+              "residual": 1.1205673217773438e-05
+            },
+            "speedup": 1.305845708045645
+          },
+          {
+            "event": 6,
+            "site": [
+              257,
+              339,
+              300
+            ],
+            "baseline": {
+              "seconds": 0.5390761540000001,
+              "cycles": 4,
+              "residual": 1.1960665384928385e-05
+            },
+            "candidate": {
+              "seconds": 0.417521472,
+              "cycles": 4,
+              "residual": 1.1960665384928385e-05
+            },
+            "speedup": 1.2911339659197218
+          },
+          {
+            "event": 7,
+            "site": [
+              258,
+              257,
+              360
+            ],
+            "baseline": {
+              "seconds": 0.6746832530000001,
+              "cycles": 5,
+              "residual": 6.516774495442708e-06
+            },
+            "candidate": {
+              "seconds": 0.518194913,
+              "cycles": 5,
+              "residual": 6.516774495442708e-06
+            },
+            "speedup": 1.3019874106714748
+          },
+          {
+            "event": 8,
+            "site": [
+              258,
+              297,
+              299
+            ],
+            "baseline": {
+              "seconds": 0.539049218,
+              "cycles": 4,
+              "residual": 1.3987223307291666e-05
+            },
+            "candidate": {
+              "seconds": 0.41629201800000004,
+              "cycles": 4,
+              "residual": 1.3987223307291666e-05
+            },
+            "speedup": 1.294882425538123
+          },
+          {
+            "event": 9,
+            "site": [
+              190,
+              256,
+              299
+            ],
+            "baseline": {
+              "seconds": 0.676209618,
+              "cycles": 5,
+              "residual": 6.9141387939453125e-06
+            },
+            "candidate": {
+              "seconds": 0.518176925,
+              "cycles": 5,
+              "residual": 6.9141387939453125e-06
+            },
+            "speedup": 1.304978252360427
+          }
+        ],
+        "warm_baseline_median": 0.541331621,
+        "warm_candidate_median": 0.417521472,
+        "warm_speedup": 1.3019874106714748,
+        "baseline_seconds_per_cycle": 0.1349366506,
+        "candidate_seconds_per_cycle": 0.10364825260000002
+      }
+    ]
+  },
+  "growth_parity": {
+    "cpu_layout": {
+      "n": 33,
+      "events": 64,
+      "tolerance": 3e-07,
+      "trajectory": [
+        [
+          17,
+          17,
+          26
+        ],
+        [
+          18,
+          17,
+          22
+        ],
+        [
+          20,
+          16,
+          19
+        ],
+        [
+          15,
+          17,
+          20
+        ],
+        [
+          18,
+          23,
+          19
+        ],
+        [
+          18,
+          17,
+          25
+        ],
+        [
+          18,
+          20,
+          19
+        ],
+        [
+          14,
+          16,
+          19
+        ],
+        [
+          20,
+          18,
+          19
+        ],
+        [
+          11,
+          17,
+          20
+        ],
+        [
+          10,
+          17,
+          20
+        ],
+        [
+          11,
+          18,
+          19
+        ],
+        [
+          18,
+          23,
+          18
+        ],
+        [
+          17,
+          23,
+          18
+        ],
+        [
+          17,
+          24,
+          18
+        ],
+        [
+          11,
+          17,
+          18
+        ],
+        [
+          16,
+          22,
+          19
+        ],
+        [
+          16,
+          24,
+          18
+        ],
+        [
+          24,
+          17,
+          19
+        ],
+        [
+          11,
+          18,
+          18
+        ],
+        [
+          16,
+          17,
+          26
+        ],
+        [
+          24,
+          17,
+          20
+        ],
+        [
+          24,
+          17,
+          18
+        ],
+        [
+          17,
+          16,
+          24
+        ],
+        [
+          17,
+          25,
+          18
+        ],
+        [
+          25,
+          17,
+          20
+        ],
+        [
+          25,
+          18,
+          20
+        ],
+        [
+          17,
+          16,
+          22
+        ],
+        [
+          18,
+          23,
+          17
+        ],
+        [
+          25,
+          16,
+          20
+        ],
+        [
+          10,
+          17,
+          21
+        ],
+        [
+          16,
+          25,
+          18
+        ],
+        [
+          18,
+          25,
+          18
+        ],
+        [
+          14,
+          16,
+          18
+        ],
+        [
+          10,
+          17,
+          22
+        ],
+        [
+          16,
+          17,
+          27
+        ],
+        [
+          20,
+          19,
+          19
+        ],
+        [
+          19,
+          23,
+          17
+        ],
+        [
+          10,
+          17,
+          23
+        ],
+        [
+          24,
+          18,
+          19
+        ],
+        [
+          16,
+          26,
+          18
+        ],
+        [
+          10,
+          18,
+          22
+        ],
+        [
+          25,
+          17,
+          19
+        ],
+        [
+          25,
+          19,
+          20
+        ],
+        [
+          21,
+          16,
+          19
+        ],
+        [
+          9,
+          17,
+          23
+        ],
+        [
+          16,
+          18,
+          26
+        ],
+        [
+          18,
+          25,
+          19
+        ],
+        [
+          25,
+          20,
+          20
+        ],
+        [
+          16,
+          17,
+          28
+        ],
+        [
+          8,
+          17,
+          23
+        ],
+        [
+          10,
+          17,
+          24
+        ],
+        [
+          10,
+          17,
+          19
+        ],
+        [
+          15,
+          26,
+          18
+        ],
+        [
+          8,
+          17,
+          24
+        ],
+        [
+          16,
+          17,
+          29
+        ],
+        [
+          17,
+          17,
+          29
+        ],
+        [
+          16,
+          19,
+          26
+        ],
+        [
+          12,
+          16,
+          19
+        ],
+        [
+          25,
+          20,
+          21
+        ],
+        [
+          17,
+          16,
+          26
+        ],
+        [
+          26,
+          17,
+          19
+        ],
+        [
+          26,
+          18,
+          19
+        ],
+        [
+          17,
+          15,
+          24
+        ]
+      ],
+      "maximum_potential_difference": 0,
+      "independent_residual": 1.5894571936403423e-07,
+      "seconds": 6.15637275
+    },
+    "amd_layout": {
+      "n": 33,
+      "events": 64,
+      "tolerance": 3e-07,
+      "trajectory": [
+        [
+          17,
+          17,
+          26
+        ],
+        [
+          18,
+          17,
+          22
+        ],
+        [
+          20,
+          16,
+          19
+        ],
+        [
+          15,
+          17,
+          20
+        ],
+        [
+          18,
+          23,
+          19
+        ],
+        [
+          18,
+          17,
+          25
+        ],
+        [
+          18,
+          20,
+          19
+        ],
+        [
+          14,
+          16,
+          19
+        ],
+        [
+          20,
+          18,
+          19
+        ],
+        [
+          11,
+          17,
+          20
+        ],
+        [
+          10,
+          17,
+          20
+        ],
+        [
+          11,
+          18,
+          19
+        ],
+        [
+          18,
+          23,
+          18
+        ],
+        [
+          17,
+          23,
+          18
+        ],
+        [
+          17,
+          24,
+          18
+        ],
+        [
+          11,
+          17,
+          18
+        ],
+        [
+          16,
+          22,
+          19
+        ],
+        [
+          16,
+          24,
+          18
+        ],
+        [
+          24,
+          17,
+          19
+        ],
+        [
+          11,
+          18,
+          18
+        ],
+        [
+          16,
+          17,
+          26
+        ],
+        [
+          24,
+          17,
+          20
+        ],
+        [
+          24,
+          17,
+          18
+        ],
+        [
+          17,
+          16,
+          24
+        ],
+        [
+          17,
+          25,
+          18
+        ],
+        [
+          25,
+          17,
+          20
+        ],
+        [
+          25,
+          18,
+          20
+        ],
+        [
+          17,
+          16,
+          22
+        ],
+        [
+          18,
+          23,
+          17
+        ],
+        [
+          25,
+          16,
+          20
+        ],
+        [
+          10,
+          17,
+          21
+        ],
+        [
+          16,
+          25,
+          18
+        ],
+        [
+          18,
+          25,
+          18
+        ],
+        [
+          14,
+          16,
+          18
+        ],
+        [
+          10,
+          17,
+          22
+        ],
+        [
+          16,
+          17,
+          27
+        ],
+        [
+          20,
+          19,
+          19
+        ],
+        [
+          19,
+          23,
+          17
+        ],
+        [
+          10,
+          17,
+          23
+        ],
+        [
+          24,
+          18,
+          19
+        ],
+        [
+          16,
+          26,
+          18
+        ],
+        [
+          10,
+          18,
+          22
+        ],
+        [
+          25,
+          17,
+          19
+        ],
+        [
+          25,
+          19,
+          20
+        ],
+        [
+          21,
+          16,
+          19
+        ],
+        [
+          9,
+          17,
+          23
+        ],
+        [
+          16,
+          18,
+          26
+        ],
+        [
+          18,
+          25,
+          19
+        ],
+        [
+          25,
+          20,
+          20
+        ],
+        [
+          16,
+          17,
+          28
+        ],
+        [
+          8,
+          17,
+          23
+        ],
+        [
+          10,
+          17,
+          24
+        ],
+        [
+          10,
+          17,
+          19
+        ],
+        [
+          15,
+          26,
+          18
+        ],
+        [
+          8,
+          17,
+          24
+        ],
+        [
+          16,
+          17,
+          29
+        ],
+        [
+          17,
+          17,
+          29
+        ],
+        [
+          16,
+          19,
+          26
+        ],
+        [
+          12,
+          16,
+          19
+        ],
+        [
+          25,
+          20,
+          21
+        ],
+        [
+          17,
+          16,
+          26
+        ],
+        [
+          26,
+          17,
+          19
+        ],
+        [
+          26,
+          18,
+          19
+        ],
+        [
+          17,
+          15,
+          24
+        ]
+      ],
+      "maximum_potential_difference": 0,
+      "independent_residual": 1.5894571936403423e-07,
+      "seconds": 1.472506499
+    },
+    "amd_layout_and_fused_norm": {
+      "n": 33,
+      "events": 64,
+      "tolerance": 3e-07,
+      "trajectory": [
+        [
+          17,
+          17,
+          26
+        ],
+        [
+          18,
+          17,
+          22
+        ],
+        [
+          20,
+          16,
+          19
+        ],
+        [
+          15,
+          17,
+          20
+        ],
+        [
+          18,
+          23,
+          19
+        ],
+        [
+          18,
+          17,
+          25
+        ],
+        [
+          18,
+          20,
+          19
+        ],
+        [
+          14,
+          16,
+          19
+        ],
+        [
+          20,
+          18,
+          19
+        ],
+        [
+          11,
+          17,
+          20
+        ],
+        [
+          10,
+          17,
+          20
+        ],
+        [
+          11,
+          18,
+          19
+        ],
+        [
+          18,
+          23,
+          18
+        ],
+        [
+          17,
+          23,
+          18
+        ],
+        [
+          17,
+          24,
+          18
+        ],
+        [
+          11,
+          17,
+          18
+        ],
+        [
+          16,
+          22,
+          19
+        ],
+        [
+          16,
+          24,
+          18
+        ],
+        [
+          24,
+          17,
+          19
+        ],
+        [
+          11,
+          18,
+          18
+        ],
+        [
+          16,
+          17,
+          26
+        ],
+        [
+          24,
+          17,
+          20
+        ],
+        [
+          24,
+          17,
+          18
+        ],
+        [
+          17,
+          16,
+          24
+        ],
+        [
+          17,
+          25,
+          18
+        ],
+        [
+          25,
+          17,
+          20
+        ],
+        [
+          25,
+          18,
+          20
+        ],
+        [
+          17,
+          16,
+          22
+        ],
+        [
+          18,
+          23,
+          17
+        ],
+        [
+          25,
+          16,
+          20
+        ],
+        [
+          10,
+          17,
+          21
+        ],
+        [
+          16,
+          25,
+          18
+        ],
+        [
+          18,
+          25,
+          18
+        ],
+        [
+          14,
+          16,
+          18
+        ],
+        [
+          10,
+          17,
+          22
+        ],
+        [
+          16,
+          17,
+          27
+        ],
+        [
+          20,
+          19,
+          19
+        ],
+        [
+          19,
+          23,
+          17
+        ],
+        [
+          10,
+          17,
+          23
+        ],
+        [
+          24,
+          18,
+          19
+        ],
+        [
+          16,
+          26,
+          18
+        ],
+        [
+          10,
+          18,
+          22
+        ],
+        [
+          25,
+          17,
+          19
+        ],
+        [
+          25,
+          19,
+          20
+        ],
+        [
+          21,
+          16,
+          19
+        ],
+        [
+          9,
+          17,
+          23
+        ],
+        [
+          16,
+          18,
+          26
+        ],
+        [
+          18,
+          25,
+          19
+        ],
+        [
+          25,
+          20,
+          20
+        ],
+        [
+          16,
+          17,
+          28
+        ],
+        [
+          8,
+          17,
+          23
+        ],
+        [
+          10,
+          17,
+          24
+        ],
+        [
+          10,
+          17,
+          19
+        ],
+        [
+          15,
+          26,
+          18
+        ],
+        [
+          8,
+          17,
+          24
+        ],
+        [
+          16,
+          17,
+          29
+        ],
+        [
+          17,
+          17,
+          29
+        ],
+        [
+          16,
+          19,
+          26
+        ],
+        [
+          12,
+          16,
+          19
+        ],
+        [
+          25,
+          20,
+          21
+        ],
+        [
+          17,
+          16,
+          26
+        ],
+        [
+          26,
+          17,
+          19
+        ],
+        [
+          26,
+          18,
+          19
+        ],
+        [
+          17,
+          15,
+          24
+        ]
+      ],
+      "maximum_potential_difference": 0,
+      "independent_residual": 1.5894571936403423e-07,
+      "seconds": 1.510714909
+    },
+    "cpu_amd_trajectory_equal": true
+  },
+  "derived_comparisons": {
+    "layout_only": [
+      {
+        "n": 513,
+        "warm_events": 9,
+        "median_paired_speedup": 1.1969950716836282,
+        "baseline_seconds_per_cycle": 0.13516568,
+        "candidate_seconds_per_cycle": 0.1127179012,
+        "maximum_potential_difference": 0,
+        "independent_residual": 6.93400700890745e-06,
+        "tolerance": 1.6e-05
+      }
+    ],
+    "norm_additional": [
+      {
+        "n": 513,
+        "warm_events": 9,
+        "median_paired_speedup": 1.0860422673599188,
+        "baseline_seconds_per_cycle": 0.1125559616,
+        "candidate_seconds_per_cycle": 0.10383633075000001,
+        "maximum_potential_difference": 0,
+        "independent_residual": 6.93400700890745e-06,
+        "tolerance": 1.6e-05
+      }
+    ],
+    "combined": [
+      {
+        "n": 513,
+        "warm_events": 9,
+        "median_paired_speedup": 1.3019874106714748,
+        "baseline_seconds_per_cycle": 0.1349366506,
+        "candidate_seconds_per_cycle": 0.10364825260000002,
+        "maximum_potential_difference": 0,
+        "independent_residual": 6.93400700890745e-06,
+        "tolerance": 1.6e-05
+      }
+    ],
+    "layout64": [
+      {
+        "n": 513,
+        "warm_events": 9,
+        "median_paired_speedup": 1.2044929570592229,
+        "baseline_seconds_per_cycle": 0.1348869356,
+        "candidate_seconds_per_cycle": 0.1120252966,
+        "maximum_potential_difference": 0,
+        "independent_residual": 6.93400700890745e-06,
+        "tolerance": 1.6e-05
+      }
+    ],
+    "rejected_global_coarse_batch": [
+      {
+        "n": 33,
+        "warm_events": 3,
+        "median_paired_speedup": 0.20028491740847923,
+        "baseline_seconds_per_cycle": 0.00058732125,
+        "candidate_seconds_per_cycle": 0.0029334502000000003,
+        "maximum_potential_difference": 0,
+        "independent_residual": 6.362795829772949e-06,
+        "tolerance": 1.6e-05
+      },
+      {
+        "n": 129,
+        "warm_events": 3,
+        "median_paired_speedup": 0.4998918506053861,
+        "baseline_seconds_per_cycle": 0.0019760052,
+        "candidate_seconds_per_cycle": 0.0039528654,
+        "maximum_potential_difference": 0,
+        "independent_residual": 1.33514404296875e-05,
+        "tolerance": 1.6e-05
+      },
+      {
+        "n": 257,
+        "warm_events": 3,
+        "median_paired_speedup": 0.9075417017496313,
+        "baseline_seconds_per_cycle": 0.0168455306,
+        "candidate_seconds_per_cycle": 0.018571226000000003,
+        "maximum_potential_difference": 0,
+        "independent_residual": 1.475214958190918e-05,
+        "tolerance": 1.6e-05
+      },
+      {
+        "n": 513,
+        "warm_events": 3,
+        "median_paired_speedup": 0.9856967134766618,
+        "baseline_seconds_per_cycle": 0.13491146660000003,
+        "candidate_seconds_per_cycle": 0.13689508860000002,
+        "maximum_potential_difference": 0,
+        "independent_residual": 9.755293528201925e-06,
+        "tolerance": 1.6e-05
+      }
+    ]
+  },
+  "limitations": [
+    "Not a measured Metal speedup; local Metal production was left untouched.",
+    "Not a complete coupled thermal/artwork benchmark.",
+    "Occasional timing outliers retained in raw samples; median paired ratios reported.",
+    "Old exploratory cold timings before per-grid reduction warmup are excluded from speedup claims.",
+    "Residual array is V-cycle scratch when norm workspace is selected; independent final residual is checked explicitly."
+  ],
+  "source_freeze_local": "outputs/mg-performance-20261015/{baseline,candidate/fused-norm}",
+  "source_freeze_remote": "/othersys/tmp/intmat-probe-20261014/mg-performance-20261015"
+}

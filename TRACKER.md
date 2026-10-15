@@ -32,9 +32,9 @@ observatory schedule outlives this session if necessary; its optimized soak has 
 
 ## Current convergence
 
-**Shared construction, in progress:** the sorptive matrix is integrated: paid
-catalysts bind food reversibly and alter permeability. The next audited wrapper
-lets growth and construction share one complementary-material/work budget,
+**Shared construction:** the sorptive matrix and audited construction wrapper are integrated: paid
+catalysts bind food reversibly and alter permeability.
+Growth and construction share one complementary-material/work budget,
 including construction in respiratory demand. This removes a concrete scheduling
 bias: the former growth-first order often left a positive secretion request with
 zero precursor. A source-pinned ten-arm study is running separately. One actual
@@ -48,12 +48,25 @@ large birth-heavy allocation by 68.65%, with a fresh matched 104.75→93.03 ms
 complete-step bracket (1.126×). Indexed genomes are explicit opt-in; default dense
 checkpoints remain readable. Five reference comparisons preserve physical bits
 and aliases. Reserved genome capacity makes some checkpoints larger.
-A complete experimental device-cellular loop passes a small native AMD fixture;
-3D compiler hardening, sustained whole-step measurements and strict restart remain
-outstanding. The native 513³ electrothermal archive is baking from its own source
+A separate experimental device-cellular loop now completes 2,000 native AMD 3D
+steps: 512→1,418 cells, 938 births, 32 deaths and 3,651 bonds, with zero blocked
+births. Capacity 20,000 exceeds the closed material budget's possible live count.
+Including compact captures it achieved 29.53 steps/s; no CPU speedup is inferred.
+Exact saved-array restore and a tolerance-checked continuation pass. The new
+Float32 synchronous law is not a bitwise port of the serial CPU model; API and
+construction integration remain outstanding. The native 513³ electrothermal archive is baking from its own source
 pin under `outputs/art/runtime-amber-archive-20261015`, with lossless captured
 fields. Its thermal mineral envelope and conductor graph provide actual optical
 geometry. New solver optimization must not alter that running source.
+
+**Mechanics and harmonic solves:** scalar BondNetwork loops reduce complete actual
+weave steps from 20.97→3.66 ms and 18.16→2.23 ms (5.73–8.14×), with 96–97% less
+allocation. All 61 geometry frames and every recorded metric from a full
+12,000-step repair-weave replay match exactly. The optional AMD multigrid layout
+and fused stopping norm give 1.302× faster native 513³ converged solves, with
+identical potentials, residuals and cycles. Metal remains occupied by immutable
+production; its performance is not inferred from AMD.
+[Mechanics](docs/bond-network-performance.md) · [Multigrid](docs/electrical-multigrid-performance.md)
 
 **Volume storage:** the portable recurrent runner now uses only its three world
 fields and two scratch fields: 84 bytes/voxel including latent ping-pong buffers,
@@ -123,7 +136,7 @@ hbox now executes the original Julia kernels through AMDGPU with normal compiled
 
 ## Evidence and limits
 
-The integrated Julia suite at `af1e442` passed 2354 assertions across 118 testsets from an immutable source copy, including exact contact/diffusion oracles, compact-world trajectory parity, portable-runner guards and the sorptive habitat. A separate 25-assertion regression covers soak failures, explicit source forks and throughput mode without replacing methods in the shared test process. The shared realFFT phase backend passes 355 focused/coupled assertions and matches the full old 96³ trajectory within 4.88e−17; a 192³ benchmark measured 1.85× speedup. Current Python tools pass 23 tests, including actual movie encoding, video byte ranges and renderer source-cache invalidation, under the bundled Pillow runtime. Actual bake audits check finite fields, material/work ledgers, graph identity, source hashes and population accounting; photographs receive visual review.
+The integrated Julia suite at `2220f5a` passed 3123 assertions across 127 testsets from an immutable source copy, including exact contact/diffusion oracles, compact-world trajectory parity, portable-runner guards and the sorptive habitat. A separate 25-assertion regression covers soak failures, explicit source forks and throughput mode without replacing methods in the shared test process. The shared realFFT phase backend passes 355 focused/coupled assertions and matches the full old 96³ trajectory within 4.88e−17; a 192³ benchmark measured 1.85× speedup. Current Python tools pass 23 tests, including actual movie encoding, video byte ranges and renderer source-cache invalidation, under the bundled Pillow runtime. Actual bake audits check finite fields, material/work ledgers, graph identity, source hashes and population accounting; photographs receive visual review.
 
 - Small finite-supply metabolic experiments reached capacity 180 then died at sampled t=384–1048; controls varied by seed. [Results](docs/metabolic-experiments.md)
 - Strong funded phase feedback retained two substantial positive domains through t=160 versus one in controls; coarsening continued. Persistent compartments remain unproven. [Study](docs/active-compartment-studies.md)

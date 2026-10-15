@@ -1,0 +1,245 @@
+{
+  "runtime": "1.12.4",
+  "threads": 2,
+  "blas_threads": 1,
+  "source_sha": "a0370e4028aa859fb344829f0d387a62dd8defb77b25f4651f7c08b386324e45",
+  "reference_sha": "3dae472a63109d373c12f3d253340bc17755db6d135afb270453284ca909711e",
+  "cases": [
+    {
+      "snapshot_step": 0,
+      "nodes": 1440,
+      "bonds": 13490,
+      "broken": 0,
+      "repaired": 0,
+      "samples": {
+        "reference": [
+          {
+            "seconds": 0.332514042,
+            "bytes": 802066240,
+            "gc_seconds": 0.045805877,
+            "steps": 20
+          },
+          {
+            "seconds": 0.357257208,
+            "bytes": 802066240,
+            "gc_seconds": 0.051686917,
+            "steps": 20
+          },
+          {
+            "seconds": 0.450064667,
+            "bytes": 802066240,
+            "gc_seconds": 0.065401501,
+            "steps": 20
+          },
+          {
+            "seconds": 0.510978709,
+            "bytes": 802066240,
+            "gc_seconds": 0.071376917,
+            "steps": 20
+          },
+          {
+            "seconds": 0.419389334,
+            "bytes": 802066240,
+            "gc_seconds": 0.079646708,
+            "steps": 20
+          }
+        ],
+        "candidate": [
+          {
+            "seconds": 0.052572,
+            "bytes": 25395840,
+            "gc_seconds": 0,
+            "steps": 20
+          },
+          {
+            "seconds": 0.073191083,
+            "bytes": 25395840,
+            "gc_seconds": 0,
+            "steps": 20
+          },
+          {
+            "seconds": 0.037150167,
+            "bytes": 25395840,
+            "gc_seconds": 0,
+            "steps": 20
+          },
+          {
+            "seconds": 0.120997083,
+            "bytes": 25395840,
+            "gc_seconds": 0,
+            "steps": 20
+          },
+          {
+            "seconds": 0.076498917,
+            "bytes": 25395840,
+            "gc_seconds": 0,
+            "steps": 20
+          }
+        ]
+      },
+      "gate": {
+        "steps": 100,
+        "exact_serialized_state": true,
+        "reference_sha": "0c3867d77d2ed559e637450ae888cb1fea0b9b12cb6c9cb0710f9ced8d8808f3",
+        "candidate_sha": "0c3867d77d2ed559e637450ae888cb1fea0b9b12cb6c9cb0710f9ced8d8808f3"
+      },
+      "note": "Timed steps include validation, tangent bound, grip motion, two force evaluations, damage, damping and work ledgers. Existing repaired bonds are retained; no new repair is inserted inside this fixed mechanical-step benchmark.",
+      "summary": {
+        "reference_ms_per_step": 20.9694667,
+        "candidate_ms_per_step": 3.65955415,
+        "speedup": 5.730060504774879,
+        "reference_bytes_per_step": 40103312.0,
+        "candidate_bytes_per_step": 1269792.0,
+        "allocation_reduction_fraction": 0.9683369792499931
+      }
+    },
+    {
+      "snapshot_step": 6000,
+      "nodes": 1440,
+      "bonds": 14859,
+      "broken": 1691,
+      "repaired": 1369,
+      "samples": {
+        "reference": [
+          {
+            "seconds": 0.363103459,
+            "bytes": 832403920,
+            "gc_seconds": 0.054013292,
+            "steps": 20
+          },
+          {
+            "seconds": 0.386417083,
+            "bytes": 832403920,
+            "gc_seconds": 0.067178208,
+            "steps": 20
+          },
+          {
+            "seconds": 0.375553167,
+            "bytes": 832403920,
+            "gc_seconds": 0.068973291,
+            "steps": 20
+          },
+          {
+            "seconds": 0.360341917,
+            "bytes": 832403920,
+            "gc_seconds": 0.060964167,
+            "steps": 20
+          },
+          {
+            "seconds": 0.359026833,
+            "bytes": 832403920,
+            "gc_seconds": 0.054618374,
+            "steps": 20
+          }
+        ],
+        "candidate": [
+          {
+            "seconds": 0.044616375,
+            "bytes": 29984000,
+            "gc_seconds": 0,
+            "steps": 20
+          },
+          {
+            "seconds": 0.043876,
+            "bytes": 29984000,
+            "gc_seconds": 0,
+            "steps": 20
+          },
+          {
+            "seconds": 0.042672084,
+            "bytes": 29984000,
+            "gc_seconds": 0,
+            "steps": 20
+          },
+          {
+            "seconds": 0.046637,
+            "bytes": 29984000,
+            "gc_seconds": 0,
+            "steps": 20
+          },
+          {
+            "seconds": 0.06858,
+            "bytes": 29984000,
+            "gc_seconds": 0,
+            "steps": 20
+          }
+        ]
+      },
+      "gate": {
+        "steps": 100,
+        "exact_serialized_state": true,
+        "reference_sha": "2b90079f0caef0e2ff2231ca2174b2621fc1d6f7829449fa563a88a4554c0215",
+        "candidate_sha": "2b90079f0caef0e2ff2231ca2174b2621fc1d6f7829449fa563a88a4554c0215"
+      },
+      "note": "Timed steps include validation, tangent bound, grip motion, two force evaluations, damage, damping and work ledgers. Existing repaired bonds are retained; no new repair is inserted inside this fixed mechanical-step benchmark.",
+      "summary": {
+        "reference_ms_per_step": 18.15517295,
+        "candidate_ms_per_step": 2.23081875,
+        "speedup": 8.13834514794176,
+        "reference_bytes_per_step": 41620196.0,
+        "candidate_bytes_per_step": 1499200.0,
+        "allocation_reduction_fraction": 0.9639790259517279
+      }
+    }
+  ],
+  "machine": {
+    "cpu": "Apple M2 Max",
+    "logical_cpus": 12,
+    "local_load_before": [
+      37.79,
+      44.57,
+      45.92
+    ],
+    "julia_threads": 2,
+    "gc_threads": 1,
+    "blas_threads": 1,
+    "gpu_used": false
+  },
+  "method": {
+    "samples": 5,
+    "steps_per_sample": 20,
+    "order": "interleaved reference/candidate",
+    "copies_and_gc": "outside timed region",
+    "reference": "preserved allocation-heavy pinned repair-weave v2 methods",
+    "original_mechanics_sha": "81001af879163392dde498534c9f099bcc79a16b8dac5104d527da7cc9f4fdac",
+    "snapshot_reconstruction": "all energy components required exact equality before timing",
+    "serialization_caveat": "same-construction copies only; serialized bytes are not a portable value fingerprint"
+  },
+  "full_study_replay": {
+    "status": "passed",
+    "candidate_pin": "outputs/bond-network-performance-20261015/candidate-source",
+    "output": "outputs/bond-network-performance-20261015/full-replay",
+    "reference": "outputs/art/repair-weave-pilot-v2",
+    "execution_cap_seconds": 180,
+    "steps": 12000,
+    "frames": 61,
+    "all_geometry_files_byte_identical": true,
+    "all_history_float_bits_identical": true,
+    "reference_elapsed_seconds": 308.771781041,
+    "candidate_elapsed_seconds": 49.420246875,
+    "timing_note": "Historical reference and fresh candidate runs were not simultaneous; this is not the matched speed ratio.",
+    "final_history": {
+      "step": 12000,
+      "time": 11.999999999998789,
+      "nodes": 1440,
+      "original_bonds": 13490,
+      "new_bonds": 1632,
+      "live_bonds": 12921,
+      "broken_bonds": 2201,
+      "broken_repairs": 360,
+      "stock": 136.42505899770856,
+      "funded_stock": 36.374941002291486,
+      "stock_error": 1.7053025658242404e-13,
+      "energy": {
+        "elastic": 0.4036249464313881,
+        "kinetic": 0.025482867554525536,
+        "damage": 1.3644813438311254,
+        "damping": 6.194290428963552,
+        "external_work": 7.985297429695793,
+        "total": 7.987879586780592
+      },
+      "energy_residual": 0.0025821570847988085,
+      "finite": true
+    }
+  }
+}
