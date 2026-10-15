@@ -156,6 +156,6 @@ function multirate_gate_main()
     open(io->JSON3.pretty(io,result),joinpath(out,"gate.json"),"w")
     println("MULTIRATE_GATE_COMPLETE seconds=",result.study_seconds);flush(stdout)
 end
-if abspath(PROGRAM_FILE)==@__FILE__ || get(ENV,"MULTIRATE_INCLUDE_MAIN","0")=="1"
+if abspath(PROGRAM_FILE)==(@__FILE__) || get(ENV,"MULTIRATE_INCLUDE_MAIN","0")=="1"
     multirate_gate_main()
 end
