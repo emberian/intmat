@@ -20,6 +20,9 @@ function mr_difference(x,y;exact=false,atol=2e-5)
             aa=aa[setdiff(eachindex(aa),[7])];bb=bb[setdiff(eachindex(bb),[7])]
         end
         size(aa)==size(bb)||error("shape mismatch $key")
+        if !exact && key==:enzyme_bits
+            aa=reinterpret(Float32,aa);bb=reinterpret(Float32,bb)
+        end
         if eltype(aa)<:AbstractFloat
             err=isempty(aa) ? 0. : maximum(abs.(Float64.(aa).-Float64.(bb)))
             worst=max(worst,err)

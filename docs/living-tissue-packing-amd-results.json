@@ -2754,6 +2754,32 @@
       "source_pin": "source-pin.json",
       "checkpoint_format": "living-tissue-packing-v1",
       "provenance": "Complete SSH/tar copy preserved. Field byte counts and copied sourceSHA verified; independent Julia1.12.4 Serialization read compared all seven finalstate channels and reserve exactly with finalnativecapture."
+    },
+    "sampled_occupancy_review": {
+      "format": "living-tissue-native-review-v1",
+      "id": "living-tissue-packing-volume128-oscillatory",
+      "dimensions": [
+        128,
+        128,
+        128
+      ],
+      "extent": [
+        24,
+        24,
+        24
+      ],
+      "dt": 0.00125,
+      "steps": 64000,
+      "review_source_sha256": "e7128185997ed1113a3e6d2bb87be0987116ef5592252d7ee47eb3113ccc1f7a",
+      "low": 0.27,
+      "high": 0.63,
+      "convention": "Sampled native rho=B+M. A site must first be observed above high before opening below low; reformation requires an observed opening. Thresholds are concentration fractions of declared solid capacity, not mechanical cavities or organisms. Radial spectra sum fluctuation power in rounded physical wave-number shells; high-frequency fraction uses .7 of the smallest axis Nyquist.",
+      "opened_sites": 1835904,
+      "reformed_sites": 1819267,
+      "opening_events": 5857712,
+      "reformation_events": 5130463,
+      "maximum_openings_at_site": 5,
+      "elapsed_seconds": 99.573961635
     }
   }
 }

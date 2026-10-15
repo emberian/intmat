@@ -144,3 +144,44 @@ must include both clocks, phase, held inputs, controller-derivation source pin a
 biological RNG/event index. Saving only the underlying native carrier would lose
 these laws. Native GPU failure/ownership/composition and whole-step parity gates
 remain necessary. No GPU slot has been requested or used for this study.
+
+## Native AMD gate with Float64 battery
+
+The bounded 64³ closed-world gate used 256 founders, capacity 4096, materialized
+physical support and the native fine lattice throughout. Its actual funded
+mass/minimum-mass headroom bound was below capacity. Each trajectory covered
+256 fast steps of Float32(.001), physical duration 0.256000012; neural updates
+remained at that fast clock and mechanics at its sixteenth. Biological/material
+updates occurred every 1, 2, or 4 fast steps. Float64 battery storage was selected
+explicitly. This is a temporal approximation, not production acceleration.
+
+Three alternating warm whole-loop pairs gave median wall times 2.296 s native,
+1.768 s ratio 2 and1.508 s ratio 4: **1.30× and1.52×** by ratio of medians. Simulated
+time per wall second was 0.1115, 0.1448 and 0.1697. Timings include all coupled
+stages and identical status checks every 8 fast steps; construction and detached
+final observations are outside. One initial ratio4 sample was 1.841 s, versus
+1.506/1.508 s on the following pairs, so the individual samples remain recorded.
+
+This gain has a measured cost. Food-species field L2 errors were 1.14%/1.09%
+(ratio 2) and 3.83%/3.72% (ratio 4) against native at the same physical time.
+Bound-food field L2 errors were 2.70%/9.80%; their absolute L1 errors were
+0.00463/0.01627 against native bound inventory 0.20898. Catalyst field L2 errors
+were 0.143%/0.397%. These are short-time errors, not a mature ecological
+trajectory or long-time equivalence result. All 256 identities survived this
+performance fixture; separate prefix gates force simultaneous death/division
+and actual reciprocal contact communication.
+
+Ratio 1 matched all native state and scratch arrays exactly on AMD in ordinary,
+lifecycle and contact gates. Ratio 4 CPU/AMD maximum floating differences were
+1.19e-7,2.38e-7 and5.96e-8 respectively. Cross-backend comparison decodes atomic
+catalyst UInt32 storage as Float32 and excludes nonphysical linked-list order
+and cached-radius bits; integer identities remain exact. Final full-trajectory
+material residuals were 6.81e-5/3.48e-5/1.80e-5, and potential/work/heat closure
+residuals 4.06e-4/2.09e-4/1.08e-4 over approximately 3426 potential units.
+
+The immutable numerical base was 0159111, with only the study/fixture/driver
+overlays recorded in `docs/multirate-amd-results.json`. It predates the newer
+production lifecycle integration. The pinned AMD runtime used the process-local
+GPUCompiler opt_level 1 workaround, not a different simulation implementation.
+The complete invocation took 110.83 s including compilation and gates under a
+300 s, 8 GiB/no-swap, CPU 10/11 budget. Wrapper checkpoint/restart remains unsupported.

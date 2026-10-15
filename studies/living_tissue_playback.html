@@ -49,7 +49,7 @@ $("recording").textContent=specimen.dimensions[2]>1 ? `${specimen.dimensions.joi
 $("timeline").max=frames.length-1;
 $("trace-start").textContent=`t = ${frames[0].time.toFixed(1)}`;$("trace-end").textContent=`t = ${frames.at(-1).time.toFixed(1)}`;
 $("method").textContent=`Native fields: ${specimen.dimensions.join(" × ")} samples. This offline preview uses a ${width} × ${height} middle section, quantized to eight bits with fixed ranges. Values outside the display range are clipped. Site values below are display approximations; whole-specimen amounts use ${specimen.inventory_units}.`;
-$("source").textContent=`Study source SHA-256: ${specimen.source_sha256["studies/living_tissue_turnover.jl"]||specimen.source_sha256["studies/living_tissue.jl"]}`;
+$("source").textContent=`Study source SHA-256: ${specimen.source_sha256["studies/living_tissue_packing.jl"]||specimen.source_sha256["studies/living_tissue_turnover.jl"]||specimen.source_sha256["studies/living_tissue.jl"]}`;
 $("initialization").textContent=specimen.initialization;$("budget").textContent=specimen.budget;
 $("reserve-row").style.display=("reserve" in frames[0].metrics)?"flex":"none";
 const clamp=x=>Math.max(0,Math.min(1,x)),palette={biomass:[.56,.42,.75],matrix:[.90,.55,.28],excitation:[.32,.90,.94]};

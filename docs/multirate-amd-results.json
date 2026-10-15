@@ -1,0 +1,357 @@
+{
+  "source_commit": "0159111+b648566+fd9b943+comparisonfix",
+  "source": {
+    "model": "6a31e4db5573ecbbaec156d1d5aa2b66e6f1f886331bca2003e8556aa7d6156e",
+    "initialization": "b3c62d90bdd1c2340ae5097c2242a440b3ab7fc5204e57b18f087067b2c41bd7",
+    "founder_initialization": "d76e4c791a2c56bc7fd651b1836e6879b9e27013566ce6d94a1d2f677f62e633",
+    "support": "5a767b83c2c912d8706468ec7c5b86e56cf99430b2a23dfd3a7f3ee8f21bf55b",
+    "resource": "050991b42eceab1403c940e69b027d27106f966dfcc0cfbf215b5b5ff7221c18",
+    "kernels": "6bc6a18e62263d8335a2b55e03520c5ad597cf1d4055b513cac1b6f4adab82eb",
+    "checkpoint": "4ec974b9518fe71e082888b231a1f16592f6dc91e895a4e5f48defb0ee0c27d4",
+    "protocol": "5b5b8c4b945af6c9a6a2496dc115e83501cc3b1329f7c8b2abab71d175c22720"
+  },
+  "habitat_source": {
+    "helper": "a69f56d9dfd424c343a67857a7d7b4bcece16718b64a697a4abdeafcf4543dd8",
+    "kernels": "f6ab9782cff0816919368d3d1f8c766af39f9eba3a0badd2636e50b55366ac42",
+    "sorption": "f135e74e59959187e72725a45665ac5c67293b8305298c8d3ac4bdbb81e6ac93"
+  },
+  "runtime": {
+    "julia": "1.12.4",
+    "kernel": "Linux",
+    "architecture": "x86_64",
+    "launch_threads": 2,
+    "backend": "amd",
+    "device": "HIPDevice(id=1, name=AMD Radeon RX 6750 XT, gcn_arch=gfx1030)",
+    "backend_version": "2.8.0",
+    "actual_device_optlevel": 1,
+    "project_sha256": "284c920aebff70f466a40df21f7c83ae4c561857b046f940274b43a8feeaec6d",
+    "manifest_sha256": "dc18aa010fdd703cfa98ea8acb5289167e83d4fcfa399bdcf0ea8e02d64d0ee9"
+  },
+  "driver_sha256": "d314a55aded54f39b24c8dc293298e94b026bb9250fdad1eda05f184a81a640b",
+  "cached_controller_source_sha256": "6bc6a18e62263d8335a2b55e03520c5ad597cf1d4055b513cac1b6f4adab82eb",
+  "recipe": {
+    "size": 64,
+    "founders": 256,
+    "capacity": 4096,
+    "fast_steps": 256,
+    "fast_dt": 0.0010000000474974513,
+    "pairs": 3,
+    "energy_type": "Float64"
+  },
+  "timing_boundary": "full coupled trajectory; identical batch8 fast-clock status checks; excludes construction and final snapshots; target warmups precede timings",
+  "checkpoint_support": false,
+  "gates": [
+    {
+      "mode": "ordinary",
+      "ratio": 1,
+      "result": {
+        "maximum_float_error": 0,
+        "discrete_equal": true,
+        "exact": true,
+        "excluded_nonphysical_caches": []
+      }
+    },
+    {
+      "mode": "lifecycle",
+      "ratio": 1,
+      "result": {
+        "maximum_float_error": 0,
+        "discrete_equal": true,
+        "exact": true,
+        "excluded_nonphysical_caches": []
+      }
+    },
+    {
+      "mode": "contact",
+      "ratio": 1,
+      "result": {
+        "maximum_float_error": 0,
+        "discrete_equal": true,
+        "exact": true,
+        "excluded_nonphysical_caches": []
+      }
+    },
+    {
+      "mode": "ordinary",
+      "ratio": 4,
+      "result": {
+        "maximum_float_error": 1.1920928955078125e-07,
+        "discrete_equal": true,
+        "exact": false,
+        "excluded_nonphysical_caches": [
+          "state.next",
+          "environment.heads",
+          "environment.metadata[7] radius bits"
+        ]
+      },
+      "residual": {
+        "material": 9.511609277979005e-09,
+        "potential": 3.911567225678425e-08
+      }
+    },
+    {
+      "mode": "lifecycle",
+      "ratio": 4,
+      "result": {
+        "maximum_float_error": 2.384185791015625e-07,
+        "discrete_equal": true,
+        "exact": false,
+        "excluded_nonphysical_caches": [
+          "state.next",
+          "environment.heads",
+          "environment.metadata[7] radius bits"
+        ]
+      },
+      "residual": {
+        "material": 1.5832483768463135e-08,
+        "potential": 3.72544928239904e-09
+      }
+    },
+    {
+      "mode": "contact",
+      "ratio": 4,
+      "result": {
+        "maximum_float_error": 5.960464477539063e-08,
+        "discrete_equal": true,
+        "exact": false,
+        "excluded_nonphysical_caches": [
+          "state.next",
+          "environment.heads",
+          "environment.metadata[7] radius bits"
+        ]
+      },
+      "residual": {
+        "material": -3.740069587365724e-09,
+        "potential": -1.4901230915853603e-08
+      }
+    }
+  ],
+  "study_seconds": 89.267297848,
+  "provenance": {
+    "numerical_base": "0159111",
+    "three_file_overlay": "b648566",
+    "entry_guard": "fd9b943",
+    "final_comparison_only_patch": "UInt32 enzyme bits decoded Float32 for cross-backend comparison; exact same-backend unchanged",
+    "raw": "outputs/device-multirate-amd-0159111-f64-v3/gate.json",
+    "external_startup_to_exit_seconds": 110.83
+  },
+  "ratios": [
+    {
+      "ratio": 1,
+      "seconds": [
+        2.431675213,
+        2.289231721,
+        2.295990219
+      ],
+      "median_seconds": 2.295990219,
+      "median_simulated_time_per_wall_second": 0.1114987381221712,
+      "paired_speedups": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "final_audit": {
+        "material": 985.6000727424108,
+        "potential": 3425.850397137812,
+        "work": 13.41490190234414,
+        "heat": 144.73510098797078,
+        "supplied": 0,
+        "removed": 0,
+        "supplied_potential": 0,
+        "removed_potential": 0,
+        "population": 256,
+        "completed_steps": 256,
+        "secreted": [
+          1.1453423716319604,
+          1.2883370556446223
+        ],
+        "solubilized": [
+          0.856909127204178,
+          0.9679391837077396
+        ],
+        "bound": [
+          0.09203600568653231,
+          0.11694703421656398
+        ],
+        "enzyme": [
+          1.144139637345818,
+          1.2869782590130594
+        ],
+        "inert": 0.000963349289874214,
+        "finite": true
+      },
+      "residual": {
+        "material": 6.806940666592709e-05,
+        "potential": 0.00040575017260380264
+      },
+      "funded_population_upper_bound": 3943,
+      "errors": null
+    },
+    {
+      "ratio": 2,
+      "seconds": [
+        1.762334969,
+        1.768041258,
+        1.768299401
+      ],
+      "median_seconds": 1.768041258,
+      "median_simulated_time_per_wall_second": 0.14479300808225118,
+      "paired_speedups": [
+        1.3798030770392096,
+        1.294784106785816,
+        1.2984171219543381
+      ],
+      "final_audit": {
+        "material": 985.6000394511648,
+        "potential": 3425.8758710243005,
+        "work": 13.412375900568573,
+        "heat": 144.71195679091417,
+        "supplied": 0,
+        "removed": 0,
+        "supplied_potential": 0,
+        "removed_potential": 0,
+        "population": 256,
+        "completed_steps": 128,
+        "secreted": [
+          1.144750496465401,
+          1.2873525632134868
+        ],
+        "solubilized": [
+          0.8601488106155422,
+          0.9714673180514097
+        ],
+        "bound": [
+          0.09358456982591616,
+          0.11887754005220869
+        ],
+        "enzyme": [
+          1.1435388401875155,
+          1.285983849826489
+        ],
+        "inert": 0.0004883939363088999,
+        "finite": true
+      },
+      "residual": {
+        "material": 3.477816062513739e-05,
+        "potential": 0.00020943782917015596
+      },
+      "funded_population_upper_bound": 3943,
+      "errors": {
+        "pair": 1,
+        "ratio": 2,
+        "identities_equal": true,
+        "free": {
+          "relative_l2": 0.001001413090634897,
+          "maximum_concentration_error": 0.06735992431640625,
+          "mass_l1_error": 0.037951692920406586,
+          "per_species_relative_l2": [
+            0.011409148912869328,
+            0.010901404060715532,
+            0.0009929944007623919
+          ]
+        },
+        "bound": {
+          "relative_l2": 0.027003176241113848,
+          "maximum_concentration_error": 0.040337830781936646,
+          "mass_l1_error": 0.004629961298558602,
+          "per_species_relative_l2": [
+            0.029682807932874665,
+            0.025047454476445116
+          ]
+        },
+        "enzyme": {
+          "relative_l2": 0.0014343376509786078,
+          "maximum_concentration_error": 0.008421182632446289,
+          "mass_l1_error": 0.0029290218010685374,
+          "per_species_relative_l2": [
+            0.0012723815379303653,
+            0.001559947367929832
+          ]
+        }
+      }
+    },
+    {
+      "ratio": 4,
+      "seconds": [
+        1.841281812,
+        1.505985718,
+        1.508438981
+      ],
+      "median_seconds": 1.508438981,
+      "median_simulated_time_per_wall_second": 0.16971187789753062,
+      "paired_speedups": [
+        1.3206426073142572,
+        1.520088599538764,
+        1.5220968484107347
+      ],
+      "final_audit": {
+        "material": 985.6000226483205,
+        "potential": 3425.9385390043717,
+        "work": 13.407413196301878,
+        "heat": 144.65415001852378,
+        "supplied": 0,
+        "removed": 0,
+        "supplied_potential": 0,
+        "removed_potential": 0,
+        "population": 256,
+        "completed_steps": 64,
+        "secreted": [
+          1.1433554561175687,
+          1.2856174282701773
+        ],
+        "solubilized": [
+          0.8663806516943549,
+          0.9784126288682296
+        ],
+        "bound": [
+          0.09696785500602857,
+          0.12309294652413333
+        ],
+        "enzyme": [
+          1.1421373820055387,
+          1.2842415861212895
+        ],
+        "inert": 0.00024884439706697014,
+        "finite": true
+      },
+      "residual": {
+        "material": 1.797531638203509e-05,
+        "potential": 0.00010794124327162535
+      },
+      "funded_population_upper_bound": 3943,
+      "errors": {
+        "pair": 1,
+        "ratio": 4,
+        "identities_equal": true,
+        "free": {
+          "relative_l2": 0.0028579350091616157,
+          "maximum_concentration_error": 0.15575218200683594,
+          "mass_l1_error": 0.11201368910064503,
+          "per_species_relative_l2": [
+            0.03825988180537539,
+            0.037191928870925206,
+            0.0028240553223846214
+          ]
+        },
+        "bound": {
+          "relative_l2": 0.09800492151437783,
+          "maximum_concentration_error": 0.14673954248428345,
+          "mass_l1_error": 0.016271382069185856,
+          "per_species_relative_l2": [
+            0.10728123566463678,
+            0.09126208760173564
+          ]
+        },
+        "enzyme": {
+          "relative_l2": 0.003972480605927114,
+          "maximum_concentration_error": 0.01973247528076172,
+          "mass_l1_error": 0.008408957296691935,
+          "per_species_relative_l2": [
+            0.0038147232533987732,
+            0.004103001050969582
+          ]
+        }
+      }
+    }
+  ]
+}

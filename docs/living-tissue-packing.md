@@ -275,3 +275,7 @@ At t40, solid q10/50/90 is.1875/.6087/.9000 and matrix is.00514/.03210/.15911;
 at t60 they are.2189/.5343/.9000 and.00871/.03246/.11323. Sampled center-site
 excitation upcrossings imply periods12.4–14.5, about six to seven retained states
 per cycle. Optical threshold choices remain separate from these native measures.
+Across all41 retained native states, the declared.27/.63 observer records
+5,857,712 openings and5,130,463 refillings;87.54% of sites open and86.75% refill,
+with at most five observed openings at a site. The two-unit cadence can miss
+short events. These are sampled concentration cycles, not organism counts.
