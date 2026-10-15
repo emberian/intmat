@@ -148,7 +148,7 @@ exported channels. [Details](docs/recurrent-material.md)
 with pressure waves in both directions on a fixed physical domain at native 256³.
 The 640-step bake records 65 full-volume states. Its reviewed 2000²/128-sample still
 and 960²/48-sample film use nacre glass, copper and refractive pressure fronts;
-seeded folds and optical mappings are explicit. Gallery: 62 still studies plus
+seeded folds and optical mappings are explicit. Gallery: 63 still studies plus
 recorded films. The companion catalytic-habitat film shows 121 actual field/body
 observations through t300. [Art and reproduction](docs/nacre-fault.md) ·
 [Film publication](docs/publishing.md)
@@ -290,3 +290,5 @@ against incompatible fixed aliases. A reviewed native 256³ activity-contour pho
 
 - 2026-10-15 (Codex runtime): launched source-pinned optimized broad continuation on hbox from commit `361d0a9`, output `/othersys/tmp/intmat-soaks-optimized-20261015/continuation`, Julia PID3828298, CPU6–7,8GiB/no-swap/nice15, two Julia threads/one GC thread. Explicit fresh-fork provenance preserves parent checkpoint SHA `d7f81c4c…` and old/new source maps; recipe/budgets unchanged. Integrated 100-step deepcopy-fixture SHA matches baseline exactly; recursive direct-copy comparison has no value/array/type/alias differences. Real 60.0256s runner trial advanced18270steps; completed checkpoint strict-restored independently. Original broad/mosaic jobs and all local arenas/observers remain separate. Endpoints/source-budget exhaustion are experiment boundaries; no rescue fuel or reseeding. See `docs/cellular-soaks.md` for run identity, retention and recovery.
   - Optimized continuation first advanced checkpoint234995 (199cells) independently strict-restored with31source hashes and pool/grid aliases verified. Remaining precursor budgets954881.2693/954881.2505; material/chemical residuals0.000339/0.000806. Full inventories and ledgers preserved in `/othersys/tmp/intmat-soaks-optimized-20261015/long-checkpoint-verification.json`; original jobs unchanged.
+
+- 14:30 UTC integration: Amber confluence native257³ event11520 photograph reviewed at2000²/128 samples and curated; gallery63 stills,119.67MB. Its65-frame actual-state film runs on hbox CPU14–15,8GiB/no-swap/nice15, Blender5.2.2, sequential bounded8-frame batches. Runtime/film plan: `outputs/art/runtime-amber-render-hbox-20261015`; remote output `/tank/chreatures/probes/intmat-20261015/amber-confluence-film`. Local retained-garden final and immutable513³ Metal production continue.

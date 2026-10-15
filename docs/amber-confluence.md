@@ -21,3 +21,11 @@ The final immutable runtime is `outputs/art/runtime-amber-confluence-v3-20261015
 Production completed all 24,576 events in 1,538.36 seconds, including captures. The final state contains 24,643 conductive cells, maximum dose 2.0844, maximum mineral fraction 0.73810 and minimum nutrient fraction 0.26190. Its recorded relative material-balance error is 4.64e-10 and independent harmonic residual 6.78e-6. The final `run.json` records actual event count, termination, elapsed time, per-capture invariants and source hashes; the independent saved-state validator passed all 65 captures and 803,075 conductor observations. It checks persistent birth identities, exact face adjacency and attachment to older sites. The final pointwise food-plus-mineral error is 6.91e-6 and global relative error 4.64e-10; source hashes match both the immutable runtime and exported source copies. The report is `benchmarks/2026-10-15-amber-confluence.json`. Final photographs and the fixed-camera film will be selected from those actual states. Amber, copper, cyan emission, contour thresholds and camera placement are optical choices; they are not a solved optical feedback model.
 
 The selected midpoint is event 11,520 (time 28.8). Its more open branching is preferred for the still; the complete sequence retains the denser later growth. The three electrical components remain separate throughout the saved history, and midpoint mineral contours at 0.007, 0.02 and 0.04 also have three components. Their shared harmonic screening is real, but this run does not demonstrate fusion of their thermal envelopes. Clear mineral on a dark photographic background keeps the actual copper-colored conductor paths legible; warmer absorption and brighter cove variants are retained as unselected optical studies.
+
+The reviewed 2000², 128-sample photograph is now curated in the
+[gallery](https://emberian.github.io/intmat/#collection-20261015/amber-confluence).
+Its original PNG SHA256 is
+`bd3f6b0c6e667ee9001107db6301e958480091175975615affd28288988f9bcf`.
+The 65-frame film uses the same actual captures, fixed camera and optical mapping.
+It is rendering with Blender 5.2.2 on hbox CPU cores 14–15, following a reviewed
+960²/48-sample host-portability trial. Film publication awaits sequence review.

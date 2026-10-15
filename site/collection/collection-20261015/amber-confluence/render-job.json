@@ -1,0 +1,27 @@
+{
+  "id": "amber-confluence",
+  "title": "The shared weather",
+  "description": "Three electrical roots screen one another while remembered heat and depleted feedstock redirect growth. Transparent mineral follows the accumulated thermal writing; copper paths remain visible through its branching interior.",
+  "family": "interfaces",
+  "renderer": "electrothermal-archive",
+  "volume": "frames/11520",
+  "size": 2000,
+  "samples": 128,
+  "args": [
+    "--steps",
+    "11520",
+    "--no-carrier",
+    "--halo-mode",
+    "surface",
+    "--halo-iso",
+    ".007",
+    "--distance",
+    "3.8",
+    "--mineral-optics",
+    "clear",
+    "--backdrop",
+    "ink",
+    "--save-scene"
+  ],
+  "image": "final.png"
+}

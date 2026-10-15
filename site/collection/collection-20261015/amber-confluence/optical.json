@@ -1,0 +1,61 @@
+{
+  "renderer_sha256": "95b874a3e9921f2cd7ba5c15d19db03a6dba50ff62d8b5b2921ac520078c6efe",
+  "source": {
+    "run_sha256": "d5f06c0a69ecf5222f77c5afb23e7c5dcf4397a89b4467b96875c9cb0a4b4f4d",
+    "field_sha256": {
+      "frames/11520/geometry.json": "6e16bd429964f12c83a68bd7801a2cfae2944a36097a51534fe53cc9e4dc1bcb",
+      "frames/11520/solid.f32.gz": "f8a9b0d8a56379d2cdaf44453f274f7d4242b4b60e3e68a774b5f381c9832f74",
+      "frames/11520/temperature.f32.gz": "b12575cfb19d9c8264290471be6ca2745f02be5b5a04abde7e814311d1cf103d"
+    },
+    "shape": [
+      257,
+      257,
+      257
+    ],
+    "step": 11520,
+    "time": 28.799999356269836
+  },
+  "settings": {
+    "run": "amber-confluence",
+    "output": "amber-confluence",
+    "steps": "11520",
+    "size": 2000,
+    "samples": 128,
+    "device": "CPU",
+    "image_name": "final.png",
+    "orbit": 0.38,
+    "elevation": 0.17,
+    "distance": 3.8,
+    "halo_iso": 0.007,
+    "no_carrier": true,
+    "no_halo": false,
+    "halo_mode": "surface",
+    "carrier": "crystal",
+    "backdrop": "ink",
+    "mineral_optics": "clear",
+    "save_scene": true
+  },
+  "camera": {
+    "location": [
+      1.3891795873641968,
+      -3.478055238723755,
+      0.6428928971290588
+    ],
+    "lens_mm": 58,
+    "fixed": true
+  },
+  "geometry": {
+    "occupied_cells": 11587,
+    "edges": 12422,
+    "thermal_mineral": {
+      "vertices": 82635,
+      "faces": 94288,
+      "isovalue": 0.007
+    }
+  },
+  "interpretation": {
+    "carrier": "No carrier.",
+    "conductor": "Face-connected graph between occupied Julia cells; two subvoxel corner-cutting passes soften degree-two centerlines while preserving junctions and topology. Radius is a chosen visibility transfer. Cyan emission marks recently created edges, not physically solved luminescence.",
+    "mineral": "Isosurface of saved conservative thermal/electrical deposit, chosen translucent amber thin-film shader. No procedural animated deformation."
+  }
+}

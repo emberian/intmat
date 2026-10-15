@@ -504,5 +504,16 @@
       "render-job.json",
       "run.json"
     ]
+  },
+  {
+    "id": "collection-20261015/amber-confluence",
+    "source_image_sha256": "bd3f6b0c6e667ee9001107db6301e958480091175975615affd28288988f9bcf",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
   }
 ]

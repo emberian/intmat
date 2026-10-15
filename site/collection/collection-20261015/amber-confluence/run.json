@@ -1,0 +1,1186 @@
+{
+  "id": "amber-confluence",
+  "title": "The shared weather",
+  "description": "Three electrical roots screen one another while remembered heat and depleted feedstock redirect growth. Transparent mineral follows the accumulated thermal writing; copper paths remain visible through its branching interior.",
+  "family": "interfaces",
+  "shape": [
+    257,
+    257,
+    257
+  ],
+  "extent": [
+    2,
+    2,
+    2
+  ],
+  "steps": 24576,
+  "requested_steps": 24576,
+  "termination": "completed",
+  "time": 61.439998626708984,
+  "dt": 0.0025,
+  "elapsed_seconds": 1538.357116999,
+  "estimated_working_bytes": 1623244864,
+  "source_sha256": {
+    "studies/branch_metal_multigrid.jl": "92b8ede5460f0b5d1fc09f3589b9ba1e00c77d96002ab8d2de4814989205aad2",
+    "studies/electrothermal_archive.jl": "a7d8e280e4d0728c1a1624c6d5c3c8f6f923f0a119a2e4e87de2fa1beef871ae",
+    "src/writing.jl": "78fba7cd46f03749bdc56547b7ce5622f7ba3ea42cc34801829345dae3975e05",
+    "src/electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+    "studies/branch_solver_prototype.jl": "23ffce8e17f9bef91c6ebfabf02f92374c3e9ee7658dc7cee6925a7950cb3aa0"
+  },
+  "params": {
+    "dt": 0.0025,
+    "root_scale": 0.3,
+    "events": 24576,
+    "backend": "amd",
+    "cooling": 0.8,
+    "capture_every": 384,
+    "id": "amber-confluence",
+    "conversion": 0.4,
+    "description": "Three nearby electrical roots write a shared mineral interior. Their field screening, remembered heat and depleted feedstock determine where later channels can grow.",
+    "memory_gain": 1.5,
+    "resolution": 257,
+    "diffusion": 0.0002,
+    "solver_fused_norm": true,
+    "eta": 4.8,
+    "width": 0.017,
+    "heat": 45,
+    "threshold": 0.03,
+    "compress_captures": true,
+    "solver_workgroup": [
+      32,
+      4,
+      2
+    ],
+    "title": "The shared weather",
+    "seed": 7331,
+    "memory_budget_mb": 6144,
+    "stub_scale": 0.8,
+    "tolerance": 2e-05
+  },
+  "history": [
+    {
+      "event": 0,
+      "time": 0,
+      "occupied": 67,
+      "temperature_max": 0,
+      "dose_max": 0,
+      "solid_max": 0.25,
+      "nutrient_min": 0.75,
+      "material_relative_error": 0,
+      "residual": 9.814898173014322e-06,
+      "finite": true
+    },
+    {
+      "event": 384,
+      "time": 0.96,
+      "occupied": 451,
+      "temperature_max": 1.140868,
+      "dose_max": 0.7629511,
+      "solid_max": 0.44940668,
+      "nutrient_min": 0.5505936,
+      "material_relative_error": 1.220432168815282e-12,
+      "residual": 7.410844167110575e-06,
+      "finite": true
+    },
+    {
+      "event": 768,
+      "time": 1.92,
+      "occupied": 835,
+      "temperature_max": 1.0177622,
+      "dose_max": 1.2531747,
+      "solid_max": 0.6101746,
+      "nutrient_min": 0.38982472,
+      "material_relative_error": 1.3398198868220277e-12,
+      "residual": 8.881092071533203e-06,
+      "finite": true
+    },
+    {
+      "event": 1152,
+      "time": 2.8799999,
+      "occupied": 1219,
+      "temperature_max": 1.0117831,
+      "dose_max": 1.4463335,
+      "solid_max": 0.6422723,
+      "nutrient_min": 0.35772637,
+      "material_relative_error": -1.3290662136927437e-12,
+      "residual": 7.708867390987528e-06,
+      "finite": true
+    },
+    {
+      "event": 1536,
+      "time": 3.84,
+      "occupied": 1603,
+      "temperature_max": 0.96141815,
+      "dose_max": 1.5911033,
+      "solid_max": 0.6555557,
+      "nutrient_min": 0.34444296,
+      "material_relative_error": -1.8011305177966228e-12,
+      "residual": 1.0867913564083231e-05,
+      "finite": true
+    },
+    {
+      "event": 1920,
+      "time": 4.7999997,
+      "occupied": 1987,
+      "temperature_max": 0.89890134,
+      "dose_max": 1.6843213,
+      "solid_max": 0.70093894,
+      "nutrient_min": 0.2990611,
+      "material_relative_error": 1.3027526339335363e-11,
+      "residual": 7.152557373046875e-06,
+      "finite": true
+    },
+    {
+      "event": 2304,
+      "time": 5.7599998,
+      "occupied": 2371,
+      "temperature_max": 1.0120099,
+      "dose_max": 1.7233211,
+      "solid_max": 0.7082202,
+      "nutrient_min": 0.29177913,
+      "material_relative_error": 1.0094846053077745e-11,
+      "residual": 1.0530153910282003e-05,
+      "finite": true
+    },
+    {
+      "event": 2688,
+      "time": 6.72,
+      "occupied": 2755,
+      "temperature_max": 0.8871168,
+      "dose_max": 1.7255807,
+      "solid_max": 0.7088417,
+      "nutrient_min": 0.2911578,
+      "material_relative_error": 1.601595015569172e-11,
+      "residual": 1.0768572489383565e-05,
+      "finite": true
+    },
+    {
+      "event": 3072,
+      "time": 7.68,
+      "occupied": 3139,
+      "temperature_max": 0.8909205,
+      "dose_max": 1.7255807,
+      "solid_max": 0.7088417,
+      "nutrient_min": 0.2911578,
+      "material_relative_error": 2.2263395318371925e-11,
+      "residual": 1.436471939086914e-05,
+      "finite": true
+    },
+    {
+      "event": 3456,
+      "time": 8.639999,
+      "occupied": 3523,
+      "temperature_max": 0.82461685,
+      "dose_max": 1.7255807,
+      "solid_max": 0.7088417,
+      "nutrient_min": 0.2911578,
+      "material_relative_error": 2.0043310473967073e-11,
+      "residual": 6.834665934207784e-06,
+      "finite": true
+    },
+    {
+      "event": 3840,
+      "time": 9.599999,
+      "occupied": 3907,
+      "temperature_max": 0.8919188,
+      "dose_max": 1.7255807,
+      "solid_max": 0.7088417,
+      "nutrient_min": 0.2911578,
+      "material_relative_error": 2.3558005885507576e-11,
+      "residual": 1.2358029683467997e-05,
+      "finite": true
+    },
+    {
+      "event": 4224,
+      "time": 10.559999,
+      "occupied": 4291,
+      "temperature_max": 0.816279,
+      "dose_max": 1.7255807,
+      "solid_max": 0.7088417,
+      "nutrient_min": 0.2911578,
+      "material_relative_error": 1.7040182655576797e-11,
+      "residual": 1.545747121178831e-05,
+      "finite": true
+    },
+    {
+      "event": 4608,
+      "time": 11.5199995,
+      "occupied": 4675,
+      "temperature_max": 0.8577025,
+      "dose_max": 1.7324003,
+      "solid_max": 0.7088417,
+      "nutrient_min": 0.2911578,
+      "material_relative_error": 2.4156919639993623e-11,
+      "residual": 8.682409922244894e-06,
+      "finite": true
+    },
+    {
+      "event": 4992,
+      "time": 12.48,
+      "occupied": 5059,
+      "temperature_max": 0.82129073,
+      "dose_max": 1.8158993,
+      "solid_max": 0.7088417,
+      "nutrient_min": 0.2911578,
+      "material_relative_error": 4.291615375723741e-11,
+      "residual": 8.761882781982422e-06,
+      "finite": true
+    },
+    {
+      "event": 5376,
+      "time": 13.44,
+      "occupied": 5443,
+      "temperature_max": 0.78043944,
+      "dose_max": 1.874002,
+      "solid_max": 0.7088417,
+      "nutrient_min": 0.2911578,
+      "material_relative_error": 5.271889493408909e-11,
+      "residual": 5.841255187988281e-06,
+      "finite": true
+    },
+    {
+      "event": 5760,
+      "time": 14.4,
+      "occupied": 5827,
+      "temperature_max": 0.949113,
+      "dose_max": 1.8940545,
+      "solid_max": 0.7088417,
+      "nutrient_min": 0.2911578,
+      "material_relative_error": 5.6439007448670606e-11,
+      "residual": 7.291634877559794e-06,
+      "finite": true
+    },
+    {
+      "event": 6144,
+      "time": 15.36,
+      "occupied": 6211,
+      "temperature_max": 0.7257287,
+      "dose_max": 1.9098512,
+      "solid_max": 0.72747004,
+      "nutrient_min": 0.27253088,
+      "material_relative_error": 6.735947224281707e-11,
+      "residual": 6.159146626827372e-06,
+      "finite": true
+    },
+    {
+      "event": 6528,
+      "time": 16.32,
+      "occupied": 6595,
+      "temperature_max": 0.77436256,
+      "dose_max": 1.9123384,
+      "solid_max": 0.72858596,
+      "nutrient_min": 0.271415,
+      "material_relative_error": 8.287307223946937e-11,
+      "residual": 1.0331471761104716e-05,
+      "finite": true
+    },
+    {
+      "event": 6912,
+      "time": 17.279999,
+      "occupied": 6979,
+      "temperature_max": 0.6752163,
+      "dose_max": 1.9123384,
+      "solid_max": 0.72858596,
+      "nutrient_min": 0.271415,
+      "material_relative_error": 8.559923810910134e-11,
+      "residual": 1.0152657826778544e-05,
+      "finite": true
+    },
+    {
+      "event": 7296,
+      "time": 18.24,
+      "occupied": 7363,
+      "temperature_max": 0.7556414,
+      "dose_max": 1.9123384,
+      "solid_max": 0.72858596,
+      "nutrient_min": 0.271415,
+      "material_relative_error": 8.859687935956852e-11,
+      "residual": 6.119410196903097e-06,
+      "finite": true
+    },
+    {
+      "event": 7680,
+      "time": 19.199999,
+      "occupied": 7747,
+      "temperature_max": 0.71707284,
+      "dose_max": 1.9123384,
+      "solid_max": 0.72858596,
+      "nutrient_min": 0.271415,
+      "material_relative_error": 9.368468352602143e-11,
+      "residual": 4.9670537313195595e-06,
+      "finite": true
+    },
+    {
+      "event": 8064,
+      "time": 20.16,
+      "occupied": 8131,
+      "temperature_max": 0.59757245,
+      "dose_max": 1.9123384,
+      "solid_max": 0.72858596,
+      "nutrient_min": 0.271415,
+      "material_relative_error": 9.9242357369409e-11,
+      "residual": 9.020169576046122e-06,
+      "finite": true
+    },
+    {
+      "event": 8448,
+      "time": 21.119999,
+      "occupied": 8515,
+      "temperature_max": 0.5836909,
+      "dose_max": 1.9123384,
+      "solid_max": 0.72858596,
+      "nutrient_min": 0.271415,
+      "material_relative_error": 1.0235828902429829e-10,
+      "residual": 8.344650268554688e-06,
+      "finite": true
+    },
+    {
+      "event": 8832,
+      "time": 22.08,
+      "occupied": 8899,
+      "temperature_max": 0.73415875,
+      "dose_max": 1.9123384,
+      "solid_max": 0.72858596,
+      "nutrient_min": 0.271415,
+      "material_relative_error": 9.572722303243464e-11,
+      "residual": 1.023213068640505e-05,
+      "finite": true
+    },
+    {
+      "event": 9216,
+      "time": 23.039999,
+      "occupied": 9283,
+      "temperature_max": 0.577232,
+      "dose_max": 1.9123384,
+      "solid_max": 0.72858596,
+      "nutrient_min": 0.271415,
+      "material_relative_error": 1.0261747449298573e-10,
+      "residual": 1.3947486877441406e-05,
+      "finite": true
+    },
+    {
+      "event": 9600,
+      "time": 24,
+      "occupied": 9667,
+      "temperature_max": 0.69915885,
+      "dose_max": 1.9123384,
+      "solid_max": 0.72858596,
+      "nutrient_min": 0.271415,
+      "material_relative_error": 1.0966749481145761e-10,
+      "residual": 1.5179316202762472e-05,
+      "finite": true
+    },
+    {
+      "event": 9984,
+      "time": 24.96,
+      "occupied": 10051,
+      "temperature_max": 0.7513829,
+      "dose_max": 1.9123384,
+      "solid_max": 0.72858596,
+      "nutrient_min": 0.271415,
+      "material_relative_error": 1.1963812496675627e-10,
+      "residual": 8.742014567020284e-06,
+      "finite": true
+    },
+    {
+      "event": 10368,
+      "time": 25.92,
+      "occupied": 10435,
+      "temperature_max": 0.69981986,
+      "dose_max": 1.9123384,
+      "solid_max": 0.72858596,
+      "nutrient_min": 0.271415,
+      "material_relative_error": 1.305592481490535e-10,
+      "residual": 1.2516975402832031e-05,
+      "finite": true
+    },
+    {
+      "event": 10752,
+      "time": 26.88,
+      "occupied": 10819,
+      "temperature_max": 0.69786924,
+      "dose_max": 1.9123384,
+      "solid_max": 0.72858596,
+      "nutrient_min": 0.271415,
+      "material_relative_error": 1.452926581870404e-10,
+      "residual": 8.90096028649534e-06,
+      "finite": true
+    },
+    {
+      "event": 11136,
+      "time": 27.84,
+      "occupied": 11203,
+      "temperature_max": 0.7973597,
+      "dose_max": 1.9123384,
+      "solid_max": 0.72858596,
+      "nutrient_min": 0.271415,
+      "material_relative_error": 1.618596792249287e-10,
+      "residual": 1.531839370727539e-05,
+      "finite": true
+    },
+    {
+      "event": 11520,
+      "time": 28.8,
+      "occupied": 11587,
+      "temperature_max": 0.60066926,
+      "dose_max": 1.9123384,
+      "solid_max": 0.72858596,
+      "nutrient_min": 0.271415,
+      "material_relative_error": 1.6478906757043245e-10,
+      "residual": 6.318092346191406e-06,
+      "finite": true
+    },
+    {
+      "event": 11904,
+      "time": 29.76,
+      "occupied": 11971,
+      "temperature_max": 0.57205313,
+      "dose_max": 1.9123384,
+      "solid_max": 0.72858596,
+      "nutrient_min": 0.271415,
+      "material_relative_error": 1.6661411952437382e-10,
+      "residual": 9.497006734249247e-06,
+      "finite": true
+    },
+    {
+      "event": 12288,
+      "time": 30.72,
+      "occupied": 12355,
+      "temperature_max": 0.72939014,
+      "dose_max": 1.9123384,
+      "solid_max": 0.72858596,
+      "nutrient_min": 0.271415,
+      "material_relative_error": 1.693356766769504e-10,
+      "residual": 3.854433695438253e-06,
+      "finite": true
+    },
+    {
+      "event": 12672,
+      "time": 31.679998,
+      "occupied": 12739,
+      "temperature_max": 0.65173686,
+      "dose_max": 1.9123384,
+      "solid_max": 0.72858596,
+      "nutrient_min": 0.271415,
+      "material_relative_error": 1.786999313453876e-10,
+      "residual": 1.0351339975955831e-05,
+      "finite": true
+    },
+    {
+      "event": 13056,
+      "time": 32.64,
+      "occupied": 13123,
+      "temperature_max": 0.73400736,
+      "dose_max": 1.9123384,
+      "solid_max": 0.72858596,
+      "nutrient_min": 0.271415,
+      "material_relative_error": 1.8241104588857522e-10,
+      "residual": 8.066495259639872e-06,
+      "finite": true
+    },
+    {
+      "event": 13440,
+      "time": 33.6,
+      "occupied": 13507,
+      "temperature_max": 0.73433554,
+      "dose_max": 1.9123384,
+      "solid_max": 0.72858596,
+      "nutrient_min": 0.271415,
+      "material_relative_error": 1.8888826851587503e-10,
+      "residual": 9.5367431640625e-06,
+      "finite": true
+    },
+    {
+      "event": 13824,
+      "time": 34.559998,
+      "occupied": 13891,
+      "temperature_max": 0.86603224,
+      "dose_max": 1.9123384,
+      "solid_max": 0.72858596,
+      "nutrient_min": 0.271415,
+      "material_relative_error": 1.918687916744221e-10,
+      "residual": 7.549921671512472e-06,
+      "finite": true
+    },
+    {
+      "event": 14208,
+      "time": 35.52,
+      "occupied": 14275,
+      "temperature_max": 0.8125217,
+      "dose_max": 1.9123384,
+      "solid_max": 0.72858596,
+      "nutrient_min": 0.271415,
+      "material_relative_error": 1.957675468405799e-10,
+      "residual": 9.2784563699988e-06,
+      "finite": true
+    },
+    {
+      "event": 14592,
+      "time": 36.48,
+      "occupied": 14659,
+      "temperature_max": 0.70834935,
+      "dose_max": 1.9123384,
+      "solid_max": 0.72858596,
+      "nutrient_min": 0.271415,
+      "material_relative_error": 2.1293457894653887e-10,
+      "residual": 6.775061289432394e-06,
+      "finite": true
+    },
+    {
+      "event": 14976,
+      "time": 37.44,
+      "occupied": 15043,
+      "temperature_max": 0.76348877,
+      "dose_max": 1.9123384,
+      "solid_max": 0.72858596,
+      "nutrient_min": 0.271415,
+      "material_relative_error": 2.2196832276328826e-10,
+      "residual": 1.424551010131836e-05,
+      "finite": true
+    },
+    {
+      "event": 15360,
+      "time": 38.399998,
+      "occupied": 15427,
+      "temperature_max": 0.5366072,
+      "dose_max": 1.9553089,
+      "solid_max": 0.72858596,
+      "nutrient_min": 0.271415,
+      "material_relative_error": 2.2994996231510322e-10,
+      "residual": 7.967154184940206e-06,
+      "finite": true
+    },
+    {
+      "event": 15744,
+      "time": 39.36,
+      "occupied": 15811,
+      "temperature_max": 0.48302075,
+      "dose_max": 1.9799914,
+      "solid_max": 0.72858596,
+      "nutrient_min": 0.271415,
+      "material_relative_error": 2.400887009115658e-10,
+      "residual": 5.424022674560547e-06,
+      "finite": true
+    },
+    {
+      "event": 16128,
+      "time": 40.32,
+      "occupied": 16195,
+      "temperature_max": 0.5088094,
+      "dose_max": 2.0118124,
+      "solid_max": 0.72858596,
+      "nutrient_min": 0.271415,
+      "material_relative_error": 2.5711088762435485e-10,
+      "residual": 5.324681599971903e-06,
+      "finite": true
+    },
+    {
+      "event": 16512,
+      "time": 41.28,
+      "occupied": 16579,
+      "temperature_max": 0.812879,
+      "dose_max": 2.0411906,
+      "solid_max": 0.72858596,
+      "nutrient_min": 0.271415,
+      "material_relative_error": 2.630093870671256e-10,
+      "residual": 1.366933186852659e-05,
+      "finite": true
+    },
+    {
+      "event": 16896,
+      "time": 42.239998,
+      "occupied": 16963,
+      "temperature_max": 0.6231203,
+      "dose_max": 2.0635886,
+      "solid_max": 0.72858596,
+      "nutrient_min": 0.271415,
+      "material_relative_error": 2.644604745514282e-10,
+      "residual": 8.006890614864481e-06,
+      "finite": true
+    },
+    {
+      "event": 17280,
+      "time": 43.2,
+      "occupied": 17347,
+      "temperature_max": 0.689415,
+      "dose_max": 2.0821345,
+      "solid_max": 0.72858596,
+      "nutrient_min": 0.271415,
+      "material_relative_error": 2.775810530827394e-10,
+      "residual": 1.4682610829708231e-05,
+      "finite": true
+    },
+    {
+      "event": 17664,
+      "time": 44.16,
+      "occupied": 17731,
+      "temperature_max": 1.0033563,
+      "dose_max": 2.0822937,
+      "solid_max": 0.72858596,
+      "nutrient_min": 0.271415,
+      "material_relative_error": 2.82991028517637e-10,
+      "residual": 1.043081283569336e-05,
+      "finite": true
+    },
+    {
+      "event": 18048,
+      "time": 45.12,
+      "occupied": 18115,
+      "temperature_max": 0.62849945,
+      "dose_max": 2.0822937,
+      "solid_max": 0.72858596,
+      "nutrient_min": 0.271415,
+      "material_relative_error": 2.8905895317787324e-10,
+      "residual": 1.0371208190917969e-05,
+      "finite": true
+    },
+    {
+      "event": 18432,
+      "time": 46.079998,
+      "occupied": 18499,
+      "temperature_max": 0.6835394,
+      "dose_max": 2.0822937,
+      "solid_max": 0.72858596,
+      "nutrient_min": 0.271415,
+      "material_relative_error": 2.9899885855280253e-10,
+      "residual": 6.894270578983175e-06,
+      "finite": true
+    },
+    {
+      "event": 18816,
+      "time": 47.039997,
+      "occupied": 18883,
+      "temperature_max": 0.89964736,
+      "dose_max": 2.0822937,
+      "solid_max": 0.72858596,
+      "nutrient_min": 0.271415,
+      "material_relative_error": 3.0028754362658124e-10,
+      "residual": 1.3232231140136719e-05,
+      "finite": true
+    },
+    {
+      "event": 19200,
+      "time": 48,
+      "occupied": 19267,
+      "temperature_max": 0.63241833,
+      "dose_max": 2.0835965,
+      "solid_max": 0.72893316,
+      "nutrient_min": 0.27106518,
+      "material_relative_error": 3.1086367141787366e-10,
+      "residual": 1.074870427453245e-05,
+      "finite": true
+    },
+    {
+      "event": 19584,
+      "time": 48.96,
+      "occupied": 19651,
+      "temperature_max": 0.42282426,
+      "dose_max": 2.0843787,
+      "solid_max": 0.7289575,
+      "nutrient_min": 0.2710407,
+      "material_relative_error": 3.184976820260807e-10,
+      "residual": 1.4344851175907003e-05,
+      "finite": true
+    },
+    {
+      "event": 19968,
+      "time": 49.92,
+      "occupied": 20035,
+      "temperature_max": 0.49689692,
+      "dose_max": 2.0843787,
+      "solid_max": 0.7289575,
+      "nutrient_min": 0.2710407,
+      "material_relative_error": 3.2893137851408937e-10,
+      "residual": 1.5079975128173828e-05,
+      "finite": true
+    },
+    {
+      "event": 20352,
+      "time": 50.879997,
+      "occupied": 20419,
+      "temperature_max": 0.55652744,
+      "dose_max": 2.0843787,
+      "solid_max": 0.7289795,
+      "nutrient_min": 0.27101865,
+      "material_relative_error": 3.3941796551687677e-10,
+      "residual": 1.3530254364013672e-05,
+      "finite": true
+    },
+    {
+      "event": 20736,
+      "time": 51.84,
+      "occupied": 20803,
+      "temperature_max": 0.82411915,
+      "dose_max": 2.0843787,
+      "solid_max": 0.7289795,
+      "nutrient_min": 0.27101865,
+      "material_relative_error": 3.4782009563431844e-10,
+      "residual": 6.278355916378153e-06,
+      "finite": true
+    },
+    {
+      "event": 21120,
+      "time": 52.8,
+      "occupied": 21187,
+      "temperature_max": 0.7175258,
+      "dose_max": 2.0843787,
+      "solid_max": 0.7289795,
+      "nutrient_min": 0.27101865,
+      "material_relative_error": 3.6418104118101493e-10,
+      "residual": 5.02665837609495e-06,
+      "finite": true
+    },
+    {
+      "event": 21504,
+      "time": 53.76,
+      "occupied": 21571,
+      "temperature_max": 0.62845856,
+      "dose_max": 2.0843787,
+      "solid_max": 0.7289795,
+      "nutrient_min": 0.27101865,
+      "material_relative_error": 3.7600371720443664e-10,
+      "residual": 1.0887781778934347e-05,
+      "finite": true
+    },
+    {
+      "event": 21888,
+      "time": 54.719997,
+      "occupied": 21955,
+      "temperature_max": 0.5518653,
+      "dose_max": 2.0843787,
+      "solid_max": 0.7289795,
+      "nutrient_min": 0.27101865,
+      "material_relative_error": 3.898612515391792e-10,
+      "residual": 4.589557647705078e-06,
+      "finite": true
+    },
+    {
+      "event": 22272,
+      "time": 55.68,
+      "occupied": 22339,
+      "temperature_max": 0.6628447,
+      "dose_max": 2.0843787,
+      "solid_max": 0.7289795,
+      "nutrient_min": 0.27101865,
+      "material_relative_error": 4.019764713642608e-10,
+      "residual": 1.4901161193847656e-05,
+      "finite": true
+    },
+    {
+      "event": 22656,
+      "time": 56.64,
+      "occupied": 22723,
+      "temperature_max": 0.5217129,
+      "dose_max": 2.0843787,
+      "solid_max": 0.7289795,
+      "nutrient_min": 0.27101865,
+      "material_relative_error": 4.094070400338792e-10,
+      "residual": 7.331371307373047e-06,
+      "finite": true
+    },
+    {
+      "event": 23040,
+      "time": 57.6,
+      "occupied": 23107,
+      "temperature_max": 0.39392588,
+      "dose_max": 2.0843787,
+      "solid_max": 0.7289795,
+      "nutrient_min": 0.27101865,
+      "material_relative_error": 4.198975773655712e-10,
+      "residual": 7.927417755126953e-06,
+      "finite": true
+    },
+    {
+      "event": 23424,
+      "time": 58.559998,
+      "occupied": 23491,
+      "temperature_max": 0.4812545,
+      "dose_max": 2.0843787,
+      "solid_max": 0.7289795,
+      "nutrient_min": 0.27101865,
+      "material_relative_error": 4.298205841112973e-10,
+      "residual": 7.192293802860128e-06,
+      "finite": true
+    },
+    {
+      "event": 23808,
+      "time": 59.52,
+      "occupied": 23875,
+      "temperature_max": 0.62940973,
+      "dose_max": 2.0843787,
+      "solid_max": 0.7289795,
+      "nutrient_min": 0.27101865,
+      "material_relative_error": 4.4677144544108597e-10,
+      "residual": 1.1841456095340597e-05,
+      "finite": true
+    },
+    {
+      "event": 24192,
+      "time": 60.48,
+      "occupied": 24259,
+      "temperature_max": 0.58637244,
+      "dose_max": 2.0843787,
+      "solid_max": 0.7289795,
+      "nutrient_min": 0.27101865,
+      "material_relative_error": 4.5023237248698005e-10,
+      "residual": 6.9538752237585655e-06,
+      "finite": true
+    },
+    {
+      "event": 24576,
+      "time": 61.44,
+      "occupied": 24643,
+      "temperature_max": 0.6557855,
+      "dose_max": 2.0843787,
+      "solid_max": 0.73809797,
+      "nutrient_min": 0.2619023,
+      "material_relative_error": 4.6438354793696714e-10,
+      "residual": 6.775061289432394e-06,
+      "finite": true
+    }
+  ],
+  "frames": [
+    {
+      "step": 0,
+      "time": 0,
+      "directory": "frames/00000"
+    },
+    {
+      "step": 384,
+      "time": 0.9599999785423279,
+      "directory": "frames/00384"
+    },
+    {
+      "step": 768,
+      "time": 1.9199999570846558,
+      "directory": "frames/00768"
+    },
+    {
+      "step": 1152,
+      "time": 2.8799999356269836,
+      "directory": "frames/01152"
+    },
+    {
+      "step": 1536,
+      "time": 3.8399999141693115,
+      "directory": "frames/01536"
+    },
+    {
+      "step": 1920,
+      "time": 4.799999892711639,
+      "directory": "frames/01920"
+    },
+    {
+      "step": 2304,
+      "time": 5.759999871253967,
+      "directory": "frames/02304"
+    },
+    {
+      "step": 2688,
+      "time": 6.719999849796295,
+      "directory": "frames/02688"
+    },
+    {
+      "step": 3072,
+      "time": 7.679999828338623,
+      "directory": "frames/03072"
+    },
+    {
+      "step": 3456,
+      "time": 8.639999806880951,
+      "directory": "frames/03456"
+    },
+    {
+      "step": 3840,
+      "time": 9.599999785423279,
+      "directory": "frames/03840"
+    },
+    {
+      "step": 4224,
+      "time": 10.559999763965607,
+      "directory": "frames/04224"
+    },
+    {
+      "step": 4608,
+      "time": 11.519999742507935,
+      "directory": "frames/04608"
+    },
+    {
+      "step": 4992,
+      "time": 12.479999721050262,
+      "directory": "frames/04992"
+    },
+    {
+      "step": 5376,
+      "time": 13.43999969959259,
+      "directory": "frames/05376"
+    },
+    {
+      "step": 5760,
+      "time": 14.399999678134918,
+      "directory": "frames/05760"
+    },
+    {
+      "step": 6144,
+      "time": 15.359999656677246,
+      "directory": "frames/06144"
+    },
+    {
+      "step": 6528,
+      "time": 16.319999635219574,
+      "directory": "frames/06528"
+    },
+    {
+      "step": 6912,
+      "time": 17.279999613761902,
+      "directory": "frames/06912"
+    },
+    {
+      "step": 7296,
+      "time": 18.23999959230423,
+      "directory": "frames/07296"
+    },
+    {
+      "step": 7680,
+      "time": 19.199999570846558,
+      "directory": "frames/07680"
+    },
+    {
+      "step": 8064,
+      "time": 20.159999549388885,
+      "directory": "frames/08064"
+    },
+    {
+      "step": 8448,
+      "time": 21.119999527931213,
+      "directory": "frames/08448"
+    },
+    {
+      "step": 8832,
+      "time": 22.07999950647354,
+      "directory": "frames/08832"
+    },
+    {
+      "step": 9216,
+      "time": 23.03999948501587,
+      "directory": "frames/09216"
+    },
+    {
+      "step": 9600,
+      "time": 23.999999463558197,
+      "directory": "frames/09600"
+    },
+    {
+      "step": 9984,
+      "time": 24.959999442100525,
+      "directory": "frames/09984"
+    },
+    {
+      "step": 10368,
+      "time": 25.919999420642853,
+      "directory": "frames/10368"
+    },
+    {
+      "step": 10752,
+      "time": 26.87999939918518,
+      "directory": "frames/10752"
+    },
+    {
+      "step": 11136,
+      "time": 27.83999937772751,
+      "directory": "frames/11136"
+    },
+    {
+      "step": 11520,
+      "time": 28.799999356269836,
+      "directory": "frames/11520"
+    },
+    {
+      "step": 11904,
+      "time": 29.759999334812164,
+      "directory": "frames/11904"
+    },
+    {
+      "step": 12288,
+      "time": 30.719999313354492,
+      "directory": "frames/12288"
+    },
+    {
+      "step": 12672,
+      "time": 31.67999929189682,
+      "directory": "frames/12672"
+    },
+    {
+      "step": 13056,
+      "time": 32.63999927043915,
+      "directory": "frames/13056"
+    },
+    {
+      "step": 13440,
+      "time": 33.599999248981476,
+      "directory": "frames/13440"
+    },
+    {
+      "step": 13824,
+      "time": 34.559999227523804,
+      "directory": "frames/13824"
+    },
+    {
+      "step": 14208,
+      "time": 35.51999920606613,
+      "directory": "frames/14208"
+    },
+    {
+      "step": 14592,
+      "time": 36.47999918460846,
+      "directory": "frames/14592"
+    },
+    {
+      "step": 14976,
+      "time": 37.43999916315079,
+      "directory": "frames/14976"
+    },
+    {
+      "step": 15360,
+      "time": 38.399999141693115,
+      "directory": "frames/15360"
+    },
+    {
+      "step": 15744,
+      "time": 39.35999912023544,
+      "directory": "frames/15744"
+    },
+    {
+      "step": 16128,
+      "time": 40.31999909877777,
+      "directory": "frames/16128"
+    },
+    {
+      "step": 16512,
+      "time": 41.2799990773201,
+      "directory": "frames/16512"
+    },
+    {
+      "step": 16896,
+      "time": 42.23999905586243,
+      "directory": "frames/16896"
+    },
+    {
+      "step": 17280,
+      "time": 43.199999034404755,
+      "directory": "frames/17280"
+    },
+    {
+      "step": 17664,
+      "time": 44.15999901294708,
+      "directory": "frames/17664"
+    },
+    {
+      "step": 18048,
+      "time": 45.11999899148941,
+      "directory": "frames/18048"
+    },
+    {
+      "step": 18432,
+      "time": 46.07999897003174,
+      "directory": "frames/18432"
+    },
+    {
+      "step": 18816,
+      "time": 47.039998948574066,
+      "directory": "frames/18816"
+    },
+    {
+      "step": 19200,
+      "time": 47.999998927116394,
+      "directory": "frames/19200"
+    },
+    {
+      "step": 19584,
+      "time": 48.95999890565872,
+      "directory": "frames/19584"
+    },
+    {
+      "step": 19968,
+      "time": 49.91999888420105,
+      "directory": "frames/19968"
+    },
+    {
+      "step": 20352,
+      "time": 50.87999886274338,
+      "directory": "frames/20352"
+    },
+    {
+      "step": 20736,
+      "time": 51.839998841285706,
+      "directory": "frames/20736"
+    },
+    {
+      "step": 21120,
+      "time": 52.79999881982803,
+      "directory": "frames/21120"
+    },
+    {
+      "step": 21504,
+      "time": 53.75999879837036,
+      "directory": "frames/21504"
+    },
+    {
+      "step": 21888,
+      "time": 54.71999877691269,
+      "directory": "frames/21888"
+    },
+    {
+      "step": 22272,
+      "time": 55.67999875545502,
+      "directory": "frames/22272"
+    },
+    {
+      "step": 22656,
+      "time": 56.639998733997345,
+      "directory": "frames/22656"
+    },
+    {
+      "step": 23040,
+      "time": 57.59999871253967,
+      "directory": "frames/23040"
+    },
+    {
+      "step": 23424,
+      "time": 58.559998691082,
+      "directory": "frames/23424"
+    },
+    {
+      "step": 23808,
+      "time": 59.51999866962433,
+      "directory": "frames/23808"
+    },
+    {
+      "step": 24192,
+      "time": 60.47999864816666,
+      "directory": "frames/24192"
+    },
+    {
+      "step": 24576,
+      "time": 61.439998626708984,
+      "directory": "frames/24576"
+    }
+  ],
+  "simulation": "Quasistatic screened dielectric growth with converged 3D harmonic potential; discharge-centered heat diffusion/cooling and conservative thermal nutrient-to-mineral conversion reuse Interior ThermalWriter exposure law; accumulated dose enhances subsequent growth susceptibility while depleted nutrient inhibits it.",
+  "initialization": "Three unequal designed conductive electrode stubs and a soft chamfered-prism susceptibility envelope. No pre-grown branches.",
+  "optics": "Chosen amber chamber, metallic conductor thickness, cold emission for recently created sites, mineral isosurfaces and temperature volume are artistic optical mappings; no physical luminescence or Maxwell optical solve.",
+  "publication": {
+    "source_image_sha256": "bd3f6b0c6e667ee9001107db6301e958480091175975615affd28288988f9bcf",
+    "webp_sha256": "f55a992b6c2a53dc4467edb2264e171f652570ac8d2ce0bda7e08deeee437cba",
+    "quality": 95,
+    "width": 2000,
+    "samples": 128,
+    "native_shape": [
+      257,
+      257,
+      257
+    ],
+    "original_retained": true,
+    "reviewed_by": "Codex material artist"
+  }
+}
