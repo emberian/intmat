@@ -449,3 +449,16 @@ against incompatible fixed aliases. A reviewed native 256³ activity-contour pho
   The heartbeat now monitors all four bounded histories, retaining its original
   thirty-minute cadence and stop-after-completion policy. Optimized old CPU
   continuation still has its own21:54UTC deadline after this ten-hour session.
+
+- 17:02 UTC art publication: **Wider weather** (`77cdc07`,65 actual257³
+  captures,960²) is live; Pages succeeded. **Retained garden** (`f5624a2`,61
+  actual64³ captures,t0–300,960²) is reviewed, curated and pushed. Both films
+  preserve fixed cameras and source histories. Local `_site` rebuilt135.58MB
+  under144MB. Counterpoint2000² final and the second-seam193-frame Metal film
+  continue; Counterpoint wide-camera CPU trial precedes its film batches.
+- The actual native observatory has passed production64³/32³, selection and
+  playback QA through t15; mirror/observer/watchdog PIDs25223/25224/25281,
+  provenance and source hashes in its output directory. New lattice AMD gate
+  is prepared and CPU-smoked (`41ec52b`) but awaits the longgarden GPU release.
+  A separate contact-candidate study is exploring reuse across mechanical
+  substeps; no production changes or speedup claim yet.
