@@ -1,0 +1,118 @@
+{
+  "kind": "warmed complete catalytic arena step and matching ordered stages",
+  "habitat_fraction_of_complete_medians": 0.13657944628280191,
+  "stages": {
+    "tuple_preflight": {
+      "p10_ms": 0.1726291,
+      "minimum_ms": 0.169042,
+      "total_gc_ms": 0.0,
+      "samples": 40,
+      "p90_ms": 0.21485060000000003,
+      "median_ms": 0.1822705,
+      "median_allocated_bytes": 49264.0
+    },
+    "soluble_pool": {
+      "p10_ms": 0.0478708,
+      "minimum_ms": 0.047416999999999994,
+      "total_gc_ms": 0.0,
+      "samples": 40,
+      "p90_ms": 0.050671100000000004,
+      "median_ms": 0.049625,
+      "median_allocated_bytes": 1232.0
+    },
+    "feedstock_pool": {
+      "p10_ms": 0.0273667,
+      "minimum_ms": 0.026958,
+      "total_gc_ms": 0.0,
+      "samples": 40,
+      "p90_ms": 0.03349559999999999,
+      "median_ms": 0.0292085,
+      "median_allocated_bytes": 816.0
+    },
+    "cellular_ecology": {
+      "p10_ms": 0.9198204999999999,
+      "minimum_ms": 0.902292,
+      "total_gc_ms": 0.0,
+      "samples": 40,
+      "p90_ms": 1.3760583,
+      "median_ms": 0.9797914999999999,
+      "median_allocated_bytes": 490848.0
+    },
+    "catalytic_habitat": {
+      "p10_ms": 0.1878833,
+      "minimum_ms": 0.181625,
+      "total_gc_ms": 0.0,
+      "samples": 40,
+      "p90_ms": 0.23524110000000004,
+      "median_ms": 0.1973545,
+      "median_allocated_bytes": 45568.0
+    }
+  },
+  "method": "40 fresh deep copies of the same t80 state per path; clone outside timing;5 warmups. Ordered stage timings include tuple preflight but exclude clock/counter increment. No source migration or saved/live mutation. Source pin may differ from subsequently optimized working tree.",
+  "sum_stage_medians_ms": 1.43825,
+  "source_snapshot": "catalytic-habitat-20261015-active-source",
+  "environment": {
+    "julia": "1.12.4",
+    "backend": "Julia CPU",
+    "arch": "aarch64",
+    "threads": 2,
+    "cpu": "apple-m2",
+    "kernel": "Darwin",
+    "gc_threads": 1
+  },
+  "loaded_sources": {
+    "core.jl": "14e35f0ff39a67a55265d4d1046d470e6043140b663da00d5eda0e4179cc69b6",
+    "neural_workspace.jl": "ecdd45856bc0b3c61708de90814d1abb33bc1232a0f9ff5785b32b9bc39a9139",
+    "writing.jl": "78fba7cd46f03749bdc56547b7ce5622f7ba3ea42cc34801829345dae3975e05",
+    "Interior.jl": "ed70d2cfdfd245da13483dea2b36d75faeaceaaf0bff2d8bb75cb97d5700e4f1",
+    "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+    "cellular.jl": "44cb6fc4ff7e94b6b0e7f06dafa294f7b9964bb5c6801ba0a3a3378763869d3a",
+    "cellular_contacts.jl": "16a234cbd1a18bba85d4a69ddba00d8ca97f4baae01bf7e4b7687bce7a7c4828",
+    "resources.jl": "859f6e04b456ceee051fd83214b37ca18418af09126960997b7d62d83c2dcab0",
+    "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+    "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+    "dose_writer.jl": "b8d1b4013921a3c82388ee87a7ede00b97964a1894062f2a07339f2c6be197eb",
+    "cellular_transport.jl": "d734d0c7b9b305a7543ad994c18e5a649163f34b5450a6542e44e7258ce45f35",
+    "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+    "cellular_arena.jl": "2ef965717c99cd0c46a8acd9ceb7da26232201cb18547bd23712e989688429e2",
+    "experiments.jl": "e2e513ac4bfb0af90b5d1c870c5f403705eddd0606316ee2f86c5f5bc83eb527",
+    "metabolic_ecology.jl": "2f599a1d6ea0a5552a594113d57e238e4c6ff3c1fd8d74de5a51f83a77179bb1",
+    "mechanics.jl": "81001af879163392dde498534c9f099bcc79a16b8dac5104d527da7cc9f4fdac",
+    "neural_ecology.jl": "ed0496adb31ce4511f8bc0d5343ff843c410c39c51d30c165b3cf5eac1135df2",
+    "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+    "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+    "compartments.jl": "e7c55ce4e0f4a8548c078c9d160815b5eaeb846a3765aad89a875f166b5005e5",
+    "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+    "catalytic_habitat.jl": "c38fd30910b03c8917dd7b4eea536afdf4b6a92d58872385081f05827ac14f19",
+    "arena.jl": "da24242b7d7b7553a612b011abf1721c4ecb91018c1af35e18cfd8fdcd5ac8b4",
+    "catalytic_arena.jl": "7bc8656ee4894fd1c3d588d359bd504cf9bdc70044462eab2beac2cffbfb977d",
+    "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+    "implicit_phase.jl": "1fb617707591f89784b95171e0558065101b3d992f7b3eabd16a7bf01dca4ceb",
+    "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+    "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+    "recurrent_material.jl": "6d9aa46d74bd0b5302f5ca8fe4211bf2a3596826a218ed9f8c2cfaa5240871ac",
+    "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+    "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+    "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+  },
+  "complete_step": {
+    "p10_ms": 1.3650667,
+    "minimum_ms": 1.345209,
+    "total_gc_ms": 0.0,
+    "samples": 40,
+    "p90_ms": 1.7795750000000001,
+    "median_ms": 1.4449795,
+    "median_allocated_bytes": 587600.0
+  },
+  "state": {
+    "step": 800,
+    "population": 78,
+    "time": 80.0000011920929,
+    "bonds": 114,
+    "snapshot_sha256": "9d708bfce0332b55dfcb86373d114fc3bc3eb9ea33151379e5c2b0cd14ceed8a",
+    "enzyme_mass": [
+      1.8879352079973644,
+      1.3498405666367617
+    ]
+  }
+}

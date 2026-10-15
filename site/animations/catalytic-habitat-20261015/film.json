@@ -1,0 +1,806 @@
+{
+  "schema": "interior-animation",
+  "id": "catalytic-habitat-20261015",
+  "title": "A habitat built by its inhabitants",
+  "description": "Cells pay to construct extracellular catalysts that unlock otherwise inaccessible food. Recorded catalyst and soluble-food fields accompany measured cells and bonds from t=0 to t=300. This exploratory trajectory grows, then declines; it does not demonstrate evolved cooperation or lasting collective organization.",
+  "source": {
+    "model": "Julia CellularEcology + CatalyticHabitat",
+    "condition": "regulated",
+    "observation_kind": "121 actual recorded observations; no reconstructed or interpolated motion",
+    "source_snapshot": "catalytic-habitat-20261015-active-source",
+    "loaded_sources": {
+      "core.jl": "14e35f0ff39a67a55265d4d1046d470e6043140b663da00d5eda0e4179cc69b6",
+      "neural_workspace.jl": "ecdd45856bc0b3c61708de90814d1abb33bc1232a0f9ff5785b32b9bc39a9139",
+      "writing.jl": "78fba7cd46f03749bdc56547b7ce5622f7ba3ea42cc34801829345dae3975e05",
+      "Interior.jl": "ed70d2cfdfd245da13483dea2b36d75faeaceaaf0bff2d8bb75cb97d5700e4f1",
+      "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+      "cellular.jl": "44cb6fc4ff7e94b6b0e7f06dafa294f7b9964bb5c6801ba0a3a3378763869d3a",
+      "cellular_contacts.jl": "16a234cbd1a18bba85d4a69ddba00d8ca97f4baae01bf7e4b7687bce7a7c4828",
+      "resources.jl": "859f6e04b456ceee051fd83214b37ca18418af09126960997b7d62d83c2dcab0",
+      "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+      "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+      "dose_writer.jl": "b8d1b4013921a3c82388ee87a7ede00b97964a1894062f2a07339f2c6be197eb",
+      "cellular_transport.jl": "d734d0c7b9b305a7543ad994c18e5a649163f34b5450a6542e44e7258ce45f35",
+      "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+      "cellular_arena.jl": "2ef965717c99cd0c46a8acd9ceb7da26232201cb18547bd23712e989688429e2",
+      "experiments.jl": "e2e513ac4bfb0af90b5d1c870c5f403705eddd0606316ee2f86c5f5bc83eb527",
+      "metabolic_ecology.jl": "2f599a1d6ea0a5552a594113d57e238e4c6ff3c1fd8d74de5a51f83a77179bb1",
+      "mechanics.jl": "81001af879163392dde498534c9f099bcc79a16b8dac5104d527da7cc9f4fdac",
+      "neural_ecology.jl": "ed0496adb31ce4511f8bc0d5343ff843c410c39c51d30c165b3cf5eac1135df2",
+      "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+      "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+      "compartments.jl": "e7c55ce4e0f4a8548c078c9d160815b5eaeb846a3765aad89a875f166b5005e5",
+      "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+      "catalytic_habitat.jl": "c38fd30910b03c8917dd7b4eea536afdf4b6a92d58872385081f05827ac14f19",
+      "arena.jl": "da24242b7d7b7553a612b011abf1721c4ecb91018c1af35e18cfd8fdcd5ac8b4",
+      "catalytic_arena.jl": "7bc8656ee4894fd1c3d588d359bd504cf9bdc70044462eab2beac2cffbfb977d",
+      "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+      "implicit_phase.jl": "1fb617707591f89784b95171e0558065101b3d992f7b3eabd16a7bf01dca4ceb",
+      "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+      "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+      "recurrent_material.jl": "6d9aa46d74bd0b5302f5ca8fe4211bf2a3596826a218ed9f8c2cfaa5240871ac",
+      "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+      "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+      "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+    },
+    "configuration": {
+      "batch": 5,
+      "cellular": {
+        "hidden": 8,
+        "population": 32,
+        "mutation": 0.08,
+        "mutation_probability": 0.03,
+        "exchange_radius": 1.0,
+        "junction_rate": 0.8,
+        "capacity": 1024
+      },
+      "catalysis": {
+        "secretion_work": 0.2,
+        "investment_bias": -1.0,
+        "allocation_exponent": 2.0,
+        "half_saturation": 0.2,
+        "catalytic_rate": 4.0,
+        "allocation_bias_scale": 1.2,
+        "secretion_rate": 0.12,
+        "decay_rate": 0.015,
+        "mutation": 0.08,
+        "mutation_probability": 0.03,
+        "regulation": true
+      },
+      "model": "catalytic",
+      "dt": 0.1,
+      "snapshot_seconds": 2.0,
+      "sleep_seconds": 0.001,
+      "feedstock": {
+        "names": [
+          "bound_a",
+          "bound_b"
+        ],
+        "diffusion": [
+          0.0,
+          0.0
+        ],
+        "initial": [
+          1.5,
+          1.5
+        ],
+        "source_rates": [
+          0.0025,
+          0.0025
+        ],
+        "source_budgets": [
+          100000.0,
+          100000.0
+        ],
+        "potentials": [
+          4.0,
+          4.0
+        ]
+      },
+      "grid": {
+        "shape": [
+          32,
+          32,
+          1
+        ],
+        "extent": [
+          16.0,
+          16.0,
+          1.0
+        ]
+      },
+      "resources": {
+        "source_budgets": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "niche_contrast": 0.95,
+        "names": [
+          "precursor_a",
+          "precursor_b",
+          "waste"
+        ],
+        "spatial_niches": true,
+        "sink_budgets": [
+          0.0,
+          0.0,
+          100000.0
+        ],
+        "niche_waves": [
+          2,
+          2,
+          0
+        ],
+        "diffusion": [
+          0.12,
+          0.12,
+          0.03
+        ],
+        "sink_rates": [
+          0.0,
+          0.0,
+          0.01
+        ],
+        "initial": [
+          0.3,
+          0.3,
+          0.0
+        ],
+        "source_rates": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "potentials": [
+          4.0,
+          4.0,
+          0.0
+        ]
+      },
+      "checkpoint_seconds": 90.0,
+      "seed": 211
+    },
+    "simulation_time_bounds": [
+      0.0,
+      300.00000447034836
+    ],
+    "integration_dt": 0.1,
+    "sample_steps": 25,
+    "observation_report_sha256": "9ce92d193844b5fd608d0d6c7796f608ba3bc0dc4c42650e0c9c5b62cef248b0",
+    "display": {
+      "left": "enzyme_a/enzyme_b, catalyst mass per physical volume",
+      "right": "precursor_a/precursor_b, mass per grid cell; cell volume 0.25",
+      "hue": "A amber, B teal",
+      "exposure": "Each panel uses one fixed maximum over the full trajectory; brightness=log1p(20*(A+B)/maximum)/log(21). Panels have independent scales.",
+      "panel_maxima": [
+        0.30394921228617017,
+        0.18862183999999999
+      ],
+      "spatial_interpolation": "nearest-neighbour grid values",
+      "geometry": "Recorded physical disks and periodic ID bonds; no 3D anatomy or fabricated motion"
+    }
+  },
+  "playback": {
+    "fps": 12,
+    "duration_seconds": 10.083333333333334,
+    "width": 928,
+    "height": 584,
+    "rendered_width": 928,
+    "rendered_height": 584,
+    "interpolation": "none; one video frame per recorded simulation sample"
+  },
+  "frames": [
+    {
+      "video_time": 0.0,
+      "simulation_time": 0.0,
+      "source_image_sha256": "fdecdfbdf281643d6966b89ec0a41f0146ece05bf47c4db597c81a07b7126bb9"
+    },
+    {
+      "video_time": 0.08333333333333333,
+      "simulation_time": 2.500000037252903,
+      "source_image_sha256": "e1e74a55df818802364e4c18d2160feb1109a13416a9d7be92e1cc21e0eb5ce3"
+    },
+    {
+      "video_time": 0.16666666666666666,
+      "simulation_time": 5.000000074505806,
+      "source_image_sha256": "5e4571220aa467034a389fa71bc615c12bfc4a3320be0576da27b35119362ca7"
+    },
+    {
+      "video_time": 0.25,
+      "simulation_time": 7.500000111758709,
+      "source_image_sha256": "9db5ad4f34b74694d3ee1dd57f59386f970b99de4934a1df36c9782e861050eb"
+    },
+    {
+      "video_time": 0.3333333333333333,
+      "simulation_time": 10.000000149011612,
+      "source_image_sha256": "6ab358b2888ecdbd39e75e1263ef051d11dce251785c3063778fe8ac2baadc32"
+    },
+    {
+      "video_time": 0.4166666666666667,
+      "simulation_time": 12.500000186264515,
+      "source_image_sha256": "ec8d3e98d61d59bba26284a072ceaec2d474ca0912142cc2d6a02ab2456d212c"
+    },
+    {
+      "video_time": 0.5,
+      "simulation_time": 15.000000223517418,
+      "source_image_sha256": "8d8b2a1eeb8f96d8edbc281893b3fe75eeee03c895ade97f7e5a01135b57425b"
+    },
+    {
+      "video_time": 0.5833333333333334,
+      "simulation_time": 17.50000026077032,
+      "source_image_sha256": "5008e3b23db27e61e329dc38eaddbcfb4f2f909292d54f5617d91fafb1fbbe47"
+    },
+    {
+      "video_time": 0.6666666666666666,
+      "simulation_time": 20.000000298023224,
+      "source_image_sha256": "e68fc30ecb189e9d12f663e758803b3230fd1cc1734b2b6ad28c47ab4031770c"
+    },
+    {
+      "video_time": 0.75,
+      "simulation_time": 22.500000335276127,
+      "source_image_sha256": "7b5f894435d4691c3c90a19093f5234462f5e31c2ae9511d7cbed2ec9e15503b"
+    },
+    {
+      "video_time": 0.8333333333333334,
+      "simulation_time": 25.00000037252903,
+      "source_image_sha256": "a5d2cc4f77e5ed1e5c674f5df39c9016273555236365814bb527e1c481d3a33c"
+    },
+    {
+      "video_time": 0.9166666666666666,
+      "simulation_time": 27.500000409781933,
+      "source_image_sha256": "879a0eded08928d857a10529cfd6eb2e2886277688523fc3bf32f348557a340b"
+    },
+    {
+      "video_time": 1.0,
+      "simulation_time": 30.000000447034836,
+      "source_image_sha256": "401560f1a89833003f990d127be1f77814036be522b961ffa62a58571b1dff39"
+    },
+    {
+      "video_time": 1.0833333333333333,
+      "simulation_time": 32.50000048428774,
+      "source_image_sha256": "120680a760f90f98a3ea1b74cf1cf4b56586cb9ad4f7d2800c8fe3ad86f2442c"
+    },
+    {
+      "video_time": 1.1666666666666667,
+      "simulation_time": 35.00000052154064,
+      "source_image_sha256": "20844916733691e2cd262b0bac04038d1b07d02f3308ca3365a83bc203c79f12"
+    },
+    {
+      "video_time": 1.25,
+      "simulation_time": 37.500000558793545,
+      "source_image_sha256": "d6d77936a8ab84b16b66871ebd47a201befd36f86241b375bce22b15198654ab"
+    },
+    {
+      "video_time": 1.3333333333333333,
+      "simulation_time": 40.00000059604645,
+      "source_image_sha256": "eb7ddd5e58f6b03232d7214626ce705cfe22d1aa65815e56f0a9987e763f676d"
+    },
+    {
+      "video_time": 1.4166666666666667,
+      "simulation_time": 42.50000063329935,
+      "source_image_sha256": "d778266ffe5c9915bac8d0ac0b447378a5eeafc1e628f3e61cb0998a1d7e4fb4"
+    },
+    {
+      "video_time": 1.5,
+      "simulation_time": 45.000000670552254,
+      "source_image_sha256": "3ba8f1cf9d85d334c97fca688a4b3d24330d6cb85d7117461a88b0051bd316cc"
+    },
+    {
+      "video_time": 1.5833333333333333,
+      "simulation_time": 47.50000070780516,
+      "source_image_sha256": "1f4ffdceed97a821a51d049ff5a678a613dc8e5c3c8d21be14e385bceefaef0a"
+    },
+    {
+      "video_time": 1.6666666666666667,
+      "simulation_time": 50.00000074505806,
+      "source_image_sha256": "d33729bd7becb6e5aae86c0e680d046d225d56362abe52c036361e2823a41ba3"
+    },
+    {
+      "video_time": 1.75,
+      "simulation_time": 52.50000078231096,
+      "source_image_sha256": "02c61f6c4c06e7e7fc38a42b74d61d851b66c2a66b4c83b4b6f3afab975a022f"
+    },
+    {
+      "video_time": 1.8333333333333333,
+      "simulation_time": 55.000000819563866,
+      "source_image_sha256": "cd1c46e08dad6df944550467e6bbdf14514878b950a2e4eed7c5438ece8efcee"
+    },
+    {
+      "video_time": 1.9166666666666667,
+      "simulation_time": 57.50000085681677,
+      "source_image_sha256": "eb6224e823d1c0a7c5f65683d3bbb9b5f5eda3a7a5b4adb5a6b299d412f9f0ed"
+    },
+    {
+      "video_time": 2.0,
+      "simulation_time": 60.00000089406967,
+      "source_image_sha256": "b252b68b00e072e48321c9959f77db3e7b02da278117dcda53b484261e10ddfb"
+    },
+    {
+      "video_time": 2.0833333333333335,
+      "simulation_time": 62.500000931322575,
+      "source_image_sha256": "ccee4fb6df9a1931487aee09e50fab6ba75ea6fcc23c198882f4d03f497f4e1f"
+    },
+    {
+      "video_time": 2.1666666666666665,
+      "simulation_time": 65.00000096857548,
+      "source_image_sha256": "921e66a380e5ff6a24d8683451b9e605e936c99916cf436a90318bb654ec0142"
+    },
+    {
+      "video_time": 2.25,
+      "simulation_time": 67.50000100582838,
+      "source_image_sha256": "ffb74f86d28b44ecbbd10e0e3a72a40d2ddba63e25c6c841d2c8565bb7d82cb1"
+    },
+    {
+      "video_time": 2.3333333333333335,
+      "simulation_time": 70.00000104308128,
+      "source_image_sha256": "4205a53b3c101052c690db348e80b8f6c4a35b621986f915f6b64f550a174b18"
+    },
+    {
+      "video_time": 2.4166666666666665,
+      "simulation_time": 72.50000108033419,
+      "source_image_sha256": "f7389e32cf2ea9993b5657d489ad48458da153c856206ebd77c0b3130fee8f5a"
+    },
+    {
+      "video_time": 2.5,
+      "simulation_time": 75.00000111758709,
+      "source_image_sha256": "9a547a16f149e0f01218b0d1f8a294759406692fefa33c402058f8996e9df52a"
+    },
+    {
+      "video_time": 2.5833333333333335,
+      "simulation_time": 77.50000115483999,
+      "source_image_sha256": "8a22f94cb4978072fe9c4f3362f68483d22b6bd7e42f510f715191c58cd23fa7"
+    },
+    {
+      "video_time": 2.6666666666666665,
+      "simulation_time": 80.0000011920929,
+      "source_image_sha256": "27e70c90fa1e536946fb829ff351da433b4ea6d37c7b0141e7503f89b670de07"
+    },
+    {
+      "video_time": 2.75,
+      "simulation_time": 82.5000012293458,
+      "source_image_sha256": "d831502014eaa06751b7f752eafe1cee8e77f41e4d9f26c5ac3b7aea6dfa6923"
+    },
+    {
+      "video_time": 2.8333333333333335,
+      "simulation_time": 85.0000012665987,
+      "source_image_sha256": "006fafec0a2d87403d721de87645189a0504c8f29075cb15e123912cbe14dd4e"
+    },
+    {
+      "video_time": 2.9166666666666665,
+      "simulation_time": 87.5000013038516,
+      "source_image_sha256": "457e77305d7a7effcfae5b53c8f90e6831a1d5a319c8abf65cf748bf4f409074"
+    },
+    {
+      "video_time": 3.0,
+      "simulation_time": 90.00000134110451,
+      "source_image_sha256": "ebf3cabb0ba20dbdaf8edd2303b4588e5bc9f91818adcdab17a16323b870dcf0"
+    },
+    {
+      "video_time": 3.0833333333333335,
+      "simulation_time": 92.50000137835741,
+      "source_image_sha256": "bf4d1f92bfaf945a928a05433f09acef728d6b6093e7e6ce08b9e1480b2dcea5"
+    },
+    {
+      "video_time": 3.1666666666666665,
+      "simulation_time": 95.00000141561031,
+      "source_image_sha256": "16e6f24e8de072505117fa931e46565ad8ca81b1b203243761f7b0864f26118d"
+    },
+    {
+      "video_time": 3.25,
+      "simulation_time": 97.50000145286322,
+      "source_image_sha256": "ce73c4caf7bcbae24265eb5d0b9579e1e059d6e714726ddf936c6afe117737bc"
+    },
+    {
+      "video_time": 3.3333333333333335,
+      "simulation_time": 100.00000149011612,
+      "source_image_sha256": "b22e8fd3954fcb08f7835bd1630e1aa3050e7c8dfe3a7fff19863f3c7ad2cc0a"
+    },
+    {
+      "video_time": 3.4166666666666665,
+      "simulation_time": 102.50000152736902,
+      "source_image_sha256": "6f348a9063fd38b1da24a5193c5c919cbed21152316e79c6560fc4f5afdbe61b"
+    },
+    {
+      "video_time": 3.5,
+      "simulation_time": 105.00000156462193,
+      "source_image_sha256": "3d46cc51fb7e8b0dd351f09628ae5df54522027f6c734025a6f73c6ae0177c5f"
+    },
+    {
+      "video_time": 3.5833333333333335,
+      "simulation_time": 107.50000160187483,
+      "source_image_sha256": "e3d5dcea2a9d1fc11ca23aa9fbb68b556c18f8897dcf9cf2a7559bd78156d6ef"
+    },
+    {
+      "video_time": 3.6666666666666665,
+      "simulation_time": 110.00000163912773,
+      "source_image_sha256": "6a7f9a9d7d82da85efd68a1b2b16b80c9e777fbe5a9455405dea9418bbf2cef1"
+    },
+    {
+      "video_time": 3.75,
+      "simulation_time": 112.50000167638063,
+      "source_image_sha256": "c5a15d8471f9665d07f4da9ee758d46fd8f229817a9853870d50a648d36d2b38"
+    },
+    {
+      "video_time": 3.8333333333333335,
+      "simulation_time": 115.00000171363354,
+      "source_image_sha256": "f18f66b01b7a3215925aeedb5c8ab866e25707e5e868346471a34d31d745997e"
+    },
+    {
+      "video_time": 3.9166666666666665,
+      "simulation_time": 117.50000175088644,
+      "source_image_sha256": "1babf186fa9062e4ca92690f61cc5932c0a086de554eef8d5228516ea0751335"
+    },
+    {
+      "video_time": 4.0,
+      "simulation_time": 120.00000178813934,
+      "source_image_sha256": "0b94cd844105c1d6b9b53ef47a04b64efd134478e7373565671b7215019467dd"
+    },
+    {
+      "video_time": 4.083333333333333,
+      "simulation_time": 122.50000182539225,
+      "source_image_sha256": "0abf885047af579836170e8fdeda9aacbe7f266f60de7c8968b1378c8bb049a8"
+    },
+    {
+      "video_time": 4.166666666666667,
+      "simulation_time": 125.00000186264515,
+      "source_image_sha256": "30c454c432874a6dddc58be60c83df21278ce92b51b19f4ea9b6a1109be45853"
+    },
+    {
+      "video_time": 4.25,
+      "simulation_time": 127.50000189989805,
+      "source_image_sha256": "90da1e5272091ac26a021aea285e7ecb6b5b6bc110f46f58b8b2ba29bfc9b568"
+    },
+    {
+      "video_time": 4.333333333333333,
+      "simulation_time": 130.00000193715096,
+      "source_image_sha256": "e6464c6bea011f8778dcfc8af72dc2dadce0194fa6334c999227638b7ca6254e"
+    },
+    {
+      "video_time": 4.416666666666667,
+      "simulation_time": 132.50000197440386,
+      "source_image_sha256": "0edc61c7ce572c3b37dc3c18279673316f63d68fbfed60d3f7a904ff439eed7c"
+    },
+    {
+      "video_time": 4.5,
+      "simulation_time": 135.00000201165676,
+      "source_image_sha256": "02ce0c4df3c45b43e19518f73fceb435b231869347ce83251bc4315949ac209c"
+    },
+    {
+      "video_time": 4.583333333333333,
+      "simulation_time": 137.50000204890966,
+      "source_image_sha256": "1ef99ae26db1bbf8c8868920f98fde36aacc638f5de6ffce38f11544cca50cf3"
+    },
+    {
+      "video_time": 4.666666666666667,
+      "simulation_time": 140.00000208616257,
+      "source_image_sha256": "f6f59809d4c53c8711e734e827474682fefba473503f93834d003d5d25e2f95a"
+    },
+    {
+      "video_time": 4.75,
+      "simulation_time": 142.50000212341547,
+      "source_image_sha256": "4dff297bc64dbc1dfd2048c355c36cb23ac4caef62cbd13a00a281cbd92d4917"
+    },
+    {
+      "video_time": 4.833333333333333,
+      "simulation_time": 145.00000216066837,
+      "source_image_sha256": "51cb0f568ebe5abafcfaeee6f1008ce4dd264ad3453be3b330a428b9d84f5ec9"
+    },
+    {
+      "video_time": 4.916666666666667,
+      "simulation_time": 147.50000219792128,
+      "source_image_sha256": "413a79d73ec1d5ca573e1016f04ca6b72325c32557106cdf14dee655893534cf"
+    },
+    {
+      "video_time": 5.0,
+      "simulation_time": 150.00000223517418,
+      "source_image_sha256": "70149b3a6803e72d89da1892bec5e92852f741c9cae3f02e9271faf65a48ac4e"
+    },
+    {
+      "video_time": 5.083333333333333,
+      "simulation_time": 152.50000227242708,
+      "source_image_sha256": "bd8f27aa469aa3aee178c41d6decc89893ac72d129cb13258c8388d233cde961"
+    },
+    {
+      "video_time": 5.166666666666667,
+      "simulation_time": 155.00000230967999,
+      "source_image_sha256": "c03dc226ac7a7380619435e7b8fa96d50d659abef5f216c8ea4179250b288669"
+    },
+    {
+      "video_time": 5.25,
+      "simulation_time": 157.5000023469329,
+      "source_image_sha256": "ae56ec4f174c743217d3444bfc060b421e5fd42bb952f34b30aa860f49024e36"
+    },
+    {
+      "video_time": 5.333333333333333,
+      "simulation_time": 160.0000023841858,
+      "source_image_sha256": "de78c0995837cb35a7a90acbe0f2a3d2c4fe0c501a7c5d05e45fc97500cd96de"
+    },
+    {
+      "video_time": 5.416666666666667,
+      "simulation_time": 162.5000024214387,
+      "source_image_sha256": "f48a9945392ed2f7841ab57dc98d30a1c88e888207cf4cd7c36dc0ab7d0766ae"
+    },
+    {
+      "video_time": 5.5,
+      "simulation_time": 165.0000024586916,
+      "source_image_sha256": "615dc71d404ef167d1224975045d1e36a602c83b06067435af6e4c27b90bb348"
+    },
+    {
+      "video_time": 5.583333333333333,
+      "simulation_time": 167.5000024959445,
+      "source_image_sha256": "e6745ef9788b155c2075f3d9ffdb97e4163319d7812a611cbd1392aee86f2e83"
+    },
+    {
+      "video_time": 5.666666666666667,
+      "simulation_time": 170.0000025331974,
+      "source_image_sha256": "b94e0087f643ae1441635406f1cf4d861ed513a1856cd7c486de9fc9d2520b34"
+    },
+    {
+      "video_time": 5.75,
+      "simulation_time": 172.5000025704503,
+      "source_image_sha256": "ad4c177c8f3cfc01fb2b6eb5c56f525179f193008caf7983bb9b2fd346fafe62"
+    },
+    {
+      "video_time": 5.833333333333333,
+      "simulation_time": 175.0000026077032,
+      "source_image_sha256": "c4c01e2d88fa99a27770b619e2a3a3f92dfbd272860b551651c3ca1b17f3e98a"
+    },
+    {
+      "video_time": 5.916666666666667,
+      "simulation_time": 177.5000026449561,
+      "source_image_sha256": "8005477eefcdeaacb2dea65288ddcb7b3618a0b4be767339b0ccc621d6a60e28"
+    },
+    {
+      "video_time": 6.0,
+      "simulation_time": 180.00000268220901,
+      "source_image_sha256": "7d8636e136c8777d4d5935f31901cc7e3102f8441c7a15f653296b5997b9bb69"
+    },
+    {
+      "video_time": 6.083333333333333,
+      "simulation_time": 182.50000271946192,
+      "source_image_sha256": "ed46efa56fa9b5575cc478f7a802692624f31277efa2edfe710bde8b11446c26"
+    },
+    {
+      "video_time": 6.166666666666667,
+      "simulation_time": 185.00000275671482,
+      "source_image_sha256": "e6946fa2c39c088e80348fe275ddc991bfaaad560e0bff0788e7bfd64d79f92d"
+    },
+    {
+      "video_time": 6.25,
+      "simulation_time": 187.50000279396772,
+      "source_image_sha256": "af4b51c924be689730271ddf249dc2f27be57dffffd7d5ec5a0c85446ef03d48"
+    },
+    {
+      "video_time": 6.333333333333333,
+      "simulation_time": 190.00000283122063,
+      "source_image_sha256": "053b9936a24c03c464ccbcad33c34746fab4386c025a662a331eda498f2ae986"
+    },
+    {
+      "video_time": 6.416666666666667,
+      "simulation_time": 192.50000286847353,
+      "source_image_sha256": "623b8da9f3f125d2a067fde9b0d23421204c46919bf69c99c10b5809fb2d171d"
+    },
+    {
+      "video_time": 6.5,
+      "simulation_time": 195.00000290572643,
+      "source_image_sha256": "2b4c7ea534654f2f239c9500df61a891cd0fd6004c118b8239ab1a71aa83599b"
+    },
+    {
+      "video_time": 6.583333333333333,
+      "simulation_time": 197.50000294297934,
+      "source_image_sha256": "6a250890125f007cbba1f3d54507f24da304dacebdc30b31bf853d33551d2f0b"
+    },
+    {
+      "video_time": 6.666666666666667,
+      "simulation_time": 200.00000298023224,
+      "source_image_sha256": "eea6c292cff38a294ac9bdb1099d0028a525e76384fd26a11cfd46744dfbfb7a"
+    },
+    {
+      "video_time": 6.75,
+      "simulation_time": 202.50000301748514,
+      "source_image_sha256": "60614639b984242e827ce34e3de48cad892254d4bc28e928ea9d80e216b8fe08"
+    },
+    {
+      "video_time": 6.833333333333333,
+      "simulation_time": 205.00000305473804,
+      "source_image_sha256": "f663fbbf91d6c251ba484d7f2a2c49ac13beda1c78344a45be193a1e73dbf330"
+    },
+    {
+      "video_time": 6.916666666666667,
+      "simulation_time": 207.50000309199095,
+      "source_image_sha256": "09287494234e947c0fc52ff2de556f57d6b94216d1c82b346b0f051cca87a34d"
+    },
+    {
+      "video_time": 7.0,
+      "simulation_time": 210.00000312924385,
+      "source_image_sha256": "7b7567260c158aa42954a621cbae0afb3ec803fca0132adb2c8f7cb26824bdce"
+    },
+    {
+      "video_time": 7.083333333333333,
+      "simulation_time": 212.50000316649675,
+      "source_image_sha256": "e2336c31d721f476953411d8aa5941c0242c03ff54323456601630cc3990b561"
+    },
+    {
+      "video_time": 7.166666666666667,
+      "simulation_time": 215.00000320374966,
+      "source_image_sha256": "2f385a838e6dba3b3a99bc22055657d56dfe8ede4384f4644280a5109f2638c3"
+    },
+    {
+      "video_time": 7.25,
+      "simulation_time": 217.50000324100256,
+      "source_image_sha256": "a54afaa164c4e98ad308287032a0d8727e7074b4419923216da61097075f0d36"
+    },
+    {
+      "video_time": 7.333333333333333,
+      "simulation_time": 220.00000327825546,
+      "source_image_sha256": "8659bea9775289a7029ee5c1ccdabf84022ad66b692a890b609b23d7d1f7ec57"
+    },
+    {
+      "video_time": 7.416666666666667,
+      "simulation_time": 222.50000331550837,
+      "source_image_sha256": "685d668c78c5c097bc037127c41b9d7eb789b9fad5862928b501ae3de6d1d73f"
+    },
+    {
+      "video_time": 7.5,
+      "simulation_time": 225.00000335276127,
+      "source_image_sha256": "ab6015dbfd7507bf78e873833ed2eb6ac18430cd4eca8f4bb0bdba68862c2363"
+    },
+    {
+      "video_time": 7.583333333333333,
+      "simulation_time": 227.50000339001417,
+      "source_image_sha256": "87c1370d8f47444cf8d4d83bc5f0bfe04333be9c795ff0782217de47797f1a3e"
+    },
+    {
+      "video_time": 7.666666666666667,
+      "simulation_time": 230.00000342726707,
+      "source_image_sha256": "3121df3c160d3a4cc592260b9fa56b41e76a31e43a45006ed5a72f75102c64b8"
+    },
+    {
+      "video_time": 7.75,
+      "simulation_time": 232.50000346451998,
+      "source_image_sha256": "91a36eae66de404a34918dafdf544ad3127be5db19a83888cf4b6fb704686ca0"
+    },
+    {
+      "video_time": 7.833333333333333,
+      "simulation_time": 235.00000350177288,
+      "source_image_sha256": "c559ab57ffe7f0f223571233b9bd4e9cd744160c72f37d754fa865ef5488a614"
+    },
+    {
+      "video_time": 7.916666666666667,
+      "simulation_time": 237.50000353902578,
+      "source_image_sha256": "edb461862cb0e0e1a6c112c8b8516b43b4608c32a3452edbbd7ef7b8bf4006c9"
+    },
+    {
+      "video_time": 8.0,
+      "simulation_time": 240.0000035762787,
+      "source_image_sha256": "06c69424955e8e08ecd3dfff72e6baee482de4ed607f1e6e48077ee5be3ec8fd"
+    },
+    {
+      "video_time": 8.083333333333334,
+      "simulation_time": 242.5000036135316,
+      "source_image_sha256": "5b562b993f82c91f741733b09a41fad69694ac0caa004718e29eb0f1a2479684"
+    },
+    {
+      "video_time": 8.166666666666666,
+      "simulation_time": 245.0000036507845,
+      "source_image_sha256": "b11088fab2a04ef9c90601d13dc85bc52bb6fe37e79a198e345751e7ad381643"
+    },
+    {
+      "video_time": 8.25,
+      "simulation_time": 247.5000036880374,
+      "source_image_sha256": "bcc3d01f73d9fd04e554300958ec016966d7b3b62537f3bd50340b2df76192ee"
+    },
+    {
+      "video_time": 8.333333333333334,
+      "simulation_time": 250.0000037252903,
+      "source_image_sha256": "12dce7beb4ba1c78492f3283d838132ba5c1936662932fd5793899c2db92f037"
+    },
+    {
+      "video_time": 8.416666666666666,
+      "simulation_time": 252.5000037625432,
+      "source_image_sha256": "459a276883f23bdd66ff6ceca464f90d0d352f8ae6f110743871e6ae54887dd9"
+    },
+    {
+      "video_time": 8.5,
+      "simulation_time": 255.0000037997961,
+      "source_image_sha256": "3a5749fb53a4d0b43a7159aa6232405fc84b2e055c4efea0db1936dcb3a895a9"
+    },
+    {
+      "video_time": 8.583333333333334,
+      "simulation_time": 257.500003837049,
+      "source_image_sha256": "cd85951297cbc0e93abbf9f65d8b1818fb6893b311eb80c488aecb4cdea43341"
+    },
+    {
+      "video_time": 8.666666666666666,
+      "simulation_time": 260.0000038743019,
+      "source_image_sha256": "ca43452ab6209ee80be58c075e6f074ae39afb0b9a6a0039fb35fa0b77e1a853"
+    },
+    {
+      "video_time": 8.75,
+      "simulation_time": 262.5000039115548,
+      "source_image_sha256": "ec53313224f6564361ac70a90d928b67b319929e6a63f404975dc312baa86e60"
+    },
+    {
+      "video_time": 8.833333333333334,
+      "simulation_time": 265.0000039488077,
+      "source_image_sha256": "15c7d9625fcf336aec8951ea339d5b7d895973af9f447de5b28f6a968c98f197"
+    },
+    {
+      "video_time": 8.916666666666666,
+      "simulation_time": 267.5000039860606,
+      "source_image_sha256": "e2ef8534eb405f60089613ad20d2b77a48c8a3e08b046560708d0f1fd3562309"
+    },
+    {
+      "video_time": 9.0,
+      "simulation_time": 270.0000040233135,
+      "source_image_sha256": "0eeefb82256b71e4d9a48eb49d1e7ae6086d0b2e04f759cec50d5a0ae7e52df8"
+    },
+    {
+      "video_time": 9.083333333333334,
+      "simulation_time": 272.5000040605664,
+      "source_image_sha256": "91d61293af953d8cd35697e26f05fd0c19c558f2a453b286cefe240d39df1c8b"
+    },
+    {
+      "video_time": 9.166666666666666,
+      "simulation_time": 275.0000040978193,
+      "source_image_sha256": "9ef0592ca07c3f284aeaca419554f273fe72f7e57d0c400dae43567c09696e0c"
+    },
+    {
+      "video_time": 9.25,
+      "simulation_time": 277.50000413507223,
+      "source_image_sha256": "701dfaa906df42e6fd547500a3e62738bee9f0b6b8e6688af35f13e0ccd9d652"
+    },
+    {
+      "video_time": 9.333333333333334,
+      "simulation_time": 280.00000417232513,
+      "source_image_sha256": "2375279b71f8ea3f7058246faa62d892652cc399669ed25d38c5e6cad7d16990"
+    },
+    {
+      "video_time": 9.416666666666666,
+      "simulation_time": 282.50000420957804,
+      "source_image_sha256": "3937e03861bd83d4213402f586bf17cb842f4545ed48c8c11f6c3db799e36eca"
+    },
+    {
+      "video_time": 9.5,
+      "simulation_time": 285.00000424683094,
+      "source_image_sha256": "e043b7430e916b721f580257528f298a212d787a6b72470503edcf6dad985792"
+    },
+    {
+      "video_time": 9.583333333333334,
+      "simulation_time": 287.50000428408384,
+      "source_image_sha256": "079f925d6188a43e05e741872ad737563ada998da6db5e6d79a6c817cb5b4d8e"
+    },
+    {
+      "video_time": 9.666666666666666,
+      "simulation_time": 290.00000432133675,
+      "source_image_sha256": "b6227b5c66f981f9e74e95d260cbf9f7d09dbd1cfde5e2d8d9044d8141571dd1"
+    },
+    {
+      "video_time": 9.75,
+      "simulation_time": 292.50000435858965,
+      "source_image_sha256": "6aad0f180980f5313e2fa17e34e358c4291b761a7afc4b8d66ebcb15287d3971"
+    },
+    {
+      "video_time": 9.833333333333334,
+      "simulation_time": 295.00000439584255,
+      "source_image_sha256": "0cdef436e7c2dcadc9adfdeb65949d11b723bea755c561fe968ffb05aa380195"
+    },
+    {
+      "video_time": 9.916666666666666,
+      "simulation_time": 297.50000443309546,
+      "source_image_sha256": "be07f967b922eee73d2637b39a2f7f2d4755f54cc1f137a3e32d3d708afb64d1"
+    },
+    {
+      "video_time": 10.0,
+      "simulation_time": 300.00000447034836,
+      "source_image_sha256": "751d23d860daf9cb1ce45eff7692d68a977b93406ab940a8512bd8a80e3f734d"
+    }
+  ],
+  "review": {
+    "sequence_sha256": "a68f3bb7ac89c155160a1f4695164e40132bc0432114dd2d0ccf165507fab2f1",
+    "reviewed_by": "Codex alife_holistic"
+  },
+  "video_sha256": "6753d5f664f217fc85daf880fa022ed99ce8a7f9b9d1e5e1daf81de6840ea989",
+  "poster_sha256": "3073b5e6edb9e3dd02cb8791dbb1be2efa11248e88e7bfb8fa3dc966184e566d"
+}

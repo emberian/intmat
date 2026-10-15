@@ -7,7 +7,7 @@ pressure and damage. Its inhabitants have state: recurrent brains, plastic memor
 inherited metabolism, ancestry and finite inventories. Each changes what the other
 encounters next.
 
-[Gallery](https://emberian.github.io/intmat/) · [Living cells in motion](https://emberian.github.io/intmat/cellular/) · [Cellular architecture](docs/cellular.md) · [Metabolic replay](https://emberian.github.io/intmat/metabolic/arena.html) · [Working state](TRACKER.md)
+[Gallery](https://emberian.github.io/intmat/) · [Material films](https://emberian.github.io/intmat/animations/) · [Living cells in motion](https://emberian.github.io/intmat/cellular/) · [Cellular architecture](docs/cellular.md) · [Metabolic replay](https://emberian.github.io/intmat/metabolic/arena.html) · [Working state](TRACKER.md)
 
 ## Material collection
 
@@ -15,7 +15,7 @@ Six families: phase surfaces, written inclusions, dielectric branches, fractured
 networks, acoustic/neural contours and 3D metabolic inhabitants. Each photograph
 observes a saved simulation through chosen optics. The first series adds 36
 specimens at 1600². Refinement now evolves native 384³ phase, writing and waves;
-768³ writing is complete. Seven refined 2400² photographs plus a recurrent-material portrait bring the gallery to 60
+768³ writing is complete. Seven refined 2400² photographs, recurrent matter and a coupled optical study bring the gallery to 61
 studies, with corrected crop geometry and resin, wax, frost, bronze and copper
 optics. Native 1152³ Julia writing completed in 56.9 minutes with 18.35 GB of state. Ecology remains 32³
 plus continuous agents; mechanics retains its actual deformed bond graph.
@@ -25,6 +25,12 @@ plus continuous agents; mechanics retains its actual deformed bond graph.
 solid; solid changes their communication and thresholds. Native 256³ trajectories
 now run entirely on the GPU in Julia. These are designed, untrained dynamics with
 material memory. [Photograph and motion](https://emberian.github.io/intmat/recurrent/) · [Model and throughput](docs/recurrent-material.md)
+
+**The nacre fault:** native 256³ recurrent mineral and pressure waves change one
+another. Perforated folds are photographed through nacre glass, copper and
+refractive pressure fronts: a 2000² still and 65-frame film. The folds are seeded;
+their subsequent motion comes from the coupled Julia simulation.
+[Study](docs/nacre-fault.md) · [Films](https://emberian.github.io/intmat/animations/)
 
 ## Run
 

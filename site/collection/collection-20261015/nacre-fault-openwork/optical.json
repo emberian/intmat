@@ -1,0 +1,65 @@
+{
+  "renderer_sha256": "56044aa5d274e9f555761fb28fa381993fc6ba0a1e01e8dc62f9096c989a9e6f",
+  "settings": {
+    "run": "nacre-fault-openwork",
+    "output": "nacre-fault-openwork",
+    "device": "METAL",
+    "image_name": "final-v2.png",
+    "steps": "320",
+    "size": 2000,
+    "samples": 128,
+    "solid_iso": 0.16,
+    "core_iso": 0.6,
+    "pressure_iso": 0.12,
+    "no_wave": false,
+    "save_scene": true,
+    "orbit": 0.55,
+    "elevation": 0.36,
+    "distance": 4.0
+  },
+  "source": {
+    "shape": [
+      256,
+      256,
+      256
+    ],
+    "step": 320,
+    "time": 8.00000011920929,
+    "run_sha256": "1e572dd5b9b657650f1119009244fb11623021616178dfa4838cb7dc2ca1ed9f"
+  },
+  "meshes": [
+    {
+      "vertices": 110169,
+      "faces": 126906,
+      "isovalue": 0.16,
+      "field": "solid / translucent skin"
+    },
+    {
+      "vertices": 27499,
+      "faces": 32029,
+      "isovalue": 0.6,
+      "field": "solid / dense core"
+    },
+    {
+      "vertices": 23559,
+      "faces": 15191,
+      "isovalue": 0.12,
+      "field": "pressure / positive crest"
+    }
+  ],
+  "camera": {
+    "location": [
+      1.9567252397537231,
+      -3.191499948501587,
+      1.4090969562530518
+    ],
+    "lens_mm": 55,
+    "fixed": true
+  },
+  "interpretation": {
+    "skin": "Saved solid isosurface; artistic translucent nacre; color from saved recurrent activity; thin-film thickness 380+170*tanh(4*pressure) nm is optical mapping, not simulated film thickness.",
+    "core": "Higher solid isosurface with chosen warm metallic BSDF.",
+    "wave": "Positive saved pressure isosurface with radius .86 / y .58 display clipping, cubic opacity fade over the outer .07 radius / .05 y widths; refractive optical surrogate, not a material phase.",
+    "lighting": "Fixed area lights; no generated texture or displacement."
+  }
+}

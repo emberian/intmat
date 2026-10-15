@@ -482,5 +482,16 @@
       "render-job.json",
       "run.json"
     ]
+  },
+  {
+    "id": "collection-20261015/nacre-fault-openwork",
+    "source_image_sha256": "8d00206b3acaa1c3794d333ce36dcf364fd5484a1048be383b87853d0c2335a3",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
   }
 ]

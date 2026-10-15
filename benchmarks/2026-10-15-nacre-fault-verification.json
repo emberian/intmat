@@ -1,0 +1,20 @@
+{
+    "shape": [
+        24,
+        24,
+        24
+    ],
+    "steps": 160,
+    "dt": 0.025,
+    "cpu_metal_maximum_errors": {
+        "nutrient": 1.7881393e-7,
+        "pressure": 4.0233135e-6,
+        "solid": 1.7881393e-7,
+        "latent": 1.0728836e-6
+    },
+    "material_relative_error": -2.2732570508366594e-8,
+    "minimum_nutrient": 6.2040443e-31,
+    "pressure_to_mineral_max_effect": 0.33697557,
+    "mineral_to_pressure_max_effect": 0.8235905,
+    "interpretation": "Matched ablations establish both feedback directions in this fixture; they do not establish emergent intelligence, physical acoustic calibration, or an ecological conclusion."
+}

@@ -1,0 +1,1225 @@
+{
+  "initial_material_mass": 500068.68007219327,
+  "id": "nacre-fault-openwork",
+  "title": "The nacre fault",
+  "description": "Perforated lamellae conduct a pressure choir. Recurrent memory deposits and erodes their folds while the changing mineral retunes travelling fronts. Nacre glass and copper expose the meeting of three depths.",
+  "family": "interfaces",
+  "shape": [
+    256,
+    256,
+    256
+  ],
+  "extent": [
+    64,
+    64,
+    64
+  ],
+  "time": 16.00000023841858,
+  "steps": 640,
+  "dt": 0.025,
+  "elapsed_seconds": 55.631629334,
+  "source_sha256": {
+    "studies/interfacial_choir.jl": "12a4e9d136fefb6168b6066c2717079d09510b883c9ce75cf0c15be3718fab55",
+    "src/acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+    "src/recurrent_material.jl": "6d9aa46d74bd0b5302f5ca8fe4211bf2a3596826a218ed9f8c2cfaa5240871ac"
+  },
+  "params": {
+    "aperture": 0.18,
+    "pressure_coupling": 0.75,
+    "resolution": 256,
+    "steps": 640,
+    "perforation_frequency": 1.45,
+    "capture_every": 10,
+    "id": "nacre-fault-openwork",
+    "title": "The nacre fault",
+    "dt": 0.025,
+    "description": "Perforated lamellae conduct a pressure choir. Recurrent memory deposits and erodes their folds while the changing mineral retunes travelling fronts. Nacre glass and copper expose the meeting of three depths."
+  },
+  "history": [
+    {
+      "step": 0,
+      "time": 0,
+      "material_error": 0,
+      "solid_mean": 0.01429992,
+      "solid_max": 0.6999767,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        0,
+        1.6967505
+      ],
+      "finite": true
+    },
+    {
+      "step": 10,
+      "time": 0.2500000037252903,
+      "material_error": -3.1924108043313026e-05,
+      "solid_mean": 0.0145237,
+      "solid_max": 0.7404976,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -8.227678e-38,
+        1.553266
+      ],
+      "finite": true
+    },
+    {
+      "step": 20,
+      "time": 0.5000000074505806,
+      "material_error": -1.2945965863764286e-06,
+      "solid_mean": 0.014614772,
+      "solid_max": 0.7671524,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -1.0531462e-37,
+        1.238506
+      ],
+      "finite": true
+    },
+    {
+      "step": 30,
+      "time": 0.7500000111758709,
+      "material_error": -3.451027441769838e-05,
+      "solid_mean": 0.014657158,
+      "solid_max": 0.78464323,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -1.1693166e-37,
+        1.0334693
+      ],
+      "finite": true
+    },
+    {
+      "step": 40,
+      "time": 1.0000000149011612,
+      "material_error": -2.032530028373003e-05,
+      "solid_mean": 0.014685126,
+      "solid_max": 0.7955763,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        0,
+        1.0702736
+      ],
+      "finite": true
+    },
+    {
+      "step": 50,
+      "time": 1.2500000186264515,
+      "material_error": 9.813986252993345e-06,
+      "solid_mean": 0.014710937,
+      "solid_max": 0.8015551,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -0.08134945,
+        1.2454381
+      ],
+      "finite": true
+    },
+    {
+      "step": 60,
+      "time": 1.5000000223517418,
+      "material_error": 1.341220922768116e-06,
+      "solid_mean": 0.0147340465,
+      "solid_max": 0.8028274,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -0.38551122,
+        1.5048026
+      ],
+      "finite": true
+    },
+    {
+      "step": 70,
+      "time": 1.750000026077032,
+      "material_error": -1.071905717253685e-05,
+      "solid_mean": 0.014747001,
+      "solid_max": 0.8026908,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -0.66887754,
+        1.7403793
+      ],
+      "finite": true
+    },
+    {
+      "step": 80,
+      "time": 2.0000000298023224,
+      "material_error": -2.1117681171745062e-05,
+      "solid_mean": 0.014740716,
+      "solid_max": 0.7968946,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -0.85939467,
+        1.8928419
+      ],
+      "finite": true
+    },
+    {
+      "step": 90,
+      "time": 2.2500000335276127,
+      "material_error": -5.4653966799378395e-05,
+      "solid_mean": 0.014720346,
+      "solid_max": 0.79233444,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -0.9592835,
+        1.92592
+      ],
+      "finite": true
+    },
+    {
+      "step": 100,
+      "time": 2.500000037252903,
+      "material_error": -7.732782978564501e-05,
+      "solid_mean": 0.014708116,
+      "solid_max": 0.79341245,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -0.9709648,
+        1.8259991
+      ],
+      "finite": true
+    },
+    {
+      "step": 110,
+      "time": 2.7500000409781933,
+      "material_error": -7.591373287141323e-05,
+      "solid_mean": 0.014709924,
+      "solid_max": 0.79123306,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -0.9058103,
+        1.5621811
+      ],
+      "finite": true
+    },
+    {
+      "step": 120,
+      "time": 3.0000000447034836,
+      "material_error": -0.0001060409122146666,
+      "solid_mean": 0.014716018,
+      "solid_max": 0.81835705,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -0.7942343,
+        1.2090708
+      ],
+      "finite": true
+    },
+    {
+      "step": 130,
+      "time": 3.250000048428774,
+      "material_error": -8.67901835590601e-05,
+      "solid_mean": 0.014751579,
+      "solid_max": 0.84019184,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -0.69130147,
+        0.9450559
+      ],
+      "finite": true
+    },
+    {
+      "step": 140,
+      "time": 3.500000052154064,
+      "material_error": -2.7289381250739098e-05,
+      "solid_mean": 0.014848169,
+      "solid_max": 0.8571317,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -0.615168,
+        0.78405964
+      ],
+      "finite": true
+    },
+    {
+      "step": 150,
+      "time": 3.7500000558793545,
+      "material_error": -7.007975364103913e-05,
+      "solid_mean": 0.014992097,
+      "solid_max": 0.86828077,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -0.8533359,
+        0.7748386
+      ],
+      "finite": true
+    },
+    {
+      "step": 160,
+      "time": 4.000000059604645,
+      "material_error": -0.0001142179244197905,
+      "solid_mean": 0.015156138,
+      "solid_max": 0.87421006,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -1.4976246,
+        0.8395164
+      ],
+      "finite": true
+    },
+    {
+      "step": 170,
+      "time": 4.250000063329935,
+      "material_error": -0.0001361919566988945,
+      "solid_mean": 0.01531446,
+      "solid_max": 0.8762026,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -2.088557,
+        0.87186474
+      ],
+      "finite": true
+    },
+    {
+      "step": 180,
+      "time": 4.500000067055225,
+      "material_error": -0.00015405751764774323,
+      "solid_mean": 0.015448192,
+      "solid_max": 0.8748402,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -2.5533676,
+        0.8804401
+      ],
+      "finite": true
+    },
+    {
+      "step": 190,
+      "time": 4.750000070780516,
+      "material_error": -0.0001921796938404441,
+      "solid_mean": 0.015547324,
+      "solid_max": 0.8646581,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -2.7814755,
+        0.86632836
+      ],
+      "finite": true
+    },
+    {
+      "step": 200,
+      "time": 5.000000074505806,
+      "material_error": -0.00018917745910584927,
+      "solid_mean": 0.015608976,
+      "solid_max": 0.84961694,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -2.7076573,
+        0.8458372
+      ],
+      "finite": true
+    },
+    {
+      "step": 210,
+      "time": 5.250000078231096,
+      "material_error": -0.00017021893290802836,
+      "solid_mean": 0.015634201,
+      "solid_max": 0.8253603,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -2.393443,
+        0.818798
+      ],
+      "finite": true
+    },
+    {
+      "step": 220,
+      "time": 5.500000081956387,
+      "material_error": -0.00018231227295473218,
+      "solid_mean": 0.015625808,
+      "solid_max": 0.8101261,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -1.9572746,
+        0.8129182
+      ],
+      "finite": true
+    },
+    {
+      "step": 230,
+      "time": 5.750000085681677,
+      "material_error": -0.00018713774625211954,
+      "solid_mean": 0.015584704,
+      "solid_max": 0.81557435,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -1.587706,
+        0.808664
+      ],
+      "finite": true
+    },
+    {
+      "step": 240,
+      "time": 6.000000089406967,
+      "material_error": -0.00021181796910241246,
+      "solid_mean": 0.0155216195,
+      "solid_max": 0.8183981,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -1.4204706,
+        0.7965088
+      ],
+      "finite": true
+    },
+    {
+      "step": 250,
+      "time": 6.2500000931322575,
+      "material_error": -0.0002498400863260031,
+      "solid_mean": 0.0154503165,
+      "solid_max": 0.8188019,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -1.2786324,
+        0.76207685
+      ],
+      "finite": true
+    },
+    {
+      "step": 260,
+      "time": 6.500000096857548,
+      "material_error": -0.00028813176322728395,
+      "solid_mean": 0.0153765585,
+      "solid_max": 0.8188019,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -1.161251,
+        0.91152686
+      ],
+      "finite": true
+    },
+    {
+      "step": 270,
+      "time": 6.750000100582838,
+      "material_error": -0.00027659034822136164,
+      "solid_mean": 0.015302039,
+      "solid_max": 0.8188019,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -1.062461,
+        1.3035709
+      ],
+      "finite": true
+    },
+    {
+      "step": 280,
+      "time": 7.000000104308128,
+      "material_error": -0.0002824612893164158,
+      "solid_mean": 0.015226014,
+      "solid_max": 0.8188019,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -0.9886188,
+        1.592467
+      ],
+      "finite": true
+    },
+    {
+      "step": 290,
+      "time": 7.250000108033419,
+      "material_error": -0.0002877491060644388,
+      "solid_mean": 0.01515145,
+      "solid_max": 0.8188019,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -0.9285767,
+        1.7912338
+      ],
+      "finite": true
+    },
+    {
+      "step": 300,
+      "time": 7.500000111758709,
+      "material_error": -0.0002613309770822525,
+      "solid_mean": 0.015082994,
+      "solid_max": 0.8188019,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -0.9029529,
+        1.8887216
+      ],
+      "finite": true
+    },
+    {
+      "step": 310,
+      "time": 7.750000115483999,
+      "material_error": -0.0002898250240832567,
+      "solid_mean": 0.015022609,
+      "solid_max": 0.8188019,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -0.90575945,
+        1.8714188
+      ],
+      "finite": true
+    },
+    {
+      "step": 320,
+      "time": 8.00000011920929,
+      "material_error": -0.0002745195524767041,
+      "solid_mean": 0.014974265,
+      "solid_max": 0.8190836,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -0.8916924,
+        1.7251967
+      ],
+      "finite": true
+    },
+    {
+      "step": 330,
+      "time": 8.25000012293458,
+      "material_error": -0.00024969002697616816,
+      "solid_mean": 0.014942253,
+      "solid_max": 0.82025343,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -0.87334937,
+        1.4439002
+      ],
+      "finite": true
+    },
+    {
+      "step": 340,
+      "time": 8.50000012665987,
+      "material_error": -0.00026498723309487104,
+      "solid_mean": 0.014922599,
+      "solid_max": 0.8245378,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -0.83341223,
+        1.1602448
+      ],
+      "finite": true
+    },
+    {
+      "step": 350,
+      "time": 8.75000013038516,
+      "material_error": -0.0002743526129052043,
+      "solid_mean": 0.014909922,
+      "solid_max": 0.83559746,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -0.830434,
+        1.0270206
+      ],
+      "finite": true
+    },
+    {
+      "step": 360,
+      "time": 9.00000013411045,
+      "material_error": -0.0002999214339070022,
+      "solid_mean": 0.014902903,
+      "solid_max": 0.8454473,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -0.8579198,
+        0.9266804
+      ],
+      "finite": true
+    },
+    {
+      "step": 370,
+      "time": 9.250000137835741,
+      "material_error": -0.0002648145309649408,
+      "solid_mean": 0.014904974,
+      "solid_max": 0.8533569,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -1.3078303,
+        0.8696318
+      ],
+      "finite": true
+    },
+    {
+      "step": 380,
+      "time": 9.500000141561031,
+      "material_error": -0.0002995669492520392,
+      "solid_mean": 0.014919827,
+      "solid_max": 0.8587442,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -1.986315,
+        0.8523348
+      ],
+      "finite": true
+    },
+    {
+      "step": 390,
+      "time": 9.750000145286322,
+      "material_error": -0.0002555219689384103,
+      "solid_mean": 0.01494902,
+      "solid_max": 0.8612126,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -2.529946,
+        0.8547714
+      ],
+      "finite": true
+    },
+    {
+      "step": 400,
+      "time": 10.000000149011612,
+      "material_error": -0.00026700214948505163,
+      "solid_mean": 0.0149915805,
+      "solid_max": 0.861358,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -2.8492725,
+        0.860762
+      ],
+      "finite": true
+    },
+    {
+      "step": 410,
+      "time": 10.250000152736902,
+      "material_error": -0.0003304640995338559,
+      "solid_mean": 0.015046418,
+      "solid_max": 0.86615586,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -2.9146092,
+        0.8687341
+      ],
+      "finite": true
+    },
+    {
+      "step": 420,
+      "time": 10.500000156462193,
+      "material_error": -0.0002998743439093232,
+      "solid_mean": 0.015114886,
+      "solid_max": 0.8739108,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -2.6997707,
+        0.87439847
+      ],
+      "finite": true
+    },
+    {
+      "step": 430,
+      "time": 10.750000160187483,
+      "material_error": -0.0002814586041495204,
+      "solid_mean": 0.015196925,
+      "solid_max": 0.8787851,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -2.3059852,
+        0.8724726
+      ],
+      "finite": true
+    },
+    {
+      "step": 440,
+      "time": 11.000000163912773,
+      "material_error": -0.00025327433831989765,
+      "solid_mean": 0.015290114,
+      "solid_max": 0.8805139,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -1.9141824,
+        0.8527149
+      ],
+      "finite": true
+    },
+    {
+      "step": 450,
+      "time": 11.250000167638063,
+      "material_error": -0.0003334921784698963,
+      "solid_mean": 0.015390633,
+      "solid_max": 0.8805139,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -1.6234282,
+        0.796903
+      ],
+      "finite": true
+    },
+    {
+      "step": 460,
+      "time": 11.500000171363354,
+      "material_error": -0.00031522841891273856,
+      "solid_mean": 0.015493977,
+      "solid_max": 0.8805139,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -1.4141347,
+        0.68718755
+      ],
+      "finite": true
+    },
+    {
+      "step": 470,
+      "time": 11.750000175088644,
+      "material_error": -0.000257466163020581,
+      "solid_mean": 0.015594615,
+      "solid_max": 0.87611216,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -1.267423,
+        0.9245432
+      ],
+      "finite": true
+    },
+    {
+      "step": 480,
+      "time": 12.000000178813934,
+      "material_error": -0.0002478901296854019,
+      "solid_mean": 0.015687041,
+      "solid_max": 0.87730986,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -1.1586542,
+        1.3936539
+      ],
+      "finite": true
+    },
+    {
+      "step": 490,
+      "time": 12.250000182539225,
+      "material_error": -0.00025103247025981545,
+      "solid_mean": 0.01576662,
+      "solid_max": 0.8861222,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -1.0732931,
+        1.7235479
+      ],
+      "finite": true
+    },
+    {
+      "step": 500,
+      "time": 12.500000186264515,
+      "material_error": -0.00023088441230356693,
+      "solid_mean": 0.015829101,
+      "solid_max": 0.89495987,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -1.0009499,
+        1.9357489
+      ],
+      "finite": true
+    },
+    {
+      "step": 510,
+      "time": 12.750000189989805,
+      "material_error": -0.00019082246581092477,
+      "solid_mean": 0.015869,
+      "solid_max": 0.90298766,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -0.9507952,
+        2.0320358
+      ],
+      "finite": true
+    },
+    {
+      "step": 520,
+      "time": 13.000000193715096,
+      "material_error": -0.00017047219444066286,
+      "solid_mean": 0.015881538,
+      "solid_max": 0.90959823,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -0.9259847,
+        2.0026336
+      ],
+      "finite": true
+    },
+    {
+      "step": 530,
+      "time": 13.250000197440386,
+      "material_error": -0.00024010532069951296,
+      "solid_mean": 0.01586631,
+      "solid_max": 0.91428417,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -0.8999579,
+        1.8411354
+      ],
+      "finite": true
+    },
+    {
+      "step": 540,
+      "time": 13.500000201165676,
+      "material_error": -0.00023294065613299608,
+      "solid_mean": 0.015826724,
+      "solid_max": 0.91662437,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -0.87362844,
+        1.5695666
+      ],
+      "finite": true
+    },
+    {
+      "step": 550,
+      "time": 13.750000204890966,
+      "material_error": -0.0002429615706205368,
+      "solid_mean": 0.015768213,
+      "solid_max": 0.9168338,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -0.83039033,
+        1.319954
+      ],
+      "finite": true
+    },
+    {
+      "step": 560,
+      "time": 14.000000208616257,
+      "material_error": -0.00021253933664411306,
+      "solid_mean": 0.015698152,
+      "solid_max": 0.9167539,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -0.7783952,
+        1.1803061
+      ],
+      "finite": true
+    },
+    {
+      "step": 570,
+      "time": 14.250000212341547,
+      "material_error": -0.00019580457592383027,
+      "solid_mean": 0.015625535,
+      "solid_max": 0.91113085,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -0.7015661,
+        1.0806999
+      ],
+      "finite": true
+    },
+    {
+      "step": 580,
+      "time": 14.500000216066837,
+      "material_error": -0.0002330608549527824,
+      "solid_mean": 0.015559537,
+      "solid_max": 0.900081,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -1.245124,
+        1.0272989
+      ],
+      "finite": true
+    },
+    {
+      "step": 590,
+      "time": 14.750000219792128,
+      "material_error": -0.0002474120701663196,
+      "solid_mean": 0.0155087495,
+      "solid_max": 0.90072477,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -1.9395257,
+        1.0114042
+      ],
+      "finite": true
+    },
+    {
+      "step": 600,
+      "time": 15.000000223517418,
+      "material_error": -0.0002517721150070429,
+      "solid_mean": 0.015479734,
+      "solid_max": 0.90072477,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -2.509236,
+        1.0116268
+      ],
+      "finite": true
+    },
+    {
+      "step": 610,
+      "time": 15.250000227242708,
+      "material_error": -0.00021153147099539638,
+      "solid_mean": 0.015477358,
+      "solid_max": 0.8999982,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -2.8618705,
+        1.0099066
+      ],
+      "finite": true
+    },
+    {
+      "step": 620,
+      "time": 15.500000230967999,
+      "material_error": -0.00017088651657104492,
+      "solid_mean": 0.015504118,
+      "solid_max": 0.8981294,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -2.9839532,
+        0.9974172
+      ],
+      "finite": true
+    },
+    {
+      "step": 630,
+      "time": 15.750000234693289,
+      "material_error": -0.0001871954882517457,
+      "solid_mean": 0.015560434,
+      "solid_max": 0.8984817,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -2.8227277,
+        0.9900587
+      ],
+      "finite": true
+    },
+    {
+      "step": 640,
+      "time": 16.00000023841858,
+      "material_error": -0.00022733892546966672,
+      "solid_mean": 0.015645616,
+      "solid_max": 0.9027202,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -2.465183,
+        0.9986714
+      ],
+      "finite": true
+    }
+  ],
+  "frames": [
+    {
+      "step": 0,
+      "time": 0,
+      "directory": "frames/00000"
+    },
+    {
+      "step": 10,
+      "time": 0.2500000037252903,
+      "directory": "frames/00010"
+    },
+    {
+      "step": 20,
+      "time": 0.5000000074505806,
+      "directory": "frames/00020"
+    },
+    {
+      "step": 30,
+      "time": 0.7500000111758709,
+      "directory": "frames/00030"
+    },
+    {
+      "step": 40,
+      "time": 1.0000000149011612,
+      "directory": "frames/00040"
+    },
+    {
+      "step": 50,
+      "time": 1.2500000186264515,
+      "directory": "frames/00050"
+    },
+    {
+      "step": 60,
+      "time": 1.5000000223517418,
+      "directory": "frames/00060"
+    },
+    {
+      "step": 70,
+      "time": 1.750000026077032,
+      "directory": "frames/00070"
+    },
+    {
+      "step": 80,
+      "time": 2.0000000298023224,
+      "directory": "frames/00080"
+    },
+    {
+      "step": 90,
+      "time": 2.2500000335276127,
+      "directory": "frames/00090"
+    },
+    {
+      "step": 100,
+      "time": 2.500000037252903,
+      "directory": "frames/00100"
+    },
+    {
+      "step": 110,
+      "time": 2.7500000409781933,
+      "directory": "frames/00110"
+    },
+    {
+      "step": 120,
+      "time": 3.0000000447034836,
+      "directory": "frames/00120"
+    },
+    {
+      "step": 130,
+      "time": 3.250000048428774,
+      "directory": "frames/00130"
+    },
+    {
+      "step": 140,
+      "time": 3.500000052154064,
+      "directory": "frames/00140"
+    },
+    {
+      "step": 150,
+      "time": 3.7500000558793545,
+      "directory": "frames/00150"
+    },
+    {
+      "step": 160,
+      "time": 4.000000059604645,
+      "directory": "frames/00160"
+    },
+    {
+      "step": 170,
+      "time": 4.250000063329935,
+      "directory": "frames/00170"
+    },
+    {
+      "step": 180,
+      "time": 4.500000067055225,
+      "directory": "frames/00180"
+    },
+    {
+      "step": 190,
+      "time": 4.750000070780516,
+      "directory": "frames/00190"
+    },
+    {
+      "step": 200,
+      "time": 5.000000074505806,
+      "directory": "frames/00200"
+    },
+    {
+      "step": 210,
+      "time": 5.250000078231096,
+      "directory": "frames/00210"
+    },
+    {
+      "step": 220,
+      "time": 5.500000081956387,
+      "directory": "frames/00220"
+    },
+    {
+      "step": 230,
+      "time": 5.750000085681677,
+      "directory": "frames/00230"
+    },
+    {
+      "step": 240,
+      "time": 6.000000089406967,
+      "directory": "frames/00240"
+    },
+    {
+      "step": 250,
+      "time": 6.2500000931322575,
+      "directory": "frames/00250"
+    },
+    {
+      "step": 260,
+      "time": 6.500000096857548,
+      "directory": "frames/00260"
+    },
+    {
+      "step": 270,
+      "time": 6.750000100582838,
+      "directory": "frames/00270"
+    },
+    {
+      "step": 280,
+      "time": 7.000000104308128,
+      "directory": "frames/00280"
+    },
+    {
+      "step": 290,
+      "time": 7.250000108033419,
+      "directory": "frames/00290"
+    },
+    {
+      "step": 300,
+      "time": 7.500000111758709,
+      "directory": "frames/00300"
+    },
+    {
+      "step": 310,
+      "time": 7.750000115483999,
+      "directory": "frames/00310"
+    },
+    {
+      "step": 320,
+      "time": 8.00000011920929,
+      "directory": "frames/00320"
+    },
+    {
+      "step": 330,
+      "time": 8.25000012293458,
+      "directory": "frames/00330"
+    },
+    {
+      "step": 340,
+      "time": 8.50000012665987,
+      "directory": "frames/00340"
+    },
+    {
+      "step": 350,
+      "time": 8.75000013038516,
+      "directory": "frames/00350"
+    },
+    {
+      "step": 360,
+      "time": 9.00000013411045,
+      "directory": "frames/00360"
+    },
+    {
+      "step": 370,
+      "time": 9.250000137835741,
+      "directory": "frames/00370"
+    },
+    {
+      "step": 380,
+      "time": 9.500000141561031,
+      "directory": "frames/00380"
+    },
+    {
+      "step": 390,
+      "time": 9.750000145286322,
+      "directory": "frames/00390"
+    },
+    {
+      "step": 400,
+      "time": 10.000000149011612,
+      "directory": "frames/00400"
+    },
+    {
+      "step": 410,
+      "time": 10.250000152736902,
+      "directory": "frames/00410"
+    },
+    {
+      "step": 420,
+      "time": 10.500000156462193,
+      "directory": "frames/00420"
+    },
+    {
+      "step": 430,
+      "time": 10.750000160187483,
+      "directory": "frames/00430"
+    },
+    {
+      "step": 440,
+      "time": 11.000000163912773,
+      "directory": "frames/00440"
+    },
+    {
+      "step": 450,
+      "time": 11.250000167638063,
+      "directory": "frames/00450"
+    },
+    {
+      "step": 460,
+      "time": 11.500000171363354,
+      "directory": "frames/00460"
+    },
+    {
+      "step": 470,
+      "time": 11.750000175088644,
+      "directory": "frames/00470"
+    },
+    {
+      "step": 480,
+      "time": 12.000000178813934,
+      "directory": "frames/00480"
+    },
+    {
+      "step": 490,
+      "time": 12.250000182539225,
+      "directory": "frames/00490"
+    },
+    {
+      "step": 500,
+      "time": 12.500000186264515,
+      "directory": "frames/00500"
+    },
+    {
+      "step": 510,
+      "time": 12.750000189989805,
+      "directory": "frames/00510"
+    },
+    {
+      "step": 520,
+      "time": 13.000000193715096,
+      "directory": "frames/00520"
+    },
+    {
+      "step": 530,
+      "time": 13.250000197440386,
+      "directory": "frames/00530"
+    },
+    {
+      "step": 540,
+      "time": 13.500000201165676,
+      "directory": "frames/00540"
+    },
+    {
+      "step": 550,
+      "time": 13.750000204890966,
+      "directory": "frames/00550"
+    },
+    {
+      "step": 560,
+      "time": 14.000000208616257,
+      "directory": "frames/00560"
+    },
+    {
+      "step": 570,
+      "time": 14.250000212341547,
+      "directory": "frames/00570"
+    },
+    {
+      "step": 580,
+      "time": 14.500000216066837,
+      "directory": "frames/00580"
+    },
+    {
+      "step": 590,
+      "time": 14.750000219792128,
+      "directory": "frames/00590"
+    },
+    {
+      "step": 600,
+      "time": 15.000000223517418,
+      "directory": "frames/00600"
+    },
+    {
+      "step": 610,
+      "time": 15.250000227242708,
+      "directory": "frames/00610"
+    },
+    {
+      "step": 620,
+      "time": 15.500000230967999,
+      "directory": "frames/00620"
+    },
+    {
+      "step": 630,
+      "time": 15.750000234693289,
+      "directory": "frames/00630"
+    },
+    {
+      "step": 640,
+      "time": 16.00000023841858,
+      "directory": "frames/00640"
+    }
+  ],
+  "simulation": "Eight fixed recurrent channels, conservative nutrient/solid exchange, scalar pressure with mineral-dependent face speed; bounded pressure-to-latent forcing. Driven invented material, not calibrated biology or acoustics.",
+  "initialization": "Three analytically seeded, folded perforated lamellae with unequal depth and displaced apertures; coherent latent phases. Geometry is seeded, not claimed to emerge from noise.",
+  "optics": "Isosurfaces of saved solid and pressure; chosen opal/copper/glass materials. No solved optical feedback, physical luminescence or material stress birefringence.",
+  "publication": {
+    "source_image_sha256": "8d00206b3acaa1c3794d333ce36dcf364fd5484a1048be383b87853d0c2335a3",
+    "webp_sha256": "70766fba80f098873c92488bc08999ec7640550a7affce8a712bbcefbf9e0cf7",
+    "quality": 95,
+    "width": 2000,
+    "samples": 128,
+    "native_shape": [],
+    "original_retained": true,
+    "reviewed_by": "Codex material artist"
+  }
+}

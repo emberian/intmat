@@ -124,3 +124,17 @@ Recorded disks and bonds overlay both fields. `regulated-material.png` uses the
 existing cellular renderer on the t=80 state: physical planar positions/radii
 are measured; lens height and lighting are optical staging. Its background shows
 soluble chemistry, while the diagnostic explicitly shows the catalyst fields.
+
+[Watch the recorded catalyst and food fields](https://emberian.github.io/intmat/animations/#catalytic-habitat-20261015).
+
+## Complete-step cost
+
+The recorded t80 state (78 cells, 114 bonds) took a median **1.445 ms** per complete
+step on Apple M2, Julia 1.12.4, two threads and one GC thread. Forty warmed
+fresh-copy samples allocated 587,600 bytes per step; copies were outside timing.
+The habitat stage took 0.197 ms (13.7% of the full-step median), cellular ecology
+0.980 ms, tuple validation 0.182 ms and both pools 0.079 ms. The next useful targets
+are cellular allocations and repeated validation; secretion arithmetic is a
+smaller share. This measurement uses the experiment's own source pin, independently
+of later working-tree optimization, and does not establish throughput at larger
+populations. [Samples and source fingerprints](../benchmarks/2026-10-15-catalytic-t80.json).

@@ -1,0 +1,20 @@
+{
+  "id": "nacre-fault-openwork",
+  "title": "The nacre fault",
+  "description": "Perforated lamellae conduct a pressure choir. Recurrent memory deposits and erodes their folds while the changing mineral retunes travelling fronts. Nacre glass and copper expose the meeting of three depths.",
+  "family": "interfaces",
+  "renderer": "interfacial-choir",
+  "volume": "frames/00320",
+  "size": 2000,
+  "samples": 128,
+  "args": [
+    "--steps",
+    "320",
+    "--orbit",
+    ".55",
+    "--elevation",
+    ".36",
+    "--save-scene"
+  ],
+  "image": "final-v2.png"
+}

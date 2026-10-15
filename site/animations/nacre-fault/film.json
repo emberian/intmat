@@ -1,0 +1,388 @@
+{
+  "schema": "interior-animation",
+  "id": "nacre-fault",
+  "title": "The nacre fault",
+  "description": "Pressure lenses cross three perforated mineral folds. Recurrent memory builds and erodes the nacre while the changing mineral retunes the next wave. A fixed camera observes 65 native 256\u00b3 samples from simulation time 0 to 16.",
+  "source": {
+    "specimen": "collection-20261015/nacre-fault-openwork",
+    "native_shape": [
+      256,
+      256,
+      256
+    ],
+    "simulation_dt": 0.025,
+    "capture_every_steps": 10,
+    "source_sha256": {
+      "studies/interfacial_choir.jl": "12a4e9d136fefb6168b6066c2717079d09510b883c9ce75cf0c15be3718fab55",
+      "src/acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+      "src/recurrent_material.jl": "6d9aa46d74bd0b5302f5ca8fe4211bf2a3596826a218ed9f8c2cfaa5240871ac"
+    },
+    "run_sha256": "1e572dd5b9b657650f1119009244fb11623021616178dfa4838cb7dc2ca1ed9f",
+    "renderer_sha256": "56044aa5d274e9f555761fb28fa381993fc6ba0a1e01e8dc62f9096c989a9e6f",
+    "renderer": "scripts/render_interfacial_choir.py",
+    "camera": {
+      "orbit": 0.55,
+      "elevation": 0.36,
+      "distance": 4,
+      "lens_mm": 55,
+      "fixed": true
+    },
+    "render": {
+      "size": 960,
+      "samples": 48,
+      "device": "METAL"
+    },
+    "optical_mapping": {
+      "solid_skin": 0.16,
+      "solid_copper_core": 0.6,
+      "positive_pressure_front": 0.12,
+      "film_thickness_nm": "380 + 170 tanh(4 pressure); chosen optical mapping",
+      "tint": "saved recurrent activity",
+      "pressure_crop": "radius .86, |y| < .58; cubic opacity fade across outer .07 radial / .05 depth widths"
+    },
+    "interpretation": "Seeded perforated lamellae, eight fixed recurrent channels, conservative nutrient/mineral exchange and driven scalar pressure. Glass, copper and pressure-visible film are optical interpretations; no trained rule or solved optical feedback. No interpolation or reverse-time padding; this is a finite excerpt.",
+    "render_revision": 2
+  },
+  "playback": {
+    "fps": 8,
+    "duration_seconds": 8.125,
+    "width": 960,
+    "height": 960,
+    "rendered_width": 960,
+    "rendered_height": 960,
+    "interpolation": "none; one video frame per recorded simulation sample"
+  },
+  "frames": [
+    {
+      "video_time": 0.0,
+      "simulation_time": 0,
+      "source_image_sha256": "b46cf0b822c502dc451f71bc060d8aed9e0827292f6ed6136356db38bdc1be55"
+    },
+    {
+      "video_time": 0.125,
+      "simulation_time": 0.2500000037252903,
+      "source_image_sha256": "da91eb8f6b088460daaa0cedcc09821f8ccb1671ea8f2f387edd6772746b615f"
+    },
+    {
+      "video_time": 0.25,
+      "simulation_time": 0.5000000074505806,
+      "source_image_sha256": "9874cf75207fab88e825d8e5ae396bb236a05b2918669d2efb6018227b286cda"
+    },
+    {
+      "video_time": 0.375,
+      "simulation_time": 0.7500000111758709,
+      "source_image_sha256": "ecd08703f5c16e669cd541ce62cb7edf04836e7c791ba143f9b23734d71614ee"
+    },
+    {
+      "video_time": 0.5,
+      "simulation_time": 1.0000000149011612,
+      "source_image_sha256": "8c8039d33e66fd053240679e17e4fcb384e02561af25572566d42e72a7cef4fa"
+    },
+    {
+      "video_time": 0.625,
+      "simulation_time": 1.2500000186264515,
+      "source_image_sha256": "479ec2af745e0da964662b5218b050ab510deae467b8bf3ee8441b91eea22bf6"
+    },
+    {
+      "video_time": 0.75,
+      "simulation_time": 1.5000000223517418,
+      "source_image_sha256": "d81b5fca00fb43921e0a114db0e626e6ce01e13fc8b4cf3c2895210917ca1121"
+    },
+    {
+      "video_time": 0.875,
+      "simulation_time": 1.750000026077032,
+      "source_image_sha256": "8e8c90a371ad194df4603db82f8bbc7a1e86700c20d1740530f436abeabdbfdd"
+    },
+    {
+      "video_time": 1.0,
+      "simulation_time": 2.0000000298023224,
+      "source_image_sha256": "55554108dfcd2f75f8cceab43a57c68e15549906f66277ff4ea9ddb74fc113a5"
+    },
+    {
+      "video_time": 1.125,
+      "simulation_time": 2.2500000335276127,
+      "source_image_sha256": "687b721cc7d9cbe618d055472f843a66e0804e57e0a73bcc9b03cce53cf3b4b6"
+    },
+    {
+      "video_time": 1.25,
+      "simulation_time": 2.500000037252903,
+      "source_image_sha256": "7013f4f7aae10beaba909c62158cac4274d263edff40a93572e9e4791872ee1c"
+    },
+    {
+      "video_time": 1.375,
+      "simulation_time": 2.7500000409781933,
+      "source_image_sha256": "e5c797a1c7eb1a0f2f6cd5474453195ae7176ee8918a8196d0d72bc971f168d8"
+    },
+    {
+      "video_time": 1.5,
+      "simulation_time": 3.0000000447034836,
+      "source_image_sha256": "772be43dd132618f9295471190ad9be643c5be3ac8e2bedeb2814099390d2145"
+    },
+    {
+      "video_time": 1.625,
+      "simulation_time": 3.250000048428774,
+      "source_image_sha256": "e251de6d7688e889cec463b9297ce6f66ad359f5ee760efed13373e16c089252"
+    },
+    {
+      "video_time": 1.75,
+      "simulation_time": 3.500000052154064,
+      "source_image_sha256": "5a15358330a2a94fde378e7b9a217d1681a45ccc590e9d582c11bb3f6eb28721"
+    },
+    {
+      "video_time": 1.875,
+      "simulation_time": 3.7500000558793545,
+      "source_image_sha256": "1e916a19f0d09ee211ca2ab66462eb1627b4933aedd3f3c011bb1733189e232b"
+    },
+    {
+      "video_time": 2.0,
+      "simulation_time": 4.000000059604645,
+      "source_image_sha256": "0491e5e75545f1b13c985b8ce7d97def5dd0432b79e0d0a0affd6005650a6710"
+    },
+    {
+      "video_time": 2.125,
+      "simulation_time": 4.250000063329935,
+      "source_image_sha256": "aeaa5739dca2b44f6ea189fdd645e3246281a0a8f897bb06fd71f16d4c910a30"
+    },
+    {
+      "video_time": 2.25,
+      "simulation_time": 4.500000067055225,
+      "source_image_sha256": "901a1e5adc75ef95e6e50c6b9645fda35dd5ec457aca66cea5f1ea4ac7049cb4"
+    },
+    {
+      "video_time": 2.375,
+      "simulation_time": 4.750000070780516,
+      "source_image_sha256": "1177de7c8103d868cc1d46958eb8ff971797c959d1834235c5360978e4b54dbb"
+    },
+    {
+      "video_time": 2.5,
+      "simulation_time": 5.000000074505806,
+      "source_image_sha256": "e0a764319556cb422c3d7e443cc7582181fd20ddb9cd3bbc34f789a46de425af"
+    },
+    {
+      "video_time": 2.625,
+      "simulation_time": 5.250000078231096,
+      "source_image_sha256": "c37d5b152d10566858558aee1e6f1903a1c1d0b09fc1540f98485336a6f3506d"
+    },
+    {
+      "video_time": 2.75,
+      "simulation_time": 5.500000081956387,
+      "source_image_sha256": "c2e55947c97e45677744c4dc87af69b0c4e02d87ebc3cddb6a7e7e026c07170a"
+    },
+    {
+      "video_time": 2.875,
+      "simulation_time": 5.750000085681677,
+      "source_image_sha256": "ca20308ea6fea0ed8700a94e671dc5a8543afb5051abb5da3f5121197bff577f"
+    },
+    {
+      "video_time": 3.0,
+      "simulation_time": 6.000000089406967,
+      "source_image_sha256": "ef068bd1a9c31af04f5aaa56241e5d934ce61290487f5679346de2e9f5591654"
+    },
+    {
+      "video_time": 3.125,
+      "simulation_time": 6.2500000931322575,
+      "source_image_sha256": "6a116bc43fd2b037f6ee5f351c1b0e73948c6c3a2b4f752a9964da49e37f34d9"
+    },
+    {
+      "video_time": 3.25,
+      "simulation_time": 6.500000096857548,
+      "source_image_sha256": "728a5b3fcc05135cffbeb2282f6affd6b4045be90c952f19405e35a5c67db2bf"
+    },
+    {
+      "video_time": 3.375,
+      "simulation_time": 6.750000100582838,
+      "source_image_sha256": "ece0fcd2d8bf1c9d29f4c38aac0c9597c39016c61e5fd703d9e5d7bd00179fe0"
+    },
+    {
+      "video_time": 3.5,
+      "simulation_time": 7.000000104308128,
+      "source_image_sha256": "da7a9f30dfbb813990e67f3451378caede0d52b6a8dc8be46b59429c4ca00a44"
+    },
+    {
+      "video_time": 3.625,
+      "simulation_time": 7.250000108033419,
+      "source_image_sha256": "a79884b34338ac664f53ee42f3bc5b2c98758991abd6de26ca42f84082f0f7e1"
+    },
+    {
+      "video_time": 3.75,
+      "simulation_time": 7.500000111758709,
+      "source_image_sha256": "e22171d8e75bfcd8cd5fe2887b16455dbdc206d03f4362a7665fac9b9456c14f"
+    },
+    {
+      "video_time": 3.875,
+      "simulation_time": 7.750000115483999,
+      "source_image_sha256": "0eae0cd91abe018f41ae1ddeb5b66b286cd9275c20337ee41dc5af2861752145"
+    },
+    {
+      "video_time": 4.0,
+      "simulation_time": 8.00000011920929,
+      "source_image_sha256": "ca833227e3e419a113e015e2901040dfea2b309debe78212697302b1148e690a"
+    },
+    {
+      "video_time": 4.125,
+      "simulation_time": 8.25000012293458,
+      "source_image_sha256": "87d29a8ecf1ad4f581f5cafd7ef692e25b4ff152abc5d0fb391f9c316a811dd3"
+    },
+    {
+      "video_time": 4.25,
+      "simulation_time": 8.50000012665987,
+      "source_image_sha256": "0c6556714fee7fc85ce4c065d434b509f76f1f6ed08d3e73317a0b208b0a4998"
+    },
+    {
+      "video_time": 4.375,
+      "simulation_time": 8.75000013038516,
+      "source_image_sha256": "9a40ac9d01d7df02ff1e2d9deaebc04d0bbb862119fec01bec5a6bbbc6a5a25a"
+    },
+    {
+      "video_time": 4.5,
+      "simulation_time": 9.00000013411045,
+      "source_image_sha256": "8bdd85ea486c1a3e6b0df0b5db61185c91871fa4c27aecd60f855802aaf92965"
+    },
+    {
+      "video_time": 4.625,
+      "simulation_time": 9.250000137835741,
+      "source_image_sha256": "11dfa768d20dbaf01e142409dd90bf6a3bc0d2e3fb910d9d57a82901eea43443"
+    },
+    {
+      "video_time": 4.75,
+      "simulation_time": 9.500000141561031,
+      "source_image_sha256": "0884362a59e422290472723cc8648577d17bddeae9f6fa222f0ed6df5b8d24e6"
+    },
+    {
+      "video_time": 4.875,
+      "simulation_time": 9.750000145286322,
+      "source_image_sha256": "2c68782816f0648d5626f8c57723a110172070b86b7395bf4a0256cabeee4554"
+    },
+    {
+      "video_time": 5.0,
+      "simulation_time": 10.000000149011612,
+      "source_image_sha256": "76be950f75eb88c68fc7959478d5d9dd291527b412b743e29a298fc0bfd423a4"
+    },
+    {
+      "video_time": 5.125,
+      "simulation_time": 10.250000152736902,
+      "source_image_sha256": "21cced04da375d3342e61d5cad591d541d43bc1b18c231a58ff9639d5f93ee90"
+    },
+    {
+      "video_time": 5.25,
+      "simulation_time": 10.500000156462193,
+      "source_image_sha256": "6ac9728688db1d44852912231a225fe32789de3b85fb480b4d8605a59b247772"
+    },
+    {
+      "video_time": 5.375,
+      "simulation_time": 10.750000160187483,
+      "source_image_sha256": "32ef3d0571be4455e113de66cd968592381d28418cc7c00d1e811a65f4dd89a0"
+    },
+    {
+      "video_time": 5.5,
+      "simulation_time": 11.000000163912773,
+      "source_image_sha256": "0de2c9c7d9bbb01750285f0cd28f3a61723c2aa4f8b8431c697b42b1fb5df71b"
+    },
+    {
+      "video_time": 5.625,
+      "simulation_time": 11.250000167638063,
+      "source_image_sha256": "e2306ed2a8eb3fb5788c4c0278a595363720d802926d6e048ee0937900cbc350"
+    },
+    {
+      "video_time": 5.75,
+      "simulation_time": 11.500000171363354,
+      "source_image_sha256": "4cb0b3295e4c4fc54a3b0cfc578d2f82c5be999408eae68634658d65cb2fec0e"
+    },
+    {
+      "video_time": 5.875,
+      "simulation_time": 11.750000175088644,
+      "source_image_sha256": "8d9bf5e413e6af94b15415acd7c49dced6767310a34f5ed13534ed25eb9561cf"
+    },
+    {
+      "video_time": 6.0,
+      "simulation_time": 12.000000178813934,
+      "source_image_sha256": "054fcd248e66ad5700101c8662a9d8fa922449272fa8781b1325e3eeed7d180f"
+    },
+    {
+      "video_time": 6.125,
+      "simulation_time": 12.250000182539225,
+      "source_image_sha256": "f735943701061515bd61050701e702a9184e8e87ddb58968174a09daf7638efc"
+    },
+    {
+      "video_time": 6.25,
+      "simulation_time": 12.500000186264515,
+      "source_image_sha256": "002a4a95802a4cca406c2413fe6f1da4e98c8a08b4c4c231419083cc20439836"
+    },
+    {
+      "video_time": 6.375,
+      "simulation_time": 12.750000189989805,
+      "source_image_sha256": "53b161a170f58bf41b69956d6392201d225a1913b4edce2c0d283d70bfa9ad88"
+    },
+    {
+      "video_time": 6.5,
+      "simulation_time": 13.000000193715096,
+      "source_image_sha256": "6c07af8a54bfc60d7a4994eaef723b6be3f4bb5083185437cd816806d90cab54"
+    },
+    {
+      "video_time": 6.625,
+      "simulation_time": 13.250000197440386,
+      "source_image_sha256": "674ea60687a0a8ef3501094528729c9010ff2ca4717befc98af6f7dc9beeae90"
+    },
+    {
+      "video_time": 6.75,
+      "simulation_time": 13.500000201165676,
+      "source_image_sha256": "3dbc18804c8a78d0d97d4c2f1e4590b303a98336ce84aaaef5d2188539e5c63b"
+    },
+    {
+      "video_time": 6.875,
+      "simulation_time": 13.750000204890966,
+      "source_image_sha256": "f9e18da2df77ab810ba614b923b7acf192d6b620348225fb1b6a7c762382176e"
+    },
+    {
+      "video_time": 7.0,
+      "simulation_time": 14.000000208616257,
+      "source_image_sha256": "3014776ff0a89905f9e6d73886aaed1daef1c2f91405f38a118999153d863bc9"
+    },
+    {
+      "video_time": 7.125,
+      "simulation_time": 14.250000212341547,
+      "source_image_sha256": "1b7256e48e43aaa37ceacdd484997117f23a562a1ca4a331737c7bca5cde7ea3"
+    },
+    {
+      "video_time": 7.25,
+      "simulation_time": 14.500000216066837,
+      "source_image_sha256": "f08d45bf6b97888ba488b3c2560dc64751c3d2cd504f20d086672e4f5b6adc80"
+    },
+    {
+      "video_time": 7.375,
+      "simulation_time": 14.750000219792128,
+      "source_image_sha256": "0de0d7caef0f02820a7fec5153cd5c650af40ca383b08147036734489f0ff2df"
+    },
+    {
+      "video_time": 7.5,
+      "simulation_time": 15.000000223517418,
+      "source_image_sha256": "d93be8bf238b032a05ade843db6f14c3f9540bf8ae76057670897f5b96a417fb"
+    },
+    {
+      "video_time": 7.625,
+      "simulation_time": 15.250000227242708,
+      "source_image_sha256": "16bb31bc018796f7c7eda0c6bc66cde0cb446cb7b7ff9ef3967024e05c894879"
+    },
+    {
+      "video_time": 7.75,
+      "simulation_time": 15.500000230967999,
+      "source_image_sha256": "7c62079d8ad30dca026a5f35d2a387b1091c72a6c2e3d0107c1707a4c6b870d4"
+    },
+    {
+      "video_time": 7.875,
+      "simulation_time": 15.750000234693289,
+      "source_image_sha256": "bc487d7fc9f88ddd19cb99c809924836fb87e2886e6ba983fede68b993c7b61a"
+    },
+    {
+      "video_time": 8.0,
+      "simulation_time": 16.00000023841858,
+      "source_image_sha256": "b2b74e2c496910ece82f0f3af86ffad2b3736d381fd96590182532e209c968cc"
+    }
+  ],
+  "review": {
+    "sequence_sha256": "6724701b11f10e6ad16534b5ec67ac1a813dedcacb12d0135babb9feae8544e1",
+    "reviewed_by": "Codex material artist"
+  },
+  "video_sha256": "5a5c031b2870a3b0c5194b39ee6d63e27a626d3d0edd9d771b1e09fbe8a0fce8",
+  "poster_sha256": "e2111f756d838f6df5bdc6994a4c161d1b0b7f37ca7c24f8d35fc3449928e0fc"
+}

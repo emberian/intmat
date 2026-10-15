@@ -14,6 +14,15 @@
 
 ## Current convergence
 
+**Optical composition:** “The nacre fault” couples eight-channel recurrent mineral
+with pressure waves in both directions on a fixed physical domain at native 256³.
+The 640-step bake records 65 full-volume states. Its reviewed 2000²/128-sample still
+and 960²/48-sample film use nacre glass, copper and refractive pressure fronts;
+seeded folds and optical mappings are explicit. Gallery: 61 still studies plus
+recorded films. The companion catalytic-habitat film shows 121 actual field/body
+observations through t300. [Art and reproduction](docs/nacre-fault.md) ·
+[Film publication](docs/publishing.md)
+
 **New ecology:** cells now pay to construct two persistent extracellular catalysts;
 heritable secretion readouts control investment and allocation. Catalysts unlock
 otherwise inaccessible food for neighbors. The first active three-arm trajectory
@@ -65,7 +74,7 @@ hbox now executes the original Julia kernels through AMDGPU with normal compiled
 
 ## Evidence and limits
 
-The integrated Julia suite passed 2296 assertions across 112 testsets, including exact contact/diffusion oracles, portable-runner guards and the catalytic habitat. A separate 25-assertion regression covers soak failures, explicit source forks and throughput mode without replacing methods in the shared test process. The shared realFFT phase backend passes 355 focused/coupled assertions and matches the full old 96³ trajectory within 4.88e−17; a 192³ benchmark measured 1.85× speedup. Current Python tools pass 15 tests, including three actual movie-encoding checks run with the bundled Pillow runtime. Actual bake audits check finite fields, material/work ledgers, graph identity, source hashes and population accounting; photographs receive visual review.
+The integrated Julia suite passed 2296 assertions across 112 testsets, including exact contact/diffusion oracles, portable-runner guards and the catalytic habitat. A separate 25-assertion regression covers soak failures, explicit source forks and throughput mode without replacing methods in the shared test process. The shared realFFT phase backend passes 355 focused/coupled assertions and matches the full old 96³ trajectory within 4.88e−17; a 192³ benchmark measured 1.85× speedup. Current Python tools pass 20 tests, including actual movie encoding and renderer source-cache invalidation, under the bundled Pillow runtime. Actual bake audits check finite fields, material/work ledgers, graph identity, source hashes and population accounting; photographs receive visual review.
 
 - Small finite-supply metabolic experiments reached capacity 180 then died at sampled t=384–1048; controls varied by seed. [Results](docs/metabolic-experiments.md)
 - Strong funded phase feedback retained two substantial positive domains through t=160 versus one in controls; coarsening continued. Persistent compartments remain unproven. [Study](docs/active-compartment-studies.md)

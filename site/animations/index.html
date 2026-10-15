@@ -20,8 +20,10 @@ async function load(){
   const heading=el('div',undefined,'heading');heading.append(el('h2',film.title),el('span',String(index+1).padStart(2,'0'), 'number'));article.append(heading,el('p',film.description));
   const video=el('video');video.controls=true;video.playsInline=true;video.preload='none';video.poster=path+'poster.webp';video.src=path+'film.mp4';video.setAttribute('aria-label',film.title);video.style.aspectRatio=`${film.playback.width}/${film.playback.height}`;article.append(video);
   const caption=el('div',undefined,'caption'),time=el('span'),facts=el('span',`${film.frames.length} recorded frames · ${film.playback.width} × ${film.playback.height} film`);
-  function update(){const i=Math.min(film.frames.length-1,Math.floor(video.currentTime*film.playback.fps+1e-5));time.textContent=`Simulation t = ${Number(film.frames[i].simulation_time).toFixed(3)} · frame ${i+1} / ${film.frames.length}`}
-  video.addEventListener('timeupdate',update);video.addEventListener('seeked',update);update();caption.append(time,facts);article.append(caption);
+  function update(at=video.currentTime){const i=Math.min(film.frames.length-1,Math.floor(at*film.playback.fps+1e-5));time.textContent=`Simulation t = ${Number(film.frames[i].simulation_time).toFixed(3)} · frame ${i+1} / ${film.frames.length}`}
+  video.addEventListener('timeupdate',()=>update());video.addEventListener('seeked',()=>update());
+  if(video.requestVideoFrameCallback){const presented=(_,frame)=>{update(frame.mediaTime);video.requestVideoFrameCallback(presented)};video.requestVideoFrameCallback(presented)}
+  update();caption.append(time,facts);article.append(caption);
   const links=el('div',undefined,'links');links.append(link('Open film ↗',path+'film.mp4'),link('Source & frame times',path+'film.json'));article.append(links);
   const details=el('details');details.append(el('summary','Reading the motion'),el('p',`Each video frame corresponds to one recorded simulation sample. Playback is ${film.playback.fps} frames per second, without invented intermediate simulation states. The last frame ends the recording; replay starts the same sequence again.`));
   if(film.source.interpretation)details.append(el('p',film.source.interpretation));article.append(details);main.append(article);
