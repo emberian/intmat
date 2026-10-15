@@ -1,5 +1,15 @@
 # Working hbox Torch route (15 October 2026)
 
+**Diagnostic evidence only.** Ember requires Julia for the simulation algorithms.
+The Torch probes below are retained as evidence about the working hardware,
+runtime libraries and numerical comparison. They are not an approved simulation
+backend or a production execution route. Further algorithm work targets Julia.
+
+Julia recovery subsequently passed the original Interior CPU/GPU comparison
+(maximum absolute field error 3.73e-9) using normal package images and the
+working wheel's ROCm libraries read-only, without importing Torch. The current
+Julia replay and controlled attribution are in [hbox-runtime.md](hbox-runtime.md).
+
 The earlier successful Torch environment still works, including fused
 `torch.compile` kernels and GPU real FFTs. It is separate from the retired
 `/home/hbox/h1-ghost/venv` and from the new Julia AMDGPU experiments:
@@ -80,25 +90,24 @@ one compilation task. Initial import/device startup was slower cold; a second
 arithmetic process imported in .76 seconds and completed GPU initialization and
 arithmetic about 4.55 seconds after launch. No persistent compute job remains.
 
-## Integration path
+## Implications for Julia recovery
 
-Use a persistent Torch worker that owns its device tensors. Julia can send
-physical parameters and bounded batches of advances, then request only outputs
-needed for export. A process protocol or an optional PythonCall environment
-avoids repeatedly importing Torch and compiling kernels. Keep all intermediate
-temperature, scratch and dose arrays on the device; the measured 12.06 ms
-upload/download cost for a single 256³ field exceeds the 1.29 ms resident
-stencil. DLPack alone would not repair the failed Julia GPU compiler; bridging
-host-resident Julia arrays through it does not create zero-copy GPU state.
+The working wheel bundles ROCm 6.3 libraries under
+`/tank/chreatures/envs/rocm-dev/lib/python3.12/site-packages/torch/lib`, and uses
+`HSA_OVERRIDE_GFX_VERSION=10.3.0`. These provide a concrete runtime reference for
+recovering Julia AMDGPU. The earlier proposal to use a persistent Torch worker,
+PythonCall or DLPack as an algorithm backend has been withdrawn in accordance
+with the Julia-only requirement. The measured transfer costs remain useful
+evidence for keeping eventual Julia state resident on the GPU.
 
 A faithful writer backend must compare the original cell coordinates, periodic
 stencil, source trajectory/pulsing, cooling, timestep guards, threshold-dose
 quadrature and material update against Julia fixtures over multiple steps.
 The component microbenchmark above establishes no such full writer equivalence.
 
-### Verified opt-in dose writer
+### Historical diagnostic writer comparison
 
-`scripts/probe_hbox_torch_writer.py` now implements the opt-in three-array
+`scripts/probe_hbox_torch_writer.py` was used to compare the opt-in three-array
 `DoseThermalWriter` equations with a fused resident Torch kernel. It retains
 the explicit Euler temperature update, periodic finite-difference Laplacian,
 Gaussian source, cooling, nonnegative temperature clamp and right-endpoint

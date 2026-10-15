@@ -26,3 +26,11 @@ Copy `arena.html` and the recorded `latest.json` together into the curated colle
 ## Snapshot contract
 
 `schema` is `interior-arena-live`, `schema_version` is `1`; `grid` supplies `shape` and physical `extent`. Each `fields` entry has a two-dimensional `shape` and numeric `values` in x-fastest order. Agent entries supply `id`, `position`, `lineage`, `generation`, `energy`, and `storage`, plus optional inherited/plastic details. `step`, `time`, `paused`, and `metrics` describe the current runtime. The exporter atomically replaces this file so the browser cannot read a half-written snapshot.
+
+## Cellular body view
+
+Snapshots with `metrics.cellular_model` select the cellular rendering path. Each body uses its exported physical `radius` and the arena's physical extent; this is distinct from the fixed scientific markers used by the original and metabolic arenas. Bodies crossing a periodic boundary appear on both sides. In a 3D arena the map projects the bodies onto the central field slice rather than claiming to render sphere cross-sections.
+
+The Medium, Cell bodies, and Bonds layers can be explored independently. Bond segments come from the exported stable-ID `cell_bonds` graph and use the shortest periodic displacement. Connected-component counts describe that graph; they do not designate organisms. Select an actual body to inspect internal precursor stocks, biomass, battery, ancestry, recurrent/adaptation state, and its eleven controller outputs. Neighbour buttons follow recorded bonds to other cells.
+
+Cellular catalytic allocations are current controller outputs for precursor A uptake, precursor B uptake, growth, and oxidation. They are displayed separately from the inherited metabolic fractions of the older model. Battery and storage fractions appear only when the snapshot exports their capacities. Existing original/metabolic snapshots and recorded replays retain their own rendering and labels.
