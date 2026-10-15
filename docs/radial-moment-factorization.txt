@@ -1,0 +1,123 @@
+Radial support factorization: experimental architecture, 2026-10-15
+
+The strongest concrete alternative so far is a geometry plan with hierarchical
+polynomial field moments. It preserves the periodic physical sphere and its
+nearest-site fallback. The radial polynomial (1-r²/R²)^2 admits fourteen tile
+moments: constant, three linear, six quadratic, three x_i|x|², and |x|⁴.
+A wholly interior tile uses fourteen numbers; only boundary tiles enumerate
+individual sites. Local tile coordinates limit cancellation. Thin periodic axes
+and minimum-image seams are classified conservatively, never by shrinking R.
+
+This is exact in real arithmetic, not the production Float32 reduction order.
+The independent CellStencil comparisons have errors below 3e-14 for Float64
+moments in the measured fixtures. These are numerical measurements, not a
+uniform error theorem. Float32 stored moments have their own explicit test.
+No coupled trajectory or GPU throughput improvement has been established.
+
+The reusable object is geometry, not a field cache. SupportPlan owns a held
+position snapshot, interior nodes, boundary tiles, normalization, and bounded
+axis distance caches. Position, radius, grid or lifecycle changes rebuild it.
+Each changed scalar field must refresh its own moments before a query. Reusing
+one scalar refresh across eight distinct or mutated fields would be invalid.
+
+The first implementation built all moments at every level. Its 512³/N24/width4
+query was 0.00483s versus axis0.01613s, but field build6.990s overwhelmed the
+query saving: complete scalar epoch7.0035s versus0.02775s. This is a failed
+whole-cost result for sparse queries, not evidence of a whole-engine speedup.
+The pinned result is /tmp/intmat-radial-moments-final-20261015.json; its study
+hash predates the later scatter/lazy additions. Query timings use CPU axis
+reconstruction, not the faster default GPU materialized support.
+
+The lazy variant fixes the gratuitous full-field build. Geometry-only plans
+first identify queried interior nodes. Their child closure is deduplicated
+across all cells. Only those leaves read the field; parent moments reuse the
+same translation formula as the full pyramid. Compact14-by-used-node values
+are indexed by dense Int32 tile maps (width4, roughlyV/14 bytes), rather than
+14 moments on every node. Boundary-only leaves read the current source field
+at gather time and do not need moments. The remaining whole-map walk isO(V/64),
+notO(V); profiling may justify a packed per-level node list in a GPU version.
+Co-located cells share exactly the same moment storage and construction work.
+
+The associated CPU epoch probe compares N512 and N4096 at128³/256³ with fixed
+extent4 andR.18. It records geometry build, changed-field refresh, all-cell
+queries, storage, used-leaf field traffic, and dense/lazy exact equality.
+A single warm query number cannot select the architecture. High population
+amortizes tile construction but eventually covers most of the field. The
+boundary fraction falls as R/h grows; the method targets physically resolved
+large supports, not tiny supports already cheap as materialized edge lists.
+
+Gather/scatter duality is usable but has a physical boundary. The prototype
+scatter sums fourteen polynomial coefficients onto interior nodes and expands
+them to sites; explicit sphere tests handle boundary tiles. This is a request
+operator, not permission to batch paid CAS enzyme delivery. Actual Float32
+recipient credits must fund donor debits. A nonmutating CPU allocation proof
+withdraws actual Float32 source endpoints, pays grants from withdrawal escrow,
+and accounts any unassigned residue as explicit inert plus chemical heat.
+It does not implement cell stores, construction work, lifecycle, or simultaneous
+paid secretion. Those laws require their own whole-trajectory accounting gate.
+
+Memory is a separate limiting architecture. Current coupled dense grids cost
+about268V bytes:4.50GB at256³ and35.97GB at512³ before genomes or support.
+A support-only compression cannot make512³ fit a12GB device. Possible next
+state-layout experiments are global/block compensated diagnostic reductions
+instead of96V cumulative spatial ledgers, frozen/shared mask providers instead
+of duplicate uniform masks, and removal of unused feedstock channels. Spatial
+history is an observability tradeoff; none of these changes is implemented here.
+
+Other candidates and discrimination:
+* Workgroup/edge-parallel gathers retain the existing support representation
+  and can change GPU occupancy without a new physical allocation law. Measure
+  achieved occupancy, memory traffic, register pressure, and full coupled time.
+* Per-voxel spatial-bin queries avoid edge storage, but must visit every eligible
+  cell, including high overlap, and preserve any held-geometry contract. They
+  need exact periodic coverage tests and count-dependent load balancing.
+* Shared-memory tiles can amortize field reads among overlapping cells. Compare
+  a tile's unique cell list against sum of edges; count index-building cost.
+* Dense gradient preprocessing adds six channels (24V bytes), unattractive for
+  sparseN512 where NS/V is about0.195 at this fixed geometry. High overlap may
+  reverse the traffic balance; measure rather than assume.
+* A spherical indicator is not separable. Replacing it by box range sums or a
+  separable polynomial changes the law. Interior14-moment tiles retain explicit
+  curved boundaries and therefore avoid that approximation.
+
+All new implementations live in studies/radial_moment_tiles.jl, with independent
+checks in test/radial_moment_tiles.jl. Production kernels, invalidation schedules,
+mechanical pair coverage, old outputs, and GPU state are untouched.
+
+A stronger boundary factorization to prototype next is a column interval sum.
+For fixed voxel x,y the sphere's eligible z sites form a contiguous periodic
+interval (possibly split at the seam). Let A=1-(dx²+dy²)/R². The radial weight is
+A²-2A*dz²/R²+dz⁴/R⁴. Five prefix moments in local z coordinates (powers0..4)
+therefore evaluate the entire z interval with constant work, reducing queries
+fromO((R/h)^3) toO((R/h)^2). This differs from14-moment3D tiles by eliminating
+explicit curved-boundary voxel scans rather than just interior scans.
+
+A full five-prefix field would require20V bytes inFloat32,40V inFloat64 per
+scalar field, and wholeV construction each refresh; that is unattractive for
+sparseN512 and already overcommitted512³ coupled state. A viable variant must
+first union the queried column intervals, build local prefixes only within
+those segments, and reuse the geometry segment map across mutable fields.
+High-overlap populations amortize each segment among many cells; disjoint
+small supports do not. Periodic intervals and endpoint inclusion must use the
+same squared-distance comparisons as physical support, with corrected endpoints
+rather than an unchecked sqrt/floor shortcut. Local coordinates limit prefix
+cancellation. The future gate must measure complete segment-union construction,
+changed-field prefix rebuild, all gathers, scatter allocation if proposed, and
+whole coupled time; query-only O(R²) is not sufficient. This idea remains a
+specified next experiment, not an implementation or speedup claim.
+
+Retained actual-population CPU measurements (seconds; median3 warm query/refresh):
+grid N    axis_epoch lazy_epoch axis_query lazy_query lazy_refresh lazyMB denseMB
+128  512 0.01959 0.02085 0.01060 0.00500 0.00169 0.292 4.194
+128 4096 0.13904 0.30343 0.05501 0.07281 0.04164 1.140 4.194
+256  512 0.16155 0.32362 0.07303 0.05626 0.07417 4.087 33.554
+256 4096 0.90454 1.61453 0.34189 0.31075 0.34602 18.053 33.554
+Epoch includes actual initial geometry/moment construction; query/refresh are
+median3 after warming both boundary and interior paths. Shared-host timing is
+variable; this is not a GPU benchmark. All four dense/lazy outputs are bitwise
+equal and maximum axis-oracle deviation is below1.6e-14. The retained JSON
+includes study and runner hashes: docs/radial-moment-cpu-epochs.json.
+
+Reproduce (one CPU thread, fresh output path):
+julia --project --threads=1 --gcthreads=1 test/radial_moment_tiles.jl
+julia --project --threads=1 --gcthreads=1 studies/probe_lazy_radial_moments.jl /tmp/new-radial-epoch.json

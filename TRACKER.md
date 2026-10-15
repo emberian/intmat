@@ -339,3 +339,23 @@ against incompatible fixed aliases. A reviewed native 256³ activity-contour pho
   artist preparing a closer composition. Neither contour art establishes evolved
   organization. Completed stronger-feedback t3000–3100 continuations now retain
   201 actual frames each with cells, actions, bonds and interval chemical flows.
+
+- 15:40 UTC integration: deterministic compensated resource accounting is now
+  production code at `8f502c2`; the shared world-batch adapter uses the same
+  phase. Scoped checks passed 1,033 resource/composition/alias assertions plus
+  246 batch assertions. Full integration is running from an immutable archive
+  on hbox CPU8–9. Native128³ fed whole-step timing was 4969.126→29.952ms
+  (165.90×), short warmed samples; actual64³/C16384 sustained production gate
+  is next. Physical arrays match the old atomic path; aggregate source ledger
+  summation differs slightly. Bounded pair precision and inherited endpoint
+  subtraction limits remain explicit in docs/device-resource-reduction.md.
+- The reviewed **Kept, released, remade.** exhibit is committed at `f0912b9`:
+  402 actual frames across two late constructed histories, all recorded cells,
+  bonds, hidden states and sampled paid flows. Public compact bundle2.96MB;
+  full staged gallery123.43MB/65cards. Desktop/mobile and actual gallery entry
+  passed. It records two-dimensional ecology, without invented 3D motion.
+- Read-only soak observation `outputs/observatory/20261015-1540.json` found
+  original broad/mosaic alive at t91351.5/89070,216/229cells. Optimized remains
+  empty after the already recorded finite-funding extinction; no reseed or
+  deadline change. All source maps/checkpoints/host controls valid, no failure
+  artifacts. Native garden is a separate fresh recipe, pending sustained gate.

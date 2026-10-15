@@ -1,0 +1,457 @@
+{
+  "fixture": "fresh seeded 192-founder dense closed constructive ecology; no old-state migration",
+  "config": {
+    "batch": 5,
+    "cellular": {
+      "hidden": 8,
+      "basal_rate": 0.025,
+      "population": 192,
+      "mutation": 0.08,
+      "mutation_probability": 0.03,
+      "exchange_radius": 1,
+      "speed": 0.3,
+      "junction_rate": 0.8,
+      "capacity": 768
+    },
+    "catalysis": {
+      "secretion_work": 0.2,
+      "investment_bias": -0.8,
+      "allocation_exponent": 2,
+      "half_saturation": 0.2,
+      "shared_anabolism": true,
+      "catalytic_rate": 6,
+      "allocation_bias_scale": 1.2,
+      "secretion_rate": 0.12,
+      "decay_rate": 0.008,
+      "mutation": 0.08,
+      "mutation_probability": 0.03,
+      "regulation": true
+    },
+    "model": "catalytic",
+    "_initial_energy": 2676.3200150799744,
+    "dt": 0.1,
+    "snapshot_seconds": 2,
+    "sleep_seconds": 0.001,
+    "feedstock": {
+      "names": [
+        "bound_a",
+        "bound_b"
+      ],
+      "diffusion": [
+        0,
+        0
+      ],
+      "initial": [
+        2,
+        2
+      ],
+      "source_rates": [
+        0,
+        0
+      ],
+      "source_budgets": [
+        100000,
+        100000
+      ],
+      "potentials": [
+        4,
+        4
+      ]
+    },
+    "matrix": {
+      "capacity_per_enzyme": 6,
+      "transport_barrier": 20,
+      "desorption_rate": 0.12,
+      "cross_binding": 0,
+      "adsorption_rate": 4
+    },
+    "grid": {
+      "shape": [
+        10,
+        10,
+        10
+      ],
+      "extent": [
+        5,
+        5,
+        5
+      ]
+    },
+    "resources": {
+      "source_budgets": [
+        100000,
+        100000,
+        0
+      ],
+      "niche_contrast": 0.8,
+      "names": [
+        "precursor_a",
+        "precursor_b",
+        "waste"
+      ],
+      "spatial_niches": true,
+      "sink_budgets": [
+        100000,
+        100000,
+        100000
+      ],
+      "niche_waves": [
+        1,
+        2,
+        1
+      ],
+      "diffusion": [
+        0.2,
+        0.2,
+        0.03
+      ],
+      "sink_rates": [
+        0,
+        0,
+        0
+      ],
+      "initial": [
+        0.3,
+        0.3,
+        0.0
+      ],
+      "source_rates": [
+        0,
+        0,
+        0
+      ],
+      "potentials": [
+        4,
+        4,
+        0
+      ]
+    },
+    "checkpoint_seconds": 90,
+    "seed": 211
+  },
+  "rows": [
+    {
+      "name": "adaptive",
+      "seconds": 0.20934959,
+      "bytes": 19292816,
+      "gc_seconds": 0,
+      "steps": 10,
+      "time": 1.0000000149011612,
+      "population": 192,
+      "births": 0,
+      "deaths": 0,
+      "work": 21.190170316796742,
+      "mass_residual": -2.0966581359971315e-08,
+      "energy_residual": 3.0361252356669866e-07,
+      "finite": true,
+      "minimum_funds": 0.9353681130916186,
+      "policy_calls": 0
+    },
+    {
+      "name": "rkc16",
+      "seconds": 0.19111244,
+      "bytes": 42824944,
+      "gc_seconds": 0,
+      "steps": 10,
+      "time": 1.0000000149011612,
+      "population": 192,
+      "births": 0,
+      "deaths": 0,
+      "work": 21.277893471930266,
+      "mass_residual": 1.4179022400639951e-09,
+      "energy_residual": 8.661390893394127e-08,
+      "finite": true,
+      "minimum_funds": 0.9365296921270843,
+      "policy_calls": 10
+    },
+    {
+      "name": "fine256",
+      "seconds": 0.997119581,
+      "bytes": 19106232,
+      "gc_seconds": 0,
+      "steps": 10,
+      "time": 1.0000000149011612,
+      "population": 192,
+      "births": 0,
+      "deaths": 0,
+      "work": 21.242139820292536,
+      "mass_residual": 7.543633273598971e-08,
+      "energy_residual": 5.029155545344111e-07,
+      "finite": true,
+      "minimum_funds": 0.936152139064035,
+      "policy_calls": 0
+    },
+    {
+      "name": "fine512",
+      "seconds": 1.909092426,
+      "bytes": 19188088,
+      "gc_seconds": 0,
+      "steps": 10,
+      "time": 1.0000000149011612,
+      "population": 192,
+      "births": 0,
+      "deaths": 0,
+      "work": 21.24689545128322,
+      "mass_residual": 8.219558367272839e-08,
+      "energy_residual": 8.1956841313513e-08,
+      "finite": true,
+      "minimum_funds": 0.9362255303928064,
+      "policy_calls": 0
+    },
+    {
+      "name": "fine1024",
+      "seconds": 3.772027223,
+      "bytes": 19351992,
+      "gc_seconds": 0,
+      "steps": 10,
+      "time": 1.0000000149011612,
+      "population": 192,
+      "births": 0,
+      "deaths": 0,
+      "work": 21.249270857314094,
+      "mass_residual": -9.93921958070132e-08,
+      "energy_residual": -2.1234200175968e-07,
+      "finite": true,
+      "minimum_funds": 0.9362619531938389,
+      "policy_calls": 0
+    },
+    {
+      "name": "rkc8",
+      "seconds": 0.132146767,
+      "bytes": 30603800,
+      "gc_seconds": 0,
+      "steps": 10,
+      "time": 1.0000000149011612,
+      "population": 192,
+      "births": 0,
+      "deaths": 0,
+      "work": 21.342736619776034,
+      "mass_residual": 2.1096741420478793e-07,
+      "energy_residual": 7.040807759040035e-07,
+      "finite": true,
+      "minimum_funds": 0.9364233083967126,
+      "policy_calls": 10
+    },
+    {
+      "name": "rkc32",
+      "seconds": 0.280130722,
+      "bytes": 66051584,
+      "gc_seconds": 0,
+      "steps": 10,
+      "time": 1.0000000149011612,
+      "population": 192,
+      "births": 0,
+      "deaths": 0,
+      "work": 21.272535950641693,
+      "mass_residual": 7.920789357740432e-09,
+      "energy_residual": 1.7509000826976262e-07,
+      "finite": true,
+      "minimum_funds": 0.9362945874585011,
+      "policy_calls": 10
+    }
+  ],
+  "errors": {
+    "rkc32": {
+      "common_ids": 192,
+      "same_ids": true,
+      "rms": 0.0012262312116603485,
+      "maximum": 0.008710988140327572,
+      "bond_jaccard": 0.9892665474060823,
+      "work_error": 0.023265093327598407,
+      "resource_relative_l2": 0.002599075061250264
+    },
+    "adaptive": {
+      "common_ids": 192,
+      "same_ids": true,
+      "rms": 0.015176267820078181,
+      "maximum": 0.1563745302189394,
+      "bond_jaccard": 0.9892665474060823,
+      "work_error": -0.059100540517352584,
+      "resource_relative_l2": 0.004501580760629337
+    },
+    "rkc8": {
+      "common_ids": 192,
+      "same_ids": true,
+      "rms": 0.0036816273700748755,
+      "maximum": 0.03412690342136198,
+      "bond_jaccard": 0.982174688057041,
+      "work_error": 0.09346576246193905,
+      "resource_relative_l2": 0.003285562498381983
+    },
+    "fine256": {
+      "common_ids": 192,
+      "same_ids": true,
+      "rms": 0.0016795250047723074,
+      "maximum": 0.01717496465579008,
+      "bond_jaccard": 1,
+      "work_error": -0.007131037021558484,
+      "resource_relative_l2": 0.000439749535920579
+    },
+    "fine512": {
+      "common_ids": 192,
+      "same_ids": true,
+      "rms": 0.0005397217875418783,
+      "maximum": 0.005613161382339821,
+      "bond_jaccard": 1,
+      "work_error": -0.002375406030875382,
+      "resource_relative_l2": 0.00014349536425991612
+    },
+    "rkc16": {
+      "common_ids": 192,
+      "same_ids": true,
+      "rms": 0.0028728036789680243,
+      "maximum": 0.02529844513012485,
+      "bond_jaccard": 0.982174688057041,
+      "work_error": 0.02862261461617166,
+      "resource_relative_l2": 0.0031993899916801516
+    }
+  },
+  "timings": [
+    {
+      "adaptive": {
+        "seconds": 0.211100716,
+        "bytes": 19292816,
+        "gc_seconds": 0
+      },
+      "paired_speedup": 1.0969903395232306,
+      "sample": 1,
+      "rkc16": {
+        "seconds": 0.192436258,
+        "bytes": 42824944,
+        "gc_seconds": 0
+      }
+    },
+    {
+      "adaptive": {
+        "seconds": 0.215597804,
+        "bytes": 19292816,
+        "gc_seconds": 0
+      },
+      "paired_speedup": 1.118834617465147,
+      "sample": 2,
+      "rkc16": {
+        "seconds": 0.192698546,
+        "bytes": 42824944,
+        "gc_seconds": 0
+      }
+    },
+    {
+      "adaptive": {
+        "seconds": 0.213362485,
+        "bytes": 19292816,
+        "gc_seconds": 0
+      },
+      "paired_speedup": 1.1113858897723894,
+      "sample": 3,
+      "rkc16": {
+        "seconds": 0.19197876,
+        "bytes": 42824944,
+        "gc_seconds": 0
+      }
+    },
+    {
+      "adaptive": {
+        "seconds": 0.213804208,
+        "bytes": 19292816,
+        "gc_seconds": 0
+      },
+      "paired_speedup": 1.1240012048761368,
+      "sample": 4,
+      "rkc16": {
+        "seconds": 0.190217063,
+        "bytes": 42824944,
+        "gc_seconds": 0
+      }
+    },
+    {
+      "adaptive": {
+        "seconds": 0.21118908,
+        "bytes": 19292816,
+        "gc_seconds": 0
+      },
+      "paired_speedup": 1.103108005065429,
+      "sample": 5,
+      "rkc16": {
+        "seconds": 0.191449141,
+        "bytes": 42824944,
+        "gc_seconds": 0
+      }
+    }
+  ],
+  "median_paired_speedup": 1.1113858897723894,
+  "source": {
+    "writing.jl": "78fba7cd46f03749bdc56547b7ce5622f7ba3ea42cc34801829345dae3975e05",
+    "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+    "cellular.jl": "97eda8b05c7d51883bc52dc7ecc985b882b60920296c79b4f2903ed358dc0131",
+    "matrix_mechanics.jl": "e232c0d13449324aabe6c299ee1de8ba1d961777e363bc328d44fa5af8de03ed",
+    "cellular_transport.jl": "fc8bfb0df1948b3869afae0a06fb5cc23bb87778452a31ffc3d27954eeb87aa2",
+    "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+    "cellular_arena.jl": "2ef965717c99cd0c46a8acd9ceb7da26232201cb18547bd23712e989688429e2",
+    "experiments.jl": "5697958abac5f36713418d5f9d94f274fb0a51b86ed1a84b3f58b68cba1e42d1",
+    "metabolic_ecology.jl": "2f599a1d6ea0a5552a594113d57e238e4c6ff3c1fd8d74de5a51f83a77179bb1",
+    "neural_ecology.jl": "ed0496adb31ce4511f8bc0d5343ff843c410c39c51d30c165b3cf5eac1135df2",
+    "compartments.jl": "e7c55ce4e0f4a8548c078c9d160815b5eaeb846a3765aad89a875f166b5005e5",
+    "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+    "catalytic_habitat.jl": "9a69b5ec394bc6dcee988d68f6463fc7c72bfa273e89bbd6e46513d392468eb1",
+    "device_cellular_support.jl": "5a767b83c2c912d8706468ec7c5b86e56cf99430b2a23dfd3a7f3ee8f21bf55b",
+    "arena.jl": "75acccd7b144e1512984c8ececb368d5fa3f03db08daa40e4b8f8f027198c16f",
+    "catalytic_arena.jl": "4a359bb5cfee951c898aca039efe07a4558797fce5544876158791139b105524",
+    "recurrent_material.jl": "e9457d0d6e31f74950fa4be8ef84b138b020c0de7fc4b95c9a7f3cd5db148347",
+    "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+    "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+    "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b",
+    "Interior.jl": "194971f1f1f6c5c044145238c12ed27dbe4975f9f60a67b5d2074aa8efbf9631",
+    "resources.jl": "859f6e04b456ceee051fd83214b37ca18418af09126960997b7d62d83c2dcab0",
+    "cellular_initialization.jl": "d76e4c791a2c56bc7fd651b1836e6879b9e27013566ce6d94a1d2f677f62e633",
+    "constructive_cells.jl": "000953e0da6de61574abaff6566790c051af13c320c6c53162598625b6b6bf27",
+    "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+    "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+    "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+    "implicit_phase.jl": "1fb617707591f89784b95171e0558065101b3d992f7b3eabd16a7bf01dca4ceb",
+    "device_cellular_protocol.jl": "095c40b8e42baca3688abe902289377da49e8f352017733ce92728729fb40be5",
+    "core.jl": "b4302b90eaeba213360e8a15ce8b7e4cb4c491606657e3e500d2fb8507753a52",
+    "neural_workspace.jl": "ecdd45856bc0b3c61708de90814d1abb33bc1232a0f9ff5785b32b9bc39a9139",
+    "device_habitat_kernels.jl": "ee2a1c13ac99a2d69a36a3aec25c6ed55072a578cff82094329263500c8090b9",
+    "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+    "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+    "device_cellular_initialization.jl": "1484f9c00e3aa438f2557d12af1b29be2247e3b27dd5e4bcfd64d603785e6dc9",
+    "cellular_storage.jl": "735c3281aca69158609392ef161397bec166d4a1698d7e741cd95b5a426cfaff",
+    "device_cellular_kernels.jl": "a85cf1f8e0739373572e9029deb46415ab5d16669f3513b0fbf020b289ad0b27",
+    "device_cellular.jl": "72ecaccee6a0968b00b43fc2c9dfb7fee074a5f4e9fa95d2bc646640860e3e6d",
+    "device_cellular_checkpoint.jl": "77f943195ef1ae0466d57fc57c051595f3f363c822e8d9f6d4dbc1b9d5a6a9b0",
+    "cellular_contacts.jl": "337247cbe0707778f15672385f2e33684cbb44535afc9580e3cf880c4089aafa",
+    "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+    "dose_writer.jl": "b8d1b4013921a3c82388ee87a7ede00b97964a1894062f2a07339f2c6be197eb",
+    "device_habitat.jl": "f08c0ea979ab9a4dbdb3ffbf3f9c07c00ff71667df2d27807da4ad534e87f53a",
+    "mechanics.jl": "a0370e4028aa859fb344829f0d387a62dd8defb77b25f4651f7c08b386324e45",
+    "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+    "device_habitat_sorption.jl": "f135e74e59959187e72725a45665ac5c67293b8305298c8d3ac4bdbb81e6ac93",
+    "sorptive_matrix.jl": "f5643e0c951c983a7d5864676156123db3181e05510335fcd618de105ff1f036"
+  },
+  "study_sha256": {
+    "cellular_rkc_mechanics.jl": "4d3c0c45fc046647444433e7970ab2de212c0c4b6a909fe07334e6754c8b2388",
+    "cellular_rkc_ecology.jl": "96bf6bf50bf9a4ff852a5b2e9ab59969ceaea778cedb733dedd48272272f4dba",
+    "cellular_rkc_funding.jl": "e0a6ef44d68d62c6ed869e4981230b6bdf279edf35b3bf5005809025189d2232",
+    "cellular_implicit_mechanics.jl": "994ca7f5f15ff9e4ab9bc71e2ac0c647a8c18737126ed6e7fa429fe4bc0c8d5c",
+    "cellular_pair_proximal.jl": "85ca44f6d5d8626126419ead182eaa8c0860442f3ef547ba450987876decc469"
+  },
+  "scope": "complete-step same fresh initial condition/common outer clock; no turnover in this short gate; experimental numerical law, not exact trajectory replay",
+  "evidence_root": "/othersys/tmp/intmat-rkc-refined-0a1c6a8-20261015",
+  "controls": {
+    "base_commit": "0a1c6a83b1ad20183847db47348da2c07c006b47",
+    "cpus": [
+      8,
+      9
+    ],
+    "julia_threads": 2,
+    "gc_threads": 1,
+    "blas_threads": 1,
+    "memory_limit": "8GiB",
+    "swap": false,
+    "nice": 15,
+    "wall_limit_seconds": 180,
+    "julia_version": "1.12.4"
+  },
+  "default_median_seconds": 0.213362485,
+  "rkc16_median_seconds": 0.19197876
+}

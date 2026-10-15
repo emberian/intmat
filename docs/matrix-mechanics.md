@@ -78,8 +78,8 @@ previous repaired source snapshot exactly, excluding wall-clock metadata.
 
 ## Two matched exploratory seeds
 
-Four fresh arms completed time3000 with the same stronger-feedback recipe,
-comparing unit mobility with resistance20. All242 physical snapshots from the
+Four fresh arms completed time 3000 with the same stronger-feedback recipe,
+comparing unit mobility with resistance 20. All 242 physical snapshots from the
 two unit controls exactly reproduce the earlier repaired-source recordings,
 excluding wall-clock metadata. This checks that the opt-in law did not change
 the default trajectory over the full study horizon.
@@ -91,17 +91,17 @@ the default trajectory over the full study horizon.
 |307 / unit|123|78|1.086|0.604|1.108|
 |307 / matrix drag|138|100|0.901|0.764|1.313|
 
-Late values average the complete population snapshots from time1600–3000,
-spaced25 time units apart. The mean sampled drag over that window is1.582 for
-seed211 and1.270 for seed307. No arm reaches the population guard. Maximum
+Late values average the complete population snapshots from time 1600–3000,
+spaced 25 time units apart. The mean sampled drag over that window is 1.582 for
+seed 211 and 1.270 for seed 307. No arm reaches the population guard. Maximum
 sampled material and chemical-energy ledger errors across all arms are below
 0.000315 and0.000047 respectively.
 
 The mechanical consequence is real, while its ecological consequences remain
 trajectory-dependent. Seed211 has fewer late contacts per cell and a smaller
-largest-component fraction under matrix drag; seed307 changes in the opposite
+largest-component fraction under matrix drag; seed 307 changes in the opposite
 direction. Both drag arms finish with less catalyst standing at the endpoint,
-while continuing paid construction (cumulative totals215.669 and144.977).
+while continuing paid construction (cumulative totals 215.669 and 144.977).
 These are two coupled ecological trajectories, not evidence that drag universally
 promotes residence, cooperation, collective organisms or adaptation. Their
 changed histories also prevent attributing every endpoint difference directly
@@ -109,10 +109,10 @@ to one instantaneous mechanical effect.
 
 ![Actual physical cells, contacts and catalyst under matched mechanics](figures/matrix-mechanics-states.png)
 
-The four panels show actual time3000 states at identical field exposure and
+The four panels show actual time 3000 states at identical field exposure and
 physical scale. White outlines use physical disk radii; gray edges are the
 stable-ID contact graph with periodic minimum-image geometry. Amber/teal show
-catalyst A/B concentration with the same logarithmic exposure0.3 mass per volume.
+catalyst A/B concentration with the same logarithmic exposure 0.3 mass per volume.
 No spatial field interpolation or anatomical surface has been added.
 
 [Compact results, parameters and figure provenance](matrix-mechanics-results.json)
@@ -121,4 +121,4 @@ frozen source remain local under `outputs/matrix-drag-paired-20261015` and
 `outputs/matrix-drag-20261015-final-source`; analysis helpers are under
 `outputs/matrix-drag-20261015`. Mechanical work/distance values in those recorded
 snapshots describe the last physical step only; they are not integrated motion
-histories over the25-unit capture interval.
+histories over the 25-unit capture interval.

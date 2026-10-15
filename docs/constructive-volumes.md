@@ -133,3 +133,13 @@ which still supplies some soluble precursor; it does not establish dependence
 on the constructed habitat alone.
 
 ![Catalyst renewal inferred from two recorded states, with the actual final total](figures/constructive-volume-catalyst-turnover.png)
+
+The bounded continuation subsequently completed time 1500 on its original physical
+source. It ends with 1,693 cells, 455 bonds, 63.318 catalyst mass and 86.017 bound-food
+mass; cumulative paid construction reaches 1,227.986, with no blocked births.
+The later material was renewed while the initially dense contact graph changed
+substantially. These observations do not establish a stationary state or
+functional dependence. The final complete checkpoint restored strictly under
+its matching source, and a hash-verified copy is retained locally.
+[Completion, accounting and source provenance](constructive-volume-continuation.json)
+record the final state and the separate continuation's parent.
