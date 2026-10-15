@@ -1,0 +1,289 @@
+{
+  "format_version": 1,
+  "law": "experimental DeviceCellular; fixed checked mechanics and synchronous donor-limited junctions, distinct from adaptive CPU CellularEcology",
+  "runtime": {
+    "julia": "1.12.4",
+    "kernel": "Linux",
+    "architecture": "x86_64",
+    "launch_threads": 2,
+    "backend": "amd",
+    "device": "HIPDevice(id=1, name=AMD Radeon RX 6750 XT, gcn_arch=gfx1030)",
+    "backend_version": "2.8.0",
+    "actual_device_optlevel": 1,
+    "project_sha256": "284c920aebff70f466a40df21f7c83ae4c561857b046f940274b43a8feeaec6d",
+    "manifest_sha256": "19a74145cc443003999a5458b6055ed9c688494afba5bbe2a0699f722bac035a"
+  },
+  "initial_full_step_benchmark": {
+    "model_sha256": "831b0ac1b2784657e59c9d6ecf370c26633e42db2c16eb2d5efcdbf8827265b6",
+    "kernels_sha256": "825d6b5bdf2eeec57e771eecfdd7c55f2bea1f6b19c51a137facdf37b596fbf7",
+    "steps": 100,
+    "seconds": 2.542987718,
+    "full_steps_per_second": 39.32382342713304,
+    "process_resident_bytes": 8417656,
+    "host_allocation_bytes": 229789552,
+    "material_error": 5.7028782975976355e-06,
+    "potential_error": 4.890002071533672e-05
+  },
+  "saturated_fixture": {
+    "source": {
+      "model": "831b0ac1b2784657e59c9d6ecf370c26633e42db2c16eb2d5efcdbf8827265b6",
+      "kernels": "825d6b5bdf2eeec57e771eecfdd7c55f2bea1f6b19c51a137facdf37b596fbf7",
+      "checkpoint": "60d143a53a5297dc34109c67170aafc14d00156fb355c58e56834398bf71696b"
+    },
+    "steps": 1000,
+    "seconds": 26.211859447,
+    "full_steps_per_second": 38.15067000576535,
+    "material_error": -2.0286978724470828e-05,
+    "potential_error": 6.741842298652045e-05,
+    "restore_all_arrays_exact": true,
+    "final_statistics": {
+      "population": 1024,
+      "births": 544,
+      "deaths": 32,
+      "blocked_births": 130053,
+      "completed_steps": 1000,
+      "bonds": 2399,
+      "material": 4362.879638671875,
+      "potential": 5803.35546875,
+      "supplied": 0,
+      "removed": 0,
+      "supplied_potential": 0,
+      "removed_potential": 0,
+      "work": 2873.43701171875,
+      "heat": 5433.9267578125,
+      "synthesized": 744.0416870117188,
+      "oxidized": 1710.76513671875,
+      "finite": true,
+      "minimum_resource": 0,
+      "minimum_energy": 0,
+      "observation_bytes": 244
+    },
+    "restart_maximum_float_error": 0.00022733211517333984,
+    "restart_integer_mismatches": [
+      "state.next",
+      "environment.heads"
+    ]
+  },
+  "headroom_closed_trajectory": {
+    "source": {
+      "model": "831b0ac1b2784657e59c9d6ecf370c26633e42db2c16eb2d5efcdbf8827265b6",
+      "kernels": "825d6b5bdf2eeec57e771eecfdd7c55f2bea1f6b19c51a137facdf37b596fbf7",
+      "checkpoint": "60d143a53a5297dc34109c67170aafc14d00156fb355c58e56834398bf71696b"
+    },
+    "steps": 2000,
+    "seconds": 67.722162633,
+    "full_steps_per_second": 29.53242959529219,
+    "material_error": 1.1009161426045466e-05,
+    "potential_error": -0.0012826889151256182,
+    "restore_all_arrays_exact": true,
+    "final_statistics": {
+      "population": 1418,
+      "births": 938,
+      "deaths": 32,
+      "blocked_births": 0,
+      "completed_steps": 2000,
+      "bonds": 3651,
+      "material": 4362.87939453125,
+      "potential": 1407.59228515625,
+      "supplied": 0,
+      "removed": 0,
+      "supplied_potential": 0,
+      "removed_potential": 0,
+      "work": 6049.08642578125,
+      "heat": 6654.0390625,
+      "synthesized": 798.38427734375,
+      "oxidized": 2427.00927734375,
+      "finite": true,
+      "minimum_resource": 0,
+      "minimum_energy": 0,
+      "observation_bytes": 244
+    },
+    "restart_maximum_float_error": 8.803606033325195e-05,
+    "restart_integer_mismatches": [
+      "state.next",
+      "environment.heads"
+    ],
+    "headroom_forecast": {
+      "initial_population": 512,
+      "capacity": 20000,
+      "initial_material": 4362.880046129227,
+      "remaining_external_material": 0,
+      "minimum_viable_mass": 0.25,
+      "conservative_live_count_bound": 17451.520184516907,
+      "capacity_covers_material_bound": true
+    }
+  },
+  "paired_bin_measurements": [
+    {
+      "source": {
+        "model": "0a57ac3776fb69a959da085f0a474ce40e9e33f5af495f683fb54df40120edd8",
+        "kernels": "e11be58bb9b25eb27819a123a97b1cd6661f7e015e821fc3eba987c7e3964628",
+        "checkpoint": "0888d1cadaf5200c554b23913fd0bffb5fd08cca5b975f47afbbaff1511cbae8",
+        "protocol": "fb2b4081155d3356160585c83551410e461d5a38f07096251c1a8ece711d8a14"
+      },
+      "founders": 512,
+      "steps_per_sample": 200,
+      "pairs": 5,
+      "mechanical_substeps": 16,
+      "recipe": "projected",
+      "wide_bin_width": 4.15,
+      "narrow_bin_width": 1,
+      "median_wide_steps_per_second": 41.61376159172578,
+      "median_narrow_steps_per_second": 113.20148040345371,
+      "median_paired_speedup": 2.72175155124371,
+      "paired_speedup_range": [
+        2.7118684610530295,
+        2.7644327634545958
+      ],
+      "all_active_identities_match": true,
+      "minimum_final_bond_jaccard": 1,
+      "worst_position_error": 3.147125244140625e-05,
+      "worst_position_rms": 1.630789244250287e-06,
+      "worst_hidden_error": 3.4421682357788086e-06,
+      "worst_resource_error": 8.419156074523926e-06,
+      "final_statistics": {
+        "population": 960,
+        "births": 480,
+        "deaths": 32,
+        "blocked_births": 0,
+        "completed_steps": 200,
+        "bonds": 2046,
+        "material": 4362.879638671875,
+        "potential": 12322.029296875,
+        "supplied": 0,
+        "removed": 0,
+        "supplied_potential": 0,
+        "removed_potential": 0,
+        "work": 428.79132080078125,
+        "heat": 1359.899169921875,
+        "synthesized": 152.22509765625,
+        "oxidized": 491.649658203125,
+        "finite": true,
+        "minimum_resource": 0,
+        "minimum_energy": 0.3291475,
+        "observation_bytes": 244
+      }
+    },
+    {
+      "source": {
+        "model": "0a57ac3776fb69a959da085f0a474ce40e9e33f5af495f683fb54df40120edd8",
+        "kernels": "e11be58bb9b25eb27819a123a97b1cd6661f7e015e821fc3eba987c7e3964628",
+        "checkpoint": "0888d1cadaf5200c554b23913fd0bffb5fd08cca5b975f47afbbaff1511cbae8",
+        "protocol": "fb2b4081155d3356160585c83551410e461d5a38f07096251c1a8ece711d8a14"
+      },
+      "founders": 4096,
+      "steps_per_sample": 200,
+      "pairs": 5,
+      "mechanical_substeps": 16,
+      "recipe": "projected",
+      "wide_bin_width": 4.15,
+      "narrow_bin_width": 1,
+      "median_wide_steps_per_second": 29.284326731770783,
+      "median_narrow_steps_per_second": 88.07462756605554,
+      "median_paired_speedup": 3.0032913166881308,
+      "paired_speedup_range": [
+        2.9789756533407163,
+        3.1113901423937778
+      ],
+      "all_active_identities_match": true,
+      "minimum_final_bond_jaccard": 1,
+      "worst_position_error": 0.0011348724365234375,
+      "worst_position_rms": 1.1624027522111905e-05,
+      "worst_hidden_error": 0.0032996535301208496,
+      "worst_resource_error": 0.0006534159183502197,
+      "final_statistics": {
+        "population": 7680,
+        "births": 3840,
+        "deaths": 256,
+        "blocked_births": 0,
+        "completed_steps": 200,
+        "bonds": 16391,
+        "material": 34903.0537109375,
+        "potential": 98275.48046875,
+        "supplied": 0,
+        "removed": 0,
+        "supplied_potential": 0,
+        "removed_potential": 0,
+        "work": 3493.044189453125,
+        "heat": 11117.21875,
+        "synthesized": 1249.2528076171875,
+        "oxidized": 4013.3466796875,
+        "finite": true,
+        "minimum_resource": 0.0079868315,
+        "minimum_energy": 0.15259963,
+        "observation_bytes": 244
+      }
+    }
+  ],
+  "final_random_3d_cpu_amd_probe": {
+    "source": {
+      "model": "e195a8b62cd82188af9945e6d799880aecbaab0da83bee34df3aff4e7598bcc3",
+      "kernels": "e11be58bb9b25eb27819a123a97b1cd6661f7e015e821fc3eba987c7e3964628",
+      "checkpoint": "0888d1cadaf5200c554b23913fd0bffb5fd08cca5b975f47afbbaff1511cbae8",
+      "protocol": "095c40b8e42baca3688abe902289377da49e8f352017733ce92728729fb40be5"
+    },
+    "passed": true,
+    "tolerance": 0.0001,
+    "hidden_maximum": 0.19026825,
+    "errors": {
+      "position": 1.3113022e-06,
+      "metabolites": 2.910383e-11,
+      "hidden": 7.4505806e-08,
+      "resources": 9.685755e-08
+    },
+    "material_error": 5.613402009885249e-06,
+    "potential_error": 2.2453265318134186e-05
+  },
+  "final_default_checkpoint_gate": {
+    "source": {
+      "model": "e195a8b62cd82188af9945e6d799880aecbaab0da83bee34df3aff4e7598bcc3",
+      "kernels": "e11be58bb9b25eb27819a123a97b1cd6661f7e015e821fc3eba987c7e3964628",
+      "checkpoint": "0888d1cadaf5200c554b23913fd0bffb5fd08cca5b975f47afbbaff1511cbae8",
+      "protocol": "095c40b8e42baca3688abe902289377da49e8f352017733ce92728729fb40be5"
+    },
+    "steps": 500,
+    "seconds": 6.078397656,
+    "full_steps_per_second": 82.2585207972448,
+    "material_error": -2.3440064978785813e-05,
+    "potential_error": 1.2859352864325047e-05,
+    "restore_all_arrays_exact": true,
+    "final_statistics": {
+      "population": 1106,
+      "births": 626,
+      "deaths": 32,
+      "blocked_births": 0,
+      "completed_steps": 500,
+      "bonds": 2552,
+      "material": 4362.8804931640625,
+      "potential": 9457.627197265625,
+      "supplied": 0,
+      "removed": 0,
+      "supplied_potential": 0,
+      "removed_potential": 0,
+      "work": 1304.1497802734375,
+      "heat": 3348.93994140625,
+      "synthesized": 466.75457763671875,
+      "oxidized": 1013.7371826171875,
+      "finite": true,
+      "minimum_resource": 0,
+      "minimum_energy": 0,
+      "observation_bytes": 244
+    },
+    "restart_maximum_float_error": 1.1920928955078125e-07,
+    "restart_integer_mismatches": [
+      "state.next",
+      "environment.heads"
+    ],
+    "restart_pass": true,
+    "latch_arrays_frozen": true,
+    "headroom_forecast": {
+      "initial_population": 512,
+      "capacity": 20000,
+      "initial_material": 4362.880046129227,
+      "remaining_external_material": 0,
+      "minimum_viable_mass": 0.25,
+      "conservative_live_count_bound": 17451.520184516907,
+      "capacity_covers_material_bound": true
+    }
+  }
+}

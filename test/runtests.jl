@@ -51,3 +51,8 @@ include("constructive_cells.jl")
 module ElectricalMultigridTests
 include("electrical_multigrid.jl")
 end
+
+module DeviceCellularTests
+include("device_cellular.jl")
+include("device_cellular_protocol.jl")
+end

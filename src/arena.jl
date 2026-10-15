@@ -38,6 +38,18 @@ mutable struct Arena
     last_command::String
     config::Dict{String,Any}
 end
+# Experimental device stages can support Experiment without implementing Arena's
+# richer inventory, observation and portable-checkpoint adapter yet.
+arena_process_supported(p)=true
+function validate_arena_processes(processes)
+    function visit(p)
+        arena_process_supported(p) || throw(ArgumentError(
+            "$(typeof(p)) has no Arena adapter; use its native runner or Experiment"))
+        foreach(visit,process_children(p))
+    end
+    foreach(visit,processes)
+    nothing
+end
 # Follow references once: wrappers borrow pools/media, they do not own copies.
 function arena_inventory(w,processes)
     total=sum(Float64,w.fields.nutrient)+sum(Float64,w.fields.deposit)
@@ -80,6 +92,7 @@ function arena_energy(processes)
     sum(visit(p) for p in processes;init=0.0)
 end
 function Arena(w::World,processes::Tuple;dt=0.05,config=Dict{String,Any}())
+    validate_arena_processes(processes)
     validate_composition(processes)
     foreach(p->check_dt(w,p,dt),processes)
     cfg=Dict{String,Any}(config)
@@ -110,6 +123,7 @@ end
 """Atomic trusted-local restart checkpoint. Serializes complete state and aliases;
 restore requires the exact Julia version and implementation hashes by default."""
 function checkpoint!(a::Arena,path::AbstractString)
+    validate_arena_processes(a.processes)
     envelope=(schema="interior-arena-checkpoint",version=1,julia=string(VERSION),sources=arena_sources(),arena=a)
     arena_atomic(io->Serialization.serialize(io,envelope),path)
 end

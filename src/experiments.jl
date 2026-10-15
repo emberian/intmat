@@ -87,23 +87,31 @@ owned_material_mass(p)=0.0
 owned_material_mass(p::ParticleCarrier)=sum(Float64,p.storage;init=0.0)
 owned_material_mass(p::Ecology)=sum(Float64,p.storage;init=0.0)+p.waste
 
+"""Observation-time finiteness check; nested custom state should specialize this hook."""
+function process_state_finite(p)
+    all(n->begin
+        a=getfield(p,n)
+        !(a isa AbstractArray{<:AbstractFloat}) || all(isfinite,Array(a))
+    end,fieldnames(typeof(p))) && all(process_state_finite,process_children(p))
+end
+
 """Small host diagnostics; callback cadence does not change the integration schedule.
 
 `material_mass` includes world inventory and declared process inventories. Finiteness
-checks world fields and direct floating array fields of every process. Custom nested
-state requires a custom diagnostics callback.
+checks world fields and each process's `process_state_finite` hook. Absent world
+material fields contribute no inventory; absent activity/nutrient extrema are
+`nothing`. This supports compact worlds without allocating unused grids.
 """
 function experiment_diagnostics(w::World,processes)
     fields=map(a->Array(a),values(w.fields))
-    grid_mass=sum(Float64,Array(w.fields.nutrient))+sum(Float64,Array(w.fields.deposit))
+    field_sum(name)=hasproperty(w.fields,name) ? sum(Float64,Array(getproperty(w.fields,name))) : 0.0
+    grid_mass=field_sum(:nutrient)+field_sum(:deposit)
     owned_mass=sum(owned_material_mass(p) for p in processes; init=0.0)
-    owned_arrays=(getfield(p,n) for p in processes for n in fieldnames(typeof(p))
-                  if getfield(p,n) isa AbstractArray{<:AbstractFloat})
     (material_mass=grid_mass+owned_mass,grid_mass=grid_mass,owned_mass=owned_mass,
-     finite=all(a->all(isfinite,a),fields) && all(a->all(isfinite,Array(a)),owned_arrays),
-     activity_max=maximum(Array(w.fields.activity)),
-     nutrient_min=minimum(Array(w.fields.nutrient)),
-     deposit_mass=sum(Float64,Array(w.fields.deposit)))
+     finite=all(a->all(isfinite,a),fields) && all(process_state_finite,processes),
+     activity_max=hasproperty(w.fields,:activity) ? maximum(Array(w.fields.activity)) : nothing,
+     nutrient_min=hasproperty(w.fields,:nutrient) ? minimum(Array(w.fields.nutrient)) : nothing,
+     deposit_mass=field_sum(:deposit))
 end
 
 """

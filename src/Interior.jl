@@ -68,6 +68,10 @@ include("scenes.jl")
 include("arena.jl")
 include("cellular_arena.jl")
 include("catalytic_arena.jl")
+include("device_cellular.jl")
+include("device_cellular_protocol.jl")
+export DeviceCellular, device_cellular_step!, device_cellular_status!, device_cellular_statistics
+export device_cellular_snapshot, device_cellular_audit, device_cellular_checkpoint, device_cellular_restore
 export Arena, Chemostat, arena_step!, arena_snapshot, checkpoint!, restore_arena, run_arena!, build_arena
 export RenderSettings, render_volume, export_volume, volume_sample, transport_segment, build_scene, optical_fields
 end
