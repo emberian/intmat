@@ -84,17 +84,18 @@ end
 function Interior.device_cellular_status!(p::CellularWorldBatch)
     Interior.KernelAbstractions.synchronize(p.backend)
     codes=Array(p.environment.status.storage)
-    all(iszero,codes)||error("independent-world status bits: $codes")
+    all(iszero,codes)||throw(ArgumentError("independent-world status bits: $codes"))
     p
 end
 @inline batch_parameters(q,w,seeds)=hasproperty(q,:seed) ? merge(q,(seed=seeds[w],)) : q
+@inline batch_anabolic_argument(x,w,seeds)=x
 const CELLULAR_BATCH_KERNELS=IdDict()
 function Interior.device_cellular_launch!(p::CellularWorldBatch,kernel,args...;ndrange)
     dims=ndrange isa Tuple ? ndrange : (ndrange,)
     CELLULAR_BATCH_KERNELS[kernel](p.backend,128)(args...,p.seeds;ndrange=(dims...,p.worlds))
 end
 # Rewrite parsed syntax, not textual bodies. Refuse unfamiliar index forms.
-function batch_kernel_ast(ex)
+function batch_kernel_ast(ex;habitat=false)
     fn=ex.args[end];sig=fn.args[1];body=fn.args[2]
     name=sig.args[1];sig.args[1]=Symbol("worldbatch_",name)
     indexpos=findfirst(x->x isa Expr&&x.head==:(=)&&x.args[2] isa Expr&&x.args[2].head==:macrocall&&x.args[2].args[1]==Symbol("@index"),body.args)
@@ -108,10 +109,18 @@ function batch_kernel_ast(ex)
     insertions=Expr[]
     for j in 2:length(sig.args)
         arg=sig.args[j]
-        if arg in (:s,:e,:q)
+        if arg in (:s,:e,:q,:a,:feed,:descriptor,:cq,:anabolism)
             packed=Symbol("packed_",arg)
             sig.args[j]=packed
-            push!(insertions,arg===:q ? :($arg=Main.batch_parameters($packed,batch_world_id,batch_seeds)) : :($arg=Main.batch_world($packed,batch_world_id)))
+            if arg===:anabolism
+                push!(insertions,:($arg=Main.batch_anabolic_argument($packed,batch_world_id,batch_seeds)))
+            elseif arg===:q && habitat
+                push!(insertions,:($arg=Main.batch_habitat_parameters($packed,batch_world_id,batch_seeds)))
+            elseif arg in (:q,:cq)
+                push!(insertions,:($arg=Main.batch_parameters($packed,batch_world_id,batch_seeds)))
+            else
+                push!(insertions,:($arg=Main.batch_world($packed,batch_world_id)))
+            end
         end
     end
     push!(sig.args,:batch_seeds)

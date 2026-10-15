@@ -1,0 +1,1507 @@
+{
+  "cpu_pilot": {
+    "model": "existing DeviceConstructiveEcology",
+    "backend": "CPU-KA",
+    "source": {
+      "base": "261eb92854b4c7c5b4fb5c1126bed3186a4f3be88fc6f457c8e9ba9c5bd59d3e",
+      "composition": "e4e9cfeebf894c7b421c0d7ffa3016cc98612a178270331361465942ce53a35b",
+      "habitat": {
+        "helper": "f08c0ea979ab9a4dbdb3ffbf3f9c07c00ff71667df2d27807da4ad534e87f53a",
+        "kernels": "ee2a1c13ac99a2d69a36a3aec25c6ed55072a578cff82094329263500c8090b9",
+        "sorption": "f135e74e59959187e72725a45665ac5c67293b8305298c8d3ac4bdbb81e6ac93"
+      }
+    },
+    "geometry": {
+      "shape": [
+        6,
+        6,
+        1
+      ],
+      "extent": [
+        6,
+        6,
+        1
+      ],
+      "exchange_radius": 1,
+      "capacity_per_world": 32,
+      "mechanical_substeps": 16
+    },
+    "steps": 160,
+    "dt": 0.01,
+    "worlds": 4,
+    "all_complete_snapshots_exact": true,
+    "checkpoint_restart": true,
+    "maximum_material_error": 8.254439727295448e-06,
+    "maximum_potential_work_heat_error": 7.537958353509566e-05,
+    "elapsed_with_serial_reference_and_audits": 129.346016709,
+    "observations": [
+      [
+        {
+          "label": {
+            "seed": 11,
+            "arm": "closed",
+            "budget_scale": 0
+          },
+          "step": 0,
+          "time": 0,
+          "population": 2,
+          "lineages": 2,
+          "births": 0,
+          "deaths": 0,
+          "blocked_births": 0,
+          "work": 0,
+          "heat": 0,
+          "supplied": 0,
+          "secreted": [
+            0,
+            0
+          ],
+          "solubilized": [
+            0,
+            0
+          ],
+          "bound": [
+            0,
+            0
+          ],
+          "enzyme": [
+            0.35999999195337296,
+            0.35999999195337296
+          ],
+          "material_error": 0,
+          "potential_work_heat_error": 0,
+          "finite": true
+        },
+        {
+          "label": {
+            "seed": 11,
+            "arm": "finite_flux",
+            "budget_scale": 1
+          },
+          "step": 0,
+          "time": 0,
+          "population": 2,
+          "lineages": 2,
+          "births": 0,
+          "deaths": 0,
+          "blocked_births": 0,
+          "work": 0,
+          "heat": 0,
+          "supplied": 0,
+          "secreted": [
+            0,
+            0
+          ],
+          "solubilized": [
+            0,
+            0
+          ],
+          "bound": [
+            0,
+            0
+          ],
+          "enzyme": [
+            0.35999999195337296,
+            0.35999999195337296
+          ],
+          "material_error": 0,
+          "potential_work_heat_error": 0,
+          "finite": true
+        },
+        {
+          "label": {
+            "seed": 29,
+            "arm": "closed",
+            "budget_scale": 0
+          },
+          "step": 0,
+          "time": 0,
+          "population": 2,
+          "lineages": 2,
+          "births": 0,
+          "deaths": 0,
+          "blocked_births": 0,
+          "work": 0,
+          "heat": 0,
+          "supplied": 0,
+          "secreted": [
+            0,
+            0
+          ],
+          "solubilized": [
+            0,
+            0
+          ],
+          "bound": [
+            0,
+            0
+          ],
+          "enzyme": [
+            0.35999999195337296,
+            0.35999999195337296
+          ],
+          "material_error": 0,
+          "potential_work_heat_error": 0,
+          "finite": true
+        },
+        {
+          "label": {
+            "seed": 29,
+            "arm": "finite_flux",
+            "budget_scale": 1
+          },
+          "step": 0,
+          "time": 0,
+          "population": 2,
+          "lineages": 2,
+          "births": 0,
+          "deaths": 0,
+          "blocked_births": 0,
+          "work": 0,
+          "heat": 0,
+          "supplied": 0,
+          "secreted": [
+            0,
+            0
+          ],
+          "solubilized": [
+            0,
+            0
+          ],
+          "bound": [
+            0,
+            0
+          ],
+          "enzyme": [
+            0.35999999195337296,
+            0.35999999195337296
+          ],
+          "material_error": 0,
+          "potential_work_heat_error": 0,
+          "finite": true
+        }
+      ],
+      [
+        {
+          "label": {
+            "seed": 11,
+            "arm": "closed",
+            "budget_scale": 0
+          },
+          "step": 40,
+          "time": 0.3999999910593033,
+          "population": 4,
+          "lineages": 2,
+          "births": 2,
+          "deaths": 0,
+          "blocked_births": 0,
+          "work": 0.14905211062948223,
+          "heat": 1.9584814186729615,
+          "supplied": 0,
+          "secreted": [
+            0.08361985441297293,
+            0.06867362838238478
+          ],
+          "solubilized": [
+            0.033749163150787354,
+            0.033573299646377563
+          ],
+          "bound": [
+            0.01259483303874731,
+            0.012541334610432386
+          ],
+          "enzyme": [
+            0.4412065977230668,
+            0.4262729687616229
+          ],
+          "material_error": 1.9771122197198565e-06,
+          "potential_work_heat_error": 1.4284076158332937e-05,
+          "finite": true
+        },
+        {
+          "label": {
+            "seed": 11,
+            "arm": "finite_flux",
+            "budget_scale": 1
+          },
+          "step": 40,
+          "time": 0.3999999910593033,
+          "population": 4,
+          "lineages": 2,
+          "births": 2,
+          "deaths": 0,
+          "blocked_births": 0,
+          "work": 0.14914324928850603,
+          "heat": 1.9603105992413183,
+          "supplied": 0.08637115359306335,
+          "secreted": [
+            0.08372556790709496,
+            0.06874001491814852
+          ],
+          "solubilized": [
+            0.03376743197441101,
+            0.033582478761672974
+          ],
+          "bound": [
+            0.01285290066152811,
+            0.013053215108811855
+          ],
+          "enzyme": [
+            0.4413122897967696,
+            0.42633928172290325
+          ],
+          "material_error": 1.974904648704978e-06,
+          "potential_work_heat_error": 1.5116277950255608e-05,
+          "finite": true
+        },
+        {
+          "label": {
+            "seed": 29,
+            "arm": "closed",
+            "budget_scale": 0
+          },
+          "step": 40,
+          "time": 0.3999999910593033,
+          "population": 4,
+          "lineages": 2,
+          "births": 2,
+          "deaths": 0,
+          "blocked_births": 0,
+          "work": 0.16259927816699282,
+          "heat": 1.8067788301914343,
+          "supplied": 0,
+          "secreted": [
+            0.10098275355994701,
+            0.08601606823503971
+          ],
+          "solubilized": [
+            0.03442835807800293,
+            0.03378450870513916
+          ],
+          "bound": [
+            0.012637105770409107,
+            0.012488914653658867
+          ],
+          "enzyme": [
+            0.4585208212956786,
+            0.443600308150053
+          ],
+          "material_error": 1.194064395804162e-06,
+          "potential_work_heat_error": 1.1699408730692085e-06,
+          "finite": true
+        },
+        {
+          "label": {
+            "seed": 29,
+            "arm": "finite_flux",
+            "budget_scale": 1
+          },
+          "step": 40,
+          "time": 0.3999999910593033,
+          "population": 4,
+          "lineages": 2,
+          "births": 2,
+          "deaths": 0,
+          "blocked_births": 0,
+          "work": 0.16259909969764913,
+          "heat": 1.806843673898266,
+          "supplied": 0.08637116523459554,
+          "secreted": [
+            0.10098213609308004,
+            0.08601696789264679
+          ],
+          "solubilized": [
+            0.03444728162139654,
+            0.03379261493682861
+          ],
+          "bound": [
+            0.012898142915219069,
+            0.013001375366002321
+          ],
+          "enzyme": [
+            0.45852020662277937,
+            0.44360120594501495
+          ],
+          "material_error": 1.162253454367601e-06,
+          "potential_work_heat_error": 1.2479578117563506e-06,
+          "finite": true
+        }
+      ],
+      [
+        {
+          "label": {
+            "seed": 11,
+            "arm": "closed",
+            "budget_scale": 0
+          },
+          "step": 80,
+          "time": 0.7999999821186066,
+          "population": 4,
+          "lineages": 2,
+          "births": 2,
+          "deaths": 0,
+          "blocked_births": 0,
+          "work": 0.1667348481557043,
+          "heat": 2.1362696228663167,
+          "supplied": 0,
+          "secreted": [
+            0.08361985441297293,
+            0.06867362838238478
+          ],
+          "solubilized": [
+            0.07059046626091003,
+            0.06917193531990051
+          ],
+          "bound": [
+            0.026017991825938225,
+            0.025476566515862942
+          ],
+          "enzyme": [
+            0.43856770172715187,
+            0.42372339870780706
+          ],
+          "material_error": 5.604119792224083e-06,
+          "potential_work_heat_error": 4.60961644677127e-05,
+          "finite": true
+        },
+        {
+          "label": {
+            "seed": 11,
+            "arm": "finite_flux",
+            "budget_scale": 1
+          },
+          "step": 80,
+          "time": 0.7999999821186066,
+          "population": 4,
+          "lineages": 2,
+          "births": 2,
+          "deaths": 0,
+          "blocked_births": 0,
+          "work": 0.16682667196656736,
+          "heat": 2.1410153867051003,
+          "supplied": 0.1727423225529492,
+          "secreted": [
+            0.08372556790709496,
+            0.06874001491814852
+          ],
+          "solubilized": [
+            0.0706767737865448,
+            0.06921464158222079
+          ],
+          "bound": [
+            0.027026967611163855,
+            0.027436060830950737
+          ],
+          "enzyme": [
+            0.4386727614328265,
+            0.42378930654376745
+          ],
+          "material_error": 5.547217938328686e-06,
+          "potential_work_heat_error": 4.3572454160534235e-05,
+          "finite": true
+        },
+        {
+          "label": {
+            "seed": 29,
+            "arm": "closed",
+            "budget_scale": 0
+          },
+          "step": 80,
+          "time": 0.7999999821186066,
+          "population": 4,
+          "lineages": 2,
+          "births": 2,
+          "deaths": 0,
+          "blocked_births": 0,
+          "work": 0.19676251735994196,
+          "heat": 2.3843652610183748,
+          "supplied": 0,
+          "secreted": [
+            0.13995573669672012,
+            0.09333363734185696
+          ],
+          "solubilized": [
+            0.07536059617996216,
+            0.07140913605690002
+          ],
+          "bound": [
+            0.02700589830055833,
+            0.025911109056323767
+          ],
+          "enzyme": [
+            0.49456034507602453,
+            0.4482223866507411
+          ],
+          "material_error": 3.496481554066122e-06,
+          "potential_work_heat_error": 2.863326389501708e-05,
+          "finite": true
+        },
+        {
+          "label": {
+            "seed": 29,
+            "arm": "finite_flux",
+            "budget_scale": 1
+          },
+          "step": 80,
+          "time": 0.7999999821186066,
+          "population": 4,
+          "lineages": 2,
+          "births": 2,
+          "deaths": 0,
+          "blocked_births": 0,
+          "work": 0.1969324783211004,
+          "heat": 2.39135694165755,
+          "supplied": 0.17274233745411038,
+          "secreted": [
+            0.14027529582381248,
+            0.09348780289292336
+          ],
+          "solubilized": [
+            0.07546177227050066,
+            0.07145878672599792
+          ],
+          "bound": [
+            0.028070897795259953,
+            0.027920963242650032
+          ],
+          "enzyme": [
+            0.4948787400498986,
+            0.4483756963163614
+          ],
+          "material_error": 3.3729728556863847e-06,
+          "potential_work_heat_error": 2.5384975856468373e-05,
+          "finite": true
+        }
+      ],
+      [
+        {
+          "label": {
+            "seed": 11,
+            "arm": "closed",
+            "budget_scale": 0
+          },
+          "step": 120,
+          "time": 1.1999999731779099,
+          "population": 4,
+          "lineages": 2,
+          "births": 2,
+          "deaths": 0,
+          "blocked_births": 0,
+          "work": 0.18438730093865854,
+          "heat": 2.3119018584167548,
+          "supplied": 0,
+          "secreted": [
+            0.08361985441297293,
+            0.06867362838238478
+          ],
+          "solubilized": [
+            0.10714143514633179,
+            0.10449641942977905
+          ],
+          "bound": [
+            0.039139427710324526,
+            0.03801303589716554
+          ],
+          "enzyme": [
+            0.4359445748850703,
+            0.4211890622973442
+          ],
+          "material_error": 7.0014920083849574e-06,
+          "potential_work_heat_error": 3.70975562447029e-05,
+          "finite": true
+        },
+        {
+          "label": {
+            "seed": 11,
+            "arm": "finite_flux",
+            "budget_scale": 1
+          },
+          "step": 120,
+          "time": 1.1999999731779099,
+          "population": 4,
+          "lineages": 2,
+          "births": 2,
+          "deaths": 0,
+          "blocked_births": 0,
+          "work": 0.18447953714677395,
+          "heat": 2.321072747559822,
+          "supplied": 0.25911349477246404,
+          "secreted": [
+            0.08372556790709496,
+            0.06874001491814852
+          ],
+          "solubilized": [
+            0.10733586549758911,
+            0.10459300829097629
+          ],
+          "bound": [
+            0.041295990347862244,
+            0.04218216007575393
+          ],
+          "enzyme": [
+            0.43604900874197483,
+            0.4212545771151781
+          ],
+          "material_error": 6.896819854773639e-06,
+          "potential_work_heat_error": 2.9390935765372106e-05,
+          "finite": true
+        },
+        {
+          "label": {
+            "seed": 29,
+            "arm": "closed",
+            "budget_scale": 0
+          },
+          "step": 120,
+          "time": 1.1999999731779099,
+          "population": 4,
+          "lineages": 2,
+          "births": 2,
+          "deaths": 0,
+          "blocked_births": 0,
+          "work": 0.21436998650458858,
+          "heat": 2.5824585442268146,
+          "supplied": 0,
+          "secreted": [
+            0.13995573669672012,
+            0.09333363734185696
+          ],
+          "solubilized": [
+            0.11652117571793497,
+            0.10874831664841622
+          ],
+          "bound": [
+            0.04122491762973368,
+            0.03895753622055054
+          ],
+          "enzyme": [
+            0.49160231091082096,
+            0.44554151874035597
+          ],
+          "material_error": 5.33481187403595e-06,
+          "potential_work_heat_error": 5.1741971077490234e-05,
+          "finite": true
+        },
+        {
+          "label": {
+            "seed": 29,
+            "arm": "finite_flux",
+            "budget_scale": 1
+          },
+          "step": 120,
+          "time": 1.1999999731779099,
+          "population": 4,
+          "lineages": 2,
+          "births": 2,
+          "deaths": 0,
+          "blocked_births": 0,
+          "work": 0.214540033965962,
+          "heat": 2.5951074747530054,
+          "supplied": 0.2591135168913752,
+          "secreted": [
+            0.14027529582381248,
+            0.09348780289292336
+          ],
+          "solubilized": [
+            0.1167609365656972,
+            0.10886198282241821
+          ],
+          "bound": [
+            0.04350292822346091,
+            0.04322761227376759
+          ],
+          "enzyme": [
+            0.4919188227504492,
+            0.4456939119845629
+          ],
+          "material_error": 5.8171278851659736e-06,
+          "potential_work_heat_error": 4.819297134872613e-05,
+          "finite": true
+        }
+      ],
+      [
+        {
+          "label": {
+            "seed": 11,
+            "arm": "closed",
+            "budget_scale": 0
+          },
+          "step": 160,
+          "time": 1.5999999642372131,
+          "population": 4,
+          "lineages": 2,
+          "births": 2,
+          "deaths": 0,
+          "blocked_births": 0,
+          "work": 0.20198759338145902,
+          "heat": 2.4856083146789145,
+          "supplied": 0,
+          "secreted": [
+            0.08361985441297293,
+            0.06867362838238478
+          ],
+          "solubilized": [
+            0.14340585470199585,
+            0.13955074502155185
+          ],
+          "bound": [
+            0.05198353435844183,
+            0.050164195941761136
+          ],
+          "enzyme": [
+            0.4333371492102742,
+            0.4186698878183961
+          ],
+          "material_error": 6.85893326135556e-06,
+          "potential_work_heat_error": 4.105876321602864e-05,
+          "finite": true
+        },
+        {
+          "label": {
+            "seed": 11,
+            "arm": "finite_flux",
+            "budget_scale": 1
+          },
+          "step": 160,
+          "time": 1.5999999642372131,
+          "population": 4,
+          "lineages": 2,
+          "births": 2,
+          "deaths": 0,
+          "blocked_births": 0,
+          "work": 0.20208114063414867,
+          "heat": 2.5004557177322946,
+          "supplied": 0.3454846669919789,
+          "secreted": [
+            0.08372556790709496,
+            0.06874001491814852
+          ],
+          "solubilized": [
+            0.14374616742134094,
+            0.13971832348033786
+          ],
+          "bound": [
+            0.05562348756939173,
+            0.05717705236747861
+          ],
+          "enzyme": [
+            0.43344096187502146,
+            0.41873500868678093
+          ],
+          "material_error": 6.71280542974273e-06,
+          "potential_work_heat_error": 2.9571117124982393e-05,
+          "finite": true
+        },
+        {
+          "label": {
+            "seed": 29,
+            "arm": "closed",
+            "budget_scale": 0
+          },
+          "step": 160,
+          "time": 1.5999999642372131,
+          "population": 4,
+          "lineages": 2,
+          "births": 2,
+          "deaths": 0,
+          "blocked_births": 0,
+          "work": 0.23197405652401568,
+          "heat": 2.777638878307763,
+          "supplied": 0,
+          "secreted": [
+            0.13995573669672012,
+            0.09333363734185696
+          ],
+          "solubilized": [
+            0.15732320747338235,
+            0.14578577811698779
+          ],
+          "bound": [
+            0.0550925659481436,
+            0.051642277801875025
+          ],
+          "enzyme": [
+            0.48866199143230915,
+            0.44287669379264116
+          ],
+          "material_error": 7.703619118615279e-06,
+          "potential_work_heat_error": 7.537958353509566e-05,
+          "finite": true
+        },
+        {
+          "label": {
+            "seed": 29,
+            "arm": "finite_flux",
+            "budget_scale": 1
+          },
+          "step": 160,
+          "time": 1.5999999642372131,
+          "population": 4,
+          "lineages": 2,
+          "births": 2,
+          "deaths": 0,
+          "blocked_births": 0,
+          "work": 0.23214442146401915,
+          "heat": 2.7973420459414715,
+          "supplied": 0.3454847043612972,
+          "secreted": [
+            0.14027529582381248,
+            0.09348780289292336
+          ],
+          "solubilized": [
+            0.15774505911394954,
+            0.14598181832116097
+          ],
+          "bound": [
+            0.05890698847360909,
+            0.058798387297429144
+          ],
+          "enzyme": [
+            0.4889766061678529,
+            0.44302817806601524
+          ],
+          "material_error": 8.254439727295448e-06,
+          "potential_work_heat_error": 6.78797208593096e-05,
+          "finite": true
+        }
+      ]
+    ],
+    "interpretation": "bounded matched resource-budget study; shared mutation streams within seed-matched arms; no adaptation or long-run diversity claim"
+  },
+  "fresh_process_resume": {
+    "source": {
+      "base": "261eb92854b4c7c5b4fb5c1126bed3186a4f3be88fc6f457c8e9ba9c5bd59d3e",
+      "composition": "e4e9cfeebf894c7b421c0d7ffa3016cc98612a178270331361465942ce53a35b",
+      "habitat": {
+        "helper": "f08c0ea979ab9a4dbdb3ffbf3f9c07c00ff71667df2d27807da4ad534e87f53a",
+        "kernels": "ee2a1c13ac99a2d69a36a3aec25c6ed55072a578cff82094329263500c8090b9",
+        "sorption": "f135e74e59959187e72725a45665ac5c67293b8305298c8d3ac4bdbb81e6ac93"
+      }
+    },
+    "member_indices": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "additional_steps": 80,
+    "dt": 0.01,
+    "times": [
+      1.5999999642372131,
+      1.5999999642372131,
+      1.5999999642372131,
+      1.5999999642372131
+    ],
+    "initial": [
+      {
+        "material": 27.84000645825435,
+        "potential": 137.37704675829445,
+        "work": 0.1667348481557043,
+        "heat": 2.1362696228663167,
+        "supplied": 0,
+        "removed": 0,
+        "supplied_potential": 0,
+        "removed_potential": 0,
+        "population": 4,
+        "completed_steps": 80,
+        "secreted": [
+          0.08361985441297293,
+          0.06867362838238478
+        ],
+        "solubilized": [
+          0.07059046626091003,
+          0.06917193531990051
+        ],
+        "bound": [
+          0.026017991825938225,
+          0.025476566515862942
+        ],
+        "enzyme": [
+          0.43856770172715187,
+          0.42372339870780706
+        ],
+        "inert": 3.2312934490769107e-06,
+        "finite": true
+      },
+      {
+        "material": 28.012748723905446,
+        "potential": 138.23586728236114,
+        "work": 0.16682667196656736,
+        "heat": 2.1410153867051003,
+        "supplied": 0.1727423225529492,
+        "removed": 0,
+        "supplied_potential": 0.8636606354266405,
+        "removed_potential": 0,
+        "population": 4,
+        "completed_steps": 80,
+        "secreted": [
+          0.08372556790709496,
+          0.06874001491814852
+        ],
+        "solubilized": [
+          0.0706767737865448,
+          0.06921464158222079
+        ],
+        "bound": [
+          0.027026967611163855,
+          0.027436060830950737
+        ],
+        "enzyme": [
+          0.4386727614328265,
+          0.42378930654376745
+        ],
+        "inert": 3.2094055495840434e-06,
+        "finite": true
+      },
+      {
+        "material": 27.840004350616113,
+        "potential": 137.0989059880376,
+        "work": 0.19676251735994196,
+        "heat": 2.3843652610183748,
+        "supplied": 0,
+        "removed": 0,
+        "supplied_potential": 0,
+        "removed_potential": 0,
+        "population": 4,
+        "completed_steps": 80,
+        "secreted": [
+          0.13995573669672012,
+          0.09333363734185696
+        ],
+        "solubilized": [
+          0.07536059617996216,
+          0.07140913605690002
+        ],
+        "bound": [
+          0.02700589830055833,
+          0.025911109056323767
+        ],
+        "enzyme": [
+          0.49456034507602453,
+          0.4482223866507411
+        ],
+        "inert": 2.901070020031038e-06,
+        "finite": true
+      },
+      {
+        "material": 28.012746564561525,
+        "potential": 137.9554017931805,
+        "work": 0.1969324783211004,
+        "heat": 2.39135694165755,
+        "supplied": 0.17274233745411038,
+        "removed": 0,
+        "supplied_potential": 0.8636606950312853,
+        "removed_potential": 0,
+        "population": 4,
+        "completed_steps": 80,
+        "secreted": [
+          0.14027529582381248,
+          0.09348780289292336
+        ],
+        "solubilized": [
+          0.07546177227050066,
+          0.07145878672599792
+        ],
+        "bound": [
+          0.028070897795259953,
+          0.027920963242650032
+        ],
+        "enzyme": [
+          0.4948787400498986,
+          0.4483756963163614
+        ],
+        "inert": 3.000959368379408e-06,
+        "finite": true
+      }
+    ],
+    "final": [
+      {
+        "material": 27.84000771306782,
+        "potential": 136.99245028385485,
+        "work": 0.20198759338145902,
+        "heat": 2.4856083146789145,
+        "supplied": 0,
+        "removed": 0,
+        "supplied_potential": 0,
+        "removed_potential": 0,
+        "population": 4,
+        "completed_steps": 160,
+        "secreted": [
+          0.08361985441297293,
+          0.06867362838238478
+        ],
+        "solubilized": [
+          0.14340585470199585,
+          0.13955074502155185
+        ],
+        "bound": [
+          0.05198353435844183,
+          0.050164195941761136
+        ],
+        "enzyme": [
+          0.4333371492102742,
+          0.4186698878183961
+        ],
+        "inert": 6.24762898952802e-06,
+        "finite": true
+      },
+      {
+        "material": 28.185492233931967,
+        "potential": 138.7048192043003,
+        "work": 0.20208114063414867,
+        "heat": 2.5004557177322946,
+        "supplied": 0.3454846669919789,
+        "removed": 0,
+        "supplied_potential": 1.727321358397603,
+        "removed_potential": 0,
+        "population": 4,
+        "completed_steps": 160,
+        "secreted": [
+          0.08372556790709496,
+          0.06874001491814852
+        ],
+        "solubilized": [
+          0.14374616742134094,
+          0.13971832348033786
+        ],
+        "bound": [
+          0.05562348756939173,
+          0.05717705236747861
+        ],
+        "enzyme": [
+          0.43344096187502146,
+          0.41873500868678093
+        ],
+        "inert": 6.296085048249078e-06,
+        "finite": true
+      },
+      {
+        "material": 27.840008557753677,
+        "potential": 136.67046757790376,
+        "work": 0.23197405652401568,
+        "heat": 2.777638878307763,
+        "supplied": 0,
+        "removed": 0,
+        "supplied_potential": 0,
+        "removed_potential": 0,
+        "population": 4,
+        "completed_steps": 160,
+        "secreted": [
+          0.13995573669672012,
+          0.09333363734185696
+        ],
+        "solubilized": [
+          0.15732320747338235,
+          0.14578577811698779
+        ],
+        "bound": [
+          0.0550925659481436,
+          0.051642277801875025
+        ],
+        "enzyme": [
+          0.48866199143230915,
+          0.44287669379264116
+        ],
+        "inert": 6.156497165663022e-06,
+        "finite": true
+      },
+      {
+        "material": 28.185493812935583,
+        "potential": 138.37790805334225,
+        "work": 0.23214442146401915,
+        "heat": 2.7973420459414715,
+        "supplied": 0.3454847043612972,
+        "removed": 0,
+        "supplied_potential": 1.7273215078748763,
+        "removed_potential": 0,
+        "population": 4,
+        "completed_steps": 160,
+        "secreted": [
+          0.14027529582381248,
+          0.09348780289292336
+        ],
+        "solubilized": [
+          0.15774505911394954,
+          0.14598181832116097
+        ],
+        "bound": [
+          0.05890698847360909,
+          0.058798387297429144
+        ],
+        "enzyme": [
+          0.4889766061678529,
+          0.44302817806601524
+        ],
+        "inert": 6.213134583973878e-06,
+        "finite": true
+      }
+    ],
+    "material_errors": [
+      1.2548134691314772e-06,
+      1.165587491414044e-06,
+      4.207137564549157e-06,
+      4.881466871609064e-06
+    ],
+    "potential_work_heat_errors": [
+      -5.037401251684059e-06,
+      -1.4001337035551842e-05,
+      4.674631964007858e-05,
+      4.249474500284123e-05
+    ]
+  },
+  "native_status": "passed",
+  "native": {
+    "runtime": {
+      "julia": "1.12.4",
+      "kernel": "Linux",
+      "architecture": "x86_64",
+      "launch_threads": 2,
+      "backend": "amd",
+      "device": "HIPDevice(id=1, name=AMD Radeon RX 6750 XT, gcn_arch=gfx1030)",
+      "backend_version": "2.8.0",
+      "actual_device_optlevel": 1,
+      "project_sha256": "284c920aebff70f466a40df21f7c83ae4c561857b046f940274b43a8feeaec6d",
+      "manifest_sha256": "e18d2e6e4b88b7cf1f903179a4c8ceddc4cded544c3ff217dcff0463c6601cea"
+    },
+    "source": {
+      "base": "261eb92854b4c7c5b4fb5c1126bed3186a4f3be88fc6f457c8e9ba9c5bd59d3e",
+      "composition": "7b4f523404efcc7ffb6ad89f3dabebfe08cb523203cdd74a586f456add1d27fa",
+      "habitat": {
+        "helper": "f08c0ea979ab9a4dbdb3ffbf3f9c07c00ff71667df2d27807da4ad534e87f53a",
+        "kernels": "ee2a1c13ac99a2d69a36a3aec25c6ed55072a578cff82094329263500c8090b9",
+        "sorption": "f135e74e59959187e72725a45665ac5c67293b8305298c8d3ac4bdbb81e6ac93"
+      }
+    },
+    "gpu": true,
+    "failure_isolation": true,
+    "healthy_member_checkpoint": true,
+    "small": {
+      "worlds": 2,
+      "cells_per_world": 2,
+      "capacity_per_world": 16,
+      "grid": [
+        6,
+        6,
+        6
+      ],
+      "extent": [
+        8,
+        8,
+        8
+      ],
+      "exchange_radius": 1,
+      "hidden": 2,
+      "mechanical_substeps": 16,
+      "cell_seeds": [
+        101,
+        102
+      ],
+      "habitat_seeds": [
+        1101,
+        1102
+      ],
+      "steps_per_sample": 1,
+      "serial_seconds": [
+        0.010637634
+      ],
+      "batch_seconds": [
+        0.005367895
+      ],
+      "aggregate_ratio": 1.9817142473912026,
+      "field_max_errors": {
+        ".cells.state.requests": 0,
+        ".cells.environment.inert_low": 0,
+        ".feedstock.source_masks": 0,
+        ".cells.state.grants": 0,
+        ".cells.state.rest": 0,
+        ".arrays.grid_inert_low": 0,
+        ".feedstock.resource_ledger": 0,
+        ".cells.state.mass": 0,
+        ".cells.state.weights": 0,
+        ".cells.environment.resource_ledger_low": 0,
+        ".cells.state.inputs": 0,
+        ".arrays.release": 0,
+        ".cells.state.adaptation": 0,
+        ".cells.state.metabolites_next": 0,
+        ".feedstock.resource_ledger_low": 0,
+        ".arrays.cell_inert_low": 0,
+        ".feedstock.fields": 0,
+        ".cells.state.ledger": 0,
+        ".cells.environment.observation": 0,
+        ".feedstock.permeability": 0,
+        ".cells.state.metabolites": 0,
+        ".cells.state.ledger_low": 0,
+        ".cells.state.waste": 0,
+        ".arrays.expression": 0,
+        ".cells.environment.permeability": 0,
+        ".arrays.requests": 0,
+        ".cells.state.enzymes": 0,
+        ".cells.state.candidate_rest": 0,
+        ".cells.state.rows": 0,
+        ".cells.state.age": 0,
+        ".cells.environment.quota": 0,
+        ".cells.state.support_normalization": 0,
+        ".feedstock.scratch": 0,
+        ".arrays.grid_ledger_low": 0,
+        ".cells.environment.source_masks": 0,
+        ".arrays.last_secretion": 0,
+        ".arrays.cell_inert": 0,
+        ".cells.environment.occupancy": 0,
+        ".arrays.cell_ledger_low": 0,
+        ".arrays.observation": 0,
+        ".cells.state.marks": 0,
+        ".cells.state.actions": 0,
+        ".cells.environment.fields": 0,
+        ".cells.environment.scratch": 0,
+        ".cells.state.position_next": 0,
+        ".cells.environment.returns": 0,
+        ".arrays.enzyme_bits[Float32]": 0,
+        ".cells.environment.inert": 0,
+        ".cells.environment.resource_ledger": 0,
+        ".cells.state.outputs": 0,
+        ".cells.state.radii": 0,
+        ".cells.state.energy": 0,
+        ".cells.state.hidden": 0,
+        ".arrays.weights": 0,
+        ".feedstock.quota": 0,
+        ".cells.state.axis_distance2": 0,
+        ".cells.environment.demand": 0,
+        ".cells.environment.sink_masks": 0,
+        ".arrays.permeability": 0,
+        ".arrays.grid_ledger": 0,
+        ".cells.environment.scale": 0,
+        ".cells.state.force": 0,
+        ".arrays.grid_inert": 0,
+        ".cells.environment.metadata.radius": 0,
+        ".cells.state.position": 0,
+        ".cells.state.exchange_scale": 0,
+        ".feedstock.sink_masks": 0,
+        ".arrays.cell_ledger": 0,
+        ".arrays.bound": 0
+      },
+      "material_errors": [
+        -7.4078343459405005e-09,
+        -2.1447704057209194e-08
+      ],
+      "potential_work_heat_errors": [
+        1.305028945353115e-06,
+        -3.155697413603775e-06
+      ],
+      "audits": [
+        {
+          "material": 148.985917510135,
+          "potential": 802.0337494164705,
+          "work": 0.019698407801852835,
+          "heat": 0.1561331273439367,
+          "supplied": 0.025911346077919006,
+          "removed": 0,
+          "supplied_potential": 0.1295490860939026,
+          "removed_potential": 0,
+          "population": 4,
+          "completed_steps": 2,
+          "secreted": [
+            0.0035792849957942963,
+            0.003906499594449997
+          ],
+          "solubilized": [
+            0.01388615369796753,
+            0.013886839151382446
+          ],
+          "bound": [
+            0.003471747972071171,
+            0.00347727257758379
+          ],
+          "enzyme": [
+            5.122042773291469,
+            5.122369909659028
+          ],
+          "inert": 4.03824197137137e-07,
+          "finite": true
+        },
+        {
+          "material": 148.98591749609514,
+          "potential": 802.0305238738656,
+          "work": 0.023284084597608196,
+          "heat": 0.15576853242674563,
+          "supplied": 0.025911346077919006,
+          "removed": 0,
+          "supplied_potential": 0.1295490860939026,
+          "removed_potential": 0,
+          "population": 4,
+          "completed_steps": 2,
+          "secreted": [
+            0.001493167132139206,
+            0.005973758175969124
+          ],
+          "solubilized": [
+            0.013881951570510864,
+            0.013891011476516724
+          ],
+          "bound": [
+            0.0034706471487879753,
+            0.0034784115850925446
+          ],
+          "enzyme": [
+            5.119957119226456,
+            5.12443670630455
+          ],
+          "inert": 4.429370167868818e-07,
+          "finite": true
+        }
+      ],
+      "serialized_checkpoint_bytes": 237385,
+      "restart_parity": true,
+      "timing": "complete coupled enqueue + endpoint status; excludes construction, JIT, snapshots, checkpoint and restart"
+    },
+    "moderate": {
+      "worlds": 4,
+      "cells_per_world": 64,
+      "capacity_per_world": 256,
+      "grid": [
+        16,
+        16,
+        16
+      ],
+      "extent": [
+        8,
+        8,
+        8
+      ],
+      "exchange_radius": 1,
+      "hidden": 8,
+      "mechanical_substeps": 16,
+      "cell_seeds": [
+        101,
+        102,
+        103,
+        104
+      ],
+      "habitat_seeds": [
+        1101,
+        1102,
+        1103,
+        1104
+      ],
+      "steps_per_sample": 4,
+      "serial_seconds": [
+        0.276569111,
+        0.304037193,
+        0.255607356
+      ],
+      "batch_seconds": [
+        0.119375399,
+        0.126102233,
+        0.093306289
+      ],
+      "aggregate_ratio": 2.31680156310933,
+      "field_max_errors": {
+        ".cells.state.requests": 0,
+        ".cells.environment.inert_low": 0,
+        ".feedstock.source_masks": 0,
+        ".cells.state.grants": 0,
+        ".cells.state.rest": 0,
+        ".arrays.grid_inert_low": 0,
+        ".feedstock.resource_ledger": 0,
+        ".cells.state.mass": 0,
+        ".cells.state.weights": 0,
+        ".cells.environment.resource_ledger_low": 0,
+        ".cells.state.inputs": 0,
+        ".arrays.release": 0,
+        ".cells.state.adaptation": 0,
+        ".cells.state.metabolites_next": 0,
+        ".feedstock.resource_ledger_low": 0,
+        ".arrays.cell_inert_low": 0,
+        ".feedstock.fields": 0,
+        ".cells.state.ledger": 1.862645149230957e-09,
+        ".cells.environment.observation": 0,
+        ".feedstock.permeability": 0,
+        ".cells.state.metabolites": 0,
+        ".cells.state.ledger_low": 1.7462298274040222e-09,
+        ".cells.state.waste": 0,
+        ".arrays.expression": 0,
+        ".cells.environment.permeability": 5.960464477539063e-08,
+        ".arrays.requests": 0,
+        ".cells.state.enzymes": 0,
+        ".cells.state.candidate_rest": 0,
+        ".cells.state.rows": 0,
+        ".cells.state.age": 0,
+        ".cells.environment.quota": 0,
+        ".cells.state.support_normalization": 0,
+        ".feedstock.scratch": 0,
+        ".arrays.grid_ledger_low": 0,
+        ".cells.environment.source_masks": 0,
+        ".arrays.last_secretion": 0,
+        ".arrays.cell_inert": 6.984919309616089e-10,
+        ".cells.environment.occupancy": 0,
+        ".arrays.cell_ledger_low": 1.5133991837501526e-09,
+        ".arrays.observation": 0,
+        ".cells.state.marks": 0,
+        ".cells.state.actions": 0,
+        ".cells.environment.fields": 0,
+        ".cells.environment.scratch": 0,
+        ".cells.state.position_next": 0,
+        ".cells.environment.returns": 0,
+        ".arrays.enzyme_bits[Float32]": 4.656612873077393e-10,
+        ".cells.environment.inert": 1.8189894035458565e-12,
+        ".cells.environment.resource_ledger": 0,
+        ".cells.state.outputs": 0,
+        ".cells.state.radii": 0,
+        ".cells.state.energy": 0,
+        ".cells.state.hidden": 0,
+        ".arrays.weights": 0,
+        ".feedstock.quota": 0,
+        ".cells.state.axis_distance2": 0,
+        ".cells.environment.demand": 0,
+        ".cells.environment.sink_masks": 0,
+        ".arrays.permeability": 5.960464477539063e-08,
+        ".arrays.grid_ledger": 0,
+        ".cells.environment.scale": 0,
+        ".cells.state.force": 0,
+        ".arrays.grid_inert": 0,
+        ".cells.environment.metadata.radius": 0,
+        ".cells.state.position": 0,
+        ".cells.state.exchange_scale": 0,
+        ".feedstock.sink_masks": 0,
+        ".arrays.cell_ledger": 1.862645149230957e-09,
+        ".arrays.bound": 0
+      },
+      "material_errors": [
+        0.0001339223149443569,
+        0.00014766482081540744,
+        0.00013854235612598131,
+        0.00014257860675570555
+      ],
+      "potential_work_heat_errors": [
+        0.0006740184807068061,
+        0.000765255802297915,
+        0.0007045039423019261,
+        0.0007296735969344326
+      ],
+      "audits": [
+        {
+          "material": 2705.7600572963715,
+          "potential": 15291.103148620576,
+          "work": 3.4020355557819166,
+          "heat": 21.17503685397539,
+          "supplied": 2.399827167391777,
+          "removed": 0,
+          "supplied_potential": 11.998966872692108,
+          "removed_potential": 0,
+          "population": 128,
+          "completed_steps": 13,
+          "secreted": [
+            0.560658673173748,
+            1.133737869327888
+          ],
+          "solubilized": [
+            0.2267594337463379,
+            0.23969832062721252
+          ],
+          "bound": [
+            0.43949518632143736,
+            0.4665875593200326
+          ],
+          "enzyme": [
+            5.670094364206307,
+            6.2425728207454085
+          ],
+          "inert": 2.5784946407370057e-05,
+          "finite": true
+        },
+        {
+          "material": 2705.7600710388774,
+          "potential": 15290.883121982217,
+          "work": 3.3514776663005166,
+          "heat": 21.44571261913721,
+          "supplied": 2.399827167391777,
+          "removed": 0,
+          "supplied_potential": 11.998966872692108,
+          "removed_potential": 0,
+          "population": 128,
+          "completed_steps": 13,
+          "secreted": [
+            0.7991522176889703,
+            1.0362753015942872
+          ],
+          "solubilized": [
+            0.23213592171669006,
+            0.23750171065330505
+          ],
+          "bound": [
+            0.4496560487896204,
+            0.4622508389875293
+          ],
+          "enzyme": [
+            5.908337999135256,
+            6.145212341565639
+          ],
+          "inert": 2.5872723957931498e-05,
+          "finite": true
+        },
+        {
+          "material": 2705.7600619164127,
+          "potential": 15291.119190316647,
+          "work": 3.436670286490059,
+          "heat": 21.124390912657216,
+          "supplied": 2.399827167391777,
+          "removed": 0,
+          "supplied_potential": 11.998966872692108,
+          "removed_potential": 0,
+          "population": 128,
+          "completed_steps": 13,
+          "secreted": [
+            0.9410442687803879,
+            0.8198377708904445
+          ],
+          "solubilized": [
+            0.2353452444076538,
+            0.23261284828186035
+          ],
+          "bound": [
+            0.455978243611753,
+            0.4528824230656028
+          ],
+          "enzyme": [
+            6.050081198103726,
+            5.9290018666069955
+          ],
+          "inert": 2.5921014971785894e-05,
+          "finite": true
+        },
+        {
+          "material": 2705.7600659526634,
+          "potential": 15290.69786664471,
+          "work": 3.557320400050886,
+          "heat": 21.42508964068801,
+          "supplied": 2.399827167391777,
+          "removed": 0,
+          "supplied_potential": 11.998966872692108,
+          "removed_potential": 0,
+          "population": 128,
+          "completed_steps": 13,
+          "secreted": [
+            0.9647070699138567,
+            0.8760825897334144
+          ],
+          "solubilized": [
+            0.23589357733726501,
+            0.2338806390762329
+          ],
+          "bound": [
+            0.4571454031392932,
+            0.4551346739754081
+          ],
+          "enzyme": [
+            6.073718936764635,
+            5.985187917947769
+          ],
+          "inert": 2.6142699672604408e-05,
+          "finite": true
+        }
+      ],
+      "serialized_checkpoint_bytes": 11210945,
+      "restart_parity": true,
+      "timing": "complete coupled enqueue + endpoint status; excludes construction, JIT, snapshots, checkpoint and restart"
+    }
+  }
+}
