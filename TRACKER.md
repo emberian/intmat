@@ -213,6 +213,13 @@ hbox now executes the original Julia kernels through AMDGPU with normal compiled
 
 ## Evidence and limits
 
+An uninterrupted integration run from immutable commit `a6ec1a8` passed
+17,630 assertions across 162 testsets, including the endpoint precision repair,
+exact-order carry support, sorptive device habitat and shared process protocol.
+It used two Julia threads; log `/tmp/intmat-integration-a6ec1a8.log` is retained.
+Later experimental study helpers have their own scoped gates and are not implied
+by that suite result.
+
 Public constructive integration at `7bfd402` additionally passes six focused
 API/recording/restore checks; the initially under-resolved fresh smoke correctly
 halted and was replaced with a resolved non-overlapping fixture.

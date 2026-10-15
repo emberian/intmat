@@ -229,8 +229,8 @@ function tissue_statistics(w,p;state=Array(p.state))
     (time=w.time,material=sum(Float64,n)+sum(Float64,b)+sum(Float64,m)+sum(Float64,spent),
      precursor=sum(Float64,n),biomass=sum(Float64,b),matrix=sum(Float64,m),spent=sum(Float64,spent),
      potential=sum(Float64,n)+sum(Float64,b)+sum(Float64,m),
-     excitation_std=std(x),excitation_max=maximum(x),excitation_min=minimum(x),
-     memory_std=std(memory),neural_maxabs=maximum(abs,view(state,:,:,:,5:7)),
+     excitation_std=length(x)>1 ? std(x) : 0f0,excitation_max=maximum(x),excitation_min=minimum(x),
+     memory_std=length(memory)>1 ? std(memory) : 0f0,neural_maxabs=maximum(abs,view(state,:,:,:,5:7)),
      physical_min=minimum(view(state,:,:,:,1:4)),finite=all(isfinite,state),
      active_sites=count(>(.15f0),b),matrix_sites=count(>(.04f0),m),
      mean_permeability=mean(1f0 ./ (1f0 .+ 8f0*p.parameters.barrier.*m)))

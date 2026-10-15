@@ -1,0 +1,261 @@
+{
+  "scope": "complete harmonic solve including patch dispatch and synchronization; recorded geometry sequence, not coupled growth parity",
+  "backend": "amd",
+  "hardware": {
+    "device": "AMD Radeon RX 6750 XT",
+    "shared_memory_per_block": 65536,
+    "max_threads_per_block": 1024
+  },
+  "julia": "1.12.4",
+  "threads": 2,
+  "n": 257,
+  "prefix": 4096,
+  "events": 9,
+  "geometry_sha256": "6e16bd429964f12c83a68bd7801a2cfae2944a36097a51534fe53cc9e4dc1bcb",
+  "source_sha256": {
+    "studies/branch_metal_multigrid.jl": "92b8ede5460f0b5d1fc09f3589b9ba1e00c77d96002ab8d2de4814989205aad2",
+    "studies/electrical_patch_kernel.jl": "8248c0595111486754b2e3e7ba35504a3285d39c899913e9d2ecc6a6fac0e6cf",
+    "scripts/study_electrical_patch_device.jl": "6c8cf63c722e5e7228d62d9e9797b886e9c3ac3cde756cd128d67b80ca39fd9a",
+    "studies/electrical_local_correction.jl": "82c0152777feb2b7948d7cfd76f67e6f9d02f2798fcfe85d65ee209c31a72330",
+    "studies/branch_solver_prototype.jl": "23ffce8e17f9bef91c6ebfabf02f92374c3e9ee7658dc7cee6925a7950cb3aa0"
+  },
+  "tolerance": 1.6e-05,
+  "initial_state": "cold reconstructed exact occupied prefix, not saved production potential",
+  "lds_bytes": 35319,
+  "median_paired_speedup": 1.32798946869738,
+  "rows": [
+    {
+      "event": 4097,
+      "site": [
+        104,
+        129,
+        39
+      ],
+      "baseline": {
+        "cycles": 4,
+        "residual": 1.1761983235677084e-05,
+        "seconds": 0.051828343000000006
+      },
+      "candidate": {
+        "cycles": 3,
+        "residual": 1.430511474609375e-05,
+        "patch_residual": 0.00018604596455891928,
+        "seconds": 0.036225242000000005
+      },
+      "independent_baseline_residual": 1.17023785909387e-05,
+      "independent_candidate_residual": 1.4265378316280497e-05,
+      "maximum_potential_difference": 4.518032e-05,
+      "speedup": 1.4307245483687865
+    },
+    {
+      "event": 4098,
+      "site": [
+        187,
+        128,
+        153
+      ],
+      "baseline": {
+        "cycles": 3,
+        "residual": 1.1523564656575521e-05,
+        "seconds": 0.036351069
+      },
+      "candidate": {
+        "cycles": 3,
+        "residual": 7.867813110351562e-06,
+        "patch_residual": 0.00018231074015299478,
+        "seconds": 0.039451776
+      },
+      "independent_baseline_residual": 1.1523564656612528e-05,
+      "independent_candidate_residual": 7.808208465576172e-06,
+      "maximum_potential_difference": 4.1246414e-05,
+      "speedup": 0.9214051352212889
+    },
+    {
+      "event": 4099,
+      "site": [
+        105,
+        97,
+        38
+      ],
+      "baseline": {
+        "cycles": 5,
+        "residual": 8.58306884765625e-06,
+        "seconds": 0.064186541
+      },
+      "candidate": {
+        "cycles": 4,
+        "residual": 1.2079874674479166e-05,
+        "patch_residual": 0.0002549886703491211,
+        "seconds": 0.048333622
+      },
+      "independent_baseline_residual": 8.602937062618388e-06,
+      "independent_candidate_residual": 1.2020270029666769e-05,
+      "maximum_potential_difference": 5.197525e-05,
+      "speedup": 1.32798946869738
+    },
+    {
+      "event": 4100,
+      "site": [
+        87,
+        137,
+        71
+      ],
+      "baseline": {
+        "cycles": 4,
+        "residual": 7.788340250651041e-06,
+        "seconds": 0.048442144000000006
+      },
+      "candidate": {
+        "cycles": 3,
+        "residual": 1.4225641886393229e-05,
+        "patch_residual": 0.0002551873524983724,
+        "seconds": 0.037661435
+      },
+      "independent_baseline_residual": 7.788340250614034e-06,
+      "independent_candidate_residual": 1.424551010131836e-05,
+      "maximum_potential_difference": 9.816885e-05,
+      "speedup": 1.2862532720805782
+    },
+    {
+      "event": 4101,
+      "site": [
+        97,
+        121,
+        31
+      ],
+      "baseline": {
+        "cycles": 4,
+        "residual": 8.106231689453125e-06,
+        "seconds": 0.055285822000000005
+      },
+      "candidate": {
+        "cycles": 3,
+        "residual": 1.3828277587890625e-05,
+        "patch_residual": 0.0003256400426228841,
+        "seconds": 0.036076556
+      },
+      "independent_baseline_residual": 8.046627044677734e-06,
+      "independent_candidate_residual": 1.3808409372928487e-05,
+      "maximum_potential_difference": 0.00010329485,
+      "speedup": 1.53245841981147
+    },
+    {
+      "event": 4102,
+      "site": [
+        78,
+        130,
+        70
+      ],
+      "baseline": {
+        "cycles": 4,
+        "residual": 1.3669331868489584e-05,
+        "seconds": 0.048474106
+      },
+      "candidate": {
+        "cycles": 4,
+        "residual": 7.3909759521484375e-06,
+        "patch_residual": 0.00021409988403320312,
+        "seconds": 0.049617491
+      },
+      "independent_baseline_residual": 1.366933186852659e-05,
+      "independent_candidate_residual": 7.3711077371863e-06,
+      "maximum_potential_difference": 6.41346e-05,
+      "speedup": 0.9769560093234058
+    },
+    {
+      "event": 4103,
+      "site": [
+        159,
+        90,
+        183
+      ],
+      "baseline": {
+        "cycles": 4,
+        "residual": 7.152557373046875e-06,
+        "seconds": 0.051581011
+      },
+      "candidate": {
+        "cycles": 3,
+        "residual": 1.0887781778971354e-05,
+        "patch_residual": 0.00026412804921468097,
+        "seconds": 0.036076501000000004
+      },
+      "independent_baseline_residual": 7.192293802860128e-06,
+      "independent_candidate_residual": 1.0867913564083231e-05,
+      "maximum_potential_difference": 5.0485134e-05,
+      "speedup": 1.4297675653190425
+    },
+    {
+      "event": 4104,
+      "site": [
+        104,
+        95,
+        40
+      ],
+      "baseline": {
+        "cycles": 5,
+        "residual": 1.0728836059570312e-05,
+        "seconds": 0.060618045
+      },
+      "candidate": {
+        "cycles": 5,
+        "residual": 8.185704549153646e-06,
+        "patch_residual": 0.00041333834330240887,
+        "seconds": 0.065433241
+      },
+      "independent_baseline_residual": 1.074870427453245e-05,
+      "independent_candidate_residual": 8.185704549190653e-06,
+      "maximum_potential_difference": 4.2796135e-05,
+      "speedup": 0.9264105533149428
+    },
+    {
+      "event": 4105,
+      "site": [
+        202,
+        110,
+        141
+      ],
+      "baseline": {
+        "cycles": 3,
+        "residual": 3.5762786865234375e-06,
+        "seconds": 0.039115613
+      },
+      "candidate": {
+        "cycles": 2,
+        "residual": 6.198883056640625e-06,
+        "patch_residual": 6.238619486490886e-05,
+        "seconds": 0.024177335
+      },
+      "independent_baseline_residual": 3.5762786865234375e-06,
+      "independent_candidate_residual": 6.218751271602763e-06,
+      "maximum_potential_difference": 4.1484833e-05,
+      "speedup": 1.617862886873181
+    }
+  ],
+  "pin": {
+    "base_commit": "a6ec1a8dea8fc104ecb598aa0c1750cb3a1c0545",
+    "driver_patch_sha256": "6c8cf63c722e5e7228d62d9e9797b886e9c3ac3cde756cd128d67b80ca39fd9a",
+    "remote_root": "/othersys/tmp/intmat-electrical-patch-a6ec1a8-worldage-20261015",
+    "local_root": "outputs/electrical-local-correction-20261015/native-a6ec1a8",
+    "source_manifest_sha256": "f6a79407428e48f3f8e3e593565d1c57e5b6cb97a12ff4e9e7d48f436d52e9ae",
+    "fixture_sha256": "17ecd25f6ca9d22f3ba3219eda916091d5fb601c884503420c8880bdb2e78bb3",
+    "executed_job_sha256": "b051f39a8005f7bac99f6dda18a7c6ff9469c353a7c63acccfb1235aeecc43c2"
+  },
+  "controls": {
+    "timeout_seconds": 300,
+    "allowed_cpus": [
+      10,
+      11
+    ],
+    "julia_threads": 2,
+    "gc_threads": 1,
+    "blas_threads": 1,
+    "memory_max": "8GiB",
+    "swap_max": 0,
+    "nice": 15,
+    "gpu_queue": "artist completed, living-tissue and batch probe released, exclusive coordinated GPU gate"
+  },
+  "summed_solve_ratio": 1.2220313221332273,
+  "summed_baseline_seconds": 0.45588269400000003,
+  "summed_candidate_seconds": 0.37305319900000006
+}

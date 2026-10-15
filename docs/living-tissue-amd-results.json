@@ -1,0 +1,127 @@
+{
+  "backend": "ROCBackend",
+  "side": 128,
+  "steps": 256,
+  "fixture": {
+    "steps": 50,
+    "dt": 0.04,
+    "maxabs": 1.1920929e-07,
+    "reference": {
+      "time": 1.9999999552965164,
+      "material": 4264.382489099866,
+      "precursor": 2090.7459675222635,
+      "biomass": 1391.1573544219136,
+      "matrix": 672.1756003675982,
+      "spent": 110.3035667880904,
+      "potential": 4154.078922311775,
+      "excitation_std": 0.29264644,
+      "excitation_max": 0.63197315,
+      "excitation_min": -0.6589455,
+      "memory_std": 0.16353132,
+      "neural_maxabs": 0.6589455,
+      "physical_min": 0.0012116308,
+      "finite": true,
+      "active_sites": 3378,
+      "matrix_sites": 3767,
+      "mean_permeability": 0.12534903
+    },
+    "device": {
+      "time": 1.9999999552965164,
+      "material": 4264.382489388576,
+      "precursor": 2090.745968081057,
+      "biomass": 1391.1573543176055,
+      "matrix": 672.1756002549082,
+      "spent": 110.303566735005,
+      "potential": 4154.078922653571,
+      "excitation_std": 0.29264644,
+      "excitation_max": 0.63197315,
+      "excitation_min": -0.6589455,
+      "memory_std": 0.16353132,
+      "neural_maxabs": 0.6589455,
+      "physical_min": 0.0012116308,
+      "finite": true,
+      "active_sites": 3378,
+      "matrix_sites": 3767,
+      "mean_permeability": 0.12534903
+    }
+  },
+  "warm_steps": 10,
+  "cases": [
+    {
+      "name": "sparse-lace",
+      "timed_seconds": [
+        0.1889378,
+        0.188750064,
+        0.188764536
+      ],
+      "median_seconds": 0.188764536,
+      "voxel_steps_per_second": 2844130170.7223225,
+      "final": {
+        "time": 31.119999304413795,
+        "material": 1678603.3944939375,
+        "precursor": 1673560.8124729395,
+        "biomass": 4045.001029287935,
+        "matrix": 39.90669305026597,
+        "spent": 957.6742986597976,
+        "potential": 1677645.7201952776,
+        "excitation_std": 0.0064856634,
+        "excitation_max": 0.35089812,
+        "excitation_min": -0.5451661,
+        "memory_std": 0.00033741686,
+        "neural_maxabs": 0.5451661,
+        "physical_min": 0,
+        "finite": true,
+        "active_sites": 5191,
+        "matrix_sites": 110,
+        "mean_permeability": 0.99932176
+      }
+    },
+    {
+      "name": "dense-tissue",
+      "timed_seconds": [
+        0.190622456,
+        0.193277059,
+        0.195870807
+      ],
+      "median_seconds": 0.193277059,
+      "voxel_steps_per_second": 2777727034.8469033,
+      "final": {
+        "time": 31.119999304413795,
+        "material": 2180573.5012390018,
+        "precursor": 129672.10476726666,
+        "biomass": 769786.7781819999,
+        "matrix": 480157.9645797722,
+        "spent": 800956.653709963,
+        "potential": 1379616.8475290388,
+        "excitation_std": 0.1417722,
+        "excitation_max": 0.3365092,
+        "excitation_min": -0.3975133,
+        "memory_std": 0.079432525,
+        "neural_maxabs": 0.3975133,
+        "physical_min": 0.008984486,
+        "finite": true,
+        "active_sites": 2097152,
+        "matrix_sites": 2094527,
+        "mean_permeability": 0.073628105
+      }
+    }
+  ],
+  "resident_array_bytes": 117440512,
+  "source_sha256": "401d9068b33e783fec48f9af016847567322f9ad5c34973fb43f840a6625f85e",
+  "shared_source_sha256": {
+    "core.jl": "b4302b90eaeba213360e8a15ce8b7e4cb4c491606657e3e500d2fb8507753a52",
+    "recurrent_material.jl": "e9457d0d6e31f74950fa4be8ef84b138b020c0de7fc4b95c9a7f3cd5db148347"
+  },
+  "boundary": "Complete step! calls with all seven physical/neural channels, validation, buffer swaps and final synchronization. Excludes initialization, compilation, capture and rendering. Distinct continuum law; no cellular-arena speedup inferred.",
+  "provenance": {
+    "git_commit": "4e2889c",
+    "pin": "/othersys/tmp/intmat-probe-20261014/living-tissue-4e2889c-pin.json",
+    "source": "/othersys/tmp/intmat-probe-20261014/source-living-tissue-4e2889c",
+    "environment": "/othersys/tmp/intmat-probe-20261014/environment-living-tissue-4e2889c",
+    "project_sha256": "284c920aebff70f466a40df21f7c83ae4c561857b046f940274b43a8feeaec6d",
+    "manifest_sha256": "a59af63f360d865119ea1d41a9cd71cdd771175d14843c78900eab5e12f0c163",
+    "runtime": "Julia1.12.4, pinnedAMDGPUc77460e, KA0.9.45, ROCm6.4.3, RX6750XT",
+    "controls": "swarm-build8GiB/no swap, CPU10/11,2threads,180s retry cap after initial host-loader failure",
+    "host_bootstrap": "The initial late-import backend selector failed before kernel launch. Retry preloaded AMDGPU and invoked the unchanged frozen probe function directly. No kernel/fixture/parameter changes. Both processes ended before GPU handoff."
+  }
+}

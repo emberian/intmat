@@ -61,4 +61,8 @@ end
         endpoint_potential=sum((BigFloat(before[k])-BigFloat(c.metabolites[k,1]))*BigFloat(r.potentials[k]) for k in 1:2)
         @test abs(endpoint_potential-BigFloat(degraded.potential))<=4BigFloat(eps(max(degraded.potential,nextfloat(0.))))
     end
+    c.metabolites[:,1].=floatmax(Float64)
+    donors=copy(c.metabolites);waste=copy(r.fields[3]);inert=c.inert_residual
+    @test_throws ArgumentError Interior._cellular_degrade_precursors!(c,1,1.)
+    @test c.metabolites==donors && r.fields[3]==waste && c.inert_residual==inert
 end

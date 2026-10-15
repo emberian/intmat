@@ -202,5 +202,31 @@ The first contrast using an arbitrary constant .5 is also preserved under
 substantially suppresses biomass; the different average requested construction
 confounds that comparison. The mean-gate contrast above is the useful replacement.
 
-The focused CPU suite passes **27 assertions**. Accelerator parity and timing
-remain unmeasured here until the bounded device probe is run in a reserved slot.
+The focused CPU suite passes **27 assertions**.
+
+## Native AMD gate
+
+The frozen `4e2889c` study completed its reserved AMD gate on the verified
+RX 6750 XT runtime. Fifty complete steps of a dense randomized 16³ fixture give
+maximum CPU/device error **1.19e-7** across all seven channels. The 128³ sparse
+and dense cases each run three 256-step batches after ten warm steps:
+
+| Native 128³ state | Median time / 256 complete steps | Site-steps/s |
+| --- | --- | --- |
+| Sparse lace | .188765 s | 2.844 billion |
+| Dense tissue | .193277 s | 2.778 billion |
+
+The timed boundary includes `step!`, process validation, the whole material and
+neural kernel, buffer swaps, clock updates and final synchronization. It excludes
+initialization, compilation, captures and rendering. Persistent arrays occupy
+117,440,512 bytes. No cellular-arena speedup is inferred. These are three short
+samples per density on a shared device, not a long-run production bake or a
+cross-backend art comparison. [Native results and pin](living-tissue-amd-results.json)
+retain timings, array diagnostics, source hashes and the copied manifest hash.
+
+The initial host selector encountered Julia's late-import world-age restriction
+before any kernel launched. The successful retry preloaded AMDGPU and called
+the unchanged frozen probe function; no fixture, parameters or kernel changed.
+The current host selector resolves its newly imported backend in the current
+world. The newer active-turnover process is separate and is not covered by this
+device gate.

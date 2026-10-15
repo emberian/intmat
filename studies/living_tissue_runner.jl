@@ -1,9 +1,12 @@
 # Included by LivingTissueStudy; simulation laws live in living_tissue.jl.
 function tissue_backend(kind)
     if kind=="amd"
-        Core.eval(@__MODULE__,:(using AMDGPU));return Base.invokelatest(AMDGPU.ROCBackend)
+        Core.eval(@__MODULE__,:(using AMDGPU))
+        # Import can introduce a binding newer than this function's world.
+        return Core.eval(@__MODULE__,:(AMDGPU.ROCBackend()))
     elseif kind=="metal"
-        Core.eval(@__MODULE__,:(using Metal));return Base.invokelatest(Metal.MetalBackend)
+        Core.eval(@__MODULE__,:(using Metal))
+        return Core.eval(@__MODULE__,:(Metal.MetalBackend()))
     elseif kind=="cpu"
         return CPU()
     end

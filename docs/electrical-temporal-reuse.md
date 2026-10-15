@@ -1,9 +1,9 @@
 # Local correction before harmonic multigrid
 
-A small CPU study shows that correcting the newly occupied site's neighborhood
-can reduce the number of subsequent global multigrid cycles. This is a candidate
-for a fresh producer, not a change to the active amber artwork. No GPU timings or
-complete-event speedup have been measured.
+A bounded native 257³ AMD study reduced 36 global V-cycles to 30 across nine
+recorded growth additions, with a 1.328× median paired harmonic-solve speedup.
+This is a candidate for a fresh producer, not a change to the amber artwork.
+Coupled growth parity and complete-event speedup remain unmeasured.
 
 The active amber-confluence solver already keeps its potential and multigrid
 hierarchy between events. Each event adds one occupied Dirichlet cell and updates
@@ -70,13 +70,11 @@ JULIA_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 julia --project --threads=1 studies/e
 ```
 
 Source hashes, captured study source and raw 32-event rows are retained under
-`outputs/electrical-local-correction-20261015`. The next useful check is a separate
-native-size, paired device experiment including patch dispatch cost, full solve
-synchronization and independent residual checks, followed by a coupled archive
-trajectory comparison. That needs the coordinated GPU window after the artist,
-base-ecology and HIP-graph gates; none has been launched by this lane.
+`outputs/electrical-local-correction-20261015`. The bounded native-size device experiment below includes patch dispatch cost,
+full-solve synchronization and independent residual checks. A coupled archive
+trajectory comparison remains the next gate before a producer opt-in.
 
-## Device candidate prepared (not yet measured)
+## Single-workgroup device candidate
 
 `studies/electrical_patch_kernel.jl` assigns the radius 8 patch and its halo to one
 256-thread workgroup. Its 19³ potential and mask arrays plus 256 reduction floats
@@ -105,5 +103,50 @@ replace a coupled thermal-growth trajectory check.
 The future AMD command first queries the actual selected HIP device's shared-
 memory and thread limits, requiring at least 36 KiB and 256 threads per workgroup.
 It then checks scalar CPU versus GPU patch fields bitwise before measuring.
-This query and GPU launch remain pending the coordinated window; no hardware
-limit is assumed from the GPU model name. A two-event 17³ CPU harness smoke passed.
+The native gate below verified these limits on the selected device before
+compilation. A two-event 17³ CPU harness smoke also passed.
+
+
+## Native AMD gate
+
+The fixed prefix was chosen before any native timing: actual amber-confluence
+births through event 4096, followed by recorded additions 4097–4105. No prefix
+search or parameter tuning selected this result. The exact occupied geometry was
+cold-solved once, and both arms started from that same captured potential.
+The baseline was the existing `(32,4,2)` multigrid layout with fused stopping norm;
+the candidate added the radius 8, 16-sweep patch and retained that solver.
+Solve tolerance was 1.6e-5; independent checks required 2e-5.
+
+On the actual selected RX 6750 XT, HIP reported 65,536 bytes shared memory and
+1,024 threads per block. The kernel's 35,319 explicit bytes and 256 threads fit.
+Its scalar CPU versus AMD patch field comparison passed bitwise before the native
+fixture. The bounded job exited zero and released the GPU to the next queued lane.
+It used CPU 10–11, two Julia threads, one GC/BLAS thread, 8 GiB/no-swap/nice 15 and a
+300-second limit; there was no other coordinated GPU job during this gate.
+
+| Measure | Baseline | Patch + multigrid |
+|---|---:|---:|
+| Total V-cycles, nine additions |36|30|
+| Sum of complete timed solves |0.455883s|0.373053s|
+| Median complete solve |0.051581s|0.037661s|
+
+The median of paired speedups was **1.328×**; the ratio of summed solve times was
+**1.222×**. Six additions saved one cycle each. Three saved none and were slower
+(ratios 0.921, 0.977, 0.926). Every independent normalized residual was below 1.43e-5;
+conductor and grounded values remained exact. The largest baseline/candidate
+potential difference was 1.033e-4. This is convergence to the same harmonic
+operator/tolerance, not bitwise trajectory preservation. Food/dose-dependent
+selection was not rerun, so these results do not establish coupled growth parity
+or a complete electrothermal-event speedup. No production state was migrated.
+
+The source pin is commit `a6ec1a8` plus the explicitly hashed driver-only Julia
+world-age loader fix (SHA256
+`6c8cf63c722e5e7228d62d9e9797b886e9c3ac3cde756cd128d67b80ca39fd9a`).
+Numerical kernel sources were unchanged. All 209 source/environment/geometry
+hashes were verified before launch. The fresh remote root is
+`/othersys/tmp/intmat-electrical-patch-a6ec1a8-worldage-20261015`;
+its original a6 pin and an unused partial full-tree transfer remain preserved
+separately. Local logs, environment, immutable fixture and source copies are under
+`outputs/electrical-local-correction-20261015/native-a6ec1a8`.
+Tracked raw timings/provenance are in
+`benchmarks/2026-10-15-electrical-local-correction.json`.
