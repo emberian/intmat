@@ -10,6 +10,8 @@ import os
 import sys
 import numpy as np
 import bpy
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from optical_materials import PRESETS, make_material
 from mathutils import Vector
 try:
     import openvdb as vdb
@@ -51,6 +53,16 @@ parser.add_argument("--activity-power", type=float, default=1.0)
 parser.add_argument("--interfaces", action="store_true", help="Artistic activity/deposit gradient transfer; retains simulation data")
 parser.add_argument("--smooth", type=int, default=0, help="Optical three-tap smoothing passes before interface derivatives")
 parser.add_argument("--frame-content", action="store_true", help="Fit actual visible mesh bounds with an eight-percent photographic margin")
+parser.add_argument("--surface-only", action="store_true", help="Read only native inclusion scalar and omit transport volumes; supports deposit-only exports")
+parser.add_argument("--analytic-crop", action="store_true", help="Mesh the unmasked continuous scalar, then apply analytic observation boundaries")
+parser.add_argument("--crop-shape", choices=("sphere", "ellipsoid", "none"), default="sphere")
+parser.add_argument("--crop-radius", type=float, default=.88)
+parser.add_argument("--crop-axes", nargs=3, type=float, default=(.87,.94,.8))
+parser.add_argument("--mesh-adaptivity", type=float, default=.05)
+parser.add_argument("--material-preset", choices=tuple(PRESETS))
+parser.add_argument("--carrier-material", choices=tuple(PRESETS))
+parser.add_argument("--population-mode", choices=("scientific", "hidden"), default="scientific", help="Agent spheres are explicit scientific markers, independent from specimen material")
+parser.add_argument("--write-source-mapping", action="store_true", help="Opt in to writing optical metadata inside the input export")
 parser.add_argument("--inclusion-transmission", type=float, default=.3)
 parser.add_argument("--surface-smooth", type=int, default=0, help="Optical three-tap scalar smoothing passes before inclusion meshing")
 parser.add_argument("--inclusion-tint", choices=("pearl", "amber", "jade", "rose"), default="pearl")
@@ -67,17 +79,27 @@ with open(os.path.join(directory, "volume.json")) as stream:
     manifest = json.load(stream)
 shape = tuple(manifest["shape"])
 arrays = {}
+if args.surface_only and (args.conductive_graph or args.bond_graph):
+    raise ValueError("Surface-only mode targets one actual scalar; graph rendering is a separate observation")
+if args.surface_only and not args.inclusion_surface:
+    raise ValueError("Surface-only mode requires an actual --inclusion-surface field")
+required = set(manifest["fields"])
+if args.surface_only:
+    required = {args.inclusion_surface}
+    if not args.analytic_crop and "mask" in manifest["fields"]:
+        required.add("mask")
 for name in manifest["fields"]:
-    arrays[name] = np.fromfile(os.path.join(directory, name + ".f32"), dtype="<f4").reshape(shape, order="F")
-if "density" not in arrays:
-    raise ValueError("Export a density field (carrier + mineral), plus optional activity, structure, mask.")
+    if name in required:
+        arrays[name] = np.memmap(os.path.join(directory, name + ".f32"), mode="r", dtype="<f4", shape=shape, order="F") if args.surface_only else np.fromfile(os.path.join(directory, name + ".f32"), dtype="<f4").reshape(shape, order="F")
+if "density" not in arrays and not args.surface_only:
+    raise ValueError("Export density for transport rendering, or use explicit --surface-only mode")
 optical_mapping = {"settings": vars(args).copy(), "gradient_scales": {}}
 if args.emission_field in arrays:
     arrays["activity"] = arrays[args.emission_field].copy()
 elif args.emission_field != "activity":
     raise ValueError(f"Emission source {args.emission_field!r} is absent from the export")
-mask = np.clip(arrays.get("mask", np.ones(shape)), 0, 1)
-if args.cutaway_axis:
+mask = np.clip(arrays.get("mask", np.ones((1,1,1) if args.surface_only and args.analytic_crop else shape, dtype=np.float32)), 0, 1)
+if args.cutaway_axis and not (args.surface_only and args.analytic_crop):
     axis = "xyz".index(args.cutaway_axis)
     coordinate = np.linspace(-1, 1, shape[axis])
     clipping = (coordinate <= args.cutaway_position).reshape(tuple(shape[d] if d == axis else 1 for d in range(3)))
@@ -99,11 +121,12 @@ if args.interfaces:
         arrays["activity"] = edge_strength(arrays["activity"], "activity")
     if "structure" in arrays:
         arrays["density"] = .025 + .7 * edge_strength(arrays["structure"], "structure")
-arrays["density"] *= args.density_scale
+if "density" in arrays:
+    arrays["density"] *= args.density_scale
 grids = []
-if args.scattering_field not in arrays:
+if not args.surface_only and args.scattering_field not in arrays:
     raise ValueError("Scattering source absent from exported arrays")
-for name in dict.fromkeys(("density", "activity", "structure", args.scattering_field)):
+for name in (() if args.surface_only else dict.fromkeys(("density", "activity", "structure", args.scattering_field))):
     if name in arrays:
         grid = vdb.FloatGrid()
         grid.name = name
@@ -115,75 +138,80 @@ for name in dict.fromkeys(("density", "activity", "structure", args.scattering_f
 output_path = os.path.abspath(args.output)
 os.makedirs(os.path.dirname(output_path), exist_ok=True)
 vdb_path = os.path.splitext(output_path)[0] + ".vdb"
-vdb.write(vdb_path, grids=grids)
-optical_mapping["volume_file"] = vdb_path
+if not args.surface_only:
+    vdb.write(vdb_path, grids=grids)
+optical_mapping["volume_file"] = None if args.surface_only else vdb_path
+optical_mapping["source_grid"] = {"shape": shape, "dtype": "little-endian float32", "order": "F", "loaded_fields": sorted(required), "surface_only": args.surface_only}
 output_path = os.path.abspath(args.output)
 os.makedirs(os.path.dirname(output_path), exist_ok=True)
-for mapping_path in (os.path.join(directory, "optical-mapping.json"), output_path + ".optical.json"):
+for mapping_path in ((output_path + ".optical.json", os.path.join(directory, "optical-mapping.json")) if args.write_source_mapping else (output_path + ".optical.json",)):
     with open(mapping_path, "w") as stream:
         json.dump(optical_mapping, stream, indent=2)
 
 bpy.ops.object.select_all(action="SELECT")
 bpy.ops.object.delete(use_global=False)
-bpy.ops.object.volume_import(filepath=vdb_path)
-obj = bpy.context.object
-obj.name = "Simulated specimen"
-obj.scale = tuple((args.z_scale if d == 2 else 1) * 2 / n for d, n in enumerate(shape))
-obj.location = tuple((args.z_scale if d == 2 else 1) * (-1 + 1 / n) for d, n in enumerate(shape))
-palettes = {
-    "amber-cyan": ((.82,.38,.055,1), (1,.64,.26,1), (.025,.72,1,1)),
-    "amber-gold": ((.82,.38,.055,1), (1,.78,.45,1), (1,.56,.13,1)),
-    "glass-ice": ((.72,.88,.96,1), (.72,.86,1,1), (.56,.85,1,1)),
-    "acoustic-pearl": ((.74,.56,.26,1), (.95,.89,.73,1), (.67,.86,1,1)),
-}
-absorption_color, scattering_color, emission_color = palettes[args.palette]
-material = bpy.data.materials.new(args.palette + " optical interpretation")
-material.use_nodes = True
-nodes = material.node_tree.nodes
-nodes.clear()
-links = material.node_tree.links
-output = nodes.new("ShaderNodeOutputMaterial")
-def attribute(name):
-    node = nodes.new("ShaderNodeAttribute")
-    node.attribute_name = name
-    return node.outputs["Fac"]
-def multiply(value, scale):
-    node = nodes.new("ShaderNodeMath")
-    node.operation = "MULTIPLY"
-    links.new(value, node.inputs[0])
-    node.inputs[1].default_value = scale
-    return node.outputs[0]
-def add_shader(a, b):
-    node = nodes.new("ShaderNodeAddShader")
-    links.new(a, node.inputs[0]); links.new(b, node.inputs[1])
-    return node.outputs[0]
-absorb = nodes.new("ShaderNodeVolumeAbsorption")
-absorb.inputs["Color"].default_value = absorption_color
-links.new(multiply(attribute("density"), args.absorption), absorb.inputs["Density"])
-scatter = nodes.new("ShaderNodeVolumeScatter")
-scatter.inputs["Color"].default_value = scattering_color
-scatter.inputs["Anisotropy"].default_value = 0.25
-links.new(multiply(attribute(args.scattering_field), args.scattering), scatter.inputs["Density"])
-emission = nodes.new("ShaderNodeEmission")
-emission.inputs["Color"].default_value = emission_color
-if "activity" in arrays and not (args.conductive_graph or args.bond_graph):
-    links.new(multiply(attribute("activity"), args.emission), emission.inputs["Strength"])
-else:
-    emission.inputs["Strength"].default_value = 0
-links.new(add_shader(add_shader(absorb.outputs[0], scatter.outputs[0]), emission.outputs[0]), output.inputs["Volume"])
-obj.data.materials.append(material)
+obj = None
+if not args.surface_only:
+    bpy.ops.object.volume_import(filepath=vdb_path)
+    obj = bpy.context.object
+    obj.name = "Simulated specimen"
+    obj.scale = tuple((args.z_scale if d == 2 else 1) * 2 / n for d, n in enumerate(shape))
+    obj.location = tuple((args.z_scale if d == 2 else 1) * (-1 + 1 / n) for d, n in enumerate(shape))
+    palettes = {
+        "amber-cyan": ((.82,.38,.055,1), (1,.64,.26,1), (.025,.72,1,1)),
+        "amber-gold": ((.82,.38,.055,1), (1,.78,.45,1), (1,.56,.13,1)),
+        "glass-ice": ((.72,.88,.96,1), (.72,.86,1,1), (.56,.85,1,1)),
+        "acoustic-pearl": ((.74,.56,.26,1), (.95,.89,.73,1), (.67,.86,1,1)),
+    }
+    absorption_color, scattering_color, emission_color = palettes[args.palette]
+    material = bpy.data.materials.new(args.palette + " optical interpretation")
+    material.use_nodes = True
+    nodes = material.node_tree.nodes
+    nodes.clear()
+    links = material.node_tree.links
+    output = nodes.new("ShaderNodeOutputMaterial")
+    def attribute(name):
+        node = nodes.new("ShaderNodeAttribute")
+        node.attribute_name = name
+        return node.outputs["Fac"]
+    def multiply(value, scale):
+        node = nodes.new("ShaderNodeMath")
+        node.operation = "MULTIPLY"
+        links.new(value, node.inputs[0])
+        node.inputs[1].default_value = scale
+        return node.outputs[0]
+    def add_shader(a, b):
+        node = nodes.new("ShaderNodeAddShader")
+        links.new(a, node.inputs[0]); links.new(b, node.inputs[1])
+        return node.outputs[0]
+    absorb = nodes.new("ShaderNodeVolumeAbsorption")
+    absorb.inputs["Color"].default_value = absorption_color
+    links.new(multiply(attribute("density"), args.absorption), absorb.inputs["Density"])
+    scatter = nodes.new("ShaderNodeVolumeScatter")
+    scatter.inputs["Color"].default_value = scattering_color
+    scatter.inputs["Anisotropy"].default_value = 0.25
+    links.new(multiply(attribute(args.scattering_field), args.scattering), scatter.inputs["Density"])
+    emission = nodes.new("ShaderNodeEmission")
+    emission.inputs["Color"].default_value = emission_color
+    if "activity" in arrays and not (args.conductive_graph or args.bond_graph):
+        links.new(multiply(attribute("activity"), args.emission), emission.inputs["Strength"])
+    else:
+        emission.inputs["Strength"].default_value = 0
+    links.new(add_shader(add_shader(absorb.outputs[0], scatter.outputs[0]), emission.outputs[0]), output.inputs["Volume"])
+    obj.data.materials.append(material)
+
 if args.inclusion_surface:
     if args.inclusion_surface not in arrays:
         raise ValueError("Requested inclusion scalar absent from exported arrays")
     surface_grid = vdb.FloatGrid()
-    surface_values = arrays[args.inclusion_surface].copy()
+    surface_values = arrays[args.inclusion_surface].copy() if args.surface_smooth else arrays[args.inclusion_surface]
     for _ in range(args.surface_smooth):
         for axis in range(3):
             before = np.take(surface_values, np.maximum(np.arange(shape[axis]) - 1, 0), axis=axis)
             after = np.take(surface_values, np.minimum(np.arange(shape[axis]) + 1, shape[axis] - 1), axis=axis)
             surface_values = .25 * before + .5 * surface_values + .25 * after
-    surface_grid.copyFromArray(np.ascontiguousarray(surface_values * mask))
-    points, triangles, quads = surface_grid.convertToPolygons(isovalue=args.inclusion_isovalue, adaptivity=.05)
+    surface_grid.copyFromArray(np.ascontiguousarray(surface_values if args.analytic_crop else surface_values * mask))
+    points, triangles, quads = surface_grid.convertToPolygons(isovalue=args.inclusion_isovalue, adaptivity=args.mesh_adaptivity)
     points = 2 * (points + .5) / np.array(shape) - 1
     points[:, 2] *= args.z_scale
     mesh = bpy.data.meshes.new("Actual deposited inclusion isosurface")
@@ -200,7 +228,38 @@ if args.inclusion_surface:
     inclusion.data.materials.append(inclusion_material)
     for polygon in mesh.polygons:
         polygon.use_smooth = True
-    optical_mapping["inclusion_mesh"] = {"vertices": len(points), "triangles": len(triangles), "quads": len(quads), "isovalue": args.inclusion_isovalue}
+    optical_mapping["inclusion_mesh"] = {"vertices": len(points), "triangles": len(triangles), "quads": len(quads), "isovalue": args.inclusion_isovalue, "field": args.inclusion_surface, "source_shape": shape, "surface_smoothing_passes": args.surface_smooth, "mesh_adaptivity": args.mesh_adaptivity}
+
+if args.analytic_crop and args.inclusion_surface:
+    def analytic_intersection(cutter, label):
+        modifier = inclusion.modifiers.new(label, "BOOLEAN")
+        modifier.operation = "INTERSECT"
+        modifier.solver = "EXACT"
+        modifier.object = cutter
+        bpy.context.view_layer.objects.active = inclusion
+        bpy.ops.object.modifier_apply(modifier=modifier.name)
+        bpy.data.objects.remove(cutter, do_unlink=True)
+    axes = (args.crop_radius,) * 3 if args.crop_shape == "sphere" else tuple(args.crop_axes)
+    if args.crop_shape != "none":
+        bpy.ops.mesh.primitive_uv_sphere_add(segments=192, ring_count=96, radius=1)
+        bpy.context.object.scale = (axes[0], axes[1], axes[2] * args.z_scale)
+        analytic_intersection(bpy.context.object, "Analytic observation " + args.crop_shape)
+    if args.cutaway_axis:
+        axis = "xyz".index(args.cutaway_axis)
+        position = args.cutaway_position * (args.z_scale if axis == 2 else 1)
+        location = [0, 0, 0]; location[axis] = position - 3
+        bpy.ops.mesh.primitive_cube_add(size=6, location=location)
+        analytic_intersection(bpy.context.object, "Analytic optical section")
+    for polygon in inclusion.data.polygons:
+        polygon.use_smooth = True
+    optical_mapping["analytic_crop"] = {"shape": args.crop_shape, "axes": axes if args.crop_shape != "none" else None, "plane_axis": args.cutaway_axis, "plane_position": args.cutaway_position, "method": "unmasked continuous scalar surface followed by exact mesh intersection; observation crop only"}
+if args.inclusion_surface:
+    optical_mapping["inclusion_mesh"].update(post_crop_vertices=len(inclusion.data.vertices), post_crop_polygons=len(inclusion.data.polygons))
+if args.inclusion_surface and args.material_preset:
+    inclusion.data.materials.clear()
+    material, spec = make_material("Computed scalar surface", args.material_preset)
+    inclusion.data.materials.append(material)
+    optical_mapping["specimen_material"] = {"preset": args.material_preset, "resolved": spec, "interpretation": "Optical display parameters, not measured material properties"}
 
 if args.conductive_graph or args.bond_graph:
     graph_edges = []
@@ -260,34 +319,42 @@ if args.conductive_graph or args.bond_graph:
     filament.data.materials.append(filament_material)
     for polygon in mesh.polygons:
         polygon.use_smooth = True
+    if args.material_preset:
+        filament.data.materials.clear()
+        graph_material, spec = make_material("Actual graph surface", args.material_preset)
+        filament.data.materials.append(graph_material)
+        optical_mapping["specimen_material"] = {"preset": args.material_preset, "resolved": spec, "interpretation": "Optical display parameters, not measured material properties"}
 
 if args.population:
     with open(args.population) as stream:
         population = json.load(stream)
-    lineages = sorted(set(population["lineages"]))
-    colors = [(1,.48,.08,1), (.06,.68,.78,1), (.65,.2,.35,1), (.25,.58,.24,1), (.47,.25,.75,1), (.82,.75,.43,1)]
-    bpy.ops.mesh.primitive_ico_sphere_add(subdivisions=2, radius=1)
-    template = bpy.context.object
-    base_mesh = template.data
-    bpy.data.objects.remove(template, do_unlink=True)
-    marker_meshes = {}
-    for rank, lineage in enumerate(lineages):
-        mesh = base_mesh.copy()
-        marker_material = bpy.data.materials.new("Recorded lineage " + str(lineage))
-        marker_material.diffuse_color = colors[rank % len(colors)]
-        marker_material.use_nodes = True
-        shader = marker_material.node_tree.nodes.get("Principled BSDF")
-        shader.inputs["Base Color"].default_value = colors[rank % len(colors)]
-        shader.inputs["Roughness"].default_value = .28
-        shader.inputs["Metallic"].default_value = .2
-        mesh.materials.append(marker_material)
-        marker_meshes[lineage] = mesh
-    for identity, position, lineage in zip(population["ids"], population["positions"], population["lineages"]):
-        marker = bpy.data.objects.new("Recorded agent " + str(identity), marker_meshes[lineage])
-        bpy.context.collection.objects.link(marker)
-        marker.location = (2 * position[0] / shape[0] - 1, 2 * position[1] / shape[1] - 1, args.z_scale * (2 * position[2] / shape[2] - 1) if population.get("dimension", 2) == 3 else 0)
-        marker.scale = (args.population_radius,) * 3
-    optical_mapping["population_observation"] = {"count": len(population["ids"]), "lineages": lineages, "marker_radius": args.population_radius, "source": args.population, "dimension": population.get("dimension", 2), "optical_extrusion_z_scale": args.z_scale}
+    if args.population_mode == "hidden":
+        optical_mapping["population_observation"] = {"source_count": len(population["ids"]), "visible_markers": 0, "mode": "hidden", "source": args.population, "interpretation": "Recorded population preserved in source; no agent markers mixed into specimen material"}
+    else:
+        lineages = sorted(set(population["lineages"]))
+        colors = [(1,.48,.08,1), (.06,.68,.78,1), (.65,.2,.35,1), (.25,.58,.24,1), (.47,.25,.75,1), (.82,.75,.43,1)]
+        bpy.ops.mesh.primitive_ico_sphere_add(subdivisions=2, radius=1)
+        template = bpy.context.object
+        base_mesh = template.data
+        bpy.data.objects.remove(template, do_unlink=True)
+        marker_meshes = {}
+        for rank, lineage in enumerate(lineages):
+            mesh = base_mesh.copy()
+            marker_material = bpy.data.materials.new("Recorded lineage " + str(lineage))
+            marker_material.diffuse_color = colors[rank % len(colors)]
+            marker_material.use_nodes = True
+            shader = marker_material.node_tree.nodes.get("Principled BSDF")
+            shader.inputs["Base Color"].default_value = colors[rank % len(colors)]
+            shader.inputs["Roughness"].default_value = .28
+            shader.inputs["Metallic"].default_value = .2
+            mesh.materials.append(marker_material)
+            marker_meshes[lineage] = mesh
+        for identity, position, lineage in zip(population["ids"], population["positions"], population["lineages"]):
+            marker = bpy.data.objects.new("Recorded agent " + str(identity), marker_meshes[lineage])
+            bpy.context.collection.objects.link(marker)
+            marker.location = (2 * position[0] / shape[0] - 1, 2 * position[1] / shape[1] - 1, args.z_scale * (2 * position[2] / shape[2] - 1) if population.get("dimension", 2) == 3 else 0)
+            marker.scale = (args.population_radius,) * 3
+        optical_mapping["population_observation"] = {"mode": "scientific", "interpretation": "False-color agent markers; independent of specimen material", "count": len(population["ids"]), "lineages": lineages, "marker_radius": args.population_radius, "source": args.population, "dimension": population.get("dimension", 2), "optical_extrusion_z_scale": args.z_scale}
 
 if args.polished_carrier and not args.cutaway_axis:
     selected = np.argwhere(mask > .01)
@@ -316,6 +383,9 @@ if args.polished_carrier and not args.cutaway_axis:
     shader.inputs["Roughness"].default_value = args.surface_roughness
     shader.inputs["IOR"].default_value = args.ior
     shader.inputs["Transmission Weight"].default_value = 1
+    if args.carrier_material:
+        shell_material, spec = make_material("Optical carrier", args.carrier_material)
+        optical_mapping["carrier_material"] = {"preset": args.carrier_material, "resolved": spec}
     shell.data.materials.append(shell_material)
     bpy.ops.mesh.primitive_plane_add(size=200, location=(0,0,-axes[2]-.04))
     ground = bpy.context.object
@@ -328,7 +398,7 @@ if args.polished_carrier and not args.cutaway_axis:
     shader.inputs["Metallic"].default_value = .15
     ground.data.materials.append(ground_material)
     optical_mapping["polished_cut_axes"] = list(axes)
-    for mapping_path in (os.path.join(directory, "optical-mapping.json"), output_path + ".optical.json"):
+    for mapping_path in ((output_path + ".optical.json", os.path.join(directory, "optical-mapping.json")) if args.write_source_mapping else (output_path + ".optical.json",)):
         with open(mapping_path, "w") as stream:
             json.dump(optical_mapping, stream, indent=2)
 
@@ -404,9 +474,10 @@ background.inputs["Strength"].default_value = 0.3
 scene.render.image_settings.file_format = "PNG"
 scene.render.filepath = os.path.abspath(args.output)
 os.makedirs(os.path.dirname(scene.render.filepath), exist_ok=True)
-for mapping_path in (os.path.join(directory, "optical-mapping.json"), output_path + ".optical.json"):
+for mapping_path in ((output_path + ".optical.json", os.path.join(directory, "optical-mapping.json")) if args.write_source_mapping else (output_path + ".optical.json",)):
     with open(mapping_path, "w") as stream:
         json.dump(optical_mapping, stream, indent=2)
-obj.data.filepath = "//" + os.path.basename(vdb_path)
+if obj is not None:
+    obj.data.filepath = "//" + os.path.basename(vdb_path)
 bpy.ops.wm.save_as_mainfile(filepath=os.path.splitext(output_path)[0] + ".blend")
 bpy.ops.render.render(write_still=True)

@@ -13,7 +13,7 @@ def run(path):
  command=[BLENDER,'-b','-t',str(A.threads),'--python',str(REPO/'scripts/render_blender.py'),'--',str(d/j.get('volume','volume')),str(out),'--device',A.device,'--size',str(400 if A.stage=='preview' else j.get('size',1600)),'--samples',str(16 if A.stage=='preview' else j.get('samples',96))]+args
  volume_dir=d/j.get('volume','volume')
  source_signature=[(f.name,f.stat().st_size,f.stat().st_mtime_ns) for f in sorted(volume_dir.glob('*')) if f.suffix in ('.f32','.json') and f.name!='optical-mapping.json']
- fingerprint=hashlib.sha256(json.dumps([command,source_signature]).encode()+path.read_bytes()+(REPO/'scripts/render_blender.py').read_bytes()).hexdigest()
+ fingerprint=hashlib.sha256(json.dumps([command,source_signature]).encode()+path.read_bytes()+(REPO/'scripts/render_blender.py').read_bytes()+(REPO/'scripts/optical_materials.py').read_bytes()).hexdigest()
  if status.exists() and out.exists():
   old=json.loads(status.read_text())
   if old.get('status')=='complete' and old.get('fingerprint')==fingerprint:return old
@@ -24,13 +24,17 @@ def run(path):
  if out.exists():
   record['sha256']=hashlib.sha256(out.read_bytes()).hexdigest(); record['dimensions']=[int.from_bytes(out.read_bytes()[16:20],'big'),int.from_bytes(out.read_bytes()[20:24],'big')]
  status.write_text(json.dumps(record,indent=2)); print(json.dumps(record),flush=True); return record
+def ready(path):
+ try:
+  job=json.loads(path.read_text());return (path.parent/job.get('volume','volume')/'volume.json').exists()
+ except (OSError,ValueError):return False
 seen=set()
 with concurrent.futures.ThreadPoolExecutor(max_workers=min(A.workers,2)) as pool:
  while True:
   selected=set()
   for manifest in ROOT.glob('collection-*-selected.json'):
    data=json.loads(manifest.read_text()); selected.update(data if isinstance(data,list) else data.get('ids',[]))
-  paths=[p for p in sorted(ROOT.glob('*/render-job.json')) if (not A.jobs or p.parent.name in A.jobs) and (not A.selected or p.parent.name in selected) and (not A.approved or (p.parent/'art-approved.json').exists()) and (p.parent/'volume/volume.json').exists() and not p.parent.name.startswith('pilot-')]
+  paths=[p for p in sorted(ROOT.glob('*/render-job.json')) if (not A.jobs or p.parent.name in A.jobs) and (not A.selected or p.parent.name in selected) and (not A.approved or (p.parent/'art-approved.json').exists()) and ready(p) and not p.parent.name.startswith('pilot-')]
   pending=[p for p in paths if (str(p),p.stat().st_mtime_ns) not in seen]
   for p in pending: seen.add((str(p),p.stat().st_mtime_ns))
   list(pool.map(run,pending))
