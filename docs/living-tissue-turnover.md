@@ -154,6 +154,12 @@ power beyond .7 Nyquist remains .00025/.00430/.00187. The native 3D study theref
 also coarsens, and its most useful detailed organization is early/intermediate.
 The local artifact directory is
 `outputs/living-tissue-20261015-volume128-5377470/volume`.
+All 41 frames and 328 native fields passed byte-count validation; the final
+generic record matches the final native state and reserve exactly. The complete
+section replay is `outputs/living-tissue-20261015-volume128-replay-5377470/playback.html`.
+Low high-frequency excitation power is not a material-resolution proof: matrix
+power beyond .7 Nyquist reaches .0852 at t68. No native 256³ convergence test has
+been made, and late sharp matrix detail should be treated accordingly.
 
 ## Checks
 

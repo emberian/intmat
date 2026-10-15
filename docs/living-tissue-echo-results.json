@@ -1,0 +1,383 @@
+{
+  "format": "living-tissue-written-feedback-review-v1",
+  "runs": [
+    {
+      "id": "living-tissue-echo-matrix64",
+      "parameters": {
+        "base": {
+          "precursor_diffusion": 0.12,
+          "biomass_diffusion": 0.0005,
+          "excitation_diffusion": 0.08,
+          "barrier": 8,
+          "taxis": 0,
+          "taxis_sensitivity": 8,
+          "growth": 1,
+          "capacity": 1.2,
+          "turnover": 0.005,
+          "starvation_turnover": 0.02,
+          "construction": 0,
+          "erosion": 0,
+          "metabolic_work": 0.055,
+          "half_saturation": 0.15,
+          "tissue_saturation": 0.12,
+          "neural_gain": 2.8,
+          "inhibition_gain": 2.3,
+          "inhibition_time": 4.5,
+          "memory_time": 40,
+          "memory_feedback": 0.3,
+          "matrix_feedback": 1,
+          "activity_control": 1,
+          "constant_activity": 0.5
+        },
+        "phase": {
+          "renewal": 0.12,
+          "target_precursor": 0.6,
+          "phase_work": 0.08,
+          "construction": 0.2,
+          "unbuilding": 1.2,
+          "withdrawal": 1.8,
+          "motility": 0.1,
+          "taxis_sensitivity": 12,
+          "inhibition_diffusion": 0.15,
+          "phase_threshold": 0.04
+        }
+      },
+      "elapsed_seconds": 11.898331959,
+      "final": {
+        "step": 8000,
+        "material_residual": 0.001497204415500164,
+        "topology": {
+          "threshold": 0.15,
+          "occupied_components": 1,
+          "occupied_sizes": [
+            4096
+          ],
+          "void_components": 0,
+          "void_sizes": []
+        },
+        "minimum_solid": 0.17472668,
+        "maximum_solid": 0.2723652,
+        "reopened_sites": 4096,
+        "reformed_sites": 4096,
+        "reopening_events": 38743,
+        "reformation_events": 38743,
+        "time": 159.9999964237213,
+        "material": 52674.561497400515,
+        "precursor": 2174.2456908524036,
+        "biomass": 875.4403081983328,
+        "matrix": 79.94895493518561,
+        "spent": 3968.1322147250175,
+        "potential": 48706.4292826755,
+        "excitation_std": 0.02433644,
+        "excitation_max": -0.23330027,
+        "excitation_min": -0.35160118,
+        "memory_std": 0.0014898764,
+        "neural_maxabs": 0.35160118,
+        "physical_min": 0.015346893,
+        "finite": true,
+        "active_sites": 4096,
+        "matrix_sites": 0,
+        "mean_permeability": 0.4452536,
+        "reserve": 45576.794328689575,
+        "voxel_measure": 0.140625,
+        "physical_material": 7407.360210571947,
+        "physical_potential": 6849.341617876242,
+        "physical_precursor": 305.75330027611926,
+        "physical_biomass": 123.10879334039055,
+        "physical_matrix": 11.242821787760477,
+        "physical_spent": 558.0185926957056,
+        "physical_reserve": 6409.2367024719715
+      },
+      "source_sha256": {
+        "studies/living_tissue_runner.jl": "93b837249cc0d0dbdd7b6fa609a067c8710c109e3572785a1f76485081e6fdb3",
+        "studies/living_tissue.jl": "43a5e722e08963124c186147b2d15a54963292828e1c1064c2f277782a5816f0",
+        "studies/living_tissue_turnover_run.jl": "e0a422ac9d9661d0bdbab56f697550b4f088bafbb4380ee078ce597e31be4aba",
+        "src/recurrent_material.jl": "e9457d0d6e31f74950fa4be8ef84b138b020c0de7fc4b95c9a7f3cd5db148347",
+        "studies/living_tissue_observations.jl": "f3fa17688e3fafe1bcfca5ea331e91984dab077e67fad09138e66493a3b1215c",
+        "studies/living_tissue_turnover.jl": "ca543a8a3eb6e1eb3c93cfc4e16b86f03674ab6ca9598bdf328988ac09f76617",
+        "src/core.jl": "b4302b90eaeba213360e8a15ce8b7e4cb4c491606657e3e500d2fb8507753a52"
+      },
+      "spectral_samples": [
+        {
+          "time": 32.0,
+          "radial_peak_wavelength": 6.0,
+          "high_radial_power_fraction": 0.035819556564092636
+        },
+        {
+          "time": 64.0,
+          "radial_peak_wavelength": 8.0,
+          "high_radial_power_fraction": 0.0030171878170222044
+        },
+        {
+          "time": 96.0,
+          "radial_peak_wavelength": 12.0,
+          "high_radial_power_fraction": 3.098478919127956e-05
+        },
+        {
+          "time": 128.0,
+          "radial_peak_wavelength": 24.0,
+          "high_radial_power_fraction": 0.00033691275166347623
+        },
+        {
+          "time": 160.0,
+          "radial_peak_wavelength": 24.0,
+          "high_radial_power_fraction": 4.879660195911129e-07
+        }
+      ]
+    },
+    {
+      "id": "living-tissue-echo-memory64",
+      "parameters": {
+        "base": {
+          "precursor_diffusion": 0.12,
+          "biomass_diffusion": 0.0005,
+          "excitation_diffusion": 0.08,
+          "barrier": 8,
+          "taxis": 0,
+          "taxis_sensitivity": 8,
+          "growth": 1,
+          "capacity": 1.2,
+          "turnover": 0.005,
+          "starvation_turnover": 0.02,
+          "construction": 0,
+          "erosion": 0,
+          "metabolic_work": 0.055,
+          "half_saturation": 0.15,
+          "tissue_saturation": 0.12,
+          "neural_gain": 2.8,
+          "inhibition_gain": 2.3,
+          "inhibition_time": 4.5,
+          "memory_time": 16,
+          "memory_feedback": 1.5,
+          "matrix_feedback": 0.15,
+          "activity_control": 1,
+          "constant_activity": 0.5
+        },
+        "phase": {
+          "renewal": 0.12,
+          "target_precursor": 0.6,
+          "phase_work": 0.08,
+          "construction": 0.2,
+          "unbuilding": 1.2,
+          "withdrawal": 1.8,
+          "motility": 0.1,
+          "taxis_sensitivity": 12,
+          "inhibition_diffusion": 0.15,
+          "phase_threshold": 0.04
+        }
+      },
+      "elapsed_seconds": 20.023176709,
+      "final": {
+        "step": 8000,
+        "material_residual": -0.00018789898604154587,
+        "topology": {
+          "threshold": 0.15,
+          "occupied_components": 1,
+          "occupied_sizes": [
+            3019
+          ],
+          "void_components": 4,
+          "void_sizes": [
+            675,
+            393,
+            8,
+            1
+          ]
+        },
+        "minimum_solid": 0.07745918,
+        "maximum_solid": 1.154365,
+        "reopened_sites": 4074,
+        "reformed_sites": 4071,
+        "reopening_events": 33428,
+        "reformation_events": 32471,
+        "time": 159.9999964237213,
+        "material": 52674.55981229711,
+        "precursor": 2190.1647720485926,
+        "biomass": 952.7851130217314,
+        "matrix": 160.70815103221685,
+        "spent": 6409.851390719414,
+        "potential": 46264.7084215777,
+        "excitation_std": 0.24328901,
+        "excitation_max": 0.53579956,
+        "excitation_min": -0.50462455,
+        "memory_std": 0.032916896,
+        "neural_maxabs": 0.53579956,
+        "physical_min": 0.011305574,
+        "finite": true,
+        "active_sites": 2717,
+        "matrix_sites": 2060,
+        "mean_permeability": 0.32613564,
+        "reserve": 42961.05038547516,
+        "voxel_measure": 0.140625,
+        "physical_material": 7407.359973604282,
+        "physical_potential": 6505.974621784364,
+        "physical_precursor": 307.99192106933333,
+        "physical_biomass": 133.98540651868097,
+        "physical_matrix": 22.599583738905494,
+        "physical_spent": 901.3853518199176,
+        "physical_reserve": 6041.397710457444
+      },
+      "source_sha256": {
+        "studies/living_tissue_runner.jl": "93b837249cc0d0dbdd7b6fa609a067c8710c109e3572785a1f76485081e6fdb3",
+        "studies/living_tissue.jl": "43a5e722e08963124c186147b2d15a54963292828e1c1064c2f277782a5816f0",
+        "studies/living_tissue_turnover_run.jl": "e0a422ac9d9661d0bdbab56f697550b4f088bafbb4380ee078ce597e31be4aba",
+        "src/recurrent_material.jl": "e9457d0d6e31f74950fa4be8ef84b138b020c0de7fc4b95c9a7f3cd5db148347",
+        "studies/living_tissue_observations.jl": "f3fa17688e3fafe1bcfca5ea331e91984dab077e67fad09138e66493a3b1215c",
+        "studies/living_tissue_turnover.jl": "ca543a8a3eb6e1eb3c93cfc4e16b86f03674ab6ca9598bdf328988ac09f76617",
+        "src/core.jl": "b4302b90eaeba213360e8a15ce8b7e4cb4c491606657e3e500d2fb8507753a52"
+      },
+      "spectral_samples": [
+        {
+          "time": 32.0,
+          "radial_peak_wavelength": 4.8,
+          "high_radial_power_fraction": 0.034812040627002716
+        },
+        {
+          "time": 64.0,
+          "radial_peak_wavelength": 8.0,
+          "high_radial_power_fraction": 0.01404954120516777
+        },
+        {
+          "time": 96.0,
+          "radial_peak_wavelength": 8.0,
+          "high_radial_power_fraction": 0.014837732538580894
+        },
+        {
+          "time": 128.0,
+          "radial_peak_wavelength": 24.0,
+          "high_radial_power_fraction": 0.010277335532009602
+        },
+        {
+          "time": 160.0,
+          "radial_peak_wavelength": 24.0,
+          "high_radial_power_fraction": 0.00582381896674633
+        }
+      ]
+    },
+    {
+      "id": "living-tissue-echo-both64",
+      "parameters": {
+        "base": {
+          "precursor_diffusion": 0.12,
+          "biomass_diffusion": 0.0005,
+          "excitation_diffusion": 0.08,
+          "barrier": 8,
+          "taxis": 0,
+          "taxis_sensitivity": 8,
+          "growth": 1,
+          "capacity": 1.2,
+          "turnover": 0.005,
+          "starvation_turnover": 0.02,
+          "construction": 0,
+          "erosion": 0,
+          "metabolic_work": 0.055,
+          "half_saturation": 0.15,
+          "tissue_saturation": 0.12,
+          "neural_gain": 2.8,
+          "inhibition_gain": 2.3,
+          "inhibition_time": 4.5,
+          "memory_time": 24,
+          "memory_feedback": 1,
+          "matrix_feedback": 0.6,
+          "activity_control": 1,
+          "constant_activity": 0.5
+        },
+        "phase": {
+          "renewal": 0.12,
+          "target_precursor": 0.6,
+          "phase_work": 0.08,
+          "construction": 0.2,
+          "unbuilding": 1.2,
+          "withdrawal": 1.8,
+          "motility": 0.1,
+          "taxis_sensitivity": 12,
+          "inhibition_diffusion": 0.15,
+          "phase_threshold": 0.04
+        }
+      },
+      "elapsed_seconds": 20.708278708,
+      "final": {
+        "step": 8000,
+        "material_residual": 0.00032156892120838165,
+        "topology": {
+          "threshold": 0.15,
+          "occupied_components": 1,
+          "occupied_sizes": [
+            4096
+          ],
+          "void_components": 0,
+          "void_sizes": []
+        },
+        "minimum_solid": 0.15474707,
+        "maximum_solid": 0.3058992,
+        "reopened_sites": 4096,
+        "reformed_sites": 4096,
+        "reopening_events": 39715,
+        "reformation_events": 37395,
+        "time": 159.9999964237213,
+        "material": 52674.56032176502,
+        "precursor": 2107.2476200461388,
+        "biomass": 859.4700836390257,
+        "matrix": 107.97898921556771,
+        "spent": 4811.4957394599915,
+        "potential": 47863.06458230503,
+        "excitation_std": 0.009288235,
+        "excitation_max": 0.26112878,
+        "excitation_min": 0.12869096,
+        "memory_std": 0.0043424144,
+        "neural_maxabs": 0.26112878,
+        "physical_min": 0.01771813,
+        "finite": true,
+        "active_sites": 4092,
+        "matrix_sites": 0,
+        "mean_permeability": 0.3744401,
+        "reserve": 44788.3678894043,
+        "voxel_measure": 0.140625,
+        "physical_material": 7407.360045248206,
+        "physical_potential": 6730.743456886645,
+        "physical_precursor": 296.33169656898826,
+        "physical_biomass": 120.86298051173799,
+        "physical_matrix": 15.184545358439209,
+        "physical_spent": 676.6165883615613,
+        "physical_reserve": 6298.364234447479
+      },
+      "source_sha256": {
+        "studies/living_tissue_runner.jl": "93b837249cc0d0dbdd7b6fa609a067c8710c109e3572785a1f76485081e6fdb3",
+        "studies/living_tissue.jl": "43a5e722e08963124c186147b2d15a54963292828e1c1064c2f277782a5816f0",
+        "studies/living_tissue_turnover_run.jl": "e0a422ac9d9661d0bdbab56f697550b4f088bafbb4380ee078ce597e31be4aba",
+        "src/recurrent_material.jl": "e9457d0d6e31f74950fa4be8ef84b138b020c0de7fc4b95c9a7f3cd5db148347",
+        "studies/living_tissue_observations.jl": "f3fa17688e3fafe1bcfca5ea331e91984dab077e67fad09138e66493a3b1215c",
+        "studies/living_tissue_turnover.jl": "ca543a8a3eb6e1eb3c93cfc4e16b86f03674ab6ca9598bdf328988ac09f76617",
+        "src/core.jl": "b4302b90eaeba213360e8a15ce8b7e4cb4c491606657e3e500d2fb8507753a52"
+      },
+      "spectral_samples": [
+        {
+          "time": 32.0,
+          "radial_peak_wavelength": 6.0,
+          "high_radial_power_fraction": 0.035839684307575226
+        },
+        {
+          "time": 64.0,
+          "radial_peak_wavelength": 8.0,
+          "high_radial_power_fraction": 0.003909315913915634
+        },
+        {
+          "time": 96.0,
+          "radial_peak_wavelength": 12.0,
+          "high_radial_power_fraction": 0.0026422308292239904
+        },
+        {
+          "time": 128.0,
+          "radial_peak_wavelength": 8.0,
+          "high_radial_power_fraction": 0.006235320586711168
+        },
+        {
+          "time": 160.0,
+          "radial_peak_wavelength": 24.0,
+          "high_radial_power_fraction": 0.020008845254778862
+        }
+      ]
+    }
+  ],
+  "interpretation": "Separate64\u00b2 parameter pilots using unchanged turnover law, not refinements of native128\u00b3 specimen. Spatially coarse screening; no converged continuum conclusion."
+}

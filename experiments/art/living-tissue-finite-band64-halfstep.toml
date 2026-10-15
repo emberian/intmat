@@ -1,0 +1,30 @@
+id = "living-tissue-finite-band64-halfstep"
+title = "Intervals within matter"
+description = "Nearly uniform matter builds and withdraws in opposing paid phases, reopening space while a finite local reserve supports its return."
+dimensions = [64, 64, 1]
+extent = [24.0, 24.0, 1.0]
+seed = 921
+noise_model = "bandlimited"
+dt = 0.0025
+steps = 20000
+capture_every = 200
+reserve = 12.0
+
+[base]
+neural_gain = 2.8
+inhibition_gain = 2.3
+inhibition_time = 0.5
+excitation_diffusion = 0.08
+growth = 1.0
+capacity = 1.2
+barrier = 8.0
+
+[phase]
+renewal = 0.12
+target_precursor = 0.6
+phase_work = 0.08
+construction = 0.2
+unbuilding = 1.2
+withdrawal = 1.8
+motility = 0.10
+inhibition_diffusion = 4.0

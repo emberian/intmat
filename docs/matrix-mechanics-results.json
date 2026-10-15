@@ -1,0 +1,1087 @@
+{
+  "kind": "two matched seeds; optional matrix drag exploratory trajectories, no adaptation or optimality claim",
+  "source_manifest_sha256": "c6354545d8b4d061f676e1e677b377804df1fbc8fab6ef1f1fb06c6fe9c0cb6f",
+  "snapshot_cadence": 25.0,
+  "default_control_exactness": "all242 physical snapshots match the original repaired stronger-feedback recordings, excluding generated_at_unix",
+  "limits": "last-step mechanical samples are not integrated motion histories; graph components are current contacts, not collective organisms; trajectories diverge under changed physics so paired endpoints do not isolate a particular mediated effect",
+  "arms": {
+    "unit-211": {
+      "config": {
+        "batch": 5,
+        "cellular": {
+          "hidden": 8,
+          "capacity": 1536,
+          "adaptation_strength": 1.5,
+          "adaptation_time": 8.0,
+          "exchange_radius": 1.0,
+          "population": 48,
+          "mutation": 0.08,
+          "mutation_probability": 0.03,
+          "speed": 0.3,
+          "junction_rate": 0.8,
+          "basal_rate": 0.025
+        },
+        "catalysis": {
+          "secretion_work": 0.2,
+          "investment_bias": -0.8,
+          "allocation_exponent": 2.0,
+          "half_saturation": 0.2,
+          "shared_anabolism": true,
+          "catalytic_rate": 6.0,
+          "allocation_bias_scale": 1.2,
+          "secretion_rate": 0.12,
+          "decay_rate": 0.008,
+          "mutation": 0.08,
+          "mutation_probability": 0.03,
+          "regulation": true
+        },
+        "model": "catalytic",
+        "dt": 0.1,
+        "snapshot_seconds": 2.0,
+        "sleep_seconds": 0.001,
+        "feedstock": {
+          "names": [
+            "bound_a",
+            "bound_b"
+          ],
+          "diffusion": [
+            0.0,
+            0.0
+          ],
+          "initial": [
+            2.0,
+            2.0
+          ],
+          "source_rates": [
+            0.006,
+            0.006
+          ],
+          "source_budgets": [
+            100000.0,
+            100000.0
+          ],
+          "potentials": [
+            4.0,
+            4.0
+          ]
+        },
+        "matrix": {
+          "capacity_per_enzyme": 6.0,
+          "transport_barrier": 20.0,
+          "desorption_rate": 0.12,
+          "cross_binding": 0.0,
+          "adsorption_rate": 4.0
+        },
+        "grid": {
+          "shape": [
+            32,
+            32,
+            1
+          ],
+          "extent": [
+            16.0,
+            16.0,
+            1.0
+          ]
+        },
+        "resources": {
+          "source_budgets": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "niche_contrast": 0.8,
+          "names": [
+            "precursor_a",
+            "precursor_b",
+            "waste"
+          ],
+          "spatial_niches": true,
+          "sink_budgets": [
+            100000.0,
+            100000.0,
+            100000.0
+          ],
+          "niche_waves": [
+            1,
+            2,
+            0
+          ],
+          "diffusion": [
+            0.2,
+            0.2,
+            0.03
+          ],
+          "sink_rates": [
+            0.0008,
+            0.0008,
+            0.01
+          ],
+          "initial": [
+            0.3,
+            0.3,
+            0.0
+          ],
+          "source_rates": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "potentials": [
+            4.0,
+            4.0,
+            0.0
+          ]
+        },
+        "checkpoint_seconds": 90.0,
+        "seed": 211
+      },
+      "final": {
+        "time": 3000.0000447034836,
+        "population": 138,
+        "bonds": 190,
+        "largest_component": 107,
+        "components": 27,
+        "catalyst": 5.580004272218148,
+        "retained": 9.896238601169877,
+        "constructed": 219.7002375495178,
+        "mean_drag": 1.0,
+        "last_step_motor_work": 0.05976633445030327,
+        "last_step_active_distance": 0.7952747326939859,
+        "last_step_motor_drag_loss": 0.031211642367189603
+      },
+      "final_components": [
+        107,
+        4,
+        2,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "births": 859,
+      "deaths": 769,
+      "blocked_births": 0,
+      "biomass": 158.8052007120713,
+      "cumulative_work": 19822.72429605496,
+      "cumulative_construction_work": 43.9400475098986,
+      "late_mean_largest_component_fraction": 0.8057494042173433,
+      "late_mean_bonds_per_cell": 1.4996496220948778,
+      "late_mean_sampled_drag": 1.0,
+      "max_abs_material_error": 0.0001713676956569543,
+      "max_abs_chemical_error": 2.5248058591387235e-05,
+      "final_snapshot_sha256": "b0c4472ce655356e9cc0cffcfbf0ebc631971f581105759ec556a39191964977"
+    },
+    "unit-307": {
+      "config": {
+        "batch": 5,
+        "cellular": {
+          "hidden": 8,
+          "capacity": 1536,
+          "adaptation_strength": 1.5,
+          "adaptation_time": 8.0,
+          "exchange_radius": 1.0,
+          "population": 48,
+          "mutation": 0.08,
+          "mutation_probability": 0.03,
+          "speed": 0.3,
+          "junction_rate": 0.8,
+          "basal_rate": 0.025
+        },
+        "catalysis": {
+          "secretion_work": 0.2,
+          "investment_bias": -0.8,
+          "allocation_exponent": 2.0,
+          "half_saturation": 0.2,
+          "shared_anabolism": true,
+          "catalytic_rate": 6.0,
+          "allocation_bias_scale": 1.2,
+          "secretion_rate": 0.12,
+          "decay_rate": 0.008,
+          "mutation": 0.08,
+          "mutation_probability": 0.03,
+          "regulation": true
+        },
+        "model": "catalytic",
+        "dt": 0.1,
+        "snapshot_seconds": 2.0,
+        "sleep_seconds": 0.001,
+        "feedstock": {
+          "names": [
+            "bound_a",
+            "bound_b"
+          ],
+          "diffusion": [
+            0.0,
+            0.0
+          ],
+          "initial": [
+            2.0,
+            2.0
+          ],
+          "source_rates": [
+            0.006,
+            0.006
+          ],
+          "source_budgets": [
+            100000.0,
+            100000.0
+          ],
+          "potentials": [
+            4.0,
+            4.0
+          ]
+        },
+        "matrix": {
+          "capacity_per_enzyme": 6.0,
+          "transport_barrier": 20.0,
+          "desorption_rate": 0.12,
+          "cross_binding": 0.0,
+          "adsorption_rate": 4.0
+        },
+        "grid": {
+          "shape": [
+            32,
+            32,
+            1
+          ],
+          "extent": [
+            16.0,
+            16.0,
+            1.0
+          ]
+        },
+        "resources": {
+          "source_budgets": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "niche_contrast": 0.8,
+          "names": [
+            "precursor_a",
+            "precursor_b",
+            "waste"
+          ],
+          "spatial_niches": true,
+          "sink_budgets": [
+            100000.0,
+            100000.0,
+            100000.0
+          ],
+          "niche_waves": [
+            1,
+            2,
+            0
+          ],
+          "diffusion": [
+            0.2,
+            0.2,
+            0.03
+          ],
+          "sink_rates": [
+            0.0008,
+            0.0008,
+            0.01
+          ],
+          "initial": [
+            0.3,
+            0.3,
+            0.0
+          ],
+          "source_rates": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "potentials": [
+            4.0,
+            4.0,
+            0.0
+          ]
+        },
+        "checkpoint_seconds": 90.0,
+        "seed": 307
+      },
+      "final": {
+        "time": 3000.0000447034836,
+        "population": 123,
+        "bonds": 78,
+        "largest_component": 40,
+        "components": 60,
+        "catalyst": 1.0857333140191074,
+        "retained": 1.4920244730251127,
+        "constructed": 181.88181448858776,
+        "mean_drag": 1.0,
+        "last_step_motor_work": 0.04890788325414882,
+        "last_step_active_distance": 0.6489819166390512,
+        "last_step_motor_drag_loss": 0.023740027647465255
+      },
+      "final_components": [
+        40,
+        13,
+        8,
+        3,
+        2,
+        2,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "births": 953,
+      "deaths": 878,
+      "blocked_births": 0,
+      "biomass": 133.38232850014413,
+      "cumulative_work": 19441.338236152555,
+      "cumulative_construction_work": 36.37636289771858,
+      "late_mean_largest_component_fraction": 0.6044305099625749,
+      "late_mean_bonds_per_cell": 1.1081361683836028,
+      "late_mean_sampled_drag": 1.0,
+      "max_abs_material_error": 0.0003144441216136329,
+      "max_abs_chemical_error": 1.4257825569075067e-05,
+      "final_snapshot_sha256": "9fc616cbf2e361bdcce84d2393272fe9ae10aaf755879ea2b82b242b7fc6f321"
+    },
+    "drag-211": {
+      "config": {
+        "batch": 5,
+        "cellular": {
+          "hidden": 8,
+          "capacity": 1536,
+          "adaptation_strength": 1.5,
+          "adaptation_time": 8.0,
+          "exchange_radius": 1.0,
+          "population": 48,
+          "mutation": 0.08,
+          "mutation_probability": 0.03,
+          "speed": 0.3,
+          "junction_rate": 0.8,
+          "basal_rate": 0.025
+        },
+        "catalysis": {
+          "secretion_work": 0.2,
+          "investment_bias": -0.8,
+          "allocation_exponent": 2.0,
+          "half_saturation": 0.2,
+          "shared_anabolism": true,
+          "catalytic_rate": 6.0,
+          "allocation_bias_scale": 1.2,
+          "secretion_rate": 0.12,
+          "decay_rate": 0.008,
+          "mutation": 0.08,
+          "mutation_probability": 0.03,
+          "regulation": true
+        },
+        "model": "catalytic",
+        "dt": 0.1,
+        "snapshot_seconds": 2.0,
+        "sleep_seconds": 0.001,
+        "feedstock": {
+          "names": [
+            "bound_a",
+            "bound_b"
+          ],
+          "diffusion": [
+            0.0,
+            0.0
+          ],
+          "initial": [
+            2.0,
+            2.0
+          ],
+          "source_rates": [
+            0.006,
+            0.006
+          ],
+          "source_budgets": [
+            100000.0,
+            100000.0
+          ],
+          "potentials": [
+            4.0,
+            4.0
+          ]
+        },
+        "matrix_mechanics": {
+          "resistance": 20.0
+        },
+        "matrix": {
+          "capacity_per_enzyme": 6.0,
+          "transport_barrier": 20.0,
+          "desorption_rate": 0.12,
+          "cross_binding": 0.0,
+          "adsorption_rate": 4.0
+        },
+        "grid": {
+          "shape": [
+            32,
+            32,
+            1
+          ],
+          "extent": [
+            16.0,
+            16.0,
+            1.0
+          ]
+        },
+        "resources": {
+          "source_budgets": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "niche_contrast": 0.8,
+          "names": [
+            "precursor_a",
+            "precursor_b",
+            "waste"
+          ],
+          "spatial_niches": true,
+          "sink_budgets": [
+            100000.0,
+            100000.0,
+            100000.0
+          ],
+          "niche_waves": [
+            1,
+            2,
+            0
+          ],
+          "diffusion": [
+            0.2,
+            0.2,
+            0.03
+          ],
+          "sink_rates": [
+            0.0008,
+            0.0008,
+            0.01
+          ],
+          "initial": [
+            0.3,
+            0.3,
+            0.0
+          ],
+          "source_rates": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "potentials": [
+            4.0,
+            4.0,
+            0.0
+          ]
+        },
+        "checkpoint_seconds": 90.0,
+        "seed": 211
+      },
+      "final": {
+        "time": 3000.0000447034836,
+        "population": 150,
+        "bonds": 157,
+        "largest_component": 117,
+        "components": 31,
+        "catalyst": 3.3477669705416746,
+        "retained": 4.936510725523396,
+        "constructed": 215.66923341979947,
+        "mean_drag": 1.2651280616661513,
+        "last_step_motor_work": 0.08964112769396301,
+        "last_step_active_distance": 0.8763789575499503,
+        "last_step_motor_drag_loss": 0.04737426680054432
+      },
+      "final_components": [
+        117,
+        4,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "births": 777,
+      "deaths": 675,
+      "blocked_births": 0,
+      "biomass": 163.36919559184767,
+      "cumulative_work": 20395.976012178424,
+      "cumulative_construction_work": 43.1338466839618,
+      "late_mean_largest_component_fraction": 0.7510357854168231,
+      "late_mean_bonds_per_cell": 1.2526546011908295,
+      "late_mean_sampled_drag": 1.5817824115850596,
+      "max_abs_material_error": 0.00019649253317766124,
+      "max_abs_chemical_error": 4.6274041778815445e-05,
+      "final_snapshot_sha256": "4ba4545a1ec2a988af4b6f0ae920844031d667a0f8c2095cee464a073c205ab5"
+    },
+    "drag-307": {
+      "config": {
+        "batch": 5,
+        "cellular": {
+          "hidden": 8,
+          "capacity": 1536,
+          "adaptation_strength": 1.5,
+          "adaptation_time": 8.0,
+          "exchange_radius": 1.0,
+          "population": 48,
+          "mutation": 0.08,
+          "mutation_probability": 0.03,
+          "speed": 0.3,
+          "junction_rate": 0.8,
+          "basal_rate": 0.025
+        },
+        "catalysis": {
+          "secretion_work": 0.2,
+          "investment_bias": -0.8,
+          "allocation_exponent": 2.0,
+          "half_saturation": 0.2,
+          "shared_anabolism": true,
+          "catalytic_rate": 6.0,
+          "allocation_bias_scale": 1.2,
+          "secretion_rate": 0.12,
+          "decay_rate": 0.008,
+          "mutation": 0.08,
+          "mutation_probability": 0.03,
+          "regulation": true
+        },
+        "model": "catalytic",
+        "dt": 0.1,
+        "snapshot_seconds": 2.0,
+        "sleep_seconds": 0.001,
+        "feedstock": {
+          "names": [
+            "bound_a",
+            "bound_b"
+          ],
+          "diffusion": [
+            0.0,
+            0.0
+          ],
+          "initial": [
+            2.0,
+            2.0
+          ],
+          "source_rates": [
+            0.006,
+            0.006
+          ],
+          "source_budgets": [
+            100000.0,
+            100000.0
+          ],
+          "potentials": [
+            4.0,
+            4.0
+          ]
+        },
+        "matrix_mechanics": {
+          "resistance": 20.0
+        },
+        "matrix": {
+          "capacity_per_enzyme": 6.0,
+          "transport_barrier": 20.0,
+          "desorption_rate": 0.12,
+          "cross_binding": 0.0,
+          "adsorption_rate": 4.0
+        },
+        "grid": {
+          "shape": [
+            32,
+            32,
+            1
+          ],
+          "extent": [
+            16.0,
+            16.0,
+            1.0
+          ]
+        },
+        "resources": {
+          "source_budgets": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "niche_contrast": 0.8,
+          "names": [
+            "precursor_a",
+            "precursor_b",
+            "waste"
+          ],
+          "spatial_niches": true,
+          "sink_budgets": [
+            100000.0,
+            100000.0,
+            100000.0
+          ],
+          "niche_waves": [
+            1,
+            2,
+            0
+          ],
+          "diffusion": [
+            0.2,
+            0.2,
+            0.03
+          ],
+          "sink_rates": [
+            0.0008,
+            0.0008,
+            0.01
+          ],
+          "initial": [
+            0.3,
+            0.3,
+            0.0
+          ],
+          "source_rates": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "potentials": [
+            4.0,
+            4.0,
+            0.0
+          ]
+        },
+        "checkpoint_seconds": 90.0,
+        "seed": 307
+      },
+      "final": {
+        "time": 3000.0000447034836,
+        "population": 138,
+        "bonds": 100,
+        "largest_component": 66,
+        "components": 63,
+        "catalyst": 0.9012804442567575,
+        "retained": 1.2291997629584497,
+        "constructed": 144.97709230459606,
+        "mean_drag": 1.0785553676708117,
+        "last_step_motor_work": 0.056229447354980346,
+        "last_step_active_distance": 0.7062400758171224,
+        "last_step_motor_drag_loss": 0.03216661102608663
+      },
+      "final_components": [
+        66,
+        4,
+        4,
+        2,
+        2,
+        2,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "births": 913,
+      "deaths": 823,
+      "blocked_births": 0,
+      "biomass": 135.50682091042273,
+      "cumulative_work": 19810.977086876188,
+      "cumulative_construction_work": 28.995418460922004,
+      "late_mean_largest_component_fraction": 0.7643031950582446,
+      "late_mean_bonds_per_cell": 1.3131190821837222,
+      "late_mean_sampled_drag": 1.2701954936363855,
+      "max_abs_material_error": 9.890261571854353e-05,
+      "max_abs_chemical_error": 3.614999604906188e-05,
+      "final_snapshot_sha256": "2d2b79c46deac297fc69e870fdb949917b9bc4f8f807334d96ca99781fe17959"
+    }
+  },
+  "figure": {
+    "kind": "actual2D garden snapshots, fixed field mapping",
+    "frames": [
+      {
+        "file": "unit/211-full/frame-0030000.json",
+        "sha256": "b0c4472ce655356e9cc0cffcfbf0ebc631971f581105759ec556a39191964977",
+        "time": 3000.0000447034836,
+        "population": 138,
+        "bonds": 190,
+        "components": [
+          107,
+          4,
+          2,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "largest_component_founder_lineages": 7,
+        "total_founder_lineages": 7,
+        "same_founder_lineage_bonds": 127,
+        "cumulative_junction_transferred": 1335.314248524212
+      },
+      {
+        "file": "drag/211-full/frame-0030000.json",
+        "sha256": "4ba4545a1ec2a988af4b6f0ae920844031d667a0f8c2095cee464a073c205ab5",
+        "time": 3000.0000447034836,
+        "population": 150,
+        "bonds": 157,
+        "components": [
+          117,
+          4,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "largest_component_founder_lineages": 4,
+        "total_founder_lineages": 4,
+        "same_founder_lineage_bonds": 124,
+        "cumulative_junction_transferred": 1211.508042734838
+      },
+      {
+        "file": "unit/307-full/frame-0030000.json",
+        "sha256": "9fc616cbf2e361bdcce84d2393272fe9ae10aaf755879ea2b82b242b7fc6f321",
+        "time": 3000.0000447034836,
+        "population": 123,
+        "bonds": 78,
+        "components": [
+          40,
+          13,
+          8,
+          3,
+          2,
+          2,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "largest_component_founder_lineages": 4,
+        "total_founder_lineages": 5,
+        "same_founder_lineage_bonds": 43,
+        "cumulative_junction_transferred": 1192.5928145083474
+      },
+      {
+        "file": "drag/307-full/frame-0030000.json",
+        "sha256": "2d2b79c46deac297fc69e870fdb949917b9bc4f8f807334d96ca99781fe17959",
+        "time": 3000.0000447034836,
+        "population": 138,
+        "bonds": 100,
+        "components": [
+          66,
+          4,
+          4,
+          2,
+          2,
+          2,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "largest_component_founder_lineages": 4,
+        "total_founder_lineages": 4,
+        "same_founder_lineage_bonds": 81,
+        "cumulative_junction_transferred": 1061.423551244458
+      }
+    ],
+    "renderer_sha256": "7ae625939e2041e9f51ecd3ceb97cbbedb19631ed1ceef421128b41b7dfe6817",
+    "exposure": 0.3,
+    "field_units": "mass / physical volume",
+    "shape": [
+      32,
+      32
+    ],
+    "extent": [
+      16,
+      16
+    ],
+    "spatial_interpolation": "none",
+    "geometry": "physical radii; minimum-image periodic bonds"
+  }
+}

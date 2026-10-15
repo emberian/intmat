@@ -519,6 +519,47 @@
         "high_radial_power_fraction": 0.0018666445976123214
       }
     ],
-    "interpretation": "Actual native3D material remodeling with finite reserve and early small-scale spatial organization. Coarsening to box-scale excitation appears by t30; no stationary organization, individual-mechanics equivalence, learning or biological evolution claim. Central sections do not establish enclosed3D cavities."
+    "interpretation": "Actual native3D material remodeling with finite reserve and early small-scale spatial organization. Coarsening to box-scale excitation appears by t30; no stationary organization, individual-mechanics equivalence, learning or biological evolution claim. Central sections do not establish enclosed3D cavities.",
+    "material_spectrum": [
+      {
+        "time": 10.0,
+        "field": "biomass",
+        "high_radial_power_fraction": 0.014536046423017979
+      },
+      {
+        "time": 10.0,
+        "field": "matrix",
+        "high_radial_power_fraction": 0.0004223386640660465
+      },
+      {
+        "time": 30.0,
+        "field": "biomass",
+        "high_radial_power_fraction": 0.01456264965236187
+      },
+      {
+        "time": 30.0,
+        "field": "matrix",
+        "high_radial_power_fraction": 0.019863951951265335
+      },
+      {
+        "time": 68.0,
+        "field": "biomass",
+        "high_radial_power_fraction": 0.006504338700324297
+      },
+      {
+        "time": 68.0,
+        "field": "matrix",
+        "high_radial_power_fraction": 0.0852435752749443
+      }
+    ],
+    "resolution_limit": "Low high-frequency excitation power does not prove resolved material interfaces. Matrix power beyond.7Nyquist rises to.0852 at t68; native256\u00b3 spatial convergence has not been tested."
+  },
+  "native_payload_validation": {
+    "frames": 41,
+    "native_fields_checked": 328,
+    "all_native_field_sizes_correct": true,
+    "final_generic_record_matches_final_native_capture": true,
+    "section_byte_counts_correct": true,
+    "checkpoint_bytes": 67110298
   }
 }
