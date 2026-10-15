@@ -1,0 +1,18 @@
+id = "finite-locus-lattice-volume32"
+# Explicitly coordinated CPU8/9 specimen, same spacing/chemistry as16 cubed.
+dimensions = [32,32,32]
+extent = [32.0,32.0,32.0]
+seeds = [11]
+arms = ["full"]
+loci = 12
+founder_genotypes = 8
+occupancy = 0.1
+precursor = 0.6
+fuel = 0.25
+reserve = 8.0
+spatial_niches = true
+dt = 0.1
+steps = 3200
+capture_every = 80
+injury_step = 1600
+injury_radius = 6.0

@@ -537,5 +537,16 @@
       "render-job.json",
       "run.json"
     ]
+  },
+  {
+    "id": "collection-20261015/packing-counterpoint",
+    "source_image_sha256": "9c87164df0af79e8b890bebb6d6002810f9512918a89a9dc8b795e92af9a776b",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
   }
 ]

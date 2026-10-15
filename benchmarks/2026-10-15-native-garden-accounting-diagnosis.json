@@ -1,0 +1,423 @@
+{
+  "source_commit": "4b747919ec56f535f7c37bc7c666bd423316162d",
+  "final_checkpoint_sha256": "171707c2a7a7e0a614e7e8d509f88a04264027591b33ca2869729d9c6a385716",
+  "read_only": true,
+  "resumed": false,
+  "gpu_used": false,
+  "checkpoints": [
+    {
+      "file": "checkpoints/initial.jls",
+      "step": 0,
+      "time": 0.0,
+      "bytes": 243750814,
+      "sha256": "0c55401951b22534d6c1a37151e4b5357b180fe7e6cd2cd73df90451a499b5e5",
+      "audit": {
+        "material": 765.440006673336,
+        "potential": 1679.3600022792816,
+        "work": 0.0,
+        "heat": 0.0,
+        "supplied": 0.0,
+        "removed": 0.0,
+        "supplied_potential": 0.0,
+        "removed_potential": 0.0,
+        "population": 256,
+        "completed_steps": 0,
+        "secreted": [
+          0.0,
+          0.0
+        ],
+        "solubilized": [
+          0.0,
+          0.0
+        ],
+        "bound": [
+          0.0,
+          0.0
+        ],
+        "enzyme": [
+          0.0,
+          0.0
+        ],
+        "inert": 0.0,
+        "finite": true
+      },
+      "accounting": {
+        "material_error": 0.0,
+        "chemical_error": 0.0,
+        "material_tolerance": 0.0765440006673336,
+        "chemical_tolerance": 0.16793600022792818,
+        "passed": true
+      }
+    },
+    {
+      "file": "checkpoints/rolling-1.jls",
+      "step": 93384,
+      "time": 93.38400443550199,
+      "bytes": 243750818,
+      "sha256": "0edf49160bca3e306b1341c0e2048394c9f683e2cf155cf489f37b170f3ccaf4",
+      "audit": {
+        "material": 950.9676806542894,
+        "potential": 1776.9707269484193,
+        "work": 393.3095704000278,
+        "heat": 251.21325884770485,
+        "supplied": 185.53307831844404,
+        "removed": 0.0,
+        "supplied_potential": 742.1323132737762,
+        "removed_potential": 0.0,
+        "population": 259,
+        "completed_steps": 93384,
+        "secreted": [
+          1.76357650602043,
+          1.7502774413663897
+        ],
+        "solubilized": [
+          21.898144658282312,
+          21.93151157766089
+        ],
+        "bound": [
+          3.335774120825956,
+          3.31925052770686
+        ],
+        "enzyme": [
+          0.8618234056106991,
+          0.8529172114620923
+        ],
+        "inert": 0.16773673601282685,
+        "finite": true
+      },
+      "accounting": {
+        "material_error": -0.005404337490631406,
+        "chemical_error": 0.0012406430940927748,
+        "material_tolerance": 0.09509730849917801,
+        "chemical_tolerance": 0.2421492315553058,
+        "passed": true
+      }
+    },
+    {
+      "file": "checkpoints/rolling-0.jls",
+      "step": 198280,
+      "time": 198.28000941779464,
+      "bytes": 243750818,
+      "sha256": "0a6e35e2ca216a8c8eaf9d5fa534b48b1ba9efde2a48623f039441cda2704864",
+      "audit": {
+        "material": 1158.6126092496945,
+        "potential": 2418.9409503600077,
+        "work": 558.1576140523132,
+        "heat": 275.0024716815739,
+        "supplied": 393.1843250563933,
+        "removed": 0.0,
+        "supplied_potential": 1572.737300225573,
+        "removed_potential": 0.0,
+        "population": 44,
+        "completed_steps": 198280,
+        "secreted": [
+          1.7642411089427568,
+          1.7506276706934836
+        ],
+        "solubilized": [
+          32.87151436089528,
+          32.869058649829654
+        ],
+        "bound": [
+          1.8924279002053175,
+          1.8990433517146574
+        ],
+        "enzyme": [
+          0.3731690983364185,
+          0.3691790053116633
+        ],
+        "inert": 0.3581116815832002,
+        "finite": true
+      },
+      "accounting": {
+        "material_error": -0.01172248003479126,
+        "chemical_error": 0.0037335890401664074,
+        "material_tolerance": 0.11586243317297294,
+        "chemical_tolerance": 0.3252097302504855,
+        "passed": true
+      }
+    },
+    {
+      "file": "checkpoints/rolling-1.jls",
+      "step": 320432,
+      "time": 320.4320152197033,
+      "bytes": 243750818,
+      "sha256": "35e1d7404aab649951244553059f4040f570a8d385e0ff9f38269fc9e2a107a7",
+      "audit": {
+        "material": 1399.3520221245608,
+        "potential": 3329.3154407094844,
+        "work": 583.20935005828,
+        "heat": 302.5609876324127,
+        "supplied": 633.9390753988285,
+        "removed": 0.0,
+        "supplied_potential": 2535.756301595314,
+        "removed_potential": 0.0,
+        "population": 43,
+        "completed_steps": 320432,
+        "secreted": [
+          1.8812093216810941,
+          1.916734027097433
+        ],
+        "solubilized": [
+          46.537866058886245,
+          46.01135219926875
+        ],
+        "bound": [
+          1.0702991782704467,
+          1.1001215313809145
+        ],
+        "enzyme": [
+          0.24217697234969615,
+          0.27674062295751395
+        ],
+        "inert": 0.6306699600375921,
+        "finite": true
+      },
+      "accounting": {
+        "material_error": -0.027059947603788714,
+        "chemical_error": -0.03052547441848219,
+        "material_tolerance": 0.13993790820721647,
+        "chemical_tolerance": 0.42151163038745965,
+        "passed": true
+      }
+    },
+    {
+      "file": "checkpoints/rolling-0.jls",
+      "step": 442224,
+      "time": 442.2240210045129,
+      "bytes": 243750818,
+      "sha256": "6360e0d85a3f4a35072bd5a43f75c53cd6ac6f73c526ba4fdf0cc2bf06177129",
+      "audit": {
+        "material": 1638.567109562406,
+        "potential": 4122.932530325292,
+        "work": 623.5125328832115,
+        "heat": 425.02255447004995,
+        "supplied": 873.0325090200582,
+        "removed": 0.0,
+        "supplied_potential": 3492.130036080233,
+        "removed_potential": 0.0,
+        "population": 43,
+        "completed_steps": 442224,
+        "secreted": [
+          3.756983216623859,
+          3.4850369699539954
+        ],
+        "solubilized": [
+          92.86665434137396,
+          86.0304758989191
+        ],
+        "bound": [
+          5.147997793684366,
+          4.234753433325796
+        ],
+        "enzyme": [
+          1.4081390116880417,
+          1.1972007390097432
+        ],
+        "inert": 1.0721812176800436,
+        "finite": true
+      },
+      "accounting": {
+        "material_error": 0.09459386901164635,
+        "chemical_error": -0.022420680961204198,
+        "material_tolerance": 0.16384725156933944,
+        "chemical_tolerance": 0.5171490038359514,
+        "passed": true
+      }
+    },
+    {
+      "file": "checkpoints/rolling-1.jls",
+      "step": 557424,
+      "time": 557.4240264762193,
+      "bytes": 243750818,
+      "sha256": "e1f51d26a8b353de5d4e3b1a31b956f1217f379a3fe9e51722d6fc3cf52f54e6",
+      "audit": {
+        "material": 1864.0753029405232,
+        "potential": 4743.029365519445,
+        "work": 692.6997181700942,
+        "heat": 637.4373419311651,
+        "supplied": 1098.4680458766566,
+        "removed": 0.0,
+        "supplied_potential": 4393.872183506626,
+        "removed_potential": 0.0,
+        "population": 50,
+        "completed_steps": 557424,
+        "secreted": [
+          7.14927897409591,
+          6.3655592389102695
+        ],
+        "solubilized": [
+          158.934367210438,
+          153.9882879392271
+        ],
+        "bound": [
+          10.616746575490502,
+          9.54452832574992
+        ],
+        "enzyme": [
+          2.8746108053420736,
+          2.439602587152586
+        ],
+        "inert": 1.953727696911065,
+        "finite": true
+      },
+      "accounting": {
+        "material_error": 0.16725039053062574,
+        "chemical_error": -0.0657601652037556,
+        "material_tolerance": 0.18639080525499926,
+        "chemical_tolerance": 0.6073232185785908,
+        "passed": true
+      }
+    },
+    {
+      "file": "checkpoints/rolling-0.jls",
+      "step": 659992,
+      "time": 659.9920313479379,
+      "bytes": 243750818,
+      "sha256": "171707c2a7a7e0a614e7e8d509f88a04264027591b33ca2869729d9c6a385716",
+      "audit": {
+        "material": 2064.5668146236762,
+        "potential": 5067.940370921679,
+        "work": 806.5611260171509,
+        "heat": 1000.2452511107695,
+        "supplied": 1298.8794445576232,
+        "removed": 0.0,
+        "supplied_potential": 5195.517778230493,
+        "removed_potential": 0.0,
+        "population": 93,
+        "completed_steps": 659992,
+        "secreted": [
+          12.82770786023047,
+          11.311414818671667
+        ],
+        "solubilized": [
+          248.74119369216893,
+          260.2957170129544
+        ],
+        "bound": [
+          18.214825809503886,
+          18.22200775512033
+        ],
+        "enzyme": [
+          5.319173091623506,
+          4.634263504764587
+        ],
+        "inert": 3.318746069965382,
+        "finite": true
+      },
+      "accounting": {
+        "material_error": 0.247363392717034,
+        "chemical_error": -0.13103246017544734,
+        "material_tolerance": 0.20643194512309593,
+        "chemical_tolerance": 0.6874877780509775,
+        "passed": false
+      }
+    },
+    {
+      "file": "checkpoints/final.jls",
+      "step": 659992,
+      "time": 659.9920313479379,
+      "bytes": 243750818,
+      "sha256": "171707c2a7a7e0a614e7e8d509f88a04264027591b33ca2869729d9c6a385716",
+      "audit": {
+        "material": 2064.5668146236762,
+        "potential": 5067.940370921679,
+        "work": 806.5611260171509,
+        "heat": 1000.2452511107695,
+        "supplied": 1298.8794445576232,
+        "removed": 0.0,
+        "supplied_potential": 5195.517778230493,
+        "removed_potential": 0.0,
+        "population": 93,
+        "completed_steps": 659992,
+        "secreted": [
+          12.82770786023047,
+          11.311414818671667
+        ],
+        "solubilized": [
+          248.74119369216893,
+          260.2957170129544
+        ],
+        "bound": [
+          18.214825809503886,
+          18.22200775512033
+        ],
+        "enzyme": [
+          5.319173091623506,
+          4.634263504764587
+        ],
+        "inert": 3.318746069965382,
+        "finite": true
+      },
+      "accounting": {
+        "material_error": 0.247363392717034,
+        "chemical_error": -0.13103246017544734,
+        "material_tolerance": 0.20643194512309593,
+        "chemical_tolerance": 0.6874877780509775,
+        "passed": false
+      }
+    }
+  ],
+  "final_species": [
+    66.01482283541452,
+    69.71777923746052,
+    713.0305942646228
+  ],
+  "rolling557424_species": [
+    48.85566626381147,
+    48.90693554177738,
+    631.8659099618671
+  ],
+  "final_diffusion_cpu_mirror": [
+    {
+      "before": 66.01482283541452,
+      "after": 66.0148227312689,
+      "endpoint_change": -1.0414562723326526e-07,
+      "float32_flux_sum": 6.146658402157994e-13
+    },
+    {
+      "before": 69.71777923746052,
+      "after": 69.7177791521352,
+      "endpoint_change": -8.532532547178562e-08,
+      "float32_flux_sum": -6.644630486393819e-14
+    },
+    {
+      "before": 713.0305942646228,
+      "after": 713.0305946799926,
+      "endpoint_change": 4.153698682785034e-07,
+      "float32_flux_sum": -2.8845828991489603e-13
+    }
+  ],
+  "rolling557424_diffusion_cpu_mirror": [
+    {
+      "before": 48.85566626381147,
+      "after": 48.85566617350379,
+      "endpoint_change": -9.030767955664487e-08,
+      "float32_flux_sum": 2.066942736318213e-13
+    },
+    {
+      "before": 48.90693554177738,
+      "after": 48.90693550517737,
+      "endpoint_change": -3.660000658101126e-08,
+      "float32_flux_sum": -3.5396843893069395e-13
+    },
+    {
+      "before": 631.8659099618671,
+      "after": 631.8659105575643,
+      "endpoint_change": 5.956972017884254e-07,
+      "float32_flux_sum": -7.445629670536219e-14
+    }
+  ],
+  "interpretation": "Concrete substantial contributor: independent Float32 diffusion endpoint rounding creates zero-potential waste mass while computed net flux is near zero. CPU mirror, not exact AMD/FMA replay; not complete causal attribution. Other unpaired gather/scatter and material endpoints remain candidates.",
+  "controls": {
+    "cpus": [
+      2,
+      3
+    ],
+    "threads": 1,
+    "memory_max": "8G",
+    "swap": 0,
+    "each_command_timeout_seconds": 60
+  },
+  "tolerance_changed": false
+}

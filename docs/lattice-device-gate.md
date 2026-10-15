@@ -52,3 +52,20 @@ GPU compiler incompatibility, excessive cross-device divergence, a ledger/identi
 ## Prepared-source verification
 
 Final local CPU plumbing passed with the exact prepared gate source SHA256 `de586b0f57aa153ee78d30b562cce296568d0d7b61cdb61bd5ac1f81d74e1119`. Evidence: `outputs/alife-20261015/lattice-device-cpu-frozen/{protocol.json,gate.json}` and archived sources/native recordings/checkpoints. Both shapes passed all twenty observation comparisons, the paid-contact cases and strict continuation/failure cases. The two earlier CPU smoke directories remain historical. No AMD compilation, parity or performance outcome is available yet.
+
+## Native AMD execution, 2026-10-15
+
+The exact prepared baseline gate **passed on the real AMD backend**. Both 200-step CPU/AMD fixtures passed all twenty comparisons, paid birth/mutation/hop/remodeling coverage, independent physical ledgers and bounds, exact integer identity/event arrays, native recording, strict checkpoint restoration and 17-step exact same-backend continuation. Intended invalid ownership, negative-dt, checkpoint-clobber and source-mismatch operations were rejected. The maximum error across all compared floating fields was **4.77×10⁻⁷**, below the predeclared per-element tolerances. Neither source nor tolerances changed for this run.
+
+| Native workload | Steps per timed repeat | Synchronized seconds, three repeats | Million voxel steps/s | Sustained-duration criterion |
+|---|---:|---|---|---|
+| 32³ | 16,384 | 2.748 / 2.744 / 2.742 | 195.35 / 195.62 / 195.79 | **Failed**: fixed step cap reached before 3 s |
+| 64³ | 2,944 | 3.124 / 3.128 / 3.123 | 247.07 / 246.70 / 247.16 | Passed all three |
+
+The 64³ result is a passing complete-step active dense benchmark under this protocol. The overall all-grid sustained benchmark flag is **false**, preserving the 32³ duration failure. Its measured rates are descriptive 2.74-second windows, not a passing three-second sustained result; the step cap was not increased after observing it. Physical validity and active-density checks passed for both grids. Final bodies were 31,786/32,768 and 261,429/262,144 respectively. The windows were biologically active in the declared model: total accumulated births/mutations at the endpoints were 2,183,492/87,265 and 3,236,402/129,371. These cumulative counts include warm-up. Owned resident array storage was 8,421,376 and 49,709,056 bytes. The benchmark uses its explicitly declared high-reserve, reduced-construction workload, not the ecological pilot recipe.
+
+The allocated project GPU window began after the production garden ended. Two pre-existing brain services (PIDs 3377017 and 3506212) retained device handles throughout; they were neither killed nor reconfigured. A recorded utilization snapshot was 0%, which does not establish inactivity throughout timing. These are **shared-hardware observations**, not isolated-device performance guarantees, a CPU/GPU speedup ratio, or a comparison with the moving-agent/packing laws. Optional ROCm library warnings (rocFFT, rocRAND, MIOpen and others) were retained; the required custom kernels compiled and executed successfully.
+
+The enforced job used CPU10–11, two Julia threads, GC1/BLAS1, nice15, 8 GiB memory maximum, swap0 and a 900-second timeout. The systemd scope ran approximately 45 seconds including setup/compilation/gate/benchmarks, reporting 59.831 CPU seconds and 1.1G peak memory. CPU and project GPU ownership were released on completion. No background service or garden state was changed.
+
+Immutable remote evidence: `/othersys/tmp/intmat-lattice-amd-gate-20261015`. Downloaded evidence: `outputs/alife-20261015/lattice-amd-gate`, including exact sources, redirected-path copy of the existing pinned AMD environment, protocol, full field errors, funding/event statistics, native states, checkpoints, intentional invalid checkpoints, resource records, service presence, utilization snapshot and complete log. [Machine-readable results](lattice-device-results.json) retain both the numerical pass and the overall sustained-duration failure. The model and gate SHA256 pins above match the executed copies exactly.

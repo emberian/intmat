@@ -26,10 +26,22 @@ function lattice_topology(mask,dims)
     end
     (components=length(sizes),largest=isempty(sizes) ? 0 : maximum(sizes),sites=sum(sizes))
 end
-function lattice_run_main(recipe,out)
+function lattice_run_limits(cfg;coordinated_volume=false)
+    dims=Tuple(cfg["dimensions"])
+    0<cfg["steps"]<=10000&&cfg["capture_every"]>0||error("bounded schedule required")
+    frames=1+sum(step==get(cfg,"injury_step",0) ? 2 : (step%cfg["capture_every"]==0||step==cfg["steps"] ? 1 : 0) for step in 1:cfg["steps"])
+    if coordinated_volume
+        dims==(32,32,32)&&Tuple(cfg["extent"])==(32.,32.,32.)||error("coordinated opt-in is limited to spacing-one 32 cubed")
+        length(cfg["seeds"])==1&&cfg["arms"]==["full"]&&cfg["steps"]<=3200&&frames<=42||error("coordinated volume schedule exceeds approved bounds")
+        Threads.nthreads()<=2||error("coordinated volume permits at most two Julia threads")
+    else
+        prod(dims)<=4096||error("ordinary CPU pilot is bounded to 4096 voxels; approved 32 cubed run requires --coordinated-cpu-volume")
+    end
+    (coordinated_volume=coordinated_volume,frames=frames,native_frame_bytes=frames*prod(dims)*(15sizeof(Float32)+3sizeof(Int32)))
+end
+function lattice_run_main(recipe,out;coordinated_volume=false)
     cfg=TOML.parsefile(recipe);dims=Tuple(cfg["dimensions"])
-    prod(dims)<=4096 || error("this CPU-only pilot is bounded to 4096 voxels; coordinate separate scaling work")
-    cfg["steps"]<=10000&&cfg["capture_every"]>0||error("bounded schedule required")
+    limits=lattice_run_limits(cfg;coordinated_volume)
     ispath(out)&&error("choose a new output directory");mkpath(out);cp(recipe,joinpath(out,"recipe.toml"))
     write(joinpath(out,"lattice_ecology.jl"),LE.MODEL_SOURCE);write(joinpath(out,"lattice_ecology_run.jl"),RUNNER_SOURCE)
     q=lattice_parameters(;NamedTuple(Symbol(k)=>v for (k,v) in get(cfg,"parameters",Dict()))...)
@@ -76,7 +88,7 @@ function lattice_run_main(recipe,out)
         end
         lattice_checkpoint(w,p,joinpath(dir,"final.jls"));record_state(w,p,joinpath(dir,"native-final");step=p.tick)
         result=(seed=seed,arm=arm,dimensions=dims,extent=w.grid.extent,parameters=parameters,initial=initial,final=last(history),history=history,
-            step_seconds=step_seconds,wall_seconds_including_capture=wall,voxel_steps_per_second=prod(dims)*cfg["steps"]/step_seconds,
+            run_limits=limits,step_seconds=step_seconds,wall_seconds_including_capture=wall,voxel_steps_per_second=prod(dims)*cfg["steps"]/step_seconds,
             policy="Four hidden channels; seven funded flux/event gates; nine local observations, a bias and four recurrent channels. Immutable finite-locus shared rule bank; bit mutation only at funded birth.",
             law_source_sha256=LE.MODEL_SHA,runner_sha256=bytes2hex(sha256(RUNNER_SOURCE)),shared_sources=Interior.arena_sources())
         push!(results,result);open(joinpath(dir,"result.json"),"w") do io;JSON3.write(io,result);end
@@ -88,6 +100,7 @@ function lattice_run_main(recipe,out)
     println("READY ",out)
 end
 if abspath(PROGRAM_FILE)==(@__FILE__) || (isdefined(Main,:INTERIOR_RUNNING_STUDY)&&Main.INTERIOR_RUNNING_STUDY=="lattice_ecology_run")
-    length(ARGS)==2||error("recipe.toml fresh-output-directory")
-    lattice_run_main(ARGS[1],ARGS[2])
+    length(ARGS) in (2,3)||error("recipe.toml fresh-output-directory [--coordinated-cpu-volume]")
+    length(ARGS)==3&&ARGS[3]!="--coordinated-cpu-volume"&&error("unknown option")
+    lattice_run_main(ARGS[1],ARGS[2];coordinated_volume=length(ARGS)==3)
 end

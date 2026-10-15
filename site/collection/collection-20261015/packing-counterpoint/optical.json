@@ -1,0 +1,80 @@
+{
+  "renderer_sha256": "0b12c6943c98ea592c97575b9e33d3336541335feb019f35426c96c672db3fd9",
+  "source": {
+    "run_sha256": "e358ecac491ee3a02c409539ef3deba57d7c60461bb2181a5e6226a1ce14d30c",
+    "step": 32000,
+    "time": 39.99999910593033,
+    "shape": [
+      128,
+      128,
+      128
+    ],
+    "field_sha256": {
+      "volume.json": "3fdbbfefc0453b171ca471fc7c2d9bb3fa01d90a3db20e7462955cadfe30d550",
+      "biomass.f32": "84d8e83a836253dacded068e940e1020c204a6c2b4534216aec203e1a91f45bd",
+      "matrix.f32": "febda9fb9b718cf3e864d0b028c5516e3d1a3d264add438cad504bb980c9b895",
+      "excitation.f32": "ac28146287a78a80d6c60c9b885de6e781c2c968a2d6160583b458d4243dd042"
+    }
+  },
+  "settings": {
+    "run": "packing-counterpoint",
+    "output": "packing-counterpoint",
+    "steps": "32000",
+    "size": 2000,
+    "samples": 128,
+    "device": "CPU",
+    "optics": "phase-volume",
+    "phase_threshold": 0.18,
+    "phase_gain": 15.0,
+    "density_gain": 0.3,
+    "bulk_iso": 0.27,
+    "matrix_iso": 0.12,
+    "orbit": 0.95,
+    "elevation": 0.22,
+    "distance": 3.8,
+    "cut_x": -0.12,
+    "cut_y": 0.18,
+    "no_cutaway": false,
+    "target": [
+      0.1,
+      0.0,
+      0.05
+    ],
+    "image_name": "final.png",
+    "save_scene": true
+  },
+  "camera": {
+    "location": [
+      3.116478443145752,
+      -2.1571195125579834,
+      0.8792725801467896
+    ],
+    "lens_mm": 55,
+    "target": [
+      0.1,
+      0.0,
+      0.05
+    ],
+    "fixed": true
+  },
+  "geometry": {
+    "bulk": {
+      "native_shape": [
+        128,
+        128,
+        128
+      ],
+      "vdb_sha256": "b308f2aace8092cd36d7390195589a3ebd7d782af31261342cec27c2dc70f96a",
+      "density": "max(B+M-bulk_iso,0)*density_gain",
+      "emission": "max(abs(x)-phase_threshold,0)*phase_gain*clip((B+M-bulk_iso)/(capacity-bulk_iso),0,1)",
+      "hue": "fixed cyan-to-orange ramp of clip(.5+x,0,1)",
+      "cutaway": "same fixed front-right observation wedge as surface; no per-frame normalization"
+    },
+    "matrix": {
+      "vertices": 393328,
+      "faces": 416978,
+      "threshold": 0.12
+    }
+  },
+  "interpretation": "Native B+M controls faint volume density above a fixed threshold; signed activity x controls chosen cyan/orange emission, weighted by native material fraction above that threshold. Persistent matrix M is a dark titanium contour. The front-right cutaway is an observation choice, not simulated fracture. Blender traces these chosen optics; chemical luminescence and optical feedback are not part of the Julia dynamics. No designed anatomy, extrusion or temporal interpolation. Thresholds, colors, camera and gains stay fixed across time."
+}

@@ -1,0 +1,4517 @@
+{
+  "numerical_gate_passed": true,
+  "all_sustained_benchmarks_passed": false,
+  "gate": {
+    "passed": true,
+    "backend": "amd",
+    "provenance": {
+      "model_sha256": "e6d6cab2b0624965a5e7ec66b7f9f9ce44a01f9ded5653db660de61368cde9b5",
+      "gate_sha256": "de586b0f57aa153ee78d30b562cce296568d0d7b61cdb61bd5ac1f81d74e1119",
+      "julia": "1.12.4",
+      "shared_sources": {
+        "writing.jl": "78fba7cd46f03749bdc56547b7ce5622f7ba3ea42cc34801829345dae3975e05",
+        "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+        "cellular.jl": "97eda8b05c7d51883bc52dc7ecc985b882b60920296c79b4f2903ed358dc0131",
+        "matrix_mechanics.jl": "e232c0d13449324aabe6c299ee1de8ba1d961777e363bc328d44fa5af8de03ed",
+        "cellular_transport.jl": "fc8bfb0df1948b3869afae0a06fb5cc23bb87778452a31ffc3d27954eeb87aa2",
+        "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+        "cellular_arena.jl": "2ef965717c99cd0c46a8acd9ceb7da26232201cb18547bd23712e989688429e2",
+        "experiments.jl": "5697958abac5f36713418d5f9d94f274fb0a51b86ed1a84b3f58b68cba1e42d1",
+        "metabolic_ecology.jl": "2f599a1d6ea0a5552a594113d57e238e4c6ff3c1fd8d74de5a51f83a77179bb1",
+        "neural_ecology.jl": "ed0496adb31ce4511f8bc0d5343ff843c410c39c51d30c165b3cf5eac1135df2",
+        "compartments.jl": "e7c55ce4e0f4a8548c078c9d160815b5eaeb846a3765aad89a875f166b5005e5",
+        "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+        "catalytic_habitat.jl": "9a69b5ec394bc6dcee988d68f6463fc7c72bfa273e89bbd6e46513d392468eb1",
+        "device_cellular_support.jl": "5a767b83c2c912d8706468ec7c5b86e56cf99430b2a23dfd3a7f3ee8f21bf55b",
+        "arena.jl": "75acccd7b144e1512984c8ececb368d5fa3f03db08daa40e4b8f8f027198c16f",
+        "catalytic_arena.jl": "4a359bb5cfee951c898aca039efe07a4558797fce5544876158791139b105524",
+        "recurrent_material.jl": "e9457d0d6e31f74950fa4be8ef84b138b020c0de7fc4b95c9a7f3cd5db148347",
+        "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+        "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+        "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b",
+        "Interior.jl": "194971f1f1f6c5c044145238c12ed27dbe4975f9f60a67b5d2074aa8efbf9631",
+        "resources.jl": "859f6e04b456ceee051fd83214b37ca18418af09126960997b7d62d83c2dcab0",
+        "cellular_initialization.jl": "d76e4c791a2c56bc7fd651b1836e6879b9e27013566ce6d94a1d2f677f62e633",
+        "constructive_cells.jl": "000953e0da6de61574abaff6566790c051af13c320c6c53162598625b6b6bf27",
+        "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+        "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+        "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+        "implicit_phase.jl": "1fb617707591f89784b95171e0558065101b3d992f7b3eabd16a7bf01dca4ceb",
+        "device_cellular_protocol.jl": "5b5b8c4b945af6c9a6a2496dc115e83501cc3b1329f7c8b2abab71d175c22720",
+        "core.jl": "b4302b90eaeba213360e8a15ce8b7e4cb4c491606657e3e500d2fb8507753a52",
+        "neural_workspace.jl": "ecdd45856bc0b3c61708de90814d1abb33bc1232a0f9ff5785b32b9bc39a9139",
+        "device_habitat_kernels.jl": "f6ab9782cff0816919368d3d1f8c766af39f9eba3a0badd2636e50b55366ac42",
+        "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+        "device_resource_exchange.jl": "050991b42eceab1403c940e69b027d27106f966dfcc0cfbf215b5b5ff7221c18",
+        "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+        "device_cellular_initialization.jl": "b3c62d90bdd1c2340ae5097c2242a440b3ab7fc5204e57b18f087067b2c41bd7",
+        "cellular_storage.jl": "735c3281aca69158609392ef161397bec166d4a1698d7e741cd95b5a426cfaff",
+        "device_cellular_kernels.jl": "cf9ce3d4f193721b11ea7e005a9a06bb398a57bd211b9436f4876d3326a7e6d9",
+        "device_cellular_lifecycle.jl": "8826c577e960db6596cd923a591d806b185908a254c6cc0fb6b0eebb033a9629",
+        "device_cellular.jl": "db2277f6fa01f02fa5829e929ce3f8abf583cc598052f6cbb81113345cb6ff3d",
+        "device_cellular_checkpoint.jl": "10d83cb02df68183cc703c3fca152795a5685b8b90379c52b1856aae72fd6664",
+        "cellular_contacts.jl": "337247cbe0707778f15672385f2e33684cbb44535afc9580e3cf880c4089aafa",
+        "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+        "dose_writer.jl": "b8d1b4013921a3c82388ee87a7ede00b97964a1894062f2a07339f2c6be197eb",
+        "device_habitat.jl": "bbf706bf2b9d3e292a0e20207ff27b22fe3d70e294c8bebf76dc8f41179d6056",
+        "mechanics.jl": "a0370e4028aa859fb344829f0d387a62dd8defb77b25f4651f7c08b386324e45",
+        "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+        "device_habitat_sorption.jl": "f135e74e59959187e72725a45665ac5c67293b8305298c8d3ac4bdbb81e6ac93",
+        "sorptive_matrix.jl": "f5643e0c951c983a7d5864676156123db3181e05510335fcd618de105ff1f036"
+      },
+      "protocol": {
+        "float_atol": 0.0001,
+        "float_rtol": 0.0002,
+        "ledger_relative": 2e-05,
+        "capacity_atol": 2e-06,
+        "hidden_bound": 1.00001,
+        "dt": 0.1,
+        "parity_steps": 200,
+        "continuation_steps": 17,
+        "shapes": [
+          [
+            8,
+            8,
+            1
+          ],
+          [
+            4,
+            4,
+            4
+          ]
+        ],
+        "benchmark_shapes": [
+          [
+            32,
+            32,
+            32
+          ],
+          [
+            64,
+            64,
+            64
+          ]
+        ],
+        "warmup_steps": 128,
+        "benchmark_batch_steps": 128,
+        "benchmark_min_seconds": 3,
+        "benchmark_max_batches": 128,
+        "benchmark_repeats": 3,
+        "minimum_benchmark_occupancy": 0.5,
+        "benchmark_initial_occupancy": 0.65,
+        "benchmark_initial_mass": 0.7,
+        "benchmark_precursor": 2,
+        "benchmark_reserve": 1024,
+        "benchmark_construction": 0.006,
+        "benchmark_matrix_decay": 0.02
+      },
+      "backend_requested": "amd"
+    },
+    "contacts": [
+      {
+        "kind": "birth",
+        "comparison": {
+          "passed": true,
+          "fields": {
+            "hidden": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "cells": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "weights": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "environment": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "events": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "parents": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "actions": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "genotype": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "work": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "ids": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "lineage": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "heat": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "generation": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "scratch": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            }
+          }
+        },
+        "statistics": {
+          "time": 0,
+          "tick": 0,
+          "population": 2,
+          "births": 1,
+          "deaths": 0,
+          "hops": 0,
+          "mutations": 1,
+          "blocked_births": 0,
+          "material": 137.80000019073486,
+          "potential": 462.9399999976158,
+          "heat": 0.06000000238418579,
+          "energy_accounted": 463,
+          "precursor": 4.800000190734863,
+          "biomass": 1,
+          "matrix": 0,
+          "spent": 0,
+          "fuel": [
+            2,
+            2
+          ],
+          "reserve": [
+            64,
+            64
+          ],
+          "work": [
+            0,
+            0,
+            0,
+            0,
+            0.06000000238418579
+          ],
+          "unique_genotypes": 2,
+          "effective_genotypes": 2,
+          "founder_lineages": 1,
+          "max_generation": 1,
+          "minimum_physical": 0,
+          "capacity_excess": -0.70000005,
+          "hidden_maxabs": 0.4,
+          "finite": true,
+          "resident_bytes": 11296,
+          "hypothetical_per_voxel_genome_bytes": 4928,
+          "shared_genotype_bytes": 9856
+        }
+      },
+      {
+        "kind": "hop",
+        "comparison": {
+          "passed": true,
+          "fields": {
+            "hidden": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "cells": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "weights": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "environment": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "events": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "parents": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "actions": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "genotype": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "work": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "ids": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "lineage": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "heat": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "generation": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "scratch": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            }
+          }
+        },
+        "statistics": {
+          "time": 0,
+          "tick": 0,
+          "population": 1,
+          "births": 0,
+          "deaths": 0,
+          "hops": 1,
+          "mutations": 0,
+          "blocked_births": 0,
+          "material": 137.80000019073486,
+          "potential": 462.9599999785423,
+          "heat": 0.04000002145767212,
+          "energy_accounted": 463,
+          "precursor": 4.800000190734863,
+          "biomass": 1,
+          "matrix": 0,
+          "spent": 0,
+          "fuel": [
+            2,
+            2
+          ],
+          "reserve": [
+            64,
+            64
+          ],
+          "work": [
+            0,
+            0,
+            0,
+            0.04000002145767212,
+            0
+          ],
+          "unique_genotypes": 1,
+          "effective_genotypes": 1,
+          "founder_lineages": 1,
+          "max_generation": 0,
+          "minimum_physical": 0,
+          "capacity_excess": -0.20000005,
+          "hidden_maxabs": 0.4,
+          "finite": true,
+          "resident_bytes": 11296,
+          "hypothetical_per_voxel_genome_bytes": 4928,
+          "shared_genotype_bytes": 9856
+        }
+      }
+    ],
+    "fixtures": [
+      {
+        "dimensions": [
+          8,
+          8,
+          1
+        ],
+        "passed": true,
+        "initial": {
+          "time": 0,
+          "tick": 0,
+          "population": 14,
+          "births": 0,
+          "deaths": 0,
+          "hops": 0,
+          "mutations": 0,
+          "blocked_births": 0,
+          "material": 1098.880001425743,
+          "potential": 3700.479999899864,
+          "heat": 0,
+          "energy_accounted": 3700.479999899864,
+          "precursor": 38.400001525878906,
+          "biomass": 4.479999899864197,
+          "matrix": 0,
+          "spent": 0,
+          "fuel": [
+            16,
+            16
+          ],
+          "reserve": [
+            512,
+            512
+          ],
+          "work": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "unique_genotypes": 4,
+          "effective_genotypes": 3.454436655786227,
+          "founder_lineages": 14,
+          "max_generation": 0,
+          "minimum_physical": 0,
+          "capacity_excess": -0.88000005,
+          "hidden_maxabs": 0,
+          "finite": true,
+          "resident_bytes": 50944,
+          "hypothetical_per_voxel_genome_bytes": 39424,
+          "shared_genotype_bytes": 39424
+        },
+        "final": {
+          "time": 20.000000298023224,
+          "tick": 200,
+          "population": 64,
+          "births": 50,
+          "deaths": 0,
+          "hops": 37,
+          "mutations": 1,
+          "blocked_births": 90,
+          "material": 1098.8800022763899,
+          "potential": 3599.8295119404793,
+          "heat": 100.65048211366957,
+          "energy_accounted": 3700.479994054149,
+          "precursor": 0.1683009316911921,
+          "biomass": 36.79542315006256,
+          "matrix": 5.916279535740614,
+          "spent": 47.45943662524223,
+          "fuel": [
+            39.894690096378326,
+            47.05065709352493
+          ],
+          "reserve": [
+            460.797607421875,
+            460.797607421875
+          ],
+          "work": [
+            18.755915701389313,
+            14.528289675712585,
+            4.053117275238037,
+            0.9230485558509827,
+            3.000002861022949
+          ],
+          "unique_genotypes": 5,
+          "effective_genotypes": 4.032589965855977,
+          "founder_lineages": 14,
+          "max_generation": 4,
+          "minimum_physical": 0.0015589516,
+          "capacity_excess": -0.00053036213,
+          "hidden_maxabs": 0.8904399,
+          "finite": true,
+          "resident_bytes": 50944,
+          "hypothetical_per_voxel_genome_bytes": 39424,
+          "shared_genotype_bytes": 39424
+        },
+        "comparisons": [
+          {
+            "step": 10,
+            "comparison": {
+              "passed": true,
+              "fields": {
+                "hidden": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 13
+                },
+                "cells": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "weights": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "environment": {
+                  "passed": true,
+                  "maxabs": 1.4901161193847656e-08,
+                  "different": 5
+                },
+                "events": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "parents": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "actions": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 1
+                },
+                "genotype": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "work": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "ids": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "lineage": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "heat": {
+                  "passed": true,
+                  "maxabs": 5.587935447692871e-09,
+                  "different": 6
+                },
+                "generation": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "scratch": {
+                  "passed": true,
+                  "maxabs": 1.4901161193847656e-08,
+                  "different": 5
+                }
+              }
+            }
+          },
+          {
+            "step": 20,
+            "comparison": {
+              "passed": true,
+              "fields": {
+                "hidden": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 18
+                },
+                "cells": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 1
+                },
+                "weights": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "environment": {
+                  "passed": true,
+                  "maxabs": 1.4901161193847656e-08,
+                  "different": 8
+                },
+                "events": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "parents": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "actions": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 6
+                },
+                "genotype": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "work": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "ids": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "lineage": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "heat": {
+                  "passed": true,
+                  "maxabs": 6.705522537231445e-08,
+                  "different": 13
+                },
+                "generation": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "scratch": {
+                  "passed": true,
+                  "maxabs": 1.4901161193847656e-08,
+                  "different": 7
+                }
+              }
+            }
+          },
+          {
+            "step": 30,
+            "comparison": {
+              "passed": true,
+              "fields": {
+                "hidden": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 30
+                },
+                "cells": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "weights": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "environment": {
+                  "passed": true,
+                  "maxabs": 2.9802322387695312e-08,
+                  "different": 7
+                },
+                "events": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "parents": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "actions": {
+                  "passed": true,
+                  "maxabs": 2.9802322387695312e-08,
+                  "different": 6
+                },
+                "genotype": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "work": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "ids": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "lineage": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "heat": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 15
+                },
+                "generation": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "scratch": {
+                  "passed": true,
+                  "maxabs": 1.4901161193847656e-08,
+                  "different": 8
+                }
+              }
+            }
+          },
+          {
+            "step": 40,
+            "comparison": {
+              "passed": true,
+              "fields": {
+                "hidden": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 41
+                },
+                "cells": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 3
+                },
+                "weights": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "environment": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 19
+                },
+                "events": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "parents": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "actions": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 3
+                },
+                "genotype": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "work": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "ids": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "lineage": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "heat": {
+                  "passed": true,
+                  "maxabs": 6.705522537231445e-08,
+                  "different": 21
+                },
+                "generation": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "scratch": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 18
+                }
+              }
+            }
+          },
+          {
+            "step": 50,
+            "comparison": {
+              "passed": true,
+              "fields": {
+                "hidden": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 43
+                },
+                "cells": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 4
+                },
+                "weights": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "environment": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 24
+                },
+                "events": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "parents": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "actions": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 6
+                },
+                "genotype": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "work": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "ids": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "lineage": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "heat": {
+                  "passed": true,
+                  "maxabs": 1.2665987014770508e-07,
+                  "different": 29
+                },
+                "generation": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "scratch": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 21
+                }
+              }
+            }
+          },
+          {
+            "step": 60,
+            "comparison": {
+              "passed": true,
+              "fields": {
+                "hidden": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 64
+                },
+                "cells": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 7
+                },
+                "weights": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "environment": {
+                  "passed": true,
+                  "maxabs": 3.5762786865234375e-07,
+                  "different": 47
+                },
+                "events": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "parents": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "actions": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 6
+                },
+                "genotype": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "work": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "ids": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "lineage": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "heat": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 42
+                },
+                "generation": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "scratch": {
+                  "passed": true,
+                  "maxabs": 3.5762786865234375e-07,
+                  "different": 44
+                }
+              }
+            }
+          },
+          {
+            "step": 70,
+            "comparison": {
+              "passed": true,
+              "fields": {
+                "hidden": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 71
+                },
+                "cells": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 13
+                },
+                "weights": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "environment": {
+                  "passed": true,
+                  "maxabs": 3.5762786865234375e-07,
+                  "different": 62
+                },
+                "events": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "parents": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "actions": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 10
+                },
+                "genotype": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "work": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 1
+                },
+                "ids": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "lineage": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "heat": {
+                  "passed": true,
+                  "maxabs": 4.76837158203125e-07,
+                  "different": 50
+                },
+                "generation": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "scratch": {
+                  "passed": true,
+                  "maxabs": 3.5762786865234375e-07,
+                  "different": 60
+                }
+              }
+            }
+          },
+          {
+            "step": 80,
+            "comparison": {
+              "passed": true,
+              "fields": {
+                "hidden": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 76
+                },
+                "cells": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 12
+                },
+                "weights": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "environment": {
+                  "passed": true,
+                  "maxabs": 3.5762786865234375e-07,
+                  "different": 71
+                },
+                "events": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "parents": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "actions": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 10
+                },
+                "genotype": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "work": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 2
+                },
+                "ids": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "lineage": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "heat": {
+                  "passed": true,
+                  "maxabs": 4.76837158203125e-07,
+                  "different": 57
+                },
+                "generation": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "scratch": {
+                  "passed": true,
+                  "maxabs": 3.5762786865234375e-07,
+                  "different": 72
+                }
+              }
+            }
+          },
+          {
+            "step": 90,
+            "comparison": {
+              "passed": true,
+              "fields": {
+                "hidden": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 70
+                },
+                "cells": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 12
+                },
+                "weights": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "environment": {
+                  "passed": true,
+                  "maxabs": 3.5762786865234375e-07,
+                  "different": 75
+                },
+                "events": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "parents": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "actions": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 12
+                },
+                "genotype": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "work": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 2
+                },
+                "ids": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "lineage": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "heat": {
+                  "passed": true,
+                  "maxabs": 4.470348358154297e-07,
+                  "different": 60
+                },
+                "generation": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "scratch": {
+                  "passed": true,
+                  "maxabs": 3.5762786865234375e-07,
+                  "different": 73
+                }
+              }
+            }
+          },
+          {
+            "step": 100,
+            "comparison": {
+              "passed": true,
+              "fields": {
+                "hidden": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 85
+                },
+                "cells": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 14
+                },
+                "weights": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "environment": {
+                  "passed": true,
+                  "maxabs": 3.5762786865234375e-07,
+                  "different": 72
+                },
+                "events": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "parents": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "actions": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 7
+                },
+                "genotype": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "work": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 2
+                },
+                "ids": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "lineage": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "heat": {
+                  "passed": true,
+                  "maxabs": 4.470348358154297e-07,
+                  "different": 61
+                },
+                "generation": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "scratch": {
+                  "passed": true,
+                  "maxabs": 3.5762786865234375e-07,
+                  "different": 71
+                }
+              }
+            }
+          },
+          {
+            "step": 110,
+            "comparison": {
+              "passed": true,
+              "fields": {
+                "hidden": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 83
+                },
+                "cells": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 17
+                },
+                "weights": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "environment": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 73
+                },
+                "events": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "parents": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "actions": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 14
+                },
+                "genotype": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "work": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 2
+                },
+                "ids": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "lineage": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "heat": {
+                  "passed": true,
+                  "maxabs": 4.470348358154297e-07,
+                  "different": 61
+                },
+                "generation": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "scratch": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 76
+                }
+              }
+            }
+          },
+          {
+            "step": 120,
+            "comparison": {
+              "passed": true,
+              "fields": {
+                "hidden": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 98
+                },
+                "cells": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 18
+                },
+                "weights": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "environment": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 69
+                },
+                "events": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "parents": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "actions": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 14
+                },
+                "genotype": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "work": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 2
+                },
+                "ids": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "lineage": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "heat": {
+                  "passed": true,
+                  "maxabs": 4.76837158203125e-07,
+                  "different": 61
+                },
+                "generation": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "scratch": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 67
+                }
+              }
+            }
+          },
+          {
+            "step": 130,
+            "comparison": {
+              "passed": true,
+              "fields": {
+                "hidden": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 101
+                },
+                "cells": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 18
+                },
+                "weights": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "environment": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 72
+                },
+                "events": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "parents": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "actions": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 10
+                },
+                "genotype": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "work": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 2
+                },
+                "ids": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "lineage": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "heat": {
+                  "passed": true,
+                  "maxabs": 4.76837158203125e-07,
+                  "different": 61
+                },
+                "generation": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "scratch": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 75
+                }
+              }
+            }
+          },
+          {
+            "step": 140,
+            "comparison": {
+              "passed": true,
+              "fields": {
+                "hidden": {
+                  "passed": true,
+                  "maxabs": 8.940696716308594e-08,
+                  "different": 95
+                },
+                "cells": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 18
+                },
+                "weights": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "environment": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 63
+                },
+                "events": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "parents": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "actions": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 15
+                },
+                "genotype": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "work": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 2
+                },
+                "ids": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "lineage": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "heat": {
+                  "passed": true,
+                  "maxabs": 4.76837158203125e-07,
+                  "different": 61
+                },
+                "generation": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "scratch": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 64
+                }
+              }
+            }
+          },
+          {
+            "step": 150,
+            "comparison": {
+              "passed": true,
+              "fields": {
+                "hidden": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 105
+                },
+                "cells": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 18
+                },
+                "weights": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "environment": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 63
+                },
+                "events": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "parents": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "actions": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 15
+                },
+                "genotype": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "work": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 2
+                },
+                "ids": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "lineage": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "heat": {
+                  "passed": true,
+                  "maxabs": 4.76837158203125e-07,
+                  "different": 61
+                },
+                "generation": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "scratch": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 61
+                }
+              }
+            }
+          },
+          {
+            "step": 160,
+            "comparison": {
+              "passed": true,
+              "fields": {
+                "hidden": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 101
+                },
+                "cells": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 18
+                },
+                "weights": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "environment": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 58
+                },
+                "events": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "parents": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "actions": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 11
+                },
+                "genotype": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "work": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 2
+                },
+                "ids": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "lineage": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "heat": {
+                  "passed": true,
+                  "maxabs": 4.76837158203125e-07,
+                  "different": 61
+                },
+                "generation": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "scratch": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 58
+                }
+              }
+            }
+          },
+          {
+            "step": 170,
+            "comparison": {
+              "passed": true,
+              "fields": {
+                "hidden": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 106
+                },
+                "cells": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 18
+                },
+                "weights": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "environment": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 60
+                },
+                "events": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "parents": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "actions": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 10
+                },
+                "genotype": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "work": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 2
+                },
+                "ids": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "lineage": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "heat": {
+                  "passed": true,
+                  "maxabs": 4.76837158203125e-07,
+                  "different": 61
+                },
+                "generation": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "scratch": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 60
+                }
+              }
+            }
+          },
+          {
+            "step": 180,
+            "comparison": {
+              "passed": true,
+              "fields": {
+                "hidden": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 96
+                },
+                "cells": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 18
+                },
+                "weights": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "environment": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 57
+                },
+                "events": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "parents": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "actions": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 9
+                },
+                "genotype": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "work": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 3
+                },
+                "ids": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "lineage": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "heat": {
+                  "passed": true,
+                  "maxabs": 4.76837158203125e-07,
+                  "different": 61
+                },
+                "generation": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "scratch": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 59
+                }
+              }
+            }
+          },
+          {
+            "step": 190,
+            "comparison": {
+              "passed": true,
+              "fields": {
+                "hidden": {
+                  "passed": true,
+                  "maxabs": 1.043081283569336e-07,
+                  "different": 83
+                },
+                "cells": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 18
+                },
+                "weights": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "environment": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 51
+                },
+                "events": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "parents": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "actions": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 11
+                },
+                "genotype": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "work": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 3
+                },
+                "ids": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "lineage": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "heat": {
+                  "passed": true,
+                  "maxabs": 4.76837158203125e-07,
+                  "different": 60
+                },
+                "generation": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "scratch": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 51
+                }
+              }
+            }
+          },
+          {
+            "step": 200,
+            "comparison": {
+              "passed": true,
+              "fields": {
+                "hidden": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 90
+                },
+                "cells": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 18
+                },
+                "weights": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "environment": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 53
+                },
+                "events": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "parents": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "actions": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 10
+                },
+                "genotype": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "work": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 3
+                },
+                "ids": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "lineage": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "heat": {
+                  "passed": true,
+                  "maxabs": 4.76837158203125e-07,
+                  "different": 60
+                },
+                "generation": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "scratch": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 53
+                }
+              }
+            }
+          }
+        ],
+        "exact_restore": {
+          "passed": true,
+          "fields": {
+            "hidden": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "cells": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "weights": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "environment": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "events": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "parents": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "actions": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "genotype": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "work": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "ids": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "lineage": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "heat": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "generation": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            }
+          }
+        },
+        "exact_continuation": {
+          "passed": true,
+          "fields": {
+            "hidden": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "cells": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "weights": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "environment": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "events": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "parents": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "actions": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "genotype": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "work": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "ids": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "lineage": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "heat": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "generation": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "scratch": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            }
+          }
+        },
+        "alias_rejected": true,
+        "bad_dt_rejected": true,
+        "checkpoint_clobber_rejected": true,
+        "source_rejected": true,
+        "shared_source_rejected": true
+      },
+      {
+        "dimensions": [
+          4,
+          4,
+          4
+        ],
+        "passed": true,
+        "initial": {
+          "time": 0,
+          "tick": 0,
+          "population": 14,
+          "births": 0,
+          "deaths": 0,
+          "hops": 0,
+          "mutations": 0,
+          "blocked_births": 0,
+          "material": 1098.880001425743,
+          "potential": 3700.479999899864,
+          "heat": 0,
+          "energy_accounted": 3700.479999899864,
+          "precursor": 38.400001525878906,
+          "biomass": 4.479999899864197,
+          "matrix": 0,
+          "spent": 0,
+          "fuel": [
+            16,
+            16
+          ],
+          "reserve": [
+            512,
+            512
+          ],
+          "work": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "unique_genotypes": 4,
+          "effective_genotypes": 3.454436655786227,
+          "founder_lineages": 14,
+          "max_generation": 0,
+          "minimum_physical": 0,
+          "capacity_excess": -0.88000005,
+          "hidden_maxabs": 0,
+          "finite": true,
+          "resident_bytes": 50944,
+          "hypothetical_per_voxel_genome_bytes": 39424,
+          "shared_genotype_bytes": 39424
+        },
+        "final": {
+          "time": 20.000000298023224,
+          "tick": 200,
+          "population": 64,
+          "births": 50,
+          "deaths": 0,
+          "hops": 28,
+          "mutations": 2,
+          "blocked_births": 96,
+          "material": 1098.8799982552882,
+          "potential": 3599.9429743885994,
+          "heat": 100.53702557128418,
+          "energy_accounted": 3700.4799999598836,
+          "precursor": 0.1439888214226812,
+          "biomass": 36.739216297864914,
+          "matrix": 5.996794745326042,
+          "spent": 47.46917426586151,
+          "fuel": [
+            40.14875739812851,
+            46.78685188293457
+          ],
+          "reserve": [
+            460.797607421875,
+            460.797607421875
+          ],
+          "work": [
+            18.886511594057083,
+            14.54375547170639,
+            4.095351606607437,
+            0.6999937295913696,
+            3.0000030398368835
+          ],
+          "unique_genotypes": 6,
+          "effective_genotypes": 3.983191141659783,
+          "founder_lineages": 14,
+          "max_generation": 4,
+          "minimum_physical": 0.0015090259,
+          "capacity_excess": -0.00051677227,
+          "hidden_maxabs": 0.8913872,
+          "finite": true,
+          "resident_bytes": 50944,
+          "hypothetical_per_voxel_genome_bytes": 39424,
+          "shared_genotype_bytes": 39424
+        },
+        "comparisons": [
+          {
+            "step": 10,
+            "comparison": {
+              "passed": true,
+              "fields": {
+                "hidden": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 14
+                },
+                "cells": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "weights": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "environment": {
+                  "passed": true,
+                  "maxabs": 2.9802322387695312e-08,
+                  "different": 5
+                },
+                "events": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "parents": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "actions": {
+                  "passed": true,
+                  "maxabs": 2.9802322387695312e-08,
+                  "different": 1
+                },
+                "genotype": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "work": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "ids": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "lineage": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "heat": {
+                  "passed": true,
+                  "maxabs": 3.725290298461914e-09,
+                  "different": 4
+                },
+                "generation": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "scratch": {
+                  "passed": true,
+                  "maxabs": 2.9802322387695312e-08,
+                  "different": 5
+                }
+              }
+            }
+          },
+          {
+            "step": 20,
+            "comparison": {
+              "passed": true,
+              "fields": {
+                "hidden": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 25
+                },
+                "cells": {
+                  "passed": true,
+                  "maxabs": 2.9802322387695312e-08,
+                  "different": 2
+                },
+                "weights": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "environment": {
+                  "passed": true,
+                  "maxabs": 2.9802322387695312e-08,
+                  "different": 8
+                },
+                "events": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "parents": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "actions": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 3
+                },
+                "genotype": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "work": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "ids": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "lineage": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "heat": {
+                  "passed": true,
+                  "maxabs": 7.450580596923828e-09,
+                  "different": 12
+                },
+                "generation": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "scratch": {
+                  "passed": true,
+                  "maxabs": 2.9802322387695312e-08,
+                  "different": 5
+                }
+              }
+            }
+          },
+          {
+            "step": 30,
+            "comparison": {
+              "passed": true,
+              "fields": {
+                "hidden": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 29
+                },
+                "cells": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 6
+                },
+                "weights": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "environment": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 17
+                },
+                "events": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "parents": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "actions": {
+                  "passed": true,
+                  "maxabs": 2.9802322387695312e-08,
+                  "different": 1
+                },
+                "genotype": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "work": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "ids": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "lineage": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "heat": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 18
+                },
+                "generation": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "scratch": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 17
+                }
+              }
+            }
+          },
+          {
+            "step": 40,
+            "comparison": {
+              "passed": true,
+              "fields": {
+                "hidden": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 43
+                },
+                "cells": {
+                  "passed": true,
+                  "maxabs": 1.4901161193847656e-07,
+                  "different": 5
+                },
+                "weights": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "environment": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 21
+                },
+                "events": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "parents": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "actions": {
+                  "passed": true,
+                  "maxabs": 2.9802322387695312e-08,
+                  "different": 4
+                },
+                "genotype": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "work": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "ids": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "lineage": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "heat": {
+                  "passed": true,
+                  "maxabs": 4.7497451305389404e-08,
+                  "different": 22
+                },
+                "generation": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "scratch": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 20
+                }
+              }
+            }
+          },
+          {
+            "step": 50,
+            "comparison": {
+              "passed": true,
+              "fields": {
+                "hidden": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 42
+                },
+                "cells": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 6
+                },
+                "weights": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "environment": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 34
+                },
+                "events": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "parents": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "actions": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 7
+                },
+                "genotype": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "work": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 1
+                },
+                "ids": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "lineage": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "heat": {
+                  "passed": true,
+                  "maxabs": 1.2014061212539673e-07,
+                  "different": 30
+                },
+                "generation": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "scratch": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 32
+                }
+              }
+            }
+          },
+          {
+            "step": 60,
+            "comparison": {
+              "passed": true,
+              "fields": {
+                "hidden": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 70
+                },
+                "cells": {
+                  "passed": true,
+                  "maxabs": 3.5762786865234375e-07,
+                  "different": 8
+                },
+                "weights": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "environment": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 42
+                },
+                "events": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "parents": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "actions": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 8
+                },
+                "genotype": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "work": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 2
+                },
+                "ids": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "lineage": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "heat": {
+                  "passed": true,
+                  "maxabs": 3.5762786865234375e-07,
+                  "different": 44
+                },
+                "generation": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "scratch": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 37
+                }
+              }
+            }
+          },
+          {
+            "step": 70,
+            "comparison": {
+              "passed": true,
+              "fields": {
+                "hidden": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 74
+                },
+                "cells": {
+                  "passed": true,
+                  "maxabs": 3.5762786865234375e-07,
+                  "different": 10
+                },
+                "weights": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "environment": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 58
+                },
+                "events": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "parents": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "actions": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 19
+                },
+                "genotype": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "work": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 2
+                },
+                "ids": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "lineage": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "heat": {
+                  "passed": true,
+                  "maxabs": 3.5762786865234375e-07,
+                  "different": 55
+                },
+                "generation": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "scratch": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 58
+                }
+              }
+            }
+          },
+          {
+            "step": 80,
+            "comparison": {
+              "passed": true,
+              "fields": {
+                "hidden": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 75
+                },
+                "cells": {
+                  "passed": true,
+                  "maxabs": 4.76837158203125e-07,
+                  "different": 9
+                },
+                "weights": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "environment": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 68
+                },
+                "events": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "parents": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "actions": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 10
+                },
+                "genotype": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "work": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 4
+                },
+                "ids": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "lineage": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "heat": {
+                  "passed": true,
+                  "maxabs": 3.5762786865234375e-07,
+                  "different": 58
+                },
+                "generation": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "scratch": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 68
+                }
+              }
+            }
+          },
+          {
+            "step": 90,
+            "comparison": {
+              "passed": true,
+              "fields": {
+                "hidden": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 87
+                },
+                "cells": {
+                  "passed": true,
+                  "maxabs": 4.76837158203125e-07,
+                  "different": 10
+                },
+                "weights": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "environment": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 72
+                },
+                "events": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "parents": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "actions": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 13
+                },
+                "genotype": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "work": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 4
+                },
+                "ids": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "lineage": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "heat": {
+                  "passed": true,
+                  "maxabs": 3.5762786865234375e-07,
+                  "different": 61
+                },
+                "generation": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "scratch": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 71
+                }
+              }
+            }
+          },
+          {
+            "step": 100,
+            "comparison": {
+              "passed": true,
+              "fields": {
+                "hidden": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 77
+                },
+                "cells": {
+                  "passed": true,
+                  "maxabs": 4.76837158203125e-07,
+                  "different": 12
+                },
+                "weights": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "environment": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 83
+                },
+                "events": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "parents": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "actions": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 14
+                },
+                "genotype": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "work": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 5
+                },
+                "ids": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "lineage": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "heat": {
+                  "passed": true,
+                  "maxabs": 4.76837158203125e-07,
+                  "different": 64
+                },
+                "generation": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "scratch": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 81
+                }
+              }
+            }
+          },
+          {
+            "step": 110,
+            "comparison": {
+              "passed": true,
+              "fields": {
+                "hidden": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 76
+                },
+                "cells": {
+                  "passed": true,
+                  "maxabs": 4.76837158203125e-07,
+                  "different": 12
+                },
+                "weights": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "environment": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 73
+                },
+                "events": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "parents": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "actions": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 12
+                },
+                "genotype": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "work": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 6
+                },
+                "ids": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "lineage": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "heat": {
+                  "passed": true,
+                  "maxabs": 4.76837158203125e-07,
+                  "different": 64
+                },
+                "generation": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "scratch": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 73
+                }
+              }
+            }
+          },
+          {
+            "step": 120,
+            "comparison": {
+              "passed": true,
+              "fields": {
+                "hidden": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 77
+                },
+                "cells": {
+                  "passed": true,
+                  "maxabs": 4.76837158203125e-07,
+                  "different": 13
+                },
+                "weights": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "environment": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 63
+                },
+                "events": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "parents": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "actions": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 13
+                },
+                "genotype": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "work": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 6
+                },
+                "ids": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "lineage": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "heat": {
+                  "passed": true,
+                  "maxabs": 4.76837158203125e-07,
+                  "different": 64
+                },
+                "generation": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "scratch": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 68
+                }
+              }
+            }
+          },
+          {
+            "step": 130,
+            "comparison": {
+              "passed": true,
+              "fields": {
+                "hidden": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 83
+                },
+                "cells": {
+                  "passed": true,
+                  "maxabs": 4.76837158203125e-07,
+                  "different": 14
+                },
+                "weights": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "environment": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 66
+                },
+                "events": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "parents": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "actions": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 16
+                },
+                "genotype": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "work": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 6
+                },
+                "ids": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "lineage": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "heat": {
+                  "passed": true,
+                  "maxabs": 4.76837158203125e-07,
+                  "different": 64
+                },
+                "generation": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "scratch": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 70
+                }
+              }
+            }
+          },
+          {
+            "step": 140,
+            "comparison": {
+              "passed": true,
+              "fields": {
+                "hidden": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 81
+                },
+                "cells": {
+                  "passed": true,
+                  "maxabs": 4.76837158203125e-07,
+                  "different": 12
+                },
+                "weights": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "environment": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 58
+                },
+                "events": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "parents": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "actions": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 11
+                },
+                "genotype": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "work": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 6
+                },
+                "ids": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "lineage": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "heat": {
+                  "passed": true,
+                  "maxabs": 4.76837158203125e-07,
+                  "different": 64
+                },
+                "generation": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "scratch": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 55
+                }
+              }
+            }
+          },
+          {
+            "step": 150,
+            "comparison": {
+              "passed": true,
+              "fields": {
+                "hidden": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 102
+                },
+                "cells": {
+                  "passed": true,
+                  "maxabs": 4.76837158203125e-07,
+                  "different": 14
+                },
+                "weights": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "environment": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 54
+                },
+                "events": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "parents": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "actions": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 14
+                },
+                "genotype": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "work": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 6
+                },
+                "ids": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "lineage": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "heat": {
+                  "passed": true,
+                  "maxabs": 4.76837158203125e-07,
+                  "different": 65
+                },
+                "generation": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "scratch": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 54
+                }
+              }
+            }
+          },
+          {
+            "step": 160,
+            "comparison": {
+              "passed": true,
+              "fields": {
+                "hidden": {
+                  "passed": true,
+                  "maxabs": 1.4901161193847656e-07,
+                  "different": 107
+                },
+                "cells": {
+                  "passed": true,
+                  "maxabs": 4.76837158203125e-07,
+                  "different": 16
+                },
+                "weights": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "environment": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 56
+                },
+                "events": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "parents": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "actions": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 13
+                },
+                "genotype": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "work": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 6
+                },
+                "ids": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "lineage": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "heat": {
+                  "passed": true,
+                  "maxabs": 4.76837158203125e-07,
+                  "different": 66
+                },
+                "generation": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "scratch": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 57
+                }
+              }
+            }
+          },
+          {
+            "step": 170,
+            "comparison": {
+              "passed": true,
+              "fields": {
+                "hidden": {
+                  "passed": true,
+                  "maxabs": 1.7881393432617188e-07,
+                  "different": 100
+                },
+                "cells": {
+                  "passed": true,
+                  "maxabs": 4.76837158203125e-07,
+                  "different": 17
+                },
+                "weights": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "environment": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 55
+                },
+                "events": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "parents": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "actions": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 18
+                },
+                "genotype": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "work": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 6
+                },
+                "ids": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "lineage": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "heat": {
+                  "passed": true,
+                  "maxabs": 4.76837158203125e-07,
+                  "different": 66
+                },
+                "generation": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "scratch": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 54
+                }
+              }
+            }
+          },
+          {
+            "step": 180,
+            "comparison": {
+              "passed": true,
+              "fields": {
+                "hidden": {
+                  "passed": true,
+                  "maxabs": 1.4901161193847656e-07,
+                  "different": 99
+                },
+                "cells": {
+                  "passed": true,
+                  "maxabs": 4.76837158203125e-07,
+                  "different": 18
+                },
+                "weights": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "environment": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 51
+                },
+                "events": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "parents": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "actions": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 11
+                },
+                "genotype": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "work": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 6
+                },
+                "ids": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "lineage": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "heat": {
+                  "passed": true,
+                  "maxabs": 4.76837158203125e-07,
+                  "different": 66
+                },
+                "generation": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "scratch": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 53
+                }
+              }
+            }
+          },
+          {
+            "step": 190,
+            "comparison": {
+              "passed": true,
+              "fields": {
+                "hidden": {
+                  "passed": true,
+                  "maxabs": 1.6391277313232422e-07,
+                  "different": 89
+                },
+                "cells": {
+                  "passed": true,
+                  "maxabs": 3.5762786865234375e-07,
+                  "different": 18
+                },
+                "weights": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "environment": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 55
+                },
+                "events": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "parents": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "actions": {
+                  "passed": true,
+                  "maxabs": 1.1920928955078125e-07,
+                  "different": 15
+                },
+                "genotype": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "work": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 6
+                },
+                "ids": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "lineage": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "heat": {
+                  "passed": true,
+                  "maxabs": 4.76837158203125e-07,
+                  "different": 66
+                },
+                "generation": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "scratch": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 54
+                }
+              }
+            }
+          },
+          {
+            "step": 200,
+            "comparison": {
+              "passed": true,
+              "fields": {
+                "hidden": {
+                  "passed": true,
+                  "maxabs": 1.6391277313232422e-07,
+                  "different": 95
+                },
+                "cells": {
+                  "passed": true,
+                  "maxabs": 4.76837158203125e-07,
+                  "different": 16
+                },
+                "weights": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "environment": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 46
+                },
+                "events": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "parents": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "actions": {
+                  "passed": true,
+                  "maxabs": 5.960464477539063e-08,
+                  "different": 10
+                },
+                "genotype": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "work": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 6
+                },
+                "ids": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "lineage": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "heat": {
+                  "passed": true,
+                  "maxabs": 4.76837158203125e-07,
+                  "different": 65
+                },
+                "generation": {
+                  "passed": true,
+                  "maxabs": 0,
+                  "different": 0
+                },
+                "scratch": {
+                  "passed": true,
+                  "maxabs": 2.384185791015625e-07,
+                  "different": 46
+                }
+              }
+            }
+          }
+        ],
+        "exact_restore": {
+          "passed": true,
+          "fields": {
+            "hidden": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "cells": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "weights": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "environment": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "events": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "parents": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "actions": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "genotype": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "work": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "ids": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "lineage": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "heat": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "generation": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            }
+          }
+        },
+        "exact_continuation": {
+          "passed": true,
+          "fields": {
+            "hidden": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "cells": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "weights": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "environment": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "events": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "parents": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "actions": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "genotype": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "work": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "ids": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "lineage": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "heat": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "generation": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            },
+            "scratch": {
+              "passed": true,
+              "maxabs": 0,
+              "different": 0
+            }
+          }
+        },
+        "alias_rejected": true,
+        "bad_dt_rejected": true,
+        "checkpoint_clobber_rejected": true,
+        "source_rejected": true,
+        "shared_source_rejected": true
+      }
+    ]
+  },
+  "benchmark": {
+    "passed": false,
+    "provenance": {
+      "model_sha256": "e6d6cab2b0624965a5e7ec66b7f9f9ce44a01f9ded5653db660de61368cde9b5",
+      "gate_sha256": "de586b0f57aa153ee78d30b562cce296568d0d7b61cdb61bd5ac1f81d74e1119",
+      "julia": "1.12.4",
+      "shared_sources": {
+        "writing.jl": "78fba7cd46f03749bdc56547b7ce5622f7ba3ea42cc34801829345dae3975e05",
+        "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+        "cellular.jl": "97eda8b05c7d51883bc52dc7ecc985b882b60920296c79b4f2903ed358dc0131",
+        "matrix_mechanics.jl": "e232c0d13449324aabe6c299ee1de8ba1d961777e363bc328d44fa5af8de03ed",
+        "cellular_transport.jl": "fc8bfb0df1948b3869afae0a06fb5cc23bb87778452a31ffc3d27954eeb87aa2",
+        "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+        "cellular_arena.jl": "2ef965717c99cd0c46a8acd9ceb7da26232201cb18547bd23712e989688429e2",
+        "experiments.jl": "5697958abac5f36713418d5f9d94f274fb0a51b86ed1a84b3f58b68cba1e42d1",
+        "metabolic_ecology.jl": "2f599a1d6ea0a5552a594113d57e238e4c6ff3c1fd8d74de5a51f83a77179bb1",
+        "neural_ecology.jl": "ed0496adb31ce4511f8bc0d5343ff843c410c39c51d30c165b3cf5eac1135df2",
+        "compartments.jl": "e7c55ce4e0f4a8548c078c9d160815b5eaeb846a3765aad89a875f166b5005e5",
+        "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+        "catalytic_habitat.jl": "9a69b5ec394bc6dcee988d68f6463fc7c72bfa273e89bbd6e46513d392468eb1",
+        "device_cellular_support.jl": "5a767b83c2c912d8706468ec7c5b86e56cf99430b2a23dfd3a7f3ee8f21bf55b",
+        "arena.jl": "75acccd7b144e1512984c8ececb368d5fa3f03db08daa40e4b8f8f027198c16f",
+        "catalytic_arena.jl": "4a359bb5cfee951c898aca039efe07a4558797fce5544876158791139b105524",
+        "recurrent_material.jl": "e9457d0d6e31f74950fa4be8ef84b138b020c0de7fc4b95c9a7f3cd5db148347",
+        "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+        "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+        "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b",
+        "Interior.jl": "194971f1f1f6c5c044145238c12ed27dbe4975f9f60a67b5d2074aa8efbf9631",
+        "resources.jl": "859f6e04b456ceee051fd83214b37ca18418af09126960997b7d62d83c2dcab0",
+        "cellular_initialization.jl": "d76e4c791a2c56bc7fd651b1836e6879b9e27013566ce6d94a1d2f677f62e633",
+        "constructive_cells.jl": "000953e0da6de61574abaff6566790c051af13c320c6c53162598625b6b6bf27",
+        "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+        "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+        "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+        "implicit_phase.jl": "1fb617707591f89784b95171e0558065101b3d992f7b3eabd16a7bf01dca4ceb",
+        "device_cellular_protocol.jl": "5b5b8c4b945af6c9a6a2496dc115e83501cc3b1329f7c8b2abab71d175c22720",
+        "core.jl": "b4302b90eaeba213360e8a15ce8b7e4cb4c491606657e3e500d2fb8507753a52",
+        "neural_workspace.jl": "ecdd45856bc0b3c61708de90814d1abb33bc1232a0f9ff5785b32b9bc39a9139",
+        "device_habitat_kernels.jl": "f6ab9782cff0816919368d3d1f8c766af39f9eba3a0badd2636e50b55366ac42",
+        "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+        "device_resource_exchange.jl": "050991b42eceab1403c940e69b027d27106f966dfcc0cfbf215b5b5ff7221c18",
+        "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+        "device_cellular_initialization.jl": "b3c62d90bdd1c2340ae5097c2242a440b3ab7fc5204e57b18f087067b2c41bd7",
+        "cellular_storage.jl": "735c3281aca69158609392ef161397bec166d4a1698d7e741cd95b5a426cfaff",
+        "device_cellular_kernels.jl": "cf9ce3d4f193721b11ea7e005a9a06bb398a57bd211b9436f4876d3326a7e6d9",
+        "device_cellular_lifecycle.jl": "8826c577e960db6596cd923a591d806b185908a254c6cc0fb6b0eebb033a9629",
+        "device_cellular.jl": "db2277f6fa01f02fa5829e929ce3f8abf583cc598052f6cbb81113345cb6ff3d",
+        "device_cellular_checkpoint.jl": "10d83cb02df68183cc703c3fca152795a5685b8b90379c52b1856aae72fd6664",
+        "cellular_contacts.jl": "337247cbe0707778f15672385f2e33684cbb44535afc9580e3cf880c4089aafa",
+        "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+        "dose_writer.jl": "b8d1b4013921a3c82388ee87a7ede00b97964a1894062f2a07339f2c6be197eb",
+        "device_habitat.jl": "bbf706bf2b9d3e292a0e20207ff27b22fe3d70e294c8bebf76dc8f41179d6056",
+        "mechanics.jl": "a0370e4028aa859fb344829f0d387a62dd8defb77b25f4651f7c08b386324e45",
+        "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+        "device_habitat_sorption.jl": "f135e74e59959187e72725a45665ac5c67293b8305298c8d3ac4bdbb81e6ac93",
+        "sorptive_matrix.jl": "f5643e0c951c983a7d5864676156123db3181e05510335fcd618de105ff1f036"
+      },
+      "protocol": {
+        "float_atol": 0.0001,
+        "float_rtol": 0.0002,
+        "ledger_relative": 2e-05,
+        "capacity_atol": 2e-06,
+        "hidden_bound": 1.00001,
+        "dt": 0.1,
+        "parity_steps": 200,
+        "continuation_steps": 17,
+        "shapes": [
+          [
+            8,
+            8,
+            1
+          ],
+          [
+            4,
+            4,
+            4
+          ]
+        ],
+        "benchmark_shapes": [
+          [
+            32,
+            32,
+            32
+          ],
+          [
+            64,
+            64,
+            64
+          ]
+        ],
+        "warmup_steps": 128,
+        "benchmark_batch_steps": 128,
+        "benchmark_min_seconds": 3,
+        "benchmark_max_batches": 128,
+        "benchmark_repeats": 3,
+        "minimum_benchmark_occupancy": 0.5,
+        "benchmark_initial_occupancy": 0.65,
+        "benchmark_initial_mass": 0.7,
+        "benchmark_precursor": 2,
+        "benchmark_reserve": 1024,
+        "benchmark_construction": 0.006,
+        "benchmark_matrix_decay": 0.02
+      },
+      "backend_requested": "amd"
+    },
+    "rows": [
+      {
+        "dimensions": [
+          32,
+          32,
+          32
+        ],
+        "initial": {
+          "time": 12.800000190734863,
+          "tick": 128,
+          "population": 32768,
+          "births": 11516,
+          "deaths": 0,
+          "hops": 3034,
+          "mutations": 434,
+          "blocked_births": 2488,
+          "material": 67205660.39868233,
+          "potential": 234882411.95836487,
+          "heat": 70832.44371573254,
+          "energy_accounted": 234953244.4020806,
+          "precursor": 41095.09940814972,
+          "biomass": 39308.853855490685,
+          "matrix": 8.446121104352642,
+          "spent": 38097.0186342299,
+          "fuel": [
+            4938.140651214868,
+            7140.840012136847
+          ],
+          "reserve": [
+            33537536,
+            33537536
+          ],
+          "work": [
+            13939.701466053724,
+            8747.775633767247,
+            290.9081042408943,
+            108.77316527068615,
+            690.9603266716003
+          ],
+          "unique_genotypes": 106,
+          "effective_genotypes": 8.94748723005479,
+          "founder_lineages": 21252,
+          "max_generation": 4,
+          "minimum_physical": 0,
+          "capacity_excess": -6.198883e-05,
+          "hidden_maxabs": 0.98157626,
+          "finite": true,
+          "resident_bytes": 8421376,
+          "hypothetical_per_voxel_genome_bytes": 20185088,
+          "shared_genotype_bytes": 2523136
+        },
+        "samples": [
+          {
+            "repeat": 1,
+            "steps": 16384,
+            "seconds": 2.748213276999999,
+            "batches": 128,
+            "reached_minimum_duration": false,
+            "voxel_steps_per_second": 195352710.2474588,
+            "active_dense": true,
+            "statistics": {
+              "time": 1651.2000246047974,
+              "tick": 16512,
+              "population": 31786,
+              "births": 2183492,
+              "deaths": 2172958,
+              "hops": 542307,
+              "mutations": 87265,
+              "blocked_births": 84173,
+              "material": 67205668.19719425,
+              "potential": 222687569.92694014,
+              "heat": 12265674.249585012,
+              "energy_accounted": 234953244.17652515,
+              "precursor": 43904.36037015915,
+              "biomass": 36508.03957897425,
+              "matrix": 0,
+              "spent": 3383904.774131775,
+              "fuel": [
+                16412.248525708914,
+                975242.7745876312
+              ],
+              "reserve": [
+                31374848,
+                31374848
+              ],
+              "work": [
+                1819674.9167861938,
+                919117.0841350555,
+                37823.35057449341,
+                24306.551584899426,
+                131009.88644957542
+              ],
+              "unique_genotypes": 1119,
+              "effective_genotypes": 352.9384268080503,
+              "founder_lineages": 210,
+              "max_generation": 155,
+              "minimum_physical": 0,
+              "capacity_excess": -2.7537346e-05,
+              "hidden_maxabs": 0.9976724,
+              "finite": true,
+              "resident_bytes": 8421376,
+              "hypothetical_per_voxel_genome_bytes": 20185088,
+              "shared_genotype_bytes": 2523136
+            }
+          },
+          {
+            "repeat": 2,
+            "steps": 16384,
+            "seconds": 2.744394304,
+            "batches": 128,
+            "reached_minimum_duration": false,
+            "voxel_steps_per_second": 195624554.101975,
+            "active_dense": true,
+            "statistics": {
+              "time": 1651.2000246047974,
+              "tick": 16512,
+              "population": 31786,
+              "births": 2183492,
+              "deaths": 2172958,
+              "hops": 542307,
+              "mutations": 87265,
+              "blocked_births": 84173,
+              "material": 67205668.19719425,
+              "potential": 222687569.92694014,
+              "heat": 12265674.249585012,
+              "energy_accounted": 234953244.17652515,
+              "precursor": 43904.36037015915,
+              "biomass": 36508.03957897425,
+              "matrix": 0,
+              "spent": 3383904.774131775,
+              "fuel": [
+                16412.248525708914,
+                975242.7745876312
+              ],
+              "reserve": [
+                31374848,
+                31374848
+              ],
+              "work": [
+                1819674.9167861938,
+                919117.0841350555,
+                37823.35057449341,
+                24306.551584899426,
+                131009.88644957542
+              ],
+              "unique_genotypes": 1119,
+              "effective_genotypes": 352.9384268080503,
+              "founder_lineages": 210,
+              "max_generation": 155,
+              "minimum_physical": 0,
+              "capacity_excess": -2.7537346e-05,
+              "hidden_maxabs": 0.9976724,
+              "finite": true,
+              "resident_bytes": 8421376,
+              "hypothetical_per_voxel_genome_bytes": 20185088,
+              "shared_genotype_bytes": 2523136
+            }
+          },
+          {
+            "repeat": 3,
+            "steps": 16384,
+            "seconds": 2.742010043,
+            "batches": 128,
+            "reached_minimum_duration": false,
+            "voxel_steps_per_second": 195794655.5923683,
+            "active_dense": true,
+            "statistics": {
+              "time": 1651.2000246047974,
+              "tick": 16512,
+              "population": 31786,
+              "births": 2183492,
+              "deaths": 2172958,
+              "hops": 542307,
+              "mutations": 87265,
+              "blocked_births": 84173,
+              "material": 67205668.19719425,
+              "potential": 222687569.92694014,
+              "heat": 12265674.249585012,
+              "energy_accounted": 234953244.17652515,
+              "precursor": 43904.36037015915,
+              "biomass": 36508.03957897425,
+              "matrix": 0,
+              "spent": 3383904.774131775,
+              "fuel": [
+                16412.248525708914,
+                975242.7745876312
+              ],
+              "reserve": [
+                31374848,
+                31374848
+              ],
+              "work": [
+                1819674.9167861938,
+                919117.0841350555,
+                37823.35057449341,
+                24306.551584899426,
+                131009.88644957542
+              ],
+              "unique_genotypes": 1119,
+              "effective_genotypes": 352.9384268080503,
+              "founder_lineages": 210,
+              "max_generation": 155,
+              "minimum_physical": 0,
+              "capacity_excess": -2.7537346e-05,
+              "hidden_maxabs": 0.9976724,
+              "finite": true,
+              "resident_bytes": 8421376,
+              "hypothetical_per_voxel_genome_bytes": 20185088,
+              "shared_genotype_bytes": 2523136
+            }
+          }
+        ],
+        "resident_bytes": 8421376,
+        "sustained_duration_passed": false
+      },
+      {
+        "dimensions": [
+          64,
+          64,
+          64
+        ],
+        "initial": {
+          "time": 12.800000190734863,
+          "tick": 128,
+          "population": 262144,
+          "births": 91977,
+          "deaths": 0,
+          "hops": 23662,
+          "mutations": 3636,
+          "blocked_births": 19126,
+          "material": 537645388.8914949,
+          "potential": 1879059512.2753305,
+          "heat": 566548.6409378984,
+          "energy_accounted": 1879626060.9162683,
+          "precursor": 328866.48161423206,
+          "biomass": 314469.465803504,
+          "matrix": 68.94898225243378,
+          "spent": 304709.96894073486,
+          "fuel": [
+            39510.98094528355,
+            57187.04520891979
+          ],
+          "reserve": [
+            268300288,
+            268300288
+          ],
+          "work": [
+            111544.74544489384,
+            69945.39032964408,
+            2328.059957534075,
+            848.7620406895876,
+            5518.622601151466
+          ],
+          "unique_genotypes": 117,
+          "effective_genotypes": 9.019294430144447,
+          "founder_lineages": 170167,
+          "max_generation": 4,
+          "minimum_physical": 0,
+          "capacity_excess": -6.1273575e-05,
+          "hidden_maxabs": 0.98126405,
+          "finite": true,
+          "resident_bytes": 49709056,
+          "hypothetical_per_voxel_genome_bytes": 161480704,
+          "shared_genotype_bytes": 2523136
+        },
+        "samples": [
+          {
+            "repeat": 1,
+            "steps": 2944,
+            "seconds": 3.123648169,
+            "batches": 23,
+            "reached_minimum_duration": true,
+            "voxel_steps_per_second": 247067497.44068247,
+            "active_dense": true,
+            "statistics": {
+              "time": 307.2000045776367,
+              "tick": 3072,
+              "population": 261429,
+              "births": 3236402,
+              "deaths": 3145140,
+              "hops": 813057,
+              "mutations": 129371,
+              "blocked_births": 327647,
+              "material": 537645389.9301478,
+              "potential": 1861829966.6835246,
+              "heat": 17796094.718143605,
+              "energy_accounted": 1879626061.4016683,
+              "precursor": 331612.3701289296,
+              "biomass": 311792.5253607929,
+              "matrix": 7.97505781520158e-05,
+              "spent": 5040811.424746513,
+              "fuel": [
+                133858.35375209898,
+                1444467.2560796738
+              ],
+              "reserve": [
+                265191424,
+                265191424
+              ],
+              "work": [
+                2680720.6183958054,
+                1358257.955395937,
+                48842.78793042898,
+                33977.485698357224,
+                194184.5846388936
+              ],
+              "unique_genotypes": 1817,
+              "effective_genotypes": 118.86934883602626,
+              "founder_lineages": 10066,
+              "max_generation": 40,
+              "minimum_physical": 0,
+              "capacity_excess": -2.9921532e-05,
+              "hidden_maxabs": 0.9963843,
+              "finite": true,
+              "resident_bytes": 49709056,
+              "hypothetical_per_voxel_genome_bytes": 161480704,
+              "shared_genotype_bytes": 2523136
+            }
+          },
+          {
+            "repeat": 2,
+            "steps": 2944,
+            "seconds": 3.1282393140000004,
+            "batches": 23,
+            "reached_minimum_duration": true,
+            "voxel_steps_per_second": 246704890.04665706,
+            "active_dense": true,
+            "statistics": {
+              "time": 307.2000045776367,
+              "tick": 3072,
+              "population": 261429,
+              "births": 3236402,
+              "deaths": 3145140,
+              "hops": 813057,
+              "mutations": 129371,
+              "blocked_births": 327647,
+              "material": 537645389.9301478,
+              "potential": 1861829966.6835246,
+              "heat": 17796094.718143605,
+              "energy_accounted": 1879626061.4016683,
+              "precursor": 331612.3701289296,
+              "biomass": 311792.5253607929,
+              "matrix": 7.97505781520158e-05,
+              "spent": 5040811.424746513,
+              "fuel": [
+                133858.35375209898,
+                1444467.2560796738
+              ],
+              "reserve": [
+                265191424,
+                265191424
+              ],
+              "work": [
+                2680720.6183958054,
+                1358257.955395937,
+                48842.78793042898,
+                33977.485698357224,
+                194184.5846388936
+              ],
+              "unique_genotypes": 1817,
+              "effective_genotypes": 118.86934883602626,
+              "founder_lineages": 10066,
+              "max_generation": 40,
+              "minimum_physical": 0,
+              "capacity_excess": -2.9921532e-05,
+              "hidden_maxabs": 0.9963843,
+              "finite": true,
+              "resident_bytes": 49709056,
+              "hypothetical_per_voxel_genome_bytes": 161480704,
+              "shared_genotype_bytes": 2523136
+            }
+          },
+          {
+            "repeat": 3,
+            "steps": 2944,
+            "seconds": 3.1225123630000002,
+            "batches": 23,
+            "reached_minimum_duration": true,
+            "voxel_steps_per_second": 247157367.6200045,
+            "active_dense": true,
+            "statistics": {
+              "time": 307.2000045776367,
+              "tick": 3072,
+              "population": 261429,
+              "births": 3236402,
+              "deaths": 3145140,
+              "hops": 813057,
+              "mutations": 129371,
+              "blocked_births": 327647,
+              "material": 537645389.9301478,
+              "potential": 1861829966.6835246,
+              "heat": 17796094.718143605,
+              "energy_accounted": 1879626061.4016683,
+              "precursor": 331612.3701289296,
+              "biomass": 311792.5253607929,
+              "matrix": 7.97505781520158e-05,
+              "spent": 5040811.424746513,
+              "fuel": [
+                133858.35375209898,
+                1444467.2560796738
+              ],
+              "reserve": [
+                265191424,
+                265191424
+              ],
+              "work": [
+                2680720.6183958054,
+                1358257.955395937,
+                48842.78793042898,
+                33977.485698357224,
+                194184.5846388936
+              ],
+              "unique_genotypes": 1817,
+              "effective_genotypes": 118.86934883602626,
+              "founder_lineages": 10066,
+              "max_generation": 40,
+              "minimum_physical": 0,
+              "capacity_excess": -2.9921532e-05,
+              "hidden_maxabs": 0.9963843,
+              "finite": true,
+              "resident_bytes": 49709056,
+              "hypothetical_per_voxel_genome_bytes": 161480704,
+              "shared_genotype_bytes": 2523136
+            }
+          }
+        ],
+        "resident_bytes": 49709056,
+        "sustained_duration_passed": true
+      }
+    ]
+  },
+  "background_device_services": [
+    3377017,
+    3506212
+  ],
+  "utilization_snapshot_percent": 0,
+  "resource_journal": "Oct 15 16:50:19 hbox systemd[3727309]: Started run-u23653.scope - /home/hbox/bin/swarm-build taskset -c 10,11 timeout --signal=TERM --kill-after=15s 900 bash /othersys/tmp/intmat-lattice-amd-gate-20261015/run-body.sh.\nOct 15 16:51:04 hbox systemd[3727309]: run-u23653.scope: Consumed 59.831s CPU time, 1.1G memory peak.\n"
+}

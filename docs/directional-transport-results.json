@@ -1,0 +1,373 @@
+{
+  "scope": "local CPU numerical frontier; timings noisy, not GPU evidence",
+  "runtime": {
+    "julia": "1.12.4",
+    "threads": 1,
+    "backend": "CPU"
+  },
+  "source": {
+    "model": "db2277f6fa01f02fa5829e929ce3f8abf583cc598052f6cbb81113345cb6ff3d",
+    "initialization": "b3c62d90bdd1c2340ae5097c2242a440b3ab7fc5204e57b18f087067b2c41bd7",
+    "founder_initialization": "d76e4c791a2c56bc7fd651b1836e6879b9e27013566ce6d94a1d2f677f62e633",
+    "support": "5a767b83c2c912d8706468ec7c5b86e56cf99430b2a23dfd3a7f3ee8f21bf55b",
+    "lifecycle": "8826c577e960db6596cd923a591d806b185908a254c6cc0fb6b0eebb033a9629",
+    "resource": "050991b42eceab1403c940e69b027d27106f966dfcc0cfbf215b5b5ff7221c18",
+    "kernels": "cf9ce3d4f193721b11ea7e005a9a06bb398a57bd211b9436f4876d3326a7e6d9",
+    "checkpoint": "10d83cb02df68183cc703c3fca152795a5685b8b90379c52b1856aae72fd6664",
+    "protocol": "5b5b8c4b945af6c9a6a2496dc115e83501cc3b1329f7c8b2abab71d175c22720"
+  },
+  "habitat_source": {
+    "helper": "bbf706bf2b9d3e292a0e20207ff27b22fe3d70e294c8bebf76dc8f41179d6056",
+    "kernels": "f6ab9782cff0816919368d3d1f8c766af39f9eba3a0badd2636e50b55366ac42",
+    "sorption": "f135e74e59959187e72725a45665ac5c67293b8305298c8d3ac4bdbb81e6ac93"
+  },
+  "study_sha256": "8f21d0606a327b9d4f5d7e93e47bad7e7bf3ddfa68e2bfbedc9d5e6a29fa5595",
+  "raw": "outputs/directional-transport-cpu-20261015-repeat/results.json",
+  "tests": 52,
+  "recipe": [
+    24,
+    8,
+    64,
+    20,
+    0.01,
+    4
+  ],
+  "rows": [
+    {
+      "mode": "explicit",
+      "cycles": 1,
+      "field_relative_l2": 0,
+      "raw_relative_l2": 0,
+      "bound_relative_l2": 0,
+      "material_residual": 1.974330780285527e-05,
+      "potential_residual": 0.00011816869664471596,
+      "seconds": [
+        1.064017083,
+        0.30222275,
+        0.4281555
+      ]
+    },
+    {
+      "mode": "pairs",
+      "cycles": 1,
+      "field_relative_l2": 0.2291753157281591,
+      "raw_relative_l2": 0.21671907004079233,
+      "bound_relative_l2": 0.10369701993529878,
+      "material_residual": -2.4408506078543724e-06,
+      "potential_residual": -1.4616831322200596e-05,
+      "seconds": [
+        0.192631292,
+        0.053372875,
+        0.062534125
+      ]
+    },
+    {
+      "mode": "pairs",
+      "cycles": 2,
+      "field_relative_l2": 0.1517546063044681,
+      "raw_relative_l2": 0.15279416275091157,
+      "bound_relative_l2": 0.06796935656024894,
+      "material_residual": -8.409170959566836e-07,
+      "potential_residual": -4.976216587238014e-06,
+      "seconds": [
+        0.395385667,
+        0.089731666,
+        0.220967792
+      ]
+    },
+    {
+      "mode": "pairs",
+      "cycles": 4,
+      "field_relative_l2": 0.07161567147216205,
+      "raw_relative_l2": 0.07449157632709427,
+      "bound_relative_l2": 0.030681838600738188,
+      "material_residual": 1.6286912796203978e-06,
+      "potential_residual": 9.74418071564287e-06,
+      "seconds": [
+        0.256384958,
+        0.200352875,
+        0.390775792
+      ]
+    },
+    {
+      "mode": "lines",
+      "cycles": 1,
+      "field_relative_l2": 0.03728968394664066,
+      "raw_relative_l2": 0.022406989349774857,
+      "bound_relative_l2": 0.012267240723635942,
+      "material_residual": 3.838745669781929e-06,
+      "potential_residual": 2.3052736651152372e-05,
+      "seconds": [
+        0.040598667,
+        0.030044875,
+        0.0622975
+      ]
+    },
+    {
+      "mode": "lines",
+      "cycles": 2,
+      "field_relative_l2": 0.018422450216515344,
+      "raw_relative_l2": 0.011934463893787123,
+      "bound_relative_l2": 0.005003951802604348,
+      "material_residual": 9.073255569091998e-06,
+      "potential_residual": 5.43547939741984e-05,
+      "seconds": [
+        0.075664833,
+        0.0537645,
+        0.095263
+      ]
+    },
+    {
+      "mode": "lines",
+      "cycles": 4,
+      "field_relative_l2": 0.009492819600103224,
+      "raw_relative_l2": 0.006342072797799071,
+      "bound_relative_l2": 0.0022954458979706463,
+      "material_residual": 9.89595400824328e-06,
+      "potential_residual": 5.931580381002277e-05,
+      "seconds": [
+        0.126488042,
+        0.153065541,
+        0.125526209
+      ]
+    }
+  ],
+  "hbox24": {
+    "source_base": "df33fa7",
+    "runtime": {
+      "julia": "1.12.4",
+      "threads": 1,
+      "backend": "CPU"
+    },
+    "source": {
+      "model": "db2277f6fa01f02fa5829e929ce3f8abf583cc598052f6cbb81113345cb6ff3d",
+      "initialization": "b3c62d90bdd1c2340ae5097c2242a440b3ab7fc5204e57b18f087067b2c41bd7",
+      "founder_initialization": "d76e4c791a2c56bc7fd651b1836e6879b9e27013566ce6d94a1d2f677f62e633",
+      "support": "5a767b83c2c912d8706468ec7c5b86e56cf99430b2a23dfd3a7f3ee8f21bf55b",
+      "lifecycle": "8826c577e960db6596cd923a591d806b185908a254c6cc0fb6b0eebb033a9629",
+      "resource": "050991b42eceab1403c940e69b027d27106f966dfcc0cfbf215b5b5ff7221c18",
+      "kernels": "cf9ce3d4f193721b11ea7e005a9a06bb398a57bd211b9436f4876d3326a7e6d9",
+      "checkpoint": "10d83cb02df68183cc703c3fca152795a5685b8b90379c52b1856aae72fd6664",
+      "protocol": "5b5b8c4b945af6c9a6a2496dc115e83501cc3b1329f7c8b2abab71d175c22720"
+    },
+    "habitat_source": {
+      "helper": "bbf706bf2b9d3e292a0e20207ff27b22fe3d70e294c8bebf76dc8f41179d6056",
+      "kernels": "f6ab9782cff0816919368d3d1f8c766af39f9eba3a0badd2636e50b55366ac42",
+      "sorption": "f135e74e59959187e72725a45665ac5c67293b8305298c8d3ac4bdbb81e6ac93"
+    },
+    "study_sha256": "8f21d0606a327b9d4f5d7e93e47bad7e7bf3ddfa68e2bfbedc9d5e6a29fa5595",
+    "driver_sha256": "401b2e86452977f313e6db59cad36dd10db6ae975150d95b124e96d23fe6fe6c",
+    "controls": "CPU8,9;Julia1/GC1/BLAS1;8GiB noSwap nice15;noGPU",
+    "raw": "outputs/directional-transport-hbox-df33fa7/24-results.json",
+    "recipe": [
+      24,
+      8,
+      64,
+      20,
+      0.01,
+      4
+    ],
+    "rows": [
+      {
+        "mode": "explicit",
+        "cycles": 1,
+        "field_relative_l2": 0,
+        "raw_relative_l2": 0,
+        "bound_relative_l2": 0,
+        "material_residual": 1.974330780285527e-05,
+        "potential_residual": 0.00011816869664471596,
+        "seconds": [
+          0.379743815,
+          0.379862029,
+          0.380161317
+        ],
+        "median_seconds": 0.379862029,
+        "speedup_ratio_of_medians": 1.0
+      },
+      {
+        "mode": "pairs",
+        "cycles": 1,
+        "field_relative_l2": 0.22917531572815902,
+        "raw_relative_l2": 0.21671907004079233,
+        "bound_relative_l2": 0.10369701993529878,
+        "material_residual": -2.4408506078543724e-06,
+        "potential_residual": -1.4616831322200596e-05,
+        "seconds": [
+          0.060891705,
+          0.059550526,
+          0.05932158
+        ],
+        "median_seconds": 0.059550526,
+        "speedup_ratio_of_medians": 6.378819038474992
+      },
+      {
+        "mode": "pairs",
+        "cycles": 2,
+        "field_relative_l2": 0.15175460630446805,
+        "raw_relative_l2": 0.15279416275091157,
+        "bound_relative_l2": 0.06796935656024894,
+        "material_residual": -8.409170959566836e-07,
+        "potential_residual": -4.976216587238014e-06,
+        "seconds": [
+          0.11256617,
+          0.107712465,
+          0.107914736
+        ],
+        "median_seconds": 0.107914736,
+        "speedup_ratio_of_medians": 3.520019999863596
+      },
+      {
+        "mode": "pairs",
+        "cycles": 4,
+        "field_relative_l2": 0.07161567147216204,
+        "raw_relative_l2": 0.07449157632709427,
+        "bound_relative_l2": 0.030681838600738188,
+        "material_residual": 1.6286912796203978e-06,
+        "potential_residual": 9.74418071564287e-06,
+        "seconds": [
+          0.204454778,
+          0.202992527,
+          0.203991962
+        ],
+        "median_seconds": 0.203991962,
+        "speedup_ratio_of_medians": 1.8621421416594837
+      },
+      {
+        "mode": "lines",
+        "cycles": 1,
+        "field_relative_l2": 0.037289683946640645,
+        "raw_relative_l2": 0.022406989349774857,
+        "bound_relative_l2": 0.012267240723635942,
+        "material_residual": 3.838745669781929e-06,
+        "potential_residual": 2.3052736651152372e-05,
+        "seconds": [
+          0.023071278,
+          0.023624755,
+          0.023080598
+        ],
+        "median_seconds": 0.023080598,
+        "speedup_ratio_of_medians": 16.458067031018867
+      },
+      {
+        "mode": "lines",
+        "cycles": 2,
+        "field_relative_l2": 0.018422450216515337,
+        "raw_relative_l2": 0.011934463893787123,
+        "bound_relative_l2": 0.005003951802604348,
+        "material_residual": 9.073255569091998e-06,
+        "potential_residual": 5.43547939741984e-05,
+        "seconds": [
+          0.034947172,
+          0.034688122,
+          0.035129484
+        ],
+        "median_seconds": 0.034947172,
+        "speedup_ratio_of_medians": 10.869607102972452
+      },
+      {
+        "mode": "lines",
+        "cycles": 4,
+        "field_relative_l2": 0.00949281960010322,
+        "raw_relative_l2": 0.006342072797799071,
+        "bound_relative_l2": 0.0022954458979706463,
+        "material_residual": 9.89595400824328e-06,
+        "potential_residual": 5.931580381002277e-05,
+        "seconds": [
+          0.057324456,
+          0.057455411,
+          0.057453723
+        ],
+        "median_seconds": 0.057453723,
+        "speedup_ratio_of_medians": 6.611617301110321
+      }
+    ]
+  },
+  "hbox64": {
+    "source_base": "df33fa7",
+    "runtime": {
+      "julia": "1.12.4",
+      "threads": 1,
+      "backend": "CPU"
+    },
+    "source": {
+      "model": "db2277f6fa01f02fa5829e929ce3f8abf583cc598052f6cbb81113345cb6ff3d",
+      "initialization": "b3c62d90bdd1c2340ae5097c2242a440b3ab7fc5204e57b18f087067b2c41bd7",
+      "founder_initialization": "d76e4c791a2c56bc7fd651b1836e6879b9e27013566ce6d94a1d2f677f62e633",
+      "support": "5a767b83c2c912d8706468ec7c5b86e56cf99430b2a23dfd3a7f3ee8f21bf55b",
+      "lifecycle": "8826c577e960db6596cd923a591d806b185908a254c6cc0fb6b0eebb033a9629",
+      "resource": "050991b42eceab1403c940e69b027d27106f966dfcc0cfbf215b5b5ff7221c18",
+      "kernels": "cf9ce3d4f193721b11ea7e005a9a06bb398a57bd211b9436f4876d3326a7e6d9",
+      "checkpoint": "10d83cb02df68183cc703c3fca152795a5685b8b90379c52b1856aae72fd6664",
+      "protocol": "5b5b8c4b945af6c9a6a2496dc115e83501cc3b1329f7c8b2abab71d175c22720"
+    },
+    "habitat_source": {
+      "helper": "bbf706bf2b9d3e292a0e20207ff27b22fe3d70e294c8bebf76dc8f41179d6056",
+      "kernels": "f6ab9782cff0816919368d3d1f8c766af39f9eba3a0badd2636e50b55366ac42",
+      "sorption": "f135e74e59959187e72725a45665ac5c67293b8305298c8d3ac4bdbb81e6ac93"
+    },
+    "study_sha256": "8f21d0606a327b9d4f5d7e93e47bad7e7bf3ddfa68e2bfbedc9d5e6a29fa5595",
+    "driver_sha256": "401b2e86452977f313e6db59cad36dd10db6ae975150d95b124e96d23fe6fe6c",
+    "controls": "CPU8,9;Julia1/GC1/BLAS1;8GiB noSwap nice15;noGPU;single warm sample",
+    "raw": "outputs/directional-transport-hbox-df33fa7/64-results.json",
+    "recipe": [
+      64,
+      8,
+      64,
+      20,
+      0.01,
+      4
+    ],
+    "external_seconds": 94.91,
+    "rows": [
+      {
+        "mode": "explicit",
+        "cycles": 1,
+        "seconds": 50.441739617,
+        "simulated_time_per_wall_second": 0.0007929940621341913,
+        "field_relative_l2": 0,
+        "raw_relative_l2": 0,
+        "bound_relative_l2": 0,
+        "material_residual": 3.7125045082575525e-05,
+        "potential_residual": 0.0002227147447229072,
+        "speedup": 1.0
+      },
+      {
+        "mode": "lines",
+        "cycles": 1,
+        "seconds": 0.454675267,
+        "simulated_time_per_wall_second": 0.08797487548404519,
+        "field_relative_l2": 0.06273456016069238,
+        "raw_relative_l2": 0.021993761788930942,
+        "bound_relative_l2": 0.03285489372164322,
+        "material_residual": 5.3941897704135044e-06,
+        "potential_residual": 3.241366721340455e-05,
+        "speedup": 110.94014405010512
+      },
+      {
+        "mode": "lines",
+        "cycles": 2,
+        "seconds": 0.692029505,
+        "simulated_time_per_wall_second": 0.057801003730325054,
+        "field_relative_l2": 0.032698310213361184,
+        "raw_relative_l2": 0.011511330642123901,
+        "bound_relative_l2": 0.019226571204143374,
+        "material_residual": 9.88857402717258e-06,
+        "potential_residual": 5.9420553952804767e-05,
+        "speedup": 72.88957949415754
+      },
+      {
+        "mode": "lines",
+        "cycles": 4,
+        "seconds": 1.158293251,
+        "simulated_time_per_wall_second": 0.03453356908146226,
+        "field_relative_l2": 0.017487975846796157,
+        "raw_relative_l2": 0.005915423475867903,
+        "bound_relative_l2": 0.011560244219662482,
+        "material_residual": 9.85444785328582e-06,
+        "potential_residual": 5.906446949666133e-05,
+        "speedup": 43.54833249132003
+      }
+    ]
+  },
+  "total_hbox_cpu_process_wall_seconds": 131.1
+}

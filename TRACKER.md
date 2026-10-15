@@ -484,3 +484,39 @@ against incompatible fixed aliases. A reviewed native 256³ activity-contour pho
   patches. The current local source-access geometry may limit harvesting even
   with abundant world inventory; this is a testable regime, not an impossibility
   claim. Separate localCPU study; live garden remains unchanged.
+
+- 20:56 UTC recovery after usage interruption: all saved work retained; no jobs
+  restarted solely because agents lost tokens. Original broad/mosaic soaks ended
+  normally at their12h deadlines; source/checkpoint hashes verified in
+  outputs/observatory/20261015-2048.json. Optimized continuation remains live,
+  empty, bounded until21:54UTC. Longitudinal completion review is underway.
+- Native garden recovered from43 cells to93 by t659.992, then stopped at its
+  original completed-state material guard: residual+.247363 versus .206432
+  tolerance; energy−.131032 remains within .687488. Final checkpoint243750818B
+  SHA171707c2a7a7e0a614e7e8d509f88a04264027591b33ca2869729d9c6a385716
+  independently verified, process absent; no resume/tolerance change. Read-only
+  diagnosis identifies positive F32 diffusion endpoint rounding, mostly waste,
+  as a substantial contributor; full attribution remains open. All actual
+  frames mirrored/exported through finaltime, with observed recovery preserved.
+- Paid-patch assay completed four matched arms: raw mobility increases conversion
+  18.57× at identical paid catalyst dose. Matrix retention changes near-food
+  exposure from.270× without replenishment to1.56× with it. No consumers in
+  assay: exposure is not uptake/fitness. Actualt100 spatial readout and figures
+  retained. Native hidden/actions vary within persistent IDs through215;
+  neighbor controls do not establish generally stronger temporal alignment.
+- Frozen32³ lattice specimen completed3200steps/42nativeframes,2.472M voxel
+  steps/s onCPU2,~67.7s includingstartup,121.9MB. Nativefields and17future-step
+  strictrestart verified. Imposedcentralwound recolonizes, matrixscar persists.
+- NativeAMD lattice gate passed numerical/identity/funding/restart checks:
+  maximum fielddifference4.77e−7.64³ sustainedthree~3.12s windows measured
+  246.7–247.2M voxelsteps/s,49.7MBownedstate.32³ hitfixedstepcap before3s;
+  its sustained-duration failure is retained. Existingbrainservices preserved;
+  projectGPUwindow released. No moving-cell orCPU/GPU speedratio inferred.
+- Directional implicit transport study passes52checks. Fullsame-clock coupled
+  high-D20 CPU comparison:24³ fourcycles6.61× with.949%food/.634%rawL2;
+ 64³single43.55× with1.75%/.592%. Changes temporaltransport approximation,
+  not currentgarden law; batchedGPUlineimplementation remains futurework.
+- Splitgenotypebank32×smaller but slowerthanpackedCPUlayout atallthree sizes;
+ 27checks, event/identityexact, maxfloatdifference2.39e−6. Retainmemorytradeoff
+  evidence, not productionthroughputpromotion. Counterpoint2000² photograph
+  approved/curated; two completedfilms in finalreview/encoding.
