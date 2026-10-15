@@ -1,0 +1,67 @@
+{
+  "torch": "2.9.1+rocm6.3",
+  "hip": "6.3.42134-a9a80e791",
+  "device": "AMD Radeon Graphics",
+  "total_vram": 12868124672,
+  "scope": "periodic seven-point scalar diffusion and rFFT round trip; not Interior arena or complete writer",
+  "measurements": [
+    {
+      "n": 64,
+      "scalar_bytes": 1048576,
+      "eager_stencil_seconds": 9.213648736476898e-05,
+      "host_to_device_seconds": 5.614664405584335e-05,
+      "device_to_host_seconds": 4.910919815301895e-05,
+      "shape_compile_seconds": 2.0935328463092446,
+      "compiled_stencil_seconds": 5.580522119998932e-05,
+      "fft_first_plan_and_roundtrip_seconds": 3.6477818274870515,
+      "fft_roundtrip_max_abs_error": 4.3213367462158203e-07,
+      "resident_rfft_roundtrip_seconds": 9.410399943590164e-05,
+      "peak_allocated_vram": 8536064,
+      "peak_reserved_vram": 27262976
+    },
+    {
+      "n": 128,
+      "scalar_bytes": 8388608,
+      "eager_stencil_seconds": 0.0005798110738396645,
+      "host_to_device_seconds": 0.0007518742233514786,
+      "device_to_host_seconds": 0.0007392637431621552,
+      "shape_compile_seconds": 0.0003631189465522766,
+      "compiled_stencil_seconds": 0.0001749122515320778,
+      "fft_first_plan_and_roundtrip_seconds": 3.5288504138588905,
+      "fft_roundtrip_max_abs_error": 5.960464477539062e-07,
+      "resident_rfft_roundtrip_seconds": 0.0005337737500667572,
+      "peak_allocated_vram": 67911680,
+      "peak_reserved_vram": 85983232
+    },
+    {
+      "n": 256,
+      "scalar_bytes": 67108864,
+      "eager_stencil_seconds": 0.007100823894143104,
+      "host_to_device_seconds": 0.006242900714278221,
+      "device_to_host_seconds": 0.005812910012900829,
+      "shape_compile_seconds": 0.0015998706221580505,
+      "compiled_stencil_seconds": 0.0012946018949151039,
+      "fft_first_plan_and_roundtrip_seconds": 3.5284799691289663,
+      "fft_roundtrip_max_abs_error": 7.152557373046875e-07,
+      "resident_rfft_roundtrip_seconds": 0.004742981493473053,
+      "peak_allocated_vram": 538984448,
+      "peak_reserved_vram": 614465536
+    }
+  ],
+  "stencil_cpu_gpu_max_abs_error": 0.0,
+  "compiled_max_abs_error": 5.960464477539063e-08,
+  "initial_compile_seconds": 51.48501906264573,
+  "date_utc": "2026-10-15",
+  "interpreter": "/tank/chreatures/envs/rocm-dev/bin/python",
+  "hsa_override_gfx_version": "10.3.0",
+  "repetitions": 5,
+  "source_sha256": "41224976864bfde0ec99ddeb1c253d61bb4723999243fc81f60cd2b7d2644a54",
+  "resource_controls": {
+    "wrapper": "/home/hbox/bin/swarm-build",
+    "host_memory_cap": "8G",
+    "swap": "0",
+    "torch_cpu_threads": 2,
+    "inductor_compile_threads": 1,
+    "timeout_seconds": 360
+  }
+}
