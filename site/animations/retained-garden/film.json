@@ -1,0 +1,423 @@
+{
+  "schema": "interior-animation",
+  "id": "retained-garden",
+  "title": "The retained garden",
+  "description": "Cells pay to build catalysts that retain food and change its transport. Jade and wine reveal two retained chemistries around actual three-dimensional bodies. 61 native observations follow growth and depletion from time 0\u2013300.",
+  "source": {
+    "specimen": "collection-20261015/retained-garden",
+    "run_sha256": "5f73afaa2d3d5e7f139d2820b199e0ebda2ac888d48cff6d30467b9d06039b7f",
+    "renderer_sha256": "54dfe45c8e4c5cc35c13a29d548d756b823e13b15e4db651c6f8d3609f67357e",
+    "camera": {
+      "fixed": true,
+      "location": [
+        2.628413677215576,
+        -3.6817209720611572,
+        2.3550736904144287
+      ],
+      "lens_mm": 55
+    },
+    "render": {
+      "size": 960,
+      "samples": 48,
+      "device": "METAL",
+      "blender": "5.0.1"
+    },
+    "optical_settings": {
+      "size": 960,
+      "samples": 48,
+      "device": "METAL",
+      "surface": "retained",
+      "surface_optics": "mixed",
+      "iso": 0.45,
+      "no_cells": false,
+      "no_cutaway": false,
+      "cut_x": -0.3,
+      "cut_y": 0.2,
+      "orbit": 0.62,
+      "elevation": 0.48,
+      "distance": 5.1
+    },
+    "native_shape": [
+      64,
+      64,
+      64
+    ],
+    "physical_extent": [
+      12,
+      12,
+      12
+    ],
+    "simulation_dt": 0.1,
+    "capture_every_steps": 50,
+    "study_source": {
+      "sha256": "79fac8f054aacb6dca9b02eb79a1aff15ecc20976790537edee4e7f30877a6f4",
+      "path": "constructive_volume.jl"
+    },
+    "profile_source": {
+      "sha256": "0c4b27470204580bf7a7732683523ae60297295774d5298659261c7d973135f6",
+      "path": "constructive-volume-density4.toml"
+    },
+    "loaded_sources": {
+      "core.jl": "b4302b90eaeba213360e8a15ce8b7e4cb4c491606657e3e500d2fb8507753a52",
+      "neural_workspace.jl": "ecdd45856bc0b3c61708de90814d1abb33bc1232a0f9ff5785b32b9bc39a9139",
+      "writing.jl": "78fba7cd46f03749bdc56547b7ce5622f7ba3ea42cc34801829345dae3975e05",
+      "Interior.jl": "d7567ab1cf2be4e8030b01c073cfcccf5686e7c4697cb8e754a291331c8f5ad0",
+      "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+      "cellular.jl": "256580a1bef7733db9e75011eae5015f6df5a97c6357f5252e4f09528ee29880",
+      "cellular_contacts.jl": "616f0da88cd137cae29019b970e8c1a4d1f67728d9207b6a5a3513357792228a",
+      "resources.jl": "859f6e04b456ceee051fd83214b37ca18418af09126960997b7d62d83c2dcab0",
+      "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+      "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+      "dose_writer.jl": "b8d1b4013921a3c82388ee87a7ede00b97964a1894062f2a07339f2c6be197eb",
+      "cellular_transport.jl": "d734d0c7b9b305a7543ad994c18e5a649163f34b5450a6542e44e7258ce45f35",
+      "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+      "cellular_arena.jl": "2ef965717c99cd0c46a8acd9ceb7da26232201cb18547bd23712e989688429e2",
+      "experiments.jl": "e2e513ac4bfb0af90b5d1c870c5f403705eddd0606316ee2f86c5f5bc83eb527",
+      "constructive_cells.jl": "c8f3a29d95334f988c1a5409aed145f16fe62fca0f3cb7bd6505685b1290ee4f",
+      "metabolic_ecology.jl": "2f599a1d6ea0a5552a594113d57e238e4c6ff3c1fd8d74de5a51f83a77179bb1",
+      "mechanics.jl": "81001af879163392dde498534c9f099bcc79a16b8dac5104d527da7cc9f4fdac",
+      "neural_ecology.jl": "ed0496adb31ce4511f8bc0d5343ff843c410c39c51d30c165b3cf5eac1135df2",
+      "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+      "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+      "compartments.jl": "e7c55ce4e0f4a8548c078c9d160815b5eaeb846a3765aad89a875f166b5005e5",
+      "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+      "catalytic_habitat.jl": "e33e0956582cc1b880550e0fb1f03e588f3a49daa2fecff2f33a577d4eb4a2ff",
+      "arena.jl": "da52fa22b080e4314ae10f4140f629aba0c080920a8a6ab7551250003d378430",
+      "catalytic_arena.jl": "2b304e79e11f1d38b4cbd63994a1637cad2067d9f9a515f141b38ea5acb8ec8c",
+      "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+      "implicit_phase.jl": "1fb617707591f89784b95171e0558065101b3d992f7b3eabd16a7bf01dca4ceb",
+      "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+      "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+      "recurrent_material.jl": "e9457d0d6e31f74950fa4be8ef84b138b020c0de7fc4b95c9a7f3cd5db148347",
+      "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+      "cellular_storage.jl": "735c3281aca69158609392ef161397bec166d4a1698d7e741cd95b5a426cfaff",
+      "sorptive_matrix.jl": "f5643e0c951c983a7d5864676156123db3181e05510335fcd618de105ff1f036",
+      "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+      "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+    },
+    "interpretation": "Actual 3D cell centers and physical radii, including overlaps, with periodic copies clipped to the original domain. Minimum-image stable-ID bonds. Chosen concentration isosurface tinted by retained A/(A+B), not an anatomical membrane. Mixed optics assigns more opaque jade to A-rich material and clearer rose to B-rich material; this optical contrast is artistic. Front-right optical cutaway reveals the interior. Colors, faint glass skin, fibre radius, thin film and lighting are artistic; no forces, anatomy or temporal interpolation are added. This finite original trajectory excludes the separately retained later continuation."
+  },
+  "playback": {
+    "fps": 8,
+    "duration_seconds": 7.625,
+    "width": 960,
+    "height": 960,
+    "rendered_width": 960,
+    "rendered_height": 960,
+    "interpolation": "none; one video frame per recorded simulation sample"
+  },
+  "frames": [
+    {
+      "video_time": 0.0,
+      "simulation_time": 0.0,
+      "source_image_sha256": "94169089f13298fbc9064b3c85e4f83480c3ff0e5bca02f7d0548364508013cc"
+    },
+    {
+      "video_time": 0.125,
+      "simulation_time": 5.000000074505806,
+      "source_image_sha256": "0eaf8275a83a890479daec3310fec02375af96e5557ee3f84547e8501bf2c48b"
+    },
+    {
+      "video_time": 0.25,
+      "simulation_time": 10.000000149011612,
+      "source_image_sha256": "bea05b105878c3c26cb1449fe587117e085a60f5ca7e13a8330928b89f604856"
+    },
+    {
+      "video_time": 0.375,
+      "simulation_time": 15.000000223517418,
+      "source_image_sha256": "56ce22329143516b93dcf903901c83257cbbec1f6e1ff840c4963ce5d98eb1d0"
+    },
+    {
+      "video_time": 0.5,
+      "simulation_time": 20.000000298023224,
+      "source_image_sha256": "ec7a68375db653377e4b8e656bca613f51cadc146f052855f364ed51992260c3"
+    },
+    {
+      "video_time": 0.625,
+      "simulation_time": 25.00000037252903,
+      "source_image_sha256": "a711d617942ec6bd0fdf81c374440eed0a6abbac462c203720d8e632c6ce447d"
+    },
+    {
+      "video_time": 0.75,
+      "simulation_time": 30.000000447034836,
+      "source_image_sha256": "94973630e65a1e85ece4a7c688dbd92759f5fe06d5fece9167ee458008f7eef0"
+    },
+    {
+      "video_time": 0.875,
+      "simulation_time": 35.00000052154064,
+      "source_image_sha256": "ad76de1bd9a026853b27e9fccb4dac59051a78c495ebf123e57a7737096c5429"
+    },
+    {
+      "video_time": 1.0,
+      "simulation_time": 40.00000059604645,
+      "source_image_sha256": "198f475e6b53411cd720ac519bbe11bf190a4f5bc2a91483bbb9158997bd24b7"
+    },
+    {
+      "video_time": 1.125,
+      "simulation_time": 45.000000670552254,
+      "source_image_sha256": "ac2303de537b0e9304e39595d1a3ce0f73011a5e82bd100f3aa783bc8c7de979"
+    },
+    {
+      "video_time": 1.25,
+      "simulation_time": 50.00000074505806,
+      "source_image_sha256": "fd467f300197802493a37a417f38a78a83486219705a4770cb2eb1356dec473a"
+    },
+    {
+      "video_time": 1.375,
+      "simulation_time": 55.000000819563866,
+      "source_image_sha256": "440d4db313c9f5ab2cf60946ef438c5de97543e1115948f7ad5e259919a037ae"
+    },
+    {
+      "video_time": 1.5,
+      "simulation_time": 60.00000089406967,
+      "source_image_sha256": "ee618a636eee6499305463c82471d73263a161eb5f761f37a57a2991c131c27e"
+    },
+    {
+      "video_time": 1.625,
+      "simulation_time": 65.00000096857548,
+      "source_image_sha256": "bf2e5ac1767fa0b63eb42f1694bb1c335659175eb214badfda91efcd6936de53"
+    },
+    {
+      "video_time": 1.75,
+      "simulation_time": 70.00000104308128,
+      "source_image_sha256": "f3b06ce288afbed7ac070a364c66c21ccc538807767f130bf560de09f4bd7182"
+    },
+    {
+      "video_time": 1.875,
+      "simulation_time": 75.00000111758709,
+      "source_image_sha256": "4f253dc313a0133dba8aecbd8a02085affb6143dc1424675cc41d97c048a03ad"
+    },
+    {
+      "video_time": 2.0,
+      "simulation_time": 80.0000011920929,
+      "source_image_sha256": "0f434d854571e51585c3dfcc27fea1b1ec12cc80a0210d4ff941bf5ff20a4f8c"
+    },
+    {
+      "video_time": 2.125,
+      "simulation_time": 85.0000012665987,
+      "source_image_sha256": "1e8a44f09ab8ab592c84b2d0087dafe02ad086e723338891f21b3404d4baa9b9"
+    },
+    {
+      "video_time": 2.25,
+      "simulation_time": 90.00000134110451,
+      "source_image_sha256": "6da313e746c927cf25d86e6684f9d432f35887164733a407ad6d42af821f3f19"
+    },
+    {
+      "video_time": 2.375,
+      "simulation_time": 95.00000141561031,
+      "source_image_sha256": "3312e5faaaf3562562f187c296ff65b9c5bb6684d959776022bf10358445687e"
+    },
+    {
+      "video_time": 2.5,
+      "simulation_time": 100.00000149011612,
+      "source_image_sha256": "b7f957f115f2bff8d9215685a3e0bd974b1ec55e4354ee1cb99df8100a7f90f8"
+    },
+    {
+      "video_time": 2.625,
+      "simulation_time": 105.00000156462193,
+      "source_image_sha256": "b50daf6932cd4b826ed7956f6943c7aeb34c54e5f5052abe5a974c1059c0ad7a"
+    },
+    {
+      "video_time": 2.75,
+      "simulation_time": 110.00000163912773,
+      "source_image_sha256": "ce54c5a2748cb46d70822bf1a9b5b4a2987c460165d85d5e5b57837eded43eec"
+    },
+    {
+      "video_time": 2.875,
+      "simulation_time": 115.00000171363354,
+      "source_image_sha256": "3fd05a97e1a59da25ecfd17d60c771bb0effc26e0e170c5962e5ae9ee4eab0c7"
+    },
+    {
+      "video_time": 3.0,
+      "simulation_time": 120.00000178813934,
+      "source_image_sha256": "e26e48f400c149319da20d91916fab32d235dfc53a027885c560f16171b0d2be"
+    },
+    {
+      "video_time": 3.125,
+      "simulation_time": 125.00000186264515,
+      "source_image_sha256": "74ec71d9c71a11662f61f5b920bb2408f80e5151112472b51bc6cf4e6f8fc30d"
+    },
+    {
+      "video_time": 3.25,
+      "simulation_time": 130.00000193715096,
+      "source_image_sha256": "450848e3d36fe9a0fa90005278d17a1694ad900a5d63f7625f003ecc6366bd68"
+    },
+    {
+      "video_time": 3.375,
+      "simulation_time": 135.00000201165676,
+      "source_image_sha256": "cfb82af3bf7752559d2e1b7411bbf0a2dd35b39a222fccc772ce4812a374d3ff"
+    },
+    {
+      "video_time": 3.5,
+      "simulation_time": 140.00000208616257,
+      "source_image_sha256": "da3f67068777b418cb5a7cb90a6555f44179a583d9c542f39c7aee849022a14e"
+    },
+    {
+      "video_time": 3.625,
+      "simulation_time": 145.00000216066837,
+      "source_image_sha256": "41592e6bf35519745a166dc636ecbb769c724e7357be46355a6c65e3aab3d1a5"
+    },
+    {
+      "video_time": 3.75,
+      "simulation_time": 150.00000223517418,
+      "source_image_sha256": "04809cc607c068350a5c0378d6ff78678c5adbcabefe31af938ffd4f27af6c70"
+    },
+    {
+      "video_time": 3.875,
+      "simulation_time": 155.00000230967999,
+      "source_image_sha256": "378c8156f9bf777147f00fe80844a05658fb3888864d0ef2650052e0080dc16f"
+    },
+    {
+      "video_time": 4.0,
+      "simulation_time": 160.0000023841858,
+      "source_image_sha256": "d4c897557dced182e3bd2dfe88a51fd724878ccbf24baaa0fd10d2b880edb03a"
+    },
+    {
+      "video_time": 4.125,
+      "simulation_time": 165.0000024586916,
+      "source_image_sha256": "c2016945e3a417197d71395215753f0925be7652fc38563482eedbdb33578166"
+    },
+    {
+      "video_time": 4.25,
+      "simulation_time": 170.0000025331974,
+      "source_image_sha256": "43bc7030d21da4f037a5f3a57b03db50431bbc808a657c39796d4dd380215d31"
+    },
+    {
+      "video_time": 4.375,
+      "simulation_time": 175.0000026077032,
+      "source_image_sha256": "1bdcd5c766cce31656689253a36139b3579e58808527c2fa06ea36202b6b3d76"
+    },
+    {
+      "video_time": 4.5,
+      "simulation_time": 180.00000268220901,
+      "source_image_sha256": "62939827c292833d4bcbb1696a876aa6d8bf9906d33e84ea6f5ecd6af4af330c"
+    },
+    {
+      "video_time": 4.625,
+      "simulation_time": 185.00000275671482,
+      "source_image_sha256": "32c9c6b9859a248ca617d48b317b2b24d9fab696893d8454bd7ac51161dfb3f3"
+    },
+    {
+      "video_time": 4.75,
+      "simulation_time": 190.00000283122063,
+      "source_image_sha256": "548ae01e6abd4265b25c2d271b1b73ed018c8bb4e79ac538cb22e118f3f313f9"
+    },
+    {
+      "video_time": 4.875,
+      "simulation_time": 195.00000290572643,
+      "source_image_sha256": "10ffe91d2ab53c290422be45223a49fc844d7177d563d62d45cba0fdbe8e4946"
+    },
+    {
+      "video_time": 5.0,
+      "simulation_time": 200.00000298023224,
+      "source_image_sha256": "af2ba9cb2ea8b3bd9d8064e91ca449be9a3a4d4dc8b17be77d106c01ad9ea2d9"
+    },
+    {
+      "video_time": 5.125,
+      "simulation_time": 205.00000305473804,
+      "source_image_sha256": "b8214ae27f894a696d1fbbf353e6c9a4b6b8d152dff47f78946bab593d8186e9"
+    },
+    {
+      "video_time": 5.25,
+      "simulation_time": 210.00000312924385,
+      "source_image_sha256": "025cacaeb90d2c95201061e41114e751cac09535cf824576cdc7e12d84ff8e2c"
+    },
+    {
+      "video_time": 5.375,
+      "simulation_time": 215.00000320374966,
+      "source_image_sha256": "97a69c63722414b19d1abbec10b1fcf8e110bdb7858998b50b41963b4fc74232"
+    },
+    {
+      "video_time": 5.5,
+      "simulation_time": 220.00000327825546,
+      "source_image_sha256": "0e1feebcf88c17c0a22d86a7505cdb8739797305987368dba47b1479b96b725f"
+    },
+    {
+      "video_time": 5.625,
+      "simulation_time": 225.00000335276127,
+      "source_image_sha256": "ac187bac6aa7a5bd38f27de7b1bb77118467aee1d5f921cbc6b0b77779d01526"
+    },
+    {
+      "video_time": 5.75,
+      "simulation_time": 230.00000342726707,
+      "source_image_sha256": "66b6615c6a25eaeb735c9c6654bad0a05ca3a8fed80337a0c74363b7cb37d54a"
+    },
+    {
+      "video_time": 5.875,
+      "simulation_time": 235.00000350177288,
+      "source_image_sha256": "5d77a0e7e2a2e5877d244673ded008b38d51f1e99e7d7cc6d30a7f621aedfc7b"
+    },
+    {
+      "video_time": 6.0,
+      "simulation_time": 240.0000035762787,
+      "source_image_sha256": "30ad5cf56ae738eeb37ac192270b610449e2830f11f4fb453f098cb1fbef5701"
+    },
+    {
+      "video_time": 6.125,
+      "simulation_time": 245.0000036507845,
+      "source_image_sha256": "81328fa3d4c28e1e387b96e5f9e763834f55c051d88653f98711c89f5eb0252a"
+    },
+    {
+      "video_time": 6.25,
+      "simulation_time": 250.0000037252903,
+      "source_image_sha256": "68a135f40242a605bd1447449ff2943937f7b3920c497a8536cf7cb5bc02c161"
+    },
+    {
+      "video_time": 6.375,
+      "simulation_time": 255.0000037997961,
+      "source_image_sha256": "21b1ae1d9186e0be06b5e85f96e2c615ee518c66efeccf8b8b395505ae3f43d0"
+    },
+    {
+      "video_time": 6.5,
+      "simulation_time": 260.0000038743019,
+      "source_image_sha256": "9e20f16ee65abac9e22fedbf6bb867f646c74e85dd68f46549a8429529a1a61b"
+    },
+    {
+      "video_time": 6.625,
+      "simulation_time": 265.0000039488077,
+      "source_image_sha256": "52e528ca1421dd55a1684a97997e2e45a68db02964846fce0c2b5a51a4f2b501"
+    },
+    {
+      "video_time": 6.75,
+      "simulation_time": 270.0000040233135,
+      "source_image_sha256": "735e03557a3deb67ae252faa2f987b6a0f9327da0aa36dc55cd715c148303eb8"
+    },
+    {
+      "video_time": 6.875,
+      "simulation_time": 275.0000040978193,
+      "source_image_sha256": "d5482930ff174ecc6e24943dde713da9a5758df1424269ce813794ab47854219"
+    },
+    {
+      "video_time": 7.0,
+      "simulation_time": 280.00000417232513,
+      "source_image_sha256": "b860464ae5059aebce52ea8e465f7bde3d626b10f6502b9e011784bd8e974606"
+    },
+    {
+      "video_time": 7.125,
+      "simulation_time": 285.00000424683094,
+      "source_image_sha256": "f30c73b70f9e20c9d1d6c63d808eb6808313686c64cdc71168507756ee6f3e44"
+    },
+    {
+      "video_time": 7.25,
+      "simulation_time": 290.00000432133675,
+      "source_image_sha256": "5fc149edf1aa0c472e13587b7b78b45b3ebcf9b1c7a13e1530a6eb1d7a42a741"
+    },
+    {
+      "video_time": 7.375,
+      "simulation_time": 295.00000439584255,
+      "source_image_sha256": "4f578db6c80753d9824e672ce58cb21bc363af7affc3aa25cb7ec6b2341c74b7"
+    },
+    {
+      "video_time": 7.5,
+      "simulation_time": 300.00000447034836,
+      "source_image_sha256": "4beb4edd4212c24ca121d8aa058924d4449640e4017966afcea34227fcdc2876"
+    }
+  ],
+  "review": {
+    "sequence_sha256": "8ba03934648a172d86d1cc6694d9418e9ff7403981a3fb073eb524d4f327a453",
+    "reviewed_by": "Codex material artist"
+  },
+  "poster_frame_index": 6,
+  "video_sha256": "70772d333b0f09e29353423c8e46dcf3dec998d3112286cc854f8d7568329e31",
+  "poster_sha256": "2f95e6513735d9181d60a86eacc0d940994a8f0195f6cfe814ee0821befa9288"
+}
