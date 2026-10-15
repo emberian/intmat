@@ -159,6 +159,42 @@ residual-allocation control can be run with `sorptive_study`'s `conditions` keyw
 These comparisons examine continuing material construction and its consequences;
 they do not establish evolutionary improvement.
 
+## Completed shared-budget comparison
+
+The ten source-pinned trajectories under `outputs/constructive-refuges-20261015`
+now each reach t3000, with 121 recorded states and three full checkpoints. Both
+founding seeds run all four matrix settings plus the original growth-first
+allocation control. All share the same physical funding and population guard
+of 1,536. No arm reaches that guard. Compact results and source hashes are in
+`constructive-refuges-results.json`; `comparison.png` in the output directory
+shows every arm on common axes.
+
+| Setting | Final cells, seed211 / seed307 | Construction during t1500–3000, seed211 / seed307 |
+|---|---:|---:|
+| Shared budget, full matrix | 299 / 306 | 92.886 / 81.391 |
+| Shared budget, binding only | 295 / 324 | 75.018 / 86.108 |
+| Shared budget, resistance only | 315 / 315 | 93.529 / 84.334 |
+| Shared budget, catalytic function only | 299 / 316 | 62.769 / 84.809 |
+| Growth first, full matrix | 79 / 85 | 0.00358 / <0.000001 |
+
+The shared variants finish with 4.31–9.44 units of catalyst and 213.32–263.19
+units of cumulative paid construction. Their late intervals also contain
+247–333 births and 224–328 deaths: continuing construction accompanies turnover,
+rather than a frozen founder arrangement. Seed211 shows several large rebuilding
+and population episodes; seed307 has smaller fluctuations around continued
+construction. The growth-first controls finish with approximately 4.35e-5 and
+6.88e-10 catalyst units. Maximum observed material and chemical-energy residuals
+across all ten arms are 7.80e-4 and 6.03e-5.
+
+This comparison concerns the complete alternative physiology, including shared
+anabolic allocation and construction in respiratory work forecasting. It does
+not isolate either change, rank the ecological value of binding versus transport
+resistance, or establish inherited adaptation. Continued soluble feeding remains
+present. The new raw-food-only recipes remove that ongoing soluble support in
+separate runs; neither those experiments nor their interpretation replace these
+recorded trajectories. A large contact component alone is not a cooperative
+organism, and repeated bond observations do not establish uninterrupted contact.
+
 ## Checks
 
 Forty-three focused assertions cover binding bounds, equilibrium and semigroup

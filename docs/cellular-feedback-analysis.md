@@ -14,6 +14,29 @@ This is the endpoint in
 `outputs/constructive-refuges-20261015/211-full/frame-0030000.json`, not a
 measurement of how often each individual switched state through its lifetime.
 
+The subsequent raw-food-only seed-211 run supplies that missing distinction.
+Its actual oldest-32 trace contains strong repeated switching in several early
+identities. ID 27 has 403 observations from time 100–502, hidden-channel ranges
+about 1.85–1.97 and action variation alongside it; a quieter ID 1 in the same
+window stays hidden-saturated while its actions still respond to changing input.
+The selected examples are exported as
+`outputs/constructed-food-analysis-20261015/rawfood-individual-examples.png`,
+with exact CSV points and identity/source hashes. Baseline dynamics therefore
+already support switching. Stronger adaptation is a hypothesis about the
+prevalence, persistence and ecological interaction of modes, not rescuing an
+absent capacity.
+
+Persistence remains a separate question. In that completed raw-food run,
+two qualifying sampled IDs still switch strongly after time 1000, but no hidden
+channel changes sign across 44,736 consecutive sampled-ID pairs from time 1600
+through 3000. This is absence of sign switching in the oldest-32 observation
+sample, not proof of constancy throughout the population or of no other dynamics.
+Founder ancestry also concentrates: the final 203 cells represent seven founder
+lineages, and one lineage contains 177 cells with 177 cellular and 147 catalytic
+display-genome signatures. Loss of founder lineages is not loss of genotype
+diversity. Identity-resolved late results are in
+`outputs/constructed-food-analysis-20261015/rawfood-211-full-late.json`.
+
 This is an analysis of the implemented equations and a reduced-mode experiment,
 not a finding that a whole ecological trajectory oscillates. It changes no law,
 checkpoint or running configuration. The companion

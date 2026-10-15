@@ -100,3 +100,16 @@ source and parent hashes. The longer run starts from that completed check and
 targets time 1500 with a 9,000-second wall budget, two CPU threads, an 8 GiB memory
 limit and a 2 GB artifact budget. This is an explicitly recorded continuation,
 not a claim that the original study driver ran uninterrupted.
+
+A sampled contact-graph readout gives the later 3D material a more concrete
+structure: at time 300 its largest component contains 1,520 of 1,761 cells and
+261 founder lineages. There are 238 isolated cells and one three-cell component.
+In the full population, 274 of the 320 founder lineages remain; the largest has
+37 cells. Only 31.5% of bonds join cells from the same founder lineage. Of 2,859
+bonds at time 200 whose two endpoints survive to time 300, 2,596 are observed
+again. That is endpoint reobservation across a 100-time gap, not proof that each
+bond persisted uninterrupted. A large mixed contact network is not by itself a
+cooperative organism or a distinct unit of selection. The readout and source
+snapshot hashes are retained in `density4-graph-readout.json` under the local
+volume output directory; `density4-temporal-sections.png` shows the same physical
+plane at times 30, 100 and 200 with fixed field exposure.

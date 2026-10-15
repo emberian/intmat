@@ -1,0 +1,2041 @@
+{
+  "kind": "descriptive developmental evidence, one completed raw-food-only trajectory",
+  "study": "seed211/full: finite soluble bootstrap, ongoing external raw-feedstock supply, shared anabolism and sorptive matrix",
+  "recipe": "experiments/arena/constructed-food.toml",
+  "seed": 211,
+  "source_trace": "outputs/constructed-food-20261015/211-full/development.jsonl",
+  "origin_manifest": {
+    "baseline": "2220f5a",
+    "additions": {
+      "studies/sorptive_garden.jl": "efe64dd7078d02353e0eea1beb2179abff3b6afafdd5900358f150f66f07b4d5",
+      "experiments/arena/constructed-food.toml": "d7ec48308cb62a4539f539a555813373eeda60947bfa2a2fb4cec96a7de9c99f",
+      "experiments/arena/constructed-food-slow-feedback.toml": "de638981ec1de69749a7b12c5c20c3d03121b7eb8e8eb2deeac11d99b95e242f"
+    }
+  },
+  "loaded_physics_hashes": {
+    "core.jl": "b4302b90eaeba213360e8a15ce8b7e4cb4c491606657e3e500d2fb8507753a52",
+    "neural_workspace.jl": "ecdd45856bc0b3c61708de90814d1abb33bc1232a0f9ff5785b32b9bc39a9139",
+    "writing.jl": "78fba7cd46f03749bdc56547b7ce5622f7ba3ea42cc34801829345dae3975e05",
+    "Interior.jl": "d7567ab1cf2be4e8030b01c073cfcccf5686e7c4697cb8e754a291331c8f5ad0",
+    "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+    "cellular.jl": "256580a1bef7733db9e75011eae5015f6df5a97c6357f5252e4f09528ee29880",
+    "cellular_contacts.jl": "616f0da88cd137cae29019b970e8c1a4d1f67728d9207b6a5a3513357792228a",
+    "resources.jl": "859f6e04b456ceee051fd83214b37ca18418af09126960997b7d62d83c2dcab0",
+    "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+    "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+    "dose_writer.jl": "b8d1b4013921a3c82388ee87a7ede00b97964a1894062f2a07339f2c6be197eb",
+    "cellular_transport.jl": "d734d0c7b9b305a7543ad994c18e5a649163f34b5450a6542e44e7258ce45f35",
+    "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+    "cellular_arena.jl": "2ef965717c99cd0c46a8acd9ceb7da26232201cb18547bd23712e989688429e2",
+    "experiments.jl": "e2e513ac4bfb0af90b5d1c870c5f403705eddd0606316ee2f86c5f5bc83eb527",
+    "constructive_cells.jl": "c8f3a29d95334f988c1a5409aed145f16fe62fca0f3cb7bd6505685b1290ee4f",
+    "metabolic_ecology.jl": "2f599a1d6ea0a5552a594113d57e238e4c6ff3c1fd8d74de5a51f83a77179bb1",
+    "mechanics.jl": "81001af879163392dde498534c9f099bcc79a16b8dac5104d527da7cc9f4fdac",
+    "neural_ecology.jl": "ed0496adb31ce4511f8bc0d5343ff843c410c39c51d30c165b3cf5eac1135df2",
+    "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+    "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+    "compartments.jl": "e7c55ce4e0f4a8548c078c9d160815b5eaeb846a3765aad89a875f166b5005e5",
+    "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+    "catalytic_habitat.jl": "e33e0956582cc1b880550e0fb1f03e588f3a49daa2fecff2f33a577d4eb4a2ff",
+    "arena.jl": "da52fa22b080e4314ae10f4140f629aba0c080920a8a6ab7551250003d378430",
+    "catalytic_arena.jl": "2b304e79e11f1d38b4cbd63994a1637cad2067d9f9a515f141b38ea5acb8ec8c",
+    "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+    "implicit_phase.jl": "1fb617707591f89784b95171e0558065101b3d992f7b3eabd16a7bf01dca4ceb",
+    "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+    "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+    "recurrent_material.jl": "e9457d0d6e31f74950fa4be8ef84b138b020c0de7fc4b95c9a7f3cd5db148347",
+    "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+    "cellular_storage.jl": "735c3281aca69158609392ef161397bec166d4a1698d7e741cd95b5a426cfaff",
+    "sorptive_matrix.jl": "f5643e0c951c983a7d5864676156123db3181e05510335fcd618de105ff1f036",
+    "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+    "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+  },
+  "pinned_recipe_and_driver_hashes": {
+    "run_dependency.jl": "be6cf0fbb5bb4ed24beab626ff13eb695ca5f7cc36a188180bf4d27510547f4d",
+    "studies/sorptive_garden.jl": "efe64dd7078d02353e0eea1beb2179abff3b6afafdd5900358f150f66f07b4d5",
+    "experiments/arena/constructed-food.toml": "d7ec48308cb62a4539f539a555813373eeda60947bfa2a2fb4cec96a7de9c99f"
+  },
+  "trace_complete_prefix_sha256": "47aadb5bc271447848fcc656499cde5ed37f54fc2eff9e497007f8b08246fcb8",
+  "trace_complete_prefix_bytes": 44025617,
+  "trace_prefix_last_time": 3000.0000447034836,
+  "sampling": "up to32 oldest living IDs, survivor-biased changing sample; same two IDs throughout this window",
+  "limits": "within-ID changes include environmental input and division partition; repeated switching alone does not establish periodicity or adaptation; action logits/derived metabolic shares are not actual realized secretion or growth",
+  "selected_examples": [
+    {
+      "id": 27,
+      "parent": 0,
+      "lineage": 27,
+      "samples": 403,
+      "actual_time_bounds": [
+        100.00000149011612,
+        502.0000074803829
+      ],
+      "gaps": 0
+    },
+    {
+      "id": 1,
+      "parent": 0,
+      "lineage": 1,
+      "samples": 403,
+      "actual_time_bounds": [
+        100.00000149011612,
+        502.0000074803829
+      ],
+      "gaps": 0
+    }
+  ],
+  "recurrence_timing": {
+    "id": 27,
+    "channel": "hidden_1",
+    "crossing_rule": "first recorded nonnegative value following a negative value; no interpolated crossing times",
+    "upcrossing_count": 21,
+    "complete_intervals": 20,
+    "interval_median": 19.000000283122063,
+    "interval_min": 18.0000002682209,
+    "interval_max": 19.000000283122063,
+    "limits": "sampled recurrence timing, not a fitted period or proof of an autonomous oscillator"
+  },
+  "early_cohort": {
+    "trace_recorded_time_bounds": [
+      0.0,
+      509.00000758469105
+    ],
+    "selected_start_time": 100.0,
+    "minimum_samples": 100,
+    "eligible_ids": 34,
+    "ever_observed_ids_after_start": 54,
+    "median_within_id_hidden_std": 0.0014254953630985219,
+    "median_hidden_saturation_fraction": 1.0,
+    "ids_with_any_hidden_sign_changes": 5
+  },
+  "late_cohort": {
+    "trace_recorded_time_bounds": [
+      0.0,
+      3000.0000447034836
+    ],
+    "selected_start_time": 1000.0,
+    "minimum_samples": 50,
+    "eligible_ids": 144,
+    "ever_observed_ids_after_start": 164,
+    "median_within_id_hidden_std": 0.0013828376744199154,
+    "median_hidden_saturation_fraction": 1.0,
+    "ids_with_any_hidden_sign_changes": 2
+  },
+  "late_sign_change_window": {
+    "start": 1600,
+    "end": 3000.0000447034836,
+    "consecutive_sampled_id_pairs": 44736,
+    "hidden_channel_sign_changes": 0,
+    "scope": "oldest32 sample only; absence of sign changes is not absence of other dynamics"
+  },
+  "final_founder_ancestry": {
+    "time": 3000.0000447034836,
+    "population": 203,
+    "represented_cells": 203,
+    "full_population": true,
+    "founder_lineages_represented": 7,
+    "shannon_effective_founder_lineages": 1.8036052725168572
+  },
+  "lineage_material_role_snapshots": [
+    {
+      "time": 1900.0000283122063,
+      "file": "frame-0019000.json",
+      "sha256": "4c76c5b28997a98de7bd9cb9fd6376c9570bfa53fa2d2590aebc4b8942b7ba32",
+      "population": 331,
+      "full_population": true,
+      "total_biomass": 371.2245688841175,
+      "total_last_step_secretion": 0.00041671607291467844,
+      "lineages": [
+        {
+          "lineage": 4,
+          "living": 2,
+          "biomass": 1.2779128755222942,
+          "body_and_stored_material": 1.2779130389681517,
+          "fraction_of_represented_cells": 0.006042296072507553,
+          "max_generation": 2,
+          "evaluated_catalytic_readouts": 2,
+          "catalytic_allocation_a_mean": 0.8312956188174221,
+          "catalytic_allocation_a_p10": 0.8299030975475413,
+          "catalytic_allocation_a_p90": 0.8326881400873027,
+          "investment_mean": 0.40178215257938654,
+          "investment_biomass_weighted_mean": 0.40179053912100837,
+          "metabolic_allocation_mean": [
+            0.483348965,
+            0.287297725,
+            0.08579761999999999,
+            0.143555665
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.4841008007053138,
+            0.2847948622398175,
+            0.08601071453512285,
+            0.1450935888987192
+          ],
+          "actual_last_secretion": [
+            1.615432933552239e-07,
+            6.67572749109193e-09
+          ],
+          "cellular_genome_signature_count": 2,
+          "catalytic_genome_signature_count": 1,
+          "biomass_fraction": 0.0034424253743862814,
+          "last_step_secretion_fraction": 0.00040367778393985353
+        },
+        {
+          "lineage": 5,
+          "living": 14,
+          "biomass": 13.473761340852597,
+          "body_and_stored_material": 13.519752979797625,
+          "fraction_of_represented_cells": 0.04229607250755287,
+          "max_generation": 7,
+          "evaluated_catalytic_readouts": 14,
+          "catalytic_allocation_a_mean": 0.03134131254841371,
+          "catalytic_allocation_a_p10": 0.028238881371443442,
+          "catalytic_allocation_a_p90": 0.034195185118922396,
+          "investment_mean": 0.2744056195149865,
+          "investment_biomass_weighted_mean": 0.27529239359169166,
+          "metabolic_allocation_mean": [
+            0.25147071071428573,
+            0.4078301128571429,
+            0.27431233857142856,
+            0.06638680557142856
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.2537896117543347,
+            0.4063316458374099,
+            0.2747505394527154,
+            0.06512816361534238
+          ],
+          "actual_last_secretion": [
+            2.5430411164893696e-08,
+            2.1452587435864692e-05
+          ],
+          "cellular_genome_signature_count": 14,
+          "catalytic_genome_signature_count": 11,
+          "biomass_fraction": 0.036295446126731454,
+          "last_step_secretion_fraction": 0.0515411313434679
+        },
+        {
+          "lineage": 14,
+          "living": 2,
+          "biomass": 1.336089693768703,
+          "body_and_stored_material": 1.3360910251095075,
+          "fraction_of_represented_cells": 0.006042296072507553,
+          "max_generation": 4,
+          "evaluated_catalytic_readouts": 2,
+          "catalytic_allocation_a_mean": 0.277832333132387,
+          "catalytic_allocation_a_p10": 0.2655097663996439,
+          "catalytic_allocation_a_p90": 0.2901548998651301,
+          "investment_mean": 0.2441179881082334,
+          "investment_biomass_weighted_mean": 0.24095279770584388,
+          "metabolic_allocation_mean": [
+            0.47607729,
+            0.221036295,
+            0.140392735,
+            0.162493685
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.4825455308053562,
+            0.21865810276861652,
+            0.13817627618149642,
+            0.16062009396747973
+          ],
+          "actual_last_secretion": [
+            7.668275506765576e-10,
+            6.057329114044028e-09
+          ],
+          "cellular_genome_signature_count": 2,
+          "catalytic_genome_signature_count": 2,
+          "biomass_fraction": 0.003599141343971176,
+          "last_step_secretion_fraction": 1.6376034207151435e-05
+        },
+        {
+          "lineage": 23,
+          "living": 245,
+          "biomass": 273.93821206438656,
+          "body_and_stored_material": 274.40082476426034,
+          "fraction_of_represented_cells": 0.7401812688821753,
+          "max_generation": 13,
+          "evaluated_catalytic_readouts": 245,
+          "catalytic_allocation_a_mean": 0.5645566227236581,
+          "catalytic_allocation_a_p10": 0.5209348696630773,
+          "catalytic_allocation_a_p90": 0.610817477314697,
+          "investment_mean": 0.33231091727561884,
+          "investment_biomass_weighted_mean": 0.33270749155204027,
+          "metabolic_allocation_mean": [
+            0.2833008123265306,
+            0.25502549877551023,
+            0.35926760820408166,
+            0.10240607993469387
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.2854866247725881,
+            0.25293843622050943,
+            0.35949668994853806,
+            0.10207824989542708
+          ],
+          "actual_last_secretion": [
+            0.00023276775095903285,
+            0.0001513963398196667
+          ],
+          "cellular_genome_signature_count": 245,
+          "catalytic_genome_signature_count": 202,
+          "biomass_fraction": 0.7379312551640402,
+          "last_step_secretion_fraction": 0.9218845054180479
+        },
+        {
+          "lineage": 24,
+          "living": 11,
+          "biomass": 12.539131395979929,
+          "body_and_stored_material": 12.53913530107104,
+          "fraction_of_represented_cells": 0.03323262839879154,
+          "max_generation": 5,
+          "evaluated_catalytic_readouts": 11,
+          "catalytic_allocation_a_mean": 0.8982084217213867,
+          "catalytic_allocation_a_p10": 0.8718181380229293,
+          "catalytic_allocation_a_p90": 0.9089764666083515,
+          "investment_mean": 0.36120721677773054,
+          "investment_biomass_weighted_mean": 0.3620091945991449,
+          "metabolic_allocation_mean": [
+            0.31577679,
+            0.3651449727272727,
+            0.043057470363636365,
+            0.27602076363636363
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.3162099388727694,
+            0.36722397144887936,
+            0.04312583493792316,
+            0.2734402483379605
+          ],
+          "actual_last_secretion": [
+            1.4190935706619688e-06,
+            1.8491126885754328e-08
+          ],
+          "cellular_genome_signature_count": 11,
+          "catalytic_genome_signature_count": 10,
+          "biomass_fraction": 0.03377775192431883,
+          "last_step_secretion_fraction": 0.003449794214781979
+        },
+        {
+          "lineage": 26,
+          "living": 4,
+          "biomass": 3.0140699927728845,
+          "body_and_stored_material": 3.0140722700991494,
+          "fraction_of_represented_cells": 0.012084592145015106,
+          "max_generation": 6,
+          "evaluated_catalytic_readouts": 4,
+          "catalytic_allocation_a_mean": 0.7605010594082852,
+          "catalytic_allocation_a_p10": 0.7485727507768628,
+          "catalytic_allocation_a_p90": 0.7712149789885397,
+          "investment_mean": 0.40519086165526924,
+          "investment_biomass_weighted_mean": 0.4064121316989819,
+          "metabolic_allocation_mean": [
+            0.425563825,
+            0.11468780849999999,
+            0.22222749249999998,
+            0.23752088999999998
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.42246329871719734,
+            0.11300984783533048,
+            0.20955213382095297,
+            0.254974747105786
+          ],
+          "actual_last_secretion": [
+            3.7427340732827837e-08,
+            3.5082064282678654e-09
+          ],
+          "cellular_genome_signature_count": 4,
+          "catalytic_genome_signature_count": 4,
+          "biomass_fraction": 0.008119263231507086,
+          "last_step_secretion_fraction": 9.823366513025561e-05
+        },
+        {
+          "lineage": 30,
+          "living": 48,
+          "biomass": 61.47451012911906,
+          "body_and_stored_material": 61.47635909053268,
+          "fraction_of_represented_cells": 0.14501510574018128,
+          "max_generation": 13,
+          "evaluated_catalytic_readouts": 48,
+          "catalytic_allocation_a_mean": 0.39627984066243693,
+          "catalytic_allocation_a_p10": 0.3819618875722102,
+          "catalytic_allocation_a_p90": 0.42796460143042114,
+          "investment_mean": 0.28866472049826025,
+          "investment_biomass_weighted_mean": 0.28920830989677654,
+          "metabolic_allocation_mean": [
+            0.14513509322916668,
+            0.30333242895833334,
+            0.27595338458333335,
+            0.27557910166666666
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.1448782821018158,
+            0.3028468426863922,
+            0.2753180333587763,
+            0.27695684948392796
+          ],
+          "actual_last_secretion": [
+            2.5737610668183624e-06,
+            6.650814832659109e-06
+          ],
+          "cellular_genome_signature_count": 48,
+          "catalytic_genome_signature_count": 37,
+          "biomass_fraction": 0.1655992498392775,
+          "last_step_secretion_fraction": 0.022136357340279935
+        },
+        {
+          "lineage": 39,
+          "living": 1,
+          "biomass": 0.5908794180105312,
+          "body_and_stored_material": 0.5908796486276662,
+          "fraction_of_represented_cells": 0.0030211480362537764,
+          "max_generation": 3,
+          "evaluated_catalytic_readouts": 1,
+          "catalytic_allocation_a_mean": 0.8290227405231069,
+          "catalytic_allocation_a_p10": 0.8290227405231069,
+          "catalytic_allocation_a_p90": 0.8290227405231069,
+          "investment_mean": 0.2996328791643351,
+          "investment_biomass_weighted_mean": 0.2996328791643351,
+          "metabolic_allocation_mean": [
+            0.59783506,
+            0.19124806,
+            0.09560206,
+            0.11531484
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.59783506,
+            0.19124806,
+            0.09560206,
+            0.11531484
+          ],
+          "actual_last_secretion": [
+            2.2858333956340612e-08,
+            9.722733646834458e-10
+          ],
+          "cellular_genome_signature_count": 1,
+          "catalytic_genome_signature_count": 1,
+          "biomass_fraction": 0.0015917034257368395,
+          "last_step_secretion_fraction": 5.718667666054559e-05
+        },
+        {
+          "lineage": 42,
+          "living": 2,
+          "biomass": 2.4208159715091098,
+          "body_and_stored_material": 2.4208159750269678,
+          "fraction_of_represented_cells": 0.006042296072507553,
+          "max_generation": 4,
+          "evaluated_catalytic_readouts": 2,
+          "catalytic_allocation_a_mean": 0.006900438331233205,
+          "catalytic_allocation_a_p10": 0.006727406566122285,
+          "catalytic_allocation_a_p90": 0.007073470096344125,
+          "investment_mean": 0.18399331914837352,
+          "investment_biomass_weighted_mean": 0.18449960759355605,
+          "metabolic_allocation_mean": [
+            0.26288317,
+            0.40023619,
+            0.223606325,
+            0.1132743175
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.26248659224592286,
+            0.40188830884015,
+            0.22131688167449146,
+            0.11430822772908832
+          ],
+          "actual_last_secretion": [
+            6.819321583112492e-12,
+            1.4322643314022485e-07
+          ],
+          "cellular_genome_signature_count": 2,
+          "catalytic_genome_signature_count": 2,
+          "biomass_fraction": 0.006521163129870314,
+          "last_step_secretion_fraction": 0.0003437190494236938
+        },
+        {
+          "lineage": 44,
+          "living": 1,
+          "biomass": 0.2771888980236641,
+          "body_and_stored_material": 0.27718941368506717,
+          "fraction_of_represented_cells": 0.0030211480362537764,
+          "max_generation": 1,
+          "evaluated_catalytic_readouts": 1,
+          "catalytic_allocation_a_mean": 0.1619126828222149,
+          "catalytic_allocation_a_p10": 0.1619126828222149,
+          "catalytic_allocation_a_p90": 0.1619126828222149,
+          "investment_mean": 0.3278504955798517,
+          "investment_biomass_weighted_mean": 0.3278504955798517,
+          "metabolic_allocation_mean": [
+            0.23537403,
+            0.37854627,
+            0.051870305,
+            0.3342094
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.23537403,
+            0.37854627,
+            0.051870305,
+            0.3342094
+          ],
+          "actual_last_secretion": [
+            0.0,
+            0.0
+          ],
+          "cellular_genome_signature_count": 1,
+          "catalytic_genome_signature_count": 1,
+          "biomass_fraction": 0.0007466879114625415,
+          "last_step_secretion_fraction": 0.0
+        },
+        {
+          "lineage": 45,
+          "living": 1,
+          "biomass": 0.8819971041720868,
+          "body_and_stored_material": 0.8819974319084061,
+          "fraction_of_represented_cells": 0.0030211480362537764,
+          "max_generation": 2,
+          "evaluated_catalytic_readouts": 1,
+          "catalytic_allocation_a_mean": 0.9117288521885023,
+          "catalytic_allocation_a_p10": 0.9117288521885023,
+          "catalytic_allocation_a_p90": 0.9117288521885023,
+          "investment_mean": 0.14355044962388416,
+          "investment_biomass_weighted_mean": 0.14355044962388416,
+          "metabolic_allocation_mean": [
+            0.2508332,
+            0.57608193,
+            0.07602374,
+            0.09706106
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.2508332,
+            0.57608193,
+            0.07602374,
+            0.09706106
+          ],
+          "actual_last_secretion": [
+            2.8494016126624777e-08,
+            2.670913425324717e-10
+          ],
+          "cellular_genome_signature_count": 1,
+          "catalytic_genome_signature_count": 1,
+          "biomass_fraction": 0.0023759125286974565,
+          "last_step_secretion_fraction": 6.901847406074499e-05
+        }
+      ]
+    },
+    {
+      "time": 2000.0000298023224,
+      "file": "frame-0020000.json",
+      "sha256": "ccdaa4edd2d0ead182938a81aa7aa68eb14e37d1467fd2c0b6f1fbc51302c153",
+      "population": 259,
+      "full_population": true,
+      "total_biomass": 233.18490779348437,
+      "total_last_step_secretion": 0.00021066490867059558,
+      "lineages": [
+        {
+          "lineage": 4,
+          "living": 2,
+          "biomass": 1.2783231949297957,
+          "body_and_stored_material": 1.278323803886205,
+          "fraction_of_represented_cells": 0.007722007722007722,
+          "max_generation": 2,
+          "evaluated_catalytic_readouts": 2,
+          "catalytic_allocation_a_mean": 0.8307180180485713,
+          "catalytic_allocation_a_p10": 0.830339254001822,
+          "catalytic_allocation_a_p90": 0.8310967820953206,
+          "investment_mean": 0.3995044344918207,
+          "investment_biomass_weighted_mean": 0.39959770017809537,
+          "metabolic_allocation_mean": [
+            0.522262965,
+            0.24790175999999997,
+            0.087198317,
+            0.142636975
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.5257023862784986,
+            0.2457878968098382,
+            0.08663662160542572,
+            0.14187311311081977
+          ],
+          "actual_last_secretion": [
+            2.7157348377857037e-07,
+            1.1302077847609796e-08
+          ],
+          "cellular_genome_signature_count": 2,
+          "catalytic_genome_signature_count": 1,
+          "biomass_fraction": 0.005482015139941722,
+          "last_step_secretion_fraction": 0.0013427749472433312
+        },
+        {
+          "lineage": 5,
+          "living": 12,
+          "biomass": 11.94770565315347,
+          "body_and_stored_material": 11.991432564940453,
+          "fraction_of_represented_cells": 0.04633204633204633,
+          "max_generation": 7,
+          "evaluated_catalytic_readouts": 12,
+          "catalytic_allocation_a_mean": 0.03024350384470608,
+          "catalytic_allocation_a_p10": 0.02786690556492923,
+          "catalytic_allocation_a_p90": 0.034245111440282805,
+          "investment_mean": 0.2806347104776181,
+          "investment_biomass_weighted_mean": 0.28188419248641156,
+          "metabolic_allocation_mean": [
+            0.26289901,
+            0.4181249925,
+            0.24466268916666667,
+            0.07431330191666667
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.2713432835528074,
+            0.4119329950386287,
+            0.24493778305512437,
+            0.07178593281979498
+          ],
+          "actual_last_secretion": [
+            6.126245033120058e-08,
+            4.834029632447891e-05
+          ],
+          "cellular_genome_signature_count": 12,
+          "catalytic_genome_signature_count": 10,
+          "biomass_fraction": 0.05123704516818353,
+          "last_step_secretion_fraction": 0.2297561519868162
+        },
+        {
+          "lineage": 14,
+          "living": 2,
+          "biomass": 1.0876055388763135,
+          "body_and_stored_material": 1.08760606298958,
+          "fraction_of_represented_cells": 0.007722007722007722,
+          "max_generation": 4,
+          "evaluated_catalytic_readouts": 2,
+          "catalytic_allocation_a_mean": 0.28700493638640723,
+          "catalytic_allocation_a_p10": 0.28540899034662875,
+          "catalytic_allocation_a_p90": 0.2886008824261857,
+          "investment_mean": 0.241546517888227,
+          "investment_biomass_weighted_mean": 0.24069043111507799,
+          "metabolic_allocation_mean": [
+            0.49256481500000004,
+            0.20446541000000001,
+            0.12711754,
+            0.17585222
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.49465123520875376,
+            0.20379469434229863,
+            0.12649325304588713,
+            0.17506080368058663
+          ],
+          "actual_last_secretion": [
+            1.8123817105506618e-08,
+            1.1047183353903381e-07
+          ],
+          "cellular_genome_signature_count": 2,
+          "catalytic_genome_signature_count": 2,
+          "biomass_fraction": 0.004664133494606477,
+          "last_step_secretion_fraction": 0.0006104274862673876
+        },
+        {
+          "lineage": 23,
+          "living": 184,
+          "biomass": 163.25670131268433,
+          "body_and_stored_material": 163.38730038679927,
+          "fraction_of_represented_cells": 0.7104247104247104,
+          "max_generation": 13,
+          "evaluated_catalytic_readouts": 184,
+          "catalytic_allocation_a_mean": 0.5736301511900124,
+          "catalytic_allocation_a_p10": 0.5201429439741471,
+          "catalytic_allocation_a_p90": 0.6166011824939955,
+          "investment_mean": 0.3318928113090101,
+          "investment_biomass_weighted_mean": 0.3324519579271594,
+          "metabolic_allocation_mean": [
+            0.26680358130434784,
+            0.2732039076086957,
+            0.3591156205978261,
+            0.10087689381521739
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.27165376560796684,
+            0.27347992067872406,
+            0.3540290701695048,
+            0.10083725024713681
+          ],
+          "actual_last_secretion": [
+            8.068823848017873e-05,
+            7.644309661703397e-05
+          ],
+          "cellular_genome_signature_count": 184,
+          "catalytic_genome_signature_count": 156,
+          "biomass_fraction": 0.7001169280529485,
+          "last_step_secretion_fraction": 0.7458828149822987
+        },
+        {
+          "lineage": 24,
+          "living": 11,
+          "biomass": 11.356552967721658,
+          "body_and_stored_material": 11.356554733896676,
+          "fraction_of_represented_cells": 0.04247104247104247,
+          "max_generation": 5,
+          "evaluated_catalytic_readouts": 11,
+          "catalytic_allocation_a_mean": 0.89972190586905,
+          "catalytic_allocation_a_p10": 0.8748503848788853,
+          "catalytic_allocation_a_p90": 0.9100387221846986,
+          "investment_mean": 0.37086945582986136,
+          "investment_biomass_weighted_mean": 0.37326276408852915,
+          "metabolic_allocation_mean": [
+            0.3040179836363636,
+            0.3625643945454545,
+            0.047310938999999996,
+            0.2861066863636364
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.30742041259650843,
+            0.3618102427804775,
+            0.04804496440300993,
+            0.2827243792635609
+          ],
+          "actual_last_secretion": [
+            3.2446973559081653e-06,
+            4.190647989667402e-08
+          ],
+          "cellular_genome_signature_count": 11,
+          "catalytic_genome_signature_count": 10,
+          "biomass_fraction": 0.04870192104276048,
+          "last_step_secretion_fraction": 0.01560109776490545
+        },
+        {
+          "lineage": 26,
+          "living": 4,
+          "biomass": 2.642643979435205,
+          "body_and_stored_material": 2.642645282894506,
+          "fraction_of_represented_cells": 0.015444015444015444,
+          "max_generation": 6,
+          "evaluated_catalytic_readouts": 4,
+          "catalytic_allocation_a_mean": 0.7592196764934549,
+          "catalytic_allocation_a_p10": 0.74647590000491,
+          "catalytic_allocation_a_p90": 0.7708153160577088,
+          "investment_mean": 0.4044138430647493,
+          "investment_biomass_weighted_mean": 0.40635784603358227,
+          "metabolic_allocation_mean": [
+            0.4471637675,
+            0.11857542875,
+            0.226001345,
+            0.20825944
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.45103029269250355,
+            0.11553082215656665,
+            0.21530184856437015,
+            0.21813701958875598
+          ],
+          "actual_last_secretion": [
+            2.1904490709321375e-07,
+            2.248149787869875e-08
+          ],
+          "cellular_genome_signature_count": 4,
+          "catalytic_genome_signature_count": 4,
+          "biomass_fraction": 0.011332825972492229,
+          "last_step_secretion_fraction": 0.0011464956669626134
+        },
+        {
+          "lineage": 30,
+          "living": 40,
+          "biomass": 37.719883630676016,
+          "body_and_stored_material": 37.719902288545676,
+          "fraction_of_represented_cells": 0.15444015444015444,
+          "max_generation": 13,
+          "evaluated_catalytic_readouts": 40,
+          "catalytic_allocation_a_mean": 0.39406446086674496,
+          "catalytic_allocation_a_p10": 0.3773137479476303,
+          "catalytic_allocation_a_p90": 0.42740528337196604,
+          "investment_mean": 0.2834426553856056,
+          "investment_biomass_weighted_mean": 0.2858025001158692,
+          "metabolic_allocation_mean": [
+            0.14864659835,
+            0.34259992875,
+            0.2639333705,
+            0.24482010525
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.15337126874121274,
+            0.3397550281844533,
+            0.2630553482117481,
+            0.24381835974473884
+          ],
+          "actual_last_secretion": [
+            2.7902079705196224e-07,
+            6.405458193326505e-07
+          ],
+          "cellular_genome_signature_count": 40,
+          "catalytic_genome_signature_count": 31,
+          "biomass_fraction": 0.16175954090511677,
+          "last_step_secretion_fraction": 0.004365067833022373
+        },
+        {
+          "lineage": 39,
+          "living": 1,
+          "biomass": 0.5910083630596604,
+          "body_and_stored_material": 0.5910089153891521,
+          "fraction_of_represented_cells": 0.003861003861003861,
+          "max_generation": 3,
+          "evaluated_catalytic_readouts": 1,
+          "catalytic_allocation_a_mean": 0.8293019945113751,
+          "catalytic_allocation_a_p10": 0.8293019945113751,
+          "catalytic_allocation_a_p90": 0.8293019945113751,
+          "investment_mean": 0.30169793085620844,
+          "investment_biomass_weighted_mean": 0.30169793085620844,
+          "metabolic_allocation_mean": [
+            0.5780174,
+            0.20626333,
+            0.098366216,
+            0.117352985
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.5780174,
+            0.20626333,
+            0.098366216,
+            0.117352985
+          ],
+          "actual_last_secretion": [
+            4.2907216897373774e-08,
+            1.8178657991895983e-09
+          ],
+          "cellular_genome_signature_count": 1,
+          "catalytic_genome_signature_count": 1,
+          "biomass_fraction": 0.002534505207271284,
+          "last_step_secretion_fraction": 0.0002123043793995011
+        },
+        {
+          "lineage": 42,
+          "living": 2,
+          "biomass": 2.4220940143084446,
+          "body_and_stored_material": 2.4220941090329493,
+          "fraction_of_represented_cells": 0.007722007722007722,
+          "max_generation": 4,
+          "evaluated_catalytic_readouts": 2,
+          "catalytic_allocation_a_mean": 0.006728428233229486,
+          "catalytic_allocation_a_p10": 0.006473339107701969,
+          "catalytic_allocation_a_p90": 0.006983517358757003,
+          "investment_mean": 0.17991613417341606,
+          "investment_biomass_weighted_mean": 0.18016424444800136,
+          "metabolic_allocation_mean": [
+            0.262513105,
+            0.40850353,
+            0.21951501,
+            0.109468405
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.2615144233478341,
+            0.4122015322425287,
+            0.21500331422255678,
+            0.1112807751438069
+          ],
+          "actual_last_secretion": [
+            7.112738349690506e-12,
+            1.55302853610843e-07
+          ],
+          "cellular_genome_signature_count": 2,
+          "catalytic_genome_signature_count": 2,
+          "biomass_fraction": 0.010387010193873801,
+          "last_step_secretion_fraction": 0.0007372370051057806
+        },
+        {
+          "lineage": 45,
+          "living": 1,
+          "biomass": 0.8823891386394686,
+          "body_and_stored_material": 0.8823892654104294,
+          "fraction_of_represented_cells": 0.003861003861003861,
+          "max_generation": 2,
+          "evaluated_catalytic_readouts": 1,
+          "catalytic_allocation_a_mean": 0.9116757561051931,
+          "catalytic_allocation_a_p10": 0.9116757561051931,
+          "catalytic_allocation_a_p90": 0.9116757561051931,
+          "investment_mean": 0.14348381433328772,
+          "investment_biomass_weighted_mean": 0.14348381433328772,
+          "metabolic_allocation_mean": [
+            0.2205155,
+            0.5681182,
+            0.089243345,
+            0.12212291
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.2205155,
+            0.5681182,
+            0.089243345,
+            0.12212291000000002
+          ],
+          "actual_last_secretion": [
+            7.213462683728841e-08,
+            6.770532576423627e-10
+          ],
+          "cellular_genome_signature_count": 1,
+          "catalytic_genome_signature_count": 1,
+          "biomass_fraction": 0.003784074822805167,
+          "last_step_secretion_fraction": 0.0003456279479786648
+        }
+      ]
+    },
+    {
+      "time": 2500.000037252903,
+      "file": "frame-0025000.json",
+      "sha256": "78441aa4708161c935b31830cbb2eb5cdc6978e4797b2b638ab24f99b5c258e9",
+      "population": 85,
+      "full_population": true,
+      "total_biomass": 66.48738770549177,
+      "total_last_step_secretion": 0.004031488037669404,
+      "lineages": [
+        {
+          "lineage": 4,
+          "living": 1,
+          "biomass": 0.387159481463629,
+          "body_and_stored_material": 0.38715978582517946,
+          "fraction_of_represented_cells": 0.011764705882352941,
+          "max_generation": 0,
+          "evaluated_catalytic_readouts": 1,
+          "catalytic_allocation_a_mean": 0.8366156139376274,
+          "catalytic_allocation_a_p10": 0.8366156139376274,
+          "catalytic_allocation_a_p90": 0.8366156139376274,
+          "investment_mean": 0.39145895640464434,
+          "investment_biomass_weighted_mean": 0.39145895640464434,
+          "metabolic_allocation_mean": [
+            0.4313057,
+            0.24994446,
+            0.14319743,
+            0.17555244
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.4313057,
+            0.24994446000000003,
+            0.14319743,
+            0.17555244
+          ],
+          "actual_last_secretion": [
+            4.426449579699723e-08,
+            1.6882030921724347e-09
+          ],
+          "cellular_genome_signature_count": 1,
+          "catalytic_genome_signature_count": 1,
+          "biomass_fraction": 0.005823051481260861,
+          "last_step_secretion_fraction": 1.1398446047662054e-05
+        },
+        {
+          "lineage": 5,
+          "living": 4,
+          "biomass": 3.452975445582937,
+          "body_and_stored_material": 3.4529766736708694,
+          "fraction_of_represented_cells": 0.047058823529411764,
+          "max_generation": 6,
+          "evaluated_catalytic_readouts": 4,
+          "catalytic_allocation_a_mean": 0.031164591400227787,
+          "catalytic_allocation_a_p10": 0.03008586723120237,
+          "catalytic_allocation_a_p90": 0.03275234458486678,
+          "investment_mean": 0.2732975915264697,
+          "investment_biomass_weighted_mean": 0.2814146373744214,
+          "metabolic_allocation_mean": [
+            0.20660466,
+            0.4946655425,
+            0.21875951,
+            0.0799702835
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.23730341260705717,
+            0.47210865106315036,
+            0.22081510776838004,
+            0.06977282411539211
+          ],
+          "actual_last_secretion": [
+            1.721903207990488e-10,
+            1.63348294687445e-07
+          ],
+          "cellular_genome_signature_count": 4,
+          "catalytic_genome_signature_count": 3,
+          "biomass_fraction": 0.05193429257407456,
+          "last_step_secretion_fraction": 4.056082604744003e-05
+        },
+        {
+          "lineage": 14,
+          "living": 2,
+          "biomass": 1.0911542527622462,
+          "body_and_stored_material": 1.0911551660446632,
+          "fraction_of_represented_cells": 0.023529411764705882,
+          "max_generation": 4,
+          "evaluated_catalytic_readouts": 2,
+          "catalytic_allocation_a_mean": 0.2780081398818909,
+          "catalytic_allocation_a_p10": 0.2660677300033481,
+          "catalytic_allocation_a_p90": 0.2899485497604337,
+          "investment_mean": 0.24564276569353305,
+          "investment_biomass_weighted_mean": 0.24520621757760278,
+          "metabolic_allocation_mean": [
+            0.51921489,
+            0.20440248,
+            0.1175461,
+            0.15883657499999998
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.5231210257866467,
+            0.20253042566875876,
+            0.11611033914568047,
+            0.15823824886493915
+          ],
+          "actual_last_secretion": [
+            1.0673541035304554e-08,
+            7.24719181386497e-08
+          ],
+          "cellular_genome_signature_count": 2,
+          "catalytic_genome_signature_count": 2,
+          "biomass_fraction": 0.016411447199513273,
+          "last_step_secretion_fraction": 2.062401237385799e-05
+        },
+        {
+          "lineage": 23,
+          "living": 51,
+          "biomass": 39.98508102403291,
+          "body_and_stored_material": 40.14166749726867,
+          "fraction_of_represented_cells": 0.6,
+          "max_generation": 13,
+          "evaluated_catalytic_readouts": 51,
+          "catalytic_allocation_a_mean": 0.5961831071705904,
+          "catalytic_allocation_a_p10": 0.5438231110074331,
+          "catalytic_allocation_a_p90": 0.6581390485614199,
+          "investment_mean": 0.331235275857573,
+          "investment_biomass_weighted_mean": 0.3344602306813547,
+          "metabolic_allocation_mean": [
+            0.24360705960784315,
+            0.3530142749019608,
+            0.29306809019607843,
+            0.11031057715686275
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.24806750447397935,
+            0.3487596616379872,
+            0.2926768378102028,
+            0.11049599478248036
+          ],
+          "actual_last_secretion": [
+            0.0026869201433730875,
+            0.0012498627838343625
+          ],
+          "cellular_genome_signature_count": 51,
+          "catalytic_genome_signature_count": 48,
+          "biomass_fraction": 0.6013934733178002,
+          "last_step_secretion_fraction": 0.9765086465401736
+        },
+        {
+          "lineage": 24,
+          "living": 10,
+          "biomass": 6.819513596182093,
+          "body_and_stored_material": 6.819517482581679,
+          "fraction_of_represented_cells": 0.11764705882352941,
+          "max_generation": 5,
+          "evaluated_catalytic_readouts": 10,
+          "catalytic_allocation_a_mean": 0.9047577062064301,
+          "catalytic_allocation_a_p10": 0.8919622270973995,
+          "catalytic_allocation_a_p90": 0.931448090269659,
+          "investment_mean": 0.3873551962123121,
+          "investment_biomass_weighted_mean": 0.396902324677039,
+          "metabolic_allocation_mean": [
+            0.305177278,
+            0.378083115,
+            0.0778436605,
+            0.238895948
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.30481160716965405,
+            0.3838868813218156,
+            0.08574726987427078,
+            0.22555423896476076
+          ],
+          "actual_last_secretion": [
+            1.017475385624902e-06,
+            1.1914201066994375e-08
+          ],
+          "cellular_genome_signature_count": 10,
+          "catalytic_genome_signature_count": 9,
+          "biomass_fraction": 0.10256852963436267,
+          "last_step_secretion_fraction": 0.00025533737842540756
+        },
+        {
+          "lineage": 26,
+          "living": 1,
+          "biomass": 0.48448612558181225,
+          "body_and_stored_material": 0.4844865808570168,
+          "fraction_of_represented_cells": 0.011764705882352941,
+          "max_generation": 5,
+          "evaluated_catalytic_readouts": 1,
+          "catalytic_allocation_a_mean": 0.7233815920800349,
+          "catalytic_allocation_a_p10": 0.7233815920800349,
+          "catalytic_allocation_a_p90": 0.7233815920800349,
+          "investment_mean": 0.39602702374739845,
+          "investment_biomass_weighted_mean": 0.39602702374739845,
+          "metabolic_allocation_mean": [
+            0.5074217,
+            0.102585174,
+            0.21093322,
+            0.17905991
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.5074217,
+            0.102585174,
+            0.21093322,
+            0.17905991
+          ],
+          "actual_last_secretion": [
+            1.768122428372589e-08,
+            2.5854704699878814e-09
+          ],
+          "cellular_genome_signature_count": 1,
+          "catalytic_genome_signature_count": 1,
+          "biomass_fraction": 0.007286887668498282,
+          "last_step_secretion_fraction": 5.027100307466102e-06
+        },
+        {
+          "lineage": 30,
+          "living": 12,
+          "biomass": 9.689872248925555,
+          "body_and_stored_material": 9.68996934184511,
+          "fraction_of_represented_cells": 0.1411764705882353,
+          "max_generation": 12,
+          "evaluated_catalytic_readouts": 12,
+          "catalytic_allocation_a_mean": 0.41130956885612463,
+          "catalytic_allocation_a_p10": 0.38794555733978997,
+          "catalytic_allocation_a_p90": 0.4434227025220669,
+          "investment_mean": 0.30394367915868903,
+          "investment_biomass_weighted_mean": 0.3046224384450124,
+          "metabolic_allocation_mean": [
+            0.20126423916666666,
+            0.36896736083333337,
+            0.23471083,
+            0.19505758083333333
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.20346780804760065,
+            0.36685855869988826,
+            0.22994473379705987,
+            0.19972891593828193
+          ],
+          "actual_last_secretion": [
+            1.0585956534612054e-05,
+            2.794577399996755e-05
+          ],
+          "cellular_genome_signature_count": 12,
+          "catalytic_genome_signature_count": 11,
+          "biomass_fraction": 0.1457400054856597,
+          "last_step_secretion_fraction": 0.009557694373528325
+        },
+        {
+          "lineage": 39,
+          "living": 1,
+          "biomass": 0.5924738902649535,
+          "body_and_stored_material": 0.5924741166863663,
+          "fraction_of_represented_cells": 0.011764705882352941,
+          "max_generation": 3,
+          "evaluated_catalytic_readouts": 1,
+          "catalytic_allocation_a_mean": 0.8323695529088577,
+          "catalytic_allocation_a_p10": 0.8323695529088577,
+          "catalytic_allocation_a_p90": 0.8323695529088577,
+          "investment_mean": 0.3078370978486786,
+          "investment_biomass_weighted_mean": 0.3078370978486786,
+          "metabolic_allocation_mean": [
+            0.55964166,
+            0.22298166,
+            0.12157645,
+            0.0958002
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.55964166,
+            0.22298166,
+            0.12157644999999999,
+            0.0958002
+          ],
+          "actual_last_secretion": [
+            3.1344770163116106e-08,
+            1.271272125722843e-09
+          ],
+          "cellular_genome_signature_count": 1,
+          "catalytic_genome_signature_count": 1,
+          "biomass_fraction": 0.008911071869590326,
+          "last_step_secretion_fraction": 8.090323469667102e-06
+        },
+        {
+          "lineage": 42,
+          "living": 2,
+          "biomass": 3.099588200896146,
+          "body_and_stored_material": 3.1022435818911758,
+          "fraction_of_represented_cells": 0.023529411764705882,
+          "max_generation": 4,
+          "evaluated_catalytic_readouts": 2,
+          "catalytic_allocation_a_mean": 0.007199349608646519,
+          "catalytic_allocation_a_p10": 0.007088692217848316,
+          "catalytic_allocation_a_p90": 0.007310006999444723,
+          "investment_mean": 0.17033446600226984,
+          "investment_biomass_weighted_mean": 0.17017351593577457,
+          "metabolic_allocation_mean": [
+            0.280989155,
+            0.348747385,
+            0.25526914,
+            0.114994345
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.2806411148181042,
+            0.351213605102819,
+            0.25437088406706754,
+            0.1137744231593317
+          ],
+          "actual_last_secretion": [
+            2.991847929923147e-09,
+            5.475944308218861e-05
+          ],
+          "cellular_genome_signature_count": 2,
+          "catalytic_genome_signature_count": 2,
+          "biomass_fraction": 0.046619190614404664,
+          "last_step_secretion_fraction": 0.013583677892239661
+        },
+        {
+          "lineage": 45,
+          "living": 1,
+          "biomass": 0.8850834397994903,
+          "body_and_stored_material": 0.885083873091891,
+          "fraction_of_represented_cells": 0.011764705882352941,
+          "max_generation": 2,
+          "evaluated_catalytic_readouts": 1,
+          "catalytic_allocation_a_mean": 0.9200556494332089,
+          "catalytic_allocation_a_p10": 0.9200556494332089,
+          "catalytic_allocation_a_p90": 0.9200556494332089,
+          "investment_mean": 0.14305243036694318,
+          "investment_biomass_weighted_mean": 0.14305243036694318,
+          "metabolic_allocation_mean": [
+            0.23029104,
+            0.5739593,
+            0.08463074,
+            0.11111882
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.23029104,
+            0.5739593,
+            0.08463074,
+            0.11111882
+          ],
+          "actual_last_secretion": [
+            3.5783862035192366e-08,
+            2.701684149089404e-10
+          ],
+          "cellular_genome_signature_count": 1,
+          "catalytic_genome_signature_count": 1,
+          "biomass_fraction": 0.01331205015483536,
+          "last_step_secretion_fraction": 8.943107386954837e-06
+        }
+      ]
+    },
+    {
+      "time": 2900.0000432133675,
+      "file": "frame-0029000.json",
+      "sha256": "0869436acaf6ed9ecae6a2bbad676990d0448463450853e33c7a0762b7eb53a4",
+      "population": 223,
+      "full_population": true,
+      "total_biomass": 213.63690128379545,
+      "total_last_step_secretion": 0.00042047878586260487,
+      "lineages": [
+        {
+          "lineage": 5,
+          "living": 8,
+          "biomass": 8.353917826916481,
+          "body_and_stored_material": 8.35400365273355,
+          "fraction_of_represented_cells": 0.03587443946188341,
+          "max_generation": 9,
+          "evaluated_catalytic_readouts": 8,
+          "catalytic_allocation_a_mean": 0.03145279941499773,
+          "catalytic_allocation_a_p10": 0.029098599804408307,
+          "catalytic_allocation_a_p90": 0.03399879193052957,
+          "investment_mean": 0.2973492434571321,
+          "investment_biomass_weighted_mean": 0.29942409090771643,
+          "metabolic_allocation_mean": [
+            0.28791043125,
+            0.43121723624999997,
+            0.2048092575,
+            0.076063073125
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.2933537294846454,
+            0.42793196705304615,
+            0.20479820162690016,
+            0.0739161004728414
+          ],
+          "actual_last_secretion": [
+            2.4383268218864003e-08,
+            1.7468413467891628e-05
+          ],
+          "cellular_genome_signature_count": 8,
+          "catalytic_genome_signature_count": 8,
+          "biomass_fraction": 0.039103346737926745,
+          "last_step_secretion_fraction": 0.04160209105490144
+        },
+        {
+          "lineage": 14,
+          "living": 2,
+          "biomass": 0.7882253709148569,
+          "body_and_stored_material": 0.7882255681775818,
+          "fraction_of_represented_cells": 0.008968609865470852,
+          "max_generation": 4,
+          "evaluated_catalytic_readouts": 2,
+          "catalytic_allocation_a_mean": 0.30036470683121175,
+          "catalytic_allocation_a_p10": 0.2877695154476252,
+          "catalytic_allocation_a_p90": 0.3129598982147983,
+          "investment_mean": 0.23744092443545678,
+          "investment_biomass_weighted_mean": 0.23821374770105064,
+          "metabolic_allocation_mean": [
+            0.439498615,
+            0.236309045,
+            0.151982065,
+            0.17221025
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.4329933370704023,
+            0.2413440552555759,
+            0.1549698701695421,
+            0.17069270773389444
+          ],
+          "actual_last_secretion": [
+            2.7444032433751597e-08,
+            1.4830784407168524e-07
+          ],
+          "cellular_genome_signature_count": 2,
+          "catalytic_genome_signature_count": 2,
+          "biomass_fraction": 0.0036895562806716505,
+          "last_step_secretion_fraction": 0.0004179803652754679
+        },
+        {
+          "lineage": 23,
+          "living": 194,
+          "biomass": 185.50597455546264,
+          "body_and_stored_material": 185.50877390025136,
+          "fraction_of_represented_cells": 0.8699551569506726,
+          "max_generation": 21,
+          "evaluated_catalytic_readouts": 194,
+          "catalytic_allocation_a_mean": 0.5837486682718885,
+          "catalytic_allocation_a_p10": 0.5305342183040519,
+          "catalytic_allocation_a_p90": 0.6370916745126618,
+          "investment_mean": 0.349966886698128,
+          "investment_biomass_weighted_mean": 0.3519692801651926,
+          "metabolic_allocation_mean": [
+            0.27500221886597936,
+            0.2940194658762887,
+            0.3209007486082474,
+            0.11007756786082475
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.2773308183166181,
+            0.2949426086652718,
+            0.31870831007445977,
+            0.10901826367340399
+          ],
+          "actual_last_secretion": [
+            0.00014366321518031284,
+            7.58236218826988e-05
+          ],
+          "cellular_genome_signature_count": 194,
+          "catalytic_genome_signature_count": 159,
+          "biomass_fraction": 0.8683236530801218,
+          "last_step_secretion_fraction": 0.5219926532387079
+        },
+        {
+          "lineage": 24,
+          "living": 7,
+          "biomass": 6.94269994519747,
+          "body_and_stored_material": 6.94283722975236,
+          "fraction_of_represented_cells": 0.03139013452914798,
+          "max_generation": 5,
+          "evaluated_catalytic_readouts": 7,
+          "catalytic_allocation_a_mean": 0.9175757044936255,
+          "catalytic_allocation_a_p10": 0.8944071833761503,
+          "catalytic_allocation_a_p90": 0.9352560857815474,
+          "investment_mean": 0.4248298750406118,
+          "investment_biomass_weighted_mean": 0.42933853796025084,
+          "metabolic_allocation_mean": [
+            0.30126511,
+            0.39527766285714283,
+            0.08180301242857144,
+            0.22165422285714287
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.3056245118980003,
+            0.3963183680083593,
+            0.08202593006400437,
+            0.21603120440667148
+          ],
+          "actual_last_secretion": [
+            0.0001408375129157214,
+            6.939487684666382e-07
+          ],
+          "cellular_genome_signature_count": 7,
+          "catalytic_genome_signature_count": 7,
+          "biomass_fraction": 0.03249766263916542,
+          "last_step_secretion_fraction": 0.33659596260924013
+        },
+        {
+          "lineage": 30,
+          "living": 8,
+          "biomass": 7.420428218187556,
+          "body_and_stored_material": 7.420530429255026,
+          "fraction_of_represented_cells": 0.03587443946188341,
+          "max_generation": 12,
+          "evaluated_catalytic_readouts": 8,
+          "catalytic_allocation_a_mean": 0.3971772842086903,
+          "catalytic_allocation_a_p10": 0.3693491990150332,
+          "catalytic_allocation_a_p90": 0.4297444452777098,
+          "investment_mean": 0.29329794628824357,
+          "investment_biomass_weighted_mean": 0.2911982723707894,
+          "metabolic_allocation_mean": [
+            0.17707404125,
+            0.335396225,
+            0.27310442625,
+            0.214425315
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.17828099706632167,
+            0.3362179126121969,
+            0.27568180987683594,
+            0.2098192907551432
+          ],
+          "actual_last_secretion": [
+            1.9531155376488517e-06,
+            5.077413925143543e-06
+          ],
+          "cellular_genome_signature_count": 8,
+          "catalytic_genome_signature_count": 8,
+          "biomass_fraction": 0.034733831906362714,
+          "last_step_secretion_fraction": 0.016720295289973753
+        },
+        {
+          "lineage": 42,
+          "living": 3,
+          "biomass": 4.215932028747347,
+          "body_and_stored_material": 4.216057485169729,
+          "fraction_of_represented_cells": 0.013452914798206279,
+          "max_generation": 4,
+          "evaluated_catalytic_readouts": 3,
+          "catalytic_allocation_a_mean": 0.007104573407459232,
+          "catalytic_allocation_a_p10": 0.006861068825836565,
+          "catalytic_allocation_a_p90": 0.007382517725019579,
+          "investment_mean": 0.17664388492114033,
+          "investment_biomass_weighted_mean": 0.17609565915947584,
+          "metabolic_allocation_mean": [
+            0.25355158333333333,
+            0.39977328,
+            0.23459024,
+            0.11208489533333334
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.25371537426984075,
+            0.39860828446380125,
+            0.23609316787352144,
+            0.11158317262639261
+          ],
+          "actual_last_secretion": [
+            1.8498168326969155e-09,
+            3.463218262957763e-05
+          ],
+          "cellular_genome_signature_count": 3,
+          "catalytic_genome_signature_count": 3,
+          "biomass_fraction": 0.019734100258020963,
+          "last_step_secretion_fraction": 0.08236808517071607
+        },
+        {
+          "lineage": 45,
+          "living": 1,
+          "biomass": 0.40972333836910285,
+          "body_and_stored_material": 0.40972343551558027,
+          "fraction_of_represented_cells": 0.004484304932735426,
+          "max_generation": 2,
+          "evaluated_catalytic_readouts": 1,
+          "catalytic_allocation_a_mean": 0.9125010382562266,
+          "catalytic_allocation_a_p10": 0.9125010382562266,
+          "catalytic_allocation_a_p90": 0.9125010382562266,
+          "investment_mean": 0.14706771025546292,
+          "investment_biomass_weighted_mean": 0.14706771025546292,
+          "metabolic_allocation_mean": [
+            0.24068522,
+            0.5507376,
+            0.09791268,
+            0.11066441
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.24068521999999998,
+            0.5507376,
+            0.09791268000000002,
+            0.11066441
+          ],
+          "actual_last_secretion": [
+            1.262160706709363e-07,
+            1.1605229156136376e-09
+          ],
+          "cellular_genome_signature_count": 1,
+          "catalytic_genome_signature_count": 1,
+          "biomass_fraction": 0.0019178490977306679,
+          "last_step_secretion_fraction": 0.0003029322711851897
+        }
+      ]
+    },
+    {
+      "time": 3000.0000447034836,
+      "file": "frame-0030000.json",
+      "sha256": "e051430f60f179416cd666e6c3b7e430c02918d7ea300d088bb27b61badd5ae0",
+      "population": 203,
+      "full_population": true,
+      "total_biomass": 187.46545961292162,
+      "total_last_step_secretion": 0.000573408561650752,
+      "lineages": [
+        {
+          "lineage": 5,
+          "living": 7,
+          "biomass": 7.08800281917854,
+          "body_and_stored_material": 7.088067900243479,
+          "fraction_of_represented_cells": 0.034482758620689655,
+          "max_generation": 9,
+          "evaluated_catalytic_readouts": 7,
+          "catalytic_allocation_a_mean": 0.031134175221508232,
+          "catalytic_allocation_a_p10": 0.02873170446633162,
+          "catalytic_allocation_a_p90": 0.033588174709097425,
+          "investment_mean": 0.29870086536142443,
+          "investment_biomass_weighted_mean": 0.30143490078551655,
+          "metabolic_allocation_mean": [
+            0.29000017857142857,
+            0.43170474,
+            0.20307524142857142,
+            0.07521984785714285
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.2918575122765773,
+            0.4311913982551791,
+            0.20330425320063691,
+            0.07364683905070427
+          ],
+          "actual_last_secretion": [
+            2.7145708343602644e-08,
+            1.9263805376524282e-05
+          ],
+          "cellular_genome_signature_count": 7,
+          "catalytic_genome_signature_count": 7,
+          "biomass_fraction": 0.03780964682141359,
+          "last_step_secretion_fraction": 0.03364259338809366
+        },
+        {
+          "lineage": 14,
+          "living": 2,
+          "biomass": 0.7894112788200243,
+          "body_and_stored_material": 0.7894113727577781,
+          "fraction_of_represented_cells": 0.009852216748768473,
+          "max_generation": 4,
+          "evaluated_catalytic_readouts": 2,
+          "catalytic_allocation_a_mean": 0.29521710516487054,
+          "catalytic_allocation_a_p10": 0.28474547659602917,
+          "catalytic_allocation_a_p90": 0.3056887337337119,
+          "investment_mean": 0.2387749236529385,
+          "investment_biomass_weighted_mean": 0.23964983463415576,
+          "metabolic_allocation_mean": [
+            0.4405072,
+            0.23755459499999998,
+            0.15174759999999998,
+            0.17019059
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.4345803764328911,
+            0.24257751278113224,
+            0.15443046811549263,
+            0.1684116324324995
+          ],
+          "actual_last_secretion": [
+            2.760564947468236e-08,
+            1.595546040108922e-07
+          ],
+          "cellular_genome_signature_count": 2,
+          "catalytic_genome_signature_count": 2,
+          "biomass_fraction": 0.004210969212408512,
+          "last_step_secretion_fraction": 0.0003263994750039483
+        },
+        {
+          "lineage": 23,
+          "living": 177,
+          "biomass": 162.30264774886402,
+          "body_and_stored_material": 162.30404522990221,
+          "fraction_of_represented_cells": 0.8719211822660099,
+          "max_generation": 21,
+          "evaluated_catalytic_readouts": 177,
+          "catalytic_allocation_a_mean": 0.5859675765298806,
+          "catalytic_allocation_a_p10": 0.5342274695072925,
+          "catalytic_allocation_a_p90": 0.6378334853217764,
+          "investment_mean": 0.350880559186054,
+          "investment_biomass_weighted_mean": 0.3528008272499505,
+          "metabolic_allocation_mean": [
+            0.2702525902824859,
+            0.30268804937853105,
+            0.31600686740112993,
+            0.11105250104519775
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.27291539092584766,
+            0.30422182869797937,
+            0.3118657917929088,
+            0.11099699475532923
+          ],
+          "actual_last_secretion": [
+            0.00018483157435431605,
+            9.911772029356652e-05
+          ],
+          "cellular_genome_signature_count": 177,
+          "catalytic_genome_signature_count": 147,
+          "biomass_fraction": 0.8657736101572325,
+          "last_step_secretion_fraction": 0.49519542197004823
+        },
+        {
+          "lineage": 24,
+          "living": 6,
+          "biomass": 5.794594322905121,
+          "body_and_stored_material": 5.794731262608855,
+          "fraction_of_represented_cells": 0.029556650246305417,
+          "max_generation": 5,
+          "evaluated_catalytic_readouts": 6,
+          "catalytic_allocation_a_mean": 0.9184077007772866,
+          "catalytic_allocation_a_p10": 0.8930394054093765,
+          "catalytic_allocation_a_p90": 0.9345075910547289,
+          "investment_mean": 0.43441022274218166,
+          "investment_biomass_weighted_mean": 0.44656992933356676,
+          "metabolic_allocation_mean": [
+            0.2971722866666667,
+            0.40307700333333335,
+            0.09317266916666667,
+            0.20657803066666666
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.30658908562379983,
+            0.40778613114135126,
+            0.09812753929834753,
+            0.1874972323538741
+          ],
+          "actual_last_secretion": [
+            0.00025414953779959306,
+            1.2511071409733584e-06
+          ],
+          "cellular_genome_signature_count": 6,
+          "catalytic_genome_signature_count": 6,
+          "biomass_fraction": 0.030910197189763865,
+          "last_step_secretion_fraction": 0.4454077982465218
+        },
+        {
+          "lineage": 30,
+          "living": 7,
+          "biomass": 6.63546153795154,
+          "body_and_stored_material": 6.635462907905532,
+          "fraction_of_represented_cells": 0.034482758620689655,
+          "max_generation": 12,
+          "evaluated_catalytic_readouts": 7,
+          "catalytic_allocation_a_mean": 0.4086844779289492,
+          "catalytic_allocation_a_p10": 0.3826573682017268,
+          "catalytic_allocation_a_p90": 0.4351451724902133,
+          "investment_mean": 0.29276952316397764,
+          "investment_biomass_weighted_mean": 0.29184002858980734,
+          "metabolic_allocation_mean": [
+            0.19088673857142857,
+            0.34313911857142854,
+            0.26001008571428574,
+            0.20596404857142858
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.19067552860850856,
+            0.3442193174493254,
+            0.2621466900963214,
+            0.20295845732047207
+          ],
+          "actual_last_secretion": [
+            9.505316100720399e-08,
+            1.9717974683778716e-07
+          ],
+          "cellular_genome_signature_count": 7,
+          "catalytic_genome_signature_count": 7,
+          "biomass_fraction": 0.0353956486258985,
+          "last_step_secretion_fraction": 0.0005096416889969329
+        },
+        {
+          "lineage": 42,
+          "living": 3,
+          "biomass": 4.4451113007193035,
+          "body_and_stored_material": 4.445125227159499,
+          "fraction_of_represented_cells": 0.014778325123152709,
+          "max_generation": 4,
+          "evaluated_catalytic_readouts": 3,
+          "catalytic_allocation_a_mean": 0.007160948577254694,
+          "catalytic_allocation_a_p10": 0.006965039119539653,
+          "catalytic_allocation_a_p90": 0.00740738117241668,
+          "investment_mean": 0.17485301142686685,
+          "investment_biomass_weighted_mean": 0.17428765932261575,
+          "metabolic_allocation_mean": [
+            0.25623829,
+            0.39487264,
+            0.23540496333333333,
+            0.11348409466666667
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.25575958073396066,
+            0.39465132020649524,
+            0.23687179578910098,
+            0.11271728475898568
+          ],
+          "actual_last_secretion": [
+            8.119507834635463e-10,
+            1.4228357472688007e-05
+          ],
+          "cellular_genome_signature_count": 3,
+          "catalytic_genome_signature_count": 3,
+          "biomass_fraction": 0.0237116283175448,
+          "last_step_secretion_fraction": 0.024815062723353754
+        },
+        {
+          "lineage": 45,
+          "living": 1,
+          "biomass": 0.41023060448309767,
+          "body_and_stored_material": 0.410230862935558,
+          "fraction_of_represented_cells": 0.0049261083743842365,
+          "max_generation": 2,
+          "evaluated_catalytic_readouts": 1,
+          "catalytic_allocation_a_mean": 0.9137697259370309,
+          "catalytic_allocation_a_p10": 0.9137697259370309,
+          "catalytic_allocation_a_p90": 0.9137697259370309,
+          "investment_mean": 0.14865385203978057,
+          "investment_biomass_weighted_mean": 0.14865385203978057,
+          "metabolic_allocation_mean": [
+            0.24065016,
+            0.54646295,
+            0.09859861,
+            0.114288345
+          ],
+          "metabolic_allocation_biomass_weighted_mean": [
+            0.24065016,
+            0.54646295,
+            0.09859861,
+            0.114288345
+          ],
+          "actual_last_secretion": [
+            5.858666388169117e-08,
+            5.217287514692895e-10
+          ],
+          "cellular_genome_signature_count": 1,
+          "catalytic_genome_signature_count": 1,
+          "biomass_fraction": 0.0021882996757383527,
+          "last_step_secretion_fraction": 0.00010308250798173784
+        }
+      ]
+    }
+  ],
+  "role_limits": "last-step secretion means the actual .1-time-unit transfer, not cumulative lineage contribution; catalyst origin and functional dependence are not identified",
+  "coarse_full_population_late_check": {
+    "start": 1600.0,
+    "snapshot_sources": [
+      {
+        "file": "frame-0016000.json",
+        "time": 1600.000023841858,
+        "sha256": "aa97ecb99f4e7eeffa4f39e4011431ea81d08997d55d0f5098197d6ff2c0e716"
+      },
+      {
+        "file": "frame-0016250.json",
+        "time": 1625.000024214387,
+        "sha256": "71a67ceb016b0048d82d36faedfe928398b37c20b47781e9694ba3075131208f"
+      },
+      {
+        "file": "frame-0016500.json",
+        "time": 1650.000024586916,
+        "sha256": "cc5e8abf49e3a54e4681c6acb7d608d9cf9aaef58c42bca8a707a000f4fbbb8c"
+      },
+      {
+        "file": "frame-0016750.json",
+        "time": 1675.000024959445,
+        "sha256": "14ec3e2a7df2206b25180092b8d9c5a99f47f2c8287bc62a486a4d066e716e9d"
+      },
+      {
+        "file": "frame-0017000.json",
+        "time": 1700.000025331974,
+        "sha256": "a3fb6192907316f728880d88a2bca9a444837ad0dbc336c2d8829f59e110b85c"
+      },
+      {
+        "file": "frame-0017250.json",
+        "time": 1725.000025704503,
+        "sha256": "627f499438e07ed54f8860a001c039571223e3502ffeb921f1e6c4251e3f72d4"
+      },
+      {
+        "file": "frame-0017500.json",
+        "time": 1750.000026077032,
+        "sha256": "4a4319cb89064745e0b3a835ae18431c8c2ad76f53b9cac9fcfaba348d7eecb7"
+      },
+      {
+        "file": "frame-0017750.json",
+        "time": 1775.0000264495611,
+        "sha256": "353e5cf65388e9e5d47f750959455696ccaa42045b26ec2a78c1b50348cf7606"
+      },
+      {
+        "file": "frame-0018000.json",
+        "time": 1800.0000268220901,
+        "sha256": "76d5c36d0bf59a54dda8ea8cc53633e4080d04de322a2c54d22a63b24a88662c"
+      },
+      {
+        "file": "frame-0018250.json",
+        "time": 1825.0000271946192,
+        "sha256": "388dd62ba15baa06f6c64865cae44ba00a274db19c554de85288ba3631bd2225"
+      },
+      {
+        "file": "frame-0018500.json",
+        "time": 1850.0000275671482,
+        "sha256": "bd031a0c7289fcc08d94a1f6c15c69da6445f41c09c6f7222e3b2c5b4c9584ca"
+      },
+      {
+        "file": "frame-0018750.json",
+        "time": 1875.0000279396772,
+        "sha256": "03d17a9977b420697d63e20d987c13e29e3de8a5a3f9c12d91c8f50b2d7abfae"
+      },
+      {
+        "file": "frame-0019000.json",
+        "time": 1900.0000283122063,
+        "sha256": "4c76c5b28997a98de7bd9cb9fd6376c9570bfa53fa2d2590aebc4b8942b7ba32"
+      },
+      {
+        "file": "frame-0019250.json",
+        "time": 1925.0000286847353,
+        "sha256": "ad7551b25e067918547992231039ac427b239b4656d2daed70411f2a275564d4"
+      },
+      {
+        "file": "frame-0019500.json",
+        "time": 1950.0000290572643,
+        "sha256": "0e3f2a34e350b9577f4d4bb1e42e63e2ba19e6251837579f75bf9a6b6f9dbef6"
+      },
+      {
+        "file": "frame-0019750.json",
+        "time": 1975.0000294297934,
+        "sha256": "1b3ee460aad0c728dd57932de90a471382ff149fa66ef76795edf99eecd4060a"
+      },
+      {
+        "file": "frame-0020000.json",
+        "time": 2000.0000298023224,
+        "sha256": "ccdaa4edd2d0ead182938a81aa7aa68eb14e37d1467fd2c0b6f1fbc51302c153"
+      },
+      {
+        "file": "frame-0020250.json",
+        "time": 2025.0000301748514,
+        "sha256": "fc8a2183746f26f83bc05aedc57e892f5dcc7346edb42de6e2ed1a88f758c177"
+      },
+      {
+        "file": "frame-0020500.json",
+        "time": 2050.0000305473804,
+        "sha256": "5a8ab734f92e13a5cdb1777f8bc736159a63fb08cf2ddd1e982b3c71024284c1"
+      },
+      {
+        "file": "frame-0020750.json",
+        "time": 2075.0000309199095,
+        "sha256": "1e5650ac79010eb272f06a710f6419f66585f2edbf6be5696250232635e2c0a9"
+      },
+      {
+        "file": "frame-0021000.json",
+        "time": 2100.0000312924385,
+        "sha256": "2012789b9103af77ac56a8812e6b288896ac64c8ca6ec3260ba11badcac400ce"
+      },
+      {
+        "file": "frame-0021250.json",
+        "time": 2125.0000316649675,
+        "sha256": "077619d31e453e72df7b419fe8c6d1f5bfec4c763205189b69a831ab682424dc"
+      },
+      {
+        "file": "frame-0021500.json",
+        "time": 2150.0000320374966,
+        "sha256": "7c3cf11f0f6477936499bcd26f16ca2c9fd7f887453a91fc09c24daa672bba45"
+      },
+      {
+        "file": "frame-0021750.json",
+        "time": 2175.0000324100256,
+        "sha256": "9b8e21eb0bc119846ca84437c5f2a577a6817ab058a6b46f852fb336622e46ab"
+      },
+      {
+        "file": "frame-0022000.json",
+        "time": 2200.0000327825546,
+        "sha256": "da5f8fe06aa554c3892ce7d3c6ae364348ececd63ef4fe5708da933630c8d20f"
+      },
+      {
+        "file": "frame-0022250.json",
+        "time": 2225.0000331550837,
+        "sha256": "6ae3cc696a8d55d27c1076a627d3c6745cf8632a9e015e41b6fd32ad23422860"
+      },
+      {
+        "file": "frame-0022500.json",
+        "time": 2250.0000335276127,
+        "sha256": "e1fc0684bc3ad5bce7babd4762698cb799ee4e2c413bcba72aa5990f758ce382"
+      },
+      {
+        "file": "frame-0022750.json",
+        "time": 2275.0000339001417,
+        "sha256": "b1bd0062c31ce5650e1e2b59e2bfc853688941b181d206910beae21a84e6ce53"
+      },
+      {
+        "file": "frame-0023000.json",
+        "time": 2300.0000342726707,
+        "sha256": "d09da1fccd5bf872918c95c8873a1ecdd7f738b2b0147a7e93a898e86213bced"
+      },
+      {
+        "file": "frame-0023250.json",
+        "time": 2325.0000346452,
+        "sha256": "c383c489ec74c8ec16df049779dea22774ef63a378595bc3f36c280ab5b527f7"
+      },
+      {
+        "file": "frame-0023500.json",
+        "time": 2350.000035017729,
+        "sha256": "324521f1b084867ce9333301e6f43768f2e005640d48b3d3ff75e86eb89492e8"
+      },
+      {
+        "file": "frame-0023750.json",
+        "time": 2375.000035390258,
+        "sha256": "8d9171da8f9779276f7a42724e112ceca2a06c316b51b2241a1d57f28709cf61"
+      },
+      {
+        "file": "frame-0024000.json",
+        "time": 2400.000035762787,
+        "sha256": "2dfaef6cb9245aa148c44b8da92d455b43c080d77411d044c4b387b8ebd8a698"
+      },
+      {
+        "file": "frame-0024250.json",
+        "time": 2425.000036135316,
+        "sha256": "a6672f1bfe7f1b71f5f3c9b9e83729b9622b1d500094d80c9d8da57a00140a7f"
+      },
+      {
+        "file": "frame-0024500.json",
+        "time": 2450.000036507845,
+        "sha256": "a8cfc276c192dc4b36196408799e027965ebe1b57fdb121eb7a6785bcf35d913"
+      },
+      {
+        "file": "frame-0024750.json",
+        "time": 2475.000036880374,
+        "sha256": "180e4f9a2c1db3257d9e0d67985eef2ebd0be449e6b5975a66353835f27ffe65"
+      },
+      {
+        "file": "frame-0025000.json",
+        "time": 2500.000037252903,
+        "sha256": "78441aa4708161c935b31830cbb2eb5cdc6978e4797b2b638ab24f99b5c258e9"
+      },
+      {
+        "file": "frame-0025250.json",
+        "time": 2525.000037625432,
+        "sha256": "d17b26634418f9c7018e6e523b79f4e156ab4df24aabf15291f8beba30f7ea99"
+      },
+      {
+        "file": "frame-0025500.json",
+        "time": 2550.000037997961,
+        "sha256": "b4816c36b27ba8b876459e610fb90f6b6f81c8d9f2bf853b6c9adfe4713b58d5"
+      },
+      {
+        "file": "frame-0025750.json",
+        "time": 2575.00003837049,
+        "sha256": "32bbad7fdeaf7e842f54b55b376678933df3f037c05c5ac9cec1dd6853ab5a9d"
+      },
+      {
+        "file": "frame-0026000.json",
+        "time": 2600.000038743019,
+        "sha256": "6c2921cedf5362506cb8ce94d2875b63372bd439381174c39648df53b500cca4"
+      },
+      {
+        "file": "frame-0026250.json",
+        "time": 2625.000039115548,
+        "sha256": "64b733a3790bd48f1b3bb76ff8083e9dc78e9678100cd56d589b812f2a5bbec1"
+      },
+      {
+        "file": "frame-0026500.json",
+        "time": 2650.000039488077,
+        "sha256": "5669f144dcf3245220f6e67a17d823947bcb8ab270da95854f4937fbc69a1beb"
+      },
+      {
+        "file": "frame-0026750.json",
+        "time": 2675.000039860606,
+        "sha256": "6b946d3fbd256c651c9059e575532e93bfd8769c12f497e5c6c015ad336dc7ef"
+      },
+      {
+        "file": "frame-0027000.json",
+        "time": 2700.000040233135,
+        "sha256": "44f1364fa9aff8f33416dcefb83a567ea485da89ca6a586f003004b9c75ce0e2"
+      },
+      {
+        "file": "frame-0027250.json",
+        "time": 2725.0000406056643,
+        "sha256": "d77c609976b400a15cb307efa8ce27682a0164d025a1dcd3ab5f83ca248d2dc3"
+      },
+      {
+        "file": "frame-0027500.json",
+        "time": 2750.0000409781933,
+        "sha256": "4b6336d768541fd0d57cd09722d2611879694467866e25d5a1be1b16031eb3c6"
+      },
+      {
+        "file": "frame-0027750.json",
+        "time": 2775.0000413507223,
+        "sha256": "13794ddf20b0ab5ab7782392363a683a070f6dca3248871fd3cf1725645d1a56"
+      },
+      {
+        "file": "frame-0028000.json",
+        "time": 2800.0000417232513,
+        "sha256": "bef22c14cfff36a06047deeb2fbf7d6f022010344d1c2f199ef8393671a15fcb"
+      },
+      {
+        "file": "frame-0028250.json",
+        "time": 2825.0000420957804,
+        "sha256": "1b528e1794cf47096870f84aafb8a46068ddf0eefc167f773b0a3c597bda4a4a"
+      },
+      {
+        "file": "frame-0028500.json",
+        "time": 2850.0000424683094,
+        "sha256": "12770f9522807b1df78cf1b114fd7b8caef2d6f45ea0fdb2b2cc86945258ac8a"
+      },
+      {
+        "file": "frame-0028750.json",
+        "time": 2875.0000428408384,
+        "sha256": "5012ee3fe9f05a93bbdd2812967c98b3b5d05f82543a4e13cf835686896f0245"
+      },
+      {
+        "file": "frame-0029000.json",
+        "time": 2900.0000432133675,
+        "sha256": "0869436acaf6ed9ecae6a2bbad676990d0448463450853e33c7a0762b7eb53a4"
+      },
+      {
+        "file": "frame-0029250.json",
+        "time": 2925.0000435858965,
+        "sha256": "1dbad4804d1605c9d9dac55fdea265c7fe365cef6b19666e7c1783a9a00a6a76"
+      },
+      {
+        "file": "frame-0029500.json",
+        "time": 2950.0000439584255,
+        "sha256": "7dd9797041a86803ce75225ebb8fb4fd569cedb9ab0bf1ab85c8b36f635a58fc"
+      },
+      {
+        "file": "frame-0029750.json",
+        "time": 2975.0000443309546,
+        "sha256": "808731d0546441bfef18ac018f23d36e3c2999ea481815dc63d4ca8acee583e6"
+      },
+      {
+        "file": "frame-0030000.json",
+        "time": 3000.0000447034836,
+        "sha256": "e051430f60f179416cd666e6c3b7e430c02918d7ea300d088bb27b61badd5ae0"
+      }
+    ],
+    "pair_counts": {
+      "all_cells": {
+        "consecutive_id_pairs": 10627,
+        "hidden_channel_sign_changes": 5,
+        "changed_ids": [
+          696,
+          984
+        ]
+      },
+      "outside_oldest32_at_both_times": {
+        "consecutive_id_pairs": 8835,
+        "hidden_channel_sign_changes": 5,
+        "changed_ids": [
+          696,
+          984
+        ]
+      }
+    },
+    "limitations": "25-time-unit cadence can alias fast cycles; consecutive snapshots do not recover events between them; variability can include environment and division partition; not an adaptation or autonomous-oscillation assay"
+  },
+  "artifacts": {
+    "docs/figures/constructed-food-individual.png": "573c29d869f8ac69e9466cbfcfd4be7d61d26c47c3969539b073d4fd68b73dab",
+    "docs/figures/constructed-food-individual.svg": "863112ea75569ead72a36358aef34b5be52ad19595f501e2614e8e3a1fe51c6e",
+    "docs/figures/constructed-food-individual.csv": "25326944c0faf9798bcfed9ef96405b5638cd0f484eb8d63201ae4af7d9fcc58"
+  }
+}
