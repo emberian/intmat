@@ -1,0 +1,53 @@
+{
+  "status": "CPU validated; native timing and IEEE/denormal gate pending",
+  "source": {
+    "study": "655d79009212d3a16307b2df45cc1b61ebb27b3b51fbd8eb8debeeaddf93b7fb",
+    "base": {
+      "model": "db2277f6fa01f02fa5829e929ce3f8abf583cc598052f6cbb81113345cb6ff3d",
+      "initialization": "b3c62d90bdd1c2340ae5097c2242a440b3ab7fc5204e57b18f087067b2c41bd7",
+      "founder_initialization": "d76e4c791a2c56bc7fd651b1836e6879b9e27013566ce6d94a1d2f677f62e633",
+      "support": "5a767b83c2c912d8706468ec7c5b86e56cf99430b2a23dfd3a7f3ee8f21bf55b",
+      "lifecycle": "8826c577e960db6596cd923a591d806b185908a254c6cc0fb6b0eebb033a9629",
+      "resource": "050991b42eceab1403c940e69b027d27106f966dfcc0cfbf215b5b5ff7221c18",
+      "kernels": "cf9ce3d4f193721b11ea7e005a9a06bb398a57bd211b9436f4876d3326a7e6d9",
+      "checkpoint": "10d83cb02df68183cc703c3fca152795a5685b8b90379c52b1856aae72fd6664",
+      "protocol": "5b5b8c4b945af6c9a6a2496dc115e83501cc3b1329f7c8b2abab71d175c22720"
+    }
+  },
+  "assertions": {
+    "primary": 3099,
+    "independent_bigfloat_edges": 626
+  },
+  "cpu_driver_cases": [
+    {
+      "shape": 8,
+      "fed": false,
+      "maximum_field_difference": 0,
+      "maximum_restart_difference": 0,
+      "maximum_continuation_difference": 0,
+      "material_error": 5.745391717937309e-07,
+      "potential_error": 2.339016633490232e-06,
+      "failure_latch_preserved": true,
+      "partial_checkpoint_rejected": true
+    },
+    {
+      "shape": 8,
+      "fed": true,
+      "maximum_field_difference": 0,
+      "maximum_restart_difference": 0,
+      "maximum_continuation_difference": 0,
+      "material_error": 5.821054855914554e-07,
+      "potential_error": 2.369983167327394e-06,
+      "failure_latch_preserved": true,
+      "partial_checkpoint_rejected": true
+    }
+  ],
+  "retained_memory_saved_bytes": 0,
+  "memory_scope": "V\u00d76 remains allocated; dedicated-grants future saving24B/V, compact shared-arena future maximum12B/V. No actual retained-memory saving measured.",
+  "native_performance_claim": false,
+  "files": {
+    "studies/device_resource_fused.jl": "655d79009212d3a16307b2df45cc1b61ebb27b3b51fbd8eb8debeeaddf93b7fb",
+    "test/device_resource_fused.jl": "2b8d3d54b42336d832bd247211850b8171ac90830fa731dcde404d9641a5d507",
+    "scripts/gate_device_resource_fused.jl": "c4b3fded8eacc971ecaa9204c8b6b150a3f69460f27df4cbae6cfa7ef958207b"
+  }
+}

@@ -1,0 +1,228 @@
+{
+  "julia": "1.12.4",
+  "threads": 1,
+  "baseline_sha256": "e6d6cab2b0624965a5e7ec66b7f9f9ce44a01f9ded5653db660de61368cde9b5",
+  "packed_sha256": "20cbb7054fe0531c4860e6f205ec078c6817a0b03603daf1f11ed412652e1528",
+  "driver_sha256": "e79daddf9ff3a0e0e6fdfae706d622772c200ec3b21adc0a6fdb3fbb4a698375",
+  "shared_sources": {
+    "writing.jl": "78fba7cd46f03749bdc56547b7ce5622f7ba3ea42cc34801829345dae3975e05",
+    "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+    "cellular.jl": "97eda8b05c7d51883bc52dc7ecc985b882b60920296c79b4f2903ed358dc0131",
+    "matrix_mechanics.jl": "e232c0d13449324aabe6c299ee1de8ba1d961777e363bc328d44fa5af8de03ed",
+    "cellular_transport.jl": "fc8bfb0df1948b3869afae0a06fb5cc23bb87778452a31ffc3d27954eeb87aa2",
+    "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+    "cellular_arena.jl": "2ef965717c99cd0c46a8acd9ceb7da26232201cb18547bd23712e989688429e2",
+    "experiments.jl": "5697958abac5f36713418d5f9d94f274fb0a51b86ed1a84b3f58b68cba1e42d1",
+    "metabolic_ecology.jl": "2f599a1d6ea0a5552a594113d57e238e4c6ff3c1fd8d74de5a51f83a77179bb1",
+    "neural_ecology.jl": "ed0496adb31ce4511f8bc0d5343ff843c410c39c51d30c165b3cf5eac1135df2",
+    "compartments.jl": "e7c55ce4e0f4a8548c078c9d160815b5eaeb846a3765aad89a875f166b5005e5",
+    "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+    "catalytic_habitat.jl": "9a69b5ec394bc6dcee988d68f6463fc7c72bfa273e89bbd6e46513d392468eb1",
+    "device_cellular_support.jl": "5a767b83c2c912d8706468ec7c5b86e56cf99430b2a23dfd3a7f3ee8f21bf55b",
+    "arena.jl": "75acccd7b144e1512984c8ececb368d5fa3f03db08daa40e4b8f8f027198c16f",
+    "catalytic_arena.jl": "4a359bb5cfee951c898aca039efe07a4558797fce5544876158791139b105524",
+    "recurrent_material.jl": "e9457d0d6e31f74950fa4be8ef84b138b020c0de7fc4b95c9a7f3cd5db148347",
+    "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+    "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+    "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b",
+    "Interior.jl": "194971f1f1f6c5c044145238c12ed27dbe4975f9f60a67b5d2074aa8efbf9631",
+    "resources.jl": "859f6e04b456ceee051fd83214b37ca18418af09126960997b7d62d83c2dcab0",
+    "cellular_initialization.jl": "d76e4c791a2c56bc7fd651b1836e6879b9e27013566ce6d94a1d2f677f62e633",
+    "constructive_cells.jl": "000953e0da6de61574abaff6566790c051af13c320c6c53162598625b6b6bf27",
+    "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+    "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+    "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+    "implicit_phase.jl": "1fb617707591f89784b95171e0558065101b3d992f7b3eabd16a7bf01dca4ceb",
+    "device_cellular_protocol.jl": "5b5b8c4b945af6c9a6a2496dc115e83501cc3b1329f7c8b2abab71d175c22720",
+    "core.jl": "b4302b90eaeba213360e8a15ce8b7e4cb4c491606657e3e500d2fb8507753a52",
+    "neural_workspace.jl": "ecdd45856bc0b3c61708de90814d1abb33bc1232a0f9ff5785b32b9bc39a9139",
+    "device_habitat_kernels.jl": "f6ab9782cff0816919368d3d1f8c766af39f9eba3a0badd2636e50b55366ac42",
+    "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+    "device_resource_exchange.jl": "050991b42eceab1403c940e69b027d27106f966dfcc0cfbf215b5b5ff7221c18",
+    "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+    "device_cellular_initialization.jl": "b3c62d90bdd1c2340ae5097c2242a440b3ab7fc5204e57b18f087067b2c41bd7",
+    "cellular_storage.jl": "735c3281aca69158609392ef161397bec166d4a1698d7e741cd95b5a426cfaff",
+    "device_cellular_kernels.jl": "cf9ce3d4f193721b11ea7e005a9a06bb398a57bd211b9436f4876d3326a7e6d9",
+    "device_cellular_lifecycle.jl": "8826c577e960db6596cd923a591d806b185908a254c6cc0fb6b0eebb033a9629",
+    "device_cellular.jl": "db2277f6fa01f02fa5829e929ce3f8abf583cc598052f6cbb81113345cb6ff3d",
+    "device_cellular_checkpoint.jl": "10d83cb02df68183cc703c3fca152795a5685b8b90379c52b1856aae72fd6664",
+    "cellular_contacts.jl": "337247cbe0707778f15672385f2e33684cbb44535afc9580e3cf880c4089aafa",
+    "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+    "dose_writer.jl": "b8d1b4013921a3c82388ee87a7ede00b97964a1894062f2a07339f2c6be197eb",
+    "device_habitat.jl": "bbf706bf2b9d3e292a0e20207ff27b22fe3d70e294c8bebf76dc8f41179d6056",
+    "mechanics.jl": "a0370e4028aa859fb344829f0d387a62dd8defb77b25f4651f7c08b386324e45",
+    "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+    "device_habitat_sorption.jl": "f135e74e59959187e72725a45665ac5c67293b8305298c8d3ac4bdbb81e6ac93",
+    "sorptive_matrix.jl": "f5643e0c951c983a7d5864676156123db3181e05510335fcd618de105ff1f036"
+  },
+  "rows": [
+    {
+      "side": 32,
+      "warmup_steps": 64,
+      "window_steps": 100,
+      "exact_all_state_arrays": true,
+      "population_initial": 993,
+      "population_final": 1024,
+      "baseline_bytes_per_step": 50704.0,
+      "packed_bytes_per_step": 50704.0,
+      "measurements": [
+        {
+          "repeat": 1,
+          "arm": "baseline",
+          "elapsed_seconds": 0.090207,
+          "voxel_steps_per_second": 1135166.8939217578
+        },
+        {
+          "repeat": 1,
+          "arm": "packed",
+          "elapsed_seconds": 0.075260792,
+          "voxel_steps_per_second": 1360602.211042371
+        },
+        {
+          "repeat": 1,
+          "arm": "packed",
+          "elapsed_seconds": 0.077537375,
+          "voxel_steps_per_second": 1320653.4268151326
+        },
+        {
+          "repeat": 1,
+          "arm": "baseline",
+          "elapsed_seconds": 0.09818175,
+          "voxel_steps_per_second": 1042963.6872433013
+        },
+        {
+          "repeat": 2,
+          "arm": "baseline",
+          "elapsed_seconds": 0.092249666,
+          "voxel_steps_per_second": 1110031.1192454617
+        },
+        {
+          "repeat": 2,
+          "arm": "packed",
+          "elapsed_seconds": 0.068252917,
+          "voxel_steps_per_second": 1500302.1775611436
+        },
+        {
+          "repeat": 2,
+          "arm": "packed",
+          "elapsed_seconds": 0.073837208,
+          "voxel_steps_per_second": 1386834.6701299972
+        },
+        {
+          "repeat": 2,
+          "arm": "baseline",
+          "elapsed_seconds": 0.091866541,
+          "voxel_steps_per_second": 1114660.450751052
+        },
+        {
+          "repeat": 3,
+          "arm": "baseline",
+          "elapsed_seconds": 0.09373,
+          "voxel_steps_per_second": 1092499.7332764324
+        },
+        {
+          "repeat": 3,
+          "arm": "packed",
+          "elapsed_seconds": 0.064893708,
+          "voxel_steps_per_second": 1577965.0008595595
+        },
+        {
+          "repeat": 3,
+          "arm": "packed",
+          "elapsed_seconds": 0.070023084,
+          "voxel_steps_per_second": 1462374.8933994395
+        },
+        {
+          "repeat": 3,
+          "arm": "baseline",
+          "elapsed_seconds": 0.083414667,
+          "voxel_steps_per_second": 1227601.8556784505
+        }
+      ]
+    },
+    {
+      "side": 64,
+      "warmup_steps": 64,
+      "window_steps": 100,
+      "exact_all_state_arrays": true,
+      "population_initial": 3948,
+      "population_final": 4091,
+      "baseline_bytes_per_step": 50704.0,
+      "packed_bytes_per_step": 50704.0,
+      "measurements": [
+        {
+          "repeat": 1,
+          "arm": "baseline",
+          "elapsed_seconds": 0.341986125,
+          "voxel_steps_per_second": 1197709.4099943384
+        },
+        {
+          "repeat": 1,
+          "arm": "packed",
+          "elapsed_seconds": 0.423354166,
+          "voxel_steps_per_second": 967511.4428896396
+        },
+        {
+          "repeat": 1,
+          "arm": "packed",
+          "elapsed_seconds": 0.348984875,
+          "voxel_steps_per_second": 1173689.8339791945
+        },
+        {
+          "repeat": 1,
+          "arm": "baseline",
+          "elapsed_seconds": 0.423264666,
+          "voxel_steps_per_second": 967716.0247531742
+        },
+        {
+          "repeat": 2,
+          "arm": "baseline",
+          "elapsed_seconds": 0.387040625,
+          "voxel_steps_per_second": 1058286.8400442458
+        },
+        {
+          "repeat": 2,
+          "arm": "packed",
+          "elapsed_seconds": 0.29114675,
+          "voxel_steps_per_second": 1406850.6689495933
+        },
+        {
+          "repeat": 2,
+          "arm": "packed",
+          "elapsed_seconds": 0.271740667,
+          "voxel_steps_per_second": 1507319.4767715796
+        },
+        {
+          "repeat": 2,
+          "arm": "baseline",
+          "elapsed_seconds": 0.343287958,
+          "voxel_steps_per_second": 1193167.3991314312
+        },
+        {
+          "repeat": 3,
+          "arm": "baseline",
+          "elapsed_seconds": 0.312743167,
+          "voxel_steps_per_second": 1309700.8766941342
+        },
+        {
+          "repeat": 3,
+          "arm": "packed",
+          "elapsed_seconds": 0.273483709,
+          "voxel_steps_per_second": 1497712.61146674
+        },
+        {
+          "repeat": 3,
+          "arm": "packed",
+          "elapsed_seconds": 0.289485625,
+          "voxel_steps_per_second": 1414923.4525893987
+        },
+        {
+          "repeat": 3,
+          "arm": "baseline",
+          "elapsed_seconds": 0.205253834,
+          "voxel_steps_per_second": 1995577.8268190597
+        }
+      ]
+    }
+  ]
+}
