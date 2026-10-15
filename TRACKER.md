@@ -20,7 +20,7 @@
 
 **Cellular alife:** the holistic redesign is implemented: physical bodies and exchange supports, complementary metabolism, inherited recurrent development, sparse mutation, persistent adhesion, conservative chemical junctions and paid motion. Local arena [8782](http://127.0.0.1:8782/arena.html) runs pinned source `f7d50fc`, with body/bond inspection and its own recorder. Two 12-hour Julia CPU soaks run on hbox from source `606ca2e`: broad resource stripes and slower-mixing mosaic niches. Both passed 12,000 steps and independently restored periodic checkpoints. They are exploratory trajectories, not a test that can settle the substrate's potential. [Model](docs/cellular.md) · [Soaks and recovery](docs/cellular-soaks.md)
 
-**Follow-through:** a 30-minute thread heartbeat watches the two hbox jobs and native1152 run, preserves completed checkpoints on failures, continues until both soaks are handled. The1152³ photograph is now complete and curated. Ordinary progress stays quiet.
+**Follow-through:** a 30-minute thread heartbeat watches the two hbox jobs and native1152 run, preserves completed checkpoints on failures, continues until both soaks are handled. The1152³ photograph is now complete and curated. The monitor also follows the separate optimized continuation; it stops after all three bounded soaks are handled. Ordinary progress stays quiet.
 
 **Alife:** the original externally supplied arena remains alive after 3.48 million births, with 1,332 distinct inherited-controller signatures among 1,332 sampled inhabitants despite one surviving founder lineage. The separate 96² metabolic arena exhausted both million-unit external supplies and is empty after 743,520 births. Exact extinction time is unrecoverable from its old rotating checkpoints. Neither result establishes evolved cooperation. [Saved observations](docs/alife-overnight.md)
 
@@ -88,7 +88,7 @@ t150 on AMD; a native 256³ composition reached t60 on Metal. These use fixed
 designed rules, not trained/evolved weights. Warm throughput measured 695 million
 voxel-steps/s on AMD128³ and 244 million on Metal256³. Increasing this grid at unit
 spacing enlarges the domain. Zero-copy resource swaps have a pre-mutation guard
-against incompatible fixed aliases. [Model and retained trajectories](docs/recurrent-material.md)
+against incompatible fixed aliases. A reviewed native 256³ activity-contour photograph and actual slice motion are published at [the recurrent exhibit](https://emberian.github.io/intmat/recurrent/), bringing the gallery to 60 studies. [Model and retained trajectories](docs/recurrent-material.md)
 
 ## Outstanding work
 
@@ -101,3 +101,6 @@ against incompatible fixed aliases. [Model and retained trajectories](docs/recur
 7. Long studies need chunked trajectories, genotype sampling, warm accelerators and physical normalization. Larger hardware and longer runs remain necessary; present failures and successes do not bound eventual behavior.
 
 [Process atlas](docs/process-atlas.md) · [Fraser research](docs/fraser-experiments.md) · [Publication](docs/publishing.md)
+
+- 2026-10-15 (Codex runtime): launched source-pinned optimized broad continuation on hbox from commit `361d0a9`, output `/othersys/tmp/intmat-soaks-optimized-20261015/continuation`, Julia PID3828298, CPU6–7,8GiB/no-swap/nice15, two Julia threads/one GC thread. Explicit fresh-fork provenance preserves parent checkpoint SHA `d7f81c4c…` and old/new source maps; recipe/budgets unchanged. Integrated 100-step deepcopy-fixture SHA matches baseline exactly; recursive direct-copy comparison has no value/array/type/alias differences. Real 60.0256s runner trial advanced18270steps; completed checkpoint strict-restored independently. Original broad/mosaic jobs and all local arenas/observers remain separate. Endpoints/source-budget exhaustion are experiment boundaries; no rescue fuel or reseeding. See `docs/cellular-soaks.md` for run identity, retention and recovery.
+  - Optimized continuation first advanced checkpoint234995 (199cells) independently strict-restored with31source hashes and pool/grid aliases verified. Remaining precursor budgets954881.2693/954881.2505; material/chemical residuals0.000339/0.000806. Full inventories and ledgers preserved in `/othersys/tmp/intmat-soaks-optimized-20261015/long-checkpoint-verification.json`; original jobs unchanged.

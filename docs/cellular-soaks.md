@@ -148,14 +148,12 @@ hashes, and initial step. Provided profile values must still match the stored
 configuration. Ordinary resume remains strict. This flag cannot overwrite an
 old run or silently introduce a different recipe.
 
-One optimized long continuation is planned after the integrated source passes
-its final parity checks and is captured immutably. It will use the spare allowed
-CPU pair `6,7`, with two Julia threads, one GC/BLAS thread, an 8 GiB cgroup limit,
-no swap, nice 15, a 12-hour wall bound and the same 4 GB artifact cap. Temporary
-read-only work on those CPUs must finish first. The original CPU2–5 jobs continue
-unchanged. A bounded migrated trial and strict restoration of its completed
-checkpoint precede the long launch; a faster simulation clock does not establish
-a different ecological result.
+One optimized long continuation now runs from integrated commit `361d0a9` on
+CPU pair `6,7`, with two Julia threads, one GC/BLAS thread, an enforced 8 GiB
+cgroup limit, no swap, nice 15, a 12-hour wall bound and the same 4 GB artifact cap.
+The original CPU2–5 jobs continue unchanged. A bounded migrated trial and strict
+restoration of its completed checkpoint preceded launch; a faster simulation
+clock does not establish a different ecological result.
 
 For a reviewed final snapshot at `$optimized/source`, an immutable mature parent
 at `$parent`, and a new output `$optimized/continuation`, the launcher protocol is:
@@ -172,3 +170,52 @@ explicit environment switches into recorded driver flags. Both switches default
 to zero. Subsequent ordinary resumes of the new continuation use its pinned
 source and strict validation, without the migration switch. No older pin or
 running process needs to be modified.
+
+### Verified optimized run
+
+The long Julia process is PID **3828298**, with output
+`/othersys/tmp/intmat-soaks-optimized-20261015/continuation` and pinned project
+`/othersys/tmp/intmat-soaks-optimized-20261015/source`. It started at step 206665
+from the immutable, 207-cell broad-condition parent, SHA256
+`d7f81c4cbbf21b05ce1918a142764eb0d22e1d6b68565c012c66cd759a6f01de`.
+The session preserves that image and both source maps. It advanced to step 210875
+within its first published 20.8 seconds. Its wall deadline is 15 October 2026,
+21:54:05 UTC (17:54:05 America/New_York); normal end saves a checkpoint.
+
+The integrated source reproduced the published 100-step sparse-state SHA256
+`5ecc693f9ebd1415a607dde567c1e198a544814439c5655aea3c6719da47dd75`
+when using the profiler's `deepcopy` fixture. A direct-restored replay initially
+had a different serialization hash, but recursive comparison found identical
+scalar values, bitwise numeric arrays, types and 89 mutable alias pairs across
+2,206 visited values. Its only difference was dictionary iteration order at
+`arena.config[cellular]`. Both diagnostic reports are retained; serialized-byte
+parity requires the same copy fixture.
+
+The actual driver trial advanced 206665 → 224935 in 60.0256 wall seconds:
+304.37 steps/s including startup, observations and checkpoints, and approximately
+359 steps/s over the later 20–60 second window. An independent process strictly
+restored its completed checkpoint and advanced 224935 → 224936. Those evolving
+runner rates describe this trace; the separate matched-state speedups are in
+`docs/cellular-performance-results.json`.
+
+Remote evidence beside the run includes `integrated-deepcopy-parity.json`,
+`recursive-comparison.json`, `trial60-strict-restore.json`, `long-runtime.json`,
+and the source's per-file `provenance.json`. The `throughput-trial60` directory
+retains the bounded trial and its input image. These are separate from both
+original soaks.
+
+The original recipe and remaining source budgets are unchanged. Its nominal
+precursor funding covers about 520,833 model time in total; this parent begins
+at 20,666.5. At the measured runner rate, exhaustion could occur in roughly
+four wall hours, well before the 12-hour ceiling. Treat that as the funded
+experiment's boundary. Retain resource inventories, source/withdrawal ledgers,
+terminal state and checkpoint; do not silently refuel, reseed, or interpret
+fuel exhaustion as a limit on the substrate's potential.
+
+The first advanced long-run checkpoint was independently strict-restored at step
+234995 (199 cells). Resource/grid aliases and all 31 loaded source fingerprints
+matched the pin. At that checkpoint the remaining precursor budgets were
+954881.2693 and 954881.2505 mass; material and chemical-energy residuals were
+0.000339 and 0.000806. Full dissolved/intracellular inventories, biomass, supply
+and removal ledgers are retained in `long-checkpoint-verification.json` alongside
+the run. These are early recorded states, not final endpoints.

@@ -40,6 +40,19 @@ case improves substantially but remains below the 10× target. Exact metadata,
 source/checkpoint hashes and sample timings are in
 [cellular-performance-results.json](cellular-performance-results.json).
 
+These byte comparisons use the same restore-and-`deepcopy` harness on each side.
+Julia serialization is not a canonical value fingerprint: an Arena and its
+unchanged deep copy can serialize differently because of internal container
+layout. A separately integrated runtime must compare persisted values and alias
+relationships, or reproduce the exact harness, before treating a byte mismatch
+as a trajectory difference.
+The integrated `361d0a9` runtime passed that check: 2,206 persisted values and
+89 mutable alias relationships match the baseline, including bitwise array
+contents. Its direct-restored state differed only in configuration dictionary
+iteration order; reproducing the benchmark's deep-copy fixture also reproduced
+the exact 100-step serialization digest.
+
+
 A separate three-second continuous loop, without cloning or artificial sleeps,
 measured approximately 362, 569, 405 and 45 complete steps/s respectively. These
 are evolving workloads, not matched-state speedup ratios: the large case grew
