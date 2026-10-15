@@ -350,5 +350,49 @@
       "render-job.json",
       "run.json"
     ]
+  },
+  {
+    "id": "collection-20261015/branch-fault-script",
+    "source_image_sha256": "1b9bba43af70d1809510627f86fe122e7f7348a24c1b6ed305af5d09c1646c4e",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
+  },
+  {
+    "id": "collection-20261015/branch-field-comb",
+    "source_image_sha256": "8c18b410c71dd9bba52ef3097109e62ef8eb4536faad08e7c71db4ea7194cffd",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
+  },
+  {
+    "id": "collection-20261015/branch-ice-antlers",
+    "source_image_sha256": "dece9b3e37fd6e6554f61cb2dd24410f76421e190e9359ffbbda3f66edba4746",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
+  },
+  {
+    "id": "collection-20261015/branch-three-veins",
+    "source_image_sha256": "4eebaa5c055b25ac76132f162f46c6a75316a553cd57db04ccdeed17ef97dab9",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
   }
 ]

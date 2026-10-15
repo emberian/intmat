@@ -1,0 +1,13 @@
+slug = "branch-field-comb"
+title = "Field comb"
+description = "An anisotropic dielectric metric changes face fields and harmonic screening, stretching the branching competition."
+n = 64
+eta = 3.8
+seed = 836
+events = 1700
+material = "uniform"
+root = [27, 32, 32]
+extent = [3.8, 1.6, 2.4]
+radius = 0.0035
+palette = "amber-gold"
+orbit = 1.3

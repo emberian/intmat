@@ -1,0 +1,279 @@
+{
+  "metrics": {
+    "events": 638,
+    "final_mass": 28672,
+    "tips": 119,
+    "mass_drift": 0,
+    "branch_vertices": 317,
+    "occupied": 639,
+    "elapsed_seconds": 268.306602666,
+    "edges": 815,
+    "reached_ground": true,
+    "initial_mass": 28672,
+    "potential_residual": 1.4149894316993483e-05
+  },
+  "time": 31.900000475347042,
+  "model": "Lattice dielectric breakdown; field-weighted face-connected growth; nutrient-gated frontier; conductor one / box zero Dirichlet boundaries",
+  "history": [
+    {
+      "events": 25,
+      "time": 1.2500000186264515,
+      "occupied": 26,
+      "residual": 1.3725638079146616e-05,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 50,
+      "time": 2.500000037252903,
+      "occupied": 51,
+      "residual": 1.1841378485163197e-05,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 75,
+      "time": 3.7500000558793545,
+      "occupied": 76,
+      "residual": 1.2237578630447388e-05,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 100,
+      "time": 5.000000074505806,
+      "occupied": 101,
+      "residual": 1.6421719919890165e-05,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 125,
+      "time": 6.2500000931322575,
+      "occupied": 126,
+      "residual": 1.9231190284095534e-05,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 150,
+      "time": 7.500000111758709,
+      "occupied": 151,
+      "residual": 1.845120762785247e-05,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 175,
+      "time": 8.75000013038516,
+      "occupied": 176,
+      "residual": 1.378823071718216e-05,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 200,
+      "time": 10.000000149011612,
+      "occupied": 201,
+      "residual": 1.5658248836795534e-06,
+      "iterations": 88,
+      "reached_ground": false
+    },
+    {
+      "events": 225,
+      "time": 11.250000167638063,
+      "occupied": 226,
+      "residual": 1.2348949288328633e-05,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 250,
+      "time": 12.500000186264515,
+      "occupied": 251,
+      "residual": 7.0463865995407104e-06,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 275,
+      "time": 13.750000204890966,
+      "occupied": 276,
+      "residual": 1.232977956533432e-05,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 300,
+      "time": 15.000000223517418,
+      "occupied": 301,
+      "residual": 1.6557673613235013e-05,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 325,
+      "time": 16.25000024214387,
+      "occupied": 326,
+      "residual": 9.328126907348633e-06,
+      "iterations": 48,
+      "reached_ground": false
+    },
+    {
+      "events": 350,
+      "time": 17.50000026077032,
+      "occupied": 351,
+      "residual": 9.693360577027292e-06,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 375,
+      "time": 18.750000279396772,
+      "occupied": 376,
+      "residual": 8.735495309034839e-06,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 400,
+      "time": 20.000000298023224,
+      "occupied": 401,
+      "residual": 1.673524578412605e-05,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 425,
+      "time": 21.250000316649675,
+      "occupied": 426,
+      "residual": 1.0182460149131545e-05,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 450,
+      "time": 22.500000335276127,
+      "occupied": 451,
+      "residual": 1.3083219528198242e-05,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 475,
+      "time": 23.75000035390258,
+      "occupied": 476,
+      "residual": 1.775349179903435e-05,
+      "iterations": 40,
+      "reached_ground": false
+    },
+    {
+      "events": 500,
+      "time": 25.00000037252903,
+      "occupied": 501,
+      "residual": 9.611869851748438e-06,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 525,
+      "time": 26.25000039115548,
+      "occupied": 526,
+      "residual": 9.609075884023724e-06,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 550,
+      "time": 27.500000409781933,
+      "occupied": 551,
+      "residual": 8.604178826015357e-06,
+      "iterations": 40,
+      "reached_ground": false
+    },
+    {
+      "events": 575,
+      "time": 28.750000428408384,
+      "occupied": 576,
+      "residual": 1.6746732095877185e-05,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 600,
+      "time": 30.000000447034836,
+      "occupied": 601,
+      "residual": 1.1700515945751305e-05,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 625,
+      "time": 31.250000465661287,
+      "occupied": 626,
+      "residual": 1.9609307249386816e-05,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 638,
+      "time": 31.900000475347042,
+      "occupied": 639,
+      "residual": 1.4149894316993483e-05,
+      "iterations": 56,
+      "reached_ground": true
+    }
+  ],
+  "shape": [
+    64,
+    64,
+    64
+  ],
+  "random_state": {
+    "event_counter": 638,
+    "algorithm": "SplitMix64 stateless seed + event counter",
+    "seed": "834"
+  },
+  "description": "Nutrient confines genuine dielectric growth to a gently warped thin sheet.",
+  "optics": {
+    "coordinates": "normalized cube [-1,1]; anisotropic simulation extent retained in params, shown as normalized lattice",
+    "carrier": "polished box; dilute amber; exact graph filaments; optical halo only",
+    "channel_diameter": 0.007,
+    "channel_radius": 0.0035
+  },
+  "params": {
+    "root": [
+      32,
+      32,
+      32
+    ],
+    "events": 2000,
+    "material": "sheet",
+    "radius": 0.0035,
+    "slug": "branch-fault-script",
+    "extent": [
+      2,
+      2,
+      2
+    ],
+    "description": "Nutrient confines genuine dielectric growth to a gently warped thin sheet.",
+    "orbit": 0.3,
+    "eta": 2,
+    "title": "Fault script",
+    "seed": 834,
+    "palette": "amber-gold",
+    "n": 64
+  },
+  "title": "Fault script",
+  "study_hash": "c9fbda213aeb235c4b25d567aa4293fc08540f3917b0d9a5b672a6b89462f5d6",
+  "source_hash": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+  "family": "branches",
+  "publication": {
+    "source_image_sha256": "1b9bba43af70d1809510627f86fe122e7f7348a24c1b6ed305af5d09c1646c4e",
+    "webp_sha256": "91f0d275f026619834afc2e66ab62453d9ca61e46ba100816ab57bd60e5d6ae5",
+    "quality": 95,
+    "width": 1600,
+    "original_retained": true,
+    "reviewed_by": "collection_render"
+  }
+}

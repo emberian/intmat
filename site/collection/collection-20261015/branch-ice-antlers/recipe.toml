@@ -1,0 +1,13 @@
+slug = "branch-ice-antlers"
+title = "Ice antlers"
+description = "Intermediate field preference balances advancing antlers and screened forks."
+n = 64
+eta = 2.3
+seed = 833
+events = 1700
+material = "uniform"
+root = [32, 32, 32]
+extent = [2, 2, 2]
+radius = 0.0035
+palette = "glass-ice"
+orbit = 1.1

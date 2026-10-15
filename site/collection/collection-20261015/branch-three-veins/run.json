@@ -1,0 +1,775 @@
+{
+  "metrics": {
+    "events": 2200,
+    "final_mass": 73472,
+    "tips": 380,
+    "mass_drift": 0,
+    "branch_vertices": 1196,
+    "occupied": 2201,
+    "elapsed_seconds": 576.6270525,
+    "edges": 2967,
+    "reached_ground": false,
+    "initial_mass": 73472,
+    "potential_residual": 1.1661400397620925e-05
+  },
+  "time": 110.00000163912773,
+  "model": "Lattice dielectric breakdown; field-weighted face-connected growth; nutrient-gated frontier; conductor one / box zero Dirichlet boundaries",
+  "history": [
+    {
+      "events": 25,
+      "time": 1.2500000186264515,
+      "occupied": 26,
+      "residual": 1.251550080875552e-05,
+      "iterations": 80,
+      "reached_ground": false
+    },
+    {
+      "events": 50,
+      "time": 2.500000037252903,
+      "occupied": 51,
+      "residual": 1.6486650565639138e-05,
+      "iterations": 80,
+      "reached_ground": false
+    },
+    {
+      "events": 75,
+      "time": 3.7500000558793545,
+      "occupied": 76,
+      "residual": 1.3170453409353314e-05,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 100,
+      "time": 5.000000074505806,
+      "occupied": 101,
+      "residual": 1.7076730728149414e-05,
+      "iterations": 40,
+      "reached_ground": false
+    },
+    {
+      "events": 125,
+      "time": 6.2500000931322575,
+      "occupied": 126,
+      "residual": 1.927527288595951e-05,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 150,
+      "time": 7.500000111758709,
+      "occupied": 151,
+      "residual": 1.83147688706713e-05,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 175,
+      "time": 8.75000013038516,
+      "occupied": 176,
+      "residual": 1.0376175244644625e-05,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 200,
+      "time": 10.000000149011612,
+      "occupied": 201,
+      "residual": 1.7017746965089856e-05,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 225,
+      "time": 11.250000167638063,
+      "occupied": 226,
+      "residual": 1.756908992926222e-05,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 250,
+      "time": 12.500000186264515,
+      "occupied": 251,
+      "residual": 1.5548119942344896e-05,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 275,
+      "time": 13.750000204890966,
+      "occupied": 276,
+      "residual": 1.0182460149131545e-05,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 300,
+      "time": 15.000000223517418,
+      "occupied": 301,
+      "residual": 1.1931483944255944e-05,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 325,
+      "time": 16.25000024214387,
+      "occupied": 326,
+      "residual": 1.2238820393861705e-05,
+      "iterations": 40,
+      "reached_ground": false
+    },
+    {
+      "events": 350,
+      "time": 17.50000026077032,
+      "occupied": 351,
+      "residual": 1.0585101942220745e-05,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 375,
+      "time": 18.750000279396772,
+      "occupied": 376,
+      "residual": 1.1021892229715405e-05,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 400,
+      "time": 20.000000298023224,
+      "occupied": 401,
+      "residual": 1.6767065972089767e-05,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 425,
+      "time": 21.250000316649675,
+      "occupied": 426,
+      "residual": 1.5563021103538743e-05,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 450,
+      "time": 22.500000335276127,
+      "occupied": 451,
+      "residual": 1.3037274281185035e-05,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 475,
+      "time": 23.75000035390258,
+      "occupied": 476,
+      "residual": 1.4445434014003639e-05,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 500,
+      "time": 25.00000037252903,
+      "occupied": 501,
+      "residual": 1.1920928955078125e-05,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 525,
+      "time": 26.25000039115548,
+      "occupied": 526,
+      "residual": 1.12876296043396e-05,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 550,
+      "time": 27.500000409781933,
+      "occupied": 551,
+      "residual": 1.1506179968513719e-05,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 575,
+      "time": 28.750000428408384,
+      "occupied": 576,
+      "residual": 1.4568368593842473e-05,
+      "iterations": 48,
+      "reached_ground": false
+    },
+    {
+      "events": 600,
+      "time": 30.000000447034836,
+      "occupied": 601,
+      "residual": 1.118731840203213e-05,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 625,
+      "time": 31.250000465661287,
+      "occupied": 626,
+      "residual": 1.2574484571814537e-05,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 650,
+      "time": 32.50000048428774,
+      "occupied": 651,
+      "residual": 8.696379760900555e-06,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 675,
+      "time": 33.75000050291419,
+      "occupied": 676,
+      "residual": 1.634657382965088e-05,
+      "iterations": 48,
+      "reached_ground": false
+    },
+    {
+      "events": 700,
+      "time": 35.00000052154064,
+      "occupied": 701,
+      "residual": 1.2757411847512e-05,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 725,
+      "time": 36.25000054016709,
+      "occupied": 726,
+      "residual": 8.857809007167816e-06,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 750,
+      "time": 37.500000558793545,
+      "occupied": 751,
+      "residual": 1.9094596306480638e-05,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 775,
+      "time": 38.750000577419996,
+      "occupied": 776,
+      "residual": 1.687804857888886e-05,
+      "iterations": 48,
+      "reached_ground": false
+    },
+    {
+      "events": 800,
+      "time": 40.00000059604645,
+      "occupied": 801,
+      "residual": 1.4185905456542969e-05,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 825,
+      "time": 41.2500006146729,
+      "occupied": 826,
+      "residual": 8.64267349243164e-06,
+      "iterations": 48,
+      "reached_ground": false
+    },
+    {
+      "events": 850,
+      "time": 42.50000063329935,
+      "occupied": 851,
+      "residual": 1.258651415508849e-05,
+      "iterations": 40,
+      "reached_ground": false
+    },
+    {
+      "events": 875,
+      "time": 43.7500006519258,
+      "occupied": 876,
+      "residual": 1.9898017247513278e-05,
+      "iterations": 48,
+      "reached_ground": false
+    },
+    {
+      "events": 900,
+      "time": 45.000000670552254,
+      "occupied": 901,
+      "residual": 8.974845210710583e-06,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 925,
+      "time": 46.250000689178705,
+      "occupied": 926,
+      "residual": 4.12463365743554e-06,
+      "iterations": 80,
+      "reached_ground": false
+    },
+    {
+      "events": 950,
+      "time": 47.50000070780516,
+      "occupied": 951,
+      "residual": 1.152802724391222e-05,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 975,
+      "time": 48.75000072643161,
+      "occupied": 976,
+      "residual": 1.921132206916809e-05,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 1000,
+      "time": 50.00000074505806,
+      "occupied": 1001,
+      "residual": 8.938213189445265e-06,
+      "iterations": 48,
+      "reached_ground": false
+    },
+    {
+      "events": 1025,
+      "time": 51.25000076368451,
+      "occupied": 1026,
+      "residual": 1.3091446210940823e-05,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 1050,
+      "time": 52.50000078231096,
+      "occupied": 1051,
+      "residual": 1.257285475730896e-05,
+      "iterations": 48,
+      "reached_ground": false
+    },
+    {
+      "events": 1075,
+      "time": 53.750000800937414,
+      "occupied": 1076,
+      "residual": 1.4679195980231256e-05,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 1100,
+      "time": 55.000000819563866,
+      "occupied": 1101,
+      "residual": 1.2797613938651808e-05,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 1125,
+      "time": 56.25000083819032,
+      "occupied": 1126,
+      "residual": 9.95909795165062e-06,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 1150,
+      "time": 57.50000085681677,
+      "occupied": 1151,
+      "residual": 1.269827286402847e-05,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 1175,
+      "time": 58.75000087544322,
+      "occupied": 1176,
+      "residual": 1.3907750447628153e-05,
+      "iterations": 32,
+      "reached_ground": false
+    },
+    {
+      "events": 1200,
+      "time": 60.00000089406967,
+      "occupied": 1201,
+      "residual": 7.264316082000732e-06,
+      "iterations": 80,
+      "reached_ground": false
+    },
+    {
+      "events": 1225,
+      "time": 61.25000091269612,
+      "occupied": 1226,
+      "residual": 9.963909784943548e-06,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 1250,
+      "time": 62.500000931322575,
+      "occupied": 1251,
+      "residual": 1.5916923681899564e-05,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 1275,
+      "time": 63.750000949949026,
+      "occupied": 1276,
+      "residual": 1.4304726695021138e-05,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 1300,
+      "time": 65.00000096857548,
+      "occupied": 1301,
+      "residual": 7.726872960727577e-06,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 1325,
+      "time": 66.25000098720193,
+      "occupied": 1326,
+      "residual": 5.99399209022522e-06,
+      "iterations": 80,
+      "reached_ground": false
+    },
+    {
+      "events": 1350,
+      "time": 67.50000100582838,
+      "occupied": 1351,
+      "residual": 1.909583806991577e-05,
+      "iterations": 48,
+      "reached_ground": false
+    },
+    {
+      "events": 1375,
+      "time": 68.75000102445483,
+      "occupied": 1376,
+      "residual": 1.302175223827362e-05,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 1400,
+      "time": 70.00000104308128,
+      "occupied": 1401,
+      "residual": 1.424318179488182e-05,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 1425,
+      "time": 71.25000106170774,
+      "occupied": 1426,
+      "residual": 1.0753671328231351e-05,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 1450,
+      "time": 72.50000108033419,
+      "occupied": 1451,
+      "residual": 1.068909962975706e-05,
+      "iterations": 40,
+      "reached_ground": false
+    },
+    {
+      "events": 1475,
+      "time": 73.75000109896064,
+      "occupied": 1476,
+      "residual": 1.2864669164031062e-05,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 1500,
+      "time": 75.00000111758709,
+      "occupied": 1501,
+      "residual": 1.2469264523436662e-05,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 1525,
+      "time": 76.25000113621354,
+      "occupied": 1526,
+      "residual": 1.8289933602012864e-05,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 1550,
+      "time": 77.50000115483999,
+      "occupied": 1551,
+      "residual": 1.3062109549842604e-05,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 1575,
+      "time": 78.75000117346644,
+      "occupied": 1576,
+      "residual": 1.4192114273708228e-05,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 1600,
+      "time": 80.0000011920929,
+      "occupied": 1601,
+      "residual": 1.9202629725139503e-05,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 1625,
+      "time": 81.25000121071935,
+      "occupied": 1626,
+      "residual": 1.0019789139427415e-05,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 1650,
+      "time": 82.5000012293458,
+      "occupied": 1651,
+      "residual": 8.563200632694112e-06,
+      "iterations": 40,
+      "reached_ground": false
+    },
+    {
+      "events": 1675,
+      "time": 83.75000124797225,
+      "occupied": 1676,
+      "residual": 7.0853469272456025e-06,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 1700,
+      "time": 85.0000012665987,
+      "occupied": 1701,
+      "residual": 1.3416012128203425e-05,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 1725,
+      "time": 86.25000128522515,
+      "occupied": 1726,
+      "residual": 5.0993015368767936e-06,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 1750,
+      "time": 87.5000013038516,
+      "occupied": 1751,
+      "residual": 1.055002212524414e-05,
+      "iterations": 48,
+      "reached_ground": false
+    },
+    {
+      "events": 1775,
+      "time": 88.75000132247806,
+      "occupied": 1776,
+      "residual": 5.5005851512154305e-06,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 1800,
+      "time": 90.00000134110451,
+      "occupied": 1801,
+      "residual": 9.822348753615873e-06,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 1825,
+      "time": 91.25000135973096,
+      "occupied": 1826,
+      "residual": 1.495207349459099e-05,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 1850,
+      "time": 92.50000137835741,
+      "occupied": 1851,
+      "residual": 6.833889832099423e-06,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 1875,
+      "time": 93.75000139698386,
+      "occupied": 1876,
+      "residual": 1.1473894119262695e-05,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 1900,
+      "time": 95.00000141561031,
+      "occupied": 1901,
+      "residual": 9.611248970031738e-06,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 1925,
+      "time": 96.25000143423676,
+      "occupied": 1926,
+      "residual": 1.372521122296709e-05,
+      "iterations": 48,
+      "reached_ground": false
+    },
+    {
+      "events": 1950,
+      "time": 97.50000145286322,
+      "occupied": 1951,
+      "residual": 1.6609827677427358e-05,
+      "iterations": 48,
+      "reached_ground": false
+    },
+    {
+      "events": 1975,
+      "time": 98.75000147148967,
+      "occupied": 1976,
+      "residual": 1.1577135107169513e-05,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 2000,
+      "time": 100.00000149011612,
+      "occupied": 2001,
+      "residual": 1.204510529836944e-05,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 2025,
+      "time": 101.25000150874257,
+      "occupied": 2026,
+      "residual": 1.5397245685258923e-05,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 2050,
+      "time": 102.50000152736902,
+      "occupied": 2051,
+      "residual": 1.0212262471553935e-05,
+      "iterations": 32,
+      "reached_ground": false
+    },
+    {
+      "events": 2075,
+      "time": 103.75000154599547,
+      "occupied": 2076,
+      "residual": 1.852152248223507e-05,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 2100,
+      "time": 105.00000156462193,
+      "occupied": 2101,
+      "residual": 1.1066595713260519e-05,
+      "iterations": 40,
+      "reached_ground": false
+    },
+    {
+      "events": 2125,
+      "time": 106.25000158324838,
+      "occupied": 2126,
+      "residual": 1.6431013743045675e-05,
+      "iterations": 40,
+      "reached_ground": false
+    },
+    {
+      "events": 2150,
+      "time": 107.50000160187483,
+      "occupied": 2151,
+      "residual": 1.7856558163970027e-05,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 2175,
+      "time": 108.75000162050128,
+      "occupied": 2176,
+      "residual": 1.1543432871463644e-05,
+      "iterations": 40,
+      "reached_ground": false
+    },
+    {
+      "events": 2200,
+      "time": 110.00000163912773,
+      "occupied": 2201,
+      "residual": 1.1661400397620925e-05,
+      "iterations": 56,
+      "reached_ground": false
+    }
+  ],
+  "shape": [
+    64,
+    64,
+    64
+  ],
+  "random_state": {
+    "event_counter": 2200,
+    "algorithm": "SplitMix64 stateless seed + event counter",
+    "seed": "835"
+  },
+  "description": "Intersecting nutrient-bearing sheets guide field-selected conducting branches through a three-plane seam.",
+  "optics": {
+    "coordinates": "normalized cube [-1,1]; anisotropic simulation extent retained in params, shown as normalized lattice",
+    "carrier": "polished box; dilute amber; exact graph filaments; optical halo only",
+    "channel_diameter": 0.007,
+    "channel_radius": 0.0035
+  },
+  "params": {
+    "root": [
+      32,
+      32,
+      32
+    ],
+    "events": 2200,
+    "material": "fork",
+    "radius": 0.0035,
+    "slug": "branch-three-veins",
+    "extent": [
+      2,
+      2,
+      2
+    ],
+    "description": "Intersecting nutrient-bearing sheets guide field-selected conducting branches through a three-plane seam.",
+    "orbit": 0.9,
+    "eta": 1.6,
+    "title": "Three veins",
+    "seed": 835,
+    "palette": "glass-ice",
+    "n": 64
+  },
+  "title": "Three veins",
+  "study_hash": "c9fbda213aeb235c4b25d567aa4293fc08540f3917b0d9a5b672a6b89462f5d6",
+  "source_hash": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+  "family": "branches",
+  "publication": {
+    "source_image_sha256": "4eebaa5c055b25ac76132f162f46c6a75316a553cd57db04ccdeed17ef97dab9",
+    "webp_sha256": "dd4b2d8cb0f4d498d08d1e4e68f1f5f2fe8a39b219d8df608b071c2da4ad22d8",
+    "quality": 95,
+    "width": 1600,
+    "original_retained": true,
+    "reviewed_by": "collection_render"
+  }
+}

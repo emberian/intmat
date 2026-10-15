@@ -1,0 +1,295 @@
+{
+  "metrics": {
+    "events": 690,
+    "final_mass": 262144,
+    "tips": 151,
+    "mass_drift": 0,
+    "branch_vertices": 257,
+    "occupied": 691,
+    "elapsed_seconds": 167.837500875,
+    "edges": 787,
+    "reached_ground": true,
+    "initial_mass": 262144,
+    "potential_residual": 7.442119700523664e-06
+  },
+  "time": 34.50000051409006,
+  "model": "Lattice dielectric breakdown; field-weighted face-connected growth; nutrient-gated frontier; conductor one / box zero Dirichlet boundaries",
+  "history": [
+    {
+      "events": 25,
+      "time": 1.2500000186264515,
+      "occupied": 26,
+      "residual": 8.985609663282731e-06,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 50,
+      "time": 2.500000037252903,
+      "occupied": 51,
+      "residual": 1.8571590974501753e-05,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 75,
+      "time": 3.7500000558793545,
+      "occupied": 76,
+      "residual": 5.966195059811663e-06,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 100,
+      "time": 5.000000074505806,
+      "occupied": 101,
+      "residual": 4.807046421564411e-06,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 125,
+      "time": 6.2500000931322575,
+      "occupied": 126,
+      "residual": 1.5751920224934927e-05,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 150,
+      "time": 7.500000111758709,
+      "occupied": 151,
+      "residual": 1.2291986940526044e-05,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 175,
+      "time": 8.75000013038516,
+      "occupied": 176,
+      "residual": 1.4083038982731126e-05,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 200,
+      "time": 10.000000149011612,
+      "occupied": 201,
+      "residual": 5.611859855480204e-06,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 225,
+      "time": 11.250000167638063,
+      "occupied": 226,
+      "residual": 1.008460919137491e-05,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 250,
+      "time": 12.500000186264515,
+      "occupied": 251,
+      "residual": 1.52050635876394e-05,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 275,
+      "time": 13.750000204890966,
+      "occupied": 276,
+      "residual": 6.071365312960292e-06,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 300,
+      "time": 15.000000223517418,
+      "occupied": 301,
+      "residual": 5.862173774170976e-06,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 325,
+      "time": 16.25000024214387,
+      "occupied": 326,
+      "residual": 9.435022287652972e-06,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 350,
+      "time": 17.50000026077032,
+      "occupied": 351,
+      "residual": 5.759049877868041e-06,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 375,
+      "time": 18.750000279396772,
+      "occupied": 376,
+      "residual": 1.4343006399174154e-05,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 400,
+      "time": 20.000000298023224,
+      "occupied": 401,
+      "residual": 6.643992599419946e-06,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 425,
+      "time": 21.250000316649675,
+      "occupied": 426,
+      "residual": 1.4013615115819611e-05,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 450,
+      "time": 22.500000335276127,
+      "occupied": 451,
+      "residual": 1.4659745870405569e-05,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 475,
+      "time": 23.75000035390258,
+      "occupied": 476,
+      "residual": 1.9456872874613895e-05,
+      "iterations": 48,
+      "reached_ground": false
+    },
+    {
+      "events": 500,
+      "time": 25.00000037252903,
+      "occupied": 501,
+      "residual": 8.571261128031277e-06,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 525,
+      "time": 26.25000039115548,
+      "occupied": 526,
+      "residual": 9.509927900375236e-06,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 550,
+      "time": 27.500000409781933,
+      "occupied": 551,
+      "residual": 1.1768144091747756e-05,
+      "iterations": 48,
+      "reached_ground": false
+    },
+    {
+      "events": 575,
+      "time": 28.750000428408384,
+      "occupied": 576,
+      "residual": 1.220069728967519e-05,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 600,
+      "time": 30.000000447034836,
+      "occupied": 601,
+      "residual": 5.433202531737909e-06,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 625,
+      "time": 31.250000465661287,
+      "occupied": 626,
+      "residual": 7.939740447396315e-06,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 650,
+      "time": 32.50000048428774,
+      "occupied": 651,
+      "residual": 5.993429248182282e-06,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 675,
+      "time": 33.75000050291419,
+      "occupied": 676,
+      "residual": 6.67614179362952e-06,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 690,
+      "time": 34.50000051409006,
+      "occupied": 691,
+      "residual": 7.442119700523664e-06,
+      "iterations": 80,
+      "reached_ground": true
+    }
+  ],
+  "shape": [
+    64,
+    64,
+    64
+  ],
+  "random_state": {
+    "event_counter": 690,
+    "algorithm": "SplitMix64 stateless seed + event counter",
+    "seed": "836"
+  },
+  "description": "An anisotropic dielectric metric changes face fields and harmonic screening, stretching the branching competition.",
+  "optics": {
+    "coordinates": "normalized cube [-1,1]; anisotropic simulation extent retained in params, shown as normalized lattice",
+    "carrier": "polished box; dilute amber; exact graph filaments; optical halo only",
+    "channel_diameter": 0.007,
+    "channel_radius": 0.0035
+  },
+  "params": {
+    "root": [
+      27,
+      32,
+      32
+    ],
+    "events": 1700,
+    "material": "uniform",
+    "radius": 0.0035,
+    "slug": "branch-field-comb",
+    "extent": [
+      3.8,
+      1.6,
+      2.4
+    ],
+    "description": "An anisotropic dielectric metric changes face fields and harmonic screening, stretching the branching competition.",
+    "orbit": 1.3,
+    "eta": 3.8,
+    "title": "Field comb",
+    "seed": 836,
+    "palette": "amber-gold",
+    "n": 64
+  },
+  "title": "Field comb",
+  "study_hash": "c9fbda213aeb235c4b25d567aa4293fc08540f3917b0d9a5b672a6b89462f5d6",
+  "source_hash": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+  "family": "branches",
+  "publication": {
+    "source_image_sha256": "8c18b410c71dd9bba52ef3097109e62ef8eb4536faad08e7c71db4ea7194cffd",
+    "webp_sha256": "5ce4f61b01e5ab6fa9fdcf13a4e85a03f81a9fd661bb755a4db9c706e131b2da",
+    "quality": 95,
+    "width": 1600,
+    "original_retained": true,
+    "reviewed_by": "collection_render"
+  }
+}

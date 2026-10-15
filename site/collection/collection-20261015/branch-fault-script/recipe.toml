@@ -1,0 +1,13 @@
+slug = "branch-fault-script"
+title = "Fault script"
+description = "Nutrient confines genuine dielectric growth to a gently warped thin sheet."
+n = 64
+eta = 2.0
+seed = 834
+events = 2000
+material = "sheet"
+root = [32, 32, 32]
+extent = [2, 2, 2]
+radius = 0.0035
+palette = "amber-gold"
+orbit = 0.3
