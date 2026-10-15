@@ -103,11 +103,21 @@ function constructive_batch_host_carrier(x)
     own=(cells=c,arrays=a,feedstock=feed,parameters=q,argument=arg,array_shapes=map(size,a),feed_shapes=map(size,x.feedstock))
     Interior.DeviceConstructiveEcology(c,Interior.DeviceCatalyticHabitat(c,a,feed,q,arg,own))
 end
+function constructive_batch_resource_nonalias(c,arrays,feedarrays)
+    work=Interior.device_resource_workspace(c)
+    for scratch in (work.grants,(a for level in work.levels for a in (level.high,level.low))...)
+        for physical in (values(arrays)...,values(feedarrays)...)
+            Base.mightalias(scratch.storage,physical.storage)&&throw(ArgumentError("batch resource scratch aliases habitat or raw food"))
+        end
+    end
+    true
+end
 function constructive_batch_validate_ownership(p)
     c=p.cells;h=p.habitat;o=h.ownership
     h.cells===c&&o.cells===c&&h.arrays===o.arrays&&h.feedstock===o.feedstock&&h.parameters===o.parameters&&h.argument===o.argument || throw(ArgumentError("constructive batch ownership changed"))
     map(size,h.arrays)==o.array_shapes&&map(size,h.feedstock.arrays)==o.feed_shapes || throw(ArgumentError("constructive batch shapes changed"))
     h.argument.status===c.environment.status&&h.feedstock.argument.status===c.environment.status || throw(ArgumentError("constructive batch failure latch alias changed"))
+    constructive_batch_resource_nonalias(c,h.arrays,h.feedstock.arrays)
     nothing
 end
 function constructive_batch_validate_worlds(worlds,p)

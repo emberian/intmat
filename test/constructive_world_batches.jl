@@ -106,3 +106,16 @@ end
         end
     end
 end
+
+@testset "Resource scratch cannot alias packed habitat backing storage" begin
+    fixtures=[constructive_batch_fixture(seed) for seed in (91,92)]
+    batch=constructive_world_batch(last.(fixtures));c=batch.cells;h=batch.habitat
+    work=Interior.device_resource_workspace(c)
+    @test constructive_batch_resource_nonalias(c,h.arrays,h.feedstock.arrays)
+    badfields=WorldBatchArray(view(work.grants.storage,:,1:3,:),size(h.feedstock.arrays.fields))
+    badfeed=merge(h.feedstock.arrays,(fields=badfields,))
+    @test_throws ArgumentError constructive_batch_resource_nonalias(c,h.arrays,badfeed)
+    badbits=WorldBatchArray(reinterpret(UInt32,view(work.grants.storage,:,1:2,:)),size(h.arrays.enzyme_bits))
+    badhabitat=merge(h.arrays,(enzyme_bits=badbits,))
+    @test_throws ArgumentError constructive_batch_resource_nonalias(c,badhabitat,h.feedstock.arrays)
+end
