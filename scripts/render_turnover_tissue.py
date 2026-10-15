@@ -10,6 +10,9 @@ p=argparse.ArgumentParser(description=__doc__)
 p.add_argument('run',type=Path);p.add_argument('output',type=Path)
 p.add_argument('--steps',default='1500');p.add_argument('--size',type=int,default=720)
 p.add_argument('--samples',type=int,default=48);p.add_argument('--device',choices=('CPU','METAL'),default='CPU')
+p.add_argument('--optics',choices=('surfaces','phase-volume'),default='surfaces')
+p.add_argument('--phase-threshold',type=float,default=.18);p.add_argument('--phase-gain',type=float,default=15)
+p.add_argument('--density-gain',type=float,default=.3)
 p.add_argument('--bulk-iso',type=float,default=.25);p.add_argument('--matrix-iso',type=float,default=.16)
 p.add_argument('--orbit',type=float,default=.62);p.add_argument('--elevation',type=float,default=.42)
 p.add_argument('--distance',type=float,default=5.1);p.add_argument('--cut-x',type=float,default=-.12)
@@ -33,7 +36,7 @@ if a.device=='METAL':
 scene.render.resolution_x=scene.render.resolution_y=a.size;scene.render.resolution_percentage=100
 scene.render.image_settings.file_format='PNG';scene.world.use_nodes=True
 scene.world.node_tree.nodes['Background'].inputs['Color'].default_value=(.07,.08,.12,1)
-scene.world.node_tree.nodes['Background'].inputs['Strength'].default_value=.3
+scene.world.node_tree.nodes['Background'].inputs['Strength'].default_value=.08 if a.optics=='phase-volume' else .3
 scene.view_settings.view_transform='AgX';scene.view_settings.look='AgX - Medium High Contrast';scene.view_settings.exposure=-.45
 
 def aim(o):o.rotation_euler=(-o.location).to_track_quat('-Z','Y').to_euler()
@@ -42,6 +45,9 @@ bpy.ops.object.camera_add(location=tuple(x+y for x,y in zip(a.target,offset)))
 cam=bpy.context.object;cam.data.lens=55;cam.rotation_euler=(Vector(a.target)-cam.location).to_track_quat('-Z','Y').to_euler();scene.camera=cam
 for name,pos,power,color,size in [('Ivory window',(-3,-4,4),1100,(1,.88,.70),3),('Lavender edge',(3,2,2.5),1000,(.52,.55,1),2),('Soft interior',(2,-3,.5),500,(.75,.9,1),2),('Vermilion rim',(-3,1,0),700,(1,.15,.07),2)]:
  bpy.ops.object.light_add(type='AREA',location=pos);o=bpy.context.object;o.name=name;o.data.energy=power;o.data.color=color;o.data.shape='DISK';o.data.size=size;aim(o)
+
+if a.optics=='phase-volume':
+ for name,power in [('Ivory window',350),('Lavender edge',300),('Soft interior',120),('Vermilion rim',100)]:bpy.data.objects[name].data.energy=power
 
 def material(name,color,rough,metal,trans,ior):
  m=bpy.data.materials.new(name);m.use_nodes=True;s=m.node_tree.nodes.get('Principled BSDF')
@@ -64,7 +70,8 @@ bulk,bs=material('Living plus persistent matter, ivory porcelain',(.72,.65,.48,1
 attr=bulk.node_tree.nodes.new('ShaderNodeAttribute');attr.attribute_name='positive_phase'
 bs.inputs['Emission Color'].default_value=(1,.055,.015,1)
 bulk.node_tree.links.new(attr.outputs['Fac'],bs.inputs['Emission Strength']);clip_material(bulk,bs)
-matrix,ms=material('Persistent paid matrix, violet glaze',(.12,.009,.055,1),.12,.28,.55,1.33)
+if a.optics=='phase-volume':matrix,ms=material('Persistent paid matrix, dark titanium',(.08,.11,.14,1),.24,.65,0,1.45)
+else:matrix,ms=material('Persistent paid matrix, violet glaze',(.12,.009,.055,1),.12,.28,.55,1.33)
 ms.inputs['Thin Film Thickness'].default_value=420;ms.inputs['Thin Film IOR'].default_value=1.32;clip_material(matrix,ms)
 back,bks=material('Charcoal cove',(.012,.014,.024,1),1,0,0,1.4);bks.inputs['Specular IOR Level'].default_value=0
 rows=[(-200,-1.18),(3,-1.18)]+[(3+4*math.sin(t),2.82-4*math.cos(t)) for t in np.linspace(0,math.pi/2,33)[1:]]+[(7,200)]
@@ -83,6 +90,33 @@ def surface(field,iso,material,name,excitation):
  attr=mesh.attributes.new('positive_phase','FLOAT','POINT');attr.data.foreach_set('value',phase.astype(np.float32))
  return {'vertices':len(points),'faces':len(tris)+len(quads),'threshold':iso}
 
+def phase_volume(rho,excitation,step):
+ shape=rho.shape
+ if len(set(shape))!=1:raise ValueError('Phase-volume display currently requires a cubic native grid')
+ axes=[(np.arange(n,dtype=np.float32)+.5)*2/n-1 for n in shape]
+ mask=np.ones(shape,dtype=np.float32)
+ if not a.no_cutaway:mask*=~((axes[0][:,None,None]>a.cut_x)&(axes[1][None,:,None]<a.cut_y))
+ # Fixed optical transfer functions, never a simulation update or per-frame normalization.
+ density=np.maximum(rho-a.bulk_iso,0)*a.density_gain*mask
+ capacity=float(run['parameters']['phase'].get('capacity',run['parameters']['base']['capacity']))
+ if capacity<=a.bulk_iso:raise ValueError('Volume density threshold must be below material capacity')
+ fraction=np.clip((rho-a.bulk_iso)/(capacity-a.bulk_iso),0,1)
+ activity=np.maximum(np.abs(excitation)-a.phase_threshold,0)*a.phase_gain*fraction*mask
+ polarity=np.clip(.5+excitation,0,1)
+ grids=[]
+ for name,values in [('density',density),('activity',activity),('polarity',polarity)]:
+  grid=vdb.FloatGrid();grid.name=name;grid.copyFromArray(np.ascontiguousarray(values,dtype=np.float32));grid.transform=vdb.createLinearTransform(voxelSize=2/shape[0]);grid.transform.postTranslate(tuple(-1+1/n for n in shape));grids.append(grid)
+ path=a.output/f'phase-{step:07d}.vdb';vdb.write(str(path.resolve()),grids=grids)
+ data=bpy.data.volumes.new('Native signed activity volume');data.filepath=str(path.resolve());obj=bpy.data.objects.new('Activity within material',data);bpy.context.collection.objects.link(obj);obj['actual_field']=True
+ mat=bpy.data.materials.get('Native phase optics')
+ if mat is None:
+  mat=bpy.data.materials.new('Native phase optics');mat.use_nodes=True;nodes=mat.node_tree.nodes;links=mat.node_tree.links;nodes.clear();output=nodes.new('ShaderNodeOutputMaterial');volume=nodes.new('ShaderNodeVolumePrincipled');volume.inputs['Color'].default_value=(.25,.43,.60,1);volume.inputs['Anisotropy'].default_value=.15
+  for grid_name,socket in [('density','Density'),('activity','Emission Strength')]:
+   attr=nodes.new('ShaderNodeAttribute');attr.attribute_name=grid_name;links.new(attr.outputs['Fac'],volume.inputs[socket])
+  attr=nodes.new('ShaderNodeAttribute');attr.attribute_name='polarity';ramp=nodes.new('ShaderNodeValToRGB');ramp.color_ramp.elements[0].position=.15;ramp.color_ramp.elements[0].color=(.015,.23,1,1);ramp.color_ramp.elements[1].position=.85;ramp.color_ramp.elements[1].color=(1,.12,.012,1);links.new(attr.outputs['Fac'],ramp.inputs[0]);links.new(ramp.outputs['Color'],volume.inputs['Emission Color']);links.new(volume.outputs['Volume'],output.inputs['Volume'])
+ data.materials.append(mat)
+ return {'native_shape':shape,'vdb_sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'density':'max(B+M-bulk_iso,0)*density_gain','emission':'max(abs(x)-phase_threshold,0)*phase_gain*clip((B+M-bulk_iso)/(capacity-bulk_iso),0,1)','hue':'fixed cyan-to-orange ramp of clip(.5+x,0,1)','cutaway':'same fixed front-right observation wedge as surface; no per-frame normalization'}
+
 records=[]
 for step in steps:
  start=time.time();directory=a.run/'frames'/f'{step:07d}';meta=json.loads((directory/'volume.json').read_text());shape=tuple(meta['shape'])
@@ -92,10 +126,11 @@ for step in steps:
   path=directory/(name+'.f32');raw=path.read_bytes();assert len(raw)==4*math.prod(shape);hashes[path.name]=hashlib.sha256(raw).hexdigest();fields[name]=np.frombuffer(raw,dtype='<f4').reshape(shape,order='F');assert np.isfinite(fields[name]).all()
  for obj in list(bpy.data.objects):
   if obj.get('actual_field'):
-   data=obj.data;bpy.data.objects.remove(obj,do_unlink=True);bpy.data.meshes.remove(data)
- geometry={'bulk':surface(fields['biomass']+fields['matrix'],a.bulk_iso,bulk,'B plus M contour',fields['excitation']),'matrix':surface(fields['matrix'],a.matrix_iso,matrix,'M contour',fields['excitation'])}
+   data=obj.data;kind=obj.type;bpy.data.objects.remove(obj,do_unlink=True);(bpy.data.volumes if kind=='VOLUME' else bpy.data.meshes).remove(data)
+ geometry={'bulk':phase_volume(fields['biomass']+fields['matrix'],fields['excitation'],step) if a.optics=='phase-volume' else surface(fields['biomass']+fields['matrix'],a.bulk_iso,bulk,'B plus M contour',fields['excitation']),'matrix':surface(fields['matrix'],a.matrix_iso,matrix,'M contour',fields['excitation'])}
  output=a.output/(a.image_name if len(steps)==1 else f'frame-{step:07d}.png');scene.render.filepath=str(output.resolve())
  optical={'renderer_sha256':renderer_sha,'source':{'run_sha256':run_sha,'step':step,'time':meta['time'],'shape':shape,'field_sha256':hashes},'settings':{**vars(a),'run':str(a.run),'output':str(a.output)},'camera':{'location':list(cam.location),'lens_mm':55,'target':list(a.target),'fixed':True},'geometry':geometry,'interpretation':'Two isosurfaces of native Julia concentration fields, B+M and M, with a fixed observation cutaway. Periodic padding is clipped at the physical box; no designed anatomy or extruded 2D structure. Ivory porcelain, violet glazing and weak positive-x emission are chosen optical mappings; no solved optics or luminescence. Thresholds, camera and phase gain remain fixed across time.'}
+ if a.optics=='phase-volume':optical['interpretation']='Native B+M controls faint volume density above a fixed threshold; signed activity x controls chosen cyan/orange emission, weighted by native material fraction above that threshold. Persistent matrix M is a dark titanium contour. The front-right cutaway is an observation choice, not simulated fracture. Blender traces these chosen optics; chemical luminescence and optical feedback are not part of the Julia dynamics. No designed anatomy, extrusion or temporal interpolation. Thresholds, colors, camera and gains stay fixed across time.'
  output.with_suffix('.png.optical.json').write_text(json.dumps(optical,indent=2))
  if a.save_scene:bpy.ops.wm.save_as_mainfile(filepath=str(output.with_suffix('.blend').resolve()))
  bpy.ops.render.render(write_still=True)
