@@ -20,8 +20,15 @@ function build_catalytic_arena(cfg)
     arguments=Dict{Symbol,Any}(Symbol(k)=>v for (k,v) in get(cfg,"catalysis",Dict()))
     shared=Bool(pop!(arguments,:shared_anabolism,false))
     habitat=CatalyticHabitat(w,c,feedstock;arguments...)
+    mechanics_options=get(cfg,"matrix_mechanics",nothing)
+    mechanics=if mechanics_options===nothing || !get(mechanics_options,"enabled",true)
+        nothing
+    else
+        shared || throw(ArgumentError("matrix mechanics requires shared constructive anabolism"))
+        MatrixDrag(;Dict(Symbol(k)=>v for (k,v) in mechanics_options if k!="enabled")...)
+    end
     processes=if shared
-        constructive=ConstructiveEcology(w,c,habitat)
+        constructive=ConstructiveEcology(w,c,habitat;mechanics)
         (feedstock,map(p->p===c ? constructive : p,original.processes)...)
     else
         (feedstock,original.processes...,habitat)

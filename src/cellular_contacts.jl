@@ -278,7 +278,7 @@ function _cellular_refresh_workspace!(w::_CellularContactWorkspace,grid,ids,x,ra
     (;broken,formed,loss)
 end
 
-"""Advance physical periodic cell bodies using overdamped, unit-mobility mechanics.
+"""Advance physical periodic cell bodies using overdamped mechanics.
 
 Repulsion is a soft overlap potential; bonds resist tension only. Both forces are
 pairwise equal/opposite. Adjacent cells with mutual adhesion at least
@@ -292,7 +292,9 @@ Potential cost is shared by squared displacement; each cell's motion is reduced
 until its share is affordable. Downhill motion never credits chemical energy.
 Without `energy`, funding belongs to the caller; `spent_motor_work` reports the
 model's work requirement. This discrete budget is not a calibrated motor model.
-Adaptive substeps bound displacement and stiffness, and passive relaxation is
+An optional `drag_multiplier` vector ζ≥1 multiplies motor drag and divides passive
+mobility; the default `nothing` retains unit mobility. Multipliers are held fixed
+through this call. Adaptive substeps bound displacement and mobility-weighted stiffness, and passive relaxation is
 backtracked until potential does not increase. Displacements are never clipped.
 `relaxation_energy_loss` is the actual potential decrease of this discrete
 mechanical model, not a claim of exact chemical/thermal conservation. Soft
@@ -320,10 +322,26 @@ function _cellular_reanchor_pairs!(pairs,origin,grid,x,radii,range)
     nothing
 end
 
+# Identity dispatch preserves the original unit-mobility arithmetic exactly.
+@inline _cellular_drag(value,::Nothing,i)=value
+@inline _cellular_drag(value,drag,i)=value*drag[i]
+@inline _cellular_mobility(value,::Nothing,i)=value
+@inline _cellular_mobility(value,drag,i)=value/drag[i]
+_cellular_mobility_rate(rows,::Nothing)=maximum(rows)
+_cellular_mobility_rate(rows,drag)=maximum(rows[i]/drag[i] for i in eachindex(rows))
+function _cellular_passive_trial!(trial,x,forces,h,::Nothing)
+    @. trial=x+h*forces
+end
+function _cellular_passive_trial!(trial,x,forces,h,drag)
+    for i in axes(x,2),d in axes(x,1);trial[d,i]=x[d,i]+h*(forces[d,i]/drag[i]);end
+end
+_cellular_drag_loss(cost,h,velocity,::Nothing)=cost*h*sum(abs2,velocity)
+_cellular_drag_loss(cost,h,velocity,drag)=cost*h*sum(drag[i]*sum(abs2,view(velocity,:,i)) for i in axes(velocity,2))
+
 function cellular_mechanics!(grid,ids,positions,radii,bonds::CellBonds,dt::Real;
     adhesion=ones(length(ids)),motility=zeros(3,length(ids)),repulsion=10.,stiffness=2.,
     break_strain=.75,max_degree::Integer=6,adhesion_threshold=.5,bond_range=0.,max_substeps::Integer=10000,
-    energy=nothing,motor_cost=1.,reuse_candidates::Bool=true,reuse_contact_workspace::Bool=true)
+    energy=nothing,motor_cost=1.,drag_multiplier=nothing,reuse_candidates::Bool=true,reuse_contact_workspace::Bool=true)
     _cellular_validate_geometry(grid,positions,radii); _cellular_validate_bonds(bonds)
     n=length(ids); nd=_cellular_ndim(grid)
     length(radii)==length(adhesion)==n && size(motility)==(3,n) || throw(DimensionMismatch("cell action dimensions differ"))
@@ -334,6 +352,10 @@ function cellular_mechanics!(grid,ids,positions,radii,bonds::CellBonds,dt::Real;
     isfinite(motor_cost) && motor_cost>0 || throw(ArgumentError("positive motor drag coefficient required"))
     if energy !== nothing
         length(energy)==n && all(e->isfinite(e)&&e>=0,energy) || throw(ArgumentError("invalid motor energy budget"))
+    end
+    if drag_multiplier!==nothing
+        length(drag_multiplier)==n && all(z->isfinite(z)&&z>=1,drag_multiplier) ||
+            throw(ArgumentError("mechanical drag multipliers must be finite and at least one per cell"))
     end
     spent_motor_work=zeros(n);motor_drag_loss=0.;active_distance=zeros(n)
     index=Dict(id=>i for (i,id) in enumerate(ids))
@@ -367,23 +389,23 @@ function cellular_mechanics!(grid,ids,positions,radii,bonds::CellBonds,dt::Real;
         copyto!(budget_motors,motors)
         if energy !== nothing
             for i in 1:n
-                drag=motor_cost*remaining*sum(abs2,view(budget_motors,:,i))
+                drag=_cellular_drag(motor_cost*remaining*sum(abs2,view(budget_motors,:,i)),drag_multiplier,i)
                 drag>energy[i] && (budget_motors[:,i].*=sqrt(energy[i]/drag))
             end
         end
         # Snapshot loop-carried arrays before closure capture. Capturing the
         # reassigned bindings boxes them and makes the numerical loop dynamic.
         speed=let budget_motors=budget_motors, state=state
-            maximum(sqrt(sum(abs2,view(budget_motors,:,i)))+sqrt(sum(abs2,view(state.forces,:,i))) for i in 1:n)
+            maximum(sqrt(sum(abs2,view(budget_motors,:,i)))+_cellular_mobility(sqrt(sum(abs2,view(state.forces,:,i))),drag_multiplier,i) for i in 1:n)
         end
-        rate=maximum(state.rows)
+        rate=_cellular_mobility_rate(state.rows,drag_multiplier)
         h=min(remaining,speed>0 ? travel_limit/speed : Inf,rate>0 ? .45/rate : Inf)
         accepted=false
         for attempt in 1:60
             copyto!(velocity,budget_motors)
             if energy !== nothing
                 for i in 1:n
-                    drag=motor_cost*h*sum(abs2,view(velocity,:,i))
+                    drag=_cellular_drag(motor_cost*h*sum(abs2,view(velocity,:,i)),drag_multiplier,i)
                     drag>energy[i] && (velocity[:,i].*=sqrt(energy[i]/drag))
                 end
             end
@@ -403,7 +425,7 @@ function cellular_mechanics!(grid,ids,positions,radii,bonds::CellBonds,dt::Real;
                 weight_sum=sum(weights)
                 potential_cost=max(0.,motor_state.energy-state.energy)
                 for i in 1:n
-                    motor_spend[i]=motor_cost*h*weights[i]+(weight_sum>0 ? potential_cost*weights[i]/weight_sum : 0.)
+                    motor_spend[i]=_cellular_drag(motor_cost*h*weights[i],drag_multiplier,i)+(weight_sum>0 ? potential_cost*weights[i]/weight_sum : 0.)
                 end
                 if energy === nothing || all(i->motor_spend[i]<=energy[i],eachindex(motor_spend))
                     funded=true;break
@@ -413,10 +435,10 @@ function cellular_mechanics!(grid,ids,positions,radii,bonds::CellBonds,dt::Real;
                 end
             end
             funded || throw(ArgumentError("motor budget could not resolve displacement"))
-            @. trial=motor_x+h*motor_state.forces
+            _cellular_passive_trial!(trial,motor_x,motor_state.forces,h,drag_multiplier)
             for i in 1:n,d in 1:nd;trial[d,i]=mod(trial[d,i],Float64(grid.extent[d]));end
             passive_travel=let motor_state=motor_state
-                h*maximum(sqrt(sum(abs2,view(motor_state.forces,:,i))) for i in 1:n)
+                h*maximum(_cellular_mobility(sqrt(sum(abs2,view(motor_state.forces,:,i))),drag_multiplier,i) for i in 1:n)
             end
             # Reject out-of-skin moves before evaluating the cached pair list.
             trial_energy=Inf
@@ -435,7 +457,7 @@ function cellular_mechanics!(grid,ids,positions,radii,bonds::CellBonds,dt::Real;
                     active_distance[i]+=h*sqrt(sum(abs2,view(velocity,:,i)))
                     energy !== nothing && (energy[i]-=motor_spend[i])
                 end
-                motor_drag_loss+=motor_cost*h*sum(abs2,velocity)
+                motor_drag_loss+=_cellular_drag_loss(motor_cost,h,velocity,drag_multiplier)
                 copyto!(x,trial); accepted=true;break
             end
             h/=2

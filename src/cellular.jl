@@ -348,11 +348,13 @@ function _ecology_step_storage!(w::World,p::CellularEcology,dt::Real,q,weights,m
     motility=Float64.(p.last_actions[1:3,:]).*q.speed
     w.grid.size[3]==1 && (motility[3,:].=0)
     before=sum(p.energy)
+    drag_multiplier=_cellular_mechanical_drag(w,p,anabolism)
     p.mechanical=cellular_mechanics!(w.grid,p.ids,p.positions,radii,p.bonds,delta;
         adhesion=Float64.((p.last_actions[8,:].+1)./2),motility,
         repulsion=q.repulsion,stiffness=q.stiffness,break_strain=q.break_strain,max_degree=q.max_degree,
-        energy=p.energy,motor_cost=q.motor_cost)
+        energy=p.energy,motor_cost=q.motor_cost,drag_multiplier)
     p.mechanical=merge(p.mechanical,(ids=copy(p.ids),))
+    drag_multiplier===nothing || (p.mechanical=merge(p.mechanical,(drag_multiplier=copy(drag_multiplier),)))
     p.work_spent+=before-sum(p.energy)
     # All lifecycle deposits use the *new* occupied support.
     rebuild_cell_stencil!(p.stencil,p.positions)
@@ -378,6 +380,7 @@ end
 
 # The ordinary law remains an exact, concrete dispatch path. Optional processes
 # may provide a separately explicit anabolic allocator without a global registry.
+_cellular_mechanical_drag(w,p,anabolism)=nothing
 _cellular_planned_work(planned,w,p,i,delta,q,::Nothing)=planned
 
 function _cellular_anabolic_build!(w,p,i,delta,requested_growth,q,::Nothing)

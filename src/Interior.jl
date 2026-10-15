@@ -55,6 +55,8 @@ include("catalytic_habitat.jl")
 export CatalyticHabitat, catalytic_statistics
 include("sorptive_matrix.jl")
 export SorptiveMatrix, matrix_statistics
+include("matrix_mechanics.jl")
+export MatrixDrag
 include("constructive_cells.jl")
 export ConstructiveEcology, anabolic_statistics
 export Experiment, ExperimentReport, ProcessPorts, process_ports, OpticalMap, run!, experiment_diagnostics, owned_material_mass

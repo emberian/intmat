@@ -1,0 +1,37 @@
+{
+  "assertions": 820,
+  "testsets": 27,
+  "focused_log_sha256": "dbf37c93c965fafc4fa6f792e8b3bfdc2724a72d746859fc88fbaf7780eb0739",
+  "default_100step_exact_snapshot": true,
+  "reference_sha256": "ecdfae646df9af0de8db0632b528d5d80ee59470d4a4c46e0f822a49c23f476d",
+  "candidate_sha256": "ecdfae646df9af0de8db0632b528d5d80ee59470d4a4c46e0f822a49c23f476d",
+  "default_gate_source": "matrix-drag-20261015-source prototype; final differences affect only exceptional MatrixDrag coefficient validation",
+  "final_source_manifest_sha256": "c6354545d8b4d061f676e1e677b377804df1fbc8fab6ef1f1fb06c6fe9c0cb6f",
+  "source_manifest": {
+    "base_commit": "1c94bb90f289b4273b404483145e2f9a4c9145a2",
+    "overrides": {
+      "src/cellular_contacts.jl": "337247cbe0707778f15672385f2e33684cbb44535afc9580e3cf880c4089aafa",
+      "src/cellular.jl": "97eda8b05c7d51883bc52dc7ecc985b882b60920296c79b4f2903ed358dc0131",
+      "src/constructive_cells.jl": "000953e0da6de61574abaff6566790c051af13c320c6c53162598625b6b6bf27",
+      "src/matrix_mechanics.jl": "e232c0d13449324aabe6c299ee1de8ba1d961777e363bc328d44fa5af8de03ed",
+      "src/catalytic_arena.jl": "4a359bb5cfee951c898aca039efe07a4558797fce5544876158791139b105524",
+      "src/Interior.jl": "194971f1f1f6c5c044145238c12ed27dbe4975f9f60a67b5d2074aa8efbf9631",
+      "experiments/arena/constructed-food-matrix-drag.toml": "1f25a1307219799c7688d6c45fd33bf6402a07052e7ea984124bc397af6e9b42"
+    },
+    "law": "optional pre-step matrix drag; defaultNothing original arithmetic",
+    "threads": 2,
+    "gc_threads": 1,
+    "prototype_manifest_sha256": "cba9164fe5511ab2204d7c125846d71b642501ed597c89d061d7792417948fb5",
+    "default_gate": "Prototype defaultNothing exact100step full snapshot equality against repaired source; later changes affect only MatrixDrag finite-range validation.",
+    "tests": {
+      "test/catalytic_habitat.jl": "d749215fb12b4c9bbec0367442c943f8a4447170b120dc54163d9cdb497210db",
+      "test/cellular_contacts.jl": "b63e3419bac2ebedb9b9ae9e121ba91ace2f64d581ca92694408e24d175fa75b",
+      "test/matrix_mechanics.jl": "7b59c61fafa3ccb96efe032f18533b5f02a62f051f2a4a3c1545a598e23270b2",
+      "test/constructive_cells.jl": "594498568df25de0f8940e5fadf0dbc7635e14c6a56c405b28b1175b5f5f1b1e"
+    }
+  },
+  "matrix_specific_assertions": 35,
+  "independent_mechanics_assertions": 10,
+  "default_scope": "full100step snapshot equality apart from wall-clock metadata; original defaultNothing arithmetic retained",
+  "ecological_runs": "separate four-arm paired study in progress, not part of invariant assertions"
+}

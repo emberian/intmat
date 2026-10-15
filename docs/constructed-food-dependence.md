@@ -58,7 +58,7 @@ retain all six curves. Complete snapshots and checkpoints remain in the local
 
 ## A slower catalytic regime
 
-The next two-seed exploration changes only `catalytic_rate` from 6 to 0.3 in
+A subsequent two-seed exploration changes only `catalytic_rate` from 6 to 0.3 in
 [its recipe](../experiments/arena/constructed-food-slow-catalysis.toml). At raw
 feedstock concentration 2, half-saturation 0.2 and supplied flux 0.006 per
 chemical, a supply-matching estimate is `E = 0.006*(0.2+2)/(kcat*2)` for each
@@ -74,5 +74,28 @@ concentration 0.044, binding capacity is 0.264, and adsorption/desorption kineti
 local depletion, cellular demand, spatial transport and ongoing enzyme decay all
 matter. The exploration preserves these interactions and the finite material
 and work costs instead of prescribing producer identities or a colony reward.
-It runs sequentially after the stronger-adaptation comparison under the same
+It ran sequentially after the stronger-adaptation comparison under the same
 two-thread budget, with a separate immutable source and output directory.
+
+Both slower-catalysis starts eventually die: first observed empty at time 450
+for seed 211 and 650 for seed 307, after 53 and 56 births. They construct 15.15
+and 21.35 units of material cumulatively and convert 423.47 and 516.54 units of
+raw food. These starts do not establish a persistent higher-matrix regime. The
+supply-matching estimate does not describe the establishment trajectory, and
+these runs do not test an already established matrix or a different finite
+establishment pulse. They leave that possibility open rather than identifying
+an optimal catalytic rate.
+
+An idealized renewal budget clarifies the scale change without treating the
+failed starts as a proof of impossibility. Hold both raw concentrations at 2,
+assume balanced catalysts, and ignore spatial loss and other cellular demands.
+A unit of catalyst with decay rate 0.008 converts approximately
+`kcat * (2 / 2.2) / 0.008` units of raw food over its lifetime: about 682 at
+rate 6, or 34.1 at rate 0.3. Replacing that catalyst costs one unit of precursor
+plus 0.2 work; at precursor potential 4 and respiratory efficiency 0.65, the
+minimum additional fuel for that work is about 0.077. Thus the ideal share of
+released food committed to catalyst renewal and its work rises from about
+0.16% to 3.16%. This continuous-time estimate omits maintenance, growth, motion,
+food losses, unequal chemicals and changing raw concentration. Its value is to
+identify a plausible establishment and allocation problem, not to predict a
+unique ecological outcome.

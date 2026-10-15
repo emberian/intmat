@@ -5,21 +5,24 @@ whatever precursor growth leaves behind. Desired growth and both construction
 fluxes are scaled proportionally by the same limiting precursor and work. The
 normal cellular path remains available with unchanged arithmetic.
 """
-mutable struct ConstructiveEcology{C,H}
+mutable struct ConstructiveEcology{C,H,M}
     cells::C
     habitat::H
+    mechanics::M
     growth_requested::Float64
     construction_requested::Vector{Float64}
     growth_planned::Float64
     construction_planned::Vector{Float64}
 end
-function ConstructiveEcology(w::World,c::CellularEcology,h::CatalyticHabitat)
-    p=ConstructiveEcology(c,h,0.,zeros(2),0.,zeros(2))
+function ConstructiveEcology(w::World,c::CellularEcology,h::CatalyticHabitat;mechanics=nothing)
+    mechanics===nothing || mechanics isa MatrixDrag || throw(ArgumentError("unsupported constructive mechanics law"))
+    p=ConstructiveEcology(c,h,mechanics,0.,zeros(2),0.,zeros(2))
     validate(w,p);p
 end
 function validate(w::World,p::ConstructiveEcology)
     p.habitat.cells===p.cells || throw(ArgumentError("construction and cellular owners must share the same cells"))
     validate(w,p.cells);validate(w,p.habitat)
+    _validate_matrix_mechanics(w,p.habitat,p.mechanics)
     all(x->isfinite(x)&&x>=0,(p.growth_requested,p.growth_planned,p.construction_requested...,p.construction_planned...)) ||
         throw(ArgumentError("invalid anabolic diagnostics"))
     nothing
@@ -27,11 +30,13 @@ end
 stability_limit(w,p::ConstructiveEcology)=min(stability_limit(w,p.cells),stability_limit(w,p.habitat))
 process_children(p::ConstructiveEcology)=(p.cells,p.habitat)
 
-struct CatalyticAnabolism{P}
+struct CatalyticAnabolism{P,D}
     owner::P
     input::Vector{Float64}
     environment::Matrix{Float64}
     requests::Matrix{Float64}
+    drag::D
+    drag_ids::Vector{Int}
 end
 
 function CatalyticAnabolism(p)
@@ -46,8 +51,9 @@ function CatalyticAnabolism(p)
             environment[k+2,i]+=weight*h.enzymes[k][site]
         end
     end
+    drag=_matrix_drag_coefficients(p.mechanics,environment)
     for j in eachindex(environment);environment[j]/=1+environment[j];end
-    CatalyticAnabolism(p,zeros(Float64,size(c.hidden,1)+10),environment,zeros(2,n))
+    CatalyticAnabolism(p,zeros(Float64,size(c.hidden,1)+10),environment,zeros(2,n),drag,drag===nothing ? Int[] : copy(c.ids))
 end
 
 function _cellular_planned_work(planned,w,c,i,delta,cq,a::CatalyticAnabolism)
@@ -56,7 +62,16 @@ function _cellular_planned_work(planned,w,c,i,delta,cq,a::CatalyticAnabolism)
     request_a=delta*q.secretion_rate*c.biomass[i]*investment*allocation^q.allocation_exponent
     request_b=delta*q.secretion_rate*c.biomass[i]*investment*(1-allocation)^q.allocation_exponent
     a.requests[:,i].=(request_a,request_b)
-    planned+q.secretion_work*(request_a+request_b)
+    _matrix_drag_forecast(planned+q.secretion_work*(request_a+request_b),w,c,i,delta,cq,a.drag)
+end
+
+function _cellular_mechanical_drag(w,c,a::CatalyticAnabolism)
+    a.drag===nothing && return nothing
+    c.ids==a.drag_ids && return a.drag
+    # Terminal cells leave before mechanics; stable IDs preserve each survivor's
+    # earlier material observation without assigning a dead cell's drag to it.
+    index=Dict(id=>i for (i,id) in enumerate(a.drag_ids))
+    [a.drag[index[id]] for id in c.ids]
 end
 
 function _cellular_anabolic_build!(w,c,i,delta,growth_request,cq,a::CatalyticAnabolism)

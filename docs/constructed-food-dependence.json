@@ -373,5 +373,107 @@
     "seed": 211
   },
   "recorded_points_sha256": "e7ae5228ca6d3b2330b2284a9ff06242dde6dd23cffaffe0efe33aa763614068",
-  "numerical_scope": "Fresh founders in every arm under the same repaired source. Earlier original-source completed seed211/full remains separate evidence; interrupted conversion-off control was not resumed."
+  "numerical_scope": "Fresh founders in every arm under the same repaired source. Earlier original-source completed seed211/full remains separate evidence; interrupted conversion-off control was not resumed.",
+  "slower_catalysis": {
+    "arms": [
+      {
+        "regime": "constructed-food-slow-catalysis-20261015",
+        "arm": "211-full",
+        "complete": true,
+        "last_time": 3000.0000447034836,
+        "first_observed_extinction": 450.00000670552254,
+        "peak_population": 90,
+        "peak_population_time": 75.00000111758709,
+        "final_population": 0,
+        "births": 53,
+        "deaths": 101,
+        "blocked_births": 0,
+        "final_catalyst": 8.955228354076518e-10,
+        "total_constructed": 15.150760978020298,
+        "total_rawfood_converted": 423.47068582359634,
+        "final_free_precursors": [
+          0.0,
+          0.0
+        ],
+        "final_rawfeedstock": [
+          4924.602319955826,
+          4885.114003896713
+        ],
+        "final_bound_food": [
+          1.1409792486071958e-40,
+          1.1398161708818062e-40
+        ],
+        "inert_residual": 0.004905444892028042,
+        "biomass_time_integral_trapezoidal_sampled": 20965.90576188686,
+        "max_abs_mass_error": 3.3639955745456973e-06,
+        "max_abs_energy_error": 4.596243343257811e-06,
+        "metrics_sha256": "a04c2199c17c6afd150b5a9283ed5c05540db120ed2b1d35a4c71ad242a3558a"
+      },
+      {
+        "regime": "constructed-food-slow-catalysis-20261015",
+        "arm": "307-full",
+        "complete": true,
+        "last_time": 3000.0000447034836,
+        "first_observed_extinction": 650.0000096857548,
+        "peak_population": 93,
+        "peak_population_time": 75.00000111758709,
+        "final_population": 0,
+        "births": 56,
+        "deaths": 104,
+        "blocked_births": 0,
+        "final_catalyst": 1.735828232013259e-09,
+        "total_constructed": 21.34571769046571,
+        "total_rawfood_converted": 516.5392367492589,
+        "final_free_precursors": [
+          0.0,
+          0.0
+        ],
+        "final_rawfeedstock": [
+          4913.930887579918,
+          4802.814319193363
+        ],
+        "final_bound_food": [
+          1.102597683669339e-40,
+          1.1037607613947287e-40
+        ],
+        "inert_residual": 0.0066604918969995165,
+        "biomass_time_integral_trapezoidal_sampled": 26818.467505144356,
+        "max_abs_mass_error": 2.589125870144926e-06,
+        "max_abs_energy_error": 7.114751724657253e-06,
+        "metrics_sha256": "e964b18051dcc1f01d184bcc06cc7596e9f363bd9e26f5a1d66e28026fe7158a"
+      }
+    ],
+    "source_manifest": {
+      "base_commit": "2d683806506dbefa885f19bb43692894cc78394c",
+      "source_overrides": {
+        "src/cellular.jl": "ac6633c645e14a63126031dd5d34bc9ddddc18a46332839482e2a9524840acdf",
+        "src/cellular_transport.jl": "fc8bfb0df1948b3869afae0a06fb5cc23bb87778452a31ffc3d27954eeb87aa2",
+        "src/catalytic_habitat.jl": "9a69b5ec394bc6dcee988d68f6463fc7c72bfa273e89bbd6e46513d392468eb1",
+        "src/constructive_cells.jl": "c7aef86045d7639d2b6beb37d9ddc41564b374a046298cc1565bed4f01a71764"
+      },
+      "drivers": {
+        "run.jl": "5ea1f42ab8253542fcbde84a38357001c949517d65d90dcc48b0dab632afdfe2",
+        "studies/sorptive_garden.jl": "efe64dd7078d02353e0eea1beb2179abff3b6afafdd5900358f150f66f07b4d5"
+      },
+      "reason": "Fresh two-seed slower catalytic-efficiency exploration after matched dependency and stronger-adaptation queue; same repaired physical engine.",
+      "prior_output_preserved": "outputs/constructed-food-20261015",
+      "prior_source_preserved": "outputs/constructed-food-20261015-source",
+      "focused_test_log_sha256": "c96bfa6012a6356e10b1b82176cd86333d88686ea68849aca078471f49f3fd98",
+      "focused_assertions": 582,
+      "threads": 2,
+      "gc_threads": 1,
+      "parent_source_manifest_sha256": "c299506dbfe07009f411773f250ac28f6e89ebc36ccaf2c7f8d5c2e25ac1ab71",
+      "profile": {
+        "path": "experiments/arena/constructed-food-slow-catalysis.toml",
+        "sha256": "30ea8e3ddcc5fed366253a33bdebbc03bb69ce985f51e8fe6d08a0f3e51d7f53",
+        "only_parameter_change_from_constructed_food": {
+          "catalytic_rate": [
+            6.0,
+            0.3
+          ]
+        }
+      }
+    },
+    "interpretation": "These two founder starts did not establish a persistent higher-matrix regime; they do not test a pre-established matrix or a different finite establishment pulse."
+  }
 }
