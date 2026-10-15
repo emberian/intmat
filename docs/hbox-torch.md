@@ -94,7 +94,43 @@ host-resident Julia arrays through it does not create zero-copy GPU state.
 A faithful writer backend must compare the original cell coordinates, periodic
 stencil, source trajectory/pulsing, cooling, timestep guards, threshold-dose
 quadrature and material update against Julia fixtures over multiple steps.
-The current microbenchmark establishes no such full writer equivalence.
+The component microbenchmark above establishes no such full writer equivalence.
+
+### Verified opt-in dose writer
+
+`scripts/probe_hbox_torch_writer.py` now implements the opt-in three-array
+`DoseThermalWriter` equations with a fused resident Torch kernel. It retains
+the explicit Euler temperature update, periodic finite-difference Laplacian,
+Gaussian source, cooling, nonnegative temperature clamp and right-endpoint
+threshold-dose quadrature. Julia supplies exact Float32 midpoint source positions
+and pulsed powers in a device-resident table, avoiding host trigonometric
+differences and per-step parameter transfers. Temperature/scratch pointers swap
+after each step; dose updates in place. This removes the full-volume scratch
+copy without changing the next step's physical state.
+
+Against the Julia-generated 12³, 25-step fixture, saved frames at steps 1, 7, 15
+and 25 passed, including pulsing and source shutdown. Maximum absolute errors
+were 2.24e-8 temperature and 1.63e-9 dose. Analytic material reconstruction
+matched within 5.96e-8 nutrient and 6.98e-10 deposit. This comparison is against
+the new dose-owned material representation, not the older repeated nutrient/
+deposit exchange rounding.
+
+The same resident code ran **384³ for 25 steps in .12505 seconds (5.002 ms/step)**,
+using 683,225,600 bytes peak allocated VRAM. Fixture compile/check took 43.19
+seconds and large-shape compile/warmup took 6.23 seconds, both excluded from the
+timed advance. The benchmark reused the fixture's .003 timestep, parameters and
+25 source rows; it is a short writer test, not a five-unit production specimen
+or a whole-arena speedup. Evidence is in `gpu/hbox-torch-writer-verification.json`.
+
+Generate the fixture locally with
+`julia --project scripts/dose_writer_fixture.jl FRESH_OUTPUT_DIRECTORY`, copy it
+and `scripts/probe_hbox_torch_writer.py` to a fresh hbox probe directory, then
+use the same runtime/cache/resource-control environment as above:
+
+```sh
+/tank/chreatures/envs/rocm-dev/bin/python -u probe_hbox_torch_writer.py \
+  dose-fixture/fixture.json --n 384 --steps 25 --output writer-results.json
+```
 
 1152³ contains 1,528,823,808 voxels, so each Float32 field occupies 6.115 GB.
 Five fields require 30.58 GB; three require 18.35 GB before workspace. Both exceed

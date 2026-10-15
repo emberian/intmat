@@ -1,0 +1,87 @@
+{
+  "torch": "2.9.1+rocm6.3",
+  "hip": "6.3.42134-a9a80e791",
+  "fixture_sha256": "85907b0f954641f7f5216b72cf61237d02ea8a25c262e695410ea01563f465d0",
+  "fixture_source_hashes": {
+    "core.jl": "3ef44008f6a9ce8399bc60352da94dc19e670e67677944369934138042718bad",
+    "neural_workspace.jl": "ecdd45856bc0b3c61708de90814d1abb33bc1232a0f9ff5785b32b9bc39a9139",
+    "writing.jl": "78fba7cd46f03749bdc56547b7ce5622f7ba3ea42cc34801829345dae3975e05",
+    "Interior.jl": "74a3cf25e173bccf9461b3c3257f145a83ea7409db1b266a99357ba28a082ed2",
+    "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+    "cellular.jl": "a357becbcf64a025a8d39e1dcae19123bee3ac7ed175603369f2d0e181694579",
+    "cellular_contacts.jl": "cd4eb619aaa8998cf5b33049d3cd07e4da36b95463bdf894ef4d520024113ef0",
+    "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26",
+    "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+    "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+    "dose_writer.jl": "d51122f6b33dad4eb9f4888073e660b7f5600225a31a636a620c92308fb7e03a",
+    "cellular_transport.jl": "a1fd389de2c9198c9886191ef1a54730e2cd7dd304c5ee1fcb823fbeb3b72300",
+    "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+    "experiments.jl": "e2e513ac4bfb0af90b5d1c870c5f403705eddd0606316ee2f86c5f5bc83eb527",
+    "metabolic_ecology.jl": "2f599a1d6ea0a5552a594113d57e238e4c6ff3c1fd8d74de5a51f83a77179bb1",
+    "mechanics.jl": "81001af879163392dde498534c9f099bcc79a16b8dac5104d527da7cc9f4fdac",
+    "neural_ecology.jl": "ed0496adb31ce4511f8bc0d5343ff843c410c39c51d30c165b3cf5eac1135df2",
+    "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+    "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+    "compartments.jl": "8eec60b56379a3d366cd789ad62e4c7690a0c10ce5af8a485f66b670c8448751",
+    "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+    "arena.jl": "ebc9547b52d3452e3871b31ad78032c3dbee51cc387da154443104a278d3fadc",
+    "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+    "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+    "implicit_phase.jl": "1fb617707591f89784b95171e0558065101b3d992f7b3eabd16a7bf01dca4ceb",
+    "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+    "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+    "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+    "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+  },
+  "scope": "opt-in three-array DoseThermalWriter; original explicit thermal integrator and analytic private material readout",
+  "frame_errors": [
+    {
+      "step": 1,
+      "temperature_max_abs_error": 2.2351741790771484e-08,
+      "dose_max_abs_error": 6.548361852765083e-11
+    },
+    {
+      "step": 7,
+      "temperature_max_abs_error": 2.2351741790771484e-08,
+      "dose_max_abs_error": 3.4924596548080444e-10
+    },
+    {
+      "step": 15,
+      "temperature_max_abs_error": 2.2351741790771484e-08,
+      "dose_max_abs_error": 1.0477378964424133e-09
+    },
+    {
+      "step": 25,
+      "temperature_max_abs_error": 2.2351741790771484e-08,
+      "dose_max_abs_error": 1.6298145055770874e-09
+    }
+  ],
+  "material_errors": {
+    "nutrient_max_abs_error": 5.960464477539063e-08,
+    "deposit_max_abs_error": 6.984919309616089e-10
+  },
+  "fixture_compile_and_check_seconds": 43.18760723806918,
+  "benchmark_shape_compile_warm_seconds": 6.231098122894764,
+  "benchmark": {
+    "grid": [
+      384,
+      384,
+      384
+    ],
+    "steps": 25,
+    "seconds": 0.1250489391386509,
+    "dt": 0.003,
+    "source_schedule": "fixture rows; repeats only if requested steps exceed fixture length",
+    "peak_allocated_vram": 683225600,
+    "peak_reserved_vram": 702545920,
+    "temperature_max": 0.1108912006020546,
+    "dose_max": 0.005539207253605127,
+    "minimum_temperature": 2.191630798204014e-37,
+    "minimum_dose": 0.0,
+    "seconds_per_step": 0.005001957565546036
+  },
+  "date_utc": "2026-10-15",
+  "interpreter": "/tank/chreatures/envs/rocm-dev/bin/python",
+  "hsa_override_gfx_version": "10.3.0",
+  "source_sha256": "f372d75c75293d8b748b5f1888e03e162691881d107dd0bbfdd65f0d83450204"
+}
