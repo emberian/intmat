@@ -61,7 +61,7 @@ function crossed_wave(config; output=nothing)
  open(io->JSON3.pretty(io,job),joinpath(output,"render-job.json"),"w")
  println("READY ",output);report
 end
-if abspath(PROGRAM_FILE)==@__FILE__
+if abspath(PROGRAM_FILE)==(@__FILE__) || (isdefined(Main,:INTERIOR_RUNNING_STUDY) && Main.INTERIOR_RUNNING_STUDY=="refinement_waves")
  get(TOML.parsefile(ARGS[1]),"backend","cpu")=="metal" && (@eval using Metal)
  Base.invokelatest(crossed_wave,ARGS[1];output=length(ARGS)>1 ? abspath(ARGS[2]) : nothing)
 end
