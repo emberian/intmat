@@ -1,0 +1,86 @@
+Device support performance design review — 2026-10-15
+
+Scope: read-only review of the shared enqueue, device cellular/support/habitat
+kernels. These are hypotheses, not measured optimization claims. No physical
+exchange radius reduction or GPU launch was used for this review.
+
+Evidence
+The recorded graph experiment cuts host submission from about .135 seconds to
+.00077 seconds per twenty steps but changes complete-step time only 1.020x at
+32^3 and 1.002x at 128^3. Event stream intervals include inter-kernel gaps and
+preflight, so they are not an isolated kernel attribution. The published axis
+support GPU slowdown predates the carry iterator; do not attribute those timings
+to the later source. Sources: benchmarks/2026-10-15-device-graphs.json,
+docs/device-support-performance.md, studies/device_launch_profile.jl.
+
+Work model
+Let C=capacity, N=live cells, V=voxels, K=bounding-box candidates, S=accepted
+support edges per cell. Dense support costs O(CK) storage and traverses S edges.
+Axis support stores O(C sum(axis candidates)) but rechecks K candidates per
+consumer. Current base consumers make eight support traversals per macro
+step: sensing one; regulation two concentration scans plus one demand scatter;
+grant gather two; waste one; porosity one. Habitat adds one readout gather and
+up to two export traversals. Support is built before sensing and again after
+mechanics/division. Mixed sensing also includes neighbor pressure; mixed
+regulation includes plasticity, so neither event category is pure support cost.
+
+Priority hypotheses
+1. Exact-zero export/waste/request paths can avoid complete support scans.
+   Omitting a zero contribution preserves reachable-state arithmetic; preserve
+   failure-latch guards and do not turn invalid values into zero transfers.
+2. Cache regulation's own concentration accumulator during sensing. Fields and
+   support remain unchanged until allocation. Preserve both arithmetic forms:
+   sensing uses (weight/volume)*field, regulation uses weight*field/volume.
+   Reusing the squashed sensor or algebraically regrouping changes rounding.
+3. Support validity can avoid redundant rebuilds: the next macro begins with the
+   support built after the previous movement/division. Do not remove rebuilds
+   without explicit invalidation for position edits, birth/death, radius/grid
+   configuration and restoration. Fixed exchange radius differs from body radius.
+4. Workgroups per cell expose edge parallelism but do not reduce O(NK) work.
+   Capacity-major storage currently coalesces across cells; lanes across edges
+   can introduce capacity-sized strides. Reduction and atomic order can change.
+   Reuse one shared candidate evaluator, cutoff, normalization and fallback.
+5. Precomputed voxel neighbor differences may reduce repeated gradient reads.
+   Two species in 3D require 24 bytes/voxel. Cache differences before division to
+   retain weight*difference/(2h). At extent 4, radius .18, expected NS/V is only
+   .195 for 512 cells, versus7.64 for 20k; dense precomputation can lose at sparse
+   population. Refining the grid at fixed physical geometry does not change
+   that overlap ratio materially.
+6. Active-index lists can improve useful wave occupancy without moving persistent
+   slots or lowering the funded capacity bound. Death/birth ordering, slot-based
+   bonds, IDs/RNG and cumulative slot ledgers must remain intact. Lifecycle's
+   single-thread capacity scan and priority heap warrant measurement; parallel
+   selection must preserve priority, tie breaks and lowest-free-slot allocation.
+7. Tune broadphase bin width using actual body radii and occupancy, while retaining
+   all eligible pairs and separately enumerating stretched bonds. A globally
+   large radius can inflate queries for every cell; a hierarchical broadphase
+   is justified only if this case is measured. Do not substitute a smaller cutoff.
+8. Dense resource/chemistry passes may dominate independently of cell support.
+   Exact zero-rate exchange can potentially skip work, and chemistry has sites
+   with identically zero enzyme/bound state. Diffusion cannot be truncated by
+   an arbitrary concentration threshold; exact sparsity needs tracked frontiers.
+
+Minimal discrimination
+Use warmed original/replacement pairs on the same checkpoint and unchanged
+radius/extent/dt, with one uninstrumented complete-step timing alongside event
+measurements. Record N/C, K, accepted-edge distribution, bin occupancy and actual
+substeps outside timing. First compare materialized versus axis categories;
+then vary capacity at fixed live state to expose inactive-slot costs. Only test
+workgroup or gradient prototypes if the corresponding category dominates.
+For any candidate, compare completed steps/status, full trajectory state where
+exactness is claimed, material/potential/work/heat balances, newborn/slot reuse,
+and strict continuation. Event overhead and altered Float32 reduction order
+must be reported rather than folded into a claimed physical equivalence.
+
+Opt-in zero-work experiment
+studies/device_support_fastpaths.jl derives the existing waste, anabolic-build
+and export bodies from source, adds only exact-zero guards and changes named
+call edges. It checks source files against loaded runtime pins and never replaces
+production methods. DeviceSupportFastCarrier routes the ordinary shared enqueue
+schedule through these variants; the normal support rebuild schedule is intact.
+Use Interior.device_support_fast_step! explicitly after including the study in
+Interior. Record DEVICE_SUPPORT_FASTPATH_SOURCE with any measurement. Profiling
+can wrap the carrier to retain original stage labels, or sit inside it to inspect
+actual substituted kernel names. No GPU throughput or bitwise GPU claim follows
+from the CPU trajectory tests. Concentration caching and dirty-support reuse are
+not implemented in this first experiment.

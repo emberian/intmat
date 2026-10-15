@@ -169,7 +169,7 @@ explicit assertion that the supported homogeneous constant-coefficient grounded
 operator and all coarse masks have been restored. It rejects nonzero fine RHS and
 performs an ordinary global solve before enabling patches. It does not implement
 variable conductivity or make an incompatible operator correct by invalidation.
-Seventeen focused assertions cover this state machine and its fallback paths.
+Eighteen focused assertions cover this state machine and its fallback paths.
 
 A fresh pair of independent coupled histories used the actual amber-confluence
 recipe at overridden 33³ resolution for 256 events. Both arms performed thermal
@@ -186,5 +186,48 @@ histories after any changed choice, records the first choice divergence, overlap
 field differences, material budgets, residual checks and complete-event timings.
 The first 16 events are explicitly excluded from steady timing to avoid kernel-
 compilation bias; raw timings remain. No rescue or forced choice-matching occurs.
-A native 257³/1024-event bounded AMD gate is prepared for the coordinated queue;
-it has not run. Producer recipe wiring remains deferred until that result.
+The native 257³/1024-event bounded AMD gate below has completed. Producer recipe
+wiring remains deferred because its coupled history changed.
+
+## Native coupled outcome: finite-tolerance history changed
+
+The fresh `d2ae74f` gate completed all 1024 events on native 257³ in about 141 seconds,
+within its 300-second/8 GiB/no-swap/nice 15/CPU 10–11 bounds. The artist had released
+its pilot; recovery explicitly yielded the profiler slot; root granted the run.
+The GPU was released directly to recovery when it exited zero. No running artwork
+was modified.
+
+The first changed growth choice was **event 85**. Only 109/1024 subsequent ordinal
+choices matched overall, and final occupied Jaccard was **0.1184**. Both histories
+continued independently, with no forced choices or rescue. Independent harmonic
+residuals stayed below 1.582e-5. Relative material ledger errors were −6.70e-13 and
+−1.87e-12. Final solid totals were 4019.739 and 4029.889 (about 0.25% apart), but spatial
+thermal/material fields differed substantially. Their final differences compare
+different occupied geometries, not errors against a common exact solution.
+
+After the planned 16-event warmup exclusion, events 17–84 retained the same choices,
+geometry and thermal/material history. Their complete-event times summed to
+4.0153 seconds baseline versus 3.5008 seconds candidate (ratio 1.147× across 68 events).
+The full remaining steady totals were 54.411 versus 47.836 seconds, but after event 85
+these compare **different geometries** and cannot establish a trajectory-preserving
+complete-event speedup. The separate fixed-recorded-geometry solve result remains
+valid at its stated tolerance and scope.
+
+This rejects a claim that local correction preserves the existing deterministic
+coupled history at the current stopping tolerance. It does **not** establish that
+either arm is closer to a tighter harmonic reference; both passed the same
+residual criterion. Before producer wiring, a useful next accuracy experiment is
+to replay the common prefix through 84 and inspect event 85's cumulative growth
+weights against tighter common-state solves. Further trajectories should study
+sensitivity to tolerance rather than treating occupied overlap as an accuracy
+oracle. The optional wrapper remains unloaded; no production recipe selects it.
+
+Tracked raw rows, quality metrics and provenance are in
+`benchmarks/2026-10-15-electrical-temporal-coupling-native.json`. Logs, source copies,
+environment and manifest are under
+`outputs/electrical-local-correction-20261015/coupled-native-d2ae74f`.
+The 683,228,034-byte final electrical/material array records remain remotely at
+`/othersys/tmp/intmat-electrical-coupled-d2ae74f-20261015/results-001/final-states.jls`,
+SHA256 `894408677ec98f4b0524861fe786630ec83cc1691db28e3e320bb2df17d3be30`.
+They are observation arrays, not an executable archive checkpoint. No new GPU
+campaign is running from this lane.

@@ -1,5 +1,13 @@
 # Individual development in a constructed-food habitat
 
+This report preserves the original source-pinned seed-211 trajectory under
+`outputs/constructed-food-20261015`. It is separate from the later matched
+repaired-source runs under `outputs/constructed-food-fixed-20261015` and
+`outputs/constructed-food-slow-feedback-fixed-20261015`. The repair changes
+finite-precision material transfers; it was followed by fresh-founder restarts,
+not migration of this trajectory. The identities, figure and source hashes below
+have not been replaced with results from those new runs.
+
 The baseline raw-food-only run already contains strong repeated switching within
 recorded cell identities, despite high population-level hidden-state saturation.
 In seed 211, ID 27 changes across nearly the full hidden range while its actions
