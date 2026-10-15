@@ -189,9 +189,10 @@ not yet accept patterned resource initializers.
 Fresh checkpoints use format version 2, record the support strategy explicitly,
 and pin the support and founder-initialization helpers. Existing frozen runs keep
 their own source/checkpoint implementation; this runtime does not reinterpret
-version-1 checkpoints. Axis throughput and backend compiler compatibility need
-fresh measurements; the earlier v16 performance results describe materialized
-support only.
+version-1 checkpoints. The first native AMD measurement found a storage/throughput tradeoff: the original
+axis iterator saved 221× support storage at 256³ but ran at 0.189× materialized
+throughput. See [physical-support measurements](device-support-performance.md).
+The earlier v16 performance results describe materialized support only.
 
 The existing full-loop probe/benchmark/trajectory scripts accept
 `DEVICE_SUPPORT_STRATEGY=axis`; their default recipe and materialized strategy

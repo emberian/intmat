@@ -1,0 +1,189 @@
+{
+    "helper_sha256": "0ce137f66e50acb50924d97c9ef9d9d3e4fc580f5634cba439aa121333fd4864",
+    "common_seed_lazy_subarray_reference": {
+        "worlds": 4,
+        "serial_step_allocated": 1056448,
+        "batch_seconds": [
+            0.134868018,
+            0.115298117,
+            0.112798504
+        ],
+        "all_arrays_exact": true,
+        "initial_cells_per_world": 8,
+        "threads": 2,
+        "potential_work_heat_errors": [
+            -1.1233669283683412e-6,
+            4.5132355808163993e-7,
+            2.484002834535204e-7,
+            1.4261927390180063e-6
+        ],
+        "aggregate_speedup": 0.31014534261647997,
+        "serial_seconds": [
+            0.092487112,
+            0.035759174,
+            0.034767994
+        ],
+        "grid": [
+            8,
+            8,
+            1
+        ],
+        "steps_per_sample": 10,
+        "batch_step_allocated": 655904,
+        "source": {
+            "kernels": "a85cf1f8e0739373572e9029deb46415ab5d16669f3513b0fbf020b289ad0b27",
+            "schedule": "72ecaccee6a0968b00b43fc2c9dfb7fee074a5f4e9fa95d2bc646640860e3e6d"
+        },
+        "samples": 3,
+        "material_balance_errors": [
+            9.428447356185643e-8,
+            -8.343016588696628e-8,
+            3.402700485821697e-7,
+            5.87831948450912e-7
+        ]
+    },
+    "controls": {
+        "julia_threads": 2,
+        "concurrent_context": "Artist AMD production; no GPU used by this study",
+        "nice": 15,
+        "memory_limit_gib": 8,
+        "host": "hbox",
+        "cores": [
+            14,
+            15
+        ],
+        "swap": false,
+        "gc_threads": 1,
+        "blas_threads": 1
+    },
+    "source_pins": [
+        "/othersys/tmp/intmat-probe-20261014/world-batches-20261015-v1",
+        "/othersys/tmp/intmat-probe-20261014/world-batches-20261015-v2"
+    ],
+    "date": "2026-10-15",
+    "distinct_seed_offset_candidate": [
+        {
+            "worlds": 4,
+            "physical_extent": [
+                4,
+                4,
+                1
+            ],
+            "seed_vector": [
+                12,
+                13,
+                14,
+                15
+            ],
+            "serial_step_allocated": 1056448,
+            "batch_seconds": [
+                0.038374848,
+                0.06059535,
+                0.023159853
+            ],
+            "all_arrays_exact": true,
+            "initial_cells_per_world": 8,
+            "threads": 2,
+            "potential_work_heat_errors": [
+                2.388768720607004e-6,
+                -6.692597480650875e-7,
+                2.0048200894962065e-6,
+                -1.531338000404503e-6
+            ],
+            "aggregate_speedup": 1.0389381086278178,
+            "completed_steps_per_world": 32,
+            "serial_seconds": [
+                0.036106856,
+                0.039869092,
+                0.069767102
+            ],
+            "grid": [
+                8,
+                8,
+                1
+            ],
+            "steps_per_sample": 10,
+            "batch_step_allocated": 677232,
+            "source": {
+                "kernels": "a85cf1f8e0739373572e9029deb46415ab5d16669f3513b0fbf020b289ad0b27",
+                "schedule": "72ecaccee6a0968b00b43fc2c9dfb7fee074a5f4e9fa95d2bc646640860e3e6d"
+            },
+            "samples": 3,
+            "material_balance_errors": [
+                -2.090066573146032e-6,
+                7.844208766982774e-7,
+                5.355063308343233e-7,
+                2.301671884197276e-7
+            ]
+        },
+        {
+            "worlds": 4,
+            "physical_extent": [
+                8,
+                8,
+                1
+            ],
+            "seed_vector": [
+                12,
+                13,
+                14,
+                15
+            ],
+            "serial_step_allocated": 1091648,
+            "batch_seconds": [
+                0.085323333,
+                0.084488632,
+                0.087490473
+            ],
+            "all_arrays_exact": true,
+            "initial_cells_per_world": 64,
+            "threads": 2,
+            "potential_work_heat_errors": [
+                -1.1815563993877731e-7,
+                1.4386921854736556e-5,
+                2.4420081388143444e-6,
+                -2.673441400702359e-6
+            ],
+            "aggregate_speedup": 0.5860806797127815,
+            "completed_steps_per_world": 17,
+            "serial_seconds": [
+                0.045993464,
+                0.050006357,
+                0.055518593
+            ],
+            "grid": [
+                16,
+                16,
+                1
+            ],
+            "steps_per_sample": 5,
+            "batch_step_allocated": 677232,
+            "source": {
+                "kernels": "a85cf1f8e0739373572e9029deb46415ab5d16669f3513b0fbf020b289ad0b27",
+                "schedule": "72ecaccee6a0968b00b43fc2c9dfb7fee074a5f4e9fa95d2bc646640860e3e6d"
+            },
+            "samples": 3,
+            "material_balance_errors": [
+                -4.125233772356296e-7,
+                2.215846961917123e-6,
+                1.489012902311515e-6,
+                -2.798319655994419e-7
+            ]
+        }
+    ],
+    "law": "unchanged DeviceCellular full macrostep; independent worlds, common geometry and physical parameters; separate RNG seeds in final candidate",
+    "cpu_recommendation": "Do not replace serial CPU execution; moderate fixture is slower",
+    "default_changed": false,
+    "gpu_verified": false,
+    "tests": {
+        "checks": [
+            "every state and environment array after full steps",
+            "matching standalone per-world seeds",
+            "birth and extinction",
+            "failed-world isolation",
+            "material and potential/work/heat balances",
+            "slice bounds and ownership"
+        ],
+        "final_assertions": 56
+    }
+}

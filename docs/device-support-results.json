@@ -1,0 +1,287 @@
+{
+  "format_version": 1,
+  "numerical_commit": "d4d152d",
+  "script_overlay_commit": "25fcae3",
+  "runtime": {
+    "julia": "1.12.4",
+    "kernel": "Linux",
+    "architecture": "x86_64",
+    "launch_threads": 2,
+    "backend": "amd",
+    "device": "HIPDevice(id=1, name=AMD Radeon RX 6750 XT, gcn_arch=gfx1030)",
+    "backend_version": "2.8.0",
+    "actual_device_optlevel": 1,
+    "project_sha256": "284c920aebff70f466a40df21f7c83ae4c561857b046f940274b43a8feeaec6d",
+    "manifest_sha256": "f0f5cddf8e5181b495a4149d0a0e01fca136ca0df59bafa0f16b7d5a553b44f9"
+  },
+  "source": {
+    "model": "97bb37f5fd1bf27656e0b8276ea0b4f59885c35917f6f51bf3a136000755740d",
+    "initialization": "1484f9c00e3aa438f2557d12af1b29be2247e3b27dd5e4bcfd64d603785e6dc9",
+    "founder_initialization": "d76e4c791a2c56bc7fd651b1836e6879b9e27013566ce6d94a1d2f677f62e633",
+    "support": "727709b1dc15dcd6567ec63fc07816a61238a95a5963e118302806a67627e0ab",
+    "kernels": "a85cf1f8e0739373572e9029deb46415ab5d16669f3513b0fbf020b289ad0b27",
+    "checkpoint": "77f943195ef1ae0466d57fc57c051595f3f363c822e8d9f6d4dbc1b9d5a6a9b0",
+    "protocol": "095c40b8e42baca3688abe902289377da49e8f352017733ce92728729fb40be5"
+  },
+  "timing_boundary": "complete projected steps including birth/death/contact stages and batch8 compact failure/observation downloads; excludes construction, compile gate, final biological reads",
+  "recipe": {
+    "extent": 4,
+    "exchange_radius": 0.18,
+    "density": 128,
+    "founders": 512,
+    "capacity": 2048,
+    "mechanical_substeps": 16
+  },
+  "steps_per_sample": 30,
+  "comparisons": [
+    {
+      "grid": [
+        64,
+        64,
+        64
+      ],
+      "materialized_median_full_steps_per_second": 77.29858532432094,
+      "axis_median_full_steps_per_second": 41.29102523490547,
+      "median_paired_axis_speedup": 0.5381599296818983,
+      "materialized_support_bytes": 8396800,
+      "axis_support_bytes": 417792,
+      "support_storage_reduction": 20.098039215686274,
+      "pairs": 3
+    },
+    {
+      "grid": [
+        128,
+        128,
+        128
+      ],
+      "materialized_median_full_steps_per_second": 31.577295909084267,
+      "axis_median_full_steps_per_second": 7.945414026761143,
+      "median_paired_axis_speedup": 0.25159346607960265,
+      "materialized_support_bytes": 44965888,
+      "axis_support_bytes": 712704,
+      "support_storage_reduction": 63.0919540229885,
+      "pairs": 3
+    },
+    {
+      "grid": [
+        256,
+        256,
+        256
+      ],
+      "materialized_median_full_steps_per_second": 5.322558083696051,
+      "axis_median_full_steps_per_second": 1.0027491112931441,
+      "median_paired_axis_speedup": 0.18878002057163065,
+      "materialized_support_bytes": 287973376,
+      "axis_support_bytes": 1302528,
+      "support_storage_reduction": 221.08805031446542,
+      "pairs": 3
+    }
+  ],
+  "all_nine_pairs_identities_positions_hidden_bonds_exact": true,
+  "all_samples_finite": true,
+  "minimum_births_per_sample": 511,
+  "minimum_deaths_per_sample": 1,
+  "maximum_blocked_births": 0,
+  "base_gate": {
+    "checks": [
+      {
+        "strategy": "materialized",
+        "errors": {
+          "identities_equal": true,
+          "position": 0,
+          "hidden": 7.450581e-09,
+          "metabolites": 7.450581e-09,
+          "fields": 4.656613e-10
+        },
+        "stats": {
+          "population": 14,
+          "births": 7,
+          "deaths": 1,
+          "blocked_births": 0,
+          "completed_steps": 20,
+          "bonds": 7,
+          "material": 53.369964599609375,
+          "potential": 166.85661602020264,
+          "supplied": 0,
+          "removed": 0,
+          "supplied_potential": 0,
+          "removed_potential": 0,
+          "work": 0.11379767954349518,
+          "heat": 2.3094372749328613,
+          "synthesized": 0.057078659534454346,
+          "oxidized": 0.08656756579875946,
+          "finite": true,
+          "minimum_resource": 0,
+          "minimum_energy": 0.50098693,
+          "observation_bytes": 244
+        }
+      },
+      {
+        "strategy": "axis",
+        "errors": {
+          "identities_equal": true,
+          "position": 0,
+          "hidden": 7.450581e-09,
+          "metabolites": 7.450581e-09,
+          "fields": 4.656613e-10
+        },
+        "stats": {
+          "population": 14,
+          "births": 7,
+          "deaths": 1,
+          "blocked_births": 0,
+          "completed_steps": 20,
+          "bonds": 7,
+          "material": 53.369964599609375,
+          "potential": 166.8566312789917,
+          "supplied": 0,
+          "removed": 0,
+          "supplied_potential": 0,
+          "removed_potential": 0,
+          "work": 0.11379767954349518,
+          "heat": 2.3094372749328613,
+          "synthesized": 0.057078659534454346,
+          "oxidized": 0.08656756579875946,
+          "finite": true,
+          "minimum_resource": 0,
+          "minimum_energy": 0.50098693,
+          "observation_bytes": 244
+        }
+      },
+      {
+        "strategy": "axis_restart",
+        "errors": {
+          "identities_equal": true,
+          "position": 0,
+          "hidden": 0,
+          "metabolites": 0,
+          "fields": 0
+        }
+      }
+    ],
+    "dense_axis": {
+      "identities_equal": true,
+      "position": 0,
+      "hidden": 0,
+      "metabolites": 0,
+      "fields": 0
+    }
+  },
+  "habitat_gate_summary": [
+    {
+      "strategy": "materialized",
+      "steps": 20,
+      "material_error": 1.6507783584529534e-08,
+      "potential_error": 1.3625676729134284e-06,
+      "maximum_array_error": 2.384185791015625e-07,
+      "checkpoint_bitwise": true
+    },
+    {
+      "strategy": "axis",
+      "steps": 20,
+      "material_error": 1.6507783584529534e-08,
+      "potential_error": 1.3625676729134284e-06,
+      "maximum_array_error": 2.384185791015625e-07,
+      "checkpoint_bitwise": true
+    }
+  ],
+  "pilot": {
+    "recipe": {
+      "nvox": 128,
+      "extent": [
+        4,
+        4,
+        4
+      ],
+      "founders": 512,
+      "capacity": 8192,
+      "variant": "closed",
+      "seed": 911,
+      "exchange_radius": 0.18,
+      "density": 128,
+      "minimum_mass": 0.25,
+      "dt": 0.001,
+      "steps": 200,
+      "coarse": 32,
+      "cadence": 50
+    },
+    "initial": {
+      "material": 1456.6400094032288,
+      "potential": 4085.75998878479,
+      "work": 0,
+      "heat": 0,
+      "supplied": 0,
+      "removed": 0,
+      "supplied_potential": 0,
+      "removed_potential": 0,
+      "population": 512,
+      "completed_steps": 0,
+      "secreted": [
+        0,
+        0
+      ],
+      "solubilized": [
+        0,
+        0
+      ],
+      "bound": [
+        0,
+        0
+      ],
+      "enzyme": [
+        0,
+        0
+      ],
+      "inert": 0,
+      "finite": true
+    },
+    "final": {
+      "material": 1456.640056645145,
+      "potential": 3829.957498602065,
+      "work": 21.452014434647946,
+      "heat": 234.35106504616328,
+      "supplied": 0,
+      "removed": 0,
+      "supplied_potential": 0,
+      "removed_potential": 0,
+      "population": 512,
+      "completed_steps": 200,
+      "secreted": [
+        2.0854379165186536,
+        1.9274327167821657
+      ],
+      "solubilized": [
+        1.1876623644210755,
+        1.0962955369161946
+      ],
+      "bound": [
+        0.10934816188660064,
+        0.09840670930049941
+      ],
+      "enzyme": [
+        2.083773449066381,
+        1.9258963634673476
+      ],
+      "inert": 0.0016166689167718858,
+      "finite": true
+    },
+    "funded_population_upper_bound": 5827,
+    "resident_array_bytes": 618005236,
+    "stored_bytes": 624073189,
+    "loop_seconds": 49.783994565,
+    "main_full_steps_per_second": 4.017355412066661,
+    "whole_pilot_seconds": 80.372434977,
+    "material_error": 4.724191626337415e-05,
+    "potential_error": 0.0005892980859698582,
+    "continuation": {
+      "identities_equal": true,
+      "position": 0,
+      "hidden": 0,
+      "metabolites": 0,
+      "fields": 0
+    },
+    "checkpoint_bits_exact": true,
+    "timing_note": "pilot includes first-use compilation; not a warmed throughput benchmark; batch8 observations and capture recorded separately"
+  },
+  "carry_candidate_status": "99 CPU assertions passed, including exact frozen-flat edge order and Float32 bits; GPU repeat pending. These measurements describe the original flat-cursor axis iterator."
+}

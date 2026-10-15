@@ -7,6 +7,8 @@ from pathlib import Path
 SAVED_FRAME_RENDERERS = {
     'interfacial-choir': 'render_interfacial_choir.py',
     'electrothermal-archive': 'render_electrothermal_archive.py',
+    'repair-weave': 'render_repair_weave.py',
+    'constructive-volume': 'render_constructive_volume.py',
 }
 
 
@@ -29,7 +31,11 @@ def saved_frame_inputs(directory, job):
     inputs = [manifest]
     for frame in frames:
         source = directory / frame['directory']
-        if job.get('renderer') == 'electrothermal-archive':
+        if job.get('renderer') == 'repair-weave':
+            inputs.append(source / 'geometry.json')
+        elif job.get('renderer') == 'constructive-volume':
+            inputs.extend(source / name for name in ('volume.json', 'geometry.json', 'retained_a.f32', 'retained_b.f32', 'permeability.f32'))
+        elif job.get('renderer') == 'electrothermal-archive':
             inputs.extend(source / name for name in ('volume.json', 'geometry.json'))
             for name in ('solid.f32', 'temperature.f32'):
                 raw = source / name

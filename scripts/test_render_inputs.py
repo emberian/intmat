@@ -84,5 +84,31 @@ class RenderInputsTest(unittest.TestCase):
         self.assertEqual(before, source_signature(self.root, self.job))
 
 
+    def test_repair_weave_uses_selected_graph_without_volume(self):
+        self.job['renderer'] = 'repair-weave'
+        path = self.root / 'frames/10/geometry.json'
+        path.write_text('{"damage": [0,1]}')
+        before = source_signature(self.root, self.job)
+        self.assertEqual([entry[0] for entry in before], ['run.json', 'frames/10/geometry.json'])
+        (self.root / 'frames/10/solid.f32').write_bytes(b'unused')
+        self.assertEqual(before, source_signature(self.root, self.job))
+        path.write_text('{"damage": [1,1]}')
+        self.assertNotEqual(before, source_signature(self.root, self.job))
+
+
+    def test_constructive_volume_tracks_geometry_and_consumed_fields(self):
+        self.job['renderer'] = 'constructive-volume'
+        selected = self.root / 'frames/10'
+        for name in ('geometry.json', 'retained_a.f32', 'retained_b.f32', 'permeability.f32'):
+            (selected / name).write_bytes(b'original')
+        before = source_signature(self.root, self.job)
+        (selected / 'enzyme_a.f32').write_bytes(b'unused by optical mapping')
+        self.assertEqual(before, source_signature(self.root, self.job))
+        for name in ('geometry.json', 'retained_a.f32', 'retained_b.f32', 'permeability.f32'):
+            before = source_signature(self.root, self.job)
+            (selected / name).write_bytes(b'changed')
+            self.assertNotEqual(before, source_signature(self.root, self.job))
+
+
 if __name__ == '__main__':
     unittest.main()
