@@ -10,6 +10,7 @@ fixed physical extent. They do not enlarge a saved low-resolution volume.
 
 | Process | Native grid | Physical duration | Evolution time | Evidence |
 |---|---:|---:|---:|---|
+| Dose-owned thermal writing | 1152³ | 5; 3600 steps | 3414.43 s, Metal | 1.53 billion cells; three native fields independently scanned, finite and nonnegative. |
 | Thermal writing | 768³ | 5; 1600 steps | 651.77 s, Metal | 453 million cells; all three native fields finite. |
 | Thermal writing | 384³ | 5; 500 steps | 26.41 s, Metal | Finite native deposit, temperature and dose. |
 | Acoustic deposition | 384³ | 6; 1500 steps | 207.75 s, Metal | Finite pressure, accumulated intensity and deposit. |
@@ -100,9 +101,9 @@ bonds; increasing a display voxel grid would not refine its degrees of freedom.
 The fresh 257³ dielectric specimen completed using residual-controlled GPU
 multigrid. Equal event counts at different spacings do not mean equal physical growth.
 
-Six reviewed 2400² refinements are published: wax phase section, resin writing,
+Seven reviewed 2400² refinements are published: wax phase section, resin writing,
 bronze calligraphy, copper arbor, crossed frosted wave fronts and patinated phase
-section. The gallery now has 58 studies. A native 1152³ dose-writing run is active;
-its final fields and photograph remain pending.
+section, plus the native1152³ amber inclusion. The gallery now has 59 studies. The native 1152³ dose-writing run completed; its validated deposit integral is
+.01283649. Photography uses the original native field.
 
 [Scaling beyond 768³](refinement-scaling.md) · [Collection recipes](collection-20261015.md) · [Alife evidence](alife-adaptation-results.md)

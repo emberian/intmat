@@ -460,5 +460,16 @@
       "render-job.json",
       "run.json"
     ]
+  },
+  {
+    "id": "refinement-20261015/writing1152-amber-script",
+    "source_image_sha256": "b4fe2b24ad09965d471fec3321a8bd470adef0cd730eb8e03586b88f820f21a8",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
   }
 ]

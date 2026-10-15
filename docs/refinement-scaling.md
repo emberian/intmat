@@ -178,16 +178,22 @@ The paired warm Julia Metal benchmark now measured 96³ original 1.887 ms versus
 three-array ping-pong 1.423 ms (1.326×), and 384³ 36.225 versus 29.926 ms
 (1.210×), with exactly equal temperatures after matched steps. These are
 shared-host component measurements. The 1152³ four-step allocation pilot also
-passed: 18.346 GB state, 907 ms median, all finite. The authorized 3600-step
-production is now running at native 1152³ with renderer overlap explicitly
-allowed below 40 GB combined working memory; no completed 1152 specimen is
-claimed until final fields and diagnostics exist.
+passed: 18.346 GB state, 907 ms median, all finite. The 3600-step production completed at native 1152³ in 3414.43 seconds
+(56.91 minutes), using 18.35 GB for three evolving arrays. Final 360-step median:
+.9089 s/step. Its actual runtime is 5.24× the five-array 768³ bake; changes in
+representation, timestep and shared-host load make this a workload comparison,
+not an isolated scaling exponent.
 
-The native 1152³ run is recorded in `outputs/refinement-20261015/writing-1152/`;
-its loaded source and recipe are frozen there. It passed step 1440/3600 with a
-recent median of .966 s/step. This is progress, not a final runtime. The host has
-96 GiB RAM. At 1536³, three evolving arrays alone require 43.49 GB; feasibility
-depends on scratch, output staging and competing jobs, not a categorical size cap.
+The run and frozen source live in `outputs/refinement-20261015/writing-1152/`.
+An independent chunked scan verified all 1,528,823,808 values in each of the three
+exports: finite and nonnegative, exact expected file sizes (6,115,295,232 bytes
+each), deposit maximum .99810237. Reconstructed deposit agrees with
+`-expm1(-18*dose)` within 5.96e−8. Its volume integral is .01283649, about .20%
+below the 768³ result; spatial and temporal resolution both changed. Frozen
+writer and study hashes match the completed-run metadata.
+
+The host has 96 GiB RAM. At 1536³, three evolving arrays alone require 43.49 GB;
+feasibility depends on scratch, output staging and competing jobs.
 
 Original Julia kernels now also execute on hbox through AMDGPU. The dose writer
 measured 3.707 ms/step at 384³ and 29.145 ms/step at 768³ in bounded warmed probes.

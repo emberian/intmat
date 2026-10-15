@@ -1,0 +1,40 @@
+{
+  "id": "writing1152-amber-script",
+  "family": "writing",
+  "title": "A Finer Script in Amber",
+  "description": "A prescribed thermal path written through 1.53 billion native cells. The measured deposit contour is photographed as porcelain inside an amber-resin optical carrier; Julia evolved the field at 1152 cubed through physical time five.",
+  "volume": "volume",
+  "native_shape": [
+    1152,
+    1152,
+    1152
+  ],
+  "size": 2400,
+  "samples": 128,
+  "args": [
+    "--surface-only",
+    "--inclusion-surface",
+    "deposit",
+    "--inclusion-isovalue",
+    ".18",
+    "--analytic-crop",
+    "--crop-shape",
+    "none",
+    "--mesh-adaptivity",
+    ".01",
+    "--material-preset",
+    "porcelain",
+    "--polished-carrier",
+    "--carrier-shape",
+    "box",
+    "--carrier-material",
+    "amber-resin",
+    "--studio-background",
+    "warm",
+    "--orbit",
+    ".35",
+    "--elevation",
+    ".28",
+    "--frame-content"
+  ]
+}

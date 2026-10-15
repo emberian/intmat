@@ -1,0 +1,107 @@
+{
+  "schema": "interior-dose-owned-refinement",
+  "mode": "writing",
+  "recipe": {
+    "dt": 0.001388888888888889,
+    "duration": 5,
+    "name": "dose-writing1152",
+    "backend": "metal",
+    "period": 4,
+    "conversion": 18,
+    "extent": [
+      2,
+      2,
+      2
+    ],
+    "stop": 4,
+    "resolution": 1152,
+    "width": 0.018,
+    "heat": 30,
+    "threshold": 0.05,
+    "seed": 91,
+    "resident_budget_bytes": 22000000000
+  },
+  "config": "dose-writing1152.toml",
+  "shape": [
+    1152,
+    1152,
+    1152
+  ],
+  "extent": [
+    2,
+    2,
+    2
+  ],
+  "spacing": [
+    0.0017361111,
+    0.0017361111,
+    0.0017361111
+  ],
+  "dt": 0.001388888888888889,
+  "steps": 3600,
+  "time": 5.000000121071935,
+  "median_step_seconds": 0.90888725,
+  "evolution_seconds": 3414.427924124,
+  "resident_array_bytes": 18345885696,
+  "finite": true,
+  "deposit_sum": 2453092.35074549,
+  "deposit_max": 0.9981023669242859,
+  "backend": "MetalBackend",
+  "material_ownership": "private fixed uniform inventory; World material unchanged",
+  "sources": {
+    "core.jl": "3ef44008f6a9ce8399bc60352da94dc19e670e67677944369934138042718bad",
+    "neural_workspace.jl": "ecdd45856bc0b3c61708de90814d1abb33bc1232a0f9ff5785b32b9bc39a9139",
+    "writing.jl": "78fba7cd46f03749bdc56547b7ce5622f7ba3ea42cc34801829345dae3975e05",
+    "Interior.jl": "21d8aa2885ecd8a709c54c9382631a42f37052a467b0ceda0452e37c6797c554",
+    "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+    "cellular.jl": "45609362d3012070a2da8d0325666deb079c8469596c57777f0312b58f898c89",
+    "cellular_contacts.jl": "677e79d99e5f1aecee87eb9e042da51b0e96df3251722f627d556c8745bca663",
+    "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26",
+    "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+    "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+    "dose_writer.jl": "b8d1b4013921a3c82388ee87a7ede00b97964a1894062f2a07339f2c6be197eb",
+    "cellular_transport.jl": "a1fd389de2c9198c9886191ef1a54730e2cd7dd304c5ee1fcb823fbeb3b72300",
+    "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+    "cellular_arena.jl": "8b6e0ea68bc057d6765fbf8735a6baaf13306096985aba4936a84fc55364754f",
+    "experiments.jl": "e2e513ac4bfb0af90b5d1c870c5f403705eddd0606316ee2f86c5f5bc83eb527",
+    "metabolic_ecology.jl": "2f599a1d6ea0a5552a594113d57e238e4c6ff3c1fd8d74de5a51f83a77179bb1",
+    "mechanics.jl": "81001af879163392dde498534c9f099bcc79a16b8dac5104d527da7cc9f4fdac",
+    "neural_ecology.jl": "ed0496adb31ce4511f8bc0d5343ff843c410c39c51d30c165b3cf5eac1135df2",
+    "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+    "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+    "compartments.jl": "8eec60b56379a3d366cd789ad62e4c7690a0c10ce5af8a485f66b670c8448751",
+    "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+    "arena.jl": "8ea2c2628cd7af71ea3e5ebe6f05a9a2d6758191bb17386d51e530401e5a9696",
+    "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+    "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+    "implicit_phase.jl": "1fb617707591f89784b95171e0558065101b3d992f7b3eabd16a7bf01dca4ceb",
+    "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+    "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+    "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+    "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+  },
+  "study_sha256": "59058edac0bb1cab480b965cb30e92e9ebf3c4fc2fbc2a51f8d1f8244e7ea61d",
+  "native_shape": [
+    1152,
+    1152,
+    1152
+  ],
+  "comparison_notes": "Actual native1152\u00b3 dose-owned Julia thermal evolution, 3600 steps to t5, 56.91 minutes. All three fields independently scanned. Deposit=.18 contour inside an amber-resin optical carrier; no field upsampling or smoothing.",
+  "family": "writing",
+  "title": "A Finer Script in Amber",
+  "description": "A prescribed thermal path written through 1.53 billion native cells. The measured deposit contour is photographed as porcelain inside an amber-resin optical carrier; Julia evolved the field at 1152 cubed through physical time five.",
+  "publication": {
+    "source_image_sha256": "b4fe2b24ad09965d471fec3321a8bd470adef0cd730eb8e03586b88f820f21a8",
+    "webp_sha256": "7224ab4a7657953bf526cbe9d88c5e5113e87152f47a0de0fa2cdd22ffe917f3",
+    "quality": 95,
+    "width": 2400,
+    "samples": 128,
+    "native_shape": [
+      1152,
+      1152,
+      1152
+    ],
+    "original_retained": true,
+    "reviewed_by": "root"
+  }
+}
