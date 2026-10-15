@@ -462,3 +462,25 @@ against incompatible fixed aliases. A reviewed native 256³ activity-contour pho
   is prepared and CPU-smoked (`41ec52b`) but awaits the longgarden GPU release.
   A separate contact-candidate study is exploring reuse across mechanical
   substeps; no production changes or speedup claim yet.
+
+- 17:18 UTC convergence: native garden first rolling checkpoint was independently
+  size/SHA verified at t93.384 (243,750,818B). Whole material residual−.005404
+  and energy residual+.001241 pass original .09510/.24215 guards. At t108.856,
+  259 cells,3 births,0 deaths and455 bonds; energy depletion is developing.
+  Read-only evidence: outputs/observatory/native-20261015-1708.json. Bond
+  components reached140 of259 at t80, while mean energy fell; aggregation is
+  not yet persistence. The observer now exposes reciprocal components and can
+  isolate them; empty-population panels clear correctly. Eight Python checks
+  and a populated-to-empty browser check pass.
+- Contact candidate factorization passes298 scoped assertions and ten bitwise
+  matched short coupled CPU comparisons. Coverage mode cuts mechanics launches
+  82→53, with complete overflow/expired-skin fallback. Whole-loop CPU medians
+  are mixed (sparse1.148×,crowded.958×); GPU timing remains pending behind the
+  live garden. No production law or existing source pin changed.
+- Read-only17:15 old-soak inspection preserves live valid sources/checkpoints
+  and bounded artifacts; originals t107042.5/104881.0, optimizedempty t3508016.6.
+  Retained garden and latest gallery snapshot Pages builds both succeeded.
+- Next ecology assay isolates raw-food transport and paid matrix/catalyst
+  patches. The current local source-access geometry may limit harvesting even
+  with abundant world inventory; this is a testable regime, not an impossibility
+  claim. Separate localCPU study; live garden remains unchanged.

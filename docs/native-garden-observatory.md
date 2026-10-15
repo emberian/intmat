@@ -28,3 +28,18 @@ The read-only SSH mirror helper `scripts/mirror_native_garden.py` admits only ma
 The production mirror is `outputs/native-garden-4b747919ec56/`, derived view `outputs/native-garden-observatory-4b747919ec56/`. Each has a 1,000,000,000-byte admission budget and polls every 45 seconds. Both stop by 20:50 UTC on 2026-10-15; a separate deadline watchdog terminates their process groups at that deadline, including pending downloads/exports. The detached CPU-only exporter is pinned as `export-helper-pinned.jl`; its hash, process IDs and exact commands are retained in `processes.json`. This local observer adds no GPU work and changes no remote experiment files.
 
 Open `http://127.0.0.1:8769/outputs/native-garden-observatory-4b747919ec56/`. Inspect `mirror-status.json`, `observatory.json`, and the retained local logs for progress. To stop early, send SIGTERM to the mirror and observer process groups listed in `processes.json` (`kill -TERM -- -PID`), then terminate the listed watchdog PID. Preserve both output directories. Restart using the recorded commands with a newly bounded wall duration and deadline watchdog; do not reuse an expired wall bound.
+
+## Bond-connected cells
+
+The component color mode and selected-component isolation derive from reciprocal bond slots between live IDs. Isolation leaves actual cell positions and the entire material field unchanged. The inspector reports the selected cell's component size and reciprocal neighbours, while the graph panel reports component count, largest size, reciprocal edges, and explicit unmatched/invalid record lists. Component colors are keyed by the smallest current member ID; changing membership can change that key. These are graph observations, not organism or cooperation classifications.
+
+Save a compact chronological summary to a fresh evidence filename:
+
+```sh
+python3 scripts/summarize_native_observatory.py outputs/native-garden-observatory-4b747919ec56 outputs/native-garden-observatory-4b747919ec56/graph-summary-NEW.json
+python3 scripts/test_summarize_native_observatory.py
+```
+
+The helper verifies every binary SHA, selects the highest spatial resolution at each recorded physical time, and pins the manifest, metadata, source and binary hashes. It includes component members/sizes, reciprocal edge counts, adjacent-observation edge Jaccard, nonreciprocal/invalid records, mean energy, and final-step secretor counts/amounts. It creates a new file exclusively and never modifies previous summaries. Empty edge sets have Jaccard 1. Duplicate spatial samples at the same time do not create artificial temporal comparisons.
+
+The isolated browser regression `node scripts/test_native_observatory_empty.cjs` checks a populated-to-empty transition using in-memory request fixtures. It verifies zero graph counts, cleared cell/neural/bars, and refreshed actual field totals without writing a synthetic recording. Set `PLAYWRIGHT_MODULE` to the local Playwright package when needed.
