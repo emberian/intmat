@@ -77,8 +77,10 @@ for directory in directories:
     family=str(run.get('family',{'art':'Material photographs','writing':'writing','electrical':'branches','electrical-tree':'branches','acoustic':'waves','choir':'waves','neural':'waves','lace-fine':'waves','phase':'phase','mechanics':'mechanics','ecology':'ecology'}.get(key.split('/')[0],'Other studies')))
     if key.startswith(('collection-','refinement-')):images=[dict(src=x['src'],caption='Material photograph · '+family.title()) for x in images]
     frames=run.get('frames',[]);shape=run.get('shape',run.get('source_shape',[]));backend=run.get('backend','')
-    if 'budget' in run:
-        shape=[run['budget']['resolution']]*3;backend=run['budget']['backend']
+    budget=run.get('budget')
+    if isinstance(budget,dict):
+        if 'resolution' in budget:shape=[budget['resolution']]*3
+        backend=budget.get('backend',backend)
     notes=root.parent/'docs'/('rendering.md' if key.startswith(('art/','collection-','refinement-')) else 'bigruns.md' if key in ('dense-128','bigruns/dense-128-study') else (key.split('/')[0])+'.md')
     if key.startswith(('collection-','refinement-')) and (root.parent/'docs'/(key.split('/')[0]+'.md')).exists():notes=root.parent/'docs'/(key.split('/')[0]+'.md')
     if key.startswith('refinement-') and (root.parent/'docs'/'spatial-refinement.md').exists():notes=root.parent/'docs'/'spatial-refinement.md'

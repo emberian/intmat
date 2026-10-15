@@ -1,0 +1,69 @@
+{
+  "renderer_sha256": "faf6ff822befe3bd9536b59d0c6a28728afdb0c04417e9be539dcd4f3c077295",
+  "source": {
+    "run_sha256": "d2f829fa6543e0fe91bad1266c3ff9f1277526b145bdfea76cbe7c605e326630",
+    "step": 1500,
+    "time": 29.999999329447746,
+    "shape": [
+      128,
+      128,
+      128
+    ],
+    "field_sha256": {
+      "volume.json": "28ec91db2a8a57e80450203761e60422d3d8b430f1448ae9a53152e7a27c4a94",
+      "biomass.f32": "45403c1e6e5be190bb950fd1b41e2c5373b1fdaf717295db48a8350d6a131cf0",
+      "matrix.f32": "445a279513cf1c1f6cdce2c6c49d51ddd2d1345c7341fdcfaeceb362f88ba445",
+      "excitation.f32": "cf2fb60a1714a48b4c83bdbc67ea038eee682d2a22e37c2b7b98fbd78d414526"
+    }
+  },
+  "settings": {
+    "run": "turnover-porcelain",
+    "output": "turnover-porcelain",
+    "steps": "1500",
+    "size": 2000,
+    "samples": 128,
+    "device": "CPU",
+    "bulk_iso": 0.25,
+    "matrix_iso": 0.16,
+    "orbit": 0.85,
+    "elevation": 0.33,
+    "distance": 3.7,
+    "cut_x": -0.12,
+    "cut_y": 0.18,
+    "no_cutaway": false,
+    "target": [
+      0.0,
+      0.0,
+      0.06
+    ],
+    "image_name": "final.png",
+    "save_scene": true
+  },
+  "camera": {
+    "location": [
+      2.629749298095703,
+      -2.310176372528076,
+      1.258959174156189
+    ],
+    "lens_mm": 55,
+    "target": [
+      0.0,
+      0.0,
+      0.06
+    ],
+    "fixed": true
+  },
+  "geometry": {
+    "bulk": {
+      "vertices": 386980,
+      "faces": 405553,
+      "threshold": 0.25
+    },
+    "matrix": {
+      "vertices": 271952,
+      "faces": 286548,
+      "threshold": 0.16
+    }
+  },
+  "interpretation": "Two isosurfaces of native Julia concentration fields, B+M and M, with a fixed observation cutaway. Periodic padding is clipped at the physical box; no designed anatomy or extruded 2D structure. Ivory porcelain, violet glazing and weak positive-x emission are chosen optical mappings; no solved optics or luminescence. Thresholds, camera and phase gain remain fixed across time."
+}

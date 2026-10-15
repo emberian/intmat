@@ -526,5 +526,16 @@
       "render-job.json",
       "run.json"
     ]
+  },
+  {
+    "id": "collection-20261015/turnover-porcelain",
+    "source_image_sha256": "05540026b2b9d86b871d2b756a5060cd185c65db11870007d2d3e282a706cbd9",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
   }
 ]

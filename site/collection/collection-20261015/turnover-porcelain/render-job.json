@@ -1,0 +1,30 @@
+{
+  "id": "turnover-porcelain",
+  "title": "The hollowing",
+  "description": "Nearly uniform material develops a changing three-dimensional interior. Ivory total-matter contours and plum persistent-matrix contours reveal an early transient at time 30; a close optical cutaway looks into its openings.",
+  "family": "interfaces",
+  "renderer": "turnover-tissue",
+  "volume": "frames/0001500",
+  "size": 2000,
+  "samples": 128,
+  "args": [
+    "--steps",
+    "1500",
+    "--bulk-iso",
+    ".25",
+    "--matrix-iso",
+    ".16",
+    "--distance",
+    "3.7",
+    "--target",
+    "0",
+    "0",
+    ".06",
+    "--elevation",
+    ".33",
+    "--orbit",
+    ".85",
+    "--save-scene"
+  ],
+  "image": "final.png"
+}
