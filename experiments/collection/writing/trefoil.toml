@@ -1,0 +1,20 @@
+id = "trefoil"
+title = "The Glass Calligrapher"
+description = "A continuous prescribed Lissajous heat path folds into a three-dimensional cursive inclusion; cooling and dose determine its physical thickness."
+seed = 310
+duration = 4.8
+palette = "amber-gold"
+orbit = 0.55
+
+[[writers]]
+width = 0.045
+heat = 30.0
+threshold = 0.075
+conversion = 24.0
+diffusion = 0.0003
+cooling = 4.0
+period = 4.0
+stop = 4.0
+path = "lissajous"
+radius = 0.55
+height = 0.45

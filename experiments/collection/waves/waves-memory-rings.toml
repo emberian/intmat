@@ -1,0 +1,8 @@
+resolution = 96
+steps = 260
+model = "damped scalar wave plus excitable conservative deposition; not calibrated acoustics, cavitation or sonoluminescence"
+mode = "rings"
+id = "waves-memory-rings"
+title = "Memory rings"
+dt = 0.009999999776482582
+study = "studies/collection_waves.jl"

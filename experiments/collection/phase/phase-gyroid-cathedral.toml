@@ -1,0 +1,8 @@
+slug = "phase-gyroid-cathedral"
+title = "Gyroid cathedral"
+initial = "gyroid"
+description = "A prescribed triply periodic labyrinth relaxed under conserved phase dynamics."
+kappa = 0.8
+active = false
+palette = "glass-ice"
+seed = 702

@@ -1,0 +1,16 @@
+steps = 1500
+jitter = 0.18
+dt = 0.001
+failure_strain = 0.12
+id = "fracture-parted-choir"
+mass = 0.02
+study = "studies/collection_mechanics.jl"
+extent = [1.05, 1.0, 0.52]
+stretch_rate = 0.43
+weak_seam = 0.18
+shear_rate = -0.24
+nodes_shape = [18, 18, 8]
+stiffness = 8.0
+damping = 7.0
+title = "Parted choir"
+seed = 425

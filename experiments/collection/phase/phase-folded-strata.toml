@@ -1,0 +1,8 @@
+slug = "phase-folded-strata"
+title = "Folded strata"
+initial = "strata"
+description = "Warped lamellar strata with three-dimensional cross modulation and interfacial relaxation."
+kappa = 0.8
+active = false
+palette = "amber-gold"
+seed = 704

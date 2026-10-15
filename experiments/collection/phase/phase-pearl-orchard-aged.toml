@@ -1,0 +1,11 @@
+slug = "phase-pearl-orchard-aged"
+title = "Pearl orchard"
+initial = "pearls"
+description = "A periodic orchard of minority-phase droplets, rounded by conservative interfacial relaxation."
+kappa = 0.65
+active = false
+palette = "amber-gold"
+seed = 701
+t_end = 80.0
+dt = 0.25
+mobility = 0.55

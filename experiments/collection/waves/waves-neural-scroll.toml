@@ -1,0 +1,8 @@
+resolution = 96
+steps = 300
+model = "fixed recurrent tanh; no training"
+mode = "scroll"
+id = "waves-neural-scroll"
+title = "Neural scroll"
+dt = 0.009999999776482582
+study = "studies/collection_waves.jl"

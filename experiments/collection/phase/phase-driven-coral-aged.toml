@@ -1,0 +1,11 @@
+slug = "phase-driven-coral-aged"
+title = "Driven coral"
+initial = "coral"
+description = "A biased gyroid remade by an explicit traveling chemical-potential forcing; active morphology is externally driven."
+kappa = 0.65
+active = true
+palette = "amber-cyan"
+seed = 706
+t_end = 60.0
+dt = 0.25
+mobility = 1.0

@@ -1,0 +1,11 @@
+slug = "phase-perforated-veil-aged"
+title = "Perforated veil"
+initial = "membrane"
+description = "Undulating perforated membranes seeded analytically and relaxed; apertures are prescribed initial topology."
+kappa = 0.5
+active = false
+palette = "acoustic-pearl"
+seed = 703
+t_end = 0.25
+dt = 0.25
+mobility = 0.8

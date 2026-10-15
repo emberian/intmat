@@ -1,7 +1,7 @@
 #!/usr/bin/env julia
 # Supported application entry point. Core physics remains in Interior.
 const INTERIOR_ROOT = normpath(joinpath(@__DIR__, ".."))
-const INTERIOR_STUDIES = ("acoustic", "writing", "electrical", "phase", "ecology", "mechanics", "grin", "compositions", "scout", "verify")
+const INTERIOR_STUDIES = ("acoustic", "writing", "electrical", "phase", "ecology", "mechanics", "grin", "compositions", "scout", "verify", "collection_phase", "collection_writing", "collection_waves", "collection_branches", "collection_mechanics", "collection_ecology", "alife_adaptation")
 function interior_help(command=nothing)
     if command===nothing
         println("""

@@ -1,0 +1,8 @@
+resolution = 96
+steps = 280
+model = "fixed recurrent tanh; no training"
+mode = "lattice"
+id = "waves-neural-lattice"
+title = "Neural lantern lattice"
+dt = 0.009999999776482582
+study = "studies/collection_waves.jl"
