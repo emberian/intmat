@@ -24,6 +24,27 @@ These are analytical design choices, not claims that a particular organization
 will evolve. Different seeds and several changed parameters mean the pair is an
 exploration of two conditions, not a causal ablation or fitness ranking.
 
+## Read-only inspection
+
+Run the compact inspector on hbox without installing or changing anything there:
+
+```sh
+ssh hbox python3 - \
+  /othersys/tmp/intmat-soaks-20261015/broad \
+  /othersys/tmp/intmat-soaks-20261015/mosaic \
+  /othersys/tmp/intmat-soaks-optimized-20261015/continuation \
+  < scripts/inspect_cellular_soaks.py > outputs/observatory/inspection-TIMESTAMP.json
+```
+
+Use a fresh timestamped destination. The JSON records process identity, affinity,
+cgroup memory controls, a stable checkpoint pointer/hash, complete metric rows,
+partial tails, artifact bytes and all files against each source manifest. A
+partial last metric row can be an append in progress; a malformed complete row
+is reported separately. Large per-cell diagnostic arrays stay in the original
+logs. Read `inspection_error` and mismatch fields; successful transport alone
+is not a healthy-run verdict. No checkpoint is deserialized or resumed, and the
+original driver failure caveat below still applies.
+
 ## Supply and population headroom
 
 Initial precursor concentration is 0.45 per species. Continuing supply is 0.0025
