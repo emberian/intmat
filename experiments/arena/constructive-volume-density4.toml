@@ -1,0 +1,63 @@
+# Actual 3D construction with fourfold material density: smaller bodies per unit mass.
+# This changes physical packing; it is not a grid-convergence control.
+# Slower paid motility and a longer-lived matrix allow inhabitation of a place;
+# neither settlement nor producer/consumer identities are prescribed.
+model = "catalytic"
+seed = 211
+dt = 0.1
+snapshot_seconds = 2.0
+checkpoint_seconds = 90.0
+batch = 5
+sleep_seconds = 0.001
+[grid]
+shape = [24, 24, 24]
+extent = [12.0, 12.0, 12.0]
+[cellular]
+population = 320
+capacity = 4096
+hidden = 8
+density = 4.0
+exchange_radius = 1.0
+junction_rate = 0.8
+speed = 0.3
+basal_rate = 0.025
+mutation = 0.08
+mutation_probability = 0.03
+[resources]
+names = ["precursor_a", "precursor_b", "waste"]
+potentials = [4.0, 4.0, 0.0]
+initial = [0.3, 0.3, 0.0]
+diffusion = [0.2, 0.2, 0.03]
+source_rates = [0.003, 0.003, 0.0]
+source_budgets = [100000.0, 100000.0, 0.0]
+sink_rates = [0.0008, 0.0008, 0.01]
+sink_budgets = [100000.0, 100000.0, 100000.0]
+spatial_niches = true
+niche_waves = [1, 2, 1]
+niche_contrast = 0.8
+[feedstock]
+names = ["bound_a", "bound_b"]
+potentials = [4.0, 4.0]
+initial = [2.0, 2.0]
+diffusion = [0.0, 0.0]
+source_rates = [0.006, 0.006]
+source_budgets = [100000.0, 100000.0]
+[catalysis]
+shared_anabolism = true
+secretion_rate = 0.12
+secretion_work = 0.2
+allocation_exponent = 2.0
+catalytic_rate = 6.0
+half_saturation = 0.2
+decay_rate = 0.008
+investment_bias = -0.8
+allocation_bias_scale = 1.2
+mutation = 0.08
+mutation_probability = 0.03
+regulation = true
+[matrix]
+capacity_per_enzyme = 6.0
+adsorption_rate = 4.0
+desorption_rate = 0.12
+cross_binding = 0.0
+transport_barrier = 20.0

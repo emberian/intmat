@@ -5,20 +5,39 @@ using Interior,TOML,JSON3
 These are developmental/ecological trajectories, not adaptation assays.
 """
 function sorptive_study(profile,output;steps=10000,capture_every=100,seeds=(211,307),
-        conditions=("full","sorption_only","transport_only","catalytic_only"))
+        conditions=("full","sorption_only","transport_only","catalytic_only"),development_every=0)
+    steps isa Integer && steps>=0 || throw(ArgumentError("steps must be a nonnegative integer"))
+    capture_every isa Integer && capture_every>0 || throw(ArgumentError("capture interval must be a positive integer"))
+    development_every isa Integer && development_every>=0 || throw(ArgumentError("development interval must be a nonnegative integer"))
     ispath(output) && error("use a fresh output directory")
     mkpath(output);config=TOML.parsefile(profile)
     report=Dict{String,Any}("kind"=>"sorptive matrix ecological exploration; no adaptation claim",
-        "loaded_sources"=>Interior.arena_sources(),"steps"=>steps,"capture_every"=>capture_every,"arms"=>Dict())
+        "loaded_sources"=>Interior.arena_sources(),"steps"=>steps,"capture_every"=>capture_every,
+        "development_every"=>development_every,"arms"=>Dict())
     for seed in seeds,condition in conditions
         cfg=deepcopy(config);cfg["seed"]=seed
         mechanism=replace(condition,r"^(residual_|shared_)"=>"")
         startswith(condition,"residual_") && (cfg["catalysis"]["shared_anabolism"]=false)
         startswith(condition,"shared_") && (cfg["catalysis"]["shared_anabolism"]=true)
-        mechanism in ("full","sorption_only","transport_only","catalytic_only") || error("unknown mechanism $condition")
+        mechanism in ("full","sorption_only","transport_only","catalytic_only","construction_off","conversion_off") || error("unknown mechanism $condition")
+        mechanism=="construction_off" && (cfg["catalysis"]["secretion_rate"]=0.)
+        mechanism=="conversion_off" && (cfg["catalysis"]["catalytic_rate"]=0.)
         mechanism in ("transport_only","catalytic_only") && (cfg["matrix"]["capacity_per_enzyme"]=0.)
         mechanism in ("sorption_only","catalytic_only") && (cfg["matrix"]["transport_barrier"]=0.)
         a=build_arena(cfg);name="$seed-$condition";directory=joinpath(output,name);mkpath(directory)
+        owner=only(filter(p->p isa CellularEcology || p isa ConstructiveEcology,a.processes))
+        cells=owner isa ConstructiveEcology ? owner.cells : owner
+        function developmental_trace()
+            # Identity is explicit: the oldest surviving 32 cells are a changing
+            # observation sample, not a fixed cohort or an adaptation assay.
+            sample=[Dict("id"=>cells.ids[j],"parent"=>cells.parents[j],"lineage"=>cells.lineages[j],
+                "hidden"=>collect(cells.hidden[:,j]),"adaptation"=>collect(cells.adaptation[:,j]),
+                "actions"=>collect(cells.last_actions[:,j]),"metabolites"=>collect(cells.metabolites[:,j]),
+                "energy"=>cells.energy[j]) for j in 1:min(32,length(cells.ids))]
+            open(joinpath(directory,"development.jsonl"),"a") do io
+                JSON3.write(io,Dict("step"=>a.steps,"time"=>a.world.time,"cells"=>sample));write(io,'\n')
+            end
+        end
         frames=Any[];maxmass=0.;maxenergy=0.;peakbound=0.;peakpopulation=0;peakfile=""
         function capture()
             snapshot=arena_snapshot(a);file="frame-"*lpad(a.steps,7,'0')*".json"
@@ -33,10 +52,12 @@ function sorptive_study(profile,output;steps=10000,capture_every=100,seeds=(211,
                 JSON3.write(io,Dict("step"=>a.steps,"time"=>a.world.time,"metrics"=>m));write(io,'\n')
             end
         end
-        capture();checkpoint!(a,joinpath(directory,"initial.jls"));started=time()
+        capture();development_every>0 && developmental_trace()
+        checkpoint!(a,joinpath(directory,"initial.jls"));started=time()
         for i in 1:steps
             arena_step!(a)
             (i%capture_every==0 || i==steps) && capture()
+            development_every>0 && i%development_every==0 && developmental_trace()
             i==steps÷2 && checkpoint!(a,joinpath(directory,"middle.jls"))
         end
         elapsed=time()-started;checkpoint!(a,joinpath(directory,"final.jls"))

@@ -59,6 +59,22 @@ pin under `outputs/art/runtime-amber-archive-20261015`, with lossless captured
 fields. Its thermal mineral envelope and conductor graph provide actual optical
 geometry. New solver optimization must not alter that running source.
 
+**Actual 3D construction:** a source-pinned 24³ run reached t300 with 2,109
+cells, 2,514 births, 725 deaths, 5,497 bonds and no capacity-blocked births.
+Paid catalyst and retained food remain present; maximum observed mass/chemical
+residuals are below 1e-4. Soft bodies overlap substantially in this dense regime.
+A separate native 64³, density-four run uses smaller bodies and exports complete
+chemistry volumes. These are different physical regimes, not a convergence pair.
+[Volumes and recipes](docs/constructive-volumes.md)
+
+**Developmental hypotheses:** reduced neural-mode analysis suggests that collective
+sensory plasticity can stabilize a saturated mode, while stronger delayed
+inhibition can recover cycling. This is not full-network evidence. New recipes
+explore raw-feedstock dependence and stronger slow feedback; a separate proposed
+catalysis/barrier contrast targets meaningful transport remodeling. Follow cell
+identities rather than infer individual oscillations from population averages.
+[Analysis and candidate regimes](docs/cellular-feedback-analysis.md)
+
 **Mechanics and harmonic solves:** scalar BondNetwork loops reduce complete actual
 weave steps from 20.97→3.66 ms and 18.16→2.23 ms (5.73–8.14×), with 96–97% less
 allocation. All 61 geometry frames and every recorded metric from a full

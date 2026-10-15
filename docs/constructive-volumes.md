@@ -1,0 +1,67 @@
+# Constructive ecology in three dimensions
+
+`studies/constructive_volume.jl` runs the shared anabolic law, catalytic habitat
+and sorptive matrix on an actual three-dimensional grid. Cells retain physical
+positions, spherical radii and stable-ID bonds. Raw chemistry volumes accompany
+an ordinary viewer snapshot, which is explicitly a central slice.
+
+```sh
+OPENBLAS_NUM_THREADS=1 julia --project=. --threads=2 --gcthreads=1 \
+  studies/constructive_volume.jl experiments/arena/constructive-volume.toml \
+  outputs/my-fresh-volume 24 3000 50
+```
+
+Arguments after the output are resolution, steps and capture interval. The extent
+stays 12³ when resolution changes. Initial concentrations, supply rate densities,
+physical exchange radius and cell positions are preserved; independently sampled
+fields and nonlinear trajectories need not match bitwise across resolutions.
+Indexed genome storage is enabled explicitly by the study, without changing the
+cellular law. Every run uses a fresh output directory and records source hashes,
+its complete configuration and strict initial/middle/final checkpoints.
+
+Each sampled directory contains `geometry.json`, `snapshot.json`, `volume.json`
+and seven Float32 arrays in Julia/Fortran axis order: catalyst A/B, retained food
+A/B, free precursor A/B, and combined permeability. Chemistry is mass per physical
+volume; permeability is dimensionless. `volume.json` records shape, extent, time
+and raw-file hashes. Geometry positions are centered physical coordinates; bonds
+cross periodic boundaries by their shortest wrapped displacement. A renderer
+must distinguish an optical cutaway or chosen field interface from anatomy.
+
+The first source-pinned 24³ smoke run (2220f5a plus this study) reached time 10:
+320 founders became 647 cells, with 80.83 units of paid catalyst and 396.01 units
+of retained food. Its maximum observed material and chemical-energy ledger
+errors were 3.56e-6 and 1.08e-5. The longer pilot reached 2,711 cells and 7,073
+bonds at time 40, with no capacity-blocked births. Its full volumes and selected
+frames are retained under `outputs/constructive-volume-20261015` locally and
+`/othersys/tmp/intmat-constructive-volume-20261015` on Hbox.
+
+The 3,000-step pilot completed time 300 in 941 seconds including exports: 2,109
+cells, 2,514 births, 725 deaths, 5,497 bonds and no blocked births. It retained
+63.17 units of catalyst and 73.00 units of bound food. Maximum observed material
+and chemical-energy ledger errors were 9.81e-5 and 6.82e-5. This is a recorded
+construction/turnover trajectory, not an evolutionary assay.
+
+Resource diffusion subcycles internally, so the arena timestep remains 0.1 at
+64³. The study records each soluble species' explicit diffusion limit and actual
+substep count, together with hashes of the study and profile files themselves.
+
+This is a dense **soft-contact** regime. At time 40 the summed physical body
+volumes exceed the domain volume, so spheres substantially overlap; the current
+mechanical law is not an incompressible-cell solver. Contact compression is
+observable to the controller. Rendering those spheres does not establish a
+sealed tissue or mechanically solid matrix: the constructed matrix currently
+changes chemistry and transport, not contact stiffness.
+
+`constructive-volume-density4.toml` explores fourfold material density with the
+same mass and chemical funding. Smaller physical bodies leave more packing room
+around the chemistry. This is a distinct physical regime, not evidence of grid
+convergence or a change made inside an existing trajectory. The 24³ pilot and its
+original source remain intact.
+
+Two further recipes explore the same construction law in 2D.
+`constructed-food.toml` retains finite initial soluble food but supplies only raw
+feedstock afterward. `constructed-food-slow-feedback.toml` additionally raises
+slow inhibitory adaptation strength from 0.3 to 1.5 and its timescale from 6 to 8.
+That is an analytical attempt to open more temporal developmental behavior; it
+does not prescribe oscillation. These are exploratory ecological regimes, not
+claims of evolved improvement or hard-wired cooperation.
