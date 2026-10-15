@@ -1,7 +1,29 @@
 {
+    "gpu_native_gate": {
+        "births": 1,
+        "deaths": 1,
+        "audit": {
+            "material": 414.6601892088074,
+            "potential": 1644.211817085743,
+            "work": 0.017618152993236436,
+            "heat": 2.0113219342310913,
+            "supplied": 0.00018310546875,
+            "removed": 0,
+            "supplied_potential": 0.000732421875,
+            "removed_potential": 0,
+            "population": 4,
+            "completed_steps": 1,
+            "finite": true
+        }
+    },
     "helper_sha256": "0ce137f66e50acb50924d97c9ef9d9d3e4fc580f5634cba439aa121333fd4864",
     "common_seed_lazy_subarray_reference": {
-        "worlds": 4,
+        "material_balance_errors": [
+            9.428447356185643e-8,
+            -8.343016588696628e-8,
+            3.402700485821697e-7,
+            5.87831948450912e-7
+        ],
         "serial_step_allocated": 1056448,
         "batch_seconds": [
             0.134868018,
@@ -35,13 +57,9 @@
             "schedule": "72ecaccee6a0968b00b43fc2c9dfb7fee074a5f4e9fa95d2bc646640860e3e6d"
         },
         "samples": 3,
-        "material_balance_errors": [
-            9.428447356185643e-8,
-            -8.343016588696628e-8,
-            3.402700485821697e-7,
-            5.87831948450912e-7
-        ]
+        "worlds": 4
     },
+    "gpu_claim": "2.40944x aggregate throughput for four independent 64-cell 16^3 worlds; no single-world acceleration claim",
     "controls": {
         "julia_threads": 2,
         "concurrent_context": "Artist AMD production; no GPU used by this study",
@@ -56,14 +74,242 @@
         "gc_threads": 1,
         "blas_threads": 1
     },
+    "gpu_result": {
+        "runtime": {
+            "julia": "1.12.4",
+            "kernel": "Linux",
+            "architecture": "x86_64",
+            "launch_threads": 2,
+            "backend": "amd",
+            "device": "HIPDevice(id=1, name=AMD Radeon RX 6750 XT, gcn_arch=gfx1030)",
+            "backend_version": "2.8.0",
+            "actual_device_optlevel": 1,
+            "project_sha256": "284c920aebff70f466a40df21f7c83ae4c561857b046f940274b43a8feeaec6d",
+            "manifest_sha256": "02b3ec6315a6e855d152339c39da2263792e1c999cace94f305b747625897348"
+        },
+        "source": {
+            "kernels": "a85cf1f8e0739373572e9029deb46415ab5d16669f3513b0fbf020b289ad0b27",
+            "schedule": "72ecaccee6a0968b00b43fc2c9dfb7fee074a5f4e9fa95d2bc646640860e3e6d"
+        },
+        "failure_isolation": true,
+        "small_native_fixture": {
+            "cells_per_world": 4,
+            "capacity_per_world": 16,
+            "worlds": 2,
+            "grid": [
+                8,
+                8,
+                8
+            ],
+            "extent": [
+                8,
+                8,
+                8
+            ],
+            "exchange_radius": 0.8,
+            "packed_resident_bytes": 290976,
+            "seeds": [
+                101,
+                102
+            ],
+            "steps_per_sample": 2,
+            "samples": 1,
+            "serial_seconds": [
+                0.021187036
+            ],
+            "batch_seconds": [
+                0.010903345
+            ],
+            "aggregate_ratio": 1.9431684496821846,
+            "material_errors": [
+                2.3122993297874928e-7,
+                -1.0330586519557983e-7
+            ],
+            "potential_work_heat_errors": [
+                -5.176134436624125e-7,
+                1.640666596358642e-6
+            ],
+            "field_max_errors": {
+                "state.mass": 0,
+                "state.ledger_low": 0,
+                "state.candidate_rest": 0,
+                "state.enzymes": 0,
+                "state.ledger": 0,
+                "environment.source_masks": 0,
+                "environment.quota": 0,
+                "environment.scratch": 0,
+                "environment.resource_ledger_low": 0,
+                "state.energy": 0,
+                "state.grants": 0,
+                "state.inputs": 0,
+                "environment.occupancy": 0,
+                "state.actions": 0,
+                "environment.sink_masks": 0,
+                "state.exchange_scale": 0,
+                "state.hidden": 0,
+                "state.rows": 0,
+                "state.position_next": 0,
+                "environment.scale": 0,
+                "state.force": 0,
+                "state.position": 0,
+                "state.age": 0,
+                "environment.returns": 0,
+                "environment.inert": 0,
+                "state.support_normalization": 0,
+                "state.axis_distance2": 0,
+                "environment.permeability": 0,
+                "state.adaptation": 0,
+                "state.outputs": 0,
+                "environment.fields": 0,
+                "state.rest": 0,
+                "state.metabolites_next": 0,
+                "state.radii": 0,
+                "state.waste": 0,
+                "state.weights": 0,
+                "state.marks": 0,
+                "environment.demand": 0,
+                "state.metabolites": 0,
+                "environment.resource_ledger": 0,
+                "environment.observation": 0,
+                "state.requests": 0,
+                "environment.inert_low": 0
+            },
+            "completed_steps": [
+                3,
+                3
+            ],
+            "timing": "all full steps plus endpoint status synchronization; excludes compilation, packing and full audit copies"
+        },
+        "moderate": {
+            "cells_per_world": 64,
+            "capacity_per_world": 128,
+            "worlds": 4,
+            "grid": [
+                16,
+                16,
+                16
+            ],
+            "extent": [
+                8,
+                8,
+                8
+            ],
+            "exchange_radius": 0.8,
+            "packed_resident_bytes": 4615232,
+            "seeds": [
+                101,
+                102,
+                103,
+                104
+            ],
+            "steps_per_sample": 8,
+            "samples": 3,
+            "serial_seconds": [
+                0.318602066,
+                0.323544953,
+                0.323884288
+            ],
+            "batch_seconds": [
+                0.133194377,
+                0.135793538,
+                0.134282206
+            ],
+            "aggregate_ratio": 2.4094402574828124,
+            "material_errors": [
+                8.026987700304744e-6,
+                5.401486646405829e-6,
+                6.330870235160546e-6,
+                5.663748709139327e-6
+            ],
+            "potential_work_heat_errors": [
+                3.9948608218765e-5,
+                1.3864388165529817e-5,
+                1.011909489534446e-5,
+                3.576324820642185e-5
+            ],
+            "field_max_errors": {
+                "state.mass": 0,
+                "state.ledger_low": 0,
+                "state.candidate_rest": 0,
+                "state.enzymes": 0,
+                "state.ledger": 0,
+                "environment.source_masks": 0,
+                "environment.quota": 0,
+                "environment.scratch": 0,
+                "environment.resource_ledger_low": 0,
+                "state.energy": 0,
+                "state.grants": 0,
+                "state.inputs": 0,
+                "environment.occupancy": 0,
+                "state.actions": 0,
+                "environment.sink_masks": 0,
+                "state.exchange_scale": 0,
+                "state.hidden": 0,
+                "state.rows": 0,
+                "state.position_next": 0,
+                "environment.scale": 0,
+                "state.force": 0,
+                "state.position": 0,
+                "state.age": 0,
+                "environment.returns": 0,
+                "environment.inert": 0,
+                "state.support_normalization": 0,
+                "state.axis_distance2": 0,
+                "environment.permeability": 0,
+                "state.adaptation": 0,
+                "state.outputs": 0,
+                "environment.fields": 0,
+                "state.rest": 0,
+                "state.metabolites_next": 0,
+                "state.radii": 0,
+                "state.waste": 0,
+                "state.weights": 0,
+                "state.marks": 0,
+                "environment.demand": 0,
+                "state.metabolites": 0,
+                "environment.resource_ledger": 0,
+                "environment.observation": 0,
+                "state.requests": 0,
+                "environment.inert_low": 0
+            },
+            "completed_steps": [
+                25,
+                25,
+                25,
+                25
+            ],
+            "timing": "all full steps plus endpoint status synchronization; excludes compilation, packing and full audit copies"
+        },
+        "gpu": true
+    },
     "source_pins": [
         "/othersys/tmp/intmat-probe-20261014/world-batches-20261015-v1",
         "/othersys/tmp/intmat-probe-20261014/world-batches-20261015-v2"
     ],
+    "gpu_controls": {
+        "julia_threads": 2,
+        "nice": 15,
+        "memory_limit_gib": 8,
+        "timeout_seconds": 300,
+        "concurrent_gpu_jobs": false,
+        "cores": [
+            10,
+            11
+        ],
+        "swap": false,
+        "gc_threads": 1,
+        "blas_threads": 1
+    },
+    "gpu_parity_scope": "Every floating-typed state/environment array exact (maximum error 0); integer arrays exact except linked-list scratch heads/next checked for ownership/coverage, and metadata checked in identity/counter slots 1:6; full downloaded per-world conservation audits outside timing",
     "date": "2026-10-15",
     "distinct_seed_offset_candidate": [
         {
-            "worlds": 4,
+            "material_balance_errors": [
+                -2.090066573146032e-6,
+                7.844208766982774e-7,
+                5.355063308343233e-7,
+                2.301671884197276e-7
+            ],
             "physical_extent": [
                 4,
                 4,
@@ -109,15 +355,15 @@
                 "schedule": "72ecaccee6a0968b00b43fc2c9dfb7fee074a5f4e9fa95d2bc646640860e3e6d"
             },
             "samples": 3,
-            "material_balance_errors": [
-                -2.090066573146032e-6,
-                7.844208766982774e-7,
-                5.355063308343233e-7,
-                2.301671884197276e-7
-            ]
+            "worlds": 4
         },
         {
-            "worlds": 4,
+            "material_balance_errors": [
+                -4.125233772356296e-7,
+                2.215846961917123e-6,
+                1.489012902311515e-6,
+                -2.798319655994419e-7
+            ],
             "physical_extent": [
                 8,
                 8,
@@ -163,18 +409,30 @@
                 "schedule": "72ecaccee6a0968b00b43fc2c9dfb7fee074a5f4e9fa95d2bc646640860e3e6d"
             },
             "samples": 3,
-            "material_balance_errors": [
-                -4.125233772356296e-7,
-                2.215846961917123e-6,
-                1.489012902311515e-6,
-                -2.798319655994419e-7
-            ]
+            "worlds": 4
         }
     ],
     "law": "unchanged DeviceCellular full macrostep; independent worlds, common geometry and physical parameters; separate RNG seeds in final candidate",
     "cpu_recommendation": "Do not replace serial CPU execution; moderate fixture is slower",
     "default_changed": false,
-    "gpu_verified": false,
+    "gpu_verified": true,
+    "gpu_attempts": [
+        {
+            "log": "outputs/world-batches-20261015/gpu-attempt-1/gpu-attempt-1.log",
+            "attempt": 1,
+            "outcome": "host snapshot harness failure: forbidden scalar ROCArray indexing",
+            "pin": "world-batches-20261015-v3",
+            "exit_code": 1
+        },
+        {
+            "change": "only host bulk snapshot helper; simulation source unchanged",
+            "log": "outputs/world-batches-20261015/gpu-attempt-2/gpu-attempt-2.log",
+            "attempt": 2,
+            "outcome": "native parity and aggregate workload passed",
+            "pin": "world-batches-20261015-v4",
+            "exit_code": 0
+        }
+    ],
     "tests": {
         "checks": [
             "every state and environment array after full steps",

@@ -74,3 +74,16 @@ end
     @test a.storage[2,3,2]==99
     @test a.storage[2,3,1]==6
 end
+@testset "Bulk audit snapshots own their world slice" begin
+    x=WorldBatchArray(reshape(collect(1:12),2,3,2),(2,3))
+    e=WorldBatchArray(zeros(Int32,1,2),(1,))
+    p=CellularWorldBatch((x=x,),(status=e,),CPU(),(seed=UInt32(1),),
+        (dims=(2,3,1),),(unused=0,),0,2,UInt32[5,9])
+    snapshot=cellular_world_batch_snapshot(p,2)
+    @test snapshot.state.x==reshape(collect(7:12),2,3)
+    @test snapshot.parameters.seed==9
+    snapshot.state.x[1]=999
+    @test x.storage[1,1,2]==7
+    @test snapshot.environment.status==[0]
+    @test_throws BoundsError cellular_world_batch_snapshot(p,3)
+end

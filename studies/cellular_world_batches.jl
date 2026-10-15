@@ -149,6 +149,9 @@ end
 
 function cellular_world_batch_snapshot(p::CellularWorldBatch,i::Integer)
     1<=i<=p.worlds || throw(BoundsError())
-    (state=map(a->Array(batch_world(a,i)),p.state),environment=map(a->Array(batch_world(a,i)),p.environment),
+    # Audit copies are outside timing. Download the packed parent in bulk before
+    # host slicing: our custom CPU slice must never scalar-index ROCArray data.
+    (state=map(a->copy(selectdim(Array(a.storage),ndims(a.storage),i)),p.state),
+        environment=map(a->copy(selectdim(Array(a.storage),ndims(a.storage),i)),p.environment),
         parameters=merge(p.parameters,(seed=Array(p.seeds)[i],)),geometry=p.geometry,attempted_steps=p.attempted_steps)
 end

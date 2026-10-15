@@ -36,7 +36,10 @@ observatory schedule outlives this session if necessary; its optimized soak has 
 reduces support storage by 20/63/221× at 64³/128³/256³, but the first flat-axis
 iterator slows whole steps to 0.538/0.252/0.189× the materialized baseline.
 The default remains materialized. An exact-order carry iterator removes repeated
-integer division; its CPU oracle passes, with the separate GPU comparison queued.
+integer division and raises axis throughput 12–22% against the earlier separate
+run; it still reaches only 0.230× dense throughput at 256³. All nine matched
+dense/carry comparisons preserve observed identities, positions, hidden states
+and bonds exactly; complete native 3D base/habitat gates pass.
 A closed 128³ paid-habitat pilot completed 200 steps, exact checkpoint/future
 continuation checks and finite-budget capacity validation. This is a working
 construction pipeline, not yet a long ecology. [Evidence](docs/device-support-performance.md)
@@ -45,10 +48,13 @@ HIP graph replay preserves complete tested device trajectories and removes most
 host submission wall time, but whole-step gains are only 1.020× at 32³ and 1.002×
 at 128³. GPU work dominates these fixtures; kernel-category profiling is next.
 Independent-world batching remains experimental: the reserved moderate CPU case
-is slower (0.586×); its first GPU attempt reached kernels but failed in the host
-snapshot adapter, so GPU parity and throughput are still open. A local electrical
-patch plus global correction is a separate queued experiment. These alternatives
-have not replaced the ordinary execution path.
+is slower (0.586×), but the repaired host-snapshot GPU gate achieves 2.409×
+aggregate throughput for four 64-cell worlds on 16³ grids. All compared floating
+fields and identities match standalone runs exactly; failed-world isolation,
+actual birth/death/work/source flux and contact-bin ownership pass. This does
+not accelerate a single trajectory. Local electrical correction saves total
+solve time by 1.22× over nine recorded 257³ additions; a fresh coupled selection
+gate is running. These alternatives have not replaced ordinary execution.
 
 **Different material substrate:** an experimental seven-field continuum tissue
 couples excitable activity, finite food, biomass and permeability-changing matrix.
@@ -150,8 +156,9 @@ observations through t300. [Art and reproduction](docs/nacre-fault.md) ·
 **New execution studies:** the ordinary device launch schedule is now factored
 without changing its scalar RNG clock. A separate HIP graph owner uses the device
 completed-step counter, preserves failed-state latches and rejects stale captured
-buffers; 227 CPU checks pass, native graph evidence is pending. A batched-world
-study shares kernel bodies across distinct seed streams. A separate seven-channel
+buffers; 227 CPU checks and native exact replay pass, with negligible whole-step
+gain on the measured fixtures. A batched-world study shares kernel bodies across
+distinct seed streams. A separate seven-channel
 continuum tissue law trades individual contact mechanics for conservative field
 transport and paid remodeling; its 192² study produces changing connectivity.
 These alternatives remain distinct from the individual-cell law.
@@ -275,7 +282,7 @@ against incompatible fixed aliases. A reviewed native 256³ activity-contour pho
 2. Test film cooperation with mixed cooperator/free-rider invasion and a benefit-removed/cost-retained intervention; use the adaptation study's noisy controls to improve assay design.
 3. Persistent active compartments: longer replicated trajectories, local interfacial agents and conserved surface/volume exchange; count both phase signs.
 4. Develop the new catalytic habitat across longer, replicated regimes: secretion inheritance, spatial chemical dependence, resource renewal and consumer/builder interactions. Its first t300 trajectories establish functioning construction and food release, not adaptation. Study richer mechanics and developmental descriptors without treating a quiet pilot as an architectural impossibility.
-5. Device-native populations now run with bins, fair allocation, lifecycle, inherited controllers and explicit checkpoints. Integrate compact physical-support reconstruction and direct founder initialization; benchmark complete coupled construction on AMD, then prepare long source-pinned runs with compact observations.
+5. Device-native populations now run with bins, fair allocation, lifecycle, inherited controllers and explicit checkpoints. Compact support/direct initialization and a native coupled pilot are integrated. Profile complete GPU stages, optimize dominant work, then prepare long source-pinned runs with compact observations; extend experimental world batches to construction only with a new composition gate.
 6. Couple mechanics, transport, damage and healing through explicit work/material exchanges. Extend optics to absorbed-light feedback and sharper interface transport where a specimen warrants it.
 7. Long studies need chunked trajectories, genotype sampling, warm accelerators and physical normalization. Larger hardware and longer runs remain necessary; present failures and successes do not bound eventual behavior.
 

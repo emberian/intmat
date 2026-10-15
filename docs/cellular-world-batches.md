@@ -1,8 +1,11 @@
 # Independent-world batching and biological clocks
 
-The experimental batch adapter preserves the tested law, but does not justify
-a CPU default change: the reserved moderate fixture ran at 0.586× serial
-throughput. GPU throughput remains unverified.
+The experimental batch adapter improves aggregate throughput on the verified
+AMD fixture by **2.41×** for four independent 64-cell worlds. Every compared
+floating field matched standalone execution exactly, with separate seeds and
+accounting intact. This accelerates ensembles, not individual trajectories.
+The separate moderate CPU fixture ran at 0.586× serial throughput, so it does
+not justify a CPU default change.
 
 The existing cellular implementation already runs sensing, controller, plasticity,
 resource allocation, metabolism, junction exchange and lifecycle once per outer
@@ -25,7 +28,8 @@ studies investigate that problem; this study does not duplicate them.
 `studies/cellular_world_batches.jl` packs independent, identically configured
 worlds into a final array dimension. A typed world view supplies each kernel
 with its original array shape. A compact per-world seed vector preserves each
-standalone world’s mutation and keyed lifecycle random streams. The NDRange gains a world coordinate. Each world
+standalone world’s mutation and keyed lifecycle random streams. The NDRange
+gains a world coordinate. Each world
 retains its own resources, contact bins, status latch, identities, lifecycle
 random streams and material/work ledgers. No resource or force crosses worlds.
 The existing generic mechanical host loop is reused through launch dispatch.
@@ -33,18 +37,21 @@ The existing generic mechanical host loop is reused through launch dispatch.
 The physiology is embedded in kernel definitions, so this prototype parses the
 source AST and creates private kernel names. Its only kernel edits are the index
 binding, insertion of per-world state/environment views, and substitution of
-the matching world’s seed in the parameter view. The checked batch wrapper calls the shared generic
+the matching world’s seed in the parameter view. The checked batch wrapper
+calls the shared generic
 `device_cellular_enqueue!` schedule directly, with an early rejection of
-unsupported anabolic extensions. No host schedule is generated. It never replaces a production method.
+unsupported anabolic extensions. No host schedule is generated, and no
+production method is replaced.
 Both source SHA256 values are recorded with benchmark output. This is a study
 adapter, not the proposed permanent abstraction: extraction of scalar kernel
 bodies would make independent-world execution maintainable without generation.
 
 The constructor requires matching physical parameters, geometry and
-attempted-step clocks; RNG seeds may differ. Worlds can have different initial states. Construction
-copies the existing worlds and is excluded from warmed execution timings. The
-first prototype is CPU-KA verified; it does not establish GPU compilation,
-throughput, or compatibility of GPU atomic operations with the world views.
+attempted-step clocks; RNG seeds may differ. Worlds can have different initial
+states. Construction
+copies the existing worlds and is excluded from warmed execution timings.
+CPU-KA checks alone do not establish GPU compatibility; the native AMD adapter
+and its complete workload gate are documented below.
 The batch helper must currently be included from Main. The ordinary CPU
 CellularEcology representation and checkpoint ABI are unchanged.
 
@@ -98,8 +105,8 @@ The final candidate replaces general SubArray indexing with a concrete
 contiguous offset slice, and supplies distinct seeds per world. Results are
 reported separately from the common-seed reference. GPU adaptation, atomic
 access compatibility, complete-step parity and end-to-end aggregate throughput
-remain explicit gates before GPU ecological use. No GPU performance claim is
-supported by the CPU measurements.
+are tested in the native AMD gate below. No GPU performance claim is
+supported by the CPU measurements alone.
 
 The distinct-seed contiguous-offset candidate passed 51 complete-state and
 accounting assertions locally. With one Julia thread, four worlds of eight
@@ -136,7 +143,7 @@ The concrete slice repaired the initial representation cost, but the moderate
 CPU workload still loses. Keep the adapter experimental and retain serial CPU
 execution. The remaining question is whether fewer host GPU submissions offset
 view/indexing and adaptation costs on launch-bound independent GPU worlds.
-That requires a separate GPU gate; the current evidence cannot answer it.
+That requires the separate native GPU gate reported below.
 Structured measurements are in
 `benchmarks/2026-10-15-cellular-world-batches.json`, with final source/logs under
 `outputs/world-batches-20261015/final/` and the untouched hbox v2 source pin.
@@ -148,8 +155,8 @@ an optional `cellular_world_batches_amdgpu.jl` adapter. It adapts the packed par
 arrays to device descriptors, then constructs borrowed `ROCDeviceArray` world
 slices inside kernels. Using the native array type preserves AMDGPU’s floating
 atomic dispatch and avoids routing GPU scalar accesses through the CPU slice
-wrapper. This is an unverified GPU implementation until the coordinated probe
-runs; importing or compiling it is not evidence of GPU parity.
+wrapper. The native AMD gate below verifies this adapter on the stated fixtures;
+importing or compiling it alone is not evidence of GPU parity.
 
 The bounded probe first tests two worlds with distinct seeds, a failed-world
 latch and a healthy peer. Its native 3D fixture includes contact, resource flux,
@@ -163,7 +170,7 @@ only twice the founder count. The probe records full sample times, resource and
 work/heat balances, seeds, capacity, and runtime/source pins. It does not shrink
 the exchange radius or construct a capacity-sized CPU spatial stencil.
 
-The queued command, only after GPU handoff, is:
+The reproduction command, only after GPU handoff, is:
 
 ```
 DEVICE_BACKEND=amd DEVICE_AMD_OPTLEVEL=1 \
@@ -174,8 +181,7 @@ DEVICE_BACKEND=amd DEVICE_AMD_OPTLEVEL=1 \
 Status checks occur at each timed sample endpoint for both execution recipes;
 packing, JIT and full audit copies are excluded. The adapter currently rejects
 anabolic hooks. Future composition with constructive helpers or HIP graphs needs
-its own interface/parity gate. The GPU question remains open until actual native
-execution is measured.
+its own interface/parity gate. Native execution and measurements are reported below.
 
 The shared-enqueue adapter passed all 56 CPU assertions after narrowing the host
 interface. A tiny CPU dry-run of the queued native driver (two four-cell worlds,
@@ -186,3 +192,59 @@ method. The complete frozen GPU probe source is staged at
 `/othersys/tmp/intmat-probe-20261014/world-batches-20261015-v3/source/`, with its
 copied pinned environment beside it; source, dry-run JSON and test log are also
 retained in `outputs/world-batches-20261015/gpu-probe-source/`.
+
+The first native attempt (frozen v3) reached the parity snapshot and then stopped
+because the generic CPU slice attempted scalar reads from ROCArray storage.
+This was a harness failure: no native parity or throughput result was established.
+Its complete log is preserved at
+`outputs/world-batches-20261015/gpu-attempt-1/gpu-attempt-1.log` and on hbox beside
+the v3 pin. The v4 retry differs only in the host snapshot helper: it downloads
+packed parents in bulk, then takes owned CPU world slices. Full snapshot copies
+remain outside every timed sample. Five focused ownership/seed/bounds checks
+cover this change. Per-world conservation is computed from those downloaded
+arrays, using the existing Float64 host audit.
+
+
+## Native AMD result
+
+The frozen v4 retry completed successfully on the RX 6750 XT, using the same
+simulation source as v3 and only the bulk host-snapshot repair. No concurrent
+GPU job ran. The environment used Julia 1.12.4, AMDGPU 2.8.0, optlevel 1 and the
+pinned standalone ROCm runtime; CPU 10/11, two Julia threads, one GC/BLAS thread,
+nice 15, 8 GiB/no swap and a 300-second hard timeout bounded the process.
+
+| Native 3D fixture | Worlds | Cells/world; capacity | Grid; extent | Serial sample s | Batch sample s | Aggregate ratio |
+|---|---:|---|---|---:|---:|---:|
+| Small parity/pilot |2|4;16|8³;8³|0.021187|0.010903|1.943×|
+| Moderate, three samples |4|64;128|16³;8³|0.323545|0.134282|2.409×|
+
+The moderate samples each contain eight complete steps of all four worlds,
+including all 16 mechanical substeps and endpoint status synchronization.
+Median throughput is 238.3 world-steps/s batched versus 98.9 serial. Seeds are
+101, 102, 103, 104; the physical exchange radius remains 0.8. Packed state and
+environment arrays occupy 4,615,232 bytes, excluding standalone reference arrays,
+runtime/compiler storage and transient audit copies. This is an ensemble
+throughput result, not a single-world speedup or a resolution convergence claim.
+
+Every floating-typed state/environment array compared exactly (maximum error 0),
+and integer identity/state comparisons passed. Atomic linked-list scratch
+`heads`/`next` may have a different insertion order, so the gate checks their
+world ownership and coverage; metadata identity/counter slots 1–6 are compared
+exactly rather than treating the encoded radius slot as an identity. The
+failed-world latch left its healthy peer running with its corresponding seed.
+A native postcondition confirmed one birth and one death, positive paid work
+(0.0176182), and actual supplied material (0.000183105) in that healthy fixture.
+
+Per-world material balance residuals after accounting for external supply were
+at most 8.03e-6; potential-plus-work-plus-heat residuals were at most 3.99e-5.
+The batched arrays match the standalone arrays, so these are shared Float32
+accounting residuals, not added batch drift. Full snapshot transfers, parity
+comparisons and Float64 per-world audits are outside timed samples.
+
+All logs, the raw native result and birth/death audit are retained under
+`outputs/world-batches-20261015/gpu-attempt-2/`; hbox retains untouched v3 and v4
+pins. The tracked benchmark JSON contains both attempts, the earlier CPU
+negative, native runtime hashes, raw paired times and exact parity scope.
+Anabolic hooks and longer ecological ensemble trajectories remain separate
+integration gates. GPU ownership was explicitly handed to the queued profiler
+after this process exited.
