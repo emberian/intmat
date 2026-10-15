@@ -84,3 +84,50 @@ on alternating repetitions. Full concentration and total-mass errors, position
 over exchange radius, and work/heat differences accompany relative L2 metrics.
 There are2016complete steps per repetition; the repeat count and wall budget
 will be chosen from the matched dense coupled profile before launching.
+
+## Matched materialized support at time .256
+
+The longer native128³ study completed11 trajectories: one .00025 reference and
+two fresh trajectories at each coarser timestep, all with materialized support.
+All remained finite with the same512 identities. The study body took184.20s;
+external launch-to-exit time was202.60s, including Julia/package startup. The
+first failed driver launch is retained separately and contributed no simulation.
+
+The reference now contains .434539 bound mass and4.95666 catalyst mass. Bound
+food is no longer merely a near-zero startup pool:
+
+| dt | Bound mass difference | Bound field relative L2 | Free field relative L2 | Median model time / wall second |
+| --- | ---: | ---: | ---: | ---: |
+| .00025 | reference | reference | reference | .00636 |
+| .0005 | +.00187 (0.43%) | .00727 | .00456 | .01225 |
+| .001 | +.00551 (1.27%) | .0170 | .00407 | .02589 |
+| .002 | +.01290 (2.97%) | .0409 | .00424 | .04818 |
+| .004 | +.02881 (6.63%) | .102 | .00521 | .10374 |
+| .008 | +.08197 (18.9%) | .330 | .00796 | .20710 |
+
+Relative bound-inventory percentages use the reference pool. Timers include
+complete physical steps and batch status checks; construction and final detached
+reads are outside individual timers. The two .002 runs took4.93s and5.76s,
+so its rate has visible variation. The other paired durations were closer.
+
+Compared with .001, .002 provided1.86× model-time throughput while changing the
+bound inventory by2.97% relative to the fine reference (4.09% field L2). That makes
+.002 a plausible exploratory tradeoff for a declared few-percent chemical
+accuracy target, rather than a demonstrated equivalent ecological trajectory.
+The .004/.008 bound-pool deviations are substantial despite modest free-food
+errors. A production timestep has not been changed.
+
+The .00025 reference is not proved converged: its potential/work/heat residual
+is .02583 over initial potential4085.76 (6.32e-6 relative), and material residual
+.000226 over1456.64. Finer Float32 accumulation increases rounding exposure.
+Position differences are not monotone with timestep; coordinate increments can
+approach Float32 resolution. At .001 the maximum periodic difference is .00174,
+about0.97% of exchange radius; at .008 it is .00235 (1.31%). These are comparison
+errors, not evidence that the fine trajectory is exact. The test interval has
+no births, so longer ecological/morphological equivalence remains unestablished.
+
+[Exact compact evidence](device-habitat-timestep-materialized-amd.json) retains
+per-species mass differences, mass L1 errors, maximum concentration errors,
+work/heat differences, runtime/source pins and both timing samples. Numerical
+source remains d4d152d with only the7d3caeb support helper; study/test/fixture
+were overlaid fromd958d79 with a separately hashed driver parse/CLI correction.

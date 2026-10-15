@@ -1,0 +1,731 @@
+{
+  "scope": "native128^3 fixed physical duration; matched materialized support; one fine reference and two full coarser trajectories; no production timestep change",
+  "launch_to_exit_seconds": 202.6,
+  "study_body_seconds": 184.198270012,
+  "source": {
+    "model": "97bb37f5fd1bf27656e0b8276ea0b4f59885c35917f6f51bf3a136000755740d",
+    "initialization": "1484f9c00e3aa438f2557d12af1b29be2247e3b27dd5e4bcfd64d603785e6dc9",
+    "founder_initialization": "d76e4c791a2c56bc7fd651b1836e6879b9e27013566ce6d94a1d2f677f62e633",
+    "support": "5a767b83c2c912d8706468ec7c5b86e56cf99430b2a23dfd3a7f3ee8f21bf55b",
+    "kernels": "a85cf1f8e0739373572e9029deb46415ab5d16669f3513b0fbf020b289ad0b27",
+    "checkpoint": "77f943195ef1ae0466d57fc57c051595f3f363c822e8d9f6d4dbc1b9d5a6a9b0",
+    "protocol": "095c40b8e42baca3688abe902289377da49e8f352017733ce92728729fb40be5"
+  },
+  "runtime": {
+    "julia": "1.12.4",
+    "kernel": "Linux",
+    "architecture": "x86_64",
+    "launch_threads": 2,
+    "backend": "amd",
+    "device": "HIPDevice(id=1, name=AMD Radeon RX 6750 XT, gcn_arch=gfx1030)",
+    "backend_version": "2.8.0",
+    "actual_device_optlevel": 1,
+    "project_sha256": "284c920aebff70f466a40df21f7c83ae4c561857b046f940274b43a8feeaec6d",
+    "manifest_sha256": "75092a902e269d3938f3108e89633df61c417b9837e737c0c0fabc2643ae14b8"
+  },
+  "study_sha256": "a7a9f7b7428fffacca2d617676dc99994a7659fe3e1ad7e8ab0e4f1b68a400d7",
+  "driver_sha256": "973c977fb3a882930c1d906a72f9a724cf06007b8f558c94fd4427451b205cd0",
+  "recipe": [
+    128,
+    512,
+    8192,
+    911,
+    0.00025,
+    1024,
+    "materialized",
+    2,
+    1,
+    true
+  ],
+  "reference_audit": {
+    "material": 1456.6402357900768,
+    "potential": 3768.3643909997595,
+    "work": 26.78838924414094,
+    "heat": 290.633038227695,
+    "supplied": 0,
+    "removed": 0,
+    "supplied_potential": 0,
+    "removed_potential": 0,
+    "population": 512,
+    "completed_steps": 1024,
+    "secreted": [
+      2.5720866952955026,
+      2.3898592380560624
+    ],
+    "solubilized": [
+      1.9284292559963578,
+      1.7833645745038038
+    ],
+    "bound": [
+      0.2284059160344111,
+      0.2061333224062575
+    ],
+    "enzyme": [
+      2.5693378402861358,
+      2.3873172998730894
+    ],
+    "inert": 0.007534555400124645,
+    "finite": true
+  },
+  "comparisons": [
+    {
+      "dt": 0.0002500000118743628,
+      "steps": 1024,
+      "duration": 0.25600001215934753,
+      "declared_limit": 0.14648436804236586,
+      "difference": {
+        "identities_equal": true,
+        "position_max": 0,
+        "position_over_exchange_radius": 0,
+        "hidden": {
+          "maxabs": 0,
+          "relative_l2": 0
+        },
+        "metabolites": {
+          "maxabs": 0,
+          "relative_l2": 0
+        },
+        "free": {
+          "maxabs": 0,
+          "relative_l2": 0,
+          "total_mass_difference": 0,
+          "mass_l1_error": 0,
+          "reference_total_mass": 73.71772597020448,
+          "species_mass_difference": [
+            0,
+            0,
+            0
+          ],
+          "maximum_concentration_error": 0
+        },
+        "raw": {
+          "maxabs": 0,
+          "relative_l2": 0,
+          "total_mass_difference": 0,
+          "mass_l1_error": 0,
+          "reference_total_mass": 508.2883973208045,
+          "species_mass_difference": [
+            0,
+            0,
+            0
+          ],
+          "maximum_concentration_error": 0
+        },
+        "enzyme": {
+          "maxabs": 0,
+          "relative_l2": 0,
+          "total_mass_difference": 0,
+          "mass_l1_error": 0,
+          "reference_total_mass": 4.956655140159225,
+          "species_mass_difference": [
+            0,
+            0
+          ],
+          "maximum_concentration_error": 0
+        },
+        "bound": {
+          "maxabs": 0,
+          "relative_l2": 0,
+          "total_mass_difference": 0,
+          "mass_l1_error": 0,
+          "reference_total_mass": 0.4345392384406686,
+          "species_mass_difference": [
+            0,
+            0
+          ],
+          "maximum_concentration_error": 0
+        }
+      },
+      "work_difference": 0,
+      "heat_difference": 0,
+      "repetitions": 1,
+      "seconds": [
+        40.242447413
+      ],
+      "median_full_steps_per_second": 25.445768481496604,
+      "median_simulated_time_per_wall_second": 0.0063614424225264385,
+      "audit": {
+        "material": 1456.6402357900768,
+        "potential": 3768.3643909997595,
+        "work": 26.78838924414094,
+        "heat": 290.633038227695,
+        "supplied": 0,
+        "removed": 0,
+        "supplied_potential": 0,
+        "removed_potential": 0,
+        "population": 512,
+        "completed_steps": 1024,
+        "secreted": [
+          2.5720866952955026,
+          2.3898592380560624
+        ],
+        "solubilized": [
+          1.9284292559963578,
+          1.7833645745038038
+        ],
+        "bound": [
+          0.2284059160344111,
+          0.2061333224062575
+        ],
+        "enzyme": [
+          2.5693378402861358,
+          2.3873172998730894
+        ],
+        "inert": 0.007534555400124645,
+        "finite": true
+      },
+      "max_absolute_material_error": 0.0002263868479985831,
+      "max_absolute_potential_error": 0.025829686805536767
+    },
+    {
+      "dt": 0.0005000000237487257,
+      "steps": 512,
+      "duration": 0.25600001215934753,
+      "declared_limit": 0.14648436804236586,
+      "difference": {
+        "identities_equal": true,
+        "position_max": 0.001953125,
+        "position_over_exchange_radius": 0.010850694013276603,
+        "hidden": {
+          "maxabs": 0.0004369020462036133,
+          "relative_l2": 0.0006836328945178413
+        },
+        "metabolites": {
+          "maxabs": 6.424449384212494e-05,
+          "relative_l2": 0.0007279244528360572
+        },
+        "free": {
+          "maxabs": 7.839698810130358e-06,
+          "relative_l2": 0.004559311966616975,
+          "total_mass_difference": 0.005815717722654767,
+          "mass_l1_error": 0.304472435565176,
+          "reference_total_mass": 73.71772597020448,
+          "species_mass_difference": [
+            0.0002610677641003978,
+            0.00025163004097206176,
+            0.005303019917576535
+          ],
+          "maximum_concentration_error": 0.25689125061035156
+        },
+        "raw": {
+          "maxabs": 3.5636912798509e-07,
+          "relative_l2": 0.00012175497966459055,
+          "total_mass_difference": -0.004898194962152047,
+          "mass_l1_error": 0.01385495329668629,
+          "reference_total_mass": 508.2883973208045,
+          "species_mass_difference": [
+            -0.002511047543521272,
+            -0.002387147418630775,
+            0.0
+          ],
+          "maximum_concentration_error": 0.01167750358581543
+        },
+        "enzyme": {
+          "maxabs": 6.590853445231915e-07,
+          "relative_l2": 0.004681512205812057,
+          "total_mass_difference": -0.000878167702269117,
+          "mass_l1_error": 0.021379172711481417,
+          "reference_total_mass": 4.956655140159225,
+          "species_mass_difference": [
+            -0.00047921223747993125,
+            -0.00039895546478962984
+          ],
+          "maximum_concentration_error": 0.021596908569335938
+        },
+        "bound": {
+          "maxabs": 3.593915209876286e-07,
+          "relative_l2": 0.00726512337660025,
+          "total_mass_difference": 0.0018711657456823572,
+          "mass_l1_error": 0.003125634484885828,
+          "reference_total_mass": 0.4345392384406686,
+          "species_mass_difference": [
+            0.0009798838616960903,
+            0.0008912818839862668
+          ],
+          "maximum_concentration_error": 0.011776541359722614
+        }
+      },
+      "work_difference": 0.0036057422774966597,
+      "heat_difference": -0.028352754992795326,
+      "repetitions": 2,
+      "seconds": [
+        21.192506203,
+        20.613458475
+      ],
+      "median_full_steps_per_second": 24.498812445813734,
+      "median_simulated_time_per_wall_second": 0.012249406804722442,
+      "audit": {
+        "material": 1456.640104846309,
+        "potential": 3768.3631961314522,
+        "work": 26.791994986418437,
+        "heat": 290.6046854727022,
+        "supplied": 0,
+        "removed": 0,
+        "supplied_potential": 0,
+        "removed_potential": 0,
+        "population": 512,
+        "completed_steps": 512,
+        "secreted": [
+          2.5715702479020925,
+          2.38942590159084
+        ],
+        "solubilized": [
+          1.9308950105124083,
+          1.7857084930406733
+        ],
+        "bound": [
+          0.2293857998961072,
+          0.20702460429024377
+        ],
+        "enzyme": [
+          2.568858628048656,
+          2.3869183444082998
+        ],
+        "inert": 0.0038248141501669003,
+        "finite": true
+      },
+      "max_absolute_material_error": 9.544308022668702e-05,
+      "max_absolute_potential_error": 0.00011219421685382258
+    },
+    {
+      "dt": 0.0010000000474974513,
+      "steps": 256,
+      "duration": 0.25600001215934753,
+      "declared_limit": 0.14648436804236586,
+      "difference": {
+        "identities_equal": true,
+        "position_max": 0.001739501953125,
+        "position_over_exchange_radius": 0.009663899355574474,
+        "hidden": {
+          "maxabs": 0.00041862763464450836,
+          "relative_l2": 0.0010521429310020372
+        },
+        "metabolites": {
+          "maxabs": 7.854204341128934e-05,
+          "relative_l2": 0.0007985696899866338
+        },
+        "free": {
+          "maxabs": 6.721820682287216e-06,
+          "relative_l2": 0.004072804291634623,
+          "total_mass_difference": 0.017825620779831297,
+          "mass_l1_error": 0.2894191844868149,
+          "reference_total_mass": 73.71772597020448,
+          "species_mass_difference": [
+            0.00032229290442686853,
+            0.00032151301321836634,
+            0.017181814862183842
+          ],
+          "maximum_concentration_error": 0.2202606201171875
+        },
+        "raw": {
+          "maxabs": 3.682216629385948e-07,
+          "relative_l2": 0.00014163129213679083,
+          "total_mass_difference": -0.012382623193843756,
+          "mass_l1_error": 0.017256580795219634,
+          "reference_total_mass": 508.2883973208045,
+          "species_mass_difference": [
+            -0.006391428243659902,
+            -0.0059911949501838535,
+            0.0
+          ],
+          "maximum_concentration_error": 0.012065887451171875
+        },
+        "enzyme": {
+          "maxabs": 5.840665835421532e-07,
+          "relative_l2": 0.004241932926276828,
+          "total_mass_difference": -0.0025207696498723564,
+          "mass_l1_error": 0.020491890077482144,
+          "reference_total_mass": 4.956655140159225,
+          "species_mass_difference": [
+            -0.0012442873518203612,
+            -0.0012764822980515511
+          ],
+          "maximum_concentration_error": 0.019138693809509277
+        },
+        "bound": {
+          "maxabs": 1.0779786236980726e-06,
+          "relative_l2": 0.017006227276861706,
+          "total_mass_difference": 0.005513271900171368,
+          "mass_l1_error": 0.006799875194462079,
+          "reference_total_mass": 0.4345392384406686,
+          "species_mass_difference": [
+            0.0028920605681623524,
+            0.002621211332009016
+          ],
+          "maximum_concentration_error": 0.035323203541338444
+        }
+      },
+      "work_difference": 0.0030695872835693194,
+      "heat_difference": -0.06170638325050959,
+      "repetitions": 2,
+      "seconds": [
+        9.859497253,
+        9.916044423
+      ],
+      "median_full_steps_per_second": 25.890779366100478,
+      "median_simulated_time_per_wall_second": 0.02589078059584651,
+      "audit": {
+        "material": 1456.640068339409,
+        "potential": 3768.398004674949,
+        "work": 26.79145883142451,
+        "heat": 290.5713318444445,
+        "supplied": 0,
+        "removed": 0,
+        "supplied_potential": 0,
+        "removed_potential": 0,
+        "population": 512,
+        "completed_steps": 256,
+        "secreted": [
+          2.5708097318524605,
+          2.3885525559988894
+        ],
+        "solubilized": [
+          1.9347514217779163,
+          1.7892892288013231
+        ],
+        "bound": [
+          0.23129797660257345,
+          0.20875453373826652
+        ],
+        "enzyme": [
+          2.5680935529343154,
+          2.386040817575038
+        ],
+        "inert": 0.0019339638679297636,
+        "finite": true
+      },
+      "max_absolute_material_error": 5.89361802667554e-05,
+      "max_absolute_potential_error": 0.0008065660281317832
+    },
+    {
+      "dt": 0.0020000000949949026,
+      "steps": 128,
+      "duration": 0.25600001215934753,
+      "declared_limit": 0.14648436804236586,
+      "difference": {
+        "identities_equal": true,
+        "position_max": 0.001674652099609375,
+        "position_over_exchange_radius": 0.0093036224059149,
+        "hidden": {
+          "maxabs": 0.0005736108869314194,
+          "relative_l2": 0.0021213533585830017
+        },
+        "metabolites": {
+          "maxabs": 0.00020375929489091504,
+          "relative_l2": 0.0016528386368840537
+        },
+        "free": {
+          "maxabs": 7.5115240179002285e-06,
+          "relative_l2": 0.004242937558141232,
+          "total_mass_difference": 0.04155520154475312,
+          "mass_l1_error": 0.31976442228996116,
+          "reference_total_mass": 73.71772597020448,
+          "species_mass_difference": [
+            0.00013006199119125483,
+            0.0001415536660509531,
+            0.0412835858875269
+          ],
+          "maximum_concentration_error": 0.2461376190185547
+        },
+        "raw": {
+          "maxabs": 5.470647010952234e-07,
+          "relative_l2": 0.0002412457486009395,
+          "total_mass_difference": -0.026140139350900427,
+          "mass_l1_error": 0.02859528613043949,
+          "reference_total_mass": 508.2883973208045,
+          "species_mass_difference": [
+            -0.013545091744163074,
+            -0.012595047606737353,
+            0.0
+          ],
+          "maximum_concentration_error": 0.01792621612548828
+        },
+        "enzyme": {
+          "maxabs": 6.252230377867818e-07,
+          "relative_l2": 0.004655210135493567,
+          "total_mass_difference": -0.005827795071708941,
+          "mass_l1_error": 0.02323125141279418,
+          "reference_total_mass": 4.956655140159225,
+          "species_mass_difference": [
+            -0.002796746165619979,
+            -0.0030310489060889623
+          ],
+          "maximum_concentration_error": 0.020487308502197266
+        },
+        "bound": {
+          "maxabs": 2.6210705073026475e-06,
+          "relative_l2": 0.04087568378434439,
+          "total_mass_difference": 0.012896221506118577,
+          "mass_l1_error": 0.01567290341511799,
+          "reference_total_mass": 0.4345392384406686,
+          "species_mass_difference": [
+            0.006772174100504985,
+            0.006124047405613592
+          ],
+          "maximum_concentration_error": 0.08588723838329315
+        }
+      },
+      "work_difference": -0.0018808777488104056,
+      "heat_difference": -0.1221367764839556,
+      "repetitions": 2,
+      "seconds": [
+        4.930399927,
+        5.760830474
+      ],
+      "median_full_steps_per_second": 24.090200761454838,
+      "median_simulated_time_per_wall_second": 0.04818040381135596,
+      "audit": {
+        "material": 1456.6400394737868,
+        "potential": 3768.463011474855,
+        "work": 26.78650836639213,
+        "heat": 290.51090145121105,
+        "supplied": 0,
+        "removed": 0,
+        "supplied_potential": 0,
+        "removed_potential": 0,
+        "population": 512,
+        "completed_steps": 128,
+        "secreted": [
+          2.5692772273772597,
+          2.3868164090860597
+        ],
+        "solubilized": [
+          1.9418920447843364,
+          1.7958803181683796
+        ],
+        "bound": [
+          0.23517809013491608,
+          0.2122573698118711
+        ],
+        "enzyme": [
+          2.566541094120516,
+          2.3842862509670004
+        ],
+        "inert": 0.0009789273576941242,
+        "finite": true
+      },
+      "max_absolute_material_error": 3.0070558068473474e-05,
+      "max_absolute_potential_error": 0.00043250766839264543
+    },
+    {
+      "dt": 0.004000000189989805,
+      "steps": 64,
+      "duration": 0.25600001215934753,
+      "declared_limit": 0.14648436804236586,
+      "difference": {
+        "identities_equal": true,
+        "position_max": 0.001735687255859375,
+        "position_over_exchange_radius": 0.009642706593829794,
+        "hidden": {
+          "maxabs": 0.0008802246302366257,
+          "relative_l2": 0.0046255734055664615
+        },
+        "metabolites": {
+          "maxabs": 0.0006380999693647027,
+          "relative_l2": 0.004584017055271871
+        },
+        "free": {
+          "maxabs": 8.09656921774149e-06,
+          "relative_l2": 0.005210161388790821,
+          "total_mass_difference": 0.08840275635418493,
+          "mass_l1_error": 0.41577619953331435,
+          "reference_total_mass": 73.71772597020448,
+          "species_mass_difference": [
+            -0.001136619478075529,
+            -0.001084209635240363,
+            0.0906235854675117
+          ],
+          "maximum_concentration_error": 0.2653083801269531
+        },
+        "raw": {
+          "maxabs": 1.003023498924449e-06,
+          "relative_l2": 0.00047207570773073667,
+          "total_mass_difference": -0.05299336691678036,
+          "mass_l1_error": 0.05437822628300637,
+          "reference_total_mass": 508.2883973208045,
+          "species_mass_difference": [
+            -0.02742344033686095,
+            -0.02556992657991941,
+            0.0
+          ],
+          "maximum_concentration_error": 0.03286707401275635
+        },
+        "enzyme": {
+          "maxabs": 9.94812580756843e-07,
+          "relative_l2": 0.006452632626534313,
+          "total_mass_difference": -0.01261597344818366,
+          "mass_l1_error": 0.03116373247536338,
+          "reference_total_mass": 4.956655140159225,
+          "species_mass_difference": [
+            -0.006609879497363025,
+            -0.006006093950820635
+          ],
+          "maximum_concentration_error": 0.032598018646240234
+        },
+        "bound": {
+          "maxabs": 6.318967734841863e-06,
+          "relative_l2": 0.10178983813972872,
+          "total_mass_difference": 0.028808108006606714,
+          "mass_l1_error": 0.037430982999765126,
+          "reference_total_mass": 0.4345392384406686,
+          "species_mass_difference": [
+            0.015065614000572186,
+            0.013742494006034528
+          ],
+          "maximum_concentration_error": 0.20705993473529816
+        }
+      },
+      "work_difference": -0.011330763178595049,
+      "heat_difference": -0.24574910691927698,
+      "repetitions": 2,
+      "seconds": [
+        2.468977461,
+        2.466546634
+      ],
+      "median_full_steps_per_second": 25.934435449106346,
+      "median_simulated_time_per_wall_second": 0.10373774672370373,
+      "audit": {
+        "material": 1456.64002560034,
+        "potential": 3768.5956309102658,
+        "work": 26.777058480962346,
+        "heat": 290.38728912077573,
+        "supplied": 0,
+        "removed": 0,
+        "supplied_potential": 0,
+        "removed_potential": 0,
+        "population": 512,
+        "completed_steps": 64,
+        "secreted": [
+          2.565478315501393,
+          2.3838547043683733
+        ],
+        "solubilized": [
+          1.9557633848725442,
+          1.8088483341005626
+        ],
+        "bound": [
+          0.24347153003498329,
+          0.21987581641229204
+        ],
+        "enzyme": [
+          2.5627279607887727,
+          2.3813112059222687
+        ],
+        "inert": 0.0004980339481069025,
+        "finite": true
+      },
+      "max_absolute_material_error": 1.6197111335714e-05,
+      "max_absolute_potential_error": 1.027278631227091e-05
+    },
+    {
+      "dt": 0.00800000037997961,
+      "steps": 32,
+      "duration": 0.25600001215934753,
+      "declared_limit": 0.14648436804236586,
+      "difference": {
+        "identities_equal": true,
+        "position_max": 0.002353668212890625,
+        "position_over_exchange_radius": 0.013075933996468093,
+        "hidden": {
+          "maxabs": 0.0020714402198791504,
+          "relative_l2": 0.010293246671559888
+        },
+        "metabolites": {
+          "maxabs": 0.0011690567480400205,
+          "relative_l2": 0.010393007396944313
+        },
+        "free": {
+          "maxabs": 1.2053817044943571e-05,
+          "relative_l2": 0.007962852504428327,
+          "total_mass_difference": 0.16392877536452488,
+          "mass_l1_error": 0.6660772662405325,
+          "reference_total_mass": 73.71772597020448,
+          "species_mass_difference": [
+            -0.007596600216895899,
+            -0.0072310540378923704,
+            0.1787564296193267
+          ],
+          "maximum_concentration_error": 0.39497947692871094
+        },
+        "raw": {
+          "maxabs": 1.959549990715459e-06,
+          "relative_l2": 0.0009488552944708644,
+          "total_mass_difference": -0.10624847635335755,
+          "mass_l1_error": 0.10761519747029524,
+          "reference_total_mass": 508.2883973208045,
+          "species_mass_difference": [
+            -0.05502184274519095,
+            -0.051226633608166594,
+            0.0
+          ],
+          "maximum_concentration_error": 0.06421053409576416
+        },
+        "enzyme": {
+          "maxabs": 1.60992203745991e-06,
+          "relative_l2": 0.010851806122642594,
+          "total_mass_difference": -0.02555956617161481,
+          "mass_l1_error": 0.049380230065097425,
+          "reference_total_mass": 4.956655140159225,
+          "species_mass_difference": [
+            -0.013425770518836089,
+            -0.012133795652778723
+          ],
+          "maximum_concentration_error": 0.05275392532348633
+        },
+        "bound": {
+          "maxabs": 1.2911862086184556e-05,
+          "relative_l2": 0.3299137400725257,
+          "total_mass_difference": 0.08197171729174907,
+          "mass_l1_error": 0.11267859142143999,
+          "reference_total_mass": 0.4345392384406686,
+          "species_mass_difference": [
+            0.04231989904526032,
+            0.03965181824648878
+          ],
+          "maximum_concentration_error": 0.4230958968400955
+        }
+      },
+      "work_difference": -0.01986301410664737,
+      "heat_difference": -0.48086827154622824,
+      "repetitions": 2,
+      "seconds": [
+        1.23637196,
+        1.235904799
+      ],
+      "median_full_steps_per_second": 25.887070309660437,
+      "median_simulated_time_per_wall_second": 0.20709657231384238,
+      "audit": {
+        "material": 1456.6400191354446,
+        "potential": 3768.8393477017153,
+        "work": 26.768526230034293,
+        "heat": 290.1521699561488,
+        "supplied": 0,
+        "removed": 0,
+        "supplied_potential": 0,
+        "removed_potential": 0,
+        "population": 512,
+        "completed_steps": 32,
+        "secreted": [
+          2.5587010568584585,
+          2.377762911626615
+        ],
+        "solubilized": [
+          1.9833580745513544,
+          1.8345014136987712
+        ],
+        "bound": [
+          0.2707258150796714,
+          0.2457851406527463
+        ],
+        "enzyme": [
+          2.5559120697672997,
+          2.3751835042203107
+        ],
+        "inert": 0.0002508462598738737,
+        "finite": true
+      },
+      "max_absolute_material_error": 9.732215858093696e-06,
+      "max_absolute_potential_error": 5.510310802492313e-05
+    }
+  ]
+}

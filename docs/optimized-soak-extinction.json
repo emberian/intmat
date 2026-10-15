@@ -1,0 +1,921 @@
+{
+  "kind": "read-only optimized soak extinction observation",
+  "observed_at_unix": 1792075042.564888,
+  "run": "/othersys/tmp/intmat-soaks-optimized-20261015/continuation",
+  "metrics_complete_rows": 850,
+  "metrics_chunks": [
+    {
+      "file": "metrics-1792058045796933-3828298-0001.jsonl",
+      "complete_prefix_bytes": 3091916,
+      "complete_prefix_sha256": "61861ee1cdce07d211960e0aa48110702b06884811d471352e9f601237b0e9dc",
+      "ignored_tail_bytes": 0
+    },
+    {
+      "file": "metrics-1792058045796933-3828298-0002.jsonl",
+      "complete_prefix_bytes": 3142361,
+      "complete_prefix_sha256": "cfa7d1c9303a90c8301451097ccadede0783e7086d281273c85953a469fa9787",
+      "ignored_tail_bytes": 0
+    },
+    {
+      "file": "metrics-1792058045796933-3828298-0003.jsonl",
+      "complete_prefix_bytes": 3055113,
+      "complete_prefix_sha256": "943904fd416053b5a7020aac354a4f4f8ab61c327072811929a6c161a2a3d1a5",
+      "ignored_tail_bytes": 0
+    },
+    {
+      "file": "metrics-1792058045796933-3828298-0004.jsonl",
+      "complete_prefix_bytes": 145614,
+      "complete_prefix_sha256": "abcffd4c87cd68b6e8d4a9bf6a1fb0e6fdd2189dec1b8598733a4f8794547042",
+      "ignored_tail_bytes": 0
+    }
+  ],
+  "last_populated": {
+    "file": "metrics-1792058045796933-3828298-0003.jsonl",
+    "line": 249,
+    "step": 5204150,
+    "time": 520415.0077547878,
+    "observed_at_unix": 1792073252.842998,
+    "metrics": {
+      "population": 214,
+      "births": 42080,
+      "deaths": 41930,
+      "biomass": 255.34953271457422,
+      "stored_energy": 429.8455768128895,
+      "internal_material": 1.6772122156715035,
+      "material_error": 0.002734287641942501,
+      "chemical_energy_error": 0.01618072297424078,
+      "resources": {
+        "removed_potential": 0.0,
+        "removed": [
+          0.0,
+          0.0,
+          1998844.213785415
+        ],
+        "supplied_potential": 7993547.432431148,
+        "potential": 104.87409950682766,
+        "names": [
+          "precursor_a",
+          "precursor_b",
+          "waste"
+        ],
+        "mass": [
+          12.331055596823376,
+          13.88746927988354,
+          29.959961345324658
+        ],
+        "released_energy": 0.0,
+        "withdrawn": [
+          999526.8554219934,
+          999524.9885065814,
+          0.0
+        ],
+        "withdrawn_potential": 7996207.375714299,
+        "returned_potential": 0.0,
+        "supplied": [
+          999193.587685654,
+          999193.270422133,
+          0.0
+        ],
+        "returned": [
+          0.0,
+          0.0,
+          1998874.1753443896
+        ]
+      }
+    }
+  },
+  "first_empty": {
+    "file": "metrics-1792058045796933-3828298-0003.jsonl",
+    "line": 250,
+    "step": 5220815,
+    "time": 522081.5077796206,
+    "observed_at_unix": 1792073272.835393,
+    "metrics": {
+      "population": 0,
+      "births": 42106,
+      "deaths": 42170,
+      "biomass": 0.0,
+      "stored_energy": 0.0,
+      "internal_material": 0.0,
+      "material_error": 0.002730072708800435,
+      "chemical_energy_error": 0.01614079624414444,
+      "resources": {
+        "removed_potential": 0.0,
+        "removed": [
+          0.0,
+          0.0,
+          2000770.1749312591
+        ],
+        "supplied_potential": 8000000.009681368,
+        "potential": 1.553532305333647,
+        "names": [
+          "precursor_a",
+          "precursor_b",
+          "waste"
+        ],
+        "mass": [
+          0.18200251841699355,
+          0.20638055791641818,
+          0.0
+        ],
+        "released_energy": 0.0,
+        "withdrawn": [
+          1000345.4188408281,
+          1000345.3995373929,
+          0.0
+        ],
+        "withdrawn_potential": 8002763.273512884,
+        "returned_potential": 0.0,
+        "supplied": [
+          1000000.0020609869,
+          1000000.0003593551,
+          0.0
+        ],
+        "returned": [
+          0.0,
+          0.0,
+          2000770.1765284345
+        ]
+      }
+    }
+  },
+  "transition_neighbors": [
+    {
+      "file": "metrics-1792058045796933-3828298-0003.jsonl",
+      "line": 245,
+      "step": 5178515,
+      "time": 517851.5077165887,
+      "observed_at_unix": 1792073172.806056,
+      "metrics": {
+        "population": 224,
+        "births": 41928,
+        "deaths": 41768,
+        "biomass": 253.41282954122306,
+        "stored_energy": 431.86149200541007,
+        "internal_material": 4.553886984294842,
+        "material_error": 0.002764741890132427,
+        "chemical_energy_error": 0.016318952664732933,
+        "resources": {
+          "removed_potential": 0.0,
+          "removed": [
+            0.0,
+            0.0,
+            1988996.8280759258
+          ],
+          "supplied_potential": 7954172.192420318,
+          "potential": 93.39756728711089,
+          "names": [
+            "precursor_a",
+            "precursor_b",
+            "waste"
+          ],
+          "mass": [
+            10.438005727112346,
+            12.911386094665374,
+            35.4648663573003
+          ],
+          "released_energy": 0.0,
+          "withdrawn": [
+            994606.8431366388,
+            994604.0599430093,
+            0.0
+          ],
+          "withdrawn_potential": 7956843.612318592,
+          "returned_potential": 0.0,
+          "supplied": [
+            994271.6823012804,
+            994271.365803799,
+            0.0
+          ],
+          "returned": [
+            0.0,
+            0.0,
+            1989032.2945310422
+          ]
+        }
+      }
+    },
+    {
+      "file": "metrics-1792058045796933-3828298-0003.jsonl",
+      "line": 246,
+      "step": 5184960,
+      "time": 518496.0077261925,
+      "observed_at_unix": 1792073192.810898,
+      "metrics": {
+        "population": 214,
+        "births": 41962,
+        "deaths": 41812,
+        "biomass": 259.6454261579709,
+        "stored_energy": 417.59308800893564,
+        "internal_material": 4.665328408252375,
+        "material_error": 0.002756477100774646,
+        "chemical_energy_error": 0.016280262731015682,
+        "resources": {
+          "removed_potential": 0.0,
+          "removed": [
+            0.0,
+            0.0,
+            1991473.4163009548
+          ],
+          "supplied_potential": 7964071.682527525,
+          "potential": 99.5908869702364,
+          "names": [
+            "precursor_a",
+            "precursor_b",
+            "waste"
+          ],
+          "mass": [
+            12.253648083297342,
+            12.644073659261757,
+            25.856790179070956
+          ],
+          "released_energy": 0.0,
+          "withdrawn": [
+            995842.4639780021,
+            995841.7632932848,
+            0.0
+          ],
+          "withdrawn_potential": 7966736.909085147,
+          "returned_potential": 0.0,
+          "supplied": [
+            995509.1187954893,
+            995508.801836392,
+            0.0
+          ],
+          "returned": [
+            0.0,
+            0.0,
+            1991499.2746827025
+          ]
+        }
+      }
+    },
+    {
+      "file": "metrics-1792058045796933-3828298-0003.jsonl",
+      "line": 247,
+      "step": 5191415,
+      "time": 519141.5077358112,
+      "observed_at_unix": 1792073212.818538,
+      "metrics": {
+        "population": 223,
+        "births": 41999,
+        "deaths": 41840,
+        "biomass": 258.38948356311755,
+        "stored_energy": 404.09034878797,
+        "internal_material": 3.698042364092566,
+        "material_error": 0.002754480578005314,
+        "chemical_energy_error": 0.01626939605921507,
+        "resources": {
+          "removed_potential": 0.0,
+          "removed": [
+            0.0,
+            0.0,
+            1993952.7159629816
+          ],
+          "supplied_potential": 7973986.532332752,
+          "potential": 97.48778684126805,
+          "names": [
+            "precursor_a",
+            "precursor_b",
+            "waste"
+          ],
+          "mass": [
+            13.229646362450772,
+            11.14230034786624,
+            28.018580058392125
+          ],
+          "released_energy": 0.0,
+          "withdrawn": [
+            997080.8441934765,
+            997082.6213025339,
+            0.0
+          ],
+          "withdrawn_potential": 7976653.8619840415,
+          "returned_potential": 0.0,
+          "supplied": [
+            996748.4750201091,
+            996748.1580630789,
+            0.0
+          ],
+          "returned": [
+            0.0,
+            0.0,
+            1993980.7361347468
+          ]
+        }
+      }
+    },
+    {
+      "file": "metrics-1792058045796933-3828298-0003.jsonl",
+      "line": 248,
+      "step": 5197925,
+      "time": 519792.50774551183,
+      "observed_at_unix": 1792073232.829034,
+      "metrics": {
+        "population": 212,
+        "births": 42037,
+        "deaths": 41889,
+        "biomass": 251.78247416803745,
+        "stored_energy": 422.6579426301289,
+        "internal_material": 2.1857429119704745,
+        "material_error": 0.002745614852756262,
+        "chemical_energy_error": 0.016241023316979408,
+        "resources": {
+          "removed_potential": 0.0,
+          "removed": [
+            0.0,
+            0.0,
+            1996451.5207556256
+          ],
+          "supplied_potential": 7983985.861430148,
+          "potential": 107.78429588254278,
+          "names": [
+            "precursor_a",
+            "precursor_b",
+            "waste"
+          ],
+          "mass": [
+            12.976044345211307,
+            13.970029625424388,
+            34.59123252539479
+          ],
+          "released_energy": 0.0,
+          "withdrawn": [
+            998331.0139544383,
+            998329.7096845668,
+            0.0
+          ],
+          "withdrawn_potential": 7986642.89455602,
+          "returned_potential": 0.0,
+          "supplied": [
+            997998.3911912818,
+            997998.0741662552,
+            0.0
+          ],
+          "returned": [
+            0.0,
+            0.0,
+            1996486.113584352
+          ]
+        }
+      }
+    },
+    {
+      "file": "metrics-1792058045796933-3828298-0003.jsonl",
+      "line": 249,
+      "step": 5204150,
+      "time": 520415.0077547878,
+      "observed_at_unix": 1792073252.842998,
+      "metrics": {
+        "population": 214,
+        "births": 42080,
+        "deaths": 41930,
+        "biomass": 255.34953271457422,
+        "stored_energy": 429.8455768128895,
+        "internal_material": 1.6772122156715035,
+        "material_error": 0.002734287641942501,
+        "chemical_energy_error": 0.01618072297424078,
+        "resources": {
+          "removed_potential": 0.0,
+          "removed": [
+            0.0,
+            0.0,
+            1998844.213785415
+          ],
+          "supplied_potential": 7993547.432431148,
+          "potential": 104.87409950682766,
+          "names": [
+            "precursor_a",
+            "precursor_b",
+            "waste"
+          ],
+          "mass": [
+            12.331055596823376,
+            13.88746927988354,
+            29.959961345324658
+          ],
+          "released_energy": 0.0,
+          "withdrawn": [
+            999526.8554219934,
+            999524.9885065814,
+            0.0
+          ],
+          "withdrawn_potential": 7996207.375714299,
+          "returned_potential": 0.0,
+          "supplied": [
+            999193.587685654,
+            999193.270422133,
+            0.0
+          ],
+          "returned": [
+            0.0,
+            0.0,
+            1998874.1753443896
+          ]
+        }
+      }
+    },
+    {
+      "file": "metrics-1792058045796933-3828298-0003.jsonl",
+      "line": 250,
+      "step": 5220815,
+      "time": 522081.5077796206,
+      "observed_at_unix": 1792073272.835393,
+      "metrics": {
+        "population": 0,
+        "births": 42106,
+        "deaths": 42170,
+        "biomass": 0.0,
+        "stored_energy": 0.0,
+        "internal_material": 0.0,
+        "material_error": 0.002730072708800435,
+        "chemical_energy_error": 0.01614079624414444,
+        "resources": {
+          "removed_potential": 0.0,
+          "removed": [
+            0.0,
+            0.0,
+            2000770.1749312591
+          ],
+          "supplied_potential": 8000000.009681368,
+          "potential": 1.553532305333647,
+          "names": [
+            "precursor_a",
+            "precursor_b",
+            "waste"
+          ],
+          "mass": [
+            0.18200251841699355,
+            0.20638055791641818,
+            0.0
+          ],
+          "released_energy": 0.0,
+          "withdrawn": [
+            1000345.4188408281,
+            1000345.3995373929,
+            0.0
+          ],
+          "withdrawn_potential": 8002763.273512884,
+          "returned_potential": 0.0,
+          "supplied": [
+            1000000.0020609869,
+            1000000.0003593551,
+            0.0
+          ],
+          "returned": [
+            0.0,
+            0.0,
+            2000770.1765284345
+          ]
+        }
+      }
+    },
+    {
+      "file": "metrics-1792058045796933-3828298-0003.jsonl",
+      "line": 251,
+      "step": 5275020,
+      "time": 527502.0078603923,
+      "observed_at_unix": 1792073292.83791,
+      "metrics": {
+        "population": 0,
+        "births": 42106,
+        "deaths": 42170,
+        "biomass": 0.0,
+        "stored_energy": 0.0,
+        "internal_material": 0.0,
+        "material_error": 0.0027308030985295773,
+        "chemical_energy_error": 0.016143718734383583,
+        "resources": {
+          "removed_potential": 0.0,
+          "removed": [
+            0.0,
+            0.0,
+            2000770.1749312591
+          ],
+          "supplied_potential": 8000000.009681368,
+          "potential": 1.5535352273000171,
+          "names": [
+            "precursor_a",
+            "precursor_b",
+            "waste"
+          ],
+          "mass": [
+            0.18200327935846872,
+            0.20638052746653557,
+            0.0
+          ],
+          "released_energy": 0.0,
+          "withdrawn": [
+            1000345.4188408281,
+            1000345.3995373929,
+            0.0
+          ],
+          "withdrawn_potential": 8002763.273512884,
+          "returned_potential": 0.0,
+          "supplied": [
+            1000000.0020609869,
+            1000000.0003593551,
+            0.0
+          ],
+          "returned": [
+            0.0,
+            0.0,
+            2000770.1765284345
+          ]
+        }
+      }
+    }
+  ],
+  "latest_observed": {
+    "file": "metrics-1792058045796933-3828298-0004.jsonl",
+    "line": 82,
+    "step": 9977410,
+    "time": 997741.0148674995,
+    "observed_at_unix": 1792075032.922327,
+    "metrics": {
+      "population": 0,
+      "births": 42106,
+      "deaths": 42170,
+      "biomass": 0.0,
+      "stored_energy": 0.0,
+      "internal_material": 0.0,
+      "material_error": 0.0027308030985295773,
+      "chemical_energy_error": 0.016143718734383583,
+      "resources": {
+        "removed_potential": 0.0,
+        "removed": [
+          0.0,
+          0.0,
+          2000770.1749312591
+        ],
+        "supplied_potential": 8000000.009681368,
+        "potential": 1.5535352273000171,
+        "names": [
+          "precursor_a",
+          "precursor_b",
+          "waste"
+        ],
+        "mass": [
+          0.18200327935846872,
+          0.20638052746653557,
+          0.0
+        ],
+        "released_energy": 0.0,
+        "withdrawn": [
+          1000345.4188408281,
+          1000345.3995373929,
+          0.0
+        ],
+        "withdrawn_potential": 8002763.273512884,
+        "returned_potential": 0.0,
+        "supplied": [
+          1000000.0020609869,
+          1000000.0003593551,
+          0.0
+        ],
+        "returned": [
+          0.0,
+          0.0,
+          2000770.1765284345
+        ]
+      }
+    }
+  },
+  "all_later_rows_empty": true,
+  "archives": [
+    {
+      "file": "state-000005137985-1792058045796933-3828298.jls",
+      "bytes": 1723805,
+      "sha256": "74e27de243738ff0ff08826accaa166303d0eaadab5ff0947852fc9053078319"
+    },
+    {
+      "file": "state-000006240705-1792058045796933-3828298.jls",
+      "bytes": 338453,
+      "sha256": "35dd7c3a0df4cc53589e3920a3456375ece78daf5174c84b8e23733046590eb8"
+    }
+  ],
+  "parent_hashes": {
+    "preserved_parent": "d7f81c4cbbf21b05ce1918a142764eb0d22e1d6b68565c012c66cd759a6f01de",
+    "original_parent": "d7f81c4cbbf21b05ce1918a142764eb0d22e1d6b68565c012c66cd759a6f01de"
+  },
+  "source_provenance_sha256": "d6871255b04dd8fb6beb18c5d5baae6a74c530a9be2ae2e143ab2739e5ecab9b",
+  "source_mismatches": [],
+  "profile": {
+    "model": "cellular",
+    "seed": 401,
+    "dt": 0.1,
+    "snapshot_seconds": 20.0,
+    "checkpoint_seconds": 90.0,
+    "batch": 5,
+    "sleep_seconds": 0.001,
+    "grid": {
+      "shape": [
+        64,
+        48,
+        1
+      ],
+      "extent": [
+        32.0,
+        24.0,
+        1.0
+      ]
+    },
+    "cellular": {
+      "population": 64,
+      "capacity": 4096,
+      "hidden": 8,
+      "exchange_radius": 1.0,
+      "division_mass": 1.8,
+      "minimum_mass": 0.25,
+      "store_capacity": 0.8,
+      "energy_capacity": 3.0,
+      "basal_rate": 0.035,
+      "efficiency": 0.65,
+      "junction_rate": 0.8,
+      "response_time": 0.8,
+      "adaptation_time": 6.0,
+      "plasticity_rate": 0.002,
+      "plasticity_decay": 0.02,
+      "mutation": 0.08,
+      "mutation_probability": 0.03
+    },
+    "resources": {
+      "names": [
+        "precursor_a",
+        "precursor_b",
+        "waste"
+      ],
+      "potentials": [
+        4.0,
+        4.0,
+        0.0
+      ],
+      "initial": [
+        0.45,
+        0.45,
+        0.0
+      ],
+      "diffusion": [
+        0.06,
+        0.06,
+        0.03
+      ],
+      "source_rates": [
+        0.0025,
+        0.0025,
+        0.0
+      ],
+      "source_budgets": [
+        1000000.0,
+        1000000.0,
+        0.0
+      ],
+      "sink_rates": [
+        0.0,
+        0.0,
+        0.006
+      ],
+      "sink_budgets": [
+        0.0,
+        0.0,
+        10000000.0
+      ],
+      "spatial_niches": true,
+      "niche_contrast": 0.9,
+      "niche_waves": [
+        1,
+        0,
+        0
+      ]
+    }
+  },
+  "profile_sha256": "47bc2bfa0263f13b4e021925a5148a4e89e2bcb65e5ac78484d945db979474f5",
+  "observed_at_utc": "2026-10-15T14:37:22.564888+00:00",
+  "session": {
+    "file": "session-1792058045796933-3828298.json",
+    "sha256": "e02fbba656d847905424779c335418d6e9fc0ef516eb5e8060e68f4311da389e",
+    "initial_step": 206665,
+    "profile_sha256": "47bc2bfa0263f13b4e021925a5148a4e89e2bcb65e5ac78484d945db979474f5",
+    "julia_version": "1.12.4",
+    "loaded_sources": {
+      "core.jl": "14e35f0ff39a67a55265d4d1046d470e6043140b663da00d5eda0e4179cc69b6",
+      "neural_workspace.jl": "ecdd45856bc0b3c61708de90814d1abb33bc1232a0f9ff5785b32b9bc39a9139",
+      "writing.jl": "78fba7cd46f03749bdc56547b7ce5622f7ba3ea42cc34801829345dae3975e05",
+      "Interior.jl": "97836dc9628d4b24cf54fe9696b9932fb3528cf613880013cd99a29cc6f63681",
+      "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+      "cellular.jl": "44cb6fc4ff7e94b6b0e7f06dafa294f7b9964bb5c6801ba0a3a3378763869d3a",
+      "cellular_contacts.jl": "30a198bc801675ca062325cb7dbaea5af15e654f299f2aab3747762f15460654",
+      "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26",
+      "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+      "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+      "dose_writer.jl": "b8d1b4013921a3c82388ee87a7ede00b97964a1894062f2a07339f2c6be197eb",
+      "cellular_transport.jl": "a1fd389de2c9198c9886191ef1a54730e2cd7dd304c5ee1fcb823fbeb3b72300",
+      "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+      "cellular_arena.jl": "2ef965717c99cd0c46a8acd9ceb7da26232201cb18547bd23712e989688429e2",
+      "experiments.jl": "e2e513ac4bfb0af90b5d1c870c5f403705eddd0606316ee2f86c5f5bc83eb527",
+      "metabolic_ecology.jl": "2f599a1d6ea0a5552a594113d57e238e4c6ff3c1fd8d74de5a51f83a77179bb1",
+      "mechanics.jl": "81001af879163392dde498534c9f099bcc79a16b8dac5104d527da7cc9f4fdac",
+      "neural_ecology.jl": "ed0496adb31ce4511f8bc0d5343ff843c410c39c51d30c165b3cf5eac1135df2",
+      "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+      "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+      "compartments.jl": "8eec60b56379a3d366cd789ad62e4c7690a0c10ce5af8a485f66b670c8448751",
+      "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+      "arena.jl": "8ea2c2628cd7af71ea3e5ebe6f05a9a2d6758191bb17386d51e530401e5a9696",
+      "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+      "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+      "implicit_phase.jl": "1fb617707591f89784b95171e0558065101b3d992f7b3eabd16a7bf01dca4ceb",
+      "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+      "recurrent_material.jl": "cc1d2b3a13e57c5fa8f2c85a9cb62fdde2d9193e6d202038e3a932ad9bf36d4d",
+      "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+      "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+      "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+    },
+    "parent_sources": {
+      "core.jl": "3ef44008f6a9ce8399bc60352da94dc19e670e67677944369934138042718bad",
+      "neural_workspace.jl": "ecdd45856bc0b3c61708de90814d1abb33bc1232a0f9ff5785b32b9bc39a9139",
+      "writing.jl": "78fba7cd46f03749bdc56547b7ce5622f7ba3ea42cc34801829345dae3975e05",
+      "Interior.jl": "21d8aa2885ecd8a709c54c9382631a42f37052a467b0ceda0452e37c6797c554",
+      "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+      "cellular.jl": "23952e4683db1b917cdf3d752f33a5ccc8fad3170ba6bcd1cfa10d40b5aff8b8",
+      "cellular_contacts.jl": "677e79d99e5f1aecee87eb9e042da51b0e96df3251722f627d556c8745bca663",
+      "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26",
+      "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+      "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+      "dose_writer.jl": "b8d1b4013921a3c82388ee87a7ede00b97964a1894062f2a07339f2c6be197eb",
+      "cellular_transport.jl": "a1fd389de2c9198c9886191ef1a54730e2cd7dd304c5ee1fcb823fbeb3b72300",
+      "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+      "cellular_arena.jl": "2ef965717c99cd0c46a8acd9ceb7da26232201cb18547bd23712e989688429e2",
+      "experiments.jl": "e2e513ac4bfb0af90b5d1c870c5f403705eddd0606316ee2f86c5f5bc83eb527",
+      "metabolic_ecology.jl": "2f599a1d6ea0a5552a594113d57e238e4c6ff3c1fd8d74de5a51f83a77179bb1",
+      "mechanics.jl": "81001af879163392dde498534c9f099bcc79a16b8dac5104d527da7cc9f4fdac",
+      "neural_ecology.jl": "ed0496adb31ce4511f8bc0d5343ff843c410c39c51d30c165b3cf5eac1135df2",
+      "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+      "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+      "compartments.jl": "8eec60b56379a3d366cd789ad62e4c7690a0c10ce5af8a485f66b670c8448751",
+      "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+      "arena.jl": "8ea2c2628cd7af71ea3e5ebe6f05a9a2d6758191bb17386d51e530401e5a9696",
+      "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+      "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+      "implicit_phase.jl": "1fb617707591f89784b95171e0558065101b3d992f7b3eabd16a7bf01dca4ceb",
+      "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+      "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+      "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+      "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+    },
+    "parent_checkpoint_sha256": "d7f81c4cbbf21b05ce1918a142764eb0d22e1d6b68565c012c66cd759a6f01de"
+  },
+  "source_provenance_summary": {
+    "schema": "interior-pinned-optimized-soak",
+    "git_head_at_capture": "a2a2ec6561ca3187647602eb885aa281aa3358ad",
+    "source_state": "Frozen committed integrated runtime; full suite1783 assertions passed"
+  },
+  "source_manifest_verified_files": 115,
+  "checkpoint_inspection": {
+    "kind": "read-only local inspection of preserved remote checkpoints",
+    "julia": "1.12.4",
+    "loaded_sources": {
+      "core.jl": "14e35f0ff39a67a55265d4d1046d470e6043140b663da00d5eda0e4179cc69b6",
+      "neural_workspace.jl": "ecdd45856bc0b3c61708de90814d1abb33bc1232a0f9ff5785b32b9bc39a9139",
+      "writing.jl": "78fba7cd46f03749bdc56547b7ce5622f7ba3ea42cc34801829345dae3975e05",
+      "Interior.jl": "97836dc9628d4b24cf54fe9696b9932fb3528cf613880013cd99a29cc6f63681",
+      "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+      "cellular.jl": "44cb6fc4ff7e94b6b0e7f06dafa294f7b9964bb5c6801ba0a3a3378763869d3a",
+      "cellular_contacts.jl": "30a198bc801675ca062325cb7dbaea5af15e654f299f2aab3747762f15460654",
+      "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26",
+      "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+      "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+      "dose_writer.jl": "b8d1b4013921a3c82388ee87a7ede00b97964a1894062f2a07339f2c6be197eb",
+      "cellular_transport.jl": "a1fd389de2c9198c9886191ef1a54730e2cd7dd304c5ee1fcb823fbeb3b72300",
+      "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+      "cellular_arena.jl": "2ef965717c99cd0c46a8acd9ceb7da26232201cb18547bd23712e989688429e2",
+      "experiments.jl": "e2e513ac4bfb0af90b5d1c870c5f403705eddd0606316ee2f86c5f5bc83eb527",
+      "metabolic_ecology.jl": "2f599a1d6ea0a5552a594113d57e238e4c6ff3c1fd8d74de5a51f83a77179bb1",
+      "mechanics.jl": "81001af879163392dde498534c9f099bcc79a16b8dac5104d527da7cc9f4fdac",
+      "neural_ecology.jl": "ed0496adb31ce4511f8bc0d5343ff843c410c39c51d30c165b3cf5eac1135df2",
+      "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+      "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+      "compartments.jl": "8eec60b56379a3d366cd789ad62e4c7690a0c10ce5af8a485f66b670c8448751",
+      "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+      "arena.jl": "8ea2c2628cd7af71ea3e5ebe6f05a9a2d6758191bb17386d51e530401e5a9696",
+      "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+      "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+      "implicit_phase.jl": "1fb617707591f89784b95171e0558065101b3d992f7b3eabd16a7bf01dca4ceb",
+      "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+      "recurrent_material.jl": "cc1d2b3a13e57c5fa8f2c85a9cb62fdde2d9193e6d202038e3a932ad9bf36d4d",
+      "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+      "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+      "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+    },
+    "checkpoints": [
+      {
+        "file": "last-archived-populated.jls",
+        "checkpoint_sha256": "74e27de243738ff0ff08826accaa166303d0eaadab5ff0947852fc9053078319",
+        "step": 5137985,
+        "time": 513798.50765619427,
+        "population": 217,
+        "births": 41655,
+        "deaths": 41502,
+        "source_remaining": [
+          13510.057987300417,
+          13510.369896731932,
+          0.0
+        ],
+        "sink_remaining": [
+          0,
+          0,
+          8026569.175496174
+        ],
+        "supplied": [
+          986489.9438731357,
+          986489.6304837815,
+          0.0
+        ],
+        "removed": [
+          0,
+          0,
+          1973432.1927967782
+        ],
+        "dissolved_inventory": [
+          12.463223135442057,
+          12.406913007571973,
+          31.215685583819926
+        ],
+        "biomass": 259.3710509160951,
+        "intracellular_inventory": [
+          1.7225859172834,
+          0.7630990056534199
+        ],
+        "stored_energy": 422.7639448185979,
+        "material_error": 0.002806617645546794,
+        "chemical_energy_error": 0.0165169145911932,
+        "strict_source_match": true,
+        "resource_grid_aliases_preserved": true,
+        "advanced_steps": 0
+      },
+      {
+        "file": "first-archived-empty.jls",
+        "checkpoint_sha256": "35dd7c3a0df4cc53589e3920a3456375ece78daf5174c84b8e23733046590eb8",
+        "step": 6240705,
+        "time": 624070.5092993751,
+        "population": 0,
+        "births": 42106,
+        "deaths": 42170,
+        "source_remaining": [
+          2.2196567674905102e-42,
+          2.2476827367770066e-42,
+          0.0
+        ],
+        "sink_remaining": [
+          0,
+          0,
+          7999231.201722396
+        ],
+        "supplied": [
+          1000000.0020609869,
+          1000000.0003593551,
+          0.0
+        ],
+        "removed": [
+          0,
+          0,
+          2000770.1749312591
+        ],
+        "dissolved_inventory": [
+          0.18200327935846872,
+          0.20638052746653557,
+          0.0
+        ],
+        "biomass": 0,
+        "intracellular_inventory": [
+          0,
+          0
+        ],
+        "stored_energy": 0,
+        "material_error": 0.0027308030985295773,
+        "chemical_energy_error": 0.016143718734383583,
+        "strict_source_match": true,
+        "resource_grid_aliases_preserved": true,
+        "advanced_steps": 0
+      }
+    ]
+  },
+  "process_state_at_inspection": "running",
+  "nominal_funding_boundary": {
+    "per_precursor_budget": 1000000.0,
+    "per_precursor_supply_rate": 1.92,
+    "model_time": 520833.3333333334,
+    "scope": "nominal rate-density estimate, not a measured exact exhaustion or death time"
+  },
+  "limits": [
+    "population loss is bounded by adjacent sampled observations, not an exact death time",
+    "funding completion and extinction occur in the same sampled interval; their exact event ordering is unresolved",
+    "remaining source budgets are positive subnormal amounts, not exactly zero; dissolved precursor remains",
+    "the simulation process was still running; no remote stop, restart, refuel, reseed or state advance was performed",
+    "these are outcomes of this finite-funded source-pinned continuation, not bounds on possible organization"
+  ],
+  "preserved_local_evidence": {
+    "root": "outputs/optimized-soak-extinction-20261015",
+    "remote_observation_sha256": "8ad486dff21d93e077613b7d4a95fd5c2817818e91b98169fef85dbe51e1fdc4",
+    "checkpoint_inspection_sha256": "699c23724ad1d66e7108b401644ff2e418a904b405cee4550a99b26b255d0b75"
+  }
+}

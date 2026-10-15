@@ -89,7 +89,7 @@ with the corrected observer and preserves that original report unchanged.
 
 The 64² time refinement changes final mean permeability .4602→.4549 and spent
 physical material 1041.52→1041.11. Spatial refinement gives permeability .4951
-and spent982.20, so a converged morphology or quantitative continuum limit has
+and spent material 982.20, so a converged morphology or quantitative continuum limit has
 not been established. At 128² the x spectrum peaks around wavelength6 at t16–64;
 power beyond .7 of Nyquist is .00078/.00482/.007 at t16/32/64. The 64² run has
 more high-frequency power. Both eventually coarsen toward the box scale by t160
@@ -98,27 +98,27 @@ transient, not a demonstrated stationary ecosystem.
 
 The actual 128² recording is
 `outputs/living-tissue-20261015-regrowth128`: `sections.png`, standalone
-`playback.html`, and `activity-film.mp4` (101 recorded frames, 1216×688,10.1s).
+`playback.html`, and `activity-film.mp4` (101 recorded frames, 1216×688, 10.1s).
 The film compares material and signed excitation without synthetic intermediate
 simulation frames. Browser interaction QA was unavailable because the shared
 browser profile was occupied; generated JavaScript passed syntax checking.
-Fixed-range U8 preview fields may clip B above1.2; native Float32 fields remain
+Fixed-range U8 preview fields may clip B above 1.2; native Float32 fields remain
 the quantitative source.
 
 ## Native-volume gate and optical contract
 
-`experiments/art/living-tissue-volume128.toml` requests native128³, physical
-extent24³, dt.02, t0–80 and 41 captures every2timeunits. It uses the same physical
+`experiments/art/living-tissue-volume128.toml` requests native 128³, physical
+extent 24³, dt .02, t0–80 and 41 captures every 2 time units. It uses the same physical
 coefficients and initializer construction, with a genuinely 3D random spectrum.
 This is a new specimen, not an extrusion or reconstructed anatomy from the sheet.
 GPU execution requires the coordinated host queue. The gate first compares a
-dense randomized16³ CPU/device trajectory, including zero-fuel/reserve donors,
+dense randomized 16³ CPU/device trajectory, including zero-fuel/reserve donors,
 then requires exact same-device restart and continuation before any volume bake.
 
-The persistent simulation arrays cost64B/site (134217728bytes at128³). The
+The persistent simulation arrays cost 64 B/site (134217728 bytes at 128³). The
 runner preflights resident/capture budgets; the requested artifact budget is
-3000000000bytes including native captures, restart, generic record and event maps.
-The host process is separately bounded to300s,8GiB,no swap,CPU10/11,nice15. JIT,
+3000000000 bytes including native captures, restart, generic record and event maps.
+The host process is separately bounded to 300s, 8GiB, no swap, CPU10/11, nice15. JIT,
 captures, host transfers and filesystem writes belong to the bake wall time;
 they must not be presented as an isolated kernel throughput result.
 
@@ -129,14 +129,38 @@ Float32 dtype and Julia/Fortran array order. Files `precursor.f32`, `biomass.f32
 persistent boundaries, signed x to phase color, and N to surrounding resource;
 q/R are available independently. Opacity is a rendering choice, not a recorded
 mechanical surface. A 2D section of the volume must be identified as a section.
-No native-volume result is claimed until that separate gate and bake complete.
+The immutable `5377470` AMD gate and bake completed successfully. Both seven-field
+and reserve CPU/device maximum errors were 1.1920929e-7; exact same-device restart
+and 11-step continuation passed. The 4000 complete two-stage steps and 40 later
+captures took 12.37695s, or 677.76 million voxel-steps/s. Initial capture, compilation,
+warmup and final checkpoint/generic record/event maps are outside that timer.
+The retained 41 captures and other artifacts total 2921902210 bytes, below 3GB.
+This measures this continuum law, not an individual-arena speedup.
+
+Physical material changed by 6.565e-9 relative; spent material ended at 13278.61 and
+finite reserve at 152732.57 from 165888. Sampled opening/reformation events total
+6461350/5517411, across 2062260/2045915 sites. Mean permeability ended at .29249.
+Source/runtime/control provenance and actual diagnostics are in
+[`living-tissue-turnover-amd-results.json`](living-tissue-turnover-amd-results.json).
+
+Three orthogonal actual central sections at t10/30/68 show fine partitions and
+larger bands. At t30, B 10/50/90-percentiles are .106/.257/.637 and M are
+.017/.054/.299. A common B+M threshold .20 leaves low-density fractions
+12.2%/32.1%/38.0% at those times; this supports a fixed optical contrast, not a
+claim of enclosed mechanical cavities. Matrix has a sparse high tail, so fixed
+soft optical saturation is preferable to per-frame normalization. Excitation's
+radial peak shifts from wavelength 3.43 at t10 to box scale 24 by t30/68; radial
+power beyond .7 Nyquist remains .00025/.00430/.00187. The native 3D study therefore
+also coarsens, and its most useful detailed organization is early/intermediate.
+The local artifact directory is
+`outputs/living-tissue-20261015-volume128-5377470/volume`.
 
 ## Checks
 
-The focused suite `test/living_tissue_turnover.jl` passes41 tests covering donor
+The focused suite `test/living_tissue_turnover.jl` passes 41 tests covering donor
 funding and conservative transfers, hopping, zero-fuel action suppression,
 2D/3D cell-average refinement, physical inventories, process composition,
 generic recording and exact restart. Separate small CPU checks exercised the
-4³ volume writer and dense16³ parity-harness plumbing; CPU-vs-CPU identity is
+4³ volume writer and dense 16³ parity-harness plumbing; CPU-vs-CPU identity is
 not an accelerator parity result. Original tissue source pins and trajectories
 remain separate from this law.

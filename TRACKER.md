@@ -30,6 +30,39 @@ The existing three source-pinned soaks remain separate. Their established
 observatory schedule outlives this session if necessary; its optimized soak has a
 21:54 UTC deadline. Do not extend, reseed or source-migrate those experiments.
 
+### Work in flight, 14:55 UTC
+
+- GPU: recovery owns the bounded resource-zero atomic experiment, CPU10–11,
+  8GiB/no swap/nice15. Closed128³ preliminary full-step parity is exact with
+  1.308× throughput; await the fed cases and complete report before promotion.
+  Next: constructive-world batch composition gate, then the artist's separately
+  pinned hotter amber specimen. One GPU process at a time; explicit handoffs.
+- Native128³ paid-turnover tissue completed4000 steps and41 captures. Measured
+  loop12.377s includes40 noninitial captures; startup/finalization are separate.
+  Actual early3D partitions coarsen later. Native fields are being copied and
+  optically rendered; no individual-cell or evolutionary claim.
+- CPU14–15: artist's bounded amber film batches on hbox Blender5.2.2. Local
+  high-resolution retained-garden rendering and the original513³ Metal producer
+  remain active. No shared caches or other-session processes are touched.
+- Optional CPU matrix drag integrated at8426a5f:820 focused assertions and10
+  independent mechanical checks; default100-step snapshot unchanged. Four fresh
+  paired ecological arms continue under their own frozen source. Experimental
+  constructive-world batching has CPU composition/checkpoint/failure gates;
+  native composition remains pending.
+- The materialized128³ timestep comparison completed11 trajectories. dt.002
+  delivers1.86× simulated-time throughput versus.001, with2.97% bound-inventory
+  and4.09% field-L2 discrepancy from the fine reference at time.256. No production
+  timestep changed. Longer ecological sensitivity remains unresolved.
+- Original optimized soak population loss is verified between sampled times
+  520415 and522081, spanning its nominal million-unit funding boundaries.
+  Strict archived checkpoints retain tiny source remnants and dissolved fuel;
+  exact event ordering is unresolved. No run control, refueling or reseeding.
+  Broad/mosaic remain separate. Latest full inspection:
+  `outputs/observatory/20261015-1433.json`; keep bounded observatory schedule.
+- New representation studies: conservative chemistry/coarse-cell coupling,
+  multirate mechanics/habitat evolution, and tiled cell↔field support. These are
+  separate prototypes; measured complete trajectories determine utility.
+
 ## Current convergence
 
 **Representation experiments (13:55 UTC):** native AMD support reconstruction
