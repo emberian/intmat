@@ -1,0 +1,171 @@
+{
+  "format": "living-tissue-turnover-review-v1",
+  "observation": "Replayed actual native Float32 captures with low=.10 high=.24 hysteresis, initially occupied at density>=low, reformation only after observed opening. Historical reports are retained; the old high-threshold initializer produced two extra reformation counts in regrowth128.",
+  "runs": [
+    {
+      "id": "living-tissue-turnover-pilot",
+      "dimensions": [
+        64,
+        64,
+        1
+      ],
+      "dt": 0.04,
+      "steps": 4000,
+      "elapsed_seconds": 9.369173708,
+      "source_sha256": {
+        "studies/living_tissue_runner.jl": "c703db743f163c4ab1b87476620b0c6f4ddb359f921356733bf56115ebdf122b",
+        "studies/living_tissue.jl": "401d9068b33e783fec48f9af016847567322f9ad5c34973fb43f840a6625f85e",
+        "studies/living_tissue_turnover_run.jl": "7824217682d813f9be0e44cd5641ebde10a15d195a07cd53d5d2f4a1e7c35c6b",
+        "src/recurrent_material.jl": "e9457d0d6e31f74950fa4be8ef84b138b020c0de7fc4b95c9a7f3cd5db148347",
+        "studies/living_tissue_observations.jl": "e1fd00e3853b790900a5dd0a1b5d4699cd9fcafe128a3a0e759caf3d4113e55b",
+        "studies/living_tissue_turnover.jl": "644c3e4017a11c4e17ac6c2f62c19082a393626a9e0f5da6cd8150bb9b843070",
+        "src/core.jl": "b4302b90eaeba213360e8a15ce8b7e4cb4c491606657e3e500d2fb8507753a52"
+      },
+      "sample_count": 101,
+      "observed_minimum_solid": 0.13681624829769135,
+      "observed_maximum_solid": 1.165142297744751,
+      "reopening_events": 0,
+      "reformation_events": 0,
+      "reopened_sites": 0,
+      "reformed_sites": 0,
+      "physical_material_initial": 2799.2916640557814,
+      "physical_material_final": 2799.2916675688466,
+      "physical_spent_final": 1007.836911700666,
+      "physical_reserve_final": 1328.839415403083,
+      "mean_permeability_final": 0.21498804,
+      "historical_reformation_events": 0
+    },
+    {
+      "id": "living-tissue-reopening-pilot",
+      "dimensions": [
+        64,
+        64,
+        1
+      ],
+      "dt": 0.04,
+      "steps": 4000,
+      "elapsed_seconds": 6.65885025,
+      "source_sha256": {
+        "studies/living_tissue_runner.jl": "c703db743f163c4ab1b87476620b0c6f4ddb359f921356733bf56115ebdf122b",
+        "studies/living_tissue.jl": "401d9068b33e783fec48f9af016847567322f9ad5c34973fb43f840a6625f85e",
+        "studies/living_tissue_turnover_run.jl": "7824217682d813f9be0e44cd5641ebde10a15d195a07cd53d5d2f4a1e7c35c6b",
+        "src/recurrent_material.jl": "e9457d0d6e31f74950fa4be8ef84b138b020c0de7fc4b95c9a7f3cd5db148347",
+        "studies/living_tissue_observations.jl": "e1fd00e3853b790900a5dd0a1b5d4699cd9fcafe128a3a0e759caf3d4113e55b",
+        "studies/living_tissue_turnover.jl": "644c3e4017a11c4e17ac6c2f62c19082a393626a9e0f5da6cd8150bb9b843070",
+        "src/core.jl": "b4302b90eaeba213360e8a15ce8b7e4cb4c491606657e3e500d2fb8507753a52"
+      },
+      "sample_count": 101,
+      "observed_minimum_solid": 0.07766564190387726,
+      "observed_maximum_solid": 1.198359727859497,
+      "reopening_events": 323,
+      "reformation_events": 323,
+      "reopened_sites": 314,
+      "reformed_sites": 314,
+      "physical_material_initial": 2799.2916640557814,
+      "physical_material_final": 2799.291652237429,
+      "physical_spent_final": 554.4706869749352,
+      "physical_reserve_final": 1810.1885044164956,
+      "mean_permeability_final": 0.43253738,
+      "historical_reformation_events": 323
+    },
+    {
+      "id": "living-tissue-regrowth64",
+      "dimensions": [
+        64,
+        64,
+        1
+      ],
+      "dt": 0.04,
+      "steps": 4000,
+      "elapsed_seconds": 16.867907625,
+      "source_sha256": {
+        "studies/living_tissue_runner.jl": "93b837249cc0d0dbdd7b6fa609a067c8710c109e3572785a1f76485081e6fdb3",
+        "studies/living_tissue.jl": "43a5e722e08963124c186147b2d15a54963292828e1c1064c2f277782a5816f0",
+        "studies/living_tissue_turnover_run.jl": "073ad9149da65a4d9c39696a2d0108dac71e4b3e98ae5eaa5e2ed2e66a213007",
+        "src/recurrent_material.jl": "e9457d0d6e31f74950fa4be8ef84b138b020c0de7fc4b95c9a7f3cd5db148347",
+        "studies/living_tissue_observations.jl": "e1fd00e3853b790900a5dd0a1b5d4699cd9fcafe128a3a0e759caf3d4113e55b",
+        "studies/living_tissue_turnover.jl": "ca543a8a3eb6e1eb3c93cfc4e16b86f03674ab6ca9598bdf328988ac09f76617",
+        "src/core.jl": "b4302b90eaeba213360e8a15ce8b7e4cb4c491606657e3e500d2fb8507753a52"
+      },
+      "sample_count": 101,
+      "observed_minimum_solid": 0.05886249244213104,
+      "observed_maximum_solid": 1.8013355731964111,
+      "reopening_events": 29467,
+      "reformation_events": 26135,
+      "reopened_sites": 4083,
+      "reformed_sites": 4074,
+      "physical_material_initial": 7407.3600000275765,
+      "physical_material_final": 7407.360018453946,
+      "physical_spent_final": 1041.5235038101673,
+      "physical_reserve_final": 5883.788953989744,
+      "mean_permeability_final": 0.4601737,
+      "historical_reformation_events": 26135
+    },
+    {
+      "id": "living-tissue-regrowth64-halfstep",
+      "dimensions": [
+        64,
+        64,
+        1
+      ],
+      "dt": 0.02,
+      "steps": 8000,
+      "elapsed_seconds": 24.26044725,
+      "source_sha256": {
+        "studies/living_tissue_runner.jl": "93b837249cc0d0dbdd7b6fa609a067c8710c109e3572785a1f76485081e6fdb3",
+        "studies/living_tissue.jl": "43a5e722e08963124c186147b2d15a54963292828e1c1064c2f277782a5816f0",
+        "studies/living_tissue_turnover_run.jl": "a53a3f93aaa79349921ea3765d9f94012fd8f59ce758ab9768f16544b5e0f925",
+        "src/recurrent_material.jl": "e9457d0d6e31f74950fa4be8ef84b138b020c0de7fc4b95c9a7f3cd5db148347",
+        "studies/living_tissue_observations.jl": "e1fd00e3853b790900a5dd0a1b5d4699cd9fcafe128a3a0e759caf3d4113e55b",
+        "studies/living_tissue_turnover.jl": "ca543a8a3eb6e1eb3c93cfc4e16b86f03674ab6ca9598bdf328988ac09f76617",
+        "src/core.jl": "b4302b90eaeba213360e8a15ce8b7e4cb4c491606657e3e500d2fb8507753a52"
+      },
+      "sample_count": 101,
+      "observed_minimum_solid": 0.0587872676551342,
+      "observed_maximum_solid": 1.7879279851913452,
+      "reopening_events": 29475,
+      "reformation_events": 26244,
+      "reopened_sites": 4082,
+      "reformed_sites": 4074,
+      "physical_material_initial": 7407.3600000275765,
+      "physical_material_final": 7407.359852448619,
+      "physical_spent_final": 1041.1051163021475,
+      "physical_reserve_final": 5883.248983338475,
+      "mean_permeability_final": 0.4549237,
+      "historical_reformation_events": 26244
+    },
+    {
+      "id": "living-tissue-regrowth128",
+      "dimensions": [
+        128,
+        128,
+        1
+      ],
+      "dt": 0.02,
+      "steps": 8000,
+      "elapsed_seconds": 85.872125792,
+      "source_sha256": {
+        "studies/living_tissue_runner.jl": "93b837249cc0d0dbdd7b6fa609a067c8710c109e3572785a1f76485081e6fdb3",
+        "studies/living_tissue.jl": "43a5e722e08963124c186147b2d15a54963292828e1c1064c2f277782a5816f0",
+        "studies/living_tissue_turnover_run.jl": "a53a3f93aaa79349921ea3765d9f94012fd8f59ce758ab9768f16544b5e0f925",
+        "src/recurrent_material.jl": "e9457d0d6e31f74950fa4be8ef84b138b020c0de7fc4b95c9a7f3cd5db148347",
+        "studies/living_tissue_observations.jl": "e1fd00e3853b790900a5dd0a1b5d4699cd9fcafe128a3a0e759caf3d4113e55b",
+        "studies/living_tissue_turnover.jl": "ca543a8a3eb6e1eb3c93cfc4e16b86f03674ab6ca9598bdf328988ac09f76617",
+        "src/core.jl": "b4302b90eaeba213360e8a15ce8b7e4cb4c491606657e3e500d2fb8507753a52"
+      },
+      "sample_count": 101,
+      "observed_minimum_solid": 0.05432379990816116,
+      "observed_maximum_solid": 2.9007656574249268,
+      "reopening_events": 128164,
+      "reformation_events": 112141,
+      "reopened_sites": 16384,
+      "reformed_sites": 16383,
+      "physical_material_initial": 7407.359999955806,
+      "physical_material_final": 7407.359978441606,
+      "physical_spent_final": 982.2008680924773,
+      "physical_reserve_final": 5953.092870309949,
+      "mean_permeability_final": 0.49506265,
+      "historical_reformation_events": 112143
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+id = "living-tissue-volume128"
+title = "Rooms without a plan"
+description = "A nearly uniform volume develops active partitions, spending a finite reserve to build, dissolve and relocate matter in opposing phases."
+dimensions = [128, 128, 128]
+extent = [24.0, 24.0, 24.0]
+seed = 921
+noise_model = "bandlimited"
+dt = 0.02
+steps = 4000
+capture_every = 100
+reserve = 12.0
+resident_budget_mb = 512
+capture_budget_bytes = 3000000000
+
+[base]
+neural_gain = 2.8
+inhibition_gain = 2.3
+inhibition_time = 4.5
+excitation_diffusion = 0.08
+growth = 1.0
+capacity = 1.2
+barrier = 8.0
+
+[phase]
+renewal = 0.12
+target_precursor = 0.6
+phase_work = 0.08
+construction = 0.2
+unbuilding = 1.2
+withdrawal = 1.8
+motility = 0.10
+inhibition_diffusion = 0.15
