@@ -1,0 +1,1598 @@
+{
+  "format": "living-tissue-finite-mode-v1",
+  "nonlinear_runs": [
+    {
+      "id": "living-tissue-finite-mode64",
+      "dimensions": [
+        64,
+        64,
+        1
+      ],
+      "extent": [
+        24,
+        24,
+        1
+      ],
+      "dt": 0.005,
+      "steps": 20000,
+      "parameters": {
+        "base": {
+          "precursor_diffusion": 0.12,
+          "biomass_diffusion": 0.0005,
+          "excitation_diffusion": 0.08,
+          "barrier": 8,
+          "taxis": 0,
+          "taxis_sensitivity": 8,
+          "growth": 1,
+          "capacity": 0.32,
+          "turnover": 0.005,
+          "starvation_turnover": 0.02,
+          "construction": 0,
+          "erosion": 0,
+          "metabolic_work": 0.055,
+          "half_saturation": 0.15,
+          "tissue_saturation": 0.12,
+          "neural_gain": 1.8,
+          "inhibition_gain": 2.3,
+          "inhibition_time": 4.5,
+          "memory_time": 40,
+          "memory_feedback": 0.3,
+          "matrix_feedback": 0.15,
+          "activity_control": 1,
+          "constant_activity": 0.5
+        },
+        "phase": {
+          "renewal": 0.12,
+          "target_precursor": 0.6,
+          "phase_work": 0.08,
+          "construction": 0.2,
+          "unbuilding": 1.2,
+          "withdrawal": 1.8,
+          "motility": 0.1,
+          "taxis_sensitivity": 12,
+          "inhibition_diffusion": 4,
+          "phase_threshold": 0.04
+        }
+      },
+      "elapsed_seconds": 23.576920667,
+      "source_sha256": {
+        "studies/living_tissue_runner.jl": "93b837249cc0d0dbdd7b6fa609a067c8710c109e3572785a1f76485081e6fdb3",
+        "studies/living_tissue.jl": "43a5e722e08963124c186147b2d15a54963292828e1c1064c2f277782a5816f0",
+        "studies/living_tissue_turnover_run.jl": "e0a422ac9d9661d0bdbab56f697550b4f088bafbb4380ee078ce597e31be4aba",
+        "src/recurrent_material.jl": "e9457d0d6e31f74950fa4be8ef84b138b020c0de7fc4b95c9a7f3cd5db148347",
+        "studies/living_tissue_observations.jl": "f3fa17688e3fafe1bcfca5ea331e91984dab077e67fad09138e66493a3b1215c",
+        "studies/living_tissue_turnover.jl": "ca543a8a3eb6e1eb3c93cfc4e16b86f03674ab6ca9598bdf328988ac09f76617",
+        "src/core.jl": "b4302b90eaeba213360e8a15ce8b7e4cb4c491606657e3e500d2fb8507753a52"
+      },
+      "spectral_samples": [
+        {
+          "time": 20,
+          "excitation_std": 0.011103445664048195,
+          "radial_peak_wavelength": 4.8,
+          "high_radial_power_fraction": 1.2788968888344243e-05
+        },
+        {
+          "time": 40,
+          "excitation_std": 0.005941375624388456,
+          "radial_peak_wavelength": 3.4285714285714284,
+          "high_radial_power_fraction": 9.612564463168383e-05
+        },
+        {
+          "time": 60,
+          "excitation_std": 0.019395828247070312,
+          "radial_peak_wavelength": 4.8,
+          "high_radial_power_fraction": 3.336263716846588e-06
+        },
+        {
+          "time": 80,
+          "excitation_std": 0.021355941891670227,
+          "radial_peak_wavelength": 4.8,
+          "high_radial_power_fraction": 9.458733984502032e-06
+        },
+        {
+          "time": 100,
+          "excitation_std": 0.014313681051135063,
+          "radial_peak_wavelength": 4.8,
+          "high_radial_power_fraction": 5.020853132009506e-05
+        }
+      ],
+      "final": {
+        "physical_material": 7407.341438221089,
+        "physical_spent": 245.88108017854393,
+        "physical_reserve": 6663.874311983585,
+        "excitation_std": 0.014315429,
+        "minimum_solid": 0.21140756,
+        "maximum_solid": 0.30650765,
+        "reopening_events": 0,
+        "reformation_events": 0,
+        "mean_permeability": 0.9910226
+      }
+    },
+    {
+      "id": "living-tissue-finite-band64",
+      "dimensions": [
+        64,
+        64,
+        1
+      ],
+      "extent": [
+        24,
+        24,
+        1
+      ],
+      "dt": 0.005,
+      "steps": 20000,
+      "parameters": {
+        "base": {
+          "precursor_diffusion": 0.12,
+          "biomass_diffusion": 0.0005,
+          "excitation_diffusion": 0.08,
+          "barrier": 8,
+          "taxis": 0,
+          "taxis_sensitivity": 8,
+          "growth": 1,
+          "capacity": 1.2,
+          "turnover": 0.005,
+          "starvation_turnover": 0.02,
+          "construction": 0,
+          "erosion": 0,
+          "metabolic_work": 0.055,
+          "half_saturation": 0.15,
+          "tissue_saturation": 0.12,
+          "neural_gain": 2.8,
+          "inhibition_gain": 2.3,
+          "inhibition_time": 0.5,
+          "memory_time": 40,
+          "memory_feedback": 0.3,
+          "matrix_feedback": 0.15,
+          "activity_control": 1,
+          "constant_activity": 0.5
+        },
+        "phase": {
+          "renewal": 0.12,
+          "target_precursor": 0.6,
+          "phase_work": 0.08,
+          "construction": 0.2,
+          "unbuilding": 1.2,
+          "withdrawal": 1.8,
+          "motility": 0.1,
+          "taxis_sensitivity": 12,
+          "inhibition_diffusion": 4,
+          "phase_threshold": 0.04
+        }
+      },
+      "elapsed_seconds": 36.839870292,
+      "source_sha256": {
+        "studies/living_tissue_runner.jl": "93b837249cc0d0dbdd7b6fa609a067c8710c109e3572785a1f76485081e6fdb3",
+        "studies/living_tissue.jl": "43a5e722e08963124c186147b2d15a54963292828e1c1064c2f277782a5816f0",
+        "studies/living_tissue_turnover_run.jl": "e0a422ac9d9661d0bdbab56f697550b4f088bafbb4380ee078ce597e31be4aba",
+        "src/recurrent_material.jl": "e9457d0d6e31f74950fa4be8ef84b138b020c0de7fc4b95c9a7f3cd5db148347",
+        "studies/living_tissue_observations.jl": "f3fa17688e3fafe1bcfca5ea331e91984dab077e67fad09138e66493a3b1215c",
+        "studies/living_tissue_turnover.jl": "ca543a8a3eb6e1eb3c93cfc4e16b86f03674ab6ca9598bdf328988ac09f76617",
+        "src/core.jl": "b4302b90eaeba213360e8a15ce8b7e4cb4c491606657e3e500d2fb8507753a52"
+      },
+      "spectral_samples": [
+        {
+          "time": 20,
+          "excitation_std": 0.21461665630340576,
+          "radial_peak_wavelength": 0.96,
+          "high_radial_power_fraction": 0.4264172613620758
+        },
+        {
+          "time": 40,
+          "excitation_std": 0.25246185064315796,
+          "radial_peak_wavelength": 2.6666666666666665,
+          "high_radial_power_fraction": 0.30453410744667053
+        },
+        {
+          "time": 60,
+          "excitation_std": 0.21521809697151184,
+          "radial_peak_wavelength": 1.8461538461538463,
+          "high_radial_power_fraction": 0.3864554464817047
+        },
+        {
+          "time": 80,
+          "excitation_std": 0.21258936822414398,
+          "radial_peak_wavelength": 1.3333333333333333,
+          "high_radial_power_fraction": 0.45499613881111145
+        },
+        {
+          "time": 100,
+          "excitation_std": 0.25114595890045166,
+          "radial_peak_wavelength": 1.5,
+          "high_radial_power_fraction": 0.4319390058517456
+        }
+      ],
+      "final": {
+        "physical_material": 7407.358405007872,
+        "physical_spent": 1014.3027518517338,
+        "physical_reserve": 5805.777309000492,
+        "excitation_std": 0.25117663,
+        "minimum_solid": 0.058743697,
+        "maximum_solid": 2.307293,
+        "reopening_events": 4736,
+        "reformation_events": 4028,
+        "mean_permeability": 0.3344615
+      }
+    },
+    {
+      "id": "living-tissue-finite-band64-halfstep",
+      "dimensions": [
+        64,
+        64,
+        1
+      ],
+      "extent": [
+        24,
+        24,
+        1
+      ],
+      "dt": 0.0025,
+      "steps": 20000,
+      "parameters": {
+        "base": {
+          "precursor_diffusion": 0.12,
+          "biomass_diffusion": 0.0005,
+          "excitation_diffusion": 0.08,
+          "barrier": 8,
+          "taxis": 0,
+          "taxis_sensitivity": 8,
+          "growth": 1,
+          "capacity": 1.2,
+          "turnover": 0.005,
+          "starvation_turnover": 0.02,
+          "construction": 0,
+          "erosion": 0,
+          "metabolic_work": 0.055,
+          "half_saturation": 0.15,
+          "tissue_saturation": 0.12,
+          "neural_gain": 2.8,
+          "inhibition_gain": 2.3,
+          "inhibition_time": 0.5,
+          "memory_time": 40,
+          "memory_feedback": 0.3,
+          "matrix_feedback": 0.15,
+          "activity_control": 1,
+          "constant_activity": 0.5
+        },
+        "phase": {
+          "renewal": 0.12,
+          "target_precursor": 0.6,
+          "phase_work": 0.08,
+          "construction": 0.2,
+          "unbuilding": 1.2,
+          "withdrawal": 1.8,
+          "motility": 0.1,
+          "taxis_sensitivity": 12,
+          "inhibition_diffusion": 4,
+          "phase_threshold": 0.04
+        }
+      },
+      "elapsed_seconds": 36.25778,
+      "source_sha256": {
+        "studies/living_tissue_runner.jl": "93b837249cc0d0dbdd7b6fa609a067c8710c109e3572785a1f76485081e6fdb3",
+        "studies/living_tissue.jl": "43a5e722e08963124c186147b2d15a54963292828e1c1064c2f277782a5816f0",
+        "studies/living_tissue_turnover_run.jl": "e0a422ac9d9661d0bdbab56f697550b4f088bafbb4380ee078ce597e31be4aba",
+        "src/recurrent_material.jl": "e9457d0d6e31f74950fa4be8ef84b138b020c0de7fc4b95c9a7f3cd5db148347",
+        "studies/living_tissue_observations.jl": "f3fa17688e3fafe1bcfca5ea331e91984dab077e67fad09138e66493a3b1215c",
+        "studies/living_tissue_turnover.jl": "ca543a8a3eb6e1eb3c93cfc4e16b86f03674ab6ca9598bdf328988ac09f76617",
+        "src/core.jl": "b4302b90eaeba213360e8a15ce8b7e4cb4c491606657e3e500d2fb8507753a52"
+      },
+      "spectral_samples": [
+        {
+          "time": 20,
+          "excitation_std": 0.21495835483074188,
+          "radial_peak_wavelength": 0.96,
+          "high_radial_power_fraction": 0.41963598132133484
+        },
+        {
+          "time": 40,
+          "excitation_std": 0.25085484981536865,
+          "radial_peak_wavelength": 2.6666666666666665,
+          "high_radial_power_fraction": 0.3089030385017395
+        }
+      ],
+      "final": {
+        "physical_material": 7407.355981656317,
+        "physical_spent": 497.3483871964272,
+        "physical_reserve": 6316.504151210189,
+        "excitation_std": 0.22692454,
+        "minimum_solid": 0.059236452,
+        "maximum_solid": 2.3138254,
+        "reopening_events": 2781,
+        "reformation_events": 1708,
+        "mean_permeability": 0.40742332
+      }
+    }
+  ],
+  "frozen_linearization": [
+    {
+      "kind": "finite-mode",
+      "source_sha256": "3510593a8f365677ad2420792404a69327e50c9be166e670947eac941d58b9b6",
+      "model_sha256": "ca543a8a3eb6e1eb3c93cfc4e16b86f03674ab6ca9598bdf328988ac09f76617",
+      "parameters": {
+        "precursor_diffusion": 0.12,
+        "biomass_diffusion": 0.0005,
+        "excitation_diffusion": 0.08,
+        "barrier": 8,
+        "taxis": 0,
+        "taxis_sensitivity": 8,
+        "growth": 0.5,
+        "capacity": 0.32,
+        "turnover": 0.005,
+        "starvation_turnover": 0.02,
+        "construction": 0,
+        "erosion": 0,
+        "metabolic_work": 0.055,
+        "half_saturation": 0.15,
+        "tissue_saturation": 0.12,
+        "neural_gain": 1.8,
+        "inhibition_gain": 2.3,
+        "inhibition_time": 4.5,
+        "memory_time": 40,
+        "memory_feedback": 0.3,
+        "matrix_feedback": 0.15,
+        "activity_control": 1,
+        "constant_activity": 0.5
+      },
+      "inhibition_diffusion": 4,
+      "cases": [
+        {
+          "biomass": 0.26,
+          "zero_mode": [
+            {
+              "real": -0.04846913451546599,
+              "imag": -0.5041417606558539
+            },
+            {
+              "real": -0.04846913451546599,
+              "imag": 0.5041417606558539
+            },
+            {
+              "real": -0.02817871372192609,
+              "imag": 0
+            }
+          ],
+          "curves": [
+            {
+              "side": 64,
+              "dimensions": 2,
+              "direction": "axis",
+              "peak": {
+                "k": 1.1561060965210437,
+                "growth": -0.0014820693416951111,
+                "frequency": 0.05992258047256004
+              },
+              "wavelength": 5.434782608695653
+            },
+            {
+              "side": 64,
+              "dimensions": 2,
+              "direction": "diagonal",
+              "peak": {
+                "k": 1.1393509357018983,
+                "growth": -0.001484559324631994,
+                "frequency": 0.0599369866212705
+              },
+              "wavelength": 5.514705882352941
+            },
+            {
+              "side": 64,
+              "dimensions": 3,
+              "direction": "axis",
+              "peak": {
+                "k": 1.1561060965210437,
+                "growth": -0.0014820693416951111,
+                "frequency": 0.05992258047256004
+              },
+              "wavelength": 5.434782608695653
+            },
+            {
+              "side": 64,
+              "dimensions": 3,
+              "direction": "diagonal",
+              "peak": {
+                "k": 1.1393509357018983,
+                "growth": -0.001483149072225699,
+                "frequency": 0.059934790455014826
+              },
+              "wavelength": 5.514705882352941
+            },
+            {
+              "side": 128,
+              "dimensions": 2,
+              "direction": "axis",
+              "peak": {
+                "k": 1.1393509357018983,
+                "growth": -0.0014825579335601164,
+                "frequency": 0.059933740371779606
+              },
+              "wavelength": 5.514705882352941
+            },
+            {
+              "side": 128,
+              "dimensions": 2,
+              "direction": "diagonal",
+              "peak": {
+                "k": 1.1393509357018983,
+                "growth": -0.0014818135667453007,
+                "frequency": 0.059932225183358404
+              },
+              "wavelength": 5.514705882352941
+            },
+            {
+              "side": 128,
+              "dimensions": 3,
+              "direction": "axis",
+              "peak": {
+                "k": 1.1393509357018983,
+                "growth": -0.0014825579335601164,
+                "frequency": 0.059933740371779606
+              },
+              "wavelength": 5.514705882352941
+            },
+            {
+              "side": 128,
+              "dimensions": 3,
+              "direction": "diagonal",
+              "peak": {
+                "k": 1.1393509357018983,
+                "growth": -0.0014816033767679577,
+                "frequency": 0.059931736092164616
+              },
+              "wavelength": 5.514705882352941
+            }
+          ]
+        },
+        {
+          "biomass": 0.28,
+          "zero_mode": [
+            {
+              "real": -0.035494767872600155,
+              "imag": -0.5060877243728331
+            },
+            {
+              "real": -0.035494767872600155,
+              "imag": 0.5060877243728331
+            },
+            {
+              "real": -0.02823271107056055,
+              "imag": 0
+            }
+          ],
+          "curves": [
+            {
+              "side": 64,
+              "dimensions": 2,
+              "direction": "axis",
+              "peak": {
+                "k": 1.1393509357018983,
+                "growth": 0.009849309391695232,
+                "frequency": 0.05502734389410599
+              },
+              "wavelength": 5.514705882352941
+            },
+            {
+              "side": 64,
+              "dimensions": 2,
+              "direction": "diagonal",
+              "peak": {
+                "k": 1.1393509357018983,
+                "growth": 0.009849500024891558,
+                "frequency": 0.05502157751620913
+              },
+              "wavelength": 5.514705882352941
+            },
+            {
+              "side": 64,
+              "dimensions": 3,
+              "direction": "axis",
+              "peak": {
+                "k": 1.1393509357018983,
+                "growth": 0.009849309391695232,
+                "frequency": 0.05502734389410599
+              },
+              "wavelength": 5.514705882352941
+            },
+            {
+              "side": 64,
+              "dimensions": 3,
+              "direction": "diagonal",
+              "peak": {
+                "k": 1.1393509357018983,
+                "growth": 0.009848940399861988,
+                "frequency": 0.05502007012719832
+              },
+              "wavelength": 5.514705882352941
+            },
+            {
+              "side": 128,
+              "dimensions": 2,
+              "direction": "axis",
+              "peak": {
+                "k": 1.1393509357018983,
+                "growth": 0.00984854396745831,
+                "frequency": 0.05501939402722838
+              },
+              "wavelength": 5.514705882352941
+            },
+            {
+              "side": 128,
+              "dimensions": 2,
+              "direction": "diagonal",
+              "peak": {
+                "k": 1.1393509357018983,
+                "growth": 0.009847803682939677,
+                "frequency": 0.05501847676251278
+              },
+              "wavelength": 5.514705882352941
+            },
+            {
+              "side": 128,
+              "dimensions": 3,
+              "direction": "axis",
+              "peak": {
+                "k": 1.1393509357018983,
+                "growth": 0.00984854396745831,
+                "frequency": 0.05501939402722838
+              },
+              "wavelength": 5.514705882352941
+            },
+            {
+              "side": 128,
+              "dimensions": 3,
+              "direction": "diagonal",
+              "peak": {
+                "k": 1.1393509357018983,
+                "growth": 0.009847518109783307,
+                "frequency": 0.05501819682427074
+              },
+              "wavelength": 5.514705882352941
+            }
+          ]
+        },
+        {
+          "biomass": 0.3,
+          "zero_mode": [
+            {
+              "real": -0.028280984161346005,
+              "imag": 0
+            },
+            {
+              "real": -0.023756346030204975,
+              "imag": -0.5075586087433064
+            },
+            {
+              "real": -0.023756346030204975,
+              "imag": 0.5075586087433064
+            }
+          ],
+          "curves": [
+            {
+              "side": 64,
+              "dimensions": 2,
+              "direction": "axis",
+              "peak": {
+                "k": 1.1393509357018983,
+                "growth": 0.0200906312165033,
+                "frequency": 0.047923098842429124
+              },
+              "wavelength": 5.514705882352941
+            },
+            {
+              "side": 64,
+              "dimensions": 2,
+              "direction": "diagonal",
+              "peak": {
+                "k": 1.1225957748827526,
+                "growth": 0.0200900508236661,
+                "frequency": 0.04794337011439653
+              },
+              "wavelength": 5.597014925373135
+            },
+            {
+              "side": 64,
+              "dimensions": 3,
+              "direction": "axis",
+              "peak": {
+                "k": 1.1393509357018983,
+                "growth": 0.0200906312165033,
+                "frequency": 0.047923098842429124
+              },
+              "wavelength": 5.514705882352941
+            },
+            {
+              "side": 64,
+              "dimensions": 3,
+              "direction": "diagonal",
+              "peak": {
+                "k": 1.1225957748827526,
+                "growth": 0.020091290934103865,
+                "frequency": 0.04793993122048277
+              },
+              "wavelength": 5.597014925373135
+            },
+            {
+              "side": 128,
+              "dimensions": 2,
+              "direction": "axis",
+              "peak": {
+                "k": 1.1393509357018983,
+                "growth": 0.02008155971053277,
+                "frequency": 0.04792160463129574
+              },
+              "wavelength": 5.514705882352941
+            },
+            {
+              "side": 128,
+              "dimensions": 2,
+              "direction": "diagonal",
+              "peak": {
+                "k": 1.1393509357018983,
+                "growth": 0.020079422496940568,
+                "frequency": 0.04792196704859553
+              },
+              "wavelength": 5.514705882352941
+            },
+            {
+              "side": 128,
+              "dimensions": 3,
+              "direction": "axis",
+              "peak": {
+                "k": 1.1393509357018983,
+                "growth": 0.02008155971053277,
+                "frequency": 0.04792160463129574
+              },
+              "wavelength": 5.514705882352941
+            },
+            {
+              "side": 128,
+              "dimensions": 3,
+              "direction": "diagonal",
+              "peak": {
+                "k": 1.1393509357018983,
+                "growth": 0.02007867047925381,
+                "frequency": 0.047922126565656156
+              },
+              "wavelength": 5.514705882352941
+            }
+          ]
+        },
+        {
+          "biomass": 0.32,
+          "zero_mode": [
+            {
+              "real": -0.02832439631974774,
+              "imag": 0
+            },
+            {
+              "real": -0.013085289687493706,
+              "imag": -0.5086589971851412
+            },
+            {
+              "real": -0.013085289687493706,
+              "imag": 0.5086589971851412
+            }
+          ],
+          "curves": [
+            {
+              "side": 64,
+              "dimensions": 2,
+              "direction": "axis",
+              "peak": {
+                "k": 1.1225957748827526,
+                "growth": 0.029398780745161356,
+                "frequency": 0.038112758251573814
+              },
+              "wavelength": 5.597014925373135
+            },
+            {
+              "side": 64,
+              "dimensions": 2,
+              "direction": "diagonal",
+              "peak": {
+                "k": 1.1225957748827526,
+                "growth": 0.029399480631012154,
+                "frequency": 0.03810281996858686
+              },
+              "wavelength": 5.597014925373135
+            },
+            {
+              "side": 64,
+              "dimensions": 3,
+              "direction": "axis",
+              "peak": {
+                "k": 1.1225957748827526,
+                "growth": 0.029398780745161356,
+                "frequency": 0.038112758251573814
+              },
+              "wavelength": 5.597014925373135
+            },
+            {
+              "side": 64,
+              "dimensions": 3,
+              "direction": "diagonal",
+              "peak": {
+                "k": 1.1225957748827526,
+                "growth": 0.02939910234263761,
+                "frequency": 0.03810041069850633
+              },
+              "wavelength": 5.597014925373135
+            },
+            {
+              "side": 128,
+              "dimensions": 2,
+              "direction": "axis",
+              "peak": {
+                "k": 1.105840614063607,
+                "growth": 0.029384543687073467,
+                "frequency": 0.038156420437462854
+              },
+              "wavelength": 5.6818181818181825
+            },
+            {
+              "side": 128,
+              "dimensions": 2,
+              "direction": "diagonal",
+              "peak": {
+                "k": 1.105840614063607,
+                "growth": 0.029386664204630285,
+                "frequency": 0.038151144211255095
+              },
+              "wavelength": 5.6818181818181825
+            },
+            {
+              "side": 128,
+              "dimensions": 3,
+              "direction": "axis",
+              "peak": {
+                "k": 1.105840614063607,
+                "growth": 0.029384543687073467,
+                "frequency": 0.038156420437462854
+              },
+              "wavelength": 5.6818181818181825
+            },
+            {
+              "side": 128,
+              "dimensions": 3,
+              "direction": "diagonal",
+              "peak": {
+                "k": 1.105840614063607,
+                "growth": 0.02938733507028614,
+                "frequency": 0.038149438455645
+              },
+              "wavelength": 5.6818181818181825
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "finite-band",
+      "source_sha256": "e369c9a546ff2edce47ec5fd4e7368406d7d19ef9e7f99dd5a9bb4a66df8bc5b",
+      "model_sha256": "ca543a8a3eb6e1eb3c93cfc4e16b86f03674ab6ca9598bdf328988ac09f76617",
+      "parameters": {
+        "precursor_diffusion": 0.12,
+        "biomass_diffusion": 0.0005,
+        "excitation_diffusion": 0.08,
+        "barrier": 8,
+        "taxis": 0,
+        "taxis_sensitivity": 8,
+        "growth": 0.5,
+        "capacity": 1.2,
+        "turnover": 0.005,
+        "starvation_turnover": 0.02,
+        "construction": 0,
+        "erosion": 0,
+        "metabolic_work": 0.055,
+        "half_saturation": 0.15,
+        "tissue_saturation": 0.12,
+        "neural_gain": 2.8,
+        "inhibition_gain": 2.3,
+        "inhibition_time": 0.5,
+        "memory_time": 40,
+        "memory_feedback": 0.3,
+        "matrix_feedback": 0.15,
+        "activity_control": 1,
+        "constant_activity": 0.5
+      },
+      "inhibition_diffusion": 4,
+      "cases": [
+        {
+          "biomass": 0.1,
+          "zero_mode": [
+            {
+              "real": -0.9435357484021621,
+              "imag": -0.7482426865583945
+            },
+            {
+              "real": -0.9435357484021621,
+              "imag": 0.7482426865583945
+            },
+            {
+              "real": -0.02883760349680663,
+              "imag": 0
+            }
+          ],
+          "curves": [
+            {
+              "side": 64,
+              "dimensions": 2,
+              "direction": "axis",
+              "peak": {
+                "k": 0,
+                "growth": -0.02883760349680663,
+                "frequency": 0
+              },
+              "wavelength": null
+            },
+            {
+              "side": 64,
+              "dimensions": 2,
+              "direction": "diagonal",
+              "peak": {
+                "k": 0,
+                "growth": -0.02883760349680663,
+                "frequency": 0
+              },
+              "wavelength": null
+            },
+            {
+              "side": 64,
+              "dimensions": 3,
+              "direction": "axis",
+              "peak": {
+                "k": 0,
+                "growth": -0.02883760349680663,
+                "frequency": 0
+              },
+              "wavelength": null
+            },
+            {
+              "side": 64,
+              "dimensions": 3,
+              "direction": "diagonal",
+              "peak": {
+                "k": 8.377580409572781,
+                "growth": -0.028660758421804513,
+                "frequency": 0
+              },
+              "wavelength": 0.75
+            },
+            {
+              "side": 128,
+              "dimensions": 2,
+              "direction": "axis",
+              "peak": {
+                "k": 16.755160819145562,
+                "growth": -0.0265596599587023,
+                "frequency": 0
+              },
+              "wavelength": 0.375
+            },
+            {
+              "side": 128,
+              "dimensions": 2,
+              "direction": "diagonal",
+              "peak": {
+                "k": 16.755160819145562,
+                "growth": -0.025944685289300183,
+                "frequency": 0
+              },
+              "wavelength": 0.375
+            },
+            {
+              "side": 128,
+              "dimensions": 3,
+              "direction": "axis",
+              "peak": {
+                "k": 16.755160819145562,
+                "growth": -0.0265596599587023,
+                "frequency": 0
+              },
+              "wavelength": 0.375
+            },
+            {
+              "side": 128,
+              "dimensions": 3,
+              "direction": "diagonal",
+              "peak": {
+                "k": 16.755160819145562,
+                "growth": -0.025810055186115066,
+                "frequency": 0
+              },
+              "wavelength": 0.375
+            }
+          ]
+        },
+        {
+          "biomass": 0.15,
+          "zero_mode": [
+            {
+              "real": -0.8196667011307349,
+              "imag": -0.8102852626740304
+            },
+            {
+              "real": -0.8196667011307349,
+              "imag": 0.8102852626740304
+            },
+            {
+              "real": -0.030111056639860734,
+              "imag": 0
+            }
+          ],
+          "curves": [
+            {
+              "side": 64,
+              "dimensions": 2,
+              "direction": "axis",
+              "peak": {
+                "k": 2.060884780754904,
+                "growth": 0.12116356459525364,
+                "frequency": 0
+              },
+              "wavelength": 3.0487804878048785
+            },
+            {
+              "side": 64,
+              "dimensions": 2,
+              "direction": "diagonal",
+              "peak": {
+                "k": 2.027374459116613,
+                "growth": 0.12116595694514669,
+                "frequency": 0
+              },
+              "wavelength": 3.0991735537190084
+            },
+            {
+              "side": 64,
+              "dimensions": 3,
+              "direction": "axis",
+              "peak": {
+                "k": 2.060884780754904,
+                "growth": 0.12116356459525364,
+                "frequency": 0
+              },
+              "wavelength": 3.0487804878048785
+            },
+            {
+              "side": 64,
+              "dimensions": 3,
+              "direction": "diagonal",
+              "peak": {
+                "k": 2.027374459116613,
+                "growth": 0.12116219120962227,
+                "frequency": 0
+              },
+              "wavelength": 3.0991735537190084
+            },
+            {
+              "side": 128,
+              "dimensions": 2,
+              "direction": "axis",
+              "peak": {
+                "k": 2.0106192982974673,
+                "growth": 0.12116238750600755,
+                "frequency": 0
+              },
+              "wavelength": 3.1250000000000004
+            },
+            {
+              "side": 128,
+              "dimensions": 2,
+              "direction": "diagonal",
+              "peak": {
+                "k": 2.0106192982974673,
+                "growth": 0.12116629238051299,
+                "frequency": 0
+              },
+              "wavelength": 3.1250000000000004
+            },
+            {
+              "side": 128,
+              "dimensions": 3,
+              "direction": "axis",
+              "peak": {
+                "k": 2.0106192982974673,
+                "growth": 0.12116238750600755,
+                "frequency": 0
+              },
+              "wavelength": 3.1250000000000004
+            },
+            {
+              "side": 128,
+              "dimensions": 3,
+              "direction": "diagonal",
+              "peak": {
+                "k": 2.0106192982974673,
+                "growth": 0.12116595848719479,
+                "frequency": 0
+              },
+              "wavelength": 3.1250000000000004
+            }
+          ]
+        },
+        {
+          "biomass": 0.26,
+          "zero_mode": [
+            {
+              "real": -0.661711338347631,
+              "imag": -0.8578852904182718
+            },
+            {
+              "real": -0.661711338347631,
+              "imag": 0.8578852904182718
+            },
+            {
+              "real": -0.0321036616135807,
+              "imag": 0
+            }
+          ],
+          "curves": [
+            {
+              "side": 64,
+              "dimensions": 2,
+              "direction": "axis",
+              "peak": {
+                "k": 1.910088333382594,
+                "growth": 0.3743417400826009,
+                "frequency": 0
+              },
+              "wavelength": 3.2894736842105265
+            },
+            {
+              "side": 64,
+              "dimensions": 2,
+              "direction": "diagonal",
+              "peak": {
+                "k": 1.8933331725634486,
+                "growth": 0.37434275258889815,
+                "frequency": 0
+              },
+              "wavelength": 3.3185840707964602
+            },
+            {
+              "side": 64,
+              "dimensions": 3,
+              "direction": "axis",
+              "peak": {
+                "k": 1.910088333382594,
+                "growth": 0.3743417400826009,
+                "frequency": 0
+              },
+              "wavelength": 3.2894736842105265
+            },
+            {
+              "side": 64,
+              "dimensions": 3,
+              "direction": "diagonal",
+              "peak": {
+                "k": 1.8933331725634486,
+                "growth": 0.3743351747774345,
+                "frequency": 0
+              },
+              "wavelength": 3.3185840707964602
+            },
+            {
+              "side": 128,
+              "dimensions": 2,
+              "direction": "axis",
+              "peak": {
+                "k": 1.876578011744303,
+                "growth": 0.3743387920168152,
+                "frequency": 0
+              },
+              "wavelength": 3.348214285714286
+            },
+            {
+              "side": 128,
+              "dimensions": 2,
+              "direction": "diagonal",
+              "peak": {
+                "k": 1.876578011744303,
+                "growth": 0.37434282755496745,
+                "frequency": 0
+              },
+              "wavelength": 3.348214285714286
+            },
+            {
+              "side": 128,
+              "dimensions": 3,
+              "direction": "axis",
+              "peak": {
+                "k": 1.876578011744303,
+                "growth": 0.3743387920168152,
+                "frequency": 0
+              },
+              "wavelength": 3.348214285714286
+            },
+            {
+              "side": 128,
+              "dimensions": 3,
+              "direction": "diagonal",
+              "peak": {
+                "k": 1.876578011744303,
+                "growth": 0.37434279329640013,
+                "frequency": 0
+              },
+              "wavelength": 3.348214285714286
+            }
+          ]
+        },
+        {
+          "biomass": 0.5,
+          "zero_mode": [
+            {
+              "real": -0.51136342230256,
+              "imag": -0.8752683189088618
+            },
+            {
+              "real": -0.51136342230256,
+              "imag": 0.8752683189088618
+            },
+            {
+              "real": -0.03453125176359745,
+              "imag": 0
+            }
+          ],
+          "curves": [
+            {
+              "side": 64,
+              "dimensions": 2,
+              "direction": "axis",
+              "peak": {
+                "k": 1.8095573684677206,
+                "growth": 0.6008837956317308,
+                "frequency": 0
+              },
+              "wavelength": 3.4722222222222228
+            },
+            {
+              "side": 64,
+              "dimensions": 2,
+              "direction": "diagonal",
+              "peak": {
+                "k": 1.7928022076485752,
+                "growth": 0.6008813564679593,
+                "frequency": 0
+              },
+              "wavelength": 3.504672897196262
+            },
+            {
+              "side": 64,
+              "dimensions": 3,
+              "direction": "axis",
+              "peak": {
+                "k": 1.8095573684677206,
+                "growth": 0.6008837956317308,
+                "frequency": 0
+              },
+              "wavelength": 3.4722222222222228
+            },
+            {
+              "side": 64,
+              "dimensions": 3,
+              "direction": "diagonal",
+              "peak": {
+                "k": 1.7760470468294296,
+                "growth": 0.6008908714199802,
+                "frequency": 0
+              },
+              "wavelength": 3.537735849056604
+            },
+            {
+              "side": 128,
+              "dimensions": 2,
+              "direction": "axis",
+              "peak": {
+                "k": 1.7760470468294296,
+                "growth": 0.60089238302681,
+                "frequency": 0
+              },
+              "wavelength": 3.537735849056604
+            },
+            {
+              "side": 128,
+              "dimensions": 2,
+              "direction": "diagonal",
+              "peak": {
+                "k": 1.7760470468294296,
+                "growth": 0.6008897172867741,
+                "frequency": 0
+              },
+              "wavelength": 3.537735849056604
+            },
+            {
+              "side": 128,
+              "dimensions": 3,
+              "direction": "axis",
+              "peak": {
+                "k": 1.7760470468294296,
+                "growth": 0.60089238302681,
+                "frequency": 0
+              },
+              "wavelength": 3.537735849056604
+            },
+            {
+              "side": 128,
+              "dimensions": 3,
+              "direction": "diagonal",
+              "peak": {
+                "k": 1.7760470468294296,
+                "growth": 0.6008875138078271,
+                "frequency": 0
+              },
+              "wavelength": 3.537735849056604
+            }
+          ]
+        },
+        {
+          "biomass": 1.2,
+          "zero_mode": [
+            {
+              "real": -0.384835748829507,
+              "imag": -0.8702882129169711
+            },
+            {
+              "real": -0.384835748829507,
+              "imag": 0.8702882129169711
+            },
+            {
+              "real": -0.037146725107189235,
+              "imag": 0
+            }
+          ],
+          "curves": [
+            {
+              "side": 64,
+              "dimensions": 2,
+              "direction": "axis",
+              "peak": {
+                "k": 1.725781564371993,
+                "growth": 0.7872260874552998,
+                "frequency": 0
+              },
+              "wavelength": 3.6407766990291264
+            },
+            {
+              "side": 64,
+              "dimensions": 2,
+              "direction": "diagonal",
+              "peak": {
+                "k": 1.7090264035528473,
+                "growth": 0.7872285014102499,
+                "frequency": 0
+              },
+              "wavelength": 3.6764705882352944
+            },
+            {
+              "side": 64,
+              "dimensions": 3,
+              "direction": "axis",
+              "peak": {
+                "k": 1.725781564371993,
+                "growth": 0.7872260874552998,
+                "frequency": 0
+              },
+              "wavelength": 3.6407766990291264
+            },
+            {
+              "side": 64,
+              "dimensions": 3,
+              "direction": "diagonal",
+              "peak": {
+                "k": 1.7090264035528473,
+                "growth": 0.7872163730457845,
+                "frequency": 0
+              },
+              "wavelength": 3.6764705882352944
+            },
+            {
+              "side": 128,
+              "dimensions": 2,
+              "direction": "axis",
+              "peak": {
+                "k": 1.7090264035528473,
+                "growth": 0.7872064745644071,
+                "frequency": 0
+              },
+              "wavelength": 3.6764705882352944
+            },
+            {
+              "side": 128,
+              "dimensions": 2,
+              "direction": "diagonal",
+              "peak": {
+                "k": 1.7090264035528473,
+                "growth": 0.787186835850611,
+                "frequency": 0
+              },
+              "wavelength": 3.6764705882352944
+            },
+            {
+              "side": 128,
+              "dimensions": 3,
+              "direction": "axis",
+              "peak": {
+                "k": 1.7090264035528473,
+                "growth": 0.7872064745644071,
+                "frequency": 0
+              },
+              "wavelength": 3.6764705882352944
+            },
+            {
+              "side": 128,
+              "dimensions": 3,
+              "direction": "diagonal",
+              "peak": {
+                "k": 1.7090264035528473,
+                "growth": 0.7871790123435419,
+                "frequency": 0
+              },
+              "wavelength": 3.6764705882352944
+            }
+          ]
+        },
+        {
+          "biomass": 5,
+          "zero_mode": [
+            {
+              "real": -0.3014617823118836,
+              "imag": -0.8572407308449952
+            },
+            {
+              "real": -0.3014617823118836,
+              "imag": 0.8572407308449952
+            },
+            {
+              "real": -0.03926398292925262,
+              "imag": 0
+            }
+          ],
+          "curves": [
+            {
+              "side": 64,
+              "dimensions": 2,
+              "direction": "axis",
+              "peak": {
+                "k": 1.6755160819145563,
+                "growth": 0.908381533740405,
+                "frequency": 0
+              },
+              "wavelength": 3.75
+            },
+            {
+              "side": 64,
+              "dimensions": 2,
+              "direction": "diagonal",
+              "peak": {
+                "k": 1.6587609210954106,
+                "growth": 0.9083844460836369,
+                "frequency": 0
+              },
+              "wavelength": 3.787878787878788
+            },
+            {
+              "side": 64,
+              "dimensions": 3,
+              "direction": "axis",
+              "peak": {
+                "k": 1.6755160819145563,
+                "growth": 0.908381533740405,
+                "frequency": 0
+              },
+              "wavelength": 3.75
+            },
+            {
+              "side": 64,
+              "dimensions": 3,
+              "direction": "diagonal",
+              "peak": {
+                "k": 1.6587609210954106,
+                "growth": 0.908377668588126,
+                "frequency": 0
+              },
+              "wavelength": 3.787878787878788
+            },
+            {
+              "side": 128,
+              "dimensions": 2,
+              "direction": "axis",
+              "peak": {
+                "k": 1.642005760276265,
+                "growth": 0.9083645037789934,
+                "frequency": 0
+              },
+              "wavelength": 3.8265306122448983
+            },
+            {
+              "side": 128,
+              "dimensions": 2,
+              "direction": "diagonal",
+              "peak": {
+                "k": 1.642005760276265,
+                "growth": 0.9083763764846026,
+                "frequency": 0
+              },
+              "wavelength": 3.8265306122448983
+            },
+            {
+              "side": 128,
+              "dimensions": 3,
+              "direction": "axis",
+              "peak": {
+                "k": 1.642005760276265,
+                "growth": 0.9083645037789934,
+                "frequency": 0
+              },
+              "wavelength": 3.8265306122448983
+            },
+            {
+              "side": 128,
+              "dimensions": 3,
+              "direction": "diagonal",
+              "peak": {
+                "k": 1.642005760276265,
+                "growth": 0.9083791777119795,
+                "frequency": 0
+              },
+              "wavelength": 3.8265306122448983
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "spatial_refinement": {
+    "dimensions": [
+      128,
+      128,
+      1
+    ],
+    "extent": [
+      24,
+      24,
+      1
+    ],
+    "dt": 0.00125,
+    "steps": 20000,
+    "parameters": {
+      "base": {
+        "precursor_diffusion": 0.12,
+        "biomass_diffusion": 0.0005,
+        "excitation_diffusion": 0.08,
+        "barrier": 8,
+        "taxis": 0,
+        "taxis_sensitivity": 8,
+        "growth": 1,
+        "capacity": 1.2,
+        "turnover": 0.005,
+        "starvation_turnover": 0.02,
+        "construction": 0,
+        "erosion": 0,
+        "metabolic_work": 0.055,
+        "half_saturation": 0.15,
+        "tissue_saturation": 0.12,
+        "neural_gain": 2.8,
+        "inhibition_gain": 2.3,
+        "inhibition_time": 0.5,
+        "memory_time": 40,
+        "memory_feedback": 0.3,
+        "matrix_feedback": 0.15,
+        "activity_control": 1,
+        "constant_activity": 0.5
+      },
+      "phase": {
+        "renewal": 0.12,
+        "target_precursor": 0.6,
+        "phase_work": 0.08,
+        "construction": 0.2,
+        "unbuilding": 1.2,
+        "withdrawal": 1.8,
+        "motility": 0.1,
+        "taxis_sensitivity": 12,
+        "inhibition_diffusion": 4,
+        "phase_threshold": 0.04
+      }
+    },
+    "elapsed_seconds": 1.778323566,
+    "timing_scope": "20k complete two-stage advances plus25 noninitial captures/host diagnostics/native writes, excludes initialcapture/JIT/warmup/finalcheckpoint/record/maps",
+    "source_sha256": {
+      "studies/living_tissue_runner.jl": "93b837249cc0d0dbdd7b6fa609a067c8710c109e3572785a1f76485081e6fdb3",
+      "studies/living_tissue.jl": "43a5e722e08963124c186147b2d15a54963292828e1c1064c2f277782a5816f0",
+      "studies/living_tissue_turnover_run.jl": "e0a422ac9d9661d0bdbab56f697550b4f088bafbb4380ee078ce597e31be4aba",
+      "src/recurrent_material.jl": "e9457d0d6e31f74950fa4be8ef84b138b020c0de7fc4b95c9a7f3cd5db148347",
+      "studies/living_tissue_observations.jl": "f3fa17688e3fafe1bcfca5ea331e91984dab077e67fad09138e66493a3b1215c",
+      "studies/living_tissue_turnover.jl": "ca543a8a3eb6e1eb3c93cfc4e16b86f03674ab6ca9598bdf328988ac09f76617",
+      "src/core.jl": "b4302b90eaeba213360e8a15ce8b7e4cb4c491606657e3e500d2fb8507753a52"
+    },
+    "recipe_sha256": "05b7ed094b813953e52e2c507fc2241f00f9a8fe3662c30e0468b6d47c900a7b",
+    "launcher_sha256": "1d6a07400543f19eaf38131db380b8ac965dcd1f0e40e8ed0d6c01e19fa5affc",
+    "source_environment_pin": "5377470 unchanged from original native128\u00b3 gate",
+    "cpu_affinity": [
+      10,
+      11
+    ],
+    "memory_max": "8GiB",
+    "swap_max": 0,
+    "nice": 15,
+    "timeout_seconds": 120,
+    "artifact_bytes": 16419030,
+    "initial_cell_average_maxabs_errors": {
+      "precursor": 5.960464477539063e-08,
+      "biomass": 2.9802322387695312e-08,
+      "excitation": 7.450580596923828e-09
+    },
+    "spectral_samples": [
+      {
+        "time": 5,
+        "excitation_std": 0.11880312114953995,
+        "radial_peak_wavelength": 2.6666666666666665,
+        "beyond_point7_fine_Nyquist": 3.9521019061794505e-06,
+        "beyond_same_physical_coarse_cutoff": 0.00014948526222724468
+      },
+      {
+        "time": 10,
+        "excitation_std": 0.24176476895809174,
+        "radial_peak_wavelength": 2.6666666666666665,
+        "beyond_point7_fine_Nyquist": 0.0012437422992661595,
+        "beyond_same_physical_coarse_cutoff": 0.018076758831739426
+      },
+      {
+        "time": 15,
+        "excitation_std": 0.21889302134513855,
+        "radial_peak_wavelength": 2.6666666666666665,
+        "beyond_point7_fine_Nyquist": 0.024667004123330116,
+        "beyond_same_physical_coarse_cutoff": 0.13958857953548431
+      },
+      {
+        "time": 20,
+        "excitation_std": 0.2260666787624359,
+        "radial_peak_wavelength": 2.6666666666666665,
+        "beyond_point7_fine_Nyquist": 0.0794110968708992,
+        "beyond_same_physical_coarse_cutoff": 0.3597676157951355
+      },
+      {
+        "time": 25,
+        "excitation_std": 0.23230205476284027,
+        "radial_peak_wavelength": 2.6666666666666665,
+        "beyond_point7_fine_Nyquist": 0.15352630615234375,
+        "beyond_same_physical_coarse_cutoff": 0.5157197713851929
+      }
+    ],
+    "matched_t20_statistics": [
+      {
+        "id": "living-tissue-finite-band64",
+        "time": 19.999999552965164,
+        "physical_spent": 186.5450519345468,
+        "physical_biomass": 200.46837651764508,
+        "physical_matrix": 106.57538965177942,
+        "mean_permeability": 0.60248595,
+        "minimum_solid": 0.056709476,
+        "maximum_solid": 1.542831
+      },
+      {
+        "id": "living-tissue-finite-band64-halfstep",
+        "time": 19.999999552965164,
+        "physical_spent": 185.82984592672437,
+        "physical_biomass": 201.93109004903818,
+        "physical_matrix": 105.9079408754063,
+        "mean_permeability": 0.6025188,
+        "minimum_solid": 0.05699537,
+        "maximum_solid": 1.5405371
+      },
+      {
+        "id": "living-tissue-finite-band128",
+        "time": 19.999999552965164,
+        "physical_spent": 178.13559976697434,
+        "physical_biomass": 226.33145021749078,
+        "physical_matrix": 97.41275805972204,
+        "mean_permeability": 0.5826772,
+        "minimum_solid": 0.070038766,
+        "maximum_solid": 1.6744585
+      }
+    ],
+    "interpretation": "Fine dominant wavelength2.667 persists through t25, unlike coarse short-wave peak. Late high-frequency tails still grow; full spatial convergence and stationary organization remain unestablished. This is evidence of coarse spatial bias, not proof of resolved late material detail."
+  },
+  "interpretation": "The uniform-mode stability bound concerns frozen signal Jacobians only. Low-gain finite-mode material response was weak. Fast-inhibition64\u00b2 strong response has excessive high-frequency content; half-step preservation refutes a temporal-step cure but does not establish spatial convergence."
+}

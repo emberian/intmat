@@ -1,0 +1,35 @@
+id = "living-tissue-packing64-no-threshold"
+title = "Transport remembers"
+description = "Solid tissue opens and fills space through funded growth, dissolution and recipient-limited exchange, spending a finite reserve."
+dimensions = [64, 64, 1]
+extent = [24.0, 24.0, 1.0]
+seed = 921
+noise_model = "bandlimited"
+dt = 0.005
+steps = 16000
+capture_every = 160
+reserve = 12.0
+
+[base]
+neural_gain = 2.8
+inhibition_gain = 2.3
+inhibition_time = 0.5
+excitation_diffusion = 0.08
+growth = 0.0
+biomass_diffusion = 0.0
+capacity = 0.9
+barrier = 8.0
+matrix_feedback = 0.0
+
+[phase]
+capacity = 0.9
+growth = 1.2
+basal_activity = 0.18
+renewal = 0.12
+target_precursor = 0.6
+phase_work = 0.08
+construction = 0.2
+unbuilding = 1.2
+withdrawal = 1.8
+motility = 0.10
+inhibition_diffusion = 4.0

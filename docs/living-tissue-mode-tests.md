@@ -23,9 +23,24 @@ growing finite band around 3.0–3.8 for B above approximately .12. The actual 6
 test produced strong excitation and material reopening, but 30–45% of excitation
 fluctuation power lay beyond .7Nyquist. Halving dt from .005 to .0025 preserved that
 high-frequency content: at t20 the fractions were .426/.420, and at t40
-.305/.309. This is not an acceptable resolved art result. A separate 128²,
-dt .00125, t25 test with the same physical start is queued as a narrow spatial
-refutation; no conclusion about its outcome is assumed here.
+.305/.309. This is not an acceptable resolved art result.
+
+The separate 128², dt .00125, t25 probe completed with the same physical start:
+restricting initial fine N/B/x cell averages to 64² differs by at most
+5.96e-8/2.98e-8/7.45e-9. Its dominant radial wavelength stays 2.667 through t5–25,
+about 14 fine cells, while the coarse t20 peak was .96. Thus finite-band structure
+survives refinement and the coarse short-wave peak was spatially biased. Fine
+power beyond its own .7 Nyquist still grows from .00124 at t10 to .0794 at t20 and
+.1535 at t25; late sharpening has not been shown converged. At t20, halving dt
+on 64² changes spent material 186.55→185.83, whereas 128² gives 178.14 and changes
+biomass 201.93→226.33. Time refinement alone would have missed this spatial bias.
+
+The fine job used unchanged immutable source/environment 5377470 and a separately
+hashed read-only recipe, 120s/8GiB/no swap/CPU10–11/nice15. Its 20k steps and 25 later
+captures took 1.7783s, excluding initial capture, JIT/warmup and final
+checkpoint/record/maps. Artifacts total 16.42MB. Exact parameters, hashes, initial
+restriction errors and compared spectra/inventories are in
+[`living-tissue-mode-results.json`](living-tissue-mode-results.json).
 
 ## Frozen reaction bound
 
