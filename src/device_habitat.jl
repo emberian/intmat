@@ -31,11 +31,11 @@ function device_habitat_arrays(backend,C,V,h)
      grid_ledger=z(Float32,V,12),grid_ledger_low=z(Float32,V,12),
      grid_inert=z(Float32,V),grid_inert_low=z(Float32,V),observation=z(Float32,16))
 end
-function device_habitat_feed_arrays(backend,V)
+function device_habitat_feed_arrays(backend,V;inventory_type=Float32)
     z(T,d...)=KernelAbstractions.zeros(backend,T,d...)
-    (fields=z(Float32,V,3),scratch=z(Float32,V,3),permeability=z(Float32,V),
+    (fields=z(inventory_type,V,3),scratch=z(inventory_type,V,3),permeability=z(Float32,V),
      source_masks=z(Float32,V,3),sink_masks=z(Float32,V,3),
-     resource_ledger=z(Float32,3,6),resource_ledger_low=z(Float32,3,6),quota=z(Float32,3,2))
+     resource_ledger=z(inventory_type,3,6),resource_ledger_low=z(inventory_type,3,6),quota=z(Float32,3,2))
 end
 function device_habitat_argument(c,a,q)
     (requests=a.requests,last_secretion=a.last_secretion,enzyme_bits=a.enzyme_bits,
@@ -70,18 +70,18 @@ end
     after,before-after
 end
 @inline function dh_take_up(before::Float32,amount::Float64)
-    after=Float32(max(0.,Float64(before)-amount))
+    after=typeof(before)(max(0.,Float64(before)-amount))
     Float64(before)-Float64(after)<amount && after>0 && (after=prevfloat(after))
     after,Float64(before)-Float64(after)
 end
 # Withdraw no more than a request, used for kinetic source release.
-@inline function dh_take_down(before::Float32,amount::Float64)
-    after=Float32(max(0.,Float64(before)-amount))
+@inline function dh_take_down(before::Union{Float32,Float64},amount::Float64)
+    after=typeof(before)(max(0.,Float64(before)-amount))
     Float64(before)-Float64(after)>amount && (after=nextfloat(after))
     after,Float64(before)-Float64(after)
 end
-@inline function dh_add_down(before::Float32,amount::Float64)
-    after=Float32(Float64(before)+amount)
+@inline function dh_add_down(before::Union{Float32,Float64},amount::Float64)
+    after=typeof(before)(Float64(before)+amount)
     Float64(after)-Float64(before)>amount && (after=prevfloat(after))
     after,Float64(after)-Float64(before)
 end
@@ -191,7 +191,7 @@ function DeviceConstructiveEcology(w::World,c::DeviceCellular,reference::Catalyt
     all(k->fq.potentials[k]>=c.parameters.potentials[k],1:2) || throw(ArgumentError("feedstock conversion must be downhill in device precision"))
     all(x->isfinite(x)&&x>=0,Iterators.flatten(v isa Tuple ? v : (v,) for v in values(fq))) || throw(ArgumentError("invalid device feedstock parameters"))
     dh_validate_parameters(q,fq)
-    a=device_habitat_arrays(w.backend,C,V,h);owned=device_habitat_feed_arrays(w.backend,V)
+    a=device_habitat_arrays(w.backend,C,V,h);owned=device_habitat_feed_arrays(w.backend,V;inventory_type=eltype(c.environment.fields))
     weights=zeros(Float32,C,h+10,3);weights[1:n,:,:].=permutedims(reference.weights,(3,2,1));copyto!(a.weights,weights)
     enzyme=hcat((vec(map(dh_float_down,x)) for x in reference.enzymes)...)
     bound=matrix===nothing ? zeros(Float32,V,2) : hcat((vec(map(dh_float_down,x)) for x in matrix.bound)...)
@@ -211,9 +211,9 @@ function DeviceConstructiveEcology(w::World,c::DeviceCellular,reference::Catalyt
     copyto!(owned.source_masks,hcat(vec(f.source_masks[1]),vec(f.source_masks[2]),zeros(Float32,V)))
     copyto!(owned.sink_masks,hcat(vec(f.sink_masks[1]),vec(f.sink_masks[2]),zeros(Float32,V)))
     copyto!(owned.permeability,vec(f.permeability))
-    ledger=zeros(Float32,3,6);low=similar(ledger);fill!(low,0)
+    ledger=zeros(eltype(owned.resource_ledger),3,6);low=similar(ledger);fill!(low,0)
     for (column,values) in ((1,f.source_remaining),(2,f.sink_remaining))
-        ledger[1:2,column].=Float32.(values);low[1:2,column].=Float32.(values.-Float64.(ledger[1:2,column]))
+        ledger[1:2,column].=eltype(ledger).(values);low[1:2,column].=eltype(ledger).(values.-Float64.(ledger[1:2,column]))
     end
     copyto!(owned.resource_ledger,ledger);copyto!(owned.resource_ledger_low,low)
     feed=(arrays=owned,parameters=fq,argument=merge(owned,(status=c.environment.status,)))
@@ -351,7 +351,7 @@ function dh_validate_host_arrays(a,feed,q,fq)
     for (hi,lo) in ((a.cell_ledger,a.cell_ledger_low),(a.grid_ledger,a.grid_ledger_low),
             (a.cell_inert,a.cell_inert_low),(a.grid_inert,a.grid_inert_low),
             (feed.resource_ledger,feed.resource_ledger_low))
-        all(i->Float32(Float64(hi[i])+Float64(lo[i]))==hi[i],eachindex(hi)) ||
+        all(i->eltype(hi)(Float64(hi[i])+Float64(lo[i]))==hi[i],eachindex(hi)) ||
             throw(ArgumentError("nonnormalized compensated habitat pair"))
     end
     for key in (:expression,:requests,:last_secretion,:bound,:permeability,:release)
@@ -398,7 +398,7 @@ function device_habitat_restore(w::World,x)
     dh_validate_parameters(x.parameters,x.feed_parameters)
     c=device_cellular_restore(w,x.cells);g=c.geometry
     a=device_habitat_arrays(w.backend,Int(g.capacity),prod(Int.(g.dims)),Int(g.hidden))
-    owned=device_habitat_feed_arrays(w.backend,prod(Int.(g.dims)))
+    owned=device_habitat_feed_arrays(w.backend,prod(Int.(g.dims));inventory_type=eltype(c.environment.fields))
     for (target,source) in ((a,x.arrays),(owned,x.feedstock))
         keys(target)==keys(source) || throw(ArgumentError("habitat checkpoint array roles differ"))
         for key in keys(target)

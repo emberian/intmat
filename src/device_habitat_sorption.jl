@@ -17,7 +17,7 @@ end
 # Actual endpoint changes pay for each transfer. Unreceivable representable
 # donor debit belongs to inert material; the caller accounts its potential heat
 # exactly once. Ordinary exchange never forces an unrepresentable desorption.
-@inline function dh_sorption_exchange(free::Float32,bound::Float32,target::Float32)
+@inline function dh_sorption_exchange(free::Union{Float32,Float64},bound::Float32,target::Float32)
     if target>bound
         request=min(Float64(free),Float64(target)-Float64(bound))
         nextfree,taken=dh_take_down(free,request)
@@ -36,7 +36,7 @@ end
 
 # Scaffold loss is compulsory: release what the soluble Float32 endpoint can
 # receive, then retain any remaining excess as inert mass, never excess binding.
-@inline function dh_sorption_collapse(free::Float32,bound::Float32,capacity::Float32)
+@inline function dh_sorption_collapse(free::Union{Float32,Float64},bound::Float32,capacity::Float32)
     exchanged=dh_sorption_exchange(free,bound,min(bound,capacity))
     nextbound=min(exchanged.bound,capacity)
     (;free=exchanged.free,bound=nextbound,

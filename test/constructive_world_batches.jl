@@ -119,3 +119,24 @@ end
     badhabitat=merge(h.arrays,(enzyme_bits=badbits,))
     @test_throws ArgumentError constructive_batch_resource_nonalias(c,badhabitat,h.feedstock.arrays)
 end
+
+@testset "Wide inventory batch preserves transfer precision and restart" begin
+    fixtures=[constructive_batch_fixture(seed;flux=true,energy_type=Float64,inventory_type=Float64) for seed in (17,31)]
+    worlds=first.(fixtures);serial=last.(fixtures);batch=constructive_world_batch(serial)
+    @test eltype(Interior.device_resource_workspace(batch.cells).grants)===Float64
+    @test all(level->eltype(level.high)===Float64 && eltype(level.low)===Float64,Interior.device_resource_workspace(batch.cells).levels)
+    for _ in 1:4
+        for (w,p) in fixtures;advance!(w,p,.01);end
+        advance!(worlds[1],batch,.01)
+    end
+    @test all(constructive_snapshot_equal(Interior.device_habitat_snapshot(serial[i]),constructive_world_batch_snapshot(batch,i)) for i in 1:2)
+    checkpoint=constructive_world_batch_checkpoint(worlds,batch)
+    targets=[World(w.grid;seed=w.seed) for w in worlds]
+    for w in targets;fill!(w.fields.nutrient,0);end
+    restored=constructive_world_batch_restore(targets,checkpoint)
+    @test all(constructive_snapshot_equal(constructive_world_batch_snapshot(batch,i),constructive_world_batch_snapshot(restored,i)) for i in 1:2)
+    for _ in 1:3
+        advance!(worlds[1],batch,.01);advance!(targets[1],restored,.01)
+    end
+    @test all(constructive_snapshot_equal(constructive_world_batch_snapshot(batch,i),constructive_world_batch_snapshot(restored,i)) for i in 1:2)
+end

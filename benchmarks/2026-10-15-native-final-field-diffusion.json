@@ -1,0 +1,85 @@
+{
+    "checkpoint_sha256": "171707c2a7a7e0a614e7e8d509f88a04264027591b33ca2869729d9c6a385716",
+    "purpose": "Repeated diffusion-only numerical fixture. Does not resume the ecological trajectory.",
+    "steps": 4000,
+    "checkpoint_source": {
+        "model": "db2277f6fa01f02fa5829e929ce3f8abf583cc598052f6cbb81113345cb6ff3d",
+        "initialization": "b3c62d90bdd1c2340ae5097c2242a440b3ab7fc5204e57b18f087067b2c41bd7",
+        "founder_initialization": "d76e4c791a2c56bc7fd651b1836e6879b9e27013566ce6d94a1d2f677f62e633",
+        "support": "5a767b83c2c912d8706468ec7c5b86e56cf99430b2a23dfd3a7f3ee8f21bf55b",
+        "lifecycle": "8826c577e960db6596cd923a591d806b185908a254c6cc0fb6b0eebb033a9629",
+        "resource": "050991b42eceab1403c940e69b027d27106f966dfcc0cfbf215b5b5ff7221c18",
+        "kernels": "cf9ce3d4f193721b11ea7e005a9a06bb398a57bd211b9436f4876d3326a7e6d9",
+        "checkpoint": "10d83cb02df68183cc703c3fca152795a5685b8b90379c52b1856aae72fd6664",
+        "protocol": "5b5b8c4b945af6c9a6a2496dc115e83501cc3b1329f7c8b2abab71d175c22720"
+    },
+    "runtime": {
+        "julia": "1.12.4",
+        "kernel": "Linux",
+        "architecture": "x86_64",
+        "launch_threads": 2,
+        "backend": "amd",
+        "device": "HIPDevice(id=1, name=AMD Radeon RX 6750 XT, gcn_arch=gfx1030)",
+        "backend_version": "2.8.0",
+        "actual_device_optlevel": 1,
+        "project_sha256": "284c920aebff70f466a40df21f7c83ae4c561857b046f940274b43a8feeaec6d",
+        "manifest_sha256": "47146c99c0191ecbea07ae472e419037ac9bd89d4adb946260860c06ad2e5ee5"
+    },
+    "Float32": {
+        "before": [
+            66.01482283541452,
+            69.71777923746052,
+            713.0305942646228
+        ],
+        "after": [
+            66.01411045790684,
+            69.71701169937865,
+            713.0266613012645
+        ],
+        "species_residual": [
+            -0.0007123775076820493,
+            -0.0007675380818739086,
+            -0.003932963358238339
+        ],
+        "material_residual": -0.005412878947794297,
+        "potential_residual": -0.005919662358223832,
+        "seconds": 1.051309349,
+        "min": 1.8721713e-9,
+        "finite": true
+    },
+    "Float64": {
+        "before": [
+            66.01482283541452,
+            69.71777923746052,
+            713.0305942646228
+        ],
+        "after": [
+            66.01482283541452,
+            69.71777923746053,
+            713.0305942646228
+        ],
+        "species_residual": [
+            0,
+            1.4210854715202004e-14,
+            0
+        ],
+        "material_residual": 1.4210854715202004e-14,
+        "potential_residual": 5.684341886080802e-14,
+        "seconds": 1.563033291,
+        "min": 1.872174474076615e-9,
+        "finite": true
+    },
+    "dt": 0.001,
+    "snapshot_step": 659992,
+    "current_source": {
+        "model": "2f2770546313726673484e31aa70cb797bb6ded286704be0e6a082b305d5ded4",
+        "initialization": "766dfedbdbf5b4dbbb99ed5e9336a16747fa08752a84af3268fc7c98c613613a",
+        "founder_initialization": "d76e4c791a2c56bc7fd651b1836e6879b9e27013566ce6d94a1d2f677f62e633",
+        "support": "5a767b83c2c912d8706468ec7c5b86e56cf99430b2a23dfd3a7f3ee8f21bf55b",
+        "lifecycle": "8826c577e960db6596cd923a591d806b185908a254c6cc0fb6b0eebb033a9629",
+        "resource": "ac72b2db1dfa448446df0ae44840ba05933f1d8fb13c639f9e2cd3b3a7e41223",
+        "kernels": "3a0d576ab8ea091c075c38b0625026222f48e1c5fb6e919334c2d6eb42511782",
+        "checkpoint": "81c8538519e5d0c58eb8bc0b6e49be7eec87119f81b7fcd998b6944f02c68503",
+        "protocol": "52632744615956c0e4c613e010b8fa4ba08c396e46e03d7ef5ec15f037e8199d"
+    }
+}

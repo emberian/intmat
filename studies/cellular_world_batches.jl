@@ -65,8 +65,8 @@ function pack_world_arrays(xs)
 end
 # Each world's resource reduction has disjoint transient storage. The shared
 # production phase sees ordinary per-world shapes through the batch projection.
-function batch_resource_workspace(backend,n,worlds)
-    array(rows)=WorldBatchArray(Interior.KernelAbstractions.zeros(backend,Float32,rows,6,worlds),(rows,6))
+function batch_resource_workspace(backend,n,worlds;inventory_type=Float32)
+    array(rows)=WorldBatchArray(Interior.KernelAbstractions.zeros(backend,inventory_type,rows,6,worlds),(rows,6))
     grants=array(n);levels=NamedTuple[]
     while true
         n=cld(n,128);push!(levels,(high=array(n),low=array(n)))
@@ -81,7 +81,7 @@ function batch_resource_validate(p)
     Interior.device_resource_workspace_validate(work)
     arrays=(work.grants,(a for l in work.levels for a in (l.high,l.low))...)
     for (i,a) in enumerate(arrays)
-        a isa WorldBatchArray&&size(a.storage)==(size(a)...,p.worlds)&&eltype(a)===Float32 ||
+        a isa WorldBatchArray&&size(a.storage)==(size(a)...,p.worlds)&&eltype(a)===eltype(p.environment.fields) ||
             throw(ArgumentError("invalid world-isolated resource storage"))
         Interior.KernelAbstractions.get_backend(a.storage)==p.backend || throw(ArgumentError("resource batch backend differs"))
         for other in arrays[1:i-1]
@@ -113,7 +113,7 @@ function CellularWorldBatch(ps::AbstractVector)
     isempty(ps)&&error("empty ensemble");a=first(ps)
     all(p->p.geometry==a.geometry&&merge(p.parameters,(seed=a.parameters.seed,))==a.parameters&&p.backend==a.backend&&p.attempted_steps==a.attempted_steps,ps)||error("batch requires identical geometry, physical parameters, and step clock")
     s=pack_world_arrays(getproperty.(ps,:state));e=pack_world_arrays(getproperty.(ps,:environment))
-    resource=batch_resource_workspace(a.backend,size(e.fields,1),length(ps))
+    resource=batch_resource_workspace(a.backend,size(e.fields,1),length(ps);inventory_type=eltype(e.fields))
     markers=Int32[only(Array(Interior.device_lifecycle_workspace(p).highwater)) for p in ps]
     lifecycle=batch_lifecycle_workspace(a.backend,Int(a.geometry.capacity),markers)
     o=Interior.device_cellular_contract(s,e,a.parameters,a.geometry;resource_workspace=resource,lifecycle_workspace=lifecycle)

@@ -24,7 +24,7 @@ end
             env1=0f0;env2=0f0;enzyme1=0f0;enzyme2=0f0
             for (site,support_weight) in device_support_edges(descriptor,i)
                 weight=support_weight/g.volume
-                env1+=weight*feed.fields[site,1];env2+=weight*feed.fields[site,2]
+                env1+=weight*Float32(feed.fields[site,1]);env2+=weight*Float32(feed.fields[site,2])
                 enzyme1+=weight*reinterpret(Float32,a.enzyme_bits[site,1]);enzyme2+=weight*reinterpret(Float32,a.enzyme_bits[site,2])
             end
             env1/=1f0+env1;env2/=1f0+env2;enzyme1/=1f0+enzyme1;enzyme2/=1f0+enzyme2
@@ -36,7 +36,7 @@ end
                     j==6 ? s.metabolites[i,2]/max(s.mass[i]*cq.store_capacity,eps(Float32)) :
                     j==7 ? Float32(s.energy[i])/(s.mass[i]+Float32(s.energy[i])) : j==8 ? s.mass[i]/(cq.division_mass+s.mass[i]) :
                     j==9 ? s.age[i]/(20f0+s.age[i]) : 1f0
-                x+=a.weights[i,col,1]*input;y+=a.weights[i,col,2]*input;z+=a.weights[i,col,3]*input
+                x+=a.weights[i,col,1]*Float32(input);y+=a.weights[i,col,2]*Float32(input);z+=a.weights[i,col,3]*Float32(input)
             end
             investment=inv(1f0+exp(-clamp(q.regulation ? x : q.investment_bias,-40f0,40f0)))
             allocation=q.regulation ? inv(1f0+exp(-clamp(y-z,-40f0,40f0))) : .5f0

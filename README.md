@@ -88,6 +88,16 @@ Noisy controls and small evolutionary N limit the claim; cooperation remains unp
 
 [Chemistry](docs/resources.md) · [Metabolism](docs/metabolic-ecology.md) · [Boundary maintenance](docs/cooperative-boundaries.md) · [Experiments](docs/metabolic-experiments.md)
 
+## Investigate capable worlds
+
+Map the clocks, then intervene: erase neural state, plastic marks or retained
+food in matched copies; measure their response to the same nutrient pulse.
+Distinguish information retained from information used, and lifetime development
+from inherited adaptation. Preserve diverse parameterizations and actual fields
+for later simulation and rendering.
+
+[Operating map](docs/garden-operating-map.md) · [Causal windows](docs/native-memory-interventions.md) · [Inventory repair](docs/native-inventory-precision.md) · [Research and PDFs](docs/research/learning-materials.md)
+
 ## Compose
 
 A `World` owns grid fields. Processes own additional state. An ordered tuple defines

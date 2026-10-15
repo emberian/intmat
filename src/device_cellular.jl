@@ -1,6 +1,10 @@
 """Experimental capacity-major cellular execution on a KA backend.
 
-This uses Float32 physiology with opt-in Float64 battery storage on CPU/AMD; it is not bit-identical CPU CellularEcology.
+This uses Float32 control with opt-in Float64 battery and physical inventory
+storage on CPU/AMD; it is not bit-identical CPU CellularEcology.
+`inventory_type=Float64` widens biomass, metabolites, soluble fields and their
+transfer buffers; it requires `energy_type=Float64`. Geometry and controllers
+remain Float32. This explicit choice belongs to new source-pinned experiments.
 Its physiology/controller contracts are shared; junctions use synchronous donor
 limiting, bonds use mutual bounded-degree proposals, and mechanics uses checked
 fixed substeps with conservatively funded motors. Cell state, genomes, resource
@@ -23,19 +27,21 @@ function device_energy_type(backend,energy_type)
     energy_type===Float64 && occursin("Metal",string(typeof(backend))) && throw(ArgumentError("Float64 energy is unsupported on Metal"))
     energy_type
 end
-function device_cellular_arrays(backend,C,h,K,S,V,bins;support_strategy=:materialized,axis_capacity=0,energy_type=Float32)
+function device_cellular_arrays(backend,C,h,K,S,V,bins;support_strategy=:materialized,axis_capacity=0,energy_type=Float32,inventory_type=Float32)
     device_energy_type(backend,energy_type)
+    device_energy_type(backend,inventory_type)
+    inventory_type===Float64 && energy_type!==Float64 && throw(ArgumentError("Float64 inventory requires Float64 batteries"))
     z(T,d...)=KernelAbstractions.zeros(backend,T,d...)
     state=(active=z(Int32,C),ids=z(Int32,C),parents=z(Int32,C),lineages=z(Int32,C),generations=z(Int32,C),
-        position=z(Float32,C,3),position_next=z(Float32,C,3),mass=z(Float32,C),metabolites=z(Float32,C,2),
-        metabolites_next=z(Float32,C,2),energy=z(energy_type,C),age=z(Float32,C),
+        position=z(Float32,C,3),position_next=z(Float32,C,3),mass=z(inventory_type,C),metabolites=z(inventory_type,C,2),
+        metabolites_next=z(inventory_type,C,2),energy=z(energy_type,C),age=z(Float32,C),
         hidden=z(Float32,C,h),adaptation=z(Float32,C,h),weights=z(Float32,C,2h+CELLULAR_SENSORS,h+CELLULAR_ACTIONS),
         marks=z(Float32,C,2h+CELLULAR_SENSORS,h+CELLULAR_ACTIONS),actions=z(Float32,C,CELLULAR_ACTIONS),
         inputs=z(Float32,C,2h+CELLULAR_SENSORS),outputs=z(Float32,C,h+CELLULAR_ACTIONS),
-        radii=z(Float32,C),enzymes=z(Float32,C,4),requests=z(Float32,C,2),grants=z(Float32,C,2),
+        radii=z(Float32,C),enzymes=z(Float32,C,4),requests=z(inventory_type,C,2),grants=z(inventory_type,C,2),
         sites=z(Int32,C,support_strategy===:axis ? 0 : S),support=z(Float32,C,support_strategy===:axis ? 0 : S),support_count=z(Int32,C),
         bonds=z(Int32,C,K),bond_ids=z(Int32,C,K),rest=z(Float32,C,K),candidates=z(Int32,C,K),candidate_rest=z(Float32,C,K),
-        force=z(Float32,C,3),rows=z(Float32,C),exchange_scale=z(Float32,C,2),waste=z(Float32,C),
+        force=z(Float32,C,3),rows=z(Float32,C),exchange_scale=z(inventory_type,C,2),waste=z(inventory_type,C),
         ledger=z(Float32,C,9),ledger_low=z(Float32,C,9),cell_bin=z(Int32,C),next=z(Int32,C),new_parent=z(Int32,C))
     if support_strategy===:axis
         names=filter(k->!(k in (:sites,:support,:support_count)),keys(state))
@@ -45,9 +51,9 @@ function device_cellular_arrays(backend,C,h,K,S,V,bins;support_strategy=:materia
     elseif support_strategy!==:materialized
         throw(ArgumentError("unknown device support strategy"))
     end
-    env=(fields=z(Float32,V,3),scratch=z(Float32,V,3),demand=z(Float32,V,2),scale=z(Float32,V,2),
-        returns=z(Float32,V),permeability=z(Float32,V),occupancy=z(Float32,V),
-        source_masks=z(Float32,V,3),sink_masks=z(Float32,V,3),resource_ledger=z(Float32,3,6),resource_ledger_low=z(Float32,3,6),
+    env=(fields=z(inventory_type,V,3),scratch=z(inventory_type,V,3),demand=z(inventory_type,V,2),scale=z(inventory_type,V,2),
+        returns=z(inventory_type,V),permeability=z(Float32,V),occupancy=z(Float32,V),
+        source_masks=z(Float32,V,3),sink_masks=z(Float32,V,3),resource_ledger=z(inventory_type,3,6),resource_ledger_low=z(inventory_type,3,6),
         inert=z(Float32,V),inert_low=z(Float32,V),observation=z(Float32,12),observation_min=z(Int32,2),
         quota=z(Float32,3,2),heads=z(Int32,prod(bins)),metadata=z(Int32,10),status=z(Int32,1),
         heap=z(Int32,C),heap_keys=z(UInt32,C),free=z(Int32,C))
@@ -55,7 +61,7 @@ function device_cellular_arrays(backend,C,h,K,S,V,bins;support_strategy=:materia
 end
 DeviceCellular(w::World,reference::CellularEcology;kwargs...)=device_cellular_import(w,reference;kwargs...)
 function device_cellular_import(w::World,reference;capacity=reference.capacity,
-        radius_bound=2f0,bin_width=radius_bound/2,mechanical_substeps=16,seed=reference.seed,support_strategy=:materialized,energy_type=Float32)
+        radius_bound=2f0,bin_width=radius_bound/2,mechanical_substeps=16,seed=reference.seed,support_strategy=:materialized,energy_type=Float32,inventory_type=Float32)
     device_energy_type(w.backend,energy_type)
     support_strategy in (:materialized,:axis) || throw(ArgumentError("unknown device support strategy"))
     reference.medium===nothing && reference.resources.medium===nothing || throw(ArgumentError("imported device medium coupling is not implemented; construct the explicit device composition"))
@@ -66,7 +72,7 @@ function device_cellular_import(w::World,reference;capacity=reference.capacity,
     radius_bound>0 && mechanical_substeps>0 || throw(ArgumentError("positive radius bound/substeps required"))
     reference.stencil.grid.size==w.grid.size && reference.stencil.grid.extent==w.grid.extent || throw(ArgumentError("reference/device grids differ"))
     all(a->size(a)==w.grid.size && all(x->isfinite(x)&&x>=0&&isfinite(Float32(x)),a),vcat(reference.resources.fields,reference.resources.source_masks,reference.resources.sink_masks)) || throw(ArgumentError("invalid reference resource fields"))
-    budget_source=Float32.(reference.resources.source_remaining);budget_sink=Float32.(reference.resources.sink_remaining)
+    budget_source=inventory_type.(reference.resources.source_remaining);budget_sink=inventory_type.(reference.resources.sink_remaining)
     all(x->isfinite(x)&&x>=0,vcat(budget_source,budget_sink)) || throw(ArgumentError("resource budgets must remain finite in Float32"))
     dims=w.grid.size;spacing=w.grid.spacing;V=prod(dims);nd=dims[3]==1 ? 2 : 3
     exchange_radius=Float32(reference.parameters.exchange_radius)
@@ -88,14 +94,14 @@ function device_cellular_import(w::World,reference;capacity=reference.capacity,
     all(>(0),(q.exchange_radius,q.density,q.store_capacity,q.energy_capacity,q.half_saturation,q.response_time,q.adaptation_time,q.motor_cost,q.minimum_mass,q.division_mass)) || throw(ArgumentError("required rates/scales must remain positive in Float32"))
     geom=(dims=Int32.(dims),spacing=spacing,extent=w.grid.extent,nd=Int32(nd),volume=volume,
         candidates=Int32.(candidates),bins=Int32.(bins),capacity=Int32(C),hidden=Int32(h),degree=Int32(K),
-        support_strategy=support_strategy===:axis ? Int32(1) : Int32(0),support_radius2=exchange_radius^2,energy_bits=Int32(8sizeof(energy_type)))
-    state,env=device_cellular_arrays(w.backend,C,h,K,S,V,bins;support_strategy,axis_capacity=maximum(candidates),energy_type)
+        support_strategy=support_strategy===:axis ? Int32(1) : Int32(0),support_radius2=exchange_radius^2,energy_bits=Int32(8sizeof(energy_type)),inventory_bits=Int32(8sizeof(inventory_type)))
+    state,env=device_cellular_arrays(w.backend,C,h,K,S,V,bins;support_strategy,axis_capacity=maximum(candidates),energy_type,inventory_type)
     # Device buffers are already zeroed; stage founders only, never a full-capacity host replica.
     host=map(a->zeros(eltype(a),n,Base.tail(size(a))...),state)
     host.active[1:n].=1;host.ids[1:n].=Int32.(reference.ids);host.parents[1:n].=Int32.(reference.parents)
     host.lineages[1:n].=Int32.(reference.lineages);host.generations[1:n].=Int32.(reference.generations)
     for (dst,src) in ((:position,:positions),(:metabolites,:metabolites),(:hidden,:hidden),(:adaptation,:adaptation),(:actions,:last_actions))
-        getproperty(host,dst)[1:n,:].=Float32.(permutedims(getproperty(reference,src)))
+        getproperty(host,dst)[1:n,:].=eltype(getproperty(host,dst)).(permutedims(getproperty(reference,src)))
     end
     for (dst,src) in ((:mass,:biomass),(:energy,:energy),(:age,:age))
         getproperty(host,dst)[1:n].=eltype(getproperty(host,dst)).(getproperty(reference,src))
@@ -126,10 +132,10 @@ function device_cellular_import(w::World,reference;capacity=reference.capacity,
         copyto!(view(env.source_masks,:,s),vec(reference.resources.source_masks[s]))
         copyto!(view(env.sink_masks,:,s),vec(reference.resources.sink_masks[s]))
     end
-    ledger=zeros(Float32,3,6);ledger[:,1].=budget_source;ledger[:,2].=budget_sink
-    ledgerlow=zeros(Float32,3,6)
-    ledgerlow[:,1].=Float32.(reference.resources.source_remaining.-Float64.(budget_source))
-    ledgerlow[:,2].=Float32.(reference.resources.sink_remaining.-Float64.(budget_sink))
+    ledger=zeros(inventory_type,3,6);ledger[:,1].=budget_source;ledger[:,2].=budget_sink
+    ledgerlow=zeros(inventory_type,3,6)
+    ledgerlow[:,1].=inventory_type.(reference.resources.source_remaining.-Float64.(budget_source))
+    ledgerlow[:,2].=inventory_type.(reference.resources.sink_remaining.-Float64.(budget_sink))
     copyto!(env.resource_ledger_low,ledgerlow)
     copyto!(env.resource_ledger,ledger);fill!(env.permeability,1f0)
     metadata=zeros(Int32,10);metadata[1]=reference.next_id;metadata[2]=n;copyto!(env.metadata,metadata)
@@ -150,7 +156,7 @@ function device_cellular_contract(state,env,q,g;resource_workspace=nothing,resou
         geometry=NamedTuple{(:nd,:extent,:bins,:degree)}(g))
     controller=(state=NamedTuple{(:active,:weights,:marks,:inputs,:outputs)}(state),
         environment=(status=env.status,),geometry=(hidden=g.hidden,))
-    resource=resource_workspace===nothing ? DeviceResourceWorkspace(KernelAbstractions.get_backend(env.fields),size(env.fields,1)) : resource_workspace
+    resource=resource_workspace===nothing ? DeviceResourceWorkspace(KernelAbstractions.get_backend(env.fields),size(env.fields,1);inventory_type=eltype(env.fields)) : resource_workspace
     device_resource_workspace_validate(resource)
     size(resource.grants)==(size(env.fields,1),6) || throw(ArgumentError("resource workspace grid differs"))
     device_resource_workspace_nonalias(resource,state,env;allowed_transients=resource_transient_aliases)

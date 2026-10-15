@@ -1,0 +1,140 @@
+{
+  "schema_version": 1,
+  "consulted_on": "2026-10-15",
+  "purpose": "Primary reading shelf for Interior dynamical capability and causal experimentation; no claims that transfers have been validated in Interior.",
+  "bibliography": "learning-materials.bib",
+  "sources": [
+    {
+      "id": "arora2026mattr",
+      "title": "Matryoshka attribution: Learning to attribute language model outputs to representations and weights",
+      "url": "https://arxiv.org/abs/2609.25518v1",
+      "full_text_url": "https://arxiv.org/pdf/2609.25518v1",
+      "read_scope": "Primary HTML section 3, representation evaluation section 4, downloaded PDF.",
+      "local_pdf": {
+        "path": "papers/arora2026-matryoshka-attribution.pdf",
+        "bytes": 2605357,
+        "sha256": "9c49093f719aaace3f2c3dbe2ce5a9af80660f699f5ef579cc437460873cb8ca",
+        "license": "CC BY 4.0",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "license_evidence_url": "https://arxiv.org/abs/2609.25518v1",
+        "modified": false
+      }
+    },
+    {
+      "id": "dambre2012capacity",
+      "title": "Information processing capacity of dynamical systems",
+      "url": "https://doi.org/10.1038/srep00514",
+      "full_text_url": "https://www.nature.com/articles/srep00514.pdf",
+      "read_scope": "Primary article via PMC3400147, definitions and capacity theorem discussion.",
+      "local_pdf": null
+    },
+    {
+      "id": "natschlager2004edge",
+      "title": "At the Edge of Chaos: Real-time Computations and Self-Organized Criticality in Recurrent Neural Networks",
+      "url": "https://proceedings.neurips.cc/paper/2671-at-the-edge-of-chaos-real-time-computations-and-self-organized-criticality-in-recurrent-neural-networks.pdf",
+      "full_text_url": "https://proceedings.neurips.cc/paper/2671-at-the-edge-of-chaos-real-time-computations-and-self-organized-criticality-in-recurrent-neural-networks.pdf",
+      "read_scope": "Primary proceedings PDF, especially sections 3–5 on driven dynamics and NM-separation.",
+      "local_pdf": null
+    },
+    {
+      "id": "cohen2021stability",
+      "title": "Gradient Descent on Neural Networks Typically Occurs at the Edge of Stability",
+      "url": "https://arxiv.org/abs/2103.00065",
+      "full_text_url": "https://arxiv.org/pdf/2103.00065",
+      "read_scope": "Primary abstract and PDF introduction; not a survey of all optimizer variants.",
+      "local_pdf": null
+    },
+    {
+      "id": "stricker2008oscillator",
+      "title": "A fast, robust and tunable synthetic gene oscillator",
+      "url": "https://doi.org/10.1038/nature07389",
+      "full_text_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6791529/",
+      "read_scope": "Primary article/author manuscript and abstract. Link is full text; not a direct PDF.",
+      "local_pdf": null
+    },
+    {
+      "id": "nisioti2023niche",
+      "title": "Dynamics of niche construction in adaptable populations evolving in diverse environments",
+      "url": "https://arxiv.org/abs/2305.09369v1",
+      "full_text_url": "https://arxiv.org/pdf/2305.09369v1",
+      "read_scope": "Primary abstract and PDF model of niche construction/plasticity; downloaded PDF.",
+      "local_pdf": {
+        "path": "papers/nisioti2023-niche-construction.pdf",
+        "bytes": 1148110,
+        "sha256": "340be520c9c885ab1f5751bcbe361a6f81572c6746364ce44d45d5a0bba99e15",
+        "license": "CC BY 4.0",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "license_evidence_url": "https://arxiv.org/abs/2305.09369v1",
+        "modified": false
+      }
+    },
+    {
+      "id": "cully2017quality",
+      "title": "Quality and Diversity Optimization: A Unifying Modular Framework",
+      "url": "https://arxiv.org/abs/1708.09251",
+      "full_text_url": "https://arxiv.org/pdf/1708.09251",
+      "read_scope": "Primary abstract and PDF framework.",
+      "local_pdf": null
+    },
+    {
+      "id": "etcheverry2020holmes",
+      "title": "Progressive growing of self-organized hierarchical representations for exploration",
+      "url": "https://arxiv.org/abs/2005.06369v1",
+      "full_text_url": "https://arxiv.org/pdf/2005.06369v1",
+      "read_scope": "Primary abstract and PDF hierarchy construction and experimental appendix; workshop paper.",
+      "local_pdf": null
+    },
+    {
+      "id": "mordvintsev2020growing",
+      "title": "Growing Neural Cellular Automata",
+      "url": "https://distill.pub/2020/growing-ca/",
+      "full_text_url": "https://distill.pub/2020/growing-ca/",
+      "read_scope": "Primary interactive article, model and growth/persistence/regeneration experiments. HTML-native paper.",
+      "local_pdf": null
+    }
+  ],
+  "discovery": {
+    "service": "Scry",
+    "schema_url": "https://api.scry.io/v1/scry/schema",
+    "endpoint": "https://api.scry.io/v1/scry/query",
+    "sql": "SELECT toString(tweet_id) AS id, author_handle, text FROM twitter.tweets WHERE bucket_date >= '2026-09-20' AND bucket_date <= '2026-10-15' AND hasToken(search_text_lc, 'attribution') AND hasAnyTokens(search_text_lc, ['mattr','matryoshka']) AND NOT startsWith(text, 'RT @') ORDER BY tweet_id DESC, version DESC LIMIT 1 BY tweet_id LIMIT 10",
+    "record_id": "a36208ad-72e3-411b-88df-bdf25a1674ae",
+    "duration_ms": 1473,
+    "row_count": 10,
+    "deadline_partial": false,
+    "spend_nanodollars": 0,
+    "selected_author_posts": [
+      {
+        "author": "kirillacharya",
+        "url": "https://x.com/kirillacharya/status/2102808695289806889"
+      },
+      {
+        "author": "aryaman2020",
+        "url": "https://x.com/aryaman2020/status/2102800952948588731"
+      },
+      {
+        "author": "aryaman2020",
+        "url": "https://x.com/aryaman2020/status/2102800951019209059"
+      },
+      {
+        "author": "aryaman2020",
+        "url": "https://x.com/aryaman2020/status/2102800937769427281"
+      },
+      {
+        "author": "aryaman2020",
+        "url": "https://x.com/aryaman2020/status/2102800933659000846"
+      }
+    ],
+    "note": "Public author posts used for discovery; scientific claims checked against primary papers. Credentials and raw social text not stored in repository."
+  },
+  "quoted_citation_checks": [
+    {
+      "url": "https://arxiv.org/abs/2609.25518v1",
+      "result": "Title and authors confirmed; method inspected in primary HTML."
+    },
+    {
+      "url": "https://arxiv.org/abs/2609.39882v3",
+      "result": "LLM Persona Unlearning title/authors confirmed; 214-example connection unverified; excluded from the Interior core reading list."
+    }
+  ]
+}

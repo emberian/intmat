@@ -1,0 +1,43 @@
+{
+    "kind": "optical comparison of recorded native fields",
+    "shape": [
+        16,
+        16,
+        16
+    ],
+    "mapping": "retained B sets warm absorption/density; cyan emission is normalized bound B times sqrt(normalized free B); shared scales; full periodic box observed as a cut specimen; no cell glyphs",
+    "free_scale": 0.28159305453300476,
+    "bound_scale": 3.519559383392334,
+    "settings": {
+        "width": 640,
+        "height": 640,
+        "steps": 128,
+        "orbit": 0.6,
+        "elevation": 0.42,
+        "absorption": 1.6,
+        "emission": 5,
+        "scattering": 0.1,
+        "exposure": 1.4,
+        "cutaway": 1
+    },
+    "renderer_sha256": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+    "driver_sha256": "29f1db43a9bc26c2fd820e09a1a9b2859640f04f4bdb60ea008eb534fa5505b0",
+    "records": [
+        {
+            "name": "none_sham",
+            "time": 103.99999767541885,
+            "file": "none_sham.ppm",
+            "seconds": 13.9109045,
+            "source_sha256": "ccc06730590c4856fd4e04aadfae3cb1fa8e1e2da97125cef4be040eace9ac19",
+            "image_sha256": "a1513f4c4eddc830dfbd2b825aca2e5c9c9748e04b16cd5480a4950810e4fff7"
+        },
+        {
+            "name": "neural_sham",
+            "time": 103.99999767541885,
+            "file": "neural_sham.ppm",
+            "seconds": 12.654527166,
+            "source_sha256": "e787ebfd6ab72bfde68328574c11d091fded3f84a3551bfe43779a1c9d14790a",
+            "image_sha256": "b14f01e7f328361bd2738ec503e8fab8297c44c9d72196c24fd71de4e9d78e61"
+        }
+    ]
+}

@@ -64,7 +64,7 @@ end
 @kernel function dc_diffuse!(e,q,g,dt)
     site,k=@index(Global,NTuple)
     if e.status[1]==0
-        pos=dc_coords(site,g.dims);value=e.fields[site,k];flux=0f0
+        pos=dc_coords(site,g.dims);value=e.fields[site,k];flux=zero(value)
         for d in 1:3
             if g.dims[d]>1
                 for direction in (-1,1)
@@ -84,7 +84,7 @@ end
         s.next[i]=0
         if s.active[i]==1
             volume=(s.mass[i]+s.metabolites[i,1]+s.metabolites[i,2])/q.density
-            radius=g.nd==2 ? sqrt(volume/3.1415927f0) : cbrt(3f0*volume/12.566371f0)
+            radius=Float32(g.nd==2 ? sqrt(volume/3.1415927f0) : cbrt(3f0*volume/12.566371f0))
             s.radii[i]=radius
             if !(isfinite(radius)&&0<radius<=q.radius_bound)
                 KernelAbstractions.@atomic e.status[1]|=Int32(1)
@@ -169,7 +169,7 @@ end
         concentration1=0f0;concentration2=0f0
         for (site,edgeweight) in device_support_edges(device_support_descriptor(s,g),i)
             weight=edgeweight/g.volume
-            concentration1+=weight*e.fields[site,1];concentration2+=weight*e.fields[site,2]
+            concentration1+=weight*Float32(e.fields[site,1]);concentration2+=weight*Float32(e.fields[site,2])
             pos=dc_coords(site,g.dims)
             for d in 1:3
                 if g.dims[d]>1
@@ -232,9 +232,9 @@ end
         h=Int(g.hidden);total=0f0
         for j in 1:4;value=exp(2f0*s.outputs[i,h+3+j]);s.enzymes[i,j]=value;total+=value;end
         for j in 1:4;s.enzymes[i,j]/=total;end
-        room=max(0f0,q.store_capacity*s.mass[i]-s.metabolites[i,1]-s.metabolites[i,2]);requestsum=0f0
+        room=max(0f0,q.store_capacity*s.mass[i]-s.metabolites[i,1]-s.metabolites[i,2]);requestsum=zero(eltype(s.requests))
         for k in 1:2
-            concentration=0f0
+            concentration=zero(eltype(e.fields))
             for (site,weight) in device_support_edges(device_support_descriptor(s,g),i);concentration+=weight*e.fields[site,k]/g.volume;end
             amount=dt*q.uptake_rate*s.mass[i]*s.enzymes[i,k]^q.enzyme_exponent*concentration/(q.half_saturation+concentration)
             s.requests[i,k]=amount;requestsum+=amount
@@ -271,7 +271,7 @@ end
     i=@index(Global,Linear)
     if e.status[1]==0 && s.active[i]==1
         for k in 1:2
-            grant=0f0
+            grant=zero(eltype(s.metabolites))
             for (site,weight) in device_support_edges(device_support_descriptor(s,g),i);grant+=s.requests[i,k]*weight*e.scale[site,k];end
             s.grants[i,k]=grant;s.metabolites[i,k]+=grant;dc_ledger_add!(s.ledger,s.ledger_low,i,2+k,grant)
         end
@@ -289,7 +289,7 @@ end
     @inbounds begin
     if e.status[1]==0 && s.active[i]==1
         for k in 1:2
-            outgoing=0f0
+            outgoing=zero(eltype(s.metabolites))
             for b in 1:Int(g.degree)
                 dc_bond_valid(s,i,b) && (outgoing+=max(0f0,dc_exchange_flux(s.metabolites,s.mass,s.actions,q.junction_rate,i,s.bonds[i,b],k,dt)))
             end
@@ -305,7 +305,7 @@ end
         for k in 1:2
             next=s.metabolites[i,k]
             if s.active[i]==1
-                change=0f0;transferred=0f0
+                change=zero(eltype(s.metabolites));transferred=zero(eltype(s.metabolites))
                 for b in 1:Int(g.degree)
                     if dc_bond_valid(s,i,b)
                         j=s.bonds[i,b];flux=dc_exchange_flux(s.metabolites,s.mass,s.actions,q.junction_rate,i,j,k,dt)
@@ -407,8 +407,15 @@ end
 @kernel function dc_return_waste!(s,e,g)
     i=@index(Global,Linear)
     if e.status[1]==0
+        remaining=s.waste[i];edge=Int32(0)
         for (site,weight) in device_support_edges(device_support_descriptor(s,g),i)
-            amount=s.waste[i]*weight
+            edge+=Int32(1)
+            # Float32 support weights need not sum to exactly one. Wide physical
+            # inventory closes the scatter at its final edge; no mass is minted
+            # or discarded by the interpolation weights themselves.
+            amount=eltype(s.waste)===Float64 ?
+                (edge==s.support_count[i] ? remaining : min(remaining,s.waste[i]*Float64(weight))) : s.waste[i]*weight
+            remaining-=amount
             KernelAbstractions.@atomic e.returns[site]+=amount
         end
     end
@@ -422,7 +429,7 @@ end
         else
             after-before>request && (after=prevfloat(after))
             e.fields[i,3]=after
-            hi,lo=dc_pair_add(e.inert[i],e.inert_low[i],request-(after-before))
+            hi,lo=dc_inventory_pair_add(e.inert[i],e.inert_low[i],request-(after-before))
             e.inert[i]=hi;e.inert_low[i]=lo
         end
     end
@@ -686,7 +693,7 @@ end
                 s.position[child,d]=d>g.nd ? 0f0 : dc_wrap(center+shift,g.extent[d])
             end
             volume=(s.mass[parent]+s.metabolites[parent,1]+s.metabolites[parent,2])/q.density
-            radius=g.nd==2 ? sqrt(volume/3.1415927f0) : cbrt(3f0*volume/12.566371f0)
+            radius=Float32(g.nd==2 ? sqrt(volume/3.1415927f0) : cbrt(3f0*volume/12.566371f0))
             s.radii[parent]=radius;s.radii[child]=radius
             for b in 1:Int(g.degree);s.bonds[child,b]=0;s.bond_ids[child,b]=0;s.rest[child,b]=0;end
             if s.actions[parent,8]>=0 && g.degree>0
@@ -719,6 +726,12 @@ end
 @kernel function dc_complete_step!(e)
     i=@index(Global,Linear)
     if i==1 && e.status[1]==0;e.metadata[6]+=1;end
+end
+@inline dc_inventory_pair_add(hi,lo,x)=dc_pair_add(hi,lo,x)
+@inline function dc_inventory_pair_add(hi,lo,x::Float64)
+    high=Float32(x);low=Float32(x-Float64(high))
+    hi,lo=dc_pair_add(hi,lo,high)
+    dc_pair_add(hi,lo,low)
 end
 @inline function dc_pair_add(hi,lo,x)
     sum=hi+x;b=sum-hi;error=(hi-(sum-b))+(x-b)

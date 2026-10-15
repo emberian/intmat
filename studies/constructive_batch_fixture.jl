@@ -1,6 +1,6 @@
 # Initialization and snapshot comparison only; numerical stages remain in Interior.
 function constructive_batch_fixture(seed;flux=false,strategy=:axis,budget_scale=1.,backend=CPU(),
-        shape=(6,6,1),extent=(6.,6.,1.),population=2,capacity=max(8,2population),hidden=2,mechanics=false)
+        shape=(6,6,1),extent=(6.,6.,1.),population=2,capacity=max(8,2population),hidden=2,mechanics=false,energy_type=Float32,inventory_type=Float32)
     w=World(Grid(shape...;extent);seed);fill!(w.fields.nutrient,0)
     r=ResourcePool(w;potentials=(4,4,0),initial=(.01,.01,0),diffusion=(.01,.01,.01),
         source_rates=flux ? (.001,.002,0.) : (0.,0.,0.),source_budgets=flux ? (.5*budget_scale,.7*budget_scale,0.) : (0.,0.,0.))
@@ -22,7 +22,7 @@ function constructive_batch_fixture(seed;flux=false,strategy=:axis,budget_scale=
     for enzyme in h.enzymes;fill!(enzyme,.01*prod(w.grid.spacing[d] for d in 1:nd));end
     m=Interior.SorptiveMatrix(w,h)
     target=backend==CPU() ? w : World(w.grid,backend,NamedTuple(),NamedTuple(),0.,Int(seed))
-    d=Interior.DeviceCellular(target,c;mechanical_substeps=mechanics ? 16 : 1,radius_bound=2.,support_strategy=strategy)
+    d=Interior.DeviceCellular(target,c;mechanical_substeps=mechanics ? 16 : 1,radius_bound=2.,support_strategy=strategy,energy_type,inventory_type)
     target,Interior.DeviceConstructiveEcology(target,d,h;matrix=m)
 end
 function constructive_snapshot_equal(a,b)

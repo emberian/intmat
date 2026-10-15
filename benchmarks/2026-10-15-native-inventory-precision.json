@@ -1,0 +1,316 @@
+{
+    "source": {
+        "model": "2f2770546313726673484e31aa70cb797bb6ded286704be0e6a082b305d5ded4",
+        "initialization": "766dfedbdbf5b4dbbb99ed5e9336a16747fa08752a84af3268fc7c98c613613a",
+        "founder_initialization": "d76e4c791a2c56bc7fd651b1836e6879b9e27013566ce6d94a1d2f677f62e633",
+        "support": "5a767b83c2c912d8706468ec7c5b86e56cf99430b2a23dfd3a7f3ee8f21bf55b",
+        "lifecycle": "8826c577e960db6596cd923a591d806b185908a254c6cc0fb6b0eebb033a9629",
+        "resource": "ac72b2db1dfa448446df0ae44840ba05933f1d8fb13c639f9e2cd3b3a7e41223",
+        "kernels": "3a0d576ab8ea091c075c38b0625026222f48e1c5fb6e919334c2d6eb42511782",
+        "checkpoint": "81c8538519e5d0c58eb8bc0b6e49be7eec87119f81b7fcd998b6944f02c68503",
+        "protocol": "52632744615956c0e4c613e010b8fa4ba08c396e46e03d7ef5ec15f037e8199d"
+    },
+    "Float32": {
+        "initial": {
+            "material": 765.440006673336,
+            "potential": 1679.3600022792816,
+            "work": 0,
+            "heat": 0,
+            "supplied": 0,
+            "removed": 0,
+            "supplied_potential": 0,
+            "removed_potential": 0,
+            "population": 256,
+            "completed_steps": 0,
+            "secreted": [
+                0,
+                0
+            ],
+            "solubilized": [
+                0,
+                0
+            ],
+            "bound": [
+                0,
+                0
+            ],
+            "enzyme": [
+                0,
+                0
+            ],
+            "inert": 0,
+            "finite": true
+        },
+        "final": {
+            "material": 766.8325162785854,
+            "potential": 1508.2849400122616,
+            "work": 12.386114042720129,
+            "heat": 164.25899460170382,
+            "supplied": 1.3925160102453056,
+            "removed": 0,
+            "supplied_potential": 5.570064040981222,
+            "removed_potential": 0,
+            "population": 256,
+            "completed_steps": 700,
+            "secreted": [
+                1.5557746424479908,
+                1.5585680993083297
+            ],
+            "solubilized": [
+                3.138253797917695,
+                3.0084677320252364
+            ],
+            "bound": [
+                0.628111432201307,
+                0.625853361040372
+            ],
+            "enzyme": [
+                1.5488311839741054,
+                1.5516824514090377
+            ],
+            "inert": 0.00222067152482887,
+            "finite": true
+        },
+        "residual": {
+            "material": -6.404995890108012e-6,
+            "potential": -1.766357731014523e-5
+        },
+        "sample_steps": 200,
+        "sample_seconds": [
+            1.557867742,
+            1.552723299,
+            1.55167464
+        ],
+        "median_ms_per_step": 7.763616495,
+        "physical_and_snapshot_bytes": 243745268,
+        "resource_workspace_bytes": 6390576
+    },
+    "gate": {
+        "initial": {
+            "material": 44.480001497268674,
+            "potential": 242.7200090408325,
+            "work": 0,
+            "heat": 0,
+            "supplied": 0,
+            "removed": 0,
+            "supplied_potential": 0,
+            "removed_potential": 0,
+            "population": 2,
+            "completed_steps": 0,
+            "secreted": [
+                0,
+                0
+            ],
+            "solubilized": [
+                0,
+                0
+            ],
+            "bound": [
+                0,
+                0
+            ],
+            "enzyme": [
+                0,
+                0
+            ],
+            "inert": 0,
+            "finite": true
+        },
+        "final": {
+            "material": 44.480001497268674,
+            "potential": 239.30707985277454,
+            "work": 0.519590069602812,
+            "heat": 2.8933391184552146,
+            "supplied": 0,
+            "removed": 0,
+            "supplied_potential": 0,
+            "removed_potential": 0,
+            "population": 4,
+            "completed_steps": 1000,
+            "secreted": [
+                0.06671696656849235,
+                0.06671696656849235
+            ],
+            "solubilized": [
+                0.12551714670139152,
+                0.12551714670139152
+            ],
+            "bound": [
+                0.02237103832885623,
+                0.012898424174636602
+            ],
+            "enzyme": [
+                0.057658988051116467,
+                0.057658988051116467
+            ],
+            "inert": 5.637851296924623e-18,
+            "finite": true
+        },
+        "residual": {
+            "material": 0,
+            "potential": 5.3734794391857577e-14
+        },
+        "array_errors": {
+            "cells/exchange_scale": 0,
+            "cells/ledger": 1.1324882507324219e-6,
+            "cells/waste": 1.8000702841958248e-9,
+            "cells/rows": 0,
+            "cells/grants": 1.1770524547036589e-9,
+            "environment/scratch": 4.606360918951724e-7,
+            "cells/metabolites": 3.3881317890172014e-21,
+            "environment/returns": 9.016116620251579e-10,
+            "habitat/weights": 0,
+            "feedstock/scratch": 4.204554590048204e-7,
+            "environment/demand": 5.896496389708227e-10,
+            "cells/ledger_low": 5.0683139463103544e-8,
+            "cells/inputs": 3.5762786865234375e-7,
+            "feedstock/sink_masks": 0,
+            "cells/energy": 2.0097742450264633e-6,
+            "cells/requests": 1.1770524724506932e-9,
+            "environment/resource_ledger_low": 0,
+            "cells/radii": 0,
+            "habitat/last_secretion": 0,
+            "cells/mass": 9.719247850981105e-9,
+            "cells/support": 0,
+            "habitat/release": 8.69622454047203e-8,
+            "feedstock/permeability": 0,
+            "environment/inert_low": 0,
+            "habitat/permeability": 6.496906280517578e-6,
+            "habitat/observation": 0,
+            "cells/force": 0,
+            "cells/rest": 0,
+            "cells/position": 0,
+            "habitat/grid_inert_low": 0,
+            "cells/adaptation": 5.960464477539063e-8,
+            "cells/candidate_rest": 0,
+            "feedstock/source_masks": 0,
+            "environment/inert": 1.6951500966810862e-16,
+            "habitat/grid_ledger_low": 4.146439636087962e-9,
+            "environment/permeability": 4.947185516357422e-6,
+            "feedstock/resource_ledger_low": 0,
+            "habitat/grid_ledger": 1.7955899238586426e-6,
+            "habitat/bound": 1.273583620786667e-7,
+            "cells/actions": 1.4901161193847656e-7,
+            "cells/weights": 0,
+            "feedstock/fields": 4.213259153229565e-7,
+            "cells/enzymes": 5.960464477539063e-8,
+            "environment/quota": 0,
+            "environment/source_masks": 0,
+            "habitat/grid_inert": 8.673617379884035e-19,
+            "cells/hidden": 1.1920928955078125e-7,
+            "habitat/cell_inert": 0,
+            "cells/outputs": 1.4901161193847656e-7,
+            "environment/occupancy": 0,
+            "environment/resource_ledger": 0,
+            "habitat/cell_ledger": 1.1920928955078125e-7,
+            "feedstock/resource_ledger": 0,
+            "cells/age": 0,
+            "feedstock/quota": 0,
+            "cells/metabolites_next": 1.1770464637073856e-9,
+            "habitat/expression": 0,
+            "habitat/cell_ledger_low": 7.617352082434081e-8,
+            "cells/position_next": 0,
+            "habitat/requests": 0,
+            "habitat/cell_inert_low": 0,
+            "environment/fields": 4.598105423081478e-7,
+            "environment/scale": 5.051514762044462e-14,
+            "environment/sink_masks": 0,
+            "environment/observation": 0,
+            "cells/marks": 3.259629011154175e-9
+        },
+        "exact_restore": true,
+        "restart_error": 0
+    },
+    "runtime": {
+        "julia": "1.12.4",
+        "kernel": "Linux",
+        "architecture": "x86_64",
+        "launch_threads": 2,
+        "backend": "amd",
+        "device": "HIPDevice(id=1, name=AMD Radeon RX 6750 XT, gcn_arch=gfx1030)",
+        "backend_version": "2.8.0",
+        "actual_device_optlevel": 1,
+        "project_sha256": "284c920aebff70f466a40df21f7c83ae4c561857b046f940274b43a8feeaec6d",
+        "manifest_sha256": "47146c99c0191ecbea07ae472e419037ac9bd89d4adb946260860c06ad2e5ee5"
+    },
+    "Float64": {
+        "initial": {
+            "material": 765.4400019431124,
+            "potential": 1679.3600077724464,
+            "work": 0,
+            "heat": 0,
+            "supplied": 0,
+            "removed": 0,
+            "supplied_potential": 0,
+            "removed_potential": 0,
+            "population": 256,
+            "completed_steps": 0,
+            "secreted": [
+                0,
+                0
+            ],
+            "solubilized": [
+                0,
+                0
+            ],
+            "bound": [
+                0,
+                0
+            ],
+            "enzyme": [
+                0,
+                0
+            ],
+            "inert": 0,
+            "finite": true
+        },
+        "final": {
+            "material": 766.840002013348,
+            "potential": 1508.303163935332,
+            "work": 12.387900635496008,
+            "heat": 164.26894348256909,
+            "supplied": 1.4000000702367288,
+            "removed": 0,
+            "supplied_potential": 5.600000280946915,
+            "removed_potential": 0,
+            "population": 256,
+            "completed_steps": 700,
+            "secreted": [
+                1.555694211635768,
+                1.5584848523580765
+            ],
+            "solubilized": [
+                3.1385150521593923,
+                3.008729912342675
+            ],
+            "bound": [
+                0.6281051253653324,
+                0.625847005924836
+            ],
+            "enzyme": [
+                1.548751004984835,
+                1.5515994635257644
+            ],
+            "inert": 5.016468743415968e-13,
+            "finite": true
+        },
+        "residual": {
+            "material": -1.1368683772161603e-12,
+            "potential": 3.723243935382925e-12
+        },
+        "sample_steps": 200,
+        "sample_seconds": [
+            2.003579516,
+            1.670080967,
+            1.663611724
+        ],
+        "median_ms_per_step": 8.350404835,
+        "physical_and_snapshot_bytes": 262357780,
+        "resource_workspace_bytes": 12781152
+    },
+    "habitat_source": {
+        "helper": "c614e28805d47a54564f229d89b2df6eb105c4b51da3d8433b0688161cdda370",
+        "kernels": "66b1d8507a951c77667f2f125d4dd416d9817b9d860a57b2f46b56304f8d5a1c",
+        "sorption": "3811fd3627906823a01f2afb2e6693bb6aec99c37bb10bfb72d43c85f8b4ad08"
+    }
+}

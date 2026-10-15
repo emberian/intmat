@@ -15,9 +15,11 @@ function garden_frame!(path,w,p,buffer,side)
     frame=(schema="interior-native-constructive-frame",version=1,time=w.time,step=c.attempted_steps,
         completed_steps=c.attempted_steps,trace_ids=Array(c.state.ids)[active],
         energy_storage_type=string(eltype(c.state.energy)),
+        inventory_storage_type=string(eltype(c.environment.fields)),
+        observation_field_type=string(eltype(buffer)),
         extent=c.geometry.extent,shape=(side,side,side),native_shape=c.geometry.dims,
         field_names=(:free_a,:free_b,:raw_a,:raw_b,:enzyme_a,:enzyme_b,:bound_a,:bound_b,:permeability),
-        field_units="concentration except dimensionless permeability; exact native voxel values or explicit block means",
+        field_units="concentration except dimensionless permeability; Float32 native-voxel observations or explicit block means; checkpoint retains declared inventory precision",
         fields=reshape(fields,side,side,side,9),ids=Array(c.state.ids)[active],parents=Array(c.state.parents)[active],
         lineages=Array(c.state.lineages)[active],generations=Array(c.state.generations)[active],
         position=select(c.state.position),radii=Array(c.state.radii)[active],mass=Array(c.state.mass)[active],
@@ -30,10 +32,13 @@ end
 function main(profile,output;resume=nothing)
     ispath(output) && error("fresh output required")
     cfg=TOML.parsefile(profile);run=cfg["run"];q=cfg["native"]
-    all(k->run[k]>0,("target_time","wall_seconds","metrics_seconds","checkpoint_seconds","capture_time","native_capture_time","artifact_budget_bytes")) || error("positive run controls required")
+    all(k->isfinite(run[k])&&run[k]>0,("target_time","wall_seconds","metrics_seconds","checkpoint_seconds","capture_time","native_capture_time","artifact_budget_bytes")) || error("finite positive run controls required")
     dt=Float32(q["dt"]);batch=Int(q["check_every"]);batch>0 || error("positive check batch required")
     coarse=Int(run["coarse_side"]);native=Int(cfg["grid"]["shape"][1]);coarse>0&&native%coarse==0 || error("coarse side must divide native side")
-    deadline=min(time()+Float64(run["wall_seconds"]),Dates.datetime2unix(DateTime(run["deadline_utc"])))
+    # Fresh bounded studies may use only the relative wall cap. Historical
+    # explicit UTC deadlines remain additional hard bounds, never extended.
+    absolute_deadline=haskey(run,"deadline_utc") ? Dates.datetime2unix(DateTime(run["deadline_utc"])) : Inf
+    deadline=min(time()+Float64(run["wall_seconds"]),absolute_deadline)
     deadline>time()+30 || error("deadline too close or elapsed")
     maxsteps=parse(Int,get(ENV,"NATIVE_GARDEN_MAX_STEPS",string(typemax(Int))))
     maxsteps>=0 || error("nonnegative optional step bound required")
@@ -61,13 +66,14 @@ function main(profile,output;resume=nothing)
         "complete"=>false,"config"=>cfg,"funding"=>funding,"source"=>Interior.DEVICE_CELLULAR_SOURCE_PIN,
         "habitat_source"=>Interior.DEVICE_HABITAT_SOURCE_PIN,"runtime"=>device_cellular_runtime(),
         "energy_storage_type"=>string(eltype(p.cells.state.energy)),
+        "inventory_storage_type"=>string(eltype(p.cells.environment.fields)),
         "loaded_project_sources"=>Interior.arena_sources(),"source_commit"=>get(ENV,"DEVICE_SOURCE_COMMIT","unspecified"),
         "driver_sha256"=>hashfile(@__FILE__),"fixture_sha256"=>hashfile(joinpath(@__DIR__,"native_constructed_garden.jl")),
         "capture_helper_sha256"=>hashfile(joinpath(@__DIR__,"device_habitat_capture.jl")),"profile_sha256"=>hashfile(profile),
         "parent_checkpoint"=>resume===nothing ? nothing : Dict("sha256"=>hashfile(resume),"file"=>basename(resume)),
         "initial"=>initial,"initial_step"=>initialstep,"initial_time"=>initialtime,"resident_array_bytes"=>bytes,
         "deadline_unix"=>deadline,"construction_seconds"=>construction,"frames"=>frames,"checkpoints"=>archives,
-        "limits"=>"explicit native Float32 fields, geometry and controller with separately declared cellular energy precision; fixed checked contact substeps and native junction/bond rules; no CPU MatrixDrag; snapshots are actual states, no interpolation; sampled per-cell secretion is last physical step")
+        "limits"=>"explicit native Float32 geometry/controller with separately declared energy and physical inventory precision; capture fields are Float32 observations, not restart inventory; fixed checked contact substeps and native junction/bond rules; no CPU MatrixDrag; snapshots are actual states, no interpolation; sampled per-cell secretion is last physical step")
     write_manifest()=open(io->JSON3.pretty(io,manifest),joinpath(output,"run.json"),"w")
     diskbytes()=sum(filesize(joinpath(root,name)) for (root,_,files) in walkdir(output) for name in files;init=0)
     function accounting(audit)

@@ -62,6 +62,7 @@ include("device_habitat.jl")
 include("device_habitat_sorption.jl")
 include("device_habitat_support.jl")
 include("device_habitat_audit.jl")
+include("device_inventory_precision.jl")
 include("device_cellular_protocol.jl")
 end
 
@@ -78,4 +79,8 @@ module DeviceLifecycleTests
 include("device_lifecycle_prefix.jl")
 include("device_lifecycle_workspace.jl")
 include("device_lifecycle_habitat_aliases.jl")
+end
+
+module GardenOperatingMapTests
+include("garden_operating_map.jl")
 end

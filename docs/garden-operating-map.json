@@ -1,0 +1,699 @@
+{
+    "kind": "analytical operating map; no simulated trajectories",
+    "profile": "experiments/native/constructed-garden-64.toml",
+    "profile_sha256": "f05844ed6aa0554c52da68a363d660ca6ad5d898ee75769c202e33e49684032a",
+    "source_sha256": "ae55c2b1373abebb3034d739e281d1350245f1e2dda30bb7b03a88da32775f23",
+    "defaults_sha256": "d76e4c791a2c56bc7fd651b1836e6879b9e27013566ce6d94a1d2f677f62e633",
+    "assumptions": [
+        "L^2/D characteristic diffusion convention; no factor of 2d or first-passage claim",
+        "Spatial mean source and initial raw concentration frozen; no uptake or heterogeneous depletion",
+        "Supply-matching enzyme is a balance estimate, not predicted expression or an optimal phenotype",
+        "Bound-capacity estimate assumes zero cross_binding; this report requires it",
+        "Binding clock linearizes fixed total soluble+bound at B=0; changing free concentration changes the clock",
+        "Travel uses maximum nominal speed; actual paid motion may be slower",
+        "Mark relaxation freezes hidden activity in [-1,1] and leaves clipping inactive",
+        "Candidate contrasts are not validated viable regimes or criticality predictions"
+    ],
+    "baseline": {
+        "catalytic_rate": 6,
+        "transport_barrier": 20,
+        "world_volume": 64,
+        "exchange_radius": 0.18,
+        "mean_raw_source_rate": [
+            0.015625,
+            0.015625
+        ],
+        "supply_matching_enzyme": [
+            0.0028645833333333336,
+            0.0028645833333333336
+        ],
+        "supply_matching_total_enzyme": 0.005729166666666667,
+        "permeability_at_supply_match": 0.8971962616822431,
+        "transport_resistance_at_supply_match": 0.11458333333333334,
+        "matching_bound_capacity": [
+            0.0171875,
+            0.0171875
+        ],
+        "capacity_over_initial_free": [
+            0.05729166666666667,
+            0.05729166666666667
+        ],
+        "clocks": {
+            "neural_response": 0.8,
+            "adaptation": 8,
+            "plastic_mark_relaxation_range": [
+                45.45454545454546,
+                50.0
+            ],
+            "bare_exchange_diffusion": [
+                5.3999999999999995,
+                5.3999999999999995
+            ],
+            "matched_exchange_diffusion": [
+                6.018749999999999,
+                6.018749999999999
+            ],
+            "minimum_nominal_exchange_travel": 3,
+            "catalyst_decay": 125,
+            "free_desorption": 8.333333333333334,
+            "binding_local_at_empty_bound": [
+                0.7200720072007201,
+                0.7200720072007201
+            ],
+            "initial_raw_over_mean_source": [
+                128,
+                128
+            ],
+            "finite_source_duration": [
+                1500,
+                1500
+            ]
+        },
+        "ratios": {
+            "adaptation_over_response": 10,
+            "diffusion_over_adaptation": [
+                0.7523437499999999,
+                0.7523437499999999
+            ],
+            "catalyst_lifetime_over_adaptation": 15.625
+        },
+        "exchange_lengths_per_adaptation": [
+            1.1529005364456453,
+            1.1529005364456453
+        ]
+    },
+    "scenarios": [
+        {
+            "catalytic_rate": 6,
+            "transport_barrier": 20,
+            "world_volume": 64,
+            "exchange_radius": 0.18,
+            "mean_raw_source_rate": [
+                0.015625,
+                0.015625
+            ],
+            "supply_matching_enzyme": [
+                0.0028645833333333336,
+                0.0028645833333333336
+            ],
+            "supply_matching_total_enzyme": 0.005729166666666667,
+            "permeability_at_supply_match": 0.8971962616822431,
+            "transport_resistance_at_supply_match": 0.11458333333333334,
+            "matching_bound_capacity": [
+                0.0171875,
+                0.0171875
+            ],
+            "capacity_over_initial_free": [
+                0.05729166666666667,
+                0.05729166666666667
+            ],
+            "clocks": {
+                "neural_response": 0.8,
+                "adaptation": 8,
+                "plastic_mark_relaxation_range": [
+                    45.45454545454546,
+                    50.0
+                ],
+                "bare_exchange_diffusion": [
+                    5.3999999999999995,
+                    5.3999999999999995
+                ],
+                "matched_exchange_diffusion": [
+                    6.018749999999999,
+                    6.018749999999999
+                ],
+                "minimum_nominal_exchange_travel": 3,
+                "catalyst_decay": 125,
+                "free_desorption": 8.333333333333334,
+                "binding_local_at_empty_bound": [
+                    0.7200720072007201,
+                    0.7200720072007201
+                ],
+                "initial_raw_over_mean_source": [
+                    128,
+                    128
+                ],
+                "finite_source_duration": [
+                    1500,
+                    1500
+                ]
+            },
+            "ratios": {
+                "adaptation_over_response": 10,
+                "diffusion_over_adaptation": [
+                    0.7523437499999999,
+                    0.7523437499999999
+                ],
+                "catalyst_lifetime_over_adaptation": 15.625
+            },
+            "exchange_lengths_per_adaptation": [
+                1.1529005364456453,
+                1.1529005364456453
+            ]
+        },
+        {
+            "catalytic_rate": 0.6,
+            "transport_barrier": 20,
+            "world_volume": 64,
+            "exchange_radius": 0.18,
+            "mean_raw_source_rate": [
+                0.015625,
+                0.015625
+            ],
+            "supply_matching_enzyme": [
+                0.028645833333333336,
+                0.028645833333333336
+            ],
+            "supply_matching_total_enzyme": 0.05729166666666667,
+            "permeability_at_supply_match": 0.4660194174757281,
+            "transport_resistance_at_supply_match": 1.1458333333333335,
+            "matching_bound_capacity": [
+                0.171875,
+                0.171875
+            ],
+            "capacity_over_initial_free": [
+                0.5729166666666667,
+                0.5729166666666667
+            ],
+            "clocks": {
+                "neural_response": 0.8,
+                "adaptation": 8,
+                "plastic_mark_relaxation_range": [
+                    45.45454545454546,
+                    50.0
+                ],
+                "bare_exchange_diffusion": [
+                    5.3999999999999995,
+                    5.3999999999999995
+                ],
+                "matched_exchange_diffusion": [
+                    11.5875,
+                    11.5875
+                ],
+                "minimum_nominal_exchange_travel": 3,
+                "catalyst_decay": 125,
+                "free_desorption": 8.333333333333334,
+                "binding_local_at_empty_bound": [
+                    0.4981320049813201,
+                    0.4981320049813201
+                ],
+                "initial_raw_over_mean_source": [
+                    128,
+                    128
+                ],
+                "finite_source_duration": [
+                    1500,
+                    1500
+                ]
+            },
+            "ratios": {
+                "adaptation_over_response": 10,
+                "diffusion_over_adaptation": [
+                    1.4484375,
+                    1.4484375
+                ],
+                "catalyst_lifetime_over_adaptation": 15.625
+            },
+            "exchange_lengths_per_adaptation": [
+                0.8309026037996745,
+                0.8309026037996745
+            ]
+        },
+        {
+            "catalytic_rate": 0.3,
+            "transport_barrier": 20,
+            "world_volume": 64,
+            "exchange_radius": 0.18,
+            "mean_raw_source_rate": [
+                0.015625,
+                0.015625
+            ],
+            "supply_matching_enzyme": [
+                0.05729166666666667,
+                0.05729166666666667
+            ],
+            "supply_matching_total_enzyme": 0.11458333333333334,
+            "permeability_at_supply_match": 0.30379746835443033,
+            "transport_resistance_at_supply_match": 2.291666666666667,
+            "matching_bound_capacity": [
+                0.34375,
+                0.34375
+            ],
+            "capacity_over_initial_free": [
+                1.1458333333333335,
+                1.1458333333333335
+            ],
+            "clocks": {
+                "neural_response": 0.8,
+                "adaptation": 8,
+                "plastic_mark_relaxation_range": [
+                    45.45454545454546,
+                    50.0
+                ],
+                "bare_exchange_diffusion": [
+                    5.3999999999999995,
+                    5.3999999999999995
+                ],
+                "matched_exchange_diffusion": [
+                    17.775000000000002,
+                    17.775000000000002
+                ],
+                "minimum_nominal_exchange_travel": 3,
+                "catalyst_decay": 125,
+                "free_desorption": 8.333333333333334,
+                "binding_local_at_empty_bound": [
+                    0.37105751391465674,
+                    0.37105751391465674
+                ],
+                "initial_raw_over_mean_source": [
+                    128,
+                    128
+                ],
+                "finite_source_duration": [
+                    1500,
+                    1500
+                ]
+            },
+            "ratios": {
+                "adaptation_over_response": 10,
+                "diffusion_over_adaptation": [
+                    2.2218750000000003,
+                    2.2218750000000003
+                ],
+                "catalyst_lifetime_over_adaptation": 15.625
+            },
+            "exchange_lengths_per_adaptation": [
+                0.6708728072355035,
+                0.6708728072355035
+            ]
+        },
+        {
+            "catalytic_rate": 6,
+            "transport_barrier": 100,
+            "world_volume": 64,
+            "exchange_radius": 0.18,
+            "mean_raw_source_rate": [
+                0.015625,
+                0.015625
+            ],
+            "supply_matching_enzyme": [
+                0.0028645833333333336,
+                0.0028645833333333336
+            ],
+            "supply_matching_total_enzyme": 0.005729166666666667,
+            "permeability_at_supply_match": 0.6357615894039734,
+            "transport_resistance_at_supply_match": 0.5729166666666667,
+            "matching_bound_capacity": [
+                0.0171875,
+                0.0171875
+            ],
+            "capacity_over_initial_free": [
+                0.05729166666666667,
+                0.05729166666666667
+            ],
+            "clocks": {
+                "neural_response": 0.8,
+                "adaptation": 8,
+                "plastic_mark_relaxation_range": [
+                    45.45454545454546,
+                    50.0
+                ],
+                "bare_exchange_diffusion": [
+                    5.3999999999999995,
+                    5.3999999999999995
+                ],
+                "matched_exchange_diffusion": [
+                    8.49375,
+                    8.49375
+                ],
+                "minimum_nominal_exchange_travel": 3,
+                "catalyst_decay": 125,
+                "free_desorption": 8.333333333333334,
+                "binding_local_at_empty_bound": [
+                    0.7200720072007201,
+                    0.7200720072007201
+                ],
+                "initial_raw_over_mean_source": [
+                    128,
+                    128
+                ],
+                "finite_source_duration": [
+                    1500,
+                    1500
+                ]
+            },
+            "ratios": {
+                "adaptation_over_response": 10,
+                "diffusion_over_adaptation": [
+                    1.06171875,
+                    1.06171875
+                ],
+                "catalyst_lifetime_over_adaptation": 15.625
+            },
+            "exchange_lengths_per_adaptation": [
+                0.9704993669957853,
+                0.9704993669957853
+            ]
+        },
+        {
+            "catalytic_rate": 0.6,
+            "transport_barrier": 100,
+            "world_volume": 64,
+            "exchange_radius": 0.18,
+            "mean_raw_source_rate": [
+                0.015625,
+                0.015625
+            ],
+            "supply_matching_enzyme": [
+                0.028645833333333336,
+                0.028645833333333336
+            ],
+            "supply_matching_total_enzyme": 0.05729166666666667,
+            "permeability_at_supply_match": 0.14860681114551083,
+            "transport_resistance_at_supply_match": 5.729166666666667,
+            "matching_bound_capacity": [
+                0.171875,
+                0.171875
+            ],
+            "capacity_over_initial_free": [
+                0.5729166666666667,
+                0.5729166666666667
+            ],
+            "clocks": {
+                "neural_response": 0.8,
+                "adaptation": 8,
+                "plastic_mark_relaxation_range": [
+                    45.45454545454546,
+                    50.0
+                ],
+                "bare_exchange_diffusion": [
+                    5.3999999999999995,
+                    5.3999999999999995
+                ],
+                "matched_exchange_diffusion": [
+                    36.3375,
+                    36.3375
+                ],
+                "minimum_nominal_exchange_travel": 3,
+                "catalyst_decay": 125,
+                "free_desorption": 8.333333333333334,
+                "binding_local_at_empty_bound": [
+                    0.4981320049813201,
+                    0.4981320049813201
+                ],
+                "initial_raw_over_mean_source": [
+                    128,
+                    128
+                ],
+                "finite_source_duration": [
+                    1500,
+                    1500
+                ]
+            },
+            "ratios": {
+                "adaptation_over_response": 10,
+                "diffusion_over_adaptation": [
+                    4.5421875,
+                    4.5421875
+                ],
+                "catalyst_lifetime_over_adaptation": 15.625
+            },
+            "exchange_lengths_per_adaptation": [
+                0.46921022871852464,
+                0.46921022871852464
+            ]
+        },
+        {
+            "catalytic_rate": 0.3,
+            "transport_barrier": 100,
+            "world_volume": 64,
+            "exchange_radius": 0.18,
+            "mean_raw_source_rate": [
+                0.015625,
+                0.015625
+            ],
+            "supply_matching_enzyme": [
+                0.05729166666666667,
+                0.05729166666666667
+            ],
+            "supply_matching_total_enzyme": 0.11458333333333334,
+            "permeability_at_supply_match": 0.0802675585284281,
+            "transport_resistance_at_supply_match": 11.458333333333334,
+            "matching_bound_capacity": [
+                0.34375,
+                0.34375
+            ],
+            "capacity_over_initial_free": [
+                1.1458333333333335,
+                1.1458333333333335
+            ],
+            "clocks": {
+                "neural_response": 0.8,
+                "adaptation": 8,
+                "plastic_mark_relaxation_range": [
+                    45.45454545454546,
+                    50.0
+                ],
+                "bare_exchange_diffusion": [
+                    5.3999999999999995,
+                    5.3999999999999995
+                ],
+                "matched_exchange_diffusion": [
+                    67.27499999999999,
+                    67.27499999999999
+                ],
+                "minimum_nominal_exchange_travel": 3,
+                "catalyst_decay": 125,
+                "free_desorption": 8.333333333333334,
+                "binding_local_at_empty_bound": [
+                    0.37105751391465674,
+                    0.37105751391465674
+                ],
+                "initial_raw_over_mean_source": [
+                    128,
+                    128
+                ],
+                "finite_source_duration": [
+                    1500,
+                    1500
+                ]
+            },
+            "ratios": {
+                "adaptation_over_response": 10,
+                "diffusion_over_adaptation": [
+                    8.409374999999999,
+                    8.409374999999999
+                ],
+                "catalyst_lifetime_over_adaptation": 15.625
+            },
+            "exchange_lengths_per_adaptation": [
+                0.34484040007458117,
+                0.34484040007458117
+            ]
+        },
+        {
+            "catalytic_rate": 6,
+            "transport_barrier": 500,
+            "world_volume": 64,
+            "exchange_radius": 0.18,
+            "mean_raw_source_rate": [
+                0.015625,
+                0.015625
+            ],
+            "supply_matching_enzyme": [
+                0.0028645833333333336,
+                0.0028645833333333336
+            ],
+            "supply_matching_total_enzyme": 0.005729166666666667,
+            "permeability_at_supply_match": 0.2587601078167116,
+            "transport_resistance_at_supply_match": 2.8645833333333335,
+            "matching_bound_capacity": [
+                0.0171875,
+                0.0171875
+            ],
+            "capacity_over_initial_free": [
+                0.05729166666666667,
+                0.05729166666666667
+            ],
+            "clocks": {
+                "neural_response": 0.8,
+                "adaptation": 8,
+                "plastic_mark_relaxation_range": [
+                    45.45454545454546,
+                    50.0
+                ],
+                "bare_exchange_diffusion": [
+                    5.3999999999999995,
+                    5.3999999999999995
+                ],
+                "matched_exchange_diffusion": [
+                    20.86875,
+                    20.86875
+                ],
+                "minimum_nominal_exchange_travel": 3,
+                "catalyst_decay": 125,
+                "free_desorption": 8.333333333333334,
+                "binding_local_at_empty_bound": [
+                    0.7200720072007201,
+                    0.7200720072007201
+                ],
+                "initial_raw_over_mean_source": [
+                    128,
+                    128
+                ],
+                "finite_source_duration": [
+                    1500,
+                    1500
+                ]
+            },
+            "ratios": {
+                "adaptation_over_response": 10,
+                "diffusion_over_adaptation": [
+                    2.60859375,
+                    2.60859375
+                ],
+                "catalyst_lifetime_over_adaptation": 15.625
+            },
+            "exchange_lengths_per_adaptation": [
+                0.6191512802834295,
+                0.6191512802834295
+            ]
+        },
+        {
+            "catalytic_rate": 0.6,
+            "transport_barrier": 500,
+            "world_volume": 64,
+            "exchange_radius": 0.18,
+            "mean_raw_source_rate": [
+                0.015625,
+                0.015625
+            ],
+            "supply_matching_enzyme": [
+                0.028645833333333336,
+                0.028645833333333336
+            ],
+            "supply_matching_total_enzyme": 0.05729166666666667,
+            "permeability_at_supply_match": 0.03373155305692199,
+            "transport_resistance_at_supply_match": 28.645833333333336,
+            "matching_bound_capacity": [
+                0.171875,
+                0.171875
+            ],
+            "capacity_over_initial_free": [
+                0.5729166666666667,
+                0.5729166666666667
+            ],
+            "clocks": {
+                "neural_response": 0.8,
+                "adaptation": 8,
+                "plastic_mark_relaxation_range": [
+                    45.45454545454546,
+                    50.0
+                ],
+                "bare_exchange_diffusion": [
+                    5.3999999999999995,
+                    5.3999999999999995
+                ],
+                "matched_exchange_diffusion": [
+                    160.0875,
+                    160.0875
+                ],
+                "minimum_nominal_exchange_travel": 3,
+                "catalyst_decay": 125,
+                "free_desorption": 8.333333333333334,
+                "binding_local_at_empty_bound": [
+                    0.4981320049813201,
+                    0.4981320049813201
+                ],
+                "initial_raw_over_mean_source": [
+                    128,
+                    128
+                ],
+                "finite_source_duration": [
+                    1500,
+                    1500
+                ]
+            },
+            "ratios": {
+                "adaptation_over_response": 10,
+                "diffusion_over_adaptation": [
+                    20.0109375,
+                    20.0109375
+                ],
+                "catalyst_lifetime_over_adaptation": 15.625
+            },
+            "exchange_lengths_per_adaptation": [
+                0.22354568033276775,
+                0.22354568033276775
+            ]
+        },
+        {
+            "catalytic_rate": 0.3,
+            "transport_barrier": 500,
+            "world_volume": 64,
+            "exchange_radius": 0.18,
+            "mean_raw_source_rate": [
+                0.015625,
+                0.015625
+            ],
+            "supply_matching_enzyme": [
+                0.05729166666666667,
+                0.05729166666666667
+            ],
+            "supply_matching_total_enzyme": 0.11458333333333334,
+            "permeability_at_supply_match": 0.017155110793423873,
+            "transport_resistance_at_supply_match": 57.29166666666667,
+            "matching_bound_capacity": [
+                0.34375,
+                0.34375
+            ],
+            "capacity_over_initial_free": [
+                1.1458333333333335,
+                1.1458333333333335
+            ],
+            "clocks": {
+                "neural_response": 0.8,
+                "adaptation": 8,
+                "plastic_mark_relaxation_range": [
+                    45.45454545454546,
+                    50.0
+                ],
+                "bare_exchange_diffusion": [
+                    5.3999999999999995,
+                    5.3999999999999995
+                ],
+                "matched_exchange_diffusion": [
+                    314.77500000000003,
+                    314.77500000000003
+                ],
+                "minimum_nominal_exchange_travel": 3,
+                "catalyst_decay": 125,
+                "free_desorption": 8.333333333333334,
+                "binding_local_at_empty_bound": [
+                    0.37105751391465674,
+                    0.37105751391465674
+                ],
+                "initial_raw_over_mean_source": [
+                    128,
+                    128
+                ],
+                "finite_source_duration": [
+                    1500,
+                    1500
+                ]
+            },
+            "ratios": {
+                "adaptation_over_response": 10,
+                "diffusion_over_adaptation": [
+                    39.346875000000004,
+                    39.346875000000004
+                ],
+                "catalyst_lifetime_over_adaptation": 15.625
+            },
+            "exchange_lengths_per_adaptation": [
+                0.1594207607346689,
+                0.1594207607346689
+            ]
+        }
+    ]
+}

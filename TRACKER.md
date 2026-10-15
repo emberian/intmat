@@ -4,6 +4,40 @@
 
 **Destination:** composable Julia simulations of phenomena inside—and constituting—materials, with evolving inhabitants and light transport revealing their structure.
 
+## Current work — accounting and dynamical capabilities
+
+2026-10-15 evening: user chose architecture and feedback studies before another
+long GPU soak. All four old bounded runs remain completed and immutable; their
+observatory schedule is paused. No new long-run deadline has been created.
+
+- Native inventory repair widens actual inventories/transfers and closes waste
+  scatter, preserving guard thresholds. Native64³ whole-step time7.764→8.350ms
+  (+7.56%), owned memory250.14→275.14MB;700-step material residual−1.137e−12,
+  potential+3.723e−12. Exact historical final-field diffusion-only4000steps gives
+  wide mass+1.421e−14 versusF32−.005413. No historical ecological step resumed.
+  CPUprecision29assertions and14,283 broader regressions passed; native restart
+  is exact at restoration, physiological7stepfuture within1e−10. See
+  docs/native-inventory-precision.md for measured scope and failures preserved.
+  Final batch/lifecycle integration800/800 passes, including wide positive-source
+  serial/batched parity and strict restart; ensemble scratch preserves precision.
+- Eight common-state native CPU branches completed warm40+response64,dt.02,
+  cadence.2, same4IDs throughout. Resetting neural/adaptation state changes
+  pulse response persistently; mark reset has smaller effects, retained-food
+  partition largely recovers. Actual16³ fields, same-ID traces and reviewed
+  optical comparison retained. Max final material/potential residual1.082e−7/
+  7.018e−8. This is coupled context sensitivity, not selected adaptation.
+  Source-provenance and timestep limitations are explicit in the study docs.
+- Recipe-derived operating map and nine catalytic/transport contrasts added;
+  16 dimensional/invariance checks pass. Verified primary reading shelf and
+  two licensed PDFs connect causal interventions, driven memory, niche
+  construction and repertoire discovery. Research informs choices rather than
+  turning short pilots into bounds on possible organization.
+- Next fresh GPU recipe is experiments/native/constructed-garden-audited-64.toml:
+  explicitF64 inventories/batteries,64modeltime/900wallseconds,.2-time coarse
+  observations. It is prepared, not launched. Longer recovery validation and
+  an outer repertoire search remain open. Favor paired clocks/gains and
+  information-use assays before another long soak; render actual selected states.
+
 ## What runs
 
 - `bin/interior.jl`: `arena`, `run`, `bigrun`, named `study` commands. Engine in `src/`; recipes in `experiments/`; investigations in `studies/`. `examples/` retains compatibility forwards.

@@ -19,6 +19,12 @@ end
         grants[i,k]=supplied;grants[i,k+3]=removed
     end
 end
+# Split wide endpoint transfers before feeding the compensated Float32 tree.
+@inline function device_resource_pair_add_checked(hi::Float32,lo::Float32,amount::Float64,status)
+    high=Float32(amount);low=Float32(amount-Float64(high))
+    hi,lo=device_resource_pair_add_checked(hi,lo,high,status)
+    device_resource_pair_add_checked(hi,lo,low,status)
+end
 @inline function device_resource_pair_add_checked(hi,lo,amount,status)
     next,next_low=dc_pair_add(hi,lo,amount)
     if !(isfinite(next)&&isfinite(next_low))
@@ -33,7 +39,7 @@ end
 @kernel function dc_resource_tree_reduce!(high,low,input_high,input_low,status,input_count)
     block,column=@index(Global,NTuple)
     if status[1]==0
-        count=size(high,1);hi=0f0;lo=0f0
+        count=size(high,1);hi=zero(eltype(high));lo=zero(eltype(low))
         for j in 0:127
             index=block+j*count
             if index<=input_count
@@ -79,15 +85,15 @@ struct DeviceResourceWorkspace{G,L,C}
     levels::L
     contract::C
 end
-function DeviceResourceWorkspace(backend,n::Integer;grants=nothing)
+function DeviceResourceWorkspace(backend,n::Integer;grants=nothing,inventory_type=Float32)
     n>0 || throw(ArgumentError("positive resource workspace size required"))
-    grants===nothing && (grants=KernelAbstractions.zeros(backend,Float32,n,6))
-    size(grants)==(n,6) && eltype(grants)===Float32 && KernelAbstractions.get_backend(grants)==backend ||
+    grants===nothing && (grants=KernelAbstractions.zeros(backend,inventory_type,n,6))
+    size(grants)==(n,6) && eltype(grants)===inventory_type && KernelAbstractions.get_backend(grants)==backend ||
         throw(ArgumentError("resource grant scratch backend/shape/type differs"))
     levels=NamedTuple[]
     while true
         n=cld(n,128)
-        push!(levels,(high=KernelAbstractions.zeros(backend,Float32,n,6),low=KernelAbstractions.zeros(backend,Float32,n,6)))
+        push!(levels,(high=KernelAbstractions.zeros(backend,inventory_type,n,6),low=KernelAbstractions.zeros(backend,inventory_type,n,6)))
         n==1 && break
     end
     typed=Tuple(levels)

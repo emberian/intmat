@@ -1,0 +1,385 @@
+{
+  "schema": "native-memory-interventions-v1",
+  "seed": 211,
+  "config": {
+    "cellular": {
+      "hidden": 8,
+      "capacity": 256,
+      "energy": 1,
+      "metabolites": 0.12,
+      "adaptation_strength": 1.5,
+      "founders": 4,
+      "adaptation_time": 8,
+      "biomass": 1.6,
+      "exchange_radius": 0.18,
+      "mutation": 0.08,
+      "mutation_probability": 0.03,
+      "density": 128,
+      "speed": 0.06,
+      "junction_rate": 0.8,
+      "basal_rate": 0.008
+    },
+    "catalysis": {
+      "secretion_work": 0.2,
+      "investment_bias": -0.8,
+      "allocation_exponent": 2,
+      "half_saturation": 0.2,
+      "catalytic_rate": 6,
+      "allocation_bias_scale": 1.2,
+      "secretion_rate": 0.12,
+      "decay_rate": 0.008,
+      "mutation": 0.08,
+      "mutation_probability": 0.03,
+      "regulation": true
+    },
+    "native": {
+      "support_strategy": "materialized",
+      "mechanical_substeps": 16,
+      "energy_type": "Float64",
+      "radius_bound": 2,
+      "check_every": 8,
+      "bin_width": 0.25,
+      "dt": 0.02
+    },
+    "run": {
+      "metrics_seconds": 30,
+      "target_time": 1200,
+      "deadline_utc": "2026-10-15T20:50:00",
+      "checkpoint_seconds": 900,
+      "capture_time": 5,
+      "native_capture_time": 50,
+      "artifact_budget_bytes": 4000000000,
+      "ledger_relative_tolerance": 0.0001,
+      "wall_seconds": 18000,
+      "coarse_side": 32
+    },
+    "feedstock": {
+      "potentials": [
+        4,
+        4
+      ],
+      "diffusion": [
+        0,
+        0
+      ],
+      "sink_rates": [
+        0,
+        0
+      ],
+      "initial": [
+        2,
+        2
+      ],
+      "source_rates": [
+        0.015625,
+        0.015625
+      ],
+      "sink_budgets": [
+        0,
+        0
+      ],
+      "source_budgets": [
+        23.4375,
+        23.4375
+      ],
+      "niche_contrast": 0.7
+    },
+    "matrix": {
+      "capacity_per_enzyme": 6,
+      "transport_barrier": 20,
+      "desorption_rate": 0.12,
+      "cross_binding": 0,
+      "adsorption_rate": 4
+    },
+    "seed": 211,
+    "grid": {
+      "shape": [
+        16,
+        16,
+        16
+      ],
+      "extent": [
+        1,
+        1,
+        1
+      ]
+    },
+    "resources": {
+      "diffusion": [
+        0.006,
+        0.006,
+        0.001
+      ],
+      "sink_rates": [
+        0,
+        0,
+        0
+      ],
+      "initial": [
+        0.3,
+        0.3,
+        0.0
+      ],
+      "source_rates": [
+        0,
+        0,
+        0
+      ],
+      "sink_budgets": [
+        0,
+        0,
+        0
+      ],
+      "source_budgets": [
+        0,
+        0,
+        0
+      ],
+      "potentials": [
+        4,
+        4,
+        0
+      ]
+    }
+  },
+  "warm": 40,
+  "horizon": 64,
+  "dt": 0.019999999552965164,
+  "cadence": 0.2,
+  "source_pin": {
+    "helper": "3b29116ca0f2add673923e79ee267a47359255246a2dc9f76977307244303330",
+    "kernels": "66b1d8507a951c77667f2f125d4dd416d9817b9d860a57b2f46b56304f8d5a1c",
+    "sorption": "3811fd3627906823a01f2afb2e6693bb6aec99c37bb10bfb72d43c85f8b4ad08"
+  },
+  "driver_sha256": "73fc83f4ed61edd37ec679014f98a7c45ccf32b7588fc5ef84b9101280ece5ad",
+  "profile_sha256": "f05844ed6aa0554c52da68a363d660ca6ad5d898ee75769c202e33e49684032a",
+  "scope": "fresh CPU native 16^3 periodic subworld, 4 founders; matched common-state causal interventions; no adaptation/criticality claim",
+  "elapsed_seconds": 237.0559630393982,
+  "final": {
+    "none_sham": {
+      "population": 4,
+      "material_residual": -5.576166195453425e-08,
+      "potential_residual": -3.537789083907228e-08,
+      "jump": {
+        "material_jump": 0,
+        "potential_jump": 0
+      }
+    },
+    "neural_sham": {
+      "population": 4,
+      "material_residual": -7.771357424246617e-08,
+      "potential_residual": -4.4516660580029566e-08,
+      "jump": {
+        "material_jump": 0,
+        "potential_jump": 0
+      }
+    },
+    "retention_pulse": {
+      "population": 4,
+      "material_residual": 2.853843028560732e-08,
+      "potential_residual": -6.002941965732589e-08,
+      "jump": {
+        "material_jump": -1.3913492580286402e-10,
+        "potential_jump": -5.565432559251349e-10
+      }
+    },
+    "marks_pulse": {
+      "population": 4,
+      "material_residual": -3.3233568785817624e-08,
+      "potential_residual": -6.730914492436568e-08,
+      "jump": {
+        "material_jump": -2.6195401403583674e-10,
+        "potential_jump": -1.047816056143347e-09
+      }
+    },
+    "marks_sham": {
+      "population": 4,
+      "material_residual": -6.07825363374559e-08,
+      "potential_residual": -5.400806379896039e-08,
+      "jump": {
+        "material_jump": 0,
+        "potential_jump": 0
+      }
+    },
+    "none_pulse": {
+      "population": 4,
+      "material_residual": -1.3128882869750669e-08,
+      "potential_residual": -7.017728620439811e-08,
+      "jump": {
+        "material_jump": -2.6195401403583674e-10,
+        "potential_jump": -1.047816056143347e-09
+      }
+    },
+    "retention_sham": {
+      "population": 4,
+      "material_residual": -1.0817539397578457e-07,
+      "potential_residual": -5.310164219451963e-08,
+      "jump": {
+        "material_jump": 5.0029314024868654e-11,
+        "potential_jump": 2.0011015067211702e-10
+      }
+    },
+    "neural_pulse": {
+      "population": 4,
+      "material_residual": 4.5280343030640324e-08,
+      "potential_residual": -2.3886862265953823e-08,
+      "jump": {
+        "material_jump": -2.6195401403583674e-10,
+        "potential_jump": -1.047816056143347e-09
+      }
+    }
+  },
+  "interactions": {
+    "marks": {
+      "peak_hidden_rms": 0.08244679413720955,
+      "final_hidden_rms": 0.02418233519598103,
+      "peak_action_rms": 0.09033969963836046,
+      "final_action_rms": 0.006664166883423427,
+      "minimum_common_ids": 4,
+      "hidden_interaction_rms_peak_delay": 53.199997916817665,
+      "hidden_interaction_rms_rms_over_window": 0.02600096530438406,
+      "action_interaction_rms_peak_delay": 52.79999792575836,
+      "action_interaction_rms_rms_over_window": 0.019949667099405145
+    },
+    "neural": {
+      "peak_hidden_rms": 0.28591310851089824,
+      "final_hidden_rms": 0.18586437129174904,
+      "peak_action_rms": 0.10183244975286382,
+      "final_action_rms": 0.039991759695353124,
+      "minimum_common_ids": 4,
+      "hidden_interaction_rms_peak_delay": 25.999998524785042,
+      "hidden_interaction_rms_rms_over_window": 0.18899633723504145,
+      "action_interaction_rms_peak_delay": 52.79999792575836,
+      "action_interaction_rms_rms_over_window": 0.055874785364924184
+    },
+    "retention": {
+      "peak_hidden_rms": 0.004591521695939422,
+      "final_hidden_rms": 0.0016057088256314657,
+      "peak_action_rms": 0.08707292322234854,
+      "final_action_rms": 0.00033594717377278513,
+      "minimum_common_ids": 4,
+      "hidden_interaction_rms_peak_delay": 50.39999797940254,
+      "hidden_interaction_rms_rms_over_window": 0.0013852519403179516,
+      "action_interaction_rms_peak_delay": 52.79999792575836,
+      "action_interaction_rms_rms_over_window": 0.018313136919063038
+    }
+  },
+  "files": {
+    "before.json": "210427347589b6b6e5308b7f427bf20f36b43120eabc05ae0e266bf1c8f683dd",
+    "neural_pulse-initial-field.json": "930530d79c9ef3761e7c12893acddee10de981eac968be9ff3463be06a931e4d",
+    "none_pulse.json": "3278616acd120c1a0d64be6ec90d9fc3ddba25e407a1770d346791fbbf3b71a0",
+    "marks_sham-initial-field.json": "210427347589b6b6e5308b7f427bf20f36b43120eabc05ae0e266bf1c8f683dd",
+    "retention_pulse-initial-field.json": "10fe3bf1f095bca90e197122d2077e0d1d56509bd2b76d0149a376a8bd9a4ef0",
+    "marks_pulse-final-field.json": "625de49a9e448b88a8c6c86d73d3fce044f33797e2090182a84869cf6e554c6d",
+    "report.json": "202dbc1eb7c5478e31c8f1ceb4afa37e64912f45ae4b7533f29768382b4d1254",
+    "marks_sham-final-field.json": "2afa88c979e8d81b89b8b99b35b89dcc0c7611bc241f196de750051e65f50ffb",
+    "neural_pulse-final-field.json": "01dff14d26742c718c28c1fdce6ba128481c5960d75bd4513e5aca57de275728",
+    "retention_pulse-final-field.json": "90f3467046e0d89b3d5bd449b392e9ac118c39e397ff8fa19d8d451cc1274b60",
+    "marks_pulse.json": "2993997f6c3c60e71ea571096c8bb98bcb2d58909b10e04211f1d8144036af78",
+    "neural_sham-final-field.json": "e787ebfd6ab72bfde68328574c11d091fded3f84a3551bfe43779a1c9d14790a",
+    "marks_pulse-initial-field.json": "ef1010cc0075405235e933f3abb9209740852dac642810c04251b0a160c4406b",
+    "neural_sham.json": "ac47017510fc9fd09e663b0ca7aac8ed9d412bab7acee6d104369f779d4b71e0",
+    "none_pulse-initial-field.json": "ef1010cc0075405235e933f3abb9209740852dac642810c04251b0a160c4406b",
+    "neural_pulse.json": "352d887836bd71e9e2be3057f5c98d43befaa374a2d9e2282e25f46713b22bd4",
+    "none_sham-initial-field.json": "210427347589b6b6e5308b7f427bf20f36b43120eabc05ae0e266bf1c8f683dd",
+    "none_pulse-final-field.json": "6adddf15aa75228a9576bc236a0eeaaed7873184bad9dc29707b1219ed7a1762",
+    "neural_sham-initial-field.json": "eb5990c328b53136248ddc8368074b41a81c23f7dd024139a5188d1cb16ea485",
+    "none_sham.json": "4546f2509baf21d57117297deb4cf248ea7f3c3692fb19bbf01840741ea6ab95",
+    "retention_pulse.json": "1422c0b67caa95a815c0446abbc2de52f1a88b3fd81ad663d2f2de8af1d5bfab",
+    "retention_sham-final-field.json": "0576f156b3d277ffd201afc1e72d763a744be0f6d3f1e642cc3b998a91e9f891",
+    "marks_sham.json": "13f0648e2045aa6a73c93ec112a0ff41797f6edd442b0daf1cc0b31d7e751df8",
+    "retention_sham.json": "770c12f67be2ca5eba4053b9f3b43a93e9711a6a02eb6f11732ff60a1880ebb0",
+    "retention_sham-initial-field.json": "97edb0032413533922472a8d40631e45d8e9f6ab18eaa291966075f5bcbdec74",
+    "none_sham-final-field.json": "ccc06730590c4856fd4e04aadfae3cb1fa8e1e2da97125cef4be040eace9ac19"
+  },
+  "branch_endpoint": {
+    "none_sham": {
+      "population": 4,
+      "births": 0,
+      "deaths": 0,
+      "free": 0.09024203056602009,
+      "raw": 6.747564476927138,
+      "bound": 0.07977314906008305,
+      "catalyst": 0.0269244723693226,
+      "permeability_mean": 0.9302665,
+      "mark_rms": 0.013062144
+    },
+    "neural_sham": {
+      "population": 4,
+      "births": 0,
+      "deaths": 0,
+      "free": 0.10480163043957358,
+      "raw": 6.724842399030578,
+      "bound": 0.0746994002917099,
+      "catalyst": 0.02698841098415499,
+      "permeability_mean": 0.9291302,
+      "mark_rms": 0.012894624
+    },
+    "retention_pulse": {
+      "population": 4,
+      "births": 0,
+      "deaths": 0,
+      "free": 0.11888886950523947,
+      "raw": 6.51073460061367,
+      "bound": 0.08798500429189174,
+      "catalyst": 0.02697098512517546,
+      "permeability_mean": 0.93001515,
+      "mark_rms": 0.013069864
+    },
+    "marks_pulse": {
+      "population": 4,
+      "births": 0,
+      "deaths": 0,
+      "free": 0.12208924039885471,
+      "raw": 6.5143864201169634,
+      "bound": 0.08208763549974418,
+      "catalyst": 0.0269244723742141,
+      "permeability_mean": 0.9302665,
+      "mark_rms": 0.011081579
+    },
+    "marks_sham": {
+      "population": 4,
+      "births": 0,
+      "deaths": 0,
+      "free": 0.09334169540382242,
+      "raw": 6.747564476868931,
+      "bound": 0.07430706100303913,
+      "catalyst": 0.026924472369912057,
+      "permeability_mean": 0.9302665,
+      "mark_rms": 0.01107174
+    },
+    "none_pulse": {
+      "population": 4,
+      "births": 0,
+      "deaths": 0,
+      "free": 0.1182942037852488,
+      "raw": 6.514386419796821,
+      "bound": 0.0877983117928671,
+      "catalyst": 0.0269244723728577,
+      "permeability_mean": 0.9302665,
+      "mark_rms": 0.013069508
+    },
+    "retention_sham": {
+      "population": 4,
+      "births": 0,
+      "deaths": 0,
+      "free": 0.08948411436783243,
+      "raw": 6.747564476927138,
+      "bound": 0.07935522710154966,
+      "catalyst": 0.026924472367665937,
+      "permeability_mean": 0.9302665,
+      "mark_rms": 0.013062282
+    },
+    "neural_pulse": {
+      "population": 4,
+      "births": 0,
+      "deaths": 0,
+      "free": 0.14830703350704688,
+      "raw": 6.449899760676871,
+      "bound": 0.08484763338012594,
+      "catalyst": 0.02722580719886923,
+      "permeability_mean": 0.92575574,
+      "mark_rms": 0.012937296
+    }
+  }
+}
