@@ -1,0 +1,143 @@
+{
+  "schema": "interior-julia-amdgpu-dose-probe",
+  "julia": "1.12.4",
+  "backend": "AMDGPU",
+  "fixture": "/tank/chreatures/probes/intmat-20261015/dose-fixture/fixture.json",
+  "fixture_source_hashes": {
+    "core.jl": "3ef44008f6a9ce8399bc60352da94dc19e670e67677944369934138042718bad",
+    "neural_workspace.jl": "ecdd45856bc0b3c61708de90814d1abb33bc1232a0f9ff5785b32b9bc39a9139",
+    "writing.jl": "78fba7cd46f03749bdc56547b7ce5622f7ba3ea42cc34801829345dae3975e05",
+    "Interior.jl": "74a3cf25e173bccf9461b3c3257f145a83ea7409db1b266a99357ba28a082ed2",
+    "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+    "cellular.jl": "a357becbcf64a025a8d39e1dcae19123bee3ac7ed175603369f2d0e181694579",
+    "cellular_contacts.jl": "cd4eb619aaa8998cf5b33049d3cd07e4da36b95463bdf894ef4d520024113ef0",
+    "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26",
+    "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+    "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+    "dose_writer.jl": "d51122f6b33dad4eb9f4888073e660b7f5600225a31a636a620c92308fb7e03a",
+    "cellular_transport.jl": "a1fd389de2c9198c9886191ef1a54730e2cd7dd304c5ee1fcb823fbeb3b72300",
+    "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+    "experiments.jl": "e2e513ac4bfb0af90b5d1c870c5f403705eddd0606316ee2f86c5f5bc83eb527",
+    "metabolic_ecology.jl": "2f599a1d6ea0a5552a594113d57e238e4c6ff3c1fd8d74de5a51f83a77179bb1",
+    "mechanics.jl": "81001af879163392dde498534c9f099bcc79a16b8dac5104d527da7cc9f4fdac",
+    "neural_ecology.jl": "ed0496adb31ce4511f8bc0d5343ff843c410c39c51d30c165b3cf5eac1135df2",
+    "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+    "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+    "compartments.jl": "8eec60b56379a3d366cd789ad62e4c7690a0c10ce5af8a485f66b670c8448751",
+    "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+    "arena.jl": "ebc9547b52d3452e3871b31ad78032c3dbee51cc387da154443104a278d3fadc",
+    "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+    "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+    "implicit_phase.jl": "1fb617707591f89784b95171e0558065101b3d992f7b3eabd16a7bf01dca4ceb",
+    "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+    "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+    "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+    "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+  },
+  "frame_errors": [
+    {
+      "step": 1,
+      "temperature_max_abs_error": 1.8626451e-09,
+      "dose_max_abs_error": 0
+    },
+    {
+      "step": 7,
+      "temperature_max_abs_error": 7.450581e-09,
+      "dose_max_abs_error": 7.2759576e-11
+    },
+    {
+      "step": 15,
+      "temperature_max_abs_error": 7.450581e-09,
+      "dose_max_abs_error": 2.3283064e-10
+    },
+    {
+      "step": 25,
+      "temperature_max_abs_error": 3.7252903e-09,
+      "dose_max_abs_error": 4.656613e-10
+    }
+  ],
+  "material_errors": {
+    "nutrient_max_abs_error": 5.9604645e-08,
+    "deposit_max_abs_error": 1.7462298e-10
+  },
+  "fixture_compile_and_check_seconds": 2.1081080436706543,
+  "warm_step_seconds": 0.003866926,
+  "benchmark": {
+    "grid": [
+      384,
+      384,
+      384
+    ],
+    "timed_steps": 25,
+    "dt": 0.003,
+    "seconds": 0.092670131,
+    "seconds_per_step": 0.00370680524,
+    "clock": 0.07800000067800283,
+    "temperature_range": [
+      2.4834845e-37,
+      0.109546736
+    ],
+    "dose_range": [
+      0,
+      0.0057176254
+    ]
+  },
+  "scope": "Existing Julia DoseThermalWriter and writer_material!; no reimplemented thermal algorithms",
+  "date_utc": "2026-10-15",
+  "amdgpu_commit": "c77460e860b35f21277d8f1253e37304bd8b8993",
+  "gpucompiler": "2.14.1",
+  "llvm_jl": "10.2.1",
+  "hip": "6.4.43484",
+  "compiled_modules": "yes",
+  "julia_depot_path": "/othersys/tmp/intmat-probe-20261014/depot:",
+  "source_root": "/othersys/tmp/intmat-probe-20261014/source-dose-20261015",
+  "project": "/othersys/tmp/intmat-probe-20261014/environment-dose-20261015",
+  "executed_source_hashes": {
+    "src/writing.jl": "78fba7cd46f03749bdc56547b7ce5622f7ba3ea42cc34801829345dae3975e05",
+    "src/dose_writer.jl": "b8d1b4013921a3c82388ee87a7ede00b97964a1894062f2a07339f2c6be197eb",
+    "scripts/probe_hbox_julia_dose.jl": "d5ba31ad52f3d81d7de8f60b9ee33ccc722e4346547b9ea97c96025fe6bdcf40"
+  },
+  "larger_benchmark": {
+    "grid": [
+      768,
+      768,
+      768
+    ],
+    "timed_steps": 25,
+    "dt": 0.003,
+    "seconds": 0.728627958,
+    "seconds_per_step": 0.02914511832,
+    "clock": 0.07800000067800283,
+    "temperature_range": [
+      1.1762883e-37,
+      0.10956489
+    ],
+    "dose_range": [
+      0,
+      0.0057173953
+    ]
+  },
+  "larger_warm_step_seconds": 0.032335718,
+  "larger_fixture_frame_errors": [
+    {
+      "step": 1,
+      "temperature_max_abs_error": 1.8626451e-09,
+      "dose_max_abs_error": 0
+    },
+    {
+      "step": 7,
+      "temperature_max_abs_error": 7.450581e-09,
+      "dose_max_abs_error": 7.2759576e-11
+    },
+    {
+      "step": 15,
+      "temperature_max_abs_error": 7.450581e-09,
+      "dose_max_abs_error": 2.3283064e-10
+    },
+    {
+      "step": 25,
+      "temperature_max_abs_error": 3.7252903e-09,
+      "dose_max_abs_error": 4.656613e-10
+    }
+  ]
+}

@@ -6,7 +6,9 @@ On 14 October 2026, SSH to `hbox` worked. Vulkan enumerated **AMD Radeon RX 6750
 
 The subsequent isolated bootstrap restored Julia/ROCm compute without system changes. A native gfx1031 HIP arithmetic kernel passed exact readback; AMDGPU.jl 2.8.0 then reported `functional() == true` with HIP 6.4. AMDGPU automatically applies its gfx1030 compatibility setting for this Navi 22 device. See [the hbox runtime record](hbox-runtime.md) and `scripts/bootstrap_hbox_probe.sh` for the exact fresh directory, resource controls and Interior parity outcome. The minimal runtime omits optional BLAS/FFT libraries, so this does not provide a GPU FFT solver.
 
-The first Interior probe failed before parity/timing: AMDGPU could not compile the `extrema` reduction used by `Excitable` validation (`InvalidIRError`). Separate scalar and flattened reductions also failed. A pinned compatible upstream compiler stack then failed at a tiny KernelAbstractions arithmetic kernel before any reduction, establishing a broader Julia GPU compilation obstruction. The proposed scalar-reduction change was removed; original numerical code remains intact. `docs/hbox-accelerator-results.json` records the attempts and leaves simulation timings null. Native HIP arithmetic and memory transfers passed, but this hbox Julia environment does not yet execute Interior; the verified Julia CUDA route is Kaggle.
+**Current status, 15 October: Julia now executes the original Interior kernels on hbox.** Normal compiled package images, the pinned AMDGPU environment and the gfx1030 override passed arithmetic, scalar/tuple reductions, and five-step 8³ CPU/GPU parity (maximum field error 3.73e-9). Ten warmed 64³ dense steps took 10.759 ms. Both the working Torch wheel's read-only ROCm6.3 libraries and the standalone ROCm6.4 runtime passed; Torch is not imported and its libraries are not required by the default Julia replay. See [the current working versions and commands](hbox-runtime.md).
+
+The dated 14 October probes failed before parity under the earlier uncached/source-loading settings. Their `InvalidIRError` affected reductions and a tiny arithmetic kernel; the proposed scalar-reduction patch was removed. Recovery required no numerical algorithm rewrite. The controlled evidence points to normal package images/system depots versus the earlier cold loading path, rather than an unsupported GPU or a reduction-specific algorithm problem. Structured results retain both the historical failures and the subsequent successful timings.
 
 Keep new hbox artifacts under `/tank` or a fresh project-specific directory in `/othersys`; respect the existing `swarm-build` resource controls for builds. Do not replace its H1 environments, remove caches, or alter system packages to establish a benchmark. At inspection, `/tank` had 423 GiB free and `/othersys` had 97 GiB free.
 
@@ -19,7 +21,7 @@ julia --project scripts/benchmark_accelerator.jl cpu 32 10
 julia --project=gpu scripts/benchmark_accelerator.jl metal 32 10
 ```
 
-CUDA environments need CUDA.jl; hbox would need a working AMDGPU.jl/ROCm environment. [AMDGPU's runtime requirements](https://amdgpu.juliagpu.org/stable/faq) require ROCm and a supported GPU. Availability must be established with a kernel launch and parity check.
+CUDA environments need CUDA.jl; hbox's verified AMDGPU.jl/ROCm environment is documented above. [AMDGPU's runtime requirements](https://amdgpu.juliagpu.org/stable/faq) describe ROCm setup. This hbox GPU/OS combination is experimentally verified by actual launches and parity, rather than claimed officially supported.
 
 ## Kaggle access and launch
 

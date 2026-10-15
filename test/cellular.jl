@@ -29,6 +29,20 @@ function cellular_test_same_state(p,q)
     @test p.resources.returned==q.resources.returned
 end
 
+@testset "Cellular complementary physical niche geometry" begin
+    cfg=Dict{String,Any}("model"=>"cellular","grid"=>Dict("shape"=>[16,12,1],"extent"=>[8.,6.,1.]),
+        "cellular"=>Dict("population"=>0),"resources"=>Dict{String,Any}("niche_waves"=>[2,3,0],"niche_contrast"=>.9))
+    a=build_arena(cfg); r=a.processes[1]
+    @test r.source_masks[1].+r.source_masks[2]≈fill(2.,16,12,1)
+    @test sum(Float64,r.source_masks[1])/192≈1 atol=1e-7
+    @test r.source_masks[1][1,1,1]!=r.source_masks[1][1,3,1]
+    @test minimum(r.source_masks[1])>=.1 && maximum(r.source_masks[1])<=1.9
+    delete!(cfg["resources"],"niche_waves"); a=build_arena(cfg)
+    @test a.processes[1].source_masks[1][:,1,:]==a.processes[1].source_masks[1][:,7,:]
+    cfg["resources"]["niche_waves"]=[1,0,1]
+    @test_throws ArgumentError build_arena(cfg)
+end
+
 @testset "Cellular terminal bodies and borrowed energy ownership" begin
     w,p=cellular_fixture(;metabolites=0.,energy=0.,uptake_rate=0.,growth_rate=0.,catabolic_rate=0.,
         basal_rate=1.,starvation_rate=10.)

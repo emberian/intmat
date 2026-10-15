@@ -20,10 +20,15 @@ function build_cellular_arena(cfg)
     # channel is still available in each region, allowing solitary strategies.
     contrast=Float64(pop!(rcfg,:niche_contrast,.9))
     0<=contrast<=1 || throw(ArgumentError("niche contrast must be in [0,1]"))
+    waves=pop!(rcfg,:niche_waves,[1,0,0])
+    length(waves)==3 && all(x->x isa Integer && x>=0,waves) && any(>(0),waves) ||
+        throw(ArgumentError("niche_waves requires three nonnegative integer cycle counts, at least one positive"))
+    dims[3]==1 && waves[3]!=0 && throw(ArgumentError("2D resource niches cannot vary along z"))
     masks=[ones(Float32,dims) for _ in 1:3]
     if spatial
         for I in CartesianIndices(masks[1])
-            value=Float32(1+contrast*cos(2pi*(I[1]-.5)/dims[1]))
+            pattern=prod(cos(2pi*waves[d]*(I[d]-.5)/dims[d]) for d in 1:3 if waves[d]>0)
+            value=Float32(1+contrast*pattern)
             masks[1][I]=value; masks[2][I]=2-value
         end
     end

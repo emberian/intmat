@@ -1,11 +1,11 @@
 {
-  "date": "2026-10-14",
+  "date": "2026-10-15",
   "host": "hbox",
   "gpu": "AMD Radeon RX 6750 XT",
   "native_architecture": "gfx1031",
   "julia_reported_architecture": "gfx1030",
   "architecture_note": "AMDGPU 2.8.0 automatically sets HSA_OVERRIDE_GFX_VERSION=10.3.0 for navy_flounder",
-  "julia": "1.11.7",
+  "julia": "1.12.4",
   "amdgpu": "2.8.0",
   "hip": "6.4.43484",
   "rocm_distribution": "6.4.3",
@@ -24,18 +24,38 @@
   },
   "interior": {
     "backend": "amd",
-    "requested_grid": [
-      32,
-      32,
-      32
+    "julia": "1.12.4",
+    "grid": [
+      64,
+      64,
+      64
     ],
-    "requested_timed_steps": 10,
-    "status": "failed_before_parity",
-    "error": "InvalidIRError in AMDGPU GPU compilation: stable reductions and a newer-stack minimal KernelAbstractions arithmetic kernel both failed through pointer stores, boxing, and hostcall allocation.",
-    "trigger": "Initial Excitable extrema validation; scalar minimum and 1D vec minimum also failed, and newer upstream failed before Interior at a minimal KA arithmetic kernel.",
-    "seconds": null,
-    "cells_per_second": null,
-    "parity_max_absolute_errors": null
+    "timed_steps": 10,
+    "dt": 0.004999999888241291,
+    "seconds": 0.010759461,
+    "cells_per_second": 243640457.454142,
+    "parity_max_absolute_errors": {
+      "vx": 1.8626451e-09,
+      "recovery": 1.1368684e-13,
+      "nutrient": 0.0,
+      "pressure": 3.7252903e-09,
+      "vy": 1.8626451e-09,
+      "activity": 5.820766e-11,
+      "vz": 0.0,
+      "deposit": 0.0
+    },
+    "workload": "dense fields; excludes continuous arena ecology and implicit FFT phase",
+    "runtime": "standalone-rocm6.4.3",
+    "log": "recover-julia-64.log",
+    "status": "passed",
+    "parity_grid": [
+      8,
+      8,
+      8
+    ],
+    "parity_steps": 5,
+    "parity_tolerance": 0.0001,
+    "parity_max_error": 3.7252903e-09
   },
   "missing_optional_libraries": [
     "rocBLAS",
@@ -59,9 +79,11 @@
     "command_timeout_seconds": 900,
     "shared_slice": "swarm.slice",
     "setup_pipeline_timeout_seconds": 1200,
-    "retained_size_gib_approx": 2.0
+    "retained_size_gib_approx": 2.0,
+    "depot_path": "/othersys/tmp/intmat-probe-20261014/depot:",
+    "normal_compiled_modules": true
   },
-  "conclusion": "Native HIP GPU compute verified; Interior AMDGPU parity and throughput remain unverified because Julia GPU compilation failed.",
+  "conclusion": "Julia AMDGPU executes the original Interior dense workload on RX6750XT with CPU/device parity. Normal package images and bundled system depots are retained. Standalone ROCm6.4.3 and bundled ROCm6.3 both passed; no Torch algorithm/backend is used.",
   "attempts": [
     {
       "julia": "1.11.7",
@@ -157,5 +179,108 @@
     "metal_seconds": 0.154520875,
     "note": "Checks applied to scalar-reduction experiment; source restored because it did not repair AMD compilation."
   },
-  "source_change": "None; ineffective scalar-reduction experiment removed, original Excitable extrema semantics retained."
+  "source_change": "None; original Interior kernels and Excitable extrema reductions pass on the recovered Julia stack.",
+  "gpucompiler": "2.14.1",
+  "llvm": "10.2.1",
+  "amdgpu_commit": "c77460e860b35f21277d8f1253e37304bd8b8993",
+  "measurements": [
+    {
+      "backend": "amd",
+      "julia": "1.12.4",
+      "grid": [
+        32,
+        32,
+        32
+      ],
+      "timed_steps": 10,
+      "dt": 0.004999999888241291,
+      "seconds": 0.005935074,
+      "cells_per_second": 55210769.06538992,
+      "parity_max_absolute_errors": {
+        "vx": 1.8626451e-09,
+        "recovery": 1.1368684e-13,
+        "nutrient": 0.0,
+        "pressure": 3.7252903e-09,
+        "vy": 1.8626451e-09,
+        "activity": 5.820766e-11,
+        "vz": 0.0,
+        "deposit": 0.0
+      },
+      "workload": "dense fields; excludes continuous arena ecology and implicit FFT phase",
+      "runtime": "bundled-rocm6.3",
+      "log": "recover-julia.log"
+    },
+    {
+      "backend": "amd",
+      "julia": "1.12.4",
+      "grid": [
+        32,
+        32,
+        32
+      ],
+      "timed_steps": 10,
+      "dt": 0.004999999888241291,
+      "seconds": 0.005933782,
+      "cells_per_second": 55222790.456407055,
+      "parity_max_absolute_errors": {
+        "vx": 1.8626451e-09,
+        "recovery": 1.1368684e-13,
+        "nutrient": 0.0,
+        "pressure": 3.7252903e-09,
+        "vy": 1.8626451e-09,
+        "activity": 5.820766e-11,
+        "vz": 0.0,
+        "deposit": 0.0
+      },
+      "workload": "dense fields; excludes continuous arena ecology and implicit FFT phase",
+      "runtime": "standalone-rocm6.4.3",
+      "log": "recover-julia-rocm64.log"
+    },
+    {
+      "backend": "amd",
+      "julia": "1.12.4",
+      "grid": [
+        64,
+        64,
+        64
+      ],
+      "timed_steps": 10,
+      "dt": 0.004999999888241291,
+      "seconds": 0.010759461,
+      "cells_per_second": 243640457.454142,
+      "parity_max_absolute_errors": {
+        "vx": 1.8626451e-09,
+        "recovery": 1.1368684e-13,
+        "nutrient": 0.0,
+        "pressure": 3.7252903e-09,
+        "vy": 1.8626451e-09,
+        "activity": 5.820766e-11,
+        "vz": 0.0,
+        "deposit": 0.0
+      },
+      "workload": "dense fields; excludes continuous arena ecology and implicit FFT phase",
+      "runtime": "standalone-rocm6.4.3",
+      "log": "recover-julia-64.log"
+    }
+  ],
+  "recovery": {
+    "date": "2026-10-15",
+    "package_images": "normal compiled modules enabled; dependency and AMDGPU package images created successfully",
+    "depot_path": "/othersys/tmp/intmat-probe-20261014/depot:",
+    "hsa_override_gfx_version": "10.3.0",
+    "microgates": [
+      "Julia no-op @roc kernel",
+      "Julia constant Float32 device pointer store with device warntype",
+      "Julia KernelAbstractions arithmetic/readback",
+      "minimum(vec(ROCArray))",
+      "minimum(3D ROCArray)",
+      "extrema(3D ROCArray)"
+    ],
+    "microgates_passed": true,
+    "host_generated_intrinsics": "LLVM10.2.1 _pointerset/_pointerref code_lowered(...;generated=true) both emitted valid load/store IR without hidden exception",
+    "runtime_control": "Same normal-image Julia stack passed all gates with both bundled HIP6.3.42134 and standalone HIP6.4.43484; switching ROCm is not required to fix prior InvalidIR",
+    "cause_attribution": "Earlier failing route loaded source without cached package images (--compiled-modules=existing on a fresh isolated depot). Normal package image creation plus retained system depots repaired the tested stack. Exact lower-level generator/context defect remains provisional; no simulation kernel or reduction rewrite was required.",
+    "log": "recover-julia.log",
+    "trace_log": "trace-llvm-generator.log"
+  }
 }

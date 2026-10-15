@@ -1,0 +1,10 @@
+slug = "branch-thunder-root-257"
+title = "Thunder root / native 257³"
+description = "A newly grown dielectric conductor on a native 257³ lattice, with harmonic screening solved by residual-controlled geometric multigrid. This is fresh fine-grid growth, not a resampling of the earlier 64³ graph."
+n = 257
+seed = 831
+eta = 7.0
+events = 2200
+tolerance = 0.000001
+extent = [2.0, 2.0, 2.0]
+optical_radius = 0.0012

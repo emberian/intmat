@@ -1,0 +1,43 @@
+# Long funded exploration. Values are physical concentrations and rate densities.
+model = "cellular"
+seed = 402
+dt = 0.1
+snapshot_seconds = 20.0
+checkpoint_seconds = 90.0
+batch = 5
+sleep_seconds = 0.001
+[grid]
+shape = [64, 48, 1]
+extent = [32.0, 24.0, 1.0]
+[cellular]
+population = 64
+capacity = 4096
+hidden = 8
+exchange_radius = 1.0
+division_mass = 1.8
+minimum_mass = 0.25
+store_capacity = 0.8
+energy_capacity = 3.0
+basal_rate = 0.035
+efficiency = 0.65
+junction_rate = 0.25
+response_time = 1.2
+adaptation_time = 24.0
+plasticity_rate = 0.001
+plasticity_decay = 0.005
+mutation = 0.08
+mutation_probability = 0.03
+[resources]
+names = ["precursor_a", "precursor_b", "waste"]
+potentials = [4.0, 4.0, 0.0]
+initial = [0.45, 0.45, 0.0]
+diffusion = [0.02, 0.02, 0.03]
+# Total precursor supply = 2 * 0.0025 * 32 * 24 = 3.84 mass / time.
+source_rates = [0.0025, 0.0025, 0.0]
+source_budgets = [1000000.0, 1000000.0, 0.0]
+# Export inert waste; tracked in the open-system material ledger.
+sink_rates = [0.0, 0.0, 0.006]
+sink_budgets = [0.0, 0.0, 10000000.0]
+spatial_niches = true
+niche_contrast = 0.9
+niche_waves = [2, 3, 0]

@@ -10,12 +10,14 @@ export JULIA_NUM_THREADS=2
 export JULIA_NUM_PRECOMPILE_TASKS=1
 export JULIA_PKG_PRECOMPILE_AUTO=0
 export OPENBLAS_NUM_THREADS=1
-export ROCM_PATH="$PROBE_ROOT/rocm-debs/opt/rocm-6.4.3"
+export ROCM_PATH="${PROBE_ROCM_PATH:-$PROBE_ROOT/rocm-debs/opt/rocm-6.4.3}"
 export LD_LIBRARY_PATH="$ROCM_PATH/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 export PATH="$ROCM_PATH/bin:$PATH"
-julia="$PROBE_ROOT/julia-${PROBE_JULIA_VERSION:-1.11.7}/bin/julia"
-project="${PROBE_PROJECT:-$PROBE_ROOT/environment}"
+julia="$PROBE_ROOT/julia-${PROBE_JULIA_VERSION:-1.12.4}/bin/julia"
+project="${PROBE_PROJECT:-$PROBE_ROOT/environment112}"
 command_timeout="${PROBE_TIMEOUT_SECONDS:-900}"
+export HSA_OVERRIDE_GFX_VERSION=10.3.0
+export PROBE_GRID="${2:-32}" PROBE_STEPS="${3:-10}"
 run() {
     SWARM_MEM_MAX=8G /home/hbox/bin/swarm-build taskset -c 0,1 \
         timeout --signal=TERM --kill-after=15s "$command_timeout" "$julia" \
@@ -24,10 +26,9 @@ run() {
 }
 case "${1:-probe}" in
     install)
-        # Reproduce the released diagnostic baseline; this stack did not pass
-        # Interior GPU compilation. Other retained manifests are selected via
-        # PROBE_PROJECT and must not be silently replaced by this mode.
-        run -e 'using Pkg; Pkg.develop(path=ENV["PROBE_ROOT"] * "/source"); Pkg.add([Pkg.PackageSpec(name="AMDGPU",version="2.8.0"), Pkg.PackageSpec(name="GPUCompiler",version="2.6.0"), Pkg.PackageSpec(name="LLVM",version="9.13.2")]); Pkg.pin(["AMDGPU","GPUCompiler","LLVM"])'
+        # Keep the tested manifest and create package images before GPU use.
+        # The cold --compiled-modules=existing route previously failed codegen.
+        run -e 'using Pkg, LazyArtifacts; isfile(joinpath(dirname(Base.active_project()),"Manifest.toml")) || error("Pinned hbox Manifest.toml required"); Pkg.instantiate(); info=only(filter(p->p.name=="LLVMDowngrader_jll",collect(values(Pkg.dependencies())))); Pkg.Artifacts.ensure_artifact_installed("LLVMDowngrader",joinpath(info.source,"Artifacts.toml")); Pkg.precompile(["AMDGPU","Interior"])'
         ;;
     prefetch)
         # Install the declared lazy artifact without loading the affected JLL.
@@ -37,10 +38,10 @@ case "${1:-probe}" in
         run -e 'using AMDGPU; AMDGPU.versioninfo(); println("functional=", AMDGPU.functional())'
         ;;
     probe)
-        run "$PROBE_ROOT/source/scripts/benchmark_accelerator.jl" amd 32 10
+        run "$PROBE_ROOT/source/scripts/benchmark_accelerator.jl" amd "$PROBE_GRID" "$PROBE_STEPS"
         ;;
     verify)
-        run -e 'using AMDGPU; AMDGPU.versioninfo(); append!(ARGS, ["amd", "32", "10"]); include(ENV["PROBE_ROOT"] * "/source/scripts/benchmark_accelerator.jl")'
+        run -e 'using AMDGPU; AMDGPU.versioninfo(); append!(ARGS, ["amd", ENV["PROBE_GRID"], ENV["PROBE_STEPS"]]); include(ENV["PROBE_ROOT"] * "/source/scripts/benchmark_accelerator.jl")'
         ;;
     *) echo 'usage: bootstrap_hbox_probe.sh install|prefetch|diagnose|probe|verify' >&2; exit 2 ;;
 esac

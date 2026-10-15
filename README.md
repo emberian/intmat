@@ -7,7 +7,7 @@ pressure and damage. Its inhabitants have state: recurrent brains, plastic memor
 inherited metabolism, ancestry and finite inventories. Each changes what the other
 encounters next.
 
-[Gallery](https://emberian.github.io/intmat/) · [Metabolic replay](https://emberian.github.io/intmat/metabolic/arena.html) · [Working state](TRACKER.md)
+[Gallery](https://emberian.github.io/intmat/) · [Cellular architecture](docs/cellular.md) · [Metabolic replay](https://emberian.github.io/intmat/metabolic/arena.html) · [Working state](TRACKER.md)
 
 ## Material collection
 
@@ -15,8 +15,9 @@ Six families: phase surfaces, written inclusions, dielectric branches, fractured
 networks, acoustic/neural contours and 3D metabolic inhabitants. Each photograph
 observes a saved simulation through chosen optics. The first series adds 36
 specimens at 1600². Refinement now evolves native 384³ phase, writing and waves;
-768³ writing is complete. New photography fixes artificial crop staircases and
-adds distinct resin, wax, frost, ceramic and metal optics. Ecology remains 32³
+768³ writing is complete. Six refined 2400² photographs bring the gallery to 58
+studies, with corrected crop geometry and resin, wax, frost, bronze and copper
+optics. A native 1152³ Julia writer is running with 18.35 GB of state. Ecology remains 32³
 plus continuous agents; mechanics retains its actual deformed bond graph.
 [Recipes](docs/collection-20261015.md) · [Spatial refinement](docs/spatial-refinement.md)
 
@@ -25,14 +26,19 @@ plus continuous agents; mechanics retains its actual deformed bond graph.
 ```sh
 julia --project=. -e 'using Pkg; Pkg.instantiate()'
 julia --project=. --threads=4 bin/interior.jl arena \
-  --profile experiments/arena/metabolic-2d.toml --output outputs/my-arena --continuous
-python3 scripts/serve_arena.py outputs/my-arena --port 8781
+  --profile experiments/arena/cellular-2d.toml --output outputs/my-arena --continuous
+python3 scripts/serve_arena.py outputs/my-arena --port 8782
 ```
 
-Open <http://127.0.0.1:8781/arena.html>. Inspect fields, individuals, inherited
+Open <http://127.0.0.1:8782/arena.html>. Inspect fields, individuals, inherited
 allocations and budgets. Pause or checkpoint without restarting. Use a fresh output
 directory; [resume explicitly](docs/arena.md). One writer per run. Checkpoints retain
 full state and check Julia/source versions. The runner is not a reboot service.
+
+`cellular-2d.toml` gives cells physical bodies, persistent contacts, internal
+chemistry and division-preserved developmental state. Bonds carry force,
+metabolites and regulatory context. There is no colony fitness bonus.
+[Design](docs/cellular.md) · [Long soaks](docs/cellular-soaks.md)
 
 `active-2d.toml` selects the earlier single-resource ecology. `metabolic-2d.toml`
 selects the multispecies model. `metabolic-96.toml` enlarges the domain at the same cell spacing; these are distinct experiments.
@@ -47,7 +53,8 @@ selects the multispecies model. `metabolic-96.toml` enlarges the domain at the s
 | Shared boundaries | Agents pay cargo and energy to maintain film. Film alters transport and phase forcing; decay returns structural matter. |
 | Selection | Birth, mutation, death and spatial competition. Neither cooperation nor increasing complexity is guaranteed. |
 
-A funded three-seed study found inherited competitive improvement: evolved
+In the earlier metabolic substrate, a funded three-seed study found inherited
+competitive improvement: evolved
 descendants won 48/48 reset-state assays, including 24 without lifetime plasticity.
 Noisy controls and small evolutionary N limit the claim; cooperation remains unproven.
 [Results and component swaps](docs/alife-adaptation-results.md)
@@ -96,7 +103,9 @@ individual histories are pruned. [Profiling](docs/arena-performance.md)
 Metal supports several dense grid processes. The evolving population remains a CPU
 implementation. Device-resident controllers beat CPU; per-tick transfers reverse
 that result. A real Kaggle T4 ran the dense-field probe; TPU and hbox work have
-separate status. [Accelerators](docs/accelerators.md) · [Larger-run budgets](docs/bigruns.md)
+separate status. **Julia now runs on hbox:** original kernels and the Julia dose
+writer pass parity; native 768³ writer steps measured 29.15 ms.
+[Reproduce](docs/hbox-runtime.md) · [Accelerators](docs/accelerators.md) · [Larger-run budgets](docs/bigruns.md)
 
 Small runs establish mechanisms and expose failures. They do not bound long-run
 behavior. Sustained turnover is not open-ended evolution; founder loss is not loss
