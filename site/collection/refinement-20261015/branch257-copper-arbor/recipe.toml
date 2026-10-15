@@ -1,0 +1,11 @@
+optical_radius = 0.0012
+n = 257
+events = 800
+backend = "Metal"
+slug = "branch-thunder-root-257-metal"
+extent = [2.0, 2.0, 2.0]
+description = "An 800-event horizon of a newly grown dielectric conductor on a native 257³ lattice, with harmonic screening solved by residual-controlled geometric multigrid. This is fresh fine-grid growth, not a resampling of the earlier 64³ graph."
+eta = 7.0
+title = "Thunder root / native 257³"
+seed = 831
+tolerance = 1.0e-6

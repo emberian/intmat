@@ -1,0 +1,35 @@
+{
+  "id": "waves384-crossed-frost",
+  "family": "waves",
+  "title": "Crossed Pressure Fronts",
+  "description": "Actual native384\u00b3 unequal opposite-sign pressure pulses crossing an offset driven source and shallow mineral membrane. The declared squared pressure crest display is contoured to show interference.",
+  "volume": "volume",
+  "native_shape": [
+    384,
+    384,
+    384
+  ],
+  "size": 2400,
+  "samples": 128,
+  "args": [
+    "--surface-only",
+    "--analytic-crop",
+    "--crop-shape",
+    "none",
+    "--mesh-adaptivity",
+    ".01",
+    "--inclusion-surface",
+    "activity",
+    "--inclusion-isovalue",
+    ".25",
+    "--material-preset",
+    "frosted-ice",
+    "--studio-background",
+    "slate",
+    "--frame-content",
+    "--orbit",
+    "1.15",
+    "--elevation",
+    ".3"
+  ]
+}

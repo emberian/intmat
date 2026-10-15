@@ -1,0 +1,162 @@
+{
+  "settings": {
+    "directory": "volume",
+    "output": "final.png",
+    "samples": 128,
+    "size": 2400,
+    "orbit": 1.15,
+    "elevation": 0.3,
+    "emission": 1.2,
+    "emission_field": "activity",
+    "palette": "amber-cyan",
+    "absorption": 1.5,
+    "scattering": 0.28,
+    "scattering_field": "density",
+    "polished_carrier": false,
+    "ior": 1.48,
+    "inclusion_surface": "activity",
+    "inclusion_isovalue": 0.25,
+    "surface_roughness": 0.035,
+    "density_scale": 1.0,
+    "light_power": 1.0,
+    "z_scale": 1.0,
+    "population": null,
+    "population_radius": 0.015,
+    "conductive_graph": false,
+    "graph_radius": 0.008,
+    "bond_graph": null,
+    "carrier_shape": "ellipsoid",
+    "activity_threshold": 0.0,
+    "activity_power": 1.0,
+    "interfaces": false,
+    "smooth": 0,
+    "frame_content": true,
+    "surface_only": true,
+    "analytic_crop": true,
+    "crop_shape": "none",
+    "crop_radius": 0.88,
+    "crop_axes": [
+      0.87,
+      0.94,
+      0.8
+    ],
+    "mesh_adaptivity": 0.01,
+    "material_preset": "frosted-ice",
+    "carrier_material": null,
+    "population_mode": "scientific",
+    "write_source_mapping": false,
+    "inclusion_transmission": 0.3,
+    "surface_smooth": 0,
+    "inclusion_tint": "pearl",
+    "camera_distance": 4.65,
+    "device": "METAL",
+    "adaptive_threshold": 0.03,
+    "cutaway_axis": null,
+    "cutaway_position": 0.0,
+    "studio_background": "slate",
+    "exposure": 0.0
+  },
+  "gradient_scales": {},
+  "volume_file": null,
+  "source_grid": {
+    "shape": [
+      384,
+      384,
+      384
+    ],
+    "dtype": "little-endian float32",
+    "order": "F",
+    "loaded_fields": [
+      "activity"
+    ],
+    "surface_only": true
+  },
+  "inclusion_mesh": {
+    "vertices": 334457,
+    "triangles": 77660,
+    "quads": 295567,
+    "isovalue": 0.25,
+    "field": "activity",
+    "source_shape": [
+      384,
+      384,
+      384
+    ],
+    "surface_smoothing_passes": 0,
+    "mesh_adaptivity": 0.01,
+    "post_crop_vertices": 334457,
+    "post_crop_polygons": 373227
+  },
+  "analytic_crop": {
+    "shape": "none",
+    "axes": null,
+    "plane_axis": null,
+    "plane_position": 0.0,
+    "method": "unmasked continuous scalar surface followed by exact mesh intersection; observation crop only"
+  },
+  "specimen_material": {
+    "preset": "frosted-ice",
+    "resolved": {
+      "label": "Frosted ice",
+      "inputs": {
+        "Base Color": [
+          0.7,
+          0.87,
+          0.96,
+          1
+        ],
+        "Roughness": 0.3,
+        "IOR": 1.31,
+        "Transmission Weight": 0.72,
+        "Subsurface Weight": 0.05,
+        "Subsurface Scale": 0.025
+      },
+      "absorption": {
+        "color": [
+          0.66,
+          0.85,
+          0.94,
+          1
+        ],
+        "density": 0.12
+      }
+    },
+    "interpretation": "Optical display parameters, not measured material properties"
+  },
+  "camera_fit": {
+    "bounds": [
+      [
+        -1.0006641149520874,
+        -0.9994975924491882,
+        -0.9998918771743774
+      ],
+      [
+        1.00068998336792,
+        0.999560534954071,
+        0.9998898506164551
+      ]
+    ],
+    "distance": 5.243472197055817,
+    "target": [
+      1.2934207916259766e-05,
+      3.147125244140625e-05,
+      -1.0132789611816406e-06
+    ],
+    "margin": 0.08
+  },
+  "render_device": [
+    {
+      "name": "Apple M2 Max (GPU - 38 cores)",
+      "type": "METAL"
+    }
+  ],
+  "metal_kernel_settings": {
+    "CYCLES_METAL_ADAPTIVE_COMPILE": null,
+    "CYCLES_METAL_SPECIALIZATION_LEVEL": null
+  },
+  "adaptive_sampling": {
+    "maximum_samples": 128,
+    "minimum_samples": 16,
+    "noise_threshold": 0.03
+  }
+}

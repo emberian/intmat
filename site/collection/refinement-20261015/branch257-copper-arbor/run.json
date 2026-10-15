@@ -1,0 +1,532 @@
+{
+  "device_solver_hash": "ffc12095ef94eb33171b7e8924bb341b9c33bc76764bf07fd7c19a696960d8f4",
+  "metrics": {
+    "events": 800,
+    "tips": 192,
+    "mass_drift": 0,
+    "branch_vertices": 203,
+    "occupied": 801,
+    "elapsed_seconds": 1001.881147083,
+    "edges": 827,
+    "reached_ground": false,
+    "potential_min": 0,
+    "potential_max": 1,
+    "potential_residual": 4.37100728389872e-07
+  },
+  "time": 40,
+  "history": [
+    {
+      "event": 25,
+      "time": 1.25,
+      "occupied": 26,
+      "span_cells": [
+        10,
+        5,
+        5
+      ],
+      "residual": 8.940696716308594e-07,
+      "vcycles": 13,
+      "solve_seconds": 1.601456791,
+      "reached_ground": false
+    },
+    {
+      "event": 50,
+      "time": 2.5,
+      "occupied": 51,
+      "span_cells": [
+        14,
+        5,
+        13
+      ],
+      "residual": 7.947285970422158e-07,
+      "vcycles": 11,
+      "solve_seconds": 1.321827833,
+      "reached_ground": false
+    },
+    {
+      "event": 75,
+      "time": 3.75,
+      "occupied": 76,
+      "span_cells": [
+        16,
+        7,
+        15
+      ],
+      "residual": 5.761782327917686e-07,
+      "vcycles": 9,
+      "solve_seconds": 1.10283675,
+      "reached_ground": false
+    },
+    {
+      "event": 100,
+      "time": 5,
+      "occupied": 101,
+      "span_cells": [
+        17,
+        7,
+        20
+      ],
+      "residual": 8.145968118933311e-07,
+      "vcycles": 12,
+      "solve_seconds": 1.427782291,
+      "reached_ground": false
+    },
+    {
+      "event": 125,
+      "time": 6.25,
+      "occupied": 126,
+      "span_cells": [
+        20,
+        10,
+        24
+      ],
+      "residual": 6.357828775671592e-07,
+      "vcycles": 12,
+      "solve_seconds": 1.461134834,
+      "reached_ground": false
+    },
+    {
+      "event": 150,
+      "time": 7.5,
+      "occupied": 151,
+      "span_cells": [
+        20,
+        14,
+        29
+      ],
+      "residual": 6.159146627160439e-07,
+      "vcycles": 11,
+      "solve_seconds": 1.330527542,
+      "reached_ground": false
+    },
+    {
+      "event": 175,
+      "time": 8.75,
+      "occupied": 176,
+      "span_cells": [
+        21,
+        14,
+        35
+      ],
+      "residual": 8.245309193743999e-07,
+      "vcycles": 11,
+      "solve_seconds": 1.324961458,
+      "reached_ground": false
+    },
+    {
+      "event": 200,
+      "time": 10,
+      "occupied": 201,
+      "span_cells": [
+        24,
+        15,
+        37
+      ],
+      "residual": 7.549921671179405e-07,
+      "vcycles": 10,
+      "solve_seconds": 1.219896417,
+      "reached_ground": false
+    },
+    {
+      "event": 225,
+      "time": 11.25,
+      "occupied": 226,
+      "span_cells": [
+        27,
+        17,
+        40
+      ],
+      "residual": 8.742014566687217e-07,
+      "vcycles": 9,
+      "solve_seconds": 1.0897205,
+      "reached_ground": false
+    },
+    {
+      "event": 250,
+      "time": 12.5,
+      "occupied": 251,
+      "span_cells": [
+        32,
+        21,
+        43
+      ],
+      "residual": 7.152557373046875e-07,
+      "vcycles": 10,
+      "solve_seconds": 1.253912166,
+      "reached_ground": false
+    },
+    {
+      "event": 275,
+      "time": 13.75,
+      "occupied": 276,
+      "span_cells": [
+        35,
+        22,
+        45
+      ],
+      "residual": 8.145968118933311e-07,
+      "vcycles": 8,
+      "solve_seconds": 1.035719375,
+      "reached_ground": false
+    },
+    {
+      "event": 300,
+      "time": 15,
+      "occupied": 301,
+      "span_cells": [
+        36,
+        22,
+        47
+      ],
+      "residual": 5.16573588016378e-07,
+      "vcycles": 10,
+      "solve_seconds": 1.31636175,
+      "reached_ground": false
+    },
+    {
+      "event": 325,
+      "time": 16.25,
+      "occupied": 326,
+      "span_cells": [
+        37,
+        24,
+        49
+      ],
+      "residual": 5.563100179406533e-07,
+      "vcycles": 10,
+      "solve_seconds": 1.222621708,
+      "reached_ground": false
+    },
+    {
+      "event": 350,
+      "time": 17.5,
+      "occupied": 351,
+      "span_cells": [
+        37,
+        24,
+        54
+      ],
+      "residual": 9.338061014441124e-07,
+      "vcycles": 9,
+      "solve_seconds": 1.230257209,
+      "reached_ground": false
+    },
+    {
+      "event": 375,
+      "time": 18.75,
+      "occupied": 376,
+      "span_cells": [
+        40,
+        25,
+        55
+      ],
+      "residual": 7.549921671179405e-07,
+      "vcycles": 10,
+      "solve_seconds": 1.1716955,
+      "reached_ground": false
+    },
+    {
+      "event": 400,
+      "time": 20,
+      "occupied": 401,
+      "span_cells": [
+        41,
+        27,
+        57
+      ],
+      "residual": 7.152557373046875e-07,
+      "vcycles": 9,
+      "solve_seconds": 1.110850375,
+      "reached_ground": false
+    },
+    {
+      "event": 425,
+      "time": 21.25,
+      "occupied": 426,
+      "span_cells": [
+        45,
+        29,
+        59
+      ],
+      "residual": 8.145968118933311e-07,
+      "vcycles": 9,
+      "solve_seconds": 1.19879825,
+      "reached_ground": false
+    },
+    {
+      "event": 450,
+      "time": 22.5,
+      "occupied": 451,
+      "span_cells": [
+        47,
+        29,
+        62
+      ],
+      "residual": 7.549921671179405e-07,
+      "vcycles": 10,
+      "solve_seconds": 1.325335958,
+      "reached_ground": false
+    },
+    {
+      "event": 475,
+      "time": 23.75,
+      "occupied": 476,
+      "span_cells": [
+        49,
+        30,
+        64
+      ],
+      "residual": 6.953875223425499e-07,
+      "vcycles": 9,
+      "solve_seconds": 1.135550167,
+      "reached_ground": false
+    },
+    {
+      "event": 500,
+      "time": 25,
+      "occupied": 501,
+      "span_cells": [
+        51,
+        31,
+        65
+      ],
+      "residual": 5.364418029785156e-07,
+      "vcycles": 8,
+      "solve_seconds": 1.044233541,
+      "reached_ground": false
+    },
+    {
+      "event": 525,
+      "time": 26.25,
+      "occupied": 526,
+      "span_cells": [
+        56,
+        33,
+        65
+      ],
+      "residual": 8.145968118933311e-07,
+      "vcycles": 8,
+      "solve_seconds": 1.04360925,
+      "reached_ground": false
+    },
+    {
+      "event": 550,
+      "time": 27.5,
+      "occupied": 551,
+      "span_cells": [
+        59,
+        34,
+        69
+      ],
+      "residual": 6.953875223425499e-07,
+      "vcycles": 9,
+      "solve_seconds": 1.112316125,
+      "reached_ground": false
+    },
+    {
+      "event": 575,
+      "time": 28.75,
+      "occupied": 576,
+      "span_cells": [
+        63,
+        35,
+        70
+      ],
+      "residual": 8.543332418176064e-07,
+      "vcycles": 10,
+      "solve_seconds": 1.433434166,
+      "reached_ground": false
+    },
+    {
+      "event": 600,
+      "time": 30,
+      "occupied": 601,
+      "span_cells": [
+        69,
+        37,
+        72
+      ],
+      "residual": 7.152557373046875e-07,
+      "vcycles": 9,
+      "solve_seconds": 1.201103542,
+      "reached_ground": false
+    },
+    {
+      "event": 625,
+      "time": 31.25,
+      "occupied": 626,
+      "span_cells": [
+        70,
+        38,
+        75
+      ],
+      "residual": 5.364418029785156e-07,
+      "vcycles": 9,
+      "solve_seconds": 1.136345084,
+      "reached_ground": false
+    },
+    {
+      "event": 650,
+      "time": 32.5,
+      "occupied": 651,
+      "span_cells": [
+        70,
+        41,
+        78
+      ],
+      "residual": 6.556510925292969e-07,
+      "vcycles": 8,
+      "solve_seconds": 1.044894541,
+      "reached_ground": false
+    },
+    {
+      "event": 675,
+      "time": 33.75,
+      "occupied": 676,
+      "span_cells": [
+        74,
+        43,
+        83
+      ],
+      "residual": 5.563100179406533e-07,
+      "vcycles": 9,
+      "solve_seconds": 1.074933458,
+      "reached_ground": false
+    },
+    {
+      "event": 700,
+      "time": 35,
+      "occupied": 701,
+      "span_cells": [
+        78,
+        44,
+        85
+      ],
+      "residual": 6.755193074914345e-07,
+      "vcycles": 7,
+      "solve_seconds": 0.850426959,
+      "reached_ground": false
+    },
+    {
+      "event": 725,
+      "time": 36.25,
+      "occupied": 726,
+      "span_cells": [
+        82,
+        44,
+        89
+      ],
+      "residual": 7.152557373046875e-07,
+      "vcycles": 8,
+      "solve_seconds": 0.925176208,
+      "reached_ground": false
+    },
+    {
+      "event": 750,
+      "time": 37.5,
+      "occupied": 751,
+      "span_cells": [
+        85,
+        46,
+        91
+      ],
+      "residual": 7.549921671179405e-07,
+      "vcycles": 8,
+      "solve_seconds": 0.930241667,
+      "reached_ground": false
+    },
+    {
+      "event": 775,
+      "time": 38.75,
+      "occupied": 776,
+      "span_cells": [
+        88,
+        48,
+        97
+      ],
+      "residual": 4.172325134277344e-07,
+      "vcycles": 8,
+      "solve_seconds": 0.889503541,
+      "reached_ground": false
+    },
+    {
+      "event": 800,
+      "time": 40,
+      "occupied": 801,
+      "span_cells": [
+        91,
+        48,
+        99
+      ],
+      "residual": 4.37100728389872e-07,
+      "vcycles": 8,
+      "solve_seconds": 0.89691125,
+      "reached_ground": false
+    }
+  ],
+  "shape": [
+    257,
+    257,
+    257
+  ],
+  "solver": "KA/Metal geometric correction multigrid; red-black smoothing; exact fine-grid Dirichlet constraints; independent core residual checked at checkpoints",
+  "description": "Actual native257\u00b3 dielectric growth: 800 events and 801 conducting sites. Exact occupied adjacency is photographed as copper filaments; no interpolated graph.",
+  "extent": [
+    2,
+    2,
+    2
+  ],
+  "prototype_hash": "32ea8f425c60685b53c783df4ee0810900d446c9968c145fbcb4b36a644689ef",
+  "growth": "same per-face field^eta probability and stateless seed/event hash as DielectricGrowth; each occupied cell consumes .8 nutrient",
+  "optics": {
+    "geometry": "exact face-adjacency native graph; optical tube thickness",
+    "diameter": 0.0024,
+    "channel_radius": 0.0012
+  },
+  "params": {
+    "optical_radius": 0.0012,
+    "n": 257,
+    "events": 800,
+    "backend": "Metal",
+    "slug": "branch-thunder-root-257-metal",
+    "extent": [
+      2,
+      2,
+      2
+    ],
+    "description": "An 800-event horizon of a newly grown dielectric conductor on a native 257\u00b3 lattice, with harmonic screening solved by residual-controlled geometric multigrid. This is fresh fine-grid growth, not a resampling of the earlier 64\u00b3 graph.",
+    "eta": 7,
+    "title": "Thunder root / native 257\u00b3",
+    "seed": 831,
+    "tolerance": 1e-06
+  },
+  "spacing": [
+    0.007782101,
+    0.007782101,
+    0.007782101
+  ],
+  "title": "A Copper Arbor",
+  "study_hash": "434c15afe600143412e7fdb31564232f4fb699d2a2290dbd01594a66910586f9",
+  "source_hash": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+  "native_shape": [
+    257,
+    257,
+    257
+  ],
+  "comparison_notes": "Fresh native257\u00b3 growth, 800 events and801 conducting sites, not interpolation of the old64\u00b3 graph. Exact occupied adjacency is shown with a declared .002 copper filament display radius; lattice corners are the actual growth geometry.",
+  "family": "branches",
+  "publication": {
+    "source_image_sha256": "ec97a4639b72da37382b2e3dad0c5ac9aab0e7912b42f5648193bd9c52368f13",
+    "webp_sha256": "fe1e476bf77ea5cc757ecf25fce427c1a663d94fff0d9ff0346389fddfc976f9",
+    "quality": 95,
+    "width": 2400,
+    "samples": 128,
+    "native_shape": [
+      257,
+      257,
+      257
+    ],
+    "original_retained": true,
+    "reviewed_by": "collection_render"
+  }
+}

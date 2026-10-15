@@ -1,0 +1,35 @@
+{
+  "id": "writing768-bronze-calligraphy",
+  "family": "writing",
+  "title": "Thermal Calligraphy in Bronze",
+  "description": "Same native768\u00b3 measured thermal deposit as the amber specimen, shown without its carrier as a brushed-bronze optical study. Actual deposit=.18; no upsampling.",
+  "volume": "volume",
+  "native_shape": [
+    768,
+    768,
+    768
+  ],
+  "size": 2400,
+  "samples": 128,
+  "args": [
+    "--surface-only",
+    "--analytic-crop",
+    "--crop-shape",
+    "none",
+    "--mesh-adaptivity",
+    ".01",
+    "--studio-background",
+    "slate",
+    "--frame-content",
+    "--inclusion-surface",
+    "deposit",
+    "--inclusion-isovalue",
+    ".18",
+    "--material-preset",
+    "brushed-bronze",
+    "--orbit",
+    "1.0",
+    "--elevation",
+    ".45"
+  ]
+}

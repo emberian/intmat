@@ -1,0 +1,37 @@
+{
+  "id": "branch257-copper-arbor",
+  "family": "branches",
+  "title": "A Copper Arbor",
+  "description": "Actual native257\u00b3 dielectric growth: 800 events and 801 conducting sites. Exact occupied adjacency is photographed as copper filaments; no interpolated graph.",
+  "volume": "volume",
+  "native_shape": [
+    257,
+    257,
+    257
+  ],
+  "size": 2400,
+  "samples": 128,
+  "args": [
+    "--bond-graph",
+    "channels.obj",
+    "--graph-radius",
+    ".002",
+    "--material-preset",
+    "oxidized-copper",
+    "--absorption",
+    "0",
+    "--scattering",
+    "0",
+    "--emission",
+    "0",
+    "--density-scale",
+    "0",
+    "--frame-content",
+    "--orbit",
+    ".6",
+    "--elevation",
+    ".35",
+    "--studio-background",
+    "warm"
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "settings": {
+    "directory": "volume",
+    "output": "final.png",
+    "samples": 128,
+    "size": 2400,
+    "orbit": 0.6,
+    "elevation": 0.35,
+    "emission": 0.0,
+    "emission_field": "activity",
+    "palette": "amber-cyan",
+    "absorption": 0.0,
+    "scattering": 0.0,
+    "scattering_field": "density",
+    "polished_carrier": false,
+    "ior": 1.48,
+    "inclusion_surface": null,
+    "inclusion_isovalue": 0.25,
+    "surface_roughness": 0.035,
+    "density_scale": 0.0,
+    "light_power": 1.0,
+    "z_scale": 1.0,
+    "population": null,
+    "population_radius": 0.015,
+    "conductive_graph": false,
+    "graph_radius": 0.002,
+    "bond_graph": "channels.obj",
+    "carrier_shape": "ellipsoid",
+    "activity_threshold": 0.0,
+    "activity_power": 1.0,
+    "interfaces": false,
+    "smooth": 0,
+    "frame_content": true,
+    "surface_only": false,
+    "analytic_crop": false,
+    "crop_shape": "sphere",
+    "crop_radius": 0.88,
+    "crop_axes": [
+      0.87,
+      0.94,
+      0.8
+    ],
+    "mesh_adaptivity": 0.05,
+    "material_preset": "oxidized-copper",
+    "carrier_material": null,
+    "population_mode": "scientific",
+    "write_source_mapping": false,
+    "inclusion_transmission": 0.3,
+    "surface_smooth": 0,
+    "inclusion_tint": "pearl",
+    "camera_distance": 4.65,
+    "device": "CPU",
+    "adaptive_threshold": 0.03,
+    "cutaway_axis": null,
+    "cutaway_position": 0.0,
+    "studio_background": "warm",
+    "exposure": 0.0
+  },
+  "gradient_scales": {},
+  "volume_file": "final.vdb",
+  "source_grid": {
+    "shape": [
+      257,
+      257,
+      257
+    ],
+    "dtype": "little-endian float32",
+    "order": "F",
+    "loaded_fields": [
+      "activity",
+      "density",
+      "mask",
+      "potential",
+      "structure"
+    ],
+    "surface_only": false
+  },
+  "specimen_material": {
+    "preset": "oxidized-copper",
+    "resolved": {
+      "label": "Oxidized copper",
+      "inputs": {
+        "Base Color": [
+          0.1,
+          0.36,
+          0.25,
+          1
+        ],
+        "Metallic": 0.88,
+        "Roughness": 0.46,
+        "IOR": 1.5,
+        "Transmission Weight": 0,
+        "Coat Weight": 0.06
+      },
+      "patina": {
+        "noise_scale": 3.7,
+        "metal": [
+          0.55,
+          0.22,
+          0.065,
+          1
+        ],
+        "oxide": [
+          0.035,
+          0.27,
+          0.18,
+          1
+        ],
+        "minimum_roughness": 0.24,
+        "maximum_roughness": 0.65
+      }
+    },
+    "interpretation": "Optical display parameters, not measured material properties"
+  },
+  "camera_fit": {
+    "bounds": [
+      [
+        -0.29571983218193054,
+        -0.18098832666873932,
+        -0.39888715744018555
+      ],
+      [
+        0.4066692590713501,
+        0.18877042829990387,
+        0.3657587468624115
+      ]
+    ],
+    "distance": 1.7103190174698832,
+    "target": [
+      0.05547471344470978,
+      0.0038910508155822754,
+      -0.016564205288887024
+    ],
+    "margin": 0.08
+  },
+  "render_device": [
+    {
+      "name": "CPU",
+      "threads": 2
+    }
+  ],
+  "metal_kernel_settings": {
+    "CYCLES_METAL_ADAPTIVE_COMPILE": null,
+    "CYCLES_METAL_SPECIALIZATION_LEVEL": null
+  },
+  "adaptive_sampling": {
+    "maximum_samples": 128,
+    "minimum_samples": 16,
+    "noise_threshold": 0.03
+  }
+}

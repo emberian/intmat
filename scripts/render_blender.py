@@ -235,6 +235,7 @@ if args.analytic_crop and args.inclusion_surface:
         modifier = inclusion.modifiers.new(label, "BOOLEAN")
         modifier.operation = "INTERSECT"
         modifier.solver = "EXACT"
+        modifier.use_hole_tolerant = True
         modifier.object = cutter
         bpy.context.view_layer.objects.active = inclusion
         bpy.ops.object.modifier_apply(modifier=modifier.name)
@@ -255,6 +256,8 @@ if args.analytic_crop and args.inclusion_surface:
     optical_mapping["analytic_crop"] = {"shape": args.crop_shape, "axes": axes if args.crop_shape != "none" else None, "plane_axis": args.cutaway_axis, "plane_position": args.cutaway_position, "method": "unmasked continuous scalar surface followed by exact mesh intersection; observation crop only"}
 if args.inclusion_surface:
     optical_mapping["inclusion_mesh"].update(post_crop_vertices=len(inclusion.data.vertices), post_crop_polygons=len(inclusion.data.polygons))
+    if not inclusion.data.polygons:
+        raise RuntimeError("Observation crop produced an empty inclusion mesh; inspect the isovalue and Boolean intersection")
 if args.inclusion_surface and args.material_preset:
     inclusion.data.materials.clear()
     material, spec = make_material("Computed scalar surface", args.material_preset)

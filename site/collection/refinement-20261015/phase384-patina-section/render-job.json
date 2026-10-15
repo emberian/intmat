@@ -1,0 +1,43 @@
+{
+  "id": "phase384-patina-section",
+  "family": "phase",
+  "title": "A Mantle of Patina",
+  "description": "Actual native384\u00b3 evolved conserved phase in an analytically sectioned block; oxidized-copper is a declared optical interpretation.",
+  "volume": "volume",
+  "native_shape": [
+    384,
+    384,
+    384
+  ],
+  "size": 2400,
+  "samples": 128,
+  "args": [
+    "--surface-only",
+    "--analytic-crop",
+    "--crop-shape",
+    "none",
+    "--mesh-adaptivity",
+    ".003",
+    "--studio-background",
+    "slate",
+    "--frame-content",
+    "--crop-shape",
+    "none",
+    "--crop-radius",
+    ".78",
+    "--inclusion-surface",
+    "structure",
+    "--inclusion-isovalue",
+    ".5",
+    "--cutaway-axis",
+    "y",
+    "--cutaway-position",
+    ".15",
+    "--material-preset",
+    "oxidized-copper",
+    "--orbit",
+    "1.1",
+    "--elevation",
+    ".55"
+  ]
+}

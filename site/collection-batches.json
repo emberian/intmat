@@ -416,5 +416,49 @@
       "render-job.json",
       "run.json"
     ]
+  },
+  {
+    "id": "refinement-20261015/writing768-bronze-calligraphy",
+    "source_image_sha256": "fcce56ace0da564a8b579d5123ffd560a598268bf877ef7e633193b7f4f66723",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
+  },
+  {
+    "id": "refinement-20261015/branch257-copper-arbor",
+    "source_image_sha256": "ec97a4639b72da37382b2e3dad0c5ac9aab0e7912b42f5648193bd9c52368f13",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
+  },
+  {
+    "id": "refinement-20261015/waves384-crossed-frost",
+    "source_image_sha256": "088beb82ab357be23e64f98875392cdb36231a54a2acde0fb9276655374909e5",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
+  },
+  {
+    "id": "refinement-20261015/phase384-patina-section",
+    "source_image_sha256": "147ab96a8dfcaf81f2da07d2cc8b3abbb0a046f51b15ef2d6dd964bc01d88850",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
   }
 ]

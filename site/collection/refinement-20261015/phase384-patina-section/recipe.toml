@@ -1,0 +1,11 @@
+id = "phase-spinodal-384"
+title = "Spinodal cathedral · 384 cubic"
+resolution = 384
+t_end = 60.0
+dt = 0.25
+extent = [64.0,64.0,64.0]
+kappa = 0.85
+mobility = 1.0
+stabilization = 3.0
+baseline = "outputs/collection-20261015/phase-gyroid-cathedral-aged"
+real_fft = true

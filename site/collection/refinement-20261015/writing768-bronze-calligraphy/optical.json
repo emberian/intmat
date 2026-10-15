@@ -1,0 +1,155 @@
+{
+  "settings": {
+    "directory": "volume",
+    "output": "final.png",
+    "samples": 128,
+    "size": 2400,
+    "orbit": 1.0,
+    "elevation": 0.45,
+    "emission": 1.2,
+    "emission_field": "activity",
+    "palette": "amber-cyan",
+    "absorption": 1.5,
+    "scattering": 0.28,
+    "scattering_field": "density",
+    "polished_carrier": false,
+    "ior": 1.48,
+    "inclusion_surface": "deposit",
+    "inclusion_isovalue": 0.18,
+    "surface_roughness": 0.035,
+    "density_scale": 1.0,
+    "light_power": 1.0,
+    "z_scale": 1.0,
+    "population": null,
+    "population_radius": 0.015,
+    "conductive_graph": false,
+    "graph_radius": 0.008,
+    "bond_graph": null,
+    "carrier_shape": "ellipsoid",
+    "activity_threshold": 0.0,
+    "activity_power": 1.0,
+    "interfaces": false,
+    "smooth": 0,
+    "frame_content": true,
+    "surface_only": true,
+    "analytic_crop": true,
+    "crop_shape": "none",
+    "crop_radius": 0.88,
+    "crop_axes": [
+      0.87,
+      0.94,
+      0.8
+    ],
+    "mesh_adaptivity": 0.01,
+    "material_preset": "brushed-bronze",
+    "carrier_material": null,
+    "population_mode": "scientific",
+    "write_source_mapping": false,
+    "inclusion_transmission": 0.3,
+    "surface_smooth": 0,
+    "inclusion_tint": "pearl",
+    "camera_distance": 4.65,
+    "device": "CPU",
+    "adaptive_threshold": 0.03,
+    "cutaway_axis": null,
+    "cutaway_position": 0.0,
+    "studio_background": "slate",
+    "exposure": 0.0
+  },
+  "gradient_scales": {},
+  "volume_file": null,
+  "source_grid": {
+    "shape": [
+      768,
+      768,
+      768
+    ],
+    "dtype": "little-endian float32",
+    "order": "F",
+    "loaded_fields": [
+      "deposit"
+    ],
+    "surface_only": true
+  },
+  "inclusion_mesh": {
+    "vertices": 141460,
+    "triangles": 36484,
+    "quads": 123218,
+    "isovalue": 0.18,
+    "field": "deposit",
+    "source_shape": [
+      768,
+      768,
+      768
+    ],
+    "surface_smoothing_passes": 0,
+    "mesh_adaptivity": 0.01,
+    "post_crop_vertices": 141460,
+    "post_crop_polygons": 159702
+  },
+  "analytic_crop": {
+    "shape": "none",
+    "axes": null,
+    "plane_axis": null,
+    "plane_position": 0.0,
+    "method": "unmasked continuous scalar surface followed by exact mesh intersection; observation crop only"
+  },
+  "specimen_material": {
+    "preset": "brushed-bronze",
+    "resolved": {
+      "label": "Brushed bronze",
+      "inputs": {
+        "Base Color": [
+          0.52,
+          0.28,
+          0.085,
+          1
+        ],
+        "Metallic": 0.95,
+        "Roughness": 0.28,
+        "Anisotropic": 0.55,
+        "IOR": 1.5,
+        "Transmission Weight": 0,
+        "Coat Weight": 0.12,
+        "Coat Roughness": 0.12
+      }
+    },
+    "interpretation": "Optical display parameters, not measured material properties"
+  },
+  "camera_fit": {
+    "bounds": [
+      [
+        -0.5886086821556091,
+        -0.5899927020072937,
+        -0.42706379294395447
+      ],
+      [
+        0.5792756080627441,
+        0.5900785326957703,
+        0.42706823348999023
+      ]
+    ],
+    "distance": 2.9018935990333556,
+    "target": [
+      -0.004666537046432495,
+      4.291534423828125e-05,
+      2.2202730178833008e-06
+    ],
+    "margin": 0.08
+  },
+  "render_device": [
+    {
+      "name": "CPU",
+      "threads": 2
+    }
+  ],
+  "metal_kernel_settings": {
+    "CYCLES_METAL_ADAPTIVE_COMPILE": null,
+    "CYCLES_METAL_SPECIALIZATION_LEVEL": null
+  },
+  "adaptive_sampling": {
+    "maximum_samples": 128,
+    "minimum_samples": 16,
+    "noise_threshold": 0.03
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "schema": "interior-true-spatial-refinement",
+  "config": "dense-writing768.toml",
+  "recipe": {
+    "mode": "writing",
+    "dt": 0.003125,
+    "duration": 5,
+    "name": "dense-writing768",
+    "backend": "metal",
+    "compact_world": true,
+    "period": 4,
+    "conversion": 18,
+    "extent": [
+      2,
+      2,
+      2
+    ],
+    "resolution": 768,
+    "width": 0.018,
+    "heat": 30,
+    "threshold": 0.05,
+    "seed": 91
+  },
+  "backend": "MetalBackend",
+  "sources": {
+    "core.jl": "3ef44008f6a9ce8399bc60352da94dc19e670e67677944369934138042718bad",
+    "neural_workspace.jl": "ecdd45856bc0b3c61708de90814d1abb33bc1232a0f9ff5785b32b9bc39a9139",
+    "writing.jl": "08abd6abb423ef077b86e70eb47fb9f0ad6d27e597ca3dd2464a6369ae002eb0",
+    "Interior.jl": "070d60e3565c4389833c3d9a55005f32c56436424fdd12df3018d704c51e2dba",
+    "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+    "resources.jl": "07e3e48ab6bb4b25eae23fec069af983deae68a67dfeca8d2e89656fd0355b26",
+    "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+    "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+    "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+    "experiments.jl": "c93f9e7a3a59ae842e5d6051f661958b1ad7ead6d6300e83e3198a3233668529",
+    "metabolic_ecology.jl": "2f599a1d6ea0a5552a594113d57e238e4c6ff3c1fd8d74de5a51f83a77179bb1",
+    "mechanics.jl": "81001af879163392dde498534c9f099bcc79a16b8dac5104d527da7cc9f4fdac",
+    "neural_ecology.jl": "ed0496adb31ce4511f8bc0d5343ff843c410c39c51d30c165b3cf5eac1135df2",
+    "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+    "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+    "compartments.jl": "8eec60b56379a3d366cd789ad62e4c7690a0c10ce5af8a485f66b670c8448751",
+    "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+    "arena.jl": "ebc9547b52d3452e3871b31ad78032c3dbee51cc387da154443104a278d3fadc",
+    "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+    "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+    "implicit_phase.jl": "c9f69ad8d2ab00bd18d678d51956effe9c52bf415d5388d5305c56b4bb351fe7",
+    "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+    "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+    "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+    "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+  },
+  "study_sha256": "5d5b469a3732499fc174aa113668fd66de25ffd6c57c3e42a70283a146a100a6",
+  "field_format": "little-endian Float32 x-fastest native grid",
+  "mode": "writing",
+  "shape": [
+    768,
+    768,
+    768
+  ],
+  "extent": [
+    2,
+    2,
+    2
+  ],
+  "spacing": [
+    0.0026041667,
+    0.0026041667,
+    0.0026041667
+  ],
+  "dt": 0.003125,
+  "stability_limit": 0.0033404995,
+  "steps": 1600,
+  "time": 5.000000074505806,
+  "median_step_seconds": 0.4097265,
+  "evolution_seconds": 651.7706918889999,
+  "resident_array_bytes": 9059696640,
+  "deposit_max": 0.99811494,
+  "deposit_sum": 728299,
+  "finite": true,
+  "native_shape": [
+    768,
+    768,
+    768
+  ],
+  "comparison_notes": "Same actual native768\u00b3 thermal deposit as the amber photograph, viewed without a carrier in brushed bronze. Native deposit=.18 contour; no field smoothing or interpolation.",
+  "family": "writing",
+  "title": "Thermal Calligraphy in Bronze",
+  "description": "Same native768\u00b3 measured thermal deposit as the amber specimen, shown without its carrier as a brushed-bronze optical study. Actual deposit=.18; no upsampling.",
+  "publication": {
+    "source_image_sha256": "fcce56ace0da564a8b579d5123ffd560a598268bf877ef7e633193b7f4f66723",
+    "webp_sha256": "e1cf47e1f32408faf1ab25caf7786f0e9edc806b6239cfbff9d90e7b52867c3b",
+    "quality": 95,
+    "width": 2400,
+    "samples": 128,
+    "native_shape": [
+      768,
+      768,
+      768
+    ],
+    "original_retained": true,
+    "reviewed_by": "collection_render"
+  }
+}

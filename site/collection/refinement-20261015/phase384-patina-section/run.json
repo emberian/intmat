@@ -1,0 +1,116 @@
+{
+  "id": "phase-spinodal-384",
+  "title": "A Mantle of Patina",
+  "family": "phase",
+  "shape": [
+    384,
+    384,
+    384
+  ],
+  "extent": [
+    64,
+    64,
+    64
+  ],
+  "spacing": 0.16666666666666666,
+  "dt": 0.25,
+  "steps": 240,
+  "time": 60,
+  "seed": 702,
+  "solver": "Cached CPU real-to-complexF64 FFT; same discrete stabilized implicit material law, validated against core",
+  "phase_parameters": {
+    "bulk": 1,
+    "kappa": 0.85,
+    "mobility": 1,
+    "mineral_pinning": 0,
+    "nutrient_diffusion": 0,
+    "interface_activity": 0.65,
+    "activity_relaxation": 0.3,
+    "stabilization": 3
+  },
+  "initialization": "Fresh evaluation of original weak analytic spinodal perturbations, identical physical modes; not interpolated",
+  "baseline": "outputs/collection-20261015/phase-gyroid-cathedral-aged",
+  "spatial_refinement_per_axis": 4,
+  "observations": [
+    {
+      "time": 0,
+      "energy": 64263.46896133149,
+      "range": [
+        -0.315,
+        0.315
+      ],
+      "rms_change": 3.0813803008353503e-09,
+      "sign_change_fraction": 0,
+      "positive_fraction": 0.5000000706425419,
+      "mean_mass_drift": 0,
+      "finite": true
+    },
+    {
+      "time": 30,
+      "energy": 47459.33836853557,
+      "range": [
+        -0.97477615,
+        0.97477615
+      ],
+      "rms_change": 0.5382560073887813,
+      "sign_change_fraction": 0.06645017200046116,
+      "positive_fraction": 0.4999999823393645,
+      "mean_mass_drift": 9.666784717734975e-15,
+      "finite": true
+    },
+    {
+      "time": 60,
+      "energy": 45649.53453781479,
+      "range": [
+        -0.9617519,
+        0.9617519
+      ],
+      "rms_change": 0.568340333455028,
+      "sign_change_fraction": 0.12191094292534722,
+      "positive_fraction": 0.5,
+      "mean_mass_drift": 5.478273502112794e-13,
+      "finite": true
+    }
+  ],
+  "elapsed_seconds": 825.72329775,
+  "source_sha256": {
+    "src/implicit_phase.jl": "c9f69ad8d2ab00bd18d678d51956effe9c52bf415d5388d5305c56b4bb351fe7",
+    "studies/collection_phase.jl": "3b959cf1e780f0da971969b657e97d0c7de9a80a6e29dd1aeb1c011894759723",
+    "src/phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b",
+    "studies/refinement_phase.jl": "9720a0d801e0b1eb19733838843dcac156595511ce08ef40a894244299fb2fb3"
+  },
+  "threads": {
+    "julia": 4,
+    "fftw": 4,
+    "blas": 1
+  },
+  "solver_equivalence": {
+    "max_error": 4.7757743e-17,
+    "rms_error": 1.1411448e-19,
+    "time": 60,
+    "relative_signed_mass_difference": 0
+  },
+  "retention": "Three scalar observations; midpoint raw phi; final six scalar volume channels. Initialization is exactly reconstructible. No full World/FFT buffers retained.",
+  "optical_mapping": "structure=(1+tanh(2phi))/2; zero emission, spherical viewing crop; constant dilute optical carrier",
+  "native_shape": [
+    384,
+    384,
+    384
+  ],
+  "comparison_notes": "Same actual native384\u00b3 evolved phase as the wax study, shown from another direction with analytic planar observation cut and .003 mesh adaptivity. Broad oxidized-copper patina is declared optical styling, not simulated chemistry.",
+  "description": "Actual native384\u00b3 evolved conserved phase in an analytically sectioned block; oxidized-copper is a declared optical interpretation.",
+  "publication": {
+    "source_image_sha256": "147ab96a8dfcaf81f2da07d2cc8b3abbb0a046f51b15ef2d6dd964bc01d88850",
+    "webp_sha256": "3c4d1d6952d4be02b51c667c9199b19fb9952862806945ceb544f17cfb4cff03",
+    "quality": 95,
+    "width": 2400,
+    "samples": 128,
+    "native_shape": [
+      384,
+      384,
+      384
+    ],
+    "original_retained": true,
+    "reviewed_by": "collection_render"
+  }
+}
