@@ -121,11 +121,12 @@ function transfer(w::World,cpu,p;shared_resource=true)
     result
 end
 """Reachable backing allocation bytes, parameterized for CPU or native GPU arrays."""
-function retained_bytes(x,isstorage)
+function retained_bytes(x,isstorage;storage_key=identity,storage_bytes=a->length(a)*sizeof(eltype(a)))
     seen=IdDict{Any,Bool}();bytes=Ref(0)
     function visit(a)
         if isstorage(a)
-            haskey(seen,a)&&return;seen[a]=true;bytes[]+=length(a)*sizeof(eltype(a))
+            key=storage_key(a)
+            haskey(seen,key)&&return;seen[key]=true;bytes[]+=storage_bytes(a)
         elseif a isa SubArray || a isa Base.ReshapedArray
             visit(parent(a))
         elseif a isa Tuple || a isa NamedTuple || a isa AbstractDict

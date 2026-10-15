@@ -1,0 +1,74 @@
+{
+    "schema": "dense-memory-native-gate",
+    "runtime": {
+        "julia": "1.12.4",
+        "kernel": "Linux",
+        "architecture": "x86_64",
+        "launch_threads": 2,
+        "backend": "amd",
+        "device": "HIPDevice(id=1, name=AMD Radeon RX 6750 XT, gcn_arch=gfx1030)",
+        "backend_version": "2.8.0",
+        "actual_device_optlevel": 1,
+        "project_sha256": "284c920aebff70f466a40df21f7c83ae4c561857b046f940274b43a8feeaec6d",
+        "manifest_sha256": "f72de1b2d06518f85263aaaf064e05136885f49f09799f7eda2669153d76805e"
+    },
+    "sources": {
+        "adapter": "f3bded1643aba16128e1157132c1c33fe2eb0e2c36e63382ca99e9f6296ecb7b",
+        "storage": "2d09d4c5a446261ea7137f844dd954207557a8a6ab7fade706f57c0895c862ad",
+        "cellular": {
+            "model": "427b8a77996ecfcf070547cbbc2140e7a4ecdda1c61b8d905f8ba213e9c7e88a",
+            "initialization": "1484f9c00e3aa438f2557d12af1b29be2247e3b27dd5e4bcfd64d603785e6dc9",
+            "founder_initialization": "d76e4c791a2c56bc7fd651b1836e6879b9e27013566ce6d94a1d2f677f62e633",
+            "support": "5a767b83c2c912d8706468ec7c5b86e56cf99430b2a23dfd3a7f3ee8f21bf55b",
+            "resource": "050991b42eceab1403c940e69b027d27106f966dfcc0cfbf215b5b5ff7221c18",
+            "kernels": "033903e62e56d69939707e1c4a54f58662729e372b11dcadc45cf34d4d65af34",
+            "checkpoint": "3c26f25b342c4c2fc8e97e109843f70598d10f1284a6e6800b5e5d1e32d4cc8d",
+            "protocol": "095c40b8e42baca3688abe902289377da49e8f352017733ce92728729fb40be5"
+        },
+        "habitat": {
+            "helper": "b6d760c2821bc8baab3ef9ebe273f310f691b09cd8fb23a7b290b4891213e528",
+            "kernels": "ee2a1c13ac99a2d69a36a3aec25c6ed55072a578cff82094329263500c8090b9",
+            "sorption": "f135e74e59959187e72725a45665ac5c67293b8305298c8d3ac4bdbb81e6ac93"
+        }
+    },
+    "helpers": {
+        "../scripts/device_cellular_setup.jl": "7a772fab450c9f78c72d2240bc7ecb0a0d71da227141934e1b56707c0a25699e",
+        "device_memory_specialization.jl": "2d09d4c5a446261ea7137f844dd954207557a8a6ab7fade706f57c0895c862ad",
+        "run_device_memory_dense.jl": "4afeeed4752d958201ad357c4e7a9938f77d18dfb508f59f9f1f8a87eb6a913e",
+        "../scripts/device_habitat_pilot_fixture.jl": "39d14f519b7fc5542c6a73de33ec64e85fe76127ff5f15ce5a5f411089046daa",
+        "device_memory_dense.jl": "f3bded1643aba16128e1157132c1c33fe2eb0e2c36e63382ca99e9f6296ecb7b"
+    },
+    "samples": [
+        {
+            "variant": "closed",
+            "size": 16,
+            "capacity": 64,
+            "persistent_exact": true,
+            "restored_future_exact": true,
+            "baseline_bytes": 1620260,
+            "specialized_bytes": 1341732,
+            "baseline_median_seconds": 0.003456242,
+            "specialized_median_seconds": 0.003317619,
+            "vram_pair_before": 1367175168,
+            "vram_three_after": 1413632000,
+            "memory_scope": "reachable backing arrays counted once; VRAM includes runtime/pools and simultaneous reference/restored carriers"
+        },
+        {
+            "variant": "finite_sources",
+            "size": 16,
+            "capacity": 64,
+            "persistent_exact": true,
+            "restored_future_exact": true,
+            "baseline_bytes": 1620260,
+            "specialized_bytes": 1341732,
+            "baseline_median_seconds": 0.003364593,
+            "specialized_median_seconds": 0.003284741,
+            "vram_pair_before": 1413632000,
+            "vram_three_after": 1413632000,
+            "memory_scope": "reachable backing arrays counted once; VRAM includes runtime/pools and simultaneous reference/restored carriers"
+        }
+    ],
+    "direct_device_allocation": true,
+    "host_dense_restore_peak_remaining": true,
+    "paging_gpu": false
+}

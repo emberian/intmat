@@ -36,8 +36,11 @@ function run_dense_gate()
             isequal(DMD.M.persistent_snapshot(b),DMD.M.persistent_snapshot(c))||error("restored future mismatch $variant/$i")
         end
         storage=x->x isa Array || (kind=="amd"&&x isa AMDGPU.ROCArray) || (kind=="metal"&&x isa Metal.MtlArray)
+        key=x->kind=="amd"&&x isa AMDGPU.ROCArray ? x.buf[] : x
+        allocation_bytes=x->kind=="amd"&&x isa AMDGPU.ROCArray ? sizeof(x.buf[]) : length(x)*sizeof(eltype(x))
+        backing_bytes=x->DMD.retained_bytes(x,storage;storage_key=key,storage_bytes=allocation_bytes)
         push!(samples,(;variant,size=n,capacity=64,persistent_exact=true,restored_future_exact=true,
-            baseline_bytes=DMD.retained_bytes(a,storage),specialized_bytes=DMD.retained_bytes(b,storage),
+            baseline_bytes=backing_bytes(a),specialized_bytes=backing_bytes(b),
             baseline_median_seconds=median(ta),specialized_median_seconds=median(tb),
             vram_pair_before=resident_before,vram_three_after=vram_used(),
             memory_scope="reachable backing arrays counted once; VRAM includes runtime/pools and simultaneous reference/restored carriers"))

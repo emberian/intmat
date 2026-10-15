@@ -1,0 +1,1268 @@
+{
+  "dimensions": [
+    128,
+    128,
+    1
+  ],
+  "extent": [
+    24,
+    24,
+    1
+  ],
+  "dt": 0.00125,
+  "steps": 64000,
+  "step_budget": 64000,
+  "elapsed_seconds": 169.966336527,
+  "source_pin": {
+    "base_commit": "301e28c",
+    "convention": "Read-only working overlay of new packing mobility, shared runner host step_budget and gate; source hashes define this experiment, not a claim that base commit contains overlay",
+    "source": "/othersys/tmp/intmat-probe-20261014/source-living-packing-overlay-20261015",
+    "environment": "/othersys/tmp/intmat-probe-20261014/environment-living-packing-overlay-20261015",
+    "archive_sha256": "56dcaba4f92b819ff8959e6bf75601e49166d876fa50e3386d0b624fd076e954",
+    "source_sha256": {
+      "Project.toml": "1691d494bfd0302ca93a23dc916cbedc191505e276aa581256c982c9dca12cd1",
+      "experiments/art/living-tissue-packing128-oscillatory.toml": "a6f51af84f2d3ea912c7499e3a5b77d041929c29579e4dce329c6eacc687c5f4",
+      "experiments/art/living-tissue-packing64-oscillatory.toml": "a886c55db6c417c0af9229fa5ed23acacae54720a2ffd1322a62654a6c7320a8",
+      "src/Interior.jl": "194971f1f1f6c5c044145238c12ed27dbe4975f9f60a67b5d2074aa8efbf9631",
+      "src/acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+      "src/arena.jl": "75acccd7b144e1512984c8ececb368d5fa3f03db08daa40e4b8f8f027198c16f",
+      "src/catalytic_arena.jl": "4a359bb5cfee951c898aca039efe07a4558797fce5544876158791139b105524",
+      "src/catalytic_habitat.jl": "9a69b5ec394bc6dcee988d68f6463fc7c72bfa273e89bbd6e46513d392468eb1",
+      "src/cellular.jl": "97eda8b05c7d51883bc52dc7ecc985b882b60920296c79b4f2903ed358dc0131",
+      "src/cellular_arena.jl": "2ef965717c99cd0c46a8acd9ceb7da26232201cb18547bd23712e989688429e2",
+      "src/cellular_contacts.jl": "337247cbe0707778f15672385f2e33684cbb44535afc9580e3cf880c4089aafa",
+      "src/cellular_initialization.jl": "d76e4c791a2c56bc7fd651b1836e6879b9e27013566ce6d94a1d2f677f62e633",
+      "src/cellular_storage.jl": "735c3281aca69158609392ef161397bec166d4a1698d7e741cd95b5a426cfaff",
+      "src/cellular_transport.jl": "fc8bfb0df1948b3869afae0a06fb5cc23bb87778452a31ffc3d27954eeb87aa2",
+      "src/compartments.jl": "e7c55ce4e0f4a8548c078c9d160815b5eaeb846a3765aad89a875f166b5005e5",
+      "src/constructive_cells.jl": "000953e0da6de61574abaff6566790c051af13c320c6c53162598625b6b6bf27",
+      "src/cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+      "src/core.jl": "b4302b90eaeba213360e8a15ce8b7e4cb4c491606657e3e500d2fb8507753a52",
+      "src/device_cellular.jl": "72ecaccee6a0968b00b43fc2c9dfb7fee074a5f4e9fa95d2bc646640860e3e6d",
+      "src/device_cellular_checkpoint.jl": "77f943195ef1ae0466d57fc57c051595f3f363c822e8d9f6d4dbc1b9d5a6a9b0",
+      "src/device_cellular_initialization.jl": "1484f9c00e3aa438f2557d12af1b29be2247e3b27dd5e4bcfd64d603785e6dc9",
+      "src/device_cellular_kernels.jl": "a85cf1f8e0739373572e9029deb46415ab5d16669f3513b0fbf020b289ad0b27",
+      "src/device_cellular_protocol.jl": "095c40b8e42baca3688abe902289377da49e8f352017733ce92728729fb40be5",
+      "src/device_cellular_support.jl": "5a767b83c2c912d8706468ec7c5b86e56cf99430b2a23dfd3a7f3ee8f21bf55b",
+      "src/device_habitat.jl": "f08c0ea979ab9a4dbdb3ffbf3f9c07c00ff71667df2d27807da4ad534e87f53a",
+      "src/device_habitat_kernels.jl": "ee2a1c13ac99a2d69a36a3aec25c6ed55072a578cff82094329263500c8090b9",
+      "src/device_habitat_sorption.jl": "f135e74e59959187e72725a45665ac5c67293b8305298c8d3ac4bdbb81e6ac93",
+      "src/dose_writer.jl": "b8d1b4013921a3c82388ee87a7ede00b97964a1894062f2a07339f2c6be197eb",
+      "src/ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+      "src/electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+      "src/experiments.jl": "5697958abac5f36713418d5f9d94f274fb0a51b86ed1a84b3f58b68cba1e42d1",
+      "src/fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+      "src/grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+      "src/implicit_phase.jl": "1fb617707591f89784b95171e0558065101b3d992f7b3eabd16a7bf01dca4ceb",
+      "src/matrix_mechanics.jl": "e232c0d13449324aabe6c299ee1de8ba1d961777e363bc328d44fa5af8de03ed",
+      "src/mechanics.jl": "a0370e4028aa859fb344829f0d387a62dd8defb77b25f4651f7c08b386324e45",
+      "src/metabolic_ecology.jl": "2f599a1d6ea0a5552a594113d57e238e4c6ff3c1fd8d74de5a51f83a77179bb1",
+      "src/neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+      "src/neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+      "src/neural_ecology.jl": "ed0496adb31ce4511f8bc0d5343ff843c410c39c51d30c165b3cf5eac1135df2",
+      "src/neural_workspace.jl": "ecdd45856bc0b3c61708de90814d1abb33bc1232a0f9ff5785b32b9bc39a9139",
+      "src/particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+      "src/phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b",
+      "src/recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+      "src/recurrent_material.jl": "e9457d0d6e31f74950fa4be8ef84b138b020c0de7fc4b95c9a7f3cd5db148347",
+      "src/render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+      "src/resources.jl": "859f6e04b456ceee051fd83214b37ca18418af09126960997b7d62d83c2dcab0",
+      "src/scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+      "src/sorptive_matrix.jl": "f5643e0c951c983a7d5864676156123db3181e05510335fcd618de105ff1f036",
+      "src/writing.jl": "78fba7cd46f03749bdc56547b7ce5622f7ba3ea42cc34801829345dae3975e05",
+      "studies/living_tissue.jl": "43a5e722e08963124c186147b2d15a54963292828e1c1064c2f277782a5816f0",
+      "studies/living_tissue_device_gate.jl": "6d15c2bc260fcea8fd16ebf00cd1d615bd4421f9b8aa84b8067bffb502fe2875",
+      "studies/living_tissue_mode_hypothesis.jl": "652ab4172a25a84918077d0addd018f97021a2d5e48a8e9730a809da3cd25eb7",
+      "studies/living_tissue_observations.jl": "f3fa17688e3fafe1bcfca5ea331e91984dab077e67fad09138e66493a3b1215c",
+      "studies/living_tissue_packing.jl": "51b19bca9039dff39edf6ef1346ef3a8abad73534e95aa9e92aaeb1e98105a84",
+      "studies/living_tissue_packing_gpu.jl": "f12b3837a18d2076c125fb02a01206a873b05f413c0aabb2cd979caa1991a519",
+      "studies/living_tissue_packing_run.jl": "090b0f4f4ed6865f4a20795de907b1f861d495c3d22adfcb0f01492812577700",
+      "studies/living_tissue_refinement_cpu.jl": "e120c47617198e87e276405fb4ad2d736b0f5f35b1c1fa4d0f1206f67f92e6f3",
+      "studies/living_tissue_runner.jl": "93b837249cc0d0dbdd7b6fa609a067c8710c109e3572785a1f76485081e6fdb3",
+      "studies/living_tissue_turnover.jl": "ca543a8a3eb6e1eb3c93cfc4e16b86f03674ab6ca9598bdf328988ac09f76617",
+      "studies/living_tissue_turnover_run.jl": "5905f8bddc0e19b6377e942c65f169b45fef1a0e826e45f8be26bf54c596897d",
+      "test/living_tissue_exporters.jl": "cfbf759c18c1e3f18a67b41f71d783cf95ab0ed5232c7cac57e920e12aa0e0e1",
+      "test/living_tissue_packing.jl": "01cf15b8cb9622fa65d39f7221326a58e77431753fe94b1a085ed8240b564b2b"
+    },
+    "project_sha256": "284c920aebff70f466a40df21f7c83ae4c561857b046f940274b43a8feeaec6d",
+    "manifest_sha256": "33d0e63bfa10e5d028b22bf85802fb527f9a49eeae426b7f7c370f1ccac4acf0"
+  },
+  "source_sha256": {
+    "studies/living_tissue_packing.jl": "51b19bca9039dff39edf6ef1346ef3a8abad73534e95aa9e92aaeb1e98105a84",
+    "studies/living_tissue_runner.jl": "93b837249cc0d0dbdd7b6fa609a067c8710c109e3572785a1f76485081e6fdb3",
+    "studies/living_tissue.jl": "43a5e722e08963124c186147b2d15a54963292828e1c1064c2f277782a5816f0",
+    "studies/living_tissue_turnover_run.jl": "5905f8bddc0e19b6377e942c65f169b45fef1a0e826e45f8be26bf54c596897d",
+    "src/recurrent_material.jl": "e9457d0d6e31f74950fa4be8ef84b138b020c0de7fc4b95c9a7f3cd5db148347",
+    "studies/living_tissue_packing_run.jl": "090b0f4f4ed6865f4a20795de907b1f861d495c3d22adfcb0f01492812577700",
+    "studies/living_tissue_observations.jl": "f3fa17688e3fafe1bcfca5ea331e91984dab077e67fad09138e66493a3b1215c",
+    "studies/living_tissue_turnover.jl": "ca543a8a3eb6e1eb3c93cfc4e16b86f03674ab6ca9598bdf328988ac09f76617",
+    "src/core.jl": "b4302b90eaeba213360e8a15ce8b7e4cb4c491606657e3e500d2fb8507753a52"
+  },
+  "rate_check": {
+    "steps": 512,
+    "elapsed_seconds": 1.514732061,
+    "projected_body_seconds": 227.20980914999998,
+    "projection_safety_factor": 1.2,
+    "maximum_body_seconds": 600,
+    "initial": {
+      "time": 0,
+      "material": 210698.23999874294,
+      "precursor": 9830.399997711182,
+      "biomass": 4259.840001031756,
+      "matrix": 0,
+      "spent": 0,
+      "potential": 210698.23999874294,
+      "excitation_std": 0.019868327,
+      "excitation_max": 0.064693436,
+      "excitation_min": -0.085753806,
+      "memory_std": 0,
+      "neural_maxabs": 0.085753806,
+      "physical_min": 0,
+      "finite": true,
+      "active_sites": 16384,
+      "matrix_sites": 0,
+      "mean_permeability": 1,
+      "reserve": 196608,
+      "voxel_measure": 0.03515625,
+      "physical_material": 7407.359999955806,
+      "physical_potential": 7407.359999955806,
+      "physical_precursor": 345.59999991953373,
+      "physical_biomass": 149.7600000362727,
+      "physical_matrix": 0,
+      "physical_spent": 0,
+      "physical_reserve": 6912,
+      "capacity": 0.9,
+      "maximum_occupancy": 0.3047668,
+      "capacity_excess": 0
+    },
+    "final": {
+      "time": 0.6399999856948853,
+      "material": 210698.2683163149,
+      "precursor": 9301.428493440151,
+      "biomass": 4726.173970371485,
+      "matrix": 0.18199781271641624,
+      "spent": 83.81241933442652,
+      "potential": 210614.45589698048,
+      "excitation_std": 0.024100004,
+      "excitation_max": 0.07931426,
+      "excitation_min": -0.10199152,
+      "memory_std": 0.0017051868,
+      "neural_maxabs": 0.10199152,
+      "physical_min": 0,
+      "finite": true,
+      "active_sites": 16384,
+      "matrix_sites": 0,
+      "mean_permeability": 0.9993066,
+      "reserve": 196586.67143535614,
+      "voxel_measure": 0.03515625,
+      "physical_material": 7407.360995495446,
+      "physical_potential": 7404.41446512822,
+      "physical_precursor": 327.0033454725053,
+      "physical_biomass": 166.1545536458725,
+      "physical_matrix": 0.006398360603311509,
+      "physical_spent": 2.9465303672259324,
+      "physical_reserve": 6911.250167649239,
+      "capacity": 0.9,
+      "maximum_occupancy": 0.33774376,
+      "capacity_excess": 0
+    },
+    "dimensions": [
+      128,
+      128,
+      1
+    ],
+    "extent": [
+      24,
+      24,
+      1
+    ],
+    "dt": 0.00125,
+    "source": "/othersys/tmp/intmat-probe-20261014/source-living-packing-overlay-20261015",
+    "recipe": "/othersys/tmp/intmat-probe-20261014/source-living-packing-overlay-20261015/experiments/art/living-tissue-packing128-oscillatory.toml"
+  },
+  "host_controls": {
+    "cpu_affinity": [
+      8,
+      9
+    ],
+    "memory_max_bytes": 8589934592,
+    "swap_max_bytes": 0,
+    "nice": 15,
+    "outer_timeout_seconds": 720,
+    "projected_body_limit_seconds": 600,
+    "backend": "CPU"
+  },
+  "artifact_budget": {
+    "bytes": 59736746,
+    "budget": 128000000
+  },
+  "initial_restriction_maxabs_error": {
+    "precursor": 5.960464477539063e-08,
+    "biomass": 2.9802322387695312e-08,
+    "excitation": 7.450580596923828e-09
+  },
+  "review": {
+    "format": "living-tissue-native-review-v1",
+    "id": "living-tissue-packing128-oscillatory",
+    "dimensions": [
+      128,
+      128,
+      1
+    ],
+    "extent": [
+      24,
+      24,
+      1
+    ],
+    "dt": 0.00125,
+    "steps": 64000,
+    "source_sha256": {
+      "studies/living_tissue_packing.jl": "51b19bca9039dff39edf6ef1346ef3a8abad73534e95aa9e92aaeb1e98105a84",
+      "studies/living_tissue_runner.jl": "93b837249cc0d0dbdd7b6fa609a067c8710c109e3572785a1f76485081e6fdb3",
+      "studies/living_tissue.jl": "43a5e722e08963124c186147b2d15a54963292828e1c1064c2f277782a5816f0",
+      "studies/living_tissue_turnover_run.jl": "5905f8bddc0e19b6377e942c65f169b45fef1a0e826e45f8be26bf54c596897d",
+      "src/recurrent_material.jl": "e9457d0d6e31f74950fa4be8ef84b138b020c0de7fc4b95c9a7f3cd5db148347",
+      "studies/living_tissue_packing_run.jl": "090b0f4f4ed6865f4a20795de907b1f861d495c3d22adfcb0f01492812577700",
+      "studies/living_tissue_observations.jl": "f3fa17688e3fafe1bcfca5ea331e91984dab077e67fad09138e66493a3b1215c",
+      "studies/living_tissue_turnover.jl": "ca543a8a3eb6e1eb3c93cfc4e16b86f03674ab6ca9598bdf328988ac09f76617",
+      "src/core.jl": "b4302b90eaeba213360e8a15ce8b7e4cb4c491606657e3e500d2fb8507753a52"
+    },
+    "review_source_sha256": "e7128185997ed1113a3e6d2bb87be0987116ef5592252d7ee47eb3113ccc1f7a",
+    "low": 0.27,
+    "high": 0.63,
+    "convention": "Sampled native rho=B+M. A site must first be observed above high before opening below low; reformation requires an observed opening. Thresholds are concentration fractions of declared solid capacity, not mechanical cavities or organisms. Radial spectra sum fluctuation power in rounded physical wave-number shells; high-frequency fraction uses .7 of the smallest axis Nyquist.",
+    "opened_sites": 15174,
+    "reformed_sites": 15014,
+    "opening_events": 48278,
+    "reformation_events": 42191,
+    "maximum_openings_at_site": 5,
+    "spectra": [
+      {
+        "time": 0.0,
+        "excitation": {
+          "std": 0.019867721028977936,
+          "radial_peak_shell": 9,
+          "dominant_wavelength": 2.6666666666666665,
+          "fraction_beyond_point7_axis_nyquist": 3.923030232847153e-16,
+          "axis_nyquist": 16.755160819145562
+        },
+        "matrix": {
+          "std": 0.0,
+          "radial_peak_shell": 0,
+          "dominant_wavelength": null,
+          "fraction_beyond_point7_axis_nyquist": 0.0,
+          "axis_nyquist": 16.755160819145562
+        },
+        "solid": {
+          "std": 0.005178472059779211,
+          "radial_peak_shell": 6,
+          "dominant_wavelength": 4.0,
+          "fraction_beyond_point7_axis_nyquist": 1.6596389709777204e-12,
+          "axis_nyquist": 16.755160819145562
+        },
+        "biomass_quantiles": [
+          0.2531942903995514,
+          0.26030245423316956,
+          0.266569522023201
+        ],
+        "matrix_quantiles": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "time": 16.0,
+        "excitation": {
+          "std": 0.13158130338916868,
+          "radial_peak_shell": 7,
+          "dominant_wavelength": 3.428571428571429,
+          "fraction_beyond_point7_axis_nyquist": 4.984175129053132e-06,
+          "axis_nyquist": 16.755160819145562
+        },
+        "matrix": {
+          "std": 0.01184506370658785,
+          "radial_peak_shell": 5,
+          "dominant_wavelength": 4.800000000000001,
+          "fraction_beyond_point7_axis_nyquist": 0.000866744833228034,
+          "axis_nyquist": 16.755160819145562
+        },
+        "solid": {
+          "std": 0.06832232647339026,
+          "radial_peak_shell": 9,
+          "dominant_wavelength": 2.6666666666666665,
+          "fraction_beyond_point7_axis_nyquist": 0.001170670736321395,
+          "axis_nyquist": 16.755160819145562
+        },
+        "biomass_quantiles": [
+          0.7931829631328583,
+          0.89516681432724,
+          0.8999988436698914
+        ],
+        "matrix_quantiles": [
+          4.163717676419767e-07,
+          0.002211888204328716,
+          0.02607857622206212
+        ]
+      },
+      {
+        "time": 32.0,
+        "excitation": {
+          "std": 0.2634736657176007,
+          "radial_peak_shell": 7,
+          "dominant_wavelength": 3.428571428571429,
+          "fraction_beyond_point7_axis_nyquist": 0.0006270223465818735,
+          "axis_nyquist": 16.755160819145562
+        },
+        "matrix": {
+          "std": 0.05959840664497785,
+          "radial_peak_shell": 7,
+          "dominant_wavelength": 3.428571428571429,
+          "fraction_beyond_point7_axis_nyquist": 0.005027429561393902,
+          "axis_nyquist": 16.755160819145562
+        },
+        "solid": {
+          "std": 0.29008656665917926,
+          "radial_peak_shell": 7,
+          "dominant_wavelength": 3.428571428571429,
+          "fraction_beyond_point7_axis_nyquist": 0.002849015147355334,
+          "axis_nyquist": 16.755160819145562
+        },
+        "biomass_quantiles": [
+          0.21242721974849701,
+          0.7032224535942078,
+          0.8308817505836487
+        ],
+        "matrix_quantiles": [
+          0.003714166791178286,
+          0.02172561828047037,
+          0.1508103147149086
+        ]
+      },
+      {
+        "time": 48.0,
+        "excitation": {
+          "std": 0.2368374161550291,
+          "radial_peak_shell": 10,
+          "dominant_wavelength": 2.4000000000000004,
+          "fraction_beyond_point7_axis_nyquist": 0.000930429940205042,
+          "axis_nyquist": 16.755160819145562
+        },
+        "matrix": {
+          "std": 0.05224279336532769,
+          "radial_peak_shell": 7,
+          "dominant_wavelength": 3.428571428571429,
+          "fraction_beyond_point7_axis_nyquist": 0.007240271392895667,
+          "axis_nyquist": 16.755160819145562
+        },
+        "solid": {
+          "std": 0.288646032694576,
+          "radial_peak_shell": 7,
+          "dominant_wavelength": 3.428571428571429,
+          "fraction_beyond_point7_axis_nyquist": 0.0030799170563764132,
+          "axis_nyquist": 16.755160819145562
+        },
+        "biomass_quantiles": [
+          0.19260048419237139,
+          0.5180169343948364,
+          0.7937856018543243
+        ],
+        "matrix_quantiles": [
+          0.006478277314454317,
+          0.03493267297744751,
+          0.1409366711974144
+        ]
+      },
+      {
+        "time": 64.0,
+        "excitation": {
+          "std": 0.2656240289183493,
+          "radial_peak_shell": 9,
+          "dominant_wavelength": 2.6666666666666665,
+          "fraction_beyond_point7_axis_nyquist": 0.0006663192268792731,
+          "axis_nyquist": 16.755160819145562
+        },
+        "matrix": {
+          "std": 0.04367083925818976,
+          "radial_peak_shell": 8,
+          "dominant_wavelength": 3.0,
+          "fraction_beyond_point7_axis_nyquist": 0.007295388957414434,
+          "axis_nyquist": 16.755160819145562
+        },
+        "solid": {
+          "std": 0.26258432862790365,
+          "radial_peak_shell": 8,
+          "dominant_wavelength": 3.0,
+          "fraction_beyond_point7_axis_nyquist": 0.003291470360652111,
+          "axis_nyquist": 16.755160819145562
+        },
+        "biomass_quantiles": [
+          0.21214009523391725,
+          0.4951234310865402,
+          0.7921248376369476
+        ],
+        "matrix_quantiles": [
+          0.00839083082973957,
+          0.03595562092959881,
+          0.12146272212266922
+        ]
+      },
+      {
+        "time": 80.0,
+        "excitation": {
+          "std": 0.2886025200121437,
+          "radial_peak_shell": 9,
+          "dominant_wavelength": 2.6666666666666665,
+          "fraction_beyond_point7_axis_nyquist": 0.0005589980155085463,
+          "axis_nyquist": 16.755160819145562
+        },
+        "matrix": {
+          "std": 0.04068411289444655,
+          "radial_peak_shell": 10,
+          "dominant_wavelength": 2.4000000000000004,
+          "fraction_beyond_point7_axis_nyquist": 0.0077305116753667216,
+          "axis_nyquist": 16.755160819145562
+        },
+        "solid": {
+          "std": 0.2514059258899856,
+          "radial_peak_shell": 10,
+          "dominant_wavelength": 2.4000000000000004,
+          "fraction_beyond_point7_axis_nyquist": 0.0035992661078258835,
+          "axis_nyquist": 16.755160819145562
+        },
+        "biomass_quantiles": [
+          0.2164032995700836,
+          0.4830659180879593,
+          0.7890624880790711
+        ],
+        "matrix_quantiles": [
+          0.009500009845942261,
+          0.03581360913813114,
+          0.11570039093494416
+        ]
+      }
+    ],
+    "occupancy_history": [
+      {
+        "time": 0.0,
+        "fraction_below_low": 0.986083984375,
+        "fraction_above_high": 0.0,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 0.8,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.0,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 1.6,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.0,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 2.4,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.0,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 3.2,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.0,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 4.0,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.0,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 4.8,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.0,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 5.6000000000000005,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.0072021484375,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 6.4,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.9910888671875,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 7.2,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 1.0,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 8.0,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.9998779296875,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 8.8,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.99542236328125,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 9.6,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.9903564453125,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 10.4,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.9866943359375,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 11.200000000000001,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.9886474609375,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 12.0,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.99420166015625,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 12.8,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.9986572265625,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 13.6,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 1.0,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 14.4,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 1.0,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 15.200000000000001,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.99810791015625,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 16.0,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.97625732421875,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 16.8,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.938720703125,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 17.6,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.9063720703125,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 18.400000000000002,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.88525390625,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 19.2,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.88836669921875,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 20.0,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.9183349609375,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 20.8,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.97528076171875,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 21.6,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.99932861328125,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 22.400000000000002,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.8740234375,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 23.2,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.7784423828125,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 24.0,
+        "fraction_below_low": 0.0009765625,
+        "fraction_above_high": 0.720703125,
+        "openings": 16,
+        "reformations": 0
+      },
+      {
+        "time": 24.8,
+        "fraction_below_low": 0.02764892578125,
+        "fraction_above_high": 0.68682861328125,
+        "openings": 453,
+        "reformations": 0
+      },
+      {
+        "time": 25.6,
+        "fraction_below_low": 0.03668212890625,
+        "fraction_above_high": 0.67193603515625,
+        "openings": 642,
+        "reformations": 0
+      },
+      {
+        "time": 26.400000000000002,
+        "fraction_below_low": 0.0098876953125,
+        "fraction_above_high": 0.67181396484375,
+        "openings": 647,
+        "reformations": 0
+      },
+      {
+        "time": 27.2,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.682861328125,
+        "openings": 647,
+        "reformations": 0
+      },
+      {
+        "time": 28.0,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.694091796875,
+        "openings": 647,
+        "reformations": 4
+      },
+      {
+        "time": 28.8,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.62615966796875,
+        "openings": 647,
+        "reformations": 298
+      },
+      {
+        "time": 29.6,
+        "fraction_below_low": 0.0035400390625,
+        "fraction_above_high": 0.60357666015625,
+        "openings": 705,
+        "reformations": 646
+      },
+      {
+        "time": 30.400000000000002,
+        "fraction_below_low": 0.0885009765625,
+        "fraction_above_high": 0.5709228515625,
+        "openings": 2108,
+        "reformations": 647
+      },
+      {
+        "time": 31.2,
+        "fraction_below_low": 0.1881103515625,
+        "fraction_above_high": 0.55474853515625,
+        "openings": 3807,
+        "reformations": 647
+      },
+      {
+        "time": 32.0,
+        "fraction_below_low": 0.21282958984375,
+        "fraction_above_high": 0.54522705078125,
+        "openings": 4445,
+        "reformations": 647
+      },
+      {
+        "time": 32.8,
+        "fraction_below_low": 0.20001220703125,
+        "fraction_above_high": 0.54205322265625,
+        "openings": 4772,
+        "reformations": 650
+      },
+      {
+        "time": 33.6,
+        "fraction_below_low": 0.1441650390625,
+        "fraction_above_high": 0.5389404296875,
+        "openings": 4962,
+        "reformations": 670
+      },
+      {
+        "time": 34.4,
+        "fraction_below_low": 0.056396484375,
+        "fraction_above_high": 0.52459716796875,
+        "openings": 5107,
+        "reformations": 791
+      },
+      {
+        "time": 35.2,
+        "fraction_below_low": 0.03125,
+        "fraction_above_high": 0.4931640625,
+        "openings": 5279,
+        "reformations": 1173
+      },
+      {
+        "time": 36.0,
+        "fraction_below_low": 0.0369873046875,
+        "fraction_above_high": 0.4530029296875,
+        "openings": 5595,
+        "reformations": 2377
+      },
+      {
+        "time": 36.800000000000004,
+        "fraction_below_low": 0.07867431640625,
+        "fraction_above_high": 0.47564697265625,
+        "openings": 6464,
+        "reformations": 4022
+      },
+      {
+        "time": 37.6,
+        "fraction_below_low": 0.2069091796875,
+        "fraction_above_high": 0.489501953125,
+        "openings": 8754,
+        "reformations": 4654
+      },
+      {
+        "time": 38.4,
+        "fraction_below_low": 0.2872314453125,
+        "fraction_above_high": 0.49615478515625,
+        "openings": 10334,
+        "reformations": 4922
+      },
+      {
+        "time": 39.2,
+        "fraction_below_low": 0.29486083984375,
+        "fraction_above_high": 0.49835205078125,
+        "openings": 10856,
+        "reformations": 5093
+      },
+      {
+        "time": 40.0,
+        "fraction_below_low": 0.2774658203125,
+        "fraction_above_high": 0.49835205078125,
+        "openings": 11165,
+        "reformations": 5265
+      },
+      {
+        "time": 40.800000000000004,
+        "fraction_below_low": 0.236083984375,
+        "fraction_above_high": 0.490478515625,
+        "openings": 11415,
+        "reformations": 5466
+      },
+      {
+        "time": 41.6,
+        "fraction_below_low": 0.16302490234375,
+        "fraction_above_high": 0.4749755859375,
+        "openings": 11679,
+        "reformations": 5819
+      },
+      {
+        "time": 42.4,
+        "fraction_below_low": 0.09857177734375,
+        "fraction_above_high": 0.4342041015625,
+        "openings": 12029,
+        "reformations": 6290
+      },
+      {
+        "time": 43.2,
+        "fraction_below_low": 0.08612060546875,
+        "fraction_above_high": 0.37646484375,
+        "openings": 12564,
+        "reformations": 7113
+      },
+      {
+        "time": 44.0,
+        "fraction_below_low": 0.12835693359375,
+        "fraction_above_high": 0.3907470703125,
+        "openings": 13655,
+        "reformations": 8648
+      },
+      {
+        "time": 44.800000000000004,
+        "fraction_below_low": 0.2314453125,
+        "fraction_above_high": 0.442626953125,
+        "openings": 15674,
+        "reformations": 10141
+      },
+      {
+        "time": 45.6,
+        "fraction_below_low": 0.2869873046875,
+        "fraction_above_high": 0.4658203125,
+        "openings": 16947,
+        "reformations": 10948
+      },
+      {
+        "time": 46.4,
+        "fraction_below_low": 0.29962158203125,
+        "fraction_above_high": 0.4735107421875,
+        "openings": 17611,
+        "reformations": 11393
+      },
+      {
+        "time": 47.2,
+        "fraction_below_low": 0.28765869140625,
+        "fraction_above_high": 0.4698486328125,
+        "openings": 18033,
+        "reformations": 11695
+      },
+      {
+        "time": 48.0,
+        "fraction_below_low": 0.25982666015625,
+        "fraction_above_high": 0.46771240234375,
+        "openings": 18396,
+        "reformations": 12056
+      },
+      {
+        "time": 48.800000000000004,
+        "fraction_below_low": 0.2012939453125,
+        "fraction_above_high": 0.455078125,
+        "openings": 18729,
+        "reformations": 12449
+      },
+      {
+        "time": 49.6,
+        "fraction_below_low": 0.1458740234375,
+        "fraction_above_high": 0.42755126953125,
+        "openings": 19135,
+        "reformations": 12962
+      },
+      {
+        "time": 50.4,
+        "fraction_below_low": 0.11956787109375,
+        "fraction_above_high": 0.3892822265625,
+        "openings": 19636,
+        "reformations": 13716
+      },
+      {
+        "time": 51.2,
+        "fraction_below_low": 0.12982177734375,
+        "fraction_above_high": 0.38519287109375,
+        "openings": 20430,
+        "reformations": 14989
+      },
+      {
+        "time": 52.0,
+        "fraction_below_low": 0.192626953125,
+        "fraction_above_high": 0.41162109375,
+        "openings": 21930,
+        "reformations": 16339
+      },
+      {
+        "time": 52.800000000000004,
+        "fraction_below_low": 0.2562255859375,
+        "fraction_above_high": 0.44189453125,
+        "openings": 23442,
+        "reformations": 17407
+      },
+      {
+        "time": 53.6,
+        "fraction_below_low": 0.28363037109375,
+        "fraction_above_high": 0.45721435546875,
+        "openings": 24357,
+        "reformations": 18034
+      },
+      {
+        "time": 54.4,
+        "fraction_below_low": 0.2816162109375,
+        "fraction_above_high": 0.46014404296875,
+        "openings": 24894,
+        "reformations": 18514
+      },
+      {
+        "time": 55.2,
+        "fraction_below_low": 0.2581787109375,
+        "fraction_above_high": 0.4600830078125,
+        "openings": 25296,
+        "reformations": 18982
+      },
+      {
+        "time": 56.0,
+        "fraction_below_low": 0.218994140625,
+        "fraction_above_high": 0.45220947265625,
+        "openings": 25695,
+        "reformations": 19426
+      },
+      {
+        "time": 56.800000000000004,
+        "fraction_below_low": 0.171630859375,
+        "fraction_above_high": 0.4310302734375,
+        "openings": 26110,
+        "reformations": 19934
+      },
+      {
+        "time": 57.6,
+        "fraction_below_low": 0.13922119140625,
+        "fraction_above_high": 0.406005859375,
+        "openings": 26614,
+        "reformations": 20632
+      },
+      {
+        "time": 58.4,
+        "fraction_below_low": 0.14520263671875,
+        "fraction_above_high": 0.39288330078125,
+        "openings": 27404,
+        "reformations": 21624
+      },
+      {
+        "time": 59.2,
+        "fraction_below_low": 0.178955078125,
+        "fraction_above_high": 0.40802001953125,
+        "openings": 28550,
+        "reformations": 22835
+      },
+      {
+        "time": 60.0,
+        "fraction_below_low": 0.22918701171875,
+        "fraction_above_high": 0.42901611328125,
+        "openings": 29913,
+        "reformations": 23911
+      },
+      {
+        "time": 60.800000000000004,
+        "fraction_below_low": 0.25970458984375,
+        "fraction_above_high": 0.44256591796875,
+        "openings": 30934,
+        "reformations": 24671
+      },
+      {
+        "time": 61.6,
+        "fraction_below_low": 0.26715087890625,
+        "fraction_above_high": 0.4481201171875,
+        "openings": 31660,
+        "reformations": 25303
+      },
+      {
+        "time": 62.4,
+        "fraction_below_low": 0.25537109375,
+        "fraction_above_high": 0.45196533203125,
+        "openings": 32214,
+        "reformations": 25851
+      },
+      {
+        "time": 63.2,
+        "fraction_below_low": 0.22894287109375,
+        "fraction_above_high": 0.44683837890625,
+        "openings": 32690,
+        "reformations": 26324
+      },
+      {
+        "time": 64.0,
+        "fraction_below_low": 0.19500732421875,
+        "fraction_above_high": 0.43878173828125,
+        "openings": 33157,
+        "reformations": 26918
+      },
+      {
+        "time": 64.8,
+        "fraction_below_low": 0.1673583984375,
+        "fraction_above_high": 0.419677734375,
+        "openings": 33687,
+        "reformations": 27576
+      },
+      {
+        "time": 65.6,
+        "fraction_below_low": 0.16033935546875,
+        "fraction_above_high": 0.402099609375,
+        "openings": 34354,
+        "reformations": 28436
+      },
+      {
+        "time": 66.4,
+        "fraction_below_low": 0.176025390625,
+        "fraction_above_high": 0.40533447265625,
+        "openings": 35317,
+        "reformations": 29491
+      },
+      {
+        "time": 67.2,
+        "fraction_below_low": 0.21466064453125,
+        "fraction_above_high": 0.421630859375,
+        "openings": 36548,
+        "reformations": 30489
+      },
+      {
+        "time": 68.0,
+        "fraction_below_low": 0.244384765625,
+        "fraction_above_high": 0.4346923828125,
+        "openings": 37621,
+        "reformations": 31342
+      },
+      {
+        "time": 68.8,
+        "fraction_below_low": 0.25592041015625,
+        "fraction_above_high": 0.4417724609375,
+        "openings": 38398,
+        "reformations": 32047
+      },
+      {
+        "time": 69.60000000000001,
+        "fraction_below_low": 0.25091552734375,
+        "fraction_above_high": 0.44732666015625,
+        "openings": 39008,
+        "reformations": 32685
+      },
+      {
+        "time": 70.4,
+        "fraction_below_low": 0.2359619140625,
+        "fraction_above_high": 0.44659423828125,
+        "openings": 39571,
+        "reformations": 33262
+      },
+      {
+        "time": 71.2,
+        "fraction_below_low": 0.2054443359375,
+        "fraction_above_high": 0.4371337890625,
+        "openings": 40085,
+        "reformations": 33848
+      },
+      {
+        "time": 72.0,
+        "fraction_below_low": 0.18017578125,
+        "fraction_above_high": 0.420654296875,
+        "openings": 40618,
+        "reformations": 34469
+      },
+      {
+        "time": 72.8,
+        "fraction_below_low": 0.17108154296875,
+        "fraction_above_high": 0.40679931640625,
+        "openings": 41283,
+        "reformations": 35285
+      },
+      {
+        "time": 73.60000000000001,
+        "fraction_below_low": 0.180908203125,
+        "fraction_above_high": 0.4095458984375,
+        "openings": 42157,
+        "reformations": 36271
+      },
+      {
+        "time": 74.4,
+        "fraction_below_low": 0.20953369140625,
+        "fraction_above_high": 0.41851806640625,
+        "openings": 43264,
+        "reformations": 37217
+      },
+      {
+        "time": 75.2,
+        "fraction_below_low": 0.23492431640625,
+        "fraction_above_high": 0.42584228515625,
+        "openings": 44317,
+        "reformations": 38061
+      },
+      {
+        "time": 76.0,
+        "fraction_below_low": 0.2452392578125,
+        "fraction_above_high": 0.43292236328125,
+        "openings": 45142,
+        "reformations": 38795
+      },
+      {
+        "time": 76.8,
+        "fraction_below_low": 0.24456787109375,
+        "fraction_above_high": 0.43603515625,
+        "openings": 45848,
+        "reformations": 39453
+      },
+      {
+        "time": 77.60000000000001,
+        "fraction_below_low": 0.22979736328125,
+        "fraction_above_high": 0.4361572265625,
+        "openings": 46457,
+        "reformations": 40072
+      },
+      {
+        "time": 78.4,
+        "fraction_below_low": 0.20947265625,
+        "fraction_above_high": 0.43048095703125,
+        "openings": 47050,
+        "reformations": 40702
+      },
+      {
+        "time": 79.2,
+        "fraction_below_low": 0.18927001953125,
+        "fraction_above_high": 0.42254638671875,
+        "openings": 47615,
+        "reformations": 41396
+      },
+      {
+        "time": 80.0,
+        "fraction_below_low": 0.1815185546875,
+        "fraction_above_high": 0.4122314453125,
+        "openings": 48278,
+        "reformations": 42191
+      }
+    ],
+    "initial": {
+      "step": 0,
+      "material_residual": 0,
+      "topology": {
+        "threshold": 0.15,
+        "occupied_components": 1,
+        "occupied_sizes": [
+          16384
+        ],
+        "void_components": 0,
+        "void_sizes": []
+      },
+      "minimum_solid": 0.23995112,
+      "maximum_solid": 0.2742901,
+      "reopened_sites": 0,
+      "reformed_sites": 0,
+      "reopening_events": 0,
+      "reformation_events": 0,
+      "time": 0,
+      "material": 210698.23999874294,
+      "precursor": 9830.399997711182,
+      "biomass": 4259.840001031756,
+      "matrix": 0,
+      "spent": 0,
+      "potential": 210698.23999874294,
+      "excitation_std": 0.019868327,
+      "excitation_max": 0.064693436,
+      "excitation_min": -0.085753806,
+      "memory_std": 0,
+      "neural_maxabs": 0.085753806,
+      "physical_min": 0,
+      "finite": true,
+      "active_sites": 16384,
+      "matrix_sites": 0,
+      "mean_permeability": 1,
+      "reserve": 196608,
+      "voxel_measure": 0.03515625,
+      "physical_material": 7407.359999955806,
+      "physical_potential": 7407.359999955806,
+      "physical_precursor": 345.59999991953373,
+      "physical_biomass": 149.7600000362727,
+      "physical_matrix": 0,
+      "physical_spent": 0,
+      "physical_reserve": 6912,
+      "capacity": 0.9,
+      "maximum_occupancy": 0.3047668,
+      "capacity_excess": 0
+    },
+    "final": {
+      "step": 64000,
+      "material_residual": 0.904671836993657,
+      "topology": {
+        "threshold": 0.15,
+        "occupied_components": 1,
+        "occupied_sizes": [
+          16373
+        ],
+        "void_components": 7,
+        "void_sizes": [
+          3,
+          2,
+          2,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "minimum_solid": 0.14411584,
+      "maximum_solid": 0.8999997,
+      "reopened_sites": 0,
+      "reformed_sites": 0,
+      "reopening_events": 0,
+      "reformation_events": 0,
+      "time": 79.99999821186066,
+      "material": 210699.14467057993,
+      "precursor": 5812.251438045874,
+      "biomass": 8184.466333866119,
+      "matrix": 821.1255112387007,
+      "spent": 39221.60147058964,
+      "potential": 171477.5431999903,
+      "excitation_std": 0.28861132,
+      "excitation_max": 0.47264823,
+      "excitation_min": -0.5062271,
+      "memory_std": 0.07776336,
+      "neural_maxabs": 0.5062271,
+      "physical_min": 0.0015402585,
+      "finite": true,
+      "active_sites": 16345,
+      "matrix_sites": 7640,
+      "mean_permeability": 0.34167635,
+      "reserve": 156659.6999168396,
+      "voxel_measure": 0.03515625,
+      "physical_material": 7407.391804825076,
+      "physical_potential": 6028.507378124659,
+      "physical_precursor": 204.33696461880027,
+      "physical_biomass": 287.73514454998076,
+      "physical_matrix": 28.867693754485572,
+      "physical_spent": 1378.884426700417,
+      "physical_reserve": 5507.567575201392,
+      "capacity": 0.9,
+      "maximum_occupancy": 0.99999964,
+      "capacity_excess": 0
+    },
+    "elapsed_seconds": 169.966336527
+  },
+  "physical_relative_material_drift": 4.293684831013778e-06,
+  "final_physical_relative_difference_from_coarse": {
+    "physical_biomass": 0.05195984659824959,
+    "physical_matrix": 0.036032430527444426,
+    "physical_spent": 0.024597952631053355,
+    "physical_reserve": -0.007510573126381037
+  },
+  "interpretation": "Same physical continuous initial field,extent,rates and finaltime; simultaneously refined space and timestep. Finite-scale moving partitions and sampled solid occupancy cycles survive, with sharply less high-frequency power. This is not a formal spatial-convergence study; inventories retain several-percent differences. Immutable source overlay is distinct from301e28c, which is only its core source base. No Packing accelerator result yet."
+}

@@ -83,7 +83,7 @@ populations, holes, exhausted capacity, candidates exceeding available slots,
 heap/free prefix exactness, twenty complete coupled steps including births,
 carrier reconstruction, identity overflow, and latched-state immutability.
 The complete trajectory ignores only unused free scratch and otherwise compares
-all arrays exactly. No GPU launch or throughput measurement has occurred.
+all arrays exactly. The subsequent bounded actual-garden GPU gate is recorded below.
 
 Deferred whole-grid architecture questions:
 * Diffusion is local but fields can start uniformly nonzero and chemostat masks
@@ -131,3 +131,38 @@ completion/status synchronization for each whole batch, excludes deep snapshots,
 checkpoint serialization, initialization and compilation warmup, and alternates
 AB/BA order. The final checkpoint is strictly restored before reconstructing H;
 that reconstruction and subsequent continuation are checked explicitly.
+
+
+Actual64³garden GPU gate completed successfully from immutable1b84077.
+The exact recipe has256 founders,capacity16384,hidden8,extent4³,R.18,dt.001,
+16 mechanics substeps and materialized support. This is initial-population
+throughput, not mature/high-H performance.
+
+Three alternating-order native20-step batches:0.211205380,0.205826570,
+0.205896316seconds. Prefix batches:0.154343218,0.154342855,0.154444599seconds.
+Median complete native step10.294816ms; prefix7.717161ms:1.334016x throughput,
+25.04% less full-step wall time. Timings include completion/status synchronization.
+No physics kernel, active count, capacity, physical radius, timestep, mechanics
+substep count or source funding was weakened to obtain the result.
+
+Warm,final and strict-restart continuation comparisons had maximum floating-role
+difference0. Identities,contacts,new_parent and counters matched exactly. The
+forced disposable fixture observed one death and one birth, replacing slot2's
+ID2 withID3. The actual garden stayed at256 live cells/H256. Strict checkpoint
+restore was exact, H reconstruction matched, and failure prevented both later
+physical mutations and checkpointing. The checkpoint remains243685172bytes.
+
+Actual recipe mass residual at the final short endpoint was3.3921e-6; the
+potential/work/heat residual was0.00238859. The latter belongs to the earlier
+Float32 energy representation under separate repair; this short gate passing
+its declared1e-4 relative tolerance is not long-horizon closure evidence. No
+long run was started. This performance transform needs a fresh matched gate
+when integrated with the energy correction.
+
+The process exited0 within its300-second external cap and released GPU/CPUs10–11.
+Live/proc+cgroup observation verified nice15,affinity10–11,memory.max8589934592,
+memory.swap.max0. Runtime was Julia1.12.4,AMDGPU2.8.0,ROCm6.4.3,gfx1030 override,
+process-local optlevel1,Julia2/GC1/BLAS1 onRX6750XT. Raw results,pins and observed
+controls are retained in docs/device-lifecycle-prefix-gpu.json. The immutable
+remote stage is /othersys/tmp/intmat-probe-20261014/lifecycle-prefix-1b84077;
+old source archives,old soaks,and the working-tree energy repair were untouched.

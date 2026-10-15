@@ -27,3 +27,9 @@ const DMD=DeviceMemoryDense
     @test q.cells.environment.status[1]==4096
     @test_throws ArgumentError Interior.device_habitat_checkpoint(target,q)
 end
+@testset "backing allocation identity" begin
+    a=zeros(Float32,4,6)
+    roles=(a,view(a,:,1:3),view(a,:,2))
+    @test DMD.retained_bytes(roles,x->x isa Array)==96
+    @test DMD.retained_bytes((a,a),x->x isa Array;storage_key=identity,storage_bytes=sizeof)==96
+end

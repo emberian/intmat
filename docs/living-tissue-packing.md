@@ -156,7 +156,25 @@ default20,000 limit for this coordinated refinement, with an upper limit100,000;
 there is no change to simulation rates. Resident arrays occupy1MiB and declared
 capture budget is128MB. A separate controlled hbox CPU8,9 rate check decides
 whether the full run can fit a600s projected body within720s,8GiB/no-swap/nice15.
-The refinement outcome belongs in the result record before choosing a3D bake.
+The immutable overlay's source inventory and host controls are preserved in
+[`living-tissue-packing-refinement-results.json`](living-tissue-packing-refinement-results.json).
+
+The CPU refinement completed in169.97s of timed advances and noninitial captures;
+the full output occupies59.74MB. Capacity excess stayed zero and relative material
+drift was4.29e−6. Restricting initial fine cell averages back to64² gives maximum
+N/B/x errors5.96e−8/2.98e−8/7.45e−9. At128², radial excitation wavelength is3.43
+at t16/32,2.4 at t48 and2.667 at t64/80. Its late high-frequency fraction stays
+below.001; the final solid high-frequency fraction is.0036, compared with.0711
+on64². The moving partitions and sampled occupancy cycling survive refinement:
+48,278 openings and42,191 refillings across15,174/15,014 sites, at most five
+openings at a site. Both retain the explicit.27/.63 occupancy thresholds.
+
+Final spent material differs by+2.46%, biomass by+5.20% and matrix by+3.60%
+from the coarse pilot. Refining time and space together does not establish
+formal spatial convergence; a small high-frequency tail alone is insufficient.
+The retained finite scales and actual material cycling support a separate3D
+pilot at the fine physical spacing. They do not justify reusing the coarse
+grid as a resolved substitute or reclassifying low-density fluid as empty space.
 
 ### Frozen reaction derivation
 
