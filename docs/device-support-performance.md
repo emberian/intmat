@@ -29,12 +29,25 @@ support arrays shrink from 287,973,376 to 1,302,528 bytes. The 221× figure conc
 support only: full-volume chemical arrays still dominate total memory. It is not
 a 221× reduction in whole-process RAM or VRAM.
 
-The measured axis iterator decodes its flat candidate cursor with integer division
+The original axis iterator decodes its flat candidate cursor with integer division
 and remainder. A subsequent carry `(x,y,z)` implementation preserves the exact
 candidate order and Float32 grouping. It passes 69 complete device assertions and
 30 frozen-reference edge assertions, including inactive, fallback, thin and
-asymmetric supports. Its GPU performance is not measured yet; the table above
-must not be attributed to that candidate.
+asymmetric supports. A fresh AMD repeat changes only the support helper from
+`7d3caeb` over the original numerical baseline:
+
+| Native grid | Materialized steps/s | Carry axis steps/s | Paired axis speedup |
+| --- | ---: | ---: | ---: |
+| 64³ | 76.79 | 46.13 | 0.601× |
+| 128³ | 31.54 | 9.43 | 0.299× |
+| 256³ | 5.33 | 1.22 | 0.230× |
+
+All nine repeat pairs matched identities, positions, hidden states and bonds
+exactly, and the complete base and paid habitat gates passed again. Support
+storage is unchanged. Carry axis rates were 12–22% higher than the earlier flat
+run; these are separate runs, rather than alternating carry-versus-flat samples.
+The measured carry path remains slower than materialized support, by about 4.35×
+at 256³. Its purpose is a tested memory option, not a throughput default.
 
 ## A paid 128³ habitat pilot
 
@@ -66,3 +79,11 @@ in [device-support-results.json](device-support-results.json). Reproduce with
 copied `DEVICE_PROJECT`; it never changes installed packages. `closed` and
 `finite_sources` are separate pilot variants, and prescribed source budgets enter
 the capacity forecast before any trajectory steps.
+
+![Actual pilot fields and individual histories](figures/device-habitat-pilot-128-t02.png)
+
+The early catalyst patches retain the seeded jittered lattice arrangement. The
+permeability panel includes body motion and paid material together. These actual projections and histories describe early material
+deposition over 0.2 model time. `scripts/export_device_habitat_frames.jl` decodes the
+detached frames using only Julia stdlibs; `scripts/plot_device_habitat_pilot.py`
+produces the diagnostic from the exported arrays.

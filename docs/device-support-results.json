@@ -283,5 +283,70 @@
     "checkpoint_bits_exact": true,
     "timing_note": "pilot includes first-use compilation; not a warmed throughput benchmark; batch8 observations and capture recorded separately"
   },
-  "carry_candidate_status": "99 CPU assertions passed, including exact frozen-flat edge order and Float32 bits; GPU repeat pending. These measurements describe the original flat-cursor axis iterator."
+  "carry_repeat": {
+    "numerical_base_commit": "d4d152d",
+    "script_overlay_commit": "25fcae3",
+    "support_only_overlay_commit": "7d3caeb",
+    "source": {
+      "model": "97bb37f5fd1bf27656e0b8276ea0b4f59885c35917f6f51bf3a136000755740d",
+      "initialization": "1484f9c00e3aa438f2557d12af1b29be2247e3b27dd5e4bcfd64d603785e6dc9",
+      "founder_initialization": "d76e4c791a2c56bc7fd651b1836e6879b9e27013566ce6d94a1d2f677f62e633",
+      "support": "5a767b83c2c912d8706468ec7c5b86e56cf99430b2a23dfd3a7f3ee8f21bf55b",
+      "kernels": "a85cf1f8e0739373572e9029deb46415ab5d16669f3513b0fbf020b289ad0b27",
+      "checkpoint": "77f943195ef1ae0466d57fc57c051595f3f363c822e8d9f6d4dbc1b9d5a6a9b0",
+      "protocol": "095c40b8e42baca3688abe902289377da49e8f352017733ce92728729fb40be5"
+    },
+    "runtime": {
+      "julia": "1.12.4",
+      "kernel": "Linux",
+      "architecture": "x86_64",
+      "launch_threads": 2,
+      "backend": "amd",
+      "device": "HIPDevice(id=1, name=AMD Radeon RX 6750 XT, gcn_arch=gfx1030)",
+      "backend_version": "2.8.0",
+      "actual_device_optlevel": 1,
+      "project_sha256": "284c920aebff70f466a40df21f7c83ae4c561857b046f940274b43a8feeaec6d",
+      "manifest_sha256": "c9318dec868baad15dbca215a3c0a1fbf32d8c6bd5aea8f66052d7cd790bb759"
+    },
+    "comparisons": [
+      {
+        "grid": [
+          64,
+          64,
+          64
+        ],
+        "materialized_median_full_steps_per_second": 76.78791778357574,
+        "axis_median_full_steps_per_second": 46.13497155623683,
+        "median_paired_axis_speedup": 0.6014671654933299,
+        "axis_rate_ratio_to_earlier_flat_run": 1.117312328618,
+        "pairs": 3
+      },
+      {
+        "grid": [
+          128,
+          128,
+          128
+        ],
+        "materialized_median_full_steps_per_second": 31.544978075767062,
+        "axis_median_full_steps_per_second": 9.432797669593377,
+        "median_paired_axis_speedup": 0.29895600628518576,
+        "axis_rate_ratio_to_earlier_flat_run": 1.1872002689630194,
+        "pairs": 3
+      },
+      {
+        "grid": [
+          256,
+          256,
+          256
+        ],
+        "materialized_median_full_steps_per_second": 5.3290406191642194,
+        "axis_median_full_steps_per_second": 1.2247364993404077,
+        "median_paired_axis_speedup": 0.22980500480496205,
+        "axis_rate_ratio_to_earlier_flat_run": 1.2213787931070703,
+        "pairs": 3
+      }
+    ],
+    "all_nine_pairs_identities_positions_hidden_bonds_exact": true,
+    "note": "Same benchmark and unchanged support storage; cross-run axis rate ratio is descriptive, not an alternating carry-versus-flat comparison. Both CPU/AMD base and paid habitat gates passed."
+  }
 }

@@ -15,10 +15,11 @@ Six families: phase surfaces, written inclusions, dielectric branches, fractured
 networks, acoustic/neural contours and 3D metabolic inhabitants. Each photograph
 observes a saved simulation through chosen optics. The first series adds 36
 specimens at 1600². Refinement now evolves native 384³ phase, writing and waves;
-768³ writing is complete. Seven refined 2400² photographs, recurrent matter and a coupled optical study bring the gallery to 61
+768³ writing is complete. Refined 2400² photographs, recurrent matter, coupled optics and a repairing weave bring the gallery to 62
 studies, with corrected crop geometry and resin, wax, frost, bronze and copper
-optics. Native 1152³ Julia writing completed in 56.9 minutes with 18.35 GB of state. Ecology remains 32³
-plus continuous agents; mechanics retains its actual deformed bond graph.
+optics. Native 1152³ Julia writing completed in 56.9 minutes with 18.35 GB of state.
+Constructive ecology now has actual 64³ trajectories and a 128³ GPU pilot;
+mechanics retains its actual deformed bond graph.
 [Recipes](docs/collection-20261015.md) · [Spatial refinement](docs/spatial-refinement.md)
 
 **Recurrent matter:** eight coupled internal channels per voxel write and erase
@@ -31,6 +32,10 @@ another. Perforated folds are photographed through nacre glass, copper and
 refractive pressure fronts: a 2000² still and 65-frame film. The folds are seeded;
 their subsequent motion comes from the coupled Julia simulation.
 [Study](docs/nacre-fault.md) · [Films](https://emberian.github.io/intmat/animations/)
+
+**The second seam:** damage opens a woven sheet; finite repair stock makes new
+connections across the wound. The photographed surface follows the deformed
+network. [Mechanism and photograph](docs/second-seam.md)
 
 ## Run
 
@@ -133,11 +138,28 @@ complete neural steps **19.13→11.20 ms**, allocations **28.42→4.32 MB**. Com
 metabolic steps measured **12.74 ms / 5.10 MB**. Births resize once per step; dead
 individual histories are pruned. [Profiling](docs/arena-performance.md)
 
-Metal supports several dense grid processes. The evolving population remains a CPU
-implementation. Device-resident controllers beat CPU; per-tick transfers reverse
-that result. A real Kaggle T4 ran the dense-field probe; TPU and hbox work have
-separate status. **Julia now runs on hbox:** original kernels and the Julia dose
-writer pass parity; native 768³ writer steps measured 29.15 ms.
+**Device-native cells now run on AMD**, including inherited controllers, division,
+contacts, transport and paid habitat construction. Their Float32 synchronous law
+differs from the serial CPU ecology. Checkpoints retain complete future state;
+generic recording copies only explicitly requested observations.
+[Device model and measurements](docs/device-cellular.md)
+
+Recent decomposition experiments distinguish storage, submission and simulation:
+
+| Change | Measured result | Boundary |
+|---|---|---|
+| Axis support reconstruction | 221× less support storage at 256³; 0.230× step throughput | Carry traversal improves the first version; materialized remains faster. |
+| HIP graph replay | 1.020× / 1.002× whole-step gain at 32³ / 128³ | Submission shrinks; device execution dominates. |
+| Independent-world batching | 2.41× aggregate throughput for four 64-cell worlds | Exact tested states; accelerates ensembles, not one trajectory. |
+| Local harmonic correction | 1.22× total time gain over nine 257³ solves | Recorded growth geometry; coupled selection gate pending. |
+| Continuous living tissue | 2.78–2.84 billion site-steps/s at 128³ | Different seven-field law; no individual ancestry. |
+
+[Support](docs/device-support-performance.md) · [Graphs](docs/device-graph-replay.md) · [World batches](docs/cellular-world-batches.md) ·
+[Local solves](docs/electrical-temporal-reuse.md) · [Tissue](docs/living-tissue.md)
+
+Metal and AMD support dense Julia processes; native 768³ writer steps measured
+29.15 ms on hbox. A real Kaggle T4 ran the dense-field probe; TPU remains a separate
+unverified route.
 [Reproduce](docs/hbox-runtime.md) · [Accelerators](docs/accelerators.md) · [Larger-run budgets](docs/bigruns.md)
 
 Small runs establish mechanisms and expose failures. They do not bound long-run

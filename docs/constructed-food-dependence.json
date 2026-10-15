@@ -1,0 +1,377 @@
+{
+  "kind": "fresh-founder fixed-source descriptive comparison; no adaptation claim",
+  "source_manifest_sha256": "c299506dbfe07009f411773f250ac28f6e89ebc36ccaf2c7f8d5c2e25ac1ab71",
+  "arms": [
+    {
+      "regime": "constructed-food-fixed-20261015",
+      "arm": "211-construction_off",
+      "complete": true,
+      "last_time": 3000.0000447034836,
+      "first_observed_extinction": 100.00000149011612,
+      "peak_population": 89,
+      "peak_population_time": 25.00000037252903,
+      "final_population": 0,
+      "births": 42,
+      "deaths": 90,
+      "blocked_births": 0,
+      "final_catalyst": 0.0,
+      "total_constructed": 0.0,
+      "total_rawfood_converted": 0.0,
+      "final_free_precursors": [
+        0.0,
+        0.0
+      ],
+      "final_rawfeedstock": [
+        5116.320671081543,
+        5116.320663452148
+      ],
+      "final_bound_food": [
+        0.0,
+        0.0
+      ],
+      "inert_residual": 0.0005954721033268368,
+      "biomass_time_integral_trapezoidal_sampled": 6052.882277833608,
+      "max_abs_mass_error": 1.227815204174476e-06,
+      "max_abs_energy_error": 4.041215085237582e-06,
+      "metrics_sha256": "b7d43a18251128d2737725c8d7623fed2f07f28269c146f69c2e2eacb6f76d47"
+    },
+    {
+      "regime": "constructed-food-fixed-20261015",
+      "arm": "211-conversion_off",
+      "complete": true,
+      "last_time": 3000.0000447034836,
+      "first_observed_extinction": 125.00000186264515,
+      "peak_population": 76,
+      "peak_population_time": 25.00000037252903,
+      "final_population": 0,
+      "births": 28,
+      "deaths": 76,
+      "blocked_births": 0,
+      "final_catalyst": 3.390953720525842e-10,
+      "total_constructed": 8.449651062140065,
+      "total_rawfood_converted": 0.0,
+      "final_free_precursors": [
+        0.0,
+        0.0
+      ],
+      "final_rawfeedstock": [
+        5116.320671081543,
+        5116.320663452148
+      ],
+      "final_bound_food": [
+        1.0502591860268071e-40,
+        1.0456068751252488e-40
+      ],
+      "inert_residual": 0.0009149351202784009,
+      "biomass_time_integral_trapezoidal_sampled": 5932.144561255206,
+      "max_abs_mass_error": 1.4687025569060097e-06,
+      "max_abs_energy_error": 2.1852397367183585e-06,
+      "metrics_sha256": "85d2ef8f09b3c2ca9b5c55d1e4450f2ad74e12dce4fa7614bb7b7c82fd09a0a4"
+    },
+    {
+      "regime": "constructed-food-fixed-20261015",
+      "arm": "211-full",
+      "complete": true,
+      "last_time": 3000.0000447034836,
+      "first_observed_extinction": 1900.0000283122063,
+      "peak_population": 393,
+      "peak_population_time": 75.00000111758709,
+      "final_population": 0,
+      "births": 604,
+      "deaths": 652,
+      "blocked_births": 0,
+      "final_catalyst": 4.676557714741274e-06,
+      "total_constructed": 119.84701013190463,
+      "total_rawfood_converted": 5549.972145740261,
+      "final_free_precursors": [
+        7.152558414511269e-07,
+        1.4643133359398069e-21
+      ],
+      "final_rawfeedstock": [
+        2280.4098396599293,
+        2407.916237384081
+      ],
+      "final_bound_food": [
+        8.983478955441275e-11,
+        1.2129543820343182e-19
+      ],
+      "inert_residual": 1.5057228049392861,
+      "biomass_time_integral_trapezoidal_sampled": 298342.9306375003,
+      "max_abs_mass_error": 0.0001768462689142325,
+      "max_abs_energy_error": 1.4684557299915468e-05,
+      "metrics_sha256": "e2fbbf00c4b178c35df017adcd4cc80d0e94b0ec9bd3e8c1966112b16bad3248"
+    },
+    {
+      "regime": "constructed-food-fixed-20261015",
+      "arm": "307-construction_off",
+      "complete": true,
+      "last_time": 3000.0000447034836,
+      "first_observed_extinction": 150.00000223517418,
+      "peak_population": 91,
+      "peak_population_time": 25.00000037252903,
+      "final_population": 0,
+      "births": 43,
+      "deaths": 91,
+      "blocked_births": 0,
+      "final_catalyst": 0.0,
+      "total_constructed": 0.0,
+      "total_rawfood_converted": 0.0,
+      "final_free_precursors": [
+        0.0,
+        0.0
+      ],
+      "final_rawfeedstock": [
+        5116.320671081543,
+        5116.320663452148
+      ],
+      "final_bound_food": [
+        0.0,
+        0.0
+      ],
+      "inert_residual": 0.0006585755279625093,
+      "biomass_time_integral_trapezoidal_sampled": 6642.958411781812,
+      "max_abs_mass_error": 4.74751971069054e-07,
+      "max_abs_energy_error": 2.2634137266663856e-06,
+      "metrics_sha256": "c84f642852a722a674f79114b85458012dfcd6e46ec41f4015d8e54e1aef4022"
+    },
+    {
+      "regime": "constructed-food-fixed-20261015",
+      "arm": "307-conversion_off",
+      "complete": true,
+      "last_time": 3000.0000447034836,
+      "first_observed_extinction": 150.00000223517418,
+      "peak_population": 76,
+      "peak_population_time": 25.00000037252903,
+      "final_population": 0,
+      "births": 28,
+      "deaths": 76,
+      "blocked_births": 0,
+      "final_catalyst": 3.89969033847418e-10,
+      "total_constructed": 9.642779054067052,
+      "total_rawfood_converted": 0.0,
+      "final_free_precursors": [
+        0.0,
+        0.0
+      ],
+      "final_rawfeedstock": [
+        5116.320671081543,
+        5116.320663452148
+      ],
+      "final_bound_food": [
+        9.862899111303792e-41,
+        9.944314552081064e-41
+      ],
+      "inert_residual": 0.0008341682104600627,
+      "biomass_time_integral_trapezoidal_sampled": 6752.768047470543,
+      "max_abs_mass_error": 1.6331209451436735e-06,
+      "max_abs_energy_error": 5.502820073388648e-06,
+      "metrics_sha256": "0ab44bbf1282d58f7ded2d7783fd10a976058dece84f1e625ca5f3bb84e23ff5"
+    },
+    {
+      "regime": "constructed-food-fixed-20261015",
+      "arm": "307-full",
+      "complete": true,
+      "last_time": 3000.0000447034836,
+      "first_observed_extinction": null,
+      "peak_population": 399,
+      "peak_population_time": 75.00000111758709,
+      "final_population": 176,
+      "births": 840,
+      "deaths": 712,
+      "blocked_births": 0,
+      "final_catalyst": 10.120956862130878,
+      "total_constructed": 257.55585576066215,
+      "total_rawfood_converted": 10107.113270005602,
+      "final_free_precursors": [
+        1.5077875536735519,
+        1.9256709174442221
+      ],
+      "final_rawfeedstock": [
+        117.46135017785127,
+        15.248885456145217
+      ],
+      "final_bound_food": [
+        1.1979070480950347,
+        6.857203828379745
+      ],
+      "inert_residual": 3.2690752469478848,
+      "biomass_time_integral_trapezoidal_sampled": 618044.0599296726,
+      "max_abs_mass_error": 0.0002385993066127412,
+      "max_abs_energy_error": 5.214208704273915e-05,
+      "metrics_sha256": "e78ac149f4428287e393ac32b0082d6d822a5a5a9f84a2bd7968f3b15120dddf"
+    }
+  ],
+  "sampling": "metrics every25 model time; extinction reported as first sampled zero, not precise death event",
+  "limits": [
+    "two seeds; long trajectories depend on the specified finite-precision law",
+    "sorption and transport remain enabled in catalytic conversion control",
+    "construction-off also removes all downstream material effects, not isolated precursor cost",
+    "no ranking of ecological mechanisms from endpoint alone"
+  ],
+  "source_manifest": {
+    "base_commit": "2d683806506dbefa885f19bb43692894cc78394c",
+    "source_overrides": {
+      "src/cellular.jl": "ac6633c645e14a63126031dd5d34bc9ddddc18a46332839482e2a9524840acdf",
+      "src/cellular_transport.jl": "fc8bfb0df1948b3869afae0a06fb5cc23bb87778452a31ffc3d27954eeb87aa2",
+      "src/catalytic_habitat.jl": "9a69b5ec394bc6dcee988d68f6463fc7c72bfa273e89bbd6e46513d392468eb1",
+      "src/constructive_cells.jl": "c7aef86045d7639d2b6beb37d9ddc41564b374a046298cc1565bed4f01a71764"
+    },
+    "drivers": {
+      "run_dependency.jl": "be6cf0fbb5bb4ed24beab626ff13eb695ca5f7cc36a188180bf4d27510547f4d",
+      "run_feedback.jl": "967d116d444349fc8186bc03c73737e19405c9bd18a17c1131057930d15b2f59",
+      "studies/sorptive_garden.jl": "efe64dd7078d02353e0eea1beb2179abff3b6afafdd5900358f150f66f07b4d5"
+    },
+    "reason": "Fresh-founder matched restart after reproduced negative subnormal precursor / unbounded catalytic-deposit correction at step622 of original conversion_off control. Endpoint-funded degradation, bounded deposits and finite corrections.",
+    "prior_output_preserved": "outputs/constructed-food-20261015",
+    "prior_source_preserved": "outputs/constructed-food-20261015-source",
+    "focused_test_log_sha256": "c96bfa6012a6356e10b1b82176cd86333d88686ea68849aca078471f49f3fd98",
+    "focused_assertions": 582,
+    "threads": 2,
+    "gc_threads": 1
+  },
+  "figure_provenance": {
+    "renderer_sha256": "7b43de6bbc284a33c94ea6407450aeb007b1c3e7d2ca1d61899c67f30ca5635d",
+    "figure_sha256": "433b511b2a588c30dab1b05d12d7e985d95510a5ab8a8599c9aaeccf8d3b5a3d",
+    "source_manifest_sha256": "c299506dbfe07009f411773f250ac28f6e89ebc36ccaf2c7f8d5c2e25ac1ab71",
+    "raw_metrics_sha256": {
+      "211-full": "e2fbbf00c4b178c35df017adcd4cc80d0e94b0ec9bd3e8c1966112b16bad3248",
+      "211-conversion_off": "85d2ef8f09b3c2ca9b5c55d1e4450f2ad74e12dce4fa7614bb7b7c82fd09a0a4",
+      "211-construction_off": "b7d43a18251128d2737725c8d7623fed2f07f28269c146f69c2e2eacb6f76d47",
+      "307-full": "e78ac149f4428287e393ac32b0082d6d822a5a5a9f84a2bd7968f3b15120dddf",
+      "307-conversion_off": "0ab44bbf1282d58f7ded2d7783fd10a976058dece84f1e625ca5f3bb84e23ff5",
+      "307-construction_off": "c84f642852a722a674f79114b85458012dfcd6e46ec41f4015d8e54e1aef4022"
+    },
+    "sampling_interval": 25,
+    "axes": "linear; common scales across seeds; first two panels full time0\u20133000, third0\u2013200"
+  },
+  "profile": {
+    "batch": 5,
+    "cellular": {
+      "hidden": 8,
+      "capacity": 1536,
+      "population": 48,
+      "mutation": 0.08,
+      "mutation_probability": 0.03,
+      "exchange_radius": 1.0,
+      "speed": 0.3,
+      "junction_rate": 0.8,
+      "basal_rate": 0.025
+    },
+    "catalysis": {
+      "secretion_work": 0.2,
+      "investment_bias": -0.8,
+      "allocation_exponent": 2.0,
+      "half_saturation": 0.2,
+      "shared_anabolism": true,
+      "catalytic_rate": 6.0,
+      "allocation_bias_scale": 1.2,
+      "secretion_rate": 0.12,
+      "decay_rate": 0.008,
+      "mutation": 0.08,
+      "mutation_probability": 0.03,
+      "regulation": true
+    },
+    "model": "catalytic",
+    "dt": 0.1,
+    "snapshot_seconds": 2.0,
+    "sleep_seconds": 0.001,
+    "feedstock": {
+      "names": [
+        "bound_a",
+        "bound_b"
+      ],
+      "diffusion": [
+        0.0,
+        0.0
+      ],
+      "initial": [
+        2.0,
+        2.0
+      ],
+      "source_rates": [
+        0.006,
+        0.006
+      ],
+      "source_budgets": [
+        100000.0,
+        100000.0
+      ],
+      "potentials": [
+        4.0,
+        4.0
+      ]
+    },
+    "matrix": {
+      "capacity_per_enzyme": 6.0,
+      "transport_barrier": 20.0,
+      "desorption_rate": 0.12,
+      "cross_binding": 0.0,
+      "adsorption_rate": 4.0
+    },
+    "grid": {
+      "shape": [
+        32,
+        32,
+        1
+      ],
+      "extent": [
+        16.0,
+        16.0,
+        1.0
+      ]
+    },
+    "resources": {
+      "source_budgets": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "niche_contrast": 0.8,
+      "names": [
+        "precursor_a",
+        "precursor_b",
+        "waste"
+      ],
+      "spatial_niches": true,
+      "sink_budgets": [
+        100000.0,
+        100000.0,
+        100000.0
+      ],
+      "niche_waves": [
+        1,
+        2,
+        0
+      ],
+      "diffusion": [
+        0.2,
+        0.2,
+        0.03
+      ],
+      "sink_rates": [
+        0.0008,
+        0.0008,
+        0.01
+      ],
+      "initial": [
+        0.3,
+        0.3,
+        0.0
+      ],
+      "source_rates": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "potentials": [
+        4.0,
+        4.0,
+        0.0
+      ]
+    },
+    "checkpoint_seconds": 90.0,
+    "seed": 211
+  },
+  "recorded_points_sha256": "e7ae5228ca6d3b2330b2284a9ff06242dde6dd23cffaffe0efe33aa763614068",
+  "numerical_scope": "Fresh founders in every arm under the same repaired source. Earlier original-source completed seed211/full remains separate evidence; interrupted conversion-off control was not resumed."
+}

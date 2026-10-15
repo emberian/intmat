@@ -285,5 +285,30 @@
       "conservative_live_count_bound": 17451.520184516907,
       "capacity_covers_material_bound": true
     }
+  },
+  "optional_axis_support": {
+    "status": "Historical CPU-KA correctness tranche; subsequent native AMD flat/carry results in device-support-results.json",
+    "assertions_passed": 69,
+    "coverage": [
+      "25 existing device assertions",
+      "39 axis edge/trajectory/restore/continuation assertions across 3D, thin and singleton grids",
+      "2 direct canonical founder initialization assertions",
+      "3 simultaneous birth/death and malformed budget assertions"
+    ],
+    "field_position_tolerance": 2e-06,
+    "support_weight_tolerance": 1e-07,
+    "checkpoint_array_restore": "exact",
+    "default_strategy": "materialized",
+    "checkpoint_format": 2,
+    "candidate_source_sha256": {
+      "device_cellular.jl": "97bb37f5fd1bf27656e0b8276ea0b4f59885c35917f6f51bf3a136000755740d",
+      "device_cellular_support.jl": "727709b1dc15dcd6567ec63fc07816a61238a95a5963e118302806a67627e0ab",
+      "device_cellular_initialization.jl": "1484f9c00e3aa438f2557d12af1b29be2247e3b27dd5e4bcfd64d603785e6dc9",
+      "device_cellular_kernels.jl": "a85cf1f8e0739373572e9029deb46415ab5d16669f3513b0fbf020b289ad0b27",
+      "device_cellular_checkpoint.jl": "77f943195ef1ae0466d57fc57c051595f3f363c822e8d9f6d4dbc1b9d5a6a9b0",
+      "cellular_initialization.jl": "d76e4c791a2c56bc7fd651b1836e6879b9e27013566ce6d94a1d2f677f62e633"
+    },
+    "performance_scope": "Existing AMD timing records above describe frozen v16 materialized support, not this optional axis candidate.",
+    "subsequent_measurements": "device-support-results.json"
   }
 }
