@@ -45,6 +45,11 @@ selects the multispecies model. `metabolic-96.toml` enlarges the domain at the s
 | Shared boundaries | Agents pay cargo and energy to maintain film. Film alters transport and phase forcing; decay returns structural matter. |
 | Selection | Birth, mutation, death and spatial competition. Neither cooperation nor increasing complexity is guaranteed. |
 
+A funded three-seed study found inherited competitive improvement: evolved
+descendants won 48/48 reset-state assays, including 24 without lifetime plasticity.
+Noisy controls and small evolutionary N limit the claim; cooperation remains unproven.
+[Results and component swaps](docs/alife-adaptation-results.md)
+
 [Chemistry](docs/resources.md) · [Metabolism](docs/metabolic-ecology.md) · [Boundary maintenance](docs/cooperative-boundaries.md) · [Experiments](docs/metabolic-experiments.md)
 
 ## Compose

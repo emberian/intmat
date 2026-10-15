@@ -122,4 +122,6 @@ function main()
     open(joinpath(out,"life-only.json"),"w") do io;JSON3.write(io,nulls);end
     open(joinpath(out,"provenance.json"),"w") do io;JSON3.write(io,(sources=Interior.arena_sources(),julia=string(VERSION),script_sha256=bytes2hex(sha256(read(@__FILE__)))));end
 end
-abspath(PROGRAM_FILE)==(@__FILE__) && main()
+if abspath(PROGRAM_FILE)==(@__FILE__) || (isdefined(Main,:INTERIOR_RUNNING_STUDY) && Main.INTERIOR_RUNNING_STUDY=="alife_adaptation")
+    main()
+end

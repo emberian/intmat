@@ -151,3 +151,13 @@ julia --project bin/interior.jl arena --profile experiments/arena/metabolic-3d.t
 Loaded Julia modules keep evolving under their captured source hashes. Editing the checkout does not hot-reload that process. The two local running studies retain source snapshots at `outputs/arena/runtime-source-a2dd363` (original) and `outputs/arena/runtime-source-8765769` (metabolic). Both snapshots strictly restored their corresponding live checkpoints after later checkout edits. To recover a run, invoke its pinned `examples/arena.jl` with that snapshot as `--project`, its profile, the owned output directory, and the checkpoint named in `checkpoint.json`. Do not start a second writer while the existing process is alive. Reviewed migrations remain an explicit opt-in; ordinary development is not permission to reinterpret stored state.
 
 New source snapshots must include `bin/` and `experiments/` alongside `src/`, `Project.toml` and `Manifest.toml`; include `studies/` when preserving study commands. Launch a new snapshot through its own `bin/interior.jl arena` with that snapshot as `--project`. The older snapshots above predate this layout and retain their original entry points.
+
+On 15 October 2026 the original arena process stopped with a Julia 1.12.4
+segmentation fault in parallel garbage collection. It was strictly restored from
+the latest completed checkpoint at step 623775 using `runtime-source-a2dd363`,
+without a source migration or population reset. The final unsaved live observation
+was step 623800. Recovery uses `--threads=2 --gcthreads=1`; this avoids the observed
+parallel GC path but is not a demonstrated general fix. Pre-recovery checkpoint,
+observation and crash log are preserved in
+`outputs/arena/recovery-original-20261015-gc-crash`; launch arguments are recorded
+in `outputs/arena/active-2d.recovery-20261015.process.json`.

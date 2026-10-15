@@ -1,0 +1,11 @@
+# Separate exploratory component transplant; primary protocol/results remain fixed.
+primary_directory = "outputs/alife-20261015/adaptation"
+seeds = [11, 29, 47]
+selection_environment = "niches"
+assay_environment = "uniform"
+components = ["evolved_both", "ancestral_controller", "ancestral_metabolism", "ancestral_both"]
+position_replicates = 2
+assay_per_group = 32
+assay_capacity = 512
+assay_time = 320.0
+plasticity = 0.0

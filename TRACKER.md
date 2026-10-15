@@ -18,9 +18,11 @@
 
 **Alife:** the original externally supplied arena remains alive after 3.48 million births, with 1,332 distinct inherited-controller signatures among 1,332 sampled inhabitants despite one surviving founder lineage. The separate 96² metabolic arena exhausted both million-unit external supplies and is empty after 743,520 births. Exact extinction time is unrecoverable from its old rotating checkpoints. Neither result establishes evolved cooperation. [Saved observations](docs/alife-overnight.md)
 
-**Functional test:** the funded three-seed study completed 12 selection arms, 80 descendant-versus-ancestor assays and 12 same-pool controls. Descendants from all six mutation-enabled populations won all 48 assays (44 ancestral-group extinctions), including all 24 without plasticity. Founder-sorting controls were mixed; two selection failures account for 16 unperformed assays. Same-pool imbalance and capacity blocking are substantial. This supports inherited competitive improvement under these conditions, not adaptive cooperation or open-ended evolution. A separate ancestry-matched controller/metabolism transplant is running. [Protocol](docs/alife-adaptation-protocol.md) · [Results](docs/alife-adaptation-results.md)
+**Functional test:** the funded three-seed study completed 12 selection arms, 80 descendant-versus-ancestor assays and 12 same-pool controls. Descendants from all six mutation-enabled populations won all 48 assays (44 ancestral-group extinctions), including all 24 without plasticity. Founder-sorting controls were mixed; two selection failures account for 16 unperformed assays. Same-pool imbalance and capacity blocking are substantial. This supports inherited competitive improvement under these conditions, not adaptive cooperation or open-ended evolution. A separate 24-assay ancestry-matched transplant found positive outcomes in 6/6 metabolism-only and 5/6 controller-only conditions; noisy identical-genotype controls and endpoint ceilings prevent causal ranking. [Component results](docs/alife-components-exploratory.md) [Protocol](docs/alife-adaptation-protocol.md) · [Results](docs/alife-adaptation-results.md)
 
 **Observation:** both historical arenas remain available on local ports 8780/8781. An independent recorder now appends distinct-step metrics every 20 s and full published observations every 5 min, stopping at 6 GB without deleting data. It cannot reconstruct the lost overnight history. [Recorder](docs/arena-observatory.md)
+
+The recorder exposed an original-arena Julia parallel-GC crash. Strict recovery from step 623775 against the same pinned source resumed the saved population; only 25 unsaved steps were lost. The restarted process uses one GC thread, has advanced beyond 625795 and produced a new independently restored checkpoint. This mitigates the observed crash path; it is not a proven runtime fix. [Recovery](docs/arena.md)
 
 ## Measured execution
 
@@ -49,7 +51,7 @@ The last integrated Julia suite passed 1298 assertions; the application interfac
 ## Outstanding work
 
 1. Complete and publish all 36 photographs; preserve recipes and physical/optical distinctions.
-2. Complete controller/metabolism component transplants. Test film cooperation with mixed cooperator/free-rider invasion and a benefit-removed/cost-retained intervention; use the adaptation study's noisy controls to improve assay design.
+2. Test film cooperation with mixed cooperator/free-rider invasion and a benefit-removed/cost-retained intervention; use the adaptation study's noisy controls to improve assay design.
 3. Persistent active compartments: longer replicated trajectories, local interfacial agents and conserved surface/volume exchange; count both phase signs.
 4. Evolving organization: persistent bonds/division, collective transport and behavioral descriptors that distinguish organism-built structure from imposed phase geometry.
 5. Device-resident populations: binning, fair allocation, lifecycle and genotype storage; asynchronous observation. Preserve identities and ledgers through CPU/device parity checks.
