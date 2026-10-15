@@ -107,3 +107,21 @@ These experiments exhibit structured ongoing activity and persistent material
 memory. They do not establish open-ended adaptation or a rich learned behavioral
 repertoire. A broader family of recurrent constitutions, composition with acoustic
 transport, and selection of useful material transformations are subsequent work.
+
+## Photograph and moving exhibit
+
+`outputs/collection-20261015/recurrent256-choir-memory/final.png` is the reviewed
+1600px, 96-sample Cycles/Metal photograph. It follows **fast activity = .30**
+through the actual native 256³ field at t60. An ellipsoidal viewing cut selects
+the specimen; amber tint/transmission, camera and studio lights are optical
+choices. No procedural texture or extra geometric detail is added. The initial
+solid=.8 portrait was visually smooth and rejected in favor of the activity
+layers. Exact optical settings and the pinned model hash accompany the curated
+photograph under `site/collection/collection-20261015/recurrent256-choir-memory`.
+
+`site/recurrent/` pairs that photograph with the actual twelve-frame 128³ slice
+recording. Pause shows four slow-memory time sections; reduced-motion preference
+starts paused. The collection build includes the exhibit and header link. The
+staged 60-study site occupies 112.72 MB, below its 128 MB budget. The recorded
+motion shows changing wave bands and small active islands, while the designed
+spatial transition between constitutions remains visible.

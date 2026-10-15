@@ -70,6 +70,8 @@ def main():
     shutil.copytree(REPO / 'site' / 'metabolic', destination / 'metabolic', dirs_exist_ok=True)
     cellular = REPO / 'site' / 'cellular'
     if cellular.exists():shutil.copytree(cellular, destination / 'cellular', dirs_exist_ok=True)
+    recurrent = REPO / 'site' / 'recurrent'
+    if recurrent.exists():shutil.copytree(recurrent, destination / 'recurrent', dirs_exist_ok=True)
     notes = REPO / 'site' / 'notes'
     if notes.exists():shutil.copytree(notes, destination / 'notes', dirs_exist_ok=True)
     subprocess.run([sys.executable, str(REPO / 'scripts/build_gallery.py'), str(destination)], check=True)
@@ -80,6 +82,7 @@ def main():
     text = text.replace('</header>', '<a href="https://github.com/emberian/intmat">Source &amp; simulation code ↗</a></header>')
     text = text.replace('</header>', '<a class="primary" href="arena/arena.html">Recorded neural arena ↗</a></header>')
     text = text.replace('</header>', '<a class="primary" href="metabolic/arena.html">Metabolic arena · 96² ↗</a></header>')
+    if recurrent.exists():text = text.replace('</header>', '<a class="primary" href="recurrent/">Recurrent matter · rhythms &amp; memory ↗</a></header>')
     if cellular.exists():text = text.replace('</header>', '<a class="primary" href="cellular/">Living cells · motion &amp; material ↗</a></header>')
     text = text.replace('</header>', '<a href="https://github.com/emberian/intmat/blob/dev/docs/alife-adaptation-results.md">Alife results ↗</a></header>')
     index.write_text(text)

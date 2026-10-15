@@ -15,7 +15,7 @@ Six families: phase surfaces, written inclusions, dielectric branches, fractured
 networks, acoustic/neural contours and 3D metabolic inhabitants. Each photograph
 observes a saved simulation through chosen optics. The first series adds 36
 specimens at 1600². Refinement now evolves native 384³ phase, writing and waves;
-768³ writing is complete. Seven refined 2400² photographs bring the gallery to 59
+768³ writing is complete. Seven refined 2400² photographs plus a recurrent-material portrait bring the gallery to 60
 studies, with corrected crop geometry and resin, wax, frost, bronze and copper
 optics. Native 1152³ Julia writing completed in 56.9 minutes with 18.35 GB of state. Ecology remains 32³
 plus continuous agents; mechanics retains its actual deformed bond graph.
@@ -24,7 +24,7 @@ plus continuous agents; mechanics retains its actual deformed bond graph.
 **Recurrent matter:** eight coupled internal channels per voxel write and erase
 solid; solid changes their communication and thresholds. Native 256³ trajectories
 now run entirely on the GPU in Julia. These are designed, untrained dynamics with
-material memory. [Model, runs and measured throughput](docs/recurrent-material.md)
+material memory. [Photograph and motion](https://emberian.github.io/intmat/recurrent/) · [Model and throughput](docs/recurrent-material.md)
 
 ## Run
 

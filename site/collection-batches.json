@@ -471,5 +471,16 @@
       "render-job.json",
       "run.json"
     ]
+  },
+  {
+    "id": "collection-20261015/recurrent256-choir-memory",
+    "source_image_sha256": "5974780d58c9fa31bf97d0da78907dec7fcaba87bf45cc5140c77f4796cbdbee",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
   }
 ]

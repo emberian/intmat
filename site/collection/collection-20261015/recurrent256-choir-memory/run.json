@@ -1,0 +1,45 @@
+{
+  "schema": "interior-recurrent-material-art",
+  "shape": [
+    256,
+    256,
+    256
+  ],
+  "native_shape": [
+    256,
+    256,
+    256
+  ],
+  "extent": [
+    256,
+    256,
+    256
+  ],
+  "time": 60,
+  "dt": 0.05,
+  "steps": 1200,
+  "backend": "Metal",
+  "seed": 31,
+  "channels": 8,
+  "title": "A Score That Changes Its Instrument",
+  "family": "recurrent matter",
+  "description": "Four interacting rhythms run inside every voxel. Their activity writes persistent material, and that material changes how the next rhythms communicate. This amber photograph follows the recorded activity contour of a native three-dimensional recurrent field.",
+  "comparison_notes": "Native 256 cubed simulation at unit cell spacing, a larger physical domain than the 128 cubed motion study. Fixed designed recurrence, not trained or genetically evolved. Amber optics and ellipsoidal viewing crop are artistic choices. Photograph follows activity = .30, not a simulated solid boundary.",
+  "source_model_sha256": "c0d3b59369fdb202c2b9711f7ad044994f333c176df45041097712f1b20fdbf6",
+  "source_recipe": "slow-memory; four clocks 1,.43,.17,.065; coupling .28, feedback2, writing .5, erosion .035, constitution contrast1.1; uniform nutrient1, latent seeded noise .12",
+  "source_pinning": "Retained loaded source predates current guard/ownership hardening; recurrence unchanged.",
+  "publication": {
+    "source_image_sha256": "5974780d58c9fa31bf97d0da78907dec7fcaba87bf45cc5140c77f4796cbdbee",
+    "webp_sha256": "323dc497b86ce6584814a8e5afdf2659edf22e41772d08b37519791ec459dfac",
+    "quality": 95,
+    "width": 1600,
+    "samples": 96,
+    "native_shape": [
+      256,
+      256,
+      256
+    ],
+    "original_retained": true,
+    "reviewed_by": "Codex active_medium visual review"
+  }
+}

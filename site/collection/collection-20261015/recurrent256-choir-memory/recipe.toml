@@ -1,0 +1,16 @@
+name = "slow-memory"
+seed = 31
+backend = "metal"
+shape = [256, 256, 256]
+extent = [256, 256, 256]
+dt = 0.05
+steps = 1200
+latent_channels = 8
+coupling = 0.28
+feedback = 2.0
+writing = 0.5
+erosion = 0.035
+contrast = 1.1
+initial_nutrient = 1.0
+initial_latent_noise = 0.12
+activity_contour = 0.30

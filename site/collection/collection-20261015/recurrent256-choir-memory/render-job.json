@@ -1,0 +1,38 @@
+{
+  "id": "recurrent256-choir-memory",
+  "title": "A Score That Changes Its Instrument",
+  "family": "recurrent matter",
+  "description": "Four interacting rhythms run inside every voxel. Their activity writes persistent material, and that material changes how the next rhythms communicate. This amber photograph follows the recorded activity contour of a native three-dimensional recurrent field.",
+  "volume": "volume",
+  "native_shape": [
+    256,
+    256,
+    256
+  ],
+  "size": 1600,
+  "samples": 96,
+  "args": [
+    "--surface-only",
+    "--inclusion-surface",
+    "activity",
+    "--inclusion-isovalue",
+    ".30",
+    "--inclusion-tint",
+    "amber",
+    "--inclusion-transmission",
+    ".7",
+    "--mesh-adaptivity",
+    ".12",
+    "--emission",
+    "0",
+    "--frame-content",
+    "--orbit",
+    ".7",
+    "--elevation",
+    ".65",
+    "--studio-background",
+    "midnight",
+    "--device",
+    "METAL"
+  ]
+}
