@@ -61,33 +61,6 @@ end
         e.quota[k,2]=sink>0 ? min(1f0,available/(sink*(1f0+8eps(Float32)))) : 0f0
     end
 end
-@kernel function dc_resource_exchange!(e,q,g,dt)
-    i,k=@index(Global,NTuple)
-    if e.status[1]==0
-        before=e.fields[i,k];give=dt*q.source_rates[k]*e.source_masks[i,k]*e.quota[k,1]
-        after=before+give
-        after-before>give && (after=prevfloat(after))
-        supplied=after-before
-        take=min(after,dt*q.sink_rates[k]*e.sink_masks[i,k]*e.quota[k,2]);next=max(0f0,after-take)
-        after-next>take && (next=nextfloat(next))
-        removed=after-next;e.fields[i,k]=next
-        oldsource,newsource=KernelAbstractions.@atomic e.resource_ledger[k,5] + supplied
-        oldsink,newsink=KernelAbstractions.@atomic e.resource_ledger[k,6] + removed
-        ((supplied>0 && newsource==oldsource) || (removed>0 && newsink==oldsink)) &&
-            (KernelAbstractions.@atomic e.status[1]|=Int32(16))
-        (!isfinite(newsource)||!isfinite(newsink)) && (KernelAbstractions.@atomic e.status[1]|=Int32(8))
-        !isfinite(next) && (KernelAbstractions.@atomic e.status[1]|=Int32(8))
-    end
-end
-@kernel function dc_resource_finish!(e)
-    k=@index(Global,Linear)
-    if e.status[1]==0
-        dc_resource_add!(e,k,1,-e.resource_ledger[k,5])
-        dc_resource_add!(e,k,2,-e.resource_ledger[k,6])
-        dc_resource_add!(e,k,3,e.resource_ledger[k,5])
-        dc_resource_add!(e,k,4,e.resource_ledger[k,6])
-    end
-end
 @kernel function dc_diffuse!(e,q,g,dt)
     site,k=@index(Global,NTuple)
     if e.status[1]==0

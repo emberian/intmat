@@ -92,3 +92,17 @@ end
     worlds[2].fields.nutrient[1]=1.
     @test_throws ArgumentError constructive_world_batch_checkpoint(worlds,batch)
 end
+
+@testset "World-isolated multilevel resource reduction" begin
+    fixtures=[constructive_batch_fixture(seed;flux=true,shape=(6,6,6),extent=(6.,6.,6.)) for seed in (81,82)]
+    worlds=first.(fixtures);batch=constructive_world_batch(last.(fixtures))
+    @test length(Interior.device_resource_workspace(batch.cells).levels)==2
+    @test batch_resource_validate(batch.cells)
+    for step in 1:2
+        for (w,p) in fixtures;Interior.device_cellular_step!(w,p.cells,.01;anabolism=p.habitat);end
+        constructive_world_batch_step!(worlds,batch,.01)
+        for i in 1:2
+            @test constructive_snapshot_equal(Interior.device_habitat_snapshot(fixtures[i][2]),constructive_world_batch_snapshot(batch,i))
+        end
+    end
+end

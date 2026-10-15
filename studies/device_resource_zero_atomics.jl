@@ -1,3 +1,4 @@
+isdefined(@__MODULE__,:dc_resource_exchange!) || include(joinpath(@__DIR__,"device_resource_atomic_oracle.jl"))
 # Opt-in exact-zero RMW elimination. No production methods are replaced.
 # Zero increments use atomic LOADS, never racing ordinary reads, so finite checks
 # remain in the same kernel even alongside threads with positive grants.
@@ -21,7 +22,7 @@ function resource_zero_install!()
     path=joinpath(@__DIR__,"..","src","device_cellular_kernels.jl")
     bytes2hex(SHA.sha256(read(path)))==DEVICE_CELLULAR_SOURCE_PIN.kernels ||
         error("resource experiment source differs from loaded kernel pin")
-    definition=resource_zero_definition(path,:dc_resource_exchange!)
+    definition=resource_zero_definition(joinpath(@__DIR__,"device_resource_atomic_oracle.jl"),:dc_resource_exchange!)
     definition.args[1].args[1]=:dc_resource_zero_exchange!
     replaced=0
     for (index,expr) in pairs(definition.args[2].args)

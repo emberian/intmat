@@ -62,11 +62,42 @@ function pack_world_arrays(xs)
         WorldBatchArray(storage,size(a))
     end |> values -> NamedTuple{keys(first(xs))}(values)
 end
+# Each world's resource reduction has disjoint transient storage. The shared
+# production phase sees ordinary per-world shapes through the batch projection.
+function batch_resource_workspace(backend,n,worlds)
+    array(rows)=WorldBatchArray(Interior.KernelAbstractions.zeros(backend,Float32,rows,6,worlds),(rows,6))
+    grants=array(n);levels=NamedTuple[]
+    while true
+        n=cld(n,128);push!(levels,(high=array(n),low=array(n)))
+        n==1&&break
+    end
+    typed=Tuple(levels)
+    contract=(grants=grants,levels=typed,grant_shape=size(grants),level_shapes=map(x->(size(x.high),size(x.low)),typed))
+    Interior.DeviceResourceWorkspace(grants,typed,contract)
+end
+function batch_resource_validate(p)
+    work=Interior.device_resource_workspace(p)
+    Interior.device_resource_workspace_validate(work)
+    arrays=(work.grants,(a for l in work.levels for a in (l.high,l.low))...)
+    for (i,a) in enumerate(arrays)
+        a isa WorldBatchArray&&size(a.storage)==(size(a)...,p.worlds)&&eltype(a)===Float32 ||
+            throw(ArgumentError("invalid world-isolated resource storage"))
+        Interior.KernelAbstractions.get_backend(a.storage)==p.backend || throw(ArgumentError("resource batch backend differs"))
+        for other in arrays[1:i-1]
+            Base.mightalias(a.storage,other.storage)&&throw(ArgumentError("resource batch scratch parents alias"))
+        end
+        for other in (values(p.state)...,values(p.environment)...)
+            Base.mightalias(a.storage,other.storage)&&throw(ArgumentError("resource batch scratch aliases process state"))
+        end
+    end
+    true
+end
 function CellularWorldBatch(ps::AbstractVector)
     isempty(ps)&&error("empty ensemble");a=first(ps)
     all(p->p.geometry==a.geometry&&merge(p.parameters,(seed=a.parameters.seed,))==a.parameters&&p.backend==a.backend&&p.attempted_steps==a.attempted_steps,ps)||error("batch requires identical geometry, physical parameters, and step clock")
     s=pack_world_arrays(getproperty.(ps,:state));e=pack_world_arrays(getproperty.(ps,:environment))
-    o=Interior.device_cellular_contract(s,e,a.parameters,a.geometry)
+    resource=batch_resource_workspace(a.backend,size(e.fields,1),length(ps))
+    o=Interior.device_cellular_contract(s,e,a.parameters,a.geometry;resource_workspace=resource)
     seeds=Interior.KernelAbstractions.zeros(a.backend,UInt32,length(ps))
     copyto!(seeds,UInt32[p.parameters.seed for p in ps])
     CellularWorldBatch(s,e,a.backend,a.parameters,a.geometry,o,a.attempted_steps,length(ps),seeds)
@@ -75,6 +106,7 @@ end
 function Interior.device_cellular_validate(w::Interior.World,p::CellularWorldBatch)
     w.backend==p.backend && w.grid.size==Tuple(Int.(p.geometry.dims)) && w.grid.extent==p.geometry.extent || error("batch world mismatch")
     p.state===p.ownership.state && p.environment===p.ownership.environment || error("batch arrays replaced")
+    batch_resource_validate(p)
     true
 end
 Interior.device_cellular_timestep_limit(p::CellularWorldBatch)=begin
@@ -109,7 +141,7 @@ function batch_kernel_ast(ex;habitat=false)
     insertions=Expr[]
     for j in 2:length(sig.args)
         arg=sig.args[j]
-        if arg in (:s,:e,:q,:a,:feed,:descriptor,:cq,:anabolism)
+        if arg in (:s,:e,:q,:a,:feed,:descriptor,:cq,:anabolism,:grants,:high,:low,:input_high,:input_low,:status)
             packed=Symbol("packed_",arg)
             sig.args[j]=packed
             if arg===:anabolism
@@ -130,7 +162,8 @@ end
 function install_cellular_world_batch!()
     normpath(dirname(pathof(Interior)))==normpath(joinpath(@__DIR__,"..","src")) || error("batch study must use Interior from the same source snapshot")
     source=joinpath(@__DIR__,"..","src","device_cellular_kernels.jl")
-    for ex in Meta.parseall(read(source,String)).args
+    resource_source=joinpath(@__DIR__,"..","src","device_resource_exchange.jl")
+    for ex in (Meta.parseall(read(source,String)).args...,Meta.parseall(read(resource_source,String)).args...)
         ex isa Expr&&ex.head==:macrocall&&ex.args[1]==Symbol("@kernel")||continue
         old,new,generated=batch_kernel_ast(deepcopy(ex))
         Core.eval(Interior,generated)
@@ -138,7 +171,7 @@ function install_cellular_world_batch!()
     end
     host=joinpath(@__DIR__,"..","src","device_cellular.jl")
     isdefined(Interior,:device_cellular_enqueue!) || error("batch study requires the shared generic enqueue interface")
-    (kernels=bytes2hex(sha256(read(source))),schedule=bytes2hex(sha256(read(host))))
+    (kernels=bytes2hex(sha256(read(source))),resource=bytes2hex(sha256(read(resource_source))),schedule=bytes2hex(sha256(read(host))))
 end
 const CELLULAR_WORLD_BATCH_SOURCE=install_cellular_world_batch!()
 # Only checked entry bookkeeping is local; every physical stage is the common

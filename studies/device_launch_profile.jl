@@ -74,7 +74,7 @@ function device_profile_category(kernel::Symbol)
     kernel===:dc_gather! && return :support_uptake_gather
     kernel in (:dc_return_waste!,:dc_porosity_scatter!) && return :support_waste_porosity_scatter
     kernel===:dc_diffuse! && return :dense_diffusion
-    kernel in (:dc_resource_quota!,:dc_resource_exchange!,:dc_resource_finish!,:dc_commit_resources!,
+    kernel in (:dc_resource_quota!,:dc_resource_exchange!,:dc_resource_finish!,:dc_resource_tree_grants!,:dc_resource_tree_reduce!,:dc_resource_tree_finish!,:dc_commit_resources!,
         :dc_allocate_sites!,:dc_clear_grid!,:dc_commit_waste!,:dc_clear_occupancy!,:dc_porosity_commit!) && return :dense_resource_passes
     kernel in (:dc_clear_heads!,:dc_geometry!) && return :bins_geometry
     kernel in (:dc_forces!,:dc_move!,:dc_commit_positions!) && return :mechanics

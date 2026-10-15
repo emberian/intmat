@@ -1503,5 +1503,21 @@
       "restart_parity": true,
       "timing": "complete coupled enqueue + endpoint status; excludes construction, JIT, snapshots, checkpoint and restart"
     }
+  },
+  "shared_resource_adapter": {
+    "cpu_assertions": 246,
+    "whole_composition_and_protocol_regression": 229,
+    "backing_storage_and_world_slice_assertions": 11,
+    "multilevel_3d_assertions": 6,
+    "native_status": "awaiting_source_freeze_and_queue",
+    "source_sha256": {
+      "studies/cellular_world_batches.jl": "52917b3bce7e14cbbe6cf34fb19f3be78b8a520e729d07ee6b403ffe7e9a2b91",
+      "studies/constructive_world_batches.jl": "3c6fac852597fba42d08434e290425c37717a47e1fe2887cd9e246648fb3de67",
+      "src/device_resource_exchange.jl": "050991b42eceab1403c940e69b027d27106f966dfcc0cfbf215b5b5ff7221c18"
+    },
+    "logs": [
+      "/tmp/intmat-batches-resource-v2-cpu-1.log",
+      "/tmp/intmat-batches-resource-v2-isolation.log"
+    ]
   }
 }

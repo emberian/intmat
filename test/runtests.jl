@@ -64,3 +64,8 @@ include("device_habitat_support.jl")
 include("device_habitat_audit.jl")
 include("device_cellular_protocol.jl")
 end
+
+module DeviceResourceTests
+include("device_resource_exchange.jl")
+include("device_resource_aliases.jl")
+end

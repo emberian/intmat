@@ -1,3 +1,4 @@
+isdefined(@__MODULE__,:dc_resource_exchange!) || include(joinpath(@__DIR__,"device_resource_atomic_oracle.jl"))
 # Private scheduling prototype derived from the integrated DeviceCellular queue.
 # No physiology/mechanics kernel is copied. Ordinary production APIs are untouched.
 function device_graph_enqueue_prototype!(w,p,delta,execution,anabolism,step_index)

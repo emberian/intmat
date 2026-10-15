@@ -54,7 +54,7 @@ function batch_rehome(p::CellularWorldBatch,backend)
     backend==p.backend&&return p
     s=map(a->batch_upload(backend,a),p.state);e=map(a->batch_upload(backend,a),p.environment)
     seeds=Interior.KernelAbstractions.zeros(backend,UInt32,p.worlds);copyto!(seeds,Array(p.seeds))
-    CellularWorldBatch(s,e,backend,p.parameters,p.geometry,Interior.device_cellular_contract(s,e,p.parameters,p.geometry),p.attempted_steps,p.worlds,seeds)
+    CellularWorldBatch(s,e,backend,p.parameters,p.geometry,Interior.device_cellular_contract(s,e,p.parameters,p.geometry;resource_workspace=batch_resource_workspace(backend,size(e.fields,1),p.worlds)),p.attempted_steps,p.worlds,seeds)
 end
 function constructive_batch_carrier(base,arrays,feedarrays,q,fq,habitat_seeds)
     c=ConstructiveBatchCells(base,habitat_seeds)

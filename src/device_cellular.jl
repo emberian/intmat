@@ -134,15 +134,20 @@ function device_cellular_import(w::World,reference;capacity=reference.capacity,
     p
 end
 
-function device_cellular_contract(state,env,q,g)
+function device_cellular_contract(state,env,q,g;resource_workspace=nothing,resource_transient_aliases=())
     mechanics=(state=NamedTuple{(:active,:ids,:position,:position_next,:mass,:metabolites,:radii,:next,:cell_bin,:bonds,:bond_ids,:rest,:actions,:force,:rows,:energy,:ledger,:ledger_low)}(state),
         environment=NamedTuple{(:status,:heads,:metadata)}(env),
         parameters=NamedTuple{(:density,:radius_bound,:repulsion,:stiffness,:speed,:motor_cost)}(q),
         geometry=NamedTuple{(:nd,:extent,:bins,:degree)}(g))
     controller=(state=NamedTuple{(:active,:weights,:marks,:inputs,:outputs)}(state),
         environment=(status=env.status,),geometry=(hidden=g.hidden,))
+    resource=resource_workspace===nothing ? DeviceResourceWorkspace(KernelAbstractions.get_backend(env.fields),size(env.fields,1)) : resource_workspace
+    device_resource_workspace_validate(resource)
+    size(resource.grants)==(size(env.fields,1),6) || throw(ArgumentError("resource workspace grid differs"))
+    device_resource_workspace_nonalias(resource,state,env;allowed_transients=resource_transient_aliases)
     (state=state,environment=env,parameters=q,geometry=g,
-        state_shapes=map(size,state),environment_shapes=map(size,env),stages=(mechanics=mechanics,controller=controller))
+        state_shapes=map(size,state),environment_shapes=map(size,env),resource_transient_aliases=resource_transient_aliases,
+        stages=(mechanics=mechanics,controller=controller,resource=resource))
 end
 """Cheap identity/shape preflight. Direct array-content edits remain caller responsibility."""
 function device_cellular_validate(w::World,p::DeviceCellular)
@@ -151,6 +156,7 @@ function device_cellular_validate(w::World,p::DeviceCellular)
         throw(ArgumentError("device cellular array roles/parameters were replaced; construct a new process"))
     map(size,p.state)==o.state_shapes && map(size,p.environment)==o.environment_shapes ||
         throw(ArgumentError("device cellular owned array shapes changed"))
+    device_resource_workspace_validate(o.stages.resource)
     w.backend==p.backend && w.grid.size==Tuple(Int.(p.geometry.dims)) && w.grid.extent==p.geometry.extent ||
         throw(ArgumentError("device cellular world mismatch"))
     true
@@ -196,9 +202,7 @@ function device_cellular_enqueue!(w,p,delta::Float32,execution::Symbol,anabolism
     C=Int(g.capacity);V=prod(Int.(g.dims))
     # All arrays are fixed capacity. Latched failure causes subsequent kernels to no-op.
     device_anabolic_begin!(anabolism,w,p,delta)
-    device_cellular_launch!(p,dc_resource_quota!,e,q,delta;ndrange=3)
-    device_cellular_launch!(p,dc_resource_exchange!,e,q,g,delta;ndrange=(V,3))
-    device_cellular_launch!(p,dc_resource_finish!,e;ndrange=3)
+    device_resource_phase!(p,e,q,g,delta)
     device_cellular_launch!(p,dc_diffuse!,e,q,g,delta;ndrange=(V,3))
     device_cellular_launch!(p,dc_commit_resources!,e;ndrange=(V,3))
     device_cellular_launch!(p,dc_clear_grid!,e;ndrange=V)
@@ -290,6 +294,7 @@ function device_cellular_statistics(p::DeviceCellular)
 end
 
 include("device_cellular_kernels.jl")
+include("device_resource_exchange.jl")
 
 """Float64 host audit of an explicit full snapshot; this intentionally transfers all state."""
 function device_cellular_audit(snapshot)

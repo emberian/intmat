@@ -5,6 +5,7 @@ const DEVICE_CELLULAR_SOURCE_PIN=(
     initialization=bytes2hex(SHA.sha256(read(joinpath(@__DIR__,"device_cellular_initialization.jl")))),
     founder_initialization=bytes2hex(SHA.sha256(read(joinpath(@__DIR__,"cellular_initialization.jl")))),
     support=bytes2hex(SHA.sha256(read(joinpath(@__DIR__,"device_cellular_support.jl")))),
+    resource=bytes2hex(SHA.sha256(read(joinpath(@__DIR__,"device_resource_exchange.jl")))),
     kernels=bytes2hex(SHA.sha256(read(joinpath(@__DIR__,"device_cellular_kernels.jl")))),
     checkpoint=bytes2hex(SHA.sha256(read(@__FILE__))),
     protocol=isfile(joinpath(@__DIR__,"device_cellular_protocol.jl")) ? bytes2hex(SHA.sha256(read(joinpath(@__DIR__,"device_cellular_protocol.jl")))) : nothing)

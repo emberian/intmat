@@ -3,7 +3,7 @@ using Interior, Random
 using Interior: JSON3
 isdefined(Interior,:DeviceCellular) || Base.include(Interior,joinpath(@__DIR__,"..","src","device_cellular.jl"))
 # Refuse to archive a different repository revision than the loaded process.
-for (role,file) in ((:model,"device_cellular.jl"),(:support,"device_cellular_support.jl"),(:initialization,"device_cellular_initialization.jl"),(:founder_initialization,"cellular_initialization.jl"),(:kernels,"device_cellular_kernels.jl"),(:checkpoint,"device_cellular_checkpoint.jl"),(:protocol,"device_cellular_protocol.jl"))
+for (role,file) in ((:model,"device_cellular.jl"),(:support,"device_cellular_support.jl"),(:initialization,"device_cellular_initialization.jl"),(:founder_initialization,"cellular_initialization.jl"),(:resource,"device_resource_exchange.jl"),(:kernels,"device_cellular_kernels.jl"),(:checkpoint,"device_cellular_checkpoint.jl"),(:protocol,"device_cellular_protocol.jl"))
     path=joinpath(@__DIR__,"..","src",file)
     actual=isfile(path) ? bytes2hex(Interior.SHA.sha256(read(path))) : nothing
     hasproperty(Interior.DEVICE_CELLULAR_SOURCE_PIN,role) && getproperty(Interior.DEVICE_CELLULAR_SOURCE_PIN,role)==actual ||

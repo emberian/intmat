@@ -88,3 +88,25 @@ This is active construction and replication, not evidence of long-term evolution
 Raw samples, per-world audits, hashes and backend details are recorded in
 `benchmarks/2026-10-15-constructive-world-batches.json`; the frozen source and
 native log are retained under `outputs/world-batches-20261015/constructive-gpu-v1`.
+
+## Shared resource-reduction adaptation
+
+The current experimental adapter also packs the production typed
+`DeviceResourceWorkspace`: grants and every compensated reduction level have a
+separate final world axis. The shared `device_resource_phase!` still owns the
+schedule and arithmetic. Private kernel wrappers project each world's grants,
+partials and status; one writer per species per world updates its ledger.
+Scratch is reconstructed on restore and never serialized as physical inventory.
+Backing arrays are checked for aliasing against each other and all packed process
+state, rather than trusting wrapper identity. Slice tests write distinct markers
+through each world view and check isolation and nonoverlapping offsets.
+
+This adaptation changes the authoritative resource source hash. The earlier AMD
+throughput numbers above refer to its retained v1 pin; they are not a measurement
+of the new resource-reduction composition.
+
+The shared-resource adapter passed 246 CPU assertions: 229 whole-composition and
+protocol regressions, 11 backing-storage/slice checks and six multi-level 3D
+checks. These include closed and fed inventories, failed-world isolation and
+healthy-member checkpoint recovery. A fresh native gate remains to be scheduled
+for this source version.

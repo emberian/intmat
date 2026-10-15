@@ -87,3 +87,18 @@ end
     @test snapshot.environment.status==[0]
     @test_throws BoundsError cellular_world_batch_snapshot(p,3)
 end
+
+@testset "Resource reduction workspace has disjoint world slices" begin
+    fixtures=[batch_fixture(.1i) for i in 1:3]
+    batch=CellularWorldBatch(last.(fixtures));work=Interior.device_resource_workspace(batch)
+    @test batch_resource_validate(batch)
+    arrays=(work.grants,(a for level in work.levels for a in (level.high,level.low))...)
+    for a in arrays
+        @test size(a.storage)==(size(a)...,3)
+        for world in 1:3;fill!(batch_world(a,world),Float32(world));end
+        @test all(all(==(Float32(world)),Array(batch_world(a,world))) for world in 1:3)
+        @test all(batch_world(a,i).offset+length(a)<=batch_world(a,i+1).offset for i in 1:2)
+        fill!(a.storage,0)
+    end
+    @test all(!Base.mightalias(a.storage,b.storage) for (i,a) in enumerate(arrays) for b in arrays[1:i-1])
+end

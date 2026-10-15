@@ -226,6 +226,10 @@ function validate(w::World,p::DeviceConstructiveEcology)
     h.cells===c && o.cells===c && h.arrays===o.arrays && h.feedstock===o.feedstock && h.parameters===o.parameters && h.argument===o.argument ||
         throw(ArgumentError("device habitat ownership/roles were replaced"))
     map(size,h.arrays)==o.array_shapes && map(size,h.feedstock.arrays)==o.feed_shapes || throw(ArgumentError("device habitat array shapes changed"))
+    # The same scratch is leased sequentially by food and feedstock exchange.
+    # Only feed diffusion scratch may overlap grants; catalysts, bound material,
+    # masks, fields and all other owned habitat roles must stay disjoint.
+    device_resource_workspace_nonalias(device_resource_workspace(c),h.arrays,h.feedstock.arrays;allowed_transients=(:scratch,))
     device_cellular_validate(w,c);device_cellular_status!(c);nothing
 end
 function stability_limit(w,p::DeviceConstructiveEcology)
@@ -247,9 +251,7 @@ process_ports(::DeviceConstructiveEcology)=ProcessPorts(reads=(:resources,:feeds
 device_anabolic_argument(h::DeviceCatalyticHabitat)=h.argument
 function device_anabolic_begin!(h::DeviceCatalyticHabitat,w,p,dt)
     f=h.feedstock;g=p.geometry;V=prod(Int.(g.dims))
-    device_cellular_launch!(p,dc_resource_quota!,f.argument,f.parameters,dt;ndrange=3)
-    device_cellular_launch!(p,dc_resource_exchange!,f.argument,f.parameters,g,dt;ndrange=(V,3))
-    device_cellular_launch!(p,dc_resource_finish!,f.argument;ndrange=3)
+    device_resource_phase!(p,f.argument,f.parameters,g,dt)
     device_cellular_launch!(p,dc_diffuse!,f.argument,f.parameters,g,dt;ndrange=(V,3))
     device_cellular_launch!(p,dc_commit_resources!,f.argument;ndrange=(V,3))
     nothing

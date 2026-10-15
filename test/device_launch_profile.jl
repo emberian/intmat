@@ -8,7 +8,7 @@ isdefined(Main,:device_habitat_3d_fixture) || include(joinpath(@__DIR__,"..","sc
         hook=coupled ? p.habitat : nothing;reference_hook=coupled ? reference.habitat : nothing
         before=Interior.device_habitat_snapshot(p)
         plan=Interior.device_profile_plan(w,p.cells,.001;anabolism=hook)
-        @test length(plan)==(coupled ? 122 : 112)
+        @test length(plan)==(coupled ? 122 : 112)+(coupled ? 2 : 1)*length(p.cells.ownership.stages.resource.levels)
         @test Interior.device_habitat_snapshot(p)==before
         @test p.cells.attempted_steps==0 && w.time==0
         recorded=Int[];waits=Ref(0);count=2length(plan)
@@ -51,6 +51,6 @@ end
     Interior.device_cellular_step!(wr,reference.cells,.001;check_status=false,anabolism=reference.habitat)
     @test Interior.device_habitat_snapshot(p;check_status=false)==Interior.device_habitat_snapshot(reference;check_status=false)
     @test p.cells.environment.metadata[6]==0 && p.cells.attempted_steps==1 && w.time==0
-    @test length(Interior.device_profile_finish(observer).samples)==122
+    @test length(Interior.device_profile_finish(observer).samples)==length(plan)
     @test_throws ArgumentError Interior.device_habitat_checkpoint(w,p)
 end
