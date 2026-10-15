@@ -210,7 +210,7 @@ end
         end
         s.inputs[i,base+9]=s.metabolites[i,1]/max(s.mass[i]*q.store_capacity,eps(Float32))
         s.inputs[i,base+10]=s.metabolites[i,2]/max(s.mass[i]*q.store_capacity,eps(Float32))
-        s.inputs[i,base+11]=dc_squash(s.energy[i]/max(s.mass[i],eps(Float32)))
+        s.inputs[i,base+11]=dc_squash(Float32(s.energy[i])/max(s.mass[i],eps(Float32)))
         s.inputs[i,base+12]=dc_squash(s.mass[i]/q.division_mass)
         s.inputs[i,base+13]=Float32(degree)/max(1,g.degree);s.inputs[i,base+14]=dc_squash(tension)
         s.inputs[i,base+15]=dc_squash(pressure);s.inputs[i,base+19]=dc_squash(s.age[i]/20f0);s.inputs[i,base+20]=1
@@ -320,6 +320,39 @@ end
     end
     end
 end
+# Legacy Float32 operations remain unchanged. Wider batteries record actual endpoints.
+@inline dc_energy_take(energy::Float32,request)=(energy-min(energy,request),min(energy,request))
+@inline function dc_energy_take(energy::Float64,request)
+    after=max(0.0,energy-Float64(request))
+    after,energy-after
+end
+@inline function dc_energy_overflow(energy::Float32,capacity)
+    overflow=max(0f0,energy-capacity)
+    energy-overflow,overflow
+end
+@inline function dc_energy_overflow(energy::Float64,capacity)
+    after=min(energy,Float64(capacity))
+    after,energy-after
+end
+@inline dc_energy_control(energy)=Float32(energy)
+@inline dc_energy_credit(energy::Float32,released,efficiency)=(energy+efficiency*released,(1f0-efficiency)*released)
+@inline function dc_energy_credit(energy::Float64,released,efficiency)
+    after=energy+Float64(efficiency*released)
+    after-energy>Float64(released) && (after=prevfloat(after))
+    after,Float64(released)-(after-energy)
+end
+@inline function device_anabolic_build!(::Nothing,i,a,b,mass,energy::Float64,growth_request,growth_work,potential_a,potential_b)
+    build=min(2f0*min(a,b),growth_request)
+    growth_work>0 && (build=min(build,Float32(energy/Float64(growth_work))))
+    for _ in 1:4
+        Float64(build*growth_work)<=energy && break
+        build=max(0f0,prevfloat(build))
+    end
+    Float64(build*growth_work)>energy && (build=0f0)
+    a-=build*.5f0;b-=build*.5f0;mass+=build
+    energy,work=dc_energy_take(energy,build*growth_work)
+    (a,b,mass,energy,work,build*.5f0*(potential_a+potential_b),build)
+end
 @inline device_anabolic_planned_work(planned,::Nothing,i)=planned
 @inline function device_anabolic_build!(::Nothing,i,a,b,mass,energy,growth_request,growth_work,potential_a,potential_b)
     build=min(2f0*min(a,b),growth_request)
@@ -339,18 +372,18 @@ end
             for d in 1:Int(g.nd);motor+=s.actions[i,d]^2;end
             planned=dt*((q.basal_rate+q.growth_work*q.growth_rate*s.enzymes[i,3])*mass+q.neural_cost*g.hidden+q.motor_cost*q.speed^2*motor)
             planned=device_anabolic_planned_work(planned,anabolism,i)
-            demand=max(0f0,reserve+planned-energy)
+            demand=max(0f0,reserve+planned-dc_energy_control(energy))
             fuel=stock>0 && q.efficiency*potential>0 ? demand*stock/(q.efficiency*potential) : 0f0
             oxidize=min(stock,dt*q.catabolic_rate*mass*s.enzymes[i,4],fuel)
             if oxidize>0
                 da=oxidize*a/stock;db=oxidize*b/stock;a-=da;b-=db
-                released=da*q.potentials[1]+db*q.potentials[2];energy+=q.efficiency*released
-                dc_ledger_add!(s.ledger,s.ledger_low,i,2,(1f0-q.efficiency)*released);dc_ledger_add!(s.ledger,s.ledger_low,i,7,oxidize);s.waste[i]+=oxidize
+                released=da*q.potentials[1]+db*q.potentials[2];energy,respiration_heat=dc_energy_credit(energy,released,q.efficiency)
+                dc_ledger_add!(s.ledger,s.ledger_low,i,2,respiration_heat);dc_ledger_add!(s.ledger,s.ledger_low,i,7,oxidize);s.waste[i]+=oxidize
             end
             maintenance=dt*(q.basal_rate*mass+q.neural_cost*g.hidden);paid=min(energy,maintenance)
-            energy-=paid;dc_ledger_add!(s.ledger,s.ledger_low,i,1,paid)
+            energy,paid=dc_energy_take(energy,maintenance);dc_ledger_add!(s.ledger,s.ledger_low,i,1,paid)
             if paid<maintenance
-                lost=min(mass,dt*q.starvation_rate*mass*(1f0-paid/maintenance));mass-=lost;s.waste[i]+=lost;dc_ledger_add!(s.ledger,s.ledger_low,i,8,lost)
+                lost=min(mass,dt*q.starvation_rate*mass*(1f0-Float32(paid/maintenance)));mass-=lost;s.waste[i]+=lost;dc_ledger_add!(s.ledger,s.ledger_low,i,8,lost)
             end
             stock=a+b;excess=max(0f0,stock-q.store_capacity*mass)
             if excess>0
@@ -360,7 +393,7 @@ end
             growth_request=dt*q.growth_rate*mass*s.enzymes[i,3]
             a,b,mass,energy,work,heat,build=device_anabolic_build!(anabolism,i,a,b,mass,energy,growth_request,q.growth_work,q.potentials[1],q.potentials[2])
             dc_ledger_add!(s.ledger,s.ledger_low,i,1,work);dc_ledger_add!(s.ledger,s.ledger_low,i,2,heat);dc_ledger_add!(s.ledger,s.ledger_low,i,6,build)
-            overflow=max(0f0,energy-q.energy_capacity*mass);energy-=overflow;dc_ledger_add!(s.ledger,s.ledger_low,i,2,overflow);s.age[i]+=dt
+            energy,overflow=dc_energy_overflow(energy,q.energy_capacity*mass);dc_ledger_add!(s.ledger,s.ledger_low,i,2,overflow);s.age[i]+=dt
             if mass<q.minimum_mass
                 s.waste[i]+=mass+a+b;dc_ledger_add!(s.ledger,s.ledger_low,i,2,a*q.potentials[1]+b*q.potentials[2]+energy)
                 s.active[i]=0;mass=0;a=0;b=0;energy=0
@@ -452,7 +485,15 @@ end
             denominator=linear+sqrt(linear^2+4f0*quadratic*s.energy[i])
             factor=denominator>0 ? min(1f0,2f0*s.energy[i]/denominator) : 0f0
         end
-        paid=min(s.energy[i],linear*factor+quadratic*factor^2);s.energy[i]-=paid;dc_ledger_add!(s.ledger,s.ledger_low,i,1,paid)
+        factor=Float32(factor)
+        if eltype(s.energy)===Float64
+            for _ in 1:4
+                linear*factor+quadratic*factor^2<=s.energy[i] && break
+                factor=max(0f0,prevfloat(factor))
+            end
+            linear*factor+quadratic*factor^2>s.energy[i] && (KernelAbstractions.@atomic e.status[1]|=Int32(8))
+        end
+        s.energy[i],paid=dc_energy_take(s.energy[i],linear*factor+quadratic*factor^2);dc_ledger_add!(s.ledger,s.ledger_low,i,1,paid)
         for d in 1:Int(g.nd)
             s.position_next[i,d]=dc_wrap(s.position[i,d]+dt*(s.force[i,d]+factor*q.speed*s.actions[i,d]),g.extent[d])
         end
@@ -659,6 +700,12 @@ end
     correction=lo+error;next=sum+correction
     next,correction-(next-sum)
 end
+@inline function dc_ledger_add!(ledger,ledger_low,i,k,amount::Float64)
+    high=Float32(amount);low=Float32(amount-Float64(high))
+    dc_ledger_add!(ledger,ledger_low,i,k,high)
+    dc_ledger_add!(ledger,ledger_low,i,k,low)
+    nothing
+end
 @inline function dc_ledger_add!(ledger,ledger_low,i,k,amount)
     hi,lo=dc_pair_add(ledger[i,k],ledger_low[i,k],amount)
     ledger[i,k]=hi;ledger_low[i,k]=lo
@@ -738,13 +785,13 @@ end
         KernelAbstractions.@atomic e.observation[9]+=s.ledger[i,7]+s.ledger_low[i,7]
         if s.active[i]==1
             material=s.mass[i]+s.metabolites[i,1]+s.metabolites[i,2]
-            potential=s.energy[i]+s.metabolites[i,1]*q.potentials[1]+s.metabolites[i,2]*q.potentials[2]
+            potential=Float32(s.energy[i])+s.metabolites[i,1]*q.potentials[1]+s.metabolites[i,2]*q.potentials[2]
             KernelAbstractions.@atomic e.observation[3]+=material
             KernelAbstractions.@atomic e.observation[4]+=potential
             bonds=0f0
             for b in 1:Int(g.degree);dc_bond_valid(s,i,b) && i<s.bonds[i,b] && (bonds+=1f0);end
             KernelAbstractions.@atomic e.observation[7]+=bonds
-            KernelAbstractions.@atomic min(e.observation_min[2],reinterpret(Int32,s.energy[i]))
+            KernelAbstractions.@atomic min(e.observation_min[2],reinterpret(Int32,Float32(s.energy[i])))
             !(isfinite(material)&&isfinite(potential)) && (KernelAbstractions.@atomic e.observation[10]+=1f0)
         end
     end

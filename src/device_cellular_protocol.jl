@@ -33,7 +33,7 @@ end
 process_ports(::DeviceCellular)=ProcessPorts(owned=(:state,:environment),
     drives="explicit finite sources and sinks in an independent three-species device pool",
     memory="device-resident development, genomes, bodies, contact graph and compensated ledgers",
-    law="Float32 capacity-major cellular physiology; synchronous donor-limited junctions, mutual bonds and checked mechanical substeps")
+    law="Float32 capacity-major cellular physiology with explicitly selectable Float32/Float64 battery storage; synchronous donor-limited junctions, mutual bonds and checked mechanical substeps")
 
 """Full detached observation with explicit array-role names; not a restart payload.
 Use device_cellular_checkpoint/device_cellular_restore for source-pinned restart.

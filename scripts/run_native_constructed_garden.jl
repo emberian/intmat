@@ -14,6 +14,7 @@ function garden_frame!(path,w,p,buffer,side)
     select(a)=Array(a)[active,:]
     frame=(schema="interior-native-constructive-frame",version=1,time=w.time,step=c.attempted_steps,
         completed_steps=c.attempted_steps,trace_ids=Array(c.state.ids)[active],
+        energy_storage_type=string(eltype(c.state.energy)),
         extent=c.geometry.extent,shape=(side,side,side),native_shape=c.geometry.dims,
         field_names=(:free_a,:free_b,:raw_a,:raw_b,:enzyme_a,:enzyme_b,:bound_a,:bound_b,:permeability),
         field_units="concentration except dimensionless permeability; exact native voxel values or explicit block means",
@@ -59,13 +60,14 @@ function main(profile,output;resume=nothing)
     manifest=Dict{String,Any}("kind"=>resume===nothing ? "fresh native constructive ecology" : "strict native checkpoint continuation",
         "complete"=>false,"config"=>cfg,"funding"=>funding,"source"=>Interior.DEVICE_CELLULAR_SOURCE_PIN,
         "habitat_source"=>Interior.DEVICE_HABITAT_SOURCE_PIN,"runtime"=>device_cellular_runtime(),
+        "energy_storage_type"=>string(eltype(p.cells.state.energy)),
         "loaded_project_sources"=>Interior.arena_sources(),"source_commit"=>get(ENV,"DEVICE_SOURCE_COMMIT","unspecified"),
         "driver_sha256"=>hashfile(@__FILE__),"fixture_sha256"=>hashfile(joinpath(@__DIR__,"native_constructed_garden.jl")),
         "capture_helper_sha256"=>hashfile(joinpath(@__DIR__,"device_habitat_capture.jl")),"profile_sha256"=>hashfile(profile),
         "parent_checkpoint"=>resume===nothing ? nothing : Dict("sha256"=>hashfile(resume),"file"=>basename(resume)),
         "initial"=>initial,"initial_step"=>initialstep,"initial_time"=>initialtime,"resident_array_bytes"=>bytes,
         "deadline_unix"=>deadline,"construction_seconds"=>construction,"frames"=>frames,"checkpoints"=>archives,
-        "limits"=>"explicit native Float32 law; fixed checked contact substeps and native junction/bond rules; no CPU MatrixDrag; snapshots are actual states, no interpolation; sampled per-cell secretion is last physical step")
+        "limits"=>"explicit native Float32 fields, geometry and controller with separately declared cellular energy precision; fixed checked contact substeps and native junction/bond rules; no CPU MatrixDrag; snapshots are actual states, no interpolation; sampled per-cell secretion is last physical step")
     write_manifest()=open(io->JSON3.pretty(io,manifest),joinpath(output,"run.json"),"w")
     diskbytes()=sum(filesize(joinpath(root,name)) for (root,_,files) in walkdir(output) for name in files;init=0)
     function accounting(audit)

@@ -18,7 +18,7 @@ function device_cellular_checkpoint(w::World,p::DeviceCellular)
     device_cellular_validate(w,p)
     snapshot=device_cellular_snapshot(p)
     snapshot.attempted_steps==snapshot.environment.metadata[6] || throw(ArgumentError("checkpoint requires a complete step boundary"))
-    (format="Interior.DeviceCellular",version=2,julia_version=VERSION,source=DEVICE_CELLULAR_SOURCE_PIN,
+    (format="Interior.DeviceCellular",version=3,julia_version=VERSION,source=DEVICE_CELLULAR_SOURCE_PIN,
         world_time=w.time,world_seed=w.seed,controller_contract=(sensors=CELLULAR_SENSORS,actions=CELLULAR_ACTIONS),snapshot=snapshot)
 end
 """Restore a complete checkpoint onto the selected World backend.
@@ -28,11 +28,13 @@ must have the same grid and zero unrelated nutrient. It does not reinterpret a
 CellularEcology snapshot or resume a failed partial step.
 """
 function device_cellular_restore(w::World,checkpoint)
-    checkpoint.format=="Interior.DeviceCellular" && checkpoint.version==2 || throw(ArgumentError("unsupported device checkpoint"))
+    checkpoint.format=="Interior.DeviceCellular" && checkpoint.version==3 || throw(ArgumentError("unsupported device checkpoint"))
     checkpoint.julia_version==VERSION || throw(ArgumentError("checkpoint Julia version differs"))
     checkpoint.source==DEVICE_CELLULAR_SOURCE_PIN || throw(ArgumentError("checkpoint source pin differs from this runtime"))
     checkpoint.controller_contract==(sensors=CELLULAR_SENSORS,actions=CELLULAR_ACTIONS) || throw(ArgumentError("checkpoint controller layout differs"))
     x=checkpoint.snapshot;g=x.geometry;q=x.parameters
+    all(x->isfinite(Float32(x)),x.state.energy) || throw(ArgumentError("checkpoint battery exceeds Float32 controller range"))
+    g.energy_bits in (32,64) && eltype(x.state.energy)==(g.energy_bits==64 ? Float64 : Float32) || throw(ArgumentError("checkpoint energy precision mismatch"))
     w.grid.size==Tuple(Int.(g.dims)) && w.grid.extent==g.extent || throw(ArgumentError("checkpoint grid mismatch"))
     g.spacing==w.grid.spacing && g.nd==(w.grid.size[3]==1 ? 2 : 3) &&
         g.volume==prod(w.grid.spacing[d] for d in 1:Int(g.nd)) || throw(ArgumentError("checkpoint metric differs from grid"))
@@ -58,7 +60,7 @@ function device_cellular_restore(w::World,checkpoint)
     length(active)==x.environment.metadata[2] && length(unique(x.state.ids[active]))==length(active) &&
         all(id->0<id<x.environment.metadata[1],x.state.ids[active]) || throw(ArgumentError("invalid checkpoint identities"))
     state,env=device_cellular_arrays(w.backend,C,h,K,S,V,Int.(g.bins);
-        support_strategy=g.support_strategy==1 ? :axis : :materialized,axis_capacity=maximum(Int.(g.candidates)))
+        support_strategy=g.support_strategy==1 ? :axis : :materialized,axis_capacity=maximum(Int.(g.candidates)),energy_type=g.energy_bits==64 ? Float64 : Float32)
     for (target,source) in ((state,x.state),(env,x.environment))
         keys(target)==keys(source) || throw(ArgumentError("checkpoint array roles differ"))
         for key in keys(target)

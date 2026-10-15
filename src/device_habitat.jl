@@ -64,6 +64,11 @@ end
 end
 # Withdraw at least the exact delivered amount; any extra representable donor
 # debit becomes explicitly owned inert mass (or heat for an energy debit).
+@inline function dh_take_up(before::Float64,amount::Float64)
+    after=max(0.0,before-amount)
+    before-after<amount && after>0 && (after=prevfloat(after))
+    after,before-after
+end
 @inline function dh_take_up(before::Float32,amount::Float64)
     after=Float32(max(0.,Float64(before)-amount))
     Float64(before)-Float64(after)<amount && after>0 && (after=prevfloat(after))

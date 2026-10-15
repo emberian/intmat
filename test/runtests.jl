@@ -69,3 +69,7 @@ module DeviceResourceTests
 include("device_resource_exchange.jl")
 include("device_resource_aliases.jl")
 end
+
+module DeviceEnergyTests
+include("device_energy_audit.jl")
+end

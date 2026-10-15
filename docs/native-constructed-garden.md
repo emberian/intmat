@@ -55,8 +55,15 @@ reward is added.
 
 ## Native law and controls
 
-This is the explicit native Float32 law, with conservative Float64 local transfer
-calculations on AMD. It is not a bitwise CPU continuation. Native junction
+Fields, bodies, geometry and controller calculations use the explicit native
+Float32 law, with conservative Float64 local transfer calculations on AMD.
+This new recipe explicitly selects **Float64 cellular energy accounts**: small
+affordable motor costs accumulate in the battery rather than disappearing below
+its Float32 resolution. There is no imposed minimum action cost. The setting is
+part of the source-pinned checkpoint law and is unsupported on Metal; the
+factory's default remains Float32 for recipes that omit it. Full frames and
+checkpoints retain the battery type, while detached optical exports use Float32
+energy values for display. It is not a bitwise CPU continuation. Native junction
 exchange is synchronous and donor-limited; contacts use mutual degree-limited
 proposals; mechanics uses 16 fixed, checked substeps and conservatively funded
 motor work, rather than the CPU adaptive contact integrator. CPU-only

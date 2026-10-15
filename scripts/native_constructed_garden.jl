@@ -2,6 +2,9 @@
 using TOML
 function native_constructed_garden(backend,cfg)
     haskey(cfg,"matrix_mechanics") && error("CPU MatrixDrag is not implemented by this native recipe")
+    precision=get(cfg["native"],"energy_type","Float32")
+    precision in ("Float32","Float64") || throw(ArgumentError("native.energy_type must be Float32 or Float64"))
+    energy_type=precision=="Float64" ? Float64 : Float32
     shape=Tuple(Int.(cfg["grid"]["shape"]));extent=Tuple(Float64.(cfg["grid"]["extent"]))
     length(shape)==3 && all(>(0),shape) && all(>(0),extent) || error("positive3D grid required")
     all(==(shape[1]),shape) || error("observation helper currently requires a cubic grid")
@@ -41,7 +44,7 @@ function native_constructed_garden(backend,cfg)
     matrix=SorptiveMatrix(cpu,habitat;Dict(Symbol(k)=>v for (k,v) in cfg["matrix"])...)
     q=cfg["native"];w=World(grid,backend,NamedTuple(),NamedTuple(),0.,seed)
     device=DeviceCellular(w,cells;capacity,support_strategy=Symbol(q["support_strategy"]),
-        mechanical_substeps=Int(q["mechanical_substeps"]),radius_bound=q["radius_bound"],bin_width=q["bin_width"])
+        mechanical_substeps=Int(q["mechanical_substeps"]),radius_bound=q["radius_bound"],bin_width=q["bin_width"],energy_type)
     p=DeviceConstructiveEcology(w,device,habitat;matrix)
     dt=Float32(q["dt"]);0<dt<=Interior.stability_limit(w,p) || error("submitted Float32 dt exceeds coupled limit")
     # Waste and residue are counted too: this deliberately loose bound cannot

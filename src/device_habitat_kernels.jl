@@ -34,7 +34,7 @@ end
                 input=col<=h ? s.hidden[i,col] : j==1 ? env1 : j==2 ? env2 : j==3 ? enzyme1 : j==4 ? enzyme2 :
                     j==5 ? s.metabolites[i,1]/max(s.mass[i]*cq.store_capacity,eps(Float32)) :
                     j==6 ? s.metabolites[i,2]/max(s.mass[i]*cq.store_capacity,eps(Float32)) :
-                    j==7 ? s.energy[i]/(s.mass[i]+s.energy[i]) : j==8 ? s.mass[i]/(cq.division_mass+s.mass[i]) :
+                    j==7 ? Float32(s.energy[i])/(s.mass[i]+Float32(s.energy[i])) : j==8 ? s.mass[i]/(cq.division_mass+s.mass[i]) :
                     j==9 ? s.age[i]/(20f0+s.age[i]) : 1f0
                 x+=a.weights[i,col,1]*input;y+=a.weights[i,col,2]*input;z+=a.weights[i,col,3]*input
             end

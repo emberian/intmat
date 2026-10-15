@@ -1,6 +1,6 @@
 """Experimental capacity-major cellular execution on a KA backend.
 
-This is an explicit Float32 backend, not bit-identical CPU CellularEcology.
+This uses Float32 physiology with opt-in Float64 battery storage on CPU/AMD; it is not bit-identical CPU CellularEcology.
 Its physiology/controller contracts are shared; junctions use synchronous donor
 limiting, bonds use mutual bounded-degree proposals, and mechanics uses checked
 fixed substeps with conservatively funded motors. Cell state, genomes, resource
@@ -18,11 +18,17 @@ end
 isdefined(@__MODULE__,:cellular_parameters) || include("cellular_initialization.jl")
 include("device_cellular_support.jl")
 
-function device_cellular_arrays(backend,C,h,K,S,V,bins;support_strategy=:materialized,axis_capacity=0)
+function device_energy_type(backend,energy_type)
+    energy_type in (Float32,Float64) || throw(ArgumentError("energy_type must be Float32 or Float64"))
+    energy_type===Float64 && occursin("Metal",string(typeof(backend))) && throw(ArgumentError("Float64 energy is unsupported on Metal"))
+    energy_type
+end
+function device_cellular_arrays(backend,C,h,K,S,V,bins;support_strategy=:materialized,axis_capacity=0,energy_type=Float32)
+    device_energy_type(backend,energy_type)
     z(T,d...)=KernelAbstractions.zeros(backend,T,d...)
     state=(active=z(Int32,C),ids=z(Int32,C),parents=z(Int32,C),lineages=z(Int32,C),generations=z(Int32,C),
         position=z(Float32,C,3),position_next=z(Float32,C,3),mass=z(Float32,C),metabolites=z(Float32,C,2),
-        metabolites_next=z(Float32,C,2),energy=z(Float32,C),age=z(Float32,C),
+        metabolites_next=z(Float32,C,2),energy=z(energy_type,C),age=z(Float32,C),
         hidden=z(Float32,C,h),adaptation=z(Float32,C,h),weights=z(Float32,C,2h+CELLULAR_SENSORS,h+CELLULAR_ACTIONS),
         marks=z(Float32,C,2h+CELLULAR_SENSORS,h+CELLULAR_ACTIONS),actions=z(Float32,C,CELLULAR_ACTIONS),
         inputs=z(Float32,C,2h+CELLULAR_SENSORS),outputs=z(Float32,C,h+CELLULAR_ACTIONS),
@@ -49,7 +55,8 @@ function device_cellular_arrays(backend,C,h,K,S,V,bins;support_strategy=:materia
 end
 DeviceCellular(w::World,reference::CellularEcology;kwargs...)=device_cellular_import(w,reference;kwargs...)
 function device_cellular_import(w::World,reference;capacity=reference.capacity,
-        radius_bound=2f0,bin_width=radius_bound/2,mechanical_substeps=16,seed=reference.seed,support_strategy=:materialized)
+        radius_bound=2f0,bin_width=radius_bound/2,mechanical_substeps=16,seed=reference.seed,support_strategy=:materialized,energy_type=Float32)
+    device_energy_type(w.backend,energy_type)
     support_strategy in (:materialized,:axis) || throw(ArgumentError("unknown device support strategy"))
     reference.medium===nothing && reference.resources.medium===nothing || throw(ArgumentError("imported device medium coupling is not implemented; construct the explicit device composition"))
     all(x->length(x)==3,(reference.resources.fields,reference.resources.potentials,reference.resources.diffusion,reference.resources.source_rates,reference.resources.sink_rates,reference.resources.source_masks,reference.resources.sink_masks,reference.resources.source_remaining,reference.resources.sink_remaining)) && reference.resources.potentials[3]==0 || throw(ArgumentError("device cells require two precursors and one zero-potential waste species"))
@@ -81,8 +88,8 @@ function device_cellular_import(w::World,reference;capacity=reference.capacity,
     all(>(0),(q.exchange_radius,q.density,q.store_capacity,q.energy_capacity,q.half_saturation,q.response_time,q.adaptation_time,q.motor_cost,q.minimum_mass,q.division_mass)) || throw(ArgumentError("required rates/scales must remain positive in Float32"))
     geom=(dims=Int32.(dims),spacing=spacing,extent=w.grid.extent,nd=Int32(nd),volume=volume,
         candidates=Int32.(candidates),bins=Int32.(bins),capacity=Int32(C),hidden=Int32(h),degree=Int32(K),
-        support_strategy=support_strategy===:axis ? Int32(1) : Int32(0),support_radius2=exchange_radius^2)
-    state,env=device_cellular_arrays(w.backend,C,h,K,S,V,bins;support_strategy,axis_capacity=maximum(candidates))
+        support_strategy=support_strategy===:axis ? Int32(1) : Int32(0),support_radius2=exchange_radius^2,energy_bits=Int32(8sizeof(energy_type)))
+    state,env=device_cellular_arrays(w.backend,C,h,K,S,V,bins;support_strategy,axis_capacity=maximum(candidates),energy_type)
     # Device buffers are already zeroed; stage founders only, never a full-capacity host replica.
     host=map(a->zeros(eltype(a),n,Base.tail(size(a))...),state)
     host.active[1:n].=1;host.ids[1:n].=Int32.(reference.ids);host.parents[1:n].=Int32.(reference.parents)
@@ -91,7 +98,7 @@ function device_cellular_import(w::World,reference;capacity=reference.capacity,
         getproperty(host,dst)[1:n,:].=Float32.(permutedims(getproperty(reference,src)))
     end
     for (dst,src) in ((:mass,:biomass),(:energy,:energy),(:age,:age))
-        getproperty(host,dst)[1:n].=Float32.(getproperty(reference,src))
+        getproperty(host,dst)[1:n].=eltype(getproperty(host,dst)).(getproperty(reference,src))
     end
     host.weights[1:n,:,:].=permutedims(reference.weights,(3,2,1))
     host.marks[1:n,:,:].=permutedims(reference.plastic_marks,(3,2,1))
@@ -107,6 +114,7 @@ function device_cellular_import(w::World,reference;capacity=reference.capacity,
     for value in values(host)
         eltype(value)<:AbstractFloat && !all(isfinite,value) && throw(ArgumentError("reference state must remain finite in Float32"))
     end
+    all(x->isfinite(Float32(x)),host.energy) || throw(ArgumentError("battery must remain representable in Float32 controller observations"))
     all(>(0),host.mass[1:n]) && all(>=(0),host.metabolites) && all(>=(0),host.energy) && all(>=(0),host.age) || throw(ArgumentError("reference physiological state must remain valid after Float32 conversion"))
     0<=q.efficiency<=1 && 0<=q.mutation_probability<=1 || throw(ArgumentError("invalid device probability/efficiency"))
     for name in keys(state)
