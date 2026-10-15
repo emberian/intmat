@@ -72,6 +72,8 @@ def main():
     if cellular.exists():shutil.copytree(cellular, destination / 'cellular', dirs_exist_ok=True)
     recurrent = REPO / 'site' / 'recurrent'
     if recurrent.exists():shutil.copytree(recurrent, destination / 'recurrent', dirs_exist_ok=True)
+    constructed = REPO / 'site' / 'constructed'
+    if constructed.exists():shutil.copytree(constructed, destination / 'constructed', dirs_exist_ok=True)
     animations = REPO / 'site' / 'animations'
     films = sorted(animations.glob('*/film.json')) if animations.exists() else []
     if films:
@@ -91,6 +93,7 @@ def main():
     if recurrent.exists():text = text.replace('</header>', '<a class="primary" href="recurrent/">Recurrent matter · rhythms &amp; memory ↗</a></header>')
     if films:text = text.replace('</header>', '<a class="primary" href="animations/">Material films ↗</a></header>')
     if cellular.exists():text = text.replace('</header>', '<a class="primary" href="cellular/">Living cells · motion &amp; material ↗</a></header>')
+    if constructed.exists():text = text.replace('</header>', '<a class="primary" href="constructed/">Constructed life · cells &amp; shared material ↗</a></header>')
     text = text.replace('</header>', '<a href="https://github.com/emberian/intmat/blob/dev/docs/alife-adaptation-results.md">Alife results ↗</a></header>')
     index.write_text(text)
     for file in destination.rglob('*'):

@@ -1,0 +1,66 @@
+{
+  "title": "Kept, released, remade.",
+  "family": "ecology",
+  "subtitle": "Two recordings \u00b7 actual 2D states",
+  "description": "Catalyst and retained food surround physical cells with persistent bonds. Watch two completed constructive ecologies, select any recorded cell, and compare its neural state with paid material and work flows.",
+  "viewer": "index.html",
+  "viewer_label": "Open recorded motion",
+  "viewer_context": "Recorded motion + cell inspection",
+  "image_caption": "Actual planar state \u00b7 seed 211 \u00b7 t 3064",
+  "native_shape": [
+    32,
+    32,
+    1
+  ],
+  "kind": "compact display of completed 2D recordings and exact-replay paid-flow sidecars; no altered trajectories or temporal cell interpolation",
+  "encoding": {
+    "fields": "unsigned 8-bit linear, per-field maxima shared across both recordings; lossless temporal byte differences",
+    "positions_radius_energy_capacity_biomass": "unsigned 16-bit linear",
+    "neural": "signed 8-bit linear [-1,1], max error 1/254",
+    "metabolites_and_paid_flows": "IEEE Float32, rounded from recorded Float64"
+  },
+  "runs": [
+    {
+      "seed": 211,
+      "frames": 201,
+      "start": 3000.0000447034836,
+      "end": 3100.0000461935997,
+      "sequence_sha256": "1b2ad126bea14a0d763bf8a88e133fa5844757965137e660d6f06db05ad7b5f3",
+      "paid_flow_sha256": "e2826f942da3e1151ee0efc6c761d057844a77a0a979b8ca9d4c469c11589abb",
+      "paid_flow_report_sha256": "4f79a3ba084541ef45f254d75bb7e62ed739c68d5d06c7600eef9f6af75400c8",
+      "all_physical_snapshots_exact_match": true,
+      "focus": {
+        "ids": [
+          728,
+          767
+        ],
+        "window": [
+          3061,
+          3069
+        ]
+      }
+    },
+    {
+      "seed": 307,
+      "frames": 201,
+      "start": 3000.0000447034836,
+      "end": 3100.0000461935997,
+      "sequence_sha256": "69f7100dc78bc6041c21968121b4e4072f926840a4a9a52e14416118795ac3e1",
+      "paid_flow_sha256": "baa4f25b966c34ccc9bd73c1ced919c343e9f0521523c8dd36b82bb7d3c88eef",
+      "paid_flow_report_sha256": "b267eb861de05b2a3204504e20441d9894bba5c83668334d6eeeeb286e98a6b8",
+      "all_physical_snapshots_exact_match": true,
+      "focus": {
+        "ids": [
+          917,
+          983
+        ],
+        "window": [
+          3081.5,
+          3089.5
+        ]
+      }
+    }
+  ],
+  "recording_sha256": "50b5a70dd9063c125dc1a92b2c52831eb9646170db6efc92a7db28d04aeb1945",
+  "viewer_sha256": "477b255e0514cf950ce0c8f3ade9a497e9babd24f3c788912877297969fddc22"
+}
