@@ -371,3 +371,26 @@ against incompatible fixed aliases. A reviewed native 256³ activity-contour pho
   residual+0.0384052 requires a source/accounting investigation before the
   long launch. No production history has been started or altered. A possible
   tiny motor debit / Float32 endpoint mismatch is under independent analysis.
+
+- 16:20 UTC convergence: selective Float64 batteries committed `e44b20c` repair
+  sub-ULP motor/maintenance charges while keeping Float32 material/controller
+  laws. Full immutable suite18,308/18,308 passes. Native combined gate at e44
+  plus2b25091 gate-only overlay passed10,000trend steps, endpointt10.32,N256;
+  potential residual−9.1763e−4 (5.46e−7relativeinitial), material−2.8385e−4,
+  unchanged accounting guard and exact strict final restore. Matched full-step
+  medians10.280238ms F32 /10.288087ms F64 (0.076%overhead); old noisy short-prefix
+  ratio is excluded. Production lifecycle prefix integration and packed-world
+  compatibility gates are in progress; the fresh longgarden is not yet launched.
+- The native128³ oscillatory Packing bake at immutablee2a2f16 completed64,000steps
+  to t80 plus40noninitial full captures in99.574s; controlled command119.458s,
+ 2.9215GBretained. All328fields/sourcehashes and finalcheckpoint arrays verified
+  after copy. Finite-scale3D partition changes are retained and optical pilots
+  run separately. This material has designed recurrent rules, not evolution.
+- **The shared weather** actual65-frame film is reviewed, encoded and published
+  at `b1694dd`; gallery staging126.10MB with144MBbudget. Existing stills and
+  replays retained. Hotter-film CPU lanes14–15/16–17/18–19 and Packing optical
+  pilots20–21 use independent bounded2thread/8GiB/nice15/noSwap jobs; localMetal
+  runs gardenfilm then seam. CPU8–9 is reserved for integration gates.
+- Read-only16:10soakrecord: originalbroad/mosaic t96066.5/93854.5,N217/216,zero
+  bonds; optimizedempty,t2459094.0. All live/source-valid/no failure artifacts;
+  original deadlines and immutable histories remain unchanged.

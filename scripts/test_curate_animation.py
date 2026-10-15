@@ -54,6 +54,8 @@ class AnimationPublication(unittest.TestCase):
 
     @unittest.skipUnless(shutil.which('ffmpeg') and shutil.which('ffprobe'), 'ffmpeg required')
     def test_video_roundtrip_and_budget_failure_are_atomic(self):
+        self.sequence['poster_frame_index'] = 0
+        self.approve()
         destination = self.root / 'public'
         with self.assertRaisesRegex(ValueError, 'exceeds publication budget'):
             curate(self.manifest, destination, budget_bytes=1)
@@ -64,6 +66,10 @@ class AnimationPublication(unittest.TestCase):
         self.assertEqual(data['playback']['duration_seconds'], .75)
         self.assertEqual([f['simulation_time'] for f in data['frames']], [0, .25, .5])
         self.assertEqual(data['playback']['width'], 64)
+        self.assertEqual(data['poster_frame_index'], 0)
+        from PIL import Image
+        with Image.open(target / 'poster.webp') as poster:
+            self.assertLess(poster.getpixel((32, 24))[0], 10)
         with self.assertRaisesRegex(ValueError, 'Publication exists'):
             curate(self.manifest, destination)
 

@@ -3364,5 +3364,1072 @@
     },
     "interpretation": "Numerical parity, material/capacity budget, recording and exact same-backend continuation only. CPU plumbing is not an accelerator result; this does not establish morphology or biological behavior."
   },
-  "interpretation": "Exploratory64\u00b2 packing regimes retained. Oscillatory candidate has sampled occupancy cycling and finite scales but awaits matching128\u00b2 spatial refinement; CPU gate plumbing is not GPU evidence. No modification of original5377470 native specimen."
+  "interpretation": "Exploratory64\u00b2 packing regimes retained. Oscillatory candidate has sampled occupancy cycling and finite scales but awaits matching128\u00b2 spatial refinement; CPU gate plumbing is not GPU evidence. No modification of original5377470 native specimen.",
+  "single_parameter_immobile_matrix_ablation": {
+    "format": "living-tissue-native-review-v1",
+    "id": "living-tissue-packing64-oscillatory-immobile",
+    "dimensions": [
+      64,
+      64,
+      1
+    ],
+    "extent": [
+      24,
+      24,
+      1
+    ],
+    "dt": 0.005,
+    "steps": 16000,
+    "source_sha256": {
+      "studies/living_tissue_packing.jl": "51b19bca9039dff39edf6ef1346ef3a8abad73534e95aa9e92aaeb1e98105a84",
+      "studies/living_tissue_runner.jl": "93b837249cc0d0dbdd7b6fa609a067c8710c109e3572785a1f76485081e6fdb3",
+      "studies/living_tissue.jl": "43a5e722e08963124c186147b2d15a54963292828e1c1064c2f277782a5816f0",
+      "studies/living_tissue_turnover_run.jl": "5905f8bddc0e19b6377e942c65f169b45fef1a0e826e45f8be26bf54c596897d",
+      "src/recurrent_material.jl": "e9457d0d6e31f74950fa4be8ef84b138b020c0de7fc4b95c9a7f3cd5db148347",
+      "studies/living_tissue_packing_run.jl": "090b0f4f4ed6865f4a20795de907b1f861d495c3d22adfcb0f01492812577700",
+      "studies/living_tissue_observations.jl": "f3fa17688e3fafe1bcfca5ea331e91984dab077e67fad09138e66493a3b1215c",
+      "studies/living_tissue_turnover.jl": "ca543a8a3eb6e1eb3c93cfc4e16b86f03674ab6ca9598bdf328988ac09f76617",
+      "src/core.jl": "b4302b90eaeba213360e8a15ce8b7e4cb4c491606657e3e500d2fb8507753a52"
+    },
+    "review_source_sha256": "e7128185997ed1113a3e6d2bb87be0987116ef5592252d7ee47eb3113ccc1f7a",
+    "low": 0.27,
+    "high": 0.63,
+    "convention": "Sampled native rho=B+M. A site must first be observed above high before opening below low; reformation requires an observed opening. Thresholds are concentration fractions of declared solid capacity, not mechanical cavities or organisms. Radial spectra sum fluctuation power in rounded physical wave-number shells; high-frequency fraction uses .7 of the smallest axis Nyquist.",
+    "opened_sites": 4096,
+    "reformed_sites": 4094,
+    "opening_events": 14773,
+    "reformation_events": 12747,
+    "maximum_openings_at_site": 5,
+    "spectra": [
+      {
+        "time": 0.0,
+        "excitation": {
+          "std": 0.019476911872726498,
+          "radial_peak_shell": 9,
+          "dominant_wavelength": 2.6666666666666665,
+          "fraction_beyond_point7_axis_nyquist": 4.014074832482045e-16,
+          "axis_nyquist": 8.377580409572781
+        },
+        "matrix": {
+          "std": 0.0,
+          "radial_peak_shell": 0,
+          "dominant_wavelength": null,
+          "fraction_beyond_point7_axis_nyquist": 0.0,
+          "axis_nyquist": 8.377580409572781
+        },
+        "solid": {
+          "std": 0.005114699366091501,
+          "radial_peak_shell": 6,
+          "dominant_wavelength": 4.0,
+          "fraction_beyond_point7_axis_nyquist": 1.7389922829220745e-12,
+          "axis_nyquist": 8.377580409572781
+        },
+        "biomass_quantiles": [
+          0.253246933221817,
+          0.2603008449077606,
+          0.2665140926837921
+        ],
+        "matrix_quantiles": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "time": 16.0,
+        "excitation": {
+          "std": 0.13665434115586816,
+          "radial_peak_shell": 7,
+          "dominant_wavelength": 3.428571428571429,
+          "fraction_beyond_point7_axis_nyquist": 0.0005908913288216547,
+          "axis_nyquist": 8.377580409572781
+        },
+        "matrix": {
+          "std": 0.011913396606557386,
+          "radial_peak_shell": 5,
+          "dominant_wavelength": 4.800000000000001,
+          "fraction_beyond_point7_axis_nyquist": 0.0141313587756288,
+          "axis_nyquist": 8.377580409572781
+        },
+        "solid": {
+          "std": 0.07287391254113963,
+          "radial_peak_shell": 9,
+          "dominant_wavelength": 2.6666666666666665,
+          "fraction_beyond_point7_axis_nyquist": 0.02497337616650075,
+          "axis_nyquist": 8.377580409572781
+        },
+        "biomass_quantiles": [
+          0.7827955782413483,
+          0.8946458399295807,
+          0.8999999761581421
+        ],
+        "matrix_quantiles": [
+          0.0,
+          0.002772180479951203,
+          0.026949074119329453
+        ]
+      },
+      {
+        "time": 32.0,
+        "excitation": {
+          "std": 0.2766775101844955,
+          "radial_peak_shell": 7,
+          "dominant_wavelength": 3.428571428571429,
+          "fraction_beyond_point7_axis_nyquist": 0.023936200010370126,
+          "axis_nyquist": 8.377580409572781
+        },
+        "matrix": {
+          "std": 0.06070848082872055,
+          "radial_peak_shell": 9,
+          "dominant_wavelength": 2.6666666666666665,
+          "fraction_beyond_point7_axis_nyquist": 0.04152547223665186,
+          "axis_nyquist": 8.377580409572781
+        },
+        "solid": {
+          "std": 0.3146749643354299,
+          "radial_peak_shell": 7,
+          "dominant_wavelength": 3.428571428571429,
+          "fraction_beyond_point7_axis_nyquist": 0.05687940493063868,
+          "axis_nyquist": 8.377580409572781
+        },
+        "biomass_quantiles": [
+          0.18421905487775803,
+          0.679995596408844,
+          0.8083809316158295
+        ],
+        "matrix_quantiles": [
+          0.0025324474554508924,
+          0.02246207743883133,
+          0.14587514847517014
+        ]
+      },
+      {
+        "time": 48.0,
+        "excitation": {
+          "std": 0.23121853982956678,
+          "radial_peak_shell": 10,
+          "dominant_wavelength": 2.4000000000000004,
+          "fraction_beyond_point7_axis_nyquist": 0.0665400352363106,
+          "axis_nyquist": 8.377580409572781
+        },
+        "matrix": {
+          "std": 0.05497477286356141,
+          "radial_peak_shell": 7,
+          "dominant_wavelength": 3.428571428571429,
+          "fraction_beyond_point7_axis_nyquist": 0.041110230982330506,
+          "axis_nyquist": 8.377580409572781
+        },
+        "solid": {
+          "std": 0.3140388812062211,
+          "radial_peak_shell": 7,
+          "dominant_wavelength": 3.428571428571429,
+          "fraction_beyond_point7_axis_nyquist": 0.06071132399767845,
+          "axis_nyquist": 8.377580409572781
+        },
+        "biomass_quantiles": [
+          0.15355132520198822,
+          0.44024626910686493,
+          0.7764358222484589
+        ],
+        "matrix_quantiles": [
+          0.001683911425061524,
+          0.029532738029956818,
+          0.13474036753177643
+        ]
+      },
+      {
+        "time": 64.0,
+        "excitation": {
+          "std": 0.25686836990179196,
+          "radial_peak_shell": 9,
+          "dominant_wavelength": 2.6666666666666665,
+          "fraction_beyond_point7_axis_nyquist": 0.07157715948173833,
+          "axis_nyquist": 8.377580409572781
+        },
+        "matrix": {
+          "std": 0.04512479621458983,
+          "radial_peak_shell": 8,
+          "dominant_wavelength": 3.0,
+          "fraction_beyond_point7_axis_nyquist": 0.042231316491092775,
+          "axis_nyquist": 8.377580409572781
+        },
+        "solid": {
+          "std": 0.27617237051708055,
+          "radial_peak_shell": 8,
+          "dominant_wavelength": 3.0,
+          "fraction_beyond_point7_axis_nyquist": 0.06105587129261196,
+          "axis_nyquist": 8.377580409572781
+        },
+        "biomass_quantiles": [
+          0.18104347586631775,
+          0.43178407847881317,
+          0.7730583846569061
+        ],
+        "matrix_quantiles": [
+          0.0016949271084740758,
+          0.028223950415849686,
+          0.11414720118045807
+        ]
+      },
+      {
+        "time": 80.0,
+        "excitation": {
+          "std": 0.2890365331594555,
+          "radial_peak_shell": 9,
+          "dominant_wavelength": 2.6666666666666665,
+          "fraction_beyond_point7_axis_nyquist": 0.05088005634521931,
+          "axis_nyquist": 8.377580409572781
+        },
+        "matrix": {
+          "std": 0.04196180075104845,
+          "radial_peak_shell": 10,
+          "dominant_wavelength": 2.4000000000000004,
+          "fraction_beyond_point7_axis_nyquist": 0.05697931273322482,
+          "axis_nyquist": 8.377580409572781
+        },
+        "solid": {
+          "std": 0.2564149217501884,
+          "radial_peak_shell": 10,
+          "dominant_wavelength": 2.4000000000000004,
+          "fraction_beyond_point7_axis_nyquist": 0.07387771605423459,
+          "axis_nyquist": 8.377580409572781
+        },
+        "biomass_quantiles": [
+          0.1959153339266777,
+          0.4207795113325119,
+          0.7673937380313873
+        ],
+        "matrix_quantiles": [
+          0.002061351086013019,
+          0.027458708733320236,
+          0.11050678789615631
+        ]
+      }
+    ],
+    "occupancy_history": [
+      {
+        "time": 0.0,
+        "fraction_below_low": 0.987548828125,
+        "fraction_above_high": 0.0,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 0.8,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.0,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 1.6,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.0,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 2.4,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.0,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 3.2,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.0,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 4.0,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.0,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 4.8,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.0,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 5.6000000000000005,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.0078125,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 6.4,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.98779296875,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 7.2,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 1.0,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 8.0,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.999267578125,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 8.8,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.99462890625,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 9.6,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.986572265625,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 10.4,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.9814453125,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 11.200000000000001,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.98291015625,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 12.0,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.990234375,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 12.8,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.99658203125,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 13.6,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 1.0,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 14.4,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 1.0,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 15.200000000000001,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.998779296875,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 16.0,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.969970703125,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 16.8,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.9296875,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 17.6,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.8916015625,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 18.400000000000002,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.865234375,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 19.2,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.86328125,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 20.0,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.887939453125,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 20.8,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.9423828125,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 21.6,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.994140625,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 22.400000000000002,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.860107421875,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 23.2,
+        "fraction_below_low": 0.0,
+        "fraction_above_high": 0.75439453125,
+        "openings": 0,
+        "reformations": 0
+      },
+      {
+        "time": 24.0,
+        "fraction_below_low": 0.0146484375,
+        "fraction_above_high": 0.702392578125,
+        "openings": 60,
+        "reformations": 0
+      },
+      {
+        "time": 24.8,
+        "fraction_below_low": 0.082275390625,
+        "fraction_above_high": 0.67041015625,
+        "openings": 337,
+        "reformations": 0
+      },
+      {
+        "time": 25.6,
+        "fraction_below_low": 0.096923828125,
+        "fraction_above_high": 0.653564453125,
+        "openings": 416,
+        "reformations": 0
+      },
+      {
+        "time": 26.400000000000002,
+        "fraction_below_low": 0.067138671875,
+        "fraction_above_high": 0.645751953125,
+        "openings": 427,
+        "reformations": 0
+      },
+      {
+        "time": 27.2,
+        "fraction_below_low": 0.008056640625,
+        "fraction_above_high": 0.64892578125,
+        "openings": 428,
+        "reformations": 0
+      },
+      {
+        "time": 28.0,
+        "fraction_below_low": 0.000244140625,
+        "fraction_above_high": 0.639404296875,
+        "openings": 428,
+        "reformations": 1
+      },
+      {
+        "time": 28.8,
+        "fraction_below_low": 0.00048828125,
+        "fraction_above_high": 0.54541015625,
+        "openings": 430,
+        "reformations": 80
+      },
+      {
+        "time": 29.6,
+        "fraction_below_low": 0.008056640625,
+        "fraction_above_high": 0.544921875,
+        "openings": 461,
+        "reformations": 366
+      },
+      {
+        "time": 30.400000000000002,
+        "fraction_below_low": 0.13916015625,
+        "fraction_above_high": 0.54443359375,
+        "openings": 999,
+        "reformations": 426
+      },
+      {
+        "time": 31.2,
+        "fraction_below_low": 0.27197265625,
+        "fraction_above_high": 0.531494140625,
+        "openings": 1568,
+        "reformations": 427
+      },
+      {
+        "time": 32.0,
+        "fraction_below_low": 0.314453125,
+        "fraction_above_high": 0.52783203125,
+        "openings": 1782,
+        "reformations": 428
+      },
+      {
+        "time": 32.8,
+        "fraction_below_low": 0.308349609375,
+        "fraction_above_high": 0.52099609375,
+        "openings": 1888,
+        "reformations": 428
+      },
+      {
+        "time": 33.6,
+        "fraction_below_low": 0.272705078125,
+        "fraction_above_high": 0.512939453125,
+        "openings": 1959,
+        "reformations": 434
+      },
+      {
+        "time": 34.4,
+        "fraction_below_low": 0.166748046875,
+        "fraction_above_high": 0.493896484375,
+        "openings": 2016,
+        "reformations": 459
+      },
+      {
+        "time": 35.2,
+        "fraction_below_low": 0.082275390625,
+        "fraction_above_high": 0.432373046875,
+        "openings": 2084,
+        "reformations": 530
+      },
+      {
+        "time": 36.0,
+        "fraction_below_low": 0.076904296875,
+        "fraction_above_high": 0.35888671875,
+        "openings": 2221,
+        "reformations": 726
+      },
+      {
+        "time": 36.800000000000004,
+        "fraction_below_low": 0.140869140625,
+        "fraction_above_high": 0.38671875,
+        "openings": 2560,
+        "reformations": 1280
+      },
+      {
+        "time": 37.6,
+        "fraction_below_low": 0.288818359375,
+        "fraction_above_high": 0.45458984375,
+        "openings": 3229,
+        "reformations": 1714
+      },
+      {
+        "time": 38.4,
+        "fraction_below_low": 0.3828125,
+        "fraction_above_high": 0.474609375,
+        "openings": 3674,
+        "reformations": 1870
+      },
+      {
+        "time": 39.2,
+        "fraction_below_low": 0.396728515625,
+        "fraction_above_high": 0.48828125,
+        "openings": 3820,
+        "reformations": 1959
+      },
+      {
+        "time": 40.0,
+        "fraction_below_low": 0.389892578125,
+        "fraction_above_high": 0.482421875,
+        "openings": 3902,
+        "reformations": 2018
+      },
+      {
+        "time": 40.800000000000004,
+        "fraction_below_low": 0.361328125,
+        "fraction_above_high": 0.47216796875,
+        "openings": 3963,
+        "reformations": 2073
+      },
+      {
+        "time": 41.6,
+        "fraction_below_low": 0.303466796875,
+        "fraction_above_high": 0.448486328125,
+        "openings": 4047,
+        "reformations": 2148
+      },
+      {
+        "time": 42.4,
+        "fraction_below_low": 0.215087890625,
+        "fraction_above_high": 0.386474609375,
+        "openings": 4162,
+        "reformations": 2247
+      },
+      {
+        "time": 43.2,
+        "fraction_below_low": 0.16455078125,
+        "fraction_above_high": 0.291748046875,
+        "openings": 4326,
+        "reformations": 2402
+      },
+      {
+        "time": 44.0,
+        "fraction_below_low": 0.201904296875,
+        "fraction_above_high": 0.271728515625,
+        "openings": 4718,
+        "reformations": 2704
+      },
+      {
+        "time": 44.800000000000004,
+        "fraction_below_low": 0.323974609375,
+        "fraction_above_high": 0.345947265625,
+        "openings": 5324,
+        "reformations": 3192
+      },
+      {
+        "time": 45.6,
+        "fraction_below_low": 0.39111328125,
+        "fraction_above_high": 0.419189453125,
+        "openings": 5701,
+        "reformations": 3593
+      },
+      {
+        "time": 46.4,
+        "fraction_below_low": 0.411376953125,
+        "fraction_above_high": 0.453857421875,
+        "openings": 5865,
+        "reformations": 3842
+      },
+      {
+        "time": 47.2,
+        "fraction_below_low": 0.404052734375,
+        "fraction_above_high": 0.462646484375,
+        "openings": 5963,
+        "reformations": 3955
+      },
+      {
+        "time": 48.0,
+        "fraction_below_low": 0.3837890625,
+        "fraction_above_high": 0.45068359375,
+        "openings": 6060,
+        "reformations": 4041
+      },
+      {
+        "time": 48.800000000000004,
+        "fraction_below_low": 0.34130859375,
+        "fraction_above_high": 0.425048828125,
+        "openings": 6145,
+        "reformations": 4131
+      },
+      {
+        "time": 49.6,
+        "fraction_below_low": 0.26904296875,
+        "fraction_above_high": 0.383544921875,
+        "openings": 6271,
+        "reformations": 4240
+      },
+      {
+        "time": 50.4,
+        "fraction_below_low": 0.203125,
+        "fraction_above_high": 0.318603515625,
+        "openings": 6441,
+        "reformations": 4386
+      },
+      {
+        "time": 51.2,
+        "fraction_below_low": 0.208251953125,
+        "fraction_above_high": 0.269287109375,
+        "openings": 6717,
+        "reformations": 4611
+      },
+      {
+        "time": 52.0,
+        "fraction_below_low": 0.27978515625,
+        "fraction_above_high": 0.31396484375,
+        "openings": 7168,
+        "reformations": 5052
+      },
+      {
+        "time": 52.800000000000004,
+        "fraction_below_low": 0.35986328125,
+        "fraction_above_high": 0.391845703125,
+        "openings": 7626,
+        "reformations": 5496
+      },
+      {
+        "time": 53.6,
+        "fraction_below_low": 0.39208984375,
+        "fraction_above_high": 0.43603515625,
+        "openings": 7867,
+        "reformations": 5794
+      },
+      {
+        "time": 54.4,
+        "fraction_below_low": 0.390625,
+        "fraction_above_high": 0.445556640625,
+        "openings": 7984,
+        "reformations": 5953
+      },
+      {
+        "time": 55.2,
+        "fraction_below_low": 0.376708984375,
+        "fraction_above_high": 0.448974609375,
+        "openings": 8099,
+        "reformations": 6078
+      },
+      {
+        "time": 56.0,
+        "fraction_below_low": 0.342529296875,
+        "fraction_above_high": 0.431884765625,
+        "openings": 8202,
+        "reformations": 6185
+      },
+      {
+        "time": 56.800000000000004,
+        "fraction_below_low": 0.2822265625,
+        "fraction_above_high": 0.40283203125,
+        "openings": 8311,
+        "reformations": 6314
+      },
+      {
+        "time": 57.6,
+        "fraction_below_low": 0.232666015625,
+        "fraction_above_high": 0.349609375,
+        "openings": 8469,
+        "reformations": 6446
+      },
+      {
+        "time": 58.4,
+        "fraction_below_low": 0.217041015625,
+        "fraction_above_high": 0.306884765625,
+        "openings": 8712,
+        "reformations": 6652
+      },
+      {
+        "time": 59.2,
+        "fraction_below_low": 0.265869140625,
+        "fraction_above_high": 0.311279296875,
+        "openings": 9094,
+        "reformations": 6990
+      },
+      {
+        "time": 60.0,
+        "fraction_below_low": 0.328369140625,
+        "fraction_above_high": 0.357666015625,
+        "openings": 9506,
+        "reformations": 7361
+      },
+      {
+        "time": 60.800000000000004,
+        "fraction_below_low": 0.37060546875,
+        "fraction_above_high": 0.40283203125,
+        "openings": 9818,
+        "reformations": 7689
+      },
+      {
+        "time": 61.6,
+        "fraction_below_low": 0.380615234375,
+        "fraction_above_high": 0.423828125,
+        "openings": 10000,
+        "reformations": 7915
+      },
+      {
+        "time": 62.4,
+        "fraction_below_low": 0.37255859375,
+        "fraction_above_high": 0.432373046875,
+        "openings": 10139,
+        "reformations": 8076
+      },
+      {
+        "time": 63.2,
+        "fraction_below_low": 0.344970703125,
+        "fraction_above_high": 0.431640625,
+        "openings": 10254,
+        "reformations": 8225
+      },
+      {
+        "time": 64.0,
+        "fraction_below_low": 0.302001953125,
+        "fraction_above_high": 0.404296875,
+        "openings": 10376,
+        "reformations": 8345
+      },
+      {
+        "time": 64.8,
+        "fraction_below_low": 0.25146484375,
+        "fraction_above_high": 0.369140625,
+        "openings": 10510,
+        "reformations": 8497
+      },
+      {
+        "time": 65.6,
+        "fraction_below_low": 0.220947265625,
+        "fraction_above_high": 0.32861328125,
+        "openings": 10711,
+        "reformations": 8692
+      },
+      {
+        "time": 66.4,
+        "fraction_below_low": 0.244384765625,
+        "fraction_above_high": 0.31884765625,
+        "openings": 11032,
+        "reformations": 8974
+      },
+      {
+        "time": 67.2,
+        "fraction_below_low": 0.2978515625,
+        "fraction_above_high": 0.343017578125,
+        "openings": 11437,
+        "reformations": 9307
+      },
+      {
+        "time": 68.0,
+        "fraction_below_low": 0.349853515625,
+        "fraction_above_high": 0.392578125,
+        "openings": 11785,
+        "reformations": 9658
+      },
+      {
+        "time": 68.8,
+        "fraction_below_low": 0.37158203125,
+        "fraction_above_high": 0.417724609375,
+        "openings": 11999,
+        "reformations": 9898
+      },
+      {
+        "time": 69.60000000000001,
+        "fraction_below_low": 0.360107421875,
+        "fraction_above_high": 0.43310546875,
+        "openings": 12137,
+        "reformations": 10106
+      },
+      {
+        "time": 70.4,
+        "fraction_below_low": 0.342529296875,
+        "fraction_above_high": 0.430419921875,
+        "openings": 12277,
+        "reformations": 10260
+      },
+      {
+        "time": 71.2,
+        "fraction_below_low": 0.3134765625,
+        "fraction_above_high": 0.416015625,
+        "openings": 12417,
+        "reformations": 10401
+      },
+      {
+        "time": 72.0,
+        "fraction_below_low": 0.276611328125,
+        "fraction_above_high": 0.382568359375,
+        "openings": 12577,
+        "reformations": 10532
+      },
+      {
+        "time": 72.8,
+        "fraction_below_low": 0.250244140625,
+        "fraction_above_high": 0.350830078125,
+        "openings": 12760,
+        "reformations": 10728
+      },
+      {
+        "time": 73.60000000000001,
+        "fraction_below_low": 0.253173828125,
+        "fraction_above_high": 0.332275390625,
+        "openings": 13029,
+        "reformations": 10980
+      },
+      {
+        "time": 74.4,
+        "fraction_below_low": 0.29443359375,
+        "fraction_above_high": 0.346923828125,
+        "openings": 13378,
+        "reformations": 11270
+      },
+      {
+        "time": 75.2,
+        "fraction_below_low": 0.338134765625,
+        "fraction_above_high": 0.371337890625,
+        "openings": 13724,
+        "reformations": 11580
+      },
+      {
+        "time": 76.0,
+        "fraction_below_low": 0.349609375,
+        "fraction_above_high": 0.39697265625,
+        "openings": 13957,
+        "reformations": 11855
+      },
+      {
+        "time": 76.8,
+        "fraction_below_low": 0.35791015625,
+        "fraction_above_high": 0.41259765625,
+        "openings": 14155,
+        "reformations": 12064
+      },
+      {
+        "time": 77.60000000000001,
+        "fraction_below_low": 0.352783203125,
+        "fraction_above_high": 0.419677734375,
+        "openings": 14325,
+        "reformations": 12243
+      },
+      {
+        "time": 78.4,
+        "fraction_below_low": 0.320068359375,
+        "fraction_above_high": 0.408447265625,
+        "openings": 14454,
+        "reformations": 12404
+      },
+      {
+        "time": 79.2,
+        "fraction_below_low": 0.284423828125,
+        "fraction_above_high": 0.3876953125,
+        "openings": 14596,
+        "reformations": 12570
+      },
+      {
+        "time": 80.0,
+        "fraction_below_low": 0.254150390625,
+        "fraction_above_high": 0.35888671875,
+        "openings": 14773,
+        "reformations": 12747
+      }
+    ],
+    "initial": {
+      "step": 0,
+      "material_residual": 0,
+      "topology": {
+        "threshold": 0.15,
+        "occupied_components": 1,
+        "occupied_sizes": [
+          4096
+        ],
+        "void_components": 0,
+        "void_sizes": []
+      },
+      "minimum_solid": 0.24008413,
+      "maximum_solid": 0.2741509,
+      "reopened_sites": 0,
+      "reformed_sites": 0,
+      "reopening_events": 0,
+      "reformation_events": 0,
+      "time": 0,
+      "material": 52674.5600001961,
+      "precursor": 2457.5999993681908,
+      "biomass": 1064.9600008279085,
+      "matrix": 0,
+      "spent": 0,
+      "potential": 52674.5600001961,
+      "excitation_std": 0.01947929,
+      "excitation_max": 0.063509524,
+      "excitation_min": -0.08086598,
+      "memory_std": 0,
+      "neural_maxabs": 0.08086598,
+      "physical_min": 0,
+      "finite": true,
+      "active_sites": 4096,
+      "matrix_sites": 0,
+      "mean_permeability": 1,
+      "reserve": 49152,
+      "voxel_measure": 0.140625,
+      "physical_material": 7407.3600000275765,
+      "physical_potential": 7407.3600000275765,
+      "physical_precursor": 345.5999999111518,
+      "physical_biomass": 149.76000011642464,
+      "physical_matrix": 0,
+      "physical_spent": 0,
+      "physical_reserve": 6912,
+      "capacity": 0.9,
+      "maximum_occupancy": 0.30461213,
+      "capacity_excess": 0
+    },
+    "final": {
+      "step": 16000,
+      "material_residual": 0.004481252748519182,
+      "topology": {
+        "threshold": 0.15,
+        "occupied_components": 1,
+        "occupied_sizes": [
+          4073
+        ],
+        "void_components": 17,
+        "void_sizes": [
+          3,
+          2,
+          2,
+          2,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "minimum_solid": 0.13417567,
+      "maximum_solid": 0.89994824,
+      "reopened_sites": 0,
+      "reformed_sites": 0,
+      "reopening_events": 0,
+      "reformation_events": 0,
+      "time": 79.99999821186066,
+      "material": 52674.56448144885,
+      "precursor": 1529.176880819723,
+      "biomass": 1893.8448687791824,
+      "matrix": 178.94305094936863,
+      "spent": 9464.728317260742,
+      "potential": 43209.836164188106,
+      "excitation_std": 0.28907183,
+      "excitation_max": 0.4629252,
+      "excitation_min": -0.5041661,
+      "memory_std": 0.077398725,
+      "neural_maxabs": 0.5041661,
+      "physical_min": 0.0009988999,
+      "finite": true,
+      "active_sites": 4068,
+      "matrix_sites": 1721,
+      "mean_permeability": 0.43879086,
+      "reserve": 39607.87136363983,
+      "voxel_measure": 0.140625,
+      "physical_material": 7407.360630203744,
+      "physical_potential": 6076.383210588952,
+      "physical_precursor": 215.04049886527355,
+      "physical_biomass": 266.32193467207253,
+      "physical_matrix": 25.163866539754963,
+      "physical_spent": 1330.9774196147919,
+      "physical_reserve": 5569.856910511851,
+      "capacity": 0.9,
+      "maximum_occupancy": 0.99994254,
+      "capacity_excess": 0
+    },
+    "elapsed_seconds": 47.781808083
+  },
+  "single_parameter_immobile_matrix_ablation_interpretation": "Changing only matrix_transport .04\u21920 retains finite-wavelength oscillations and sampledsolid cycles, so gel mobility is not established as their cause. It materially changes persistentmatrix amount and communication: finalphysicalM27.86\u219225.16,meanpermeability.33179\u2192.43879. Both are64\u00b2exploratoryruns,notconvergedattribution."
 }

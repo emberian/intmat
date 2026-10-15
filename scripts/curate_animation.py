@@ -49,6 +49,9 @@ def validate_sequence(manifest):
     frames = sequence['frames']
     if len(frames) < 2:
         raise ValueError('An animation needs at least two actual frames')
+    poster_index = sequence.get('poster_frame_index', len(frames) // 2)
+    if isinstance(poster_index, bool) or not isinstance(poster_index, int) or not 0 <= poster_index < len(frames):
+        raise ValueError('Poster must select an actual reviewed frame index')
     if not sequence.get('source') or not sequence.get('title') or not sequence.get('description'):
         raise ValueError('Source, title and description are required')
     paths, dimensions, last_time = [], None, -math.inf
@@ -111,7 +114,8 @@ def curate(manifest, destination, *, max_width=1280, budget_bytes=12_000_000):
         if digest(manifest) != manifest_hash or any(digest(path) != frame['sha256']
                 for path, frame in zip(paths, sequence['frames'])):
             raise ValueError('Reviewed source changed during encoding')
-        with Image.open(paths[len(paths) // 2]) as image:
+        poster_index = sequence.get('poster_frame_index', len(paths) // 2)
+        with Image.open(paths[poster_index]) as image:
             image.convert('RGB').save(work / 'poster.webp', 'WEBP', quality=93, method=6)
         public = {
             'schema': 'interior-animation', 'id': sequence['id'],
@@ -124,6 +128,7 @@ def curate(manifest, destination, *, max_width=1280, budget_bytes=12_000_000):
             'frames': [{'video_time': i / sequence['fps'], 'simulation_time': frame['time'],
                         'source_image_sha256': frame['sha256']} for i, frame in enumerate(sequence['frames'])],
             'review': {'sequence_sha256': manifest_hash, 'reviewed_by': review.get('reviewed_by', 'visual review')},
+            'poster_frame_index': poster_index,
             'video_sha256': digest(video), 'poster_sha256': digest(work / 'poster.webp'),
         }
         (work / 'film.json').write_text(json.dumps(public, indent=2) + '\n')

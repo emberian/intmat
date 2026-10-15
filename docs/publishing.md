@@ -73,6 +73,8 @@ write `sequence.json` with `id`, `title`, `description`, `fps`, `source` (grid,
 simulation/source hashes and optical interpretation), and ordered `frames`:
 `[{"file":"frame-0000.png","time":0.0,"sha256":"…"}, …]`.
 Times must be finite and strictly increasing; all frames must share dimensions.
+An optional zero-based `poster_frame_index` selects an actual reviewed frame for
+the film poster; omission uses the midpoint. Set it before approving the manifest.
 
 After inspecting the sequence, `art-reviewed.json` records `status: "approved"`,
 `reviewed_by`, and `sequence_sha256` matching the entire sequence manifest.

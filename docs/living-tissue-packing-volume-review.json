@@ -1,0 +1,470 @@
+{
+  "format": "living-tissue-native-volume-review-v1",
+  "source": "/tank/chreatures/probes/intmat-20261015/living-packing-volume128-e2a2f16",
+  "dimensions": [
+    128,
+    128,
+    128
+  ],
+  "extent": [
+    24,
+    24,
+    24
+  ],
+  "dt": 0.00125,
+  "capacity": 0.9,
+  "source_sha256": {
+    "studies/living_tissue_packing.jl": "51b19bca9039dff39edf6ef1346ef3a8abad73534e95aa9e92aaeb1e98105a84",
+    "studies/living_tissue_runner.jl": "93b837249cc0d0dbdd7b6fa609a067c8710c109e3572785a1f76485081e6fdb3",
+    "studies/living_tissue.jl": "43a5e722e08963124c186147b2d15a54963292828e1c1064c2f277782a5816f0",
+    "studies/living_tissue_turnover_run.jl": "5905f8bddc0e19b6377e942c65f169b45fef1a0e826e45f8be26bf54c596897d",
+    "src/recurrent_material.jl": "e9457d0d6e31f74950fa4be8ef84b138b020c0de7fc4b95c9a7f3cd5db148347",
+    "studies/living_tissue_packing_run.jl": "090b0f4f4ed6865f4a20795de907b1f861d495c3d22adfcb0f01492812577700",
+    "studies/living_tissue_observations.jl": "f3fa17688e3fafe1bcfca5ea331e91984dab077e67fad09138e66493a3b1215c",
+    "studies/living_tissue_turnover.jl": "ca543a8a3eb6e1eb3c93cfc4e16b86f03674ab6ca9598bdf328988ac09f76617",
+    "src/core.jl": "b4302b90eaeba213360e8a15ce8b7e4cb4c491606657e3e500d2fb8507753a52"
+  },
+  "analysis_sha256": {
+    "living_tissue_volume_review.py": "324392a7de9dfb1e068345c841d9dcad94a37f85ccfc2136c7d0d11388fceff6",
+    "living_tissue_review.py": "e7128185997ed1113a3e6d2bb87be0987116ef5592252d7ee47eb3113ccc1f7a"
+  },
+  "samples": [
+    {
+      "time": 19.999999552965164,
+      "step": 16000,
+      "source_frame": "/tank/chreatures/probes/intmat-20261015/living-packing-volume128-e2a2f16/frames/0016000",
+      "quantile_levels": [
+        0.01,
+        0.1,
+        0.5,
+        0.9,
+        0.99
+      ],
+      "quantiles": {
+        "biomass": [
+          0.5160848981142044,
+          0.6788901686668396,
+          0.8776173293590546,
+          0.8999951481819153,
+          0.8999999165534973
+        ],
+        "matrix": [
+          3.235200203732803e-08,
+          1.5023272112557609e-06,
+          0.0009327832667622715,
+          0.06762234419584282,
+          0.10583874352276325
+        ],
+        "excitation": [
+          -0.14061296254396438,
+          -0.07866437658667565,
+          -8.81444793776609e-05,
+          0.06924565210938455,
+          0.11870353549718857
+        ],
+        "memory": [
+          -0.10855971254408359,
+          -0.06784186214208603,
+          -0.0019853604026138783,
+          0.06575536355376244,
+          0.09300989903509617
+        ],
+        "solid": [
+          0.5171030843257904,
+          0.6796933889389039,
+          0.8999878764152527,
+          0.8999999761581421,
+          0.8999999761581421
+        ]
+      },
+      "low_solid_fractions": {
+        "0.27": 0.0,
+        "0.45": 0.000186920166015625,
+        "0.63": 0.06817245483398438
+      },
+      "spectra": {
+        "excitation": {
+          "std": 0.057026286175109644,
+          "radial_peak_shell": 7,
+          "dominant_wavelength": 3.428571428571429,
+          "fraction_beyond_point7_axis_nyquist": 0.0002523780231156246,
+          "axis_nyquist": 16.755160819145562
+        },
+        "matrix": {
+          "std": 0.028800995620176743,
+          "radial_peak_shell": 7,
+          "dominant_wavelength": 3.428571428571429,
+          "fraction_beyond_point7_axis_nyquist": 0.0004261403936779495,
+          "axis_nyquist": 16.755160819145562
+        },
+        "solid": {
+          "std": 0.09885478454339039,
+          "radial_peak_shell": 7,
+          "dominant_wavelength": 3.428571428571429,
+          "fraction_beyond_point7_axis_nyquist": 0.002115824329265496,
+          "axis_nyquist": 16.755160819145562
+        }
+      },
+      "slices": [
+        {
+          "axis": 0,
+          "index": 63,
+          "physical_coordinate": -0.09375,
+          "shape": [
+            128,
+            128
+          ],
+          "directory": "0016000/x"
+        },
+        {
+          "axis": 1,
+          "index": 63,
+          "physical_coordinate": -0.09375,
+          "shape": [
+            128,
+            128
+          ],
+          "directory": "0016000/y"
+        },
+        {
+          "axis": 2,
+          "index": 63,
+          "physical_coordinate": -0.09375,
+          "shape": [
+            128,
+            128
+          ],
+          "directory": "0016000/z"
+        }
+      ]
+    },
+    {
+      "time": 39.99999910593033,
+      "step": 32000,
+      "source_frame": "/tank/chreatures/probes/intmat-20261015/living-packing-volume128-e2a2f16/frames/0032000",
+      "quantile_levels": [
+        0.01,
+        0.1,
+        0.5,
+        0.9,
+        0.99
+      ],
+      "quantiles": {
+        "biomass": [
+          0.14528804063796996,
+          0.18173364400863648,
+          0.5699161291122437,
+          0.7946861863136292,
+          0.8754900294542313
+        ],
+        "matrix": [
+          0.0029823228577151896,
+          0.005135687533766031,
+          0.032102517783641815,
+          0.1591075047850609,
+          0.18039369255304336
+        ],
+        "excitation": [
+          -0.4283659228682518,
+          -0.3182882249355316,
+          0.05049792304635048,
+          0.35486440360546123,
+          0.4287570747733116
+        ],
+        "memory": [
+          -0.12982874050736426,
+          -0.11566096395254136,
+          -0.0020701595349237323,
+          0.12768267542123796,
+          0.1427997423708439
+        ],
+        "solid": [
+          0.1492194639146328,
+          0.1874693050980568,
+          0.6086836457252502,
+          0.8999752998352051,
+          0.899993896484375
+        ]
+      },
+      "low_solid_fractions": {
+        "0.27": 0.2824831008911133,
+        "0.45": 0.42592525482177734,
+        "0.63": 0.5090084075927734
+      },
+      "spectra": {
+        "excitation": {
+          "std": 0.2500084904758827,
+          "radial_peak_shell": 7,
+          "dominant_wavelength": 3.428571428571429,
+          "fraction_beyond_point7_axis_nyquist": 0.0007209336097339645,
+          "axis_nyquist": 16.755160819145562
+        },
+        "matrix": {
+          "std": 0.06075700150179371,
+          "radial_peak_shell": 7,
+          "dominant_wavelength": 3.428571428571429,
+          "fraction_beyond_point7_axis_nyquist": 0.006383505324421552,
+          "axis_nyquist": 16.755160819145562
+        },
+        "solid": {
+          "std": 0.3020064485484232,
+          "radial_peak_shell": 7,
+          "dominant_wavelength": 3.428571428571429,
+          "fraction_beyond_point7_axis_nyquist": 0.0026632425180108782,
+          "axis_nyquist": 16.755160819145562
+        }
+      },
+      "slices": [
+        {
+          "axis": 0,
+          "index": 63,
+          "physical_coordinate": -0.09375,
+          "shape": [
+            128,
+            128
+          ],
+          "directory": "0032000/x"
+        },
+        {
+          "axis": 1,
+          "index": 63,
+          "physical_coordinate": -0.09375,
+          "shape": [
+            128,
+            128
+          ],
+          "directory": "0032000/y"
+        },
+        {
+          "axis": 2,
+          "index": 63,
+          "physical_coordinate": -0.09375,
+          "shape": [
+            128,
+            128
+          ],
+          "directory": "0032000/z"
+        }
+      ]
+    },
+    {
+      "time": 59.99999865889549,
+      "step": 48000,
+      "source_frame": "/tank/chreatures/probes/intmat-20261015/living-packing-volume128-e2a2f16/frames/0048000",
+      "quantile_levels": [
+        0.01,
+        0.1,
+        0.5,
+        0.9,
+        0.99
+      ],
+      "quantiles": {
+        "biomass": [
+          0.16939450636506082,
+          0.21012097746133804,
+          0.4940848797559738,
+          0.7930878937244416,
+          0.86230093896389
+        ],
+        "matrix": [
+          0.0051709851389750835,
+          0.008706879243254662,
+          0.03245686925947666,
+          0.11323119923472406,
+          0.15010234266519545
+        ],
+        "excitation": [
+          -0.475305178463459,
+          -0.4254870474338531,
+          0.01750649604946375,
+          0.3774285972118378,
+          0.42612180978059766
+        ],
+        "memory": [
+          -0.11913407631218434,
+          -0.10026932284235954,
+          0.003339909831993282,
+          0.10532942041754727,
+          0.13404888898134232
+        ],
+        "solid": [
+          0.1760326434671879,
+          0.21890419721603394,
+          0.5342501401901245,
+          0.8999719619750977,
+          0.8999903798103333
+        ]
+      },
+      "low_solid_fractions": {
+        "0.27": 0.21574831008911133,
+        "0.45": 0.4317045211791992,
+        "0.63": 0.5752606391906738
+      },
+      "spectra": {
+        "excitation": {
+          "std": 0.30701712900744166,
+          "radial_peak_shell": 7,
+          "dominant_wavelength": 3.428571428571429,
+          "fraction_beyond_point7_axis_nyquist": 0.0004361305021525603,
+          "axis_nyquist": 16.755160819145562
+        },
+        "matrix": {
+          "std": 0.041125322089104,
+          "radial_peak_shell": 9,
+          "dominant_wavelength": 2.6666666666666665,
+          "fraction_beyond_point7_axis_nyquist": 0.0076292815519259285,
+          "axis_nyquist": 16.755160819145562
+        },
+        "solid": {
+          "std": 0.2549898908739075,
+          "radial_peak_shell": 9,
+          "dominant_wavelength": 2.6666666666666665,
+          "fraction_beyond_point7_axis_nyquist": 0.0029589092980233586,
+          "axis_nyquist": 16.755160819145562
+        }
+      },
+      "slices": [
+        {
+          "axis": 0,
+          "index": 63,
+          "physical_coordinate": -0.09375,
+          "shape": [
+            128,
+            128
+          ],
+          "directory": "0048000/x"
+        },
+        {
+          "axis": 1,
+          "index": 63,
+          "physical_coordinate": -0.09375,
+          "shape": [
+            128,
+            128
+          ],
+          "directory": "0048000/y"
+        },
+        {
+          "axis": 2,
+          "index": 63,
+          "physical_coordinate": -0.09375,
+          "shape": [
+            128,
+            128
+          ],
+          "directory": "0048000/z"
+        }
+      ]
+    },
+    {
+      "time": 79.99999821186066,
+      "step": 64000,
+      "source_frame": "/tank/chreatures/probes/intmat-20261015/living-packing-volume128-e2a2f16/frames/0064000",
+      "quantile_levels": [
+        0.01,
+        0.1,
+        0.5,
+        0.9,
+        0.99
+      ],
+      "quantiles": {
+        "biomass": [
+          0.16771598547697067,
+          0.22483306676149367,
+          0.4950927346944809,
+          0.7904721558094026,
+          0.8616789823770523
+        ],
+        "matrix": [
+          0.004798080255277455,
+          0.009120817855000496,
+          0.034442612901329994,
+          0.11658059358596802,
+          0.1520472764968872
+        ],
+        "excitation": [
+          -0.474952809214592,
+          -0.40894688963890075,
+          0.022943057119846344,
+          0.372077625989914,
+          0.4287068393826485
+        ],
+        "memory": [
+          -0.1177864582836628,
+          -0.09998158290982247,
+          0.004327807109802961,
+          0.10800609290599823,
+          0.13228496730327605
+        ],
+        "solid": [
+          0.17345651358366013,
+          0.23427131474018098,
+          0.5355929434299469,
+          0.898631626367569,
+          0.8999900221824646
+        ]
+      },
+      "low_solid_fractions": {
+        "0.27": 0.16463851928710938,
+        "0.45": 0.41653013229370117,
+        "0.63": 0.5801506042480469
+      },
+      "spectra": {
+        "excitation": {
+          "std": 0.2882431178587723,
+          "radial_peak_shell": 9,
+          "dominant_wavelength": 2.6666666666666665,
+          "fraction_beyond_point7_axis_nyquist": 0.0005319981033268862,
+          "axis_nyquist": 16.755160819145562
+        },
+        "matrix": {
+          "std": 0.0413085004879746,
+          "radial_peak_shell": 9,
+          "dominant_wavelength": 2.6666666666666665,
+          "fraction_beyond_point7_axis_nyquist": 0.008064793241280475,
+          "axis_nyquist": 16.755160819145562
+        },
+        "solid": {
+          "std": 0.24718949792458092,
+          "radial_peak_shell": 9,
+          "dominant_wavelength": 2.6666666666666665,
+          "fraction_beyond_point7_axis_nyquist": 0.00324352093619003,
+          "axis_nyquist": 16.755160819145562
+        }
+      },
+      "slices": [
+        {
+          "axis": 0,
+          "index": 63,
+          "physical_coordinate": -0.09375,
+          "shape": [
+            128,
+            128
+          ],
+          "directory": "0064000/x"
+        },
+        {
+          "axis": 1,
+          "index": 63,
+          "physical_coordinate": -0.09375,
+          "shape": [
+            128,
+            128
+          ],
+          "directory": "0064000/y"
+        },
+        {
+          "axis": 2,
+          "index": 63,
+          "physical_coordinate": -0.09375,
+          "shape": [
+            128,
+            128
+          ],
+          "directory": "0064000/z"
+        }
+      ]
+    }
+  ],
+  "convention": "Exact quantiles and fluctuation spectra from complete native3D arrays. Slices are unresampled Float32 cell-center planes in Fortran order. Low solid fractions are B+M concentrations, not mechanical cavities or empty vacuum."
+}

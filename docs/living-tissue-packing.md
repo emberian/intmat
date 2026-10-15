@@ -225,5 +225,53 @@ six full mixed-species neighbors competing for an empty recipient. It checks
 CPU/device parity, nonnegative bounded material, capacity, recording, strict
 checkpoint restore and exact same-device11-step continuation before a requested
 bake can start. Its CPU plumbing passed with zero parity errors and exact
-continuation. That plumbing is not an accelerator result. Packing's accelerator
-execution remains unverified pending its own explicitly granted GPU slot.
+continuation. That plumbing is not an accelerator result.
+
+The subsequent immutable `e2a2f16` AMD gate passed with maximum state error
+5.96e−8, reserve error0 and exact checkpoint/11-step continuation. A128³ short
+probe measured three synchronized256-step batches in.36128/.36480/.36109s;
+actual native eight-field captures including transfer and diagnostics took
+.42466/.07411/.08608s. Taking the slowest step/capture plus20% margin projects
+129.82s for64ksteps and40 noninitial captures. This is a short rate projection,
+not a sustained bake timing. The first host wrapper's missing capture parent
+directory is retained as a failed probe; a fresh wrapper fixed the parent only.
+Source hashes, strict gate, timing conventions and host controls are recorded in
+[`living-tissue-packing-amd-results.json`](living-tissue-packing-amd-results.json).
+
+The approved full native128³ run then completed t80 in99.574s of timed body
+work (64,000 whole steps and40 noninitial native captures) and119.458s for the
+complete controlled command. Initial capture, compilation/warmup and final
+checkpoint/record/maps are excluded from body time but included in command
+time. Persistent device field buffers total134,217,728bytes; this is not a
+measured peak VRAM value. Output before the small host execution record is
+2,921,497,079bytes, below3GB, with41 native states every two physical time units.
+Physical spacing is.1875 in all axes and dt.00125 is below the3D stability bound.
+
+All sampled values remain finite/nonnegative, relative material drift is3.94e−6,
+and maximum solid-capacity excess is one Float32 unit5.96e−8, within the declared
+roundoff allowance. Final excess is zero. Of the initial165,888 integrated
+reserve,132,067.18 remains;33,156.50 material is spent. This is a finite budget,
+not an imposed activity movie. Fixed-threshold volume review is separate from
+this numerical completion evidence. The unchanged legacy.10/.24 observer
+records no openings and is not reinterpreted as the declared.27/.63 readback.
+
+The single-parameter64² `oscillatory-immobile` comparison sets only matrix
+transport.04→0. Both runs retain finite scales and repeated solid-space cycling;
+matrix mobility is not established as the origin of oscillations. It changes
+persistent matrix and future communication: final integrated M27.86→25.16 and
+mean permeability.33179→.43879. These are coarse exploratory comparisons,
+retained in the packing result record rather than claims of converged causality.
+
+The subsequent whole-volume readback is retained in
+[`living-tissue-packing-volume-review.json`](living-tissue-packing-volume-review.json).
+It reads exact native3D quantiles and spectra at t20/40/60/80 and exports
+unresampled orthogonal Float32 planes, using the same fixed optics for review.
+Excitation's radial wavelength is3.43 at t20/40/60 and2.667 at t80; high-frequency
+power beyond.7 axis Nyquist is.00025/.00072/.00044/.00053. Solid-density tails
+are.0021–.00324. This supports finite-scale3D structure, not formal3D convergence.
+Fixed solid threshold.45 leaves lower-density fractions.000187/.42593/.43170/
+.41653 at those times. These are concentration regions, not mechanical cavities.
+At t40, solid q10/50/90 is.1875/.6087/.9000 and matrix is.00514/.03210/.15911;
+at t60 they are.2189/.5343/.9000 and.00871/.03246/.11323. Sampled center-site
+excitation upcrossings imply periods12.4–14.5, about six to seven retained states
+per cycle. Optical threshold choices remain separate from these native measures.

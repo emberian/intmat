@@ -1,0 +1,790 @@
+{
+  "date": "2026-10-15",
+  "stage": {
+    "base_commit": "e44b20c",
+    "gate_overlay_commit": "2b25091",
+    "gate_overlay_sha256": "5f84771b1aafd7b80fe3b394e31fbbd1b1f5252c47d698ec2c41b12f7db94a76",
+    "controls": {
+      "cpus": [
+        10,
+        11
+      ],
+      "memory_max": "8G",
+      "swap_max": 0,
+      "nice": 15,
+      "julia_threads": 2,
+      "gc_threads": 1,
+      "blas_threads": 1,
+      "timeout_seconds": 295,
+      "kill_grace_seconds": 5,
+      "amd_compiler_optlevel": 1
+    }
+  },
+  "source": {
+    "model": "6a31e4db5573ecbbaec156d1d5aa2b66e6f1f886331bca2003e8556aa7d6156e",
+    "initialization": "b3c62d90bdd1c2340ae5097c2242a440b3ab7fc5204e57b18f087067b2c41bd7",
+    "founder_initialization": "d76e4c791a2c56bc7fd651b1836e6879b9e27013566ce6d94a1d2f677f62e633",
+    "support": "5a767b83c2c912d8706468ec7c5b86e56cf99430b2a23dfd3a7f3ee8f21bf55b",
+    "resource": "050991b42eceab1403c940e69b027d27106f966dfcc0cfbf215b5b5ff7221c18",
+    "kernels": "6bc6a18e62263d8335a2b55e03520c5ad597cf1d4055b513cac1b6f4adab82eb",
+    "checkpoint": "4ec974b9518fe71e082888b231a1f16592f6dc91e895a4e5f48defb0ee0c27d4",
+    "protocol": "5b5b8c4b945af6c9a6a2496dc115e83501cc3b1329f7c8b2abab71d175c22720"
+  },
+  "habitat_source": {
+    "helper": "a69f56d9dfd424c343a67857a7d7b4bcece16718b64a697a4abdeafcf4543dd8",
+    "kernels": "f6ab9782cff0816919368d3d1f8c766af39f9eba3a0badd2636e50b55366ac42",
+    "sorption": "f135e74e59959187e72725a45665ac5c67293b8305298c8d3ac4bdbb81e6ac93"
+  },
+  "profile_sha256": "f05844ed6aa0554c52da68a363d660ca6ad5d898ee75769c202e33e49684032a",
+  "timing_comparison": "matched initial recipe with different battery precision; no Float32/Float64 trajectory-equivalence claim",
+  "timing_warm_steps": 20,
+  "timing_sample_steps": 100,
+  "float32_seconds": [
+    1.027965129,
+    1.028023835,
+    1.029371937
+  ],
+  "float64_seconds": [
+    1.028808677,
+    1.028601396,
+    1.029849264
+  ],
+  "float32_ms_per_step": 10.28023835,
+  "float64_ms_per_step": 10.28808677,
+  "float64_over_float32": 1.0007634472794107,
+  "trend_steps": 10000,
+  "trend_completed": true,
+  "trend_seconds": [
+    10.107459061,
+    8.006866088,
+    8.057728408,
+    9.255453597,
+    8.800470399,
+    8.874995531,
+    8.997939174,
+    9.107574402,
+    9.432509907,
+    9.434495672
+  ],
+  "trend_total_seconds": 90.075492239,
+  "trend_steps_per_second": 111.01798892718455,
+  "trend_history": [
+    {
+      "step": 320,
+      "time": 0.3200000151991844,
+      "residual": {
+        "material": 4.934520273280896e-06,
+        "potential": 1.887290262914121e-05
+      },
+      "physical": {
+        "material": 766.0765643731246,
+        "potential": 1513.25004284914,
+        "work": 10.782809856731822,
+        "heat": 157.87337950738552,
+        "supplied": 0.636552765268295,
+        "removed": 0,
+        "supplied_potential": 2.54621106107318,
+        "removed_potential": 0,
+        "population": 256,
+        "completed_steps": 320,
+        "secreted": [
+          1.5415712733312699,
+          1.521316306876941
+        ],
+        "solubilized": [
+          1.3984926138962699,
+          1.3469269410927414
+        ],
+        "bound": [
+          0.24768285826910613,
+          0.242990457517676
+        ],
+        "enzyme": [
+          1.5393339288139942,
+          1.5191394081655545
+        ],
+        "inert": 0.0011807659082398632,
+        "finite": true
+      }
+    },
+    {
+      "step": 1320,
+      "time": 1.3200000626966357,
+      "residual": {
+        "material": -2.6275534263930922e-05,
+        "potential": -6.290066066583222e-05
+      },
+      "physical": {
+        "material": 768.0659712804536,
+        "potential": 1507.0012871597269,
+        "work": 14.80831496695497,
+        "heat": 168.05430078254642,
+        "supplied": 2.6259908826518306,
+        "removed": 0,
+        "supplied_potential": 10.503963530607322,
+        "removed_potential": 0,
+        "population": 256,
+        "completed_steps": 1320,
+        "secreted": [
+          1.555774642448022,
+          1.5585680993083542
+        ],
+        "solubilized": [
+          4.440804456198871,
+          4.280788709563855
+        ],
+        "bound": [
+          0.935008301950238,
+          0.9223641444627255
+        ],
+        "enzyme": [
+          1.5411807544948621,
+          1.5440175431678433
+        ],
+        "inert": 0.00400356202738541,
+        "finite": true
+      }
+    },
+    {
+      "step": 2320,
+      "time": 2.320000110194087,
+      "residual": {
+        "material": -5.38307244681846e-05,
+        "potential": -0.00010946481012297227
+      },
+      "physical": {
+        "material": 770.0554030927206,
+        "potential": 1507.0849388043387,
+        "work": 18.735358877912596,
+        "heat": 172.0013961326562,
+        "supplied": 4.615450250108992,
+        "removed": 0,
+        "supplied_potential": 18.46180100043597,
+        "removed_potential": 0,
+        "population": 256,
+        "completed_steps": 2320,
+        "secreted": [
+          1.556317590221854,
+          1.5589492635193274
+        ],
+        "solubilized": [
+          5.4987372299109,
+          5.353095849661187
+        ],
+        "bound": [
+          1.1108574467534984,
+          1.0829324080898923
+        ],
+        "enzyme": [
+          1.5294615110490555,
+          1.5321152547968446
+        ],
+        "inert": 0.006986293239506995,
+        "finite": true
+      }
+    },
+    {
+      "step": 3320,
+      "time": 3.3200001576915383,
+      "residual": {
+        "material": -7.194272994581752e-05,
+        "potential": -0.00016075841188012419
+      },
+      "physical": {
+        "material": 772.0448455029376,
+        "potential": 1508.050058534473,
+        "work": 22.693840179629717,
+        "heat": 175.03558589609315,
+        "supplied": 6.604910772331536,
+        "removed": 0,
+        "supplied_potential": 26.419643089326144,
+        "removed_potential": 0,
+        "population": 256,
+        "completed_steps": 3320,
+        "secreted": [
+          1.5578289020274292,
+          1.560752172948468
+        ],
+        "solubilized": [
+          6.139612784984117,
+          6.015855710448104
+        ],
+        "bound": [
+          1.1832632472736346,
+          1.1500869693841613
+        ],
+        "enzyme": [
+          1.518801973563323,
+          1.5217243656391837
+        ],
+        "inert": 0.01003826426054997,
+        "finite": true
+      }
+    },
+    {
+      "step": 4320,
+      "time": 4.32000020518899,
+      "residual": {
+        "material": -9.38663233149839e-05,
+        "potential": -0.00022357065365952167
+      },
+      "physical": {
+        "material": 774.034117290765,
+        "potential": 1509.4174588404107,
+        "work": 26.68204305280602,
+        "heat": 177.6370947504205,
+        "supplied": 8.594204483752325,
+        "removed": 0,
+        "supplied_potential": 34.3768179350093,
+        "removed_potential": 0,
+        "population": 256,
+        "completed_steps": 4320,
+        "secreted": [
+          1.5610799455075233,
+          1.5643620654714252
+        ],
+        "solubilized": [
+          6.6040925371543,
+          6.494974491360757
+        ],
+        "bound": [
+          1.260155120819563,
+          1.221836176573162
+        ],
+        "enzyme": [
+          1.5099581619425309,
+          1.5132161581380574
+        ],
+        "inert": 0.013130428647056686,
+        "finite": true
+      }
+    },
+    {
+      "step": 5320,
+      "time": 5.320000252686441,
+      "residual": {
+        "material": -0.00011869129340880136,
+        "potential": -0.0003095301622977331
+      },
+      "physical": {
+        "material": 776.0233102660688,
+        "potential": 1511.0403951670069,
+        "work": 30.68504440247562,
+        "heat": 179.96794231574174,
+        "supplied": 10.583422284026227,
+        "removed": 0,
+        "supplied_potential": 42.33368913610491,
+        "removed_potential": 0,
+        "population": 256,
+        "completed_steps": 5320,
+        "secreted": [
+          1.5652543358169408,
+          1.5702438047710547
+        ],
+        "solubilized": [
+          6.971694685581195,
+          6.87567682376652
+        ],
+        "bound": [
+          1.3560619840604542,
+          1.311926858900085
+        ],
+        "enzyme": [
+          1.5021048995445583,
+          1.5070384143108642
+        ],
+        "inert": 0.01624194513838615,
+        "finite": true
+      }
+    },
+    {
+      "step": 6320,
+      "time": 6.320000300183892,
+      "residual": {
+        "material": -0.00014962811285101907,
+        "potential": -0.00041563773348229915
+      },
+      "physical": {
+        "material": 778.0124743451644,
+        "potential": 1512.845856918189,
+        "work": 34.697535000290564,
+        "heat": 182.10666392283343,
+        "supplied": 12.5726172999412,
+        "removed": 0,
+        "supplied_potential": 50.2904691997648,
+        "removed_potential": 0,
+        "population": 256,
+        "completed_steps": 6320,
+        "secreted": [
+          1.5709590629676853,
+          1.5764540759883765
+        ],
+        "solubilized": [
+          7.282561882161305,
+          7.200125764609632
+        ],
+        "bound": [
+          1.4682084620381295,
+          1.4176143245502568
+        ],
+        "enzyme": [
+          1.495838872984017,
+          1.5012362006607285
+        ],
+        "inert": 0.01934132364337975,
+        "finite": true
+      }
+    },
+    {
+      "step": 7320,
+      "time": 7.3200003476813436,
+      "residual": {
+        "material": -0.00018361419807888524,
+        "potential": -0.0005392381012114811
+      },
+      "physical": {
+        "material": 780.001616568541,
+        "potential": 1514.732711092329,
+        "work": 38.72039735716986,
+        "heat": 184.1535286292935,
+        "supplied": 14.561793509403003,
+        "removed": 0,
+        "supplied_potential": 58.24717403761201,
+        "removed_potential": 0,
+        "population": 256,
+        "completed_steps": 7320,
+        "secreted": [
+          1.5781574765660722,
+          1.5830429028471478
+        ],
+        "solubilized": [
+          7.561764789609352,
+          7.4868822573277765
+        ],
+        "bound": [
+          1.5917950920860702,
+          1.5338097951167673
+        ],
+        "enzyme": [
+          1.4911089174647358,
+          1.4958550842154725
+        ],
+        "inert": 0.022408437275048522,
+        "finite": true
+      }
+    },
+    {
+      "step": 8320,
+      "time": 8.320000395178795,
+      "residual": {
+        "material": -0.0002205004633566432,
+        "potential": -0.0006732478065742953
+      },
+      "physical": {
+        "material": 781.990737312872,
+        "potential": 1516.7476353524714,
+        "work": 42.746424956845615,
+        "heat": 186.06907328215553,
+        "supplied": 16.550951139999384,
+        "removed": 0,
+        "supplied_potential": 66.20380455999754,
+        "removed_potential": 0,
+        "population": 256,
+        "completed_steps": 8320,
+        "secreted": [
+          1.5845573828635477,
+          1.5894065409770133
+        ],
+        "solubilized": [
+          7.821652369573465,
+          7.7490879783567
+        ],
+        "bound": [
+          1.720690524732703,
+          1.654857851633213
+        ],
+        "enzyme": [
+          1.4856208826261175,
+          1.4902944343255684
+        ],
+        "inert": 0.025429773583237867,
+        "finite": true
+      }
+    },
+    {
+      "step": 9320,
+      "time": 9.320000442676246,
+      "residual": {
+        "material": -0.0002529468518730482,
+        "potential": -0.0008032348913502574
+      },
+      "physical": {
+        "material": 783.9797781545751,
+        "potential": 1518.879603761242,
+        "work": 46.77140947585377,
+        "heat": 187.8682835196584,
+        "supplied": 18.54002442809096,
+        "removed": 0,
+        "supplied_potential": 74.16009771236384,
+        "removed_potential": 0,
+        "population": 256,
+        "completed_steps": 9320,
+        "secreted": [
+          1.590438025988604,
+          1.5962769855994376
+        ],
+        "solubilized": [
+          8.063726565975971,
+          7.996346486812898
+        ],
+        "bound": [
+          1.849954302929223,
+          1.7769627665742278
+        ],
+        "enzyme": [
+          1.4796593341415198,
+          1.4852826233261132
+        ],
+        "inert": 0.02841024349709091,
+        "finite": true
+      }
+    },
+    {
+      "step": 10320,
+      "time": 10.320000490173697,
+      "residual": {
+        "material": -0.00028384803533754166,
+        "potential": -0.0009176313187140295
+      },
+      "physical": {
+        "material": 785.9688199505689,
+        "potential": 1521.094688067018,
+        "work": 50.79748501389732,
+        "heat": 189.58330006812034,
+        "supplied": 20.52909712526821,
+        "removed": 0,
+        "supplied_potential": 82.11638850107283,
+        "removed_potential": 0,
+        "population": 256,
+        "completed_steps": 10320,
+        "secreted": [
+          1.5949953747569627,
+          1.6020048715383424
+        ],
+        "solubilized": [
+          8.289178890186957,
+          8.233407053985642
+        ],
+        "bound": [
+          1.9746393166351561,
+          1.8972909422127544
+        ],
+        "enzyme": [
+          1.4724286218195872,
+          1.4791721150564934
+        ],
+        "inert": 0.031321349853113724,
+        "finite": true
+      }
+    }
+  ],
+  "strict_trend_restore_exact": true,
+  "prefix_exactness": {
+    "strict_restore_exact": true,
+    "highwater_reconstruction_exact": true,
+    "failure_latch_preserved": true,
+    "partial_checkpoint_rejected": true,
+    "warm_errors": {
+      "cells/exchange_scale": 0,
+      "cells/ledger": 0,
+      "cells/waste": 0,
+      "cells/rows": 0,
+      "cells/grants": 0,
+      "environment/scratch": 0,
+      "cells/metabolites": 0,
+      "environment/returns": 0,
+      "habitat/weights": 0,
+      "feedstock/scratch": 0,
+      "environment/demand": 0,
+      "cells/ledger_low": 0,
+      "cells/inputs": 0,
+      "feedstock/sink_masks": 0,
+      "cells/energy": 0,
+      "cells/requests": 0,
+      "environment/resource_ledger_low": 0,
+      "cells/radii": 0,
+      "habitat/last_secretion": 0,
+      "cells/mass": 0,
+      "cells/support": 0,
+      "habitat/release": 0,
+      "feedstock/permeability": 0,
+      "environment/inert_low": 0,
+      "habitat/permeability": 0,
+      "habitat/observation": 0,
+      "cells/force": 0,
+      "cells/rest": 0,
+      "cells/position": 0,
+      "habitat/grid_inert_low": 0,
+      "cells/adaptation": 0,
+      "cells/candidate_rest": 0,
+      "feedstock/source_masks": 0,
+      "environment/inert": 0,
+      "habitat/grid_ledger_low": 0,
+      "environment/permeability": 0,
+      "feedstock/resource_ledger_low": 0,
+      "habitat/grid_ledger": 0,
+      "habitat/bound": 0,
+      "cells/actions": 0,
+      "cells/weights": 0,
+      "feedstock/fields": 0,
+      "cells/enzymes": 0,
+      "environment/quota": 0,
+      "environment/source_masks": 0,
+      "habitat/grid_inert": 0,
+      "cells/hidden": 0,
+      "habitat/cell_inert": 0,
+      "cells/outputs": 0,
+      "environment/occupancy": 0,
+      "environment/resource_ledger": 0,
+      "habitat/enzyme": 0,
+      "habitat/cell_ledger": 0,
+      "feedstock/resource_ledger": 0,
+      "cells/age": 0,
+      "feedstock/quota": 0,
+      "cells/metabolites_next": 0,
+      "habitat/expression": 0,
+      "habitat/cell_ledger_low": 0,
+      "cells/position_next": 0,
+      "habitat/requests": 0,
+      "habitat/cell_inert_low": 0,
+      "environment/fields": 0,
+      "environment/scale": 0,
+      "environment/sink_masks": 0,
+      "environment/observation": 0,
+      "cells/marks": 0
+    },
+    "final_errors": {
+      "cells/exchange_scale": 0,
+      "cells/ledger": 0,
+      "cells/waste": 0,
+      "cells/rows": 0,
+      "cells/grants": 0,
+      "environment/scratch": 0,
+      "cells/metabolites": 0,
+      "environment/returns": 0,
+      "habitat/weights": 0,
+      "feedstock/scratch": 0,
+      "environment/demand": 0,
+      "cells/ledger_low": 0,
+      "cells/inputs": 0,
+      "feedstock/sink_masks": 0,
+      "cells/energy": 0,
+      "cells/requests": 0,
+      "environment/resource_ledger_low": 0,
+      "cells/radii": 0,
+      "habitat/last_secretion": 0,
+      "cells/mass": 0,
+      "cells/support": 0,
+      "habitat/release": 0,
+      "feedstock/permeability": 0,
+      "environment/inert_low": 0,
+      "habitat/permeability": 0,
+      "habitat/observation": 0,
+      "cells/force": 0,
+      "cells/rest": 0,
+      "cells/position": 0,
+      "habitat/grid_inert_low": 0,
+      "cells/adaptation": 0,
+      "cells/candidate_rest": 0,
+      "feedstock/source_masks": 0,
+      "environment/inert": 0,
+      "habitat/grid_ledger_low": 0,
+      "environment/permeability": 0,
+      "feedstock/resource_ledger_low": 0,
+      "habitat/grid_ledger": 0,
+      "habitat/bound": 0,
+      "cells/actions": 0,
+      "cells/weights": 0,
+      "feedstock/fields": 0,
+      "cells/enzymes": 0,
+      "environment/quota": 0,
+      "environment/source_masks": 0,
+      "habitat/grid_inert": 0,
+      "cells/hidden": 0,
+      "habitat/cell_inert": 0,
+      "cells/outputs": 0,
+      "environment/occupancy": 0,
+      "environment/resource_ledger": 0,
+      "habitat/enzyme": 0,
+      "habitat/cell_ledger": 0,
+      "feedstock/resource_ledger": 0,
+      "cells/age": 0,
+      "feedstock/quota": 0,
+      "cells/metabolites_next": 0,
+      "habitat/expression": 0,
+      "habitat/cell_ledger_low": 0,
+      "cells/position_next": 0,
+      "habitat/requests": 0,
+      "habitat/cell_inert_low": 0,
+      "environment/fields": 0,
+      "environment/scale": 0,
+      "environment/sink_masks": 0,
+      "environment/observation": 0,
+      "cells/marks": 0
+    },
+    "continuation_errors": {
+      "cells/exchange_scale": 0,
+      "cells/ledger": 0,
+      "cells/waste": 0,
+      "cells/rows": 0,
+      "cells/grants": 0,
+      "environment/scratch": 0,
+      "cells/metabolites": 0,
+      "environment/returns": 0,
+      "habitat/weights": 0,
+      "feedstock/scratch": 0,
+      "environment/demand": 0,
+      "cells/ledger_low": 0,
+      "cells/inputs": 0,
+      "feedstock/sink_masks": 0,
+      "cells/energy": 0,
+      "cells/requests": 0,
+      "environment/resource_ledger_low": 0,
+      "cells/radii": 0,
+      "habitat/last_secretion": 0,
+      "cells/mass": 0,
+      "cells/support": 0,
+      "habitat/release": 0,
+      "feedstock/permeability": 0,
+      "environment/inert_low": 0,
+      "habitat/permeability": 0,
+      "habitat/observation": 0,
+      "cells/force": 0,
+      "cells/rest": 0,
+      "cells/position": 0,
+      "habitat/grid_inert_low": 0,
+      "cells/adaptation": 0,
+      "cells/candidate_rest": 0,
+      "feedstock/source_masks": 0,
+      "environment/inert": 0,
+      "habitat/grid_ledger_low": 0,
+      "environment/permeability": 0,
+      "feedstock/resource_ledger_low": 0,
+      "habitat/grid_ledger": 0,
+      "habitat/bound": 0,
+      "cells/actions": 0,
+      "cells/weights": 0,
+      "feedstock/fields": 0,
+      "cells/enzymes": 0,
+      "environment/quota": 0,
+      "environment/source_masks": 0,
+      "habitat/grid_inert": 0,
+      "cells/hidden": 0,
+      "habitat/cell_inert": 0,
+      "cells/outputs": 0,
+      "environment/occupancy": 0,
+      "environment/resource_ledger": 0,
+      "habitat/enzyme": 0,
+      "habitat/cell_ledger": 0,
+      "feedstock/resource_ledger": 0,
+      "cells/age": 0,
+      "feedstock/quota": 0,
+      "cells/metabolites_next": 0,
+      "habitat/expression": 0,
+      "habitat/cell_ledger_low": 0,
+      "cells/position_next": 0,
+      "habitat/requests": 0,
+      "habitat/cell_inert_low": 0,
+      "environment/fields": 0,
+      "environment/scale": 0,
+      "environment/sink_masks": 0,
+      "environment/observation": 0,
+      "cells/marks": 0
+    },
+    "slot_reuse": {
+      "births": 1,
+      "deaths": 1,
+      "old_slot2_id": 2,
+      "new_slot2_id": 3,
+      "highwater": 2,
+      "errors": {
+        "cells/exchange_scale": 0,
+        "cells/ledger": 0,
+        "cells/waste": 0,
+        "cells/rows": 0,
+        "cells/grants": 0,
+        "environment/scratch": 0,
+        "cells/metabolites": 0,
+        "environment/returns": 0,
+        "habitat/weights": 0,
+        "feedstock/scratch": 0,
+        "environment/demand": 0,
+        "cells/ledger_low": 0,
+        "cells/inputs": 0,
+        "feedstock/sink_masks": 0,
+        "cells/energy": 0,
+        "cells/requests": 0,
+        "environment/resource_ledger_low": 0,
+        "cells/radii": 0,
+        "habitat/last_secretion": 0,
+        "cells/mass": 0,
+        "cells/support": 0,
+        "habitat/release": 0,
+        "feedstock/permeability": 0,
+        "environment/inert_low": 0,
+        "habitat/permeability": 0,
+        "habitat/observation": 0,
+        "cells/force": 0,
+        "cells/rest": 0,
+        "cells/position": 0,
+        "habitat/grid_inert_low": 0,
+        "cells/adaptation": 0,
+        "cells/candidate_rest": 0,
+        "feedstock/source_masks": 0,
+        "environment/inert": 0,
+        "habitat/grid_ledger_low": 0,
+        "environment/permeability": 0,
+        "feedstock/resource_ledger_low": 0,
+        "habitat/grid_ledger": 0,
+        "habitat/bound": 0,
+        "cells/actions": 0,
+        "cells/weights": 0,
+        "feedstock/fields": 0,
+        "cells/enzymes": 0,
+        "environment/quota": 0,
+        "environment/source_masks": 0,
+        "habitat/grid_inert": 0,
+        "cells/hidden": 0,
+        "habitat/cell_inert": 0,
+        "cells/outputs": 0,
+        "environment/occupancy": 0,
+        "environment/resource_ledger": 0,
+        "habitat/enzyme": 0,
+        "habitat/cell_ledger": 0,
+        "feedstock/resource_ledger": 0,
+        "cells/age": 0,
+        "feedstock/quota": 0,
+        "cells/metabolites_next": 0,
+        "habitat/expression": 0,
+        "habitat/cell_ledger_low": 0,
+        "cells/position_next": 0,
+        "habitat/requests": 0,
+        "habitat/cell_inert_low": 0,
+        "environment/fields": 0,
+        "environment/scale": 0,
+        "environment/sink_masks": 0,
+        "environment/observation": 0,
+        "cells/marks": 0
+      }
+    }
+  },
+  "energy_bytes": 131072,
+  "extra_energy_bytes": 65536,
+  "elapsed_seconds": 169.87665510177612,
+  "exit_code": 0,
+  "timing_exclusions": [
+    "Short20-step prefix comparison has severe JIT/GC contamination; its reported2.313x ratio is not a performance claim."
+  ],
+  "remote_checkpoint": "/othersys/tmp/intmat-probe-20261014/device-energy-e44b20c/results/checkpoint.jls",
+  "raw_results": "outputs/device-energy-precision-20261015/"
+}
