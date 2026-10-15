@@ -1,0 +1,83 @@
+{
+  "settings": {
+    "directory": "volume",
+    "output": "final.png",
+    "samples": 96,
+    "size": 1600,
+    "orbit": 0.74,
+    "elevation": 0.55,
+    "emission": 0.0,
+    "emission_field": "activity",
+    "palette": "glass-ice",
+    "absorption": 0.12,
+    "scattering": 0.02,
+    "scattering_field": "density",
+    "polished_carrier": false,
+    "ior": 1.48,
+    "inclusion_surface": null,
+    "inclusion_isovalue": 0.25,
+    "surface_roughness": 0.035,
+    "density_scale": 0.12,
+    "light_power": 1.0,
+    "z_scale": 1.0,
+    "population": null,
+    "population_radius": 0.015,
+    "conductive_graph": false,
+    "graph_radius": 0.0012,
+    "bond_graph": "channels.obj",
+    "carrier_shape": "ellipsoid",
+    "activity_threshold": 0.0,
+    "activity_power": 1.0,
+    "interfaces": false,
+    "smooth": 0,
+    "frame_content": true,
+    "inclusion_transmission": 0.3,
+    "surface_smooth": 0,
+    "inclusion_tint": "pearl",
+    "camera_distance": 3.2,
+    "device": "METAL",
+    "adaptive_threshold": 0.03,
+    "cutaway_axis": null,
+    "cutaway_position": 0.0,
+    "studio_background": "warm",
+    "exposure": 0.0
+  },
+  "gradient_scales": {},
+  "volume_file": "final.vdb",
+  "camera_fit": {
+    "bounds": [
+      [
+        -0.6318824291229248,
+        -0.9724500179290771,
+        -0.13808664679527283
+      ],
+      [
+        0.6726971864700317,
+        0.9724500179290771,
+        0.12785781919956207
+      ]
+    ],
+    "distance": 3.8800038993358617,
+    "target": [
+      0.020407378673553467,
+      0.0,
+      -0.005114413797855377
+    ],
+    "margin": 0.08
+  },
+  "render_device": [
+    {
+      "name": "Apple M2 Max (GPU - 38 cores)",
+      "type": "METAL"
+    }
+  ],
+  "metal_kernel_settings": {
+    "CYCLES_METAL_ADAPTIVE_COMPILE": null,
+    "CYCLES_METAL_SPECIALIZATION_LEVEL": null
+  },
+  "adaptive_sampling": {
+    "maximum_samples": 96,
+    "minimum_samples": 16,
+    "noise_threshold": 0.03
+  }
+}

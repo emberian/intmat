@@ -1,0 +1,51 @@
+{
+  "metrics": {
+    "pressure_extrema": [
+      -0.5648697,
+      0.41697672
+    ],
+    "initial_mass": 884736,
+    "crest_fraction": 0.2857530381944444,
+    "final_mass": 884736,
+    "activity_extrema": [
+      0.0028051166,
+      1.0931209
+    ],
+    "deposit_extrema": [
+      0,
+      0.56316537
+    ]
+  },
+  "family": "waves",
+  "time": 2.5999999418854713,
+  "optical_scale": 0.48505628,
+  "optical_transfer": "99.5th-percentile-clamped absolute pressure squared (or positive neural activity squared); emissive surrogate, not physical light emission",
+  "shape": [
+    96,
+    96,
+    96
+  ],
+  "sourcehash": "2e5074e109f4b44c61ae75656627a63ccb678484dd609cf1c679c69bebc7e096",
+  "id": "waves-memory-rings",
+  "description": "Concentric pressure bands write persistent mineral rings while their instantaneous crests move onward.",
+  "elapsed_seconds": 37.529620875,
+  "params": {
+    "resolution": 96,
+    "steps": 260,
+    "model": "damped scalar wave plus excitable conservative deposition; not calibrated acoustics, cavitation or sonoluminescence",
+    "mode": "rings",
+    "id": "waves-memory-rings",
+    "title": "Memory rings",
+    "dt": 0.01,
+    "study": "studies/collection_waves.jl"
+  },
+  "title": "Memory rings",
+  "publication": {
+    "source_image_sha256": "bdebec2677f3e8a4d333c187f3754bc1e3adf4ee19b82281eb5943c4fcc8e968",
+    "webp_sha256": "b1eaf810acf68807cfa680cc1646dcf5f46e88412f870eb3fa1bef84066a1bed",
+    "quality": 95,
+    "width": 1600,
+    "original_retained": true,
+    "reviewed_by": "collection_render"
+  }
+}

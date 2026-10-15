@@ -1,0 +1,51 @@
+{
+  "metrics": {
+    "pressure_extrema": [
+      -0.7408332,
+      0.73876685
+    ],
+    "initial_mass": 884736,
+    "crest_fraction": 0.3565108687789352,
+    "final_mass": 884735.9,
+    "activity_extrema": [
+      0.0013170597,
+      1.009387
+    ],
+    "deposit_extrema": [
+      0,
+      0.5139762
+    ]
+  },
+  "family": "waves",
+  "time": 2.0999999530613422,
+  "optical_scale": 0.41959053,
+  "optical_transfer": "99.5th-percentile-clamped absolute pressure squared (or positive neural activity squared); emissive surrogate, not physical light emission",
+  "shape": [
+    96,
+    96,
+    96
+  ],
+  "sourcehash": "2e5074e109f4b44c61ae75656627a63ccb678484dd609cf1c679c69bebc7e096",
+  "id": "waves-oblique-fronts",
+  "description": "Three tilted planar pressure packets collide through a stratified mineral medium.",
+  "elapsed_seconds": 41.371605208,
+  "params": {
+    "resolution": 96,
+    "steps": 210,
+    "model": "damped scalar wave plus excitable conservative deposition; not calibrated acoustics, cavitation or sonoluminescence",
+    "mode": "fronts",
+    "id": "waves-oblique-fronts",
+    "title": "Oblique fronts",
+    "dt": 0.01,
+    "study": "studies/collection_waves.jl"
+  },
+  "title": "Oblique fronts",
+  "publication": {
+    "source_image_sha256": "c7c178951e50e98f498a950f2026e3c7705c7000b7e07aa1d7aa9aad7c311194",
+    "webp_sha256": "0b68c259c9cecb074877a50c877bdd109427fea535bce5042ad5fe65c17f198b",
+    "quality": 95,
+    "width": 1600,
+    "original_retained": true,
+    "reviewed_by": "collection_render"
+  }
+}

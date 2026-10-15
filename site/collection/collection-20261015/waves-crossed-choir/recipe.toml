@@ -1,0 +1,8 @@
+resolution = 96
+steps = 240
+model = "damped scalar wave plus excitable conservative deposition; not calibrated acoustics, cavitation or sonoluminescence"
+mode = "cross"
+id = "waves-crossed-choir"
+title = "Crossed choir"
+dt = 0.009999999776482582
+study = "studies/collection_waves.jl"

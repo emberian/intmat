@@ -1,0 +1,11 @@
+slug = "phase-gyroid-cathedral-aged"
+title = "Spinodal cathedral"
+initial = "spinodal"
+description = "A weak analytic three-dimensional composition perturbation develops a bicontinuous spinodal network under conserved demixing; no mature topology is planted."
+kappa = 0.85
+active = false
+palette = "glass-ice"
+seed = 702
+t_end = 60.0
+dt = 0.25
+mobility = 1.0

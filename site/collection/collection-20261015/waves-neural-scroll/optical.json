@@ -1,0 +1,94 @@
+{
+  "settings": {
+    "directory": "volume",
+    "output": "final.png",
+    "samples": 96,
+    "size": 1600,
+    "orbit": 0.74,
+    "elevation": 0.34,
+    "emission": 0.0,
+    "emission_field": "activity",
+    "palette": "acoustic-pearl",
+    "absorption": 0.7,
+    "scattering": 0.12,
+    "scattering_field": "density",
+    "polished_carrier": false,
+    "ior": 1.38,
+    "inclusion_surface": "activity",
+    "inclusion_isovalue": 0.4,
+    "surface_roughness": 0.035,
+    "density_scale": 0.0,
+    "light_power": 1.0,
+    "z_scale": 1.0,
+    "population": null,
+    "population_radius": 0.015,
+    "conductive_graph": false,
+    "graph_radius": 0.008,
+    "bond_graph": null,
+    "carrier_shape": "box",
+    "activity_threshold": 0.0,
+    "activity_power": 1.0,
+    "interfaces": false,
+    "smooth": 0,
+    "frame_content": true,
+    "inclusion_transmission": 0.3,
+    "surface_smooth": 1,
+    "inclusion_tint": "rose",
+    "camera_distance": 3.8,
+    "device": "METAL",
+    "adaptive_threshold": 0.03,
+    "cutaway_axis": "x",
+    "cutaway_position": 0.2,
+    "studio_background": "warm",
+    "exposure": 0.0
+  },
+  "gradient_scales": {},
+  "cutaway": {
+    "axis": "x",
+    "position": 0.2,
+    "interpretation": "optical section of exported fields"
+  },
+  "volume_file": "final.vdb",
+  "inclusion_mesh": {
+    "vertices": 12712,
+    "triangles": 4254,
+    "quads": 10579,
+    "isovalue": 0.4
+  },
+  "camera_fit": {
+    "bounds": [
+      [
+        -0.8536243438720703,
+        -0.921966552734375,
+        -0.7699151039123535
+      ],
+      [
+        0.2100733071565628,
+        0.9092283248901367,
+        0.7689676284790039
+      ]
+    ],
+    "distance": 4.11631611943245,
+    "target": [
+      -0.32177552580833435,
+      -0.006369113922119141,
+      -0.0004737377166748047
+    ],
+    "margin": 0.08
+  },
+  "render_device": [
+    {
+      "name": "Apple M2 Max (GPU - 38 cores)",
+      "type": "METAL"
+    }
+  ],
+  "metal_kernel_settings": {
+    "CYCLES_METAL_ADAPTIVE_COMPILE": null,
+    "CYCLES_METAL_SPECIALIZATION_LEVEL": null
+  },
+  "adaptive_sampling": {
+    "maximum_samples": 96,
+    "minimum_samples": 16,
+    "noise_threshold": 0.03
+  }
+}

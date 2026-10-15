@@ -1,0 +1,404 @@
+{
+  "id": "phase-driven-coral-aged",
+  "title": "Driven coral",
+  "description": "A biased gyroid remade by an explicit traveling chemical-potential forcing; active morphology is externally driven.",
+  "solver": "CPU semi-implicit conserved Cahn-Hilliard; constant mobility; stabilization 3",
+  "initialization": "Explicit periodic analytic field in studies/collection_phase.jl, initial kind coral",
+  "forcing": "Prescribed time-varying chemical potential, amplitude .42 and .28; conservative Laplacian coupling. No claim of spontaneous coral growth.",
+  "pilot": "48 cubed and 96 cubed have identical extent64; spacing changes4/3 to2/3; identical physical endtime and dt; pilot checks finiteness before highres bake",
+  "phase_parameters": {
+    "bulk": 1,
+    "kappa": 0.65,
+    "mobility": 1,
+    "stabilization": 3,
+    "dt": 0.25,
+    "t_end": 60
+  },
+  "temporal": "Quarter-time raw phase fields plus central xy PPM slices in temporal/; full initial and final record_state; initial analytic topology is explicitly prescribed",
+  "optical_mapping": "structure=(1+tanh(2phi))/2; activity=.06*(.8 interface+.2 material_activity); spherical viewing crop only",
+  "traces": [
+    {
+      "label": "pilot",
+      "resolution": 48,
+      "extent": [
+        64,
+        64,
+        64
+      ],
+      "spacing": 1.3333333333333333,
+      "dt": 0.25,
+      "steps": 240,
+      "elapsed_seconds": 15.7175565,
+      "history": [
+        {
+          "step": 0,
+          "time": 0,
+          "energy": 28407.960446625744,
+          "mass": -24527.410344033153,
+          "range": [
+            -0.99955595,
+            0.9958366
+          ]
+        },
+        {
+          "step": 20,
+          "time": 5,
+          "energy": 27997.712482128645,
+          "mass": -24527.410356734355,
+          "range": [
+            -1.0851545,
+            1.0642289
+          ],
+          "rms_change": 0.17292517,
+          "positive_fraction": 0.3716091579861111,
+          "sign_change_fraction": 0.042670355902777776
+        },
+        {
+          "step": 40,
+          "time": 10,
+          "energy": 28090.38399871509,
+          "mass": -24527.410330944767,
+          "range": [
+            -1.0959975,
+            1.0656232
+          ],
+          "rms_change": 0.29751745,
+          "positive_fraction": 0.3695746527777778,
+          "sign_change_fraction": 0.08528645833333333
+        },
+        {
+          "step": 60,
+          "time": 15,
+          "energy": 28039.876359011087,
+          "mass": -24527.41033949869,
+          "range": [
+            -1.11794,
+            1.0868876
+          ],
+          "rms_change": 0.39641517,
+          "positive_fraction": 0.3690863715277778,
+          "sign_change_fraction": 0.12299262152777778
+        },
+        {
+          "step": 80,
+          "time": 20,
+          "energy": 27755.55201502042,
+          "mass": -24527.41034555665,
+          "range": [
+            -1.1213659,
+            1.0998396
+          ],
+          "rms_change": 0.5245608,
+          "positive_fraction": 0.3732367621527778,
+          "sign_change_fraction": 0.167724609375
+        },
+        {
+          "step": 100,
+          "time": 25,
+          "energy": 27722.58701035458,
+          "mass": -24527.410284531987,
+          "range": [
+            -1.157218,
+            1.1432389
+          ],
+          "rms_change": 0.635883,
+          "positive_fraction": 0.3768446180555556,
+          "sign_change_fraction": 0.21028645833333334
+        },
+        {
+          "step": 120,
+          "time": 30,
+          "energy": 27701.29509850696,
+          "mass": -24527.410275024085,
+          "range": [
+            -1.1559243,
+            1.1223875
+          ],
+          "rms_change": 0.73470855,
+          "positive_fraction": 0.3802083333333333,
+          "sign_change_fraction": 0.2529839409722222
+        },
+        {
+          "step": 140,
+          "time": 35,
+          "energy": 27835.356920516548,
+          "mass": -24527.410212891635,
+          "range": [
+            -1.1818013,
+            1.1502379
+          ],
+          "rms_change": 0.8206074,
+          "positive_fraction": 0.3817816840277778,
+          "sign_change_fraction": 0.2886284722222222
+        },
+        {
+          "step": 160,
+          "time": 40,
+          "energy": 28008.88271542932,
+          "mass": -24527.410053041458,
+          "range": [
+            -1.1855814,
+            1.1586747
+          ],
+          "rms_change": 0.9006781,
+          "positive_fraction": 0.3849283854166667,
+          "sign_change_fraction": 0.3254665798611111
+        },
+        {
+          "step": 180,
+          "time": 45,
+          "energy": 28288.575605624785,
+          "mass": -24527.410112956044,
+          "range": [
+            -1.1830937,
+            1.1575148
+          ],
+          "rms_change": 0.96577483,
+          "positive_fraction": 0.3879123263888889,
+          "sign_change_fraction": 0.3570421006944444
+        },
+        {
+          "step": 200,
+          "time": 50,
+          "energy": 28413.43171747425,
+          "mass": -24527.410146799026,
+          "range": [
+            -1.2006058,
+            1.1665521
+          ],
+          "rms_change": 1.0192024,
+          "positive_fraction": 0.3889431423611111,
+          "sign_change_fraction": 0.3851453993055556
+        },
+        {
+          "step": 220,
+          "time": 55,
+          "energy": 28731.972686277586,
+          "mass": -24527.410103901057,
+          "range": [
+            -1.2022847,
+            1.1668178
+          ],
+          "rms_change": 1.073207,
+          "positive_fraction": 0.3908962673611111,
+          "sign_change_fraction": 0.4116753472222222
+        },
+        {
+          "step": 240,
+          "time": 60,
+          "energy": 28791.07218602072,
+          "mass": -24527.410138749212,
+          "range": [
+            -1.196954,
+            1.17076
+          ],
+          "rms_change": 1.1075987,
+          "positive_fraction": 0.3911675347222222,
+          "sign_change_fraction": 0.4338650173611111
+        }
+      ],
+      "mean_mass_drift": 1.8562277640891505e-09
+    },
+    {
+      "label": "final",
+      "resolution": 96,
+      "extent": [
+        64,
+        64,
+        64
+      ],
+      "spacing": 0.6666666666666666,
+      "dt": 0.25,
+      "steps": 240,
+      "elapsed_seconds": 96.133681625,
+      "history": [
+        {
+          "step": 0,
+          "time": 0,
+          "energy": 28760.2941847782,
+          "mass": -196219.7748864572,
+          "range": [
+            -0.999587,
+            0.9961275
+          ]
+        },
+        {
+          "step": 20,
+          "time": 5,
+          "energy": 28546.450787718302,
+          "mass": -196219.77482485428,
+          "range": [
+            -1.0873786,
+            1.0648525
+          ],
+          "rms_change": 0.17155626,
+          "positive_fraction": 0.3708835177951389,
+          "sign_change_fraction": 0.0455322265625
+        },
+        {
+          "step": 40,
+          "time": 10,
+          "energy": 28658.6598271466,
+          "mass": -196219.77464786448,
+          "range": [
+            -1.0968308,
+            1.0667012
+          ],
+          "rms_change": 0.3011926,
+          "positive_fraction": 0.3687269422743056,
+          "sign_change_fraction": 0.09157307942708333
+        },
+        {
+          "step": 60,
+          "time": 15,
+          "energy": 28606.00968088107,
+          "mass": -196219.77466227917,
+          "range": [
+            -1.1183708,
+            1.0914887
+          ],
+          "rms_change": 0.40426144,
+          "positive_fraction": 0.369659423828125,
+          "sign_change_fraction": 0.13008287217881945
+        },
+        {
+          "step": 80,
+          "time": 20,
+          "energy": 28347.710331873153,
+          "mass": -196219.77469588252,
+          "range": [
+            -1.1230708,
+            1.101319
+          ],
+          "rms_change": 0.53655154,
+          "positive_fraction": 0.3729722764756944,
+          "sign_change_fraction": 0.17851426866319445
+        },
+        {
+          "step": 100,
+          "time": 25,
+          "energy": 28321.116722040268,
+          "mass": -196219.77467117208,
+          "range": [
+            -1.1607217,
+            1.143175
+          ],
+          "rms_change": 0.6518122,
+          "positive_fraction": 0.3768446180555556,
+          "sign_change_fraction": 0.22401258680555555
+        },
+        {
+          "step": 120,
+          "time": 30,
+          "energy": 28320.068004379813,
+          "mass": -196219.77479590813,
+          "range": [
+            -1.1594292,
+            1.1273057
+          ],
+          "rms_change": 0.75366807,
+          "positive_fraction": 0.3797810872395833,
+          "sign_change_fraction": 0.2675103081597222
+        },
+        {
+          "step": 140,
+          "time": 35,
+          "energy": 28462.488733878163,
+          "mass": -196219.77491635765,
+          "range": [
+            -1.1824584,
+            1.152996
+          ],
+          "rms_change": 0.8413234,
+          "positive_fraction": 0.3827141655815972,
+          "sign_change_fraction": 0.3057352701822917
+        },
+        {
+          "step": 160,
+          "time": 40,
+          "energy": 28682.752585133112,
+          "mass": -196219.77502082457,
+          "range": [
+            -1.1874552,
+            1.1642716
+          ],
+          "rms_change": 0.9219599,
+          "positive_fraction": 0.3855217827690972,
+          "sign_change_fraction": 0.3434549967447917
+        },
+        {
+          "step": 180,
+          "time": 45,
+          "energy": 28976.437285710406,
+          "mass": -196219.77473781657,
+          "range": [
+            -1.1886909,
+            1.1597623
+          ],
+          "rms_change": 0.9866038,
+          "positive_fraction": 0.3879597981770833,
+          "sign_change_fraction": 0.3756849500868056
+        },
+        {
+          "step": 200,
+          "time": 50,
+          "energy": 29131.15545367387,
+          "mass": -196219.77448909293,
+          "range": [
+            -1.2010797,
+            1.1688054
+          ],
+          "rms_change": 1.0386187,
+          "positive_fraction": 0.3891228569878472,
+          "sign_change_fraction": 0.4045240614149306
+        },
+        {
+          "step": 220,
+          "time": 55,
+          "energy": 29508.12702510733,
+          "mass": -196219.77461407593,
+          "range": [
+            -1.2028406,
+            1.16937
+          ],
+          "rms_change": 1.0905449,
+          "positive_fraction": 0.3908521864149306,
+          "sign_change_fraction": 0.4302537706163194
+        },
+        {
+          "step": 240,
+          "time": 60,
+          "energy": 29575.582638084896,
+          "mass": -196219.77466600016,
+          "range": [
+            -1.1959522,
+            1.1721023
+          ],
+          "rms_change": 1.1224381,
+          "positive_fraction": 0.3908420138888889,
+          "sign_change_fraction": 0.4512600368923611
+        }
+      ],
+      "mean_mass_drift": 2.4917832406488203e-10
+    }
+  ],
+  "source_sha256": {
+    "src/implicit_phase.jl": "c9f69ad8d2ab00bd18d678d51956effe9c52bf415d5388d5305c56b4bb351fe7",
+    "studies/collection_phase.jl": "b51fbfe181cd6d11ffb8c1dfe7b9401a14e4b33b0cd8569409e2979930efcf86",
+    "src/phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+  },
+  "family": "phase",
+  "shape": [
+    96,
+    96,
+    96
+  ],
+  "publication": {
+    "source_image_sha256": "86433425b80217e8e5731ca2c2214dcedb4f9300219bc11b07e987b58e1c5bf9",
+    "webp_sha256": "bb459982cfb2fe03cccc5bf000a33ad8c41b9049124e41b615c8973ef7561add",
+    "quality": 95,
+    "width": 1600,
+    "original_retained": true,
+    "reviewed_by": "collection_render"
+  }
+}

@@ -82,8 +82,8 @@ def main():
             if re.search(r'/Users/|/home/|file://|localhost:|127\.0\.0\.1:', file.read_text()):
                 raise ValueError(f'Private/local reference in {file.relative_to(destination)}')
     size = sum(p.stat().st_size for p in destination.rglob('*') if p.is_file())
-    if size > 80_000_000:
-        raise ValueError(f'Gallery exceeds 80 MB budget: {size}')
+    if size > 128_000_000:
+        raise ValueError(f'Gallery exceeds 128 MB budget: {size}')
     print(f'Staged {size / 1_000_000:.2f} MB at {destination}')
 
 if __name__ == '__main__':

@@ -1,0 +1,167 @@
+[
+  {
+    "id": "collection-20261015/ecology-gyroid-gardens",
+    "source_image_sha256": "6eb4d700306d3fe7bd239ba807967ff2819c61660f0f58dc108997f82f4784df",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
+  },
+  {
+    "id": "collection-20261015/fracture-shear-veil",
+    "source_image_sha256": "aca46a928364997809661edf1584e6c06a4cac7b2508a42fe48694f0eb06773e",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
+  },
+  {
+    "id": "collection-20261015/waves-crossed-choir",
+    "source_image_sha256": "87ee7e326f1e66e86e9f372c00e6d2b958d308eba055996eabb0f5b08bdc68fc",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
+  },
+  {
+    "id": "collection-20261015/fracture-copper-lace",
+    "source_image_sha256": "9967e9c477679900377c08a4af9c47b69b54de715a8364040d7492ea3060d02c",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
+  },
+  {
+    "id": "collection-20261015/fracture-golden-sail",
+    "source_image_sha256": "f7fe9cff5b75eadc1e9d6515767d3e1417a1eaee8c6dd4e6542e9d6f3068538a",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
+  },
+  {
+    "id": "collection-20261015/fracture-ice-cleavage",
+    "source_image_sha256": "e4073f569da2176186179ff328b5d96017de3b2ccd6e321c2ec3e08ac52c7f6c",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
+  },
+  {
+    "id": "collection-20261015/fracture-parted-choir",
+    "source_image_sha256": "b3f551ab10b270cb12ec53f7840b331d3fa17423e0a9c73b817cee879d890747",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
+  },
+  {
+    "id": "collection-20261015/phase-driven-coral-aged",
+    "source_image_sha256": "86433425b80217e8e5731ca2c2214dcedb4f9300219bc11b07e987b58e1c5bf9",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
+  },
+  {
+    "id": "collection-20261015/phase-folded-strata-aged",
+    "source_image_sha256": "4ae3dc1a94d4a3a8ae5a1c213f7de969bcc1388498666978f084f25aaa145e8b",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
+  },
+  {
+    "id": "collection-20261015/phase-gyroid-cathedral-aged",
+    "source_image_sha256": "7451a6d334b0d34f70a13b7e8145eb21da6f12dab8c06caff1c4b2dede419c88",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
+  },
+  {
+    "id": "collection-20261015/waves-memory-rings",
+    "source_image_sha256": "bdebec2677f3e8a4d333c187f3754bc1e3adf4ee19b82281eb5943c4fcc8e968",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
+  },
+  {
+    "id": "collection-20261015/waves-neural-lattice",
+    "source_image_sha256": "aad221ac33d435224e51e7174eea793bfa6fd4251c77d95cfe0f679fe9742506",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
+  },
+  {
+    "id": "collection-20261015/waves-neural-scroll",
+    "source_image_sha256": "756a7a8b6ef796737de9ec90cb2246bb3f24a1a0a7b8926a72d5c512beda52a8",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
+  },
+  {
+    "id": "collection-20261015/waves-oblique-fronts",
+    "source_image_sha256": "c7c178951e50e98f498a950f2026e3c7705c7000b7e07aa1d7aa9aad7c311194",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
+  },
+  {
+    "id": "collection-20261015/write-counterspiral",
+    "source_image_sha256": "268523207bf8d1299ce4ce7607542da5717d23177c93bfccaf0cb2911beeeffa",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
+  }
+]

@@ -1,0 +1,51 @@
+{
+  "metrics": {
+    "pressure_extrema": [
+      0,
+      0
+    ],
+    "initial_mass": 884736,
+    "crest_fraction": 0.23105310510706017,
+    "final_mass": 884735.7,
+    "activity_extrema": [
+      -0.88325787,
+      0.7848734
+    ],
+    "deposit_extrema": [
+      0,
+      0.23779684
+    ]
+  },
+  "family": "waves",
+  "time": 2.9999999329447746,
+  "optical_scale": 0.7636761,
+  "optical_transfer": "99.5th-percentile-clamped absolute pressure squared (or positive neural activity squared); emissive surrogate, not physical light emission",
+  "shape": [
+    96,
+    96,
+    96
+  ],
+  "sourcehash": "2e5074e109f4b44c61ae75656627a63ccb678484dd609cf1c679c69bebc7e096",
+  "id": "waves-neural-scroll",
+  "description": "A fixed recurrent two-channel tanh field unfolds a twisted phase initialization into mineral-writing excitation.",
+  "elapsed_seconds": 18.330612458,
+  "params": {
+    "resolution": 96,
+    "steps": 300,
+    "model": "fixed recurrent tanh; no training",
+    "mode": "scroll",
+    "id": "waves-neural-scroll",
+    "title": "Neural scroll",
+    "dt": 0.01,
+    "study": "studies/collection_waves.jl"
+  },
+  "title": "Neural scroll",
+  "publication": {
+    "source_image_sha256": "756a7a8b6ef796737de9ec90cb2246bb3f24a1a0a7b8926a72d5c512beda52a8",
+    "webp_sha256": "fa68e4adce7a550844ea572a1a76c5a2a5582fe1c1222b64e2fee8e88eca48c0",
+    "quality": 95,
+    "width": 1600,
+    "original_retained": true,
+    "reviewed_by": "collection_render"
+  }
+}

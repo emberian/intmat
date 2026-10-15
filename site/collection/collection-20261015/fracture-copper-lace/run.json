@@ -1,0 +1,61 @@
+{
+  "id": "fracture-copper-lace",
+  "family": "mechanics",
+  "title": "Copper lace",
+  "description": "Disordered central-force spring network under tensile and shear grip loading; measured tensile strain irreversibly removes bonds. Transparent carrier is optical staging. No healing or continuum calibration.",
+  "time": 1.6500000783707947,
+  "params": {
+    "steps": 1650,
+    "jitter": 0.27,
+    "dt": 0.001,
+    "failure_strain": 0.26,
+    "id": "fracture-copper-lace",
+    "mass": 0.02,
+    "study": "studies/collection_mechanics.jl",
+    "extent": [
+      1,
+      1.15,
+      0.3
+    ],
+    "stretch_rate": 0.27,
+    "weak_seam": 0.52,
+    "shear_rate": 0.32,
+    "nodes_shape": [
+      20,
+      16,
+      5
+    ],
+    "stiffness": 8,
+    "damping": 1,
+    "title": "Copper lace",
+    "seed": 424
+  },
+  "metrics": {
+    "nodes": 1600,
+    "bonds": 16542,
+    "broken": 2171,
+    "surviving": 14371,
+    "energy": {
+      "elastic": 1.9972904537631277,
+      "kinetic": 1.0354594385403109,
+      "damage": 3.332022681743949,
+      "damping": 1.7804747326960007,
+      "external_work": 8.122740255837854,
+      "total": 8.14524730674339
+    },
+    "energy_balance_residual": 0.022507050905534953,
+    "relative_work_residual": 0.0027708692136694905,
+    "max_displacement": 0.4330820618367411
+  },
+  "elapsed_seconds": 62.322022333,
+  "sourcehash": "af707f5b3feb1cd7d2101dc2fc9152ebdbd95babfe3a8a436e461ec0c1695409",
+  "optical_transfer": "Exact deformed surviving OBJ segments in gallery filament material; constant near-transparent density carrier, no density-derived fracture geometry.",
+  "publication": {
+    "source_image_sha256": "9967e9c477679900377c08a4af9c47b69b54de715a8364040d7492ea3060d02c",
+    "webp_sha256": "31cae4d36165a6b7b51a863649473c3f293e541603a4ec8f5f381cf3c98f50a4",
+    "quality": 95,
+    "width": 1600,
+    "original_retained": true,
+    "reviewed_by": "collection_render"
+  }
+}

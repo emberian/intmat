@@ -1,0 +1,61 @@
+{
+  "id": "fracture-ice-cleavage",
+  "family": "mechanics",
+  "title": "Ice cleavage",
+  "description": "Disordered central-force spring network under tensile and shear grip loading; measured tensile strain irreversibly removes bonds. Transparent carrier is optical staging. No healing or continuum calibration.",
+  "time": 1.3000000617466867,
+  "params": {
+    "steps": 1300,
+    "jitter": 0.08,
+    "dt": 0.001,
+    "failure_strain": 0.14,
+    "id": "fracture-ice-cleavage",
+    "mass": 0.02,
+    "study": "studies/collection_mechanics.jl",
+    "extent": [
+      1,
+      1,
+      1
+    ],
+    "stretch_rate": 0.34,
+    "weak_seam": 0.23,
+    "shear_rate": 0.015,
+    "nodes_shape": [
+      16,
+      16,
+      16
+    ],
+    "stiffness": 8,
+    "damping": 11,
+    "title": "Ice cleavage",
+    "seed": 422
+  },
+  "metrics": {
+    "nodes": 4096,
+    "bonds": 46620,
+    "broken": 8125,
+    "surviving": 38495,
+    "energy": {
+      "elastic": 0.940677054536289,
+      "kinetic": 0.34324919126738335,
+      "damage": 4.785214668948192,
+      "damping": 16.30029196984024,
+      "external_work": 22.345504440754297,
+      "total": 22.369432884592108
+    },
+    "energy_balance_residual": 0.023928443837810676,
+    "relative_work_residual": 0.0010708392778177509,
+    "max_displacement": 0.2228720282797353
+  },
+  "elapsed_seconds": 125.569787,
+  "sourcehash": "af707f5b3feb1cd7d2101dc2fc9152ebdbd95babfe3a8a436e461ec0c1695409",
+  "optical_transfer": "Exact deformed surviving OBJ segments in gallery filament material; constant near-transparent density carrier, no density-derived fracture geometry.",
+  "publication": {
+    "source_image_sha256": "e4073f569da2176186179ff328b5d96017de3b2ccd6e321c2ec3e08ac52c7f6c",
+    "webp_sha256": "bb6f35f33dc973fdcbc6b80e424a8037decd5cff90dca1dc1b0e5d46fb47d335",
+    "quality": 95,
+    "width": 1600,
+    "original_retained": true,
+    "reviewed_by": "collection_render"
+  }
+}

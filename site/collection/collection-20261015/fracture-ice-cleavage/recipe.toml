@@ -1,0 +1,16 @@
+steps = 1300
+jitter = 0.08
+dt = 0.001
+failure_strain = 0.14
+id = "fracture-ice-cleavage"
+mass = 0.02
+study = "studies/collection_mechanics.jl"
+extent = [1.0, 1.0, 1.0]
+stretch_rate = 0.34
+weak_seam = 0.23
+shear_rate = 0.015
+nodes_shape = [16, 16, 16]
+stiffness = 8.0
+damping = 11.0
+title = "Ice cleavage"
+seed = 422

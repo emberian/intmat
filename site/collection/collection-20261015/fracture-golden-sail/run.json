@@ -1,0 +1,61 @@
+{
+  "id": "fracture-golden-sail",
+  "family": "mechanics",
+  "title": "Golden sail",
+  "description": "Disordered central-force spring network under tensile and shear grip loading; measured tensile strain irreversibly removes bonds. Transparent carrier is optical staging. No healing or continuum calibration.",
+  "time": 1.3500000641215593,
+  "params": {
+    "steps": 1350,
+    "jitter": 0.14,
+    "dt": 0.001,
+    "failure_strain": 0.2,
+    "id": "fracture-golden-sail",
+    "mass": 0.02,
+    "study": "studies/collection_mechanics.jl",
+    "extent": [
+      1.05,
+      1.25,
+      0.13
+    ],
+    "stretch_rate": 0.33,
+    "weak_seam": 0.3,
+    "shear_rate": 0.18,
+    "nodes_shape": [
+      20,
+      20,
+      3
+    ],
+    "stiffness": 8,
+    "damping": 5,
+    "title": "Golden sail",
+    "seed": 421
+  },
+  "metrics": {
+    "nodes": 1200,
+    "bonds": 11174,
+    "broken": 1363,
+    "surviving": 9811,
+    "energy": {
+      "elastic": 0.8672264855078919,
+      "kinetic": 0.2747155960829639,
+      "damage": 1.0858684242277687,
+      "damping": 3.1216479723688675,
+      "external_work": 5.343671830107526,
+      "total": 5.349458478187492
+    },
+    "energy_balance_residual": 0.0057866480799653175,
+    "relative_work_residual": 0.0010828973529702847,
+    "max_displacement": 0.2537317847959813
+  },
+  "elapsed_seconds": 38.108077375,
+  "sourcehash": "af707f5b3feb1cd7d2101dc2fc9152ebdbd95babfe3a8a436e461ec0c1695409",
+  "optical_transfer": "Exact deformed surviving OBJ segments in gallery filament material; constant near-transparent density carrier, no density-derived fracture geometry.",
+  "publication": {
+    "source_image_sha256": "f7fe9cff5b75eadc1e9d6515767d3e1417a1eaee8c6dd4e6542e9d6f3068538a",
+    "webp_sha256": "9d235a19efd996b9e60b06042047d06c0534d0fca4b5f6a2783ff989a786845a",
+    "quality": 95,
+    "width": 1600,
+    "original_retained": true,
+    "reviewed_by": "collection_render"
+  }
+}

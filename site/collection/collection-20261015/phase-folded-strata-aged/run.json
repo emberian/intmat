@@ -1,0 +1,404 @@
+{
+  "id": "phase-folded-strata-aged",
+  "title": "Folded strata",
+  "description": "Warped lamellar strata with three-dimensional cross modulation and interfacial relaxation.",
+  "solver": "CPU semi-implicit conserved Cahn-Hilliard; constant mobility; stabilization 3",
+  "initialization": "Explicit periodic analytic field in studies/collection_phase.jl, initial kind strata",
+  "forcing": "none",
+  "pilot": "48 cubed and 96 cubed have identical extent64; spacing changes4/3 to2/3; identical physical endtime and dt; pilot checks finiteness before highres bake",
+  "phase_parameters": {
+    "bulk": 1,
+    "kappa": 0.9,
+    "mobility": 1.2,
+    "stabilization": 3,
+    "dt": 0.25,
+    "t_end": 60
+  },
+  "temporal": "Quarter-time raw phase fields plus central xy PPM slices in temporal/; full initial and final record_state; initial analytic topology is explicitly prescribed",
+  "optical_mapping": "structure=(1+tanh(2phi))/2; activity=.06*(.8 interface+.2 material_activity); spherical viewing crop only",
+  "traces": [
+    {
+      "label": "pilot",
+      "resolution": 48,
+      "extent": [
+        64,
+        64,
+        64
+      ],
+      "spacing": 1.3333333333333333,
+      "dt": 0.25,
+      "steps": 240,
+      "elapsed_seconds": 13.459140166,
+      "history": [
+        {
+          "step": 0,
+          "time": 0,
+          "energy": 31914.84019493895,
+          "mass": 0,
+          "range": [
+            -0.9911923,
+            0.9911923
+          ]
+        },
+        {
+          "step": 20,
+          "time": 5,
+          "energy": 31154.373204224103,
+          "mass": 0,
+          "range": [
+            -1.0060121,
+            1.0060121
+          ],
+          "rms_change": 0.057954933,
+          "positive_fraction": 0.5001085069444444,
+          "sign_change_fraction": 0.01392505787037037
+        },
+        {
+          "step": 40,
+          "time": 10,
+          "energy": 30766.91412550492,
+          "mass": 0,
+          "range": [
+            -1.0025592,
+            1.0025592
+          ],
+          "rms_change": 0.09491305,
+          "positive_fraction": 0.5000994646990741,
+          "sign_change_fraction": 0.024929470486111112
+        },
+        {
+          "step": 60,
+          "time": 15,
+          "energy": 30446.26411707443,
+          "mass": 0,
+          "range": [
+            -0.999383,
+            0.999383
+          ],
+          "rms_change": 0.12993826,
+          "positive_fraction": 0.5001085069444444,
+          "sign_change_fraction": 0.03562644675925926
+        },
+        {
+          "step": 80,
+          "time": 20,
+          "energy": 30173.307505314482,
+          "mass": 0,
+          "range": [
+            -0.99789244,
+            0.99789244
+          ],
+          "rms_change": 0.1626706,
+          "positive_fraction": 0.5001085069444444,
+          "sign_change_fraction": 0.04555483217592592
+        },
+        {
+          "step": 100,
+          "time": 25,
+          "energy": 29931.05009249846,
+          "mass": 0,
+          "range": [
+            -1.0000155,
+            1.0000155
+          ],
+          "rms_change": 0.19359136,
+          "positive_fraction": 0.5001085069444444,
+          "sign_change_fraction": 0.055591724537037035
+        },
+        {
+          "step": 120,
+          "time": 30,
+          "energy": 29707.866342570487,
+          "mass": 0,
+          "range": [
+            -1.0007764,
+            1.0007764
+          ],
+          "rms_change": 0.22309667,
+          "positive_fraction": 0.5001085069444444,
+          "sign_change_fraction": 0.06546585648148148
+        },
+        {
+          "step": 140,
+          "time": 35,
+          "energy": 29505.245919825535,
+          "mass": 0,
+          "range": [
+            -0.999858,
+            0.999858
+          ],
+          "rms_change": 0.2509143,
+          "positive_fraction": 0.5001085069444444,
+          "sign_change_fraction": 0.07376663773148148
+        },
+        {
+          "step": 160,
+          "time": 40,
+          "energy": 29334.233607453778,
+          "mass": 0,
+          "range": [
+            -0.99858993,
+            0.99858993
+          ],
+          "rms_change": 0.2760081,
+          "positive_fraction": 0.5001085069444444,
+          "sign_change_fraction": 0.08060257523148148
+        },
+        {
+          "step": 180,
+          "time": 45,
+          "energy": 29200.56400693929,
+          "mass": 0,
+          "range": [
+            -0.9959711,
+            0.9959711
+          ],
+          "rms_change": 0.29760396,
+          "positive_fraction": 0.5001085069444444,
+          "sign_change_fraction": 0.08599175347222222
+        },
+        {
+          "step": 200,
+          "time": 50,
+          "energy": 29097.110639968985,
+          "mass": 0,
+          "range": [
+            -0.99289525,
+            0.99289525
+          ],
+          "rms_change": 0.31594387,
+          "positive_fraction": 0.5001085069444444,
+          "sign_change_fraction": 0.09136284722222222
+        },
+        {
+          "step": 220,
+          "time": 55,
+          "energy": 29011.000834090097,
+          "mass": 0,
+          "range": [
+            -0.9900691,
+            0.9900691
+          ],
+          "rms_change": 0.33209318,
+          "positive_fraction": 0.5001085069444444,
+          "sign_change_fraction": 0.09666160300925926
+        },
+        {
+          "step": 240,
+          "time": 60,
+          "energy": 28934.042140102087,
+          "mass": 0,
+          "range": [
+            -0.98888624,
+            0.98888624
+          ],
+          "rms_change": 0.34701768,
+          "positive_fraction": 0.5001085069444444,
+          "sign_change_fraction": 0.10284649884259259
+        }
+      ],
+      "mean_mass_drift": 0
+    },
+    {
+      "label": "final",
+      "resolution": 96,
+      "extent": [
+        64,
+        64,
+        64
+      ],
+      "spacing": 0.6666666666666666,
+      "dt": 0.25,
+      "steps": 240,
+      "elapsed_seconds": 61.259247333,
+      "history": [
+        {
+          "step": 0,
+          "time": 0,
+          "energy": 32748.34734220417,
+          "mass": 0,
+          "range": [
+            -0.9912263,
+            0.9912263
+          ]
+        },
+        {
+          "step": 20,
+          "time": 5,
+          "energy": 31839.2429526911,
+          "mass": -7.275957614183426e-12,
+          "range": [
+            -1.0086563,
+            1.0086563
+          ],
+          "rms_change": 0.060890757,
+          "positive_fraction": 0.4999932183159722,
+          "sign_change_fraction": 0.013337311921296295
+        },
+        {
+          "step": 40,
+          "time": 10,
+          "energy": 31474.153404982328,
+          "mass": 0,
+          "range": [
+            -1.0041783,
+            1.0041783
+          ],
+          "rms_change": 0.09542503,
+          "positive_fraction": 0.49999434859664355,
+          "sign_change_fraction": 0.025181523075810185
+        },
+        {
+          "step": 60,
+          "time": 15,
+          "energy": 31166.87925745051,
+          "mass": 0,
+          "range": [
+            -1.002495,
+            1.002495
+          ],
+          "rms_change": 0.12966786,
+          "positive_fraction": 0.4999954788773148,
+          "sign_change_fraction": 0.03615993923611111
+        },
+        {
+          "step": 80,
+          "time": 20,
+          "energy": 30905.310836562407,
+          "mass": 0,
+          "range": [
+            -1.0008522,
+            1.0008522
+          ],
+          "rms_change": 0.16206273,
+          "positive_fraction": 0.4999954788773148,
+          "sign_change_fraction": 0.045952690972222224
+        },
+        {
+          "step": 100,
+          "time": 25,
+          "energy": 30681.86162575608,
+          "mass": -1.4551915228366852e-11,
+          "range": [
+            -0.999037,
+            0.999037
+          ],
+          "rms_change": 0.19214998,
+          "positive_fraction": 0.4999932183159722,
+          "sign_change_fraction": 0.055135091145833336
+        },
+        {
+          "step": 120,
+          "time": 30,
+          "energy": 30490.45168481618,
+          "mass": 1.4551915228366852e-11,
+          "range": [
+            -0.99818593,
+            0.99818593
+          ],
+          "rms_change": 0.21987626,
+          "positive_fraction": 0.49999208803530093,
+          "sign_change_fraction": 0.06423045970775464
+        },
+        {
+          "step": 140,
+          "time": 35,
+          "energy": 30326.034270393422,
+          "mass": 0,
+          "range": [
+            -0.9972141,
+            0.9972141
+          ],
+          "rms_change": 0.24533512,
+          "positive_fraction": 0.4999932183159722,
+          "sign_change_fraction": 0.0721096462673611
+        },
+        {
+          "step": 160,
+          "time": 40,
+          "energy": 30184.381912203695,
+          "mass": 0,
+          "range": [
+            -0.99605227,
+            0.99605227
+          ],
+          "rms_change": 0.2686755,
+          "positive_fraction": 0.49999208803530093,
+          "sign_change_fraction": 0.0795932345920139
+        },
+        {
+          "step": 180,
+          "time": 45,
+          "energy": 30061.9350389636,
+          "mass": 0,
+          "range": [
+            -0.99468786,
+            0.99468786
+          ],
+          "rms_change": 0.2900666,
+          "positive_fraction": 0.4999954788773148,
+          "sign_change_fraction": 0.0864529079861111
+        },
+        {
+          "step": 200,
+          "time": 50,
+          "energy": 29955.697744941153,
+          "mass": 0,
+          "range": [
+            -0.99415547,
+            0.99415547
+          ],
+          "rms_change": 0.3096809,
+          "positive_fraction": 0.4999932183159722,
+          "sign_change_fraction": 0.09323911313657407
+        },
+        {
+          "step": 220,
+          "time": 55,
+          "energy": 29863.16651174814,
+          "mass": 0,
+          "range": [
+            -0.9936992,
+            0.9936992
+          ],
+          "rms_change": 0.32768446,
+          "positive_fraction": 0.4999954788773148,
+          "sign_change_fraction": 0.09931098090277778
+        },
+        {
+          "step": 240,
+          "time": 60,
+          "energy": 29782.260634851205,
+          "mass": -1.4551915228366852e-11,
+          "range": [
+            -0.99324286,
+            0.99324286
+          ],
+          "rms_change": 0.34423128,
+          "positive_fraction": 0.49999434859664355,
+          "sign_change_fraction": 0.10468772605613426
+        }
+      ],
+      "mean_mass_drift": -1.644774851296528e-17
+    }
+  ],
+  "source_sha256": {
+    "src/implicit_phase.jl": "c9f69ad8d2ab00bd18d678d51956effe9c52bf415d5388d5305c56b4bb351fe7",
+    "studies/collection_phase.jl": "b51fbfe181cd6d11ffb8c1dfe7b9401a14e4b33b0cd8569409e2979930efcf86",
+    "src/phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+  },
+  "family": "phase",
+  "shape": [
+    96,
+    96,
+    96
+  ],
+  "publication": {
+    "source_image_sha256": "4ae3dc1a94d4a3a8ae5a1c213f7de969bcc1388498666978f084f25aaa145e8b",
+    "webp_sha256": "82ca9838a79c157a36d0f6ff3499b7c73c75ba8653274d491011623e1529cd9c",
+    "quality": 95,
+    "width": 1600,
+    "original_retained": true,
+    "reviewed_by": "collection_render"
+  }
+}

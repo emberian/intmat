@@ -1,0 +1,61 @@
+{
+  "id": "fracture-parted-choir",
+  "family": "mechanics",
+  "title": "Parted choir",
+  "description": "Disordered central-force spring network under tensile and shear grip loading; measured tensile strain irreversibly removes bonds. Transparent carrier is optical staging. No healing or continuum calibration.",
+  "time": 1.500000071246177,
+  "params": {
+    "steps": 1500,
+    "jitter": 0.18,
+    "dt": 0.001,
+    "failure_strain": 0.12,
+    "id": "fracture-parted-choir",
+    "mass": 0.02,
+    "study": "studies/collection_mechanics.jl",
+    "extent": [
+      1.05,
+      1.0,
+      0.52
+    ],
+    "stretch_rate": 0.43,
+    "weak_seam": 0.18,
+    "shear_rate": -0.24,
+    "nodes_shape": [
+      18,
+      18,
+      8
+    ],
+    "stiffness": 8,
+    "damping": 7,
+    "title": "Parted choir",
+    "seed": 425
+  },
+  "metrics": {
+    "nodes": 2592,
+    "bonds": 28448,
+    "broken": 4109,
+    "surviving": 24339,
+    "energy": {
+      "elastic": 0.028803635857835942,
+      "kinetic": 0.008763135813045428,
+      "damage": 1.640792874973213,
+      "damping": 3.5863854653271,
+      "external_work": 5.261552752142839,
+      "total": 5.2647451119711945
+    },
+    "energy_balance_residual": 0.003192359828355862,
+    "relative_work_residual": 0.0006067334071782764,
+    "max_displacement": 0.36933218510969057
+  },
+  "elapsed_seconds": 80.855679,
+  "sourcehash": "af707f5b3feb1cd7d2101dc2fc9152ebdbd95babfe3a8a436e461ec0c1695409",
+  "optical_transfer": "Exact deformed surviving OBJ segments in gallery filament material; constant near-transparent density carrier, no density-derived fracture geometry.",
+  "publication": {
+    "source_image_sha256": "b3f551ab10b270cb12ec53f7840b331d3fa17423e0a9c73b817cee879d890747",
+    "webp_sha256": "17d7cccac9a01033c753338ff1bbb6214670cbc4df95b4cb4433066d50b6cf3f",
+    "quality": 95,
+    "width": 1600,
+    "original_retained": true,
+    "reviewed_by": "collection_render"
+  }
+}

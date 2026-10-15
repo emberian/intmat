@@ -1,0 +1,51 @@
+{
+  "metrics": {
+    "pressure_extrema": [
+      0,
+      0
+    ],
+    "initial_mass": 884736.06,
+    "crest_fraction": 0.29428665726273145,
+    "final_mass": 884735.8,
+    "activity_extrema": [
+      -0.9028876,
+      0.79326475
+    ],
+    "deposit_extrema": [
+      1.0501558e-27,
+      0.43047875
+    ]
+  },
+  "family": "waves",
+  "time": 2.799999937415123,
+  "optical_scale": 0.7687107,
+  "optical_transfer": "99.5th-percentile-clamped absolute pressure squared (or positive neural activity squared); emissive surrogate, not physical light emission",
+  "shape": [
+    96,
+    96,
+    96
+  ],
+  "sourcehash": "2e5074e109f4b44c61ae75656627a63ccb678484dd609cf1c679c69bebc7e096",
+  "id": "waves-neural-lattice",
+  "description": "Structured recurrent neural excitation competes with a mineral lattice, leaving a porous activity memory.",
+  "elapsed_seconds": 21.131963542,
+  "params": {
+    "resolution": 96,
+    "steps": 280,
+    "model": "fixed recurrent tanh; no training",
+    "mode": "lattice",
+    "id": "waves-neural-lattice",
+    "title": "Neural lantern lattice",
+    "dt": 0.01,
+    "study": "studies/collection_waves.jl"
+  },
+  "title": "Neural lantern lattice",
+  "publication": {
+    "source_image_sha256": "aad221ac33d435224e51e7174eea793bfa6fd4251c77d95cfe0f679fe9742506",
+    "webp_sha256": "ba96743d32825778b47414432602ffc282999233c8fd57ccd1d89f0ed50f8d84",
+    "quality": 95,
+    "width": 1600,
+    "original_retained": true,
+    "reviewed_by": "collection_render"
+  }
+}

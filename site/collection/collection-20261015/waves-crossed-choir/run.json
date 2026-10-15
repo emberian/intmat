@@ -1,0 +1,51 @@
+{
+  "metrics": {
+    "pressure_extrema": [
+      -0.2556458,
+      1.0393249
+    ],
+    "initial_mass": 884736,
+    "crest_fraction": 0.35212424949363424,
+    "final_mass": 884736,
+    "activity_extrema": [
+      4.118242e-09,
+      1.0643046
+    ],
+    "deposit_extrema": [
+      0,
+      0.49349383
+    ]
+  },
+  "family": "waves",
+  "time": 2.3999999463558197,
+  "optical_scale": 0.17878771,
+  "optical_transfer": "99.5th-percentile-clamped absolute pressure squared (or positive neural activity squared); emissive surrogate, not physical light emission",
+  "shape": [
+    96,
+    96,
+    96
+  ],
+  "sourcehash": "2e5074e109f4b44c61ae75656627a63ccb678484dd609cf1c679c69bebc7e096",
+  "id": "waves-crossed-choir",
+  "description": "Unequal, opposite-sign pressure pulses cross a continuously driven off-axis transducer.",
+  "elapsed_seconds": 28.806194625,
+  "params": {
+    "resolution": 96,
+    "steps": 240,
+    "model": "damped scalar wave plus excitable conservative deposition; not calibrated acoustics, cavitation or sonoluminescence",
+    "mode": "cross",
+    "id": "waves-crossed-choir",
+    "title": "Crossed choir",
+    "dt": 0.01,
+    "study": "studies/collection_waves.jl"
+  },
+  "title": "Crossed choir",
+  "publication": {
+    "source_image_sha256": "87ee7e326f1e66e86e9f372c00e6d2b958d308eba055996eabb0f5b08bdc68fc",
+    "webp_sha256": "fed282ba8e287a76044cfe57fb4c6929da96672d0f567f6393830a1a14b2f721",
+    "quality": 95,
+    "width": 1600,
+    "original_retained": true,
+    "reviewed_by": "collection_render"
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "settings": {
+    "directory": "volume",
+    "output": "final.png",
+    "samples": 96,
+    "size": 1600,
+    "orbit": 0.65,
+    "elevation": 0.2,
+    "emission": 0.0,
+    "emission_field": "activity",
+    "palette": "amber-cyan",
+    "absorption": 0.035,
+    "scattering": 0.015,
+    "scattering_field": "density",
+    "polished_carrier": false,
+    "ior": 1.48,
+    "inclusion_surface": "deposit",
+    "inclusion_isovalue": 0.18,
+    "surface_roughness": 0.09,
+    "density_scale": 0.0,
+    "light_power": 1.0,
+    "z_scale": 1.0,
+    "population": null,
+    "population_radius": 0.015,
+    "conductive_graph": false,
+    "graph_radius": 0.008,
+    "bond_graph": null,
+    "carrier_shape": "ellipsoid",
+    "activity_threshold": 0.0,
+    "activity_power": 1.0,
+    "interfaces": false,
+    "smooth": 0,
+    "frame_content": true,
+    "inclusion_transmission": 0.3,
+    "surface_smooth": 0,
+    "inclusion_tint": "pearl",
+    "camera_distance": 4.65,
+    "device": "METAL",
+    "adaptive_threshold": 0.03,
+    "cutaway_axis": null,
+    "cutaway_position": 0.0,
+    "studio_background": "warm",
+    "exposure": 0.0
+  },
+  "gradient_scales": {},
+  "volume_file": "final.vdb",
+  "inclusion_mesh": {
+    "vertices": 19065,
+    "triangles": 3900,
+    "quads": 17123,
+    "isovalue": 0.18
+  },
+  "camera_fit": {
+    "bounds": [
+      [
+        -0.6197227835655212,
+        -0.48202767968177795,
+        -0.6503427028656006
+      ],
+      [
+        0.6239290237426758,
+        0.4824856221675873,
+        0.6504195332527161
+      ]
+    ],
+    "distance": 3.1251145273447043,
+    "target": [
+      0.0021031200885772705,
+      0.00022897124290466309,
+      3.841519355773926e-05
+    ],
+    "margin": 0.08
+  },
+  "render_device": [
+    {
+      "name": "Apple M2 Max (GPU - 38 cores)",
+      "type": "METAL"
+    }
+  ],
+  "metal_kernel_settings": {
+    "CYCLES_METAL_ADAPTIVE_COMPILE": null,
+    "CYCLES_METAL_SPECIALIZATION_LEVEL": null
+  },
+  "adaptive_sampling": {
+    "maximum_samples": 96,
+    "minimum_samples": 16,
+    "noise_threshold": 0.03
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "id": "fracture-shear-veil",
+  "family": "mechanics",
+  "title": "Shear veil",
+  "description": "Disordered central-force spring network under tensile and shear grip loading; measured tensile strain irreversibly removes bonds. Transparent carrier is optical staging. No healing or continuum calibration.",
+  "time": 1.4500000688713044,
+  "params": {
+    "steps": 1450,
+    "jitter": 0.22,
+    "dt": 0.001,
+    "failure_strain": 0.18,
+    "id": "fracture-shear-veil",
+    "mass": 0.02,
+    "study": "studies/collection_mechanics.jl",
+    "extent": [
+      1.1,
+      1.0,
+      0.22
+    ],
+    "stretch_rate": 0.08,
+    "weak_seam": 0.4,
+    "shear_rate": 0.65,
+    "nodes_shape": [
+      20,
+      18,
+      4
+    ],
+    "stiffness": 8,
+    "damping": 2,
+    "title": "Shear veil",
+    "seed": 423
+  },
+  "metrics": {
+    "nodes": 1440,
+    "bonds": 14360,
+    "broken": 1688,
+    "surviving": 12672,
+    "energy": {
+      "elastic": 0.5763823825412384,
+      "kinetic": 0.435407019467447,
+      "damage": 1.419507550986256,
+      "damping": 4.21236624229143,
+      "external_work": 6.635281242735928,
+      "total": 6.643663195286371
+    },
+    "energy_balance_residual": 0.00838195255044294,
+    "relative_work_residual": 0.0012632399809155348,
+    "max_displacement": 0.51280271641467
+  },
+  "elapsed_seconds": 74.887444375,
+  "sourcehash": "af707f5b3feb1cd7d2101dc2fc9152ebdbd95babfe3a8a436e461ec0c1695409",
+  "optical_transfer": "Exact deformed surviving OBJ segments in gallery filament material; constant near-transparent density carrier, no density-derived fracture geometry.",
+  "publication": {
+    "source_image_sha256": "aca46a928364997809661edf1584e6c06a4cac7b2508a42fe48694f0eb06773e",
+    "webp_sha256": "f4bcaca360d4e1825dd05dfb2f65e43a2c5802ad08cfbafcb89bb762b71e0672",
+    "quality": 95,
+    "width": 1600,
+    "original_retained": true,
+    "reviewed_by": "collection_render"
+  }
+}

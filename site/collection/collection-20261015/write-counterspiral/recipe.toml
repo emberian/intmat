@@ -1,0 +1,35 @@
+id = "counterspiral"
+title = "The Double Ascent"
+description = "Two independently prescribed three-turn helices rise together around offset axes, interleaving conservative thermal inclusions."
+seed = 312
+duration = 5.2
+palette = "amber-cyan"
+orbit = 0.65
+
+[[writers]]
+width = 0.038
+heat = 30.0
+threshold = 0.075
+conversion = 24.0
+diffusion = 0.0003
+cooling = 4.0
+period = 4.0
+stop = 4.0
+path = "helix"
+center = [-0.14, 0, 0]
+radius = 0.4
+height = 0.58
+
+[[writers]]
+width = 0.038
+heat = 30.0
+threshold = 0.075
+conversion = 24.0
+diffusion = 0.0003
+cooling = 4.0
+period = 4.6
+stop = 4.6
+path = "helix"
+center = [0.14, 0, 0]
+radius = 0.4
+height = 0.58

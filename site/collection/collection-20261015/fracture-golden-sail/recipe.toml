@@ -1,0 +1,16 @@
+steps = 1350
+jitter = 0.14
+dt = 0.001
+failure_strain = 0.2
+id = "fracture-golden-sail"
+mass = 0.02
+study = "studies/collection_mechanics.jl"
+extent = [1.05, 1.25, 0.13]
+stretch_rate = 0.33
+weak_seam = 0.3
+shear_rate = 0.18
+nodes_shape = [20, 20, 3]
+stiffness = 8.0
+damping = 5.0
+title = "Golden sail"
+seed = 421
