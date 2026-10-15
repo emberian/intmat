@@ -194,6 +194,11 @@ running process needs to be modified.
 
 ### Verified optimized run
 
+**Completed:** this continuation ended normally at its original deadline.
+See the [terminal record](cellular-optimized-completion.md) for final hashes,
+metrics and resource-control evidence. The launch and early verification
+details below are retained as history.
+
 The long Julia process is PID **3828298**, with output
 `/othersys/tmp/intmat-soaks-optimized-20261015/continuation` and pinned project
 `/othersys/tmp/intmat-soaks-optimized-20261015/source`. It started at step 206665

@@ -560,3 +560,14 @@ against incompatible fixed aliases. A reviewed native 256³ activity-contour pho
 - SecondSeam193frames andCounterpoint33framecontiguousexcerpt16–80 independently
   visuallyreviewed,encodedandcurated. Gallerybudget raised144→160MB toretain
   fine seam motion at reviewedquality; existingimages/films preserved.
+
+- 22:00 UTC observatory closure: optimized `361d0a9` continuation completed
+  normally at its unchanged21:54:05 deadline, elapsed43200.010s. Process absent;
+  finalstep84973885 agrees across status, metrics and stable checkpoint pointer.
+  All115 source files and original parent hash match;2161 complete metrics rows,
+  72archives,74.86MB/4GB, no failure files. Terminal SHA256
+  `3cf1e53f0fc79d6ff87705a513dc8f907d73ee380ea7f093340bc3d3963765f6`.
+  Population remains0 after previously recorded finite-resource collapse; no
+  reseed, resume or new ecological inference. Compact longitudinal/terminal
+  record: docs/cellular-optimized-completion.md and JSON. All four bounded runs
+  are handled; the observatory follow-up schedule is stopped (PAUSED).
