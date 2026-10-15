@@ -97,3 +97,14 @@ viewer. The builder discovers its metadata and adds it to the material films
 catalog. Inspect playback and seeking locally, then publish through the ordinary
 gallery workflow. Optical animation and camera motion, when used, belong in the
 source interpretation rather than being described as simulation motion.
+
+For a local gallery with working video scrubbing, use the byte-range server:
+
+```sh
+python3 scripts/serve_gallery.py --directory _site --port 8770
+```
+
+It binds to loopback and serves partial video responses. Python's basic
+`http.server` can play a movie but may reset seeks to the beginning. Film URLs
+include their content hash so old cached server responses cannot persist across
+new published assets.

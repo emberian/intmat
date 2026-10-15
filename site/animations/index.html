@@ -18,7 +18,7 @@ async function load(){
  films.forEach((film,index)=>{
   const path=encodeURIComponent(film.directory)+'/';const article=el('article');article.id=film.id;
   const heading=el('div',undefined,'heading');heading.append(el('h2',film.title),el('span',String(index+1).padStart(2,'0'), 'number'));article.append(heading,el('p',film.description));
-  const video=el('video');video.controls=true;video.playsInline=true;video.preload='none';video.poster=path+'poster.webp';video.src=path+'film.mp4';video.setAttribute('aria-label',film.title);video.style.aspectRatio=`${film.playback.width}/${film.playback.height}`;article.append(video);
+  const video=el('video');video.controls=true;video.playsInline=true;video.preload='none';video.poster=path+'poster.webp';video.src=path+'film.mp4?v='+film.video_sha256;video.setAttribute('aria-label',film.title);video.style.aspectRatio=`${film.playback.width}/${film.playback.height}`;article.append(video);
   const caption=el('div',undefined,'caption'),time=el('span'),facts=el('span',`${film.frames.length} recorded frames · ${film.playback.width} × ${film.playback.height} film`);
   function update(at=video.currentTime){const i=Math.min(film.frames.length-1,Math.floor(at*film.playback.fps+1e-5));time.textContent=`Simulation t = ${Number(film.frames[i].simulation_time).toFixed(3)} · frame ${i+1} / ${film.frames.length}`}
   video.addEventListener('timeupdate',()=>update());video.addEventListener('seeked',()=>update());
