@@ -1,0 +1,22 @@
+id = "finite-locus-lattice-pilot"
+# Fixed spacing, random founders, zero initial matrix. No drawn initial anatomy.
+dimensions = [32, 32, 1]
+extent = [32.0, 32.0, 1.0]
+seeds = [11, 29]
+arms = ["full", "no_mutation", "no_transport_barrier", "no_recurrence"]
+loci = 12
+founder_genotypes = 8
+occupancy = 0.10
+precursor = 0.6
+fuel = 0.25
+reserve = 8.0
+spatial_niches = true
+dt = 0.1
+steps = 1600
+capture_every = 40
+injury_step = 800
+injury_radius = 5.0
+[parameters]
+mutation_probability = 0.04
+matrix_barrier = 8.0
+lifespan = 24.0

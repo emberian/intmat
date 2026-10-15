@@ -1,0 +1,17 @@
+id = "finite-locus-lattice-smoke"
+dimensions = [8, 8, 1]
+extent = [8.0, 8.0, 1.0]
+seeds = [11]
+arms = ["full", "no_mutation"]
+loci = 6
+founder_genotypes = 4
+occupancy = 0.25
+precursor = 0.6
+fuel = 0.25
+reserve = 8.0
+spatial_niches = true
+dt = 0.1
+steps = 40
+capture_every = 10
+injury_step = 20
+injury_radius = 1.5

@@ -1,0 +1,550 @@
+{
+  "model_source_sha256": "e6d6cab2b0624965a5e7ec66b7f9f9ce44a01f9ded5653db660de61368cde9b5",
+  "completed_runs": 8,
+  "all_sampled_states_valid": true,
+  "maximum_material_residual": 0.002204635315138148,
+  "maximum_energy_residual": 0.00162831036868738,
+  "runs": [
+    {
+      "seed": 11,
+      "arm": "full",
+      "dimensions": [
+        32,
+        32,
+        1
+      ],
+      "initial_population": 88,
+      "population": 507,
+      "births": 4539,
+      "deaths": 4120,
+      "hops": 7755,
+      "mutations": 172,
+      "unique_genotypes": 60,
+      "founder_lineages": 40,
+      "max_generation": 23,
+      "matrix": 307.32930263876915,
+      "injury_population_before": 57,
+      "injury_population_after": 0,
+      "injury_population_final": 47,
+      "injury_matrix_before": 19.97432468086481,
+      "injury_matrix_final": 12.124632634222507,
+      "maximum_material_residual": 0.0016546659608138725,
+      "maximum_energy_residual": 0.0011031927715521306,
+      "complete_step_seconds": 0.0005984696562500006,
+      "voxel_steps_per_second": 1711030.7754220394,
+      "resident_array_bytes": 2707456,
+      "shared_genotype_bytes": 2523136,
+      "living_topology": {
+        "components": 60,
+        "largest": 275,
+        "sites": 507
+      },
+      "matrix_topology": {
+        "components": 1,
+        "largest": 1023,
+        "sites": 1023
+      },
+      "final_reserve": [
+        4915.4375,
+        4915.4375
+      ],
+      "work": [
+        1587.62496560812,
+        1058.426953792572,
+        340.84896343946457,
+        155.50485429167747,
+        272.34024810791016
+      ]
+    },
+    {
+      "seed": 11,
+      "arm": "no_mutation",
+      "dimensions": [
+        32,
+        32,
+        1
+      ],
+      "initial_population": 88,
+      "population": 496,
+      "births": 4497,
+      "deaths": 4089,
+      "hops": 7854,
+      "mutations": 0,
+      "unique_genotypes": 6,
+      "founder_lineages": 39,
+      "max_generation": 23,
+      "matrix": 312.18458837270737,
+      "injury_population_before": 58,
+      "injury_population_after": 0,
+      "injury_population_final": 53,
+      "injury_matrix_before": 19.953575991094112,
+      "injury_matrix_final": 13.507764168083668,
+      "maximum_material_residual": 0.0012835827583330683,
+      "maximum_energy_residual": 0.0005439229862531647,
+      "complete_step_seconds": 0.0009249715631249988,
+      "voxel_steps_per_second": 1107061.0609264954,
+      "resident_array_bytes": 2707456,
+      "shared_genotype_bytes": 2523136,
+      "living_topology": {
+        "components": 70,
+        "largest": 154,
+        "sites": 496
+      },
+      "matrix_topology": {
+        "components": 1,
+        "largest": 1022,
+        "sites": 1022
+      },
+      "final_reserve": [
+        4915.4375,
+        4915.4375
+      ],
+      "work": [
+        1574.964033484459,
+        1061.1827579438686,
+        345.1036942601204,
+        157.2388261705637,
+        269.8202396631241
+      ]
+    },
+    {
+      "seed": 11,
+      "arm": "no_transport_barrier",
+      "dimensions": [
+        32,
+        32,
+        1
+      ],
+      "initial_population": 88,
+      "population": 530,
+      "births": 4633,
+      "deaths": 4191,
+      "hops": 7992,
+      "mutations": 188,
+      "unique_genotypes": 60,
+      "founder_lineages": 52,
+      "max_generation": 19,
+      "matrix": 325.56795213371515,
+      "injury_population_before": 58,
+      "injury_population_after": 0,
+      "injury_population_final": 53,
+      "injury_matrix_before": 20.551511898636818,
+      "injury_matrix_final": 17.456741653382778,
+      "maximum_material_residual": 0.00028966975514777005,
+      "maximum_energy_residual": 0.00061193791043479,
+      "complete_step_seconds": 0.0006430419556249991,
+      "voxel_steps_per_second": 1592431.0864051352,
+      "resident_array_bytes": 2707456,
+      "shared_genotype_bytes": 2523136,
+      "living_topology": {
+        "components": 48,
+        "largest": 138,
+        "sites": 530
+      },
+      "matrix_topology": {
+        "components": 1,
+        "largest": 1023,
+        "sites": 1023
+      },
+      "final_reserve": [
+        4915.4375,
+        4915.4375
+      ],
+      "work": [
+        1621.6501733064651,
+        1109.0591411292553,
+        354.4650803208351,
+        162.60730868577957,
+        277.98026609420776
+      ]
+    },
+    {
+      "seed": 11,
+      "arm": "no_recurrence",
+      "dimensions": [
+        32,
+        32,
+        1
+      ],
+      "initial_population": 88,
+      "population": 665,
+      "births": 5159,
+      "deaths": 4582,
+      "hops": 8139,
+      "mutations": 191,
+      "unique_genotypes": 59,
+      "founder_lineages": 49,
+      "max_generation": 21,
+      "matrix": 251.63104874189594,
+      "injury_population_before": 65,
+      "injury_population_after": 0,
+      "injury_population_final": 65,
+      "injury_matrix_before": 18.05602977797389,
+      "injury_matrix_final": 10.357755071629072,
+      "maximum_material_residual": 0.002204635315138148,
+      "maximum_energy_residual": 0.0013987297570565715,
+      "complete_step_seconds": 0.0007234230793749995,
+      "voxel_steps_per_second": 1415492.5785401864,
+      "resident_array_bytes": 2707456,
+      "shared_genotype_bytes": 2523136,
+      "living_topology": {
+        "components": 19,
+        "largest": 630,
+        "sites": 665
+      },
+      "matrix_topology": {
+        "components": 1,
+        "largest": 986,
+        "sites": 986
+      },
+      "final_reserve": [
+        4915.4375,
+        4915.4375
+      ],
+      "work": [
+        1836.7243693470955,
+        1189.937981903553,
+        333.4366312325001,
+        167.2050338089466,
+        309.5402893424034
+      ]
+    },
+    {
+      "seed": 29,
+      "arm": "full",
+      "dimensions": [
+        32,
+        32,
+        1
+      ],
+      "initial_population": 94,
+      "population": 533,
+      "births": 4900,
+      "deaths": 4461,
+      "hops": 8620,
+      "mutations": 218,
+      "unique_genotypes": 65,
+      "founder_lineages": 43,
+      "max_generation": 19,
+      "matrix": 293.43610486388206,
+      "injury_population_before": 68,
+      "injury_population_after": 0,
+      "injury_population_final": 39,
+      "injury_matrix_before": 16.727173559367657,
+      "injury_matrix_final": 13.420544773340225,
+      "maximum_material_residual": 0.002026624930294929,
+      "maximum_energy_residual": 0.00162831036868738,
+      "complete_step_seconds": 0.0010765998275000012,
+      "voxel_steps_per_second": 951142.6380012111,
+      "resident_array_bytes": 2707456,
+      "shared_genotype_bytes": 2523136,
+      "living_topology": {
+        "components": 37,
+        "largest": 370,
+        "sites": 533
+      },
+      "matrix_topology": {
+        "components": 1,
+        "largest": 1024,
+        "sites": 1024
+      },
+      "final_reserve": [
+        4915.4375,
+        4915.4375
+      ],
+      "work": [
+        1755.0278069376945,
+        1139.644069492817,
+        331.12828728556633,
+        175.93716168403625,
+        294.00027722120285
+      ]
+    },
+    {
+      "seed": 29,
+      "arm": "no_mutation",
+      "dimensions": [
+        32,
+        32,
+        1
+      ],
+      "initial_population": 94,
+      "population": 564,
+      "births": 4926,
+      "deaths": 4456,
+      "hops": 8839,
+      "mutations": 0,
+      "unique_genotypes": 7,
+      "founder_lineages": 47,
+      "max_generation": 22,
+      "matrix": 290.661925625056,
+      "injury_population_before": 64,
+      "injury_population_after": 0,
+      "injury_population_final": 56,
+      "injury_matrix_before": 15.541918344795704,
+      "injury_matrix_final": 13.174296271055937,
+      "maximum_material_residual": 0.001645775519136805,
+      "maximum_energy_residual": 0.0013127881538821384,
+      "complete_step_seconds": 0.0012607772393749997,
+      "voxel_steps_per_second": 812197.4033316334,
+      "resident_array_bytes": 2707456,
+      "shared_genotype_bytes": 2523136,
+      "living_topology": {
+        "components": 30,
+        "largest": 498,
+        "sites": 564
+      },
+      "matrix_topology": {
+        "components": 1,
+        "largest": 1023,
+        "sites": 1023
+      },
+      "final_reserve": [
+        4915.4375,
+        4915.4375
+      ],
+      "work": [
+        1761.0841661691666,
+        1142.8063410520554,
+        330.4844571650028,
+        180.02707855403423,
+        295.56028240919113
+      ]
+    },
+    {
+      "seed": 29,
+      "arm": "no_transport_barrier",
+      "dimensions": [
+        32,
+        32,
+        1
+      ],
+      "initial_population": 94,
+      "population": 618,
+      "births": 5061,
+      "deaths": 4537,
+      "hops": 8377,
+      "mutations": 214,
+      "unique_genotypes": 72,
+      "founder_lineages": 59,
+      "max_generation": 19,
+      "matrix": 301.17992827296257,
+      "injury_population_before": 63,
+      "injury_population_after": 0,
+      "injury_population_final": 57,
+      "injury_matrix_before": 16.911103539168835,
+      "injury_matrix_final": 16.60221391916275,
+      "maximum_material_residual": 0.0010591261598165147,
+      "maximum_energy_residual": 0.0007169438904384151,
+      "complete_step_seconds": 0.0010329797318749992,
+      "voxel_steps_per_second": 991306.9621814361,
+      "resident_array_bytes": 2707456,
+      "shared_genotype_bytes": 2523136,
+      "living_topology": {
+        "components": 20,
+        "largest": 572,
+        "sites": 618
+      },
+      "matrix_topology": {
+        "components": 1,
+        "largest": 1024,
+        "sites": 1024
+      },
+      "final_reserve": [
+        4915.4375,
+        4915.4375
+      ],
+      "work": [
+        1807.4355073571205,
+        1186.021772801876,
+        343.77026626467705,
+        172.9366807937622,
+        303.66029834747314
+      ]
+    },
+    {
+      "seed": 29,
+      "arm": "no_recurrence",
+      "dimensions": [
+        32,
+        32,
+        1
+      ],
+      "initial_population": 94,
+      "population": 546,
+      "births": 4780,
+      "deaths": 4328,
+      "hops": 8546,
+      "mutations": 215,
+      "unique_genotypes": 65,
+      "founder_lineages": 51,
+      "max_generation": 22,
+      "matrix": 301.280295971781,
+      "injury_population_before": 59,
+      "injury_population_after": 0,
+      "injury_population_final": 50,
+      "injury_matrix_before": 16.883312419056892,
+      "injury_matrix_final": 12.247686114162207,
+      "maximum_material_residual": 0.0018694486425374635,
+      "maximum_energy_residual": 0.0014819982388871722,
+      "complete_step_seconds": 0.0007197753025000002,
+      "voxel_steps_per_second": 1422666.2076947268,
+      "resident_array_bytes": 2707456,
+      "shared_genotype_bytes": 2523136,
+      "living_topology": {
+        "components": 41,
+        "largest": 113,
+        "sites": 546
+      },
+      "matrix_topology": {
+        "components": 1,
+        "largest": 1024,
+        "sites": 1024
+      },
+      "final_reserve": [
+        4915.4375,
+        4915.4375
+      ],
+      "work": [
+        1700.4998596906662,
+        1099.4939522147179,
+        307.5330810844898,
+        174.16727420687675,
+        286.8002772331238
+      ]
+    }
+  ],
+  "inference": "Finite source-pinned mechanism and perturbation study; not a demonstration of adaptive organization.",
+  "complete_step_benchmark": {
+    "kind": "CPU1 complete physics step, separate identical-state allocation and timing windows",
+    "julia": "1.12.4",
+    "threads": 1,
+    "model_source_sha256": "e6d6cab2b0624965a5e7ec66b7f9f9ce44a01f9ded5653db660de61368cde9b5",
+    "benchmark_source_sha256": "e7264a4bdfef407fd3912c2cd715f08838237369d2a5a7de3268842f9aca3147",
+    "shared_sources": {
+      "writing.jl": "78fba7cd46f03749bdc56547b7ce5622f7ba3ea42cc34801829345dae3975e05",
+      "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+      "cellular.jl": "97eda8b05c7d51883bc52dc7ecc985b882b60920296c79b4f2903ed358dc0131",
+      "matrix_mechanics.jl": "e232c0d13449324aabe6c299ee1de8ba1d961777e363bc328d44fa5af8de03ed",
+      "cellular_transport.jl": "fc8bfb0df1948b3869afae0a06fb5cc23bb87778452a31ffc3d27954eeb87aa2",
+      "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+      "cellular_arena.jl": "2ef965717c99cd0c46a8acd9ceb7da26232201cb18547bd23712e989688429e2",
+      "experiments.jl": "5697958abac5f36713418d5f9d94f274fb0a51b86ed1a84b3f58b68cba1e42d1",
+      "metabolic_ecology.jl": "2f599a1d6ea0a5552a594113d57e238e4c6ff3c1fd8d74de5a51f83a77179bb1",
+      "neural_ecology.jl": "ed0496adb31ce4511f8bc0d5343ff843c410c39c51d30c165b3cf5eac1135df2",
+      "compartments.jl": "e7c55ce4e0f4a8548c078c9d160815b5eaeb846a3765aad89a875f166b5005e5",
+      "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+      "catalytic_habitat.jl": "9a69b5ec394bc6dcee988d68f6463fc7c72bfa273e89bbd6e46513d392468eb1",
+      "device_cellular_support.jl": "5a767b83c2c912d8706468ec7c5b86e56cf99430b2a23dfd3a7f3ee8f21bf55b",
+      "arena.jl": "75acccd7b144e1512984c8ececb368d5fa3f03db08daa40e4b8f8f027198c16f",
+      "catalytic_arena.jl": "4a359bb5cfee951c898aca039efe07a4558797fce5544876158791139b105524",
+      "recurrent_material.jl": "e9457d0d6e31f74950fa4be8ef84b138b020c0de7fc4b95c9a7f3cd5db148347",
+      "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+      "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+      "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b",
+      "Interior.jl": "194971f1f1f6c5c044145238c12ed27dbe4975f9f60a67b5d2074aa8efbf9631",
+      "resources.jl": "859f6e04b456ceee051fd83214b37ca18418af09126960997b7d62d83c2dcab0",
+      "cellular_initialization.jl": "d76e4c791a2c56bc7fd651b1836e6879b9e27013566ce6d94a1d2f677f62e633",
+      "constructive_cells.jl": "000953e0da6de61574abaff6566790c051af13c320c6c53162598625b6b6bf27",
+      "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+      "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+      "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+      "implicit_phase.jl": "1fb617707591f89784b95171e0558065101b3d992f7b3eabd16a7bf01dca4ceb",
+      "device_cellular_protocol.jl": "5b5b8c4b945af6c9a6a2496dc115e83501cc3b1329f7c8b2abab71d175c22720",
+      "core.jl": "b4302b90eaeba213360e8a15ce8b7e4cb4c491606657e3e500d2fb8507753a52",
+      "neural_workspace.jl": "ecdd45856bc0b3c61708de90814d1abb33bc1232a0f9ff5785b32b9bc39a9139",
+      "device_habitat_kernels.jl": "f6ab9782cff0816919368d3d1f8c766af39f9eba3a0badd2636e50b55366ac42",
+      "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+      "device_resource_exchange.jl": "050991b42eceab1403c940e69b027d27106f966dfcc0cfbf215b5b5ff7221c18",
+      "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+      "device_cellular_initialization.jl": "b3c62d90bdd1c2340ae5097c2242a440b3ab7fc5204e57b18f087067b2c41bd7",
+      "cellular_storage.jl": "735c3281aca69158609392ef161397bec166d4a1698d7e741cd95b5a426cfaff",
+      "device_cellular_kernels.jl": "cf9ce3d4f193721b11ea7e005a9a06bb398a57bd211b9436f4876d3326a7e6d9",
+      "device_cellular_lifecycle.jl": "8826c577e960db6596cd923a591d806b185908a254c6cc0fb6b0eebb033a9629",
+      "device_cellular.jl": "db2277f6fa01f02fa5829e929ce3f8abf583cc598052f6cbb81113345cb6ff3d",
+      "device_cellular_checkpoint.jl": "10d83cb02df68183cc703c3fca152795a5685b8b90379c52b1856aae72fd6664",
+      "cellular_contacts.jl": "337247cbe0707778f15672385f2e33684cbb44535afc9580e3cf880c4089aafa",
+      "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+      "dose_writer.jl": "b8d1b4013921a3c82388ee87a7ede00b97964a1894062f2a07339f2c6be197eb",
+      "device_habitat.jl": "a69f56d9dfd424c343a67857a7d7b4bcece16718b64a697a4abdeafcf4543dd8",
+      "mechanics.jl": "a0370e4028aa859fb344829f0d387a62dd8defb77b25f4651f7c08b386324e45",
+      "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+      "device_habitat_sorption.jl": "f135e74e59959187e72725a45665ac5c67293b8305298c8d3ac4bdbb81e6ac93",
+      "sorptive_matrix.jl": "f5643e0c951c983a7d5864676156123db3181e05510335fcd618de105ff1f036"
+    },
+    "rows": [
+      {
+        "shape": [
+          8,
+          8,
+          1
+        ],
+        "steps": 100,
+        "dt": 0.1,
+        "warmup_steps": 64,
+        "complete_step_allocated_bytes": 50656.0,
+        "complete_step_seconds": 5.074167e-05,
+        "voxel_steps_per_second": 1261290.769499703,
+        "population_initial": 62,
+        "population_final": 64,
+        "resident_array_bytes": 2534656,
+        "shared_genotype_bytes": 2523136,
+        "hypothetical_per_voxel_genome_bytes": 39424
+      },
+      {
+        "shape": [
+          16,
+          16,
+          1
+        ],
+        "steps": 100,
+        "dt": 0.1,
+        "warmup_steps": 64,
+        "complete_step_allocated_bytes": 50656.0,
+        "complete_step_seconds": 0.00030178709,
+        "voxel_steps_per_second": 848280.1567157826,
+        "population_initial": 254,
+        "population_final": 256,
+        "resident_array_bytes": 2569216,
+        "shared_genotype_bytes": 2523136,
+        "hypothetical_per_voxel_genome_bytes": 157696
+      },
+      {
+        "shape": [
+          32,
+          32,
+          1
+        ],
+        "steps": 100,
+        "dt": 0.1,
+        "warmup_steps": 64,
+        "complete_step_allocated_bytes": 50704.0,
+        "complete_step_seconds": 0.00189816333,
+        "voxel_steps_per_second": 539468.8559282199,
+        "population_initial": 993,
+        "population_final": 1024,
+        "resident_array_bytes": 2707456,
+        "shared_genotype_bytes": 2523136,
+        "hypothetical_per_voxel_genome_bytes": 630784
+      },
+      {
+        "shape": [
+          64,
+          64,
+          1
+        ],
+        "steps": 100,
+        "dt": 0.1,
+        "warmup_steps": 64,
+        "complete_step_allocated_bytes": 50704.0,
+        "complete_step_seconds": 0.02827793833,
+        "voxel_steps_per_second": 144847.90058596892,
+        "population_initial": 3948,
+        "population_final": 4091,
+        "resident_array_bytes": 3260416,
+        "shared_genotype_bytes": 2523136,
+        "hypothetical_per_voxel_genome_bytes": 2523136
+      }
+    ]
+  }
+}

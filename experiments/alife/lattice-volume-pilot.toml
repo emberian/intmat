@@ -1,0 +1,18 @@
+id = "finite-locus-lattice-volume-pilot"
+# Modest true 3D CPU1 specimen; not a device/scaling demonstration.
+dimensions = [16, 16, 16]
+extent = [16.0, 16.0, 16.0]
+seeds = [11]
+arms = ["full"]
+loci = 12
+founder_genotypes = 8
+occupancy = 0.1
+precursor = 0.6
+fuel = 0.25
+reserve = 8.0
+spatial_niches = true
+dt = 0.1
+steps = 800
+capture_every = 40
+injury_step = 400
+injury_radius = 3.0
