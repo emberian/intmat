@@ -20,3 +20,11 @@ Native 64³ samples and 32³ concentration block means are explicitly labelled; 
 The small real smoke recording is available at `outputs/native-garden-observatory-smoke-20261015/`: eight actual cells, native 8³ and averaged 4³ fields at physical times 0 and 0.002. It validates display and export plumbing, not long-run ecology.
 
 Checks: `python3 scripts/test_observe_native_garden.py` covers hash/size/path admission, partial manifest retention, budget admission failed export retention, source identity rejection and restart bounds. Isolated Chromium additionally exercised actual volume rendering, rotation, identity selection, native/coarse switching, slices, time navigation and mobile layout.
+
+## Attached production observation (2026-10-15)
+
+The read-only SSH mirror helper `scripts/mirror_native_garden.py` admits only manifest-listed frames and verifies each downloaded file before atomically publishing the local manifest. Raw complete remote manifests are retained under `manifests/`; checkpoints are excluded. A malformed remote manifest leaves the previous mirror usable.
+
+The production mirror is `outputs/native-garden-4b747919ec56/`, derived view `outputs/native-garden-observatory-4b747919ec56/`. Each has a 1,000,000,000-byte admission budget and polls every 45 seconds. Both stop by 20:50 UTC on 2026-10-15; a separate deadline watchdog terminates their process groups at that deadline, including pending downloads/exports. The detached CPU-only exporter is pinned as `export-helper-pinned.jl`; its hash, process IDs and exact commands are retained in `processes.json`. This local observer adds no GPU work and changes no remote experiment files.
+
+Open `http://127.0.0.1:8769/outputs/native-garden-observatory-4b747919ec56/`. Inspect `mirror-status.json`, `observatory.json`, and the retained local logs for progress. To stop early, send SIGTERM to the mirror and observer process groups listed in `processes.json` (`kill -TERM -- -PID`), then terminate the listed watchdog PID. Preserve both output directories. Restart using the recorded commands with a newly bounded wall duration and deadline watchdog; do not reuse an expired wall bound.

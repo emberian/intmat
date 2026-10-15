@@ -29,8 +29,8 @@ def completed_entries(source,manifest,known=()):
     return entries
 
 class Observer:
-    def __init__(self,source,destination,budget=256_000_000,julia='julia'):
-        self.source=Path(source).resolve();self.destination=Path(destination).resolve();self.budget=budget;self.julia=julia
+    def __init__(self,source,destination,budget=256_000_000,julia='julia',export_helper=None):
+        self.source=Path(source).resolve();self.destination=Path(destination).resolve();self.budget=budget;self.julia=julia;self.export_helper=Path(export_helper) if export_helper else ROOT/'scripts/export_native_observatory_frame.jl'
         self.destination.mkdir(parents=True,exist_ok=True)
         self.index={'schema':'native-garden-observatory-1','frames':[],'observer':{},'source_name':self.source.name}
         existing=self.destination/'observatory.json'
@@ -78,7 +78,7 @@ class Observer:
             name=f"frame-{entry['step']:09d}-{entry['side']}-{entry['sha256'][:10]}"
             temporary=Path(tempfile.mkdtemp(prefix='.export-',dir=self.destination));target=temporary/'payload'
             try:
-                subprocess.run([self.julia,'--startup-file=no','--project='+str(ROOT),str(ROOT/'scripts/export_native_observatory_frame.jl'),str(path),entry['sha256'],str(target)],check=True,timeout=120)
+                subprocess.run([self.julia,'--startup-file=no','--project='+str(ROOT),str(self.export_helper),str(path),entry['sha256'],str(target)],check=True,timeout=120)
                 metadata=json.loads((target/'frame.json').read_text())
                 if metadata['source_sha256']!=entry['sha256'] or metadata['step']!=entry['step'] or metadata['shape']!=[entry['side']]*3 or abs(metadata['time']-entry['time'])>1e-9:
                     raise ValueError('export metadata disagrees with completed manifest entry')
@@ -102,9 +102,9 @@ class Observer:
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('run',type=Path);p.add_argument('destination',type=Path)
     p.add_argument('--follow',action='store_true');p.add_argument('--max-wall-seconds',type=float,default=600);p.add_argument('--poll-seconds',type=float,default=5)
-    p.add_argument('--artifact-budget-bytes',type=int,default=256_000_000);p.add_argument('--julia',default='julia');a=p.parse_args()
+    p.add_argument('--artifact-budget-bytes',type=int,default=256_000_000);p.add_argument('--julia',default='julia');p.add_argument('--export-helper',type=Path);a=p.parse_args()
     if a.max_wall_seconds<=0 or a.poll_seconds<=0 or a.artifact_budget_bytes<=0:p.error('positive bounds required')
-    observer=Observer(a.run,a.destination,a.artifact_budget_bytes,a.julia);wall_deadline=time.time()+a.max_wall_seconds
+    observer=Observer(a.run,a.destination,a.artifact_budget_bytes,a.julia,a.export_helper);wall_deadline=time.time()+a.max_wall_seconds
     while True:
         observer.scan();deadline=min(wall_deadline,observer.index.get('deadline_unix') or wall_deadline)
         if not a.follow or observer.index.get('run_complete') or observer.index['observer'].get('stop_reason') or time.time()>=deadline:break
