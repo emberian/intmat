@@ -133,7 +133,7 @@ function device_cellular_import(w::World,reference;capacity=reference.capacity,
     copyto!(env.resource_ledger_low,ledgerlow)
     copyto!(env.resource_ledger,ledger);fill!(env.permeability,1f0)
     metadata=zeros(Int32,10);metadata[1]=reference.next_id;metadata[2]=n;copyto!(env.metadata,metadata)
-    p=DeviceCellular(state,env,w.backend,q,geom,0,device_cellular_contract(state,env,q,geom))
+    p=DeviceCellular(state,env,w.backend,q,geom,0,device_cellular_contract(state,env,q,geom;lifecycle_highwater=n))
     device_cellular_launch!(p,dc_geometry!,p.state,p.environment,q,geom;ndrange=C)
     device_cellular_launch!(p,dc_support!,p.state,p.environment,q,geom;ndrange=C)
     device_cellular_launch!(p,dc_porosity_scatter!,p.state,p.environment,geom;ndrange=C)
@@ -142,7 +142,8 @@ function device_cellular_import(w::World,reference;capacity=reference.capacity,
     p
 end
 
-function device_cellular_contract(state,env,q,g;resource_workspace=nothing,resource_transient_aliases=())
+function device_cellular_contract(state,env,q,g;resource_workspace=nothing,resource_transient_aliases=(),
+        lifecycle_workspace=nothing,lifecycle_highwater=nothing)
     mechanics=(state=NamedTuple{(:active,:ids,:position,:position_next,:mass,:metabolites,:radii,:next,:cell_bin,:bonds,:bond_ids,:rest,:actions,:force,:rows,:energy,:ledger,:ledger_low)}(state),
         environment=NamedTuple{(:status,:heads,:metadata)}(env),
         parameters=NamedTuple{(:density,:radius_bound,:repulsion,:stiffness,:speed,:motor_cost)}(q),
@@ -153,9 +154,18 @@ function device_cellular_contract(state,env,q,g;resource_workspace=nothing,resou
     device_resource_workspace_validate(resource)
     size(resource.grants)==(size(env.fields,1),6) || throw(ArgumentError("resource workspace grid differs"))
     device_resource_workspace_nonalias(resource,state,env;allowed_transients=resource_transient_aliases)
+    if lifecycle_workspace===nothing
+        if lifecycle_highwater===nothing
+            host=(ids=Array(state.ids),active=Array(state.active),new_parent=Array(state.new_parent))
+            lifecycle_highwater=device_lifecycle_host_highwater(host)
+        end
+        lifecycle_workspace=DeviceLifecycleWorkspace(KernelAbstractions.get_backend(env.fields),Int(g.capacity);initial=lifecycle_highwater)
+    end
+    device_lifecycle_workspace_validate(lifecycle_workspace,KernelAbstractions.get_backend(env.fields),Int(g.capacity))
+    device_lifecycle_workspace_nonalias(lifecycle_workspace,state,env,resource)
     (state=state,environment=env,parameters=q,geometry=g,
         state_shapes=map(size,state),environment_shapes=map(size,env),resource_transient_aliases=resource_transient_aliases,
-        stages=(mechanics=mechanics,controller=controller,resource=resource))
+        stages=(mechanics=mechanics,controller=controller,resource=resource,lifecycle=lifecycle_workspace))
 end
 """Cheap identity/shape preflight. Direct array-content edits remain caller responsibility."""
 function device_cellular_validate(w::World,p::DeviceCellular)
@@ -165,6 +175,7 @@ function device_cellular_validate(w::World,p::DeviceCellular)
     map(size,p.state)==o.state_shapes && map(size,p.environment)==o.environment_shapes ||
         throw(ArgumentError("device cellular owned array shapes changed"))
     device_resource_workspace_validate(o.stages.resource)
+    device_lifecycle_workspace_validate(o.stages.lifecycle,p.backend,Int(p.geometry.capacity))
     w.backend==p.backend && w.grid.size==Tuple(Int.(p.geometry.dims)) && w.grid.extent==p.geometry.extent ||
         throw(ArgumentError("device cellular world mismatch"))
     true
@@ -192,20 +203,21 @@ device_anabolic_begin!(::Nothing,w,p,dt)=nothing
 device_anabolic_prepare!(::Nothing,w,p,dt)=nothing
 device_anabolic_inherit!(::Nothing,w,p,step)=nothing
 device_anabolic_finish!(::Nothing,w,p,dt)=nothing
-function device_cellular_step!(w::World,p::DeviceCellular,dt::Real;check_status=true,execution=:projected,anabolism=nothing)
+function device_cellular_step!(w::World,p::DeviceCellular,dt::Real;check_status=true,execution=:projected,anabolism=nothing,lifecycle=:prefix)
     device_cellular_validate(w,p)
     execution in (:staged,:projected) || throw(ArgumentError("unknown device execution recipe"))
+    lifecycle in (:prefix,:dense) || throw(ArgumentError("unknown device lifecycle recipe"))
     delta=Float32(dt)
     isfinite(delta) && 0<delta<=device_cellular_timestep_limit(p) || throw(ArgumentError("invalid device cellular timestep"))
     p.attempted_steps+=1
-    device_cellular_enqueue!(w,p,delta,execution,anabolism,UInt32(p.attempted_steps))
+    device_cellular_enqueue!(w,p,delta,execution,anabolism,UInt32(p.attempted_steps),lifecycle)
     check_status && device_cellular_status!(p)
     p
 end
 # Internal fixed-capacity launch schedule. The checked ordinary entry point owns
 # host attempt bookkeeping. A captured queue may instead supply a device clock;
 # neither capture nor this function advances host counters or World time.
-function device_cellular_enqueue!(w,p,delta::Float32,execution::Symbol,anabolism,step_index)
+function device_cellular_enqueue!(w,p,delta::Float32,execution::Symbol,anabolism,step_index,lifecycle::Symbol=:prefix)
     g=p.geometry;q=p.parameters;s=p.state;e=p.environment
     C=Int(g.capacity);V=prod(Int.(g.dims))
     # All arrays are fixed capacity. Latched failure causes subsequent kernels to no-op.
@@ -247,7 +259,12 @@ function device_cellular_enqueue!(w,p,delta::Float32,execution::Symbol,anabolism
     end
     device_cellular_launch!(p,dc_propose_bonds!,s,e,q,g;ndrange=C)
     device_cellular_launch!(p,dc_commit_bonds!,s,e,q,g;ndrange=C)
-    device_cellular_launch!(p,dc_lifecycle!,s,e,q,g,step_index;ndrange=1)
+    highwater=device_lifecycle_workspace(p).highwater
+    if lifecycle===:dense
+        device_cellular_launch!(p,dc_lifecycle_dense!,s,e,q,g,step_index,highwater;ndrange=1)
+    else
+        device_cellular_launch!(p,dc_lifecycle_prefix!,s,e,q,g,step_index,highwater;ndrange=1)
+    end
     device_cellular_launch!(p,dc_divide!,s,e,q,g,step_index;ndrange=C)
     device_anabolic_inherit!(anabolism,w,p,step_index)
     device_cellular_launch!(p,dc_clear_occupancy!,e;ndrange=V)
@@ -303,6 +320,7 @@ end
 
 include("device_cellular_kernels.jl")
 include("device_resource_exchange.jl")
+include("device_cellular_lifecycle.jl")
 
 """Float64 host audit of an explicit full snapshot; this intentionally transfers all state."""
 function device_cellular_audit(snapshot)

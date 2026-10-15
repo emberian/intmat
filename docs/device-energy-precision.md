@@ -16,7 +16,7 @@ CPU gates passed: 50 independent assertions covering actual motor microsteps, ma
 
 The source-pinned gate completed on the RX 6750 XT: core `e44b20c` with gate-only overlay `2b25091` (SHA256 `5f84771b1aafd7b80fe3b394e31fbbd1b1f5252c47d698ec2c41b12f7db94a76`). It used the actual 64³ garden, 256 founders and capacity 16,384, under the usual 8 GiB/no-swap, CPUs 10–11, two Julia threads, one GC/BLAS thread, nice 15 and AMD compiler optlevel 1 controls. Total gate elapsed time was 169.88 seconds.
 
-After 20 warm steps, three alternating 100-step samples measured **10.2802 ms/step for Float32 energy and 10.2881 ms/step for Float64 energy**, a **0.076% overhead**. These compare battery representations with the same initial recipe; they do not assert equivalent trajectories.
+With the frozen e44 dense-lifecycle baseline, after 20 warm steps three alternating 100-step samples measured **10.2802 ms/step for Float32 energy and 10.2881 ms/step for Float64 energy**, a **0.076% overhead**. These compare battery representations with the same initial recipe; they do not assert equivalent trajectories.
 
 The Float64 trajectory then completed **10,000 additional steps**, reaching step 10,320 / time 10.32. Potential closure error was **−0.0009176** (5.46×10⁻⁷ of initial potential), and material error was **−0.0002838**. All intermediate checks retained the existing absolute/relative guard. The prior Float32 gate had reached +0.0384 potential error by time 1.1. The remaining small drift is measurable; this is not an arbitrary-precision conservation claim.
 
@@ -25,3 +25,5 @@ The prefix trajectory sustained **111.02 steps/s** across its 10,000 timed steps
 Float64 native/prefix arrays matched exactly, including forced simultaneous death and slot reuse. Strict restore, continuation, reconstructed high-water mark and failure-latch checks passed; the final long-trend checkpoint restored bitwise exactly. The battery consumes 131,072 bytes, **65,536 bytes more** than Float32 at this capacity. No long garden was launched by this gate.
 
 Compact evidence: [benchmark JSON](../benchmarks/2026-10-15-device-energy-precision.json). Raw JSON is retained under `outputs/device-energy-precision-20261015/`; the approximately 244 MB strict checkpoint remains on hbox at `/othersys/tmp/intmat-probe-20261014/device-energy-e44b20c/results/checkpoint.jls`.
+
+After production lifecycle integration, the replay driver explicitly requests `lifecycle=:prefix` for future battery-overhead measurements. That harness change has not been used to reinterpret the frozen dense-lifecycle timing above.

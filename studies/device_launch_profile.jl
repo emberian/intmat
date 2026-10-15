@@ -79,7 +79,7 @@ function device_profile_category(kernel::Symbol)
     kernel in (:dc_clear_heads!,:dc_geometry!) && return :bins_geometry
     kernel in (:dc_forces!,:dc_move!,:dc_commit_positions!) && return :mechanics
     kernel in (:dc_propose_bonds!,:dc_commit_bonds!) && return :contacts
-    kernel in (:dc_lifecycle!,:dc_divide!) && return :lifecycle
+    kernel in (:dc_lifecycle!,:dc_lifecycle_prefix!,:dc_lifecycle_dense!,:dc_divide!) && return :lifecycle
     kernel===:dc_controller! && return :controller
     kernel in (:dc_exchange_scale!,:dc_exchange_commit!,:dc_commit_metabolites!) && return :junctions
     kernel===:dc_metabolism! && return :metabolism

@@ -77,7 +77,7 @@ end
     w,p=energy_audit_fixture(;energy_type=Float64,biomass=2.)
     p.state.energy[1]=1+2.0^-40;p.state.actions[1,10]=1
     initial=p.state.energy[1]
-    Interior.dc_lifecycle!(CPU(),1)(p.state,p.environment,p.parameters,p.geometry,UInt32(1);ndrange=1)
+    Interior.dc_lifecycle_dense!(CPU(),1)(p.state,p.environment,p.parameters,p.geometry,UInt32(1),Interior.device_lifecycle_workspace(p).highwater;ndrange=1)
     Interior.dc_divide!(CPU(),1)(p.state,p.environment,p.parameters,p.geometry,UInt32(1);ndrange=4)
     @test count(==(1),p.state.active)==2
     @test sum(p.state.energy)==initial

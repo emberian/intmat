@@ -5,6 +5,7 @@ const DEVICE_CELLULAR_SOURCE_PIN=(
     initialization=bytes2hex(SHA.sha256(read(joinpath(@__DIR__,"device_cellular_initialization.jl")))),
     founder_initialization=bytes2hex(SHA.sha256(read(joinpath(@__DIR__,"cellular_initialization.jl")))),
     support=bytes2hex(SHA.sha256(read(joinpath(@__DIR__,"device_cellular_support.jl")))),
+    lifecycle=bytes2hex(SHA.sha256(read(joinpath(@__DIR__,"device_cellular_lifecycle.jl")))),
     resource=bytes2hex(SHA.sha256(read(joinpath(@__DIR__,"device_resource_exchange.jl")))),
     kernels=bytes2hex(SHA.sha256(read(joinpath(@__DIR__,"device_cellular_kernels.jl")))),
     checkpoint=bytes2hex(SHA.sha256(read(@__FILE__))),
@@ -69,7 +70,7 @@ function device_cellular_restore(w::World,checkpoint)
             copyto!(dst,src)
         end
     end
-    p=DeviceCellular(state,env,w.backend,q,g,x.attempted_steps,device_cellular_contract(state,env,q,g))
+    p=DeviceCellular(state,env,w.backend,q,g,x.attempted_steps,device_cellular_contract(state,env,q,g;lifecycle_highwater=device_lifecycle_host_highwater(x.state)))
     device_cellular_launch!(p,dc_validate_complete!,state,env,g;ndrange=max(C,V))
     device_cellular_status!(p)
     w.time=checkpoint.world_time;w.seed=checkpoint.world_seed

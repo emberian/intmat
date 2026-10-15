@@ -8,6 +8,7 @@ struct WorldBatchArray{T,N,A<:AbstractArray{T}} <: AbstractArray{T,N}
     shape::NTuple{N,Int}
 end
 Base.size(a::WorldBatchArray)=a.shape
+Interior.KernelAbstractions.get_backend(a::WorldBatchArray)=Interior.KernelAbstractions.get_backend(a.storage)
 const WorldBatchAdapt=Interior.KernelAbstractions.Adapt
 function WorldBatchAdapt.adapt_structure(to,a::WorldBatchArray)
     WorldBatchArray(WorldBatchAdapt.adapt(to,a.storage),a.shape)
@@ -92,12 +93,30 @@ function batch_resource_validate(p)
     end
     true
 end
+function batch_lifecycle_workspace(backend,capacity,markers)
+    values=Int32.(collect(markers))
+    all(h->0<=h<=capacity,values)||throw(ArgumentError("batch lifecycle marker exceeds capacity"))
+    parent=Interior.KernelAbstractions.zeros(backend,Int32,1,length(values));copyto!(parent,reshape(values,1,:))
+    highwater=WorldBatchArray(parent,(1,))
+    Interior.DeviceLifecycleWorkspace(highwater,backend,Int(capacity),(highwater=highwater,shape=size(highwater)))
+end
+function batch_lifecycle_validate(p)
+    work=Interior.device_lifecycle_workspace(p);h=work.highwater
+    Interior.device_lifecycle_workspace_validate(work,p.backend,Int(p.geometry.capacity))
+    h isa WorldBatchArray&&size(h.storage)==(1,p.worlds)||throw(ArgumentError("invalid world-local lifecycle storage"))
+    resource=Interior.device_resource_workspace(p)
+    others=(values(p.state)...,values(p.environment)...,resource.grants,(a for level in resource.levels for a in (level.high,level.low))...)
+    any(a->Base.mightalias(h.storage,a.storage),others)&&throw(ArgumentError("batch lifecycle marker aliases process or resource storage"))
+    true
+end
 function CellularWorldBatch(ps::AbstractVector)
     isempty(ps)&&error("empty ensemble");a=first(ps)
     all(p->p.geometry==a.geometry&&merge(p.parameters,(seed=a.parameters.seed,))==a.parameters&&p.backend==a.backend&&p.attempted_steps==a.attempted_steps,ps)||error("batch requires identical geometry, physical parameters, and step clock")
     s=pack_world_arrays(getproperty.(ps,:state));e=pack_world_arrays(getproperty.(ps,:environment))
     resource=batch_resource_workspace(a.backend,size(e.fields,1),length(ps))
-    o=Interior.device_cellular_contract(s,e,a.parameters,a.geometry;resource_workspace=resource)
+    markers=Int32[only(Array(Interior.device_lifecycle_workspace(p).highwater)) for p in ps]
+    lifecycle=batch_lifecycle_workspace(a.backend,Int(a.geometry.capacity),markers)
+    o=Interior.device_cellular_contract(s,e,a.parameters,a.geometry;resource_workspace=resource,lifecycle_workspace=lifecycle)
     seeds=Interior.KernelAbstractions.zeros(a.backend,UInt32,length(ps))
     copyto!(seeds,UInt32[p.parameters.seed for p in ps])
     CellularWorldBatch(s,e,a.backend,a.parameters,a.geometry,o,a.attempted_steps,length(ps),seeds)
@@ -107,6 +126,7 @@ function Interior.device_cellular_validate(w::Interior.World,p::CellularWorldBat
     w.backend==p.backend && w.grid.size==Tuple(Int.(p.geometry.dims)) && w.grid.extent==p.geometry.extent || error("batch world mismatch")
     p.state===p.ownership.state && p.environment===p.ownership.environment || error("batch arrays replaced")
     batch_resource_validate(p)
+    batch_lifecycle_validate(p)
     true
 end
 Interior.device_cellular_timestep_limit(p::CellularWorldBatch)=begin
@@ -141,7 +161,7 @@ function batch_kernel_ast(ex;habitat=false)
     insertions=Expr[]
     for j in 2:length(sig.args)
         arg=sig.args[j]
-        if arg in (:s,:e,:q,:a,:feed,:descriptor,:cq,:anabolism,:grants,:high,:low,:input_high,:input_low,:status)
+        if arg in (:s,:e,:q,:a,:feed,:descriptor,:cq,:anabolism,:grants,:high,:low,:input_high,:input_low,:status,:highwater)
             packed=Symbol("packed_",arg)
             sig.args[j]=packed
             if arg===:anabolism
@@ -177,14 +197,15 @@ const CELLULAR_WORLD_BATCH_SOURCE=install_cellular_world_batch!()
 # Only checked entry bookkeeping is local; every physical stage is the common
 # enqueue schedule, including its mechanical host loop and extension hooks.
 function cellular_world_batch_step!(w::World,p::CellularWorldBatch,dt::Real;
-        check_status=true,execution=:projected,anabolism=nothing)
+        check_status=true,execution=:projected,anabolism=nothing,lifecycle=:prefix)
     anabolism===nothing || throw(ArgumentError("batched anabolic extension is not implemented"))
+    lifecycle in (:prefix,:dense)||throw(ArgumentError("unknown batch lifecycle recipe"))
     Interior.device_cellular_validate(w,p)
     execution in (:staged,:projected) || throw(ArgumentError("unknown device execution recipe"))
     delta=Float32(dt)
     isfinite(delta)&&0<delta<=Interior.device_cellular_timestep_limit(p)||throw(ArgumentError("invalid device cellular timestep"))
     p.attempted_steps+=1
-    Interior.device_cellular_enqueue!(w,p,delta,execution,nothing,UInt32(p.attempted_steps))
+    Interior.device_cellular_enqueue!(w,p,delta,execution,nothing,UInt32(p.attempted_steps),lifecycle)
     check_status&&Interior.device_cellular_status!(p)
     p
 end

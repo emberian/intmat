@@ -786,5 +786,6 @@
     "Short20-step prefix comparison has severe JIT/GC contamination; its reported2.313x ratio is not a performance claim."
   ],
   "remote_checkpoint": "/othersys/tmp/intmat-probe-20261014/device-energy-e44b20c/results/checkpoint.jls",
-  "raw_results": "outputs/device-energy-precision-20261015/"
+  "raw_results": "outputs/device-energy-precision-20261015/",
+  "timing_lifecycle": "dense (e44b20c native default)"
 }

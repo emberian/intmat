@@ -3,7 +3,7 @@
 include(joinpath(@__DIR__,"..","scripts","device_cellular_setup.jl"))
 include(joinpath(@__DIR__,"..","scripts","native_constructed_garden.jl"))
 include(joinpath(@__DIR__,"..","scripts","device_habitat_fixture.jl"))
-Base.include(Interior,joinpath(@__DIR__,"device_lifecycle_prefix.jl"))
+isdefined(Interior,:DeviceLifecyclePrefixCarrier) || Base.include(Interior,joinpath(@__DIR__,"device_lifecycle_prefix.jl"))
 using Serialization,Statistics
 hashfile(path)=bytes2hex(Interior.SHA.sha256(read(path)))
 function prefix_gate_compare(a,b;tolerance=2e-5)
@@ -26,10 +26,10 @@ function prefix_gate_compare(a,b;tolerance=2e-5)
     maximum(values(errors);init=0.)<=tolerance || error("numerical comparison exceeds $tolerance")
     errors
 end
-function prefix_gate_steps!(w,p,count,dt,carrier=nothing)
+function prefix_gate_steps!(w,p,count,dt,carrier=nothing;lifecycle=:dense)
     for _ in 1:count
         if carrier===nothing
-            Interior.device_cellular_step!(w,p.cells,dt;anabolism=p.habitat,check_status=false)
+            Interior.device_cellular_step!(w,p.cells,dt;anabolism=p.habitat,check_status=false,lifecycle)
         else
             Interior.device_lifecycle_prefix_step!(w,carrier,dt;anabolism=p.habitat,check_status=false)
         end
@@ -71,7 +71,7 @@ function run_prefix_gate(profile,outdir)
         setup_sha256=hashfile(joinpath(@__DIR__,"..","scripts","device_cellular_setup.jl")),
         fixture_sha256=hashfile(joinpath(@__DIR__,"..","scripts","native_constructed_garden.jl")),
         slot_reuse_fixture_sha256=hashfile(joinpath(@__DIR__,"..","scripts","device_habitat_fixture.jl")),
-        highwater_reconstruction="max slot with nonzero persistent ID, active flag or new_parent; device monotonic max allocated child thereafter",
+        highwater_reconstruction="production owned workspace; constructor founder count; strict restore maximum nonzero persistent ID/active/new_parent slot; shared dense/prefix kernels maintain device monotonic watermark",
         controls=(warm_steps=warm,sample_steps=count,samples,continuation,wall_seconds=seconds),
         comparison="identity/contact/new_parent and counters exact; all floating roles <=2e-5 (ordinary native gate tolerance); unused free and nondeterministic integer scratch not compared")
     open(io->JSON3.pretty(io,provenance),joinpath(outdir,"provenance.json"),"w")

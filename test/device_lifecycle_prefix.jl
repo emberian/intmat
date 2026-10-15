@@ -1,6 +1,6 @@
 using Interior,Test,KernelAbstractions,Random
-Base.include(Interior,joinpath(@__DIR__,"..","studies","device_lifecycle_prefix.jl"))
-isdefined(Main,:constructive_device_fixture) || include(joinpath(@__DIR__,"..","scripts","device_habitat_fixture.jl"))
+isdefined(Interior,:DeviceLifecyclePrefixCarrier) || Base.include(Interior,joinpath(@__DIR__,"..","studies","device_lifecycle_prefix.jl"))
+isdefined(@__MODULE__,:constructive_device_fixture) || include(joinpath(@__DIR__,"..","scripts","device_habitat_fixture.jl"))
 function lifecycle_fixture(C,active,eligible;nextid=100)
     s=(active=Int32.(active),ids=Int32.(1:C),mass=fill(1f0,C),actions=zeros(Float32,C,Interior.CELLULAR_ACTIONS),new_parent=zeros(Int32,C))
     s.mass[eligible].=3f0;s.actions[eligible,10].=1f0
@@ -36,7 +36,7 @@ if get(ENV,"INTMAT_PREFIX_DIRECT_ONLY","0")!="1"
     carrier=Interior.DeviceLifecyclePrefixCarrier(candidate.cells)
     @test only(carrier.highwater)==2
     for step in 1:20
-        Interior.device_cellular_step!(w,p.cells,.01;anabolism=p.habitat)
+        Interior.device_cellular_step!(w,p.cells,.01;anabolism=p.habitat,lifecycle=:dense)
         Interior.device_lifecycle_prefix_step!(w2,carrier,.01;anabolism=candidate.habitat)
         @test lifecycle_canonical(Interior.device_habitat_snapshot(p))==lifecycle_canonical(Interior.device_habitat_snapshot(candidate))
     end
@@ -55,11 +55,11 @@ end # optional complete coupled gate
 
 @testset "Prefix reconstruction and failure boundary" begin
     fake=(state=(ids=Int32[1,0,4,0],active=zeros(Int32,4),new_parent=zeros(Int32,4)),backend=CPU())
-    @test only(Interior.DeviceLifecyclePrefixCarrier(fake).highwater)==3
+    @test Interior.device_lifecycle_host_highwater(fake.state)==3
     fake.state.new_parent[4]=1
-    @test only(Interior.DeviceLifecyclePrefixCarrier(fake).highwater)==4
+    @test Interior.device_lifecycle_host_highwater(fake.state)==4
     fill!(fake.state.ids,0);fill!(fake.state.new_parent,0)
-    @test only(Interior.DeviceLifecyclePrefixCarrier(fake).highwater)==0
+    @test Interior.device_lifecycle_host_highwater(fake.state)==0
     s,e,q,g=lifecycle_fixture(16,Int32[1,1,zeros(Int32,14)...],[1,2];nextid=typemax(Int32)-1)
     h=Int32[2]
     Interior.dc_lifecycle_prefix!(CPU(),32)(s,e,q,g,UInt32(1),h;ndrange=1)

@@ -23,14 +23,15 @@ function Interior.device_cellular_launch!(p::ConstructiveBatchCells,kernel,args.
 end
 # Public composition validation, stability and hooks are reused without adapters.
 function Interior.device_cellular_step!(w::World,p::ConstructiveBatchCells,dt::Real;
-        check_status=true,execution=:projected,anabolism=nothing)
+        check_status=true,execution=:projected,anabolism=nothing,lifecycle=:prefix)
     anabolism isa Interior.DeviceCatalyticHabitat && anabolism.cells===p || throw(ArgumentError("constructive batch requires its owned habitat"))
     Interior.device_cellular_validate(w,p)
     execution in (:staged,:projected)||throw(ArgumentError("unknown device execution recipe"))
+    lifecycle in (:prefix,:dense)||throw(ArgumentError("unknown batch lifecycle recipe"))
     delta=Float32(dt)
     isfinite(delta)&&0<delta<=Interior.stability_limit(w,Interior.DeviceConstructiveEcology(p,anabolism)) || throw(ArgumentError("invalid constructive batch timestep"))
     p.attempted_steps+=1
-    Interior.device_cellular_enqueue!(w,p,delta,execution,anabolism,UInt32(p.attempted_steps))
+    Interior.device_cellular_enqueue!(w,p,delta,execution,anabolism,UInt32(p.attempted_steps),lifecycle)
     check_status&&Interior.device_cellular_status!(p)
     p
 end
@@ -54,7 +55,7 @@ function batch_rehome(p::CellularWorldBatch,backend)
     backend==p.backend&&return p
     s=map(a->batch_upload(backend,a),p.state);e=map(a->batch_upload(backend,a),p.environment)
     seeds=Interior.KernelAbstractions.zeros(backend,UInt32,p.worlds);copyto!(seeds,Array(p.seeds))
-    CellularWorldBatch(s,e,backend,p.parameters,p.geometry,Interior.device_cellular_contract(s,e,p.parameters,p.geometry;resource_workspace=batch_resource_workspace(backend,size(e.fields,1),p.worlds)),p.attempted_steps,p.worlds,seeds)
+    CellularWorldBatch(s,e,backend,p.parameters,p.geometry,Interior.device_cellular_contract(s,e,p.parameters,p.geometry;resource_workspace=batch_resource_workspace(backend,size(e.fields,1),p.worlds),lifecycle_workspace=batch_lifecycle_workspace(backend,Int(p.geometry.capacity),vec(Array(Interior.device_lifecycle_workspace(p).highwater.storage)))),p.attempted_steps,p.worlds,seeds)
 end
 function constructive_batch_carrier(base,arrays,feedarrays,q,fq,habitat_seeds)
     c=ConstructiveBatchCells(base,habitat_seeds)
@@ -105,7 +106,7 @@ function constructive_batch_host_carrier(x)
 end
 function constructive_batch_resource_nonalias(c,arrays,feedarrays)
     work=Interior.device_resource_workspace(c)
-    for scratch in (work.grants,(a for level in work.levels for a in (level.high,level.low))...)
+    for scratch in (work.grants,(a for level in work.levels for a in (level.high,level.low))...,Interior.device_lifecycle_workspace(c).highwater)
         for physical in (values(arrays)...,values(feedarrays)...)
             Base.mightalias(scratch.storage,physical.storage)&&throw(ArgumentError("batch resource scratch aliases habitat or raw food"))
         end
@@ -177,13 +178,13 @@ check_status=false for diagnostic continuation of healthy peers, then explicitly
 select only complete peers when checkpointing. No failed state is resumed.
 """
 function constructive_world_batch_step!(worlds,p::Interior.DeviceConstructiveEcology{<:ConstructiveBatchCells},dt;
-        check_status=true,execution=:projected)
+        check_status=true,execution=:projected,lifecycle=:prefix)
     constructive_batch_validate_worlds(worlds,p)
     constructive_batch_validate_ownership(p)
     before=copy(Array(p.cells.environment.metadata.storage)[6,:])
     # Do not globally reject an already-latched member before its healthy peers
     # can run. Every original numerical kernel honors its own world's latch.
-    Interior.device_cellular_step!(first(worlds),p.cells,dt;check_status=false,execution,anabolism=p.habitat)
+    Interior.device_cellular_step!(first(worlds),p.cells,dt;check_status=false,execution,lifecycle,anabolism=p.habitat)
     Interior.KernelAbstractions.synchronize(p.cells.backend)
     after=Array(p.cells.environment.metadata.storage)[6,:]
     for i in eachindex(worlds)

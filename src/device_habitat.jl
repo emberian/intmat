@@ -235,6 +235,8 @@ function validate(w::World,p::DeviceConstructiveEcology)
     # Only feed diffusion scratch may overlap grants; catalysts, bound material,
     # masks, fields and all other owned habitat roles must stay disjoint.
     device_resource_workspace_nonalias(device_resource_workspace(c),h.arrays,h.feedstock.arrays;allowed_transients=(:scratch,))
+    # A lifecycle watermark is never leased to any habitat/feedstock role.
+    device_lifecycle_workspace_nonalias(device_lifecycle_workspace(c),h.arrays,h.feedstock.arrays,device_resource_workspace(c))
     device_cellular_validate(w,c);device_cellular_status!(c);nothing
 end
 function stability_limit(w,p::DeviceConstructiveEcology)

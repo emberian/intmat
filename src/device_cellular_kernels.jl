@@ -579,11 +579,15 @@ end
 @inline function dc_heap_less(s,e,a,b)
     e.heap_keys[a]<e.heap_keys[b] || (e.heap_keys[a]==e.heap_keys[b] && s.ids[e.heap[a]]<s.ids[e.heap[b]])
 end
-@kernel function dc_lifecycle!(s,e,q,g,step)
-    thread=@index(Global,Linear)
-    if e.status[1]==0 && thread==1
+@inline function dc_lifecycle_impl!(s,e,q,g,step,highwater,::Val{dense}) where {dense}
+    if e.status[1]==0
+        limit=highwater===nothing || dense ? Int(g.capacity) : Int(highwater[1])
+        if !(0<=limit<=g.capacity)
+            e.status[1]|=Int32(8)
+            return nothing
+        end
         count=0;freecount=0;alive=0
-        for i in 1:Int(g.capacity)
+        for i in 1:limit
             s.new_parent[i]=0
             if s.active[i]==0
                 freecount+=1;e.free[freecount]=i
@@ -602,6 +606,11 @@ end
                         end
                     end
                 end
+            end
+        end
+        if !dense
+            for i in limit+1:min(Int(g.capacity),limit+count)
+                freecount+=1;e.free[freecount]=i
             end
         end
         births=min(count,freecount);e.metadata[5]+=count-births
@@ -624,8 +633,24 @@ end
                 end
             end
             e.metadata[2]=alive+births;e.metadata[3]+=births
+            if highwater!==nothing && births>0
+                highwater[1]=max(highwater[1],e.free[births])
+            end
         end
     end
+end
+# The dense oracle and production prefix share every numerical operation.
+@kernel function dc_lifecycle!(s,e,q,g,step)
+    thread=@index(Global,Linear)
+    thread==1 && dc_lifecycle_impl!(s,e,q,g,step,nothing,Val(true))
+end
+@kernel function dc_lifecycle_dense!(s,e,q,g,step,highwater)
+    thread=@index(Global,Linear)
+    thread==1 && dc_lifecycle_impl!(s,e,q,g,step,highwater,Val(true))
+end
+@kernel function dc_lifecycle_prefix!(s,e,q,g,step,highwater)
+    thread=@index(Global,Linear)
+    thread==1 && dc_lifecycle_impl!(s,e,q,g,step,highwater,Val(false))
 end
 @kernel function dc_divide!(s,e,q,g,step)
     child=@index(Global,Linear)

@@ -44,7 +44,7 @@ function device_graph_enqueue_prototype!(w,p,delta,execution,anabolism,step_inde
     end
     device_cellular_launch!(p,dc_propose_bonds!,s,e,q,g;ndrange=C)
     device_cellular_launch!(p,dc_commit_bonds!,s,e,q,g;ndrange=C)
-    device_cellular_launch!(p,dc_lifecycle!,s,e,q,g,step_index;ndrange=1)
+    device_cellular_launch!(p,dc_lifecycle_prefix!,s,e,q,g,step_index,device_lifecycle_workspace(p).highwater;ndrange=1)
     device_cellular_launch!(p,dc_divide!,s,e,q,g,step_index;ndrange=C)
     device_anabolic_inherit!(anabolism,w,p,step_index)
     device_cellular_launch!(p,dc_clear_occupancy!,e;ndrange=V)

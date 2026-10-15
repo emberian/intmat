@@ -1,7 +1,10 @@
 Capacity reserve versus active work: native full-step review, 2026-10-15
 
-Selected change: source-derived serial lifecycle prefix scan. This is an opt-in
-study, not a production mutation. It retains the exact birth/allocation law.
+Current source integrates prefix lifecycle as the ordinary DeviceCellular path.
+The earlier source-derived study and its immutable1b84077 measurements are
+retained below as historical evidence. The integrated production body is shared
+with the dense oracle; there is no runtime source rewriting in production.
+The integrated CPU gates pass; a fresh integrated GPU gate is still required.
 
 The native enqueue has no per-stage backend synchronize: launches share the
 ordered stream; status sync is at the checked step boundary. Mechanics needs
@@ -166,3 +169,77 @@ process-local optlevel1,Julia2/GC1/BLAS1 onRX6750XT. Raw results,pins and observ
 controls are retained in docs/device-lifecycle-prefix-gpu.json. The immutable
 remote stage is /othersys/tmp/intmat-probe-20261014/lifecycle-prefix-1b84077;
 old source archives,old soaks,and the working-tree energy repair were untouched.
+
+Production integration plan (after the energy source freeze; not implemented):
+
+1. Own H as a one-element Int32 device array in a small immutable lifecycle
+   workspace under p.ownership.stages, alongside existing resource scratch.
+   Validate its role,shape,backend and nonaliasing on construction/restore;
+   per-step identity/shape checks stay cheap. Native stepping must not download
+   IDs or genomes. H is performance metadata, contributes no material/energy,
+   and need not appear in record_process_fields or physical snapshots.
+2. Constructor/fresh initialization already knows contiguous founder count n:
+   initialize H=n directly. Strict restore already has host snapshot IDs,active
+   and new_parent: reconstruct maximum nonzero slot there before device upload.
+   Current deaths retain IDs, so this reconstructs the historical watermark
+   exactly. Include an explicit regression if death/slot clearing ever changes.
+3. Factor one shared lifecycle numerical implementation used by a dense reference
+   kernel (H=nothing,scanC) and prefix kernel (residentH). Keep heap,free ordering,
+   identity checks and latch in that shared implementation, avoiding two evolving
+   copies of the law. Ordinary enqueue uses the owned workspace; a reference
+   study can select the dense wrapper for whole-step comparisons.
+4. Checkpoint canonical arrays/layout need not grow for reconstructible H. A new
+   lifecycle source file,if introduced,must be included in the strict base source
+   pin and standalone setup verification. Source changes already reject old
+   runtime checkpoints. Existing old immutable run sources remain available;
+   no permissive source-change restore is needed for this integration.
+5. Graph capture keeps the same resident H buffer across launches and checkpoints
+   reconstruct it before recapture. A latched failure must leave H unchanged on
+   all later queued launches; only the successful birth-commit branch updates H.
+   No transactional rollback is promised for a currently failing physical step.
+6. Test fresh zero founders,holes,capacity exhaustion,identity failure,actual
+   death/division slot reuse,strict checkpoint+H reconstruction,graph clock,full
+   coupled canonical arrays and both support strategies. The existing357 direct
+   checks plus20-step exact CPU and real-garden GPU gate provide a baseline.
+
+Next earning gate is combined precision+prefix,not a production long launch.
+The existing source-derived study regenerates its kernel from the loaded frozen
+source pin,so it can first test the new energy representation without editing
+core. The garden initializer must explicitly select new energy_type=Float64
+(prefer a native.energy_bits recipe setting mapped only to DeviceCellular),while
+retaining the same CPU founder initialization and all physical recipe values.
+Compare dense-versus-prefix under the same new energy precision and source pin;
+assert geometry.energy_bits==64,all strict restart tests and material/chemical
+closure before using the measured throughput in any long-run plan.
+
+
+Production integration implemented after frozen precision sourcee44b20c:
+* src/device_cellular_lifecycle.jl owns a reconstructible Int32[1] watermark,
+  checks identity/shape/backend and forbids aliases to state,environment and
+  resource scratch. Constructors pass founder count directly; strict restore
+  uses already-host IDs/active/new_parent,with no per-step host transfer.
+* dc_lifecycle_impl! is one shared numerical implementation. Ordinary native
+  steps call its prefix wrapper. lifecycle=:dense selects a full-capacity oracle
+  that also updates the owned watermark,so switching recipes cannot leave H
+  stale. The old five-argument dc_lifecycle! remains a detached-array oracle;
+  process-level callers must use the tracked wrapper or checked step recipe.
+* Highwater is transient ownership metadata,not physical state. Checkpoint
+  format3 canonical arrays stay unchanged; strict source pins include the new
+  lifecycle helper. Dead IDs make reconstruction exact,as the regression with
+  an actually dead tail child demonstrates. Old immutable runtimes are untouched.
+* The existing study carrier now forwards to production and owns no extra H.
+  Its current paired runner explicitly selects lifecycle=:dense for reference
+  timing. Profiling labels and the graph scheduling study recognize the new
+  wrappers. The ordinary production garden runner benefits through the shared
+  native step,without depending on a study file.
+* Packed world consumers supply a separate marker for each world; their owner
+  validates parent-storage disjointness and rebuilds markers on checkpoint/rehome.
+
+Integrated focused validation:472 assertions passed (383 retained lifecycle
+regressions plus89 new ownership/precision/layout/dead-tail checks). BothFloat32
+andFloat64 energy,and materialized and axis support,have exact canonical dense
+oracle parity. The only excluded raw scratch is unused free-list entries.
+Existing base/protocol/energy consumers pass159 assertions,and packed-world
+gates pass278 assertions including failure isolation,reconstruction andFloat64
+prefix-versus-dense parity. Source is ready for the final integrated freeze.
+No integrated GPU claim or production longrun has been made from this change.

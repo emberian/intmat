@@ -131,3 +131,39 @@ No scratch is checkpointed. The source is archived from exact commit `d0e41d1` a
 `outputs/world-batches-20261015/constructive-gpu-v2-d0e41d1`, including the native
 log and raw JSON. The process exited successfully and released the GPU; no long
 ensemble was launched.
+
+## Lifecycle watermark adaptation
+
+The current adapter supplies the production typed `DeviceLifecycleWorkspace`
+with a separate Int32 high-water marker for every world. Kernel wrappers project
+that marker alongside state and resource views. The shared enqueue and shared
+prefix/dense lifecycle bodies remain authoritative. The batch constructor copies
+owned per-world markers; backend re-homing preserves them. Strict checkpoint
+restore reconstructs ordinary per-world markers from restored IDs before packing,
+so the marker adds no physical checkpoint payload. Backing-storage guards cover
+base state, resource scratch, habitat and raw-food arrays.
+
+The carrier preserves each array's element type, including optional Float64
+battery storage; mixing battery representations within one packed batch is
+rejected by the common geometry/type contract. Historical native throughput
+above remains attached to its exact source pins and does not measure this newer
+lifecycle version.
+
+Run the related CPU gates in one process with
+`JULIA_NUM_THREADS=1 julia --project test/cellular_world_batches_all.jl` to share
+study-kernel compilation across the base, constructive and lifecycle checks.
+
+The lifecycle adaptation passed 278 CPU assertions: the existing 249 regression
+checks, 21 marker ownership/birth/death/failure/healthy-checkpoint checks, and
+eight Float64 battery checks comparing batched prefix lifecycle with standalone
+dense lifecycle. Invalid marker ranges and a marker aliased to a process role are
+rejected. Logs are retained under
+`outputs/world-batches-20261015/lifecycle-cpu-1`. No native GPU measurement was
+made for this lifecycle adaptation.
+
+A further 21 full-composition alias assertions passed, bringing the cumulative
+CPU count to 299. Lifecycle markers backed by strided/reinterpreted views into
+enzyme, bound food or raw food are rejected before either sibling's complete
+physical state, clock or attempted-step count changes. Selected-member checkpoint
+export also rejects the invalid owner. These preserve the earlier 278 results;
+no additional numerical implementation or GPU run was needed.

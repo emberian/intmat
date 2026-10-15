@@ -73,3 +73,9 @@ end
 module DeviceEnergyTests
 include("device_energy_audit.jl")
 end
+
+module DeviceLifecycleTests
+include("device_lifecycle_prefix.jl")
+include("device_lifecycle_workspace.jl")
+include("device_lifecycle_habitat_aliases.jl")
+end
