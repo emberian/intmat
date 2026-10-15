@@ -394,3 +394,38 @@ against incompatible fixed aliases. A reviewed native 256³ activity-contour pho
 - Read-only16:10soakrecord: originalbroad/mosaic t96066.5/93854.5,N217/216,zero
   bonds; optimizedempty,t2459094.0. All live/source-valid/no failure artifacts;
   original deadlines and immutable histories remain unchanged.
+
+- 16:46 UTC convergence: production lifecycle prefix is committed at `4b74791`.
+  Dense and prefix execution share one numerical implementation; the owned
+  watermark is reconstructed on strict restore and isolated across packed worlds.
+  Focused lifecycle/consumer checks passed 472+159 assertions, batch checks 299,
+  and whole-habitat alias rejection 24. Full immutable integration is running on
+  hbox CPU8–9; no old soak sources or states changed.
+- Exact `4b74791` native64³/F64 garden gate passed: 1,100 steps, 256 cells,
+  7.732 ms/step (129.33 Hz), material residual −1.892e−5 and potential −4.942e−5.
+  Strict restore and eight subsequent steps were bit-exact; failure latching and
+  partial-checkpoint rejection passed. Stage:
+  `/othersys/tmp/intmat-probe-20261014/native-garden-4b747919ec56`.
+  Fresh long run is awaiting the full suite, with the unchanged 20:50 UTC cutoff.
+  Actual-state observatory is committed `408e521`; seven observer tests and
+  isolated browser checks pass, including restart identity and retained frames.
+- **The Hollowing** is visually reviewed and published at `023e418`; Pages
+  succeeded. It photographs actual128³ turnover material at2000², distinct from
+  the newer oscillatory Packing law. Gallery staging is126.70MB/66 cards.
+  Packing titanium/phase-volume preview was reviewed and selected for a new final.
+- Lattice ecology is committed `cfb9544`: shared finite genotype bank, three
+  local passes, paid reproduction/migration/remodeling and exact pinned restart.
+  Eight32² experiments and one16³ specimen are retained;95 assertions pass.
+  These establish executable dynamics, not adaptation or multicellular organisms.
+  Controlled bank-layout experiment (`9306ccb`) preserved all tested arrays;
+ 32² medians improved28%, while64² ranges overlap and its earlier throughput
+  collapse did not reproduce. No old/new10× or nativeGPU claim is warranted.
+- Native multirate experiment (`0c6e97e`) measured1.30×/1.52× whole-loop speedups
+  at biological clock ratios2/4, with respective bound-food L2 differences
+ 2.7%/9.8% over a short matched interval. It remains a separate approximate law.
+  Fused resource-credit experiment (`9306ccb`) passed3,099 CPU assertions and626
+  independent boundary checks; native timing is deferred behind the longgarden.
+  It avoids grant traffic but still retains the allocation; no memory-saving
+  or GPU-speedup result is claimed.
+- Read-only observation `outputs/observatory/20261015-1640.json` preserves all
+  three old soak statuses. No intervention, reseed, or deadline extension.
