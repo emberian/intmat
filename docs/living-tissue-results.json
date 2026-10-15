@@ -1,0 +1,595 @@
+{
+  "date": "2026-10-15",
+  "tests": {
+    "assertions": 27,
+    "command": "JULIA_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 julia --project=. test/living_tissue.jl",
+    "backend": "CPU",
+    "julia": "1.12.4"
+  },
+  "specimens": {
+    "ribbons": {
+      "path": "outputs/living-tissue-20261015-ribbons",
+      "dimensions": [
+        96,
+        96,
+        1
+      ],
+      "dt": 0.04,
+      "steps": 4000,
+      "elapsed_seconds_including_captures": 3.639045917,
+      "voxel_steps_per_second_including_captures": 10130127.742490917,
+      "native_frames": 51,
+      "fixed_probe_crossings": 7,
+      "fixed_probe_excitation_range": [
+        -0.58163166,
+        0.5027162
+      ],
+      "maximum_absolute_material_residual": 0.00410333052968781,
+      "maximum_relative_material_residual": 5.24939289125632e-07,
+      "initial": {
+        "step": 0,
+        "material_residual": 0,
+        "potential_residual": 0,
+        "time": 0,
+        "material": 7816.771605193708,
+        "precursor": 7637.574951350689,
+        "biomass": 179.19665384301857,
+        "matrix": 0,
+        "spent": 0,
+        "potential": 7816.771605193708,
+        "excitation_std": 0.012323385,
+        "excitation_max": 0.10015559,
+        "excitation_min": -0.10260534,
+        "memory_std": 0,
+        "neural_maxabs": 0.10260534,
+        "physical_min": 0,
+        "finite": true,
+        "active_sites": 496,
+        "matrix_sites": 0,
+        "mean_permeability": 1
+      },
+      "final": {
+        "step": 4000,
+        "material_residual": -0.00410333052968781,
+        "potential_residual": -0.00410333052968781,
+        "time": 159.9999964237213,
+        "material": 7816.767501863178,
+        "precursor": 702.5498490035534,
+        "biomass": 1693.8819584995508,
+        "matrix": 465.1860727467497,
+        "spent": 4955.149621613324,
+        "potential": 2861.617880249854,
+        "excitation_std": 0.011864566,
+        "excitation_max": 0.0004921774,
+        "excitation_min": -0.044315163,
+        "memory_std": 0.016071787,
+        "neural_maxabs": 0.050177086,
+        "physical_min": 5.468824e-06,
+        "finite": true,
+        "active_sites": 7024,
+        "matrix_sites": 4774,
+        "mean_permeability": 0.56049836
+      },
+      "peak_matrix": 516.0547805509916,
+      "source_sha256": {
+        "studies/living_tissue_runner.jl": "5078daaf956718113d4705f3d92e6373b5576a449b61aebfe855d6a1a488b459",
+        "studies/living_tissue.jl": "f639f16803bfc1d2540c5cf8c25a0c89011d206c793c6771350d9b4b379f680d",
+        "src/recurrent_material.jl": "e9457d0d6e31f74950fa4be8ef84b138b020c0de7fc4b95c9a7f3cd5db148347",
+        "src/core.jl": "b4302b90eaeba213360e8a15ce8b7e4cb4c491606657e3e500d2fb8507753a52"
+      }
+    },
+    "lace": {
+      "path": "outputs/living-tissue-20261015-lace",
+      "dimensions": [
+        192,
+        192,
+        1
+      ],
+      "dt": 0.0125,
+      "steps": 6400,
+      "elapsed_seconds_including_captures": 55.542024916,
+      "voxel_steps_per_second_including_captures": 4247767.350160756,
+      "native_frames": 51,
+      "fixed_probe_crossings": 8,
+      "fixed_probe_excitation_range": [
+        -0.44639418,
+        0.30524406
+      ],
+      "maximum_absolute_material_residual": 0.03744258370716125,
+      "maximum_relative_material_residual": 1.1866116313752118e-06,
+      "initial": {
+        "step": 0,
+        "material_residual": 0,
+        "potential_residual": -3.637978807091713e-12,
+        "time": 0,
+        "material": 31554.202501594846,
+        "precursor": 30550.210079610348,
+        "biomass": 1003.9924219844985,
+        "matrix": 0,
+        "spent": 0,
+        "potential": 31554.202501594846,
+        "excitation_std": 0.014700583,
+        "excitation_max": 0.10443912,
+        "excitation_min": -0.10482368,
+        "memory_std": 0,
+        "neural_maxabs": 0.10482368,
+        "physical_min": 0,
+        "finite": true,
+        "active_sites": 2826,
+        "matrix_sites": 0,
+        "mean_permeability": 1
+      },
+      "final": {
+        "step": 6400,
+        "material_residual": -0.03744258370716125,
+        "potential_residual": -0.03744258371079923,
+        "time": 80.0000011920929,
+        "material": 31554.16505901114,
+        "precursor": 7391.3748978972435,
+        "biomass": 7969.669889589036,
+        "matrix": 2326.4761569523635,
+        "spent": 13866.644114572497,
+        "potential": 17687.520944438642,
+        "excitation_std": 0.11466299,
+        "excitation_max": 0.36147317,
+        "excitation_min": -0.43091908,
+        "memory_std": 0.022893257,
+        "neural_maxabs": 0.43091908,
+        "physical_min": 0,
+        "finite": true,
+        "active_sites": 30334,
+        "matrix_sites": 23200,
+        "mean_permeability": 0.36770567
+      },
+      "peak_matrix": 2326.4761569523635,
+      "source_sha256": {
+        "studies/living_tissue_runner.jl": "70aad7b5ab7f81fbcdab7a90f9ff5366d0bad45b9d6cf51b38cfeb01f1f9d67b",
+        "studies/living_tissue.jl": "957b0b123caa4bcb0fabd84a89bc9d4bba076da9fc2068ad094b19805e6b16c2",
+        "src/recurrent_material.jl": "e9457d0d6e31f74950fa4be8ef84b138b020c0de7fc4b95c9a7f3cd5db148347",
+        "src/core.jl": "b4302b90eaeba213360e8a15ce8b7e4cb4c491606657e3e500d2fb8507753a52"
+      }
+    }
+  },
+  "interpretation": "A distinct continuum material law; no per-organism performance equivalence, inherited adaptation, thermodynamic proof or evolutionary claim.",
+  "mean_gate_ablation": {
+    "path": "outputs/living-tissue-20261015-mean-gate-ablation",
+    "dimensions": [
+      128,
+      128,
+      1
+    ],
+    "dt": 0.025,
+    "steps": 3200,
+    "constant_gate": 0.04474373,
+    "interpretation": "Same initial state and parameters except the named interventions. Activity-control-off replaces the dynamic positive-phase gate by the full arm's biomass-weighted mean positive gate at 100-step observations. This controls approximate mean gating, not realized total construction or work (trajectories differ). It tests feedback consequences; not adaptive benefit, organisms, or evolution.",
+    "source_sha256": "401d9068b33e783fec48f9af016847567322f9ad5c34973fb43f840a6625f85e",
+    "differences": {
+      "activity-control-off": {
+        "biomass_rms": 0.02453614,
+        "matrix_rms": 0.025692388,
+        "excitation_rms": 0.16558062,
+        "maxabs": 0.64748645
+      },
+      "barrier-off": {
+        "biomass_rms": 0.04169582,
+        "matrix_rms": 0.010164429,
+        "excitation_rms": 0.050193958,
+        "maxabs": 0.2099489
+      },
+      "both-off": {
+        "biomass_rms": 0.056605086,
+        "matrix_rms": 0.029300336,
+        "excitation_rms": 0.17496638,
+        "maxabs": 0.6204145
+      },
+      "full": {
+        "biomass_rms": 0,
+        "matrix_rms": 0,
+        "excitation_rms": 0,
+        "maxabs": 0
+      }
+    },
+    "arms": [
+      {
+        "name": "full",
+        "fixed_site_crossings": 4,
+        "maximum_absolute_material_residual": 0.008513184191542678,
+        "initial": {
+          "step": 0,
+          "topology": {
+            "threshold": 0.15,
+            "occupied_components": 17,
+            "occupied_sizes": [
+              385,
+              385,
+              52,
+              52,
+              52,
+              46,
+              46,
+              44,
+              44,
+              42,
+              42,
+              22,
+              22,
+              4,
+              4,
+              2,
+              2
+            ],
+            "void_components": 5,
+            "void_sizes": [
+              15134,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "biomass_weighted_positive_gate": 9.454876123603007,
+          "material_residual": 0,
+          "time": 0,
+          "material": 14021.85910860524,
+          "precursor": 13577.887806653976,
+          "biomass": 443.9713019512644,
+          "matrix": 0,
+          "spent": 0,
+          "potential": 14021.85910860524,
+          "excitation_std": 0.014615233,
+          "excitation_max": 0.10238984,
+          "excitation_min": -0.103777885,
+          "memory_std": 0,
+          "neural_maxabs": 0.103777885,
+          "physical_min": 0,
+          "finite": true,
+          "active_sites": 1246,
+          "matrix_sites": 0,
+          "mean_permeability": 1
+        },
+        "final": {
+          "step": 3200,
+          "topology": {
+            "threshold": 0.15,
+            "occupied_components": 1,
+            "occupied_sizes": [
+              15087
+            ],
+            "void_components": 2,
+            "void_sizes": [
+              1048,
+              249
+            ]
+          },
+          "biomass_weighted_positive_gate": 82.40513675467744,
+          "material_residual": -0.008513184191542678,
+          "time": 80.0000011920929,
+          "material": 14021.850595421049,
+          "precursor": 3325.7053710073233,
+          "biomass": 3567.6510189727546,
+          "matrix": 1011.2308337183374,
+          "spent": 6117.2633717226345,
+          "potential": 7904.587223698415,
+          "excitation_std": 0.1130236,
+          "excitation_max": 0.35610133,
+          "excitation_min": -0.42853054,
+          "memory_std": 0.022922253,
+          "neural_maxabs": 0.42853054,
+          "physical_min": 0,
+          "finite": true,
+          "active_sites": 13505,
+          "matrix_sites": 10055,
+          "mean_permeability": 0.3780755
+        },
+        "occupied_component_range": [
+          1,
+          17
+        ],
+        "void_component_range": [
+          1,
+          11
+        ]
+      },
+      {
+        "name": "barrier-off",
+        "fixed_site_crossings": 4,
+        "maximum_absolute_material_residual": 0.007123238623535144,
+        "initial": {
+          "step": 0,
+          "topology": {
+            "threshold": 0.15,
+            "occupied_components": 17,
+            "occupied_sizes": [
+              385,
+              385,
+              52,
+              52,
+              52,
+              46,
+              46,
+              44,
+              44,
+              42,
+              42,
+              22,
+              22,
+              4,
+              4,
+              2,
+              2
+            ],
+            "void_components": 5,
+            "void_sizes": [
+              15134,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "biomass_weighted_positive_gate": 9.454876123603007,
+          "material_residual": 0,
+          "time": 0,
+          "material": 14021.85910860524,
+          "precursor": 13577.887806653976,
+          "biomass": 443.9713019512644,
+          "matrix": 0,
+          "spent": 0,
+          "potential": 14021.85910860524,
+          "excitation_std": 0.014615233,
+          "excitation_max": 0.10238984,
+          "excitation_min": -0.103777885,
+          "memory_std": 0,
+          "neural_maxabs": 0.103777885,
+          "physical_min": 0,
+          "finite": true,
+          "active_sites": 1246,
+          "matrix_sites": 0,
+          "mean_permeability": 1
+        },
+        "final": {
+          "step": 3200,
+          "topology": {
+            "threshold": 0.15,
+            "occupied_components": 1,
+            "occupied_sizes": [
+              15507
+            ],
+            "void_components": 2,
+            "void_sizes": [
+              718,
+              159
+            ]
+          },
+          "biomass_weighted_positive_gate": 81.23600848716231,
+          "material_residual": -0.007123238623535144,
+          "time": 80.0000011920929,
+          "material": 14021.851985366617,
+          "precursor": 2967.651822961867,
+          "biomass": 3715.222140772565,
+          "matrix": 1041.6401235395513,
+          "spent": 6297.337898092634,
+          "potential": 7724.514087273983,
+          "excitation_std": 0.108091824,
+          "excitation_max": 0.30467853,
+          "excitation_min": -0.3741091,
+          "memory_std": 0.022190219,
+          "neural_maxabs": 0.3741091,
+          "physical_min": 0,
+          "finite": true,
+          "active_sites": 14199,
+          "matrix_sites": 10966,
+          "mean_permeability": 1
+        },
+        "occupied_component_range": [
+          1,
+          17
+        ],
+        "void_component_range": [
+          1,
+          9
+        ]
+      },
+      {
+        "name": "activity-control-off",
+        "fixed_site_crossings": 6,
+        "maximum_absolute_material_residual": 0.012011473943857709,
+        "initial": {
+          "step": 0,
+          "topology": {
+            "threshold": 0.15,
+            "occupied_components": 17,
+            "occupied_sizes": [
+              385,
+              385,
+              52,
+              52,
+              52,
+              46,
+              46,
+              44,
+              44,
+              42,
+              42,
+              22,
+              22,
+              4,
+              4,
+              2,
+              2
+            ],
+            "void_components": 5,
+            "void_sizes": [
+              15134,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "biomass_weighted_positive_gate": 9.454876123603007,
+          "material_residual": 0,
+          "time": 0,
+          "material": 14021.85910860524,
+          "precursor": 13577.887806653976,
+          "biomass": 443.9713019512644,
+          "matrix": 0,
+          "spent": 0,
+          "potential": 14021.85910860524,
+          "excitation_std": 0.014615233,
+          "excitation_max": 0.10238984,
+          "excitation_min": -0.103777885,
+          "memory_std": 0,
+          "neural_maxabs": 0.103777885,
+          "physical_min": 0,
+          "finite": true,
+          "active_sites": 1246,
+          "matrix_sites": 0,
+          "mean_permeability": 1
+        },
+        "final": {
+          "step": 3200,
+          "topology": {
+            "threshold": 0.15,
+            "occupied_components": 1,
+            "occupied_sizes": [
+              15135
+            ],
+            "void_components": 2,
+            "void_sizes": [
+              1050,
+              199
+            ]
+          },
+          "biomass_weighted_positive_gate": 50.12662082511815,
+          "material_residual": -0.012011473943857709,
+          "time": 80.0000011920929,
+          "material": 14021.847097131296,
+          "precursor": 3056.151587843895,
+          "biomass": 3456.6094887789095,
+          "matrix": 1053.0681148561177,
+          "spent": 6456.017905652373,
+          "potential": 7565.829191478922,
+          "excitation_std": 0.08010924,
+          "excitation_max": 0.2698713,
+          "excitation_min": -0.3655878,
+          "memory_std": 0.017724534,
+          "neural_maxabs": 0.3655878,
+          "physical_min": 1.391408e-14,
+          "finite": true,
+          "active_sites": 13596,
+          "matrix_sites": 12563,
+          "mean_permeability": 0.2715258
+        },
+        "occupied_component_range": [
+          1,
+          17
+        ],
+        "void_component_range": [
+          1,
+          9
+        ]
+      },
+      {
+        "name": "both-off",
+        "fixed_site_crossings": 6,
+        "maximum_absolute_material_residual": 0.011418823449275806,
+        "initial": {
+          "step": 0,
+          "topology": {
+            "threshold": 0.15,
+            "occupied_components": 17,
+            "occupied_sizes": [
+              385,
+              385,
+              52,
+              52,
+              52,
+              46,
+              46,
+              44,
+              44,
+              42,
+              42,
+              22,
+              22,
+              4,
+              4,
+              2,
+              2
+            ],
+            "void_components": 5,
+            "void_sizes": [
+              15134,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "biomass_weighted_positive_gate": 9.454876123603007,
+          "material_residual": 0,
+          "time": 0,
+          "material": 14021.85910860524,
+          "precursor": 13577.887806653976,
+          "biomass": 443.9713019512644,
+          "matrix": 0,
+          "spent": 0,
+          "potential": 14021.85910860524,
+          "excitation_std": 0.014615233,
+          "excitation_max": 0.10238984,
+          "excitation_min": -0.103777885,
+          "memory_std": 0,
+          "neural_maxabs": 0.103777885,
+          "physical_min": 0,
+          "finite": true,
+          "active_sites": 1246,
+          "matrix_sites": 0,
+          "mean_permeability": 1
+        },
+        "final": {
+          "step": 3200,
+          "topology": {
+            "threshold": 0.15,
+            "occupied_components": 1,
+            "occupied_sizes": [
+              15859
+            ],
+            "void_components": 2,
+            "void_sizes": [
+              459,
+              66
+            ]
+          },
+          "biomass_weighted_positive_gate": 66.13993902445463,
+          "material_residual": -0.011418823449275806,
+          "time": 80.0000011920929,
+          "material": 14021.84768978179,
+          "precursor": 2478.6296789869666,
+          "biomass": 3649.3127730682017,
+          "matrix": 1111.882558684414,
+          "spent": 6782.022679042208,
+          "potential": 7239.8250107395825,
+          "excitation_std": 0.09038582,
+          "excitation_max": 0.22226062,
+          "excitation_min": -0.31887245,
+          "memory_std": 0.01573699,
+          "neural_maxabs": 0.31887245,
+          "physical_min": 4.2561016e-10,
+          "finite": true,
+          "active_sites": 14718,
+          "matrix_sites": 13714,
+          "mean_permeability": 1
+        },
+        "occupied_component_range": [
+          1,
+          17
+        ],
+        "void_component_range": [
+          1,
+          10
+        ]
+      }
+    ]
+  }
+}
