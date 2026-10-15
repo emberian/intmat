@@ -1,0 +1,15 @@
+seeds = [11]
+environments = ["niches"]
+founders = 24
+capacity = 128
+assay_capacity = 256
+selection_time = 8.0
+assay_time = 8.0
+lifespan = 80.0
+dt = 0.2
+capture_every = 20
+assay_per_group = 8
+position_replicates = 1
+uptake_rate = 1.4
+source_budget = 100000.0
+assay_plasticity = [0.03, 0.0]

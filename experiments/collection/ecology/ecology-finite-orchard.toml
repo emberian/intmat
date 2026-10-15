@@ -1,0 +1,66 @@
+batch = 5
+model = "metabolic"
+initial_modes = 4
+dt = 0.1
+snapshot_seconds = 1.0
+sleep_seconds = 0.005
+checkpoint_slots = 3
+checkpoint_seconds = 60.0
+seed = 512
+
+[boundary]
+decay = 0.05
+work_per_mass = 1.0
+
+[medium]
+remodeling_gain = 0.7
+signal_diffusion = 0.02
+membrane_pinning = 1.0
+nutrient_diffusion = 0.03
+
+[metabolism]
+cooperation = 0.2
+trait_mutation = 0.04
+assimilation = 0.45
+allocation = [0.45, 0.45, 0.1]
+efficiency = 0.6
+uptake_rate = 1.9
+boundary_rate = 0.015
+byproduct_fraction = 0.2
+
+[grid]
+shape = [32, 32, 32]
+extent = [24.0, 24.0, 24.0]
+
+[resources]
+names = ["substrate_a", "substrate_b", "byproduct"]
+diffusion = [0.03, 0.02, 0.01]
+sink_rates = [0.0, 0.0, 0.01]
+initial = [1.0, 1.0, 0.0]
+source_rates = [0.0, 0.0, 0.0]
+sink_budgets = [0.0, 0.0, 1.0e6]
+source_budgets = [1.0e6, 1.0e6, 0.0]
+spatial_niches = false
+potentials = [4.0, 3.0, 1.0]
+
+[ecology]
+hidden = 8
+secretion_rate = 0.045
+population = 640
+plasticity_rate = 0.03
+birth_energy = 0.3
+mutation = 0.08
+speed = 0.65
+lifespan = 60.0
+capacity = 2800
+
+[phase]
+mobility = 0.25
+mean = 0.0
+
+[collection]
+steps = 1000
+mode = "orchard"
+id = "ecology-finite-orchard"
+title = "Finite orchard"
+study = "studies/collection_ecology.jl"

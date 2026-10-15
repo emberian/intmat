@@ -1,0 +1,18 @@
+# Preregistered small adaptation study; independent from live arenas.
+seeds = [11, 29, 47]
+environments = ["niches", "uniform"]
+founders = 24
+capacity = 180
+assay_capacity = 512
+selection_time = 1600.0
+assay_time = 320.0
+lifespan = 80.0
+dt = 0.2
+capture_every = 40
+assay_per_group = 32
+position_replicates = 2
+uptake_rate = 1.4
+# Sources retain >2x worst-case horizon demand; budgets cannot exhaust.
+source_budget = 100000.0
+# Assays disable mutation; both plasticity conditions reset all nonheritable state.
+assay_plasticity = [0.03, 0.0]

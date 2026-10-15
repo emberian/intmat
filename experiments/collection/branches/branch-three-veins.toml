@@ -1,0 +1,13 @@
+slug = "branch-three-veins"
+title = "Three veins"
+description = "Intersecting nutrient-bearing sheets guide field-selected conducting branches through a three-plane seam."
+n = 64
+eta = 1.6
+seed = 835
+events = 2200
+material = "fork"
+root = [32, 32, 32]
+extent = [2, 2, 2]
+radius = 0.0035
+palette = "glass-ice"
+orbit = 0.9
