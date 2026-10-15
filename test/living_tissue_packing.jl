@@ -122,4 +122,43 @@ end
     @test maximum(out[:,:,:,2])<=1+4eps(Float32)
     @test minimum(out[:,:,:,1:4])>=0
 end
+@testset "joint biomass and matrix inflows share free occupancy" begin
+    q=packing_parameters(capacity=1,growth=0,renewal=0,motility=1,matrix_transport=1,
+        construction=0,unbuilding=0,withdrawal=0,inhibition_diffusion=0,phase_work=.02)
+    s=zeros(Float32,5,5,5,7);s[:,:,:,1].=2;s[:,:,:,2].=.4;s[:,:,:,3].=.6;s[:,:,:,5].=-1
+    s[3,3,3,2:3].=0;s[3,3,3,1]=8;r=zeros(Float32,5,5,5)
+    initial_b=sum(Float64,s[:,:,:,2]);initial_m=sum(Float64,s[:,:,:,3]);initial=sum(Float64,s[:,:,:,1:4])
+    out,ro=packing_stage(s,r,q,.14)
+    @test out[3,3,3,2]≈.14f0*6*.96f0*.4f0 atol=2e-7
+    @test out[3,3,3,3]≈.14f0*6*.6f0 atol=2e-7
+    @test maximum(out[:,:,:,2].+out[:,:,:,3])<=1+4eps(Float32)
+    @test minimum(out[:,:,:,1:4])>=0
+    @test sum(Float64,out[:,:,:,2])≈initial_b atol=3e-6
+    @test sum(Float64,out[:,:,:,3])≈initial_m atol=3e-6
+    for _ in 1:25;out,ro=packing_stage(out,ro,q,.14);end
+    @test maximum(out[:,:,:,2].+out[:,:,:,3])<=1+4eps(Float32)
+    @test minimum(out[:,:,:,1:4])>=0
+    @test sum(Float64,out[:,:,:,2])≈initial_b atol=2e-5
+    @test sum(Float64,out[:,:,:,3])≈initial_m atol=2e-5
+    @test sum(Float64,out[:,:,:,1:4])≈initial atol=3e-5
+    # Every recipient is full: neither species can use a second capacity budget.
+    s=zeros(Float32,3,3,3,7);s[:,:,:,1].=2;s[:,:,:,2].=.4;s[:,:,:,3].=.6;s[:,:,:,5].=-1
+    r=zeros(Float32,3,3,3);out,ro=packing_stage(s,r,q,.14)
+    @test out[:,:,:,2:3]==s[:,:,:,2:3]
+    w=LP.tissue_world(Grid(5,5,5;extent=(5,5,5)))
+    q=packing_parameters(motility=0,matrix_transport=10,inhibition_diffusion=0)
+    p=PackingTissue(w;parameters=q)
+    @test stability_limit(w,p)<.02
+end
+@testset "paid matrix donors do not spend incoming gel twice" begin
+    q=packing_parameters(capacity=1,growth=0,renewal=0,motility=0,matrix_transport=1,
+        construction=0,unbuilding=0,withdrawal=0,inhibition_diffusion=0)
+    s=zeros(Float32,5,1,1,7);s[:,:,:,1].=2;s[1,1,1,3]=.6;r=zeros(Float32,5,1,1)
+    out,ro=packing_stage(s,r,q,.08)
+    @test out[2,1,1,3]>0 && out[5,1,1,3]>0
+    @test out[3,1,1,3]==out[4,1,1,3]==0
+    @test sum(out[:,:,:,3])≈.6f0 atol=1e-7
+    s[1,1,1,1]=0;out,ro=packing_stage(s,r,q,.08)
+    @test out[:,:,:,3]==s[:,:,:,3] # Unfunded matrix cannot launch an exchange.
+end
 end # module PackingTissueChecks

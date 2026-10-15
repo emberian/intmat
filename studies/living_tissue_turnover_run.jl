@@ -20,7 +20,8 @@ function run_turnover_backend(recipe,output,backend,backend_kind;
     backend_kind=="cpu" && (dims[3]==1 ? maximum(dims)>128 : maximum(dims)>16) &&
         error("large CPU volume requires a separately coordinated runner; use a reserved GPU backend")
     steps=c["steps"];every=c["capture_every"]
-    0<steps<=20000 && every>0 || error("invalid bounded study schedule")
+    step_budget=get(c,"step_budget",20000)
+    0<steps<=step_budget<=100000 && every>0 || error("invalid bounded study schedule")
     ispath(output)&&error("fresh output required")
     capture_steps=sort!(collect(union(Set(0:every:steps),Set((steps,)))))
     resident=big(prod(dims))*64
@@ -73,7 +74,7 @@ function run_turnover_backend(recipe,output,backend,backend_kind;
     end
     save_checkpoint(w,p,joinpath(output,"final.jls"));record_state(w,p,joinpath(output,"final-state");step=steps)
     report=(id=c["id"],title=c["title"],description=c["description"],dimensions=dims,extent=w.grid.extent,backend=backend_kind,
-        dt,steps,law,parameters=(base=base,phase=phase),resident_array_bytes=Int(resident),estimated_capture_bytes=Int(captures),capture_budget_bytes=capture_budget,elapsed_seconds=elapsed,voxel_steps_per_second=prod(dims)*steps/elapsed,
+        dt,steps,step_budget,law,parameters=(base=base,phase=phase),resident_array_bytes=Int(resident),estimated_capture_bytes=Int(captures),capture_budget_bytes=capture_budget,elapsed_seconds=elapsed,voxel_steps_per_second=prod(dims)*steps/elapsed,
         source_sha256=sources,frame_steps=capture_steps,history,probes,probe_site=(cld(dims[1],2),cld(dims[2],2),cld(dims[3],2)),
         section=(shape=(min(160,dims[1]),min(160,dims[2]),3),dtype="uint8",array_order="F",channels=("biomass","matrix","excitation"),ranges=((0,1.2),(0,.6),(-1,1))),
         topology_observation="2D only: periodic B+M>.15 components. All dimensions: sampled hysteretic crossings below.10/above.24; a reformation requires a prior observed opening. These are concentration observations, not organisms or mechanical cavities.",

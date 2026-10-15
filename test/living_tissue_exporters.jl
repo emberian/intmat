@@ -22,6 +22,7 @@ include(joinpath(@__DIR__,"..","studies","living_tissue_packing_run.jl"))
             report=JSON3.read(read(joinpath(root,"run.json"),String))
             @test report.law==law
             @test report.frame_steps==[0,2,4]
+            @test report.step_budget==20000
             @test report.history[end].finite
             for name in ("precursor","biomass","matrix","spent","excitation","inhibition","memory","reserve")
                 @test filesize(joinpath(root,"frames","0000004",name*".f32"))==4*4*4
@@ -34,6 +35,13 @@ include(joinpath(@__DIR__,"..","studies","living_tissue_packing_run.jl"))
         wb,pb=restore_packing!(joinpath(b,"final.jls"))
         @test wa.time==wb.time
         @test packing_statistics(wb,pb).material≈turnover_statistics(wa,pa).material atol=1e-4
+        extended=deepcopy(packing);extended["step_budget"]=64000
+        extended_recipe=joinpath(dir,"extended.toml");open(io->TOML.print(io,extended),extended_recipe,"w")
+        run_packing_backend(extended_recipe,joinpath(dir,"extended"),CPU(),"cpu")
+        @test JSON3.read(read(joinpath(dir,"extended","run.json"),String)).step_budget==64000
+        extended["step_budget"]=100001
+        open(io->TOML.print(io,extended),extended_recipe,"w")
+        @test_throws ErrorException run_packing_backend(extended_recipe,joinpath(dir,"bad-budget"),CPU(),"cpu")
     end
 end
 end # module PackingExporterChecks

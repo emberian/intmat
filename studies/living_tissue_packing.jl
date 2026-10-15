@@ -19,11 +19,11 @@ export PackingTissue,packing_parameters,packing_base_parameters,packing_statisti
     packing_checkpoint,restore_packing!
 
 function packing_parameters(;capacity=.9,growth=1.2,basal_activity=.18,
-        basal_transport=0.,basal_remodeling=0.,kwargs...)
+        basal_transport=0.,basal_remodeling=0.,matrix_transport=0.,kwargs...)
     q=turnover_parameters(;kwargs...)
-    all(x->isfinite(x)&&x>=0,(capacity,growth,basal_activity,basal_transport,basal_remodeling)) && capacity>0 && basal_activity>0 ||
+    all(x->isfinite(x)&&x>=0,(capacity,growth,basal_activity,basal_transport,basal_remodeling,matrix_transport)) && capacity>0 && basal_activity>0 ||
         throw(ArgumentError("positive capacity and basal activity required"))
-    p=merge(q,map(Float32,(;capacity,growth,basal_activity,basal_transport,basal_remodeling)))
+    p=merge(q,map(Float32,(;capacity,growth,basal_activity,basal_transport,basal_remodeling,matrix_transport)))
     all(isfinite,values(p)) && p.capacity>0 && p.basal_activity>0 ||
         throw(ArgumentError("invalid Float32 packing parameters"))
     p
@@ -64,7 +64,8 @@ function validate(w,p::PackingTissue)
 end
 function stability_limit(w,p::PackingTissue)
     spatial=sum((inv(Float64(w.grid.spacing[d])^2) for d in 1:3 if w.grid.size[d]>1);init=0.)
-    min(stability_limit(w,p.flow.tissue),.9/(1+2spatial*max(p.parameters.motility,p.parameters.inhibition_diffusion)))
+    min(stability_limit(w,p.flow.tissue),.9/(1+2spatial*max(p.parameters.motility,
+        p.parameters.matrix_transport,p.parameters.inhibition_diffusion)))
 end
 @inline function packing_funding(s,r,i,j,k,dt,q)
     n=s[i,j,k,1];b=s[i,j,k,2];m=s[i,j,k,3];x=s[i,j,k,5]
@@ -87,23 +88,29 @@ end
         oldb=s[i,j,k,2];oldm=s[i,j,k,3];oldn=s[i,j,k,1]
         gap=max(0f0,1f0-(oldb+oldm)/q.capacity)
         donor=paid*(q.basal_transport+negative)/(1f0+q.basal_transport)
-        flux=0f0;inhibition_lap=0f0
+        flux=0f0;matrix_flux=0f0;inhibition_lap=0f0
         for (a,c,d,axis) in ((im,j,k,1),(ip,j,k,1),(i,jm,k,2),(i,jp,k,2),(i,j,km,3),(i,j,kp,3))
             extent=axis==1 ? nx : axis==2 ? ny : nz
             if extent>1
                 face=Interior.recurrent_face(barrier*oldm,barrier*s[a,c,d,3])
                 inhibition_lap+=face*(s[a,c,d,6]-s[i,j,k,6])/h[axis]^2
-                if q.motility>0
+                if q.motility>0 || q.matrix_transport>0
                     incoming=packing_funding(s,r,a,c,d,dt,q)
                     neighbor_donor=incoming[3]*(q.basal_transport+incoming[5])/(1f0+q.basal_transport)
                     neighbor_gap=max(0f0,1f0-(s[a,c,d,2]+s[a,c,d,3])/q.capacity)
-                    drive=tanh(q.taxis_sensitivity*(s[a,c,d,1]-oldn))
-                    flux+=.5f0*face*(neighbor_donor*s[a,c,d,2]*gap*(1f0-drive)-
-                        donor*oldb*neighbor_gap*(1f0+drive))/h[axis]^2
+                    if q.motility>0
+                        drive=tanh(q.taxis_sensitivity*(s[a,c,d,1]-oldn))
+                        flux+=.5f0*face*(neighbor_donor*s[a,c,d,2]*gap*(1f0-drive)-
+                            donor*oldb*neighbor_gap*(1f0+drive))/h[axis]^2
+                    end
+                    # Gel rearrangement has its own mobility, distinct from
+                    # nutrient/signal permeability. Old paid donors only.
+                    matrix_flux+=(incoming[3]*s[a,c,d,3]*gap-paid*oldm*neighbor_gap)/h[axis]^2
                 end
             end
         end
-        n=oldn+addition-work;b=oldb+dt*q.motility*flux;m=oldm
+        n=oldn+addition-work;b=oldb+dt*q.motility*flux
+        m=oldm+dt*q.matrix_transport*matrix_flux
         fuel=n/(half_saturation+n)
         free=max(0f0,q.capacity-(b+m))
         grown=min(n,free,b*BASE.tissue_fraction(q.growth*paid*fuel*(q.basal_activity+positive),dt))

@@ -63,6 +63,17 @@ per event at 4–5 V-cycles; these are observed production timings, not a contro
 benchmark. Production status and actual final timing are in the output run report
 when complete. No previous run was migrated, reseeded or replaced.
 
+The original run has now completed all 4,096 events and 65 captures through time
+20.48 in 15,047.79 seconds including exports. Independent saved-state validation
+passed 146,510 conductor observations; final pointwise food-plus-mineral error is
+2.49e-5, relative global error 5.04e-13 and harmonic residual 8.38e-6. All loaded
+source hashes match the original immutable pin. Its three designed stub paths
+rasterized as six face-connected seed components, which remain six at the end;
+the corrected seed raster is used only by separately initialized later studies.
+The original data are preserved. Evidence is in
+`benchmarks/2026-10-15-amber-archive.json`; these timings are production observations,
+not a matched comparison with the different 257³ workloads.
+
 ## Optical interpretation
 
 `scripts/render_electrothermal_archive.py` photographs saved states at a fixed
@@ -82,4 +93,4 @@ not feed back into the simulated dynamics.
 
 ### Native growth reach
 
-Event count is not a resolution-independent measure of development: each event adds one occupied cell. At native 513³ event 704, new conductors reached at most 0.0573 physical units from the designed roots; the 129³ pilot at 1800 events reached 0.4971. The 4096-event native run therefore does not promise the pilot's physical reach or contact between roots. Its shared harmonic field and local thermal/mineral feedback remain active. A close interior photograph may be the appropriate view of this run. A separately initialized longer 257³ study with closer roots is now running for inter-root thermal encounters; see `docs/amber-confluence.md`. It is a new composition, not a migration or continuation of the pinned 513³ trajectory.
+Event count is not a resolution-independent measure of development: each event adds one occupied cell. At native 513³ event 704, new conductors reached at most 0.0573 physical units from the designed roots; the 129³ pilot at 1800 events reached 0.4971. The 4096-event native run therefore does not promise the pilot's physical reach or contact between roots. Its shared harmonic field and local thermal/mineral feedback remain active. A close interior photograph was retained as an optical study. Separately initialized longer 257³ studies with closer roots are described in `docs/amber-confluence.md` and `docs/amber-commons.md`; the hotter latter study forms a shared mineral component. They are new compositions, not migrations or continuations of the pinned 513³ trajectory.

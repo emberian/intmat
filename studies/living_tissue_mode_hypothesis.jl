@@ -7,13 +7,21 @@ using .LivingTissueTurnover
 
 function mode_hypothesis(output;regime="slow")
     ispath(output) && error("fresh output required")
-    regime in ("slow","fast") || error("regime must be slow or fast")
-    q=turnover_base_parameters(neural_gain=regime=="fast" ? 2.8 : 1.8,
-        capacity=regime=="fast" ? 1.2 : .32,excitation_diffusion=.08,
-        inhibition_gain=2.3,inhibition_time=regime=="fast" ? .5 : 4.5)
+    regime in ("slow","fast","oscillatory") || error("regime must be slow, fast or oscillatory")
+    if regime=="oscillatory"
+        q=turnover_base_parameters(neural_gain=2.8,capacity=.9,
+            excitation_diffusion=.08,inhibition_gain=2.3,inhibition_time=.5,
+            memory_feedback=3.5,memory_time=8.,growth=0.,biomass_diffusion=0.)
+        biomasses=(.1,.15,.26,.5,.9)
+    else
+        q=turnover_base_parameters(neural_gain=regime=="fast" ? 2.8 : 1.8,
+            capacity=regime=="fast" ? 1.2 : .32,excitation_diffusion=.08,
+            inhibition_gain=2.3,inhibition_time=regime=="fast" ? .5 : 4.5)
+        biomasses=regime=="fast" ? (.1,.15,.26,.5,1.2,5.) : (.26,.28,.30,.32)
+    end
     phase=turnover_parameters(inhibition_diffusion=4.)
     cases=Any[]
-    for biomass in (regime=="fast" ? (.1,.15,.26,.5,1.2,5.) : (.26,.28,.30,.32))
+    for biomass in biomasses
         support=biomass/(q.tissue_saturation+biomass)
         vitality=support*.6/(q.half_saturation+.6)
         a=vitality*(q.neural_gain-1)-(1-support)
@@ -48,6 +56,6 @@ function mode_hypothesis(output;regime="slow")
     open(io->JSON3.pretty(io,result),output,"w")
 end
 if abspath(PROGRAM_FILE)==@__FILE__
-    length(ARGS) in (1,2) || error("fresh-output.json [slow|fast]")
+    length(ARGS) in (1,2) || error("fresh-output.json [slow|fast|oscillatory]")
     mode_hypothesis(ARGS[1];regime=length(ARGS)==2 ? ARGS[2] : "slow")
 end
