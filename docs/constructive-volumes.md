@@ -113,3 +113,23 @@ cooperative organism or a distinct unit of selection. The readout and source
 snapshot hashes are retained in `density4-graph-readout.json` under the local
 volume output directory; `density4-temporal-sections.png` shows the same physical
 plane at times 30, 100 and 200 with fixed field exposure.
+
+The original-source continuation has also provided a direct material-turnover
+readout. Between times 562 and 762, catalyst mass changes from 53.0557 to 56.1315.
+Catalyst has no transport in this law, and its only sink is exponential decay at
+rate 0.008. Consequently, 10.7118 units of the final material are surviving
+material already present at time 562; the remaining 45.4197 units, or 80.92%,
+were constructed during the interval and have survived to time 762. This is
+later construction still present, not cumulative secretion or an attribution
+to particular lineages. Float32 field-export uncertainty in this mass difference
+is below 0.000008. The original simulation's floating-point accumulation is a
+separate numerical limit. The [compact provenance and calculation](figures/constructive-volume-catalyst-turnover.json)
+retain field hashes, the physical source and parent checkpoint; the figure below
+shows a fixed-exposure physical-plane decomposition alongside the actual final
+field. The first two panels are inferred from the decay law; the third is the
+recorded total. At time 782, the next observation contains 1,688 cells and 56.3491
+units of catalyst. This later rise is an observation, not a stable-state claim. Continued construction here occurs under the original funded 3D recipe,
+which still supplies some soluble precursor; it does not establish dependence
+on the constructed habitat alone.
+
+![Catalyst renewal inferred from two recorded states, with the actual final total](figures/constructive-volume-catalyst-turnover.png)

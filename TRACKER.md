@@ -32,6 +32,42 @@ observatory schedule outlives this session if necessary; its optimized soak has 
 
 ## Current convergence
 
+**Representation experiments (13:55 UTC):** native AMD support reconstruction
+reduces support storage by 20/63/221× at 64³/128³/256³, but the first flat-axis
+iterator slows whole steps to 0.538/0.252/0.189× the materialized baseline.
+The default remains materialized. An exact-order carry iterator removes repeated
+integer division; its CPU oracle passes, with the separate GPU comparison queued.
+A closed 128³ paid-habitat pilot completed 200 steps, exact checkpoint/future
+continuation checks and finite-budget capacity validation. This is a working
+construction pipeline, not yet a long ecology. [Evidence](docs/device-support-performance.md)
+
+HIP graph replay preserves complete tested device trajectories and removes most
+host submission wall time, but whole-step gains are only 1.020× at 32³ and 1.002×
+at 128³. GPU work dominates these fixtures; kernel-category profiling is next.
+Independent-world batching remains experimental: the reserved moderate CPU case
+is slower (0.586×); its first GPU attempt reached kernels but failed in the host
+snapshot adapter, so GPU parity and throughput are still open. A local electrical
+patch plus global correction is a separate queued experiment. These alternatives
+have not replaced the ordinary execution path.
+
+**Different material substrate:** an experimental seven-field continuum tissue
+couples excitable activity, finite food, biomass and permeability-changing matrix.
+Its original law passed native AMD parity (maximum error 1.19e−7) and achieved
+2.78–2.84 billion site-steps/s on 128³, excluding compilation/capture. This is a
+different simulation without individual identities or inheritance, not an arena
+speedup. A separate paid-turnover/finite-reserve law explores reopening and
+reformation from noisy uniform material; morphology and persistence remain under
+study before any art claim.
+
+**Precision repair:** a raw-feedstock control exposed a negative subnormal donor
+and unbounded deposition correction at step 622. Endpoint-funded degradation,
+explicit inert remainder and bounded corrections are integrated in `7d3caeb`.
+Four source hashes match the fresh matched-study pin; 582 focused assertions and
+a fresh 1,000-step reproducer pass. All comparison arms restart from founders
+under that new source; earlier completed and interrupted evidence is preserved.
+Long trajectories can differ under this disclosed finite-precision transfer law.
+Immutable soaks and the separate original-source 64³ continuation are unchanged.
+
 **Shared construction:** the sorptive matrix and audited construction wrapper are integrated: paid
 catalysts bind food reversibly and alter permeability.
 Growth and construction share one complementary-material/work budget,

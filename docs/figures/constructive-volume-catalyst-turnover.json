@@ -1,0 +1,143 @@
+{
+  "kind": "equation-based catalyst age decomposition, not an ancestral attribution",
+  "time_bounds": [
+    562.0000083744526,
+    762.0000113546848
+  ],
+  "decay_rate": 0.008,
+  "survival_factor": 0.20189651318106738,
+  "law": "E(t1)=exp(-decay_rate*(t1-t0))*E(t0)+surviving secretion since t0; catalyst has no transport or other sink",
+  "mass": {
+    "initial": 53.055700902354225,
+    "surviving_initial": 10.711761016562841,
+    "final": 56.131505982024,
+    "later_construction_still_present": 45.41974496546057
+  },
+  "fraction_of_final_built_since_initial": 0.8091666911628231,
+  "float32_export_absolute_mass_error_bound": 7.96833837015473e-06,
+  "minimum_inferred_new_concentration": 7.572893127323469e-07,
+  "source_catalytic_sha256": "e33e0956582cc1b880550e0fb1f03e588f3a49daa2fecff2f33a577d4eb4a2ff",
+  "parent_checkpoint": {
+    "sha256": "c8e0ed745cbc492e8246c1ba346227dcae464d8b1c35d601de6326f266a6c47f",
+    "path": "density4-continuation-smoke-v2/final.jls"
+  },
+  "frames": [
+    {
+      "frame": "frame-0005620",
+      "metadata_sha256": "46ac33c088f4238083e49b54519614723994719e0e532034c4147b61750ae336",
+      "fields": {
+        "precursor_a": "05a8dc102eef71405e7574289f2dfa6195950d1a634aaf04bbc5cfd603c3f734",
+        "retained_a": "bd9e89111bbc6fe11497cb24980ab5bca07f64f82778624a8531ea39cbcbf07f",
+        "permeability": "0044d134ff278acb944380eac871c3cc9615a49cc3b9905667075507c75d26c6",
+        "enzyme_b": "0435aa2265a08be809fb2b3affdf1754dd1a23f9c7777550bfa8a7ecb2c79a39",
+        "precursor_b": "b7b1ab6176461356986fef52a2c16212f51073bd519476c4235510bae967a9ca",
+        "enzyme_a": "597f8d99bd550bb0e29d1fdff5f9a692e0196858ee64773b88acec2b27691197",
+        "retained_b": "5a9e37c00ccce837e18092ddaebcb0f4625d37d1d4921e9e2ddda98b5875884f"
+      }
+    },
+    {
+      "frame": "frame-0007620",
+      "metadata_sha256": "860033bd25455e7a8b42d1f179bd0760922f85c9f788c6cedf88eb467a5cde7a",
+      "fields": {
+        "precursor_a": "e6bf6d75005868be9714d29226321aeab5f585ec15ea352556b0b9dab7355edd",
+        "retained_a": "9a2d6e4cd910890395f140dfed3125ad370ccfefca912a62f6fdb04acf55b0cd",
+        "permeability": "387e17d1a002e6fcd81c0693e1f3a78dad2ef2893b55b93628864c04ea88816d",
+        "enzyme_b": "f6068db6e5b8da69eac017534df88301e16a5ab5e313c8d99789e4c87f5b072b",
+        "precursor_b": "1566d5af0e6dd6036f98ee6c714aa60d5df0bef88f1385c1919f3eccc188eda3",
+        "enzyme_a": "4dcbf627223a3ff08b89589cdb487e4252827dd56ee7b57a19700e7f02a77b7e",
+        "retained_b": "ee331fdc5dcf4437716ac50dfbe542bd530435dec2764e9e0da2516ec483d0c4"
+      }
+    }
+  ],
+  "limits": [
+    "Construction is paid under this original pinned physical law; no lineage attribution or claim of cooperation.",
+    "This measures later construction still present, not total secretion during the interval.",
+    "Export quantization bound excludes floating-point accumulation error of the original simulation."
+  ],
+  "renderer_sha256": "b69672e7641f069ec5bdf46101de9bd9370a98a2dee51af77661d6c48ad1d594",
+  "physical_source_baseline": "2220f5a; exact loaded module hashes below",
+  "loaded_sources": {
+    "core.jl": "b4302b90eaeba213360e8a15ce8b7e4cb4c491606657e3e500d2fb8507753a52",
+    "neural_workspace.jl": "ecdd45856bc0b3c61708de90814d1abb33bc1232a0f9ff5785b32b9bc39a9139",
+    "writing.jl": "78fba7cd46f03749bdc56547b7ce5622f7ba3ea42cc34801829345dae3975e05",
+    "Interior.jl": "d7567ab1cf2be4e8030b01c073cfcccf5686e7c4697cb8e754a291331c8f5ad0",
+    "electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+    "cellular.jl": "256580a1bef7733db9e75011eae5015f6df5a97c6357f5252e4f09528ee29880",
+    "cellular_contacts.jl": "616f0da88cd137cae29019b970e8c1a4d1f67728d9207b6a5a3513357792228a",
+    "resources.jl": "859f6e04b456ceee051fd83214b37ca18418af09126960997b7d62d83c2dcab0",
+    "ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+    "grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+    "dose_writer.jl": "b8d1b4013921a3c82388ee87a7ede00b97964a1894062f2a07339f2c6be197eb",
+    "cellular_transport.jl": "d734d0c7b9b305a7543ad994c18e5a649163f34b5450a6542e44e7258ce45f35",
+    "neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+    "cellular_arena.jl": "2ef965717c99cd0c46a8acd9ceb7da26232201cb18547bd23712e989688429e2",
+    "experiments.jl": "e2e513ac4bfb0af90b5d1c870c5f403705eddd0606316ee2f86c5f5bc83eb527",
+    "constructive_cells.jl": "c8f3a29d95334f988c1a5409aed145f16fe62fca0f3cb7bd6505685b1290ee4f",
+    "metabolic_ecology.jl": "2f599a1d6ea0a5552a594113d57e238e4c6ff3c1fd8d74de5a51f83a77179bb1",
+    "mechanics.jl": "81001af879163392dde498534c9f099bcc79a16b8dac5104d527da7cc9f4fdac",
+    "neural_ecology.jl": "ed0496adb31ce4511f8bc0d5343ff843c410c39c51d30c165b3cf5eac1135df2",
+    "recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+    "scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+    "compartments.jl": "e7c55ce4e0f4a8548c078c9d160815b5eaeb846a3765aad89a875f166b5005e5",
+    "acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+    "catalytic_habitat.jl": "e33e0956582cc1b880550e0fb1f03e588f3a49daa2fecff2f33a577d4eb4a2ff",
+    "arena.jl": "da52fa22b080e4314ae10f4140f629aba0c080920a8a6ab7551250003d378430",
+    "catalytic_arena.jl": "2b304e79e11f1d38b4cbd63994a1637cad2067d9f9a515f141b38ea5acb8ec8c",
+    "cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+    "implicit_phase.jl": "1fb617707591f89784b95171e0558065101b3d992f7b3eabd16a7bf01dca4ceb",
+    "render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+    "neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+    "recurrent_material.jl": "e9457d0d6e31f74950fa4be8ef84b138b020c0de7fc4b95c9a7f3cd5db148347",
+    "particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+    "cellular_storage.jl": "735c3281aca69158609392ef161397bec166d4a1698d7e741cd95b5a426cfaff",
+    "sorptive_matrix.jl": "f5643e0c951c983a7d5864676156123db3181e05510335fcd618de105ff1f036",
+    "fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+    "phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+  },
+  "profile_sha256": "0c4b27470204580bf7a7732683523ae60297295774d5298659261c7d973135f6",
+  "driver_sha256": "4b89dc95501740edaa6d24b067e456146c4307ba446489bf3e35313c18ee20f1",
+  "recording": {
+    "shape": [
+      64,
+      64,
+      64
+    ],
+    "extent": [
+      12,
+      12,
+      12
+    ],
+    "density": 4,
+    "chemical_field_units": "mass / physical volume",
+    "initial_step": 3020,
+    "snapshot_interval_steps": 200,
+    "dt": 0.1,
+    "original_run": "density4-full64",
+    "continuation": "density4-continuation-1500",
+    "bulk_artifacts": "local output directory; not included in repository"
+  },
+  "latest_observation": {
+    "step": 7820,
+    "time": 782.000011652708,
+    "population": 1688,
+    "enzyme_mass": 56.34906892735977,
+    "retained_mass": 103.56500453083902
+  },
+  "figure": {
+    "file": "constructive-volume-catalyst-turnover.png",
+    "sha256": "377139d8e144704bdec91f5db2324ba167bea217a10635b13118e713dd73a413",
+    "plane": "xy at z=0.09375",
+    "exposure": 0.25,
+    "colors": {
+      "a": "amber",
+      "b": "teal"
+    },
+    "transform": "min(1,log(1+9*c/exposure)/log(10))",
+    "spatial_display": "nearest enlargement of actual64x64 slice",
+    "panels": [
+      "inferred surviving initial material",
+      "inferred later construction still present",
+      "actual recorded total"
+    ]
+  }
+}

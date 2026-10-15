@@ -15,12 +15,16 @@ function electrical_patch_fixture(geometry_path,prefix,events)
  next=[sites[b] for b in prefix+1:prefix+events]
  (n=n,mask=mask,sites=next,prefix=prefix,geometry_sha256=bytes2hex(sha256(read(geometry_path))))
 end
-function electrical_patch_device_study(backend_name,geometry_path,output;prefix=4096,events=9)
+function electrical_patch_device_study(backend_name,geometry_path,output;kwargs...)
+ # Package loading introduces module bindings/methods in a newer Julia world.
+ backend_name=="amd" && (@eval using AMDGPU)
+ Base.invokelatest(_electrical_patch_device_study,backend_name,geometry_path,output;kwargs...)
+end
+function _electrical_patch_device_study(backend_name,geometry_path,output;prefix=4096,events=9)
  ispath(output)&&error("refusing existing output")
  mkpath(output)
  hardware=Dict{String,Any}()
  upload=if backend_name=="amd"
-  @eval using AMDGPU
   device=AMDGPU.device();props=AMDGPU.HIP.properties(device)
   hardware["device"]=AMDGPU.HIP.name(device)
   hardware["shared_memory_per_block"]=Int(props.sharedMemPerBlock)
