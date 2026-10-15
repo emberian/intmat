@@ -1,0 +1,26 @@
+id = "engulfed-script"
+title = "Memory Takes Root"
+description = "A prescribed Lissajous scaffold stimulates a fixed recurrent neural field through local material feedback; activity converts surrounding nutrient into an expanded living sheath."
+seed = 314
+duration = 6.2
+palette = "amber-gold"
+orbit = 0.6
+
+[neural]
+material_feedback = -2.2
+gain = 0.9
+diffusion = 0.0014
+rate = 0.8
+
+[[writers]]
+width = 0.043
+heat = 30.0
+threshold = 0.075
+conversion = 24.0
+diffusion = 0.0003
+cooling = 4.0
+period = 4.0
+stop = 4.0
+path = "lissajous"
+radius = 0.49
+height = 0.42

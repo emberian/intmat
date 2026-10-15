@@ -1,0 +1,85 @@
+id = "pearl-nuclei"
+title = "Six Thermal Seeds"
+description = "Six stationary Gaussian heat sources nucleate separate pearls; local neural material sensing grows their diffuse jackets without any imposed connecting path."
+seed = 315
+duration = 4.5
+palette = "glass-ice"
+orbit = 0.6
+
+[neural]
+material_feedback = -1.7
+gain = 0.8
+diffusion = 0.0007
+rate = 0.6
+
+[[writers]]
+width = 0.055
+heat = 15.0
+threshold = 0.12
+conversion = 24.0
+diffusion = 0.0003
+cooling = 4.0
+period = 4.0
+stop = 1.5
+path = "stationary"
+center = [-0.4, -0.25, -0.32]
+
+[[writers]]
+width = 0.055
+heat = 15.0
+threshold = 0.12
+conversion = 24.0
+diffusion = 0.0003
+cooling = 4.0
+period = 4.0
+stop = 1.5
+path = "stationary"
+center = [0.38, 0.25, 0.35]
+
+[[writers]]
+width = 0.055
+heat = 15.0
+threshold = 0.12
+conversion = 24.0
+diffusion = 0.0003
+cooling = 4.0
+period = 4.0
+stop = 1.5
+path = "stationary"
+center = [-0.35, 0.31, 0.3]
+
+[[writers]]
+width = 0.055
+heat = 15.0
+threshold = 0.12
+conversion = 24.0
+diffusion = 0.0003
+cooling = 4.0
+period = 4.0
+stop = 1.5
+path = "stationary"
+center = [0.32, -0.3, -0.29]
+
+[[writers]]
+width = 0.055
+heat = 15.0
+threshold = 0.12
+conversion = 24.0
+diffusion = 0.0003
+cooling = 4.0
+period = 4.0
+stop = 1.5
+path = "stationary"
+center = [0, -0.05, 0.48]
+
+[[writers]]
+width = 0.055
+heat = 15.0
+threshold = 0.12
+conversion = 24.0
+diffusion = 0.0003
+cooling = 4.0
+period = 4.0
+stop = 1.5
+path = "stationary"
+center = [0, 0.06, -0.48]

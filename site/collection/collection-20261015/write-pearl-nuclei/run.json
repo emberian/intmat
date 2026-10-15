@@ -1,0 +1,157 @@
+{
+  "id": "write-pearl-nuclei",
+  "family": "writing",
+  "title": "Six Thermal Seeds",
+  "description": "Six stationary Gaussian heat sources nucleate separate pearls; local neural material sensing grows their diffuse jackets without any imposed connecting path.",
+  "shape": [
+    96,
+    96,
+    96
+  ],
+  "extent": [
+    2,
+    2,
+    2
+  ],
+  "time": 4.499999899417162,
+  "dt": 0.02,
+  "steps": 225,
+  "parameters": {
+    "duration": 4.5,
+    "orbit": 0.6,
+    "neural": {
+      "material_feedback": -1.7,
+      "diffusion": 0.0007,
+      "rate": 0.6,
+      "gain": 0.8
+    },
+    "id": "pearl-nuclei",
+    "title": "Six Thermal Seeds",
+    "seed": 315,
+    "writers": [
+      {
+        "cooling": 4,
+        "heat": 15,
+        "stop": 1.5,
+        "diffusion": 0.0003,
+        "threshold": 0.12,
+        "period": 4,
+        "width": 0.055,
+        "conversion": 24,
+        "center": [
+          -0.4,
+          -0.25,
+          -0.32
+        ],
+        "path": "stationary"
+      },
+      {
+        "cooling": 4,
+        "heat": 15,
+        "stop": 1.5,
+        "diffusion": 0.0003,
+        "threshold": 0.12,
+        "period": 4,
+        "width": 0.055,
+        "conversion": 24,
+        "center": [
+          0.38,
+          0.25,
+          0.35
+        ],
+        "path": "stationary"
+      },
+      {
+        "cooling": 4,
+        "heat": 15,
+        "stop": 1.5,
+        "diffusion": 0.0003,
+        "threshold": 0.12,
+        "period": 4,
+        "width": 0.055,
+        "conversion": 24,
+        "center": [
+          -0.35,
+          0.31,
+          0.3
+        ],
+        "path": "stationary"
+      },
+      {
+        "cooling": 4,
+        "heat": 15,
+        "stop": 1.5,
+        "diffusion": 0.0003,
+        "threshold": 0.12,
+        "period": 4,
+        "width": 0.055,
+        "conversion": 24,
+        "center": [
+          0.32,
+          -0.3,
+          -0.29
+        ],
+        "path": "stationary"
+      },
+      {
+        "cooling": 4,
+        "heat": 15,
+        "stop": 1.5,
+        "diffusion": 0.0003,
+        "threshold": 0.12,
+        "period": 4,
+        "width": 0.055,
+        "conversion": 24,
+        "center": [
+          0,
+          -0.05,
+          0.48
+        ],
+        "path": "stationary"
+      },
+      {
+        "cooling": 4,
+        "heat": 15,
+        "stop": 1.5,
+        "diffusion": 0.0003,
+        "threshold": 0.12,
+        "period": 4,
+        "width": 0.055,
+        "conversion": 24,
+        "center": [
+          0,
+          0.06,
+          -0.48
+        ],
+        "path": "stationary"
+      }
+    ],
+    "description": "Six stationary Gaussian heat sources nucleate separate pearls; local neural material sensing grows their diffuse jackets without any imposed connecting path.",
+    "palette": "glass-ice"
+  },
+  "metrics": {
+    "mass_error": 0,
+    "deposit_sum": 7752.3813,
+    "deposit_max": 1.0000004,
+    "fraction_over_01": 0.009555392795138888,
+    "fraction_over_025": 0.00931351273148148,
+    "dose_max": 4.8913045,
+    "elapsed_seconds": 89.267533625
+  },
+  "source_sha256": {
+    "src/neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+    "src/writing.jl": "08abd6abb423ef077b86e70eb47fb9f0ad6d27e597ca3dd2464a6369ae002eb0",
+    "experiments/collection/writing/pearl-nuclei.toml": "5e94561afa450749a5d2fcfb0c5bdfd9bddac9eba02e8107dd85672e865259a4",
+    "studies/collection_writing.jl": "3a55720d29f0c245cc37f5059d5248a4bf8a36b1498cdb4b25db452a22c2e8b4"
+  },
+  "model": "Prescribed Gaussian heat source, diffusive cooling and conservative threshold nutrient-to-solid conversion. Optional fixed recurrent neural field; no trained network.",
+  "optical_mapping": "Amber or ice carrier is artistic; inclusion surface is actual deposit=0.18 isosurface.",
+  "publication": {
+    "source_image_sha256": "afe18134321989965cca89261c02e05b027f316e628a203fa450b7c3a47bf7b3",
+    "webp_sha256": "0f8295a4d65721e5930289dec5baf9ea1672d9d27db297ce4c01551bbea245df",
+    "quality": 95,
+    "width": 1600,
+    "original_retained": true,
+    "reviewed_by": "collection_render"
+  }
+}

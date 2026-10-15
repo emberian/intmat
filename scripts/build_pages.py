@@ -76,6 +76,7 @@ def main():
     text = text.replace('</header>', '<a href="https://github.com/emberian/intmat">Source &amp; simulation code ↗</a></header>')
     text = text.replace('</header>', '<a class="primary" href="arena/arena.html">Recorded neural arena ↗</a></header>')
     text = text.replace('</header>', '<a class="primary" href="metabolic/arena.html">Metabolic arena · 96² ↗</a></header>')
+    text = text.replace('</header>', '<a href="https://github.com/emberian/intmat/blob/dev/docs/alife-adaptation-results.md">Alife results ↗</a></header>')
     index.write_text(text)
     for file in destination.rglob('*'):
         if file.is_file() and file.suffix in ('.html', '.json', '.toml'):

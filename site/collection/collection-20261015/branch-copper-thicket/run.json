@@ -1,0 +1,839 @@
+{
+  "metrics": {
+    "events": 2400,
+    "final_mass": 262144,
+    "tips": 260,
+    "mass_drift": 0,
+    "branch_vertices": 1626,
+    "occupied": 2401,
+    "elapsed_seconds": 1197.542760417,
+    "edges": 3797,
+    "reached_ground": false,
+    "initial_mass": 262144,
+    "potential_residual": 1.2473513682685622e-05
+  },
+  "time": 120.00000178813934,
+  "model": "Lattice dielectric breakdown; field-weighted face-connected growth; nutrient-gated frontier; conductor one / box zero Dirichlet boundaries",
+  "history": [
+    {
+      "events": 25,
+      "time": 1.2500000186264515,
+      "occupied": 26,
+      "residual": 1.7611678534497813e-05,
+      "iterations": 80,
+      "reached_ground": false
+    },
+    {
+      "events": 50,
+      "time": 2.500000037252903,
+      "occupied": 51,
+      "residual": 1.015576223532301e-05,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 75,
+      "time": 3.7500000558793545,
+      "occupied": 76,
+      "residual": 1.3581166664759173e-05,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 100,
+      "time": 5.000000074505806,
+      "occupied": 101,
+      "residual": 1.1661400397620925e-05,
+      "iterations": 48,
+      "reached_ground": false
+    },
+    {
+      "events": 125,
+      "time": 6.2500000931322575,
+      "occupied": 126,
+      "residual": 1.0533879200617761e-05,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 150,
+      "time": 7.500000111758709,
+      "occupied": 151,
+      "residual": 1.0983630393942342e-05,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 175,
+      "time": 8.75000013038516,
+      "occupied": 176,
+      "residual": 1.9861230005820303e-05,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 200,
+      "time": 10.000000149011612,
+      "occupied": 201,
+      "residual": 1.5743697683017616e-05,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 225,
+      "time": 11.250000167638063,
+      "occupied": 226,
+      "residual": 9.870719319830302e-06,
+      "iterations": 80,
+      "reached_ground": false
+    },
+    {
+      "events": 250,
+      "time": 12.500000186264515,
+      "occupied": 251,
+      "residual": 1.2918123199294191e-06,
+      "iterations": 88,
+      "reached_ground": false
+    },
+    {
+      "events": 275,
+      "time": 13.750000204890966,
+      "occupied": 276,
+      "residual": 1.252597818772027e-05,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 300,
+      "time": 15.000000223517418,
+      "occupied": 301,
+      "residual": 1.0162747154633493e-05,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 325,
+      "time": 16.25000024214387,
+      "occupied": 326,
+      "residual": 1.2232766797144919e-05,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 350,
+      "time": 17.50000026077032,
+      "occupied": 351,
+      "residual": 1.996569335460663e-05,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 375,
+      "time": 18.750000279396772,
+      "occupied": 376,
+      "residual": 1.0304152965545654e-05,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 400,
+      "time": 20.000000298023224,
+      "occupied": 401,
+      "residual": 1.9908252094561873e-05,
+      "iterations": 80,
+      "reached_ground": false
+    },
+    {
+      "events": 425,
+      "time": 21.250000316649675,
+      "occupied": 426,
+      "residual": 1.3988465070724487e-05,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 450,
+      "time": 22.500000335276127,
+      "occupied": 451,
+      "residual": 1.3117988904326472e-05,
+      "iterations": 24,
+      "reached_ground": false
+    },
+    {
+      "events": 475,
+      "time": 23.75000035390258,
+      "occupied": 476,
+      "residual": 1.873324314753677e-05,
+      "iterations": 48,
+      "reached_ground": false
+    },
+    {
+      "events": 500,
+      "time": 25.00000037252903,
+      "occupied": 501,
+      "residual": 1.0244548320770264e-05,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 525,
+      "time": 26.25000039115548,
+      "occupied": 526,
+      "residual": 1.2636184692382812e-05,
+      "iterations": 40,
+      "reached_ground": false
+    },
+    {
+      "events": 550,
+      "time": 27.500000409781933,
+      "occupied": 551,
+      "residual": 1.7968316872916945e-05,
+      "iterations": 48,
+      "reached_ground": false
+    },
+    {
+      "events": 575,
+      "time": 28.750000428408384,
+      "occupied": 576,
+      "residual": 1.7033889889717102e-05,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 600,
+      "time": 30.000000447034836,
+      "occupied": 601,
+      "residual": 1.5109777450561523e-05,
+      "iterations": 40,
+      "reached_ground": false
+    },
+    {
+      "events": 625,
+      "time": 31.250000465661287,
+      "occupied": 626,
+      "residual": 1.3722727696102027e-05,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 650,
+      "time": 32.50000048428774,
+      "occupied": 651,
+      "residual": 1.1382546896735683e-05,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 675,
+      "time": 33.75000050291419,
+      "occupied": 676,
+      "residual": 1.0818243026733398e-05,
+      "iterations": 24,
+      "reached_ground": false
+    },
+    {
+      "events": 700,
+      "time": 35.00000052154064,
+      "occupied": 701,
+      "residual": 1.971264525006211e-05,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 725,
+      "time": 36.25000054016709,
+      "occupied": 726,
+      "residual": 1.0946144660316237e-05,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 750,
+      "time": 37.500000558793545,
+      "occupied": 751,
+      "residual": 1.5237989524999676e-05,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 775,
+      "time": 38.750000577419996,
+      "occupied": 776,
+      "residual": 1.919517914454605e-05,
+      "iterations": 40,
+      "reached_ground": false
+    },
+    {
+      "events": 800,
+      "time": 40.00000059604645,
+      "occupied": 801,
+      "residual": 1.6322980324424974e-05,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 825,
+      "time": 41.2500006146729,
+      "occupied": 826,
+      "residual": 1.185387372970581e-05,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 850,
+      "time": 42.50000063329935,
+      "occupied": 851,
+      "residual": 1.1771917343139648e-05,
+      "iterations": 32,
+      "reached_ground": false
+    },
+    {
+      "events": 875,
+      "time": 43.7500006519258,
+      "occupied": 876,
+      "residual": 1.4866391817726365e-05,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 900,
+      "time": 45.000000670552254,
+      "occupied": 901,
+      "residual": 5.263384082354605e-06,
+      "iterations": 80,
+      "reached_ground": false
+    },
+    {
+      "events": 925,
+      "time": 46.250000689178705,
+      "occupied": 926,
+      "residual": 1.767696812748909e-05,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 950,
+      "time": 47.50000070780516,
+      "occupied": 951,
+      "residual": 1.1987363298732873e-05,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 975,
+      "time": 48.75000072643161,
+      "occupied": 976,
+      "residual": 1.4790644248328932e-05,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 1000,
+      "time": 50.00000074505806,
+      "occupied": 1001,
+      "residual": 1.3689200083405462e-05,
+      "iterations": 40,
+      "reached_ground": false
+    },
+    {
+      "events": 1025,
+      "time": 51.25000076368451,
+      "occupied": 1026,
+      "residual": 1.0281801223754883e-05,
+      "iterations": 40,
+      "reached_ground": false
+    },
+    {
+      "events": 1050,
+      "time": 52.50000078231096,
+      "occupied": 1051,
+      "residual": 1.3306736946105957e-05,
+      "iterations": 40,
+      "reached_ground": false
+    },
+    {
+      "events": 1075,
+      "time": 53.750000800937414,
+      "occupied": 1076,
+      "residual": 1.3165175914764404e-05,
+      "iterations": 40,
+      "reached_ground": false
+    },
+    {
+      "events": 1100,
+      "time": 55.000000819563866,
+      "occupied": 1101,
+      "residual": 1.8600374460220337e-05,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 1125,
+      "time": 56.25000083819032,
+      "occupied": 1126,
+      "residual": 1.670668522517002e-05,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 1150,
+      "time": 57.50000085681677,
+      "occupied": 1151,
+      "residual": 1.5025337537132033e-05,
+      "iterations": 48,
+      "reached_ground": false
+    },
+    {
+      "events": 1175,
+      "time": 58.75000087544322,
+      "occupied": 1176,
+      "residual": 1.7572815219562415e-05,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 1200,
+      "time": 60.00000089406967,
+      "occupied": 1201,
+      "residual": 1.1047086445614696e-05,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 1225,
+      "time": 61.25000091269612,
+      "occupied": 1226,
+      "residual": 1.6345875337719917e-05,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 1250,
+      "time": 62.500000931322575,
+      "occupied": 1251,
+      "residual": 1.6719413300355854e-05,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 1275,
+      "time": 63.750000949949026,
+      "occupied": 1276,
+      "residual": 9.894371032714844e-06,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 1300,
+      "time": 65.00000096857548,
+      "occupied": 1301,
+      "residual": 1.2871227227151394e-05,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 1325,
+      "time": 66.25000098720193,
+      "occupied": 1326,
+      "residual": 1.0809550682701341e-05,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 1350,
+      "time": 67.50000100582838,
+      "occupied": 1351,
+      "residual": 1.8945584694543896e-05,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 1375,
+      "time": 68.75000102445483,
+      "occupied": 1376,
+      "residual": 1.1630356311798096e-05,
+      "iterations": 48,
+      "reached_ground": false
+    },
+    {
+      "events": 1400,
+      "time": 70.00000104308128,
+      "occupied": 1401,
+      "residual": 1.1990467707334584e-05,
+      "iterations": 24,
+      "reached_ground": false
+    },
+    {
+      "events": 1425,
+      "time": 71.25000106170774,
+      "occupied": 1426,
+      "residual": 1.9732241829236927e-05,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 1450,
+      "time": 72.50000108033419,
+      "occupied": 1451,
+      "residual": 9.462858239809094e-06,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 1475,
+      "time": 73.75000109896064,
+      "occupied": 1476,
+      "residual": 1.0510285695430888e-05,
+      "iterations": 40,
+      "reached_ground": false
+    },
+    {
+      "events": 1500,
+      "time": 75.00000111758709,
+      "occupied": 1501,
+      "residual": 1.8308560053498235e-05,
+      "iterations": 40,
+      "reached_ground": false
+    },
+    {
+      "events": 1525,
+      "time": 76.25000113621354,
+      "occupied": 1526,
+      "residual": 1.3193736473716966e-05,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 1550,
+      "time": 77.50000115483999,
+      "occupied": 1551,
+      "residual": 1.1444091796875e-05,
+      "iterations": 48,
+      "reached_ground": false
+    },
+    {
+      "events": 1575,
+      "time": 78.75000117346644,
+      "occupied": 1576,
+      "residual": 1.3629595438657827e-05,
+      "iterations": 24,
+      "reached_ground": false
+    },
+    {
+      "events": 1600,
+      "time": 80.0000011920929,
+      "occupied": 1601,
+      "residual": 7.2621429959935854e-06,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 1625,
+      "time": 81.25000121071935,
+      "occupied": 1626,
+      "residual": 1.5338261922199364e-05,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 1650,
+      "time": 82.5000012293458,
+      "occupied": 1651,
+      "residual": 1.6063451766967773e-05,
+      "iterations": 48,
+      "reached_ground": false
+    },
+    {
+      "events": 1675,
+      "time": 83.75000124797225,
+      "occupied": 1676,
+      "residual": 6.797044382741036e-06,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 1700,
+      "time": 85.0000012665987,
+      "occupied": 1701,
+      "residual": 1.4020750919975511e-05,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 1725,
+      "time": 86.25000128522515,
+      "occupied": 1726,
+      "residual": 1.3172626495361328e-05,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 1750,
+      "time": 87.5000013038516,
+      "occupied": 1751,
+      "residual": 9.725491205855863e-06,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 1775,
+      "time": 88.75000132247806,
+      "occupied": 1776,
+      "residual": 1.4439225196838379e-05,
+      "iterations": 48,
+      "reached_ground": false
+    },
+    {
+      "events": 1800,
+      "time": 90.00000134110451,
+      "occupied": 1801,
+      "residual": 1.5748043855026705e-05,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 1825,
+      "time": 91.25000135973096,
+      "occupied": 1826,
+      "residual": 1.2167865255226728e-05,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 1850,
+      "time": 92.50000137835741,
+      "occupied": 1851,
+      "residual": 1.5050172805786133e-05,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 1875,
+      "time": 93.75000139698386,
+      "occupied": 1876,
+      "residual": 1.8499791622161865e-05,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 1900,
+      "time": 95.00000141561031,
+      "occupied": 1901,
+      "residual": 1.8825133641570124e-05,
+      "iterations": 32,
+      "reached_ground": false
+    },
+    {
+      "events": 1925,
+      "time": 96.25000143423676,
+      "occupied": 1926,
+      "residual": 1.2665987014770508e-05,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 1950,
+      "time": 97.50000145286322,
+      "occupied": 1951,
+      "residual": 8.90096028643983e-06,
+      "iterations": 40,
+      "reached_ground": false
+    },
+    {
+      "events": 1975,
+      "time": 98.75000147148967,
+      "occupied": 1976,
+      "residual": 1.674898279209946e-05,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 2000,
+      "time": 100.00000149011612,
+      "occupied": 2001,
+      "residual": 1.4543533325195312e-05,
+      "iterations": 32,
+      "reached_ground": false
+    },
+    {
+      "events": 2025,
+      "time": 101.25000150874257,
+      "occupied": 2026,
+      "residual": 7.973828663428335e-06,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 2050,
+      "time": 102.50000152736902,
+      "occupied": 2051,
+      "residual": 8.424123128292216e-06,
+      "iterations": 32,
+      "reached_ground": false
+    },
+    {
+      "events": 2075,
+      "time": 103.75000154599547,
+      "occupied": 2076,
+      "residual": 1.0353823502853854e-05,
+      "iterations": 48,
+      "reached_ground": false
+    },
+    {
+      "events": 2100,
+      "time": 105.00000156462193,
+      "occupied": 2101,
+      "residual": 1.8487529208262906e-05,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 2125,
+      "time": 106.25000158324838,
+      "occupied": 2126,
+      "residual": 4.720272651563106e-06,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 2150,
+      "time": 107.50000160187483,
+      "occupied": 2151,
+      "residual": 1.7886360486350783e-05,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 2175,
+      "time": 108.75000162050128,
+      "occupied": 2176,
+      "residual": 1.5114744504302058e-05,
+      "iterations": 56,
+      "reached_ground": false
+    },
+    {
+      "events": 2200,
+      "time": 110.00000163912773,
+      "occupied": 2201,
+      "residual": 1.8535026659568295e-05,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 2225,
+      "time": 111.25000165775418,
+      "occupied": 2226,
+      "residual": 1.4199564854301683e-05,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 2250,
+      "time": 112.50000167638063,
+      "occupied": 2251,
+      "residual": 7.907549540164815e-06,
+      "iterations": 32,
+      "reached_ground": false
+    },
+    {
+      "events": 2275,
+      "time": 113.75000169500709,
+      "occupied": 2276,
+      "residual": 1.9311904907226562e-05,
+      "iterations": 32,
+      "reached_ground": false
+    },
+    {
+      "events": 2300,
+      "time": 115.00000171363354,
+      "occupied": 2301,
+      "residual": 1.9511207938194275e-05,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 2325,
+      "time": 116.25000173225999,
+      "occupied": 2326,
+      "residual": 1.6609827677399602e-05,
+      "iterations": 48,
+      "reached_ground": false
+    },
+    {
+      "events": 2350,
+      "time": 117.50000175088644,
+      "occupied": 2351,
+      "residual": 1.878788073857683e-05,
+      "iterations": 64,
+      "reached_ground": false
+    },
+    {
+      "events": 2375,
+      "time": 118.75000176951289,
+      "occupied": 2376,
+      "residual": 5.139930484195478e-06,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 2400,
+      "time": 120.00000178813934,
+      "occupied": 2401,
+      "residual": 1.2473513682685622e-05,
+      "iterations": 56,
+      "reached_ground": false
+    }
+  ],
+  "shape": [
+    64,
+    64,
+    64
+  ],
+  "random_state": {
+    "event_counter": 2400,
+    "algorithm": "SplitMix64 stateless seed + event counter",
+    "seed": "832"
+  },
+  "description": "Weak field preference builds a dense bush of competing conducting tips.",
+  "optics": {
+    "coordinates": "normalized cube [-1,1]; anisotropic simulation extent retained in params, shown as normalized lattice",
+    "carrier": "polished box; dilute amber; exact graph filaments; optical halo only",
+    "channel_diameter": 0.006,
+    "channel_radius": 0.003
+  },
+  "params": {
+    "root": [
+      32,
+      32,
+      32
+    ],
+    "events": 2400,
+    "material": "uniform",
+    "radius": 0.003,
+    "slug": "branch-copper-thicket",
+    "extent": [
+      2,
+      2,
+      2
+    ],
+    "description": "Weak field preference builds a dense bush of competing conducting tips.",
+    "orbit": 0.7,
+    "eta": 0.8,
+    "title": "Copper thicket",
+    "seed": 832,
+    "palette": "amber-gold",
+    "n": 64
+  },
+  "title": "Copper thicket",
+  "study_hash": "c9fbda213aeb235c4b25d567aa4293fc08540f3917b0d9a5b672a6b89462f5d6",
+  "source_hash": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+  "family": "branches",
+  "publication": {
+    "source_image_sha256": "eebda760016dbec55fe6ae9dec5892374094f5ed2a4f011d29ca776e75613e9c",
+    "webp_sha256": "ffe0c3857c1931ac4cce78d3c890ede457e72502865f2487f46205bcaed9ee21",
+    "quality": 95,
+    "width": 1600,
+    "original_retained": true,
+    "reviewed_by": "collection_render"
+  }
+}

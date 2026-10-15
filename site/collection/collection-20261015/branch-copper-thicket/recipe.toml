@@ -1,0 +1,13 @@
+slug = "branch-copper-thicket"
+title = "Copper thicket"
+description = "Weak field preference builds a dense bush of competing conducting tips."
+n = 64
+eta = 0.8
+seed = 832
+events = 2400
+material = "uniform"
+root = [32, 32, 32]
+extent = [2, 2, 2]
+radius = 0.003
+palette = "amber-gold"
+orbit = 0.7

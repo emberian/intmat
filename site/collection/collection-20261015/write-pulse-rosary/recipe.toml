@@ -1,0 +1,21 @@
+id = "pulse-rosary"
+title = "Rosary of Heat"
+description = "A slowly moving three-turn helix receives separated smooth power pulses, producing a procession of swollen glass beads and narrow connecting waists."
+seed = 311
+duration = 6.6
+palette = "glass-ice"
+orbit = 0.8
+
+[[writers]]
+width = 0.055
+heat = 70.0
+threshold = 0.14
+conversion = 30.0
+diffusion = 0.0003
+cooling = 4.0
+period = 6.0
+stop = 6.0
+path = "helix"
+radius = 0.48
+height = 0.6
+pulse_rate = 3.0

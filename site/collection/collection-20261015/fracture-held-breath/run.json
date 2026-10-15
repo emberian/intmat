@@ -1,0 +1,66 @@
+{
+  "id": "fracture-held-breath",
+  "family": "mechanics",
+  "title": "Held breath",
+  "description": "Disordered central-force spring network under tensile and shear grip loading; measured tensile strain irreversibly removes bonds. Transparent carrier is optical staging. No healing or continuum calibration.",
+  "time": 1.3500000641215593,
+  "params": {
+    "steps": 1350,
+    "jitter": 0.24,
+    "dt": 0.001,
+    "failure_strain": 0.32,
+    "id": "fracture-held-breath",
+    "mass": 0.02,
+    "study": "studies/collection_mechanics.jl",
+    "extent": [
+      1,
+      1,
+      0.65
+    ],
+    "stretch_rate": 0.19,
+    "weak_seam": 0.43,
+    "shear_rate": 0.27,
+    "nodes_shape": [
+      18,
+      18,
+      10
+    ],
+    "stiffness": 8,
+    "damping": 3,
+    "title": "Held breath",
+    "seed": 426
+  },
+  "metrics": {
+    "nodes": 3240,
+    "bonds": 36236,
+    "broken": 1788,
+    "surviving": 34448,
+    "energy": {
+      "elastic": 6.155361050255466,
+      "kinetic": 1.847400844508682,
+      "damage": 3.0296058936323966,
+      "damping": 5.37217200791438,
+      "external_work": 16.38368343845349,
+      "total": 16.404539796310925
+    },
+    "energy_balance_residual": 0.020856357857432783,
+    "relative_work_residual": 0.0012729956566715427,
+    "max_displacement": 0.2237239358349487
+  },
+  "elapsed_seconds": 123.52346425,
+  "sourcehash": "af707f5b3feb1cd7d2101dc2fc9152ebdbd95babfe3a8a436e461ec0c1695409",
+  "optical_transfer": "Exact deformed surviving OBJ segments in gallery filament material; constant near-transparent density carrier, no density-derived fracture geometry.",
+  "shape": [
+    24,
+    24,
+    24
+  ],
+  "publication": {
+    "source_image_sha256": "11a3f11801af8661b99eda33e10718400e5f964567da64ac7d24108a3b884035",
+    "webp_sha256": "85e724477f8e4a36aedaaf186e3f47a4aa86215e44d2b15338c9ebf76d8b828f",
+    "quality": 95,
+    "width": 1600,
+    "original_retained": true,
+    "reviewed_by": "collection_render"
+  }
+}

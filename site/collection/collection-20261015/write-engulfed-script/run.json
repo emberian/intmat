@@ -1,0 +1,74 @@
+{
+  "id": "write-engulfed-script",
+  "family": "writing",
+  "title": "Memory Takes Root",
+  "description": "A prescribed Lissajous scaffold stimulates a fixed recurrent neural field through local material feedback; activity converts surrounding nutrient into an expanded living sheath.",
+  "shape": [
+    96,
+    96,
+    96
+  ],
+  "extent": [
+    2,
+    2,
+    2
+  ],
+  "time": 6.199999861419201,
+  "dt": 0.02,
+  "steps": 310,
+  "parameters": {
+    "duration": 6.2,
+    "orbit": 0.6,
+    "neural": {
+      "material_feedback": -2.2,
+      "diffusion": 0.0014,
+      "rate": 0.8,
+      "gain": 0.9
+    },
+    "id": "engulfed-script",
+    "title": "Memory Takes Root",
+    "seed": 314,
+    "writers": [
+      {
+        "path": "lissajous",
+        "cooling": 4,
+        "height": 0.42,
+        "period": 4,
+        "radius": 0.49,
+        "conversion": 24,
+        "stop": 4,
+        "diffusion": 0.0003,
+        "width": 0.043,
+        "heat": 30,
+        "threshold": 0.075
+      }
+    ],
+    "description": "A prescribed Lissajous scaffold stimulates a fixed recurrent neural field through local material feedback; activity converts surrounding nutrient into an expanded living sheath.",
+    "palette": "amber-gold"
+  },
+  "metrics": {
+    "mass_error": 0,
+    "deposit_sum": 18195.238,
+    "deposit_max": 1.0000001,
+    "fraction_over_01": 0.027288366247106483,
+    "fraction_over_025": 0.024298773871527776,
+    "dose_max": 0.9891877,
+    "elapsed_seconds": 24.8543975
+  },
+  "source_sha256": {
+    "src/neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+    "src/writing.jl": "08abd6abb423ef077b86e70eb47fb9f0ad6d27e597ca3dd2464a6369ae002eb0",
+    "studies/collection_writing.jl": "3a55720d29f0c245cc37f5059d5248a4bf8a36b1498cdb4b25db452a22c2e8b4",
+    "experiments/collection/writing/engulfed-script.toml": "d284003ca7e5ff405987eba2240064a6d7e40c47dffb7ad48a3cf819e8177a18"
+  },
+  "model": "Prescribed Gaussian heat source, diffusive cooling and conservative threshold nutrient-to-solid conversion. Optional fixed recurrent neural field; no trained network.",
+  "optical_mapping": "Amber or ice carrier is artistic; inclusion surface is actual deposit=0.18 isosurface.",
+  "publication": {
+    "source_image_sha256": "8520fcda8da5bf81760a8a35a5fc69070926bc92470146e25fbd984c5f3df5ce",
+    "webp_sha256": "8cafef15b579278e3eb80e4a27083df356293526ccfc7da92212aeb99aef19b1",
+    "quality": 95,
+    "width": 1600,
+    "original_retained": true,
+    "reviewed_by": "collection_render"
+  }
+}

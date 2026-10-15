@@ -1,0 +1,16 @@
+steps = 1350
+jitter = 0.24
+dt = 0.001
+failure_strain = 0.32
+id = "fracture-held-breath"
+mass = 0.02
+study = "studies/collection_mechanics.jl"
+extent = [1.0, 1.0, 0.65]
+stretch_rate = 0.19
+weak_seam = 0.43
+shear_rate = 0.27
+nodes_shape = [18, 18, 10]
+stiffness = 8.0
+damping = 3.0
+title = "Held breath"
+seed = 426

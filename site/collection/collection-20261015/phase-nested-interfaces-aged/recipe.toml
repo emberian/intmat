@@ -1,0 +1,11 @@
+slug = "phase-nested-interfaces-aged"
+title = "Nested interfaces"
+initial = "shells"
+description = "Thin Schwarz-like periodic interface shells, relaxed briefly before coarsening can erase their nested pockets."
+kappa = 0.5
+active = false
+palette = "glass-ice"
+seed = 705
+t_end = 120.0
+dt = 0.25
+mobility = 0.65

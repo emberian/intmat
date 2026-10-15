@@ -1,0 +1,13 @@
+slug = "branch-thunder-root"
+title = "Thunder root"
+description = "Strong field preference produces a long, sparse discharge with screened side branches."
+n = 64
+eta = 7.0
+seed = 831
+events = 1000
+material = "uniform"
+root = [32, 32, 32]
+extent = [2, 2, 2]
+radius = 0.0035
+palette = "amber-gold"
+orbit = 0.6

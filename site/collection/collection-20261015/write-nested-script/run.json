@@ -1,0 +1,81 @@
+{
+  "id": "write-nested-script",
+  "family": "writing",
+  "title": "A Letter Within a Letter",
+  "description": "Two unequal Lissajous heat paths write a broad outer fold and a tightly nested inner signature with different traversal periods.",
+  "shape": [
+    96,
+    96,
+    96
+  ],
+  "extent": [
+    2,
+    2,
+    2
+  ],
+  "time": 4.799999892711639,
+  "dt": 0.02,
+  "steps": 240,
+  "parameters": {
+    "duration": 4.8,
+    "orbit": 1.1,
+    "id": "nested-script",
+    "title": "A Letter Within a Letter",
+    "seed": 313,
+    "writers": [
+      {
+        "path": "lissajous",
+        "cooling": 4,
+        "height": 0.43,
+        "period": 4,
+        "radius": 0.57,
+        "conversion": 24,
+        "stop": 4,
+        "diffusion": 0.0003,
+        "width": 0.037,
+        "heat": 38,
+        "threshold": 0.075
+      },
+      {
+        "path": "lissajous",
+        "cooling": 4,
+        "height": 0.29,
+        "period": 3.1,
+        "radius": 0.27,
+        "conversion": 24,
+        "stop": 3.1,
+        "diffusion": 0.0003,
+        "width": 0.037,
+        "heat": 28,
+        "threshold": 0.075
+      }
+    ],
+    "description": "Two unequal Lissajous heat paths write a broad outer fold and a tightly nested inner signature with different traversal periods.",
+    "palette": "glass-ice"
+  },
+  "metrics": {
+    "mass_error": 0,
+    "deposit_sum": 21217.414,
+    "deposit_max": 1.0000001,
+    "fraction_over_01": 0.03465440538194445,
+    "fraction_over_025": 0.030014603226273147,
+    "dose_max": 0.98393035,
+    "elapsed_seconds": 19.528236459
+  },
+  "source_sha256": {
+    "experiments/collection/writing/nested-script.toml": "6a9a599c0a7bd01630465fa6697b759fbb4150890948177b75372d221ea313da",
+    "src/neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+    "src/writing.jl": "08abd6abb423ef077b86e70eb47fb9f0ad6d27e597ca3dd2464a6369ae002eb0",
+    "studies/collection_writing.jl": "3a55720d29f0c245cc37f5059d5248a4bf8a36b1498cdb4b25db452a22c2e8b4"
+  },
+  "model": "Prescribed Gaussian heat source, diffusive cooling and conservative threshold nutrient-to-solid conversion. Optional fixed recurrent neural field; no trained network.",
+  "optical_mapping": "Amber or ice carrier is artistic; inclusion surface is actual deposit=0.18 isosurface.",
+  "publication": {
+    "source_image_sha256": "2c955c12add29b26ded620c984f6d938778e310515f03786f8ac47b63da56164",
+    "webp_sha256": "74901c03f779e77852aea83874db9f153046273e70e4ceb2b7d4c2923c3cc16f",
+    "quality": 95,
+    "width": 1600,
+    "original_retained": true,
+    "reviewed_by": "collection_render"
+  }
+}

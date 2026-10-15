@@ -163,5 +163,192 @@
       "render-job.json",
       "run.json"
     ]
+  },
+  {
+    "id": "collection-20261015/write-engulfed-script",
+    "source_image_sha256": "8520fcda8da5bf81760a8a35a5fc69070926bc92470146e25fbd984c5f3df5ce",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
+  },
+  {
+    "id": "collection-20261015/write-nested-script",
+    "source_image_sha256": "2c955c12add29b26ded620c984f6d938778e310515f03786f8ac47b63da56164",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
+  },
+  {
+    "id": "collection-20261015/branch-thunder-root",
+    "source_image_sha256": "f4783d82927c9a9c6012560ee7e59f09bddc9815d11c9f8ca108708f0b3bf321",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
+  },
+  {
+    "id": "collection-20261015/ecology-pearl-niches",
+    "source_image_sha256": "4adbf0cd43b93f3cdf1e96a441b64dce92861e9060d5a01c399abad268fca969",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
+  },
+  {
+    "id": "collection-20261015/ecology-root-canals",
+    "source_image_sha256": "a6fee17f67d94695d564038ad74813c1f4dff4faf6b2f7abcddde3824eebb116",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
+  },
+  {
+    "id": "collection-20261015/fracture-held-breath",
+    "source_image_sha256": "11a3f11801af8661b99eda33e10718400e5f964567da64ac7d24108a3b884035",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
+  },
+  {
+    "id": "collection-20261015/phase-nested-interfaces-aged",
+    "source_image_sha256": "02520cc3b5e4bf99eafafd3d657b2f51fbaca6ce30bab97584521cbbabb7a9d6",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
+  },
+  {
+    "id": "collection-20261015/phase-pearl-orchard-aged",
+    "source_image_sha256": "e0894e1cdb7b37779a68537883cae515a334f15aca7fffabf7ae64f3392f0fa8",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
+  },
+  {
+    "id": "collection-20261015/branch-copper-thicket",
+    "source_image_sha256": "eebda760016dbec55fe6ae9dec5892374094f5ed2a4f011d29ca776e75613e9c",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
+  },
+  {
+    "id": "collection-20261015/ecology-crossfeed-foam",
+    "source_image_sha256": "3d8848f8250517c51ceadaa291ce5e5afc66ee1b2ca6556e4f88749a5950b773",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
+  },
+  {
+    "id": "collection-20261015/ecology-finite-orchard",
+    "source_image_sha256": "14c8a7a3f693e72e105a2a08fbef38fb97e07e47a0471413b0e64c63e85e5886",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
+  },
+  {
+    "id": "collection-20261015/write-pearl-nuclei",
+    "source_image_sha256": "afe18134321989965cca89261c02e05b027f316e628a203fa450b7c3a47bf7b3",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
+  },
+  {
+    "id": "collection-20261015/write-pulse-rosary",
+    "source_image_sha256": "a19c9d56ebf715c643c24d03c856c2d048a0c14b292bf67be72e20804823ee93",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
+  },
+  {
+    "id": "collection-20261015/write-trefoil",
+    "source_image_sha256": "a6bc646f9c73c7c60cd0775c7065a6fe746ff0175ba1dd1ed0cac6922ca8f274",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
+  },
+  {
+    "id": "collection-20261015/ecology-tidal-lamellae",
+    "source_image_sha256": "9bdfe89d466fd84cfabff522d6c488af33aca07cfadae71f0e4ab1fba6f9d5ad",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
+  },
+  {
+    "id": "collection-20261015/phase-perforated-veil-open",
+    "source_image_sha256": "a5b0f9466c2752384f60184d299607db20e893209f11b554f34784a8ab049615",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
+  },
+  {
+    "id": "collection-20261015/waves-pearl-cavity",
+    "source_image_sha256": "b5024589c74cf9efda27c84f0c946d3b232283cb4195404cfb60c7a2ad8be40f",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
   }
 ]

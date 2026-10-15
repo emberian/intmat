@@ -1,0 +1,69 @@
+{
+  "id": "write-pulse-rosary",
+  "family": "writing",
+  "title": "Rosary of Heat",
+  "description": "A slowly moving three-turn helix receives separated smooth power pulses, producing a procession of swollen glass beads and narrow connecting waists.",
+  "shape": [
+    96,
+    96,
+    96
+  ],
+  "extent": [
+    2,
+    2,
+    2
+  ],
+  "time": 6.599999852478504,
+  "dt": 0.02,
+  "steps": 330,
+  "parameters": {
+    "duration": 6.6,
+    "orbit": 0.8,
+    "id": "pulse-rosary",
+    "title": "Rosary of Heat",
+    "seed": 311,
+    "writers": [
+      {
+        "pulse_rate": 3,
+        "path": "helix",
+        "cooling": 4,
+        "height": 0.6,
+        "period": 6,
+        "radius": 0.48,
+        "conversion": 30,
+        "stop": 6,
+        "diffusion": 0.0003,
+        "width": 0.055,
+        "heat": 70,
+        "threshold": 0.14
+      }
+    ],
+    "description": "A slowly moving three-turn helix receives separated smooth power pulses, producing a procession of swollen glass beads and narrow connecting waists.",
+    "palette": "glass-ice"
+  },
+  "metrics": {
+    "mass_error": 0,
+    "deposit_sum": 36253.523,
+    "deposit_max": 1.0000002,
+    "fraction_over_01": 0.052399811921296294,
+    "fraction_over_025": 0.04761985496238426,
+    "dose_max": 1.1843226,
+    "elapsed_seconds": 11.844963333
+  },
+  "source_sha256": {
+    "src/neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+    "src/writing.jl": "08abd6abb423ef077b86e70eb47fb9f0ad6d27e597ca3dd2464a6369ae002eb0",
+    "studies/collection_writing.jl": "3a55720d29f0c245cc37f5059d5248a4bf8a36b1498cdb4b25db452a22c2e8b4",
+    "experiments/collection/writing/pulse-rosary.toml": "75e5f18dee5cc99a3d51e547c8541d558da725a1ba189a240ce514f1242c266f"
+  },
+  "model": "Prescribed Gaussian heat source, diffusive cooling and conservative threshold nutrient-to-solid conversion. Optional fixed recurrent neural field; no trained network.",
+  "optical_mapping": "Amber or ice carrier is artistic; inclusion surface is actual deposit=0.18 isosurface.",
+  "publication": {
+    "source_image_sha256": "a19c9d56ebf715c643c24d03c856c2d048a0c14b292bf67be72e20804823ee93",
+    "webp_sha256": "0cd8cd6464d7063fd6c2c4251cf3fd6276087f9eea5941b5eba079ccaf406dea",
+    "quality": 95,
+    "width": 1600,
+    "original_retained": true,
+    "reviewed_by": "collection_render"
+  }
+}

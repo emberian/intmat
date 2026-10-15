@@ -1,0 +1,33 @@
+id = "nested-script"
+title = "A Letter Within a Letter"
+description = "Two unequal Lissajous heat paths write a broad outer fold and a tightly nested inner signature with different traversal periods."
+seed = 313
+duration = 4.8
+palette = "glass-ice"
+orbit = 1.1
+
+[[writers]]
+width = 0.037
+heat = 38.0
+threshold = 0.075
+conversion = 24.0
+diffusion = 0.0003
+cooling = 4.0
+period = 4.0
+stop = 4.0
+path = "lissajous"
+radius = 0.57
+height = 0.43
+
+[[writers]]
+width = 0.037
+heat = 28.0
+threshold = 0.075
+conversion = 24.0
+diffusion = 0.0003
+cooling = 4.0
+period = 3.1
+stop = 3.1
+path = "lissajous"
+radius = 0.27
+height = 0.29

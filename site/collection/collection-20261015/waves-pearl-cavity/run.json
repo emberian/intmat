@@ -1,0 +1,51 @@
+{
+  "metrics": {
+    "pressure_extrema": [
+      -0.20959719,
+      0.1921288
+    ],
+    "initial_mass": 884736,
+    "crest_fraction": 0.3572014702690972,
+    "final_mass": 884736,
+    "activity_extrema": [
+      3.6742892e-16,
+      1.0717938
+    ],
+    "deposit_extrema": [
+      0,
+      0.88395834
+    ]
+  },
+  "family": "waves",
+  "time": 2.9999999329447746,
+  "optical_scale": 0.08415244,
+  "optical_transfer": "99.5th-percentile-clamped absolute pressure squared (or positive neural activity squared); emissive surrogate, not physical light emission",
+  "shape": [
+    96,
+    96,
+    96
+  ],
+  "sourcehash": "2e5074e109f4b44c61ae75656627a63ccb678484dd609cf1c679c69bebc7e096",
+  "id": "waves-pearl-cavity",
+  "description": "A pulsed scalar wave refracts around an off-center mineral shell; pressure crests are an emissive optical surrogate.",
+  "elapsed_seconds": 36.187600792,
+  "params": {
+    "resolution": 96,
+    "steps": 300,
+    "model": "damped scalar wave plus excitable conservative deposition; not calibrated acoustics, cavitation or sonoluminescence",
+    "mode": "cavity",
+    "id": "waves-pearl-cavity",
+    "title": "Pearl cavity",
+    "dt": 0.01,
+    "study": "studies/collection_waves.jl"
+  },
+  "title": "Pearl cavity",
+  "publication": {
+    "source_image_sha256": "b5024589c74cf9efda27c84f0c946d3b232283cb4195404cfb60c7a2ad8be40f",
+    "webp_sha256": "1bc762a9b13d6a362658219bf4e15efd8b53a5045f120d792aafc895c71d3fe3",
+    "quality": 95,
+    "width": 1600,
+    "original_retained": true,
+    "reviewed_by": "collection_render"
+  }
+}

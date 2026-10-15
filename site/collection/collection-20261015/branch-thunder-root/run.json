@@ -1,0 +1,95 @@
+{
+  "metrics": {
+    "events": 283,
+    "final_mass": 262144,
+    "tips": 63,
+    "mass_drift": 0,
+    "branch_vertices": 70,
+    "occupied": 284,
+    "elapsed_seconds": 172.993511875,
+    "edges": 293,
+    "reached_ground": true,
+    "initial_mass": 262144,
+    "potential_residual": 1.743001242478573e-05
+  },
+  "time": 14.150000210851431,
+  "model": "Lattice dielectric breakdown; field-weighted face-connected growth; nutrient-gated frontier; conductor one / box zero Dirichlet boundaries",
+  "history": [
+    {
+      "events": 100,
+      "time": 5.000000074505806,
+      "occupied": 101,
+      "residual": 1.962451885143858e-05,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 200,
+      "time": 10.000000149011612,
+      "occupied": 201,
+      "residual": 6.5704031536976135e-06,
+      "iterations": 72,
+      "reached_ground": false
+    },
+    {
+      "events": 283,
+      "time": 14.150000210851431,
+      "occupied": 284,
+      "residual": 1.743001242478573e-05,
+      "iterations": 56,
+      "reached_ground": true
+    }
+  ],
+  "shape": [
+    64,
+    64,
+    64
+  ],
+  "random_state": {
+    "event_counter": 283,
+    "algorithm": "SplitMix64 stateless seed + event counter",
+    "seed": "831"
+  },
+  "description": "Strong field preference produces a long, sparse discharge with screened side branches.",
+  "optics": {
+    "coordinates": "normalized cube [-1,1]; anisotropic simulation extent retained in params, shown as normalized lattice",
+    "carrier": "polished box; dilute amber; exact graph filaments; optical halo only",
+    "channel_diameter": 0.007,
+    "channel_radius": 0.0035
+  },
+  "params": {
+    "root": [
+      32,
+      32,
+      32
+    ],
+    "events": 1000,
+    "material": "uniform",
+    "radius": 0.0035,
+    "slug": "branch-thunder-root",
+    "extent": [
+      2,
+      2,
+      2
+    ],
+    "description": "Strong field preference produces a long, sparse discharge with screened side branches.",
+    "orbit": 0.6,
+    "eta": 7,
+    "title": "Thunder root",
+    "seed": 831,
+    "palette": "amber-gold",
+    "n": 64
+  },
+  "title": "Thunder root",
+  "study_hash": "c9fbda213aeb235c4b25d567aa4293fc08540f3917b0d9a5b672a6b89462f5d6",
+  "source_hash": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+  "family": "branches",
+  "publication": {
+    "source_image_sha256": "f4783d82927c9a9c6012560ee7e59f09bddc9815d11c9f8ca108708f0b3bf321",
+    "webp_sha256": "1e8f3fb2408a79eff7bea1169109011a2b49bec54edb7304a48e2540e497a62b",
+    "quality": 95,
+    "width": 1600,
+    "original_retained": true,
+    "reviewed_by": "collection_render"
+  }
+}

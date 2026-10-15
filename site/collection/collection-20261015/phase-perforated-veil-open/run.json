@@ -1,0 +1,300 @@
+{
+  "id": "phase-perforated-veil-open",
+  "title": "Open veil",
+  "description": "Finite-thickness wavy membranes intersected with periodic apertures, then conservatively relaxed to time40; the initial openings are prescribed and their evolution is measured.",
+  "solver": "CPU semi-implicit conserved Cahn-Hilliard; constant mobility; stabilization 3",
+  "initialization": "Explicit periodic analytic field in studies/collection_phase.jl, initial kind membrane_open",
+  "forcing": "none",
+  "pilot": "48 cubed and 96 cubed have identical extent64; spacing changes4/3 to2/3; identical physical endtime and dt; pilot checks finiteness before highres bake",
+  "phase_parameters": {
+    "bulk": 1,
+    "kappa": 0.5,
+    "mobility": 0.8,
+    "stabilization": 3,
+    "dt": 0.25,
+    "t_end": 40
+  },
+  "temporal": "Quarter-time raw phase fields plus central xy PPM slices in temporal/; full initial and final record_state; initial analytic topology is explicitly prescribed",
+  "optical_mapping": "structure=(1+tanh(2phi))/2; activity=.06*(.8 interface+.2 material_activity); spherical viewing crop only",
+  "traces": [
+    {
+      "label": "pilot",
+      "resolution": 48,
+      "extent": [
+        64,
+        64,
+        64
+      ],
+      "spacing": 1.3333333333333333,
+      "dt": 0.25,
+      "steps": 160,
+      "elapsed_seconds": 15.353903541,
+      "history": [
+        {
+          "step": 0,
+          "time": 0,
+          "energy": 30528.27437531217,
+          "mass": -36236.58848007023,
+          "range": [
+            -0.9981779,
+            0.8956929
+          ]
+        },
+        {
+          "step": 20,
+          "time": 5,
+          "energy": 22764.308185238904,
+          "mass": -36236.588485170156,
+          "range": [
+            -0.9592596,
+            0.9316472
+          ],
+          "rms_change": 0.18903415,
+          "positive_fraction": 0.29597077546296297,
+          "sign_change_fraction": 0.016637731481481483
+        },
+        {
+          "step": 40,
+          "time": 10,
+          "energy": 20676.147063525426,
+          "mass": -36236.58819314535,
+          "range": [
+            -0.94942987,
+            0.9931223
+          ],
+          "rms_change": 0.25679243,
+          "positive_fraction": 0.29886429398148145,
+          "sign_change_fraction": 0.021846064814814815
+        },
+        {
+          "step": 60,
+          "time": 15,
+          "energy": 20062.16791366331,
+          "mass": -36236.58810289251,
+          "range": [
+            -0.95513,
+            1.0166128
+          ],
+          "rms_change": 0.2845115,
+          "positive_fraction": 0.3062427662037037,
+          "sign_change_fraction": 0.028645833333333332
+        },
+        {
+          "step": 80,
+          "time": 20,
+          "energy": 19806.87143576561,
+          "mass": -36236.588277861476,
+          "range": [
+            -0.9704666,
+            1.0221727
+          ],
+          "rms_change": 0.29891992,
+          "positive_fraction": 0.3100043402777778,
+          "sign_change_fraction": 0.03356481481481482
+        },
+        {
+          "step": 100,
+          "time": 25,
+          "energy": 19674.633409243022,
+          "mass": -36236.588068200275,
+          "range": [
+            -0.9773932,
+            1.0227276
+          ],
+          "rms_change": 0.3078286,
+          "positive_fraction": 0.31246383101851855,
+          "sign_change_fraction": 0.03833912037037037
+        },
+        {
+          "step": 120,
+          "time": 30,
+          "energy": 19594.378331784355,
+          "mass": -36236.58797066007,
+          "range": [
+            -0.9819197,
+            1.0222324
+          ],
+          "rms_change": 0.31372717,
+          "positive_fraction": 0.3156467013888889,
+          "sign_change_fraction": 0.04267939814814815
+        },
+        {
+          "step": 140,
+          "time": 35,
+          "energy": 19535.359217060723,
+          "mass": -36236.58801677264,
+          "range": [
+            -0.98565567,
+            1.0214114
+          ],
+          "rms_change": 0.31805962,
+          "positive_fraction": 0.3191189236111111,
+          "sign_change_fraction": 0.045572916666666664
+        },
+        {
+          "step": 160,
+          "time": 40,
+          "energy": 19488.783420445747,
+          "mass": -36236.58804986067,
+          "range": [
+            -0.9873324,
+            1.0207797
+          ],
+          "rms_change": 0.3214583,
+          "positive_fraction": 0.3195529513888889,
+          "sign_change_fraction": 0.044849537037037035
+        }
+      ],
+      "mean_mass_drift": 3.89006042193311e-09
+    },
+    {
+      "label": "final",
+      "resolution": 96,
+      "extent": [
+        64,
+        64,
+        64
+      ],
+      "spacing": 0.6666666666666666,
+      "dt": 0.25,
+      "steps": 160,
+      "elapsed_seconds": 58.870290458,
+      "history": [
+        {
+          "step": 0,
+          "time": 0,
+          "energy": 30864.09125274841,
+          "mass": -289940.06034474634,
+          "range": [
+            -0.9981779,
+            0.8956929
+          ]
+        },
+        {
+          "step": 20,
+          "time": 5,
+          "energy": 23550.8129610389,
+          "mass": -289940.0597757362,
+          "range": [
+            -0.9579263,
+            0.9397436
+          ],
+          "rms_change": 0.17562118,
+          "positive_fraction": 0.29755768952546297,
+          "sign_change_fraction": 0.027868200231481483
+        },
+        {
+          "step": 40,
+          "time": 10,
+          "energy": 21706.274637660284,
+          "mass": -289940.06086778454,
+          "range": [
+            -0.94850963,
+            0.992446
+          ],
+          "rms_change": 0.2359069,
+          "positive_fraction": 0.30579517505787035,
+          "sign_change_fraction": 0.038239655671296294
+        },
+        {
+          "step": 60,
+          "time": 15,
+          "energy": 21129.272568388064,
+          "mass": -289940.06025062094,
+          "range": [
+            -0.970381,
+            1.0084581
+          ],
+          "rms_change": 0.26466218,
+          "positive_fraction": 0.3131736472800926,
+          "sign_change_fraction": 0.04569046585648148
+        },
+        {
+          "step": 80,
+          "time": 20,
+          "energy": 20906.17586046904,
+          "mass": -289940.05994378985,
+          "range": [
+            -0.98560554,
+            1.0137161
+          ],
+          "rms_change": 0.2798591,
+          "positive_fraction": 0.31843623408564814,
+          "sign_change_fraction": 0.050953052662037035
+        },
+        {
+          "step": 100,
+          "time": 25,
+          "energy": 20793.312004183415,
+          "mass": -289940.0596583439,
+          "range": [
+            -0.99008036,
+            1.0160967
+          ],
+          "rms_change": 0.28875813,
+          "positive_fraction": 0.3207691333912037,
+          "sign_change_fraction": 0.05393699363425926
+        },
+        {
+          "step": 120,
+          "time": 30,
+          "energy": 20720.521944479086,
+          "mass": -289940.059228139,
+          "range": [
+            -0.99192774,
+            1.0173353
+          ],
+          "rms_change": 0.2945983,
+          "positive_fraction": 0.3213297526041667,
+          "sign_change_fraction": 0.05579969618055555
+        },
+        {
+          "step": 140,
+          "time": 35,
+          "energy": 20664.955222372202,
+          "mass": -289940.0596060306,
+          "range": [
+            -0.9920911,
+            1.0180304
+          ],
+          "rms_change": 0.29887626,
+          "positive_fraction": 0.3216552734375,
+          "sign_change_fraction": 0.05775282118055555
+        },
+        {
+          "step": 160,
+          "time": 40,
+          "energy": 20618.415776373386,
+          "mass": -289940.06011360686,
+          "range": [
+            -0.9915413,
+            1.0184202
+          ],
+          "rms_change": 0.3023312,
+          "positive_fraction": 0.3222701461226852,
+          "sign_change_fraction": 0.05966977719907408
+        }
+      ],
+      "mean_mass_drift": 2.6125248466626174e-10
+    }
+  ],
+  "source_sha256": {
+    "src/implicit_phase.jl": "c9f69ad8d2ab00bd18d678d51956effe9c52bf415d5388d5305c56b4bb351fe7",
+    "studies/collection_phase.jl": "3b959cf1e780f0da971969b657e97d0c7de9a80a6e29dd1aeb1c011894759723",
+    "src/phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b"
+  },
+  "family": "phase",
+  "shape": [
+    96,
+    96,
+    96
+  ],
+  "publication": {
+    "source_image_sha256": "a5b0f9466c2752384f60184d299607db20e893209f11b554f34784a8ab049615",
+    "webp_sha256": "e1901691562555a08bf57b70d2a32849eafe1695265d1c5d4004e8062d2e518e",
+    "quality": 95,
+    "width": 1600,
+    "original_retained": true,
+    "reviewed_by": "collection_render"
+  }
+}
