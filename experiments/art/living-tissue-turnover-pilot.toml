@@ -1,0 +1,28 @@
+id = "living-tissue-turnover-pilot"
+title = "A tissue opens the room again"
+description = "Nearly uniform active matter spends a finite reserve to build, withdraw and relocate in opposing phases, while inhibitory signals travel ahead of excitation."
+dimensions = [64, 64, 1]
+extent = [24.0, 24.0, 1.0]
+seed = 921
+dt = 0.04
+steps = 4000
+capture_every = 40
+reserve = 4.0
+
+[base]
+neural_gain = 2.5
+inhibition_gain = 2.0
+inhibition_time = 5.0
+excitation_diffusion = 0.03
+growth = 0.5
+barrier = 8.0
+
+[phase]
+renewal = 0.12
+target_precursor = 0.6
+phase_work = 0.08
+construction = 0.32
+unbuilding = 0.65
+withdrawal = 0.45
+motility = 0.05
+inhibition_diffusion = 0.15

@@ -1,0 +1,169 @@
+{
+  "study": "Wider weather: deliberately hotter thermal source",
+  "run_sha256": "e40f4b33e2474e8afcde8b877021feb565cd89259356be0979fb9e4072b9f020",
+  "shape": [
+    257,
+    257,
+    257
+  ],
+  "steps": 512,
+  "elapsed_seconds": 34.856390607,
+  "source_sha256": {
+    "studies/branch_metal_multigrid.jl": "92b8ede5460f0b5d1fc09f3589b9ba1e00c77d96002ab8d2de4814989205aad2",
+    "studies/electrothermal_archive.jl": "a7d8e280e4d0728c1a1624c6d5c3c8f6f923f0a119a2e4e87de2fa1beef871ae",
+    "src/writing.jl": "78fba7cd46f03749bdc56547b7ce5622f7ba3ea42cc34801829345dae3975e05",
+    "src/electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+    "studies/branch_solver_prototype.jl": "23ffce8e17f9bef91c6ebfabf02f92374c3e9ee7658dc7cee6925a7950cb3aa0"
+  },
+  "source_budget": {
+    "heat": 45,
+    "width": 0.035,
+    "diffusion": 0.0008,
+    "source_budget_convention": "Peak amplitude 45 held fixed; integrated Gaussian input 8.72685 times the narrower recipe. Not an equal-energy comparison.",
+    "source_integral_continuum": 0.030386903689028202,
+    "source_integral_ratio_to_narrow": 8.726847140240181
+  },
+  "saved_state_validation": {
+    "status": "passed",
+    "run_sha256": "e40f4b33e2474e8afcde8b877021feb565cd89259356be0979fb9e4072b9f020",
+    "shape": [
+      257,
+      257,
+      257
+    ],
+    "steps": 512,
+    "termination": "completed",
+    "captures": 5,
+    "conductor_observations": 1615,
+    "initial_components": 3,
+    "final_components": 3,
+    "final_pointwise_material_error": 1.7881393432617188e-06,
+    "final_relative_material_error": 2.2932766796657233e-12,
+    "final_field_sha256": {
+      "temperature": "63ec234ddd9402c627dd37a8f408d85a6a63d6ae1ef1f82e5245f5a9d372df51",
+      "dose": "7b2008c570b3cf34577f0d7508c6356d638ad3f106159b5544e65fa97f5ed462",
+      "solid": "bdfe548a77db6d50983ee3e84acdfe963f3d3640e2ab002d0c9503b19fad7fab"
+    },
+    "final_nutrient_sha256": "5421c9355b093a2b4c92e2c7c9170b497050709776602067e8e3d28a5f5d2ace",
+    "frames": [
+      {
+        "step": 0,
+        "occupied": 67,
+        "components": 3,
+        "component_sizes": [
+          24,
+          22,
+          21
+        ],
+        "geometry_sha256": "e48844262f1c5254d02a9582eb02aef862b466e3cb0ae833e7d5ced6c615c0d0"
+      },
+      {
+        "step": 128,
+        "occupied": 195,
+        "components": 3,
+        "component_sizes": [
+          70,
+          66,
+          59
+        ],
+        "geometry_sha256": "ab1136c9c89632b9373952cd79acb4464de631c2efcfdad451aa9cd193e93ea7"
+      },
+      {
+        "step": 256,
+        "occupied": 323,
+        "components": 3,
+        "component_sizes": [
+          124,
+          106,
+          93
+        ],
+        "geometry_sha256": "a6f739d0d2e73eb0fd7b71b20b2f9c7c88604787250afec18f86be95c6c8ad14"
+      },
+      {
+        "step": 384,
+        "occupied": 451,
+        "components": 3,
+        "component_sizes": [
+          172,
+          160,
+          119
+        ],
+        "geometry_sha256": "de743042ff2eb9acfbf52462b7f747ead0404e3ed71132b83f2de27ad05c8c19"
+      },
+      {
+        "step": 512,
+        "occupied": 579,
+        "components": 3,
+        "component_sizes": [
+          228,
+          201,
+          150
+        ],
+        "geometry_sha256": "af4955cccf41459e829a2a488ba2dc7969006533fec9749493a22a45bf2f1c12"
+      }
+    ]
+  },
+  "mineral_components": {
+    "event": 512,
+    "time": 1.28,
+    "shape": [
+      257,
+      257,
+      257
+    ],
+    "solid_file_sha256": "bdfe548a77db6d50983ee3e84acdfe963f3d3640e2ab002d0c9503b19fad7fab",
+    "seed_root_sizes": [
+      24,
+      21,
+      22
+    ],
+    "thresholds": [
+      {
+        "threshold": 0.007,
+        "foreground_voxels": 89848,
+        "touches_display_boundary": false,
+        "components": [
+          {
+            "voxels": 89848,
+            "seed_root_labels": [
+              0,
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "threshold": 0.02,
+        "foreground_voxels": 73239,
+        "touches_display_boundary": false,
+        "components": [
+          {
+            "voxels": 73239,
+            "seed_root_labels": [
+              0,
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "threshold": 0.04,
+        "foreground_voxels": 60025,
+        "touches_display_boundary": false,
+        "components": [
+          {
+            "voxels": 60025,
+            "seed_root_labels": [
+              0,
+              1,
+              2
+            ]
+          }
+        ]
+      }
+    ],
+    "interpretation": "Six-face connected thresholded mineral samples in the nonperiodic display box. Labels refer to connected components of the original electrical seed. Thermal diffusion itself is periodic; boundary intersection is reported explicitly. This metric is not exact isosurface-mesh topology."
+  }
+}

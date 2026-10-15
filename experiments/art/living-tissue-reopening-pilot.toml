@@ -1,0 +1,28 @@
+id = "living-tissue-reopening-pilot"
+title = "The room opens again"
+description = "Active matter constructs in one phase and spends another phase withdrawing into soluble stock, leaving space for its own later return."
+dimensions = [64, 64, 1]
+extent = [24.0, 24.0, 1.0]
+seed = 921
+dt = 0.04
+steps = 4000
+capture_every = 40
+reserve = 4.0
+
+[base]
+neural_gain = 2.5
+inhibition_gain = 2.0
+inhibition_time = 5.0
+excitation_diffusion = 0.03
+growth = 0.5
+barrier = 8.0
+
+[phase]
+renewal = 0.12
+target_precursor = 0.6
+phase_work = 0.08
+construction = 0.24
+unbuilding = 1.0
+withdrawal = 1.2
+motility = 0.10
+inhibition_diffusion = 0.15

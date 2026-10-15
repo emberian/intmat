@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Living tissue — recorded specimen</title>
+<style>
+:root{color-scheme:dark;font-family:ui-sans-serif,system-ui,sans-serif;color:#d4dedf;background:#071015}
+*{box-sizing:border-box}body{margin:0}button,select,input{font:inherit}button,select{color:inherit;background:#15252b;border:1px solid #35474f;border-radius:8px;padding:8px 12px;cursor:pointer}button:hover,select:hover{border-color:#80b2bb}button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid #8cdae3;outline-offset:3px}
+main{max-width:1440px;margin:auto;padding:32px 36px}header{display:flex;align-items:end;justify-content:space-between;gap:28px;margin-bottom:24px}h1{font-weight:450;font-size:clamp(26px,3.3vw,42px);letter-spacing:-.04em;margin:5px 0 10px}.eyebrow{color:#8ac2c8;text-transform:uppercase;letter-spacing:.16em;font-size:11px}.description{max-width:750px;color:#93a8ae;line-height:1.55;font-size:14px;margin:0}.recording{white-space:nowrap;font-size:12px;color:#82989f;padding-bottom:4px}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:28px}.specimen{position:relative;aspect-ratio:1;background:#030a0e;border:1px solid #24383f;border-radius:12px;overflow:hidden}#image{width:100%;height:100%;display:block;cursor:crosshair}.stamp{position:absolute;left:18px;top:15px;font-variant-numeric:tabular-nums;font-size:13px;pointer-events:none;color:#c9dcdf;text-shadow:0 1px 7px #000}.stamp span{color:#77959d;font-size:11px;display:block;margin-top:3px}.crosshair{position:absolute;width:15px;height:15px;border:1px solid #e1f7f4;border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);box-shadow:0 0 0 1px #071015}
+.fields{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 14px}.fields button{font-size:12px;padding:7px 11px}.fields button[aria-pressed=true]{background:#244149;border-color:#6c9ca5;color:#e7f5f5}.controls{display:flex;align-items:center;gap:12px;margin-top:16px}.controls button{min-width:72px}#timeline{width:100%;accent-color:#9fd0d6}.clock{min-width:88px;text-align:right;font-size:12px;color:#a8bdc2;font-variant-numeric:tabular-nums}.control-bottom{display:flex;justify-content:space-between;align-items:center;margin:10px 0 0;font-size:11px;color:#7e969e}.control-bottom select{font-size:11px;padding:5px 7px}.control-bottom label{display:flex;align-items:center;gap:6px}.control-bottom input{accent-color:#9fd0d6}.legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:18px;font-size:11px;color:#adc0c5}.legend i{display:inline-block;width:7px;height:7px;margin-right:6px;border-radius:50%}.b{background:#8f77b5}.m{background:#e5a176}.x{background:#94e3e6}
+aside{padding-top:3px}.panel{padding:0 0 22px;margin:0 0 22px;border-bottom:1px solid #23363e}.panel h2{font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:#98b0b7;margin:0 0 16px}.metric{display:flex;justify-content:space-between;gap:12px;margin:11px 0;font-size:13px}.metric dt{color:#8aa2aa}.metric dd{margin:0;font-variant-numeric:tabular-nums;color:#d8e7e9}.hint{font-size:12px;color:#829ca5;line-height:1.6;margin:0}.probe-label{font-size:12px;color:#bdd5d9;margin:13px 0 4px}.probe-values{font-size:12px;color:#819ca4;line-height:1.7;font-variant-numeric:tabular-nums}.trace-header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:14px;font-size:11px;color:#9eb7bf}.trace-header select{padding:4px;font-size:11px}#trace{display:block;width:100%;height:140px;cursor:pointer;margin-top:4px}.trace-scale{display:flex;justify-content:space-between;font-size:10px;color:#6e8993}.range-note{font-size:10px;line-height:1.5;color:#6f8a94;margin-top:8px}
+details{font-size:12px;color:#7f99a3;line-height:1.7}summary{cursor:pointer;color:#a3bfc7}details p{margin:10px 0}code{overflow-wrap:anywhere;font-size:10px}footer{font-size:11px;color:#647f89;margin-top:20px}
+@media(max-width:900px){main{padding:24px 18px}.layout{grid-template-columns:minmax(0,1fr) 250px;gap:20px}.recording{display:none}}
+@media(max-width:700px){main{padding:22px 14px}header{margin-bottom:20px}.layout{display:block}aside{display:grid;grid-template-columns:1fr;gap:0;margin-top:28px}.panel{margin-bottom:20px}.fields{gap:5px}.fields button{font-size:11px;padding:7px 9px}.controls{gap:8px}.clock{min-width:72px}.control-bottom{gap:12px}.legend{gap:12px}.stamp{left:12px;top:11px}h1{margin-top:8px}}
+</style>
+<main>
+  <header><div><div class="eyebrow">Interior · recorded material</div><h1 id="title"></h1><p class="description" id="description"></p></div><div class="recording" id="recording"></div></header>
+  <div class="layout">
+    <section aria-label="Recorded tissue specimen">
+      <div class="fields" aria-label="Displayed field">
+        <button data-field="combined" aria-pressed="true">Material</button><button data-field="biomass" aria-pressed="false">Living tissue</button><button data-field="matrix" aria-pressed="false">Built matrix</button><button data-field="excitation" aria-pressed="false">Excitation</button>
+      </div>
+      <div class="specimen"><canvas id="image" aria-label="Recorded tissue section; click to inspect a fixed site" tabindex="0"></canvas><div class="stamp" id="stamp"></div><div class="crosshair" id="crosshair"></div></div>
+      <div class="controls"><button id="play" aria-pressed="false">Play</button><input id="timeline" type="range" min="0" step="1" value="0" aria-label="Recorded frame"><div class="clock" id="clock"></div></div>
+      <div class="control-bottom"><span id="frame-count"></span><label><input id="loop" type="checkbox" checked> Loop</label><label>Playback <select id="speed" aria-label="Playback speed"><option value="4">4 frames/s</option><option value="8" selected>8 frames/s</option><option value="12">12 frames/s</option></select></label></div>
+      <div class="legend"><span><i class="b"></i>Living tissue</span><span><i class="m"></i>Built matrix</span><span><i class="x"></i>Positive excitation</span></div>
+    </section>
+    <aside>
+      <section class="panel"><h2>Finite material</h2><dl><div class="metric"><dt>Living tissue</dt><dd id="biomass"></dd></div><div class="metric"><dt>Built matrix</dt><dd id="matrix"></dd></div><div class="metric"><dt>Precursor</dt><dd id="precursor"></dd></div><div class="metric" id="reserve-row"><dt>Renewal reserve</dt><dd id="reserve"></dd></div><div class="metric"><dt>Spent material</dt><dd id="spent"></dd></div><div class="metric"><dt>Mean permeability</dt><dd id="permeability"></dd></div></dl><p class="hint">Excitation spends precursor and directs growth and construction. The slower matrix changes later transport and communication.</p></section>
+      <section class="panel"><h2>A fixed site</h2><p class="hint">Click the sheet to follow one location through the recording.</p><div class="probe-label" id="position"></div><div class="probe-values" id="probe-values"></div><div class="trace-header"><span>History at this site</span><select id="trace-field" aria-label="History field"><option value="excitation">Excitation</option><option value="biomass">Living tissue</option><option value="matrix">Built matrix</option></select></div><canvas id="trace" width="600" height="280" aria-label="Fixed-site history; click to scrub time"></canvas><div class="trace-scale"><span id="trace-start"></span><span id="trace-end"></span></div><div class="range-note" id="range-note"></div></section>
+      <details><summary>About this specimen</summary><p id="method"></p><p id="initialization"></p><p id="budget"></p><p>No individual organisms, inheritance or training are modeled. Colors are an artistic mapping of three recorded fields, with fixed exposure across time. The replay reads observations; it does not advance the simulation.</p><p id="source"></p></details>
+    </aside>
+  </div>
+  <footer>Space: play/pause · arrows: one recorded frame · click the history to scrub</footer>
+</main>
+<script>
+"use strict";
+const specimen=/*__TISSUE_DATA__*/;
+const $=id=>document.getElementById(id);
+const [width,height]=specimen.section.shape, plane=width*height;
+const frames=specimen.frames.map(frame=>({...frame,bytes:Uint8Array.from(atob(frame.data),c=>c.charCodeAt(0))}));
+let frame=Math.min(frames.length-1,Math.round((frames.length-1)*.4)), field="combined", playing=false,lastTick=0;
+let probe={x:Math.round((specimen.probe_site[0]-1)/(specimen.dimensions[0]-1)*(width-1)),y:Math.round((specimen.probe_site[1]-1)/(specimen.dimensions[1]-1)*(height-1))};
+const canvas=$("image"),context=canvas.getContext("2d"),trace=$("trace"),traceContext=trace.getContext("2d");
+canvas.width=width;canvas.height=height;
+$("title").textContent=specimen.title;document.title=specimen.title+" · Interior";$("description").textContent=specimen.description;
+$("recording").textContent=specimen.dimensions[2]>1 ? `${specimen.dimensions.join(" × ")} · middle section` : `${specimen.dimensions[0]} × ${specimen.dimensions[1]} recorded sheet`;
+$("timeline").max=frames.length-1;
+$("trace-start").textContent=`t = ${frames[0].time.toFixed(1)}`;$("trace-end").textContent=`t = ${frames.at(-1).time.toFixed(1)}`;
+$("method").textContent=`Native fields: ${specimen.dimensions.join(" × ")} samples. This offline preview uses a ${width} × ${height} middle section, quantized to eight bits with fixed ranges. Values outside the display range are clipped. Site values below are display approximations; whole-specimen amounts use ${specimen.inventory_units}.`;
+$("source").textContent=`Study source SHA-256: ${specimen.source_sha256["studies/living_tissue_turnover.jl"]||specimen.source_sha256["studies/living_tissue.jl"]}`;
+$("initialization").textContent=specimen.initialization;$("budget").textContent=specimen.budget;
+$("reserve-row").style.display=("reserve" in frames[0].metrics)?"flex":"none";
+const clamp=x=>Math.max(0,Math.min(1,x)),palette={biomass:[.56,.42,.75],matrix:[.90,.55,.28],excitation:[.32,.90,.94]};
+function values(bytes,x,y){const offset=x+y*width;return{biomass:bytes[offset]/255*1.2,matrix:bytes[offset+plane]/255*.6,excitation:bytes[offset+2*plane]/255*2-1};}
+function paint(){
+ const current=frames[frame],image=context.createImageData(width,height);
+ for(let y=0;y<height;y++)for(let x=0;x<width;x++){
+  const v=values(current.bytes,x,y),bulk=1-Math.exp(-2.7*v.biomass),matrix=1-Math.exp(-8*v.matrix),active=Math.max(0,v.excitation)*bulk;
+  let rgb;
+  if(field==="combined")rgb=[.015+.22*bulk+.70*matrix+.10*active,.027+.16*bulk+.35*matrix+.90*active,.039+.33*bulk+.10*matrix+1.10*active];
+  else if(field==="excitation"){
+   const positive=Math.max(0,v.excitation),negative=Math.max(0,-v.excitation);rgb=[.02+.24*positive+.52*negative,.035+.82*positive+.22*negative,.05+.86*positive+.57*negative];
+  }else{const density=field==="biomass"?bulk:matrix;rgb=palette[field].map((p,c)=>[.015,.027,.039][c]+p*density);}
+  const offset=(x+(height-1-y)*width)*4;for(let c=0;c<3;c++)image.data[offset+c]=255*Math.pow(clamp(rgb[c]),.8);image.data[offset+3]=255;
+ }
+ context.putImageData(image,0,0);
+ $("timeline").value=frame;$("clock").textContent=`t = ${current.time.toFixed(1)}`;
+ $("stamp").replaceChildren();$("stamp").append(document.createTextNode(`t = ${current.time.toFixed(1)}`));
+ const stamp=document.createElement("span");stamp.textContent=field==="combined"?"Tissue · matrix · excitation":({biomass:"Living tissue",matrix:"Built matrix",excitation:"Signed excitation"})[field];$("stamp").append(stamp);
+ $("frame-count").textContent=`Frame ${frame+1} / ${frames.length}`;
+ for(const key of ["biomass","matrix","precursor","spent"])$(key).textContent=current.metrics[key].toLocaleString(undefined,{maximumFractionDigits:1});
+ if("reserve" in current.metrics)$("reserve").textContent=current.metrics.reserve.toLocaleString(undefined,{maximumFractionDigits:1});
+ $("permeability").textContent=current.metrics.mean_permeability.toFixed(3);
+ updateProbe();
+}
+function updateProbe(){
+ const v=values(frames[frame].bytes,probe.x,probe.y);
+ const coordinates=[probe.x,probe.y].map((p,d)=>{const index=Math.round(p/([width,height][d]-1)*(specimen.dimensions[d]-1))+1;return(index-.5)*specimen.extent[d]/specimen.dimensions[d]-specimen.extent[d]/2;});
+ $("position").textContent=`x ${coordinates[0].toFixed(2)} · y ${coordinates[1].toFixed(2)}`;
+ $("probe-values").textContent=`Tissue ${v.biomass.toFixed(3)} · matrix ${v.matrix.toFixed(3)} · excitation ${v.excitation>=0?"+":""}${v.excitation.toFixed(3)}`;
+ $("crosshair").style.left=`${(probe.x+.5)/width*100}%`;$("crosshair").style.top=`${(height-probe.y-.5)/height*100}%`;
+ paintTrace();
+}
+function paintTrace(){
+ const key=$("trace-field").value,range=key==="biomass"?[0,1.2]:key==="matrix"?[0,.6]:[-1,1],w=trace.width,h=trace.height,pad=18;
+ const xs=frames.map(f=>(values(f.bytes,probe.x,probe.y)[key]-range[0])/(range[1]-range[0]));
+ traceContext.clearRect(0,0,w,h);traceContext.strokeStyle="#263c44";traceContext.lineWidth=1;
+ for(let row=0;row<3;row++){const y=pad+(h-2*pad)*row/2;traceContext.beginPath();traceContext.moveTo(pad,y);traceContext.lineTo(w-pad,y);traceContext.stroke();}
+ traceContext.strokeStyle={biomass:"#ac92ce",matrix:"#e5a176",excitation:"#94e3e6"}[key];traceContext.lineWidth=3;traceContext.beginPath();
+ xs.forEach((value,i)=>{const x=pad+(w-2*pad)*i/(frames.length-1),y=h-pad-(h-2*pad)*value;i?traceContext.lineTo(x,y):traceContext.moveTo(x,y);});traceContext.stroke();
+ const x=pad+(w-2*pad)*frame/(frames.length-1);traceContext.strokeStyle="#d6e7e9";traceContext.lineWidth=1.5;traceContext.beginPath();traceContext.moveTo(x,pad);traceContext.lineTo(x,h-pad);traceContext.stroke();
+ $("range-note").textContent=`Fixed ${key==="excitation"?"signed":"concentration"} scale: ${range[0]} to ${range[1]}. Click this history to move through time.`;
+}
+function setPlaying(value){playing=value;lastTick=performance.now();$("play").textContent=value?"Pause":"Play";$("play").setAttribute("aria-pressed",String(value));}
+function seek(index){frame=Math.max(0,Math.min(frames.length-1,Math.round(index)));paint();}
+$("play").addEventListener("click",()=>setPlaying(!playing));
+$("timeline").addEventListener("input",event=>{setPlaying(false);seek(Number(event.target.value));});
+document.querySelectorAll("[data-field]").forEach(button=>button.addEventListener("click",()=>{field=button.dataset.field;document.querySelectorAll("[data-field]").forEach(b=>b.setAttribute("aria-pressed",String(b===button)));paint();}));
+canvas.addEventListener("click",event=>{const r=canvas.getBoundingClientRect();probe={x:Math.min(width-1,Math.max(0,Math.floor((event.clientX-r.left)/r.width*width))),y:Math.min(height-1,Math.max(0,height-1-Math.floor((event.clientY-r.top)/r.height*height)))};updateProbe();});
+trace.addEventListener("click",event=>{const r=trace.getBoundingClientRect(),x=(event.clientX-r.left)/r.width*trace.width;setPlaying(false);seek((x-18)/(trace.width-36)*(frames.length-1));});
+$("trace-field").addEventListener("change",paintTrace);
+document.addEventListener("keydown",event=>{if(event.target.matches("select,input,button"))return;if(event.code==="Space"){event.preventDefault();setPlaying(!playing);}if(event.code==="ArrowLeft"||event.code==="ArrowRight"){event.preventDefault();setPlaying(false);seek(frame+(event.code==="ArrowRight"?1:-1));}});
+function tick(now){if(playing&&now-lastTick>=1000/Number($("speed").value)){lastTick=now;if(frame===frames.length-1){if($("loop").checked)seek(0);else setPlaying(false);}else seek(frame+1);}requestAnimationFrame(tick);}
+paint();requestAnimationFrame(tick);
+</script>
+</html>

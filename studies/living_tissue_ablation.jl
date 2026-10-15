@@ -3,32 +3,8 @@ using Interior, TOML, SHA, Statistics
 using Interior: JSON3
 include("living_tissue.jl")
 using .LivingTissueStudy
-
-function tissue_components(mask)
-    nx,ny=size(mask);seen=falses(nx,ny);queue=CartesianIndex{2}[];sizes=Int[]
-    for start in CartesianIndices(mask)
-        (!mask[start] || seen[start]) && continue
-        empty!(queue);push!(queue,start);seen[start]=true;head=1
-        while head<=length(queue)
-            i,j=Tuple(queue[head]);head+=1
-            for neighbor in (CartesianIndex(mod1(i-1,nx),j),CartesianIndex(mod1(i+1,nx),j),
-                CartesianIndex(i,mod1(j-1,ny)),CartesianIndex(i,mod1(j+1,ny)))
-                if mask[neighbor] && !seen[neighbor];seen[neighbor]=true;push!(queue,neighbor);end
-            end
-        end
-        push!(sizes,length(queue))
-    end
-    sort!(sizes;rev=true)
-end
-function tissue_topology(state)
-    size(state,3)==1 || throw(ArgumentError("2D topology observation required"))
-    mask=state[:,:,1,2].+state[:,:,1,3].>.15f0
-    components=tissue_components(mask);voids=tissue_components(.!mask)
-    # These are periodic grid components at an explicit threshold. A separate
-    # background component is not interpreted as a physical surrounding wall.
-    (threshold=.15,occupied_components=length(components),occupied_sizes=components,
-        void_components=length(voids),void_sizes=voids)
-end
+include("living_tissue_observations.jl")
+using .TissueObservations
 function tissue_ablation(recipe,output)
     c=TOML.parsefile(recipe);ispath(output)&&error("fresh output required")
     mkpath(output);cp(recipe,joinpath(output,"recipe.toml"));cp(@__FILE__,joinpath(output,"ablation-source.jl"))

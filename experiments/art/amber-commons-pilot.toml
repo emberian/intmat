@@ -1,0 +1,29 @@
+id = "amber-commons-pilot"
+title = "Wider weather, pilot"
+description = "Three nearby electrical roots write a shared mineral interior. Their field screening, remembered heat and depleted feedstock determine where later channels can grow."
+backend = "amd"
+resolution = 257
+events = 512
+capture_every = 128
+seed = 7331
+eta = 4.8
+tolerance = 0.00002
+dt = 0.0025
+heat = 45.0
+width = 0.035
+diffusion = 0.0008
+cooling = 0.8
+threshold = 0.03
+conversion = 0.4
+memory_gain = 1.5
+root_scale = 0.30
+stub_scale = 0.80
+solver_workgroup = [32, 4, 2]
+solver_fused_norm = true
+memory_budget_mb = 6144
+compress_captures = true
+
+# New hotter composition: hold peak amplitude while widening the Gaussian.
+source_budget_convention = "Peak amplitude 45 held fixed; integrated Gaussian input 8.72685 times the narrower recipe. Not an equal-energy comparison."
+source_integral_continuum = 0.030386903689028202
+source_integral_ratio_to_narrow = 8.726847140240181
