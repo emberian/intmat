@@ -6,13 +6,15 @@ function timestep_main()
     out=only(ARGS);ispath(out)&&error("fresh output required")
     mkpath(dirname(abspath(out)));mkdir(out)
     started=time_ns()
-    result=habitat_timestep_study(backend;size=128,founders=512,capacity=8192,
+    result=habitat_timestep_study(backend;size=parse(Int,get(ENV,"TIMESTEP_SIZE","128")),
+        founders=parse(Int,get(ENV,"TIMESTEP_FOUNDERS","512")),
+        capacity=parse(Int,get(ENV,"TIMESTEP_CAPACITY","8192")),
         reference_dt=parse(Float64,get(ENV,"TIMESTEP_REFERENCE_DT",".0005")),
         reference_steps=parse(Int,get(ENV,"TIMESTEP_REFERENCE_STEPS","32")),
         factors=Tuple(parse.(Int,split(get(ENV,"TIMESTEP_FACTORS","1,2,4,8,16"),','))),
         support_strategy=Symbol(get(ENV,"TIMESTEP_SUPPORT","axis")),
         repetitions=parse(Int,get(ENV,"TIMESTEP_REPETITIONS","1")),
-        reference_repetitions=parse(Int,get(ENV,"TIMESTEP_REFERENCE_REPETITIONS",get(ENV,"TIMESTEP_REPETITIONS","1")))),
+        reference_repetitions=parse(Int,get(ENV,"TIMESTEP_REFERENCE_REPETITIONS",get(ENV,"TIMESTEP_REPETITIONS","1"))),
         warmup=get(ENV,"TIMESTEP_WARMUP","false")=="true")
     whole_seconds=(time_ns()-started)/1e9
     report=(source=Interior.DEVICE_CELLULAR_SOURCE_PIN,runtime=device_cellular_runtime(),
