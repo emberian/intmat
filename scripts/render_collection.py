@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Resumable bounded Blender queue. Each photograph retains its own VDB, scene and log."""
 import argparse, concurrent.futures, hashlib, json, os, pathlib, subprocess, time
-from render_inputs import interfacial_inputs, source_signature, source_revision
+from render_inputs import SAVED_FRAME_RENDERERS, saved_frame_inputs, source_signature, source_revision
 P=argparse.ArgumentParser(); P.add_argument('--root',default='outputs/collection-20261015'); P.add_argument('--stage',choices=['preview','final'],default='preview'); P.add_argument('--jobs',nargs='*'); P.add_argument('--workers',type=int,default=2); P.add_argument('--threads',type=int,default=4); P.add_argument('--watch',action='store_true'); P.add_argument('--device',choices=['CPU','METAL'],default='CPU'); P.add_argument('--selected',action='store_true'); P.add_argument('--approved',action='store_true'); A=P.parse_args()
 ROOT=pathlib.Path(A.root).resolve(); REPO=pathlib.Path(__file__).resolve().parent.parent
 BLENDER='/Applications/Blender.app/Contents/MacOS/Blender'
@@ -13,8 +13,8 @@ def run(path):
  for flag in ['--bond-graph','--population']:
   if flag in args:
    i=args.index(flag)+1; args[i]=str((d/args[i]).resolve())
- renderer=REPO/'scripts'/('render_interfacial_choir.py' if j.get('renderer')=='interfacial-choir' else 'render_blender.py')
- if j.get('renderer')=='interfacial-choir':
+ renderer=REPO/'scripts'/SAVED_FRAME_RENDERERS.get(j.get('renderer'),'render_blender.py')
+ if j.get('renderer') in SAVED_FRAME_RENDERERS:
   command=[BLENDER,'-b','-t',str(A.threads),'--python',str(renderer),'--',str(d),str(d),'--device',A.device,'--image-name',out.name,'--size',str(400 if A.stage=='preview' else j.get('size',1600)),'--samples',str(16 if A.stage=='preview' else j.get('samples',96))]+args
  else:
   command=[BLENDER,'-b','-t',str(A.threads),'--python',str(renderer),'--',str(d/j.get('volume','volume')),str(out),'--device',A.device,'--size',str(400 if A.stage=='preview' else j.get('size',1600)),'--samples',str(16 if A.stage=='preview' else j.get('samples',96))]+args
@@ -33,7 +33,7 @@ def run(path):
 def ready(path):
  try:
   job=json.loads(path.read_text())
-  if job.get('renderer')=='interfacial-choir':return all(source.is_file() for source in interfacial_inputs(path.parent,job))
+  if job.get('renderer') in SAVED_FRAME_RENDERERS:return all(source.is_file() for source in saved_frame_inputs(path.parent,job))
   return (path.parent/job.get('volume','volume')/'volume.json').exists()
  except (OSError,ValueError,KeyError,IndexError):return False
 seen=set()

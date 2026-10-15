@@ -58,5 +58,31 @@ class RenderInputsTest(unittest.TestCase):
         self.assertNotIn('frames/0/solid.f32', paths)
 
 
+    def test_electrothermal_compressed_fields_and_graph_are_inputs(self):
+        self.job['renderer'] = 'electrothermal-archive'
+        selected = self.root / 'frames/10'
+        (selected / 'geometry.json').write_text('{"edges": [[1,2]]}')
+        (selected / 'temperature.f32.gz').write_bytes(b'compressed thermal field')
+        signature = source_signature(self.root, self.job)
+        paths = [entry[0] for entry in signature]
+        self.assertIn('frames/10/geometry.json', paths)
+        self.assertIn('frames/10/temperature.f32.gz', paths)
+        (selected / 'temperature.f32.gz').write_bytes(b'changed thermal field')
+        self.assertNotEqual(signature, source_signature(self.root, self.job))
+        signature = source_signature(self.root, self.job)
+        (selected / 'geometry.json').write_text('{"edges": [[2,3]]}')
+        self.assertNotEqual(signature, source_signature(self.root, self.job))
+
+    def test_electrothermal_prefers_raw_if_both_encodings_exist(self):
+        self.job['renderer'] = 'electrothermal-archive'
+        selected = self.root / 'frames/10'
+        (selected / 'geometry.json').write_text('{}')
+        (selected / 'temperature.f32').write_bytes(b'raw thermal field')
+        (selected / 'temperature.f32.gz').write_bytes(b'unused compressed field')
+        before = source_signature(self.root, self.job)
+        (selected / 'temperature.f32.gz').write_bytes(b'changed unused compression')
+        self.assertEqual(before, source_signature(self.root, self.job))
+
+
 if __name__ == '__main__':
     unittest.main()

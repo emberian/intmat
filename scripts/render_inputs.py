@@ -4,8 +4,14 @@ import json
 from pathlib import Path
 
 
-def interfacial_inputs(directory, job):
-    """Follow the same saved-frame selection as render_interfacial_choir.py."""
+SAVED_FRAME_RENDERERS = {
+    'interfacial-choir': 'render_interfacial_choir.py',
+    'electrothermal-archive': 'render_electrothermal_archive.py',
+}
+
+
+def saved_frame_inputs(directory, job):
+    """Follow each renderer's saved-frame selection and raw/gzip precedence."""
     directory = Path(directory)
     manifest = directory / 'run.json'
     run = json.loads(manifest.read_text())
@@ -23,14 +29,20 @@ def interfacial_inputs(directory, job):
     inputs = [manifest]
     for frame in frames:
         source = directory / frame['directory']
-        inputs.extend(source / name for name in ('volume.json', 'solid.f32', 'activity.f32', 'pressure.f32'))
+        if job.get('renderer') == 'electrothermal-archive':
+            inputs.extend(source / name for name in ('volume.json', 'geometry.json'))
+            for name in ('solid.f32', 'temperature.f32'):
+                raw = source / name
+                inputs.append(raw if raw.exists() else source / (name + '.gz'))
+        else:
+            inputs.extend(source / name for name in ('volume.json', 'solid.f32', 'activity.f32', 'pressure.f32'))
     return inputs
 
 
 def source_revision(directory, job):
     """Cheap watch key; ctime also detects rewrites with restored mtime."""
     directory = Path(directory)
-    inputs = interfacial_inputs(directory, job) if job.get('renderer') == 'interfacial-choir' else [
+    inputs = saved_frame_inputs(directory, job) if job.get('renderer') in SAVED_FRAME_RENDERERS else [
         path for path in sorted((directory / job.get('volume', 'volume')).glob('*'))
         if path.suffix in ('.f32', '.json') and path.name != 'optical-mapping.json']
     return tuple((str(path), path.stat().st_size, path.stat().st_mtime_ns,
@@ -39,9 +51,9 @@ def source_revision(directory, job):
 
 def source_signature(directory, job):
     directory = Path(directory)
-    if job.get('renderer') == 'interfacial-choir':
+    if job.get('renderer') in SAVED_FRAME_RENDERERS:
         records = []
-        for path in interfacial_inputs(directory, job):
+        for path in saved_frame_inputs(directory, job):
             digest = hashlib.sha256()
             with path.open('rb') as stream:
                 for block in iter(lambda: stream.read(4 * 1024 * 1024), b''):
@@ -52,3 +64,7 @@ def source_signature(directory, job):
     return [(path.name, path.stat().st_size, path.stat().st_mtime_ns)
             for path in sorted(volume.glob('*'))
             if path.suffix in ('.f32', '.json') and path.name != 'optical-mapping.json']
+
+
+# Retain the previous helper name for external queue consumers.
+interfacial_inputs = saved_frame_inputs

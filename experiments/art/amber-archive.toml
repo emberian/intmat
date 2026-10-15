@@ -1,0 +1,20 @@
+id = "amber-archive"
+title = "A weather archive"
+description = "Competing electrical trees write their warmth into amber. Mineral memory changes where the next discharge can grow."
+resolution = 513
+events = 4096
+capture_every = 64
+seed = 7331
+eta = 4.8
+tolerance = 0.00002
+dt = 0.005
+heat = 45.0
+width = 0.017
+diffusion = 0.0002
+cooling = 0.8
+threshold = 0.03
+conversion = 0.4
+memory_gain = 1.5
+memory_budget_mb = 12288
+
+compress_captures = true
