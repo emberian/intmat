@@ -96,6 +96,21 @@ class RenderInputsTest(unittest.TestCase):
         self.assertNotEqual(before, source_signature(self.root, self.job))
 
 
+    def test_turnover_tracks_native_frame_steps_and_only_consumed_fields(self):
+        self.job['renderer'] = 'turnover-tissue'
+        (self.root / 'run.json').write_text(json.dumps({'frame_steps': [0, 10]}))
+        selected = self.root / 'frames/0000010'
+        selected.mkdir()
+        for name in ('volume.json', 'biomass.f32', 'matrix.f32', 'excitation.f32'):
+            (selected / name).write_bytes(b'original')
+        before = source_signature(self.root, self.job)
+        (selected / 'memory.f32').write_bytes(b'not currently mapped optically')
+        self.assertEqual(before, source_signature(self.root, self.job))
+        for name in ('volume.json', 'biomass.f32', 'matrix.f32', 'excitation.f32'):
+            before = source_signature(self.root, self.job)
+            (selected / name).write_bytes(b'changed')
+            self.assertNotEqual(before, source_signature(self.root, self.job))
+
     def test_constructive_volume_tracks_geometry_and_consumed_fields(self):
         self.job['renderer'] = 'constructive-volume'
         selected = self.root / 'frames/10'

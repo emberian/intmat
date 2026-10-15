@@ -9,6 +9,7 @@ SAVED_FRAME_RENDERERS = {
     'electrothermal-archive': 'render_electrothermal_archive.py',
     'repair-weave': 'render_repair_weave.py',
     'constructive-volume': 'render_constructive_volume.py',
+    'turnover-tissue': 'render_turnover_tissue.py',
 }
 
 
@@ -18,20 +19,24 @@ def saved_frame_inputs(directory, job):
     manifest = directory / 'run.json'
     run = json.loads(manifest.read_text())
     args = job.get('args', [])
-    selection = 'all'
+    selection = '1500' if job.get('renderer') == 'turnover-tissue' else 'all'
     for index, argument in enumerate(args):
         if argument == '--steps':
             selection = args[index + 1]
         elif argument.startswith('--steps='):
             selection = argument.partition('=')[2]
     steps = None if selection == 'all' else set(map(int, selection.split(',')))
-    frames = [frame for frame in run['frames'] if steps is None or frame['step'] in steps]
+    recorded = ([{'step': step, 'directory': f'frames/{step:07d}'} for step in run['frame_steps']]
+                if job.get('renderer') == 'turnover-tissue' else run['frames'])
+    frames = [frame for frame in recorded if steps is None or frame['step'] in steps]
     if not frames:
         raise ValueError('No saved frames match the render selection')
     inputs = [manifest]
     for frame in frames:
         source = directory / frame['directory']
-        if job.get('renderer') == 'repair-weave':
+        if job.get('renderer') == 'turnover-tissue':
+            inputs.extend(source / name for name in ('volume.json', 'biomass.f32', 'matrix.f32', 'excitation.f32'))
+        elif job.get('renderer') == 'repair-weave':
             inputs.append(source / 'geometry.json')
         elif job.get('renderer') == 'constructive-volume':
             inputs.extend(source / name for name in ('volume.json', 'geometry.json', 'retained_a.f32', 'retained_b.f32', 'permeability.f32'))

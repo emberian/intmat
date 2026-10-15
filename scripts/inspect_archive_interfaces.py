@@ -12,7 +12,7 @@ from pathlib import Path
 import numpy as np
 
 
-def inspect(directory, thresholds):
+def inspect(directory, thresholds, max_foreground=2_000_000):
     geometry = json.loads((directory / 'geometry.json').read_text())
     volume = json.loads((directory / 'volume.json').read_text())
     shape = tuple(geometry['shape'])
@@ -43,7 +43,15 @@ def inspect(directory, thresholds):
     assert solid.size == n**3 and np.isfinite(solid).all()
     results = []
     for threshold in thresholds:
-        remaining = set(map(int, np.flatnonzero(solid >= threshold)))
+        assert np.isfinite(threshold) and threshold > 0
+        foreground = solid >= threshold
+        count = int(np.count_nonzero(foreground))
+        if count > max_foreground:
+            raise ValueError(f'{count:,} foreground voxels exceed the explicit '
+                             f'{max_foreground:,}-voxel component-workspace budget; '
+                             'choose a higher threshold or deliberately raise --max-foreground')
+        remaining = set(map(int, np.flatnonzero(foreground)))
+        del foreground
         total = len(remaining); components = []; touches_box = False
         while remaining:
             queue = [remaining.pop()]; count = 0; roots = set()
@@ -73,7 +81,9 @@ if __name__ == '__main__':
     parser.add_argument('capture', type=Path)
     parser.add_argument('--thresholds', default='.007,.02,.04')
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--max-foreground', type=int, default=2_000_000,
+                        help='Bound the Python component workspace before allocating its sets')
     args = parser.parse_args()
-    result = inspect(args.capture, [float(x) for x in args.thresholds.split(',')])
+    result = inspect(args.capture, [float(x) for x in args.thresholds.split(',')], args.max_foreground)
     args.output.write_text(json.dumps(result, indent=2) + '\n')
     print(json.dumps(result))
