@@ -1,0 +1,1038 @@
+{
+  "schema": "interior-animation",
+  "id": "second-seam",
+  "title": "The second seam",
+  "description": "A folded sheet tears under load. Delayed repair spends finite construction stock to bridge surviving endpoints; copper marks the new bonds. 193 actual mechanical states trace loading, failure and repair through time 0\u201312.",
+  "source": {
+    "specimen": "collection-20261015/second-seam",
+    "run_sha256": "e3f3e83234b43a7324ebd586096d42a95fc95808a43be53a3d90867f27203fd8",
+    "renderer_sha256": "d3771f60d9cdcd5d2f85aada3d3ea8f98dace713f62d0ddc4aefe64f472a0484",
+    "camera": {
+      "location": [
+        2.1576943397521973,
+        -3.153892993927002,
+        1.182080864906311
+      ],
+      "fixed": true,
+      "lens_mm": 55,
+      "target": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "render": {
+      "size": 960,
+      "samples": 64,
+      "device": "METAL",
+      "blender": "5.0.1"
+    },
+    "optical_settings": {
+      "size": 960,
+      "samples": 64,
+      "device": "METAL",
+      "no_skin": false,
+      "orbit": 0.6,
+      "elevation": 0.3,
+      "distance": 4.0,
+      "palette": "cobalt",
+      "target": "0,0,0"
+    },
+    "native_node_lattice": [
+      48,
+      38,
+      3
+    ],
+    "initial_nodes": 5472,
+    "simulation_dt": 0.0005,
+    "capture_every_steps": 125,
+    "source_sha256": {
+      "src/mechanics.jl": "a0370e4028aa859fb344829f0d387a62dd8defb77b25f4651f7c08b386324e45",
+      "studies/repair_weave.jl": "07ea554ff57f5d5f97cf0f2c5ce3b41e8cf1b45c598561f1a0634fa7d8273693"
+    },
+    "interpretation": "Exact deformed node positions, surviving original bonds and separately funded repair bonds. Thin optical panels appear only when all three mechanical connections survive. Materials, fibre radii and strain-to-film mapping are artistic; optical panels add no mechanical forces. Fixed camera; no temporal interpolation. Finite construction stock is a model resource, not calibrated mass; node inertia remains fixed. No self-contact or continuum-convergence claim."
+  },
+  "playback": {
+    "fps": 24,
+    "duration_seconds": 8.041666666666666,
+    "width": 960,
+    "height": 960,
+    "rendered_width": 960,
+    "rendered_height": 960,
+    "interpolation": "none; one video frame per recorded simulation sample"
+  },
+  "frames": [
+    {
+      "video_time": 0.0,
+      "simulation_time": 0,
+      "source_image_sha256": "38617070cbebd4a7cd9a7634a15c0cf2a4fe0706e5c6f54de4f2c6ec74d3dc30"
+    },
+    {
+      "video_time": 0.041666666666666664,
+      "simulation_time": 0.06250000000000004,
+      "source_image_sha256": "6ba6bdb17888052f49800377f03025e8aee9f20379cd048a6195fc65f2f2d220"
+    },
+    {
+      "video_time": 0.08333333333333333,
+      "simulation_time": 0.12500000000000008,
+      "source_image_sha256": "86401fb9e373a1cfa59f44b43e23095e97ad6c8454cfc4c99a901a68cc10a780"
+    },
+    {
+      "video_time": 0.125,
+      "simulation_time": 0.18750000000000014,
+      "source_image_sha256": "c0381d502b8f9448feef64e07c2903a0444e79255cc3f6993ce57041aaf449c2"
+    },
+    {
+      "video_time": 0.16666666666666666,
+      "simulation_time": 0.25000000000000017,
+      "source_image_sha256": "cd9ff5dcfb94a70c050cf6096e752aa325889b0acaefb69cb927208b754577f1"
+    },
+    {
+      "video_time": 0.20833333333333334,
+      "simulation_time": 0.3125000000000002,
+      "source_image_sha256": "9661dc58cf20f8acfb5f5811e0c40102d0a3b1f16341466d211a18b6bd78b658"
+    },
+    {
+      "video_time": 0.25,
+      "simulation_time": 0.3750000000000003,
+      "source_image_sha256": "f0302d8c057aca51210087540632dd460be6f6000a3fef3f662be5bbb12c3d92"
+    },
+    {
+      "video_time": 0.2916666666666667,
+      "simulation_time": 0.43750000000000033,
+      "source_image_sha256": "41d6a64eed1087537c8ed4616bfffc19a5eeb4444f5ac8b4ec058765b93feec1"
+    },
+    {
+      "video_time": 0.3333333333333333,
+      "simulation_time": 0.5000000000000003,
+      "source_image_sha256": "02497149986da792fa40b3230895d5419f2c7253738f29dc5c19e17c72117494"
+    },
+    {
+      "video_time": 0.375,
+      "simulation_time": 0.5624999999999934,
+      "source_image_sha256": "f373562725ca4ec21f64f73149a3975dc6805931f256a9de3a42395c25533b77"
+    },
+    {
+      "video_time": 0.4166666666666667,
+      "simulation_time": 0.6249999999999866,
+      "source_image_sha256": "28fb7f1cc23fec49c9e738eebd280b8e431e57343cd608eb95e046969bee3415"
+    },
+    {
+      "video_time": 0.4583333333333333,
+      "simulation_time": 0.6874999999999797,
+      "source_image_sha256": "96182125673c7d578b7da622fbfb460d19f07a13a1fe619331d4c703585d832a"
+    },
+    {
+      "video_time": 0.5,
+      "simulation_time": 0.7499999999999728,
+      "source_image_sha256": "b2569aefe4beb38fc4040f3a37840a3ecbfb650f9bd3b3b7265ce81e5f93a8c4"
+    },
+    {
+      "video_time": 0.5416666666666666,
+      "simulation_time": 0.8124999999999659,
+      "source_image_sha256": "e81285adc50b0c24e7116387f167850960ad59d49bd1f3793cd71b50f2979e8e"
+    },
+    {
+      "video_time": 0.5833333333333334,
+      "simulation_time": 0.874999999999959,
+      "source_image_sha256": "5c6e4e128e1252063c351a092158edaa81df8f4791e704a0239b1f626b9feafc"
+    },
+    {
+      "video_time": 0.625,
+      "simulation_time": 0.9374999999999521,
+      "source_image_sha256": "519f1ad3a1bac13573001fc6d90d8a9a0dca4a4cadb91547404fa626ecb17e0c"
+    },
+    {
+      "video_time": 0.6666666666666666,
+      "simulation_time": 0.9999999999999453,
+      "source_image_sha256": "47c04dd88e4421b68909f1eb5895658392d2a3ec9c519bd1de836aee57314157"
+    },
+    {
+      "video_time": 0.7083333333333334,
+      "simulation_time": 1.0624999999999385,
+      "source_image_sha256": "5e5e915a3f83a8d9f8be7482dae821aabb872db5cf8ddca81f07a445a6fab1b2"
+    },
+    {
+      "video_time": 0.75,
+      "simulation_time": 1.1249999999999316,
+      "source_image_sha256": "bedc2056eb28a933e891ee5431205dbbb3cdfb43df95348be47346af801bb42c"
+    },
+    {
+      "video_time": 0.7916666666666666,
+      "simulation_time": 1.1874999999999247,
+      "source_image_sha256": "e5c7ef3f889d3a5500f69b75649bb52dc9cccab5a7de0965e6de22998295d3df"
+    },
+    {
+      "video_time": 0.8333333333333334,
+      "simulation_time": 1.2499999999999178,
+      "source_image_sha256": "13f6a470557ef9751d766fc158e4b0e55cb552b0e342212d614e3b3261a3f3b9"
+    },
+    {
+      "video_time": 0.875,
+      "simulation_time": 1.312499999999911,
+      "source_image_sha256": "c437ccb313c1ef1289d8a5dfa9f5cd446f8085dd6b3198906cf7824e1953f848"
+    },
+    {
+      "video_time": 0.9166666666666666,
+      "simulation_time": 1.374999999999904,
+      "source_image_sha256": "e1796d889dbffdd88c53fb3aedf051cb1684178afadc829c5b61f70779b8fb12"
+    },
+    {
+      "video_time": 0.9583333333333334,
+      "simulation_time": 1.4374999999998972,
+      "source_image_sha256": "a22d080f80fdb688c5e2545168e74b9e4022822dd07f3945d9878efc83204422"
+    },
+    {
+      "video_time": 1.0,
+      "simulation_time": 1.4999999999998903,
+      "source_image_sha256": "c4ddf55badd44bb136919d0b7585676431338aa87a1aae8320676bb88f2c5ac5"
+    },
+    {
+      "video_time": 1.0416666666666667,
+      "simulation_time": 1.5624999999998834,
+      "source_image_sha256": "929d3eb6902dd2ad92d4c88a64a389538c19613868123186ae24f97970c95c11"
+    },
+    {
+      "video_time": 1.0833333333333333,
+      "simulation_time": 1.6249999999998765,
+      "source_image_sha256": "50be6cb9a66ec8696ca95a111c580eb27fdb158ae6a5c804f7afc1dc2acafe21"
+    },
+    {
+      "video_time": 1.125,
+      "simulation_time": 1.6874999999998697,
+      "source_image_sha256": "c748a7e04de75afd305a4a366b0bef1702e4e26c3f468cf62daa7e7540920008"
+    },
+    {
+      "video_time": 1.1666666666666667,
+      "simulation_time": 1.7499999999998628,
+      "source_image_sha256": "d23fa25e0d6d8f8f4b6db81b769929e7442fbcbf3c02b563c67140a9f5a1b4a5"
+    },
+    {
+      "video_time": 1.2083333333333333,
+      "simulation_time": 1.812499999999856,
+      "source_image_sha256": "03ffb1cb2a299c2d785fd02ca0fe5df7236475f07f03a989c78389b22edb03bf"
+    },
+    {
+      "video_time": 1.25,
+      "simulation_time": 1.874999999999849,
+      "source_image_sha256": "e76aaf82ae2cd12737e39e45f4e25ae9e03729bce56c61e41b0f9e0322dba004"
+    },
+    {
+      "video_time": 1.2916666666666667,
+      "simulation_time": 1.9374999999998421,
+      "source_image_sha256": "4d27731bc7387683a66d69cb7c856df26aaba7e74ea101b3bf9de4e9f99457ed"
+    },
+    {
+      "video_time": 1.3333333333333333,
+      "simulation_time": 1.9999999999998352,
+      "source_image_sha256": "03e70f9160882ec887ca7c85c4eecf3271eeea38f07599a844120b62d13bd5ae"
+    },
+    {
+      "video_time": 1.375,
+      "simulation_time": 2.062499999999856,
+      "source_image_sha256": "6478131be609db186489860cc5169765702a5e776c8d2805a30716c8a1f25f57"
+    },
+    {
+      "video_time": 1.4166666666666667,
+      "simulation_time": 2.124999999999877,
+      "source_image_sha256": "02d439a55a73d2ca224f20d160dae9c9b9932c6ac1ab58898a2d0e7db0ce41d7"
+    },
+    {
+      "video_time": 1.4583333333333333,
+      "simulation_time": 2.187499999999898,
+      "source_image_sha256": "d5641d0c43b0bb121d49623e59df5f00806227fe9f2099711d246814070ad959"
+    },
+    {
+      "video_time": 1.5,
+      "simulation_time": 2.2499999999999187,
+      "source_image_sha256": "033ec09e480e36d03e7db78677c6425fa914801ac2ffbfb703b94ff844ad458d"
+    },
+    {
+      "video_time": 1.5416666666666667,
+      "simulation_time": 2.3124999999999396,
+      "source_image_sha256": "81d53d4863d30fa65e10f5c5d169b5e13267a616380e8ecc2d1936185d0ba238"
+    },
+    {
+      "video_time": 1.5833333333333333,
+      "simulation_time": 2.3749999999999605,
+      "source_image_sha256": "643d4cea86cc5006177e71b2a8fb6694dc20b490249adf2e3c461a1439ce2a7a"
+    },
+    {
+      "video_time": 1.625,
+      "simulation_time": 2.4374999999999813,
+      "source_image_sha256": "baa1f295bc50b507fc0201fda5bae77dc3f5f1d8c515cace854d58686c08fba3"
+    },
+    {
+      "video_time": 1.6666666666666667,
+      "simulation_time": 2.500000000000002,
+      "source_image_sha256": "2eb5f3b6c0adacb9b791c1e3d0d007bea151be01b7060163ab7fd4cf49d3998a"
+    },
+    {
+      "video_time": 1.7083333333333333,
+      "simulation_time": 2.562500000000023,
+      "source_image_sha256": "f2904bafb85e75c9cfc5a24d5d4cc8485d7be706d9f8ea84560a807511cbdf40"
+    },
+    {
+      "video_time": 1.75,
+      "simulation_time": 2.625000000000044,
+      "source_image_sha256": "664df8e6ebd1f79b43e4afee430939e4ea72c6dd26dc497b080c6838fb3401c6"
+    },
+    {
+      "video_time": 1.7916666666666667,
+      "simulation_time": 2.687500000000065,
+      "source_image_sha256": "7bfa5b797352914f67caf96cbd816192f26ee6cb63737acf22bb91e45a03f157"
+    },
+    {
+      "video_time": 1.8333333333333333,
+      "simulation_time": 2.7500000000000857,
+      "source_image_sha256": "fd1d00149bcd8fedaebd50e8cd576f7d2a26695a5974401f12eb4aebe762b376"
+    },
+    {
+      "video_time": 1.875,
+      "simulation_time": 2.8125000000001066,
+      "source_image_sha256": "3b9f05bc77578415f0fbe29f80f7e5863dcfd7194596869cffe57b42b2e835c1"
+    },
+    {
+      "video_time": 1.9166666666666667,
+      "simulation_time": 2.8750000000001275,
+      "source_image_sha256": "b3d5622b02abe839e9125dcedd37844d0e342de3c1c1d140c5aa918eb256c610"
+    },
+    {
+      "video_time": 1.9583333333333333,
+      "simulation_time": 2.9375000000001483,
+      "source_image_sha256": "b164a7e3f230bdad4d4125798eb101bb5f7f0439e3f5df677c1592610fe0eba5"
+    },
+    {
+      "video_time": 2.0,
+      "simulation_time": 3.000000000000169,
+      "source_image_sha256": "a8d8a8883e1b8a7218d4efc5b103acd0615c28b90b8b1dd5b1cfcefc708cc8e3"
+    },
+    {
+      "video_time": 2.0416666666666665,
+      "simulation_time": 3.06250000000019,
+      "source_image_sha256": "ef458ddb91a832bc747912bed8243a08f5fa25f99df455865cb1a1369f1aa0d3"
+    },
+    {
+      "video_time": 2.0833333333333335,
+      "simulation_time": 3.125000000000211,
+      "source_image_sha256": "53b8b5326c2a9a2924b3801698c75c1e5a366ce6e441c910c36a6f760c4a4e7e"
+    },
+    {
+      "video_time": 2.125,
+      "simulation_time": 3.187500000000232,
+      "source_image_sha256": "cf69f4da87c42653f372ea3f9b22de0eaaee748d12c03c8a90c29ce34b144efb"
+    },
+    {
+      "video_time": 2.1666666666666665,
+      "simulation_time": 3.2500000000002527,
+      "source_image_sha256": "3c57b95f52f3f4ea727edc3960bd7f7b17391a85bf4cdb129a39b369a60d5010"
+    },
+    {
+      "video_time": 2.2083333333333335,
+      "simulation_time": 3.3125000000002736,
+      "source_image_sha256": "4f9010d9954000b6b844341483f7b0a3cda719bcdab6bf4316c1bd9d1114f383"
+    },
+    {
+      "video_time": 2.25,
+      "simulation_time": 3.3750000000002944,
+      "source_image_sha256": "53e01f05fc0b6639e66ed30c15c8f1d375ae74515ba199c0f2ee39d7aaac00f0"
+    },
+    {
+      "video_time": 2.2916666666666665,
+      "simulation_time": 3.4375000000003153,
+      "source_image_sha256": "0bcb2d59dfb4258266c3d28e59a9b2b49614aa6f41ebee422696299e2e050f2a"
+    },
+    {
+      "video_time": 2.3333333333333335,
+      "simulation_time": 3.500000000000336,
+      "source_image_sha256": "d1d47a08c252528655fbffd18dbdc90a8ce707053ae2d787d1f077b82b9dab81"
+    },
+    {
+      "video_time": 2.375,
+      "simulation_time": 3.562500000000357,
+      "source_image_sha256": "b922675a08d53544d8e317024e4bcc46fbf36401c151112e03f982e1503754ee"
+    },
+    {
+      "video_time": 2.4166666666666665,
+      "simulation_time": 3.625000000000378,
+      "source_image_sha256": "837b5691dd104a105560967c31c52c399af7e035911a68266aec92c3889f300f"
+    },
+    {
+      "video_time": 2.4583333333333335,
+      "simulation_time": 3.687500000000399,
+      "source_image_sha256": "b68a7b988b79901b4a2f6f1830eb21da40875e765d1e70cd58902ce4e3c4a890"
+    },
+    {
+      "video_time": 2.5,
+      "simulation_time": 3.7500000000004197,
+      "source_image_sha256": "5b5f554cab2ac7ccfb98fc4281f9d18ac7d588f5ef90ecce3b383f57658c0c6c"
+    },
+    {
+      "video_time": 2.5416666666666665,
+      "simulation_time": 3.8125000000004405,
+      "source_image_sha256": "9a5b495fe03caedb56ca72cf019877379645e0e5faddde4fa521beb737b4909e"
+    },
+    {
+      "video_time": 2.5833333333333335,
+      "simulation_time": 3.8750000000004614,
+      "source_image_sha256": "1f876d03c45390ebb657f4f5a394f384094d017d7f9667e81163b0815eb94864"
+    },
+    {
+      "video_time": 2.625,
+      "simulation_time": 3.9375000000004823,
+      "source_image_sha256": "e174c34a94bd213fd76aac641c3717526bbf7b5746172c7a9f0e167dafba6422"
+    },
+    {
+      "video_time": 2.6666666666666665,
+      "simulation_time": 4.000000000000503,
+      "source_image_sha256": "ed33b78f437e038a31ff49b768c11e356783799cd3328e17284b5208e3b00b29"
+    },
+    {
+      "video_time": 2.7083333333333335,
+      "simulation_time": 4.062500000000468,
+      "source_image_sha256": "b15a83198036e63ce3c79506eb3bec1f828b5614943939d0f8b8b4088d7309c8"
+    },
+    {
+      "video_time": 2.75,
+      "simulation_time": 4.125000000000433,
+      "source_image_sha256": "296325c00c8572550ad926b8376d492089a369336d7b5bf5e814c69477b91577"
+    },
+    {
+      "video_time": 2.7916666666666665,
+      "simulation_time": 4.187500000000399,
+      "source_image_sha256": "af6e7a2ff58c01d0b24e9af745438d2fdc6c2779fe0fa203ec49498e28fcbb8c"
+    },
+    {
+      "video_time": 2.8333333333333335,
+      "simulation_time": 4.250000000000364,
+      "source_image_sha256": "dc2a697efe9dbb20347cac521f73b3af376d6d29a9a74ddbc7ac4694cb2b1f66"
+    },
+    {
+      "video_time": 2.875,
+      "simulation_time": 4.3125000000003295,
+      "source_image_sha256": "98351d9c678090d845c3d78eabb1c326c043f7f496741a7f0ef721bb76bcc422"
+    },
+    {
+      "video_time": 2.9166666666666665,
+      "simulation_time": 4.375000000000295,
+      "source_image_sha256": "6c4d30a52566933ff2719998e3050d1f72b22f5591033f1cd622a2e6ee5cf765"
+    },
+    {
+      "video_time": 2.9583333333333335,
+      "simulation_time": 4.43750000000026,
+      "source_image_sha256": "c54c7da395defbccb7c322db503854521496c97e68198b3b614ef81229092f29"
+    },
+    {
+      "video_time": 3.0,
+      "simulation_time": 4.500000000000226,
+      "source_image_sha256": "0b54c71581b55b9c26a9c4785254de88968f09cc66d766fc7865525fde3400d0"
+    },
+    {
+      "video_time": 3.0416666666666665,
+      "simulation_time": 4.562500000000191,
+      "source_image_sha256": "2445e4d1b322a37c1e508cd0d97d87e827e50d17dd726040ec255e031a98f6fd"
+    },
+    {
+      "video_time": 3.0833333333333335,
+      "simulation_time": 4.625000000000156,
+      "source_image_sha256": "9c8a44ae0b5652a7b837835a8c1e11f5e2e9ed72a13e310be05dadd3ee2ea3f2"
+    },
+    {
+      "video_time": 3.125,
+      "simulation_time": 4.687500000000122,
+      "source_image_sha256": "6d82077961b9971b482ed0fcf533315d84feeb8b9e5ca1e6b158188edbf5d663"
+    },
+    {
+      "video_time": 3.1666666666666665,
+      "simulation_time": 4.750000000000087,
+      "source_image_sha256": "ee4b0039cd6b0caf59fb4d1d170c81ba43456b3cf8508746cbee6d3127c5c24f"
+    },
+    {
+      "video_time": 3.2083333333333335,
+      "simulation_time": 4.812500000000052,
+      "source_image_sha256": "9b54127cef81275bd6221eb703c2f885af153df7d2d252881461bd6e6e281dc4"
+    },
+    {
+      "video_time": 3.25,
+      "simulation_time": 4.875000000000018,
+      "source_image_sha256": "9f59ade4e6735b62d3b617e62a7ef2f6ce6d48bca1f8bc8803f97dd0a1ea6dd0"
+    },
+    {
+      "video_time": 3.2916666666666665,
+      "simulation_time": 4.937499999999983,
+      "source_image_sha256": "33bb8eeed0f5a8e585d46d965617c9e38ae4f4aadd3bf9ec1421320495232a53"
+    },
+    {
+      "video_time": 3.3333333333333335,
+      "simulation_time": 4.9999999999999485,
+      "source_image_sha256": "6528ec051a60a1e95f0fdfa2bafa27510030d908fb5b79394f5834a33d9e021f"
+    },
+    {
+      "video_time": 3.375,
+      "simulation_time": 5.062499999999914,
+      "source_image_sha256": "f825ff1ff68c74a4b0ed4af9afcc195126efc8105b27ef9692fbf26cdb3ce47d"
+    },
+    {
+      "video_time": 3.4166666666666665,
+      "simulation_time": 5.124999999999879,
+      "source_image_sha256": "507d496fef568e6b0c6db6d266002fbc9778ce87e11964036ef80a35c164253f"
+    },
+    {
+      "video_time": 3.4583333333333335,
+      "simulation_time": 5.187499999999845,
+      "source_image_sha256": "552a60c80dad092e8f54936a16bec1333ce36ef473aff3832b5b11fa7b56a3e7"
+    },
+    {
+      "video_time": 3.5,
+      "simulation_time": 5.24999999999981,
+      "source_image_sha256": "036edd605ed18668dce7e835b0a746c7b28c673a6415a84a1d2f8686c654f44f"
+    },
+    {
+      "video_time": 3.5416666666666665,
+      "simulation_time": 5.312499999999775,
+      "source_image_sha256": "14a635da7c979438ae0dd1a9ba79759a0b934df30efc22bdf6cf596928604305"
+    },
+    {
+      "video_time": 3.5833333333333335,
+      "simulation_time": 5.374999999999741,
+      "source_image_sha256": "4912a3c7a285c1e25868515a61226cc337be1eb7d86cd2779112a76d46582bfa"
+    },
+    {
+      "video_time": 3.625,
+      "simulation_time": 5.437499999999706,
+      "source_image_sha256": "a65727f6c64eafe05ce31ab7ef987f196230563f9554659e00b427ed743844d7"
+    },
+    {
+      "video_time": 3.6666666666666665,
+      "simulation_time": 5.499999999999671,
+      "source_image_sha256": "0e30480015ade1754cef04700d6fc194b8eb5cd186c951e7d43f64076a905bad"
+    },
+    {
+      "video_time": 3.7083333333333335,
+      "simulation_time": 5.562499999999637,
+      "source_image_sha256": "593d2b1b7a3fe3322d4b31226f904f8c23bd64225c42056ba266504bd804fa52"
+    },
+    {
+      "video_time": 3.75,
+      "simulation_time": 5.624999999999602,
+      "source_image_sha256": "8bdde5182a87784a529492e4103d6ab43f1cca7d6af4ee73d4c4f264ee27609b"
+    },
+    {
+      "video_time": 3.7916666666666665,
+      "simulation_time": 5.6874999999995675,
+      "source_image_sha256": "2c2897dcab84bf84a5e88bf93b35f71af354d8b2a52c80b496b272506f49795c"
+    },
+    {
+      "video_time": 3.8333333333333335,
+      "simulation_time": 5.749999999999533,
+      "source_image_sha256": "879770302fc828c802236e61e5908e01f7012d2c657ceaa0e9363c6e7305be21"
+    },
+    {
+      "video_time": 3.875,
+      "simulation_time": 5.812499999999498,
+      "source_image_sha256": "739cddc24551920b8243dc22d26dbe2e822a6bf072b3375555beabe07adf3e1d"
+    },
+    {
+      "video_time": 3.9166666666666665,
+      "simulation_time": 5.8749999999994635,
+      "source_image_sha256": "773f189fc2de3141c00817df9637f40bd436c2bfc698e2181fecd3e9d361014e"
+    },
+    {
+      "video_time": 3.9583333333333335,
+      "simulation_time": 5.937499999999429,
+      "source_image_sha256": "6c44a09ac4b7e2c91304350bef9431c1007b68ccd3d9c9a1682bc6cba3cb07ad"
+    },
+    {
+      "video_time": 4.0,
+      "simulation_time": 5.999999999999394,
+      "source_image_sha256": "7190cddaf2c73269942ded85cdc61326d2b7499796d2e82f310d1ae011f21870"
+    },
+    {
+      "video_time": 4.041666666666667,
+      "simulation_time": 6.06249999999936,
+      "source_image_sha256": "ad92632ed6dda7bcf7caf0631636323d8ceeded1356cbf09fb29de8efa078e8c"
+    },
+    {
+      "video_time": 4.083333333333333,
+      "simulation_time": 6.124999999999325,
+      "source_image_sha256": "b7570fa99bc64fd2209699c7fe9588c8ac87882acc4bca21174c029fe300d233"
+    },
+    {
+      "video_time": 4.125,
+      "simulation_time": 6.18749999999929,
+      "source_image_sha256": "5a29e1e1d7d802c62c9b35fab0c435de111bf7586ff6aa4ec84be0f38c287fbe"
+    },
+    {
+      "video_time": 4.166666666666667,
+      "simulation_time": 6.249999999999256,
+      "source_image_sha256": "0bdbed7aaf44119f76caa0d7c84faa678b03e8493ffcf1b628acfd524d4a7e63"
+    },
+    {
+      "video_time": 4.208333333333333,
+      "simulation_time": 6.312499999999221,
+      "source_image_sha256": "61be01b7ea9800851541ef5dfca920bb1c2ab5226b03a4c50def8c1cad749d3a"
+    },
+    {
+      "video_time": 4.25,
+      "simulation_time": 6.374999999999186,
+      "source_image_sha256": "d916657b7673d075b5951affaf4c5d6899bfffaae6a0f459f74d48cd06c3afa8"
+    },
+    {
+      "video_time": 4.291666666666667,
+      "simulation_time": 6.437499999999152,
+      "source_image_sha256": "8ef3a2fc2b8df901a0b391f0ceed618cae5ecac9d45ce1646ab64c9e9e7ec9a4"
+    },
+    {
+      "video_time": 4.333333333333333,
+      "simulation_time": 6.499999999999117,
+      "source_image_sha256": "9ecbe466911cdcb66c815563e436bc583158bee9c91c88968aeaf3c36b1eaa75"
+    },
+    {
+      "video_time": 4.375,
+      "simulation_time": 6.5624999999990825,
+      "source_image_sha256": "4090d97675918b77c850f069dc75b204549b6e6e1540edfd6d70dff1cbdf9d5e"
+    },
+    {
+      "video_time": 4.416666666666667,
+      "simulation_time": 6.624999999999048,
+      "source_image_sha256": "5d7ae245ec6d2f3f3abdb6e192eaa7851dee375546d87221f1d0e2624887f42d"
+    },
+    {
+      "video_time": 4.458333333333333,
+      "simulation_time": 6.687499999999013,
+      "source_image_sha256": "8ab9055c378384cb07f90da18d0a75368f7b33cc0d25bb2acd3320f9805179f0"
+    },
+    {
+      "video_time": 4.5,
+      "simulation_time": 6.749999999998979,
+      "source_image_sha256": "3def774f440e30c086eb131d0c8b2f624a3ab3d455c080e6e056957fe84d397e"
+    },
+    {
+      "video_time": 4.541666666666667,
+      "simulation_time": 6.812499999998944,
+      "source_image_sha256": "af37da3d2dcc49b5e289013c9e8f34c42fb805b52f80c7c341f716d4f16213a5"
+    },
+    {
+      "video_time": 4.583333333333333,
+      "simulation_time": 6.874999999998909,
+      "source_image_sha256": "31b3d0d83b54a5388d6032a81704bb0325149d7bbe4b04f77212325afaaf7426"
+    },
+    {
+      "video_time": 4.625,
+      "simulation_time": 6.937499999998875,
+      "source_image_sha256": "f62b3669ff6d60863060e62bba750662c51a5cd8bdf9adf93dc767f6f2d4873d"
+    },
+    {
+      "video_time": 4.666666666666667,
+      "simulation_time": 6.99999999999884,
+      "source_image_sha256": "f35962ac4a8acdaa4772e52fb5b6b17d04586f3b64a7a2a64721859c990164e1"
+    },
+    {
+      "video_time": 4.708333333333333,
+      "simulation_time": 7.062499999998805,
+      "source_image_sha256": "26ce3e1a41bc860e87ae7d13f7c80724e2c95e5f23c471df7926929dd68f6c2c"
+    },
+    {
+      "video_time": 4.75,
+      "simulation_time": 7.124999999998771,
+      "source_image_sha256": "971dee40669c4403ae629464a3f76abdca374265e7393c411d0877baf41ef1b7"
+    },
+    {
+      "video_time": 4.791666666666667,
+      "simulation_time": 7.187499999998736,
+      "source_image_sha256": "dd81289014f3f147e2ae3c1020639e92b90e4333f98f67466e89b03e58a90961"
+    },
+    {
+      "video_time": 4.833333333333333,
+      "simulation_time": 7.2499999999987015,
+      "source_image_sha256": "b2fd12a15742204c6c4cc5f5d3bbebf408fbcf0ba3b293b5e3f748e0cca27f14"
+    },
+    {
+      "video_time": 4.875,
+      "simulation_time": 7.312499999998667,
+      "source_image_sha256": "c0657d1f8ce5f59ddec6dfec2ccc3d10ef4c404a457f9f35b2556b8c1ede0223"
+    },
+    {
+      "video_time": 4.916666666666667,
+      "simulation_time": 7.374999999998632,
+      "source_image_sha256": "93dddaaa2d945aa93fcfc332c8a58ebf8d19afef0a0d5f7f79bc12a9db68955c"
+    },
+    {
+      "video_time": 4.958333333333333,
+      "simulation_time": 7.437499999998598,
+      "source_image_sha256": "56267b67733f1c9767e867a375e5071f49b342f53e75daf526286a5323919869"
+    },
+    {
+      "video_time": 5.0,
+      "simulation_time": 7.499999999998563,
+      "source_image_sha256": "e91192d8694ffa7e58352077acf89355a0a5a42f593cf30673ede98154bc1e93"
+    },
+    {
+      "video_time": 5.041666666666667,
+      "simulation_time": 7.562499999998528,
+      "source_image_sha256": "86e08bfff5a270ebb51cd9914f0d60c7cf5a962a769bd59c1d197d6858a2f265"
+    },
+    {
+      "video_time": 5.083333333333333,
+      "simulation_time": 7.624999999998494,
+      "source_image_sha256": "f2cbbd9cec8e38511fb8af828ccc92b218574aa3c9df9d23e48e9c9692a21f8b"
+    },
+    {
+      "video_time": 5.125,
+      "simulation_time": 7.687499999998459,
+      "source_image_sha256": "65500b549c8803df2df1f8ec242c9c83af4022e220b8531e81309619db5c6c58"
+    },
+    {
+      "video_time": 5.166666666666667,
+      "simulation_time": 7.749999999998424,
+      "source_image_sha256": "6a2feca2b487c4e20c5c7500559859f1ab7bcb0c0c578ba7ed1fc871523cb467"
+    },
+    {
+      "video_time": 5.208333333333333,
+      "simulation_time": 7.81249999999839,
+      "source_image_sha256": "da523379de3f1bdd6e26f0d19d08651d4b49baaa8d813e840c1a52fc0ee07d8c"
+    },
+    {
+      "video_time": 5.25,
+      "simulation_time": 7.874999999998355,
+      "source_image_sha256": "ff1eee38cde05f0af26f586b359952a53c80f3e6d3fea61c4dd3b70cc1d5384c"
+    },
+    {
+      "video_time": 5.291666666666667,
+      "simulation_time": 7.9374999999983205,
+      "source_image_sha256": "711d6cf3402334c2532c4ee6ade14ae799adb553a557b3ba795ca59a41aec6fd"
+    },
+    {
+      "video_time": 5.333333333333333,
+      "simulation_time": 7.999999999998286,
+      "source_image_sha256": "d8b115ab1639a1ff64915e486a646645dbbb801d650605a9a948c2665abe9c4c"
+    },
+    {
+      "video_time": 5.375,
+      "simulation_time": 8.062499999998362,
+      "source_image_sha256": "38ee58ceb3102de9d8f77bae1573fe5e0caf9abe7032166d233ea172bd81c756"
+    },
+    {
+      "video_time": 5.416666666666667,
+      "simulation_time": 8.124999999998439,
+      "source_image_sha256": "81dd700e7e444c0dbc399be90af4643b80853b164e66e5761d9c02f638160cbb"
+    },
+    {
+      "video_time": 5.458333333333333,
+      "simulation_time": 8.187499999998515,
+      "source_image_sha256": "c12705711965f7c8f74ed495395c9f44da5c420c757c351226dc75319505c18f"
+    },
+    {
+      "video_time": 5.5,
+      "simulation_time": 8.249999999998591,
+      "source_image_sha256": "6c85d3dee97fd7ad8f8c9fba5eb2eca4dd94ff004995397ed1d84a3d28c0b7d8"
+    },
+    {
+      "video_time": 5.541666666666667,
+      "simulation_time": 8.312499999998668,
+      "source_image_sha256": "44cd1fa5c2376bb74a58933e950bdf439abfb7bd9bcde7376d6b60eefc98cac2"
+    },
+    {
+      "video_time": 5.583333333333333,
+      "simulation_time": 8.374999999998744,
+      "source_image_sha256": "e1063af05ce36ab214be98889b7a0a14095ef806022e469280b51305a3b06310"
+    },
+    {
+      "video_time": 5.625,
+      "simulation_time": 8.43749999999882,
+      "source_image_sha256": "538fe82de1772863320582318c61ffe2ad640cedc2237736b89c32529ac7af76"
+    },
+    {
+      "video_time": 5.666666666666667,
+      "simulation_time": 8.499999999998897,
+      "source_image_sha256": "488e7ac90af47716b17922109307a3540ec028fa31bc2ece80819dc8c09241d6"
+    },
+    {
+      "video_time": 5.708333333333333,
+      "simulation_time": 8.562499999998973,
+      "source_image_sha256": "4608d9c035e69fb6d665d9e3bd0ae4ec7b53892f53ef93b8c4c88ef2b4e66fb3"
+    },
+    {
+      "video_time": 5.75,
+      "simulation_time": 8.62499999999905,
+      "source_image_sha256": "57b27eb9571b44640e56cc866859bee93c7d44ea3dbb79a9244223856a22ffc2"
+    },
+    {
+      "video_time": 5.791666666666667,
+      "simulation_time": 8.687499999999126,
+      "source_image_sha256": "6b59f0e68c833f6fc5c4b0b9493c6c61cb3696dcd4c69eeabcfc1ea9646d7ec6"
+    },
+    {
+      "video_time": 5.833333333333333,
+      "simulation_time": 8.749999999999202,
+      "source_image_sha256": "15d7070206cf4726af2c83fbe633cbaa38611ffe61156bd46cef874913c09d08"
+    },
+    {
+      "video_time": 5.875,
+      "simulation_time": 8.812499999999279,
+      "source_image_sha256": "0240d6596e3a914985fff6ab5928552b90b3ed5b81a0adeaf714f6d2ad6d06d6"
+    },
+    {
+      "video_time": 5.916666666666667,
+      "simulation_time": 8.874999999999355,
+      "source_image_sha256": "fa7181fb68c0a82ccbf62810d745e50db493623591e00b2d9535113934991e8b"
+    },
+    {
+      "video_time": 5.958333333333333,
+      "simulation_time": 8.937499999999432,
+      "source_image_sha256": "8c5207c78e710bb974aa78f90845dc205e7daaa2c22048957afcfebfda2cc577"
+    },
+    {
+      "video_time": 6.0,
+      "simulation_time": 8.999999999999508,
+      "source_image_sha256": "f858ccc4ad79e44eea59f3f7e43db5e46ccc86856e1400eb40bbc3fe131f18a8"
+    },
+    {
+      "video_time": 6.041666666666667,
+      "simulation_time": 9.062499999999584,
+      "source_image_sha256": "9201141d6454681440521d7a5faac1b0bbae9bf459b7486f5d407d1838c2b3d8"
+    },
+    {
+      "video_time": 6.083333333333333,
+      "simulation_time": 9.12499999999966,
+      "source_image_sha256": "bf8ed6b5593fa96d4963a83bc992aaf1815cbf8ee0cc6063c78f6f89c3a0d2a9"
+    },
+    {
+      "video_time": 6.125,
+      "simulation_time": 9.187499999999737,
+      "source_image_sha256": "4ce91601b2d2ddbcf53d76a78522a22ef3079c3390ee075274345bad499328a3"
+    },
+    {
+      "video_time": 6.166666666666667,
+      "simulation_time": 9.249999999999813,
+      "source_image_sha256": "825116762276fe891427b2f10ad1019b879683b11f13a2ec3766dbc4d8b2e4e3"
+    },
+    {
+      "video_time": 6.208333333333333,
+      "simulation_time": 9.31249999999989,
+      "source_image_sha256": "f5d95773375c380f799ae98dced4af99c360b5de1c6338a3b81039b3df93f3a5"
+    },
+    {
+      "video_time": 6.25,
+      "simulation_time": 9.374999999999966,
+      "source_image_sha256": "32a661168b92e02405592269815724c513b483f645b7eebc17967496ced5e8ca"
+    },
+    {
+      "video_time": 6.291666666666667,
+      "simulation_time": 9.437500000000043,
+      "source_image_sha256": "bbdc93aa1dd0d4d5e4583f8b104dd73dbdc2203ba1afabff366910f9c8749bc6"
+    },
+    {
+      "video_time": 6.333333333333333,
+      "simulation_time": 9.500000000000119,
+      "source_image_sha256": "32aea1569de62cb9b38485b13be914477d375472db0851e0c614cf913531b664"
+    },
+    {
+      "video_time": 6.375,
+      "simulation_time": 9.562500000000195,
+      "source_image_sha256": "1c9ccd436a2bc1066113ef9f4ceeb80e645c12e8dc9472dbb74e5a0c41b5c249"
+    },
+    {
+      "video_time": 6.416666666666667,
+      "simulation_time": 9.625000000000272,
+      "source_image_sha256": "fbf5651bd62cdfd2af7c8c309011ac7fb2f3e47dbd7bdabf792150618997c638"
+    },
+    {
+      "video_time": 6.458333333333333,
+      "simulation_time": 9.687500000000348,
+      "source_image_sha256": "4bf350702b7a2e3e5c275c57b4a860ff8b457a4340e030fc83c651439663b654"
+    },
+    {
+      "video_time": 6.5,
+      "simulation_time": 9.750000000000425,
+      "source_image_sha256": "b48763f47c067434355a524905daabd74b1d60cec71f783a7a11d705fe1c2e48"
+    },
+    {
+      "video_time": 6.541666666666667,
+      "simulation_time": 9.812500000000501,
+      "source_image_sha256": "8a93a2bc89b94d7bd69c95e8bdd5adff98d92e6f8897b703ac835d6c91e8ee72"
+    },
+    {
+      "video_time": 6.583333333333333,
+      "simulation_time": 9.875000000000577,
+      "source_image_sha256": "e203d8f2092f8bb424fdbce368cc3f0012101607787b5fb7e4151e4f515a5ec1"
+    },
+    {
+      "video_time": 6.625,
+      "simulation_time": 9.937500000000654,
+      "source_image_sha256": "a490c8a5d4cec2f9dbdfddfd4e0cc773d4d6d627ec2b7b4a40b368c3a333b0b0"
+    },
+    {
+      "video_time": 6.666666666666667,
+      "simulation_time": 10.00000000000073,
+      "source_image_sha256": "69971181dca103a1a7e069fdbd7e6f970e26032c243b0b57b36643cc26f71e62"
+    },
+    {
+      "video_time": 6.708333333333333,
+      "simulation_time": 10.062500000000806,
+      "source_image_sha256": "f5ecb7a8993741aba04f351fd6295fff072b38b7670b2d175747183bbc138696"
+    },
+    {
+      "video_time": 6.75,
+      "simulation_time": 10.125000000000883,
+      "source_image_sha256": "9091e01824b6a52a131e16bcd289df0e8451a2d13d6361260b9e95bca3b8ee7c"
+    },
+    {
+      "video_time": 6.791666666666667,
+      "simulation_time": 10.18750000000096,
+      "source_image_sha256": "971bc81c3749e222f909f4bfaab2e46447d69de00a7f3bd4d6a0fe70404efdf3"
+    },
+    {
+      "video_time": 6.833333333333333,
+      "simulation_time": 10.250000000001036,
+      "source_image_sha256": "fd26ce48918cf371f0808f3705fc12a39e514267c3418c4f04da8d441aceecb0"
+    },
+    {
+      "video_time": 6.875,
+      "simulation_time": 10.312500000001112,
+      "source_image_sha256": "bd8c2906e654869e509a1750f9a30d517b2c10ce4b0f00645ce565794c93c3ef"
+    },
+    {
+      "video_time": 6.916666666666667,
+      "simulation_time": 10.375000000001188,
+      "source_image_sha256": "5ae5626de1e04fdb7b47d4691ca9975c0765a4133b08ee5c35612d88ce780279"
+    },
+    {
+      "video_time": 6.958333333333333,
+      "simulation_time": 10.437500000001265,
+      "source_image_sha256": "f75312b9dbc39c367e0ed2535b987d35d05ac98b6510748e22dfc47f887deebe"
+    },
+    {
+      "video_time": 7.0,
+      "simulation_time": 10.500000000001341,
+      "source_image_sha256": "af6ba821dcfa205f05b1f1903aa3ad107dfb225e0514fc4c06edc1ac0bbae6f9"
+    },
+    {
+      "video_time": 7.041666666666667,
+      "simulation_time": 10.562500000001418,
+      "source_image_sha256": "f235a5d10246555ded46f50481fc839a2cac77f3c8e180f5d8e0f6b872b44872"
+    },
+    {
+      "video_time": 7.083333333333333,
+      "simulation_time": 10.625000000001494,
+      "source_image_sha256": "83d8f4f8f2ae65fdd6c45618805e8e19836903d61286ab06b731ad02ff6d9eea"
+    },
+    {
+      "video_time": 7.125,
+      "simulation_time": 10.68750000000157,
+      "source_image_sha256": "acc0b6de48c1d96506130685f3f7c415d517714660dcb5da053f00467cce0b04"
+    },
+    {
+      "video_time": 7.166666666666667,
+      "simulation_time": 10.750000000001647,
+      "source_image_sha256": "52ad9409f21fc5b6c193497f2b06618a7770bbce4f64d476f19de3a83469460e"
+    },
+    {
+      "video_time": 7.208333333333333,
+      "simulation_time": 10.812500000001723,
+      "source_image_sha256": "9a637eea6ee46a301b457ba21f9ff6f7125023acc88a742852c3db16cd892d5e"
+    },
+    {
+      "video_time": 7.25,
+      "simulation_time": 10.8750000000018,
+      "source_image_sha256": "bf3148aab63a11374a8ba0527fea46f3c82d2e66e4fcfdf83b9683a8960da44e"
+    },
+    {
+      "video_time": 7.291666666666667,
+      "simulation_time": 10.937500000001876,
+      "source_image_sha256": "491a262922672d0e2f1dbbe973f2cde6b628794dd509a08b20e8eb5e1db10821"
+    },
+    {
+      "video_time": 7.333333333333333,
+      "simulation_time": 11.000000000001952,
+      "source_image_sha256": "24a382eb82c54b9c819c48e18704390e189bf5740d0863c42406a783ea830e4e"
+    },
+    {
+      "video_time": 7.375,
+      "simulation_time": 11.062500000002029,
+      "source_image_sha256": "7ac90903ad871a3ad6c55999c1398ab4f6817cd794c155439f897ecb2fbb6998"
+    },
+    {
+      "video_time": 7.416666666666667,
+      "simulation_time": 11.125000000002105,
+      "source_image_sha256": "735fdba5ed95511eaaae8e97a94f283a648b93ff402b85bf930f8135717b4881"
+    },
+    {
+      "video_time": 7.458333333333333,
+      "simulation_time": 11.187500000002181,
+      "source_image_sha256": "6a80d63b338693667f2cb6c329d27bcec09c7edf5cea291c597fb3d2bb3daaf4"
+    },
+    {
+      "video_time": 7.5,
+      "simulation_time": 11.250000000002258,
+      "source_image_sha256": "4b7e751f5511a3134123efd2a059c34c2654ffc37412a55e14cdaebbba1642f4"
+    },
+    {
+      "video_time": 7.541666666666667,
+      "simulation_time": 11.312500000002334,
+      "source_image_sha256": "bf603a9d91d69b278a1b620bc5f63d80615bcdb5082bbb35f4f692c001135083"
+    },
+    {
+      "video_time": 7.583333333333333,
+      "simulation_time": 11.37500000000241,
+      "source_image_sha256": "043a83ff719380b67c750bff2faf88dd5bc0e655533c22954d9282782fc79def"
+    },
+    {
+      "video_time": 7.625,
+      "simulation_time": 11.437500000002487,
+      "source_image_sha256": "a67ea3c8cc692040fd0435f71fbf273adf9975e5202ef83915b8cc995444a5e7"
+    },
+    {
+      "video_time": 7.666666666666667,
+      "simulation_time": 11.500000000002563,
+      "source_image_sha256": "f755cb19fbbc33e9de725c95c35bd7bc7f69a206c4feb4733ab70def7bfcefaf"
+    },
+    {
+      "video_time": 7.708333333333333,
+      "simulation_time": 11.56250000000264,
+      "source_image_sha256": "46048bcd7b781c8749be47a61f6fbef6ce090ef0432eec50dfdfd7c63355e19e"
+    },
+    {
+      "video_time": 7.75,
+      "simulation_time": 11.625000000002716,
+      "source_image_sha256": "dd5ba8cc75777f7f764f304ac86a5da85be356fa4903bf6e5302c5591e62efd4"
+    },
+    {
+      "video_time": 7.791666666666667,
+      "simulation_time": 11.687500000002792,
+      "source_image_sha256": "5cf6e7d4ad7cde3e8cb63e7549bc53afbab76b0eea46b24a802209e7d35a953e"
+    },
+    {
+      "video_time": 7.833333333333333,
+      "simulation_time": 11.750000000002869,
+      "source_image_sha256": "55d02f059831fd5c304fccf0d00b75728a034e4ca6c6903097a1db6f83541357"
+    },
+    {
+      "video_time": 7.875,
+      "simulation_time": 11.812500000002945,
+      "source_image_sha256": "84a8d496303b52a893e8bd1993e3112bbbe1f27e8fb83ce5b13abdf4b67aa36d"
+    },
+    {
+      "video_time": 7.916666666666667,
+      "simulation_time": 11.875000000003022,
+      "source_image_sha256": "ee82d8590a42fb86d4d29cb60f86106570ed1f0f5684a4925aa4e4122d22addd"
+    },
+    {
+      "video_time": 7.958333333333333,
+      "simulation_time": 11.937500000003098,
+      "source_image_sha256": "9cd4a137cfe6a2f342f82f7afd5bf55bb6fe0df1057293e0a924c1223c84c1c4"
+    },
+    {
+      "video_time": 8.0,
+      "simulation_time": 12.000000000003174,
+      "source_image_sha256": "0aeb65e2858d4c4cc5c033fed4ae93c445a9f009640e0286e139fedf91ff62c6"
+    }
+  ],
+  "review": {
+    "sequence_sha256": "27580dd8ef61dffcc6be05d89e14488b572ac95ddbe0352626e1924bd8f8f385",
+    "reviewed_by": "Codex material artist"
+  },
+  "poster_frame_index": 120,
+  "video_sha256": "840ce4b5775ba20fd993d6ffc022d44fd26e9ace0dc850b0ff0eda942af73516",
+  "poster_sha256": "bb986a9d7e3710d5d5c23fcdfccdc79b08ee2660043adac5b9e31d77efa5927a"
+}

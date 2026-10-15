@@ -1,0 +1,263 @@
+{
+  "schema": "interior-animation",
+  "id": "packing-counterpoint",
+  "title": "A room in counterpoint",
+  "description": "Persistent dark framework encloses a changing field of light. Chosen orange and blue emission follows the actual signed activity inside material that builds, withdraws and rearranges itself. A fixed cutaway observes 33 native three-dimensional states from time 16 to 80.",
+  "source": {
+    "specimen": "collection-20261015/packing-counterpoint",
+    "native_shape": [
+      128,
+      128,
+      128
+    ],
+    "physical_extent": [
+      24,
+      24,
+      24
+    ],
+    "simulation_dt": 0.00125,
+    "capture_every_steps": 1600,
+    "source_run_sha256": "e358ecac491ee3a02c409539ef3deba57d7c60461bb2181a5e6226a1ce14d30c",
+    "renderer_sha256": "0b12c6943c98ea592c97575b9e33d3336541335feb019f35426c96c672db3fd9",
+    "simulation_source_sha256": {
+      "studies/living_tissue_packing.jl": "51b19bca9039dff39edf6ef1346ef3a8abad73534e95aa9e92aaeb1e98105a84",
+      "studies/living_tissue_runner.jl": "93b837249cc0d0dbdd7b6fa609a067c8710c109e3572785a1f76485081e6fdb3",
+      "studies/living_tissue.jl": "43a5e722e08963124c186147b2d15a54963292828e1c1064c2f277782a5816f0",
+      "studies/living_tissue_turnover_run.jl": "5905f8bddc0e19b6377e942c65f169b45fef1a0e826e45f8be26bf54c596897d",
+      "src/recurrent_material.jl": "e9457d0d6e31f74950fa4be8ef84b138b020c0de7fc4b95c9a7f3cd5db148347",
+      "studies/living_tissue_packing_run.jl": "090b0f4f4ed6865f4a20795de907b1f861d495c3d22adfcb0f01492812577700",
+      "studies/living_tissue_observations.jl": "f3fa17688e3fafe1bcfca5ea331e91984dab077e67fad09138e66493a3b1215c",
+      "studies/living_tissue_turnover.jl": "ca543a8a3eb6e1eb3c93cfc4e16b86f03674ab6ca9598bdf328988ac09f76617",
+      "src/core.jl": "b4302b90eaeba213360e8a15ce8b7e4cb4c491606657e3e500d2fb8507753a52"
+    },
+    "renderer": "scripts/render_turnover_tissue.py",
+    "blender": {
+      "version": "5.2.2 LTS",
+      "revision": "d13f752e3b9c"
+    },
+    "camera": {
+      "location": [
+        2.705737590789795,
+        -3.7900314331054688,
+        2.079578399658203
+      ],
+      "lens_mm": 55,
+      "target": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "fixed": true
+    },
+    "render": {
+      "size": 960,
+      "samples": 48,
+      "device": "CPU",
+      "threads": 2
+    },
+    "optical_mapping": {
+      "optics": "phase-volume",
+      "bulk_iso": 0.27,
+      "matrix_iso": 0.12,
+      "phase_threshold": 0.18,
+      "phase_gain": 15,
+      "density_gain": 0.3,
+      "cut_x": -0.12,
+      "cut_y": 0.18
+    },
+    "interpretation": "Capacity-limited Julia packing starts from nearly uniform matter with two-percent bandlimited noise, without drawn anatomy or time-dependent forcing. Finite reserve pays material building, withdrawal, dissolution and recipient-limited exchange. Native matrix M=.12 is displayed as dark titanium; density is .3max(B+M-.27,0), chosen emission is15max(abs(x)-.18,0)clip((B+M-.27)/(.9-.27),0,1), with a fixed cyan/orange ramp from actual signed x. The observation wedge, material optics and luminescence are display choices, not simulated fracture or optical feedback. The initial material may have no visible contour or strong activity. This is a distinct law from The hollowing. Native128\u00b3 is not a spatial-convergence claim. A contiguous selection of original observations, no interpolated/reversed frames.",
+    "retained_original_frame_count": 41,
+    "displayed_original_frame_indices": [
+      8,
+      40
+    ],
+    "displayed_simulation_time_range": [
+      15.999999642372131,
+      79.99999821186066
+    ],
+    "selection": "Contiguous excerpt begins at the visually reviewed optical onset; all41 original captures and rendered images are retained. Fixed transfer functions and exposure throughout."
+  },
+  "playback": {
+    "fps": 6,
+    "duration_seconds": 5.5,
+    "width": 960,
+    "height": 960,
+    "rendered_width": 960,
+    "rendered_height": 960,
+    "interpolation": "none; one video frame per recorded simulation sample"
+  },
+  "frames": [
+    {
+      "video_time": 0.0,
+      "simulation_time": 15.999999642372131,
+      "source_image_sha256": "1a055d3641edc390c6f1e0366a285bdaf411fe49257b5dd383f4755677c2399c"
+    },
+    {
+      "video_time": 0.16666666666666666,
+      "simulation_time": 17.999999597668648,
+      "source_image_sha256": "8c226c2f78017e1650c7c3104a0728392df73c951a5f0fa3d0677e863e3e1699"
+    },
+    {
+      "video_time": 0.3333333333333333,
+      "simulation_time": 19.999999552965164,
+      "source_image_sha256": "5955fb502e79daf75bb1f11dd38c218edfd6d40a83ae808b31fb955cf79950f2"
+    },
+    {
+      "video_time": 0.5,
+      "simulation_time": 21.99999950826168,
+      "source_image_sha256": "24e0181a0350e1e5efaafa3f25a32defb3d5cd9d7a02198ed42c06a066471c6f"
+    },
+    {
+      "video_time": 0.6666666666666666,
+      "simulation_time": 23.999999463558197,
+      "source_image_sha256": "8c1592d02a480878a06a51c8927cc37447ac5dafac17d84ada90d07455d2f434"
+    },
+    {
+      "video_time": 0.8333333333333334,
+      "simulation_time": 25.999999418854713,
+      "source_image_sha256": "af28cdb51c895771fd84657903a8ab5589bd579d8c508f864c86bbf8fcfe88e1"
+    },
+    {
+      "video_time": 1.0,
+      "simulation_time": 27.99999937415123,
+      "source_image_sha256": "b8ca58e58a3e68983169bae3ea6407d80c4a8cd91bb7721ebed086f11666d1d7"
+    },
+    {
+      "video_time": 1.1666666666666667,
+      "simulation_time": 29.999999329447746,
+      "source_image_sha256": "cd92f4e4c3ddd73d792e674d9b9bd5d312af3fe0450e259264500071c62b5a8e"
+    },
+    {
+      "video_time": 1.3333333333333333,
+      "simulation_time": 31.999999284744263,
+      "source_image_sha256": "03d44e815c8eea3a238c4fec7441f7aa4cb90bd0fd42b090c705235e334e03dc"
+    },
+    {
+      "video_time": 1.5,
+      "simulation_time": 33.99999924004078,
+      "source_image_sha256": "b7e4036e9fd5c8e9fc6112b7080f717c272d87968a0c3ff6b365c509492deb8b"
+    },
+    {
+      "video_time": 1.6666666666666667,
+      "simulation_time": 35.999999195337296,
+      "source_image_sha256": "90d7ab8f0ee4fd1a96d5ef3d19bac1a8c0e5aeecaf266e8f6930c6565e924ff8"
+    },
+    {
+      "video_time": 1.8333333333333333,
+      "simulation_time": 37.99999915063381,
+      "source_image_sha256": "5985b62d0a5e9b516140aecb462b986f03278d192e9a26e92e3eb295412b4da2"
+    },
+    {
+      "video_time": 2.0,
+      "simulation_time": 39.99999910593033,
+      "source_image_sha256": "05f3ed4e51f1896ff75b13f187af833f77ad97150c374a235bab21eba0069b65"
+    },
+    {
+      "video_time": 2.1666666666666665,
+      "simulation_time": 41.999999061226845,
+      "source_image_sha256": "5bac9d06d78190c2847aa40bda910ad644b89f6cd4f02c5207b72e51220d309b"
+    },
+    {
+      "video_time": 2.3333333333333335,
+      "simulation_time": 43.99999901652336,
+      "source_image_sha256": "d89f67c6a6ca7c306fe19907b7278582af386aed2c7ba03e86d73db06e0e8441"
+    },
+    {
+      "video_time": 2.5,
+      "simulation_time": 45.99999897181988,
+      "source_image_sha256": "4b5df40e3492de5c3cd530794cd5c1e9a9cd10e19ea77644f9252ab886c37b62"
+    },
+    {
+      "video_time": 2.6666666666666665,
+      "simulation_time": 47.999998927116394,
+      "source_image_sha256": "c02800239c84c795eea8f73e8a99567150e2e29b0b77dc84ed33d8d88ac83ccd"
+    },
+    {
+      "video_time": 2.8333333333333335,
+      "simulation_time": 49.99999888241291,
+      "source_image_sha256": "8294eb20900f42aac0908ca1a80a25d5bd99a37c4c58d9ae31310d39f67942bc"
+    },
+    {
+      "video_time": 3.0,
+      "simulation_time": 51.99999883770943,
+      "source_image_sha256": "aad36995aeaa1407d6ad32a8cf6055c3b4373dac32c4197e12ccf5a0781cd65b"
+    },
+    {
+      "video_time": 3.1666666666666665,
+      "simulation_time": 53.99999879300594,
+      "source_image_sha256": "ccd4e6a4530ba8f32483406f207e504320db095ef2f89efab440267ca9fab5fb"
+    },
+    {
+      "video_time": 3.3333333333333335,
+      "simulation_time": 55.99999874830246,
+      "source_image_sha256": "fc0c4633b608faf1edadac9d03daf21d1aebe67c85d1db1c18b24f9b341b29b3"
+    },
+    {
+      "video_time": 3.5,
+      "simulation_time": 57.999998703598976,
+      "source_image_sha256": "dcb7217f4cbd896cf2f17d9990c92f409003c59bd81e45af1c2467c3ab64d40f"
+    },
+    {
+      "video_time": 3.6666666666666665,
+      "simulation_time": 59.99999865889549,
+      "source_image_sha256": "2ba2ad6161bf3a46a05b359e1108c26352e928050fc05e2780ed837ba2268c08"
+    },
+    {
+      "video_time": 3.8333333333333335,
+      "simulation_time": 61.99999861419201,
+      "source_image_sha256": "66e904ce5b66ecd4c2c9e88ce23fe33efef6aa659e1ac7a64ec327360900afa6"
+    },
+    {
+      "video_time": 4.0,
+      "simulation_time": 63.999998569488525,
+      "source_image_sha256": "d79e6ec93bdd71c7ffbf53716685ba373f06c334b9b5fcd26cfa8c5283377207"
+    },
+    {
+      "video_time": 4.166666666666667,
+      "simulation_time": 65.99999852478504,
+      "source_image_sha256": "80b1436a01922d60f9ac3be3fe167956856e17f4b9e60cc6c07a1a52afe68ebb"
+    },
+    {
+      "video_time": 4.333333333333333,
+      "simulation_time": 67.99999848008156,
+      "source_image_sha256": "c8fface5c42c244472e44703cda80765747b7d52cb4b207b941ba6e2c3b1a32e"
+    },
+    {
+      "video_time": 4.5,
+      "simulation_time": 69.99999843537807,
+      "source_image_sha256": "320a633cdecfcd0c6e39709e8ca1230c527721921f6affbd3efd4c917e973eeb"
+    },
+    {
+      "video_time": 4.666666666666667,
+      "simulation_time": 71.99999839067459,
+      "source_image_sha256": "d2b5f9cc48bf2094bcd4af6a185d04c7844e6e21ab49e06dba5d67ed9f4164b1"
+    },
+    {
+      "video_time": 4.833333333333333,
+      "simulation_time": 73.99999834597111,
+      "source_image_sha256": "2be2285aea95afcb61c39eb86e63745918c13d38e164d509ee2e8d846dd26a79"
+    },
+    {
+      "video_time": 5.0,
+      "simulation_time": 75.99999830126762,
+      "source_image_sha256": "9e47a690294d6c0b41375e1903b818e3e600752233eeac39b3f3d84575db4922"
+    },
+    {
+      "video_time": 5.166666666666667,
+      "simulation_time": 77.99999825656414,
+      "source_image_sha256": "5a8ef1f33e9f0b363b7944db3d5efe380969ad6a0325022099c008980c7ec721"
+    },
+    {
+      "video_time": 5.333333333333333,
+      "simulation_time": 79.99999821186066,
+      "source_image_sha256": "e7d8fb7e6ebe97e867e465a27204798d8b6ac23b353b2fb8bcb562dc74a3d33f"
+    }
+  ],
+  "review": {
+    "sequence_sha256": "d74a9d2a8bbdb18d26f1a4e6c21330fef3eecf93145a7622706fcf28c7c81229",
+    "reviewed_by": "Codex material artist"
+  },
+  "poster_frame_index": 12,
+  "video_sha256": "8d39ce4d2a3610270c938d30ff8b810d4f606f1a3479aaf242e67e59499791f6",
+  "poster_sha256": "b2bfb9787b2cd33f72248b917a00ec41db9433a11e26493c7a1b385f96a3d5c9"
+}

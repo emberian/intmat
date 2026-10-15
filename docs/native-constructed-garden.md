@@ -144,3 +144,37 @@ partial state. A resumed experiment must write a fresh directory; retain the
 original output and parent checkpoint hash. No automatic reseed or rescue fuel.
 The [read-only observatory](native-garden-observatory.md) consumes completed
 frames and does not alter the simulation.
+
+
+## Completed trajectory, 15 October 2026
+
+The original source-pinned run stopped at model time659.992 after659,992 steps
+on its unchanged completed-state material-accounting guard. It did not become
+extinct: population fell from259 to43, remained near43 while stored energy
+recovered, then reached93 by the final observation. There was no reseeding or
+refueling intervention. Final material residual+.247363 exceeds tolerance.206432;
+energy residual−.131032 remains inside.687488. The final checkpoint's exact bytes
+and SHA were independently verified; no continuation was attempted. See
+[numerical diagnosis](native-garden-accounting-diagnosis.md). These numerical
+limits qualify the whole trajectory, including its apparent recovery.
+
+| Observed model time | Cells | Reciprocal bonds | Largest bonded component | Mean stored energy |
+|---|---:|---:|---:|---:|
+| 0 | 256 | 0 | 1 | 1.000 |
+| 80 | 259 | 397 | 140 | .643 |
+| 170 | 52 | 4 | 2 | .000384 |
+| 215 | 43 | 5 | 2 | .0374 |
+| 300 | 43 | 7 | 2 | .245 |
+| 400 | 43 | 11 | 5 | .814 |
+| 500 | 44 | 20 | 5 | 1.611 |
+| 600 | 64 | 58 | 9 | 1.978 |
+| 659.992 | 93 | 100 | 17 | 1.941 |
+
+All133 unique recorded times are preserved in the completed observatory, with
+native64³ or explicitly averaged32³ material fields. The
+[compact observation record](native-garden-completed-observations.json) pins
+metadata and binary hashes. Components require reciprocal bonds between live
+identities. Aggregation, fragmentation and renewed growth are measured features
+of this history, not evidence that an adaptive multicellular organism evolved.
+The earlier t100 food-access and through-t215 neural analyses are deliberately
+bounded windows; neither represents the terminal outcome.

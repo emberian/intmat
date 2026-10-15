@@ -30,6 +30,34 @@ The existing three source-pinned soaks remain separate. Their established
 observatory schedule outlives this session if necessary; its optimized soak has a
 21:54 UTC deadline. Do not extend, reseed or source-migrate those experiments.
 
+### Session convergence, 21:06 UTC
+
+The ten-hour wall window elapsed, including a usage-limit interruption around
+17:30–20:46UTC. Interrupted agent work was recovered from actual outputs; no
+lost observation was treated as a failed job or permission to rerun a history.
+The final research/art tranche is integrated at1e4e635; final films and soak
+completion records are being published in the closing snapshot.
+
+- Engineering: integrated production lifecycle prefix and audited F64 batteries
+  passed19,103 source-pinned assertions; native lattice gate passed and measured
+  complete64³ GPU throughput. Directional transport and contact reuse remain
+  explicit studies, with errors/tradeoffs reported; smaller genetic lookup did
+  not improve CPU throughput. No promised universal10× acceleration.
+- Ecology: original broad/mosaic completed normally and have longitudinal/spatial
+  records. Native garden's decline and recovery are preserved with its final
+  material-guard stop. Food-access and neural readouts answer specific questions;
+  they do not establish evolved organization. Next substantive work is conservative
+  field endpoint accounting, then separate transport/retention experiments.
+- Art: Counterpoint still and SecondSeam/Counterpoint films visually reviewed;
+  isolated browser playback passed both at960², actualtime advances/noerrors.
+  Pages staging67specimens,155.99MB/160MB; all oldart retained. Hollowing film is
+  prepared but unlaunched, optional futurework; its reviewed still is published.
+- Resources: all new render/benchmark lanes released. Only original optimized
+  CPU6–7 soak remains, unchangeddeadline21:54:05UTC. Updated heartbeat handles
+  finalverification/snapshotthenstops. No experimentdeadlineextended.
+- Preserved: immutable sources, completedcheckpoints, allactualcapturedata,
+  unrelateddickson11.png/studies/outputs, originalprofiles, privatefile boundaries.
+
 ### Work in flight, 15:02 UTC
 
 - GPU: artist owns fresh `runtime-amber-commons-20261015`, native257³/8192
@@ -485,7 +513,7 @@ against incompatible fixed aliases. A reviewed native 256³ activity-contour pho
   with abundant world inventory; this is a testable regime, not an impossibility
   claim. Separate localCPU study; live garden remains unchanged.
 
-- 20:56 UTC recovery after usage interruption: all saved work retained; no jobs
+- 20:53 UTC recovery after usage interruption: all saved work retained; no jobs
   restarted solely because agents lost tokens. Original broad/mosaic soaks ended
   normally at their12h deadlines; source/checkpoint hashes verified in
   outputs/observatory/20261015-2048.json. Optimized continuation remains live,
@@ -520,3 +548,15 @@ against incompatible fixed aliases. A reviewed native 256³ activity-contour pho
  27checks, event/identityexact, maxfloatdifference2.39e−6. Retainmemorytradeoff
   evidence, not productionthroughputpromotion. Counterpoint2000² photograph
   approved/curated; two completedfilms in finalreview/encoding.
+
+- 21:04 UTC: all133 nativegarden observation times validated in a compact
+  completed record. Minimum observedN43 at t200; meanenergy recovers.037 at215
+  to1.94 final, population93 and100reciprocalbonds/largestcomponent17. Retained
+  guardfailurequalifiesinterpretation; noresume. OriginaltwoCPUsoaks nowfully
+  reviewed:2152rows each,72archives each,final217/239cells, sustainedturnover,
+  onefounderlineage each andsparsebonds. Sixoriginal-source positional panels
+  andall-rowstatistics preserved. Remainingoptimizedsoak live/sourcevalid at
+ 21:01,~72.9MB, deadline21:54unchanged; heartbeat narrowed tofinishitthenstop.
+- SecondSeam193frames andCounterpoint33framecontiguousexcerpt16–80 independently
+  visuallyreviewed,encodedandcurated. Gallerybudget raised144→160MB toretain
+  fine seam motion at reviewedquality; existingimages/films preserved.

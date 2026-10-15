@@ -25,5 +25,5 @@ The finer run completed in 301 seconds and made 1,075 repair bonds, of which 377
 The reviewed 2000², 128-sample photograph at step 15000 is published in the
 [material gallery](https://emberian.github.io/intmat/#collection-20261015/second-seam).
 Its triangular panels expose surviving connections; copper distinguishes funded
-repairs. A finer 193-frame replay is being prepared for a fixed-camera film.
+repairs. The completed fixed-camera film uses a finer 193-frame replay, capturing every 125 steps through time 0–12. Its 960², 64-sample images were rendered consistently in Blender 5.0.1 on Metal, with no interpolation or reverse padding. The film plays at 24 fps and uses time 7.5 as its poster. Every original geometry file, image, timestamp, renderer and run hash passed validation; artist and root reviewed all 193 frames. Reviewed sequence SHA256: `27580dd8ef61dffcc6be05d89e14488b572ac95ddbe0352626e1924bd8f8f385`.
 Full PNGs, scenes and recorded mechanics remain in local outputs.
