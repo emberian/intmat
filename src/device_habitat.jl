@@ -416,11 +416,34 @@ arena_process_supported(::DeviceConstructiveEcology)=false
 arena_process_supported(::DeviceCatalyticHabitat)=false
 function owned_material_mass(h::DeviceCatalyticHabitat)
     device_cellular_status!(h.cells)
-    a=map(Array,h.arrays);feed=map(Array,h.feedstock.arrays)
-    sum(Float64,feed.fields)+sum(Float64,reinterpret(Float32,a.enzyme_bits))+sum(Float64,a.bound)+
+    a=h.arrays;feed=h.feedstock.arrays
+    # CPU/AMD support the Float64 accumulator required by strict inventory.
+    # Only scalar reduction results cross the backend boundary.
+    sum(Float64,feed.fields)+sum(x->Float64(reinterpret(Float32,x)),a.enzyme_bits)+sum(Float64,a.bound)+
         sum(Float64,a.cell_inert)+sum(Float64,a.cell_inert_low)+sum(Float64,a.grid_inert)+sum(Float64,a.grid_inert_low)
 end
 owned_material_mass(p::DeviceConstructiveEcology)=owned_material_mass(p.cells)+owned_material_mass(p.habitat)
 function process_state_finite(p::DeviceConstructiveEcology)
-    device_habitat_audit(device_habitat_snapshot(p)).finite
+    h=p.habitat
+    process_state_finite(p.cells) &&
+        all(a->!(eltype(a)<:AbstractFloat)||all(isfinite,a),values(h.arrays)) &&
+        all(a->!(eltype(a)<:AbstractFloat)||all(isfinite,a),values(h.feedstock.arrays)) &&
+        all(x->isfinite(reinterpret(Float32,x)),h.arrays.enzyme_bits)
+end
+
+"""Detached generic observation with named cell, habitat and feedstock roles.
+This full snapshot is explicit; scalar diagnostics do not call this method.
+Use device_habitat_checkpoint/device_habitat_restore for strict restart.
+"""
+function record_process_fields(p::DeviceConstructiveEcology)
+    c=record_process_fields(p.cells);h=p.habitat
+    a=map(Array,h.arrays);feed=map(Array,h.feedstock.arrays)
+    (;schema="interior-device-constructive-observation",schema_version=1,
+        catalyst_storage="habitat_enzyme_bits contains UInt32 bit patterns of Float32 catalyst inventory",
+        habitat_parameter_names=Tuple(keys(h.parameters)),habitat_parameters=Tuple(values(h.parameters)),
+        feedstock_parameter_names=Tuple(keys(h.feedstock.parameters)),feedstock_parameters=Tuple(values(h.feedstock.parameters)),
+        habitat_source_names=Tuple(keys(DEVICE_HABITAT_SOURCE_PIN)),habitat_source=Tuple(values(DEVICE_HABITAT_SOURCE_PIN)),
+        (Symbol("cells_",name)=>value for (name,value) in pairs(c))...,
+        (Symbol("habitat_",name)=>array for (name,array) in pairs(a))...,
+        (Symbol("feedstock_",name)=>array for (name,array) in pairs(feed))...)
 end

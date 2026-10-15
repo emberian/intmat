@@ -68,3 +68,45 @@ end
     @test Float64(a.grid_inert[2])+Float64(a.grid_inert_low[2])==1
     @test Float64(a.grid_ledger[2,11])+Float64(a.grid_ledger_low[2,11])==4
 end
+
+# Observation-only wrappers forbid bulk downloads while retaining ordinary
+# backend reductions. Explicit recording uses the real arrays below.
+struct HabitatNoDownload{T,N,A<:AbstractArray{T,N}} <: AbstractArray{T,N}
+    parent::A
+end
+HabitatNoDownload(a::AbstractArray{T,N}) where {T,N}=HabitatNoDownload{T,N,typeof(a)}(a)
+Base.size(a::HabitatNoDownload)=size(a.parent)
+Base.IndexStyle(::Type{<:HabitatNoDownload})=IndexLinear()
+Base.getindex(a::HabitatNoDownload,i::Int)=a.parent[i]
+Base.Array(::HabitatNoDownload)=error("unexpected full-array diagnostic download")
+
+@testset "Habitat scalar diagnostics and explicit detached recording" begin
+    w,p=constructive_device_fixture();h=p.habitat
+    before=Interior.device_habitat_snapshot(p)
+    expected=Interior.device_habitat_audit(before)
+    protected=Interior.DeviceCatalyticHabitat(p.cells,map(HabitatNoDownload,h.arrays),
+        merge(h.feedstock,(arrays=map(HabitatNoDownload,h.feedstock.arrays),)),h.parameters,h.argument,nothing)
+    @test Interior.owned_material_mass(protected)≈expected.material-Interior.owned_material_mass(p.cells) atol=1e-12
+    @test Interior.process_state_finite(Interior.DeviceConstructiveEcology(p.cells,protected))
+    h.arrays.weights[1,1,1]=NaN32
+    @test !Interior.process_state_finite(p)
+    h.arrays.weights[1,1,1]=before.arrays.weights[1,1,1]
+    h.arrays.enzyme_bits[1,1]=reinterpret(UInt32,NaN32)
+    @test !Interior.process_state_finite(p)
+    h.arrays.enzyme_bits[1,1]=before.arrays.enzyme_bits[1,1]
+    saved=record_process_fields(p)
+    @test saved.schema=="interior-device-constructive-observation"
+    @test all(k->hasproperty(saved,Symbol("habitat_",k)),keys(h.arrays))
+    @test all(k->hasproperty(saved,Symbol("feedstock_",k)),keys(h.feedstock.arrays))
+    @test all(k->hasproperty(saved,Symbol("cells_state_",k)),keys(p.cells.state))
+    @test saved.habitat_parameter_names==keys(h.parameters)
+    saved.habitat_weights[1]+=1;saved.cells_state_mass[1]+=1;saved.feedstock_fields[1]+=1
+    @test Interior.device_habitat_snapshot(p)==before
+    mktempdir() do dir
+        manifest=record_state(w,p,joinpath(dir,"state");step=0)
+        state=only(manifest["processes"])["state"]
+        @test state["habitat_enzyme_bits"]["dtype"]=="UInt32"
+        @test state["habitat_bound"]["shape"]==collect(size(h.arrays.bound))
+        @test isfile(joinpath(dir,"state",state["feedstock_fields"]["file"]))
+    end
+end
