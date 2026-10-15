@@ -1,11 +1,13 @@
-# Collection · 2026-10-15
+# First collection · 2026-10-15
 
-Thirty-six intended photographs across six material families: folded inclusions,
-branching conductors, fractured filaments, pressure surfaces and living niches.
-Selection, simulation and final photography complete independently; this document
-is a replay guide, not a claim that all 36 finals are finished. The current
-selection is the union of `outputs/collection-20261015/collection-*-selected.json`.
-Those manifests exclude pilots and rejected phase attempts.
+The first series is complete: thirty-six reviewed photographs across six material
+families, published alongside the sixteen earlier studies. Folded inclusions,
+branching conductors, fractured filaments, pressure surfaces and living niches
+provide six photographs per family. This historical replay guide records their
+original simulations and 1600² photography; later native-grid refinements are
+separate specimens and preserve this series. The final selection is the union of
+`outputs/collection-20261015/collection-*-selected.json`, excluding pilots and
+rejected phase attempts.
 
 | Family · six specimens | Actual simulation discretization | What makes the form |
 | --- | --- | --- |
@@ -67,3 +69,8 @@ sampling. `final-status.json` distinguishes completion from a pending job;
 `final.blend`, VDB and log support optical replay. Publication through
 `scripts/curate_collection.py outputs/collection-20261015` requires a matching
 visual review and writes photographs under `site/collection/collection-20261015/`.
+
+All thirty-six selected finals completed visual review with matching source-image
+hashes before publication. The gallery retains their quality-95 WebP photographs,
+small run/recipe/optical metadata and six family filters. Raw simulation fields and
+full PNG originals remain under the local output batch.

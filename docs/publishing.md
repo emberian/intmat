@@ -53,3 +53,14 @@ python3 scripts/build_pages.py
 The curator reads the batch’s `collection-*-selected.json` lists. Each published specimen requires a completed `final-status.json`, a matching approved `art-reviewed.json`, and the original final image hash. Preview approvals do not qualify. Optional `--ids ID ...` limits an incremental publication to selected specimens. The current phase selection uses the aged specimens, excluding superseded pilots.
 
 Approved 1600px finals become quality-95 WebP photographs; full PNG originals remain in local outputs. Public assets include small sanitized run, recipe, render-job and optical metadata. Titles and descriptions follow the reviewed render job; simulation metrics remain in run metadata. Raw states, scenes and private filesystem references are excluded. `site/collection-batches.json` records the curated assets without removing older publication history. CI stages the tracked files and requires no Pillow or rendering runtime.
+
+## Native-grid refinements
+
+A `refinement-YYYYMMDD` batch publishes only records in its explicit `refinement-publication-selected.json`; diagnostic comparison directories are excluded. Each record supplies `id`, `directory`, `native_shape`, `size`, and `samples`, with optional `comparison_notes`. Final status, review hashes and image dimensions must match the selected render job. Images retain the job's full pixel dimensions (for example 2400px / 128 samples), with a minimum of 1600px / 96 samples.
+
+```sh
+python3 scripts/curate_collection.py outputs/refinement-20261015
+python3 scripts/build_pages.py
+```
+
+The declared native grid must match the recorded source grid. Gallery facts distinguish that simulation grid from photograph pixels; newer refinements lead the gallery while earlier photographs remain browsable. Native solver resolution is never inferred from image dimensions or an enlarged render.
