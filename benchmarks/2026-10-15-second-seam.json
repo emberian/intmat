@@ -1,0 +1,63 @@
+{
+  "run": "outputs/collection-20261015/second-seam",
+  "run_sha256": "ecee42a9c483a7dc17a223cc643a664e7da76c2841d2d50d291f444cf70f81cd",
+  "frames": 65,
+  "bond_observations_checked": 3486175,
+  "maximum_stock_error": 1.1368683772161603e-13,
+  "maximum_energy_residual_over_max_one_work": 0.00042149868975108754,
+  "persistent_ids_and_irreversible_damage": true,
+  "repair_parent_edges_and_generations": true,
+  "finite_positions_velocities_and_nonnegative_stock": true,
+  "source_sha256": {
+    "src/mechanics.jl": "a0370e4028aa859fb344829f0d387a62dd8defb77b25f4651f7c08b386324e45",
+    "studies/repair_weave.jl": "07ea554ff57f5d5f97cf0f2c5ce3b41e8cf1b45c598561f1a0634fa7d8273693"
+  },
+  "elapsed_seconds": 301.161235875,
+  "final": {
+    "step": 24000,
+    "time": 12.000000000003174,
+    "nodes": 5472,
+    "original_bonds": 52928,
+    "new_bonds": 1075,
+    "live_bonds": 50556,
+    "broken_bonds": 3447,
+    "broken_repairs": 377,
+    "stock": 123.48245624072996,
+    "funded_stock": 13.317543759269892,
+    "stock_error": 8.526512829121202e-14,
+    "energy": {
+      "elastic": 0.11315623341764755,
+      "kinetic": 0.020413234313013055,
+      "damage": 0.8491188525701185,
+      "damping": 5.513855569689691,
+      "external_work": 6.49403833928067,
+      "total": 6.496543889990471
+    },
+    "energy_residual": 0.00250555070980063,
+    "finite": true
+  },
+  "initialization": "Deliberately curved, disordered layered lattice and weakened notch. All later positions and bond failures follow mechanical dynamics. No simulated optical feedback.",
+  "params": {
+    "ripple_amplitude": 0.05,
+    "repair_delay": 0.6,
+    "steps": 24000,
+    "dt": 0.0005,
+    "node_mass": 0.00475,
+    "grip_twist": 0.55,
+    "capture_every": 375,
+    "id": "second-seam",
+    "fold_amplitude": 0.24,
+    "description": "A folded cloth opens under opposing twists. Its wounds are bridged by a finite stock of softer copper-colored connections, which carry new loads and sometimes tear again.",
+    "repair_every": 60,
+    "repair_stock": 0.025,
+    "dimensions": [
+      48,
+      38,
+      3
+    ],
+    "fold_frequency": 5,
+    "cycle_time": 6,
+    "title": "The second seam",
+    "memory_budget_mb": 512
+  }
+}

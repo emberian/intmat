@@ -1,0 +1,17 @@
+id = "second-seam"
+title = "The second seam"
+description = "A folded cloth opens under opposing twists. Its wounds are bridged by a finite stock of softer copper-colored connections, which carry new loads and sometimes tear again."
+dimensions = [48, 38, 3]
+dt = 0.0005
+steps = 24000
+capture_every = 375
+cycle_time = 6.0
+repair_every = 60
+repair_delay = 0.6
+repair_stock = 0.025
+grip_twist = 0.55
+node_mass = 0.00475
+fold_amplitude = 0.24
+fold_frequency = 5.0
+ripple_amplitude = 0.05
+memory_budget_mb = 512

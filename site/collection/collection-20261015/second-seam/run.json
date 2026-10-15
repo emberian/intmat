@@ -1,0 +1,1877 @@
+{
+  "id": "second-seam",
+  "title": "The second seam",
+  "family": "interfaces",
+  "description": "A folded spring cloth remembers its wounds in softer connections. Opposing twists open its edge into several depths; copper marks new bonds paid from a finite construction stock.",
+  "steps": 24000,
+  "time": 12.000000000003174,
+  "dt": 0.0005,
+  "elapsed_seconds": 301.161235875,
+  "params": {
+    "ripple_amplitude": 0.05,
+    "repair_delay": 0.6,
+    "steps": 24000,
+    "dt": 0.0005,
+    "node_mass": 0.00475,
+    "grip_twist": 0.55,
+    "capture_every": 375,
+    "id": "second-seam",
+    "fold_amplitude": 0.24,
+    "description": "A folded cloth opens under opposing twists. Its wounds are bridged by a finite stock of softer copper-colored connections, which carry new loads and sometimes tear again.",
+    "repair_every": 60,
+    "repair_stock": 0.025,
+    "dimensions": [
+      48,
+      38,
+      3
+    ],
+    "fold_frequency": 5,
+    "cycle_time": 6,
+    "title": "The second seam",
+    "memory_budget_mb": 512
+  },
+  "frames": [
+    {
+      "step": 0,
+      "time": 0,
+      "directory": "frames/00000"
+    },
+    {
+      "step": 375,
+      "time": 0.18750000000000014,
+      "directory": "frames/00375"
+    },
+    {
+      "step": 750,
+      "time": 0.3750000000000003,
+      "directory": "frames/00750"
+    },
+    {
+      "step": 1125,
+      "time": 0.5624999999999934,
+      "directory": "frames/01125"
+    },
+    {
+      "step": 1500,
+      "time": 0.7499999999999728,
+      "directory": "frames/01500"
+    },
+    {
+      "step": 1875,
+      "time": 0.9374999999999521,
+      "directory": "frames/01875"
+    },
+    {
+      "step": 2250,
+      "time": 1.1249999999999316,
+      "directory": "frames/02250"
+    },
+    {
+      "step": 2625,
+      "time": 1.312499999999911,
+      "directory": "frames/02625"
+    },
+    {
+      "step": 3000,
+      "time": 1.4999999999998903,
+      "directory": "frames/03000"
+    },
+    {
+      "step": 3375,
+      "time": 1.6874999999998697,
+      "directory": "frames/03375"
+    },
+    {
+      "step": 3750,
+      "time": 1.874999999999849,
+      "directory": "frames/03750"
+    },
+    {
+      "step": 4125,
+      "time": 2.062499999999856,
+      "directory": "frames/04125"
+    },
+    {
+      "step": 4500,
+      "time": 2.2499999999999187,
+      "directory": "frames/04500"
+    },
+    {
+      "step": 4875,
+      "time": 2.4374999999999813,
+      "directory": "frames/04875"
+    },
+    {
+      "step": 5250,
+      "time": 2.625000000000044,
+      "directory": "frames/05250"
+    },
+    {
+      "step": 5625,
+      "time": 2.8125000000001066,
+      "directory": "frames/05625"
+    },
+    {
+      "step": 6000,
+      "time": 3.000000000000169,
+      "directory": "frames/06000"
+    },
+    {
+      "step": 6375,
+      "time": 3.187500000000232,
+      "directory": "frames/06375"
+    },
+    {
+      "step": 6750,
+      "time": 3.3750000000002944,
+      "directory": "frames/06750"
+    },
+    {
+      "step": 7125,
+      "time": 3.562500000000357,
+      "directory": "frames/07125"
+    },
+    {
+      "step": 7500,
+      "time": 3.7500000000004197,
+      "directory": "frames/07500"
+    },
+    {
+      "step": 7875,
+      "time": 3.9375000000004823,
+      "directory": "frames/07875"
+    },
+    {
+      "step": 8250,
+      "time": 4.125000000000433,
+      "directory": "frames/08250"
+    },
+    {
+      "step": 8625,
+      "time": 4.3125000000003295,
+      "directory": "frames/08625"
+    },
+    {
+      "step": 9000,
+      "time": 4.500000000000226,
+      "directory": "frames/09000"
+    },
+    {
+      "step": 9375,
+      "time": 4.687500000000122,
+      "directory": "frames/09375"
+    },
+    {
+      "step": 9750,
+      "time": 4.875000000000018,
+      "directory": "frames/09750"
+    },
+    {
+      "step": 10125,
+      "time": 5.062499999999914,
+      "directory": "frames/10125"
+    },
+    {
+      "step": 10500,
+      "time": 5.24999999999981,
+      "directory": "frames/10500"
+    },
+    {
+      "step": 10875,
+      "time": 5.437499999999706,
+      "directory": "frames/10875"
+    },
+    {
+      "step": 11250,
+      "time": 5.624999999999602,
+      "directory": "frames/11250"
+    },
+    {
+      "step": 11625,
+      "time": 5.812499999999498,
+      "directory": "frames/11625"
+    },
+    {
+      "step": 12000,
+      "time": 5.999999999999394,
+      "directory": "frames/12000"
+    },
+    {
+      "step": 12375,
+      "time": 6.18749999999929,
+      "directory": "frames/12375"
+    },
+    {
+      "step": 12750,
+      "time": 6.374999999999186,
+      "directory": "frames/12750"
+    },
+    {
+      "step": 13125,
+      "time": 6.5624999999990825,
+      "directory": "frames/13125"
+    },
+    {
+      "step": 13500,
+      "time": 6.749999999998979,
+      "directory": "frames/13500"
+    },
+    {
+      "step": 13875,
+      "time": 6.937499999998875,
+      "directory": "frames/13875"
+    },
+    {
+      "step": 14250,
+      "time": 7.124999999998771,
+      "directory": "frames/14250"
+    },
+    {
+      "step": 14625,
+      "time": 7.312499999998667,
+      "directory": "frames/14625"
+    },
+    {
+      "step": 15000,
+      "time": 7.499999999998563,
+      "directory": "frames/15000"
+    },
+    {
+      "step": 15375,
+      "time": 7.687499999998459,
+      "directory": "frames/15375"
+    },
+    {
+      "step": 15750,
+      "time": 7.874999999998355,
+      "directory": "frames/15750"
+    },
+    {
+      "step": 16125,
+      "time": 8.062499999998362,
+      "directory": "frames/16125"
+    },
+    {
+      "step": 16500,
+      "time": 8.249999999998591,
+      "directory": "frames/16500"
+    },
+    {
+      "step": 16875,
+      "time": 8.43749999999882,
+      "directory": "frames/16875"
+    },
+    {
+      "step": 17250,
+      "time": 8.62499999999905,
+      "directory": "frames/17250"
+    },
+    {
+      "step": 17625,
+      "time": 8.812499999999279,
+      "directory": "frames/17625"
+    },
+    {
+      "step": 18000,
+      "time": 8.999999999999508,
+      "directory": "frames/18000"
+    },
+    {
+      "step": 18375,
+      "time": 9.187499999999737,
+      "directory": "frames/18375"
+    },
+    {
+      "step": 18750,
+      "time": 9.374999999999966,
+      "directory": "frames/18750"
+    },
+    {
+      "step": 19125,
+      "time": 9.562500000000195,
+      "directory": "frames/19125"
+    },
+    {
+      "step": 19500,
+      "time": 9.750000000000425,
+      "directory": "frames/19500"
+    },
+    {
+      "step": 19875,
+      "time": 9.937500000000654,
+      "directory": "frames/19875"
+    },
+    {
+      "step": 20250,
+      "time": 10.125000000000883,
+      "directory": "frames/20250"
+    },
+    {
+      "step": 20625,
+      "time": 10.312500000001112,
+      "directory": "frames/20625"
+    },
+    {
+      "step": 21000,
+      "time": 10.500000000001341,
+      "directory": "frames/21000"
+    },
+    {
+      "step": 21375,
+      "time": 10.68750000000157,
+      "directory": "frames/21375"
+    },
+    {
+      "step": 21750,
+      "time": 10.8750000000018,
+      "directory": "frames/21750"
+    },
+    {
+      "step": 22125,
+      "time": 11.062500000002029,
+      "directory": "frames/22125"
+    },
+    {
+      "step": 22500,
+      "time": 11.250000000002258,
+      "directory": "frames/22500"
+    },
+    {
+      "step": 22875,
+      "time": 11.437500000002487,
+      "directory": "frames/22875"
+    },
+    {
+      "step": 23250,
+      "time": 11.625000000002716,
+      "directory": "frames/23250"
+    },
+    {
+      "step": 23625,
+      "time": 11.812500000002945,
+      "directory": "frames/23625"
+    },
+    {
+      "step": 24000,
+      "time": 12.000000000003174,
+      "directory": "frames/24000"
+    }
+  ],
+  "history": [
+    {
+      "step": 0,
+      "time": 0,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 0,
+      "live_bonds": 52928,
+      "broken_bonds": 0,
+      "broken_repairs": 0,
+      "stock": 136.79999999999976,
+      "funded_stock": 0,
+      "stock_error": 0,
+      "energy": {
+        "elastic": 0,
+        "kinetic": 0,
+        "damage": 0,
+        "damping": 0,
+        "external_work": 0,
+        "total": 0
+      },
+      "energy_residual": 0,
+      "finite": true
+    },
+    {
+      "step": 375,
+      "time": 0.18750000000000014,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 0,
+      "live_bonds": 52832,
+      "broken_bonds": 96,
+      "broken_repairs": 0,
+      "stock": 136.79999999999976,
+      "funded_stock": 0,
+      "stock_error": 0,
+      "energy": {
+        "elastic": 0.18197737689354396,
+        "kinetic": 0.13124605044761964,
+        "damage": 0.01469038153798766,
+        "damping": 0.20993267756159945,
+        "external_work": 0.5378454206572447,
+        "total": 0.5378464864407507
+      },
+      "energy_residual": 1.065783506004614e-06,
+      "finite": true
+    },
+    {
+      "step": 750,
+      "time": 0.3750000000000003,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 0,
+      "live_bonds": 52642,
+      "broken_bonds": 286,
+      "broken_repairs": 0,
+      "stock": 136.79999999999976,
+      "funded_stock": 0,
+      "stock_error": 0,
+      "energy": {
+        "elastic": 0.24477984956530288,
+        "kinetic": 0.14545634255400128,
+        "damage": 0.05117431037880567,
+        "damping": 0.5841367008569348,
+        "external_work": 1.025445545901845,
+        "total": 1.0255472033550446
+      },
+      "energy_residual": 0.0001016574531995662,
+      "finite": true
+    },
+    {
+      "step": 1125,
+      "time": 0.5624999999999934,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 0,
+      "live_bonds": 52423,
+      "broken_bonds": 505,
+      "broken_repairs": 0,
+      "stock": 136.79999999999976,
+      "funded_stock": 0,
+      "stock_error": 0,
+      "energy": {
+        "elastic": 0.24701967640163966,
+        "kinetic": 0.12129026618037136,
+        "damage": 0.09602724871770031,
+        "damping": 0.9353629561304729,
+        "external_work": 1.399373074372222,
+        "total": 1.3997001474301842
+      },
+      "energy_residual": 0.0003270730579623127,
+      "finite": true
+    },
+    {
+      "step": 1500,
+      "time": 0.7499999999999728,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 8,
+      "live_bonds": 52280,
+      "broken_bonds": 656,
+      "broken_repairs": 0,
+      "stock": 136.7225736763366,
+      "funded_stock": 0.07742632366316347,
+      "stock_error": 0,
+      "energy": {
+        "elastic": 0.2323351676880707,
+        "kinetic": 0.09479723964516364,
+        "damage": 0.12770651978041034,
+        "damping": 1.2151024739852623,
+        "external_work": 1.669469547121778,
+        "total": 1.669941401098907
+      },
+      "energy_residual": 0.0004718539771291219,
+      "finite": true
+    },
+    {
+      "step": 1875,
+      "time": 0.9374999999999521,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 34,
+      "live_bonds": 52171,
+      "broken_bonds": 791,
+      "broken_repairs": 5,
+      "stock": 136.46517048055898,
+      "funded_stock": 0.3348295194407545,
+      "stock_error": -2.842170943040401e-14,
+      "energy": {
+        "elastic": 0.22108722432741537,
+        "kinetic": 0.07260743818897625,
+        "damage": 0.1550165440322218,
+        "damping": 1.4337489993666899,
+        "external_work": 1.8818811978797574,
+        "total": 1.8824602059153033
+      },
+      "energy_residual": 0.0005790080355458915,
+      "finite": true
+    },
+    {
+      "step": 2250,
+      "time": 1.1249999999999316,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 73,
+      "live_bonds": 52114,
+      "broken_bonds": 887,
+      "broken_repairs": 6,
+      "stock": 136.04898228132896,
+      "funded_stock": 0.7510177186707991,
+      "stock_error": 0,
+      "energy": {
+        "elastic": 0.21026236151953415,
+        "kinetic": 0.05574363733897086,
+        "damage": 0.17561950464684953,
+        "damping": 1.6008991793136929,
+        "external_work": 2.0418746745922056,
+        "total": 2.0425246828190473
+      },
+      "energy_residual": 0.0006500082268416918,
+      "finite": true
+    },
+    {
+      "step": 2625,
+      "time": 1.312499999999911,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 103,
+      "live_bonds": 52088,
+      "broken_bonds": 943,
+      "broken_repairs": 6,
+      "stock": 135.69764828576893,
+      "funded_stock": 1.1023517142308226,
+      "stock_error": 0,
+      "energy": {
+        "elastic": 0.20511326050886086,
+        "kinetic": 0.042376871075831206,
+        "damage": 0.18679898748058954,
+        "damping": 1.72919375646076,
+        "external_work": 2.1628105028165145,
+        "total": 2.1634828755260416
+      },
+      "energy_residual": 0.0006723727095270249,
+      "finite": true
+    },
+    {
+      "step": 3000,
+      "time": 1.4999999999998903,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 166,
+      "live_bonds": 52112,
+      "broken_bonds": 982,
+      "broken_repairs": 6,
+      "stock": 134.93271253590098,
+      "funded_stock": 1.8672874640987873,
+      "stock_error": 0,
+      "energy": {
+        "elastic": 0.1974503633686238,
+        "kinetic": 0.03177697265282157,
+        "damage": 0.1941805434038943,
+        "damping": 1.8260118553211198,
+        "external_work": 2.248731816089097,
+        "total": 2.2494197347464593
+      },
+      "energy_residual": 0.0006879186573622853,
+      "finite": true
+    },
+    {
+      "step": 3375,
+      "time": 1.6874999999998697,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 201,
+      "live_bonds": 52113,
+      "broken_bonds": 1016,
+      "broken_repairs": 7,
+      "stock": 134.45800485556578,
+      "funded_stock": 2.341995144433994,
+      "stock_error": 0,
+      "energy": {
+        "elastic": 0.19381048704912526,
+        "kinetic": 0.02626221317343571,
+        "damage": 0.20000900336847804,
+        "damping": 1.900779335047197,
+        "external_work": 2.3201557982613705,
+        "total": 2.320861038638236
+      },
+      "energy_residual": 0.0007052403768654791,
+      "finite": true
+    },
+    {
+      "step": 3750,
+      "time": 1.874999999999849,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 233,
+      "live_bonds": 52101,
+      "broken_bonds": 1060,
+      "broken_repairs": 7,
+      "stock": 134.04553296571504,
+      "funded_stock": 2.7544670342847466,
+      "stock_error": 2.842170943040401e-14,
+      "energy": {
+        "elastic": 0.1981464747103981,
+        "kinetic": 0.028964827458649228,
+        "damage": 0.20649454690176453,
+        "damping": 1.971440626078038,
+        "external_work": 2.4043327508756627,
+        "total": 2.4050464751488496
+      },
+      "energy_residual": 0.0007137242731869442,
+      "finite": true
+    },
+    {
+      "step": 4125,
+      "time": 2.062499999999856,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 267,
+      "live_bonds": 52071,
+      "broken_bonds": 1124,
+      "broken_repairs": 7,
+      "stock": 133.63062153989193,
+      "funded_stock": 3.169378460107845,
+      "stock_error": 2.842170943040401e-14,
+      "energy": {
+        "elastic": 0.20859631348622157,
+        "kinetic": 0.03730404286589646,
+        "damage": 0.2181445648922625,
+        "damping": 2.0577012040744065,
+        "external_work": 2.52100917367204,
+        "total": 2.521746125318787
+      },
+      "energy_residual": 0.0007369516467470305,
+      "finite": true
+    },
+    {
+      "step": 4500,
+      "time": 2.2499999999999187,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 296,
+      "live_bonds": 52045,
+      "broken_bonds": 1179,
+      "broken_repairs": 8,
+      "stock": 133.28887721887017,
+      "funded_stock": 3.511122781129616,
+      "stock_error": 2.842170943040401e-14,
+      "energy": {
+        "elastic": 0.23699811123868914,
+        "kinetic": 0.050332187656068575,
+        "damage": 0.22824343403661312,
+        "damping": 2.1709179524890434,
+        "external_work": 2.685747212697304,
+        "total": 2.686491685420414
+      },
+      "energy_residual": 0.0007444727231100678,
+      "finite": true
+    },
+    {
+      "step": 4875,
+      "time": 2.4374999999999813,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 320,
+      "live_bonds": 51967,
+      "broken_bonds": 1281,
+      "broken_repairs": 12,
+      "stock": 132.9943304923878,
+      "funded_stock": 3.8056695076119884,
+      "stock_error": 2.842170943040401e-14,
+      "energy": {
+        "elastic": 0.2668016877459725,
+        "kinetic": 0.06365035672469993,
+        "damage": 0.24883663409172546,
+        "damping": 2.3201692761504566,
+        "external_work": 2.8986780650212047,
+        "total": 2.8994579547128545
+      },
+      "energy_residual": 0.0007798896916497711,
+      "finite": true
+    },
+    {
+      "step": 5250,
+      "time": 2.625000000000044,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 349,
+      "live_bonds": 51860,
+      "broken_bonds": 1417,
+      "broken_repairs": 25,
+      "stock": 132.63393997449953,
+      "funded_stock": 4.166060025500275,
+      "stock_error": 5.684341886080802e-14,
+      "energy": {
+        "elastic": 0.29211438086806324,
+        "kinetic": 0.07247650772564208,
+        "damage": 0.2821609152242804,
+        "damping": 2.496260406082812,
+        "external_work": 3.142136627097292,
+        "total": 3.1430122099007978
+      },
+      "energy_residual": 0.0008755828035056368,
+      "finite": true
+    },
+    {
+      "step": 5625,
+      "time": 2.8125000000001066,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 373,
+      "live_bonds": 51692,
+      "broken_bonds": 1609,
+      "broken_repairs": 42,
+      "stock": 132.33132146659838,
+      "funded_stock": 4.468678533401419,
+      "stock_error": 5.684341886080802e-14,
+      "energy": {
+        "elastic": 0.2906700296579231,
+        "kinetic": 0.07084589529222574,
+        "damage": 0.3407891063286769,
+        "damping": 2.6860459399219803,
+        "external_work": 3.387363699640844,
+        "total": 3.388350971200806
+      },
+      "energy_residual": 0.000987271559961922,
+      "finite": true
+    },
+    {
+      "step": 6000,
+      "time": 3.000000000000169,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 414,
+      "live_bonds": 51490,
+      "broken_bonds": 1852,
+      "broken_repairs": 71,
+      "stock": 131.77355809982112,
+      "funded_stock": 5.02644190017868,
+      "stock_error": 2.842170943040401e-14,
+      "energy": {
+        "elastic": 0.2540206287905929,
+        "kinetic": 0.053508121172557745,
+        "damage": 0.41516995082622127,
+        "damping": 2.8515993451242467,
+        "external_work": 3.5731462469644892,
+        "total": 3.5742980459136184
+      },
+      "energy_residual": 0.0011517989491292013,
+      "finite": true
+    },
+    {
+      "step": 6375,
+      "time": 3.187500000000232,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 454,
+      "live_bonds": 51379,
+      "broken_bonds": 2003,
+      "broken_repairs": 100,
+      "stock": 131.2581939913922,
+      "funded_stock": 5.541806008607614,
+      "stock_error": 5.684341886080802e-14,
+      "energy": {
+        "elastic": 0.23713156811445996,
+        "kinetic": 0.04548239175506105,
+        "damage": 0.4631764031819212,
+        "damping": 2.9822237807101035,
+        "external_work": 3.7267598054697797,
+        "total": 3.7280141437615457
+      },
+      "energy_residual": 0.0012543382917660217,
+      "finite": true
+    },
+    {
+      "step": 6750,
+      "time": 3.3750000000002944,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 499,
+      "live_bonds": 51299,
+      "broken_bonds": 2128,
+      "broken_repairs": 121,
+      "stock": 130.6619930477931,
+      "funded_stock": 6.1380069522066885,
+      "stock_error": 2.842170943040401e-14,
+      "energy": {
+        "elastic": 0.20586594640447434,
+        "kinetic": 0.03360181575039154,
+        "damage": 0.5099802961055218,
+        "damping": 3.0864309546547406,
+        "external_work": 3.8345493172153184,
+        "total": 3.8358790129151283
+      },
+      "energy_residual": 0.0013296956998098963,
+      "finite": true
+    },
+    {
+      "step": 7125,
+      "time": 3.562500000000357,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 541,
+      "live_bonds": 51264,
+      "broken_bonds": 2205,
+      "broken_repairs": 126,
+      "stock": 130.19414715977967,
+      "funded_stock": 6.605852840220114,
+      "stock_error": 2.842170943040401e-14,
+      "energy": {
+        "elastic": 0.18551327523132327,
+        "kinetic": 0.02647018180742663,
+        "damage": 0.5302206487827564,
+        "damping": 3.167463989139173,
+        "external_work": 3.908261009903563,
+        "total": 3.9096680949606792
+      },
+      "energy_residual": 0.0014070850571163973,
+      "finite": true
+    },
+    {
+      "step": 7500,
+      "time": 3.7500000000004197,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 575,
+      "live_bonds": 51254,
+      "broken_bonds": 2249,
+      "broken_repairs": 127,
+      "stock": 129.76323014876834,
+      "funded_stock": 7.03676985123147,
+      "stock_error": 5.684341886080802e-14,
+      "energy": {
+        "elastic": 0.17428660102325866,
+        "kinetic": 0.02130183947717935,
+        "damage": 0.5402339590348231,
+        "damping": 3.230524200300679,
+        "external_work": 3.964905677490917,
+        "total": 3.96634659983594
+      },
+      "energy_residual": 0.0014409223450231323,
+      "finite": true
+    },
+    {
+      "step": 7875,
+      "time": 3.9375000000004823,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 601,
+      "live_bonds": 51250,
+      "broken_bonds": 2279,
+      "broken_repairs": 134,
+      "stock": 129.4506530638077,
+      "funded_stock": 7.349346936192134,
+      "stock_error": 8.526512829121202e-14,
+      "energy": {
+        "elastic": 0.16748942544106749,
+        "kinetic": 0.01584018663162115,
+        "damage": 0.5470550082399968,
+        "damping": 3.2786177259972513,
+        "external_work": 4.00754370594434,
+        "total": 4.009002346309937
+      },
+      "energy_residual": 0.0014586403655965086,
+      "finite": true
+    },
+    {
+      "step": 8250,
+      "time": 4.125000000000433,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 637,
+      "live_bonds": 51276,
+      "broken_bonds": 2289,
+      "broken_repairs": 134,
+      "stock": 129.00420990777997,
+      "funded_stock": 7.7957900922198275,
+      "stock_error": 2.842170943040401e-14,
+      "energy": {
+        "elastic": 0.1660408997495213,
+        "kinetic": 0.01125870119568767,
+        "damage": 0.5485317254626395,
+        "damping": 3.3146359856129743,
+        "external_work": 4.039002662897403,
+        "total": 4.040467312020823
+      },
+      "energy_residual": 0.0014646491234202585,
+      "finite": true
+    },
+    {
+      "step": 8625,
+      "time": 4.3125000000003295,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 658,
+      "live_bonds": 51288,
+      "broken_bonds": 2298,
+      "broken_repairs": 134,
+      "stock": 128.73165223704058,
+      "funded_stock": 8.068347762959243,
+      "stock_error": 5.684341886080802e-14,
+      "energy": {
+        "elastic": 0.16682794626764944,
+        "kinetic": 0.007985536076901651,
+        "damage": 0.550170122426,
+        "damping": 3.3394384889648645,
+        "external_work": 4.062952295900332,
+        "total": 4.064422093735415
+      },
+      "energy_residual": 0.0014697978350834973,
+      "finite": true
+    },
+    {
+      "step": 9000,
+      "time": 4.500000000000226,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 680,
+      "live_bonds": 51303,
+      "broken_bonds": 2305,
+      "broken_repairs": 134,
+      "stock": 128.4771320784871,
+      "funded_stock": 8.32286792151271,
+      "stock_error": 5.684341886080802e-14,
+      "energy": {
+        "elastic": 0.16769710326505588,
+        "kinetic": 0.007751154683358882,
+        "damage": 0.5510764558622723,
+        "damping": 3.359234616321026,
+        "external_work": 4.084287771429559,
+        "total": 4.085759330131713
+      },
+      "energy_residual": 0.0014715587021543186,
+      "finite": true
+    },
+    {
+      "step": 9375,
+      "time": 4.687500000000122,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 693,
+      "live_bonds": 51296,
+      "broken_bonds": 2325,
+      "broken_repairs": 134,
+      "stock": 128.3253154737491,
+      "funded_stock": 8.47468452625072,
+      "stock_error": 5.684341886080802e-14,
+      "energy": {
+        "elastic": 0.16292691614117555,
+        "kinetic": 0.008423838762507,
+        "damage": 0.5551732363118966,
+        "damping": 3.3799926959968665,
+        "external_work": 4.105028898981667,
+        "total": 4.106516687212446
+      },
+      "energy_residual": 0.00148778823077933,
+      "finite": true
+    },
+    {
+      "step": 9750,
+      "time": 4.875000000000018,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 705,
+      "live_bonds": 51278,
+      "broken_bonds": 2355,
+      "broken_repairs": 135,
+      "stock": 128.14463241681298,
+      "funded_stock": 8.65536758318682,
+      "stock_error": 5.684341886080802e-14,
+      "energy": {
+        "elastic": 0.1575411234332024,
+        "kinetic": 0.010160648548867722,
+        "damage": 0.5596447904974545,
+        "damping": 3.4043965785465873,
+        "external_work": 4.130240922724243,
+        "total": 4.131743141026112
+      },
+      "energy_residual": 0.0015022183018684743,
+      "finite": true
+    },
+    {
+      "step": 10125,
+      "time": 5.062499999999914,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 710,
+      "live_bonds": 51279,
+      "broken_bonds": 2359,
+      "broken_repairs": 135,
+      "stock": 128.07902525259556,
+      "funded_stock": 8.720974747404245,
+      "stock_error": 5.684341886080802e-14,
+      "energy": {
+        "elastic": 0.16143708919843766,
+        "kinetic": 0.012026546788618931,
+        "damage": 0.560460745891526,
+        "damping": 3.432635554489136,
+        "external_work": 4.16505758860341,
+        "total": 4.166559936367719
+      },
+      "energy_residual": 0.001502347764309242,
+      "finite": true
+    },
+    {
+      "step": 10500,
+      "time": 5.24999999999981,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 728,
+      "live_bonds": 51271,
+      "broken_bonds": 2385,
+      "broken_repairs": 137,
+      "stock": 127.82555759636189,
+      "funded_stock": 8.974442403637932,
+      "stock_error": 5.684341886080802e-14,
+      "energy": {
+        "elastic": 0.15886342679584767,
+        "kinetic": 0.015366454571992438,
+        "damage": 0.5645178970732199,
+        "damping": 3.4698279302753963,
+        "external_work": 4.207055919606255,
+        "total": 4.208575708716456
+      },
+      "energy_residual": 0.0015197891102012306,
+      "finite": true
+    },
+    {
+      "step": 10875,
+      "time": 5.437499999999706,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 752,
+      "live_bonds": 51261,
+      "broken_bonds": 2419,
+      "broken_repairs": 139,
+      "stock": 127.52998150009402,
+      "funded_stock": 9.270018499905797,
+      "stock_error": 5.684341886080802e-14,
+      "energy": {
+        "elastic": 0.15726310686609288,
+        "kinetic": 0.019266612339586823,
+        "damage": 0.5705492120684158,
+        "damping": 3.51516441072448,
+        "external_work": 4.260696139760967,
+        "total": 4.262243341998576
+      },
+      "energy_residual": 0.0015472022376092909,
+      "finite": true
+    },
+    {
+      "step": 11250,
+      "time": 5.624999999999602,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 769,
+      "live_bonds": 51246,
+      "broken_bonds": 2451,
+      "broken_repairs": 140,
+      "stock": 127.23871179578562,
+      "funded_stock": 9.561288204214204,
+      "stock_error": 5.684341886080802e-14,
+      "energy": {
+        "elastic": 0.16306237063578496,
+        "kinetic": 0.025062761764765854,
+        "damage": 0.5760859379062392,
+        "damping": 3.569895209771371,
+        "external_work": 4.33253050150382,
+        "total": 4.334106280078161
+      },
+      "energy_residual": 0.0015757785743408803,
+      "finite": true
+    },
+    {
+      "step": 11625,
+      "time": 5.812499999999498,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 800,
+      "live_bonds": 51246,
+      "broken_bonds": 2482,
+      "broken_repairs": 144,
+      "stock": 126.63119329129826,
+      "funded_stock": 10.168806708701561,
+      "stock_error": 5.684341886080802e-14,
+      "energy": {
+        "elastic": 0.18160622879752963,
+        "kinetic": 0.034522258338702816,
+        "damage": 0.5814818318376723,
+        "damping": 3.6460812256179067,
+        "external_work": 4.442089369353703,
+        "total": 4.443691544591811
+      },
+      "energy_residual": 0.0016021752381076837,
+      "finite": true
+    },
+    {
+      "step": 12000,
+      "time": 5.999999999999394,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 835,
+      "live_bonds": 51212,
+      "broken_bonds": 2551,
+      "broken_repairs": 153,
+      "stock": 126.20082108995305,
+      "funded_stock": 10.599178910046778,
+      "stock_error": 8.526512829121202e-14,
+      "energy": {
+        "elastic": 0.195271684511953,
+        "kinetic": 0.06241177282299444,
+        "damage": 0.5951187112145173,
+        "damping": 3.773424406556461,
+        "external_work": 4.62452761276537,
+        "total": 4.6262265751059255
+      },
+      "energy_residual": 0.0016989623405558874,
+      "finite": true
+    },
+    {
+      "step": 12375,
+      "time": 6.18749999999929,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 868,
+      "live_bonds": 51162,
+      "broken_bonds": 2634,
+      "broken_repairs": 163,
+      "stock": 125.77289772280886,
+      "funded_stock": 11.02710227719099,
+      "stock_error": 8.526512829121202e-14,
+      "energy": {
+        "elastic": 0.18802034554377475,
+        "kinetic": 0.04581130252207092,
+        "damage": 0.6137739122546444,
+        "damping": 3.918357937717952,
+        "external_work": 4.764109503491393,
+        "total": 4.765963498038442
+      },
+      "energy_residual": 0.0018539945470488206,
+      "finite": true
+    },
+    {
+      "step": 12750,
+      "time": 6.374999999999186,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 899,
+      "live_bonds": 51129,
+      "broken_bonds": 2698,
+      "broken_repairs": 170,
+      "stock": 125.32984143846903,
+      "funded_stock": 11.470158561530804,
+      "stock_error": 8.526512829121202e-14,
+      "energy": {
+        "elastic": 0.19335158578744685,
+        "kinetic": 0.03904475208645032,
+        "damage": 0.6271619068955666,
+        "damping": 4.029296921352101,
+        "external_work": 4.886945793460555,
+        "total": 4.888855166121565
+      },
+      "energy_residual": 0.0019093726610099893,
+      "finite": true
+    },
+    {
+      "step": 13125,
+      "time": 6.5624999999990825,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 914,
+      "live_bonds": 51089,
+      "broken_bonds": 2753,
+      "broken_repairs": 182,
+      "stock": 125.13912246090192,
+      "funded_stock": 11.660877539097939,
+      "stock_error": 8.526512829121202e-14,
+      "energy": {
+        "elastic": 0.21799399918315315,
+        "kinetic": 0.03931096291956317,
+        "damage": 0.6421058111946094,
+        "damping": 4.128173258051224,
+        "external_work": 5.025646046764347,
+        "total": 5.02758403134855
+      },
+      "energy_residual": 0.0019379845842024679,
+      "finite": true
+    },
+    {
+      "step": 13500,
+      "time": 6.749999999998979,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 932,
+      "live_bonds": 51030,
+      "broken_bonds": 2830,
+      "broken_repairs": 211,
+      "stock": 124.9775310039953,
+      "funded_stock": 11.822468996004543,
+      "stock_error": 8.526512829121202e-14,
+      "energy": {
+        "elastic": 0.23668917111259316,
+        "kinetic": 0.043336013821912774,
+        "damage": 0.6656005763722309,
+        "damping": 4.234958222907771,
+        "external_work": 5.1785968825235305,
+        "total": 5.180583984214508
+      },
+      "energy_residual": 0.0019871016909771555,
+      "finite": true
+    },
+    {
+      "step": 13875,
+      "time": 6.937499999998875,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 952,
+      "live_bonds": 50928,
+      "broken_bonds": 2952,
+      "broken_repairs": 233,
+      "stock": 124.78990427064144,
+      "funded_stock": 12.0100957293584,
+      "stock_error": 8.526512829121202e-14,
+      "energy": {
+        "elastic": 0.21957105813772856,
+        "kinetic": 0.04001108374461183,
+        "damage": 0.7000485133211677,
+        "damping": 4.346100441581929,
+        "external_work": 5.303615728065831,
+        "total": 5.305731096785437
+      },
+      "energy_residual": 0.0021153687196058257,
+      "finite": true
+    },
+    {
+      "step": 14250,
+      "time": 7.124999999998771,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 961,
+      "live_bonds": 50858,
+      "broken_bonds": 3031,
+      "broken_repairs": 256,
+      "stock": 124.7057577383269,
+      "funded_stock": 12.094242261672962,
+      "stock_error": 1.1368683772161603e-13,
+      "energy": {
+        "elastic": 0.2017382356983757,
+        "kinetic": 0.028292032198379828,
+        "damage": 0.7221093794463638,
+        "damping": 4.437278188338676,
+        "external_work": 5.38721952387406,
+        "total": 5.389417835681796
+      },
+      "energy_residual": 0.0021983118077359975,
+      "finite": true
+    },
+    {
+      "step": 14625,
+      "time": 7.312499999998667,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 968,
+      "live_bonds": 50810,
+      "broken_bonds": 3086,
+      "broken_repairs": 270,
+      "stock": 124.65899822337552,
+      "funded_stock": 12.141001776624332,
+      "stock_error": 8.526512829121202e-14,
+      "energy": {
+        "elastic": 0.1868499088103072,
+        "kinetic": 0.02096158798279791,
+        "damage": 0.7404359491263867,
+        "damping": 4.500716857615021,
+        "external_work": 5.446700451172515,
+        "total": 5.448964303534513
+      },
+      "energy_residual": 0.0022638523619979978,
+      "finite": true
+    },
+    {
+      "step": 15000,
+      "time": 7.499999999998563,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 986,
+      "live_bonds": 50790,
+      "broken_bonds": 3124,
+      "broken_repairs": 277,
+      "stock": 124.5112602171796,
+      "funded_stock": 12.288739782820269,
+      "stock_error": 1.1368683772161603e-13,
+      "energy": {
+        "elastic": 0.17283674571139676,
+        "kinetic": 0.014758105021793462,
+        "damage": 0.7513544615488783,
+        "damping": 4.548006946910097,
+        "external_work": 5.484644488726417,
+        "total": 5.486956259192166
+      },
+      "energy_residual": 0.002311770465748708,
+      "finite": true
+    },
+    {
+      "step": 15375,
+      "time": 7.687499999998459,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 995,
+      "live_bonds": 50794,
+      "broken_bonds": 3129,
+      "broken_repairs": 277,
+      "stock": 124.41057335549607,
+      "funded_stock": 12.389426644503784,
+      "stock_error": 8.526512829121202e-14,
+      "energy": {
+        "elastic": 0.1721333147900409,
+        "kinetic": 0.01208099670393525,
+        "damage": 0.7522318487615186,
+        "damping": 4.582461154001848,
+        "external_work": 5.516594834587739,
+        "total": 5.518907314257342
+      },
+      "energy_residual": 0.002312479669603462,
+      "finite": true
+    },
+    {
+      "step": 15750,
+      "time": 7.874999999998355,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 999,
+      "live_bonds": 50795,
+      "broken_bonds": 3132,
+      "broken_repairs": 277,
+      "stock": 124.35945123336833,
+      "funded_stock": 12.440548766631526,
+      "stock_error": 1.1368683772161603e-13,
+      "energy": {
+        "elastic": 0.1717845935986663,
+        "kinetic": 0.012372676621346598,
+        "damage": 0.7530805455640033,
+        "damping": 4.614295548989218,
+        "external_work": 5.5492209705565365,
+        "total": 5.551533364773234
+      },
+      "energy_residual": 0.0023123942166973777,
+      "finite": true
+    },
+    {
+      "step": 16125,
+      "time": 8.062499999998362,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 1005,
+      "live_bonds": 50799,
+      "broken_bonds": 3134,
+      "broken_repairs": 277,
+      "stock": 124.31356789152056,
+      "funded_stock": 12.486432108479303,
+      "stock_error": 1.1368683772161603e-13,
+      "energy": {
+        "elastic": 0.17570076821511119,
+        "kinetic": 0.013486725331532019,
+        "damage": 0.7533502218701161,
+        "damping": 4.64795973436323,
+        "external_work": 5.588185814722798,
+        "total": 5.590497449779989
+      },
+      "energy_residual": 0.0023116350571914523,
+      "finite": true
+    },
+    {
+      "step": 16500,
+      "time": 8.249999999998591,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 1011,
+      "live_bonds": 50800,
+      "broken_bonds": 3139,
+      "broken_repairs": 280,
+      "stock": 124.24373995117259,
+      "funded_stock": 12.55626004882728,
+      "stock_error": 1.1368683772161603e-13,
+      "energy": {
+        "elastic": 0.18263019630968366,
+        "kinetic": 0.016317320443007495,
+        "damage": 0.7546603646289866,
+        "damping": 4.686911641612267,
+        "external_work": 5.638208185517899,
+        "total": 5.640519522993944
+      },
+      "energy_residual": 0.002311337476045061,
+      "finite": true
+    },
+    {
+      "step": 16875,
+      "time": 8.43749999999882,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 1016,
+      "live_bonds": 50782,
+      "broken_bonds": 3162,
+      "broken_repairs": 285,
+      "stock": 124.18813732383113,
+      "funded_stock": 12.611862676168736,
+      "stock_error": 1.1368683772161603e-13,
+      "energy": {
+        "elastic": 0.18830574440408807,
+        "kinetic": 0.02186496889785942,
+        "damage": 0.7594318111569547,
+        "damping": 4.735706174880554,
+        "external_work": 5.702993072007268,
+        "total": 5.705308699339456
+      },
+      "energy_residual": 0.0023156273321882637,
+      "finite": true
+    },
+    {
+      "step": 17250,
+      "time": 8.62499999999905,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 1016,
+      "live_bonds": 50722,
+      "broken_bonds": 3222,
+      "broken_repairs": 301,
+      "stock": 124.18813732383113,
+      "funded_stock": 12.611862676168736,
+      "stock_error": 1.1368683772161603e-13,
+      "energy": {
+        "elastic": 0.17692810428991537,
+        "kinetic": 0.02741004238460756,
+        "damage": 0.7757590652102122,
+        "damping": 4.79885199761322,
+        "external_work": 5.776589185281786,
+        "total": 5.778949209497955
+      },
+      "energy_residual": 0.0023600242161689877,
+      "finite": true
+    },
+    {
+      "step": 17625,
+      "time": 8.812499999999279,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 1017,
+      "live_bonds": 50669,
+      "broken_bonds": 3276,
+      "broken_repairs": 318,
+      "stock": 124.18085855425576,
+      "funded_stock": 12.619141445744102,
+      "stock_error": 1.1368683772161603e-13,
+      "energy": {
+        "elastic": 0.16603793179661572,
+        "kinetic": 0.029040791031705645,
+        "damage": 0.7891745144428031,
+        "damping": 4.873256613939537,
+        "external_work": 5.855105542181356,
+        "total": 5.857509851210661
+      },
+      "energy_residual": 0.0024043090293055513,
+      "finite": true
+    },
+    {
+      "step": 18000,
+      "time": 8.999999999999508,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 1021,
+      "live_bonds": 50628,
+      "broken_bonds": 3321,
+      "broken_repairs": 340,
+      "stock": 124.14412212865528,
+      "funded_stock": 12.655877871344565,
+      "stock_error": 8.526512829121202e-14,
+      "energy": {
+        "elastic": 0.16094815725641332,
+        "kinetic": 0.032103218219899705,
+        "damage": 0.8058623837899921,
+        "damping": 4.955545287645473,
+        "external_work": 5.952016639421622,
+        "total": 5.9544590469117775
+      },
+      "energy_residual": 0.0024424074901556736,
+      "finite": true
+    },
+    {
+      "step": 18375,
+      "time": 9.187499999999737,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 1028,
+      "live_bonds": 50613,
+      "broken_bonds": 3343,
+      "broken_repairs": 353,
+      "stock": 124.03367421103928,
+      "funded_stock": 12.766325788960575,
+      "stock_error": 1.1368683772161603e-13,
+      "energy": {
+        "elastic": 0.15201243387314303,
+        "kinetic": 0.028334738036424046,
+        "damage": 0.81969671131782,
+        "damping": 5.035163179913558,
+        "external_work": 6.032759524614029,
+        "total": 6.035207063140945
+      },
+      "energy_residual": 0.0024475385269155936,
+      "finite": true
+    },
+    {
+      "step": 18750,
+      "time": 9.374999999999966,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 1032,
+      "live_bonds": 50600,
+      "broken_bonds": 3360,
+      "broken_repairs": 359,
+      "stock": 123.9846691347684,
+      "funded_stock": 12.815330865231449,
+      "stock_error": 8.526512829121202e-14,
+      "energy": {
+        "elastic": 0.14077432770366782,
+        "kinetic": 0.0245922780190441,
+        "damage": 0.8307757824221298,
+        "damping": 5.1039783820669165,
+        "external_work": 6.097659978064248,
+        "total": 6.100120770211758
+      },
+      "energy_residual": 0.002460792147509494,
+      "finite": true
+    },
+    {
+      "step": 19125,
+      "time": 9.562500000000195,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 1037,
+      "live_bonds": 50595,
+      "broken_bonds": 3370,
+      "broken_repairs": 363,
+      "stock": 123.92973539340481,
+      "funded_stock": 12.870264606595036,
+      "stock_error": 8.526512829121202e-14,
+      "energy": {
+        "elastic": 0.1401364583041741,
+        "kinetic": 0.01917333126463818,
+        "damage": 0.8332147559790085,
+        "damping": 5.157560275133135,
+        "external_work": 6.1476199084537475,
+        "total": 6.150084820680956
+      },
+      "energy_residual": 0.002464912227208238,
+      "finite": true
+    },
+    {
+      "step": 19500,
+      "time": 9.750000000000425,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 1039,
+      "live_bonds": 50582,
+      "broken_bonds": 3385,
+      "broken_repairs": 366,
+      "stock": 123.90395684282586,
+      "funded_stock": 12.896043157173992,
+      "stock_error": 8.526512829121202e-14,
+      "energy": {
+        "elastic": 0.14136174236942725,
+        "kinetic": 0.014311166357224592,
+        "damage": 0.837498414765916,
+        "damping": 5.2000484379890635,
+        "external_work": 6.190747312199655,
+        "total": 6.193219761481632
+      },
+      "energy_residual": 0.002472449281976985,
+      "finite": true
+    },
+    {
+      "step": 19875,
+      "time": 9.937500000000654,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 1041,
+      "live_bonds": 50567,
+      "broken_bonds": 3402,
+      "broken_repairs": 368,
+      "stock": 123.88634157474559,
+      "funded_stock": 12.913658425254267,
+      "stock_error": 8.526512829121202e-14,
+      "energy": {
+        "elastic": 0.13873581737568655,
+        "kinetic": 0.011144054782097451,
+        "damage": 0.8406455547607988,
+        "damping": 5.233786522990438,
+        "external_work": 6.221827161603021,
+        "total": 6.224311949909021
+      },
+      "energy_residual": 0.002484788305999963,
+      "finite": true
+    },
+    {
+      "step": 20250,
+      "time": 10.125000000000883,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 1043,
+      "live_bonds": 50569,
+      "broken_bonds": 3402,
+      "broken_repairs": 368,
+      "stock": 123.85331024367497,
+      "funded_stock": 12.946689756324888,
+      "stock_error": 1.1368683772161603e-13,
+      "energy": {
+        "elastic": 0.14094172575369854,
+        "kinetic": 0.007296227553594801,
+        "damage": 0.8406455547607988,
+        "damping": 5.2575634393298,
+        "external_work": 6.243963147051376,
+        "total": 6.246446947397892
+      },
+      "energy_residual": 0.002483800346515963,
+      "finite": true
+    },
+    {
+      "step": 20625,
+      "time": 10.312500000001112,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 1046,
+      "live_bonds": 50571,
+      "broken_bonds": 3403,
+      "broken_repairs": 368,
+      "stock": 123.82189397074669,
+      "funded_stock": 12.978106029253167,
+      "stock_error": 8.526512829121202e-14,
+      "energy": {
+        "elastic": 0.141408887901284,
+        "kinetic": 0.005350462613654417,
+        "damage": 0.8412001042026711,
+        "damping": 5.273705858292881,
+        "external_work": 6.259181570437432,
+        "total": 6.26166531301049
+      },
+      "energy_residual": 0.0024837425730579454,
+      "finite": true
+    },
+    {
+      "step": 21000,
+      "time": 10.500000000001341,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 1050,
+      "live_bonds": 50572,
+      "broken_bonds": 3406,
+      "broken_repairs": 368,
+      "stock": 123.77001439710378,
+      "funded_stock": 13.02998560289608,
+      "stock_error": 1.1368683772161603e-13,
+      "energy": {
+        "elastic": 0.13981774964275517,
+        "kinetic": 0.004908408994698266,
+        "damage": 0.8417787439415062,
+        "damping": 5.2865620453826825,
+        "external_work": 6.270579673203926,
+        "total": 6.273066947961642
+      },
+      "energy_residual": 0.0024872747577155963,
+      "finite": true
+    },
+    {
+      "step": 21375,
+      "time": 10.68750000000157,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 1053,
+      "live_bonds": 50567,
+      "broken_bonds": 3414,
+      "broken_repairs": 372,
+      "stock": 123.75301446007597,
+      "funded_stock": 13.046985539923872,
+      "stock_error": 8.526512829121202e-14,
+      "energy": {
+        "elastic": 0.13417909480918563,
+        "kinetic": 0.005257757059260643,
+        "damage": 0.8434640457545526,
+        "damping": 5.300497364750949,
+        "external_work": 6.280906058673308,
+        "total": 6.2833982623739475
+      },
+      "energy_residual": 0.002492203700639628,
+      "finite": true
+    },
+    {
+      "step": 21750,
+      "time": 10.8750000000018,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 1056,
+      "live_bonds": 50563,
+      "broken_bonds": 3421,
+      "broken_repairs": 372,
+      "stock": 123.70278501219961,
+      "funded_stock": 13.097214987800237,
+      "stock_error": 8.526512829121202e-14,
+      "energy": {
+        "elastic": 0.13011216254418462,
+        "kinetic": 0.00608369418098183,
+        "damage": 0.8447409608030026,
+        "damping": 5.315156574323895,
+        "external_work": 6.293599215360164,
+        "total": 6.2960933918520645
+      },
+      "energy_residual": 0.002494176491900646,
+      "finite": true
+    },
+    {
+      "step": 22125,
+      "time": 11.062500000002029,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 1056,
+      "live_bonds": 50556,
+      "broken_bonds": 3428,
+      "broken_repairs": 373,
+      "stock": 123.70278501219961,
+      "funded_stock": 13.097214987800237,
+      "stock_error": 8.526512829121202e-14,
+      "energy": {
+        "elastic": 0.1263894916187158,
+        "kinetic": 0.007729903270636819,
+        "damage": 0.8459756375429502,
+        "damping": 5.333698435785903,
+        "external_work": 6.311296210545761,
+        "total": 6.313793468218206
+      },
+      "energy_residual": 0.00249725767244513,
+      "finite": true
+    },
+    {
+      "step": 22500,
+      "time": 11.250000000002258,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 1061,
+      "live_bonds": 50559,
+      "broken_bonds": 3430,
+      "broken_repairs": 373,
+      "stock": 123.6594006685074,
+      "funded_stock": 13.140599331492435,
+      "stock_error": 8.526512829121202e-14,
+      "energy": {
+        "elastic": 0.12338627269139611,
+        "kinetic": 0.009661769389200735,
+        "damage": 0.8463778615249254,
+        "damping": 5.356450002073738,
+        "external_work": 6.333378773064942,
+        "total": 6.33587590567926
+      },
+      "energy_residual": 0.002497132614318609,
+      "finite": true
+    },
+    {
+      "step": 22875,
+      "time": 11.437500000002487,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 1062,
+      "live_bonds": 50559,
+      "broken_bonds": 3431,
+      "broken_repairs": 374,
+      "stock": 123.64662929942881,
+      "funded_stock": 13.15337070057105,
+      "stock_error": 1.1368683772161603e-13,
+      "energy": {
+        "elastic": 0.12127341342756924,
+        "kinetic": 0.011240798008390519,
+        "damage": 0.8464641778551775,
+        "damping": 5.383208773585085,
+        "external_work": 6.359691161263474,
+        "total": 6.362187162876221
+      },
+      "energy_residual": 0.0024960016127471008,
+      "finite": true
+    },
+    {
+      "step": 23250,
+      "time": 11.625000000002716,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 1070,
+      "live_bonds": 50565,
+      "broken_bonds": 3433,
+      "broken_repairs": 375,
+      "stock": 123.54605207637424,
+      "funded_stock": 13.253947923625608,
+      "stock_error": 8.526512829121202e-14,
+      "energy": {
+        "elastic": 0.11990645436169643,
+        "kinetic": 0.014687355552129409,
+        "damage": 0.8468314993658386,
+        "damping": 5.416968307101816,
+        "external_work": 6.395898794809231,
+        "total": 6.3983936163814805
+      },
+      "energy_residual": 0.0024948215722497835,
+      "finite": true
+    },
+    {
+      "step": 23625,
+      "time": 11.812500000002945,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 1072,
+      "live_bonds": 50566,
+      "broken_bonds": 3434,
+      "broken_repairs": 375,
+      "stock": 123.52116291329881,
+      "funded_stock": 13.278837086701053,
+      "stock_error": 1.1368683772161603e-13,
+      "energy": {
+        "elastic": 0.11683234751487083,
+        "kinetic": 0.018216432116632812,
+        "damage": 0.84707730470496,
+        "damping": 5.462669250678221,
+        "external_work": 6.4423021595351,
+        "total": 6.444795335014685
+      },
+      "energy_residual": 0.0024931754795849415,
+      "finite": true
+    },
+    {
+      "step": 24000,
+      "time": 12.000000000003174,
+      "nodes": 5472,
+      "original_bonds": 52928,
+      "new_bonds": 1075,
+      "live_bonds": 50556,
+      "broken_bonds": 3447,
+      "broken_repairs": 377,
+      "stock": 123.48245624072996,
+      "funded_stock": 13.317543759269892,
+      "stock_error": 8.526512829121202e-14,
+      "energy": {
+        "elastic": 0.11315623341764755,
+        "kinetic": 0.020413234313013055,
+        "damage": 0.8491188525701185,
+        "damping": 5.513855569689691,
+        "external_work": 6.49403833928067,
+        "total": 6.496543889990471
+      },
+      "energy_residual": 0.00250555070980063,
+      "finite": true
+    }
+  ],
+  "source_sha256": {
+    "src/mechanics.jl": "a0370e4028aa859fb344829f0d387a62dd8defb77b25f4651f7c08b386324e45",
+    "studies/repair_weave.jl": "07ea554ff57f5d5f97cf0f2c5ce3b41e8cf1b45c598561f1a0634fa7d8273693"
+  },
+  "simulation": "Existing central-force BondNetwork with cyclic externally driven stretching, shearing and opposing grip rotation, irreversible tensile failure, and study-local delayed repair. Finite node repair stock funds new lower-stiffness bonds at their current separation; old damage and bond IDs are preserved. Repair stock is a normalized construction budget, not a calibrated mass model; node inertia stays fixed.",
+  "initialization": "Deliberately curved, disordered layered lattice and weakened notch. All later positions and bond failures follow mechanical dynamics. No simulated optical feedback.",
+  "publication": {
+    "source_image_sha256": "56ae9726fa94c2f38c310d092cb32ec89e3f34eea0eb5eee7ed4fb2a11d9bd46",
+    "webp_sha256": "6bb8bf6e7fafe3235b17574408e9c06257b3afe91a1d0e934b866197c6e2f8dc",
+    "quality": 95,
+    "width": 2000,
+    "samples": 128,
+    "native_shape": [
+      48,
+      38,
+      3
+    ],
+    "original_retained": true,
+    "reviewed_by": "Codex material artist"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "second-seam",
+  "title": "The second seam",
+  "description": "A folded spring cloth remembers its wounds in softer connections. Opposing twists open its edge into several depths; copper marks new bonds paid from a finite construction stock.",
+  "family": "interfaces",
+  "renderer": "repair-weave",
+  "volume": "frames/15000",
+  "size": 2000,
+  "samples": 128,
+  "args": [
+    "--steps",
+    "15000",
+    "--distance",
+    "2.15",
+    "--orbit",
+    ".80",
+    "--elevation",
+    ".28",
+    "--target",
+    ".46,0,-.04",
+    "--palette",
+    "cobalt",
+    "--save-scene"
+  ],
+  "image": "final.png"
+}

@@ -493,5 +493,16 @@
       "render-job.json",
       "run.json"
     ]
+  },
+  {
+    "id": "collection-20261015/second-seam",
+    "source_image_sha256": "56ae9726fa94c2f38c310d092cb32ec89e3f34eea0eb5eee7ed4fb2a11d9bd46",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
   }
 ]

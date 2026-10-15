@@ -1,0 +1,15 @@
+id = "repair-weave-pilot"
+title = "The second seam"
+description = "A woven membrane remembers its wounds in a second generation of softer bonds."
+dimensions = [24, 20, 3]
+dt = 0.001
+steps = 12000
+capture_every = 200
+cycle_time = 6.0
+repair_every = 30
+repair_delay = 0.45
+repair_stock = 0.12
+
+grip_twist = 0.32
+node_mass = 0.018
+memory_budget_mb = 512

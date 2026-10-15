@@ -1,0 +1,49 @@
+{
+  "renderer_sha256": "d3771f60d9cdcd5d2f85aada3d3ea8f98dace713f62d0ddc4aefe64f472a0484",
+  "settings": {
+    "run": "second-seam",
+    "output": "second-seam",
+    "steps": "15000",
+    "size": 2000,
+    "samples": 128,
+    "device": "CPU",
+    "image_name": "final.png",
+    "no_skin": false,
+    "orbit": 0.8,
+    "elevation": 0.28,
+    "distance": 2.15,
+    "palette": "cobalt",
+    "target": ".46,0,-.04",
+    "save_scene": true
+  },
+  "source": {
+    "run_sha256": "ecee42a9c483a7dc17a223cc643a664e7da76c2841d2d50d291f444cf70f81cd",
+    "geometry_sha256": "9f1b649c4ac5bf3473305fff5cd59301fbb9acb2f0455ffc92dd4cf36333d034",
+    "step": 15000,
+    "time": 7.499999999998563
+  },
+  "camera": {
+    "location": [
+      1.9422508478164673,
+      -1.439583659172058,
+      0.5541646480560303
+    ],
+    "fixed": true,
+    "lens_mm": 55,
+    "target": [
+      0.46000000834465027,
+      0.0,
+      -0.03999999910593033
+    ]
+  },
+  "geometry": {
+    "nodes": 5472,
+    "live_edges": 50790,
+    "live_repairs": 709,
+    "surface": {
+      "panels": 6503,
+      "repair_panels": 287
+    }
+  },
+  "interpretation": "Exact deformed node positions, surviving original bonds and separately funded repair bonds. Thin optical panels appear only when all three mechanical connections survive. Materials, fibre radii and strain-to-film mapping are artistic; optical panels add no mechanical forces. Fixed camera; no temporal interpolation."
+}
