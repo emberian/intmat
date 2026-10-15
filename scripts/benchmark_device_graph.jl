@@ -44,7 +44,12 @@ Interior.device_cellular_step!(ww,wp,.001)
 wp.attempted_steps+=1
 Interior.device_cellular_enqueue!(ww,wp,.001f0,:projected,nothing,Interior.DeviceGraphStepIndex(wp.environment.metadata))
 Interior.device_cellular_status!(wp)
-ww=nothing;wp=nothing;GC.gc();AMDGPU.synchronize()
+# Warm the actual replay wrapper too: GPU kernels alone do not compile its host
+# keyword specialization. This disposable graph/state never enters timed records.
+warm_owner=Interior.device_cellular_capture_graph(ww,wp,.001,AMDGPU)
+Interior.device_cellular_graph_replay!(warm_owner,1;check_status=false)
+Interior.device_cellular_status!(wp)
+warm_owner=nothing;ww=nothing;wp=nothing;GC.gc();AMDGPU.synchronize()
 function graph_nodes(owner)
     count=Ref{Csize_t}(0)
     AMDGPU.HIP.hipGraphGetNodes(owner.graph,C_NULL,count)

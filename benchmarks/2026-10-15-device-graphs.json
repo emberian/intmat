@@ -1,0 +1,764 @@
+{
+  "date": "2026-10-15",
+  "model_commit": "575c14b",
+  "status": "experimental; capture correct, no substantial whole-step acceleration",
+  "compatibility": {
+    "runtime": {
+      "julia": "1.12.4",
+      "kernel": "Linux",
+      "architecture": "x86_64",
+      "launch_threads": 2,
+      "backend": "amd",
+      "device": "HIPDevice(id=1, name=AMD Radeon RX 6750 XT, gcn_arch=gfx1030)",
+      "backend_version": "2.8.0",
+      "actual_device_optlevel": 1,
+      "project_sha256": "284c920aebff70f466a40df21f7c83ae4c561857b046f940274b43a8feeaec6d",
+      "manifest_sha256": "5b3993e84dcddf92a0cc64d027d1a341086a577e5caf0e6be1693c04978e5273"
+    },
+    "capture_seconds": 0.301497924,
+    "replays": 5,
+    "nodes_per_replay": 2,
+    "capture_did_not_execute": true,
+    "dynamic_rng_bitwise": true,
+    "failure_latch": true,
+    "note": "Compatibility gate only; no complete-step acceleration claim.",
+    "graph_api_source_sha256": "082d96e3a1fe2fe39de63e3f552062504c972d9b0a052310d8b12880bb75dd89"
+  },
+  "habitat_observations": {
+    "runtime": {
+      "julia": "1.12.4",
+      "kernel": "Linux",
+      "architecture": "x86_64",
+      "launch_threads": 2,
+      "backend": "amd",
+      "device": "HIPDevice(id=1, name=AMD Radeon RX 6750 XT, gcn_arch=gfx1030)",
+      "backend_version": "2.8.0",
+      "actual_device_optlevel": 1,
+      "project_sha256": "284c920aebff70f466a40df21f7c83ae4c561857b046f940274b43a8feeaec6d",
+      "manifest_sha256": "5b3993e84dcddf92a0cc64d027d1a341086a577e5caf0e6be1693c04978e5273"
+    },
+    "result": {
+      "owned_material": 518.7399999880721,
+      "expected_material": 518.7399999880721,
+      "material_scalar_agrees": true,
+      "finite": true,
+      "nan_expression_detected": true,
+      "nan_catalyst_detected": true,
+      "detached_named_observation": true,
+      "habitat_source": {
+        "helper": "f08c0ea979ab9a4dbdb3ffbf3f9c07c00ff71667df2d27807da4ad534e87f53a",
+        "kernels": "ee2a1c13ac99a2d69a36a3aec25c6ed55072a578cff82094329263500c8090b9",
+        "sorption": "f135e74e59959187e72725a45665ac5c67293b8305298c8d3ac4bdbb81e6ac93"
+      }
+    },
+    "gate_sha256": "d9bfec30fed1e6575e887e19026e265b7100d1328803e5db81caecad03601dde"
+  },
+  "cases": [
+    {
+      "grid": 32,
+      "physical_extent": [
+        4,
+        4,
+        4
+      ],
+      "radius": 0.18,
+      "density": 128,
+      "eligible_pairs": [
+        2,
+        3
+      ],
+      "excluded_pairs": {
+        "1": "First graph replay host keyword specialization compiled inside timer; exclude both modes of this pair."
+      },
+      "median_native_seconds": 0.26223176449999996,
+      "median_graph_seconds": 0.2572030695,
+      "whole_step_speedup": 1.0195514579580085,
+      "median_native_enqueue_seconds": 0.134690993,
+      "median_graph_enqueue_seconds": 0.00077167,
+      "primary_max_error": 0,
+      "raw_result": {
+        "runtime": {
+          "julia": "1.12.4",
+          "kernel": "Linux",
+          "architecture": "x86_64",
+          "launch_threads": 2,
+          "backend": "amd",
+          "device": "HIPDevice(id=1, name=AMD Radeon RX 6750 XT, gcn_arch=gfx1030)",
+          "backend_version": "2.8.0",
+          "actual_device_optlevel": 1,
+          "project_sha256": "284c920aebff70f466a40df21f7c83ae4c561857b046f940274b43a8feeaec6d",
+          "manifest_sha256": "5b3993e84dcddf92a0cc64d027d1a341086a577e5caf0e6be1693c04978e5273"
+        },
+        "source": {
+          "studies/device_graph_clock.jl": "a3482738aea77b093cc2ce96197ec03494d37642e2b176c3128dff746c74df94",
+          "scripts/benchmark_device_graph.jl": "ab514efb7bf89a712ca582fbc158a1b0516b48ce0bfa0d8fe1e2d7e41a55c933",
+          "studies/amd_cellular_graph.jl": "5e391f08c42c61dfacd57fe269d5e1c3cf8d16eee73d9d70c02a063acefaf848"
+        },
+        "base_source": {
+          "model": "72ecaccee6a0968b00b43fc2c9dfb7fee074a5f4e9fa95d2bc646640860e3e6d",
+          "initialization": "1484f9c00e3aa438f2557d12af1b29be2247e3b27dd5e4bcfd64d603785e6dc9",
+          "founder_initialization": "d76e4c791a2c56bc7fd651b1836e6879b9e27013566ce6d94a1d2f677f62e633",
+          "support": "727709b1dc15dcd6567ec63fc07816a61238a95a5963e118302806a67627e0ab",
+          "kernels": "a85cf1f8e0739373572e9029deb46415ab5d16669f3513b0fbf020b289ad0b27",
+          "checkpoint": "77f943195ef1ae0466d57fc57c051595f3f363c822e8d9f6d4dbc1b9d5a6a9b0",
+          "protocol": "095c40b8e42baca3688abe902289377da49e8f352017733ce92728729fb40be5"
+        },
+        "founders": 512,
+        "capacity": 8192,
+        "grid": 32,
+        "steps": 20,
+        "pairs": 3,
+        "dt": 0.001,
+        "mechanical_substeps": 16,
+        "material_forecast": 1108.48,
+        "median_native_seconds": 0.263864275,
+        "median_graph_seconds": 0.257220448,
+        "whole_step_speedup": 1.0258293112062382,
+        "records": [
+          {
+            "mode": "native",
+            "steps": 20,
+            "wall_seconds": 0.27599992,
+            "enqueue_seconds": 0.149397268,
+            "stream_seconds": 0.27412912249565125,
+            "capture_seconds": 0,
+            "nodes": 0,
+            "full_steps_per_second": 72.46378911993887,
+            "initial": {
+              "material": 1106.7300109639764,
+              "potential": 1157.1199951171875,
+              "work": 0,
+              "heat": 0,
+              "supplied": 0,
+              "removed": 0,
+              "supplied_potential": 0,
+              "removed_potential": 0,
+              "population": 512,
+              "completed_steps": 0,
+              "finite": true
+            },
+            "final": {
+              "material": 1106.7300139139156,
+              "potential": 1123.0895304266242,
+              "work": 7.922378700891812,
+              "heat": 26.10808765110778,
+              "supplied": 0,
+              "removed": 0,
+              "supplied_potential": 0,
+              "removed_potential": 0,
+              "population": 1022,
+              "completed_steps": 20,
+              "finite": true
+            },
+            "material_error": 2.9499392439902294e-06,
+            "potential_error": 1.66143624369397e-06,
+            "pair": 1
+          },
+          {
+            "mode": "graph",
+            "steps": 20,
+            "wall_seconds": 0.410948858,
+            "enqueue_seconds": 0.150975814,
+            "stream_seconds": 0.41068118810653687,
+            "capture_seconds": 0.097511197,
+            "nodes": 112,
+            "full_steps_per_second": 48.66785637837203,
+            "initial": {
+              "material": 1106.7300109639764,
+              "potential": 1157.1199951171875,
+              "work": 0,
+              "heat": 0,
+              "supplied": 0,
+              "removed": 0,
+              "supplied_potential": 0,
+              "removed_potential": 0,
+              "population": 512,
+              "completed_steps": 0,
+              "finite": true
+            },
+            "final": {
+              "material": 1106.7300139139156,
+              "potential": 1123.0895304266242,
+              "work": 7.922378700891812,
+              "heat": 26.10808765110778,
+              "supplied": 0,
+              "removed": 0,
+              "supplied_potential": 0,
+              "removed_potential": 0,
+              "population": 1022,
+              "completed_steps": 20,
+              "finite": true
+            },
+            "material_error": 2.9499392439902294e-06,
+            "potential_error": 1.66143624369397e-06,
+            "pair": 1
+          },
+          {
+            "mode": "graph",
+            "steps": 20,
+            "wall_seconds": 0.257185691,
+            "enqueue_seconds": 0.000764931,
+            "stream_seconds": 0.25684672594070435,
+            "capture_seconds": 0.008654673,
+            "nodes": 112,
+            "full_steps_per_second": 77.76482401581198,
+            "initial": {
+              "material": 1106.7300109639764,
+              "potential": 1157.1199951171875,
+              "work": 0,
+              "heat": 0,
+              "supplied": 0,
+              "removed": 0,
+              "supplied_potential": 0,
+              "removed_potential": 0,
+              "population": 512,
+              "completed_steps": 0,
+              "finite": true
+            },
+            "final": {
+              "material": 1106.7300139139156,
+              "potential": 1123.0895304266242,
+              "work": 7.922378700891812,
+              "heat": 26.10808765110778,
+              "supplied": 0,
+              "removed": 0,
+              "supplied_potential": 0,
+              "removed_potential": 0,
+              "population": 1022,
+              "completed_steps": 20,
+              "finite": true
+            },
+            "material_error": 2.9499392439902294e-06,
+            "potential_error": 1.66143624369397e-06,
+            "pair": 2
+          },
+          {
+            "mode": "native",
+            "steps": 20,
+            "wall_seconds": 0.263864275,
+            "enqueue_seconds": 0.135345024,
+            "stream_seconds": 0.2635195255279541,
+            "capture_seconds": 0,
+            "nodes": 0,
+            "full_steps_per_second": 75.79654350707386,
+            "initial": {
+              "material": 1106.7300109639764,
+              "potential": 1157.1199951171875,
+              "work": 0,
+              "heat": 0,
+              "supplied": 0,
+              "removed": 0,
+              "supplied_potential": 0,
+              "removed_potential": 0,
+              "population": 512,
+              "completed_steps": 0,
+              "finite": true
+            },
+            "final": {
+              "material": 1106.7300139139156,
+              "potential": 1123.0895304266242,
+              "work": 7.922378700891812,
+              "heat": 26.10808765110778,
+              "supplied": 0,
+              "removed": 0,
+              "supplied_potential": 0,
+              "removed_potential": 0,
+              "population": 1022,
+              "completed_steps": 20,
+              "finite": true
+            },
+            "material_error": 2.9499392439902294e-06,
+            "potential_error": 1.66143624369397e-06,
+            "pair": 2
+          },
+          {
+            "mode": "native",
+            "steps": 20,
+            "wall_seconds": 0.260599254,
+            "enqueue_seconds": 0.134036962,
+            "stream_seconds": 0.26029273867607117,
+            "capture_seconds": 0,
+            "nodes": 0,
+            "full_steps_per_second": 76.74619053207266,
+            "initial": {
+              "material": 1106.7300109639764,
+              "potential": 1157.1199951171875,
+              "work": 0,
+              "heat": 0,
+              "supplied": 0,
+              "removed": 0,
+              "supplied_potential": 0,
+              "removed_potential": 0,
+              "population": 512,
+              "completed_steps": 0,
+              "finite": true
+            },
+            "final": {
+              "material": 1106.7300139139156,
+              "potential": 1123.0895304266242,
+              "work": 7.922378700891812,
+              "heat": 26.10808765110778,
+              "supplied": 0,
+              "removed": 0,
+              "supplied_potential": 0,
+              "removed_potential": 0,
+              "population": 1022,
+              "completed_steps": 20,
+              "finite": true
+            },
+            "material_error": 2.9499392439902294e-06,
+            "potential_error": 1.66143624369397e-06,
+            "pair": 3
+          },
+          {
+            "mode": "graph",
+            "steps": 20,
+            "wall_seconds": 0.257220448,
+            "enqueue_seconds": 0.000778409,
+            "stream_seconds": 0.25683358311653137,
+            "capture_seconds": 0.010305129,
+            "nodes": 112,
+            "full_steps_per_second": 77.75431601767524,
+            "initial": {
+              "material": 1106.7300109639764,
+              "potential": 1157.1199951171875,
+              "work": 0,
+              "heat": 0,
+              "supplied": 0,
+              "removed": 0,
+              "supplied_potential": 0,
+              "removed_potential": 0,
+              "population": 512,
+              "completed_steps": 0,
+              "finite": true
+            },
+            "final": {
+              "material": 1106.7300139139156,
+              "potential": 1123.0895304266242,
+              "work": 7.922378700891812,
+              "heat": 26.10808765110778,
+              "supplied": 0,
+              "removed": 0,
+              "supplied_potential": 0,
+              "removed_potential": 0,
+              "population": 1022,
+              "completed_steps": 20,
+              "finite": true
+            },
+            "material_error": 2.9499392439902294e-06,
+            "potential_error": 1.66143624369397e-06,
+            "pair": 3
+          }
+        ],
+        "comparisons": [
+          {
+            "pair": 1,
+            "errors": {
+              "hidden": 0,
+              "fields": 0,
+              "weights": 0,
+              "energy": 0,
+              "age": 0,
+              "metabolites": 0,
+              "actions": 0,
+              "mass": 0,
+              "position": 0,
+              "adaptation": 0,
+              "marks": 0
+            }
+          },
+          {
+            "pair": 2,
+            "errors": {
+              "hidden": 0,
+              "fields": 0,
+              "weights": 0,
+              "energy": 0,
+              "age": 0,
+              "metabolites": 0,
+              "actions": 0,
+              "mass": 0,
+              "position": 0,
+              "adaptation": 0,
+              "marks": 0
+            }
+          },
+          {
+            "pair": 3,
+            "errors": {
+              "hidden": 0,
+              "fields": 0,
+              "weights": 0,
+              "energy": 0,
+              "age": 0,
+              "metabolites": 0,
+              "actions": 0,
+              "mass": 0,
+              "position": 0,
+              "adaptation": 0,
+              "marks": 0
+            }
+          }
+        ],
+        "timing_boundary": "complete native/graph batches including one equal preflight and final status transfer; construction, capture, compilation and full audits excluded",
+        "stream_timing_note": "HIP event interval includes device work, preflight transfer and inter-kernel gaps; it is not an isolated kernel-time or launch-gap attribution"
+      }
+    },
+    {
+      "grid": 128,
+      "physical_extent": [
+        4,
+        4,
+        4
+      ],
+      "radius": 0.18,
+      "density": 128,
+      "eligible_pairs": [
+        1,
+        2,
+        3
+      ],
+      "excluded_pairs": {},
+      "median_native_seconds": 2.479238142,
+      "median_graph_seconds": 2.47362597,
+      "whole_step_speedup": 1.0022688037997918,
+      "median_native_enqueue_seconds": 1.320250636,
+      "median_graph_enqueue_seconds": 0.000813873,
+      "primary_max_error": 0,
+      "raw_result": {
+        "runtime": {
+          "julia": "1.12.4",
+          "kernel": "Linux",
+          "architecture": "x86_64",
+          "launch_threads": 2,
+          "backend": "amd",
+          "device": "HIPDevice(id=1, name=AMD Radeon RX 6750 XT, gcn_arch=gfx1030)",
+          "backend_version": "2.8.0",
+          "actual_device_optlevel": 1,
+          "project_sha256": "284c920aebff70f466a40df21f7c83ae4c561857b046f940274b43a8feeaec6d",
+          "manifest_sha256": "5b3993e84dcddf92a0cc64d027d1a341086a577e5caf0e6be1693c04978e5273"
+        },
+        "source": {
+          "studies/device_graph_clock.jl": "a3482738aea77b093cc2ce96197ec03494d37642e2b176c3128dff746c74df94",
+          "scripts/benchmark_device_graph.jl": "ab514efb7bf89a712ca582fbc158a1b0516b48ce0bfa0d8fe1e2d7e41a55c933",
+          "studies/amd_cellular_graph.jl": "5e391f08c42c61dfacd57fe269d5e1c3cf8d16eee73d9d70c02a063acefaf848"
+        },
+        "base_source": {
+          "model": "72ecaccee6a0968b00b43fc2c9dfb7fee074a5f4e9fa95d2bc646640860e3e6d",
+          "initialization": "1484f9c00e3aa438f2557d12af1b29be2247e3b27dd5e4bcfd64d603785e6dc9",
+          "founder_initialization": "d76e4c791a2c56bc7fd651b1836e6879b9e27013566ce6d94a1d2f677f62e633",
+          "support": "727709b1dc15dcd6567ec63fc07816a61238a95a5963e118302806a67627e0ab",
+          "kernels": "a85cf1f8e0739373572e9029deb46415ab5d16669f3513b0fbf020b289ad0b27",
+          "checkpoint": "77f943195ef1ae0466d57fc57c051595f3f363c822e8d9f6d4dbc1b9d5a6a9b0",
+          "protocol": "095c40b8e42baca3688abe902289377da49e8f352017733ce92728729fb40be5"
+        },
+        "founders": 512,
+        "capacity": 8192,
+        "grid": 128,
+        "steps": 20,
+        "pairs": 3,
+        "dt": 0.001,
+        "mechanical_substeps": 16,
+        "material_forecast": 1108.48,
+        "median_native_seconds": 2.479238142,
+        "median_graph_seconds": 2.47362597,
+        "whole_step_speedup": 1.0022688037997918,
+        "records": [
+          {
+            "mode": "native",
+            "steps": 20,
+            "wall_seconds": 2.479238142,
+            "enqueue_seconds": 1.320750129,
+            "stream_seconds": 2.47894024848938,
+            "capture_seconds": 0,
+            "nodes": 0,
+            "full_steps_per_second": 8.066994316191833,
+            "initial": {
+              "material": 1106.7300109639764,
+              "potential": 1157.1199951171875,
+              "work": 0,
+              "heat": 0,
+              "supplied": 0,
+              "removed": 0,
+              "supplied_potential": 0,
+              "removed_potential": 0,
+              "population": 512,
+              "completed_steps": 0,
+              "finite": true
+            },
+            "final": {
+              "material": 1106.7300123232171,
+              "potential": 1122.7752198706876,
+              "work": 8.23399085166838,
+              "heat": 26.1107766820096,
+              "supplied": 0,
+              "removed": 0,
+              "supplied_potential": 0,
+              "removed_potential": 0,
+              "population": 1022,
+              "completed_steps": 20,
+              "finite": true
+            },
+            "material_error": 1.359240741294343e-06,
+            "potential_error": -7.712821940231152e-06,
+            "pair": 1
+          },
+          {
+            "mode": "graph",
+            "steps": 20,
+            "wall_seconds": 2.492399124,
+            "enqueue_seconds": 0.000852516,
+            "stream_seconds": 2.4921209812164307,
+            "capture_seconds": 0.014424442,
+            "nodes": 112,
+            "full_steps_per_second": 8.024396978563535,
+            "initial": {
+              "material": 1106.7300109639764,
+              "potential": 1157.1199951171875,
+              "work": 0,
+              "heat": 0,
+              "supplied": 0,
+              "removed": 0,
+              "supplied_potential": 0,
+              "removed_potential": 0,
+              "population": 512,
+              "completed_steps": 0,
+              "finite": true
+            },
+            "final": {
+              "material": 1106.7300123232171,
+              "potential": 1122.7752198706876,
+              "work": 8.23399085166838,
+              "heat": 26.1107766820096,
+              "supplied": 0,
+              "removed": 0,
+              "supplied_potential": 0,
+              "removed_potential": 0,
+              "population": 1022,
+              "completed_steps": 20,
+              "finite": true
+            },
+            "material_error": 1.359240741294343e-06,
+            "potential_error": -7.712821940231152e-06,
+            "pair": 1
+          },
+          {
+            "mode": "graph",
+            "steps": 20,
+            "wall_seconds": 2.47362597,
+            "enqueue_seconds": 0.000813873,
+            "stream_seconds": 2.4733738899230957,
+            "capture_seconds": 0.022605864,
+            "nodes": 112,
+            "full_steps_per_second": 8.085296743549309,
+            "initial": {
+              "material": 1106.7300109639764,
+              "potential": 1157.1199951171875,
+              "work": 0,
+              "heat": 0,
+              "supplied": 0,
+              "removed": 0,
+              "supplied_potential": 0,
+              "removed_potential": 0,
+              "population": 512,
+              "completed_steps": 0,
+              "finite": true
+            },
+            "final": {
+              "material": 1106.7300123232171,
+              "potential": 1122.7752198706876,
+              "work": 8.23399085166838,
+              "heat": 26.1107766820096,
+              "supplied": 0,
+              "removed": 0,
+              "supplied_potential": 0,
+              "removed_potential": 0,
+              "population": 1022,
+              "completed_steps": 20,
+              "finite": true
+            },
+            "material_error": 1.359240741294343e-06,
+            "potential_error": -7.712821940231152e-06,
+            "pair": 2
+          },
+          {
+            "mode": "native",
+            "steps": 20,
+            "wall_seconds": 2.886195401,
+            "enqueue_seconds": 1.318166801,
+            "stream_seconds": 2.885939359664917,
+            "capture_seconds": 0,
+            "nodes": 0,
+            "full_steps_per_second": 6.9295377551604656,
+            "initial": {
+              "material": 1106.7300109639764,
+              "potential": 1157.1199951171875,
+              "work": 0,
+              "heat": 0,
+              "supplied": 0,
+              "removed": 0,
+              "supplied_potential": 0,
+              "removed_potential": 0,
+              "population": 512,
+              "completed_steps": 0,
+              "finite": true
+            },
+            "final": {
+              "material": 1106.7300123232171,
+              "potential": 1122.7752198706876,
+              "work": 8.23399085166838,
+              "heat": 26.1107766820096,
+              "supplied": 0,
+              "removed": 0,
+              "supplied_potential": 0,
+              "removed_potential": 0,
+              "population": 1022,
+              "completed_steps": 20,
+              "finite": true
+            },
+            "material_error": 1.359240741294343e-06,
+            "potential_error": -7.712821940231152e-06,
+            "pair": 2
+          },
+          {
+            "mode": "native",
+            "steps": 20,
+            "wall_seconds": 2.477972629,
+            "enqueue_seconds": 1.320250636,
+            "stream_seconds": 2.4777674674987793,
+            "capture_seconds": 0,
+            "nodes": 0,
+            "full_steps_per_second": 8.071114170486666,
+            "initial": {
+              "material": 1106.7300109639764,
+              "potential": 1157.1199951171875,
+              "work": 0,
+              "heat": 0,
+              "supplied": 0,
+              "removed": 0,
+              "supplied_potential": 0,
+              "removed_potential": 0,
+              "population": 512,
+              "completed_steps": 0,
+              "finite": true
+            },
+            "final": {
+              "material": 1106.7300123232171,
+              "potential": 1122.7752198706876,
+              "work": 8.23399085166838,
+              "heat": 26.1107766820096,
+              "supplied": 0,
+              "removed": 0,
+              "supplied_potential": 0,
+              "removed_potential": 0,
+              "population": 1022,
+              "completed_steps": 20,
+              "finite": true
+            },
+            "material_error": 1.359240741294343e-06,
+            "potential_error": -7.712821940231152e-06,
+            "pair": 3
+          },
+          {
+            "mode": "graph",
+            "steps": 20,
+            "wall_seconds": 2.470393299,
+            "enqueue_seconds": 0.000775685,
+            "stream_seconds": 2.4700496196746826,
+            "capture_seconds": 0.021318635,
+            "nodes": 112,
+            "full_steps_per_second": 8.095876882476922,
+            "initial": {
+              "material": 1106.7300109639764,
+              "potential": 1157.1199951171875,
+              "work": 0,
+              "heat": 0,
+              "supplied": 0,
+              "removed": 0,
+              "supplied_potential": 0,
+              "removed_potential": 0,
+              "population": 512,
+              "completed_steps": 0,
+              "finite": true
+            },
+            "final": {
+              "material": 1106.7300123232171,
+              "potential": 1122.7752198706876,
+              "work": 8.23399085166838,
+              "heat": 26.1107766820096,
+              "supplied": 0,
+              "removed": 0,
+              "supplied_potential": 0,
+              "removed_potential": 0,
+              "population": 1022,
+              "completed_steps": 20,
+              "finite": true
+            },
+            "material_error": 1.359240741294343e-06,
+            "potential_error": -7.712821940231152e-06,
+            "pair": 3
+          }
+        ],
+        "comparisons": [
+          {
+            "pair": 1,
+            "errors": {
+              "hidden": 0,
+              "fields": 0,
+              "weights": 0,
+              "energy": 0,
+              "age": 0,
+              "metabolites": 0,
+              "actions": 0,
+              "mass": 0,
+              "position": 0,
+              "adaptation": 0,
+              "marks": 0
+            }
+          },
+          {
+            "pair": 2,
+            "errors": {
+              "hidden": 0,
+              "fields": 0,
+              "weights": 0,
+              "energy": 0,
+              "age": 0,
+              "metabolites": 0,
+              "actions": 0,
+              "mass": 0,
+              "position": 0,
+              "adaptation": 0,
+              "marks": 0
+            }
+          },
+          {
+            "pair": 3,
+            "errors": {
+              "hidden": 0,
+              "fields": 0,
+              "weights": 0,
+              "energy": 0,
+              "age": 0,
+              "metabolites": 0,
+              "actions": 0,
+              "mass": 0,
+              "position": 0,
+              "adaptation": 0,
+              "marks": 0
+            }
+          }
+        ],
+        "timing_boundary": "complete native/graph batches including one equal preflight and final status transfer; construction, capture, compilation and full audits excluded",
+        "stream_timing_note": "HIP event interval includes device work, preflight transfer and inter-kernel gaps; it is not an isolated kernel-time or launch-gap attribution"
+      }
+    }
+  ],
+  "caveats": [
+    "Raw result timing_boundary says compilation excluded, but first32cubed graph replay compiled its host wrapper inside the timed batch. The normalized summary excludes that entire pair. All subsequent32cubed and all128cubed wrapper calls were warm.",
+    "enqueue_seconds is wall time in host submission including possible driver backpressure; it is not measured process CPU time.",
+    "HIP event stream intervals include inter-kernel gaps and preflight transfer; no individual kernel breakdown was recorded.",
+    "The first startup attempt lacked a Main namespace import; the retry supplied it in the external driver without modifying immutable575c14b model or scripts.",
+    "The later benchmark harness now explicitly warms actual graph replay on a disposable process, but that harness revision has not been rerun on GPU."
+  ]
+}

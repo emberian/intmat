@@ -1,6 +1,7 @@
 #!/usr/bin/env julia
 # Compatibility gate only. Run exclusively in an assigned AMD window.
 include("device_cellular_setup.jl")
+using Interior: KernelAbstractions
 using Interior.KernelAbstractions: @kernel, @index
 backend isa AMDGPU.ROCBackend || error("native AMD backend required")
 isdefined(Interior,:DeviceGraphStepIndex) || Base.include(Interior,joinpath(@__DIR__,"..","studies","device_graph_clock.jl"))
