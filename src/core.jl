@@ -19,15 +19,23 @@ mutable struct World{B,F,S}
     time::Float64
     seed::Int
 end
-function World(grid::Grid; seed=17, backend=CPU())
-    names = (:nutrient,:deposit,:activity,:recovery,:pressure,:vx,:vy,:vz)
+const WORLD_FIELD_NAMES = (:nutrient,:deposit,:activity,:recovery,:pressure,:vx,:vy,:vz)
+"""Allocate independent fields and scratch buffers. Defaults retain the full world;
+specialized workloads may select only the buffers their processes consume."""
+function World(grid::Grid; seed=17, backend=CPU(), fields=WORLD_FIELD_NAMES, scratch_fields=fields)
+    names = Tuple(fields)
+    scratch_names = Tuple(scratch_fields)
+    all(n->n isa Symbol && n in WORLD_FIELD_NAMES,names) && length(unique(names))==length(names) ||
+        throw(ArgumentError("fields must contain distinct standard world-field symbols"))
+    all(n->n in names,scratch_names) && length(unique(scratch_names))==length(scratch_names) ||
+        throw(ArgumentError("scratch_fields must be a distinct subset of fields"))
     arrays = map(names) do name
         a = KernelAbstractions.zeros(backend,Float32,grid.size...)
         name == :nutrient && fill!(a,1f0)
         a
     end
-    scratch = map(_->KernelAbstractions.zeros(backend,Float32,grid.size...),names)
-    World(grid,backend,NamedTuple{names}(arrays),NamedTuple{names}(scratch),0.0,Int(seed))
+    scratch = map(_->KernelAbstractions.zeros(backend,Float32,grid.size...),scratch_names)
+    World(grid,backend,NamedTuple{names}(arrays),NamedTuple{scratch_names}(scratch),0.0,Int(seed))
 end
 """Stages advanced internally by this process; borrowed reservoir references are excluded."""
 process_children(p)=()

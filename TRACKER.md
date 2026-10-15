@@ -12,7 +12,33 @@
 - Inherited recurrent agents with separate lifetime plasticity; finite chemical inventories; heritable metabolic allocation and efficiency/throughput tradeoffs; lower-potential export/uptake; paid shared film that changes transport and phase forcing. Structural recycling does not regenerate fuel.
 - Exact sampled state recordings, source-aware executable checkpoints, streamed volume playback, live field/individual inspection, Cycles photography and a curated Pages gallery.
 
+## Autonomous research session
+
+2026-10-15, **11:06:31–21:06:31 UTC (07:06–17:06 Eastern)**. The user explicitly
+requested a ten-hour autonomous goal. The active goal covers engineering,
+ecological exploration and art; keep working across intermediate integrations
+until the session boundary. Do not mark it complete after a small tranche.
+
+Recovered early conversations reaffirm a broad composable instrument: phenomena
+inside media, neural dynamics, evolving organization, persistent traces, waves,
+chemistry, topology and rich 3D optics. Current lanes pursue device-native cellular
+execution, lower-allocation CPU lifecycle, cell-built sorptive/porous habitats,
+and an electrothermal archive artwork. Root coordinates interfaces, hardware,
+whole-step benchmarks, review, integration and publication.
+
+The existing three source-pinned soaks remain separate. Their established
+observatory schedule outlives this session if necessary; its optimized soak has a
+21:54 UTC deadline. Do not extend, reseed or source-migrate those experiments.
+
 ## Current convergence
+
+**Volume storage:** the portable recurrent runner now uses only its three world
+fields and two scratch fields: 84 bytes/voxel including latent ping-pong buffers,
+down from 128 (34.4% less). Default worlds remain unchanged. Compact and full
+worlds preserve all shared physical bits through 101 steps; 32 runner/compact
+checks and 102 core/recurrent checks pass. This is memory headroom, not a measured
+kernel speedup. The runner retains constructor source and accounts for eleven
+exported channels. [Details](docs/recurrent-material.md)
 
 **Optical composition:** “The nacre fault” couples eight-channel recurrent mineral
 with pressure waves in both directions on a fixed physical domain at native 256³.

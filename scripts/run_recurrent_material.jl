@@ -2,6 +2,7 @@
 using Interior,Statistics
 using Interior: JSON3
 const loaded_model_source=read(joinpath(@__DIR__,"..","src","recurrent_material.jl"),String)
+const loaded_core_source=read(joinpath(@__DIR__,"..","src","core.jl"),String)
 isdefined(Interior,:RecurrentMaterial) || Base.include(Interior,joinpath(@__DIR__,"..","src","recurrent_material.jl"))
 using Interior: RecurrentMaterial
 include(joinpath(@__DIR__,"recurrent_runtime.jl"))
@@ -30,7 +31,8 @@ function parse_recurrent_args(args)
     captures=parse(Int,get(flags,"captures","12"));states=parse(Int,get(flags,"states","1"))
     mode=get(flags,"capture-mode","slices");budget=parse(Int,get(flags,"budget-mb","1536"))*1_000_000
     resident_budget=parse(Int,get(flags,"resident-mb","8192"))*1_000_000
-    resident_bytes=big(side)^3*128
+    # Three world fields, two world scratch buffers, two eight-channel latent buffers.
+    resident_bytes=big(side)^3*84
     resident_budget>0 && resident_bytes<=resident_budget || throw(ArgumentError("resident arrays need $(Float64(resident_bytes)/1e6) MB; --resident-mb budget is $(resident_budget/1e6)"))
     batch=parse(Int,get(flags,"batch","64"))
     side>0 && steps>0 && batch>0 && budget>0 || throw(ArgumentError("side, steps, batch and budget must be positive"))
@@ -42,7 +44,7 @@ function parse_recurrent_args(args)
     frames=recurrent_capture_steps(steps,captures);checkpoints=recurrent_capture_steps(steps,states)
     # Raw payload plus a conservative metadata allowance, over the entire run.
     perframe=mode=="volumes" ? big(side)^3*8 : mode=="slices" ? big(side)^2*24 : 0
-    estimated=length(selected)*(length(frames)*perframe+length(checkpoints)*big(side)^3*64+1_000_000)
+    estimated=length(selected)*(length(frames)*perframe+length(checkpoints)*big(side)^3*44+1_000_000)
     estimated<=budget || throw(ArgumentError("capture plan needs $(round(Float64(estimated)/1e6;digits=1)) MB, budget $(budget/1e6) MB; reduce --captures/--states, select one --profile, or raise --budget-mb"))
     (side=side,steps=steps,root=root,backend=backend,profile=profile,captures=captures,states=states,
         capture_mode=mode,budget_bytes=budget,resident_array_bytes=Int(resident_bytes),resident_budget_bytes=resident_budget,batch=batch,estimated_bytes=Int(estimated),selected=selected,
@@ -59,18 +61,21 @@ function write_recurrent_capture(dir,field,array,k,mode)
     end
 end
 function warm_recurrent_material(backend)
-    w=World(Grid(4,4,4;extent=(4,4,4));backend,seed=31)
+    w=recurrent_world(Grid(4,4,4;extent=(4,4,4)),backend)
     p=RecurrentMaterial(w)
     advance!(w,p,.05)
     Interior.KernelAbstractions.synchronize(backend)
     nothing
 end
+recurrent_world(grid,backend)=World(grid;backend,seed=31,
+    fields=(:nutrient,:deposit,:activity),scratch_fields=(:nutrient,:deposit))
 function run_recurrent_material(options)
     o=options;root=o.root;side=o.side;steps=o.steps
     ispath(root) && throw(ArgumentError("output directory exists; use a fresh destination"))
     backend=recurrent_backend(o.backend)
     mkpath(dirname(abspath(root)));mkdir(root) # Atomic exclusive output claim.
     write(joinpath(root,"loaded-model-source.jl"),loaded_model_source)
+    write(joinpath(root,"loaded-core-source.jl"),loaded_core_source)
     cp(@__FILE__,joinpath(root,"runner-source.jl"))
     cp(joinpath(@__DIR__,"recurrent_runtime.jl"),joinpath(root,"runtime-source.jl"))
     open(joinpath(root,"run-config.json"),"w") do io
@@ -78,12 +83,13 @@ function run_recurrent_material(options)
             capture_steps=sort!(collect(o.frames)),state_steps=sort!(collect(o.checkpoints)),
             estimated_capture_bytes=o.estimated_bytes,capture_budget_bytes=o.budget_bytes,resident_array_bytes=o.resident_array_bytes,
             resident_budget_bytes=o.resident_budget_bytes,batch=o.batch,
-            model_source_sha256=bytes2hex(Interior.SHA.sha256(loaded_model_source))))
+            model_source_sha256=bytes2hex(Interior.SHA.sha256(loaded_model_source)),
+            core_source_sha256=bytes2hex(Interior.SHA.sha256(loaded_core_source))))
     end
     # Small-grid compilation avoids retaining two full-size worlds during reset.
     warm_recurrent_material(backend)
     for (name,kwargs) in o.selected
-        w=World(Grid(side,side,side;extent=Float32.((side,side,side)));backend,seed=31)
+        w=recurrent_world(Grid(side,side,side;extent=Float32.((side,side,side))),backend)
         p=RecurrentMaterial(w;kwargs...);dir=joinpath(root,name);mkdir(dir)
         before=Float64(side)^3;samples=Any[]
         open(joinpath(dir,"volume.json"),"w") do io

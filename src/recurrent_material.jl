@@ -16,7 +16,8 @@ mutable struct RecurrentMaterial{A,R,B}
 end
 function RecurrentMaterial(w::World;seed=w.seed,coupling=.12,feedback=1.2,writing=.25,erosion=.06,contrast=.7)
     rng=MersenneTwister(seed)
-    host=clamp.(.12f0.*randn(rng,Float32,w.grid.size...,8),-1f0,1f0)
+    host=randn(rng,Float32,w.grid.size...,8)
+    host .= clamp.(.12f0 .* host,-1f0,1f0)
     a=KernelAbstractions.zeros(w.backend,Float32,w.grid.size...,8)
     b=similar(a);copyto!(a,host);fill!(b,0)
     p=RecurrentMaterial(a,b,(a,b),w.fields.activity,(w.fields.nutrient,w.scratch.nutrient,w.fields.deposit,w.scratch.deposit),Float32.((coupling,feedback,writing,erosion,contrast))...)

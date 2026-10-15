@@ -183,7 +183,17 @@ julia --project=AMD_ENV scripts/run_recurrent_material.jl 128 10000 outputs/amd-
 ```
 
 Defaults request twelve captures, one full state, a 1,536MB total capture budget,
-and an 8,192MB resident-array budget. Capture counts stay fixed as the simulation
+and an 8,192MB resident-array budget. The portable runner now allocates only the
+three world fields and two scratch fields it uses, plus sixteen latent channels:
+**84 bytes/voxel**, down from 128 (34.4% less resident array memory). The default
+`World` remains unchanged for other compositions. This removes unused storage;
+it does not claim a kernel throughput gain. A 256³ run needs 1,409,286,144 array
+bytes; 512³ needs 11,274,289,152, before compiler/driver and observation overhead.
+Full observations write eleven channels (44 bytes/voxel), not scratch buffers.
+Initialization also avoids a second full host latent array. Source pins include
+the world constructor. Historical benchmarks below used the full world.
+
+Capture counts stay fixed as the simulation
 gets longer. `--capture-mode slices` writes three actual middle planes for
 activity/deposit, `volumes` writes both full fields, and `none` writes metrics only
 at the requested observation times. `--states 0` disables full observations.
