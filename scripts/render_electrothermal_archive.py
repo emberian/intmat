@@ -7,7 +7,7 @@ from pathlib import Path
 import bpy, numpy as np, openvdb as vdb
 from mathutils import Vector
 p=argparse.ArgumentParser();p.add_argument('run',type=Path);p.add_argument('output',type=Path)
-p.add_argument('--steps',default='all');p.add_argument('--size',type=int,default=800);p.add_argument('--samples',type=int,default=48);p.add_argument('--device',default='METAL',choices=('METAL','CPU'));p.add_argument('--image-name',default='final.png');p.add_argument('--orbit',type=float,default=.38);p.add_argument('--elevation',type=float,default=.17);p.add_argument('--distance',type=float,default=4.4);p.add_argument('--halo-iso',type=float,default=.08);p.add_argument('--no-carrier',action='store_true');p.add_argument('--no-halo',action='store_true');p.add_argument('--halo-mode',choices=('surface','volume'),default='volume');p.add_argument('--carrier',choices=('cutaway','crystal'),default='crystal');p.add_argument('--backdrop',choices=('ink','twilight'),default='ink');p.add_argument('--save-scene',action='store_true')
+p.add_argument('--steps',default='all');p.add_argument('--size',type=int,default=800);p.add_argument('--samples',type=int,default=48);p.add_argument('--device',default='METAL',choices=('METAL','CPU'));p.add_argument('--image-name',default='final.png');p.add_argument('--orbit',type=float,default=.38);p.add_argument('--elevation',type=float,default=.17);p.add_argument('--distance',type=float,default=4.4);p.add_argument('--halo-iso',type=float,default=.08);p.add_argument('--no-carrier',action='store_true');p.add_argument('--no-halo',action='store_true');p.add_argument('--halo-mode',choices=('surface','volume'),default='volume');p.add_argument('--carrier',choices=('cutaway','crystal'),default='crystal');p.add_argument('--backdrop',choices=('ink','twilight','slate'),default='ink');p.add_argument('--mineral-optics',choices=('clear','amber'),default='clear');p.add_argument('--save-scene',action='store_true')
 a=p.parse_args(sys.argv[sys.argv.index('--')+1:]);a.output.mkdir(parents=True,exist_ok=True)
 renderer_sha=hashlib.sha256(Path(__file__).read_bytes()).hexdigest();run_sha=hashlib.sha256((a.run/'run.json').read_bytes()).hexdigest();run=json.loads((a.run/'run.json').read_text());steps=None if a.steps=='all' else set(map(int,a.steps.split(',')));frames=[f for f in run['frames'] if steps is None or f['step'] in steps]
 bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
@@ -30,6 +30,9 @@ def material(name,color,rough=.2,metal=0,trans=0,ior=1.45):
 amber,ab=material('Cut amber optical carrier',(1,.87,.62,1),.055,0,1,1.47)
 absorb=amber.node_tree.nodes.new('ShaderNodeVolumeAbsorption');absorb.inputs['Color'].default_value=(.72,.24,.035,1);absorb.inputs['Density'].default_value=.25;amber.node_tree.links.new(absorb.outputs[0],amber.node_tree.nodes.get('Material Output').inputs['Volume'])
 halo,hs=material('Persistent thermally written mineral',(1,.83,.48,1),.07,0,1,1.14);hs.inputs['Thin Film Thickness'].default_value=285;hs.inputs['Thin Film IOR'].default_value=1.29
+if a.mineral_optics=='amber':
+ hs.inputs['IOR'].default_value=1.22;hs.inputs['Roughness'].default_value=.10
+ absorption=halo.node_tree.nodes.new('ShaderNodeVolumeAbsorption');absorption.inputs['Color'].default_value=(.72,.24,.035,1);absorption.inputs['Density'].default_value=1.5;halo.node_tree.links.new(absorption.outputs[0],halo.node_tree.nodes.get('Material Output').inputs['Volume'])
 copper,cs=material('Old conductive scars',(.62,.21,.035,1),.23,.78);cs.inputs['Emission Color'].default_value=(1,.2,.015,1);cs.inputs['Emission Strength'].default_value=.13
 active,acs=material('Recently selected conductor sites',(.16,.65,1,1),.16,.55);acs.inputs['Emission Color'].default_value=(.035,.45,1,1);acs.inputs['Emission Strength'].default_value=2.5
 seedmat,sm=material('Designed electrode roots',(.65,.3,.07,1),.18,.9)
@@ -46,11 +49,20 @@ if not a.no_carrier:
  if a.carrier=='crystal':polygon=[(-.91,-.47),(-.64,-.70),(.48,-.64),(.87,-.26),(.82,.42),(.42,.68),(-.64,.62),(-.91,.26)]
  prism('Faceted amber observation chamber',polygon,-.89,.91,amber)
 # prism('Thin floating basalt base',[(-.94,-.77),(.94,-.77),(.99,-.67),(.99,.72),(.88,.79),(-.88,.79),(-.99,.68),(-.99,-.67)],-.97,-.91,black)
-bpy.ops.mesh.primitive_plane_add(size=200,location=(0,0,-1.005));bpy.context.object.data.materials.append(black)
+bpy.ops.mesh.primitive_plane_add(size=200,location=(0,0,-1.005));floor_object=bpy.context.object;floor_object.data.materials.append(black)
 if a.backdrop=='twilight':
  backdrop,bs2=material('Twilight blue photographic backdrop',(.055,.105,.16,1),.75)
  bpy.ops.mesh.primitive_plane_add(size=200,location=(0,2.2,0),rotation=(math.pi/2,0,0));bpy.context.object.data.materials.append(backdrop)
  scene.world.node_tree.nodes['Background'].inputs['Color'].default_value=(.22,.3,.45,1);scene.world.node_tree.nodes['Background'].inputs['Strength'].default_value=.35
+
+if a.backdrop=='slate':
+ bpy.data.objects.remove(floor_object,do_unlink=True)
+ backdrop,bss=material('Matte blue photographic cove',(.025,.04,.06,1),1)
+ bss.inputs['Specular IOR Level'].default_value=0;bss.inputs['Coat Weight'].default_value=0
+ rows=[(-200,-1.005),(2,-1.005)]+[(2+3*math.sin(t),1.995-3*math.cos(t)) for t in np.linspace(0,math.pi/2,33)[1:]]+[(5,200)]
+ mesh=bpy.data.meshes.new('Seamless slate cove');mesh.from_pydata([(x,y,z) for y,z in rows for x in (-200,200)],[],[(2*q,2*q+1,2*q+3,2*q+2) for q in range(len(rows)-1)]);mesh.update();obj=bpy.data.objects.new('Seamless slate cove',mesh);bpy.context.collection.objects.link(obj);mesh.materials.append(backdrop)
+ for polygon in mesh.polygons:polygon.use_smooth=True
+ scene.world.node_tree.nodes['Background'].inputs['Color'].default_value=(.1,.14,.2,1);scene.world.node_tree.nodes['Background'].inputs['Strength'].default_value=.35
 
 
 def field_read(directory,name,shape):

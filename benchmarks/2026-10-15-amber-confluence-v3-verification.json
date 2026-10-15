@@ -1,0 +1,22 @@
+{
+    "shape": [
+        33,
+        33,
+        33
+    ],
+    "events": 180,
+    "backend": "amd",
+    "matched_cpu_device_events": 180,
+    "cpu_device_maximum_errors": {
+        "nutrient": 5.9604645e-8,
+        "dose": 2.3841858e-7,
+        "solid": 8.940697e-8,
+        "temperature": 5.9604645e-8
+    },
+    "material_relative_error": 7.991729463626135e-11,
+    "min_nutrient": 0.3561959,
+    "harmonic_residual": 1.1920928955078125e-7,
+    "first_dose_feedback_ablation_difference": 7,
+    "thermal_mineral_gain": 336.1702913155541,
+    "interpretation": "Matched coarse fixture uses a spatially scaled heat width and diffusion. Demonstrates conservative thermal writing, portable coupled execution, and a causal dose-to-growth effect; not a universal morphology or physical electrical calibration claim."
+}

@@ -1,0 +1,42 @@
+{
+  "specimen": "amber-confluence",
+  "shape": [
+    257,
+    257,
+    257
+  ],
+  "requested_events": 24576,
+  "completed_events": 24576,
+  "termination": "completed",
+  "elapsed_seconds_including_captures": 1538.357116999,
+  "working_set_estimate_bytes": 1623244864,
+  "run_sha256": "d5f06c0a69ecf5222f77c5afb23e7c5dcf4397a89b4467b96875c9cb0a4b4f4d",
+  "source_sha256": {
+    "studies/branch_metal_multigrid.jl": "92b8ede5460f0b5d1fc09f3589b9ba1e00c77d96002ab8d2de4814989205aad2",
+    "studies/electrothermal_archive.jl": "a7d8e280e4d0728c1a1624c6d5c3c8f6f923f0a119a2e4e87de2fa1beef871ae",
+    "src/writing.jl": "78fba7cd46f03749bdc56547b7ce5622f7ba3ea42cc34801829345dae3975e05",
+    "src/electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+    "studies/branch_solver_prototype.jl": "23ffce8e17f9bef91c6ebfabf02f92374c3e9ee7658dc7cee6925a7950cb3aa0"
+  },
+  "captured_frames": 65,
+  "conductor_observations_checked": 803075,
+  "initial_components": 3,
+  "final_components": 3,
+  "final_pointwise_material_error": 6.9141387939453125e-06,
+  "final_relative_material_error": 4.6438364265100063e-10,
+  "maximum_captured_harmonic_residual": 1.545747121178831e-05,
+  "final": {
+    "event": 24576,
+    "time": 61.44,
+    "occupied": 24643,
+    "temperature_max": 0.6557855,
+    "dose_max": 2.0843787,
+    "solid_max": 0.73809797,
+    "nutrient_min": 0.2619023,
+    "material_relative_error": 4.6438354793696714e-10,
+    "residual": 6.775061289432394e-06,
+    "finite": true
+  },
+  "validation": "All65 saved graph histories preserve identities and birth events, exact face adjacency, attachment to an older conductor, finite nonnegative final fields, and local/global material balance. Source hashes match immutable runtime and exported source copies.",
+  "interpretation": "A native257\u00b3 actual coupled trajectory, not a performance comparison. Three electrical components remain separate; they share a harmonic field. Mineral contours at selected midpoint also remain separate at iso.007/.02/.04; no fused-envelope claim."
+}
