@@ -20,7 +20,11 @@ This is a stabilized first-order semi-implicit step: the stiff biharmonic term
 and linear stabilizer are implicit, while the cubic chemical potential and
 external chemical forcing are explicit. The q=0 mode is unchanged, so forcing
 remodels composition through conservative flux rather than adding phase mass.
-Float32 state introduces small rounding drift; transforms use ComplexF64.
+Float32 state introduces small rounding drift; real-to-complex transforms use
+Float64 work space and a ComplexF64 Hermitian half-spectrum. The conjugate modes
+are redundant for this real material, so the representation changes neither the
+discrete operator nor its time integration. Native FFT plans stay local to each
+advance, preserving ordinary serialization and deterministic checkpoint restart.
 The FFT diagonalizes the *finite-difference* operator, so small-step comparison
 with the explicit reference tests temporal error without changing spatial
 physics. This follows the stabilized semi-implicit approach analyzed by
@@ -53,14 +57,31 @@ external forcing is recorded separately. Recordings omit FFT scratch buffers. FF
 the process object graph; ordinary Julia Serialization preserves aliases and
 checkpoint restart reproduces the next step exactly. For portable recordings,
 construct a fresh process and restore recorded arrays and parameters.
+Binary checkpoints made with the earlier full-complex process layout require
+their original pinned source. The new real-FFT layout has no implicit binary
+migration; its own serialization roundtrip and alias-preserving continuation are
+tested.
 
 Validation in `test/implicit_phase.jl` covers 2D and 3D unequal spacing,
 conservation, monotone passive energy at dt=0.2, uniform stationary states,
 constant/nonuniform forcing, exact uniform pinning and rejected variable
 pinning. Halving dt in a same-stencil comparison with explicit Euler halves
-the discrepancy, as expected for first-order time integration (174 assertions).
+the discrepancy, as expected for first-order time integration. The 187 focused
+assertions also cover full-complex representation parity on odd, anisotropic,
+singleton-axis and true 2D grids with forcing and uniform mineral pinning, plus
+current-source checkpoint continuity.
 
-A warmed local CPU measurement at 64³ with extent=(32,32,32), bulk=1,
+A 192³ same-process comparison on the local Apple M2 Max used two Julia/FFTW
+threads and one BLAS thread. Three interleaved warm samples gave median times of
+0.643 seconds for the real-FFT core and 1.187 seconds for the previous full-complex
+implementation (1.85× throughput), with 14,544 Julia allocation bytes per core
+step. The cached production prototype measured 0.671 seconds in that comparison.
+The core splits its inverse into complex axes 2–3 and real axis 1 to avoid
+FFTW.jl's full-input copy during multidimensional real-inverse planning; no global
+plan cache is required. Evidence is retained in
+`outputs/refinement-20261015/phase-backend-comparison-192.json`.
+
+An earlier full-complex CPU measurement at 64³ with extent=(32,32,32), bulk=1,
 kappa=0.7, mobility=1, pinning=0 and explicit coupling disabled used the seeded
 noise plus a smooth cosine mode:
 

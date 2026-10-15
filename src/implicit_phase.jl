@@ -5,11 +5,12 @@ uniform deposits; varying deposits require the explicit reference process.
 `chemical_forcing` is an externally writable chemical-potential field, never a
 composition source: its Laplacian conserves the signed composition.
 """
-struct ImplicitPhaseSeparation{P,F,C}
+struct ImplicitPhaseSeparation{P,F,R,C}
     reference::P
     chemical_forcing::F
     stabilization::Float64
     eigenvalues::F
+    real_buffer::R
     spectrum::C
     nonlinear_spectrum::C
 end
@@ -23,12 +24,14 @@ function ImplicitPhaseSeparation(w::World; stabilization=2, chemical_forcing=not
     reference=PhaseSeparation(w;kwargs...)
     forcing=chemical_forcing===nothing ? zeros(Float32,w.grid.size) : Float32.(chemical_forcing)
     size(forcing)==w.grid.size || throw(DimensionMismatch("chemical forcing/world grid mismatch"))
-    eigenvalues=zeros(Float32,w.grid.size)
+    spectral_size=(w.grid.size[1]÷2+1,w.grid.size[2],w.grid.size[3])
+    eigenvalues=zeros(Float32,spectral_size)
     for I in CartesianIndices(eigenvalues)
         eigenvalues[I]=sum(4sinpi((I[d]-1)/w.grid.size[d])^2/w.grid.spacing[d]^2 for d in 1:3 if w.grid.size[d]>1; init=0.0)
     end
-    spectrum=zeros(ComplexF64,w.grid.size); nonlinear=similar(spectrum)
-    p=ImplicitPhaseSeparation(reference,forcing,Float64(stabilization),eigenvalues,spectrum,nonlinear)
+    real_buffer=zeros(Float64,w.grid.size)
+    spectrum=zeros(ComplexF64,spectral_size); nonlinear=similar(spectrum)
+    p=ImplicitPhaseSeparation(reference,forcing,Float64(stabilization),eigenvalues,real_buffer,spectrum,nonlinear)
     validate(w,p)
     p
 end
@@ -54,18 +57,28 @@ end
 function advance!(w::World,p::ImplicitPhaseSeparation,dt::Real)
     check_dt(w,p,dt)
     m=implicit_mobility(w,p); s=p.stabilization
+    # The real material needs only its Hermitian half-spectrum. Plans remain
+    # local, so serialization never captures native FFTW resources.
+    forward=FFTW.plan_rfft(p.real_buffer;flags=FFTW.ESTIMATE)
+    # FFTW.jl copies multidimensional real-inverse input when planning. Split
+    # the separable inverse into in-place complex axes and the real first axis:
+    # the one-dimensional real planner needs no full-grid planning copy.
+    inverse_complex=FFTW.plan_ifft!(p.spectrum,(2,3);flags=FFTW.ESTIMATE)
+    inverse_real=FFTW.plan_irfft(p.spectrum,w.grid.size[1],(1,);flags=FFTW.ESTIMATE)
+    for I in eachindex(p.phi); p.real_buffer[I]=p.phi[I]; end
+    mul!(p.spectrum,forward,p.real_buffer)
     for I in eachindex(p.phi)
         u=Float64(p.phi[I])
-        p.spectrum[I]=u
-        p.nonlinear_spectrum[I]=p.bulk*(u^3-u)+p.chemical_forcing[I]
+        p.real_buffer[I]=p.bulk*(u^3-u)+p.chemical_forcing[I]
     end
-    FFTW.fft!(p.spectrum); FFTW.fft!(p.nonlinear_spectrum)
+    mul!(p.nonlinear_spectrum,forward,p.real_buffer)
     for I in eachindex(p.spectrum)
         q=Float64(p.eigenvalues[I]); a=Float64(dt)*m*q
         p.spectrum[I]=((1+a*s)*p.spectrum[I]-a*p.nonlinear_spectrum[I])/(1+a*(s+p.kappa*q))
     end
-    FFTW.ifft!(p.spectrum)
-    for I in eachindex(p.phi); p.phi[I]=real(p.spectrum[I]); end
+    inverse_complex*p.spectrum
+    mul!(p.real_buffer,inverse_real,p.spectrum)
+    for I in eachindex(p.phi); p.phi[I]=p.real_buffer[I]; end
     phase_observe!(w,p)
     launch!(w,phase_couple_kernel!,w.scratch.nutrient,w.fields.nutrient,w.fields.activity,p.phi,p.interface,w.grid.spacing,Float32(dt),p.nutrient_diffusion,p.phase_barrier,p.interface_activity,p.activity_relaxation)
     copyto!(w.fields.nutrient,w.scratch.nutrient)

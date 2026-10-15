@@ -40,6 +40,40 @@
     @test Interior.implicit_mobility(v,q)≈1/9
 end
 
+@testset "Real FFT phase matches the full complex representation" begin
+    # Independent old representation: all Fourier modes, including redundant
+    # conjugates. Odd/singleton first axes exercise real-transform layout.
+    for grid in (Grid(9,7,5;extent=(9,14,7)),
+                 Grid(1,9,7;extent=(2,9,14)),
+                 Grid(10,7;extent=(8,14,1)))
+        w=World(grid;seed=63); fill!(w.fields.deposit,2)
+        p=ImplicitPhaseSeparation(w;mineral_pinning=.7,stabilization=3,
+            nutrient_diffusion=0,activity_relaxation=0)
+        for I in CartesianIndices(p.chemical_forcing)
+            p.chemical_forcing[I]=.15sin(sum(Tuple(I)))
+        end
+        phi=copy(p.phi); q=zeros(Float32,grid.size)
+        for I in CartesianIndices(q)
+            q[I]=sum(4sinpi((I[d]-1)/grid.size[d])^2/grid.spacing[d]^2 for d in 1:3 if grid.size[d]>1;init=0.0)
+        end
+        dt=.15f0; mobility=Interior.implicit_mobility(w,p)
+        for _ in 1:30
+            u=Float64.(phi)
+            old=Interior.FFTW.fft(u)
+            nonlinear=Interior.FFTW.fft(p.bulk .* (u.^3 .- u) .+ p.chemical_forcing)
+            for I in eachindex(old)
+                a=Float64(dt)*mobility*Float64(q[I])
+                old[I]=((1+a*p.stabilization)*old[I]-a*nonlinear[I])/(1+a*(p.stabilization+p.kappa*Float64(q[I])))
+            end
+            phi.=real.(Interior.FFTW.ifft(old))
+            step!(w,p,dt)
+        end
+        @test p.phi≈phi atol=2e-7 rtol=2e-6
+        @test size(p.spectrum)==(grid.size[1]÷2+1,grid.size[2],grid.size[3])
+        @test size(p.real_buffer)==grid.size
+    end
+end
+
 @testset "Implicit phase checkpoint continuity" begin
     w=World(Grid(16,16;extent=(16,16,1)))
     p=ImplicitPhaseSeparation(w;nutrient_diffusion=0,activity_relaxation=0)
