@@ -13,10 +13,12 @@ encounters next.
 
 Six families: phase surfaces, written inclusions, dielectric branches, fractured
 networks, acoustic/neural contours and 3D metabolic inhabitants. Each photograph
-observes a saved simulation through chosen optics. The new series targets 36
-specimens at 1600²; grid studies use 96³ cells, branches 64³, ecology 32³ plus
-continuous agents. Mechanics retains its actual deformed bond graph.
-[Recipes and reproduction](docs/collection-20261015.md)
+observes a saved simulation through chosen optics. The first series adds 36
+specimens at 1600². Refinement now evolves native 384³ phase, writing and waves;
+768³ writing is complete. New photography fixes artificial crop staircases and
+adds distinct resin, wax, frost, ceramic and metal optics. Ecology remains 32³
+plus continuous agents; mechanics retains its actual deformed bond graph.
+[Recipes](docs/collection-20261015.md) · [Spatial refinement](docs/spatial-refinement.md)
 
 ## Run
 
