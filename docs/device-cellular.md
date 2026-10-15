@@ -162,3 +162,39 @@ captures; it restored every checkpoint array exactly and its 20-step continuatio
 had maximum floating error 1.19e-7. Evidence is source-pinned in
 `outputs/device-cellular-native-v16/`. Focused base tests pass 25 assertions;
 protocol and independent coverage tests are maintained separately.
+
+### Optional physical-support representation
+
+`DeviceCellular(w, reference; support_strategy=:axis)` stores separable periodic
+coordinate indices and squared distances for each cell, then regenerates radial
+weights as each kernel visits the physical support. The default remains
+`:materialized`. Both strategies use the same sampling, fair resource allocation,
+waste return and body-permeability kernels through
+`device_support_edges(device_support_descriptor(p), slot)`. The descriptor borrows
+process arrays; retain it only while that process owns the same arrays. Axis
+storage grows with the sum of candidate axis lengths rather than their product.
+It still visits every eligible voxel and retains the specified physical radius.
+It is a memory representation change, not a smaller neighborhood approximation.
+
+`device_cellular_initialize(w, positions; support_strategy=:axis, ...)` creates
+founders without constructing a CPU `CellStencil`. It shares parameter validation
+and the seeded genome prior with `CellularEcology`; the CPU struct layout is
+unchanged. Only founder-sized biological arrays are staged on the host, instead
+of downloading and re-uploading every capacity-sized scratch array. `initial`
+means resource concentration, converted to voxel mass. Uniform source/sink masks
+and finite total rate/budget tuples define the initial resource law. Temporary
+resource initialization buffers live on the selected backend. This factory does
+not yet accept patterned resource initializers.
+
+Fresh checkpoints use format version 2, record the support strategy explicitly,
+and pin the support and founder-initialization helpers. Existing frozen runs keep
+their own source/checkpoint implementation; this runtime does not reinterpret
+version-1 checkpoints. Axis throughput and backend compiler compatibility need
+fresh measurements; the earlier v16 performance results describe materialized
+support only.
+
+The existing full-loop probe/benchmark/trajectory scripts accept
+`DEVICE_SUPPORT_STRATEGY=axis`; their default recipe and materialized strategy
+remain unchanged. Those reference-based recipes still build a CPU founder
+stencil. Use the direct factory for large fine-grid initialization instead of
+mistaking the script's legacy setup cost for a requirement of the new backend.

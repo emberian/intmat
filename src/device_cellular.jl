@@ -15,7 +15,10 @@ mutable struct DeviceCellular{S,E,B,Q,G,O}
     attempted_steps::Int
     ownership::O
 end
-function device_cellular_arrays(backend,C,h,K,S,V,bins)
+isdefined(@__MODULE__,:cellular_parameters) || include("cellular_initialization.jl")
+include("device_cellular_support.jl")
+
+function device_cellular_arrays(backend,C,h,K,S,V,bins;support_strategy=:materialized,axis_capacity=0)
     z(T,d...)=KernelAbstractions.zeros(backend,T,d...)
     state=(active=z(Int32,C),ids=z(Int32,C),parents=z(Int32,C),lineages=z(Int32,C),generations=z(Int32,C),
         position=z(Float32,C,3),position_next=z(Float32,C,3),mass=z(Float32,C),metabolites=z(Float32,C,2),
@@ -24,10 +27,18 @@ function device_cellular_arrays(backend,C,h,K,S,V,bins)
         marks=z(Float32,C,2h+CELLULAR_SENSORS,h+CELLULAR_ACTIONS),actions=z(Float32,C,CELLULAR_ACTIONS),
         inputs=z(Float32,C,2h+CELLULAR_SENSORS),outputs=z(Float32,C,h+CELLULAR_ACTIONS),
         radii=z(Float32,C),enzymes=z(Float32,C,4),requests=z(Float32,C,2),grants=z(Float32,C,2),
-        sites=z(Int32,C,S),support=z(Float32,C,S),support_count=z(Int32,C),
+        sites=z(Int32,C,support_strategy===:axis ? 0 : S),support=z(Float32,C,support_strategy===:axis ? 0 : S),support_count=z(Int32,C),
         bonds=z(Int32,C,K),bond_ids=z(Int32,C,K),rest=z(Float32,C,K),candidates=z(Int32,C,K),candidate_rest=z(Float32,C,K),
         force=z(Float32,C,3),rows=z(Float32,C),exchange_scale=z(Float32,C,2),waste=z(Float32,C),
         ledger=z(Float32,C,9),ledger_low=z(Float32,C,9),cell_bin=z(Int32,C),next=z(Int32,C),new_parent=z(Int32,C))
+    if support_strategy===:axis
+        names=filter(k->!(k in (:sites,:support,:support_count)),keys(state))
+        state=merge(NamedTuple{names}(state),(axis_indices=z(Int32,C,axis_capacity,3),
+            axis_distance2=z(Float32,C,axis_capacity,3),support_normalization=z(Float32,C),
+            support_fallback=z(Int32,C),support_count=z(Int32,C)))
+    elseif support_strategy!==:materialized
+        throw(ArgumentError("unknown device support strategy"))
+    end
     env=(fields=z(Float32,V,3),scratch=z(Float32,V,3),demand=z(Float32,V,2),scale=z(Float32,V,2),
         returns=z(Float32,V),permeability=z(Float32,V),occupancy=z(Float32,V),
         source_masks=z(Float32,V,3),sink_masks=z(Float32,V,3),resource_ledger=z(Float32,3,6),resource_ledger_low=z(Float32,3,6),
@@ -36,8 +47,10 @@ function device_cellular_arrays(backend,C,h,K,S,V,bins)
         heap=z(Int32,C),heap_keys=z(UInt32,C),free=z(Int32,C))
     state,env
 end
-function DeviceCellular(w::World,reference::CellularEcology;capacity=reference.capacity,
-        radius_bound=2f0,bin_width=radius_bound/2,mechanical_substeps=16,seed=reference.seed)
+DeviceCellular(w::World,reference::CellularEcology;kwargs...)=device_cellular_import(w,reference;kwargs...)
+function device_cellular_import(w::World,reference;capacity=reference.capacity,
+        radius_bound=2f0,bin_width=radius_bound/2,mechanical_substeps=16,seed=reference.seed,support_strategy=:materialized)
+    support_strategy in (:materialized,:axis) || throw(ArgumentError("unknown device support strategy"))
     reference.medium===nothing && reference.resources.medium===nothing || throw(ArgumentError("imported device medium coupling is not implemented; construct the explicit device composition"))
     all(x->length(x)==3,(reference.resources.fields,reference.resources.potentials,reference.resources.diffusion,reference.resources.source_rates,reference.resources.sink_rates,reference.resources.source_masks,reference.resources.sink_masks,reference.resources.source_remaining,reference.resources.sink_remaining)) && reference.resources.potentials[3]==0 || throw(ArgumentError("device cells require two precursors and one zero-potential waste species"))
     (!hasproperty(w.fields,:nutrient)||all(iszero,Array(w.fields.nutrient))) || throw(ArgumentError("DeviceCellular owns its resource pool; zero unrelated world nutrient explicitly"))
@@ -61,15 +74,17 @@ function DeviceCellular(w::World,reference::CellularEcology;capacity=reference.c
     q=merge(map(x->x isa Integer ? Int32(x) : Float32(x),reference.parameters),
         (potentials=Tuple(Float32.(reference.resources.potentials)),diffusion=Tuple(Float32.(reference.resources.diffusion)),
         source_rates=Tuple(Float32.(reference.resources.source_rates)),sink_rates=Tuple(Float32.(reference.resources.sink_rates)),
-        source_totals=Tuple(Float32(sum(Float64,m)) for m in reference.resources.source_masks),
-        sink_totals=Tuple(Float32(sum(Float64,m)) for m in reference.resources.sink_masks),
+        source_totals=hasproperty(reference.resources,:source_totals) ? Tuple(Float32.(reference.resources.source_totals)) : Tuple(Float32(sum(Float64,m)) for m in reference.resources.source_masks),
+        sink_totals=hasproperty(reference.resources,:sink_totals) ? Tuple(Float32.(reference.resources.sink_totals)) : Tuple(Float32(sum(Float64,m)) for m in reference.resources.sink_masks),
         radius_bound=Float32(radius_bound),bin_width=binwidth,mechanical_substeps=Int32(mechanical_substeps),seed=UInt32(seed)))
     all(x->isfinite(x)&&x>=0,Iterators.flatten(v isa Tuple ? v : (v,) for v in values(q))) || throw(ArgumentError("parameters must remain finite in Float32"))
     all(>(0),(q.exchange_radius,q.density,q.store_capacity,q.energy_capacity,q.half_saturation,q.response_time,q.adaptation_time,q.motor_cost,q.minimum_mass,q.division_mass)) || throw(ArgumentError("required rates/scales must remain positive in Float32"))
     geom=(dims=Int32.(dims),spacing=spacing,extent=w.grid.extent,nd=Int32(nd),volume=volume,
-        candidates=Int32.(candidates),bins=Int32.(bins),capacity=Int32(C),hidden=Int32(h),degree=Int32(K))
-    state,env=device_cellular_arrays(w.backend,C,h,K,S,V,bins)
-    host=map(Array,state)
+        candidates=Int32.(candidates),bins=Int32.(bins),capacity=Int32(C),hidden=Int32(h),degree=Int32(K),
+        support_strategy=support_strategy===:axis ? Int32(1) : Int32(0),support_radius2=exchange_radius^2)
+    state,env=device_cellular_arrays(w.backend,C,h,K,S,V,bins;support_strategy,axis_capacity=maximum(candidates))
+    # Device buffers are already zeroed; stage founders only, never a full-capacity host replica.
+    host=map(a->zeros(eltype(a),n,Base.tail(size(a))...),state)
     host.active[1:n].=1;host.ids[1:n].=Int32.(reference.ids);host.parents[1:n].=Int32.(reference.parents)
     host.lineages[1:n].=Int32.(reference.lineages);host.generations[1:n].=Int32.(reference.generations)
     for (dst,src) in ((:position,:positions),(:metabolites,:metabolites),(:hidden,:hidden),(:adaptation,:adaptation),(:actions,:last_actions))
@@ -94,7 +109,10 @@ function DeviceCellular(w::World,reference::CellularEcology;capacity=reference.c
     end
     all(>(0),host.mass[1:n]) && all(>=(0),host.metabolites) && all(>=(0),host.energy) && all(>=(0),host.age) || throw(ArgumentError("reference physiological state must remain valid after Float32 conversion"))
     0<=q.efficiency<=1 && 0<=q.mutation_probability<=1 || throw(ArgumentError("invalid device probability/efficiency"))
-    for name in keys(state);copyto!(getproperty(state,name),getproperty(host,name));end
+    for name in keys(state)
+        dst=getproperty(state,name);src=getproperty(host,name)
+        copyto!(view(dst,1:n,ntuple(_->Colon(),ndims(dst)-1)...),src)
+    end
     for s in 1:3
         copyto!(view(env.fields,:,s),vec(reference.resources.fields[s]))
         copyto!(view(env.source_masks,:,s),vec(reference.resources.source_masks[s]))
@@ -285,3 +303,5 @@ function device_cellular_audit(snapshot)
 end
 
 include("device_cellular_checkpoint.jl")
+
+include("device_cellular_initialization.jl")

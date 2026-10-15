@@ -10,7 +10,7 @@ min(side,steps,batch,capture,restart_steps,mechanical_substeps)>0 || error("posi
 out=length(ARGS)>0 ? ARGS[1] : "outputs/device-cellular-trajectory"
 ispath(out) && error("fresh output required")
 mkpath(dirname(abspath(out)));mkdir(out);mkdir(joinpath(out,"frames"));mkdir(joinpath(out,"source"))
-for file in ("device_cellular.jl","device_cellular_kernels.jl","device_cellular_checkpoint.jl","device_cellular_protocol.jl")
+for file in ("device_cellular.jl","device_cellular_support.jl","device_cellular_initialization.jl","cellular_initialization.jl","device_cellular_kernels.jl","device_cellular_checkpoint.jl","device_cellular_protocol.jl")
     cp(joinpath(@__DIR__,"..","src",file),joinpath(out,"source",file))
 end
 for file in ("run_device_cellular.jl","device_cellular_setup.jl","device_cellular_population.jl")

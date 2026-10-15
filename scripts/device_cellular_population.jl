@@ -1,5 +1,5 @@
 # Seeded finite population used by full-loop probes, not a trained genome.
-function device_cellular_population(side,backend;mechanical_substeps=16,bin_width=parse(Float32,get(ENV,"DEVICE_BIN_WIDTH","1")),capacity=parse(Int,get(ENV,"DEVICE_CAPACITY",string(2side^3))))
+function device_cellular_population(side,backend;support_strategy=Symbol(get(ENV,"DEVICE_SUPPORT_STRATEGY","materialized")),mechanical_substeps=16,bin_width=parse(Float32,get(ENV,"DEVICE_BIN_WIDTH","1")),capacity=parse(Int,get(ENV,"DEVICE_CAPACITY",string(2side^3))))
     n=side^3;extent=1.7side;dims=max(4,2side)
     grid=Grid(dims,dims,dims;extent=(extent,extent,extent))
     wcpu=World(grid,CPU(),NamedTuple(),NamedTuple(),0.,17)
@@ -13,5 +13,5 @@ function device_cellular_population(side,backend;mechanical_substeps=16,bin_widt
     # Explicit empty World works with both the pinned and current package:
     # this process owns every chemical/material buffer itself.
     w=World(wcpu.grid,backend,NamedTuple(),NamedTuple(),0.,wcpu.seed)
-    w,Interior.DeviceCellular(w,c;mechanical_substeps=mechanical_substeps,bin_width=bin_width)
+    w,Interior.DeviceCellular(w,c;mechanical_substeps=mechanical_substeps,bin_width=bin_width,support_strategy=support_strategy)
 end

@@ -65,3 +65,38 @@ slow inhibitory adaptation strength from 0.3 to 1.5 and its timescale from 6 to 
 That is an analytical attempt to open more temporal developmental behavior; it
 does not prescribe oscillation. These are exploratory ecological regimes, not
 claims of evolved improvement or hard-wired cooperation.
+
+The 64³ density-four run completed time 300 in 2,072.49 seconds including
+exports: 1,761 cells, 2,717 births, 1,276 deaths, 3,451 bonds and no blocked
+births. Catalyst mass was 92.196, retained food 187.888, and cumulative paid
+construction 651.517. Maximum observed material and chemical-energy errors were
+9.92e-6 and 3.17e-5. Following the bloom, construction per model-time unit was
+0.0776, 0.1526, 0.2826 and 0.3104 in successive 50-time intervals from 100 to
+300; deaths in those intervals were 486, 288, 148 and 105. Construction remains
+below catalyst decay, but the later trajectory is not simply a passive remnant.
+These observations motivate continuation; they do not establish adaptation or
+persistent collective organization. Density and resolution both differ from the
+24³ pilot, so this is not an isolated grid-refinement comparison.
+
+The study also accepts a strict checkpoint continuation:
+
+```sh
+julia --project=PATH_TO_ORIGINAL_SOURCE --threads=2 --gcthreads=1 \
+  studies/constructive_volume.jl PATH_TO_ORIGINAL_PROFILE \
+  outputs/a-fresh-continuation 64 11980 200 PATH_TO_PARENT_CHECKPOINT 9000 2000000000
+```
+
+The last three arguments are the parent checkpoint, wall budget in seconds after
+initial export, and artifact budget in bytes. Restore still requires the original
+physical source. All recipe settings must match the checkpoint; only Arena's
+derived initial-energy ledger metadata is excluded from recipe comparison. The
+new driver records its own hash, parent checkpoint hash, initial step/time and
+stop reason, preserves genome storage, and reserves checkpoint space before
+stopping. It never replaces an earlier trajectory or deletes its artifacts.
+
+The density-four continuation uses the original 2220f5a physical engine. A
+separate 20-step restore/export check passed from step 3000 to 3020 with matching
+source and parent hashes. The longer run starts from that completed check and
+targets time 1500 with a 9,000-second wall budget, two CPU threads, an 8 GiB memory
+limit and a 2 GB artifact budget. This is an explicitly recorded continuation,
+not a claim that the original study driver ran uninterrupted.

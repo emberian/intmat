@@ -53,8 +53,13 @@ steps: 512→1,418 cells, 938 births, 32 deaths and 3,651 bonds, with zero block
 births. Capacity 20,000 exceeds the closed material budget's possible live count.
 Including compact captures it achieved 29.53 steps/s; no CPU speedup is inferred.
 Exact saved-array restore and a tolerance-checked continuation pass. The new
-Float32 synchronous law is not a bitwise port of the serial CPU model; API and
-construction integration remain outstanding. The native 513³ electrothermal archive is baking from its own source
+Float32 synchronous law is not a bitwise port of the serial CPU model. Its public
+Experiment/recording/checkpoint protocol is integrated; queued failures latch and
+generic preflight protects earlier siblings. Five alternating complete-step
+comparisons measured another 2.72× (512 founders) and 3.00× (4096 founders) from
+tighter contact bins, with matching births/deaths/identities and final bond sets
+but small Float32 trajectory differences. Paid construction is passing separate
+CPU/device integration gates. [Device evidence](docs/device-cellular.md). The native 513³ electrothermal archive is baking from its own source
 pin under `outputs/art/runtime-amber-archive-20261015`, with lossless captured
 fields. Its thermal mineral envelope and conductor graph provide actual optical
 geometry. New solver optimization must not alter that running source.
@@ -63,8 +68,11 @@ geometry. New solver optimization must not alter that running source.
 cells, 2,514 births, 725 deaths, 5,497 bonds and no capacity-blocked births.
 Paid catalyst and retained food remain present; maximum observed mass/chemical
 residuals are below 1e-4. Soft bodies overlap substantially in this dense regime.
-A separate native 64³, density-four run uses smaller bodies and exports complete
-chemistry volumes. These are different physical regimes, not a convergence pair.
+A separate native 64³, density-four run reached t300: 1,761 cells, 2,717 births,
+1,276 deaths, 3,451 bonds and no blocked births. Construction increased after the
+initial bloom while deaths declined. A verified strict continuation now targets
+t1500 under a fresh 9,000-second/2 GB bound, retaining its original engine. It
+uses smaller bodies and exports complete chemistry volumes. These are different physical regimes, not a convergence pair.
 [Volumes and recipes](docs/constructive-volumes.md)
 
 **Developmental hypotheses:** reduced neural-mode analysis suggests that collective
@@ -152,7 +160,7 @@ hbox now executes the original Julia kernels through AMDGPU with normal compiled
 
 ## Evidence and limits
 
-The integrated Julia suite at `2220f5a` passed 3123 assertions across 127 testsets from an immutable source copy, including exact contact/diffusion oracles, compact-world trajectory parity, portable-runner guards and the sorptive habitat. A separate 25-assertion regression covers soak failures, explicit source forks and throughput mode without replacing methods in the shared test process. The shared realFFT phase backend passes 355 focused/coupled assertions and matches the full old 96³ trajectory within 4.88e−17; a 192³ benchmark measured 1.85× speedup. Current Python tools pass 23 tests, including actual movie encoding, video byte ranges and renderer source-cache invalidation, under the bundled Pillow runtime. Actual bake audits check finite fields, material/work ledgers, graph identity, source hashes and population accounting; photographs receive visual review.
+The integrated Julia suite through `037aa94` passed 3462 assertions across 141 testsets from an immutable source copy, including exact contact/diffusion oracles, compact-world trajectory parity, portable-runner guards, sorptive habitat and device protocol. Coverage combines the initial run with a successful tail rerun: the copy initially dereferenced compatibility symlinks, causing 11 CLI link checks to fail; restoring those links fixed the harness. Logs are retained under `/tmp/intmat-integration-device-20261015*.log`. A separate 25-assertion regression covers soak failures, explicit source forks and throughput mode without replacing methods in the shared test process. The shared realFFT phase backend passes 355 focused/coupled assertions and matches the full old 96³ trajectory within 4.88e−17; a 192³ benchmark measured 1.85× speedup. Current Python tools pass 23 tests, including actual movie encoding, video byte ranges and renderer source-cache invalidation, under the bundled Pillow runtime. Actual bake audits check finite fields, material/work ledgers, graph identity, source hashes and population accounting; photographs receive visual review.
 
 - Small finite-supply metabolic experiments reached capacity 180 then died at sampled t=384–1048; controls varied by seed. [Results](docs/metabolic-experiments.md)
 - Strong funded phase feedback retained two substantial positive domains through t=160 versus one in controls; coarsening continued. Persistent compartments remain unproven. [Study](docs/active-compartment-studies.md)
@@ -203,7 +211,7 @@ against incompatible fixed aliases. A reviewed native 256³ activity-contour pho
 2. Test film cooperation with mixed cooperator/free-rider invasion and a benefit-removed/cost-retained intervention; use the adaptation study's noisy controls to improve assay design.
 3. Persistent active compartments: longer replicated trajectories, local interfacial agents and conserved surface/volume exchange; count both phase signs.
 4. Develop the new catalytic habitat across longer, replicated regimes: secretion inheritance, spatial chemical dependence, resource renewal and consumer/builder interactions. Its first t300 trajectories establish functioning construction and food release, not adaptation. Study richer mechanics and developmental descriptors without treating a quiet pilot as an architectural impossibility.
-5. Device-resident populations: binning, fair allocation, lifecycle and genotype storage; asynchronous observation. Preserve identities and ledgers through CPU/device parity checks.
+5. Device-native populations now run with bins, fair allocation, lifecycle, inherited controllers and explicit checkpoints. Integrate compact physical-support reconstruction and direct founder initialization; benchmark complete coupled construction on AMD, then prepare long source-pinned runs with compact observations.
 6. Couple mechanics, transport, damage and healing through explicit work/material exchanges. Extend optics to absorbed-light feedback and sharper interface transport where a specimen warrants it.
 7. Long studies need chunked trajectories, genotype sampling, warm accelerators and physical normalization. Larger hardware and longer runs remain necessary; present failures and successes do not bound eventual behavior.
 

@@ -126,8 +126,7 @@ end
         end
     end
 end
-@kernel function dc_support!(s,e,q,g)
-    i=@index(Global,Linear)
+@inline function dc_materialized_support!(s,e,q,g,i)
     if e.status[1]==0
         s.support_count[i]=0
         if s.active[i]==1
@@ -154,6 +153,40 @@ end
         end
     end
 end
+@inline function dc_axis_support!(s,e,q,g,i)
+    if e.status[1]==0
+        s.support_count[i]=0;s.support_fallback[i]=0;s.support_normalization[i]=0f0
+        if s.active[i]==1
+            lo=ntuple(d->d>g.nd ? Int32(1) : Int32(floor((s.position[i,d]-q.exchange_radius)/g.spacing[d]+.5f0)),3)
+            for d in 1:3,offset in 0:g.candidates[d]-1
+                pos=dc_period(lo[d]+offset,g.dims[d]);s.axis_indices[i,offset+1,d]=pos
+                delta=d>g.nd ? 0f0 : abs((pos-.5f0)*g.spacing[d]-s.position[i,d])
+                delta=d>g.nd ? 0f0 : min(delta,g.extent[d]-delta)
+                s.axis_distance2[i,offset+1,d]=delta^2
+            end
+            total=0f0;count=Int32(0)
+            for z in 1:g.candidates[3],y in 1:g.candidates[2],x in 1:g.candidates[1]
+                r2=(s.axis_distance2[i,x,1]+s.axis_distance2[i,y,2])+s.axis_distance2[i,z,3]
+                if r2<q.exchange_radius^2
+                    total+=(1f0-r2/q.exchange_radius^2)^2;count+=Int32(1)
+                end
+            end
+            if count==0
+                pos=ntuple(d->d>g.nd ? Int32(1) : min(g.dims[d],Int32(floor(s.position[i,d]/g.spacing[d]))+1),3)
+                s.support_fallback[i]=dc_index(pos...,g.dims);count=Int32(1);total=1f0
+            end
+            s.support_count[i]=count;s.support_normalization[i]=total
+        end
+    end
+end
+@kernel function dc_support!(s,e,q,g)
+    i=@index(Global,Linear)
+    if hasproperty(s,:sites)
+        dc_materialized_support!(s,e,q,g,i)
+    else
+        dc_axis_support!(s,e,q,g,i)
+    end
+end
 @kernel function dc_sense!(s,e,q,g)
     i=@index(Global,Linear)
     if e.status[1]==0 && s.active[i]==1
@@ -161,8 +194,8 @@ end
         for j in 1:h;s.inputs[i,j]=s.hidden[i,j];s.inputs[i,h+j]=0;end
         for j in 1:CELLULAR_SENSORS;s.inputs[i,base+j]=0;end
         concentration1=0f0;concentration2=0f0
-        for edge in 1:s.support_count[i]
-            site=s.sites[i,edge];weight=s.support[i,edge]/g.volume
+        for (site,edgeweight) in device_support_edges(device_support_descriptor(s,g),i)
+            weight=edgeweight/g.volume
             concentration1+=weight*e.fields[site,1];concentration2+=weight*e.fields[site,2]
             pos=dc_coords(site,g.dims)
             for d in 1:3
@@ -229,7 +262,7 @@ end
         room=max(0f0,q.store_capacity*s.mass[i]-s.metabolites[i,1]-s.metabolites[i,2]);requestsum=0f0
         for k in 1:2
             concentration=0f0
-            for edge in 1:s.support_count[i];concentration+=s.support[i,edge]*e.fields[s.sites[i,edge],k]/g.volume;end
+            for (site,weight) in device_support_edges(device_support_descriptor(s,g),i);concentration+=weight*e.fields[site,k]/g.volume;end
             amount=dt*q.uptake_rate*s.mass[i]*s.enzymes[i,k]^q.enzyme_exponent*concentration/(q.half_saturation+concentration)
             s.requests[i,k]=amount;requestsum+=amount
         end
@@ -247,8 +280,8 @@ end
             end
         end
         for row in 1:CELLULAR_ACTIONS;s.actions[i,row]=s.outputs[i,h+row];end
-        for edge in 1:s.support_count[i],k in 1:2
-            site=s.sites[i,edge];proposal=s.requests[i,k]*s.support[i,edge]
+        for (site,weight) in device_support_edges(device_support_descriptor(s,g),i),k in 1:2
+            proposal=s.requests[i,k]*weight
             KernelAbstractions.@atomic e.demand[site,k]+=proposal
         end
     end
@@ -266,7 +299,7 @@ end
     if e.status[1]==0 && s.active[i]==1
         for k in 1:2
             grant=0f0
-            for edge in 1:s.support_count[i];grant+=s.requests[i,k]*s.support[i,edge]*e.scale[s.sites[i,edge],k];end
+            for (site,weight) in device_support_edges(device_support_descriptor(s,g),i);grant+=s.requests[i,k]*weight*e.scale[site,k];end
             s.grants[i,k]=grant;s.metabolites[i,k]+=grant;dc_ledger_add!(s.ledger,s.ledger_low,i,2+k,grant)
         end
     end
@@ -368,8 +401,8 @@ end
 @kernel function dc_return_waste!(s,e,g)
     i=@index(Global,Linear)
     if e.status[1]==0
-        for edge in 1:s.support_count[i]
-            amount=s.waste[i]*s.support[i,edge];site=s.sites[i,edge]
+        for (site,weight) in device_support_edges(device_support_descriptor(s,g),i)
+            amount=s.waste[i]*weight
             KernelAbstractions.@atomic e.returns[site]+=amount
         end
     end
@@ -634,8 +667,8 @@ end
     i=@index(Global,Linear)
     if e.status[1]==0 && s.active[i]==1
         mass=s.mass[i]+s.metabolites[i,1]+s.metabolites[i,2]
-        for edge in 1:s.support_count[i]
-            amount=mass*s.support[i,edge]/g.volume;site=s.sites[i,edge]
+        for (site,weight) in device_support_edges(device_support_descriptor(s,g),i)
+            amount=mass*weight/g.volume
             KernelAbstractions.@atomic e.occupancy[site]+=amount
         end
     end

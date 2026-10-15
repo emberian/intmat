@@ -120,3 +120,53 @@ end
     c.resources.potentials[3]=1
     @test_throws ArgumentError Interior.DeviceCellular(w,c)
 end
+
+@testset "Optional axis support, full-step consumers and restart" begin
+    for dims in ((8,8,8),(3,2,1),(1,1,1))
+        w=World(Grid(dims...;extent=(4,4,4));fields=(),scratch_fields=())
+        r=ResourcePool(w;potentials=(4,4,0),initial=(.2,.3,.4),diffusion=(.01,.01,0))
+        c=CellularEcology(w,[.1 2.1;.2 1.8;.3 2.4],r;capacity=4,exchange_radius=.8)
+        a=DeviceCellular(w,c;support_strategy=:axis);b=DeviceCellular(w,c)
+        @test !hasproperty(a.state,:sites)
+        for i in 1:4
+            x=collect(Interior.device_support_edges(Interior.device_support_descriptor(a),i))
+            y=collect(Interior.device_support_edges(Interior.device_support_descriptor(b),i))
+            @test first.(x)==first.(y)
+            @test last.(x)≈last.(y) atol=1e-7
+        end
+        for _ in 1:12
+            device_cellular_step!(w,a,.01);device_cellular_step!(w,b,.01)
+        end
+        @test Array(a.environment.fields)≈Array(b.environment.fields) atol=2e-6
+        @test Array(a.state.position)≈Array(b.state.position) atol=2e-6
+        cp=device_cellular_checkpoint(w,a);a2=device_cellular_restore(w,cp)
+        @test device_cellular_snapshot(a)==device_cellular_snapshot(a2)
+        device_cellular_step!(w,a,.01);device_cellular_step!(w,a2,.01)
+        @test device_cellular_snapshot(a)==device_cellular_snapshot(a2)
+    end
+end
+@testset "Direct device initialization uses canonical founders" begin
+    w=World(Grid(4,4,4;extent=(4,4,4));fields=(),scratch_fields=())
+    positions=[.1 2.1;.2 1.8;.3 2.4]
+    r=ResourcePool(w;potentials=(4,4,0),initial=(.2,.2,0),diffusion=(.08,.08,.02))
+    c=CellularEcology(w,positions,r;capacity=4,seed=17)
+    a=DeviceCellular(w,c;support_strategy=:axis)
+    b=Interior.device_cellular_initialize(w,positions;capacity=4,seed=17)
+    @test device_cellular_snapshot(a)==device_cellular_snapshot(b)
+    @test_throws ArgumentError Interior.device_cellular_initialize(w,positions;initial=(Inf,0,0))
+end
+@testset "Axis lifecycle and normalized budget checkpoints" begin
+    w=World(Grid(4,4,4;extent=(4,4,4));fields=(),scratch_fields=())
+    p=Interior.device_cellular_initialize(w,[.2 2.2;.2 2.2;.2 2.2];capacity=6,
+        biomass=1.9,energy=2.,initial=(0.,0.,0.),growth_rate=0.,mutation=0.)
+    p.state.mass[2]=.1f0
+    device_cellular_step!(w,p,.01)
+    x=device_cellular_snapshot(p)
+    @test x.environment.metadata[3]>0
+    @test x.environment.metadata[4]>0
+    cp=device_cellular_checkpoint(w,p)
+    env=deepcopy(cp.snapshot.environment)
+    env.resource_ledger[1,1]=1f0;env.resource_ledger_low[1,1]=-.5f0
+    malformed=merge(cp,(snapshot=merge(cp.snapshot,(environment=env,)),))
+    @test_throws ArgumentError device_cellular_restore(w,malformed)
+end

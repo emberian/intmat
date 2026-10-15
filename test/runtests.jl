@@ -54,5 +54,6 @@ end
 
 module DeviceCellularTests
 include("device_cellular.jl")
+include("cellular_initialization.jl")
 include("device_cellular_protocol.jl")
 end
