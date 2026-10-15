@@ -9,6 +9,15 @@ encounters next.
 
 [Gallery](https://emberian.github.io/intmat/) · [Metabolic replay](https://emberian.github.io/intmat/metabolic/arena.html) · [Working state](TRACKER.md)
 
+## Material collection
+
+Six families: phase surfaces, written inclusions, dielectric branches, fractured
+networks, acoustic/neural contours and 3D metabolic inhabitants. Each photograph
+observes a saved simulation through chosen optics. The new series targets 36
+specimens at 1600²; grid studies use 96³ cells, branches 64³, ecology 32³ plus
+continuous agents. Mechanics retains its actual deformed bond graph.
+[Recipes and reproduction](docs/collection-20261015.md)
+
 ## Run
 
 ```sh
@@ -85,6 +94,7 @@ separate status. [Accelerators](docs/accelerators.md) · [Larger-run budgets](do
 Small runs establish mechanisms and expose failures. They do not bound long-run
 behavior. Sustained turnover is not open-ended evolution; founder loss is not loss
 of all genotype variation. Compare seeds, timescales, capacities and resolutions.
+[Overnight observations](docs/alife-overnight.md) · [Adaptation protocol](docs/alife-adaptation-protocol.md)
 
 ## Invariants and limits
 

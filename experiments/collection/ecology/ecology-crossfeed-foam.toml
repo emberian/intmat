@@ -21,7 +21,7 @@ nutrient_diffusion = 0.03
 [metabolism]
 cooperation = 0.65
 trait_mutation = 0.04
-assimilation = 0.75
+assimilation = 0.4
 allocation = [0.45, 0.45, 0.1]
 efficiency = 0.6
 uptake_rate = 1.5

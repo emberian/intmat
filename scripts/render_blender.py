@@ -50,6 +50,17 @@ parser.add_argument("--activity-threshold", type=float, default=0.0)
 parser.add_argument("--activity-power", type=float, default=1.0)
 parser.add_argument("--interfaces", action="store_true", help="Artistic activity/deposit gradient transfer; retains simulation data")
 parser.add_argument("--smooth", type=int, default=0, help="Optical three-tap smoothing passes before interface derivatives")
+parser.add_argument("--frame-content", action="store_true", help="Fit actual visible mesh bounds with an eight-percent photographic margin")
+parser.add_argument("--inclusion-transmission", type=float, default=.3)
+parser.add_argument("--surface-smooth", type=int, default=0, help="Optical three-tap scalar smoothing passes before inclusion meshing")
+parser.add_argument("--inclusion-tint", choices=("pearl", "amber", "jade", "rose"), default="pearl")
+parser.add_argument("--camera-distance", type=float, default=4.65)
+parser.add_argument("--device", choices=("CPU", "METAL"), default="CPU")
+parser.add_argument("--adaptive-threshold", type=float, default=.03)
+parser.add_argument("--cutaway-axis", choices=("x", "y", "z"))
+parser.add_argument("--cutaway-position", type=float, default=0.0, help="Optical clipping plane in normalized specimen coordinates")
+parser.add_argument("--studio-background", choices=("midnight", "warm", "slate"), default="midnight")
+parser.add_argument("--exposure", type=float, default=0.0)
 args = parser.parse_args(sys.argv[sys.argv.index("--") + 1:])
 directory = os.path.abspath(args.directory)
 with open(os.path.join(directory, "volume.json")) as stream:
@@ -66,6 +77,12 @@ if args.emission_field in arrays:
 elif args.emission_field != "activity":
     raise ValueError(f"Emission source {args.emission_field!r} is absent from the export")
 mask = np.clip(arrays.get("mask", np.ones(shape)), 0, 1)
+if args.cutaway_axis:
+    axis = "xyz".index(args.cutaway_axis)
+    coordinate = np.linspace(-1, 1, shape[axis])
+    clipping = (coordinate <= args.cutaway_position).reshape(tuple(shape[d] if d == axis else 1 for d in range(3)))
+    mask = mask * clipping
+    optical_mapping["cutaway"] = {"axis": args.cutaway_axis, "position": args.cutaway_position, "interpretation": "optical section of exported fields"}
 if args.interfaces:
     def edge_strength(field, name):
         for _ in range(args.smooth):
@@ -159,7 +176,13 @@ if args.inclusion_surface:
     if args.inclusion_surface not in arrays:
         raise ValueError("Requested inclusion scalar absent from exported arrays")
     surface_grid = vdb.FloatGrid()
-    surface_grid.copyFromArray(np.ascontiguousarray(arrays[args.inclusion_surface] * mask))
+    surface_values = arrays[args.inclusion_surface].copy()
+    for _ in range(args.surface_smooth):
+        for axis in range(3):
+            before = np.take(surface_values, np.maximum(np.arange(shape[axis]) - 1, 0), axis=axis)
+            after = np.take(surface_values, np.minimum(np.arange(shape[axis]) + 1, shape[axis] - 1), axis=axis)
+            surface_values = .25 * before + .5 * surface_values + .25 * after
+    surface_grid.copyFromArray(np.ascontiguousarray(surface_values * mask))
     points, triangles, quads = surface_grid.convertToPolygons(isovalue=args.inclusion_isovalue, adaptivity=.05)
     points = 2 * (points + .5) / np.array(shape) - 1
     points[:, 2] *= args.z_scale
@@ -170,10 +193,10 @@ if args.inclusion_surface:
     inclusion_material = bpy.data.materials.new("Pale frosted deposited phase")
     inclusion_material.use_nodes = True
     shader = inclusion_material.node_tree.nodes.get("Principled BSDF")
-    shader.inputs["Base Color"].default_value = (.85,.93,.98,1)
+    shader.inputs["Base Color"].default_value = {"pearl": (.85,.93,.98,1), "amber": (.72,.34,.065,1), "jade": (.15,.55,.39,1), "rose": (.64,.23,.3,1)}[args.inclusion_tint]
     shader.inputs["Roughness"].default_value = .18
     shader.inputs["IOR"].default_value = 1.2
-    shader.inputs["Transmission Weight"].default_value = .3
+    shader.inputs["Transmission Weight"].default_value = args.inclusion_transmission
     inclusion.data.materials.append(inclusion_material)
     for polygon in mesh.polygons:
         polygon.use_smooth = True
@@ -262,11 +285,11 @@ if args.population:
     for identity, position, lineage in zip(population["ids"], population["positions"], population["lineages"]):
         marker = bpy.data.objects.new("Recorded agent " + str(identity), marker_meshes[lineage])
         bpy.context.collection.objects.link(marker)
-        marker.location = (2 * position[0] / shape[0] - 1, 2 * position[1] / shape[1] - 1, 0)
+        marker.location = (2 * position[0] / shape[0] - 1, 2 * position[1] / shape[1] - 1, args.z_scale * (2 * position[2] / shape[2] - 1) if population.get("dimension", 2) == 3 else 0)
         marker.scale = (args.population_radius,) * 3
-    optical_mapping["population_observation"] = {"count": len(population["ids"]), "lineages": lineages, "marker_radius": args.population_radius, "source": args.population, "dimension": 2, "optical_extrusion_z_scale": args.z_scale}
+    optical_mapping["population_observation"] = {"count": len(population["ids"]), "lineages": lineages, "marker_radius": args.population_radius, "source": args.population, "dimension": population.get("dimension", 2), "optical_extrusion_z_scale": args.z_scale}
 
-if args.polished_carrier:
+if args.polished_carrier and not args.cutaway_axis:
     selected = np.argwhere(mask > .01)
     if selected.size == 0:
         raise ValueError("Cannot cut a polished carrier from an empty viewing mask")
@@ -311,10 +334,26 @@ if args.polished_carrier:
 
 def point_at(obj, target):
     obj.rotation_euler = (Vector(target) - obj.location).to_track_quat("-Z", "Y").to_euler()
-bpy.ops.object.camera_add(location=(4.65 * math.cos(args.elevation) * math.sin(args.orbit), -4.65 * math.cos(args.elevation) * math.cos(args.orbit), 4.65 * math.sin(args.elevation)))
+bpy.ops.object.camera_add(location=(args.camera_distance * math.cos(args.elevation) * math.sin(args.orbit), -args.camera_distance * math.cos(args.elevation) * math.cos(args.orbit), args.camera_distance * math.sin(args.elevation)))
 camera = bpy.context.object
 point_at(camera, (0, 0, 0))
 camera.data.lens = 52
+if args.frame_content:
+    bpy.context.view_layer.update()
+    corners = [item.matrix_world @ Vector(corner) for item in bpy.context.scene.objects if item.type == "MESH" and item.name != "Dark studio ground" for corner in item.bound_box]
+    if corners:
+        lower = Vector(tuple(min(p[d] for p in corners) for d in range(3)))
+        upper = Vector(tuple(max(p[d] for p in corners) for d in range(3)))
+        center = (lower + upper) * .5
+        backward = camera.location.normalized()
+        right = backward.cross(Vector((0, 0, 1))).normalized()
+        up = right.cross(backward).normalized()
+        tangent = camera.data.sensor_width / (2 * camera.data.lens)
+        distance = max(max(abs((p-center).dot(right)), abs((p-center).dot(up))) / tangent + (p-center).dot(backward) for p in corners) * 1.08
+        camera.location = center + backward * distance
+        point_at(camera, center)
+        optical_mapping["camera_fit"] = {"bounds": [list(lower), list(upper)], "distance": distance, "target": list(center), "margin": .08}
+
 bpy.context.scene.camera = camera
 for location, energy, size, color in [((-3, -2, 4), 650, 4, (1, .74, .4)), ((2, 2, 3), 950, 3, (.45, .72, 1))]:
     bpy.ops.object.light_add(type="AREA", location=location)
@@ -327,6 +366,27 @@ for location, energy, size, color in [((-3, -2, 4), 650, 4, (1, .74, .4)), ((2, 
 scene = bpy.context.scene
 scene.render.engine = "CYCLES"
 scene.cycles.samples = args.samples
+scene.cycles.use_adaptive_sampling = True
+scene.cycles.adaptive_threshold = args.adaptive_threshold
+scene.cycles.adaptive_min_samples = min(16, args.samples)
+if args.device == "METAL":
+    preferences = bpy.context.preferences.addons["cycles"].preferences
+    preferences.compute_device_type = "METAL"
+    preferences.get_devices()
+    devices = []
+    for device in preferences.devices:
+        device.use = device.type == "METAL"
+        if device.use:
+            devices.append({"name": device.name, "type": device.type})
+    if not devices:
+        raise RuntimeError("METAL requested but no enabled Metal device was discovered")
+    scene.cycles.device = "GPU"
+    optical_mapping["render_device"] = devices
+else:
+    scene.cycles.device = "CPU"
+    optical_mapping["render_device"] = [{"name": "CPU", "threads": bpy.context.scene.render.threads}]
+optical_mapping["metal_kernel_settings"] = {key: os.environ.get(key) for key in ("CYCLES_METAL_ADAPTIVE_COMPILE", "CYCLES_METAL_SPECIALIZATION_LEVEL")}
+optical_mapping["adaptive_sampling"] = {"maximum_samples": args.samples, "minimum_samples": scene.cycles.adaptive_min_samples, "noise_threshold": args.adaptive_threshold}
 scene.cycles.use_denoising = True
 scene.cycles.volume_step_rate = 0.25
 scene.cycles.volume_max_steps = 2048
@@ -338,7 +398,8 @@ scene.render.resolution_y = args.size
 scene.render.resolution_percentage = 100
 scene.world.use_nodes = True
 background = scene.world.node_tree.nodes.get("Background")
-background.inputs["Color"].default_value = (0.008, 0.014, 0.025, 1)
+background.inputs["Color"].default_value = {"midnight": (0.008, 0.014, 0.025, 1), "warm": (.12,.085,.055,1), "slate": (.11,.15,.18,1)}[args.studio_background]
+scene.view_settings.exposure = args.exposure
 background.inputs["Strength"].default_value = 0.3
 scene.render.image_settings.file_format = "PNG"
 scene.render.filepath = os.path.abspath(args.output)

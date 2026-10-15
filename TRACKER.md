@@ -1,68 +1,59 @@
 # Interior — working state
 
-2026-10-14 · ChatGPT integration ledger. The destination is an extensible Julia art simulator for phenomena within—and constituting—materials, across grids, particles, graphs and interfaces, with light transport revealing the resulting structures.
+2026-10-15 · ChatGPT integration ledger.
+
+**Destination:** composable Julia simulations of phenomena inside—and constituting—materials, with evolving inhabitants and light transport revealing their structure.
 
 ## What runs
 
-- Shared Julia `World`, ordered `Experiment` stages, declared ports, explicit publisher conflicts, preflight validation and per-process timestep bounds. Observations are detached from integration; arbitrary runtime errors do not imply transactional rollback.
-- Dense excitable and recurrent neural fields; conservative material conversion and deposit-dependent transport. Metal validation exists for dense, neural, writing, acoustic and phase kernels. Moving particles and evolutionary populations currently run on CPU.
-- Persistent recurrent particles, resource-funded inherited neural ecology, and a deformable spring/bond graph with irreversible damage. These carriers retain their own state and identities; ecology is distinct from fixed-rule recurrence.
-- Thermal writing and irreversible dose, heterogeneous damped acoustic waves, harmonic-field dielectric branching, conservative Cahn–Hilliard phase separation, deformation/fracture, and graded-index ray observation. Each has executable examples and focused numerical checks.
-- Actual coupled ablations: writing changes neural deposition; acoustic excitation reaches particle exchange; phase interfaces coexist with finite-material ecology; mechanical history remains distinct within shared experiments.
-- Schema-v2 immutable state observations preserve native floating precision, owned process arrays, exact IDs, source hashes and parameters. This is an observation format, not yet an executable restart format.
-- Offline WebGL2 recorded-volume viewers, straight-ray previews, and Blender/Cycles photographs of exported fields, actual interfaces and surviving graph geometry. Finished studies include an amber branching conductor, a phase-interface labyrinth, a written inclusion and a fractured network.
-- Curated GitHub Pages collection and automated deployment from `dev`. Generated raw output and third-party reference footage stay outside Git. Snapshot commits are pushed as work converges.
-- Bounded 32³/64³/128³ CPU/Metal scaling measurements, explicit larger-run profiles and a streaming runner. The full dense128 study completed 3,414 steps to t=10.001953125 in 100.92 seconds of loop time, with 11 captures and maximum relative material drift 3.51e-07. Full 256³ runs remain a future experiment.
+- `bin/interior.jl`: `arena`, `run`, `bigrun`, named `study` commands. Engine in `src/`; recipes in `experiments/`; investigations in `studies/`. `examples/` retains compatibility forwards.
+- Ordered `World`/`Experiment` processes with owned state, declared observation ports, preflight checks and timestep bounds. Arbitrary runtime errors do not imply transactional rollback.
+- Excitable/recurrent fields, thermal writing, heterogeneous acoustics, dielectric growth, conserved phase separation, irreversible spring fracture and graded-index rays. Coupled ablations connect writing, neural deposition, pressure, ecology and interfaces.
+- Inherited recurrent agents with separate lifetime plasticity; finite chemical inventories; heritable metabolic allocation and efficiency/throughput tradeoffs; lower-potential export/uptake; paid shared film that changes transport and phase forcing. Structural recycling does not regenerate fuel.
+- Exact sampled state recordings, source-aware executable checkpoints, streamed volume playback, live field/individual inspection, Cycles photography and a curated Pages gallery.
 
-## Evidence and boundaries
+## Current convergence
 
-- The integrated suite passes 1,049 assertions (1,038 in the integrated run, plus 11 additional initializer/migration checks) after the active-arena convergence, including recording fidelity and composition. Small Metal checks cover wave/acoustic source phase and pulsed thermal writing with the new host clock.
-- A completed 32³ phase run evolved to t=54: energy 8210.76 → 5549.54, phase standard deviation 0.06894 → 0.66403, relative conserved-mass drift 4.92e-5. No mean correction or clipping was applied.
-- The ecology example produced births, deaths, mutation and surviving lineages with explicit material and energy ledgers. These observations do not establish multicellularity or open-ended evolution.
-- The 96³ lace study improved spatial artifacts from the coarser recording. Larger optical image dimensions alone do not improve simulation resolution.
-- Periodic numerical fields and the optical object's polished surface/crop are separate choices. No deformable enclosing gel boundary is yet solved. Ecology's current optical export is a shallow extrusion of its 2D population.
-- Array inventory units conserve within a fixed discretization; particle chemistry still needs explicit cell-volume normalization for cross-resolution physical equivalence.
-- Original supplied HTML/design documents remain historical context. Their earlier NumPy source was not supplied. Current measurements refer to this Julia implementation.
+**Art:** 36 selected parameterizations across phase, writing, branches, mechanics, waves/neural and 3D ecology. Phase/writing/waves use 96³ cells, branches 64³, ecology 32³ plus continuous agents; mechanics exports actual surviving bonds. The six phase bakes evolve through t=40–120; mean mass drift≤4.1e−9. Six ecology bakes reach t=100 with actual turnover; finite orchard ends 323 inhabitants, while crossfeed foam consumes 2462 units of generated byproduct. These are configured physical environments, not evidence that organisms invented their geometry. Bakes, rejected trials and source snapshots remain under `outputs/collection-20261015*`. Final 1600² photographs are rendering and entering the gallery after visual review. [Replay guide](docs/collection-20261015.md)
 
-## Next substantial work
+**Alife:** the original externally supplied arena remains alive after 3.48 million births, with 1,332 distinct inherited-controller signatures among 1,332 sampled inhabitants despite one surviving founder lineage. The separate 96² metabolic arena exhausted both million-unit external supplies and is empty after 743,520 births. Exact extinction time is unrecoverable from its old rotating checkpoints. Neither result establishes evolved cooperation. [Saved observations](docs/alife-overnight.md)
 
-1. **Persistent active compartments:** stronger funded feedback changes phase topology in a matched five-run study, but coarsening continues. Test more seeds, longer lifetimes, local interfacial agents, explicit conserved surface/volume exchange, and heritable boundary maintenance. Count connected regions in both phase signs.
-2. **Ecological differentiation:** multiple resources, heritable metabolic tradeoffs and spatial niches; compare diversity and extinction against simpler controls. Current long runs sustain turnover but lose founder lineages. Mutation within surviving lineages remains substantial.
-3. **Evolving organization:** conservative persistent bonds, division and organism-scale behavioral descriptors; investigate cooperative transport and collective structures without imposing their appearance in rendering.
-4. **GPU carriers and 3D:** port conservative fair allocation, local neighborhoods and mutable populations while retaining exact identities and ledgers. The continuous neural arena currently runs on CPU; small 3D tests run, but are not evidence of resolution-independent chemistry.
-5. **Material deformation:** couple mechanics to transport, damage, growth and healing through documented work/material exchanges. The present spring graph is a carrier, not a solved continuum gel.
-6. **Optics as a participant:** absorbed light as a thermal/chemical input; interface refraction alongside graded-index transport; specialized wave/polarization optics where a specimen warrants it.
-7. **Long studies:** use the tested bounded checkpoint ring, source-aware restore and single-writer ownership for multi-seed ensembles. Add chunked trajectory output, lineage sampling, and physical cell-volume normalization before comparing resolutions.
-8. **Photographic series:** use the semi-implicit solver for longer 3D boundary dynamics and photograph actual evolving interfaces/inclusions across time. Keep simulation resolution distinct from optical image dimensions.
+**Functional test:** an independent, funded, three-seed selection/transplant study is running: 12 selection arms, 96 descendant-versus-ancestor assays and 12 same-pool label controls. Fresh environments reset acquired state, positions and inventories; paired assays disable lifetime plasticity. No live arena was altered. Report all outcomes, including extinction, before interpreting inheritance or geometry specificity. [Fixed protocol](docs/alife-adaptation-protocol.md)
 
-See `docs/process-atlas.md` for the broader artistic/research map, `docs/fraser-experiments.md` for primary-source research, and `docs/bigruns.md` for measured scaling and concrete run profiles. These next directions remain part of the project, rather than being reduced to the initial specimens.
+**Observation:** both historical arenas remain available on local ports 8780/8781. An independent recorder now appends distinct-step metrics every 20 s and full published observations every 5 min, stopping at 6 GB without deleting data. It cannot reconstruct the lost overnight history. [Recorder](docs/arena-observatory.md)
 
-## Active convergence: compartments and continuous arena
+## Measured execution
 
-Implemented and integrated: `ImplicitPhaseSeparation`, `ActiveMedium`, `NeuralEcology`, and restartable `Arena`. Inhabitants have inherited recurrent controllers, separate bounded lifetime plasticity, fair proportional resource access, catabolic fuel use, paid signaling/deposition/erosion/remodeling, persistent ancestry and mutation. A closed-fuel test demonstrates extinction and a work plateau rather than free-energy recycling.
+| Workload | Evidence | Boundary |
+|---|---|---|
+| Semi-implicit phase |64³ to t10 in 19 s; measured 84× equal-time explicit throughput; mean drift<2e−10|Constant mobility, CPU FFT; no timestep-independence guarantee.|
+| Complete neural step, 2400 agents |19.13→11.20ms; 28.42→4.32MB allocated|CPU; reusable CSR bins/buffers, one sensing pass, batched lifecycle.|
+| Complete metabolic step, 2400 agents |12.74ms /5.10MB|GPU-resident populations remain unfinished.|
+| Kaggle T4 dense 64³ |Ten steps .01444s versus .35578s CPU|Dense fields, not an arena benchmark.|
+| Metal controller, 2400 agents |.89ms resident;11.76ms with transfers;3.32ms CPU|Residency determines whether acceleration helps.|
+| Dense 128³ run |3414 steps, t=10.00195, 100.92 s loop, 11 captures, 3.51e−7 relative mass drift|Bounded study; 256³ remains unrun.|
 
-The constant-mobility semi-implicit phase solver completed a 64³ t=10 run in 19 seconds; measured per-step timings imply about 84× equal-physical-time throughput versus the explicit reference at its stability limit. Mean composition drift stayed below 2e-10. This is not a guarantee of nonlinear stability or timestep-independent trajectories.
+hbox native HIP arithmetic works; Julia AMDGPU compilation remains blocked. The submitted TPU component probe has no verified timing in this ledger. [Accelerators](docs/accelerators.md) · [Performance](docs/arena-performance.md) · [Budgets](docs/bigruns.md)
 
-A continuous 64² arena is running locally at `http://127.0.0.1:8780/arena.html`, with measured fields, individual selection, genome/plastic-state inspection, live controls and bounded checkpoints. It is an ordinary local process, not an installed reboot service. A constructor-only source migration preserved step 6,470 and all 2,291 inhabitants; the restarted process advanced and produced a new checkpoint that passed strict source-hash restore. The curated Pages replay contains 25 actual snapshots with display fields sampled to 32² and displayed agent floats rounded; it is explicitly recorded playback.
+## Evidence and limits
 
-Two coarse fair-share runs reached t=1000 with populations 383/398, no blocked births, and continued birth/death turnover, but only 1/3 surviving founder lineages. Feedback ablation also persisted; this does not establish a diversity benefit from feedback. In the boundary sweep, strong funded feedback retained two substantial positive domains at t=160, while both controls had one component in each phase; interface length still decreased. See `docs/arena-experiments.md`, `docs/arena-experiment-results.json`, and `docs/active-compartment-studies.md` for settings and counterexamples.
+The last integrated Julia suite passed 1298 assertions; the application interface added 31 checks. This collection changes studies and observation/render tooling, not engine physics. Current Python tools pass 12 tests. Actual bake audits check finite fields, material/work ledgers, graph identity, source hashes and population accounting; photographs receive visual review.
 
-## Metabolic organization and efficient execution — 2026-10-14
+- Small finite-supply metabolic experiments reached capacity 180 then died at sampled t=384–1048; controls varied by seed. [Results](docs/metabolic-experiments.md)
+- Strong funded phase feedback retained two substantial positive domains through t=160 versus one in controls; coarsening continued. Persistent compartments remain unproven. [Study](docs/active-compartment-studies.md)
+- Periodic fields, optical crops and polished display surfaces are separate. No enclosing deformable gel wall is solved. Older ecology art extrudes 2D; the new collection uses actual 3D populations.
+- Inventory units conserve within a discretization. Cross-resolution physical chemistry needs explicit cell-volume normalization.
+- Fixed recurrent neural fields are distinct from evolved agents. Attractive morphology, unique genomes and long survival do not establish adaptive organization.
+- Pages presents photographs and recorded playback; it does not execute Julia. Large states/scenes and third-party references remain outside Git.
 
-The next model is integrated: finite masked resource supplies; three species with explicit chemical potentials; heritable simplex enzyme allocation, assimilation, efficiency/throughput tradeoffs and partial catabolism; lower-potential export and uptake; paid shared film with decay, permeability and phase feedback. Structural recycling never replenishes chemical potential. The original arena remains running; a separate 96² metabolic arena runs at `http://127.0.0.1:8781/arena.html`, with 576 founders and capacity 12,000. It enlarges the domain at the same .5-cell spacing rather than claiming cross-resolution equivalence.
+## Outstanding work
 
-The execution redesign adds reusable contiguous observation/controller buffers, CSR neighborhood bins, a single sensing/inference pass for metabolism and lifecycle, batched population growth, and pruning of dead individual contribution histories. Matched complete neural steps at 2,400 inhabitants improved 19.13→11.20 ms and 28.42→4.32 MB allocated; the composed metabolic step measured 12.74 ms/5.10 MB. GPU-resident full population state, device binning/allocation/lifecycle, asynchronous observation and capacity-based genotype storage remain unfinished.
+1. Complete and publish all 36 photographs; preserve recipes and physical/optical distinctions.
+2. Finish the funded adaptation study; inspect seed-level effects, reciprocal gardens, capacity blocking and same-pool controls. Then test film cooperation with mixed cooperator/free-rider invasion and a benefit-removed/cost-retained intervention.
+3. Persistent active compartments: longer replicated trajectories, local interfacial agents and conserved surface/volume exchange; count both phase signs.
+4. Evolving organization: persistent bonds/division, collective transport and behavioral descriptors that distinguish organism-built structure from imposed phase geometry.
+5. Device-resident populations: binning, fair allocation, lifecycle and genotype storage; asynchronous observation. Preserve identities and ledgers through CPU/device parity checks.
+6. Couple mechanics, transport, damage and healing through explicit work/material exchanges. Extend optics to absorbed-light feedback and sharper interface transport where a specimen warrants it.
+7. Long studies need chunked trajectories, genotype sampling, warm accelerators and physical normalization. Larger hardware and longer runs remain necessary; present failures and successes do not bound eventual behavior.
 
-The full integrated Julia suite passes 1,298 assertions; Python tools pass 11 tests. Tests include both phase signs, conservative chemistry, paid film, byproduct potential, reordering/inheritance, synchronous sensing parity, duplicate-owned-stage rejection, actual recording and checkpoint continuation.
-
-The matched long study completed 15×12,000 steps against a pinned pre-workspace physics implementation. Every small finite-supply population first expanded to capacity180 and later went extinct (sampled times384–1048). Some chemical species remained. Outcomes varied by seed and intervention; this is evidence of executing mechanisms and finite-budget dynamics, not a general result about cooperation or evolving organization. Results and costs: `docs/metabolic-experiment-results.json`, `docs/metabolic-experiments.md`.
-
-Kaggle Julia/CUDA ran on an actual Tesla T4: the bounded 64³ dense-field probe took .01444 s for ten steps versus .35578 s on that job's CPU. This is not the evolving arena. Metal controller measurements demonstrate why residency matters: .89 ms resident, 11.76 ms including per-tick state transfers, versus 3.32 ms CPU at2,400 inhabitants. Hardware access, scripts and remaining backend work are recorded in `docs/accelerators.md` and `docs/tpu-controller.md`.
-
-A bounded 32³ metabolic composition also completed 64 steps (t=6.4), ending with 1,536 inhabitants, finite inspected arrays, material residual −.00218 and energy residual −.00243. The 13.30-second runner measurement includes first-call compilation/I/O; it excludes package loading and construction. Its exact checkpoint restored and advanced. This is a 3D execution check, not an ecological timescale study.
-
-## Application interface and material photographs — 2026-10-14
-
-The supported entry point is `bin/interior.jl`: `arena`, `run`, `bigrun`, and named `study` commands. The engine remains in `src/`; canonical parameter recipes live under `experiments/{arena,materials,bigruns}`; reproducible investigations live in `studies/`. `examples/` now contains compatibility forwards and recipe symlinks. No simulation source hashes changed. The interface passed 31 checks, including preservation of existing recordings, the moved scene verification passed 36 assertions, and bounded arena, material and 128³ dense commands actually ran. Source-pinned recovery instructions retain their historical paths.
-
-The art convergence photographs saved state rather than rerunning it: a true 32³ phase-rich contour within a chosen amber display matrix, and a thin optical section of the running 96² metabolic material. Exact captures, optical mappings and Blender scenes stay under `outputs/art/`; selected photographs and compact provenance enter the public gallery. Optical depth in the metabolic section does not imply 3D ecological dynamics.
+[Process atlas](docs/process-atlas.md) · [Fraser research](docs/fraser-experiments.md) · [Publication](docs/publishing.md)
