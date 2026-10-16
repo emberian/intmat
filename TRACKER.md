@@ -669,3 +669,13 @@ against incompatible fixed aliases. A reviewed native 256³ activity-contour pho
   reseed, resume or new ecological inference. Compact longitudinal/terminal
   record: docs/cellular-optimized-completion.md and JSON. All four bounded runs
   are handled; the observatory follow-up schedule is stopped (PAUSED).
+
+### Native thermal knots published
+
+The warm thread remembers: two prescribed continuous thermal paths share finite
+precursor, and retained mineral changes acoustic propagation. Native384³/2500steps
+completed in521.71s; actual geometry photographed at1600². Shared-inventory
+interaction and CPU/Metal fixtures pass; final material relative residual
+−1.28e−10. The paths are designed; thermal exposure, deposition and pressure are
+computed. Reviewed publication brings the gallery to70 specimens/148.67MB.
+Full-resolution photograph takes precedence over the retained320px thumbnail.

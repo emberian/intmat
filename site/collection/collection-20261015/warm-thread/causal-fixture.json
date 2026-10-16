@@ -1,0 +1,13 @@
+{
+    "schema": "warm-thread-causal-fixture",
+    "shape": [
+        24,
+        24,
+        24
+    ],
+    "shared_inventory_composition_max_error": 8.940697e-7,
+    "independent_inventory_excess": 373.8435459174216,
+    "material_sound_ablation_max_difference": 1.0664133,
+    "material_relative_error": -1.5650816938735563e-9,
+    "interpretation": "At coarse, deliberately broader writer resolution, shared nutrient prevents both histories independently claiming the same material; fixed deposited material measurably changes propagation of an identical pulse. Not a full-resolution convergence result."
+}

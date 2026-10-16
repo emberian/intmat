@@ -1,0 +1,241 @@
+{
+  "schema": "interior-animation",
+  "id": "fault-remembers-motion",
+  "title": "The fault remembers",
+  "description": "A laminated material takes tension and shear. Conductive dose marks its sheets as a fault opens through seven layers. Forty actual recorded states.",
+  "source": {
+    "study": "studies/fault_remembers.jl",
+    "render_study": "scripts/render_fault_motion.py",
+    "capture_verification_sha256": "896daa6f347b69a1998755e4fe3aa414be372184b946689170bc8983282ed9e8",
+    "render_record_sha256": "d47b74ad7dd15ea77c02bb88c34bf72829783558e199d99b6dede8c2f439510a",
+    "same_approved_final_state": true,
+    "temporal_interpolation": false,
+    "actual_samples": 40,
+    "physical_time_interval": [
+      0,
+      1.015
+    ],
+    "global_dose_optical_max": 0.04419005268498425,
+    "camera": "fixed throughout",
+    "native_nodes": 5670,
+    "native_bonds": 63209
+  },
+  "playback": {
+    "fps": 8,
+    "duration_seconds": 5.0,
+    "width": 640,
+    "height": 640,
+    "rendered_width": 640,
+    "rendered_height": 640,
+    "interpolation": "none; one video frame per recorded simulation sample"
+  },
+  "frames": [
+    {
+      "video_time": 0.0,
+      "simulation_time": 0.0,
+      "source_image_sha256": "a2bf66c870800793769c112ea011365c62e5d8af2ead0b8cdd6df5c418cb98f5"
+    },
+    {
+      "video_time": 0.125,
+      "simulation_time": 0.0259,
+      "source_image_sha256": "284679e474cd305f9134dea8510e3b505fd0fca2f67ad71a50713e994446ad2a"
+    },
+    {
+      "video_time": 0.25,
+      "simulation_time": 0.0518,
+      "source_image_sha256": "608cdfea2a5941b80dfa48a32cb3e9b3d75580103b9be19241ddfb6139f56ece"
+    },
+    {
+      "video_time": 0.375,
+      "simulation_time": 0.0784,
+      "source_image_sha256": "d61343476156d43b876a3688b7c120ce0e4b252fe8bee802e1c76bce8e1ea302"
+    },
+    {
+      "video_time": 0.5,
+      "simulation_time": 0.1043,
+      "source_image_sha256": "f9b9ca36764b63777357fc58dd37af109fa4aa5f0d6e2326b9b804d566d98572"
+    },
+    {
+      "video_time": 0.625,
+      "simulation_time": 0.1302,
+      "source_image_sha256": "39c32f8081703fb32011937d59b0a0cad22da4cb4d7b8b03012fd65da1a80c50"
+    },
+    {
+      "video_time": 0.75,
+      "simulation_time": 0.1561,
+      "source_image_sha256": "4c7d8e9941cfaafecbc60aa66c1723e2e0db7a86160d11e54c26baae935b5b22"
+    },
+    {
+      "video_time": 0.875,
+      "simulation_time": 0.182,
+      "source_image_sha256": "226c9531bd79d40e37af77a6b302ef498e4c3d703413ad5a16a948ae42d14a8c"
+    },
+    {
+      "video_time": 1.0,
+      "simulation_time": 0.2079,
+      "source_image_sha256": "ea1e1404cd664a81dc3b662650dfdbe7b99b405bbef65803c975bf8bf2a1072e"
+    },
+    {
+      "video_time": 1.125,
+      "simulation_time": 0.2345,
+      "source_image_sha256": "83efaf601fb3fba623160eb9f2a8fcf8554f3a5169a21d02eb87020f1ebe3ce7"
+    },
+    {
+      "video_time": 1.25,
+      "simulation_time": 0.2604,
+      "source_image_sha256": "8527e81892f55d49688cdd05ac543aadd1395344efd7616ac541160f9ebf0687"
+    },
+    {
+      "video_time": 1.375,
+      "simulation_time": 0.2863,
+      "source_image_sha256": "bab2b2b77367f0978820a914a5d7516767bc7ab0828f650a0db3c863285d0d65"
+    },
+    {
+      "video_time": 1.5,
+      "simulation_time": 0.3122,
+      "source_image_sha256": "40e782eee5535f01b68768cac4cc769b6d9cabb2b05a24e8065ecfcbfb195b47"
+    },
+    {
+      "video_time": 1.625,
+      "simulation_time": 0.3381,
+      "source_image_sha256": "60b9f7253af71cf922aec1c939859e135dc661ce3f9e30286e2c4f2731c8c4b2"
+    },
+    {
+      "video_time": 1.75,
+      "simulation_time": 0.36469999999999997,
+      "source_image_sha256": "e10f445af85547511ff38ef2189cd83f91d91d7d03e97317daec1de76da48795"
+    },
+    {
+      "video_time": 1.875,
+      "simulation_time": 0.3906,
+      "source_image_sha256": "7e620e9aa81433fc755d2d7f16fc5d483fd41a76711a7159b70786309888ce0e"
+    },
+    {
+      "video_time": 2.0,
+      "simulation_time": 0.4165,
+      "source_image_sha256": "5cfcd0bdc70fabefd93ed77f694a7eef0abb9fe198f1230ae28c345e112a7b3e"
+    },
+    {
+      "video_time": 2.125,
+      "simulation_time": 0.4424,
+      "source_image_sha256": "32088627145df28acc48f0f2bb83a15825d2449713c61ac8ef3d3a1d4ce90124"
+    },
+    {
+      "video_time": 2.25,
+      "simulation_time": 0.4683,
+      "source_image_sha256": "7acd18070a8a9d43495a5e24f8f8b4d56897dbbc8d3443003aa1e5fabc52afc2"
+    },
+    {
+      "video_time": 2.375,
+      "simulation_time": 0.4942,
+      "source_image_sha256": "fdc4a7685884e40a8949ddc4faaee5d36ae87b19c81195c91370271e9ec050dc"
+    },
+    {
+      "video_time": 2.5,
+      "simulation_time": 0.5208,
+      "source_image_sha256": "bd83bf797d68422fc765dc63e4cc36398d6b1589e8c7ce50d0c82dbc5982bb33"
+    },
+    {
+      "video_time": 2.625,
+      "simulation_time": 0.5467,
+      "source_image_sha256": "6ef1026d40e37146c16b8a98b8b13fda3dbf2eafa13d5c32d8bdb08c9597089b"
+    },
+    {
+      "video_time": 2.75,
+      "simulation_time": 0.5726,
+      "source_image_sha256": "d2524edfa55a0396b998b61415bc75a8ec011bb8a2358ea9ecaafa195c0a34b4"
+    },
+    {
+      "video_time": 2.875,
+      "simulation_time": 0.5985,
+      "source_image_sha256": "9bb5ae5e85d78eb30ef6b656b8dda30dfe0a159fbdfb653c823a8c3a560041e3"
+    },
+    {
+      "video_time": 3.0,
+      "simulation_time": 0.6244,
+      "source_image_sha256": "7548f297bb1e1a32e5b681c2a85a08acd6cabc4b9ceb76a81c9bb97f2a52b1bc"
+    },
+    {
+      "video_time": 3.125,
+      "simulation_time": 0.6503,
+      "source_image_sha256": "32f3da95afaef125ccb9a2fd46b1768525fa92248e693828e3d3e2e84ed97d15"
+    },
+    {
+      "video_time": 3.25,
+      "simulation_time": 0.6769,
+      "source_image_sha256": "5921c01fe7475a78890a3b3556215407526354f28071970878bed8178f1bc202"
+    },
+    {
+      "video_time": 3.375,
+      "simulation_time": 0.7028,
+      "source_image_sha256": "0b604ccf9c43ffa14334c2f471087259b7140b81544cd4193dc809998ffb4aec"
+    },
+    {
+      "video_time": 3.5,
+      "simulation_time": 0.7287,
+      "source_image_sha256": "8499a2ffca4f85108dd5e4fc47815c075177467426f3693f0bbd21aab765c091"
+    },
+    {
+      "video_time": 3.625,
+      "simulation_time": 0.7545999999999999,
+      "source_image_sha256": "60e58b40ef5cafad91576b052d4df6880dea62e1d9158a7d8d4482b83299aa36"
+    },
+    {
+      "video_time": 3.75,
+      "simulation_time": 0.7805,
+      "source_image_sha256": "50649283c2d7c17307b234146b2a811be30f0cb60696fe8b5def5674145a2220"
+    },
+    {
+      "video_time": 3.875,
+      "simulation_time": 0.8071,
+      "source_image_sha256": "42bc460d96f4a3bd8a74d60ee82c58b9ef6361268b460295b467c592198e4aae"
+    },
+    {
+      "video_time": 4.0,
+      "simulation_time": 0.833,
+      "source_image_sha256": "aa82a7c973e04cc0da01ab0ffe7c77df89dd0f48f6571aa8d161e53d69e5f9a4"
+    },
+    {
+      "video_time": 4.125,
+      "simulation_time": 0.8589,
+      "source_image_sha256": "86763f80daa522dd14c4a52799567482080d25a5505c68932a77a89952b5f583"
+    },
+    {
+      "video_time": 4.25,
+      "simulation_time": 0.8848,
+      "source_image_sha256": "34bd35efcf1e7eb0d792b73dcb9b746841a95894bf435390f917de2d43a95b34"
+    },
+    {
+      "video_time": 4.375,
+      "simulation_time": 0.9107,
+      "source_image_sha256": "5268585fda973296010f06127cca011730e0b2b41e4dae46c4466cf7d799f699"
+    },
+    {
+      "video_time": 4.5,
+      "simulation_time": 0.9366,
+      "source_image_sha256": "98d770b6e23bc651d1d0b9b5dc96105296097ec42f7481b61dff512d00743476"
+    },
+    {
+      "video_time": 4.625,
+      "simulation_time": 0.9632,
+      "source_image_sha256": "6071ab823923d586314ad6cccfa573b3244e064a816629f4c15357e6d459cbeb"
+    },
+    {
+      "video_time": 4.75,
+      "simulation_time": 0.9891,
+      "source_image_sha256": "ebe6f553396869e0a0e31543b94c5584f9b86d46eb06adcc22bd316029d15b95"
+    },
+    {
+      "video_time": 4.875,
+      "simulation_time": 1.015,
+      "source_image_sha256": "5718acd33dd29e5f61d8c6f5ef17f204247437dc4742c2f98bf3faff617c28ca"
+    }
+  ],
+  "review": {
+    "sequence_sha256": "cf2819bbd9b0e94971aab8b8b83d10ad419cc42c04a870407623c1831ccb35fb",
+    "reviewed_by": "GPT-6.1-sol: three full-resolution keyframes and contact sheets of all40actual states"
+  },
+  "poster_frame_index": 39,
+  "video_sha256": "437255a44cf22683694b0c8a3af6f96c451b39b928c3d1c38cf0135c567cc4ea",
+  "poster_sha256": "07a682554bdf7021c91d44f98b25cc0f424deeb466949535444b06c6af29051b"
+}

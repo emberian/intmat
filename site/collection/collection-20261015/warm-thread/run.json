@@ -1,0 +1,120 @@
+{
+  "id": "warm-thread",
+  "title": "The warm thread remembers",
+  "description": "Two continuous thermal knot histories braid mineral into an amber medium; sound crosses the material they leave behind.",
+  "shape": [
+    384,
+    384,
+    384
+  ],
+  "extent": [
+    2,
+    2,
+    2
+  ],
+  "dt": 0.0032,
+  "steps": 2500,
+  "time": 7.999999797903001,
+  "frames": [
+    {
+      "step": 833,
+      "time": 2.66559993266128,
+      "directory": "frames/00833",
+      "mineral_max": 0.99999875,
+      "mineral_sum": 594535.245885277,
+      "temperature_max": 3.6335704,
+      "pressure_max": 0.3983593,
+      "shared_inventory_suppression": 8549.640754016527,
+      "shared_composition_max_error": 1.3113022e-06,
+      "material_relative_error": -2.0301127034582788e-11
+    },
+    {
+      "step": 1667,
+      "time": 5.334399865241721,
+      "directory": "frames/01667",
+      "mineral_max": 0.99999934,
+      "mineral_sum": 1216398.5210667117,
+      "temperature_max": 4.530476,
+      "pressure_max": 0.62479424,
+      "shared_inventory_suppression": 44722.33726337586,
+      "shared_composition_max_error": 1.4305115e-06,
+      "material_relative_error": -6.575415109519209e-11
+    },
+    {
+      "step": 2500,
+      "time": 7.999999797903001,
+      "directory": "frames/02500",
+      "mineral_max": 1,
+      "mineral_sum": 1621249.1707841167,
+      "temperature_max": 0.0052420343,
+      "pressure_max": 0.5806758,
+      "shared_inventory_suppression": 88761.95949131635,
+      "shared_composition_max_error": 1.6093254e-06,
+      "material_relative_error": -1.2797993117938285e-10
+    }
+  ],
+  "median_step_seconds": 0.197665208,
+  "evolution_seconds": 521.708755397,
+  "spacing": 0.005208333333333333,
+  "width_cells": 4.992,
+  "maximum_source_step_distance": [
+    0.01040352,
+    0.0072813304
+  ],
+  "thermal_stability_limits": [
+    0.02605518,
+    0.02605518
+  ],
+  "acoustic_stability_limit": 0.007314404,
+  "source_sha256": {
+    "src/acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+    "src/writing.jl": "78fba7cd46f03749bdc56547b7ce5622f7ba3ea42cc34801829345dae3975e05",
+    "studies/warm_thread.jl": "b30d91e29f5900e5e19bb8fb0fbfdf199d7bc86e75aa748e3fe390dc38159cbe"
+  },
+  "simulation": "Existing Julia write_heat_kernel!/thermal_exposure \u00d72 conservatively convert shared nutrient into deposit using accumulated supra-threshold exposure. New source-position functions prescribe continuous3:7 and rotated2:5 thermal knots, not emergent motion. AcousticField propagates a damped scalar wave with deposit-dependent face wave speed. Paths are designed, mineral and pressure are solved; model units, not a calibrated physical specimen.",
+  "writers": [
+    {
+      "kind": 1,
+      "start": 0,
+      "stop": 7,
+      "period": 7,
+      "width": 0.026,
+      "heat": 140,
+      "diffusion": 0.00012,
+      "cooling": 8,
+      "threshold": 0.035,
+      "conversion": 14
+    },
+    {
+      "kind": 2,
+      "start": 0.45,
+      "stop": 7.25,
+      "period": 6.8,
+      "width": 0.026,
+      "heat": 125,
+      "diffusion": 0.00012,
+      "cooling": 8,
+      "threshold": 0.035,
+      "conversion": 12
+    }
+  ],
+  "family": "interfaces",
+  "native_shape": [
+    384,
+    384,
+    384
+  ],
+  "backend": "Metal",
+  "subtitle": "Two histories share one precursor",
+  "publication": {
+    "path": "photograph.webp",
+    "width": 1600,
+    "height": 1600,
+    "quality": 87,
+    "bytes": 166158,
+    "sha256": "82f709d3428b5590768996ba8bc5bd2ea574e3e4beb2b7e4c3cefd56825f321f",
+    "source_image_sha256": "4ff56cbdcb5d0888dd337f04e00bc968af86c139bd4b55c917c9750dd74e9435",
+    "samples": 64,
+    "review": "Native final and published image reviewed by artist and root."
+  }
+}

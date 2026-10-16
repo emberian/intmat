@@ -1,0 +1,24 @@
+{
+  "title": "The warm thread remembers",
+  "family": "interfaces",
+  "replaces_presentation_of": "acoustic",
+  "native_run": "outputs/art/runtime-warm-knots-v2-20261016",
+  "native_image": "outputs/art/warm-thread-final.png",
+  "native_image_sha256": "4ff56cbdcb5d0888dd337f04e00bc968af86c139bd4b55c917c9750dd74e9435",
+  "photograph": {
+    "path": "photograph.webp",
+    "width": 1600,
+    "height": 1600,
+    "quality": 87,
+    "bytes": 166158,
+    "sha256": "82f709d3428b5590768996ba8bc5bd2ea574e3e4beb2b7e4c3cefd56825f321f"
+  },
+  "preview": {
+    "path": "gallery-preview.webp",
+    "width": 320,
+    "height": 320,
+    "bytes": 8782
+  },
+  "display_description": "Two continuous thermal histories share a finite precursor, leaving an intertwined mineral memory that changes how sound travels through the medium.",
+  "review": "Native1600px64sample photograph visually reviewed; optical staging and transfers are declared in optical.json and docs/warm-thread.md."
+}

@@ -571,5 +571,18 @@
       "render-job.json",
       "run.json"
     ]
+  },
+  {
+    "id": "collection-20261015/warm-thread",
+    "source_image_sha256": "4ff56cbdcb5d0888dd337f04e00bc968af86c139bd4b55c917c9750dd74e9435",
+    "files": [
+      "causal-fixture.json",
+      "device-fixture.json",
+      "gallery-preview.webp",
+      "optical.json",
+      "photograph.webp",
+      "publication.json",
+      "run.json"
+    ]
   }
 ]

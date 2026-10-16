@@ -1,0 +1,48 @@
+{
+  "title": "The warm thread remembers",
+  "source_run_sha256": "c85fae98baa46ebdd877f913265528ac9185dd02a771fff506e7e2cb79e98dcc",
+  "source_fields_sha256": {
+    "solid": "59261464f0fe9201858e46ad2a78c86d2d0bf4a835f24eb441bc4c3b91388689",
+    "temperature": "9016646c1f358faffce16f28856a8b53b2c726998d920220ac328264d4803b2b",
+    "pressure": "3aa450ad532df76e5e85f625d0541d8d33feeec9944c82cca58b8b33d4a6fc75"
+  },
+  "renderer_sha256": "995c5fbd840b3c3517bfb7a11b6e9a2bd40c4dd0493312117e206e610d61719a",
+  "shape": [
+    384,
+    384,
+    384
+  ],
+  "time": 7.999999797903001,
+  "pressure_normalization_maximum": 0.5806757807731628,
+  "material_pressure_normalization_maximum": 0.5806757807731628,
+  "image_sha256": "4ff56cbdcb5d0888dd337f04e00bc968af86c139bd4b55c917c9750dd74e9435",
+  "geometry": [
+    {
+      "isovalue": 0.99,
+      "vertices": 129507,
+      "faces": 140919
+    },
+    {
+      "isovalue": 0.65,
+      "vertices": 106544,
+      "faces": 112763
+    },
+    {
+      "isovalue": 0.11,
+      "vertices": 135012,
+      "faces": 147932
+    }
+  ],
+  "settings": {
+    "run": "outputs/art/runtime-warm-knots-v2-20261016",
+    "output": "outputs/art/warm-thread-final.png",
+    "size": 1600,
+    "samples": 64,
+    "step": null,
+    "device": "METAL",
+    "orbit": 0.35,
+    "carrier": "cutaway"
+  },
+  "render_seconds": 79.77967262268066,
+  "optical_mapping": "Designed faceted pale amber carrier. Native deposit isosurfaces at .99, .65 and .11 become a copper-gold heart, transparent mineral gel and thin-film transparent sheath. Absolute saved pressure / measured maximum, thresholded at .08 and gated by native mineral*6, drives cyan emission; this is a chosen display, not physical luminescence. Native pressure sampled at mineral vertices, normalized by maximum pressure within deposit>.11, also tints the core toward cyan and drives emission3\u00d7 normalized amplitude above.12. No displacement or procedural interior geometry."
+}

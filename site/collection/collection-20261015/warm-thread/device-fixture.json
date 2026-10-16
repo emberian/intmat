@@ -1,0 +1,21 @@
+{
+    "schema": "warm-knot-source-wrapper-cpu-metal",
+    "shape": [
+        18,
+        18,
+        18
+    ],
+    "steps": 150,
+    "time": 0.4799999878741801,
+    "maximum_absolute_errors": {
+        "nutrient": 1.1920929e-7,
+        "dose1": 1.4901161e-8,
+        "pressure": 5.543232e-6,
+        "temperature1": 4.4703484e-8,
+        "temperature2": 5.9604645e-8,
+        "dose2": 1.4901161e-8,
+        "deposit": 1.1920929e-7
+    },
+    "material_relative_error": 8.836001462592303e-10,
+    "interpretation": "Broader and faster sources exercise both exact knot-position functions, two shared-inventory production thermal kernels and mineral-dependent production acoustic kernel on CPU/Metal. A portability fixture, not artwork-resolution convergence or a benchmark."
+}

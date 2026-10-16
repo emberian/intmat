@@ -58,7 +58,10 @@ for directory in directories:
     except (ValueError,OSError):continue
     images=[]
     preferred=['photograph-1200.png','phase-glass.png','polished-network.png','population-glass.png','polished-inclusion.png','polished-wave.png','polished.png','cycles-pressure.png','cycles-interfaces.png','cycles.png','cycles-fronts.png','cycles-mid.png','cycles-above.png','specimen.png','projection.png','gallery-preview.png']
+    preferred.insert(0,'photograph.webp')
     candidates=list(directory.glob('*.png'))+list(directory.glob('*.jpg'))+list(directory.glob('*.webp'))
+    if (directory/'photograph.webp').is_file():
+        candidates=[x for x in candidates if x.name!='gallery-preview.webp']
     candidates=[x for x in candidates if not any(word in x.name for word in ['check','screenshot','test'])]
     if not candidates and (directory/'specimen.ppm').exists():
         out=directory/'gallery-preview.png'
