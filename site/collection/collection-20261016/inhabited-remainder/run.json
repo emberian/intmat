@@ -1,0 +1,158 @@
+{
+  "schema": "living-patch-art-source-summary",
+  "native_shape": [
+    32,
+    32,
+    32
+  ],
+  "extent": [
+    2.0,
+    2.0,
+    2.0
+  ],
+  "time": 64.0,
+  "dt": 0.02,
+  "voxel_volume": 0.000244140625,
+  "cells": 48,
+  "native_bonds": 105,
+  "supplied": 25.6,
+  "material_residual": -1.4210854715202004e-14,
+  "potential_residual": -2.842170943040401e-14,
+  "material_totals": {
+    "raw_a": 0.16464064886337976,
+    "raw_b": 0.1614454234845001,
+    "catalyst_a": 0.17342199957989957,
+    "catalyst_b": 0.17354856576800234,
+    "bound_a": 0.5974675569914168,
+    "bound_b": 0.5980258138986426,
+    "free_a": 4.705058164935302,
+    "free_b": 4.6202445026580135
+  },
+  "source_report_sha256": "bbd3156e98c0a881af420908d64fb530016618d67cb5885c61c0a8530408f356",
+  "source_recipe_sha256": "58ea5a91a520bceb2858ff7c552cb73362ec26dd9524c862cbb2fd530bb67ed2",
+  "source_metadata": {
+    "shape": [
+      32,
+      32,
+      32
+    ],
+    "extent": [
+      2.0,
+      2.0,
+      2.0
+    ],
+    "origin": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "dt": 0.02,
+    "seed": 211,
+    "source_rates": [
+      0.4,
+      0.4
+    ],
+    "source_budgets": [
+      12.8,
+      12.8
+    ],
+    "horizon": 2.0,
+    "actor_rate": 0.003,
+    "sigma": 0.3,
+    "inheritance_fraction": 0.5,
+    "birth_transfer_adjusted": true,
+    "material_units": "amount per voxel",
+    "field_order": "x-fast",
+    "elapsed_seconds": 91.69639205932617,
+    "capacity": {
+      "initial": {
+        "material": 59.360000384822506,
+        "potential": 107.84000153928997,
+        "work": 0.0,
+        "heat": 0.0,
+        "supplied": 0.0,
+        "removed": 0.0,
+        "supplied_potential": 0.0,
+        "removed_potential": 0.0,
+        "population": 24,
+        "completed_steps": 0,
+        "secreted": [
+          0.0,
+          0.0
+        ],
+        "solubilized": [
+          0.0,
+          0.0
+        ],
+        "bound": [
+          0.0,
+          0.0
+        ],
+        "enzyme": [
+          0.0,
+          0.0
+        ],
+        "inert": 0.0,
+        "finite": true
+      },
+      "remaining_source_budget": 25.6,
+      "funded_population_upper_bound": 340,
+      "nominal_source_duration": 32.0
+    },
+    "source": {
+      "model": "1a938948fb14c400876c6848e4389fc432f4cc2a3962903374d2d76fb34f1c99",
+      "initialization": "766dfedbdbf5b4dbbb99ed5e9336a16747fa08752a84af3268fc7c98c613613a",
+      "founder_initialization": "d76e4c791a2c56bc7fd651b1836e6879b9e27013566ce6d94a1d2f677f62e633",
+      "support": "5a767b83c2c912d8706468ec7c5b86e56cf99430b2a23dfd3a7f3ee8f21bf55b",
+      "lifecycle": "8826c577e960db6596cd923a591d806b185908a254c6cc0fb6b0eebb033a9629",
+      "resource": "ac72b2db1dfa448446df0ae44840ba05933f1d8fb13c639f9e2cd3b3a7e41223",
+      "kernels": "8f9f5d153ff1e4f4636388072063aa6e53fbb20d9c5175d64d6fcb15993207ae",
+      "checkpoint": "81c8538519e5d0c58eb8bc0b6e49be7eec87119f81b7fcd998b6944f02c68503",
+      "protocol": "52632744615956c0e4c613e010b8fa4ba08c396e46e03d7ef5ec15f037e8199d"
+    },
+    "habitat_source": {
+      "helper": "5753f0cf5065345cf08fb9a2501d87aad4f6eff13183fd344e8f53dfe736aa41",
+      "kernels": "16ccc6b379522d61cd9a3d259143376e118328f9d6194f4d74eec53a77640e5a",
+      "sorption": "3811fd3627906823a01f2afb2e6693bb6aec99c37bb10bfb72d43c85f8b4ad08"
+    },
+    "driver_sha256": "a3e64e8d02cd050411389f715752ed72c71ae8e8e837f45cddf6808f7b1c7925"
+  },
+  "interpretation": "Actual native32\u00b3 physical refinement. Fields amount per voxel; optics divides by physical voxel volume. Almost all residents in one native bond component by time 64. No claim of ongoing demographic renewal, learning causation, calibrated optics or fine-grid convergence.",
+  "title": "After the last feeding",
+  "family": "ecology",
+  "shape": [
+    32,
+    32,
+    32
+  ],
+  "backend": "Julia CPU native living construction",
+  "viewer": "related.html",
+  "viewer_label": "Related 16\u00b3 living trajectory",
+  "viewer_context": "Separate 16\u00b3 trajectory; photograph native 32\u00b3",
+  "related_trajectory": {
+    "url": "../../laboratory/living-patch/",
+    "label": "Explore the separate16\u00b3 trajectory",
+    "native_shape": [
+      16,
+      16,
+      16
+    ],
+    "context": "Separate16\u00b3 candidate trajectory. This photograph uses the actual32\u00b3 t = 64 state; the linked trajectory is not the exact rendered state."
+  },
+  "comparison_notes": "Actual native 32\u00b3 t = 64 state. Fluorescence is a chosen optical stain; bonds are native ID-validated junctions. All fields, bodies and bonds share one exact periodic translation. Related 16\u00b3 trajectory is a separate resolution and state.",
+  "description": "A bonded living assembly retains softly stained material after its finite feed ends. Gold marks actual mechanical junctions; fluorescence is an optical stain of retained catalyst and bound precursor. Native 32\u00b3 at time 64. The related16\u00b3 trajectory is a separate resolution and state.",
+  "publication": {
+    "source_image_sha256": "7d3a0494c0c1178eb9136e5ce44aa35d7b800165e146b7be6e423817672e4068",
+    "webp_sha256": "db2867275c1dfef5c550547ffa2a82a383ec114eb09fd2ff42f968b86b04330d",
+    "quality": 95,
+    "width": 1600,
+    "samples": 96,
+    "native_shape": [
+      32,
+      32,
+      32
+    ],
+    "original_retained": true,
+    "reviewed_by": "optical_interior_art and root"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "inhabited-remainder",
+  "title": "After the last feeding",
+  "renderer": "scripts/render_living_patch.py",
+  "source_renderer_sha256": "a532edda45d6f6659fd479e3cd01c17c1b0495ddcd9cd8cd138a4c06328cae7d",
+  "source_report_sha256": "bbd3156e98c0a881af420908d64fb530016618d67cb5885c61c0a8530408f356",
+  "source_shape": [
+    32,
+    32,
+    32
+  ],
+  "input_time": 64,
+  "size": 1600,
+  "samples": 96,
+  "device": "METAL",
+  "threads": 2,
+  "family": "ecology",
+  "description": "A bonded living assembly retains softly stained material after its finite feed ends. Gold marks actual mechanical junctions; fluorescence is an optical stain of retained catalyst and bound precursor. Native32\u00b3 at time 64. The related16\u00b3 trajectory is a separate resolution and state.",
+  "optical_transfer": {
+    "retained_density": "catalyst_a+catalyst_b+.25*(bound_a+bound_b)",
+    "detection_floor": 0.12,
+    "scattering_scale": 3.0,
+    "fluorescence_scale": 0.85,
+    "body_ior": 1.035,
+    "bond_radius": 0.008,
+    "trajectory_overlay": false
+  },
+  "periodic_translation": [
+    0.75,
+    -0.5,
+    0.0
+  ],
+  "related_trajectory": {
+    "url": "/laboratory/living-patch/",
+    "label": "Explore the separate16\u00b3 trajectory",
+    "native_shape": [
+      16,
+      16,
+      16
+    ],
+    "context": "Separate16\u00b3 candidate trajectory. This photograph uses the actual32\u00b3 t = 64 state; the linked trajectory is not the exact rendered state."
+  }
+}

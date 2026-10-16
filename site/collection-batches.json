@@ -661,5 +661,19 @@
       "render-job.json",
       "run.json"
     ]
+  },
+  {
+    "id": "collection-20261016/inhabited-remainder",
+    "source_image_sha256": "7d3a0494c0c1178eb9136e5ce44aa35d7b800165e146b7be6e423817672e4068",
+    "files": [
+      "gallery-preview.webp",
+      "optical.json",
+      "photograph-audit.json",
+      "photograph.webp",
+      "recipe.toml",
+      "related.html",
+      "render-job.json",
+      "run.json"
+    ]
   }
 ]

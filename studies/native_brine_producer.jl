@@ -151,10 +151,14 @@ function native_brine_producer(recipe,out;preflight_only=false,capture=producer_
  report
 end
 if abspath(PROGRAM_FILE)==@__FILE__
+ fresh_output=!ispath(ARGS[2])
  try
   native_brine_producer(ARGS[1],ARGS[2];preflight_only="--preflight-only" in ARGS)
  catch err
-  mkpath(ARGS[2]);open(io->JSON3.pretty(io,(success=false,resumable=false,failure=sprint(showerror,err,catch_backtrace()))),joinpath(ARGS[2],"failure.json"),"w")
+  # A rejected reused output path must never modify its historical artifacts.
+  if fresh_output
+   mkpath(ARGS[2]);open(io->JSON3.pretty(io,(success=false,resumable=false,failure=sprint(showerror,err,catch_backtrace()))),joinpath(ARGS[2],"failure.json"),"w")
+  end
   rethrow()
  end
 end

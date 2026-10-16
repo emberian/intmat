@@ -1,0 +1,33 @@
+{
+  "chemical_storage": "Float64",
+  "phase_storage": "Float32",
+  "fft_storage": "Float64/ComplexF64",
+  "allocation_performed": false,
+  "formula": "N=n^3,H=(n/2+1)n^2;physical=76N+36H,native=76N+68H,full_phi_a_b_mineral=28N",
+  "rows": [
+    {
+      "resolution": 384,
+      "physical_bytes": 5327880192,
+      "native_active_bytes": 6238568448,
+      "full_four_field_bytes": 1585446912,
+      "host_peak_additional_to_baseline_estimate": 6586171392,
+      "native_active_gib": 5.81011962890625
+    },
+    {
+      "resolution": 576,
+      "physical_bytes": 17975623680,
+      "native_active_bytes": 21043888128,
+      "full_four_field_bytes": 5350883328,
+      "host_peak_additional_to_baseline_estimate": 20309753856,
+      "native_active_gib": 19.598648071289062
+    },
+    {
+      "resolution": 1152,
+      "physical_bytes": 143757213696,
+      "native_active_bytes": 168260861952,
+      "full_four_field_bytes": 42807066624,
+      "host_peak_additional_to_baseline_estimate": 156793110528,
+      "native_active_gib": 156.70513916015625
+    }
+  ]
+}

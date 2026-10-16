@@ -1,0 +1,33 @@
+{
+  "schema": "living-photograph-source-audit",
+  "native_shape": [
+    32,
+    32,
+    32
+  ],
+  "source_report_sha256": "bbd3156e98c0a881af420908d64fb530016618d67cb5885c61c0a8530408f356",
+  "native_bonds": 105,
+  "bond_endpoint_max_error": 0,
+  "minimum_image_bond_length_range": [
+    0.2407855971079947,
+    0.44036894347575495
+  ],
+  "periodic_shift_voxels": [
+    12,
+    -8,
+    0
+  ],
+  "per_field_translation_sum_error": {
+    "raw_a": 0.0,
+    "raw_b": 0.0,
+    "catalyst_a": 0.0,
+    "catalyst_b": 0.0,
+    "bound_a": 0.0,
+    "bound_b": 0.0,
+    "free_a": 0.0,
+    "free_b": 0.0
+  },
+  "image_sha256": "7d3a0494c0c1178eb9136e5ce44aa35d7b800165e146b7be6e423817672e4068",
+  "renderer_sha256": "a532edda45d6f6659fd479e3cd01c17c1b0495ddcd9cd8cd138a4c06328cae7d",
+  "interpretation": "Independent checks of native bond endpoints and periodic optical translation, plus actual source/image/renderer linkage. This audits the photograph input and coordinate mapping, not new simulation convergence."
+}

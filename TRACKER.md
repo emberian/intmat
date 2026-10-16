@@ -872,51 +872,69 @@ from this preserved first exhibit. No new long soak is running.
 A matched four-arm experiment varies raw transport and catalyst lifetime while
 holding founders, funding and learning fixed. Mobile raw stock (D=.006) and
 slower catalyst decay (.05) together increase conversion 7.17× and retained
-catalyst 20.6× at time32 relative to the original living recipe. This is a
+catalyst 20.6× at time 32 relative to the original living recipe. This is a
 physical feedback improvement, not evidence of a learning advantage. Actual
 inventories, spatial overlap and conservative ledgers are retained in
 `docs/figures/living-patch-recruitment.json`; mechanisms and timescales are in
 `docs/research/living-patch-recruitment.md`.
 
-A fresh64-time copy/reset pair exhausts the same25.6 funding at32. Both reach48
-cells through24 founder-to-child births; no second generation appears. Material
-activity persists after feed exhaustion: funded secretion grows1.525→2.121,
-retained catalyst declines.698→.385, and actual native bonds grow81→101.
+A fresh 64-time copy/reset pair exhausts the same 25.6 funding at 32. Both reach 48
+cells through 24 founder-to-child births; no second generation appears. Material
+activity persists after feed exhaustion: funded secretion grows 1.525→2.121,
+retained catalyst declines .698→.385, and actual native bonds grow 81→101.
 Nineteen offspring receive nonzero paid readouts, with no demonstrated benefit
-relative to reset. All66 actual captures validate bond identities and endpoints;
-maximum material/potential residual is1.48e-12. Separate art and exploratory
+relative to reset. All 66 actual captures validate bond identities and endpoints;
+maximum material/potential residual is 1.48e-12. Separate art and exploratory
 views are being prepared from this transient. Published16-time data is preserved.
 
-The native384³ brine producer stopped on its original conservation guard at
-step3240; its earlier replay and log are preserved. This exposed cumulative
-Float32 chemical drift rather than a memory failure. A separate explicit
+The native 384³ brine producer stopped on its original conservation guard at
+step 3240; its earlier replay and log are preserved. This exposed cumulative
+Float 32 chemical drift rather than a memory failure. A separate explicit
 Float64 chemical-storage variant and reliable failure export are being gated;
 no old experiment is resumed or its guard loosened.
 
 ### Explore the scaffold; preserve its learning state
 
-The separate living-patch exhibit retains all33 actual captures and exposes
+The separate living-patch exhibit retains all 33 actual captures and exposes
 native bonds, selected-ID history, fixed-scale reference comparisons and finite
-funding. It preserves the original16-time exhibit. Root reviewed the actual
-browser at time64 against time32; packaging and periodic geometry checks pass.
-The photograph now in curation observes a distinct32³ refinement, not the
+funding. It preserves the original 16-time exhibit. Root reviewed the actual
+browser at time 64 against time 32; packaging and periodic geometry checks pass.
+The photograph now in curation observes a distinct 32³ refinement, not the
 16³ recording used by this exhibit.
 
 Static publication now losslessly compresses eight legacy recordings, preserving
-all411 frames and exact decoded bytes. Root verified staged loading; three loader
-comparisons preserve rendered canvas hashes. The76-specimen stage plus new
-living-patch exhibit is119.58MB, within the original160MB cap. Source recordings
+all 411 frames and exact decoded bytes. Root verified staged loading; three loader
+comparisons preserve rendered canvas hashes. The 76-specimen stage plus new
+living-patch exhibit is 119.58 MB, within the original 160 MB cap. Source recordings
 and images remain unchanged; this is a storage reduction, not a network-speed claim.
 
 Optional WORKBENCH_LIVING mode reuses the native law with explicit policy
 parameters. Complete forks preserve independent actor/critic arrays, pending
 cohorts, birth-copy events, private memory, masks, clocks and finite budgets.
 Receptor interventions then change future sensing without resetting that history.
-The living composition gate passes73 checks including a funded birth-copy fixture;
-all238 existing workbench checks pass. No unbounded worker or new soak was started.
+The living composition gate passes 73 checks including a funded birth-copy fixture;
+all 238 existing workbench checks pass. No unbounded worker or new soak was started.
 
 Full-step CPU equality gates support an empty-material chemistry shortcut, but
 contended local timings do not establish its throughput benefit. Isolated hbox
-CPU/native gates are queued behind the independently frozen384³ brine producer.
+CPU/native gates are queued behind the independently frozen 384³ brine producer.
 That Float64 chemical epoch has passed the old failure horizon with inventory
-error below1e-15; target completion and export remain pending.
+error below 1e-15; target completion and export remain pending.
+
+### A learned material choice, and its transfer boundary
+
+A bounded episodic experiment isolates catalyst allocation at constant total
+construction. A temporal cue readout learns useful allocation after the cue is
+hidden; an equal-norm unsigned-history control does not. Swapping only remembered
+sign reverses the benefit, and reversed credit hurts. Two exploration seeds
+agree; these share one founder bank. Paid work, construction totals and physical
+closure are recorded in `docs/research/history-dependent-construction.md`.
+This is external training apparatus, not autonomous garden learning. With
+constant unoccluded sensing, temporal contrast vanishes and the learned benefit
+largely disappears. A continuously observed physical ramp is the next mechanism
+being tested; the episodic experiment is preserved as a working component.
+
+The reviewed 1600²/96-sample photograph After the last feeding observes the
+separate native 32³ state at time 64: actual body radii and 105 ID-validated bonds,
+with concentration-based optical fluorescence. It is the 77th gallery specimen.
+Its related interactive link explicitly opens the distinct 16³ trajectory.

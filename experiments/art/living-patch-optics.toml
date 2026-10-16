@@ -1,0 +1,17 @@
+id = "inhabited-remainder"
+title = "After the last feeding"
+source_recipe = "experiments/native/living-patch-recruitment-32.toml"
+source_report_sha256 = "bbd3156e98c0a881af420908d64fb530016618d67cb5885c61c0a8530408f356"
+native_shape = [32, 32, 32]
+time = 64.0
+periodic_translation = [0.75, -0.5, 0.0]
+# These are chosen optical transfers of actual saved concentrations.
+retained_density = "catalyst_a + catalyst_b + 0.25*(bound_a+bound_b)"
+concentration_conversion = "divide amount per voxel by physical voxel volume"
+optical_scattering_scale = 3.0
+fluorescence_scale = 0.85
+optical_concentration_detection_floor = 0.12
+body_geometry = "actual native positions and mass-derived physical radii"
+bond_geometry = "native ID-validated minimum-image bond centerlines"
+bond_optical_radius = 0.008
+observed_trajectory_overlay = false

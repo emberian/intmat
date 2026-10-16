@@ -162,3 +162,11 @@ end
 module NativeLivingWorkbenchTests
 include("native_living_workbench.jl")
 end
+
+module NativeHistoryConstructionTests
+include("native_history_construction.jl")
+end
+
+module NativeBrineProducerPathTests
+include("native_brine_producer_paths.jl")
+end

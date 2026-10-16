@@ -82,3 +82,10 @@ The final small-only F64 preflight measured 7,305,797,632 bytes estimated host
 peak, 6,238,568,448 active native bytes plus a 2-GiB safety margin against
 11,651,776,512 free device bytes, and 1,641,021,440 estimated artifact bytes.
 Evidence: `benchmarks/2026-10-16-native-brine-384-f64-preflight.json`.
+
+The F64-chemical memory forecast is separate from the earlier F32-chemical
+backend table. Active arrays plus native FFT plans require approximately 5.81,
+19.60 and 156.71 GiB at 384³, 576³ and 1152³ respectively; only 384³ fits the
+present 12-GB device. Full four-field files alone require 1.59, 5.35 and 42.81 GB.
+These larger forecasts involve no allocation:
+`benchmarks/2026-10-16-brine-f64-memory-ceiling.json`.

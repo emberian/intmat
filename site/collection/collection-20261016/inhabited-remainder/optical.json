@@ -1,0 +1,50 @@
+{
+  "title": "After the last feeding",
+  "shape": [
+    32,
+    32,
+    32
+  ],
+  "time": 64.0,
+  "cells": 48,
+  "native_bonds": 105,
+  "rendered_periodic_segments": 121,
+  "observed_trajectory_segments": 0,
+  "source_report_sha256": "bbd3156e98c0a881af420908d64fb530016618d67cb5885c61c0a8530408f356",
+  "source_frame_sha256": "1b5a99579f2756f9e3d3373090a9be6e5df4a6b469e3e2227e6c56bba2fc35d7",
+  "renderer_sha256": "a532edda45d6f6659fd479e3cd01c17c1b0495ddcd9cd8cd138a4c06328cae7d",
+  "periodic_translation": [
+    0.75,
+    -0.5,
+    0.0
+  ],
+  "voxel_spacing": [
+    0.0625,
+    0.0625,
+    0.0625
+  ],
+  "voxel_volume": 0.000244140625,
+  "optical_transfer": {
+    "retained_density": "catalyst_a+catalyst_b+.25*(bound_a+bound_b)",
+    "detection_floor": 0.12,
+    "scattering_scale": 3.0,
+    "fluorescence_scale": 0.85,
+    "body_ior": 1.035,
+    "bond_radius": 0.008,
+    "trajectory_overlay": false
+  },
+  "image_sha256": "7d3a0494c0c1178eb9136e5ce44aa35d7b800165e146b7be6e423817672e4068",
+  "settings": {
+    "report": "outputs/art/living-patch-32-time64/source-report.json",
+    "output": "outputs/art/living-patch-32-time64/final.png",
+    "size": 1600,
+    "samples": 96,
+    "time": 64.0,
+    "device": "METAL",
+    "density": 3.0,
+    "trails": false,
+    "detection_floor": 0.12
+  },
+  "render_seconds": 42.197985887527466,
+  "interpretation": "Actual native-grid amounts divided by physical voxel volume; chosen fluorescence proportional to retained-field concentration, plus trilinear optical scattering of catalyst plus .25 bound food, after the recorded concentration detection floor, colored by A/B allocation. Native cell positions and physical body radii; body energy/mass selects optical color. Native ID-validated mechanical bonds shown at chosen optical radius .008; periodic minimum-image edges clipped to specimen bounds. Volume interpolation, opacity, color, bond thickness, light and floor are optical choices; Optional cell trails, when included, are piecewise-linear observations of actual sampled positions during the preceding32time units, not persistent deposited matter; exact periodic translation (.75,-.5,0) applies to all fields/bodies/bonds/trails. No additional simulated geometry, selected wavelength, adhesion, or higher simulation resolution is implied. No source fields are modified."
+}

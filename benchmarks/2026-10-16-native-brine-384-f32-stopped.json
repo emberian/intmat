@@ -1,0 +1,47 @@
+{
+  "success": false,
+  "epoch": "native-brine-384-20261016-v1",
+  "resolution": 384,
+  "chemical_storage": "Float32",
+  "guard": 2e-06,
+  "last_passing_history": {
+    "event": "history",
+    "step": 3120,
+    "time": 7.799999825656414,
+    "mineral_sum": 2020729.8352707648,
+    "mineral_max": 0.49522108,
+    "phase_mean": -2.743996377598236e-09,
+    "phase_mean_error": -4.943102805914521e-11,
+    "chemical_relative_error": -1.9847095648176945e-06,
+    "phase_range": [
+      -0.88909835,
+      0.8650127
+    ],
+    "a_range": [
+      2.114518e-16,
+      1.1879877
+    ],
+    "b_range": [
+      8.625307e-06,
+      0.9
+    ],
+    "elapsed_seconds": 551.307201798
+  },
+  "next_scheduled_guard_step": 3240,
+  "next_guard_step_inferred_from_frozen_schedule": true,
+  "failure": "finite/positivity/conservation guard",
+  "full_final_capture_available": false,
+  "resumable": false,
+  "preserved_replay_physical_time": 7.199999839067459,
+  "sources": {
+    "src/implicit_phase.jl": "e724d19ad8827aa45958880182e3bfbbf0300aca19db0e9616180be5300d9d32",
+    "studies/implicit_phase_runtime.jl": "1f39b40248917d643391ce29385a1054b634f9f1024ca36c1e63e547b878edca",
+    "scripts/device_cellular_setup.jl": "a4c64eb5a43c67cfd746acf2c03bb47d71dbfb12aebd63273fbf5a04172be1e4",
+    "studies/brine_memory.jl": "5ab3ad1ba93f07383af119a59b76d8ccf5b390c807d0dc141bb9d517b5287639",
+    "src/phase.jl": "2815bbd2ee63bacfd0ff36956d16c22d6bc3eaf4798f4fb385026222349848ec",
+    "src/core.jl": "b4302b90eaeba213360e8a15ce8b7e4cb4c491606657e3e500d2fb8507753a52",
+    "src/compartments.jl": "b0e82216232acde9f4692d0053be43887378e4a80b07f76ab61dd19f3de34cea",
+    "studies/native_brine_producer.jl": "3e18c84cb08f67dc6f2ad3f393533db26f21cd43926bd6bbf0ce87837c2053ed"
+  },
+  "recipe_sha256": "7be690fb6ee006a3974ed5d530c4f4a8e75f1023053f2dd1b2b79e809af6fa3b"
+}
