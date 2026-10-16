@@ -15,8 +15,8 @@ from urllib.parse import urlsplit, unquote
 import uuid
 
 REPO = Path(__file__).resolve().parent.parent
-ACTIONS = {'describe', 'observe', 'step', 'pause', 'checkpoint', 'receptor_scales', 'stop'}
-BRANCHES = {'off', 'sensing', 'both'}
+ACTIONS = {'describe', 'observe', 'step', 'pause', 'checkpoint', 'receptor_scales', 'fork', 'stop'}
+BRANCHES = {'off', 'sensing', 'fork1', 'fork2', 'both'}
 
 def valid_scale(value):
     if type(value) not in (int, float):
@@ -71,9 +71,9 @@ class NativeWorkbenchHandler(BaseHTTPRequestHandler):
                 return self.reply(200, self.read_json('control.json') if ack.exists() else {})
             if path in {'/', '/index.html'}:
                 target = REPO / 'web/native_workbench.html'
-            elif re.fullmatch(r'/branches/(off|sensing)/index.html', path):
+            elif re.fullmatch(r'/branches/(off|sensing|fork1|fork2)/index.html', path):
                 target = REPO / 'web/native_observatory.html'
-            elif re.fullmatch(r'/branches/(off|sensing)/(observatory\.json|frames/[0-9]+(?:-(?:before|after))?/(frame\.json|state\.bin))', path):
+            elif re.fullmatch(r'/branches/(off|sensing|fork1|fork2)/(observatory\.json|frames/[0-9]+(?:-(?:before|after))?/(frame\.json|state\.bin))', path):
                 target = (self.root / path.lstrip('/')).resolve()
                 if not target.is_relative_to(self.root):
                     return self.reply(403, {'error': 'Observation path leaves the session'})
@@ -81,7 +81,7 @@ class NativeWorkbenchHandler(BaseHTTPRequestHandler):
                 return self.reply(404, {'error': 'Unknown observation or page'})
             mime = {'.html': 'text/html; charset=utf-8', '.json': 'application/json', '.bin': 'application/octet-stream'}[target.suffix]
             data = target.read_bytes()
-            if re.fullmatch(r'/branches/(off|sensing)/index.html', path):
+            if re.fullmatch(r'/branches/(off|sensing|fork1|fork2)/index.html', path):
                 # Keep the native status/error nodes; only compress embedded chrome.
                 style = b'<style id="workbench-embed">header{padding:8px 14px;justify-content:flex-end;min-height:38px}header>div:first-child{display:none}header .badge{padding:4px 9px;margin:0}main{padding:14px;gap:18px}</style>'
                 data = data.replace(b'</style>', b'</style>' + style, 1)
@@ -110,6 +110,10 @@ class NativeWorkbenchHandler(BaseHTTPRequestHandler):
             worker = self.read_json('worker.json')
             if worker.get('status') != 'ready':
                 return self.reply(409, {'error': 'Julia worker is not ready', 'status': worker.get('status')})
+            if action not in worker.get('actions', ACTIONS) or (branch != 'both' and 'branches' in worker and branch not in worker['branches']):
+                raise ValueError('Worker does not expose that action or branch')
+            if action == 'fork' and branch == 'both':
+                raise ValueError('Fork requires one existing branch')
             if action == 'step':
                 limit = worker['limits']['max_steps_per_command']
                 steps = body.get('steps')
@@ -119,7 +123,7 @@ class NativeWorkbenchHandler(BaseHTTPRequestHandler):
                 raise ValueError('Steps apply only to step')
             if action == 'receptor_scales':
                 scales = body.get('scales')
-                if branch != 'sensing' or not isinstance(scales, list) or len(scales) != 3 or not all(valid_scale(x) for x in scales):
+                if branch == 'both' or (branch != 'sensing' and 'fork' not in worker.get('actions', [])) or not isinstance(scales, list) or len(scales) != 3 or not all(valid_scale(x) for x in scales):
                     raise ValueError('Three positive finite scales for sensing are required')
             elif 'scales' in body:
                 raise ValueError('Scales apply only to receptor_scales')

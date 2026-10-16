@@ -27,11 +27,11 @@ checkpoint `.jls` files. Public Pages can display recordings without this worker
 ```
 
 IDs contain1–80 ASCII letters, digits, underscores or hyphens. Allowed keys are
-`id`, `action`, `branch`, `steps`, `scales`, `requested_at`. Branch is `off`, `sensing` or
-`both` (default). `steps` is a positive integer only for the step action; booleans,
+`id`, `action`, `branch`, `steps`, `scales`, `requested_at`. Branch is an existing `off`, `sensing`, `fork1` or `fork2`; `both` (default)
+always means the original `off`/`sensing` pair. `steps` is a positive integer only for the step action; booleans,
 unknown fields and arbitrary expressions are rejected. The `receptor_scales` action
 also accepts `scales`: exactly three positive finite numbers representable as
-positive finite Float32 concentrations, with `branch: "sensing"`. Other actions
+positive finite Float32 concentrations, with `branch: a single receptor-enabled branch`. Other actions
 reject that field.
 
 | Action | Effect at a complete step boundary |
@@ -42,6 +42,7 @@ reject that field.
 | `pause` | Acknowledge paused state; all branches are already paused between finite commands |
 | `checkpoint` | Write a strict complete native checkpoint with source and content hash |
 | `receptor_scales` | Apply three half-response scales to the sensing branch, preserving physical state and recording a timed intervention |
+| `fork` | Strictly clone one current complete branch into an independent generated child, preserving the immutable parent checkpoint |
 | `stop` | Stop accepting new work and let the worker exit |
 
 `control.json` contains `id`, `ok`, `accepted`, `status` (`completed`, `rejected`
@@ -219,3 +220,54 @@ not changed or duplicated by this adapter.
 pins the fresh source, event, binary identities and completed checkpoint. Full
 browser data and reviewed images are in `outputs/native-workbench-receptors-review-20261016`.
 The worker is stopped; port8808 serves those preserved actual observations.
+
+
+## Fork a current completed state
+
+```json
+{"id":"fork-study-1","action":"fork","branch":"sensing"}
+```
+
+This uses the selected branch's **current completed state**, not the viewer's
+recorded timeline position. Child names are generated internally as `fork1` and
+`fork2`; four total branches is a hard maximum. No arbitrary path, external
+checkpoint, source migration or failed partial state is accepted.
+
+The worker saves and verifies a complete parent checkpoint, then uses the native
+strict source-aware restore into independent arrays. Time, world seed, attempted
+steps, complete controller state, inventories, paid source funding and original
+accounting baseline are retained. Parent provenance and inherited intervention
+history are included in the child's manifest and checkpoint. The parent checkpoint
+is immutable; either live future can subsequently advance without modifying it.
+
+Children share the existing session wall deadline, idle policy, artifact cap and
+command cap. The absolute step and model-time limits are unchanged; forking does
+not buy additional lifetime. A child from a receptor-disabled parent stays
+receptor-disabled. Receptor-enabled children support the existing scale command;
+its channels and concrete native parameter types remain fixed.
+
+The browser selects an existing branch for commands and independent left/right
+branches for comparison. A successful fork selects its parent on the left and its
+child on the right. Commands are gated by the worker's advertised actions, so
+older frozen paired workers remain usable without gaining unsupported forks.
+
+
+The fresh CPU browser gate forked sensing at step4, advanced parent and child
+independently to step8, and obtained identical actual exported arrays. It applied
+new receptor scales only to the child, selected the two futures in the browser,
+created the fourth branch and verified refusal of a fifth. The parent checkpoint
+hash stayed unchanged. All workers from this gate stopped normally. The Julia
+composition gate passed233 checks, including exact full-state future parity,
+changed-child divergence after equal-time advances, unchanged parent during a
+child advance, inherited absolute step bounds and rejection of failed state.
+Five additional ownership checks verified that every restored cell, environment,
+habitat and feedstock array, plus the observation buffer, is independent of its
+parent. The original wall deadline was unchanged across the browser session.
+Eight HTTP tests passed. A read-only old-worker ready-status fixture verified
+that existing frozen paired workers do not expose the new fork action.
+
+[Compact fork evidence](../benchmarks/2026-10-16-native-workbench-fork.json) records
+the source pins and checkpoint hash. Full browser results and the reviewed
+comparison are in `outputs/native-workbench-fork-review-20261016`; port8810 serves
+the stopped actual session. This is a control/independence result, not an ecology
+or long-horizon organization claim.

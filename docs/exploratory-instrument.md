@@ -16,8 +16,12 @@ separate service, not part of Pages hosting.
 - `site/laboratory/`: recorded controller capability matrix, per-founder memory
   curves and matched controls. This is an analytical view, not live simulation.
 
-The gap is a common native control/observation adapter and a workbench that joins
-these pieces. The older arena control loop does not yet control the native garden.
+The native adapter and paired workbench now join these pieces: a resident Julia
+worker, finite acknowledged commands, actual volume/cell observations, receptor
+interventions and independent current-state forks. See
+[native workbench control](native-workbench-control.md). The older arena remains
+an independent runtime. Selecting arbitrary historical complete checkpoints and
+generalizing the adapter to other material processes remain open.
 
 ## Central interaction
 
@@ -59,6 +63,14 @@ requiring a live connection. [GLMakie](https://docs.makie.org/stable/explanation
 provides native OpenGL windows. Julia-to-WebAssembly is a separate compiler/runtime
 effort; this plan does not depend on porting AMDGPU or Metal kernels into a browser.
 
-First live vertical slice: two fresh short native branches, one receptor edit,
-fixed field scales, same-ID response plots, acknowledged completion and a saved
-comparison. Then generalize the adapter to other material processes.
+Implemented native slice: two initially matched states, finite advances, timed
+receptor changes with before/after checkpoints, current-state forks, and left/right
+comparison using actual fields and cells. Four branches share one original wall,
+artifact and command budget; child clocks and absolute step limits are inherited.
+The current-state fork preserves its parent checkpoint and allocates independent
+state, so the parent trajectory can remain a comparison future. The immutable
+fork point is retained even when either future subsequently advances.
+
+Still open: choosing an older complete checkpoint from the timeline, same-ID
+response plots alongside material optics, and broader mechanism adapters. Display
+frames alone remain insufficient for a restart.

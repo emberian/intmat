@@ -21,7 +21,7 @@ const LOADED_CODE_PINS=(
     capture=bytes2hex(sha256(read(joinpath(@__DIR__,"device_habitat_capture.jl")))),
     startup=bytes2hex(sha256(read(joinpath(@__DIR__,"native_workbench_startup.jl")))))
 const FIELD_NAMES=(:free_a,:free_b,:raw_a,:raw_b,:enzyme_a,:enzyme_b,:bound_a,:bound_b,:permeability)
-const ACTIONS=("describe","observe","step","pause","checkpoint","receptor_scales","stop")
+const ACTIONS=("describe","observe","step","pause","checkpoint","receptor_scales","fork","stop")
 Base.@kwdef struct Limits
     max_steps::Int=4096
     max_steps_per_command::Int=256
@@ -30,6 +30,7 @@ Base.@kwdef struct Limits
     idle_seconds::Float64=120.
     artifact_bytes::Int=512_000_000
     max_commands::Int=128
+    max_branches::Int=4
 end
 mutable struct Branch{W,P,B,A}
     world::W
@@ -41,6 +42,7 @@ mutable struct Branch{W,P,B,A}
     checkpoint::Any
     history::Vector{Any}
     interventions::Vector{Any}
+    parent::Any
 end
 mutable struct Session
     root::String
@@ -68,7 +70,7 @@ end
 function branches_state(s)
     Dict(name=>(step=b.process.cells.attempted_steps,time=b.world.time,paused=true,failed=b.failed,
         latest_observation=b.observation,latest_checkpoint=b.checkpoint,
-        material_parameters=b.process.habitat.parameters,interventions=b.interventions) for (name,b) in s.branches)
+        material_parameters=b.process.habitat.parameters,interventions=b.interventions,parent=b.parent) for (name,b) in s.branches)
 end
 function manifest!(s)
     atomic_json(joinpath(s.root,"worker.json"),(schema="interior-native-workbench-1",status=s.stop_reason===nothing ? (s.busy ? "running" : "ready") : "stopped",
@@ -140,7 +142,7 @@ function checkpoint!(s,name;event=nothing)
     b=s.branches[name];b.failed && error("branch has a partial failed state")
     reserve!(s,2resident_bytes(b.process)+2_000_000)
     ledger=accounting(b);payload=merge(Interior.device_habitat_checkpoint(b.world,b.process),
-        (workbench=(branch=name,intervention=event,interventions=copy(b.interventions)),))
+        (workbench=(branch=name,intervention=event,interventions=copy(b.interventions),parent=b.parent,accounting_baseline=b.initial),))
     path=joinpath(s.root,"checkpoints",name*"-"*lpad(s.sequence,5,'0')*(event===nothing ? "" : "-"*event.phase)*".jls")
     serialize(path*".pending",payload);mv(path*".pending",path)
     b.checkpoint=(file=relpath(path,s.root),sha256=hashfile(path),bytes=filesize(path),step=b.process.cells.attempted_steps,time=b.world.time,accounting=ledger)
@@ -148,6 +150,7 @@ end
 function create_session(profile,root;backend=CPU(),side=8,limits=Limits(),startup_token=nothing)
     started=ispath(root) ? NativeWorkbenchStartup.validate(root,startup_token) : time()
     all(x->isfinite(x)&&x>0,(limits.max_steps,limits.max_steps_per_command,limits.max_model_time,limits.wall_seconds,limits.idle_seconds,limits.artifact_bytes,limits.max_commands)) || error("finite positive limits required")
+    2<=limits.max_branches<=4 || error("branch cap must be between two and four")
     limits.max_steps_per_command<=limits.max_steps || error("command cap exceeds session cap")
     cfg=profile isa AbstractString ? TOML.parsefile(profile) : deepcopy(profile)
     haskey(cfg,"material_sensing") || error("profile must declare the sensing branch receptors")
@@ -157,7 +160,7 @@ function create_session(profile,root;backend=CPU(),side=8,limits=Limits(),startu
         trial=deepcopy(cfg);name=="off"&&delete!(trial,"material_sensing")
         w,p,funding=native_constructed_garden(backend,trial)
         buffer=Interior.KernelAbstractions.zeros(backend,Float32,side^3,9)
-        bs[name]=Branch(w,p,buffer,funding.initial,false,nothing,nothing,Any[],Any[])
+        bs[name]=Branch(w,p,buffer,funding.initial,false,nothing,nothing,Any[],Any[],nothing)
     end
     # Same physiological state; receptor semantics are the sole branch-law edit.
     a=Interior.device_habitat_snapshot(bs["off"].process);b=Interior.device_habitat_snapshot(bs["sensing"].process)
@@ -174,18 +177,19 @@ function validate_command(c,s)
     Set(keys(c))<=Set(("id","action","branch","steps","scales","requested_at")) || throw(ArgumentError("unknown command fields"))
     id=get(c,"id",nothing);id isa String && occursin(r"^[A-Za-z0-9_-]{1,80}$",id) || throw(ArgumentError("invalid command id"))
     action=get(c,"action",nothing);action in ACTIONS || throw(ArgumentError("unknown action"))
-    branch=get(c,"branch","both");branch in ("off","sensing","both") || throw(ArgumentError("unknown branch"))
+    branch=get(c,"branch","both");(branch=="both" || haskey(s.branches,branch)) || throw(ArgumentError("unknown branch"))
     if action=="step"
         n=get(c,"steps",nothing);n isa Integer && !(n isa Bool) && 0<n<=s.limits.max_steps_per_command || throw(ArgumentError("step count exceeds finite command cap"))
     else
         haskey(c,"steps") && throw(ArgumentError("steps only applies to step"))
     end
     if action=="receptor_scales"
-        branch=="sensing" || throw(ArgumentError("receptor scales apply only to sensing"))
+        branch!="both" && hasproperty(s.branches[branch].process.habitat.parameters,:material_scales) || throw(ArgumentError("selected branch has no material receptors"))
         receptor_scales(get(c,"scales",nothing))
     else
         haskey(c,"scales") && throw(ArgumentError("scales only applies to receptor_scales"))
     end
+    action=="fork" && branch=="both" && throw(ArgumentError("fork requires one complete branch"))
     id,action,branch=="both" ? ["off","sensing"] : [branch]
 end
 function receptor_scales(values)
@@ -207,8 +211,8 @@ function receptor_process(b,scales)
     Interior.validate(b.world,candidate)
     candidate
 end
-function intervene_receptors!(s,id,scales)
-    name="sensing";b=s.branches[name];b.failed&&error("branch has a partial failed state")
+function intervene_receptors!(s,name,id,scales)
+    b=s.branches[name];b.failed&&error("branch has a partial failed state")
     candidate=receptor_process(b,scales)
     candidate.habitat.parameters.material_channels==b.process.habitat.parameters.material_channels || error("fixed receptor channels changed")
     reserve!(s,4resident_bytes(b.process)+4_000_000+4s.side^3*9*4)
@@ -222,6 +226,26 @@ function intervene_receptors!(s,id,scales)
     push!(b.interventions,merge(event,(before_checkpoint=before_checkpoint,before_observation=before_observation)))
     manifest!(s)
     checkpoint!(s,name;event=after);observe!(s,name;event=after)
+end
+function fork_current!(s,name)
+    length(s.branches)<s.limits.max_branches || error("branch budget exhausted")
+    b=s.branches[name];b.failed&&error("cannot fork a partial failed branch")
+    child=first(filter(n->!haskey(s.branches,n),("fork1","fork2")))
+    reserve!(s,4resident_bytes(b.process)+4_000_000+2s.side^3*9*4)
+    checkpoint!(s,name)
+    parent_checkpoint=b.checkpoint;path=joinpath(s.root,parent_checkpoint.file)
+    hashfile(path)==parent_checkpoint.sha256 || error("parent checkpoint hash mismatch")
+    payload=deserialize(path)
+    w=World(b.world.grid,b.world.backend,NamedTuple(),NamedTuple(),b.world.time,b.world.seed)
+    process=Interior.device_habitat_restore(w,payload)
+    Interior.device_habitat_snapshot(process)==Interior.device_habitat_snapshot(b.process) || error("strict fork differs from parent state")
+    provenance=(branch=name,checkpoint=parent_checkpoint,step=b.process.cells.attempted_steps,time=b.world.time,
+        source=payload.source,cellular_source=payload.cells.source,parameters=payload.parameters,sequence=s.sequence)
+    buffer=Interior.KernelAbstractions.zeros(w.backend,Float32,s.side^3,9)
+    fresh=Branch(w,process,buffer,b.initial,false,nothing,nothing,Any[],deepcopy(b.interventions),provenance)
+    mkpath(joinpath(s.root,"branches",child,"frames"));s.branches[child]=fresh
+    checkpoint!(s,child);observe!(s,child)
+    child
 end
 function advance_one!(b,dt)
     try
@@ -260,9 +284,14 @@ function process_command!(s,c)
                 advance_one!(s.branches[name],s.dt)
             end
             for name in names;observe!(s,name);end
+        elseif action=="fork"
+            length(s.branches)<s.limits.max_branches || error("branch budget exhausted")
+            s.branches[only(names)].failed && error("cannot fork a partial failed branch")
+            accepted=true;s.busy=true;manifest!(s)
+            fork_current!(s,only(names))
         elseif action=="receptor_scales"
             accepted=true;s.busy=true;manifest!(s)
-            intervene_receptors!(s,id,receptor_scales(c["scales"]))
+            intervene_receptors!(s,only(names),id,receptor_scales(c["scales"]))
         elseif action=="observe"
             accepted=true;
             for name in names;observe!(s,name);end

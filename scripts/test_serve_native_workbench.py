@@ -69,6 +69,18 @@ class GatewayTests(unittest.TestCase):
             self.assertEqual(self.request(path=f'/branches/sensing/frames/00001-{phase}/frame.json')[0], 200)
         self.assertEqual(self.request(path='/branches/sensing/frames/00001-untrusted/frame.json')[0], 404)
 
+    def test_fork_capability_and_fixed_branch_names(self):
+        (self.root / 'worker.json').write_text(json.dumps({'status': 'ready', 'actions': ['step'], 'branches': {'off': {}}, 'limits': {'max_steps_per_command': 16}}))
+        self.assertEqual(self.request('POST', '/api/control', {'action': 'fork', 'branch': 'off'})[0], 400)
+        (self.root / 'worker.json').write_text(json.dumps({'status': 'ready', 'actions': ['fork'], 'branches': {'sensing': {}, 'fork1': {}}, 'limits': {'max_steps_per_command': 16}}))
+        for branch in ('both', 'fork2', '../old', 'user-name'):
+            self.assertEqual(self.request('POST', '/api/control', {'action': 'fork', 'branch': branch})[0], 400)
+        self.assertEqual(self.request('POST', '/api/control', {'action': 'fork', 'branch': 'fork1'})[0], 202)
+        folder=self.root/'branches/fork1/frames/00001-after';folder.mkdir(parents=True)
+        (folder/'frame.json').write_text('{}')
+        self.assertEqual(self.request(path='/branches/fork1/frames/00001-after/frame.json')[0], 200)
+        self.assertEqual(self.request(path='/branches/fork3/frames/00001-after/frame.json')[0], 404)
+
     def test_origin_and_host_checks(self):
         body = {'action': 'step', 'steps': 1}
         self.assertEqual(self.request('POST', '/api/control', body, {'Origin': 'https://example.invalid'})[0], 403)

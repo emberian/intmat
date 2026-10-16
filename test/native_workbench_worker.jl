@@ -16,7 +16,7 @@ using .NativeWorkbench
         @test_throws ErrorException NativeWorkbenchStartup.begin_startup(root,@__FILE__)
         @test_throws ErrorException NativeWorkbench.create_session(cfg,root;side=4,startup_token="wrong")
         s=NativeWorkbench.create_session(cfg,root;side=4,startup_token=token,
-            limits=NativeWorkbench.Limits(max_steps=8,max_steps_per_command=4,max_model_time=1.,wall_seconds=3600.,idle_seconds=60.,max_commands=20))
+            limits=NativeWorkbench.Limits(max_steps=10,max_steps_per_command=4,max_model_time=1.,wall_seconds=3600.,idle_seconds=60.,max_commands=40))
         @test all(b->b.world.time==0,values(s.branches))
         metadata=Interior.JSON3.read(read(joinpath(s.root,"worker.json"),String))
         @test isconst(NativeWorkbench,:LOADED_CODE_PINS)
@@ -89,8 +89,48 @@ using .NativeWorkbench
         more=NativeWorkbench.process_command!(s,Dict("id"=>"more","action"=>"step","steps"=>4))
         @test more.ok && all(b->b.process.cells.attempted_steps==7,values(s.branches))
         @test maximum(abs,Array(branch.process.cells.state.inputs).-oldsnapshot.cells.state.inputs)>1e-4
-        excess=NativeWorkbench.process_command!(s,Dict("id"=>"excess","action"=>"step","steps"=>2))
+        excess=NativeWorkbench.process_command!(s,Dict("id"=>"excess","action"=>"step","steps"=>4))
         @test !excess.ok && !excess.accepted && all(b->b.process.cells.attempted_steps==7,values(s.branches))
+        # Fork only a current complete state; parent and child have independent arrays.
+        parent=s.branches["sensing"];parentsnapshot=Interior.device_habitat_snapshot(parent.process)
+        fork=NativeWorkbench.process_command!(s,Dict("id"=>"fork-one","action"=>"fork","branch"=>"sensing"))
+        @test fork.ok && length(s.branches)==3
+        child=s.branches["fork1"]
+        @test child.world.time==parent.world.time && child.world.seed==parent.world.seed
+        @test child.initial==parent.initial && child.parent.branch=="sensing"
+        @test child.process.cells.state.position!==parent.process.cells.state.position
+        @test child.process.habitat.arrays.bound!==parent.process.habitat.arrays.bound
+        for (owned,original) in zip((child.process.cells.state,child.process.cells.environment,child.process.habitat.arrays,child.process.habitat.feedstock.arrays),
+                                     (parent.process.cells.state,parent.process.cells.environment,parent.process.habitat.arrays,parent.process.habitat.feedstock.arrays))
+            @test all(k->getproperty(owned,k)!==getproperty(original,k),keys(owned))
+        end
+        @test child.buffer!==parent.buffer
+        @test Interior.device_habitat_snapshot(child.process)==parentsnapshot
+        @test Interior.device_habitat_snapshot(parent.process)==parentsnapshot
+        checkpointpath=joinpath(s.root,child.parent.checkpoint.file)
+        immutable_hash=NativeWorkbench.hashfile(checkpointpath)
+        @test immutable_hash==child.parent.checkpoint.sha256
+        @test NativeWorkbench.process_command!(s,Dict("id"=>"replay-parent","action"=>"step","branch"=>"sensing","steps"=>1)).ok
+        @test NativeWorkbench.process_command!(s,Dict("id"=>"replay-child","action"=>"step","branch"=>"fork1","steps"=>1)).ok
+        @test Interior.device_habitat_snapshot(child.process)==Interior.device_habitat_snapshot(parent.process)
+        @test NativeWorkbench.process_command!(s,Dict("id"=>"child-scales","action"=>"receptor_scales","branch"=>"fork1","scales"=>[2.,.04,.008])).ok
+        @test child.process.habitat.parameters.material_scales!=(parent.process.habitat.parameters.material_scales)
+        @test Interior.device_habitat_snapshot(parent.process).parameters==now.parameters
+        parentbefore=Interior.device_habitat_snapshot(parent.process)
+        @test NativeWorkbench.process_command!(s,Dict("id"=>"changed-child-future","action"=>"step","branch"=>"fork1","steps"=>1)).ok
+        @test Interior.device_habitat_snapshot(parent.process)==parentbefore
+        @test NativeWorkbench.process_command!(s,Dict("id"=>"parent-future","action"=>"step","branch"=>"sensing","steps"=>1)).ok
+        @test child.world.time==parent.world.time
+        @test maximum(abs,Array(child.process.cells.state.inputs).-Array(parent.process.cells.state.inputs))>1e-3
+        @test !NativeWorkbench.process_command!(s,Dict("id"=>"child-absolute-cap","action"=>"step","branch"=>"fork1","steps"=>2)).accepted
+        @test child.process.cells.attempted_steps==9
+        @test NativeWorkbench.hashfile(checkpointpath)==immutable_hash
+        @test NativeWorkbench.process_command!(s,Dict("id"=>"fork-two","action"=>"fork","branch"=>"off")).ok
+        @test length(s.branches)==4 && s.branches["fork2"].parent.branch=="off"
+        @test !NativeWorkbench.process_command!(s,Dict("id"=>"too-many-forks","action"=>"fork","branch"=>"sensing")).accepted
+        @test_throws ArgumentError NativeWorkbench.validate_command(Dict("id"=>"off-child-scales","action"=>"receptor_scales","branch"=>"fork2","scales"=>[1.,1.,1.]),s)
+        @test_throws ArgumentError NativeWorkbench.validate_command(Dict("id"=>"both-fork","action"=>"fork","branch"=>"both"),s)
+        @test_throws ArgumentError NativeWorkbench.validate_command(Dict("id"=>"path-fork","action"=>"fork","branch"=>"../old"),s)
         before=filesize(binary)
         stop=NativeWorkbench.process_command!(s,Dict("id"=>"stop","action"=>"stop"))
         @test stop.ok && s.stop_reason=="stop command"
@@ -118,4 +158,9 @@ end
             @test dst[LinearIndices((2,2,2))[coarse],k]≈expected rtol=2eps(Float32)
         end
     end
+end
+
+@testset "Partial branches cannot fork" begin
+    fake=(branches=Dict("sensing"=>(failed=true,)),limits=NativeWorkbench.Limits())
+    @test_throws ErrorException NativeWorkbench.fork_current!(fake,"sensing")
 end

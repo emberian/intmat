@@ -7,7 +7,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs/promises'),path=r
   const page=await browser.newPage({viewport:{width:1640,height:1420}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.route('**/api/status',route=>route.fulfill({json:{status:'starting',phase:'Loading Julia and preparing paired native states'}}));
   await page.goto(url);await page.waitForFunction(()=>document.querySelector('#status').textContent.startsWith('Initializing Julia'));
-  assert(await page.locator('#advance').isDisabled());assert.equal(await page.locator('#clock-off').textContent(),'initializing');
+  assert(await page.locator('#advance').isDisabled());assert.equal(await page.locator('#clock-left').textContent(),'initializing');
   await page.screenshot({path:path.join(out,'starting-fixture.png'),fullPage:true});
   await page.unroute('**/api/status');await page.waitForFunction(()=>document.querySelector('#status').textContent.startsWith('stopped'));
   const frames=[page.frame({url:/branches\/off\/index.html/}),page.frame({url:/branches\/sensing\/index.html/})];

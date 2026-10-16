@@ -1,0 +1,110 @@
+{
+  "schema": "interior-native-workbench-fork-evidence-1",
+  "source_stage": "outputs/native-workbench-fork-source-20261016",
+  "session": "outputs/native-workbench-fork-20261016",
+  "backend": "Julia CPU, two threads",
+  "driver_sha256": "507237747471919c59bebc73840ff63d9817015164a91f17f763ebf46f5854ab",
+  "source": {
+    "model": "1a938948fb14c400876c6848e4389fc432f4cc2a3962903374d2d76fb34f1c99",
+    "initialization": "766dfedbdbf5b4dbbb99ed5e9336a16747fa08752a84af3268fc7c98c613613a",
+    "founder_initialization": "d76e4c791a2c56bc7fd651b1836e6879b9e27013566ce6d94a1d2f677f62e633",
+    "support": "5a767b83c2c912d8706468ec7c5b86e56cf99430b2a23dfd3a7f3ee8f21bf55b",
+    "lifecycle": "8826c577e960db6596cd923a591d806b185908a254c6cc0fb6b0eebb033a9629",
+    "resource": "ac72b2db1dfa448446df0ae44840ba05933f1d8fb13c639f9e2cd3b3a7e41223",
+    "kernels": "8f9f5d153ff1e4f4636388072063aa6e53fbb20d9c5175d64d6fcb15993207ae",
+    "checkpoint": "81c8538519e5d0c58eb8bc0b6e49be7eec87119f81b7fcd998b6944f02c68503",
+    "protocol": "52632744615956c0e4c613e010b8fa4ba08c396e46e03d7ef5ec15f037e8199d"
+  },
+  "habitat_source": {
+    "helper": "5753f0cf5065345cf08fb9a2501d87aad4f6eff13183fd344e8f53dfe736aa41",
+    "kernels": "b89543752488d8cab09412d928b2a452e4474b9fe42e63ef1058152ab6351759",
+    "sorption": "3811fd3627906823a01f2afb2e6693bb6aec99c37bb10bfb72d43c85f8b4ad08"
+  },
+  "limits": {
+    "max_steps": 4096,
+    "max_steps_per_command": 256,
+    "max_model_time": 64,
+    "wall_seconds": 900,
+    "idle_seconds": 120,
+    "artifact_bytes": 512000000,
+    "max_commands": 128,
+    "max_branches": 4
+  },
+  "parent_checkpoint": {
+    "file": "checkpoints/sensing-00002.jls",
+    "sha256": "e290089ec8820489cde3c2bc7d1ab23cbb9e021867511aab7a78b9809f9e776f",
+    "bytes": 4106297,
+    "step": 4,
+    "time": 0.03999999910593033,
+    "accounting": {
+      "audit": {
+        "material": 11.961250023814829,
+        "potential": 25.867726622810025,
+        "work": 0.022303065422982906,
+        "heat": 0.354970407026303,
+        "supplied": 0.0012499999729698175,
+        "removed": 0,
+        "supplied_potential": 0.00499999989187927,
+        "removed_potential": 0,
+        "population": 4,
+        "completed_steps": 4,
+        "secreted": [
+          0.00018670221334767635,
+          0.00807247441267079
+        ],
+        "solubilized": [
+          2.5253887738054112e-05,
+          0.000995544937461043
+        ],
+        "bound": [
+          1.0912849973019397e-05,
+          0.0004425109842338469
+        ],
+        "enzyme": [
+          0.00018666484788630236,
+          0.008070861455232656
+        ],
+        "inert": 1.3921325301303328e-16,
+        "finite": true
+      },
+      "material_error": 1.7763568394002505e-15,
+      "potential_error": 2.220446049250313e-16
+    }
+  },
+  "parent_checkpoint_unchanged_after_futures": true,
+  "fork_step": 4,
+  "matched_future_step": 8,
+  "matched_export_hashes": [
+    "c6562e7209f3df6f3a7d541460f59c0e146f35f61d16b9916750838431877bd4",
+    "c6562e7209f3df6f3a7d541460f59c0e146f35f61d16b9916750838431877bd4"
+  ],
+  "child_scales": [
+    0.5,
+    0.03,
+    0.006
+  ],
+  "unchanged_parent_scales": [
+    4,
+    0.02,
+    0.004
+  ],
+  "cap_ack": {
+    "accepted": false,
+    "status": "rejected",
+    "message": "branch budget exhausted"
+  },
+  "final_branches": {
+    "off": 0,
+    "sensing": 8,
+    "fork1": 8,
+    "fork2": 0
+  },
+  "status": "stopped",
+  "browser_errors": [],
+  "julia_composition_checks": 233,
+  "gateway_checks": 8,
+  "report_sha256": "9c81e7e9b5ff0e2b7c9110a7e8f137138135f662f2927ae4be25e0a07f8dc7da",
+  "scope": "Current complete state only; strict independent restart, replay parity, timed child intervention. No historical timeline restart, GPU gate or ecological usefulness claim.",
+  "additional_all_array_ownership_checks": 5,
+  "original_wall_deadline_preserved": 1792117295.686874
+}
