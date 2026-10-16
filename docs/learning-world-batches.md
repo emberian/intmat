@@ -197,3 +197,28 @@ The pulse cohort CPU gate adds 25 assertions: distinct axes, signs, producers an
 memory flags match serial hooks exactly; saved commands match, and checkpoints
 restart exactly halfway through the pulse and after it. Mixed pulse origins are
 rejected. Native pulse cohorts still require their own gate before scientific use.
+
+## Decision-aligned return queues
+
+The separate extension `studies/cohort_construction_world_batches.jl` registers
+`register_cohort_construction_world_batches!(Q)`. It reuses joint construction's
+launches and adds the original cohort choose/mature/diagnostic kernels. Queue
+length, horizon and action clocks remain common; memory, learning/critic flags,
+noise, actor rate and critic gain may differ per member. All queue arrays live
+in the existing private state and survive the ordinary strict batch checkpoint.
+
+The policy projector now world-projects chemistry arguments too, because they
+may contain private scalars such as critic gain. The physical batch engine's
+common-parameter behavior remains unchanged. CPU lifetime 125 and joint 30 checks
+pass after this projection change. The cohort adds 28 exact physical/private
+parity, partial-queue restart, original-mask, maturity and positive paid-update
+checks through H=2, action time 4, drain time 6, with distinct memory and actor-only
+versus critic-only members.
+
+The independent native batch gate passed 11 checks on four worlds through 60
+steps/time 6, including positive/reversed actors and critic-only gains .01/.03.
+Maximum CPU/AMD difference was 7.63e-6 (gate 2e-5); partial-queue restart at step
+19 and subsequent native continuations were exact. All members paid and matured
+eligible records with strict material/potential accounting. This is a parity gate,
+not a new throughput claim. Compact evidence is
+`benchmarks/2026-10-16-cohort-world-batches-native.json`.

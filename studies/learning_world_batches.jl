@@ -48,7 +48,20 @@ function project_sidecar_kernel!(kernel,scope,path)
     sig.args[1]=Symbol("policybatch_",new,"_",string(objectid(@__MODULE__);base=16))
     insertions=Expr[]
     for arg in original_args
-        j=findfirst(==(arg),sig.args);j===nothing&&continue
+        j=findfirst(==(arg),sig.args)
+        if j===nothing
+            # Cell kernels treat q/cq as common physical parameters. Policy
+            # chemistry can contain private scalars (e.g. a critic gain).
+            if arg in (:q,:cq)
+                packed=Symbol("packed_",arg)
+                for statement in body.args
+                    if statement isa Expr&&statement.head==:(=)&&statement.args[1]===arg
+                        statement.args[2]=:($(GlobalRef(@__MODULE__,:batch_world))($packed,batch_world_id))
+                    end
+                end
+            end
+            continue
+        end
         packed=Symbol("policy_packed_",arg);sig.args[j]=packed
         push!(insertions,:($arg=$(GlobalRef(@__MODULE__,:batch_world))($packed,batch_world_id)))
     end

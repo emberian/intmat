@@ -1,0 +1,78 @@
+{
+    "checks": 11,
+    "errors": [
+        3.5762786865234375e-7,
+        7.62939453125e-6,
+        1.430511474609375e-6,
+        1.430511474609375e-6
+    ],
+    "rows": [
+        {
+            "material": -8.881784197001252e-16,
+            "potential": 3.552713678800501e-15,
+            "paid": 5.673396985073076e-5,
+            "matured": 80,
+            "critic_gain": 0.01,
+            "memory": true,
+            "actor_updates": 40,
+            "critic_updates": 0
+        },
+        {
+            "material": -8.881784197001252e-16,
+            "potential": 3.552713678800501e-15,
+            "paid": 1.5557071472382944e-5,
+            "matured": 80,
+            "critic_gain": 0.03,
+            "memory": false,
+            "actor_updates": 40,
+            "critic_updates": 0
+        },
+        {
+            "material": -8.881784197001252e-16,
+            "potential": 7.105427357601002e-15,
+            "paid": 3.364873969280424e-5,
+            "matured": 80,
+            "critic_gain": 0.01,
+            "memory": true,
+            "actor_updates": 0,
+            "critic_updates": 80
+        },
+        {
+            "material": -8.881784197001252e-16,
+            "potential": 7.105427357601002e-15,
+            "paid": 9.582606304880947e-5,
+            "matured": 80,
+            "critic_gain": 0.03,
+            "memory": false,
+            "actor_updates": 0,
+            "critic_updates": 80
+        }
+    ],
+    "time": [
+        6.000000089406967,
+        6.000000089406967,
+        6.000000089406967,
+        6.000000089406967
+    ],
+    "source": {
+        "adapter": "d782bf0f55b2aaeaa87e4703bdedcfaf0f3ce290d5002386eb438d76b2ac718e",
+        "lifetime": {
+            "lifetime": "5fed54e3346c4688f72726d458b4bc5dc4a01c49606f0426332771d5d03f625f"
+        },
+        "constructive": {
+            "base": "eab5b2c36daa5fc7a9d7c0d030fbcdd400694903b34213a9e380fe76de31ae61",
+            "composition": "9e7ff79aa0008cd21ec087223c4a440ce759241dce2486544c589137741f4ac6",
+            "habitat": {
+                "helper": "5753f0cf5065345cf08fb9a2501d87aad4f6eff13183fd344e8f53dfe736aa41",
+                "kernels": "16ccc6b379522d61cd9a3d259143376e118328f9d6194f4d74eec53a77640e5a",
+                "sorption": "3811fd3627906823a01f2afb2e6693bb6aec99c37bb10bfb72d43c85f8b4ad08"
+            }
+        }
+    },
+    "policy": {
+        "joint": "d8ec1ea9d5e70e495ea6a56b9f9e8cf3e597a0785aa5b3bffc74e00c6d196aa5",
+        "construction": "b31734c84e81bc7e441f477dac05397f976b641232113d03d14923e4556003a7",
+        "lifetime": "5fed54e3346c4688f72726d458b4bc5dc4a01c49606f0426332771d5d03f625f",
+        "cohort": "70224365f9f1b12d04c92656a7ee05aa966309a5875aabe51fc6f9b70c5ab9ec"
+    }
+}
