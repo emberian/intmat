@@ -729,3 +729,28 @@ futures agree; child-only receptor changes leave parent state untouched.
 fork/intervene/compare pass. Session budgets remain shared, max4 branches.
 The unused8809 session stopped at its original idle deadline with0commands;
 its evidence remains. The reviewed8810 session is stopped and available read-only.
+
+### Native ensemble throughput and refractive interiors
+
+Paid-learning cohorts preserve independent physical state, memory, clocks and
+failure latches while sharing GPU launches. On hbox,32 independent8³ worlds gain
+26.67–28.14× aggregate stepping and6.90–7.77× including warm setup plus16steps and
+observation. The baseline queues standalone worlds before one synchronization.
+All12 timed comparisons match checked arrays/payments exactly; CPU125checks and
+native23checks include partial-window restart and failed-member isolation.
+This is ensemble throughput, not acceleration of one trajectory. Source and
+measurements are committed in2df228d; cold compilation remains separately stated.
+
+The light takes the long way adds a reviewed2000² photograph of a native256³
+recurrent mineral. Actual graded-index trajectories change with its interior;
+five-state viewer includes straight controls, cuts and receiver counts. All
+325440 receiver rays are accounted for. Material production/captures took35.18s
+on Metal; optical observation is one-way in this specimen. A separate coupled
+light/material experiment is next. Public bundle adds3.23MB, preserving older art.
+
+New construction learning exposed absent actuator authority: default reserve
+demand spent incoming precursor before secretion. A declared lower reserve
+phenotype restores ongoing funded secretion. This is being separated from
+learning effects, with paid joint reserve/investment/allocation policy next;
+the original zero-authority pilot remains preserved. No new soaks were launched;
+development runs remain bounded.

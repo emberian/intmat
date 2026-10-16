@@ -15,7 +15,7 @@ Six families: phase surfaces, written inclusions, dielectric branches, fractured
 networks, acoustic/neural contours and 3D metabolic inhabitants. Each photograph
 observes a saved simulation through chosen optics. The first series adds 36
 specimens at 1600². Refinement now evolves native 384³ phase, writing and waves;
-768³ writing is complete. Refined 2400² photographs, recurrent matter, coupled optics and a repairing weave bring the gallery to 70
+768³ writing is complete. Refined 2400² photographs, recurrent matter, coupled optics and a repairing weave bring the gallery to 71
 studies, with corrected crop geometry and resin, wax, frost, bronze and copper
 optics. Native 1152³ Julia writing completed in 56.9 minutes with 18.35 GB of state.
 Constructive ecology now has actual 64³ trajectories and a 128³ GPU pilot;
@@ -48,6 +48,10 @@ tests after episodic training; autonomous learning remains under development.
 in three matched founder banks; without raw substrate it stays costly. Explore
 [who gains and what remains](https://emberian.github.io/intmat/laboratory/secretion-payback/).
 This is a measured opportunity for learning, not learned cooperation.
+
+**The light takes the long way:** a changing 256³ mineral bends light through
+three fixed apertures. [Rotate, cut and compare actual paths](https://emberian.github.io/intmat/collection-20261016/refractive-memory/viewer.html)
+across five saved states; the 2000² photograph reveals its amber and copper interior.
 
 ## Run
 
@@ -174,6 +178,12 @@ generic recording copies only explicitly requested observations.
 [Device model and measurements](docs/device-cellular.md)
 
 Recent decomposition experiments distinguish storage, submission and simulation:
+
+Paid-learning batches now advance 32 independent 8³ worlds **26.7–28.1× faster**
+than queued standalone worlds on AMD. Including setup and observation, the
+16-step assays gain **6.90–7.77×**, with exact compared states and payments.
+This accelerates experiments in parallel; it does not speed one world's clock.
+[Measurements and restart contract](docs/learning-world-batches.md)
 
 | Change | Measured result | Boundary |
 |---|---|---|

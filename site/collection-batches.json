@@ -584,5 +584,18 @@
       "publication.json",
       "run.json"
     ]
+  },
+  {
+    "id": "collection-20261016/refractive-memory",
+    "source_image_sha256": "d8837c79e05a0192ce8ce47131a4a89e2ef3fa4f681398ec5343b2a42bcb7aec",
+    "files": [
+      "optical-summary.json",
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json",
+      "viewer.html"
+    ]
   }
 ]

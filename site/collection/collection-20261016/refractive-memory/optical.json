@@ -1,0 +1,776 @@
+{
+  "renderer_sha256": "1cdb7f5815fa62dad750560146b47b5f826bed5d7da2e5d05e3ef71210425a9b",
+  "observation_sha256": "a8a7acd8f031d4e341ec1b47bc605a708044e4fe6d94b59bd3d2a940946a52df",
+  "settings": {
+    "run": "outputs/collection-20261016/refractive-memory",
+    "optics": "outputs/collection-20261016/refractive-memory/optics/000480-guided-final",
+    "output": "outputs/collection-20261016/refractive-memory/final.png",
+    "size": 2000,
+    "samples": 128,
+    "device": "METAL",
+    "radius": 0.0013,
+    "gain": 0.55,
+    "orbit": 0.55,
+    "elevation": 0.45,
+    "distance": 3.3,
+    "material": "surface",
+    "screen": false,
+    "save_scene": true,
+    "wavelength": 550,
+    "ray_stride": 2,
+    "display_zmin": -0.65,
+    "display_zmax": 0.95,
+    "no_plate": true,
+    "launch_radius": 10.0,
+    "ray_palette": "ice",
+    "no_floor": true,
+    "surface_style": "glass",
+    "skin_iso": 0.14,
+    "core_iso": 0.5,
+    "cut_y": -2.0,
+    "rays_in_material": 0.045,
+    "skin_absorption": 0.25,
+    "slate": true
+  },
+  "source": {
+    "shape": [
+      256,
+      256,
+      256
+    ],
+    "time": 12.000000178813934,
+    "step": 480,
+    "checks": [
+      {
+        "wavelength": 460,
+        "index_range": [
+          1,
+          1.4191186
+        ],
+        "total": 21696,
+        "reached": 21696,
+        "unresolved": 0,
+        "outside": 10717,
+        "binned": 10979,
+        "mean_transverse_deflection": 1.1387327891448966,
+        "maximum_transverse_deflection": 2.8287347099884643,
+        "max_coarse_difference": 0.0019019761841241776,
+        "max_fine_difference": 0.000714327596348673,
+        "fixture": [
+          {
+            "launch": [
+              -0.1263310459323076,
+              -0.3525284302398564,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 0.00046706755593803887,
+            "fine_difference": 0.00040315479564016846
+          },
+          {
+            "launch": [
+              -0.1263310459323076,
+              -0.3103062080176342,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 0.00012147971137050465,
+            "fine_difference": 0.00033200532079851396
+          },
+          {
+            "launch": [
+              -0.04188660148786314,
+              -0.2891950969065231,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 0.0005427180376658434,
+            "fine_difference": 0.00027269141669334767
+          },
+          {
+            "launch": [
+              -0.1263310459323076,
+              -0.24697287468430085,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 0.0007104427733554609,
+            "fine_difference": 0.0002307948497993733
+          },
+          {
+            "launch": [
+              -0.020775490376752026,
+              -0.22586176357318977,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 0.0003073652992414238,
+            "fine_difference": 0.00013627314408572291
+          },
+          {
+            "launch": [
+              0.15399973167943387,
+              0.021790491434691472,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 0.0019019761841241776,
+            "fine_difference": 0.000714327596348673
+          },
+          {
+            "launch": [
+              0.13288862056832274,
+              0.06401271365691369,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 0.001640615250143592,
+            "fine_difference": 0.0006111959646996089
+          },
+          {
+            "launch": [
+              0.2384441761238783,
+              0.08512382476802481,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 0.00012490265032580585,
+            "fine_difference": 0.00021892800837678482
+          },
+          {
+            "launch": [
+              0.15399973167943387,
+              0.12734604699024704,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 9.024107464923321e-05,
+            "fine_difference": 0.00021011459055910857
+          },
+          {
+            "launch": [
+              0.25955528723498944,
+              0.14845715810135815,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 0.00039881788712401437,
+            "fine_difference": 0.00011248734066286655
+          },
+          {
+            "launch": [
+              0.2384441761238783,
+              0.19067938032358037,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 0.0005051937850956247,
+            "fine_difference": 8.517958362440482e-05
+          },
+          {
+            "launch": [
+              -0.331446463524904,
+              0.11962682769405397,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 0.0010268256646695513,
+            "fine_difference": 0.0001340427480281394
+          },
+          {
+            "launch": [
+              -0.2258909079693484,
+              0.14073793880516508,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 0.00019431905746793203,
+            "fine_difference": 0.0002686655477744259
+          },
+          {
+            "launch": [
+              -0.31033535241379284,
+              0.18296016102738732,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 0.0012263911135628736,
+            "fine_difference": 0.00021322969019280786
+          },
+          {
+            "launch": [
+              -0.2258909079693484,
+              0.2040712721384984,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 0.0004236877311246697,
+            "fine_difference": 0.00027517094375195233
+          },
+          {
+            "launch": [
+              -0.2258909079693484,
+              0.24629349436072062,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 0.00032317527201570194,
+            "fine_difference": 0.00038248030272355075
+          }
+        ]
+      },
+      {
+        "wavelength": 550,
+        "index_range": [
+          1,
+          1.4085873
+        ],
+        "total": 21696,
+        "reached": 21696,
+        "unresolved": 0,
+        "outside": 10753,
+        "binned": 10943,
+        "mean_transverse_deflection": 1.1189017640573964,
+        "maximum_transverse_deflection": 2.7692834216046704,
+        "max_coarse_difference": 0.0010541831120201663,
+        "max_fine_difference": 0.000477406414803034,
+        "fixture": [
+          {
+            "launch": [
+              -0.1263310459323076,
+              -0.3525284302398564,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 0.00034906212016987836,
+            "fine_difference": 0.0002967696377286991
+          },
+          {
+            "launch": [
+              -0.1263310459323076,
+              -0.3103062080176342,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 0.0006200701388675825,
+            "fine_difference": 0.00040427163042482594
+          },
+          {
+            "launch": [
+              -0.04188660148786314,
+              -0.2891950969065231,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 0.0010541831120201663,
+            "fine_difference": 0.000477406414803034
+          },
+          {
+            "launch": [
+              -0.1263310459323076,
+              -0.24697287468430085,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 0.0005434354377251514,
+            "fine_difference": 0.00015563816395060346
+          },
+          {
+            "launch": [
+              -0.020775490376752026,
+              -0.22586176357318977,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 0.00022741993012026604,
+            "fine_difference": 7.095376274155706e-05
+          },
+          {
+            "launch": [
+              0.15399973167943387,
+              0.021790491434691472,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 9.215640977923992e-05,
+            "fine_difference": 7.06625683319122e-05
+          },
+          {
+            "launch": [
+              0.13288862056832274,
+              0.06401271365691369,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 0.0009000261362973085,
+            "fine_difference": 0.00015665756010155087
+          },
+          {
+            "launch": [
+              0.2384441761238783,
+              0.08512382476802481,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 0.0002781141602847084,
+            "fine_difference": 0.00024918384260113404
+          },
+          {
+            "launch": [
+              0.15399973167943387,
+              0.12734604699024704,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 0.00011401606380620472,
+            "fine_difference": 0.00011356107027600216
+          },
+          {
+            "launch": [
+              0.25955528723498944,
+              0.14845715810135815,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 0.00020989915151786945,
+            "fine_difference": 0.00042372045953078234
+          },
+          {
+            "launch": [
+              0.2384441761238783,
+              0.19067938032358037,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 0.00033819511215030706,
+            "fine_difference": 8.556735942985299e-05
+          },
+          {
+            "launch": [
+              -0.331446463524904,
+              0.11962682769405397,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 0.00041072397276704627,
+            "fine_difference": 5.5276219170724705e-05
+          },
+          {
+            "launch": [
+              -0.2258909079693484,
+              0.14073793880516508,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 0.00030422179014057886,
+            "fine_difference": 0.0002042378392123105
+          },
+          {
+            "launch": [
+              -0.31033535241379284,
+              0.18296016102738732,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 0.0008289321307829716,
+            "fine_difference": 0.00031454075871517053
+          },
+          {
+            "launch": [
+              -0.2258909079693484,
+              0.2040712721384984,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 0.00039051223391103787,
+            "fine_difference": 0.00023154970411722145
+          },
+          {
+            "launch": [
+              -0.2258909079693484,
+              0.24629349436072062,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 0.0005298927830149692,
+            "fine_difference": 0.0001759421956301601
+          }
+        ]
+      },
+      {
+        "wavelength": 630,
+        "index_range": [
+          1,
+          1.4027566
+        ],
+        "total": 21696,
+        "reached": 21696,
+        "unresolved": 0,
+        "outside": 10785,
+        "binned": 10911,
+        "mean_transverse_deflection": 1.1076578422017325,
+        "maximum_transverse_deflection": 2.7386546571110855,
+        "max_coarse_difference": 0.0013267673801476833,
+        "max_fine_difference": 0.000349109227357406,
+        "fixture": [
+          {
+            "launch": [
+              -0.1263310459323076,
+              -0.3525284302398564,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 2.8268653195038878e-05,
+            "fine_difference": 3.423276268168951e-05
+          },
+          {
+            "launch": [
+              -0.1263310459323076,
+              -0.3103062080176342,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 0.00038595386358894306,
+            "fine_difference": 0.0001812453183092494
+          },
+          {
+            "launch": [
+              -0.04188660148786314,
+              -0.2891950969065231,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 0.00036440948775030564,
+            "fine_difference": 0.00020591876689498998
+          },
+          {
+            "launch": [
+              -0.1263310459323076,
+              -0.24697287468430085,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 0.0003753361323131933,
+            "fine_difference": 0.00026668536739141185
+          },
+          {
+            "launch": [
+              -0.020775490376752026,
+              -0.22586176357318977,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 0.0006061103596448939,
+            "fine_difference": 0.00013409495193092498
+          },
+          {
+            "launch": [
+              0.15399973167943387,
+              0.021790491434691472,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 0.00029227699730534,
+            "fine_difference": 0.000349109227357406
+          },
+          {
+            "launch": [
+              0.13288862056832274,
+              0.06401271365691369,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 0.0013267673801476833,
+            "fine_difference": 0.00010381705288141187
+          },
+          {
+            "launch": [
+              0.2384441761238783,
+              0.08512382476802481,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 0.0005532120687304682,
+            "fine_difference": 0.0002480669321732147
+          },
+          {
+            "launch": [
+              0.15399973167943387,
+              0.12734604699024704,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 0.0005192548148647475,
+            "fine_difference": 0.00011551037588239107
+          },
+          {
+            "launch": [
+              0.25955528723498944,
+              0.14845715810135815,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 0.0006561286367460713,
+            "fine_difference": 0.00014382568578016476
+          },
+          {
+            "launch": [
+              0.2384441761238783,
+              0.19067938032358037,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 0.0003143900631574099,
+            "fine_difference": 0.0001622373118391237
+          },
+          {
+            "launch": [
+              -0.331446463524904,
+              0.11962682769405397,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 0.0005115163434992928,
+            "fine_difference": 4.54601836999908e-05
+          },
+          {
+            "launch": [
+              -0.2258909079693484,
+              0.14073793880516508,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 0.00021613235805320203,
+            "fine_difference": 0.00011915293168610308
+          },
+          {
+            "launch": [
+              -0.31033535241379284,
+              0.18296016102738732,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 0.0002782373529429397,
+            "fine_difference": 0.00011124184874150605
+          },
+          {
+            "launch": [
+              -0.2258909079693484,
+              0.2040712721384984,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 0.0004638910369575833,
+            "fine_difference": 0.00016264488177568818
+          },
+          {
+            "launch": [
+              -0.2258909079693484,
+              0.24629349436072062,
+              -0.65
+            ],
+            "statuses": [
+              "reached",
+              "reached",
+              "reached"
+            ],
+            "coarse_difference": 0.0005157718740934719,
+            "fine_difference": 0.00017495656183146203
+          }
+        ]
+      }
+    ]
+  },
+  "ray_counts": {
+    "550": 60
+  },
+  "interpretation": "Julia GRIN path polylines, equal-weight input rays. Luminous tubes are visible path glyphs, not computed scattering radiance. Mineral haze/ghost contour and dark launch plate are optical staging. Count screen uses fixed five-tap display blur and1-exp(-.16 normalized count); no interference/Fresnel or coherent-wave caustic calculation."
+}

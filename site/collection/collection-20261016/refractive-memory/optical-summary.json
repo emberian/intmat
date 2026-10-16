@@ -1,0 +1,312 @@
+{
+  "observations": [
+    {
+      "step": 0,
+      "time": 0,
+      "ds": 0.0005,
+      "elapsed_seconds": 32.710821458,
+      "constant_index_max_error": 1.6930901125533637e-13,
+      "source_solid_sha256": "a300d9090a904b6f9fa566056654a25ad1e2e5a5010ca4cedc58ae5ce000a24b",
+      "source_run_sha256": "873d2a1d14a91c81b267735da4a0630ad7d3c50fb26c6936e67caee84dda1556",
+      "tracer_sha256": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+      "observer_source_sha256": "08e0a842f454b49bb2e7095cfb51b2c32258b09348a359c58c3bc414fb41177b",
+      "checks": [
+        {
+          "wavelength": 460,
+          "index_range": [
+            1,
+            1.3366591
+          ],
+          "total": 21696,
+          "reached": 21696,
+          "unresolved": 0,
+          "outside": 10413,
+          "binned": 11283,
+          "mean_transverse_deflection": 1.1069427493219015,
+          "maximum_transverse_deflection": 2.742525634830901,
+          "max_coarse_difference": 0.001113699614987341,
+          "max_fine_difference": 0.0004984781453213305
+        },
+        {
+          "wavelength": 550,
+          "index_range": [
+            1,
+            1.3281997
+          ],
+          "total": 21696,
+          "reached": 21696,
+          "unresolved": 0,
+          "outside": 10335,
+          "binned": 11361,
+          "mean_transverse_deflection": 1.0855165306599484,
+          "maximum_transverse_deflection": 2.696158617135686,
+          "max_coarse_difference": 0.0007591338857466318,
+          "max_fine_difference": 0.0005787896063995182
+        },
+        {
+          "wavelength": 630,
+          "index_range": [
+            1,
+            1.3235161
+          ],
+          "total": 21696,
+          "reached": 21696,
+          "unresolved": 0,
+          "outside": 10275,
+          "binned": 11421,
+          "mean_transverse_deflection": 1.073435242317949,
+          "maximum_transverse_deflection": 2.6672493137884667,
+          "max_coarse_difference": 0.0014369276500223996,
+          "max_fine_difference": 0.0005157605223008579
+        }
+      ]
+    },
+    {
+      "step": 240,
+      "time": 6.000000089406967,
+      "ds": 0.0005,
+      "elapsed_seconds": 18.530692541,
+      "constant_index_max_error": 1.6930901125533637e-13,
+      "source_solid_sha256": "c0face39b6a07f464b30055b4bd07b96bceeff61a0ee8176ed3e743623e85621",
+      "source_run_sha256": "873d2a1d14a91c81b267735da4a0630ad7d3c50fb26c6936e67caee84dda1556",
+      "tracer_sha256": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+      "observer_source_sha256": "08e0a842f454b49bb2e7095cfb51b2c32258b09348a359c58c3bc414fb41177b",
+      "checks": [
+        {
+          "wavelength": 460,
+          "index_range": [
+            1,
+            1.3976853
+          ],
+          "total": 21696,
+          "reached": 21696,
+          "unresolved": 0,
+          "outside": 10290,
+          "binned": 11406,
+          "mean_transverse_deflection": 1.1808039839008388,
+          "maximum_transverse_deflection": 2.7431765792450573,
+          "max_coarse_difference": 0.0008102221972917774,
+          "max_fine_difference": 0.0005722331595774696
+        },
+        {
+          "wavelength": 550,
+          "index_range": [
+            1,
+            1.3876926
+          ],
+          "total": 21696,
+          "reached": 21696,
+          "unresolved": 0,
+          "outside": 10363,
+          "binned": 11333,
+          "mean_transverse_deflection": 1.155772177572947,
+          "maximum_transverse_deflection": 2.7035515165687056,
+          "max_coarse_difference": 0.0024024279875885604,
+          "max_fine_difference": 0.0008169892595794127
+        },
+        {
+          "wavelength": 630,
+          "index_range": [
+            1,
+            1.38216
+          ],
+          "total": 21696,
+          "reached": 21696,
+          "unresolved": 0,
+          "outside": 10407,
+          "binned": 11289,
+          "mean_transverse_deflection": 1.1419092390909262,
+          "maximum_transverse_deflection": 2.677292832224402,
+          "max_coarse_difference": 0.001430713572026818,
+          "max_fine_difference": 0.000430782056458941
+        }
+      ]
+    },
+    {
+      "step": 480,
+      "time": 12.000000178813934,
+      "ds": 0.0005,
+      "elapsed_seconds": 17.353135833,
+      "constant_index_max_error": 1.6930901125533637e-13,
+      "source_solid_sha256": "3dac9c16f8a4b5369de4a8a0c7ed74fb5f5efc5d7af3c887ea0e6cf9fba3b0cd",
+      "source_run_sha256": "873d2a1d14a91c81b267735da4a0630ad7d3c50fb26c6936e67caee84dda1556",
+      "tracer_sha256": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+      "observer_source_sha256": "08e0a842f454b49bb2e7095cfb51b2c32258b09348a359c58c3bc414fb41177b",
+      "checks": [
+        {
+          "wavelength": 460,
+          "index_range": [
+            1,
+            1.4191186
+          ],
+          "total": 21696,
+          "reached": 21696,
+          "unresolved": 0,
+          "outside": 10717,
+          "binned": 10979,
+          "mean_transverse_deflection": 1.1387327891448966,
+          "maximum_transverse_deflection": 2.8287347099884643,
+          "max_coarse_difference": 0.0019019761841241776,
+          "max_fine_difference": 0.000714327596348673
+        },
+        {
+          "wavelength": 550,
+          "index_range": [
+            1,
+            1.4085873
+          ],
+          "total": 21696,
+          "reached": 21696,
+          "unresolved": 0,
+          "outside": 10753,
+          "binned": 10943,
+          "mean_transverse_deflection": 1.1189017640573964,
+          "maximum_transverse_deflection": 2.7692834216046704,
+          "max_coarse_difference": 0.0010541831120201663,
+          "max_fine_difference": 0.000477406414803034
+        },
+        {
+          "wavelength": 630,
+          "index_range": [
+            1,
+            1.4027566
+          ],
+          "total": 21696,
+          "reached": 21696,
+          "unresolved": 0,
+          "outside": 10785,
+          "binned": 10911,
+          "mean_transverse_deflection": 1.1076578422017325,
+          "maximum_transverse_deflection": 2.7386546571110855,
+          "max_coarse_difference": 0.0013267673801476833,
+          "max_fine_difference": 0.000349109227357406
+        }
+      ]
+    },
+    {
+      "step": 720,
+      "time": 18.0000002682209,
+      "ds": 0.0005,
+      "elapsed_seconds": 15.568868041,
+      "constant_index_max_error": 1.6930901125533637e-13,
+      "source_solid_sha256": "9c3d3564f21953937bbe82700a4ddd4385044bb80ef41db93e770e4343b49805",
+      "source_run_sha256": "873d2a1d14a91c81b267735da4a0630ad7d3c50fb26c6936e67caee84dda1556",
+      "tracer_sha256": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+      "observer_source_sha256": "08e0a842f454b49bb2e7095cfb51b2c32258b09348a359c58c3bc414fb41177b",
+      "checks": [
+        {
+          "wavelength": 460,
+          "index_range": [
+            1,
+            1.4185636
+          ],
+          "total": 21696,
+          "reached": 21696,
+          "unresolved": 0,
+          "outside": 11607,
+          "binned": 10089,
+          "mean_transverse_deflection": 1.1052278925636245,
+          "maximum_transverse_deflection": 2.8110374057266347,
+          "max_coarse_difference": 0.0010999302501173648,
+          "max_fine_difference": 0.0003521029657407877
+        },
+        {
+          "wavelength": 550,
+          "index_range": [
+            1,
+            1.4080462
+          ],
+          "total": 21696,
+          "reached": 21696,
+          "unresolved": 0,
+          "outside": 11577,
+          "binned": 10119,
+          "mean_transverse_deflection": 1.0857702444849917,
+          "maximum_transverse_deflection": 2.745635359357309,
+          "max_coarse_difference": 0.001301523118718451,
+          "max_fine_difference": 0.00043866934292035876
+        },
+        {
+          "wavelength": 630,
+          "index_range": [
+            1,
+            1.4022232
+          ],
+          "total": 21696,
+          "reached": 21696,
+          "unresolved": 0,
+          "outside": 11518,
+          "binned": 10178,
+          "mean_transverse_deflection": 1.074828778683825,
+          "maximum_transverse_deflection": 2.7362272118461566,
+          "max_coarse_difference": 0.0009248041620372001,
+          "max_fine_difference": 0.0005006067327878444
+        }
+      ]
+    },
+    {
+      "step": 960,
+      "time": 24.00000035762787,
+      "ds": 0.0005,
+      "elapsed_seconds": 15.871807083,
+      "constant_index_max_error": 1.6930901125533637e-13,
+      "source_solid_sha256": "8e43becd3df609de91701cf3155c38e5d7282b051f1763bf90cbf4782cfa33d4",
+      "source_run_sha256": "873d2a1d14a91c81b267735da4a0630ad7d3c50fb26c6936e67caee84dda1556",
+      "tracer_sha256": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+      "observer_source_sha256": "08e0a842f454b49bb2e7095cfb51b2c32258b09348a359c58c3bc414fb41177b",
+      "checks": [
+        {
+          "wavelength": 460,
+          "index_range": [
+            1,
+            1.4159164
+          ],
+          "total": 21696,
+          "reached": 21696,
+          "unresolved": 0,
+          "outside": 9993,
+          "binned": 11703,
+          "mean_transverse_deflection": 1.2150688406771872,
+          "maximum_transverse_deflection": 2.750152625170746,
+          "max_coarse_difference": 0.001002844261634747,
+          "max_fine_difference": 0.0008165800285272293
+        },
+        {
+          "wavelength": 550,
+          "index_range": [
+            1,
+            1.4054655
+          ],
+          "total": 21696,
+          "reached": 21696,
+          "unresolved": 0,
+          "outside": 9949,
+          "binned": 11747,
+          "mean_transverse_deflection": 1.1893539465179808,
+          "maximum_transverse_deflection": 2.704755592258247,
+          "max_coarse_difference": 0.002062791691300707,
+          "max_fine_difference": 0.001016981143725388
+        },
+        {
+          "wavelength": 630,
+          "index_range": [
+            1,
+            1.3996793
+          ],
+          "total": 21696,
+          "reached": 21696,
+          "unresolved": 0,
+          "outside": 9951,
+          "binned": 11745,
+          "mean_transverse_deflection": 1.1755665376494566,
+          "maximum_transverse_deflection": 2.686346025663822,
+          "max_coarse_difference": 0.0018079473329841492,
+          "max_fine_difference": 0.0006912962016993307
+        }
+      ]
+    }
+  ],
+  "fixed_launch_count": 621,
+  "t0_t12_endpoint_change_mean": 0.27380901920798456,
+  "t0_t12_endpoint_change_max": 0.8519505856473304
+}

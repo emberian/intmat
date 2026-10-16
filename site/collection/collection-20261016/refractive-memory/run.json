@@ -1,0 +1,182 @@
+{
+  "id": "refractive-memory",
+  "title": "The light takes the long way",
+  "description": "A finite stock of mineral remembers three intertwined rhythms. Three fixed apertures send light through the changing interior, gathering a different constellation beyond it.",
+  "family": "Optical interiors",
+  "shape": [
+    256,
+    256,
+    256
+  ],
+  "extent": [
+    64,
+    64,
+    64
+  ],
+  "time": 24.00000035762787,
+  "steps": 960,
+  "dt": 0.025,
+  "elapsed_seconds": 35.179930917,
+  "initial_material_mass": 705236.7178045434,
+  "frames": [
+    {
+      "step": 0,
+      "time": 0,
+      "directory": "frames/000000"
+    },
+    {
+      "step": 240,
+      "time": 6.000000089406967,
+      "directory": "frames/000240"
+    },
+    {
+      "step": 480,
+      "time": 12.000000178813934,
+      "directory": "frames/000480"
+    },
+    {
+      "step": 720,
+      "time": 18.0000002682209,
+      "directory": "frames/000720"
+    },
+    {
+      "step": 960,
+      "time": 24.00000035762787,
+      "directory": "frames/000960"
+    }
+  ],
+  "history": [
+    {
+      "step": 0,
+      "time": 0,
+      "mass_error": 0,
+      "solid_range": [
+        5.6331814e-29,
+        0.5049227
+      ],
+      "solid_mean": 0.020209277,
+      "nutrient_min": 8.0344495e-29
+    },
+    {
+      "step": 240,
+      "time": 6.000000089406967,
+      "mass_error": 0.00010666530579328537,
+      "solid_range": [
+        3.7358565e-27,
+        0.59645003
+      ],
+      "solid_mean": 0.02364922,
+      "nutrient_min": 4.5717325e-24
+    },
+    {
+      "step": 480,
+      "time": 12.000000178813934,
+      "mass_error": 0.0005265297368168831,
+      "solid_range": [
+        1.4251907e-24,
+        0.6285959
+      ],
+      "solid_mean": 0.02497451,
+      "nutrient_min": 8.529899e-23
+    },
+    {
+      "step": 720,
+      "time": 18.0000002682209,
+      "mass_error": 0.0005254423012956977,
+      "solid_range": [
+        6.896678e-23,
+        0.62776345
+      ],
+      "solid_mean": 0.02553663,
+      "nutrient_min": 4.0954631e-22
+    },
+    {
+      "step": 960,
+      "time": 24.00000035762787,
+      "mass_error": 0.00021426845341920853,
+      "solid_range": [
+        1.118866e-21,
+        0.62379307
+      ],
+      "solid_mean": 0.025816534,
+      "nutrient_min": 1.1716029e-21
+    }
+  ],
+  "params": {
+    "resolution": 256,
+    "steps": 960,
+    "capture_every": 240,
+    "id": "refractive-memory",
+    "title": "The light takes the long way",
+    "dt": 0.025,
+    "description": "A finite stock of mineral remembers three intertwined rhythms. Three fixed apertures send light through the changing interior, gathering a different constellation beyond it."
+  },
+  "source_sha256": {
+    "src/experiments.jl": "5697958abac5f36713418d5f9d94f274fb0a51b86ed1a84b3f58b68cba1e42d1",
+    "refractive_memory.jl": "ef227940a91c7bc41f504c2d89262d4cd953de56f72d7a9d35abcef1c696c714",
+    "src/device_habitat_sorption.jl": "3811fd3627906823a01f2afb2e6693bb6aec99c37bb10bfb72d43c85f8b4ad08",
+    "src/arena.jl": "75acccd7b144e1512984c8ececb368d5fa3f03db08daa40e4b8f8f027198c16f",
+    "src/mechanics.jl": "a0370e4028aa859fb344829f0d387a62dd8defb77b25f4651f7c08b386324e45",
+    "src/particles.jl": "75eebe6bfef9307601c13369164e387c395cec6f0d05f843ed5149718ea33576",
+    "src/device_cellular.jl": "1a938948fb14c400876c6848e4389fc432f4cc2a3962903374d2d76fb34f1c99",
+    "src/catalytic_arena.jl": "4a359bb5cfee951c898aca039efe07a4558797fce5544876158791139b105524",
+    "src/device_cellular_checkpoint.jl": "81c8538519e5d0c58eb8bc0b6e49be7eec87119f81b7fcd998b6944f02c68503",
+    "src/device_habitat_kernels.jl": "16ccc6b379522d61cd9a3d259143376e118328f9d6194f4d74eec53a77640e5a",
+    "src/device_cellular_support.jl": "5a767b83c2c912d8706468ec7c5b86e56cf99430b2a23dfd3a7f3ee8f21bf55b",
+    "src/cellular_contacts.jl": "337247cbe0707778f15672385f2e33684cbb44535afc9580e3cf880c4089aafa",
+    "src/device_cellular_kernels.jl": "8f9f5d153ff1e4f4636388072063aa6e53fbb20d9c5175d64d6fcb15993207ae",
+    "src/fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+    "src/neural_workspace.jl": "ecdd45856bc0b3c61708de90814d1abb33bc1232a0f9ff5785b32b9bc39a9139",
+    "src/neural.jl": "461b7c1fd996e41e88b1222a461a2530b16fce40f14716c6a52cc453d820c78c",
+    "src/cellular_initialization.jl": "d76e4c791a2c56bc7fd651b1836e6879b9e27013566ce6d94a1d2f677f62e633",
+    "src/cellular_transport.jl": "fc8bfb0df1948b3869afae0a06fb5cc23bb87778452a31ffc3d27954eeb87aa2",
+    "src/cellular.jl": "97eda8b05c7d51883bc52dc7ecc985b882b60920296c79b4f2903ed358dc0131",
+    "src/device_habitat.jl": "5753f0cf5065345cf08fb9a2501d87aad4f6eff13183fd344e8f53dfe736aa41",
+    "src/catalytic_habitat.jl": "9a69b5ec394bc6dcee988d68f6463fc7c72bfa273e89bbd6e46513d392468eb1",
+    "src/device_cellular_lifecycle.jl": "8826c577e960db6596cd923a591d806b185908a254c6cc0fb6b0eebb033a9629",
+    "src/neural_batch.jl": "be74a1a37d5c9d9be94d00ca845a59c0041e8aa3aaf7e9b768ec658a5aa03fa2",
+    "src/metabolic_ecology.jl": "2f599a1d6ea0a5552a594113d57e238e4c6ff3c1fd8d74de5a51f83a77179bb1",
+    "src/cooperative_boundaries.jl": "f257fdc1fdf15ab6d5c33682270e44181af70390f02a3580659faf6738f74efe",
+    "src/writing.jl": "78fba7cd46f03749bdc56547b7ce5622f7ba3ea42cc34801829345dae3975e05",
+    "src/electrical.jl": "1d50960ab597375b65ef9a9f0fc27963f2375db91dc6e2b56dee35ab33099faa",
+    "src/device_cellular_protocol.jl": "52632744615956c0e4c613e010b8fa4ba08c396e46e03d7ef5ec15f037e8199d",
+    "src/ecology.jl": "b2db2d3d3696a65c18ff912e0c35b7a95720d00da44eff92963b5943d9ad975e",
+    "src/recurrent_material.jl": "e9457d0d6e31f74950fa4be8ef84b138b020c0de7fc4b95c9a7f3cd5db148347",
+    "src/phase.jl": "93fcda42de0748b75a12faf7cb9a7acef682021852d0786c0dce24987bee856b",
+    "src/resources.jl": "859f6e04b456ceee051fd83214b37ca18418af09126960997b7d62d83c2dcab0",
+    "src/Interior.jl": "194971f1f1f6c5c044145238c12ed27dbe4975f9f60a67b5d2074aa8efbf9631",
+    "src/implicit_phase.jl": "1fb617707591f89784b95171e0558065101b3d992f7b3eabd16a7bf01dca4ceb",
+    "src/cellular_arena.jl": "2ef965717c99cd0c46a8acd9ceb7da26232201cb18547bd23712e989688429e2",
+    "src/render.jl": "e4570851eaac8e901e1235e48c662a9defb6c110ea7a28b9f40e3a8e9c7039fe",
+    "src/cellular_storage.jl": "735c3281aca69158609392ef161397bec166d4a1698d7e741cd95b5a426cfaff",
+    "src/core.jl": "b4302b90eaeba213360e8a15ce8b7e4cb4c491606657e3e500d2fb8507753a52",
+    "src/device_resource_exchange.jl": "ac72b2db1dfa448446df0ae44840ba05933f1d8fb13c639f9e2cd3b3a7e41223",
+    "src/compartments.jl": "e7c55ce4e0f4a8548c078c9d160815b5eaeb846a3765aad89a875f166b5005e5",
+    "src/grin.jl": "8e46bea4dee901debac1940c5c2ee7cd76e214fbda6989c0ec6e395cab37ecd1",
+    "src/scenes.jl": "44deab24c29de7dd6f6e1706ce3229fe6d983383c5d9efdb245ec5b093207126",
+    "src/acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+    "src/recording.jl": "1ae3c17a15fbf209aa0b1fd4f10581c8722d66a8fa1146c022a0010a5465f70a",
+    "src/matrix_mechanics.jl": "e232c0d13449324aabe6c299ee1de8ba1d961777e363bc328d44fa5af8de03ed",
+    "src/constructive_cells.jl": "000953e0da6de61574abaff6566790c051af13c320c6c53162598625b6b6bf27",
+    "src/neural_ecology.jl": "ed0496adb31ce4511f8bc0d5343ff843c410c39c51d30c165b3cf5eac1135df2",
+    "src/device_cellular_initialization.jl": "766dfedbdbf5b4dbbb99ed5e9336a16747fa08752a84af3268fc7c98c613613a",
+    "src/dose_writer.jl": "b8d1b4013921a3c82388ee87a7ede00b97964a1894062f2a07339f2c6be197eb",
+    "src/sorptive_matrix.jl": "f5643e0c951c983a7d5864676156123db3181e05510335fcd618de105ff1f036"
+  },
+  "initialization": "Three soft helical mineral/nutrient lenses; phase-textured eight-channel recurrent initialization. Initial geometry is authored, not emergent from noise.",
+  "simulation": "Existing RecurrentMaterial conservative writing/erosion and diffusion, fixed designed recurrence. Optical observation does not feed back on material.",
+  "publication": {
+    "source_image_sha256": "d8837c79e05a0192ce8ce47131a4a89e2ef3fa4f681398ec5343b2a42bcb7aec",
+    "webp_sha256": "93bf30ac8a9eb066d444c1a300f6cc795ba7fdadcb5dc4d84db9ae54dba6fdef",
+    "quality": 95,
+    "width": 2000,
+    "samples": 128,
+    "native_shape": [
+      256,
+      256,
+      256
+    ],
+    "original_retained": true,
+    "reviewed_by": "gallery_reinvention and root; native 2000px photograph inspected"
+  }
+}

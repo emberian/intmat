@@ -1,0 +1,7 @@
+id = "refractive-memory"
+title = "The light takes the long way"
+description = "A finite stock of mineral remembers three intertwined rhythms. Three fixed apertures send light through the changing interior, gathering a different constellation beyond it."
+resolution = 256
+steps = 960
+dt = 0.025
+capture_every = 240

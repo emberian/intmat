@@ -2,7 +2,7 @@
 
 The gallery is served at <https://emberian.github.io/intmat/>. GitHub Pages deploys on pushes to `dev`, or through the **Publish material gallery** workflow's manual run button.
 
-The published collection contains rendered simulation images, sanitized recording metadata and three self-contained WebGL2 viewers. The viewers replay recorded fields; the browser does not run Julia or Blender. Documentation and source links point to this repository.
+The published collection contains rendered simulation images, sanitized recording metadata and self-contained WebGL2 viewers. The viewers replay recorded fields; the browser does not run Julia or Blender. Documentation and source links point to this repository.
 
 ## Refresh the collection
 
@@ -17,7 +17,7 @@ Review <http://localhost:8770>, then commit the updated `site/collection/` asset
 
 `python3 scripts/build_pages.py` stages the checked-in collection into `_site/` without reading simulation outputs. This is the command used by CI and requires only Python's standard library. No simulations, cloud GPU runtimes, external image services or frontend dependencies are required.
 
-The curated bundle has a 144 MB budget, expanded for the reviewed material films and constructive motion exhibit. `site/arena/` also contains a recorded neural arena: 25 measured frames, agent inspection, field selection and playback, with no live backend. Its compact `replay.json` and `latest.json`, HTML viewer and preview image are curated from `outputs/arena/replay-fairshare-20261014/`; JSON paths are sanitized through the publication builder’s `public` helper. Refresh this explicit arena snapshot separately when publishing a new recording. Raw `.f32` fields, VDB volumes, Blender scenes, browser captures and third-party reference footage are outside the publication manifest. Metadata and embedded viewer data are sanitized; staging fails if a local filesystem or localhost reference remains.
+The curated bundle has a 160 MB budget, expanded for the reviewed material films and constructive motion exhibit. `site/arena/` also contains a recorded neural arena: 25 measured frames, agent inspection, field selection and playback, with no live backend. Its compact `replay.json` and `latest.json`, HTML viewer and preview image are curated from `outputs/arena/replay-fairshare-20261014/`; JSON paths are sanitized through the publication builder’s `public` helper. Refresh this explicit arena snapshot separately when publishing a new recording. Raw `.f32` fields, VDB volumes, Blender scenes, browser captures and third-party reference footage are outside the publication manifest. Metadata and embedded viewer data are sanitized; staging fails if a local filesystem or localhost reference remains.
 
 ## Repository setup
 
