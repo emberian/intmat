@@ -7,7 +7,7 @@ pressure and damage. Its inhabitants have state: recurrent brains, plastic memor
 inherited metabolism, ancestry and finite inventories. Each changes what the other
 encounters next.
 
-[Gallery](https://emberian.github.io/intmat/) · [Material films](https://emberian.github.io/intmat/animations/) · [Living cells in motion](https://emberian.github.io/intmat/cellular/) · [Cellular architecture](docs/cellular.md) · [Metabolic replay](https://emberian.github.io/intmat/metabolic/arena.html) · [Working state](TRACKER.md)
+[Gallery](https://emberian.github.io/intmat/) · [Films](https://emberian.github.io/intmat/animations/) · [Laboratory](https://emberian.github.io/intmat/laboratory/) · [Living cells](https://emberian.github.io/intmat/cellular/) · [Architecture](docs/cellular.md) · [Working state](TRACKER.md)
 
 ## Material collection
 
@@ -15,7 +15,7 @@ Six families: phase surfaces, written inclusions, dielectric branches, fractured
 networks, acoustic/neural contours and 3D metabolic inhabitants. Each photograph
 observes a saved simulation through chosen optics. The first series adds 36
 specimens at 1600². Refinement now evolves native 384³ phase, writing and waves;
-768³ writing is complete. Refined 2400² photographs, recurrent matter, coupled optics and a repairing weave bring the gallery to 63
+768³ writing is complete. Refined 2400² photographs, recurrent matter, coupled optics and a repairing weave bring the gallery to 69
 studies, with corrected crop geometry and resin, wax, frost, bronze and copper
 optics. Native 1152³ Julia writing completed in 56.9 minutes with 18.35 GB of state.
 Constructive ecology now has actual 64³ trajectories and a 128³ GPU pilot;
@@ -36,6 +36,13 @@ their subsequent motion comes from the coupled Julia simulation.
 **The second seam:** damage opens a woven sheet; finite repair stock makes new
 connections across the wound. The photographed surface follows the deformed
 network. [Mechanism and photograph](docs/second-seam.md)
+
+**Interior instruments:** rotate and cut through actual resonant shells in
+[What the bell kept](https://emberian.github.io/intmat/collection-20261015/resonant-reliquary/viewer.html).
+The [laboratory](https://emberian.github.io/intmat/laboratory/) maps controller
+memory and action-credit learning. Three founder banks improve frozen resource-use
+tests after episodic training; autonomous learning remains under development.
+[Mechanism and limits](docs/research/action-credit-materials.md)
 
 ## Run
 

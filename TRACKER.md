@@ -56,12 +56,17 @@ electrical threshold law is exploratory and externally powered.
 
 Current bounded development: a Julia command/ack worker for paired native branches
 has CPU protocol and AMD execution gates; root gateway/UI integration is in flight.
-Action-credit research exposed a proportional-depletion endpoint defect; a narrow
+Action-credit research exposed a proportional-depletion endpoint defect; the
 representable-donor repair has120038 boundary assertions and a passing F64 coupled
 CPU/AMD gate. F32 potential closure still fails the study's chosen threshold and
-is recorded separately. Learning tests are expanding across founder banks before
-any generalization claim. LocalMetal is assigned to384³ interacting thermal
-writing; hboxGPU to the bounded learning gate. No soaks are running or planned.
+is recorded separately. Three four-founder banks now pass432 training windows:
+correct credit improves mean frozen held-out usable energy in each bank, zero
+credit changes nothing, reversed credit lowers each mean. This validates the
+episodic action-credit bridge for this task, not autonomous learning or ecological
+persistence. Source and evidence are committed bfd9be8. A paid uninterrupted-life
+prototype is in development. LocalMetal's384³ thermal writing completed2500steps;
+hboxGPU has passed from the learning gate to exact sensing-fusion benchmarks.
+No new soaks are running or planned; historical local arena services are untouched.
 
 ## Current work — accounting and dynamical capabilities
 
