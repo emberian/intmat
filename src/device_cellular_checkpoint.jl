@@ -14,13 +14,14 @@ const DEVICE_CELLULAR_SOURCE_PIN=(
 
 No checkpoint is emitted from a partial/failed step. Scratch arrays, contact
 bins, free lists, counters, identities and compensated ledgers are included.
+The support execution choice is recorded; its construction scratch is rebuilt.
 """
 function device_cellular_checkpoint(w::World,p::DeviceCellular)
     device_cellular_validate(w,p)
     snapshot=device_cellular_snapshot(p)
     snapshot.attempted_steps==snapshot.environment.metadata[6] || throw(ArgumentError("checkpoint requires a complete step boundary"))
     (format="Interior.DeviceCellular",version=4,julia_version=VERSION,source=DEVICE_CELLULAR_SOURCE_PIN,
-        world_time=w.time,world_seed=w.seed,controller_contract=(sensors=CELLULAR_SENSORS,actions=CELLULAR_ACTIONS),snapshot=snapshot)
+        world_time=w.time,world_seed=w.seed,support_execution=device_support_execution(p),controller_contract=(sensors=CELLULAR_SENSORS,actions=CELLULAR_ACTIONS),snapshot=snapshot)
 end
 """Restore a complete checkpoint onto the selected World backend.
 
@@ -34,6 +35,7 @@ function device_cellular_restore(w::World,checkpoint)
     checkpoint.source==DEVICE_CELLULAR_SOURCE_PIN || throw(ArgumentError("checkpoint source pin differs from this runtime"))
     checkpoint.controller_contract==(sensors=CELLULAR_SENSORS,actions=CELLULAR_ACTIONS) || throw(ArgumentError("checkpoint controller layout differs"))
     x=checkpoint.snapshot;g=x.geometry;q=x.parameters
+    device_support_execution_validate(checkpoint.support_execution,g.support_strategy==1 ? :axis : :materialized)
     all(x->isfinite(Float32(x)),x.state.energy) || throw(ArgumentError("checkpoint battery exceeds Float32 controller range"))
     g.energy_bits in (32,64) && eltype(x.state.energy)==(g.energy_bits==64 ? Float64 : Float32) || throw(ArgumentError("checkpoint energy precision mismatch"))
     g.inventory_bits in (32,64) && eltype(x.environment.fields)==(g.inventory_bits==64 ? Float64 : Float32) || throw(ArgumentError("checkpoint inventory precision mismatch"))
@@ -71,7 +73,7 @@ function device_cellular_restore(w::World,checkpoint)
             copyto!(dst,src)
         end
     end
-    p=DeviceCellular(state,env,w.backend,q,g,x.attempted_steps,device_cellular_contract(state,env,q,g;lifecycle_highwater=device_lifecycle_host_highwater(x.state)))
+    p=DeviceCellular(state,env,w.backend,q,g,x.attempted_steps,device_cellular_contract(state,env,q,g;lifecycle_highwater=device_lifecycle_host_highwater(x.state),support_execution=checkpoint.support_execution))
     device_cellular_launch!(p,dc_validate_complete!,state,env,g;ndrange=max(C,V))
     device_cellular_status!(p)
     w.time=checkpoint.world_time;w.seed=checkpoint.world_seed

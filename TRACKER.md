@@ -6,6 +6,31 @@
 
 ## Resumed — 2026-10-16, 20:05 UTC
 
+### Current direction: stateful programs in a learnable material
+
+The next separate Julia mechanism expands the restricted allocation learner into
+frequent local program decisions: preserve/harvest, build A, build B and balanced
+construction, with retained memory and explicit dwell. Local material forecasts
+learn observed outcomes; an authored chemistry-based planner evaluates actions.
+The forecast is not a causal oracle. Matched persistence/current-observation
+controls and actual paid outcomes will establish whether this helps. A per-cell
+viewer will connect actual decision IDs, predictions, state and later outcomes.
+No long soak is underway.
+
+Ordered parallel support is now integrated as an explicit constructor/recipe
+choice. Serial remains the default without extra scratch. CPU tests pass 160
+checks; integrated AMD routing and restored continuation match 92,517,672 array
+elements bitwise. The earlier isolated throughput result remains 1.19–1.20×;
+integration was checked for equality rather than retimed.
+
+The local evidence-sharing component preserves private response offsets and
+passes 12 tests. On 543 actual matured decisions, neighbor-conditioned fitting
+still loses to predicting zero action effect in the held-out interval. This
+specific noisy return estimator has not been installed as paid communication.
+The working component and observations are preserved in
+`docs/research/local-action-evidence.md`; the new predictive-material design
+targets a denser observation signal instead.
+
 The usage pause preserved the running jobs and their source epochs. No soaks
 were restarted. The 96×72×40 electrical fracture producer completed all 3,160
 steps and 32 actual observations in 31.30 minutes, within its 45-minute bound;

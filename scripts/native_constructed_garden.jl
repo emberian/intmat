@@ -46,7 +46,7 @@ function native_constructed_garden(backend,cfg)
     habitat=CatalyticHabitat(cpu,cells,feedstock;seed,Dict(Symbol(k)=>v for (k,v) in cfg["catalysis"])...)
     matrix=SorptiveMatrix(cpu,habitat;Dict(Symbol(k)=>v for (k,v) in cfg["matrix"])...)
     q=cfg["native"];w=World(grid,backend,NamedTuple(),NamedTuple(),0.,seed)
-    device=DeviceCellular(w,cells;capacity,support_strategy=Symbol(q["support_strategy"]),
+    device=DeviceCellular(w,cells;capacity,support_strategy=Symbol(q["support_strategy"]),support_execution=Symbol(get(q,"support_execution","serial")),
         mechanical_substeps=Int(q["mechanical_substeps"]),radius_bound=q["radius_bound"],bin_width=q["bin_width"],energy_type,inventory_type)
     sensing=get(cfg,"material_sensing",nothing)
     material_sensing=sensing===nothing ? nothing : (channels=Tuple(sensing["channels"]),scales=Tuple(sensing["scales"]))

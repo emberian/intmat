@@ -5,6 +5,13 @@ support storage but slow complete steps. Materialized support remains the defaul
 Both representations retain the physical exchange radius and the same declared
 cellular law. This result does not support an axis throughput improvement.
 
+Materialized support now also has an explicit `support_execution=:parallel`
+option that retains its stored edges and arithmetic order. A separate paid living
+64³ gate improves complete AMD steps by 1.19–1.20×, using additional construction
+scratch. The default execution remains serial. See
+[living representation performance](living-representation-performance.md) for
+its different fixtures, exact-state comparisons, API and memory cost.
+
 | Native grid | Materialized steps/s | Axis steps/s | Paired axis speedup | Support storage reduction |
 | --- | ---: | ---: | ---: | ---: |
 | 64³ | 77.30 | 41.29 | 0.538× | 20.1× |

@@ -214,3 +214,11 @@ end
 module TemporalLocalAuthorityTests
 include("temporal_local_authority.jl")
 end
+
+module DeviceSupportParallelTests
+include("device_support_parallel.jl")
+end
+
+module LocalActionEvidenceTests
+include("local_action_evidence.jl")
+end

@@ -5,6 +5,9 @@ storage on CPU/AMD; it is not bit-identical CPU CellularEcology.
 `inventory_type=Float64` widens biomass, metabolites, soluble fields and their
 transfer buffers; it requires `energy_type=Float64`. Geometry and controllers
 remain Float32. This explicit choice belongs to new source-pinned experiments.
+`support_execution=:parallel` explicitly parallelizes materialized support
+construction with extra candidate scratch and exactly the serial edge/sum order.
+The default `:serial` allocates no support scratch; `:parallel` rejects axis support.
 Its physiology/controller contracts are shared; junctions use synchronous donor
 limiting, bonds use mutual bounded-degree proposals, and mechanics uses checked
 fixed substeps with conservatively funded motors. Cell state, genomes, resource
@@ -61,9 +64,10 @@ function device_cellular_arrays(backend,C,h,K,S,V,bins;support_strategy=:materia
 end
 DeviceCellular(w::World,reference::CellularEcology;kwargs...)=device_cellular_import(w,reference;kwargs...)
 function device_cellular_import(w::World,reference;capacity=reference.capacity,
-        radius_bound=2f0,bin_width=radius_bound/2,mechanical_substeps=16,seed=reference.seed,support_strategy=:materialized,energy_type=Float32,inventory_type=Float32)
+        radius_bound=2f0,bin_width=radius_bound/2,mechanical_substeps=16,seed=reference.seed,support_strategy=:materialized,support_execution=:serial,energy_type=Float32,inventory_type=Float32)
     device_energy_type(w.backend,energy_type)
     support_strategy in (:materialized,:axis) || throw(ArgumentError("unknown device support strategy"))
+    device_support_execution_validate(support_execution,support_strategy)
     reference.medium===nothing && reference.resources.medium===nothing || throw(ArgumentError("imported device medium coupling is not implemented; construct the explicit device composition"))
     all(x->length(x)==3,(reference.resources.fields,reference.resources.potentials,reference.resources.diffusion,reference.resources.source_rates,reference.resources.sink_rates,reference.resources.source_masks,reference.resources.sink_masks,reference.resources.source_remaining,reference.resources.sink_remaining)) && reference.resources.potentials[3]==0 || throw(ArgumentError("device cells require two precursors and one zero-potential waste species"))
     (!hasproperty(w.fields,:nutrient)||all(iszero,Array(w.fields.nutrient))) || throw(ArgumentError("DeviceCellular owns its resource pool; zero unrelated world nutrient explicitly"))
@@ -139,7 +143,7 @@ function device_cellular_import(w::World,reference;capacity=reference.capacity,
     copyto!(env.resource_ledger_low,ledgerlow)
     copyto!(env.resource_ledger,ledger);fill!(env.permeability,1f0)
     metadata=zeros(Int32,10);metadata[1]=reference.next_id;metadata[2]=n;copyto!(env.metadata,metadata)
-    p=DeviceCellular(state,env,w.backend,q,geom,0,device_cellular_contract(state,env,q,geom;lifecycle_highwater=n))
+    p=DeviceCellular(state,env,w.backend,q,geom,0,device_cellular_contract(state,env,q,geom;lifecycle_highwater=n,support_execution))
     device_cellular_launch!(p,dc_geometry!,p.state,p.environment,q,geom;ndrange=C)
     device_cellular_launch!(p,dc_support!,p.state,p.environment,q,geom;ndrange=C)
     device_cellular_launch!(p,dc_porosity_scatter!,p.state,p.environment,geom;ndrange=C)
@@ -149,7 +153,7 @@ function device_cellular_import(w::World,reference;capacity=reference.capacity,
 end
 
 function device_cellular_contract(state,env,q,g;resource_workspace=nothing,resource_transient_aliases=(),
-        lifecycle_workspace=nothing,lifecycle_highwater=nothing)
+        lifecycle_workspace=nothing,lifecycle_highwater=nothing,support_execution=:serial,support_workspace=nothing)
     mechanics=(state=NamedTuple{(:active,:ids,:position,:position_next,:mass,:metabolites,:radii,:next,:cell_bin,:bonds,:bond_ids,:rest,:actions,:force,:rows,:energy,:ledger,:ledger_low)}(state),
         environment=NamedTuple{(:status,:heads,:metadata)}(env),
         parameters=NamedTuple{(:density,:radius_bound,:repulsion,:stiffness,:speed,:motor_cost)}(q),
@@ -169,9 +173,15 @@ function device_cellular_contract(state,env,q,g;resource_workspace=nothing,resou
     end
     device_lifecycle_workspace_validate(lifecycle_workspace,KernelAbstractions.get_backend(env.fields),Int(g.capacity))
     device_lifecycle_workspace_nonalias(lifecycle_workspace,state,env,resource)
+    strategy=g.support_strategy==1 ? :axis : :materialized
+    device_support_execution_validate(support_execution,strategy)
+    support=support_execution===:parallel ? (support_workspace===nothing ? DeviceSupportWorkspace(KernelAbstractions.get_backend(env.fields),state,g) : support_workspace) : nothing
+    support_execution===:serial && support_workspace!==nothing && throw(ArgumentError("serial support cannot own parallel scratch"))
+    device_support_workspace_validate(support,KernelAbstractions.get_backend(env.fields),g)
+    device_support_workspace_nonalias(support,state,env,resource,lifecycle_workspace)
     (state=state,environment=env,parameters=q,geometry=g,
         state_shapes=map(size,state),environment_shapes=map(size,env),resource_transient_aliases=resource_transient_aliases,
-        stages=(mechanics=mechanics,controller=controller,resource=resource,lifecycle=lifecycle_workspace))
+        stages=(mechanics=mechanics,controller=controller,resource=resource,lifecycle=lifecycle_workspace,support=support))
 end
 """Cheap identity/shape preflight. Direct array-content edits remain caller responsibility."""
 function device_cellular_validate(w::World,p::DeviceCellular)
@@ -182,12 +192,18 @@ function device_cellular_validate(w::World,p::DeviceCellular)
         throw(ArgumentError("device cellular owned array shapes changed"))
     device_resource_workspace_validate(o.stages.resource)
     device_lifecycle_workspace_validate(o.stages.lifecycle,p.backend,Int(p.geometry.capacity))
+    device_support_workspace_validate(o.stages.support,p.backend,p.geometry)
     w.backend==p.backend && w.grid.size==Tuple(Int.(p.geometry.dims)) && w.grid.extent==p.geometry.extent ||
         throw(ArgumentError("device cellular world mismatch"))
     true
 end
 function device_cellular_launch!(p,kernel,args...;ndrange)
-    kernel(p.backend,128)(args...;ndrange)
+    if kernel===dc_support!
+        ndrange==Int(p.geometry.capacity) || throw(ArgumentError("support launch capacity differs"))
+        device_support_launch!(p,device_support_workspace(p),args...)
+    else
+        kernel(p.backend,128)(args...;ndrange)
+    end
 end
 function device_cellular_status!(p::DeviceCellular)
     KernelAbstractions.synchronize(p.backend)

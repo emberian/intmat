@@ -1,0 +1,66 @@
+{
+    "schema": "local-action-evidence-identification-v1",
+    "replay_exact": true,
+    "training_count": 216,
+    "heldout_count": 135,
+    "train_end": 16,
+    "heldout_start": 20,
+    "primary_ridge": 0.1,
+    "results": [
+        {
+            "ridge": 0.01,
+            "mode": "own",
+            "n": 120,
+            "residual_mse": 0.0010748193649779355,
+            "zero_response_mse": 0.0004283529044833779,
+            "median_smallest_information": 0.0015416076561267566,
+            "median_slope_norm": 0.17420602713904998
+        },
+        {
+            "ridge": 0.01,
+            "mode": "bond",
+            "n": 120,
+            "residual_mse": 0.0009059552774687177,
+            "zero_response_mse": 0.0004283529044833779,
+            "median_smallest_information": 0.007408587065535568,
+            "median_slope_norm": 0.15353372450614655
+        },
+        {
+            "ridge": 0.1,
+            "mode": "own",
+            "n": 120,
+            "residual_mse": 0.0007482807985315442,
+            "zero_response_mse": 0.0004283529044833779,
+            "median_smallest_information": 0.0016639609520343948,
+            "median_slope_norm": 0.05188887631960703
+        },
+        {
+            "ridge": 0.1,
+            "mode": "bond",
+            "n": 120,
+            "residual_mse": 0.0006981429291205921,
+            "zero_response_mse": 0.0004283529044833779,
+            "median_smallest_information": 0.008149097781596407,
+            "median_slope_norm": 0.05245513108199233
+        },
+        {
+            "ridge": 1,
+            "mode": "own",
+            "n": 120,
+            "residual_mse": 0.00044606135146510093,
+            "zero_response_mse": 0.0004283529044833779,
+            "median_smallest_information": 0.0019785422869973424,
+            "median_slope_norm": 0.02008918640981211
+        },
+        {
+            "ridge": 1,
+            "mode": "bond",
+            "n": 120,
+            "residual_mse": 0.0004854903966605034,
+            "zero_response_mse": 0.0004283529044833779,
+            "median_smallest_information": 0.010850972351202692,
+            "median_slope_norm": 0.024083270118874397
+        }
+    ],
+    "scope": "fixed time16 bond neighborhood; train original eligible maturities through16 and predict20..24; descriptive response fit, not learned communication or causal benefit"
+}
