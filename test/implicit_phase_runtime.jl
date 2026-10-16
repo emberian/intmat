@@ -95,3 +95,18 @@ end
  @test_throws DimensionMismatch ImplicitPhaseSeparation(w;chemical_forcing=zeros(Float32,9,35))
  @test_throws DimensionMismatch ImplicitPhaseSeparation(w;chemical_forcing=zeros(Float32,15,7,3))
 end
+
+@testset "Explicit chemical storage reuses complete brine law" begin
+ c=TOML.parsefile(joinpath(@__DIR__,"..","experiments/art/brine-lace-96.toml"))
+ a=phase_runtime_fixture(c,8);b=phase_runtime_fixture(c,8;chemical_type=Float32)
+ @test a.w.fields==b.w.fields&&a.a==b.a&&a.b==b.b
+ @test_throws ArgumentError phase_runtime_fixture(c,8;chemical_type=Float16)
+ d=phase_runtime_fixture(c,8;chemical_type=Float64)
+ @test eltype(d.a)===eltype(d.b)===eltype(d.scratch)===eltype(d.w.fields.deposit)===Float64
+ @test eltype(d.p.phi)===eltype(d.p.chemical_forcing)===eltype(d.permeability)===Float32
+ @test d.a==Float64.(a.a)&&d.b==Float64.(a.b)&&d.p.phi==a.p.phi
+ initial=sum(d.a)+sum(d.b)
+ for _ in 1:20;coupled_runtime_step!(d,c,.01f0,true);end
+ @test abs((sum(d.a)+sum(d.b)+sum(d.w.fields.deposit)-initial)/initial)<1e-12
+ @test minimum(d.a)>=0&&minimum(d.b)>=0
+end

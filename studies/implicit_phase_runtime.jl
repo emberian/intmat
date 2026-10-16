@@ -15,10 +15,14 @@ end
 Interior.process_ports(p::UncachedImplicitPhase)=Interior.process_ports(p.phase)
 Interior.check_dt(w,p::UncachedImplicitPhase,dt)=Interior.check_dt(w,p.phase,dt)
 Interior.advance!(w,p::UncachedImplicitPhase,dt::Real)=Interior.advance!(w,p.phase,dt,Interior.ImplicitPhaseRuntime(p.phase))
-function phase_runtime_fixture(c,n)
- w=World(Grid(n,n,n;extent=ntuple(_->c["extent"],3));fields=(:nutrient,:deposit,:activity),scratch_fields=(:nutrient,))
+function phase_runtime_fixture(c,n;chemical_type=Float32)
+ chemical_type in (Float32,Float64)||throw(ArgumentError("chemical_type must be Float32 or Float64"))
+ grid=Grid(n,n,n;extent=ntuple(_->c["extent"],3))
+ # Construct heterogeneous storage directly, avoiding a duplicate large field.
+ w=World(grid,Interior.CPU(),(nutrient=ones(Float32,grid.size),deposit=zeros(chemical_type,grid.size),activity=zeros(Float32,grid.size)),
+  (nutrient=zeros(Float32,grid.size),),0.0,17)
  p=ImplicitPhaseSeparation(w;noise=0,kappa=c["kappa"],mobility=c["mobility"],mineral_pinning=0,nutrient_diffusion=0,interface_activity=0,activity_relaxation=0,stabilization=c["stabilization"])
- a=zeros(Float32,n,n,n);b=similar(a);scratch=similar(a);permeability=similar(a)
+ a=zeros(chemical_type,n,n,n);b=similar(a);scratch=similar(a);permeability=zeros(Float32,n,n,n)
  brine_initialize!(w,p,a,b,c)
  (;w,p,a,b,scratch,permeability,runtime=Interior.ImplicitPhaseRuntime(p))
 end

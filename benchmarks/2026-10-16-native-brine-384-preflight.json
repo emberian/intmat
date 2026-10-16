@@ -1,0 +1,31 @@
+{
+    "preflight": {
+        "memory": {
+            "device_free": 11660165120,
+            "device_total": 12868124672,
+            "host_current": 734130176,
+            "host_peak": 840695808
+        },
+        "physical_bytes": 4421910528,
+        "native_active_bytes": 5332598784,
+        "host_peak_estimate": 6414331904,
+        "device_margin": 2147483648,
+        "artifact_estimate": 961544192,
+        "dt": 0.0025,
+        "positivity": 0.6143999862670898,
+        "planned_steps": 5760,
+        "planned_physical_time": 14.399999678134918
+    },
+    "warm_seconds": 4.485950322,
+    "sources": {
+        "src/implicit_phase.jl": "e724d19ad8827aa45958880182e3bfbbf0300aca19db0e9616180be5300d9d32",
+        "studies/implicit_phase_runtime.jl": "1f39b40248917d643391ce29385a1054b634f9f1024ca36c1e63e547b878edca",
+        "scripts/device_cellular_setup.jl": "a4c64eb5a43c67cfd746acf2c03bb47d71dbfb12aebd63273fbf5a04172be1e4",
+        "studies/brine_memory.jl": "5ab3ad1ba93f07383af119a59b76d8ccf5b390c807d0dc141bb9d517b5287639",
+        "src/phase.jl": "2815bbd2ee63bacfd0ff36956d16c22d6bc3eaf4798f4fb385026222349848ec",
+        "src/core.jl": "b4302b90eaeba213360e8a15ce8b7e4cb4c491606657e3e500d2fb8507753a52",
+        "src/compartments.jl": "b0e82216232acde9f4692d0053be43887378e4a80b07f76ab61dd19f3de34cea",
+        "studies/native_brine_producer.jl": "3e18c84cb08f67dc6f2ad3f393533db26f21cd43926bd6bbf0ce87837c2053ed"
+    },
+    "recipe_sha256": "7be690fb6ee006a3974ed5d530c4f4a8e75f1023053f2dd1b2b79e809af6fa3b"
+}
