@@ -1,0 +1,65 @@
+{
+  "schema": "interior-action-credit-reading-v1",
+  "accessed": "2026-10-16",
+  "sources": [
+    {
+      "key": "williams1992",
+      "title": "Simple statistical gradient-following algorithms for connectionist reinforcement learning",
+      "doi": "10.1007/BF00992696",
+      "fulltext": "https://gwern.net/doc/reinforcement-learning/model-free/1992-williams.pdf",
+      "read_sections": [
+        "5 Episodic learning",
+        "6 Gaussian units",
+        "Appendix A"
+      ],
+      "retained_in_git": false,
+      "access_note": "Public PDF mirror; university PDF text encoding broken; no redistribution license inferred"
+    },
+    {
+      "key": "miconi2017",
+      "title": "Biologically plausible learning in recurrent neural networks reproduces neural dynamics observed during cognitive tasks",
+      "doi": "10.7554/eLife.20899",
+      "fulltext": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5398889/fullTextXML",
+      "read_sections": [
+        "Description of learning rule",
+        "Learning rule",
+        "Analysis of proposed rule",
+        "Network models",
+        "Reviewer discussion of relaxation effects"
+      ],
+      "license": "CC-BY",
+      "temporary_fulltext_sha256": "253c19f6226c4b251633d0aed99313b2fbb52541a47716c6ce8d6812a9ffbf8b",
+      "retained_in_git": false,
+      "access_note": "Publisher and PMC browser challenge; Europe PMC XML fulltext accessible; 2015 arXiv predecessor inspected separately and not conflated"
+    },
+    {
+      "key": "hamon2022",
+      "title": "Learning Sensorimotor Agency in Cellular Automata",
+      "fulltext": "https://developmentalsystems.org/sensorimotor-lenia/",
+      "version": "author-hosted 2022 article, hal-03519319v1 citation",
+      "read_sections": [
+        "Differentiable Lenia",
+        "Curriculum-driven goal exploration",
+        "Sensorimotor capabilities",
+        "Discussion",
+        "Bad initialization",
+        "Failure cases",
+        "Mutation and breeding"
+      ],
+      "retained_in_git": false,
+      "access_note": "Author-hosted full text explicitly links later Science Advances extension; no claims transferred from unread extension"
+    },
+    {
+      "key": "fremaux2016",
+      "title": "Neuromodulated Spike-Timing-Dependent Plasticity, and Theory of Three-Factor Learning Rules",
+      "doi": "10.3389/fncir.2015.00085",
+      "fulltext": "https://www.frontiersin.org/journals/neural-circuits/articles/10.3389/fncir.2015.00085/full",
+      "read_sections": [
+        "2 Basic concepts",
+        "4.1 R-STDP and baselines"
+      ],
+      "article_type": "review",
+      "retained_in_git": false
+    }
+  ]
+}

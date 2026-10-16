@@ -360,6 +360,28 @@ end
     a-=build*.5f0;b-=build*.5f0;mass+=build;work=build*growth_work;energy-=work
     (a,b,mass,energy,work,build*.5f0*(potential_a+potential_b),build)
 end
+# Proportional withdrawal is defined by representable donor endpoints. In
+# particular, `stock*a/stock` can exceed `a` by an ulp at full depletion. Never
+# pass that negative remainder into construction, nor credit nominal rather
+# than actual fuel. Keep this type-generic for Float32-only device backends.
+@inline function dc_inventory_take_down(before::T,want) where {T<:AbstractFloat}
+    after=T(max(zero(before),before-want))
+    taken=before-after
+    if taken>want
+        after=nextfloat(after);taken=before-after
+    end
+    after,taken
+end
+@inline function dc_proportional_debit(a::T,b::T,request) where {T<:AbstractFloat}
+    stock=a+b
+    request<=0 && return (a,b,zero(a),zero(b))
+    request>=stock && return (zero(a),zero(b),a,b)
+    nexta,da=dc_inventory_take_down(a,min(a,request*(a/stock)))
+    remaining=max(zero(request),request-da)
+    da+remaining>request && (remaining=prevfloat(remaining))
+    nextb,db=dc_inventory_take_down(b,min(b,remaining,request*(b/stock)))
+    nexta,nextb,da,db
+end
 @kernel function dc_metabolism!(s,e,q,g,anabolism,dt)
     i=@index(Global,Linear)
     if e.status[1]==0
@@ -376,7 +398,8 @@ end
             fuel=stock>0 && q.efficiency*potential>0 ? demand*stock/(q.efficiency*potential) : 0f0
             oxidize=min(stock,dt*q.catabolic_rate*mass*s.enzymes[i,4],fuel)
             if oxidize>0
-                da=oxidize*a/stock;db=oxidize*b/stock;a-=da;b-=db
+                a,b,da,db=dc_proportional_debit(a,b,oxidize)
+                oxidize=da+db
                 released=da*q.potentials[1]+db*q.potentials[2];energy,respiration_heat=dc_energy_credit(energy,released,q.efficiency)
                 dc_ledger_add!(s.ledger,s.ledger_low,i,2,respiration_heat);dc_ledger_add!(s.ledger,s.ledger_low,i,7,oxidize);s.waste[i]+=oxidize
             end
@@ -387,8 +410,8 @@ end
             end
             stock=a+b;excess=max(0f0,stock-q.store_capacity*mass)
             if excess>0
-                da=excess*a/stock;db=excess*b/stock;a-=da;b-=db
-                dc_ledger_add!(s.ledger,s.ledger_low,i,2,da*q.potentials[1]+db*q.potentials[2]);s.waste[i]+=excess
+                a,b,da,db=dc_proportional_debit(a,b,excess)
+                dc_ledger_add!(s.ledger,s.ledger_low,i,2,da*q.potentials[1]+db*q.potentials[2]);s.waste[i]+=da+db
             end
             growth_request=dt*q.growth_rate*mass*s.enzymes[i,3]
             a,b,mass,energy,work,heat,build=device_anabolic_build!(anabolism,i,a,b,mass,energy,growth_request,q.growth_work,q.potentials[1],q.potentials[2])

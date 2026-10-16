@@ -1,0 +1,256 @@
+{
+    "schema": "native-action-credit-gpu-gate-v1",
+    "results": [
+        {
+            "precision": "Float64",
+            "context": [
+                0.1,
+                0.5
+            ],
+            "closure_pass": true,
+            "closure_tolerance": 1.0e-8,
+            "steps": 200,
+            "dt": 0.02,
+            "errors": {
+                "hidden": 1.4901161193847656e-7,
+                "metabolites": 0,
+                "actions": 5.960464477539063e-8,
+                "mass": 0,
+                "energy": 1.2762713108571688e-9
+            },
+            "cpu_residual": {
+                "material": 0,
+                "potential": -1.021405182655144e-14
+            },
+            "gpu_residual": {
+                "material": 0,
+                "potential": -1.0436096431476471e-14
+            },
+            "elapsed_seconds": 23.64867901802063
+        },
+        {
+            "precision": "Float64",
+            "context": [
+                0.5,
+                0.1
+            ],
+            "closure_pass": true,
+            "closure_tolerance": 1.0e-8,
+            "steps": 200,
+            "dt": 0.02,
+            "errors": {
+                "hidden": 5.960464477539063e-8,
+                "metabolites": 0,
+                "actions": 5.960464477539063e-8,
+                "mass": 0,
+                "energy": 3.170880225056294e-9
+            },
+            "cpu_residual": {
+                "material": 0,
+                "potential": -8.881784197001252e-15
+            },
+            "gpu_residual": {
+                "material": 0,
+                "potential": -2.886579864025407e-15
+            },
+            "elapsed_seconds": 1.2019610404968262
+        },
+        {
+            "precision": "Float64",
+            "context": [
+                0.2,
+                0.4
+            ],
+            "closure_pass": true,
+            "closure_tolerance": 1.0e-8,
+            "steps": 200,
+            "dt": 0.02,
+            "errors": {
+                "hidden": 2.682209014892578e-7,
+                "metabolites": 0,
+                "actions": 5.960464477539063e-8,
+                "mass": 0,
+                "energy": 1.648182257341091e-9
+            },
+            "cpu_residual": {
+                "material": 0,
+                "potential": -1.887379141862766e-14
+            },
+            "gpu_residual": {
+                "material": 1.7763568394002505e-15,
+                "potential": -1.176836406102666e-14
+            },
+            "elapsed_seconds": 1.2649719715118408
+        },
+        {
+            "precision": "Float64",
+            "context": [
+                0.4,
+                0.2
+            ],
+            "closure_pass": true,
+            "closure_tolerance": 1.0e-8,
+            "steps": 200,
+            "dt": 0.02,
+            "errors": {
+                "hidden": 3.427267074584961e-7,
+                "metabolites": 0,
+                "actions": 5.960464477539063e-8,
+                "mass": 0,
+                "energy": 1.3652541319686406e-9
+            },
+            "cpu_residual": {
+                "material": 1.7763568394002505e-15,
+                "potential": -7.105427357601002e-15
+            },
+            "gpu_residual": {
+                "material": 0,
+                "potential": -1.2212453270876722e-14
+            },
+            "elapsed_seconds": 1.1830182075500488
+        },
+        {
+            "precision": "Float32",
+            "context": [
+                0.1,
+                0.5
+            ],
+            "closure_pass": false,
+            "closure_tolerance": 0.0001,
+            "steps": 200,
+            "dt": 0.02,
+            "errors": {
+                "hidden": 1.4901161193847656e-7,
+                "metabolites": 0,
+                "actions": 5.960464477539063e-8,
+                "mass": 0,
+                "energy": 0
+            },
+            "cpu_residual": {
+                "material": -3.1218844398495094e-8,
+                "potential": -0.00012187606280278374
+            },
+            "gpu_residual": {
+                "material": -2.7217378573141104e-8,
+                "potential": -0.00012189079474111963
+            },
+            "elapsed_seconds": 19.183682203292847
+        },
+        {
+            "precision": "Float32",
+            "context": [
+                0.5,
+                0.1
+            ],
+            "closure_pass": true,
+            "closure_tolerance": 0.0001,
+            "steps": 200,
+            "dt": 0.02,
+            "errors": {
+                "hidden": 1.341104507446289e-7,
+                "metabolites": 0,
+                "actions": 5.960464477539063e-8,
+                "mass": 0,
+                "energy": 1.1920928955078125e-7
+            },
+            "cpu_residual": {
+                "material": 1.2845678298845087e-8,
+                "potential": -8.283134158659777e-5
+            },
+            "gpu_residual": {
+                "material": 6.692284060250131e-9,
+                "potential": -8.294914178463841e-5
+            },
+            "elapsed_seconds": 1.2799317836761475
+        },
+        {
+            "precision": "Float32",
+            "context": [
+                0.2,
+                0.4
+            ],
+            "closure_pass": false,
+            "closure_tolerance": 0.0001,
+            "steps": 200,
+            "dt": 0.02,
+            "errors": {
+                "hidden": 2.682209014892578e-7,
+                "metabolites": 0,
+                "actions": 1.043081283569336e-7,
+                "mass": 0,
+                "energy": 1.1920928955078125e-7
+            },
+            "cpu_residual": {
+                "material": -3.194530151517938e-8,
+                "potential": -0.00010759687253170114
+            },
+            "gpu_residual": {
+                "material": -2.1609421807511353e-8,
+                "potential": -0.00010733970892573552
+            },
+            "elapsed_seconds": 1.2563579082489014
+        },
+        {
+            "precision": "Float32",
+            "context": [
+                0.4,
+                0.2
+            ],
+            "closure_pass": true,
+            "closure_tolerance": 0.0001,
+            "steps": 200,
+            "dt": 0.02,
+            "errors": {
+                "hidden": 5.960464477539063e-8,
+                "metabolites": 0,
+                "actions": 5.960464477539063e-8,
+                "mass": 0,
+                "energy": 0
+            },
+            "cpu_residual": {
+                "material": -6.859828616256891e-8,
+                "potential": -8.825629808484337e-5
+            },
+            "gpu_residual": {
+                "material": -7.243201949336253e-8,
+                "potential": -8.8267486745508e-5
+            },
+            "elapsed_seconds": 1.254992961883545
+        }
+    ],
+    "sidecar": {
+        "marks": 0,
+        "trace": 0,
+        "learned": 0
+    },
+    "runtime": {
+        "julia": "1.12.4",
+        "kernel": "Linux",
+        "architecture": "x86_64",
+        "launch_threads": 2,
+        "backend": "amd",
+        "device": "HIPDevice(id=1, name=AMD Radeon RX 6750 XT, gcn_arch=gfx1030)",
+        "backend_version": "2.8.0",
+        "actual_device_optlevel": 1,
+        "project_sha256": "284c920aebff70f466a40df21f7c83ae4c561857b046f940274b43a8feeaec6d",
+        "manifest_sha256": "0b9eaceb9bf32d860b1c88a17fba52cc60e1e46744bff2db3c57797e6dc9bb24"
+    },
+    "source": {
+        "model": "1a938948fb14c400876c6848e4389fc432f4cc2a3962903374d2d76fb34f1c99",
+        "initialization": "766dfedbdbf5b4dbbb99ed5e9336a16747fa08752a84af3268fc7c98c613613a",
+        "founder_initialization": "d76e4c791a2c56bc7fd651b1836e6879b9e27013566ce6d94a1d2f677f62e633",
+        "support": "5a767b83c2c912d8706468ec7c5b86e56cf99430b2a23dfd3a7f3ee8f21bf55b",
+        "lifecycle": "8826c577e960db6596cd923a591d806b185908a254c6cc0fb6b0eebb033a9629",
+        "resource": "ac72b2db1dfa448446df0ae44840ba05933f1d8fb13c639f9e2cd3b3a7e41223",
+        "kernels": "38b3a7e0cdaa62a258c22e5cc6c84c99a1ad316ef56ecc418d1c2e533d934eb9",
+        "checkpoint": "81c8538519e5d0c58eb8bc0b6e49be7eec87119f81b7fcd998b6944f02c68503",
+        "protocol": "52632744615956c0e4c613e010b8fa4ba08c396e46e03d7ef5ec15f037e8199d"
+    },
+    "habitat_source": {
+        "helper": "5753f0cf5065345cf08fb9a2501d87aad4f6eff13183fd344e8f53dfe736aa41",
+        "kernels": "b89543752488d8cab09412d928b2a452e4474b9fe42e63ef1058152ab6351759",
+        "sorption": "3811fd3627906823a01f2afb2e6693bb6aec99c37bb10bfb72d43c85f8b4ad08"
+    },
+    "driver_sha256": "936f1a68f156e4667f8fe7efd18f03ad9266e9f58cc8c6deb4c3ba66dbe49e70",
+    "scope": "eight bounded CPU/AMD paired coupled windows plus sidecar kernel parity; Float32 closure is explicitly reported pass/fail, only wide closure gates acceptance; no full resident-learning throughput claim"
+}
