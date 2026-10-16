@@ -89,3 +89,14 @@ backend table. Active arrays plus native FFT plans require approximately 5.81,
 present 12-GB device. Full four-field files alone require 1.59, 5.35 and 42.81 GB.
 These larger forecasts involve no allocation:
 `benchmarks/2026-10-16-brine-f64-memory-ceiling.json`.
+
+The separate Float64-chemical epoch completed all 5760 steps to physical time
+14.399999678 in 1036.94 seconds. Warm complete coupled steps had median 144.45 ms;
+CPU initialization took 174.06 s and transfer/native runtime setup 4.22 s.
+Evolution including observation/capture took 839.42 s. These are single-run
+execution measurements, not a paired CPU speedup. The measured host cgroup peak
+was 6.317 GB (below 8 GiB), final device free memory 5.276 GB, and reported artifact
+bytes 1,639,983,706 (before its compact run report). Final chemical relative error
+was -9.90e-16, signed phase mean drift -9.36e-11, and all fields passed the finite,
+positivity and unchanged conservation guards. Source-pinned complete evidence:
+`benchmarks/2026-10-16-native-brine-384-f64-complete.json`.

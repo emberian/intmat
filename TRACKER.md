@@ -4,6 +4,27 @@
 
 **Destination:** composable Julia simulations of phenomena inside—and constituting—materials, with evolving inhabitants and light transport revealing their structure.
 
+## Latest integration — 2026-10-16, 04:45 UTC
+
+- Continuous-observation construction now has a causal learning component:
+  real finite supply ramps cross at identical current observations; temporal
+  history improves frozen allocation return in two exploration seeds. Swapping
+  history reverses the benefit. Predictor saturation was repaired by scaling its
+  basis, with the failed parameterization preserved. This is an externally reset
+  component assay; continuous moving/dividing integration is the next active lane.
+  See `docs/research/continuous-ramp-construction.md`.
+- Native 384³ brine completed 5760 steps in 17.3 minutes with Float64 chemistry
+  and unchanged guards. All 64 exported files and eight executed sources have
+  local size/hash verification. The full-resolution interior is being photographed.
+- The 64³ living scene reaches 48 residents and 108 actual bonds, with 46 residents
+  in its largest connected assembly. This is a separate refined trajectory,
+  not evidence of learned organization or a convergence rate.
+- Performance queue: exact empty-chemistry bypass CPU/AMD gate, threaded brine
+  initializer, then memory-reduced implicit brine. Tests use isolated host controls;
+  hbox CPUs 10–11 are two SMT threads on one physical core.
+- New art lane explores electrical/fracture memory inside optical media. Existing
+  artworks, old soaks and their sources remain preserved. No new soaks.
+
 ## Active goal — an instrument for discovering rich living materials
 
 Fresh ten-hour session: **2026-10-16 00:50:31–10:50:31 UTC**
@@ -885,11 +906,11 @@ retained catalyst declines .698→.385, and actual native bonds grow 81→101.
 Nineteen offspring receive nonzero paid readouts, with no demonstrated benefit
 relative to reset. All 66 actual captures validate bond identities and endpoints;
 maximum material/potential residual is 1.48e-12. Separate art and exploratory
-views are being prepared from this transient. Published16-time data is preserved.
+views are being prepared from this transient. Published 16-time data is preserved.
 
 The native 384³ brine producer stopped on its original conservation guard at
 step 3240; its earlier replay and log are preserved. This exposed cumulative
-Float 32 chemical drift rather than a memory failure. A separate explicit
+Float32 chemical drift rather than a memory failure. A separate explicit
 Float64 chemical-storage variant and reliable failure export are being gated;
 no old experiment is resumed or its guard loosened.
 
@@ -953,7 +974,7 @@ mineral observations. Root reviewed decoded contact sheets: interfaces appear,
 merge and recede under a fixed camera and fixed pressure-to-light transfer.
 The shared acoustic initializer now accepts arbitrary finite fields through its
 original face operator; CPU and Metal initialization/parity checks pass.
-Complete Metal64³ steps measured 3.05–3.45 ms; CPU timings were variable and
+Complete Metal 64³ steps measured 3.05–3.45 ms; CPU timings were variable and
 remain explicitly inconclusive about general CPU speedup. The local living
 workbench also passed an actual HTTP/viewer session through advance, independent
 fork, receptor change, child advance and clean stop, preserving the parent.
