@@ -139,11 +139,12 @@ function Interior.device_anabolic_finish!(h::CohortHabitat,w,p,dt)
     q=h.options
     if h.steps>=q.horizon_stride && h.steps%q.decision_stride==0
         s=p.state;chemistry=(efficiency=p.parameters.efficiency,potentials=p.parameters.potentials,critic_gain=q.critic_gain,critic_current=true)
+        hasproperty(q,:development_coefficient) && (chemistry=merge(chemistry,(development_coefficient=q.development_coefficient,)))
         slot=mod((h.steps-q.horizon_stride)÷q.decision_stride,q.queue_length)+1
-        L.policy_launch!(h,mature!,(active=s.active,ids=s.ids,energy=s.energy,metabolites=s.metabolites),p.environment.status,chemistry,h.state,slot,q.rate;ndrange=Int(p.geometry.capacity))
+        L.policy_launch!(h,mature!,(active=s.active,ids=s.ids,energy=s.energy,metabolites=s.metabolites,mass=s.mass),p.environment.status,chemistry,h.state,slot,q.rate;ndrange=Int(p.geometry.capacity))
         # Transaction mask prevents the shared updater from inventing a return
         # for a missing, dead or replaced resident's queue entry.
-        v=(active=h.state.transaction,ids=s.ids,energy=s.energy,metabolites=s.metabolites,ledger=s.ledger,ledger_low=s.ledger_low)
+        v=(active=h.state.transaction,ids=s.ids,energy=s.energy,metabolites=s.metabolites,mass=s.mass,ledger=s.ledger,ledger_low=s.ledger_low)
         L.policy_launch!(h,L.reward!,v,p.environment.status,chemistry,h.state,q.rate,.3f0,q.kappa,q.learning,q.critic,q.critic_learning;ndrange=Int(p.geometry.capacity))
         L.policy_launch!(h,transaction_diagnostics!,p.environment.status,h.state,q.learning,q.critic,q.critic_learning;ndrange=Int(p.geometry.capacity))
     end

@@ -191,6 +191,14 @@ module NativeTemporalLivingTests
 include("native_temporal_living.jl")
 end
 
+module LocalDevelopmentValueTests
+include("local_development_value.jl")
+end
+
+module NativeDevelopmentLivingTests
+include("native_development_living.jl")
+end
+
 module HomeostaticTemporalMemoryTests
 include("homeostatic_temporal_memory.jl")
 end

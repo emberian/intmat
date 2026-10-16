@@ -1,0 +1,1952 @@
+{
+  "schema": "developmental-living-learning-v1",
+  "duration": 24.0,
+  "probe_time": 4.0,
+  "rate": 0.1,
+  "noise_seed": 6201,
+  "recipe": {
+    "cellular": {
+      "hidden": 8,
+      "capacity": 512,
+      "energy": 1.0,
+      "metabolites": 0.12,
+      "adaptation_strength": 0.3,
+      "growth_rate": 0.1,
+      "founders": 24,
+      "adaptation_time": 8.0,
+      "biomass": 1.6,
+      "exchange_radius": 0.18,
+      "mutation": 0.08,
+      "mutation_probability": 0.03,
+      "density": 128.0,
+      "speed": 0.06,
+      "junction_rate": 0.8,
+      "basal_rate": 0.008
+    },
+    "catalysis": {
+      "secretion_work": 0.2,
+      "investment_bias": -0.8,
+      "allocation_exponent": 1.0,
+      "half_saturation": 0.2,
+      "catalytic_rate": 6.0,
+      "allocation_bias_scale": 1.2,
+      "secretion_rate": 0.12,
+      "decay_rate": 0.2,
+      "mutation": 0.08,
+      "mutation_probability": 0.03,
+      "regulation": true
+    },
+    "temporal_policy": {
+      "reserve": 0.02,
+      "critic_scale": 4.0,
+      "decision_time": 1.0,
+      "phase_time": 8.0,
+      "observation_time": 0.2
+    },
+    "native": {
+      "support_strategy": "materialized",
+      "mechanical_substeps": 16,
+      "energy_type": "Float64",
+      "inventory_type": "Float64",
+      "radius_bound": 2.0,
+      "bin_width": 0.25,
+      "dt": 0.02
+    },
+    "feedstock": {
+      "potentials": [
+        4.0,
+        4.0
+      ],
+      "diffusion": [
+        0.006,
+        0.006
+      ],
+      "sink_rates": [
+        0.96,
+        0.96
+      ],
+      "initial": [
+        0.08,
+        0.08
+      ],
+      "source_rates": [
+        0.8,
+        0.8
+      ],
+      "sink_budgets": [
+        30.72,
+        30.72
+      ],
+      "source_budgets": [
+        25.6,
+        25.6
+      ],
+      "niche_contrast": 0.95
+    },
+    "matrix": {
+      "capacity_per_enzyme": 6.0,
+      "transport_barrier": 20.0,
+      "desorption_rate": 0.12,
+      "cross_binding": 0.0,
+      "adsorption_rate": 4.0
+    },
+    "seed": 211,
+    "grid": {
+      "shape": [
+        16,
+        16,
+        16
+      ],
+      "extent": [
+        2.0,
+        2.0,
+        2.0
+      ]
+    },
+    "material_sensing": {
+      "channels": [
+        "raw_balance",
+        "raw_total",
+        "catalyst_total"
+      ],
+      "scales": [
+        1.0,
+        1.0,
+        0.5
+      ]
+    },
+    "resources": {
+      "diffusion": [
+        0.006,
+        0.006,
+        0.001
+      ],
+      "sink_rates": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "initial": [
+        0.15,
+        0.15,
+        0.0
+      ],
+      "source_rates": [
+        0.1,
+        0.1,
+        0.0
+      ],
+      "sink_budgets": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "source_budgets": [
+        3.2,
+        3.2,
+        0.0
+      ],
+      "potentials": [
+        4.0,
+        4.0,
+        0.0
+      ]
+    }
+  },
+  "source": {
+    "model": "1a938948fb14c400876c6848e4389fc432f4cc2a3962903374d2d76fb34f1c99",
+    "initialization": "766dfedbdbf5b4dbbb99ed5e9336a16747fa08752a84af3268fc7c98c613613a",
+    "founder_initialization": "d76e4c791a2c56bc7fd651b1836e6879b9e27013566ce6d94a1d2f677f62e633",
+    "support": "5a767b83c2c912d8706468ec7c5b86e56cf99430b2a23dfd3a7f3ee8f21bf55b",
+    "lifecycle": "8826c577e960db6596cd923a591d806b185908a254c6cc0fb6b0eebb033a9629",
+    "resource": "ac72b2db1dfa448446df0ae44840ba05933f1d8fb13c639f9e2cd3b3a7e41223",
+    "kernels": "8f9f5d153ff1e4f4636388072063aa6e53fbb20d9c5175d64d6fcb15993207ae",
+    "checkpoint": "81c8538519e5d0c58eb8bc0b6e49be7eec87119f81b7fcd998b6944f02c68503",
+    "protocol": "52632744615956c0e4c613e010b8fa4ba08c396e46e03d7ef5ec15f037e8199d"
+  },
+  "habitat_source": {
+    "helper": "5753f0cf5065345cf08fb9a2501d87aad4f6eff13183fd344e8f53dfe736aa41",
+    "kernels": "b9774fc4b57b8d6dd844dc996979b007cf4f3e8160660a2961525514dad52c9c",
+    "sorption": "3811fd3627906823a01f2afb2e6693bb6aec99c37bb10bfb72d43c85f8b4ad08"
+  },
+  "scope": "same-arm physical-state frozen interventions; dead endpoint0 in both values; actual same-parent child U/mass gifts; common noise is not independent replication",
+  "arms": {
+    "history": {
+      "coefficient": 2.999999910593033,
+      "options": {
+        "dt": 0.02,
+        "decision_stride": 50,
+        "reward_stride": 100,
+        "rate": 0.1,
+        "sigma": 0.3,
+        "kappa": 0.001,
+        "seed": 6201,
+        "rows": [
+          4,
+          5,
+          7
+        ],
+        "hidden": 8,
+        "learning": true,
+        "critic": true,
+        "critic_learning": true,
+        "phase_stride": 400,
+        "phase_offset": 0,
+        "enabled": true,
+        "horizon_stride": 200,
+        "queue_length": 4,
+        "act_stride": 1200,
+        "critic_gain": 0.3,
+        "observation_stride": 10,
+        "af": 0.917915,
+        "as": 0.39346933,
+        "critic_scale": 4.0,
+        "investment_logit": -1.6958141,
+        "reserve_logit": -1.9459101,
+        "development_coefficient": 2.999999910593033
+      },
+      "learning_work": 0.007288652564350739,
+      "actor_updates": 423,
+      "critic_updates": 543,
+      "clipping": 269,
+      "critic_max": 0.015961224,
+      "learned_max": 0.08926697,
+      "samples": [
+        {
+          "time": 0.0,
+          "ledger": {
+            "material": 47.84000005511569,
+            "potential": 61.76000022046269,
+            "work": 0.0,
+            "heat": 0.0,
+            "supplied": 0.0,
+            "removed": 0.0,
+            "supplied_potential": 0.0,
+            "removed_potential": 0.0,
+            "material_residual": 0.0,
+            "potential_residual": 0.0
+          },
+          "funded": [
+            0.0,
+            0.0
+          ],
+          "requested": [
+            0.0,
+            0.0
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 1.6239999771118163,
+          "mean_development_value": 6.42399983406067,
+          "biomass": 38.40000000000001
+        },
+        {
+          "time": 2.0,
+          "ledger": {
+            "material": 48.11843774756312,
+            "potential": 47.97668087779299,
+            "work": 1.738031666878944,
+            "heat": 13.159038445580526,
+            "supplied": 3.6000001877255268,
+            "removed": 3.321562495278081,
+            "supplied_potential": 14.400000750902107,
+            "removed_potential": 13.286249981112324,
+            "material_residual": -1.2878587085651816e-14,
+            "potential_residual": -1.9539925233402755e-14
+          },
+          "funded": [
+            0.7370482495301818,
+            0.72482643851684
+          ],
+          "requested": [
+            0.7370496322400868,
+            0.7248278223269153
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 1.235117447216401,
+          "mean_development_value": 6.263602912774353,
+          "biomass": 40.227884923348014
+        },
+        {
+          "time": 4.0,
+          "ledger": {
+            "material": 48.64140802859496,
+            "potential": 38.02261792835997,
+            "work": 3.295413732358411,
+            "heat": 23.647600453661468,
+            "supplied": 7.200000375451054,
+            "removed": 6.3985924019717615,
+            "supplied_potential": 28.800001501804218,
+            "removed_potential": 25.594369607887046,
+            "material_residual": -2.1316282072803006e-14,
+            "potential_residual": -1.4210854715202004e-14
+          },
+          "funded": [
+            1.358123172966681,
+            1.340278437786758
+          ],
+          "requested": [
+            1.5012989130773349,
+            1.4874494968244107
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 0.907713446164565,
+          "mean_development_value": 6.109400603974918,
+          "biomass": 41.61349850266172
+        },
+        {
+          "time": 6.0,
+          "ledger": {
+            "material": 49.22915236063375,
+            "potential": 37.57486174110169,
+            "work": 4.203448654191867,
+            "heat": 25.538299047241406,
+            "supplied": 10.800000563176582,
+            "removed": 9.41084825765851,
+            "supplied_potential": 43.20000225270633,
+            "removed_potential": 37.64339303063404,
+            "material_residual": -1.2434497875801753e-14,
+            "potential_residual": -2.1316282072803006e-14
+          },
+          "funded": [
+            1.4942132905994467,
+            1.4829975519273133
+          ],
+          "requested": [
+            2.2697700531425653,
+            2.271619550519972
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 0.8443684255442706,
+          "mean_development_value": 6.070288759710114,
+          "biomass": 41.80736391928329
+        },
+        {
+          "time": 8.0,
+          "ledger": {
+            "material": 49.82230112322336,
+            "potential": 38.36372120671478,
+            "work": 5.038103163439817,
+            "heat": 26.287380122738863,
+            "supplied": 14.400000750902109,
+            "removed": 12.417699682794415,
+            "supplied_potential": 57.600003003608435,
+            "removed_potential": 49.67079873117766,
+            "material_residual": -1.9539925233402755e-14,
+            "potential_residual": -7.105427357601002e-15
+          },
+          "funded": [
+            1.5414301636826293,
+            1.5288240967770501
+          ],
+          "requested": [
+            3.0639773066941416,
+            3.034532899459009
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 0.8160989843035689,
+          "mean_development_value": 6.0537976744860575,
+          "biomass": 41.90159077022463
+        },
+        {
+          "time": 10.0,
+          "ledger": {
+            "material": 49.71535371208836,
+            "potential": 36.14945209036474,
+            "work": 5.889479185807144,
+            "heat": 27.22248357218158,
+            "supplied": 18.000000938627636,
+            "removed": 16.124647281654937,
+            "supplied_potential": 72.00000375451054,
+            "removed_potential": 64.49858912661975,
+            "material_residual": -2.842170943040401e-14,
+            "potential_residual": -2.842170943040401e-14
+          },
+          "funded": [
+            1.597089263327712,
+            1.5877381077674082
+          ],
+          "requested": [
+            3.8187202865083236,
+            3.8407682748365914
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 0.7806803671474302,
+          "mean_development_value": 6.033279400851497,
+          "biomass": 42.020793521949756
+        },
+        {
+          "time": 12.0,
+          "ledger": {
+            "material": 50.30165472668483,
+            "potential": 36.5022109332597,
+            "work": 6.779475104954372,
+            "heat": 28.324932868525302,
+            "supplied": 21.600001126353163,
+            "removed": 19.138346454783992,
+            "supplied_potential": 86.40000450541265,
+            "removed_potential": 76.55338581913597,
+            "material_residual": -2.842170943040401e-14,
+            "potential_residual": 0.0
+          },
+          "funded": [
+            1.6625402143266264,
+            1.65269121188957
+          ],
+          "requested": [
+            4.616254769774969,
+            4.60916183370864
+          ],
+          "births": 2,
+          "deaths": 0,
+          "population": 26,
+          "mean_usable": 0.682435543336132,
+          "mean_development_value": 5.547743297290333,
+          "biomass": 42.16600179091452
+        },
+        {
+          "time": 14.0,
+          "ledger": {
+            "material": 50.9722854166413,
+            "potential": 37.07238748496412,
+            "work": 7.694359207146341,
+            "heat": 29.52239497445459,
+            "supplied": 25.20000131407869,
+            "removed": 22.067715952553087,
+            "supplied_potential": 100.80000525631476,
+            "removed_potential": 88.27086381021235,
+            "material_residual": 7.105427357601002e-15,
+            "potential_residual": -5.684341886080802e-14
+          },
+          "funded": [
+            1.7286056648259542,
+            1.7231838963386767
+          ],
+          "requested": [
+            5.378818717450486,
+            5.418316616647644
+          ],
+          "births": 3,
+          "deaths": 0,
+          "population": 27,
+          "mean_usable": 0.619046515596223,
+          "mean_development_value": 5.322247395701944,
+          "biomass": 42.328809182448325
+        },
+        {
+          "time": 16.0,
+          "ledger": {
+            "material": 51.62518578206176,
+            "potential": 37.58001696540481,
+            "work": 8.618765677958663,
+            "heat": 30.701960484883593,
+            "supplied": 28.800001501804218,
+            "removed": 25.014815774858107,
+            "supplied_potential": 115.20000600721687,
+            "removed_potential": 100.05926309943243,
+            "material_residual": -3.552713678800501e-14,
+            "potential_residual": -7.105427357601002e-14
+          },
+          "funded": [
+            1.7974052400928802,
+            1.788899340886161
+          ],
+          "requested": [
+            6.194762500708748,
+            6.180105754989199
+          ],
+          "births": 4,
+          "deaths": 0,
+          "population": 28,
+          "mean_usable": 0.5614709104530516,
+          "mean_development_value": 5.113883511234977,
+          "biomass": 42.48918554024104
+        },
+        {
+          "time": 18.0,
+          "ledger": {
+            "material": 51.70254621241764,
+            "potential": 35.94740172549656,
+            "work": 9.536881046021136,
+            "heat": 31.725902078152767,
+            "supplied": 32.400001689529745,
+            "removed": 28.537455532227785,
+            "supplied_potential": 129.60000675811898,
+            "removed_potential": 114.14982212891114,
+            "material_residual": -1.0658141036401503e-14,
+            "potential_residual": -7.105427357601002e-14
+          },
+          "funded": [
+            1.8550337342525514,
+            1.844647537744233
+          ],
+          "requested": [
+            7.001595631889359,
+            6.956647402505041
+          ],
+          "births": 5,
+          "deaths": 0,
+          "population": 29,
+          "mean_usable": 0.5100559207118357,
+          "mean_development_value": 4.920241401092597,
+          "biomass": 42.631794247540505
+        },
+        {
+          "time": 20.0,
+          "ledger": {
+            "material": 52.39354376924898,
+            "potential": 36.54441153186775,
+            "work": 10.500996641137066,
+            "heat": 32.92876690399096,
+            "supplied": 36.00000187725527,
+            "removed": 31.44645816312198,
+            "supplied_potential": 144.0000075090211,
+            "removed_potential": 125.78583265248793,
+            "material_residual": 0.0,
+            "potential_residual": -8.526512829121202e-14
+          },
+          "funded": [
+            1.919120294872451,
+            1.9117717340520544
+          ],
+          "requested": [
+            7.777104435597721,
+            7.770155515070655
+          ],
+          "births": 8,
+          "deaths": 0,
+          "population": 32,
+          "mean_usable": 0.43238523100430887,
+          "mean_development_value": 4.44500695801938,
+          "biomass": 42.80129969707223
+        },
+        {
+          "time": 22.0,
+          "ledger": {
+            "material": 53.069604141093535,
+            "potential": 37.119322356038104,
+            "work": 11.46729611843627,
+            "heat": 34.091798089899704,
+            "supplied": 39.6000020649808,
+            "removed": 34.37039797900294,
+            "supplied_potential": 158.4000082599232,
+            "removed_potential": 137.48159191601175,
+            "material_residual": -1.4210854715202004e-14,
+            "potential_residual": -5.684341886080802e-14
+          },
+          "funded": [
+            1.9850108299758142,
+            1.974376621753282
+          ],
+          "requested": [
+            8.589744042947132,
+            8.552857686729112
+          ],
+          "births": 9,
+          "deaths": 0,
+          "population": 33,
+          "mean_usable": 0.39208028137172685,
+          "mean_development_value": 4.297858535038162,
+          "biomass": 42.96356207074472
+        },
+        {
+          "time": 24.0,
+          "ledger": {
+            "material": 53.726189673154366,
+            "potential": 37.54335034864861,
+            "work": 12.437597748674046,
+            "heat": 35.3238105952948,
+            "supplied": 43.20000225270633,
+            "removed": 37.31381263466763,
+            "supplied_potential": 172.8000090108253,
+            "removed_potential": 149.2552505386705,
+            "material_residual": -2.1316282072803006e-14,
+            "potential_residual": -2.842170943040401e-14
+          },
+          "funded": [
+            2.0552077118955365,
+            2.0430719441252885
+          ],
+          "requested": [
+            9.394462038195343,
+            9.349635992279218
+          ],
+          "births": 9,
+          "deaths": 0,
+          "population": 33,
+          "mean_usable": 0.36443661326063836,
+          "mean_development_value": 4.285588586655898,
+          "biomass": 43.13267299280167
+        }
+      ],
+      "probes": {
+        "learned": {
+          "initial_count": 33,
+          "survivors": 33,
+          "mean_inventory_return": -0.060819663616840325,
+          "mean_development_return": -0.027291075360455115,
+          "partition_mass": 4.500085537624627
+        },
+        "erased": {
+          "initial_count": 33,
+          "survivors": 33,
+          "mean_inventory_return": -0.06082381601260599,
+          "mean_development_return": -0.027296940932434496,
+          "partition_mass": 4.500087079982948
+        },
+        "swapped": {
+          "initial_count": 33,
+          "survivors": 33,
+          "mean_inventory_return": -0.060823959408246614,
+          "mean_development_return": -0.02729424564609423,
+          "partition_mass": 4.500087183223696
+        }
+      },
+      "birth_count": 9
+    },
+    "instantaneous": {
+      "coefficient": 2.999999910593033,
+      "options": {
+        "dt": 0.02,
+        "decision_stride": 50,
+        "reward_stride": 100,
+        "rate": 0.1,
+        "sigma": 0.3,
+        "kappa": 0.001,
+        "seed": 6201,
+        "rows": [
+          4,
+          5,
+          7
+        ],
+        "hidden": 8,
+        "learning": true,
+        "critic": true,
+        "critic_learning": true,
+        "phase_stride": 400,
+        "phase_offset": 0,
+        "enabled": true,
+        "horizon_stride": 200,
+        "queue_length": 4,
+        "act_stride": 1200,
+        "critic_gain": 0.3,
+        "observation_stride": 10,
+        "af": 0.917915,
+        "as": 0.39346933,
+        "critic_scale": 4.0,
+        "investment_logit": -1.6958141,
+        "reserve_logit": -1.9459101,
+        "development_coefficient": 2.999999910593033
+      },
+      "learning_work": 0.007288834624013724,
+      "actor_updates": 423,
+      "critic_updates": 543,
+      "clipping": 269,
+      "critic_max": 0.015963888,
+      "learned_max": 0.055864148,
+      "samples": [
+        {
+          "time": 0.0,
+          "ledger": {
+            "material": 47.84000005511569,
+            "potential": 61.76000022046269,
+            "work": 0.0,
+            "heat": 0.0,
+            "supplied": 0.0,
+            "removed": 0.0,
+            "supplied_potential": 0.0,
+            "removed_potential": 0.0,
+            "material_residual": 0.0,
+            "potential_residual": 0.0
+          },
+          "funded": [
+            0.0,
+            0.0
+          ],
+          "requested": [
+            0.0,
+            0.0
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 1.6239999771118163,
+          "mean_development_value": 6.42399983406067,
+          "biomass": 38.40000000000001
+        },
+        {
+          "time": 2.0,
+          "ledger": {
+            "material": 48.11843774756312,
+            "potential": 47.97668087779299,
+            "work": 1.738031666878944,
+            "heat": 13.159038445580526,
+            "supplied": 3.6000001877255268,
+            "removed": 3.321562495278081,
+            "supplied_potential": 14.400000750902107,
+            "removed_potential": 13.286249981112324,
+            "material_residual": -1.2878587085651816e-14,
+            "potential_residual": -1.9539925233402755e-14
+          },
+          "funded": [
+            0.7370482495301818,
+            0.72482643851684
+          ],
+          "requested": [
+            0.7370496322400868,
+            0.7248278223269153
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 1.235117447216401,
+          "mean_development_value": 6.263602912774353,
+          "biomass": 40.227884923348014
+        },
+        {
+          "time": 4.0,
+          "ledger": {
+            "material": 48.64140802859496,
+            "potential": 38.02261792835997,
+            "work": 3.295413732358411,
+            "heat": 23.647600453661468,
+            "supplied": 7.200000375451054,
+            "removed": 6.3985924019717615,
+            "supplied_potential": 28.800001501804218,
+            "removed_potential": 25.594369607887046,
+            "material_residual": -2.1316282072803006e-14,
+            "potential_residual": -1.4210854715202004e-14
+          },
+          "funded": [
+            1.358123172966681,
+            1.340278437786758
+          ],
+          "requested": [
+            1.5012989130773349,
+            1.4874494968244107
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 0.907713446164565,
+          "mean_development_value": 6.109400603974918,
+          "biomass": 41.61349850266172
+        },
+        {
+          "time": 6.0,
+          "ledger": {
+            "material": 49.22915236063375,
+            "potential": 37.57486174110169,
+            "work": 4.203448654191867,
+            "heat": 25.538299047241406,
+            "supplied": 10.800000563176582,
+            "removed": 9.41084825765851,
+            "supplied_potential": 43.20000225270633,
+            "removed_potential": 37.64339303063404,
+            "material_residual": -1.2434497875801753e-14,
+            "potential_residual": -2.1316282072803006e-14
+          },
+          "funded": [
+            1.4942132905994467,
+            1.4829975519273133
+          ],
+          "requested": [
+            2.2697700531425653,
+            2.271619550519972
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 0.8443684255442706,
+          "mean_development_value": 6.070288759710114,
+          "biomass": 41.80736391928329
+        },
+        {
+          "time": 8.0,
+          "ledger": {
+            "material": 49.82230112322336,
+            "potential": 38.36372120671478,
+            "work": 5.038103163439817,
+            "heat": 26.287380122738863,
+            "supplied": 14.400000750902109,
+            "removed": 12.417699682794415,
+            "supplied_potential": 57.600003003608435,
+            "removed_potential": 49.67079873117766,
+            "material_residual": -1.9539925233402755e-14,
+            "potential_residual": -7.105427357601002e-15
+          },
+          "funded": [
+            1.5414301636826293,
+            1.5288240967770501
+          ],
+          "requested": [
+            3.0639773066941416,
+            3.034532899459009
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 0.8160989843035689,
+          "mean_development_value": 6.0537976744860575,
+          "biomass": 41.90159077022463
+        },
+        {
+          "time": 10.0,
+          "ledger": {
+            "material": 49.71535597885016,
+            "potential": 36.149495734029664,
+            "work": 5.889476753649402,
+            "heat": 27.22245142772161,
+            "supplied": 18.000000938627636,
+            "removed": 16.124645014893147,
+            "supplied_potential": 72.00000375451054,
+            "removed_potential": 64.49858005957259,
+            "material_residual": -1.4210854715202004e-14,
+            "potential_residual": 2.842170943040401e-14
+          },
+          "funded": [
+            1.5970955188748215,
+            1.587727772558305
+          ],
+          "requested": [
+            3.8186115281132516,
+            3.840876986316289
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 0.7806810895115159,
+          "mean_development_value": 6.033279628658972,
+          "biomass": 42.02078956549678
+        },
+        {
+          "time": 12.0,
+          "ledger": {
+            "material": 50.30165852239164,
+            "potential": 36.50224257506169,
+            "work": 6.779473824846727,
+            "heat": 28.32491768965818,
+            "supplied": 21.600001126353163,
+            "removed": 19.13834265907719,
+            "supplied_potential": 86.40000450541265,
+            "removed_potential": 76.55337063630876,
+            "material_residual": -2.1316282072803006e-14,
+            "potential_residual": 0.0
+          },
+          "funded": [
+            1.662459732957228,
+            1.6527695439216405
+          ],
+          "requested": [
+            4.61625756387366,
+            4.609158855237183
+          ],
+          "births": 2,
+          "deaths": 0,
+          "population": 26,
+          "mean_usable": 0.6824359492763087,
+          "mean_development_value": 5.54774351337904,
+          "biomass": 42.166000145535065
+        },
+        {
+          "time": 14.0,
+          "ledger": {
+            "material": 50.97228917248811,
+            "potential": 37.072303319174814,
+            "work": 7.694366108778871,
+            "heat": 29.522487261998812,
+            "supplied": 25.20000131407869,
+            "removed": 22.067712196706246,
+            "supplied_potential": 100.80000525631476,
+            "removed_potential": 88.27084878682498,
+            "material_residual": -2.1316282072803006e-14,
+            "potential_residual": 2.842170943040401e-14
+          },
+          "funded": [
+            1.728320988000769,
+            1.7234813338833905
+          ],
+          "requested": [
+            5.376571361106471,
+            5.420563960826257
+          ],
+          "births": 3,
+          "deaths": 0,
+          "population": 27,
+          "mean_usable": 0.6190453311959933,
+          "mean_development_value": 5.322247356986851,
+          "biomass": 42.32881949361484
+        },
+        {
+          "time": 16.0,
+          "ledger": {
+            "material": 51.62519070056503,
+            "potential": 37.57985786593265,
+            "work": 8.618776206115246,
+            "heat": 30.70212873021228,
+            "supplied": 28.800001501804218,
+            "removed": 25.014810856354856,
+            "supplied_potential": 115.20000600721687,
+            "removed_potential": 100.05924342541942,
+            "material_residual": -2.1316282072803006e-14,
+            "potential_residual": 4.263256414560601e-14
+          },
+          "funded": [
+            1.797024457138517,
+            1.7893074618310658
+          ],
+          "requested": [
+            6.1908785377963795,
+            6.183990082383389
+          ],
+          "births": 4,
+          "deaths": 0,
+          "population": 28,
+          "mean_usable": 0.5614697694087133,
+          "mean_development_value": 5.113883947691482,
+          "biomass": 42.48920026358268
+        },
+        {
+          "time": 18.0,
+          "ledger": {
+            "material": 51.70255531160835,
+            "potential": 35.94739140988335,
+            "work": 9.536882556187253,
+            "heat": 31.725947280362874,
+            "supplied": 32.400001689529745,
+            "removed": 28.537446433037047,
+            "supplied_potential": 129.60000675811898,
+            "removed_potential": 114.14978573214819,
+            "material_residual": -3.552713678800501e-14,
+            "potential_residual": 0.0
+          },
+          "funded": [
+            1.8547259029194234,
+            1.8449686978762685
+          ],
+          "requested": [
+            6.999271079788741,
+            6.958972631888173
+          ],
+          "births": 5,
+          "deaths": 0,
+          "population": 29,
+          "mean_usable": 0.5100562029708079,
+          "mean_development_value": 4.920241473532984,
+          "biomass": 42.63179221929411
+        },
+        {
+          "time": 20.0,
+          "ledger": {
+            "material": 52.39355633813918,
+            "potential": 36.54426370524749,
+            "work": 10.50101198299914,
+            "heat": 32.92894966431009,
+            "supplied": 36.00000187725527,
+            "removed": 31.446445594231772,
+            "supplied_potential": 144.0000075090211,
+            "removed_potential": 125.78578237692709,
+            "material_residual": -1.0658141036401503e-14,
+            "potential_residual": 1.4210854715202004e-14
+          },
+          "funded": [
+            1.9188620059364985,
+            1.912055480868219
+          ],
+          "requested": [
+            7.775092691241298,
+            7.772168086892634
+          ],
+          "births": 8,
+          "deaths": 0,
+          "population": 32,
+          "mean_usable": 0.4323833849088009,
+          "mean_development_value": 4.445007008692525,
+          "biomass": 42.8013199292718
+        },
+        {
+          "time": 22.0,
+          "ledger": {
+            "material": 53.06961711007589,
+            "potential": 37.11911912863232,
+            "work": 11.467320105060011,
+            "heat": 34.092029206611244,
+            "supplied": 39.6000020649808,
+            "removed": 34.370385010020584,
+            "supplied_potential": 158.4000082599232,
+            "removed_potential": 137.48154004008234,
+            "material_residual": -1.4210854715202004e-14,
+            "potential_residual": 2.842170943040401e-14
+          },
+          "funded": [
+            1.9849577253687047,
+            1.9744493161674879
+          ],
+          "requested": [
+            8.587712072891009,
+            8.55489149413188
+          ],
+          "births": 9,
+          "deaths": 0,
+          "population": 33,
+          "mean_usable": 0.39207900057991146,
+          "mean_development_value": 4.297860726007224,
+          "biomass": 42.963600260115506
+        },
+        {
+          "time": 24.0,
+          "ledger": {
+            "material": 53.726205947829634,
+            "potential": 37.54298983828287,
+            "work": 12.437640101882472,
+            "heat": 35.32419385115312,
+            "supplied": 43.20000225270633,
+            "removed": 37.31379635999238,
+            "supplied_potential": 172.8000090108253,
+            "removed_potential": 149.25518543996952,
+            "material_residual": 0.0,
+            "potential_residual": 0.0
+          },
+          "funded": [
+            2.0553032893694594,
+            2.0429976500044797
+          ],
+          "requested": [
+            9.392861268155684,
+            9.351240563919418
+          ],
+          "births": 9,
+          "deaths": 0,
+          "population": 33,
+          "mean_usable": 0.36443386935836136,
+          "mean_development_value": 4.285592618263552,
+          "biomass": 43.13274752341315
+        }
+      ],
+      "probes": {
+        "learned": {
+          "initial_count": 33,
+          "survivors": 33,
+          "mean_inventory_return": -0.060754594014841554,
+          "mean_development_return": -0.02735630068197783,
+          "partition_mass": 4.500086658809375
+        },
+        "erased": {
+          "initial_count": 33,
+          "survivors": 33,
+          "mean_inventory_return": -0.06075715811761813,
+          "mean_development_return": -0.027361576840916564,
+          "partition_mass": 4.5000872119193485
+        },
+        "swapped": {
+          "initial_count": 33,
+          "survivors": 33,
+          "mean_inventory_return": -0.060754594014841554,
+          "mean_development_return": -0.02735630068197783,
+          "partition_mass": 4.500086658809375
+        }
+      },
+      "birth_count": 9
+    },
+    "reversed_credit": {
+      "coefficient": 2.999999910593033,
+      "options": {
+        "dt": 0.02,
+        "decision_stride": 50,
+        "reward_stride": 100,
+        "rate": -0.1,
+        "sigma": 0.3,
+        "kappa": 0.001,
+        "seed": 6201,
+        "rows": [
+          4,
+          5,
+          7
+        ],
+        "hidden": 8,
+        "learning": true,
+        "critic": true,
+        "critic_learning": true,
+        "phase_stride": 400,
+        "phase_offset": 0,
+        "enabled": true,
+        "horizon_stride": 200,
+        "queue_length": 4,
+        "act_stride": 1200,
+        "critic_gain": 0.3,
+        "observation_stride": 10,
+        "af": 0.917915,
+        "as": 0.39346933,
+        "critic_scale": 4.0,
+        "investment_logit": -1.6958141,
+        "reserve_logit": -1.9459101,
+        "development_coefficient": 2.999999910593033
+      },
+      "learning_work": 0.007275139745094944,
+      "actor_updates": 423,
+      "critic_updates": 543,
+      "clipping": 269,
+      "critic_max": 0.01596678,
+      "learned_max": 0.08928974,
+      "samples": [
+        {
+          "time": 0.0,
+          "ledger": {
+            "material": 47.84000005511569,
+            "potential": 61.76000022046269,
+            "work": 0.0,
+            "heat": 0.0,
+            "supplied": 0.0,
+            "removed": 0.0,
+            "supplied_potential": 0.0,
+            "removed_potential": 0.0,
+            "material_residual": 0.0,
+            "potential_residual": 0.0
+          },
+          "funded": [
+            0.0,
+            0.0
+          ],
+          "requested": [
+            0.0,
+            0.0
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 1.6239999771118163,
+          "mean_development_value": 6.42399983406067,
+          "biomass": 38.40000000000001
+        },
+        {
+          "time": 2.0,
+          "ledger": {
+            "material": 48.11843774756312,
+            "potential": 47.97668087779299,
+            "work": 1.738031666878944,
+            "heat": 13.159038445580526,
+            "supplied": 3.6000001877255268,
+            "removed": 3.321562495278081,
+            "supplied_potential": 14.400000750902107,
+            "removed_potential": 13.286249981112324,
+            "material_residual": -1.2878587085651816e-14,
+            "potential_residual": -1.9539925233402755e-14
+          },
+          "funded": [
+            0.7370482495301818,
+            0.72482643851684
+          ],
+          "requested": [
+            0.7370496322400868,
+            0.7248278223269153
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 1.235117447216401,
+          "mean_development_value": 6.263602912774353,
+          "biomass": 40.227884923348014
+        },
+        {
+          "time": 4.0,
+          "ledger": {
+            "material": 48.64140802859496,
+            "potential": 38.02261792835997,
+            "work": 3.295413732358411,
+            "heat": 23.647600453661468,
+            "supplied": 7.200000375451054,
+            "removed": 6.3985924019717615,
+            "supplied_potential": 28.800001501804218,
+            "removed_potential": 25.594369607887046,
+            "material_residual": -2.1316282072803006e-14,
+            "potential_residual": -1.4210854715202004e-14
+          },
+          "funded": [
+            1.358123172966681,
+            1.340278437786758
+          ],
+          "requested": [
+            1.5012989130773349,
+            1.4874494968244107
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 0.907713446164565,
+          "mean_development_value": 6.109400603974918,
+          "biomass": 41.61349850266172
+        },
+        {
+          "time": 6.0,
+          "ledger": {
+            "material": 49.22915236063375,
+            "potential": 37.57486174110169,
+            "work": 4.203448654191867,
+            "heat": 25.538299047241406,
+            "supplied": 10.800000563176582,
+            "removed": 9.41084825765851,
+            "supplied_potential": 43.20000225270633,
+            "removed_potential": 37.64339303063404,
+            "material_residual": -1.2434497875801753e-14,
+            "potential_residual": -2.1316282072803006e-14
+          },
+          "funded": [
+            1.4942132905994467,
+            1.4829975519273133
+          ],
+          "requested": [
+            2.2697700531425653,
+            2.271619550519972
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 0.8443684255442706,
+          "mean_development_value": 6.070288759710114,
+          "biomass": 41.80736391928329
+        },
+        {
+          "time": 8.0,
+          "ledger": {
+            "material": 49.82230112322336,
+            "potential": 38.36372120671478,
+            "work": 5.038103163439817,
+            "heat": 26.287380122738863,
+            "supplied": 14.400000750902109,
+            "removed": 12.417699682794415,
+            "supplied_potential": 57.600003003608435,
+            "removed_potential": 49.67079873117766,
+            "material_residual": -1.9539925233402755e-14,
+            "potential_residual": -7.105427357601002e-15
+          },
+          "funded": [
+            1.5414301636826293,
+            1.5288240967770501
+          ],
+          "requested": [
+            3.0639773066941416,
+            3.034532899459009
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 0.8160989843035689,
+          "mean_development_value": 6.0537976744860575,
+          "biomass": 41.90159077022463
+        },
+        {
+          "time": 10.0,
+          "ledger": {
+            "material": 49.71535124943417,
+            "potential": 36.14943851303794,
+            "work": 5.88948002180836,
+            "heat": 27.2224864628904,
+            "supplied": 18.000000938627636,
+            "removed": 16.12464974430913,
+            "supplied_potential": 72.00000375451054,
+            "removed_potential": 64.49859897723653,
+            "material_residual": -2.1316282072803006e-14,
+            "potential_residual": 0.0
+          },
+          "funded": [
+            1.5970458446348095,
+            1.5877784768166239
+          ],
+          "requested": [
+            3.8191930761240656,
+            3.840295502988738
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 0.7806798947952098,
+          "mean_development_value": 6.0332794000393735,
+          "biomass": 42.02079729427065
+        },
+        {
+          "time": 12.0,
+          "ledger": {
+            "material": 50.301651518321215,
+            "potential": 36.502195571151226,
+            "work": 6.779475747699851,
+            "heat": 28.324934754433787,
+            "supplied": 21.600001126353163,
+            "removed": 19.13834966314763,
+            "supplied_potential": 86.40000450541265,
+            "removed_potential": 76.55339865259052,
+            "material_residual": -7.105427357601002e-15,
+            "potential_residual": 2.842170943040401e-14
+          },
+          "funded": [
+            1.6622265911927196,
+            1.6530019266786338
+          ],
+          "requested": [
+            4.615142199079855,
+            4.610274634862435
+          ],
+          "births": 2,
+          "deaths": 0,
+          "population": 26,
+          "mean_usable": 0.6824355355947118,
+          "mean_development_value": 5.547743679528358,
+          "biomass": 42.16600517073649
+        },
+        {
+          "time": 14.0,
+          "ledger": {
+            "material": 50.97228368736877,
+            "potential": 37.07216693984135,
+            "work": 7.694375502869613,
+            "heat": 29.52259230676411,
+            "supplied": 25.20000131407869,
+            "removed": 22.067717681825595,
+            "supplied_potential": 100.80000525631476,
+            "removed_potential": 88.27087072730238,
+            "material_residual": -1.0658141036401503e-14,
+            "potential_residual": 0.0
+          },
+          "funded": [
+            1.728001831235232,
+            1.7238118425743612
+          ],
+          "requested": [
+            5.374726555935922,
+            5.422409538310603
+          ],
+          "births": 3,
+          "deaths": 0,
+          "population": 27,
+          "mean_usable": 0.619043001857255,
+          "mean_development_value": 5.322246684233161,
+          "biomass": 42.32883440288072
+        },
+        {
+          "time": 16.0,
+          "ledger": {
+            "material": 51.62518761009382,
+            "potential": 37.57987545211349,
+            "work": 8.618774740898811,
+            "heat": 30.70210024736299,
+            "supplied": 28.800001501804218,
+            "removed": 25.014813946826067,
+            "supplied_potential": 115.20000600721687,
+            "removed_potential": 100.05925578730427,
+            "material_residual": -2.1316282072803006e-14,
+            "potential_residual": 0.0
+          },
+          "funded": [
+            1.7964063502132768,
+            1.7899242995920828
+          ],
+          "requested": [
+            6.185229234317376,
+            6.189640300544852
+          ],
+          "births": 4,
+          "deaths": 0,
+          "population": 28,
+          "mean_usable": 0.5614697354897643,
+          "mean_development_value": 5.113883286820968,
+          "biomass": 42.48919441203458
+        },
+        {
+          "time": 18.0,
+          "ledger": {
+            "material": 51.70259720988948,
+            "potential": 35.94195056182853,
+            "work": 9.537465155144824,
+            "heat": 31.730973122584615,
+            "supplied": 32.400001689529745,
+            "removed": 28.53740453475593,
+            "supplied_potential": 129.60000675811898,
+            "removed_potential": 114.14961813902372,
+            "material_residual": -2.1316282072803006e-14,
+            "potential_residual": 0.0
+          },
+          "funded": [
+            1.8543183334361835,
+            1.845788305719003
+          ],
+          "requested": [
+            6.991056019869575,
+            6.96720457214542
+          ],
+          "births": 5,
+          "deaths": 0,
+          "population": 29,
+          "mean_usable": 0.5100045517297349,
+          "mean_development_value": 4.920277176309576,
+          "biomass": 42.632636641490045
+        },
+        {
+          "time": 20.0,
+          "ledger": {
+            "material": 52.39368374765857,
+            "potential": 36.539625092231184,
+            "work": 10.501432397287628,
+            "heat": 32.93367750111542,
+            "supplied": 36.00000187725527,
+            "removed": 31.44631818471239,
+            "supplied_potential": 144.0000075090211,
+            "removed_potential": 125.78527273884956,
+            "material_residual": 0.0,
+            "potential_residual": 0.0
+          },
+          "funded": [
+            1.918724625328378,
+            1.9128021862496856
+          ],
+          "requested": [
+            7.768397715444735,
+            7.7788936258803005
+          ],
+          "births": 8,
+          "deaths": 0,
+          "population": 32,
+          "mean_usable": 0.4323259930909224,
+          "mean_development_value": 4.445003301350669,
+          "biomass": 42.80189256369978
+        },
+        {
+          "time": 22.0,
+          "ledger": {
+            "material": 53.0697392637305,
+            "potential": 37.104623311195716,
+            "work": 11.466223692343577,
+            "heat": 34.10811005138264,
+            "supplied": 39.6000020649808,
+            "removed": 34.37026285636598,
+            "supplied_potential": 158.4000082599232,
+            "removed_potential": 137.48105142546393,
+            "material_residual": -7.105427357601002e-15,
+            "potential_residual": -2.842170943040401e-14
+          },
+          "funded": [
+            1.9856418592031133,
+            1.976113326965456
+          ],
+          "requested": [
+            8.580652613971324,
+            8.562034762384428
+          ],
+          "births": 9,
+          "deaths": 0,
+          "population": 33,
+          "mean_usable": 0.3919668698747775,
+          "mean_development_value": 4.297900601348511,
+          "biomass": 42.96527232667598
+        },
+        {
+          "time": 24.0,
+          "ledger": {
+            "material": 53.72635871078155,
+            "potential": 37.51623566287832,
+            "work": 12.43897888704617,
+            "heat": 35.35022029320166,
+            "supplied": 43.20000225270633,
+            "removed": 37.31364359704045,
+            "supplied_potential": 172.8000090108253,
+            "removed_potential": 149.2545743881618,
+            "material_residual": -1.4210854715202004e-14,
+            "potential_residual": -2.842170943040401e-14
+          },
+          "funded": [
+            2.056454221484744,
+            2.045055139435372
+          ],
+          "requested": [
+            9.385373610421084,
+            9.358891296949878
+          ],
+          "births": 9,
+          "deaths": 0,
+          "population": 33,
+          "mean_usable": 0.3642157433276159,
+          "mean_development_value": 4.285674327584411,
+          "biomass": 43.13604571237909
+        }
+      ],
+      "probes": {
+        "learned": {
+          "initial_count": 33,
+          "survivors": 33,
+          "mean_inventory_return": -0.060726392689314256,
+          "mean_development_return": -0.027099290323443652,
+          "partition_mass": 4.500104103757039
+        },
+        "erased": {
+          "initial_count": 33,
+          "survivors": 33,
+          "mean_inventory_return": -0.060722582417736155,
+          "mean_development_return": -0.02709378490758393,
+          "partition_mass": 4.500102564046722
+        },
+        "swapped": {
+          "initial_count": 33,
+          "survivors": 33,
+          "mean_inventory_return": -0.060720901760097756,
+          "mean_development_return": -0.027095676712339468,
+          "partition_mass": 4.500102424742211
+        }
+      },
+      "birth_count": 9
+    },
+    "no_credit": {
+      "coefficient": 2.999999910593033,
+      "options": {
+        "dt": 0.02,
+        "decision_stride": 50,
+        "reward_stride": 100,
+        "rate": 0.0,
+        "sigma": 0.3,
+        "kappa": 0.001,
+        "seed": 6201,
+        "rows": [
+          4,
+          5,
+          7
+        ],
+        "hidden": 8,
+        "learning": false,
+        "critic": true,
+        "critic_learning": true,
+        "phase_stride": 400,
+        "phase_offset": 0,
+        "enabled": true,
+        "horizon_stride": 200,
+        "queue_length": 4,
+        "act_stride": 1200,
+        "critic_gain": 0.3,
+        "observation_stride": 10,
+        "af": 0.917915,
+        "as": 0.39346933,
+        "critic_scale": 4.0,
+        "investment_logit": -1.6958141,
+        "reserve_logit": -1.9459101,
+        "development_coefficient": 2.999999910593033
+      },
+      "learning_work": 0.002303246171643153,
+      "actor_updates": 0,
+      "critic_updates": 543,
+      "clipping": 0,
+      "critic_max": 0.015952203,
+      "learned_max": 0.0,
+      "samples": [
+        {
+          "time": 0.0,
+          "ledger": {
+            "material": 47.84000005511569,
+            "potential": 61.76000022046269,
+            "work": 0.0,
+            "heat": 0.0,
+            "supplied": 0.0,
+            "removed": 0.0,
+            "supplied_potential": 0.0,
+            "removed_potential": 0.0,
+            "material_residual": 0.0,
+            "potential_residual": 0.0
+          },
+          "funded": [
+            0.0,
+            0.0
+          ],
+          "requested": [
+            0.0,
+            0.0
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 1.6239999771118163,
+          "mean_development_value": 6.42399983406067,
+          "biomass": 38.40000000000001
+        },
+        {
+          "time": 2.0,
+          "ledger": {
+            "material": 48.11843774756312,
+            "potential": 47.97668087779299,
+            "work": 1.738031666878944,
+            "heat": 13.159038445580526,
+            "supplied": 3.6000001877255268,
+            "removed": 3.321562495278081,
+            "supplied_potential": 14.400000750902107,
+            "removed_potential": 13.286249981112324,
+            "material_residual": -1.2878587085651816e-14,
+            "potential_residual": -1.9539925233402755e-14
+          },
+          "funded": [
+            0.7370482495301818,
+            0.72482643851684
+          ],
+          "requested": [
+            0.7370496322400868,
+            0.7248278223269153
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 1.235117447216401,
+          "mean_development_value": 6.263602912774353,
+          "biomass": 40.227884923348014
+        },
+        {
+          "time": 4.0,
+          "ledger": {
+            "material": 48.64140802859496,
+            "potential": 38.02261792835997,
+            "work": 3.295413732358411,
+            "heat": 23.647600453661468,
+            "supplied": 7.200000375451054,
+            "removed": 6.3985924019717615,
+            "supplied_potential": 28.800001501804218,
+            "removed_potential": 25.594369607887046,
+            "material_residual": -2.1316282072803006e-14,
+            "potential_residual": -1.4210854715202004e-14
+          },
+          "funded": [
+            1.358123172966681,
+            1.340278437786758
+          ],
+          "requested": [
+            1.5012989130773349,
+            1.4874494968244107
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 0.907713446164565,
+          "mean_development_value": 6.109400603974918,
+          "biomass": 41.61349850266172
+        },
+        {
+          "time": 6.0,
+          "ledger": {
+            "material": 49.22915236063375,
+            "potential": 37.57486174110169,
+            "work": 4.203448654191867,
+            "heat": 25.538299047241406,
+            "supplied": 10.800000563176582,
+            "removed": 9.41084825765851,
+            "supplied_potential": 43.20000225270633,
+            "removed_potential": 37.64339303063404,
+            "material_residual": -1.2434497875801753e-14,
+            "potential_residual": -2.1316282072803006e-14
+          },
+          "funded": [
+            1.4942132905994467,
+            1.4829975519273133
+          ],
+          "requested": [
+            2.2697700531425653,
+            2.271619550519972
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 0.8443684255442706,
+          "mean_development_value": 6.070288759710114,
+          "biomass": 41.80736391928329
+        },
+        {
+          "time": 8.0,
+          "ledger": {
+            "material": 49.82230112322336,
+            "potential": 38.364018978857736,
+            "work": 5.037805391296864,
+            "heat": 26.287380122738863,
+            "supplied": 14.400000750902109,
+            "removed": 12.417699682794415,
+            "supplied_potential": 57.600003003608435,
+            "removed_potential": 49.67079873117766,
+            "material_residual": -1.9539925233402755e-14,
+            "potential_residual": -7.105427357601002e-15
+          },
+          "funded": [
+            1.5414301636826293,
+            1.5288240967770501
+          ],
+          "requested": [
+            3.0639773066941416,
+            3.034532899459009
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 0.8161113914761918,
+          "mean_development_value": 6.053810081658681,
+          "biomass": 41.90159077022463
+        },
+        {
+          "time": 10.0,
+          "ledger": {
+            "material": 49.71535249426005,
+            "potential": 36.150508100672276,
+            "work": 5.888416653397832,
+            "heat": 27.222485222970175,
+            "supplied": 18.000000938627636,
+            "removed": 16.124648499483243,
+            "supplied_potential": 72.00000375451054,
+            "removed_potential": 64.49859399793297,
+            "material_residual": -2.842170943040401e-14,
+            "potential_residual": 1.4210854715202004e-14
+          },
+          "funded": [
+            1.5970674220607166,
+            1.5877584386655492
+          ],
+          "requested": [
+            3.8189553737611277,
+            3.840533192633302
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 0.7807244189271588,
+          "mean_development_value": 6.033323693014468,
+          "biomass": 42.02079544501576
+        },
+        {
+          "time": 12.0,
+          "ledger": {
+            "material": 50.30165315280789,
+            "potential": 36.50406092583631,
+            "work": 6.777616623142588,
+            "heat": 28.32493506225265,
+            "supplied": 21.600001126353163,
+            "removed": 19.13834802866095,
+            "supplied_potential": 86.40000450541265,
+            "removed_potential": 76.5533921146438,
+            "material_residual": -1.4210854715202004e-14,
+            "potential_residual": 0.0
+          },
+          "funded": [
+            1.6623833385594091,
+            1.6528468437897026
+          ],
+          "requested": [
+            4.61569750761555,
+            4.609719211861375
+          ],
+          "births": 2,
+          "deaths": 0,
+          "population": 26,
+          "mean_usable": 0.6825069936253366,
+          "mean_development_value": 5.547814954383253,
+          "biomass": 42.166003583213445
+        },
+        {
+          "time": 14.0,
+          "ledger": {
+            "material": 50.97228465040952,
+            "potential": 37.07473648394514,
+            "work": 7.69190516135006,
+            "heat": 29.522496956342852,
+            "supplied": 25.20000131407869,
+            "removed": 22.067716718784855,
+            "supplied_potential": 100.80000525631476,
+            "removed_potential": 88.27086687513942,
+            "material_residual": -3.552713678800501e-15,
+            "potential_residual": 1.4210854715202004e-14
+          },
+          "funded": [
+            1.728303960900726,
+            1.7234980332654104
+          ],
+          "requested": [
+            5.376772351010004,
+            5.420363373385044
+          ],
+          "births": 3,
+          "deaths": 0,
+          "population": 27,
+          "mean_usable": 0.6191359191488359,
+          "mean_development_value": 5.322338250640131,
+          "biomass": 42.328822244918875
+        },
+        {
+          "time": 16.0,
+          "ledger": {
+            "material": 51.62518695053393,
+            "potential": 37.58308910265405,
+            "work": 8.615621734093198,
+            "heat": 30.70203696538844,
+            "supplied": 28.800001501804218,
+            "removed": 25.01481460638596,
+            "supplied_potential": 115.20000600721687,
+            "removed_potential": 100.05925842554385,
+            "material_residual": -1.4210854715202004e-14,
+            "potential_residual": -2.842170943040401e-14
+          },
+          "funded": [
+            1.7969068287221854,
+            1.7894117003233712
+          ],
+          "requested": [
+            6.190004301060981,
+            6.184864630202355
+          ],
+          "births": 4,
+          "deaths": 0,
+          "population": 28,
+          "mean_usable": 0.561582714322297,
+          "mean_development_value": 5.1139958692534595,
+          "biomass": 42.48919071230075
+        },
+        {
+          "time": 18.0,
+          "ledger": {
+            "material": 51.70256259013102,
+            "potential": 35.95115416430495,
+            "work": 9.533215221323463,
+            "heat": 31.72588097489575,
+            "supplied": 32.400001689529745,
+            "removed": 28.53743915451438,
+            "supplied_potential": 129.60000675811898,
+            "removed_potential": 114.14975661805752,
+            "material_residual": -2.842170943040401e-14,
+            "potential_residual": 1.4210854715202004e-14
+          },
+          "funded": [
+            1.8544862343675432,
+            1.84519571432977
+          ],
+          "requested": [
+            6.996264577544935,
+            6.9619790474826
+          ],
+          "births": 5,
+          "deaths": 0,
+          "population": 29,
+          "mean_usable": 0.5101827948400698,
+          "mean_development_value": 4.920367659443458,
+          "biomass": 42.63178829502571
+        },
+        {
+          "time": 20.0,
+          "ledger": {
+            "material": 52.39355751936871,
+            "potential": 36.54851654954638,
+            "work": 10.49687534091845,
+            "heat": 32.92883818701005,
+            "supplied": 36.00000187725527,
+            "removed": 31.446444413002222,
+            "supplied_potential": 144.0000075090211,
+            "removed_potential": 125.78577765200889,
+            "material_residual": -2.4868995751603507e-14,
+            "potential_residual": -1.4210854715202004e-14
+          },
+          "funded": [
+            1.9186664037606476,
+            1.9122305823937642
+          ],
+          "requested": [
+            7.772676198830595,
+            7.774584439612227
+          ],
+          "births": 8,
+          "deaths": 0,
+          "population": 32,
+          "mean_usable": 0.4325136626991083,
+          "mean_development_value": 4.4451365956696,
+          "biomass": 42.801312560597076
+        },
+        {
+          "time": 22.0,
+          "ledger": {
+            "material": 53.06961771685009,
+            "potential": 37.12384557355465,
+            "work": 11.462717088804565,
+            "heat": 34.09190820504112,
+            "supplied": 39.6000020649808,
+            "removed": 34.370384403246376,
+            "supplied_potential": 158.4000082599232,
+            "removed_potential": 137.4815376129855,
+            "material_residual": -2.1316282072803006e-14,
+            "potential_residual": -5.684341886080802e-14
+          },
+          "funded": [
+            1.9846433870865292,
+            1.9747468607128749
+          ],
+          "requested": [
+            8.585091954228119,
+            8.557511102801072
+          ],
+          "births": 9,
+          "deaths": 0,
+          "population": 33,
+          "mean_usable": 0.39221851257425955,
+          "mean_development_value": 4.297999014669268,
+          "biomass": 42.96358680345976
+        },
+        {
+          "time": 24.0,
+          "ledger": {
+            "material": 53.72620639758435,
+            "potential": 37.54811806776768,
+            "work": 12.432645362661587,
+            "heat": 35.32406215990821,
+            "supplied": 43.20000225270633,
+            "removed": 37.31379591023763,
+            "supplied_potential": 172.8000090108253,
+            "removed_potential": 149.25518364095052,
+            "material_residual": -3.552713678800501e-14,
+            "potential_residual": 0.0
+          },
+          "funded": [
+            2.0549258968114805,
+            2.043364996028021
+          ],
+          "requested": [
+            9.389849773200694,
+            9.3542510564439
+          ],
+          "births": 9,
+          "deaths": 0,
+          "population": 33,
+          "mean_usable": 0.36458443664595913,
+          "mean_development_value": 4.285741105889685,
+          "biomass": 43.13272464713634
+        }
+      ],
+      "probes": {
+        "learned": {
+          "initial_count": 33,
+          "survivors": 33,
+          "mean_inventory_return": -0.06076062348333074,
+          "mean_development_return": -0.02736348333519468,
+          "partition_mass": 4.500081839597433
+        },
+        "erased": {
+          "initial_count": 33,
+          "survivors": 33,
+          "mean_inventory_return": -0.06076062348333074,
+          "mean_development_return": -0.02736348333519468,
+          "partition_mass": 4.500081839597433
+        },
+        "swapped": {
+          "initial_count": 33,
+          "survivors": 33,
+          "mean_inventory_return": -0.06076062348333074,
+          "mean_development_return": -0.02736348333519468,
+          "partition_mass": 4.500081839597433
+        }
+      },
+      "birth_count": 9
+    }
+  },
+  "raw_report_sha256": "6fb55b25de68c4dd25af3b338493af3acb796302bb7ae48f069bbf2f84f51491"
+}

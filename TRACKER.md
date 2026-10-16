@@ -4,6 +4,29 @@
 
 **Destination:** composable Julia simulations of phenomena inside—and constituting—materials, with evolving inhabitants and light transport revealing their structure.
 
+## Resumed — 2026-10-16, 20:05 UTC
+
+The usage pause preserved the running jobs and their source epochs. No soaks
+were restarted. The 96×72×40 electrical fracture producer completed all 3,160
+steps and 32 actual observations in 31.30 minutes, within its 45-minute bound;
+numerical review and a new material photograph are underway.
+
+Developmental valuation now counts retained body construction alongside stored
+resources, using the replacement coefficient derived from native stoichiometry.
+It shares the original paid learning transaction and conservatively accounts for
+actual child partitions; it adds no physical energy. The 119 focused CPU checks,
+28 existing cohort/restart checks and nine-time CPU/AMD composition gate passed.
+Native comparison includes 24 paid-copy births and a maximum ledger residual
+of 3.55e-14. The four-arm experiment shows small learned benefits, not rich
+organization yet. See `docs/research/developmental-value-accounting.md`.
+
+Parallel support construction measured 1.19–1.20× complete-step GPU throughput
+with all existing arrays bitwise equal across ten paired blocks. It requires
+11.24 MB extra scratch at the tested 64³/capacity-512 shape. An explicit native
+execution option is being integrated; the old default and historical sources
+remain intact. The next learning design investigates whether local communication
+can share useful experience while retaining different local specializations.
+
 ## Latest integration — 2026-10-16, 04:45 UTC
 
 - Continuous-observation construction now has a causal learning component:

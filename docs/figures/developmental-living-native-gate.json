@@ -1,0 +1,715 @@
+{
+    "schema": "developmental-living-native-gate-v1",
+    "coefficient": 2.999999910593033,
+    "errors": {
+        "bound_b": 4.889443516731262e-9,
+        "private.critic_proposal": 1.1788188203354366e-9,
+        "private.queue_value": 2.580575353405834e-8,
+        "private.requested": 1.4406396076083183e-9,
+        "private.critic": 2.3283064365386963e-9,
+        "free_b": 2.815261669619762e-9,
+        "private.older_reward": 1.797327531249948e-8,
+        "private.baseline": 1.594102377183715e-8,
+        "catalyst_a": 5.587935447692871e-9,
+        "bound_a": 2.2118911147117615e-9,
+        "private.funded_increment": 8.731149137020111e-9,
+        "private.credit_moment": 6.103857291828163e-8,
+        "radius": 0,
+        "private.before_paid": 8.385570016145039e-12,
+        "private.proposed_increment": 8.731149137020111e-9,
+        "private.drive": 2.9802322387695312e-8,
+        "private.queue_prediction": 1.4901161193847656e-8,
+        "stores": 5.338009875267835e-9,
+        "catalyst_b": 4.6566128730773926e-9,
+        "private.paid": 1.1502132579721547e-11,
+        "raw_a": 3.13241906846058e-10,
+        "temporal.slow": 4.76837158203125e-7,
+        "private.prediction_error": 1.2646402591798278e-8,
+        "private.learned": 8.381903171539307e-9,
+        "private.previous": 1.7384830908184767e-8,
+        "private.ema_error": 1.6876409422716954e-8,
+        "temporal.fast": 5.960464477539062e-7,
+        "private.queue_critic": 3.4570693969726562e-6,
+        "private.proposal": 8.731149137020111e-9,
+        "raw_b": 6.289674655125636e-10,
+        "energy": 1.8965413239868667e-8,
+        "private.features": 1.430511474609375e-6,
+        "private.current_features": 2.5033950805664062e-6,
+        "private.prediction": 7.450580596923828e-9,
+        "mass": 8.093520520446873e-9,
+        "position": 4.76837158203125e-7,
+        "capital.mass": 2.1456947330023013e-10,
+        "private.last_reward": 1.2646402591798278e-8,
+        "learning_work": 1.1502132579721547e-11,
+        "free_a": 3.3279043553811807e-9,
+        "private.trace": 0,
+        "private.queue_score": 9.5367431640625e-7,
+        "private.queue_features": 8.642673492431641e-7,
+        "private.raw_increment": 1.2652874532836922e-8
+    },
+    "residual": 3.552713678800501e-14,
+    "actor_updates": 72,
+    "learning_work": 0.0020448603000105536,
+    "cpu_births": [
+        {
+            "time": 0.19999999552965164,
+            "parent_id": 3,
+            "child_id": 25,
+            "child_usable_before_copy": 0.7934890338361564,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        },
+        {
+            "time": 0.19999999552965164,
+            "parent_id": 9,
+            "child_id": 26,
+            "child_usable_before_copy": 0.7926719960466049,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        },
+        {
+            "time": 0.19999999552965164,
+            "parent_id": 23,
+            "child_id": 27,
+            "child_usable_before_copy": 0.7928932877345118,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        },
+        {
+            "time": 0.19999999552965164,
+            "parent_id": 7,
+            "child_id": 28,
+            "child_usable_before_copy": 0.7930599427212128,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        },
+        {
+            "time": 0.2199999950826168,
+            "parent_id": 5,
+            "child_id": 29,
+            "child_usable_before_copy": 0.7924721214903949,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        },
+        {
+            "time": 0.2199999950826168,
+            "parent_id": 15,
+            "child_id": 30,
+            "child_usable_before_copy": 0.7914269129883991,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        },
+        {
+            "time": 0.2199999950826168,
+            "parent_id": 13,
+            "child_id": 31,
+            "child_usable_before_copy": 0.7911016445915021,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        },
+        {
+            "time": 0.23999999463558197,
+            "parent_id": 18,
+            "child_id": 32,
+            "child_usable_before_copy": 0.7906436850723182,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        },
+        {
+            "time": 0.23999999463558197,
+            "parent_id": 17,
+            "child_id": 33,
+            "child_usable_before_copy": 0.7905997488014892,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        },
+        {
+            "time": 0.23999999463558197,
+            "parent_id": 10,
+            "child_id": 34,
+            "child_usable_before_copy": 0.7907906083944465,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        },
+        {
+            "time": 0.23999999463558197,
+            "parent_id": 14,
+            "child_id": 35,
+            "child_usable_before_copy": 0.7917728412455862,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        },
+        {
+            "time": 0.25999999418854713,
+            "parent_id": 8,
+            "child_id": 36,
+            "child_usable_before_copy": 0.7900204083588365,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        },
+        {
+            "time": 0.25999999418854713,
+            "parent_id": 2,
+            "child_id": 37,
+            "child_usable_before_copy": 0.7910723331885505,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        },
+        {
+            "time": 0.25999999418854713,
+            "parent_id": 6,
+            "child_id": 38,
+            "child_usable_before_copy": 0.7912626854621512,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        },
+        {
+            "time": 0.2799999937415123,
+            "parent_id": 1,
+            "child_id": 39,
+            "child_usable_before_copy": 0.7891592908785017,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        },
+        {
+            "time": 0.2799999937415123,
+            "parent_id": 4,
+            "child_id": 40,
+            "child_usable_before_copy": 0.7902215263566572,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        },
+        {
+            "time": 0.29999999329447746,
+            "parent_id": 22,
+            "child_id": 41,
+            "child_usable_before_copy": 0.7895821173494806,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        },
+        {
+            "time": 0.29999999329447746,
+            "parent_id": 12,
+            "child_id": 42,
+            "child_usable_before_copy": 0.7890391117246109,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        },
+        {
+            "time": 0.29999999329447746,
+            "parent_id": 24,
+            "child_id": 43,
+            "child_usable_before_copy": 0.7888336850197897,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        },
+        {
+            "time": 0.29999999329447746,
+            "parent_id": 20,
+            "child_id": 44,
+            "child_usable_before_copy": 0.7900038824638705,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        },
+        {
+            "time": 0.3199999928474426,
+            "parent_id": 19,
+            "child_id": 45,
+            "child_usable_before_copy": 0.7881104123543449,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        },
+        {
+            "time": 0.3199999928474426,
+            "parent_id": 11,
+            "child_id": 46,
+            "child_usable_before_copy": 0.7884799713691486,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        },
+        {
+            "time": 0.3399999924004078,
+            "parent_id": 16,
+            "child_id": 47,
+            "child_usable_before_copy": 0.787751492588832,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        },
+        {
+            "time": 0.41999999061226845,
+            "parent_id": 21,
+            "child_id": 48,
+            "child_usable_before_copy": 0.7852447270593368,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        }
+    ],
+    "gpu_births": [
+        {
+            "time": 0.19999999552965164,
+            "parent_id": 3,
+            "child_id": 25,
+            "child_usable_before_copy": 0.7934890336697584,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        },
+        {
+            "time": 0.19999999552965164,
+            "parent_id": 9,
+            "child_id": 26,
+            "child_usable_before_copy": 0.7926719960781508,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        },
+        {
+            "time": 0.19999999552965164,
+            "parent_id": 23,
+            "child_id": 27,
+            "child_usable_before_copy": 0.7928932879098277,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        },
+        {
+            "time": 0.19999999552965164,
+            "parent_id": 7,
+            "child_id": 28,
+            "child_usable_before_copy": 0.7930599425707305,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        },
+        {
+            "time": 0.2199999950826168,
+            "parent_id": 5,
+            "child_id": 29,
+            "child_usable_before_copy": 0.7924721214458614,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        },
+        {
+            "time": 0.2199999950826168,
+            "parent_id": 15,
+            "child_id": 30,
+            "child_usable_before_copy": 0.7914269131609977,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        },
+        {
+            "time": 0.2199999950826168,
+            "parent_id": 13,
+            "child_id": 31,
+            "child_usable_before_copy": 0.7911016447493942,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        },
+        {
+            "time": 0.23999999463558197,
+            "parent_id": 18,
+            "child_id": 32,
+            "child_usable_before_copy": 0.7906436850646354,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        },
+        {
+            "time": 0.23999999463558197,
+            "parent_id": 17,
+            "child_id": 33,
+            "child_usable_before_copy": 0.790599748183263,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        },
+        {
+            "time": 0.23999999463558197,
+            "parent_id": 10,
+            "child_id": 34,
+            "child_usable_before_copy": 0.7907906085551226,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        },
+        {
+            "time": 0.23999999463558197,
+            "parent_id": 14,
+            "child_id": 35,
+            "child_usable_before_copy": 0.7917728418984864,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        },
+        {
+            "time": 0.25999999418854713,
+            "parent_id": 8,
+            "child_id": 36,
+            "child_usable_before_copy": 0.7900204084622922,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        },
+        {
+            "time": 0.25999999418854713,
+            "parent_id": 2,
+            "child_id": 37,
+            "child_usable_before_copy": 0.7910723330404014,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        },
+        {
+            "time": 0.25999999418854713,
+            "parent_id": 6,
+            "child_id": 38,
+            "child_usable_before_copy": 0.7912626854523681,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        },
+        {
+            "time": 0.2799999937415123,
+            "parent_id": 1,
+            "child_id": 39,
+            "child_usable_before_copy": 0.789159290923964,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        },
+        {
+            "time": 0.2799999937415123,
+            "parent_id": 4,
+            "child_id": 40,
+            "child_usable_before_copy": 0.7902215264366226,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        },
+        {
+            "time": 0.29999999329447746,
+            "parent_id": 22,
+            "child_id": 41,
+            "child_usable_before_copy": 0.789582117395753,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        },
+        {
+            "time": 0.29999999329447746,
+            "parent_id": 12,
+            "child_id": 42,
+            "child_usable_before_copy": 0.7890391118952949,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        },
+        {
+            "time": 0.29999999329447746,
+            "parent_id": 24,
+            "child_id": 43,
+            "child_usable_before_copy": 0.7888336848659817,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        },
+        {
+            "time": 0.29999999329447746,
+            "parent_id": 20,
+            "child_id": 44,
+            "child_usable_before_copy": 0.7900038822175016,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        },
+        {
+            "time": 0.3199999928474426,
+            "parent_id": 19,
+            "child_id": 45,
+            "child_usable_before_copy": 0.7881104125129408,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        },
+        {
+            "time": 0.3199999928474426,
+            "parent_id": 11,
+            "child_id": 46,
+            "child_usable_before_copy": 0.788479971518796,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        },
+        {
+            "time": 0.3399999924004078,
+            "parent_id": 16,
+            "child_id": 47,
+            "child_usable_before_copy": 0.7877514926520623,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        },
+        {
+            "time": 0.41999999061226845,
+            "parent_id": 21,
+            "child_id": 48,
+            "child_usable_before_copy": 0.7852447268859759,
+            "copied_l1": 0.001500000071246177,
+            "copy_work": 1.5000000713749628e-6,
+            "copy_funded": true,
+            "adjusted_pending_count": 1
+        }
+    ],
+    "recipe": {
+        "cellular": {
+            "hidden": 8,
+            "capacity": 512,
+            "energy": 1,
+            "metabolites": 0.12,
+            "adaptation_strength": 0.3,
+            "growth_rate": 0.1,
+            "founders": 24,
+            "adaptation_time": 8,
+            "biomass": 1.79,
+            "exchange_radius": 0.18,
+            "mutation": 0.08,
+            "mutation_probability": 0.03,
+            "density": 128,
+            "speed": 0.06,
+            "junction_rate": 0.8,
+            "basal_rate": 0.008
+        },
+        "catalysis": {
+            "secretion_work": 0.2,
+            "investment_bias": -0.8,
+            "allocation_exponent": 1,
+            "half_saturation": 0.2,
+            "catalytic_rate": 6,
+            "allocation_bias_scale": 1.2,
+            "secretion_rate": 0.12,
+            "decay_rate": 0.2,
+            "mutation": 0.08,
+            "mutation_probability": 0.03,
+            "regulation": true
+        },
+        "temporal_policy": {
+            "reserve": 0.02,
+            "critic_scale": 4,
+            "decision_time": 1,
+            "phase_time": 8,
+            "observation_time": 0.2
+        },
+        "native": {
+            "support_strategy": "materialized",
+            "mechanical_substeps": 16,
+            "energy_type": "Float64",
+            "inventory_type": "Float64",
+            "radius_bound": 2,
+            "bin_width": 0.25,
+            "dt": 0.02
+        },
+        "feedstock": {
+            "potentials": [
+                4,
+                4
+            ],
+            "diffusion": [
+                0.006,
+                0.006
+            ],
+            "sink_rates": [
+                0.96,
+                0.96
+            ],
+            "initial": [
+                0.08,
+                0.08
+            ],
+            "source_rates": [
+                0.8,
+                0.8
+            ],
+            "sink_budgets": [
+                30.72,
+                30.72
+            ],
+            "source_budgets": [
+                25.6,
+                25.6
+            ],
+            "niche_contrast": 0.95
+        },
+        "matrix": {
+            "capacity_per_enzyme": 6,
+            "transport_barrier": 20,
+            "desorption_rate": 0.12,
+            "cross_binding": 0,
+            "adsorption_rate": 4
+        },
+        "seed": 211,
+        "grid": {
+            "shape": [
+                16,
+                16,
+                16
+            ],
+            "extent": [
+                2,
+                2,
+                2
+            ]
+        },
+        "material_sensing": {
+            "channels": [
+                "raw_balance",
+                "raw_total",
+                "catalyst_total"
+            ],
+            "scales": [
+                1,
+                1,
+                0.5
+            ]
+        },
+        "resources": {
+            "diffusion": [
+                0.006,
+                0.006,
+                0.001
+            ],
+            "sink_rates": [
+                0,
+                0,
+                0
+            ],
+            "initial": [
+                0.15,
+                0.15,
+                0.0
+            ],
+            "source_rates": [
+                0.1,
+                0.1,
+                0.0
+            ],
+            "sink_budgets": [
+                0,
+                0,
+                0
+            ],
+            "source_budgets": [
+                3.2,
+                3.2,
+                0.0
+            ],
+            "potentials": [
+                4,
+                4,
+                0
+            ]
+        }
+    },
+    "runtime": {
+        "julia": "1.12.4",
+        "kernel": "Linux",
+        "architecture": "x86_64",
+        "launch_threads": 2,
+        "backend": "amd",
+        "device": "HIPDevice(id=1, name=AMD Radeon RX 6750 XT, gcn_arch=gfx1030)",
+        "backend_version": "2.8.0",
+        "actual_device_optlevel": 1,
+        "project_sha256": "284c920aebff70f466a40df21f7c83ae4c561857b046f940274b43a8feeaec6d",
+        "manifest_sha256": "d4b4fe25e640c2159b25a75e05203239485119dfd705bd7682a3e2e0187494e4"
+    },
+    "source": {
+        "model": "1a938948fb14c400876c6848e4389fc432f4cc2a3962903374d2d76fb34f1c99",
+        "initialization": "766dfedbdbf5b4dbbb99ed5e9336a16747fa08752a84af3268fc7c98c613613a",
+        "founder_initialization": "d76e4c791a2c56bc7fd651b1836e6879b9e27013566ce6d94a1d2f677f62e633",
+        "support": "5a767b83c2c912d8706468ec7c5b86e56cf99430b2a23dfd3a7f3ee8f21bf55b",
+        "lifecycle": "8826c577e960db6596cd923a591d806b185908a254c6cc0fb6b0eebb033a9629",
+        "resource": "ac72b2db1dfa448446df0ae44840ba05933f1d8fb13c639f9e2cd3b3a7e41223",
+        "kernels": "8f9f5d153ff1e4f4636388072063aa6e53fbb20d9c5175d64d6fcb15993207ae",
+        "checkpoint": "81c8538519e5d0c58eb8bc0b6e49be7eec87119f81b7fcd998b6944f02c68503",
+        "protocol": "52632744615956c0e4c613e010b8fa4ba08c396e46e03d7ef5ec15f037e8199d"
+    },
+    "habitat_source": {
+        "helper": "5753f0cf5065345cf08fb9a2501d87aad4f6eff13183fd344e8f53dfe736aa41",
+        "kernels": "b9774fc4b57b8d6dd844dc996979b007cf4f3e8160660a2961525514dad52c9c",
+        "sorption": "3811fd3627906823a01f2afb2e6693bb6aec99c37bb10bfb72d43c85f8b4ad08"
+    },
+    "scope": "stoichiometric developmental-value objective; uninterrupted 9-time CPU/AMD parity; near-division fixture and nonzero initial allocation readout exercise paid birth; filter cadence .2, action cadence1, horizon4; no GPU fork claim"
+}

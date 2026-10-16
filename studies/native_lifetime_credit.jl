@@ -9,7 +9,15 @@ using Interior, KernelAbstractions, Random, Statistics, SHA
 using Interior: JSON3
 include("native_action_credit.jl")
 
-@inline local_value(s,q,i)=Float64(s.energy[i])+Float64(q.efficiency)*(Float64(s.metabolites[i,1])*q.potentials[1]+Float64(s.metabolites[i,2])*q.potentials[2])
+@inline function local_value(s,q,i)
+    value=Float64(s.energy[i])+Float64(q.efficiency)*(Float64(s.metabolites[i,1])*q.potentials[1]+Float64(s.metabolites[i,2])*q.potentials[2])
+    # Optional study valuation; absent/zero preserves the original arithmetic
+    # and does not read mass. This does not add physical energy to the cell.
+    if hasproperty(q,:development_coefficient) && q.development_coefficient!=0
+        value+=Float64(q.development_coefficient)*Float64(s.mass[i])
+    end
+    value
+end
 @kernel function choose!(s,status,q,z,rows,h,decision,sigma,seed,clock,window_start,critic_mode)
     i=@index(Global,Linear)
     if status[1]==0 && s.active[i]==1
