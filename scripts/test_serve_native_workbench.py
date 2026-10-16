@@ -56,6 +56,19 @@ class GatewayTests(unittest.TestCase):
                 self.assertEqual(self.request('POST', '/api/control', body)[0], 400)
         self.assertFalse((self.root / 'command.json').exists())
 
+    def test_receptor_scale_contract_and_event_paths(self):
+        for scales in ([0, 1, 1], [True, 1, 1], [1, 2], [float("inf"), 1, 1], [1e100, 1, 1], [1e-100, 1, 1]):
+            self.assertEqual(self.request('POST', '/api/control', {'action': 'receptor_scales', 'branch': 'sensing', 'scales': scales})[0], 400)
+        self.assertEqual(self.request('POST', '/api/control', {'action': 'receptor_scales', 'branch': 'off', 'scales': [1, 2, 3]})[0], 400)
+        self.assertEqual(self.request('POST', '/api/control', {'action': 'observe', 'scales': [1, 2, 3]})[0], 400)
+        self.assertEqual(self.request('POST', '/api/control', {'action': 'receptor_scales', 'branch': 'sensing', 'scales': [.5, .03, .006]})[0], 202)
+        for phase in ('before', 'after'):
+            frame = self.root / f'branches/sensing/frames/00001-{phase}'
+            frame.mkdir(parents=True)
+            (frame / 'frame.json').write_text('{}')
+            self.assertEqual(self.request(path=f'/branches/sensing/frames/00001-{phase}/frame.json')[0], 200)
+        self.assertEqual(self.request(path='/branches/sensing/frames/00001-untrusted/frame.json')[0], 404)
+
     def test_origin_and_host_checks(self):
         body = {'action': 'step', 'steps': 1}
         self.assertEqual(self.request('POST', '/api/control', body, {'Origin': 'https://example.invalid'})[0], 403)

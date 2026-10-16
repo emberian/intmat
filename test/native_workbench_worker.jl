@@ -54,9 +54,41 @@ using .NativeWorkbench
         @test NativeWorkbench.hashfile(binary)==meta.binary_sha256
         index=Interior.JSON3.read(read(joinpath(s.root,"branches","sensing","observatory.json"),String))
         @test length(index.frames)==2 && index.frames[end].step==3
+        # A paused intervention changes the concrete receptor parameters only.
+        branch=s.branches["sensing"];oldprocess=branch.process
+        oldsnapshot=Interior.device_habitat_snapshot(oldprocess)
+        for (name,values) in (("zero",[0.,1.,1.]),("underflow",[1e-100,1.,1.]),("overflow",[1e100,1.,1.]),("bool",Any[true,1.,1.]),("short",[1.,1.]),("nan",[NaN,1.,1.]))
+            @test_throws ArgumentError NativeWorkbench.validate_command(Dict("id"=>name,"action"=>"receptor_scales","branch"=>"sensing","scales"=>values),s)
+        end
+        @test_throws ArgumentError NativeWorkbench.validate_command(Dict("id"=>"offscale","action"=>"receptor_scales","branch"=>"off","scales"=>[1.,1.,1.]),s)
+        intervention=Dict("id"=>"receptors","action"=>"receptor_scales","branch"=>"sensing","scales"=>[.5,.03,.006])
+        changed=NativeWorkbench.process_command!(s,intervention)
+        @test changed.ok && changed.accepted
+        @test branch.process!==oldprocess && branch.process.cells===oldprocess.cells
+        @test branch.process.habitat.arrays===oldprocess.habitat.arrays
+        @test branch.process.habitat.feedstock===oldprocess.habitat.feedstock
+        now=Interior.device_habitat_snapshot(branch.process)
+        @test now.cells==oldsnapshot.cells && now.arrays==oldsnapshot.arrays && now.feedstock==oldsnapshot.feedstock
+        @test now.parameters.material_scales==(.5f0,.03f0,.006f0)
+        @test now.parameters.material_channels==oldsnapshot.parameters.material_channels
+        @test branch.world.time==3Float64(s.dt) && branch.process.cells.attempted_steps==3
+        @test length(branch.interventions)==1 && branch.interventions[1].step==3
+        @test NativeWorkbench.process_command!(s,intervention)==changed && length(branch.interventions)==1
+        post=deserialize(joinpath(s.root,branch.checkpoint.file))
+        @test post.parameters.material_scales==now.parameters.material_scales && post.workbench.intervention.phase=="after"
+        @test post.workbench.interventions[1].id=="receptors"
+        @test Interior.device_habitat_snapshot(Interior.device_habitat_restore(w,post))==now
+        events=Interior.JSON3.read(read(joinpath(s.root,"branches","sensing","observatory.json"),String)).frames[end-1:end]
+        @test events[1].time==events[2].time && events[1].source_sha256!=events[2].source_sha256
+        beforemeta=Interior.JSON3.read(read(joinpath(s.root,"branches","sensing",events[1].file),String))
+        aftermeta=Interior.JSON3.read(read(joinpath(s.root,"branches","sensing",events[2].file),String))
+        @test beforemeta.binary_sha256==aftermeta.binary_sha256
+        @test beforemeta.intervention.phase=="before" && aftermeta.intervention.phase=="after"
+        @test aftermeta.material_parameters.material_scales≈[.5,.03,.006]
         @test_throws ArgumentError NativeWorkbench.reserve!(s,s.limits.artifact_bytes)
         more=NativeWorkbench.process_command!(s,Dict("id"=>"more","action"=>"step","steps"=>4))
         @test more.ok && all(b->b.process.cells.attempted_steps==7,values(s.branches))
+        @test maximum(abs,Array(branch.process.cells.state.inputs).-oldsnapshot.cells.state.inputs)>1e-4
         excess=NativeWorkbench.process_command!(s,Dict("id"=>"excess","action"=>"step","steps"=>2))
         @test !excess.ok && !excess.accepted && all(b->b.process.cells.attempted_steps==7,values(s.branches))
         before=filesize(binary)

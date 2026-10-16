@@ -1,0 +1,105 @@
+{
+  "schema": "interior-native-receptor-intervention-evidence-1",
+  "backend": "Julia CPU, two threads",
+  "source_stage": "outputs/native-workbench-receptors-source-20261016",
+  "session": "outputs/native-workbench-receptors-20261016",
+  "driver_sha256": "87dca66cd6cdab3120591b669350589ac9a0c2a7d5d7a46f57b2368d6ea260b8",
+  "source": {
+    "model": "1a938948fb14c400876c6848e4389fc432f4cc2a3962903374d2d76fb34f1c99",
+    "initialization": "766dfedbdbf5b4dbbb99ed5e9336a16747fa08752a84af3268fc7c98c613613a",
+    "founder_initialization": "d76e4c791a2c56bc7fd651b1836e6879b9e27013566ce6d94a1d2f677f62e633",
+    "support": "5a767b83c2c912d8706468ec7c5b86e56cf99430b2a23dfd3a7f3ee8f21bf55b",
+    "lifecycle": "8826c577e960db6596cd923a591d806b185908a254c6cc0fb6b0eebb033a9629",
+    "resource": "ac72b2db1dfa448446df0ae44840ba05933f1d8fb13c639f9e2cd3b3a7e41223",
+    "kernels": "38b3a7e0cdaa62a258c22e5cc6c84c99a1ad316ef56ecc418d1c2e533d934eb9",
+    "checkpoint": "81c8538519e5d0c58eb8bc0b6e49be7eec87119f81b7fcd998b6944f02c68503",
+    "protocol": "52632744615956c0e4c613e010b8fa4ba08c396e46e03d7ef5ec15f037e8199d"
+  },
+  "habitat_source": {
+    "helper": "5753f0cf5065345cf08fb9a2501d87aad4f6eff13183fd344e8f53dfe736aa41",
+    "kernels": "b89543752488d8cab09412d928b2a452e4474b9fe42e63ef1058152ab6351759",
+    "sorption": "3811fd3627906823a01f2afb2e6693bb6aec99c37bb10bfb72d43c85f8b4ad08"
+  },
+  "intervention": {
+    "id": "84ebcba8-9e89-40c8-8015-100f1a808145",
+    "action": "receptor_scales",
+    "sequence": 2,
+    "time": 0.1599999964237213,
+    "step": 16,
+    "channels": [
+      3,
+      7,
+      11
+    ],
+    "before": [
+      4,
+      0.02,
+      0.004
+    ],
+    "after": [
+      0.5,
+      0.03,
+      0.006
+    ]
+  },
+  "before_after_binary_sha256": [
+    "1d43474f20b976e2137be7867441b4b218b3b10e2df7d0697053a99050924387",
+    "1d43474f20b976e2137be7867441b4b218b3b10e2df7d0697053a99050924387"
+  ],
+  "before_after_observation_identity": [
+    "df6265c4f430bc062be32bb8ef1ea514b67f0404deb615172b04d8030bb37389",
+    "34544717ee3fa7996bb4e965537d84c498f3d2a418ca891e3aa67f2c386610ba"
+  ],
+  "after_checkpoint": {
+    "file": "checkpoints/sensing-00002-after.jls",
+    "sha256": "d96a4ea7111fa65b594bf8cb4614a490f4bb640bdf1c02eafd9e9b4476e245c8",
+    "bytes": 4107290,
+    "step": 16,
+    "time": 0.1599999964237213,
+    "accounting": {
+      "audit": {
+        "material": 11.965000023733738,
+        "potential": 24.72534429788049,
+        "work": 0.09403473432139833,
+        "heat": 1.4406210627330602,
+        "supplied": 0.00499999989187927,
+        "removed": 0,
+        "supplied_potential": 0.01999999956751708,
+        "removed_potential": 0,
+        "population": 4,
+        "completed_steps": 16,
+        "secreted": [
+          0.0007436276540176536,
+          0.03257798219291372
+        ],
+        "solubilized": [
+          0.00034183363726900817,
+          0.013030243985594384
+        ],
+        "bound": [
+          6.071748253973955e-05,
+          0.0034628255060733287
+        ],
+        "enzyme": [
+          0.0007431216921542057,
+          0.032555922829490186
+        ],
+        "inert": 4.0038442735410885e-16,
+        "finite": true
+      },
+      "material_error": 1.7763568394002505e-15,
+      "potential_error": -2.220446049250313e-16
+    }
+  },
+  "final_steps": {
+    "off": 16,
+    "sensing": 24
+  },
+  "worker_status": "stopped",
+  "browser_errors": [],
+  "before_after_viewer_navigation": "Both same-time event frames reachable in best-resolution mode; phase markers verified",
+  "cpu_checks": 204,
+  "gateway_checks": 7,
+  "report_sha256": "3b9cc761aecd262aadc37f5b73dc1c5f2bc735912ac9f5b1de0920fecd3419a9",
+  "scope": "A finite paused parameter intervention with unchanged physical arrays at application and strict checkpoint restoration. No ecological usefulness or GPU performance claim."
+}

@@ -4,8 +4,10 @@ import argparse
 from functools import partial
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import json
+import math
 from pathlib import Path
 import re
+import struct
 import tempfile
 import threading
 import time
@@ -13,8 +15,19 @@ from urllib.parse import urlsplit, unquote
 import uuid
 
 REPO = Path(__file__).resolve().parent.parent
-ACTIONS = {'describe', 'observe', 'step', 'pause', 'checkpoint', 'stop'}
+ACTIONS = {'describe', 'observe', 'step', 'pause', 'checkpoint', 'receptor_scales', 'stop'}
 BRANCHES = {'off', 'sensing', 'both'}
+
+def valid_scale(value):
+    if type(value) not in (int, float):
+        return False
+    try:
+        if not math.isfinite(value) or value <= 0:
+            return False
+        narrowed = struct.unpack('f', struct.pack('f', value))[0]
+        return math.isfinite(narrowed) and narrowed > 0
+    except (OverflowError, struct.error):
+        return False
 
 class NativeWorkbenchHandler(BaseHTTPRequestHandler):
     command_lock = threading.Lock()
@@ -60,7 +73,7 @@ class NativeWorkbenchHandler(BaseHTTPRequestHandler):
                 target = REPO / 'web/native_workbench.html'
             elif re.fullmatch(r'/branches/(off|sensing)/index.html', path):
                 target = REPO / 'web/native_observatory.html'
-            elif re.fullmatch(r'/branches/(off|sensing)/(observatory\.json|frames/[0-9]+/(frame\.json|state\.bin))', path):
+            elif re.fullmatch(r'/branches/(off|sensing)/(observatory\.json|frames/[0-9]+(?:-(?:before|after))?/(frame\.json|state\.bin))', path):
                 target = (self.root / path.lstrip('/')).resolve()
                 if not target.is_relative_to(self.root):
                     return self.reply(403, {'error': 'Observation path leaves the session'})
@@ -89,8 +102,8 @@ class NativeWorkbenchHandler(BaseHTTPRequestHandler):
             if not 0 < length <= 2048:
                 raise ValueError('Request size must be 1–2048 bytes')
             body = json.loads(self.rfile.read(length))
-            if not isinstance(body, dict) or set(body) - {'action', 'branch', 'steps'}:
-                raise ValueError('Only action, branch and steps are accepted')
+            if not isinstance(body, dict) or set(body) - {'action', 'branch', 'steps', 'scales'}:
+                raise ValueError('Only action, branch, steps and scales are accepted')
             action, branch = body.get('action'), body.get('branch', 'both')
             if action not in ACTIONS or branch not in BRANCHES:
                 raise ValueError('Unknown action or branch')
@@ -104,6 +117,12 @@ class NativeWorkbenchHandler(BaseHTTPRequestHandler):
                     raise ValueError(f'Steps must be an integer in 1–{limit}')
             elif 'steps' in body:
                 raise ValueError('Steps apply only to step')
+            if action == 'receptor_scales':
+                scales = body.get('scales')
+                if branch != 'sensing' or not isinstance(scales, list) or len(scales) != 3 or not all(valid_scale(x) for x in scales):
+                    raise ValueError('Three positive finite scales for sensing are required')
+            elif 'scales' in body:
+                raise ValueError('Scales apply only to receptor_scales')
             command = dict(body, branch=branch, id=str(uuid.uuid4()), requested_at=time.time())
             with self.command_lock:
                 previous = self.root / 'command.json'

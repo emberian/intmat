@@ -4,8 +4,8 @@ A fresh resident Julia worker owns two initially identical physical states. The
 `off` branch leaves native sensory slots16–18 zero; `sensing` uses the profile's
 explicit receptor channels/scales. This is a declared law edit at branch creation.
 The worker starts paused and never advances without a finite `step` command. It
-does not resume historical checkpoints, execute browser-supplied code, mutate a
-running law or run a background soak.
+does not resume historical checkpoints, execute browser-supplied code, load arbitrary code or mutate a
+running step or run a background soak.
 
 ```sh
 DEVICE_BACKEND=cpu WORKBENCH_SIDE=8 julia --project=. \
@@ -27,9 +27,12 @@ checkpoint `.jls` files. Public Pages can display recordings without this worker
 ```
 
 IDs contain1–80 ASCII letters, digits, underscores or hyphens. Allowed keys are
-`id`, `action`, `branch`, `steps`, `requested_at`. Branch is `off`, `sensing` or
+`id`, `action`, `branch`, `steps`, `scales`, `requested_at`. Branch is `off`, `sensing` or
 `both` (default). `steps` is a positive integer only for the step action; booleans,
-unknown fields and arbitrary expressions are rejected.
+unknown fields and arbitrary expressions are rejected. The `receptor_scales` action
+also accepts `scales`: exactly three positive finite numbers representable as
+positive finite Float32 concentrations, with `branch: "sensing"`. Other actions
+reject that field.
 
 | Action | Effect at a complete step boundary |
 |---|---|
@@ -38,6 +41,7 @@ unknown fields and arbitrary expressions are rejected.
 | `step` | Advance selected branches by the requested bounded count; publish actual observations afterward |
 | `pause` | Acknowledge paused state; all branches are already paused between finite commands |
 | `checkpoint` | Write a strict complete native checkpoint with source and content hash |
+| `receptor_scales` | Apply three half-response scales to the sensing branch, preserving physical state and recording a timed intervention |
 | `stop` | Stop accepting new work and let the worker exit |
 
 `control.json` contains `id`, `ok`, `accepted`, `status` (`completed`, `rejected`
@@ -163,3 +167,55 @@ The final isolated Julia module gate passed 179 checks; six HTTP gateway checks
 and five lightweight startup ownership/failure checks also pass.
 [Compact browser evidence](../benchmarks/2026-10-16-native-workbench-browser.json)
 keeps the actual run source pins distinct from the later startup/layout-only gates.
+
+
+## Paused receptor intervention
+
+```json
+{"id":"scale-study-1","action":"receptor_scales","branch":"sensing","scales":[0.5,0.03,0.006]}
+```
+
+The three channel identities remain fixed at creation. The miniature profile uses
+raw total, bound total and catalyst total concentrations. Each sensor response is
+`c / (scale + c)`; a smaller scale increases response at the same concentration.
+The worker validates all three values and constructs a same-type habitat wrapper
+with the existing cells, fields, inventories and controller state. One wrapper
+assignment applies the tuple. No simulation step or receptor recomputation occurs
+until the next explicit advance; recorded inputs remain those of the last step.
+
+Each application preserves `-before` and `-after` complete checkpoints and actual
+observations at the same physical time. Their physical arrays agree; effective
+parameters differ. Checkpoint `workbench` metadata and the command journal carry
+the intervention ID, step, time, old and new scales; the strict native payload
+carries the effective parameters used for restoration. A full artifact reserve is
+checked before publication. If publication fails after application, the failed
+acknowledgement and current manifest report the applied configuration; this is
+an atomic parameter tuple change, not a transactional filesystem commit.
+
+Observation identities use metadata hashes so a configuration-only change is not
+mistaken for an unchanged frame. Optional `observation_event` distinguishes same-
+time before/after frames in the existing viewer. Its stamp shows the intervention
+phase; historical exports without this field retain their existing behavior.
+
+For a **new** resident interactive session, launch-time environment variables
+`WORKBENCH_WALL_SECONDS=3600 WORKBENCH_IDLE_SECONDS=900` can keep Julia warm across
+many short commands. They change only that fresh worker's finite bounds; elapsed
+initialization counts toward wall time, and no simulation advances while idle.
+The gateway has no deadline-extension command. Existing closed runs are unchanged.
+
+
+### Exercised scale change
+
+The CPU browser gate changed `[4, .02, .004]` to `[.5, .03, .006]` at step16,
+time.16. Before/after binary observations are identical, while their metadata
+identities and effective parameters differ. Both same-time frames were reachable
+with the viewer's best-resolution mode, and the intervention phase was visible.
+An additional eight sensing steps then completed; the pair stopped at16/24 steps.
+Strict restoration retains the new parameters. The isolated Julia suite passed
+204 checks; the HTTP gateway passed7. The native algorithm and GPU kernels were
+not changed or duplicated by this adapter.
+
+[Compact intervention evidence](../benchmarks/2026-10-16-native-receptor-intervention.json)
+pins the fresh source, event, binary identities and completed checkpoint. Full
+browser data and reviewed images are in `outputs/native-workbench-receptors-review-20261016`.
+The worker is stopped; port8808 serves those preserved actual observations.

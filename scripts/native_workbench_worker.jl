@@ -21,7 +21,7 @@ const LOADED_CODE_PINS=(
     capture=bytes2hex(sha256(read(joinpath(@__DIR__,"device_habitat_capture.jl")))),
     startup=bytes2hex(sha256(read(joinpath(@__DIR__,"native_workbench_startup.jl")))))
 const FIELD_NAMES=(:free_a,:free_b,:raw_a,:raw_b,:enzyme_a,:enzyme_b,:bound_a,:bound_b,:permeability)
-const ACTIONS=("describe","observe","step","pause","checkpoint","stop")
+const ACTIONS=("describe","observe","step","pause","checkpoint","receptor_scales","stop")
 Base.@kwdef struct Limits
     max_steps::Int=4096
     max_steps_per_command::Int=256
@@ -40,6 +40,7 @@ mutable struct Branch{W,P,B,A}
     observation::Any
     checkpoint::Any
     history::Vector{Any}
+    interventions::Vector{Any}
 end
 mutable struct Session
     root::String
@@ -67,7 +68,7 @@ end
 function branches_state(s)
     Dict(name=>(step=b.process.cells.attempted_steps,time=b.world.time,paused=true,failed=b.failed,
         latest_observation=b.observation,latest_checkpoint=b.checkpoint,
-        material_parameters=b.process.habitat.parameters) for (name,b) in s.branches)
+        material_parameters=b.process.habitat.parameters,interventions=b.interventions) for (name,b) in s.branches)
 end
 function manifest!(s)
     atomic_json(joinpath(s.root,"worker.json"),(schema="interior-native-workbench-1",status=s.stop_reason===nothing ? (s.busy ? "running" : "ready") : "stopped",
@@ -87,7 +88,7 @@ function accounting(b)
     end
     (audit=v,material_error=material,potential_error=potential)
 end
-function observe!(s,name)
+function observe!(s,name;event=nothing)
     b=s.branches[name];b.failed && error("branch has a partial failed state")
     p=b.process;c=p.cells;h=p.habitat;Interior.device_cellular_status!(c)
     side=s.side;reserve!(s,2side^3*9*4+Int(c.geometry.capacity)*1024+65536)
@@ -101,7 +102,7 @@ function observe!(s,name)
         material_inputs=select(c.state.inputs)[:,2Int(c.geometry.hidden)+16:2Int(c.geometry.hidden)+18],
         catalytic_expression=select(h.arrays.expression),last_step_secretion=select(h.arrays.last_secretion))
     all(a->all(isfinite,a),values) || error("nonfinite observation")
-    folder=joinpath(s.root,"branches",name,"frames",lpad(s.sequence,5,'0'));mkdir(folder)
+    folder=joinpath(s.root,"branches",name,"frames",lpad(s.sequence,5,'0')*(event===nothing ? "" : "-"*event.phase));mkdir(folder)
     arrays=Dict{String,Any}();offset=0;binary=joinpath(folder,"state.bin")
     open(binary*".pending","w") do io
         for (key,value) in pairs(values)
@@ -117,11 +118,14 @@ function observe!(s,name)
         field_units="concentration except dimensionless permeability",field_sampling=side==c.geometry.dims[1] ? "native voxel observations" : "explicit concentration block means",
         source_sha256=hashfile(binary),source=Interior.DEVICE_CELLULAR_SOURCE_PIN,habitat_source=Interior.DEVICE_HABITAT_SOURCE_PIN,
         binary="state.bin",binary_sha256=hashfile(binary),order="column-major",endian=ENDIAN_BOM==0x04030201 ? "little" : "big",arrays=arrays,
-        secretion_note="Actual final completed step secretion, not an interval total.",accounting=audit)
+        secretion_note="Actual final completed step secretion, not an interval total.",accounting=audit,
+        material_parameters=p.habitat.parameters,intervention=event,
+        material_input_note="Receptor inputs are from the last completed step; new scales first act on the next physical step.")
     atomic_json(joinpath(folder,"frame.json"),meta)
     b.observation=(file=relpath(joinpath(folder,"frame.json"),s.root),sha256=hashfile(joinpath(folder,"frame.json")),
         step=c.attempted_steps,time=b.world.time,population=length(active),binary_bytes=filesize(binary),
-        source_sha256=meta.source_sha256,side=side,native_shape=c.geometry.dims)
+        source_sha256=hashfile(joinpath(folder,"frame.json")),side=side,native_shape=c.geometry.dims,
+        observation_event=event===nothing ? "" : event.id*"-"*event.phase)
     push!(b.history,merge(b.observation,(file=relpath(joinpath(folder,"frame.json"),joinpath(s.root,"branches",name)),)))
     observation_index!(s,name)
 end
@@ -129,14 +133,15 @@ function observation_index!(s,name)
     b=s.branches[name]
     atomic_json(joinpath(s.root,"branches",name,"observatory.json"),
         (schema="native-garden-observatory-1",run_complete=s.stop_reason!==nothing,
-         native_shape=b.process.cells.geometry.dims,physical_dt=s.dt,frames=b.history,
+         native_shape=b.process.cells.geometry.dims,physical_dt=s.dt,frames=b.history,interventions=b.interventions,
          observer=(stored_bytes=sum(x.binary_bytes for x in b.history),status="Paused between finite commands",stop_reason=s.stop_reason)))
 end
-function checkpoint!(s,name)
+function checkpoint!(s,name;event=nothing)
     b=s.branches[name];b.failed && error("branch has a partial failed state")
     reserve!(s,2resident_bytes(b.process)+2_000_000)
-    ledger=accounting(b);payload=Interior.device_habitat_checkpoint(b.world,b.process)
-    path=joinpath(s.root,"checkpoints",name*"-"*lpad(s.sequence,5,'0')*".jls")
+    ledger=accounting(b);payload=merge(Interior.device_habitat_checkpoint(b.world,b.process),
+        (workbench=(branch=name,intervention=event,interventions=copy(b.interventions)),))
+    path=joinpath(s.root,"checkpoints",name*"-"*lpad(s.sequence,5,'0')*(event===nothing ? "" : "-"*event.phase)*".jls")
     serialize(path*".pending",payload);mv(path*".pending",path)
     b.checkpoint=(file=relpath(path,s.root),sha256=hashfile(path),bytes=filesize(path),step=b.process.cells.attempted_steps,time=b.world.time,accounting=ledger)
 end
@@ -152,7 +157,7 @@ function create_session(profile,root;backend=CPU(),side=8,limits=Limits(),startu
         trial=deepcopy(cfg);name=="off"&&delete!(trial,"material_sensing")
         w,p,funding=native_constructed_garden(backend,trial)
         buffer=Interior.KernelAbstractions.zeros(backend,Float32,side^3,9)
-        bs[name]=Branch(w,p,buffer,funding.initial,false,nothing,nothing,Any[])
+        bs[name]=Branch(w,p,buffer,funding.initial,false,nothing,nothing,Any[],Any[])
     end
     # Same physiological state; receptor semantics are the sole branch-law edit.
     a=Interior.device_habitat_snapshot(bs["off"].process);b=Interior.device_habitat_snapshot(bs["sensing"].process)
@@ -166,7 +171,7 @@ function create_session(profile,root;backend=CPU(),side=8,limits=Limits(),startu
 end
 function validate_command(c,s)
     c isa AbstractDict || throw(ArgumentError("command must be an object"))
-    Set(keys(c))<=Set(("id","action","branch","steps","requested_at")) || throw(ArgumentError("unknown command fields"))
+    Set(keys(c))<=Set(("id","action","branch","steps","scales","requested_at")) || throw(ArgumentError("unknown command fields"))
     id=get(c,"id",nothing);id isa String && occursin(r"^[A-Za-z0-9_-]{1,80}$",id) || throw(ArgumentError("invalid command id"))
     action=get(c,"action",nothing);action in ACTIONS || throw(ArgumentError("unknown action"))
     branch=get(c,"branch","both");branch in ("off","sensing","both") || throw(ArgumentError("unknown branch"))
@@ -175,7 +180,48 @@ function validate_command(c,s)
     else
         haskey(c,"steps") && throw(ArgumentError("steps only applies to step"))
     end
+    if action=="receptor_scales"
+        branch=="sensing" || throw(ArgumentError("receptor scales apply only to sensing"))
+        receptor_scales(get(c,"scales",nothing))
+    else
+        haskey(c,"scales") && throw(ArgumentError("scales only applies to receptor_scales"))
+    end
     id,action,branch=="both" ? ["off","sensing"] : [branch]
+end
+function receptor_scales(values)
+    values isa AbstractVector && length(values)==3 || throw(ArgumentError("exactly three receptor scales required"))
+    all(x->x isa Real && !(x isa Bool) && isfinite(x) && x>0,values) || throw(ArgumentError("positive finite numeric receptor scales required"))
+    scales=Tuple(Float32.(values))
+    all(x->isfinite(x)&&x>0,scales) || throw(ArgumentError("receptor scales must remain positive and finite in Float32"))
+    scales
+end
+function receptor_process(b,scales)
+    p=b.process;h=p.habitat;c=p.cells
+    hasproperty(h.parameters,:material_scales) || error("branch lacks material receptors")
+    q=merge(h.parameters,(material_scales=scales,))
+    Interior.dh_validate_parameters(q,h.feedstock.parameters)
+    argument=Interior.device_habitat_argument(c,h.arrays,q)
+    ownership=merge(h.ownership,(parameters=q,argument=argument))
+    habitat=typeof(h)(c,h.arrays,h.feedstock,q,argument,ownership)
+    candidate=typeof(p)(c,habitat)
+    Interior.validate(b.world,candidate)
+    candidate
+end
+function intervene_receptors!(s,id,scales)
+    name="sensing";b=s.branches[name];b.failed&&error("branch has a partial failed state")
+    candidate=receptor_process(b,scales)
+    candidate.habitat.parameters.material_channels==b.process.habitat.parameters.material_channels || error("fixed receptor channels changed")
+    reserve!(s,4resident_bytes(b.process)+4_000_000+4s.side^3*9*4)
+    event=(id=id,action="receptor_scales",sequence=s.sequence,time=b.world.time,step=b.process.cells.attempted_steps,
+        channels=candidate.habitat.parameters.material_channels,before=b.process.habitat.parameters.material_scales,after=scales)
+    before=merge(event,(phase="before",));after=merge(event,(phase="after",))
+    checkpoint!(s,name;event=before);observe!(s,name;event=before)
+    before_checkpoint=b.checkpoint;before_observation=b.observation
+    # Single host-wrapper swap; physical arrays, cells, and controller state are shared unchanged.
+    b.process=candidate
+    push!(b.interventions,merge(event,(before_checkpoint=before_checkpoint,before_observation=before_observation)))
+    manifest!(s)
+    checkpoint!(s,name;event=after);observe!(s,name;event=after)
 end
 function advance_one!(b,dt)
     try
@@ -214,6 +260,9 @@ function process_command!(s,c)
                 advance_one!(s.branches[name],s.dt)
             end
             for name in names;observe!(s,name);end
+        elseif action=="receptor_scales"
+            accepted=true;s.busy=true;manifest!(s)
+            intervene_receptors!(s,id,receptor_scales(c["scales"]))
         elseif action=="observe"
             accepted=true;
             for name in names;observe!(s,name);end
@@ -266,7 +315,9 @@ if abspath(PROGRAM_FILE)==@__FILE__
     try
         include("device_cellular_setup.jl")
         session=NativeWorkbench.create_session(ARGS[1],ARGS[2];backend,
-            side=parse(Int,get(ENV,"WORKBENCH_SIDE","8")),startup_token=NATIVE_WORKBENCH_STARTUP_TOKEN)
+            side=parse(Int,get(ENV,"WORKBENCH_SIDE","8")),startup_token=NATIVE_WORKBENCH_STARTUP_TOKEN,
+            limits=NativeWorkbench.Limits(wall_seconds=parse(Float64,get(ENV,"WORKBENCH_WALL_SECONDS","900")),
+                idle_seconds=parse(Float64,get(ENV,"WORKBENCH_IDLE_SECONDS","120"))))
         NativeWorkbench.serve!(session)
     catch e
         NativeWorkbenchStartup.failed(ARGS[2],NATIVE_WORKBENCH_STARTUP_TOKEN,e)
