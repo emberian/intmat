@@ -1,0 +1,318 @@
+{
+    "description": "bounded complete physical brine step; Float64 chemicals unchanged; timings include validations and clocks, exclude field download/file IO",
+    "runtime": {
+        "julia": "1.12.4",
+        "kernel": "Linux",
+        "architecture": "x86_64",
+        "launch_threads": 2,
+        "backend": "amd",
+        "device": "HIPDevice(id=1, name=AMD Radeon RX 6750 XT, gcn_arch=gfx1030)",
+        "backend_version": "2.8.0",
+        "actual_device_optlevel": 1,
+        "project_sha256": "ea2724f6aee424afa18192edf284c4121c9b9aba20bdf30d709b4156f0318435",
+        "manifest_sha256": "90e74321608d7e6b2e14ea64ab593d6e8856bf1d7883d1d66665f663334b45d0"
+    },
+    "source": {
+        "src/implicit_phase.jl": "4771f39417af155e1efa59880e8448d7a9d74adf81c4d3bf280be5cf5402987c",
+        "studies/implicit_phase_runtime.jl": "a6f772ee39b66cf1d5e12742ff9a94a3a0c187a99fdae113d377be14b80baf75",
+        "studies/brine_memory.jl": "5d8ec28796fe1ebae2438152db6ec8c5802a32ff64d88a205d9c86c84ae597bd",
+        "studies/compact_brine_runtime.jl": "9b741ca81857f9f09532267b4fee45380669fbd7b85a584a0ac557bb1aa258a5",
+        "src/phase.jl": "7233bbdcb4d8ba0278cef6ad55fdf62d234e93613ff86628183aae8e240dd252",
+        "src/core.jl": "b4302b90eaeba213360e8a15ce8b7e4cb4c491606657e3e500d2fb8507753a52",
+        "src/compartments.jl": "b0e82216232acde9f4692d0053be43887378e4a80b07f76ab61dd19f3de34cea"
+    },
+    "script_sha": "ca47cac5f9eaef2d0e4d540b2b733f78a6f0b924b549ee2fe692da84818c8f8a",
+    "rows": [
+        {
+            "n": 16,
+            "errors": {
+                "interface": 0,
+                "mineral": 0,
+                "permeability": 0,
+                "phi": 0,
+                "forcing": 0,
+                "b": 0,
+                "a": 0
+            },
+            "final_errors": {
+                "interface": 0,
+                "mineral": 0,
+                "permeability": 0,
+                "phi": 0,
+                "forcing": 0,
+                "b": 0,
+                "a": 0
+            },
+            "restart": {
+                "interface": 0,
+                "mineral": 0,
+                "permeability": 0,
+                "phi": 0,
+                "forcing": 0,
+                "b": 0,
+                "a": 0
+            },
+            "immediate_restart": {
+                "interface": 0,
+                "mineral": 0,
+                "permeability": 0,
+                "phi": 0,
+                "forcing": 0,
+                "b": 0,
+                "a": 0
+            },
+            "mass": 0,
+            "phase_error": -1.5776424611146922e-10,
+            "ranges": {
+                "phi": [
+                    -0.38442641,
+                    0.41669345
+                ],
+                "a": [
+                    9.026096747053391e-24,
+                    1.1999353557985906
+                ],
+                "b": [
+                    3.0988352062396335e-5,
+                    0.8999999761581421
+                ],
+                "mineral": [
+                    0,
+                    0
+                ]
+            },
+            "timings": [
+                {
+                    "compact": false,
+                    "seconds_per_step": 0.0009105933999999999
+                },
+                {
+                    "compact": true,
+                    "seconds_per_step": 0.0003207018
+                },
+                {
+                    "compact": false,
+                    "seconds_per_step": 0.00040416560000000005
+                },
+                {
+                    "compact": true,
+                    "seconds_per_step": 0.0002811234
+                },
+                {
+                    "compact": false,
+                    "seconds_per_step": 0.00040304720000000003
+                },
+                {
+                    "compact": true,
+                    "seconds_per_step": 0.0002786668
+                }
+            ],
+            "memory": {
+                "n": 16,
+                "owned_bytes": 270664,
+                "native_active_bytes": 344392,
+                "full_four_field_bytes": 114688
+            },
+            "runtime_memory": {
+                "forward_buffer": 36864,
+                "forward_workspace": 0,
+                "inverse_buffer": 36864,
+                "inverse_workspace": 0
+            }
+        },
+        {
+            "n": 32,
+            "errors": {
+                "interface": 0,
+                "mineral": 0,
+                "permeability": 0,
+                "phi": 0,
+                "forcing": 0,
+                "b": 0,
+                "a": 0
+            },
+            "final_errors": {
+                "interface": 0,
+                "mineral": 0,
+                "permeability": 0,
+                "phi": 0,
+                "forcing": 0,
+                "b": 0,
+                "a": 0
+            },
+            "restart": {
+                "interface": 0,
+                "mineral": 0,
+                "permeability": 0,
+                "phi": 0,
+                "forcing": 0,
+                "b": 0,
+                "a": 0
+            },
+            "immediate_restart": {
+                "interface": 0,
+                "mineral": 0,
+                "permeability": 0,
+                "phi": 0,
+                "forcing": 0,
+                "b": 0,
+                "a": 0
+            },
+            "mass": 1.193355146561035e-16,
+            "phase_error": -1.2075218602802806e-10,
+            "ranges": {
+                "phi": [
+                    -0.41564214,
+                    0.4335333
+                ],
+                "a": [
+                    2.4798817307274183e-32,
+                    1.1999799652145748
+                ],
+                "b": [
+                    9.452318471096083e-6,
+                    0.8999999761581421
+                ],
+                "mineral": [
+                    0,
+                    0
+                ]
+            },
+            "timings": [
+                {
+                    "compact": false,
+                    "seconds_per_step": 0.0005420406
+                },
+                {
+                    "compact": true,
+                    "seconds_per_step": 0.00042247860000000004
+                },
+                {
+                    "compact": false,
+                    "seconds_per_step": 0.0005444024000000001
+                },
+                {
+                    "compact": true,
+                    "seconds_per_step": 0.0004227822
+                },
+                {
+                    "compact": false,
+                    "seconds_per_step": 0.0005445140000000001
+                },
+                {
+                    "compact": true,
+                    "seconds_per_step": 0.00042104999999999996
+                }
+            ],
+            "memory": {
+                "n": 32,
+                "owned_bytes": 2130568,
+                "native_active_bytes": 2687624,
+                "full_four_field_bytes": 917504
+            },
+            "runtime_memory": {
+                "forward_buffer": 278528,
+                "forward_workspace": 0,
+                "inverse_buffer": 278528,
+                "inverse_workspace": 0
+            }
+        },
+        {
+            "n": 96,
+            "errors": {
+                "interface": 0,
+                "mineral": 0,
+                "permeability": 0,
+                "phi": 0,
+                "forcing": 0,
+                "b": 0,
+                "a": 0
+            },
+            "final_errors": {
+                "interface": 0,
+                "mineral": 0,
+                "permeability": 0,
+                "phi": 0,
+                "forcing": 0,
+                "b": 0,
+                "a": 0
+            },
+            "restart": {
+                "interface": 0,
+                "mineral": 0,
+                "permeability": 0,
+                "phi": 0,
+                "forcing": 0,
+                "b": 0,
+                "a": 0
+            },
+            "immediate_restart": {
+                "interface": 0,
+                "mineral": 0,
+                "permeability": 0,
+                "phi": 0,
+                "forcing": 0,
+                "b": 0,
+                "a": 0
+            },
+            "mass": 1.4143468458533185e-16,
+            "phase_error": 8.537324950959478e-12,
+            "ranges": {
+                "phi": [
+                    -0.4195271,
+                    0.4411806
+                ],
+                "a": [
+                    7.50548001996229e-44,
+                    1.199997581394262
+                ],
+                "b": [
+                    1.0466768877042532e-6,
+                    0.8999999761581421
+                ],
+                "mineral": [
+                    0,
+                    0
+                ]
+            },
+            "timings": [
+                {
+                    "compact": false,
+                    "seconds_per_step": 0.0024530916
+                },
+                {
+                    "compact": true,
+                    "seconds_per_step": 0.002187714
+                },
+                {
+                    "compact": false,
+                    "seconds_per_step": 0.002474835
+                },
+                {
+                    "compact": true,
+                    "seconds_per_step": 0.0021811212
+                },
+                {
+                    "compact": false,
+                    "seconds_per_step": 0.0024595415999999998
+                },
+                {
+                    "compact": true,
+                    "seconds_per_step": 0.0021777316000000002
+                }
+            ],
+            "memory": {
+                "n": 96,
+                "owned_bytes": 56919944,
+                "native_active_bytes": 71370632,
+                "full_four_field_bytes": 24772608
+            },
+            "runtime_memory": {
+                "forward_buffer": 7225344,
+                "forward_workspace": 0,
+                "inverse_buffer": 7225344,
+                "inverse_workspace": 0
+            }
+        }
+    ]
+}

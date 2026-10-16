@@ -80,7 +80,9 @@ struct DeviceImplicitPhaseRuntime{F,R,L} <: AbstractImplicitPhaseRuntime
     normalization::Float64
     layout::L
 end
-function ImplicitPhaseRuntime(p::ImplicitPhaseSeparation)
+ImplicitPhaseRuntime(p::ImplicitPhaseSeparation)=implicit_phase_runtime(p)
+# Shared resource factory also supports explicitly separate experimental states.
+function implicit_phase_runtime(p)
     backend=KernelAbstractions.get_backend(p.real_buffer)
     if backend isa CPU
         forward=FFTW.plan_rfft(p.real_buffer;flags=FFTW.ESTIMATE)

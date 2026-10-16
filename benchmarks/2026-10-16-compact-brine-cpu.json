@@ -1,0 +1,210 @@
+{
+  "description": "bounded complete physical brine step; Float64 chemicals unchanged; timings include validations and clocks, exclude field download/file IO",
+  "rows": [
+    {
+      "n": 16,
+      "errors": {
+        "interface": 0,
+        "mineral": 0,
+        "permeability": 0,
+        "phi": 0,
+        "forcing": 0,
+        "b": 0,
+        "a": 0
+      },
+      "final_errors": {
+        "interface": 0,
+        "mineral": 0,
+        "permeability": 0,
+        "phi": 0,
+        "forcing": 0,
+        "b": 0,
+        "a": 0
+      },
+      "restart": {
+        "interface": 0,
+        "mineral": 0,
+        "permeability": 0,
+        "phi": 0,
+        "forcing": 0,
+        "b": 0,
+        "a": 0
+      },
+      "mass": 1.193355844285022e-16,
+      "timings": [
+        {
+          "compact": false,
+          "seconds_per_step": 0.0007513416
+        },
+        {
+          "compact": true,
+          "seconds_per_step": 0.0005201082
+        },
+        {
+          "compact": false,
+          "seconds_per_step": 0.0005763082
+        },
+        {
+          "compact": true,
+          "seconds_per_step": 0.000644375
+        },
+        {
+          "compact": false,
+          "seconds_per_step": 0.0006955
+        },
+        {
+          "compact": true,
+          "seconds_per_step": 0.0006368418
+        }
+      ],
+      "memory": {
+        "n": 16,
+        "owned_bytes": 270664,
+        "native_active_bytes": 344392,
+        "full_four_field_bytes": 114688
+      }
+    },
+    {
+      "n": 32,
+      "errors": {
+        "interface": 0,
+        "mineral": 0,
+        "permeability": 0,
+        "phi": 0,
+        "forcing": 0,
+        "b": 0,
+        "a": 0
+      },
+      "final_errors": {
+        "interface": 0,
+        "mineral": 0,
+        "permeability": 0,
+        "phi": 0,
+        "forcing": 0,
+        "b": 0,
+        "a": 0
+      },
+      "restart": {
+        "interface": 0,
+        "mineral": 0,
+        "permeability": 0,
+        "phi": 0,
+        "forcing": 0,
+        "b": 0,
+        "a": 0
+      },
+      "mass": 2.38671029312207e-16,
+      "timings": [
+        {
+          "compact": false,
+          "seconds_per_step": 0.0026787834
+        },
+        {
+          "compact": true,
+          "seconds_per_step": 0.0026717166
+        },
+        {
+          "compact": false,
+          "seconds_per_step": 0.0026274918000000003
+        },
+        {
+          "compact": true,
+          "seconds_per_step": 0.0025355
+        },
+        {
+          "compact": false,
+          "seconds_per_step": 0.0027245
+        },
+        {
+          "compact": true,
+          "seconds_per_step": 0.002625275
+        }
+      ],
+      "memory": {
+        "n": 32,
+        "owned_bytes": 2130568,
+        "native_active_bytes": 2687624,
+        "full_four_field_bytes": 917504
+      }
+    },
+    {
+      "n": 96,
+      "errors": {
+        "interface": 0,
+        "mineral": 0,
+        "permeability": 0,
+        "phi": 0,
+        "forcing": 0,
+        "b": 0,
+        "a": 0
+      },
+      "final_errors": {
+        "interface": 0,
+        "mineral": 0,
+        "permeability": 0,
+        "phi": 0,
+        "forcing": 0,
+        "b": 0,
+        "a": 0
+      },
+      "restart": {
+        "interface": 0,
+        "mineral": 0,
+        "permeability": 0,
+        "phi": 0,
+        "forcing": 0,
+        "b": 0,
+        "a": 0
+      },
+      "mass": 1.4143468458533185e-16,
+      "timings": [
+        {
+          "compact": false,
+          "seconds_per_step": 0.0668187
+        },
+        {
+          "compact": true,
+          "seconds_per_step": 0.0596949084
+        },
+        {
+          "compact": false,
+          "seconds_per_step": 0.065545675
+        },
+        {
+          "compact": true,
+          "seconds_per_step": 0.0601379
+        },
+        {
+          "compact": false,
+          "seconds_per_step": 0.0667061166
+        },
+        {
+          "compact": true,
+          "seconds_per_step": 0.0592675334
+        }
+      ],
+      "memory": {
+        "n": 96,
+        "owned_bytes": 56919944,
+        "native_active_bytes": 71370632,
+        "full_four_field_bytes": 24772608
+      }
+    }
+  ],
+  "environment": {
+    "backend": "CPU",
+    "julia": "1.12.4",
+    "threads": 2,
+    "machine": "arm64",
+    "complete_step": true,
+    "scope": "local bounded gate, not native GPU performance"
+  },
+  "source_sha256": {
+    "src/phase.jl": "7233bbdcb4d8ba0278cef6ad55fdf62d234e93613ff86628183aae8e240dd252",
+    "src/implicit_phase.jl": "4771f39417af155e1efa59880e8448d7a9d74adf81c4d3bf280be5cf5402987c",
+    "src/compartments.jl": "b0e82216232acde9f4692d0053be43887378e4a80b07f76ab61dd19f3de34cea",
+    "studies/brine_memory.jl": "5d8ec28796fe1ebae2438152db6ec8c5802a32ff64d88a205d9c86c84ae597bd",
+    "studies/compact_brine_runtime.jl": "7d5340c2395b98b810b460f99f9c77eab56428aeb424188249a77a90c2384b1b",
+    "scripts/probe_compact_brine.jl": "092ab021530bd221e6b6f2b093210c92caa4067ecc8793e8600bc4fed39af374"
+  }
+}

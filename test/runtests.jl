@@ -135,6 +135,10 @@ module ImplicitPhaseRuntimeTests
 include("implicit_phase_runtime.jl")
 end
 
+module CompactBrineRuntimeTests
+include("compact_brine_runtime.jl")
+end
+
 module NativeConstructionLagTests
 include("native_construction_lag.jl")
 end
@@ -169,4 +173,8 @@ end
 
 module NativeBrineProducerPathTests
 include("native_brine_producer_paths.jl")
+end
+
+module NativeRampConstructionTests
+include("native_ramp_construction.jl")
 end

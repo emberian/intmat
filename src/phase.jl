@@ -59,11 +59,8 @@ end
     q=q<1 ? dims[axis] : (q>dims[axis] ? 1 : q)
     axis==1 ? (q,pos[2],pos[3]) : axis==2 ? (pos[1],q,pos[3]) : (pos[1],pos[2],q)
 end
-@kernel function phase_observe_kernel!(mu,interface,phi,h,bulk,kappa)
-    i,j,k=@index(Global,NTuple)
-    u=phi[i,j,k]
-    mu[i,j,k]=bulk*(u*u*u-u)-kappa*laplacian(phi,i,j,k,h)
-    grad2=0f0; pos=(i,j,k); dims=size(phi)
+@inline function phase_interface_value(phi,pos,h)
+    grad2=0f0; dims=size(phi)
     for axis in 1:3
         if dims[axis]>1
             plus=phase_neighbor(pos,axis,1,dims); minus=phase_neighbor(pos,axis,-1,dims)
@@ -71,7 +68,13 @@ end
             grad2+=grad*grad
         end
     end
-    interface[i,j,k]=sqrt(grad2)
+    sqrt(grad2)
+end
+@kernel function phase_observe_kernel!(mu,interface,phi,h,bulk,kappa)
+    i,j,k=@index(Global,NTuple)
+    u=phi[i,j,k]
+    mu[i,j,k]=bulk*(u*u*u-u)-kappa*laplacian(phi,i,j,k,h)
+    interface[i,j,k]=phase_interface_value(phi,(i,j,k),h)
 end
 function phase_observe!(w,p)
     launch!(w,phase_observe_kernel!,p.chemical_potential,p.interface,p.phi,w.grid.spacing,p.bulk,p.kappa)
