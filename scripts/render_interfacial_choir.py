@@ -9,6 +9,7 @@ from mathutils import Vector
 p=argparse.ArgumentParser();p.add_argument('run',type=Path);p.add_argument('output',type=Path)
 p.add_argument('--device',choices=('CPU','METAL'),default='METAL');p.add_argument('--image-name',default='final.png');p.add_argument('--steps',default='all');p.add_argument('--size',type=int,default=720);p.add_argument('--samples',type=int,default=32)
 p.add_argument('--solid-iso',type=float,default=.16);p.add_argument('--core-iso',type=float,default=.60);p.add_argument('--pressure-iso',type=float,default=.12)
+p.add_argument('--skin-transmission',type=float,default=.9);p.add_argument('--skin-roughness',type=float,default=.14)
 p.add_argument('--no-wave',action='store_true');p.add_argument('--save-scene',action='store_true');p.add_argument('--orbit',type=float,default=.35);p.add_argument('--elevation',type=float,default=.32);p.add_argument('--distance',type=float,default=4.0)
 renderer_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
 a=p.parse_args(sys.argv[sys.argv.index('--')+1:]);a.output.mkdir(parents=True,exist_ok=True)
@@ -40,7 +41,7 @@ def material(name,color,rough,metal=0,transmission=0,ior=1.46):
     m=bpy.data.materials.new(name);m.use_nodes=True;s=m.node_tree.nodes.get('Principled BSDF')
     for key,value in [('Base Color',color),('Roughness',rough),('Metallic',metal),('Transmission Weight',transmission),('IOR',ior),('Coat Weight',.3),('Coat Roughness',.06)]:s.inputs[key].default_value=value
     return m,s
-shell,ss=material('Pressure-tuned nacre',(.25,.65,.63,1),.14,0,.9,1.34)
+shell,ss=material('Pressure-tuned nacre',(.25,.65,.63,1),a.skin_roughness,0,a.skin_transmission,1.34)
 # Film thickness and color depend on saved fields sampled at the actual surface.
 att=shell.node_tree.nodes.new('ShaderNodeAttribute');att.attribute_name='material_activity'
 ramp=shell.node_tree.nodes.new('ShaderNodeValToRGB');ramp.color_ramp.elements.remove(ramp.color_ramp.elements[1])

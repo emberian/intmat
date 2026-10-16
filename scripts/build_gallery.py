@@ -44,6 +44,7 @@ names['dense-128']=('Dense choir / 128³','A larger recorded field','A complete 
 names['bigruns/dense-128-study']=names['dense-128']
 names['art/amber-interior']=('Amber window','Ribbons inside amber','Pale phase-rich ribbons fold through a transparent amber matrix. The photograph follows a selected contour inside a recorded three-dimensional demixed material.')
 names['art/metabolic-gel']=('Metabolic gel','A thin living section','Phase boundaries, film, and inhabitants appear inside a translucent gel section. This material view follows a recorded two-dimensional metabolic arena.')
+names['collection-20261015/fault-remembers']=('The fault remembers','A current opens a fault','Seven bronze laminae pull apart into curled plates and narrow bridges. Current follows the surviving bonds; its accumulated dose weakens the paths that carry the next load, leaving a fractured record in copper and oxide.')
 items=[]
 directories=list(root.iterdir())+[d for d in [root/'writing'/'scaffold',root/'writing'/'living',root/'bigruns'/'dense-128-study',root/'art'/'amber-interior',root/'art'/'metabolic-gel'] if d.is_dir()]
 directories=sorted(set(directories + [p.parent for pattern in ('collection-*/*/run.json','refinement-*/*/run.json') for p in root.glob(pattern)]))

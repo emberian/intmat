@@ -42,6 +42,27 @@ builds a bounded warm Julia native worker/API for branch/step/observe. Root owns
 workbench integration and further capability comparisons. No readout-plasticity
 law has yet been integrated into production. All old long runs remain completed.
 
+### Second integration — instruments and rebuilt interiors
+
+The gallery now contains69 specimens at148.19MB under the unchanged160MB cap.
+Lossless embedded-viewer storage recovered11.37MB; all12.54million decoded voxel
+bytes and four rendered framebuffers match the originals. This improves storage,
+not compressed HTTP transfer speed (which increased0.71%). Both desktop controls
+and mobile layouts were checked. `What the bell kept` adds actual three-time
+recurrent/acoustic interior exploration; `The fault remembers` adds seven torn
+conductive laminae, with accumulated Joule dose influencing subsequent rupture.
+Its photographed geometry comes from surviving faces and deformed bonds; the
+electrical threshold law is exploratory and externally powered.
+
+Current bounded development: a Julia command/ack worker for paired native branches
+has CPU protocol and AMD execution gates; root gateway/UI integration is in flight.
+Action-credit research exposed a proportional-depletion endpoint defect; a narrow
+representable-donor repair has120038 boundary assertions and a passing F64 coupled
+CPU/AMD gate. F32 potential closure still fails the study's chosen threshold and
+is recorded separately. Learning tests are expanding across founder banks before
+any generalization claim. LocalMetal is assigned to384³ interacting thermal
+writing; hboxGPU to the bounded learning gate. No soaks are running or planned.
+
 ## Current work — accounting and dynamical capabilities
 
 2026-10-15 evening: user chose architecture and feedback studies before another

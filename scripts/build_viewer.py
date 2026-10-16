@@ -6,6 +6,7 @@ frames retain comparable values. Julia's x-fastest storage maps directly to
 WebGL's x-fastest texture layout. No simulation is run in the browser.
 """
 import argparse, array, base64, html as html_escape, json, math, pathlib, sys
+from viewer_storage import compress_html
 try:
     import tomllib
 except ImportError:
@@ -144,4 +145,4 @@ if streamed:
         html=html.replace('An active medium leaves a material trace. Cyan emphasizes spatial changes in activity inside that accumulated amber. Scrub the recording to watch the balance change.','Amber shows the positive phase; cyan emphasizes gradients in the recorded interface field. Slices show the signed composition and other selected fields directly.')
         html=html.replace(html_escape.escape(run['model'])+' Scrub the recording to inspect its progression.','Amber shows the positive phase; cyan emphasizes gradients in the recorded interface field. Slices show the signed composition and other selected fields directly.')
 output=root/'viewer.html';temporary=root/'viewer.html.tmp'
-temporary.write_text(html.replace('__DATA__',data));temporary.replace(output);print(output)
+temporary.write_text(compress_html(html.replace('__DATA__',data)));temporary.replace(output);print(output)

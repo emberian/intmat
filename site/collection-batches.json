@@ -548,5 +548,28 @@
       "render-job.json",
       "run.json"
     ]
+  },
+  {
+    "id": "collection-20261015/resonant-reliquary",
+    "source_image_sha256": "3361c3e51b6d2a160a7db479dda3724d8af83614d190bf2b248017a5e524a317",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json",
+      "viewer.html"
+    ]
+  },
+  {
+    "id": "collection-20261015/fault-remembers",
+    "source_image_sha256": "a5fc730cc149de020709e71fcb86f124c7530cdf085150deabb6043f3e38391c",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
   }
 ]

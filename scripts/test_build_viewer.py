@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Small exact-byte fixtures for the legacy and streamed viewer adapters."""
 import array,base64,json,pathlib,re,subprocess,sys,tempfile,unittest
+from viewer_storage import unpack
 SCRIPT=pathlib.Path(__file__).with_name('build_viewer.py')
 class AdapterTests(unittest.TestCase):
     def setUp(self):
@@ -16,6 +17,7 @@ class AdapterTests(unittest.TestCase):
         self.assertEqual(proc.returncode,0,proc.stderr)
         text=(self.root/'viewer.html').read_text()
         data=json.loads(re.search(r'<script id="recording" type="application/json">(.*?)</script>',text,re.S).group(1))
+        data['fields']=unpack(data)
         return text,data
     def fixture(self,kind='dense'):
         capture=['phi','interface','deposit','activity','nutrient','chemical_potential'] if kind=='phase' else ['deposit','activity','nutrient']

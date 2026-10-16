@@ -1,0 +1,62 @@
+{
+  "title": "The fault remembers",
+  "steps": 1450,
+  "dt": 0.0007,
+  "seed": 7126,
+  "nodes": 5670,
+  "bonds": 63209,
+  "broken": 6383,
+  "maxdose": 0.04419005268498425,
+  "elapsed": 64.017179167,
+  "energy": {
+    "elastic": 0.5282959716403658,
+    "kinetic": 0.20938168242833066,
+    "damage": 0.7244900350932072,
+    "damping": 2.397502174193253,
+    "external_work": 3.856183637306161,
+    "total": 3.8596698633551565
+  },
+  "sourcehash": "e847fe28aad71edf59a623902ecda525c5b6becd515faec2b41ecfc13abff1fa",
+  "description": "A seven-lamina 3D spring material driven in tension and shear. Surviving bonds conduct a relaxed voltage field; Joule dissipation accumulates dose and lowers tensile thresholds. Broken bonds stop conducting. Membrane faces exist only where their perimeter bonds survive. This is an exploratory art law, not calibrated electromechanics.",
+  "id": "fault-remembers",
+  "family": "mechanics",
+  "time": 1.015,
+  "params": {
+    "nodes_shape": [
+      30,
+      27,
+      7
+    ],
+    "extent": [
+      1.65,
+      1.7,
+      0.65
+    ],
+    "stiffness": 6.0,
+    "mass": 0.008,
+    "damping": 5.0,
+    "failure_strain": 0.2,
+    "stretch_rate": 0.28,
+    "shear_rate": 0.21,
+    "jitter": 0.17,
+    "dt": 0.0007,
+    "steps": 1450,
+    "voltage_relaxation_sweeps": 24,
+    "electrical_cadence": 10,
+    "dose_weakening_gain": 8.0,
+    "interlayer_stiffness_factor": 0.2,
+    "interlayer_conductance_factor": 0.045,
+    "out_of_plane_load_amplitude": 0.014
+  },
+  "optical_transfer": "Deformed surviving lamina face complex and actual through-thickness ties. Dose/strain drive copper oxide optics; finite sheet thickness is staging.",
+  "publication": {
+    "source_image_sha256": "a5fc730cc149de020709e71fcb86f124c7530cdf085150deabb6043f3e38391c",
+    "webp_sha256": "bdbb3634a8bf90da0dc270dd8625f20ea660d692b720b5b54b2bd45d1e66051a",
+    "quality": 90,
+    "width": 1400,
+    "samples": 64,
+    "native_shape": [],
+    "original_retained": true,
+    "reviewed_by": "Codex root visual review, 2026-10-16"
+  }
+}

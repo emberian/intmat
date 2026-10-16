@@ -1,0 +1,61 @@
+{
+  "renderer_sha256": "45883e229bf3709bae30db651e7291fdce91253adbee80c8ef401461db51f068",
+  "settings": {
+    "run": "resonant-reliquary",
+    "output": "resonant-reliquary",
+    "device": "METAL",
+    "image_name": "final.png",
+    "steps": "480",
+    "size": 1600,
+    "samples": 96,
+    "solid_iso": 0.12,
+    "core_iso": 0.4,
+    "pressure_iso": 0.12,
+    "skin_transmission": 0.12,
+    "skin_roughness": 0.3,
+    "no_wave": true,
+    "save_scene": true,
+    "orbit": 0.14,
+    "elevation": 0.22,
+    "distance": 3.75
+  },
+  "source": {
+    "shape": [
+      128,
+      128,
+      128
+    ],
+    "step": 480,
+    "time": 12.000000178813934,
+    "run_sha256": "9eb58230548edcaad7b63c041c101c8f412dc20094a891a8556e7830632861ed"
+  },
+  "meshes": [
+    {
+      "vertices": 139995,
+      "faces": 150555,
+      "isovalue": 0.12,
+      "field": "solid / translucent skin"
+    },
+    {
+      "vertices": 72262,
+      "faces": 76436,
+      "isovalue": 0.4,
+      "field": "solid / dense core"
+    }
+  ],
+  "camera": {
+    "location": [
+      0.5106741189956665,
+      -3.623809814453125,
+      0.8183611035346985
+    ],
+    "lens_mm": 55,
+    "fixed": true
+  },
+  "interpretation": {
+    "skin": "Saved solid isosurface; artistic translucent nacre; color from saved recurrent activity; thin-film thickness 380+170*tanh(4*pressure) nm is optical mapping, not simulated film thickness.",
+    "core": "Higher solid isosurface with chosen warm metallic BSDF.",
+    "wave": "Positive saved pressure isosurface with radius .86 / y .58 display clipping, cubic opacity fade over the outer .07 radius / .05 y widths; refractive optical surrogate, not a material phase.",
+    "lighting": "Fixed area lights; no generated texture or displacement."
+  }
+}

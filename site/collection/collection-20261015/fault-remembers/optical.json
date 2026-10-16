@@ -1,0 +1,7 @@
+{
+  "surviving_faces": 3059,
+  "missing_faces": 2219,
+  "mapping": "Surviving deformed perimeter bonds define lamina faces. Dose and measured strain color the optical conductor; surviving axial ties are explicit. Plate thickness is optical staging.",
+  "size": 1400,
+  "samples": 64
+}

@@ -1,0 +1,144 @@
+{
+  "initial_material_mass": 118817.35794625833,
+  "id": "resonant-reliquary",
+  "title": "What the bell kept",
+  "description": "Three broken mineral bells share a pressure field. Their stored oscillations write and dissolve the finite material between fissures, leaving nested nacre and warm metal around an absent centre.",
+  "family": "interfaces",
+  "shape": [
+    128,
+    128,
+    128
+  ],
+  "extent": [
+    64,
+    64,
+    64
+  ],
+  "time": 24.00000035762787,
+  "steps": 960,
+  "dt": 0.025,
+  "elapsed_seconds": 55.338929875,
+  "source_sha256": {
+    "studies/interfacial_choir.jl": "52ca84d44873a708fd60d6ea0d9f6b5cbb590a47e5d15b9b2c30d3ceac40f543",
+    "src/acoustics.jl": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+    "src/recurrent_material.jl": "e9457d0d6e31f74950fa4be8ef84b138b020c0de7fc4b95c9a7f3cd5db148347",
+    "studies/resonant_reliquary.jl": "5cc5b3f817c394d25f0e7191aad0cbbb3783b3b6258835b07ac84ea2e328e969"
+  },
+  "params": {
+    "pressure_coupling": 0.75,
+    "resolution": 128,
+    "steps": 960,
+    "capture_every": 240,
+    "id": "resonant-reliquary",
+    "title": "What the bell kept",
+    "dt": 0.025,
+    "description": "Three broken mineral bells share a pressure field. Their stored oscillations write and dissolve the finite material between fissures, leaving nested nacre and warm metal around an absent centre."
+  },
+  "history": [
+    {
+      "step": 0,
+      "time": 0,
+      "material_error": 0,
+      "solid_mean": 0.02762243,
+      "solid_max": 0.68987495,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        0,
+        1.6870395
+      ],
+      "finite": true
+    },
+    {
+      "step": 240,
+      "time": 6.000000089406967,
+      "material_error": 0.00011002010433003306,
+      "solid_mean": 0.028046643,
+      "solid_max": 0.86116767,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -1.2403753,
+        0.31340718
+      ],
+      "finite": true
+    },
+    {
+      "step": 480,
+      "time": 12.000000178813934,
+      "material_error": 7.463608926627785e-05,
+      "solid_mean": 0.027793212,
+      "solid_max": 0.9338296,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -0.97380453,
+        1.6375277
+      ],
+      "finite": true
+    },
+    {
+      "step": 720,
+      "time": 18.0000002682209,
+      "material_error": 5.7602213928475976e-05,
+      "solid_mean": 0.029052448,
+      "solid_max": 0.96039194,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -0.7109066,
+        2.1068506
+      ],
+      "finite": true
+    },
+    {
+      "step": 960,
+      "time": 24.00000035762787,
+      "material_error": 0.00015645108942408115,
+      "solid_mean": 0.030628126,
+      "solid_max": 0.9674864,
+      "nutrient_min": 0,
+      "pressure_extrema": [
+        -0.699551,
+        1.5075179
+      ],
+      "finite": true
+    }
+  ],
+  "frames": [
+    {
+      "step": 0,
+      "time": 0,
+      "directory": "frames/00000"
+    },
+    {
+      "step": 240,
+      "time": 6.000000089406967,
+      "directory": "frames/00240"
+    },
+    {
+      "step": 480,
+      "time": 12.000000178813934,
+      "directory": "frames/00480"
+    },
+    {
+      "step": 720,
+      "time": 18.0000002682209,
+      "directory": "frames/00720"
+    },
+    {
+      "step": 960,
+      "time": 24.00000035762787,
+      "directory": "frames/00960"
+    }
+  ],
+  "simulation": "Eight fixed recurrent channels, conservative nutrient/solid exchange, scalar pressure with mineral-dependent face speed; bounded pressure-to-latent forcing. Driven invented material, not calibrated biology or acoustics.",
+  "initialization": "Three eccentric, corrugated mineral shells with deliberately cut ragged apertures and branching fissures; finite nutrient confined initially to those shells. Eight phase-textured recurrent channels. Geometry is seeded, not claimed to emerge from noise; subsequent pressure/mineral feedback is simulated.",
+  "optics": "Isosurfaces of saved solid and pressure; chosen opal/copper/glass materials. No solved optical feedback, physical luminescence or material stress birefringence.",
+  "publication": {
+    "source_image_sha256": "3361c3e51b6d2a160a7db479dda3724d8af83614d190bf2b248017a5e524a317",
+    "webp_sha256": "cf5cf78ba8d6d8192a3183b8046b0a192f0b85b03a742ecd2b217d3e0c35ca99",
+    "quality": 95,
+    "width": 1600,
+    "samples": 96,
+    "native_shape": [],
+    "original_retained": true,
+    "reviewed_by": "Codex gallery reinvention"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "resonant-reliquary",
+  "family": "interfaces",
+  "title": "What the bell kept",
+  "description": "Three broken mineral bells share a pressure field. Their stored oscillations write and dissolve the finite material between fissures, leaving nested nacre and warm metal around an absent centre.",
+  "renderer": "interfacial-choir",
+  "args": [
+    "--steps",
+    "480",
+    "--solid-iso",
+    ".12",
+    "--core-iso",
+    ".40",
+    "--no-wave",
+    "--orbit",
+    ".14",
+    "--elevation",
+    ".22",
+    "--distance",
+    "3.75",
+    "--skin-transmission",
+    ".12",
+    "--skin-roughness",
+    ".3",
+    "--save-scene"
+  ],
+  "size": 1600,
+  "samples": 96,
+  "volume": "frames/00480"
+}

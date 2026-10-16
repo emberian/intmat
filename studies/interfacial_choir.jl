@@ -43,19 +43,21 @@ function initial(n;aperture=.85f0,frequency=1f0)
     end
     deposit,food,latent,host
 end
-function run(config,out)
+function run(config,out; initializer=initial,
+             source_files=("src/recurrent_material.jl","src/acoustics.jl","studies/interfacial_choir.jl"),
+             initialization_text="Three analytically seeded, folded perforated lamellae with unequal depth and displaced apertures; coherent latent phases. Geometry is seeded, not claimed to emerge from noise.")
     c=TOML.parsefile(config); n=c["resolution"];dt=Float32(c["dt"]);steps=c["steps"];capture=c["capture_every"]
     ispath(out) && error("Refusing existing run: $out")
     mkpath(out);cp(config,joinpath(out,"recipe.toml"));cp(@__FILE__,joinpath(out,"study-source.jl"))
     # Pin the actual loaded implementations beside this new run.
     hashes=Dict{String,String}()
-    for f in ("src/recurrent_material.jl","src/acoustics.jl","studies/interfacial_choir.jl")
+    for f in source_files
         data=read(joinpath(dirname(@__DIR__),f));hashes[f]=bytes2hex(sha256(data));write(joinpath(out,basename(f)),data)
     end
     w=World(Grid(n,n,n;extent=(64,64,64));backend=MetalBackend(),seed=813)
     p=RecurrentMaterial(w;coupling=.23,feedback=1.4,writing=1.1,erosion=.48,contrast=.8)
     sound=AcousticField(w;speed=3.4,material_feedback=14,damping=.035,source_amplitude=2.8,frequency=.19,source_radius=2.5,source_center=(-17.,-6.,-2.),activity_gain=0)
-    d,f,l,host=initial(n;aperture=Float32(get(c,"aperture",.85)),frequency=Float32(get(c,"perforation_frequency",1.)));copyto!(w.fields.deposit,d);copyto!(w.fields.nutrient,f);copyto!(p.state,l)
+    d,f,l,host=initializer(n;aperture=Float32(get(c,"aperture",.85)),frequency=Float32(get(c,"perforation_frequency",1.)));copyto!(w.fields.deposit,d);copyto!(w.fields.nutrient,f);copyto!(p.state,l)
     Interior.seed_acoustic!(w,sound;amplitude=1.7,radius=3.5,center=(-13.,-4.,-1.),dt)
     d=nothing;f=nothing;l=nothing;GC.gc()
     open(io->write(io,host),joinpath(out,"initial-support.f32"),"w")
@@ -88,7 +90,7 @@ function run(config,out)
     for (name,array) in (("final-previous-pressure",sound.previous),("final-pressure-envelope",sound.envelope))
         open(io->write(io,Array(array)),joinpath(out,name*".f32"),"w")
     end
-    report=(initial_material_mass=initialmass,id=c["id"],title=c["title"],description=c["description"],family="interfaces",shape=w.grid.size,extent=w.grid.extent,time=w.time,steps=steps,dt=dt,elapsed_seconds=elapsed,source_sha256=hashes,params=c,history=history,frames=manifest,simulation="Eight fixed recurrent channels, conservative nutrient/solid exchange, scalar pressure with mineral-dependent face speed; bounded pressure-to-latent forcing. Driven invented material, not calibrated biology or acoustics.",initialization="Three analytically seeded, folded perforated lamellae with unequal depth and displaced apertures; coherent latent phases. Geometry is seeded, not claimed to emerge from noise.",optics="Isosurfaces of saved solid and pressure; chosen opal/copper/glass materials. No solved optical feedback, physical luminescence or material stress birefringence.")
+    report=(initial_material_mass=initialmass,id=c["id"],title=c["title"],description=c["description"],family="interfaces",shape=w.grid.size,extent=w.grid.extent,time=w.time,steps=steps,dt=dt,elapsed_seconds=elapsed,source_sha256=hashes,params=c,history=history,frames=manifest,simulation="Eight fixed recurrent channels, conservative nutrient/solid exchange, scalar pressure with mineral-dependent face speed; bounded pressure-to-latent forcing. Driven invented material, not calibrated biology or acoustics.",initialization=initialization_text,optics="Isosurfaces of saved solid and pressure; chosen opal/copper/glass materials. No solved optical feedback, physical luminescence or material stress birefringence.")
     open(io->JSON3.pretty(io,report),joinpath(out,"run.json"),"w")
     open(io->JSON3.pretty(io,(shape=w.grid.size,fields=["solid","activity","pressure"])),joinpath(out,"volume.json"),"w")
     println("READY ",out)

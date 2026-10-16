@@ -1,0 +1,10 @@
+{
+  "id": "fault-remembers",
+  "family": "mechanics",
+  "title": "The fault remembers",
+  "renderer": "scripts/render_fault_remembers.py",
+  "size": 1400,
+  "samples": 64,
+  "device": "CPU",
+  "threads": 2
+}

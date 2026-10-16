@@ -7,6 +7,7 @@ import re
 import shutil
 import subprocess
 import sys
+from viewer_storage import RECORDING, compress_html
 
 REPO = pathlib.Path(__file__).resolve().parent.parent
 SOURCE = REPO / 'site' / 'collection'
@@ -44,6 +45,9 @@ def refresh():
                 def clean(match):
                     return match[1] + json.dumps(public(json.loads(match[2])), separators=(',', ':')).replace('</', '<\\/') + match[3]
                 text = re.sub(r'(<script id="recording" type="application/json">)(.*?)(</script>)', clean, text, flags=re.S)
+                recording = RECORDING.search(text)
+                if recording and any(key in json.loads(recording[2]) for key in ('fields', 'fields_gzip')):
+                    text = compress_html(text)
                 dest.write_text(text)
             else:
                 shutil.copyfile(source, dest)
@@ -74,6 +78,8 @@ def main():
     if recurrent.exists():shutil.copytree(recurrent, destination / 'recurrent', dirs_exist_ok=True)
     constructed = REPO / 'site' / 'constructed'
     if constructed.exists():shutil.copytree(constructed, destination / 'constructed', dirs_exist_ok=True)
+    laboratory = REPO / 'site' / 'laboratory'
+    if laboratory.exists():shutil.copytree(laboratory, destination / 'laboratory', dirs_exist_ok=True)
     animations = REPO / 'site' / 'animations'
     films = sorted(animations.glob('*/film.json')) if animations.exists() else []
     if films:
@@ -94,6 +100,7 @@ def main():
     if films:text = text.replace('</header>', '<a class="primary" href="animations/">Material films ↗</a></header>')
     if cellular.exists():text = text.replace('</header>', '<a class="primary" href="cellular/">Living cells · motion &amp; material ↗</a></header>')
     if constructed.exists():text = text.replace('</header>', '<a class="primary" href="constructed/">Constructed life · cells &amp; shared material ↗</a></header>')
+    if laboratory.exists():text = text.replace('</header>', '<a class="primary" href="laboratory/">Laboratory · explore memory &amp; feedback ↗</a></header>')
     text = text.replace('</header>', '<a href="https://github.com/emberian/intmat/blob/dev/docs/alife-adaptation-results.md">Alife results ↗</a></header>')
     index.write_text(text)
     for file in destination.rglob('*'):
