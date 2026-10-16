@@ -1,0 +1,270 @@
+{
+  "schema": "interior-animation",
+  "id": "voltage-pieces-motion-48",
+  "title": "The field gives way",
+  "description": "A fractured support opens and redirects its electrical interior. Gold potential contours tear and separate while their color records accumulated Joule dose. Thirty-two actual Julia observations, under one fixed camera and optical transfer. The contour foils are observations of voltage, not additional physical sheets.",
+  "source": {
+    "study": "studies/voltage_between_pieces.jl",
+    "runner": "scripts/run_voltage_pieces_motion.jl",
+    "render_study": "scripts/render_voltage_pieces.py",
+    "variant_of": "voltage-pieces-48",
+    "actual_samples": 32,
+    "raw_captured_samples": 40,
+    "raw_indices": [
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39
+    ],
+    "native_shape": [
+      48,
+      36,
+      20
+    ],
+    "native_nodes": 34560,
+    "native_bonds": 419228,
+    "temporal_interpolation": false,
+    "restart_checkpoints": false,
+    "same_approved_final_state": false,
+    "camera": "fixed throughout: (2.8,-4,2.6), ortho2.85",
+    "potential_levels": [
+      0.12,
+      0.22,
+      0.32,
+      0.42,
+      0.52,
+      0.62,
+      0.72,
+      0.82,
+      0.9
+    ],
+    "global_dose_optical_max": 0.03901355913548854,
+    "physical_time_interval": [
+      0.19425676146056503,
+      0.5250000127125531
+    ],
+    "capture_verification_sha256": "9a6a02c3f4aa6816d81054ab47207e286bfc64a6a17af0aab00690b519e298d1",
+    "render_record_sha256": "6764b75d502c2f019a64a8eba515d64c1430aebe349cb28926c302c2c5e2eb3d",
+    "renderer_sha256": "f76802f6be93b2b01db9ae7e6f65e47c6bf4049b1cb82f6765a55bc1ddb1fa77",
+    "simulation_source_sha256": {
+      "src/mechanics.jl": "a0370e4028aa859fb344829f0d387a62dd8defb77b25f4651f7c08b386324e45",
+      "scripts/run_voltage_pieces_motion.jl": "e6b2b00911e22291ab18f8c2a67ef6d6fe8b7dd727dcf6b8df90ad694412142b",
+      "studies/voltage_between_pieces.jl": "652619a2d598ee13504178efd07af88918988a2e31ee875aa5d2b77f0016e905"
+    },
+    "base_sha256": "cd87f654917ed129e86bdf101fc7168423752fc4f08ba988cc2c5f5daf4c6983",
+    "interpretation": "Prepared conductivity grains, quenched geometry, weak seams and grip forcing are authored. Shared 3D spring dynamics and irreversible failure change the conducting graph; newly solved voltage contours show its electrical interior. The optical foil thickness and dose palette are assignments. Fresh bounded run with32-step electrical cadence (52 in the still), same physical parameters and duration; no historical rerun or latent-heat/closed-energy claim.",
+    "numerical_closure": {
+      "maximum_independent_residual": 3.455255724814622e-07,
+      "maximum_relative_power_defect": 4.03671611165698e-06,
+      "maximum_mechanical_relative_work_residual": 0.0006718429103000129,
+      "irreversible_damage_and_nondecreasing_dose": true
+    },
+    "samples": 24
+  },
+  "playback": {
+    "fps": 8,
+    "duration_seconds": 4.0,
+    "width": 640,
+    "height": 640,
+    "rendered_width": 640,
+    "rendered_height": 640,
+    "interpolation": "none; one video frame per recorded simulation sample"
+  },
+  "frames": [
+    {
+      "video_time": 0.0,
+      "simulation_time": 0.19425676146056503,
+      "source_image_sha256": "77983bd13092ce6e2dc05df61a4ab89ee5e1c477a47c9e3c3ff13181364c974e"
+    },
+    {
+      "video_time": 0.125,
+      "simulation_time": 0.205067572533153,
+      "source_image_sha256": "fce8aa9219870b5b70fabe49921a90a4c5953f3051cab07df42aa9344fb2ef28"
+    },
+    {
+      "video_time": 0.25,
+      "simulation_time": 0.21587838360574096,
+      "source_image_sha256": "4e8894823fc6e0003f929ce16cb16b111b91e5dd84e395dea4e488d7fba6eb3f"
+    },
+    {
+      "video_time": 0.375,
+      "simulation_time": 0.22668919467832893,
+      "source_image_sha256": "1e88e7731b096a6c4e62b0972940e3cf3dda0762a71b74a23139983092c16ea8"
+    },
+    {
+      "video_time": 0.5,
+      "simulation_time": 0.2375000057509169,
+      "source_image_sha256": "d252918e198a899448129f3f81fa3d10ebd026673f0bd543a4c90de9cc4f0e25"
+    },
+    {
+      "video_time": 0.625,
+      "simulation_time": 0.24831081682350487,
+      "source_image_sha256": "dcbf17aa421b9da428c1e2e9d56a3456cc359b1fe229d56aa1dcd61865221173"
+    },
+    {
+      "video_time": 0.75,
+      "simulation_time": 0.25912162789609283,
+      "source_image_sha256": "eae6a0a45a0934df157d00d4ba709af5e5db9046ce794cbbe20a5589dc8fa381"
+    },
+    {
+      "video_time": 0.875,
+      "simulation_time": 0.2699324389686808,
+      "source_image_sha256": "d36588ffaff5c753244309d1a221df0ad6d086d5a3b60d709d0d287b009296e8"
+    },
+    {
+      "video_time": 1.0,
+      "simulation_time": 0.28074325004126877,
+      "source_image_sha256": "5622a452d613d45ebf7992e9c73590c118cea842e1478d4f08f26c816e497bcc"
+    },
+    {
+      "video_time": 1.125,
+      "simulation_time": 0.29155406111385673,
+      "source_image_sha256": "a07eea9eeba662eb8be79c37e69fb1e57075471d7c9602275d619f751089daee"
+    },
+    {
+      "video_time": 1.25,
+      "simulation_time": 0.3023648721864447,
+      "source_image_sha256": "ff8c5f2d2ca69af752efa43cf86781af5a57df9dc3e25df7aa46dec69840855b"
+    },
+    {
+      "video_time": 1.375,
+      "simulation_time": 0.31317568325903267,
+      "source_image_sha256": "7b54f85dbf5885e9966e845a87f0e2f0ede1500fbde8d67798ceae352f6ca09b"
+    },
+    {
+      "video_time": 1.5,
+      "simulation_time": 0.32398649433162063,
+      "source_image_sha256": "5dd4b254aa3ede7c2219d9abb60fce1279d52f017303335f5b05eaea4a75b587"
+    },
+    {
+      "video_time": 1.625,
+      "simulation_time": 0.3347973054042086,
+      "source_image_sha256": "d3e3491fbb4fd39c8d1c40d9e7cce31b4798b309c06d34e3e7defbae82720916"
+    },
+    {
+      "video_time": 1.75,
+      "simulation_time": 0.34560811647679657,
+      "source_image_sha256": "5d0cd618672ac799709f808ecf0b71b1ba3809adcaaca5bb7455ab2bdc4ffb6b"
+    },
+    {
+      "video_time": 1.875,
+      "simulation_time": 0.35641892754938453,
+      "source_image_sha256": "c763cdaee294ac55598b855833e4f3753b6e82717e705bdb9e03dceb64c26d53"
+    },
+    {
+      "video_time": 2.0,
+      "simulation_time": 0.3672297386219725,
+      "source_image_sha256": "2de5ecf5822e9a167a4a731e824943b03119db268b8073c5b4518f4189fd78d9"
+    },
+    {
+      "video_time": 2.125,
+      "simulation_time": 0.37804054969456047,
+      "source_image_sha256": "e7d9fd040b289bfbcb46013da8a271fdfdfaed9191bb76da19015b2887c4b088"
+    },
+    {
+      "video_time": 2.25,
+      "simulation_time": 0.38885136076714844,
+      "source_image_sha256": "a1a3ae814c6765216b2290ae14f59c6a36c70eb13df9f57cf381e474b336c93c"
+    },
+    {
+      "video_time": 2.375,
+      "simulation_time": 0.3996621718397364,
+      "source_image_sha256": "75074978886df9b034ecf84925fd88a94f3534016f8bc5de42851f4d767b449a"
+    },
+    {
+      "video_time": 2.5,
+      "simulation_time": 0.41047298291232437,
+      "source_image_sha256": "d9a57d92de5b0f8c68ea85fc19a4d40a94589c976aebec5b95bd9b6607a42e81"
+    },
+    {
+      "video_time": 2.625,
+      "simulation_time": 0.42128379398491234,
+      "source_image_sha256": "d6b3d2b5f88def897a558f87ffdb8aa187294bbb5cd99e265ccd525ac13a9e28"
+    },
+    {
+      "video_time": 2.75,
+      "simulation_time": 0.4320946050575003,
+      "source_image_sha256": "c9c14e7b635b18ab6c3251c80382d5047ed8bb6e1248df2173b3bf2b5bfc07a7"
+    },
+    {
+      "video_time": 2.875,
+      "simulation_time": 0.44290541613008827,
+      "source_image_sha256": "22eb3ab494797e825c387703deb5714c71d7407ea095c1a9f36cec52a47d9ee0"
+    },
+    {
+      "video_time": 3.0,
+      "simulation_time": 0.45371622720267624,
+      "source_image_sha256": "fe06a350f43d350887134658cab6e4d5d68cfdb99afb3a696a8b22fccb60fe5e"
+    },
+    {
+      "video_time": 3.125,
+      "simulation_time": 0.4645270382752642,
+      "source_image_sha256": "79b4247d447f3bec5bb6b89b3487ea2a1107d6f34b328a1a1f06933643d45aac"
+    },
+    {
+      "video_time": 3.25,
+      "simulation_time": 0.47533784934785217,
+      "source_image_sha256": "4c9c2f3d2697dfcfd2ee10939bf794078c850007158ab0c7de7636b243589d6b"
+    },
+    {
+      "video_time": 3.375,
+      "simulation_time": 0.48614866042044014,
+      "source_image_sha256": "df92652acd023da85bad896aed479234ee35994a614bcb81a1c78463c603c570"
+    },
+    {
+      "video_time": 3.5,
+      "simulation_time": 0.4969594714930281,
+      "source_image_sha256": "e6477036105c152282921ac7e08d057f84d390b1a626b0904de3cfb15357aca9"
+    },
+    {
+      "video_time": 3.625,
+      "simulation_time": 0.5077702825656161,
+      "source_image_sha256": "e46897d002cbefa5807d362e064c67f661bbd54c4158b6018312f1dc056dd358"
+    },
+    {
+      "video_time": 3.75,
+      "simulation_time": 0.518581093638204,
+      "source_image_sha256": "4ad8604307b27cba257a145b584c522f2b2b157db31f097f586a715ad1d4e005"
+    },
+    {
+      "video_time": 3.875,
+      "simulation_time": 0.5250000127125531,
+      "source_image_sha256": "baacea36091e5770a75fff6014a766cf4bbc0c68c22782ab26cbbadd6ad3b63e"
+    }
+  ],
+  "review": {
+    "sequence_sha256": "70fa65a9c988fef11ac93ecb415976ead7c813e8bbdcbf2688c2993bd6adec65",
+    "reviewed_by": "GPT-6.1-sol and root: all 32 decoded frames, fixed camera/transfer, complete contact sheets"
+  },
+  "poster_frame_index": 31,
+  "video_sha256": "ba4acba90403bd3a3e2ba6c55a9aabd69f4475e51d46f192ee8660eef707c0b6",
+  "poster_sha256": "0a5d365f2f93164935975d4b2e5d4e8092105621f478319fb12b0c4ace5768d2"
+}

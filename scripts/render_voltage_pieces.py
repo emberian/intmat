@@ -2,11 +2,13 @@
 import bpy,bmesh,numpy as np,json,argparse,sys,hashlib,itertools
 from pathlib import Path
 from mathutils import Vector
-p=argparse.ArgumentParser();p.add_argument('state',type=Path);p.add_argument('output',type=Path);p.add_argument('--size',type=int,default=640);p.add_argument('--samples',type=int,default=16);p.add_argument('--device',choices=['CPU','METAL'],default='CPU');a=p.parse_args(sys.argv[sys.argv.index('--')+1:])
-s=json.loads(a.state.read_text());nx,ny,nz=s['dims']
+p=argparse.ArgumentParser();p.add_argument('state',type=Path);p.add_argument('output',type=Path);p.add_argument('--base',type=Path);p.add_argument('--dose-max',type=float,default=0);p.add_argument('--size',type=int,default=640);p.add_argument('--samples',type=int,default=16);p.add_argument('--device',choices=['CPU','METAL'],default='CPU');a=p.parse_args(sys.argv[sys.argv.index('--')+1:])
+s=json.loads(a.state.read_text())
+if a.base:s={**json.loads(a.base.read_text()),**s}
+nx,ny,nz=s['dims']
 def columns(key,width):
  v=np.array(s[key]);return v.reshape(-1,width) if v.ndim==1 else v
-pos=columns('position',3);edges=columns('bonds',2).astype(int)-1;damage=np.array(s['damage']);voltage=np.array(s['potential']);dose=np.array(s['dose']);edge={tuple(sorted(e)):i for i,e in enumerate(edges)}
+pos=columns('position',3);edges=columns('bonds',2).astype(int)-1;damage=np.array(s['damage']);voltage=np.array(s['potential']);dose=np.array(s['dose']);dose_scale=a.dose_max or max(dose.max(),1e-9);edge={tuple(sorted(e)):i for i,e in enumerate(edges)}
 tetpattern=((0,1,3,7),(0,3,2,7),(0,2,6,7),(0,6,4,7),(0,4,5,7),(0,5,1,7));tets=[];boundary={};removed=0
 for k in range(nz-1):
  for j in range(ny-1):
@@ -41,7 +43,7 @@ for level in isos:
   if length<1e-14:continue
   normal/=length
   if normal@direction<0:normal=-normal
-  u=points[0]-center;u/=np.linalg.norm(u);v=np.cross(normal,u);order=np.argsort(np.arctan2((points-center)@v,(points-center)@u));faces.append([polygon[q] for q in order]);value=np.mean(dose[ids]);materials.append(min(15,int(15*np.clip(value/max(dose.max(),1e-9),0,1)**.45)))
+  u=points[0]-center;u/=np.linalg.norm(u);v=np.cross(normal,u);order=np.argsort(np.arctan2((points-center)@v,(points-center)@u));faces.append([polygon[q] for q in order]);value=np.mean(dose[ids]);materials.append(min(15,int(15*np.clip(value/dose_scale,0,1)**.45)))
 me=bpy.data.meshes.new('Computed voltage contours');me.from_pydata(vertices,[],faces);me.update();o=bpy.data.objects.new('Potential in surviving 3D material',me);bpy.context.collection.objects.link(o)
 for m in mats:me.materials.append(m)
 for f,index in zip(me.polygons,materials):f.material_index=index;f.use_smooth=True
@@ -61,4 +63,4 @@ bpy.ops.object.camera_add(location=(2.8,-4,2.6));cam=bpy.context.object;cam.data
 for name,xyz,energy,color,size in [('Warm textile',(-2,-3,4),800,(1,.83,.66),3),('Violet edge',(3,1,2),900,(.57,.65,1),2),('Silver fill',(-3,2,0),450,(.8,.9,1),2)]:
  bpy.ops.object.light_add(type='AREA',location=xyz);o=bpy.context.object;o.name=name;o.data.energy=energy;o.data.color=color;o.data.size=size;aim(o)
 a.output.parent.mkdir(parents=True,exist_ok=True);sc.render.image_settings.file_format='PNG';sc.render.filepath=str(a.output.resolve());bpy.ops.render.render(write_still=True)
-a.output.with_suffix('.optical.json').write_text(json.dumps({'size':a.size,'samples':a.samples,'device':a.device,'source_nodes':len(pos),'source_tetrahedra_surviving':len(tets),'source_tetrahedra_removed':removed,'contour_faces':len(faces),'levels':isos,'interpretation':'Computed voltage iso-surfaces inside surviving six-edge tetrahedra, actual deformed coordinates. Foil thickness.004 and dose color are optical staging, not added material. Violet back observation surface is the actual surviving tetrahedral boundary exactly plane-clipped at y=.18.','renderer_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest()},indent=2))
+a.output.with_suffix('.optical.json').write_text(json.dumps({'size':a.size,'samples':a.samples,'device':a.device,'source_nodes':len(pos),'source_tetrahedra_surviving':len(tets),'source_tetrahedra_removed':removed,'contour_faces':len(faces),'levels':isos,'dose_optical_max':dose_scale,'camera':'fixed (2.8,-4,2.6), ortho2.85','interpretation':'Computed voltage iso-surfaces inside surviving six-edge tetrahedra, actual deformed coordinates. Foil thickness.004 and dose color are optical staging, not added material. Violet back observation surface is the actual surviving tetrahedral boundary exactly plane-clipped at y=.18.','renderer_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest()},indent=2))

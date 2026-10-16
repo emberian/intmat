@@ -1,0 +1,42 @@
+{
+  "actual_captures": 40,
+  "native_nodes": 34560,
+  "native_bonds": 419228,
+  "physical_time_interval": [
+    0.1077702728798613,
+    0.5250000127125531
+  ],
+  "maximum_independent_residual": 3.455255724814622e-07,
+  "maximum_relative_power_defect": 4.03671611165698e-06,
+  "maximum_mechanical_relative_work_residual": 0.0006718429103000129,
+  "broken_bonds_interval": [
+    0,
+    28736
+  ],
+  "global_dose_optical_max": 0.03901355913548854,
+  "temporal_interpolation": false,
+  "restart_checkpoints": false,
+  "source_sha256": {
+    "src/mechanics.jl": "a0370e4028aa859fb344829f0d387a62dd8defb77b25f4651f7c08b386324e45",
+    "scripts/run_voltage_pieces_motion.jl": "e6b2b00911e22291ab18f8c2a67ef6d6fe8b7dd727dcf6b8df90ad694412142b",
+    "studies/voltage_between_pieces.jl": "652619a2d598ee13504178efd07af88918988a2e31ee875aa5d2b77f0016e905"
+  },
+  "capture_sha256": "3883b5ac2cde641aa1e3f9bac42412907dce6414c033b1ffc22143cdb0b65b74",
+  "irreversible_damage_and_nondecreasing_dose": true,
+  "callback_parity": {
+    "snapshot_calls": 4,
+    "read_only_callback_final_state_byte_exact": true,
+    "state_sha256": "1cca4164e0f7d1b8bcf223b11f6d0c414587dc7faf5da947191d61198f5b815d",
+    "qualification": "Small complete coupled trajectory at unchanged default cadence, callback disabled versus read-only observation. No artwork rerun."
+  },
+  "displayed_raw_indices": [
+    8,
+    39
+  ],
+  "displayed_frames": 32,
+  "displayed_broken_bonds_interval": [
+    58,
+    28736
+  ],
+  "movie_optics": "Fixed nine voltage levels, cuts and camera, with one global dose maximum; no per-frame normalization."
+}

@@ -113,6 +113,27 @@ Active work: electrical-fracture film; representation-level resource staging and
 GPU whole-step profiling; conditional individual-action effects and a causal
 local-flow baseline. No new soaks or changes to old experiments.
 
+### Electrical motion and developmental value
+
+**The field gives way** adds a reviewed four-second film: 32 actual electrical/
+fracture observations, fixed camera and optical transfer, 640² at 8 fps. Root
+reviewed all decoded frames and used the shared animation curator; public payload
+is 568,850 bytes. A separate finer spatial realization is being prepared.
+
+The individual-action map exactly reconstructs the learned time-12 checkpoint
+and selects three residents by raw-balance rank before observing outcomes.
+Its effects are much smaller than collective interventions and can reverse with
+lag. One action raises inventory utility while lowering uptake and biomass:
+the current score omits the body built from fuel. A separate developmental value
+is now being derived from actual growth stoichiometry, with partition conservation;
+it is not yet an implemented/gated learning result.
+
+The shadow-flow baseline exactly reproduces the original learning trajectory.
+It reduces late residuals but worsens them overall by extrapolating the early
+inventory transient. No unconditional replacement was installed. Paired evidence
+and scope are in `docs/research/local-flow-credit.md`; conditional action evidence
+is in `docs/research/temporal-single-resident-authority.md`.
+
 ## Active goal — an instrument for discovering rich living materials
 
 Fresh ten-hour session: **2026-10-16 00:50:31–10:50:31 UTC**

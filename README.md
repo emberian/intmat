@@ -102,6 +102,8 @@ mineral walls and absorbed-power sheets. [Photographic study](docs/inner-shore.m
 **The field inside the fracture:** surviving mechanical bonds conduct voltage;
 electrical dose weakens later bonds. Gold potential contours reveal the resulting
 field inside fractured violet support. [Model and photograph](docs/voltage-pieces.md).
+Its moving relative, [The field gives way](https://emberian.github.io/intmat/animations/#voltage-pieces-motion-48),
+shows 32 computed states as openings redirect that electrical interior.
 
 **After the last feeding:** actual cell bonds become a gold scaffold inside
 optically stained catalyst and stored food. The photograph observes a native

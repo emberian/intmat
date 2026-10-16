@@ -53,10 +53,10 @@ function voltage!(v,p,g,den,r,z,d,q,b,pinned;tol=1e-7,maxiter=1000)
  residual<2e-6||error("independent graph residual $residual")
  (iterations=iterations,residual=residual,joule_power=joule,electrode_power=power,relative_power_defect=abs(joule-power)/max(joule,1e-30),floating_components=floating)
 end
-function produce(out;dims=(24,18,10),steps=1300,weakening=80.,scaled=false)
+function produce(out;dims=(24,18,10),steps=1300,weakening=80.,scaled=false,snapshot=nothing,electrical_cadence=nothing)
  ispath(out)&&error("fresh output required");mkpath(out)
  ratio=scaled ? prod(((1.7/(dims[1]-1))/(1.7/23),(1.5/(dims[2]-1))/(1.5/17),(.95/(dims[3]-1))/(.95/9)))^(1/3) : 1.
- duration=steps*.0007;steps=ceil(Int,steps/ratio);dt=duration/steps;cadence=max(1,round(Int,25/ratio))
+ duration=steps*.0007;steps=ceil(Int,steps/ratio);dt=duration/steps;cadence=electrical_cadence===nothing ? max(1,round(Int,25/ratio)) : Int(electrical_cadence);cadence>0||error("electrical cadence must be positive")
  w=World(Grid(4,4,4);seed=1944);p=Interior.BondNetwork(w;size=dims,extent=(1.7,1.5,.95),mass=.008*ratio^3,stiffness=6*ratio,damping=5,failure_strain=.18,weak_seam=.42,stretch_rate=.26,shear_rate=.19,jitter=.14)
  n=length(p.node_ids);m=length(p.bond_ids);v=zeros(n);dose=zeros(n);temperature=zeros(n);base=copy(p.threshold);g=zeros(m);g0=zeros(m);den=zeros(n);r=zeros(n);z=zeros(n);d=zeros(n);q=zeros(n);b=zeros(n);pinned=falses(n);heat=zeros(n)
  # Quenched conductivity grains and two small weak notches are designed inputs.
@@ -76,6 +76,7 @@ function produce(out;dims=(24,18,10),steps=1300,weakening=80.,scaled=false)
    interval=step==1 ? 0. : (step-lastsolve)*dt;lastsolve=step
    for i=1:n;temperature[i]=exp(-interval*2)*temperature[i]+(-expm1(-interval*2))*heat[i];dose[i]+=interval*temperature[i];end
    for e=1:m;i=p.bonds[1,e];j=p.bonds[2,e];p.threshold[e]=base[e]/(1+weakening*(dose[i]+dose[j]));end
+   snapshot===nothing||snapshot((stage=:electrical,step=step-1,time=w.time,process=p,potential=v,dose=dose,temperature=temperature,solver=solved))
   end
   step!(w,p,dt)
   if step%100==0||step==steps
@@ -83,6 +84,7 @@ function produce(out;dims=(24,18,10),steps=1300,weakening=80.,scaled=false)
   end
  end
  g.=g0.*(1 .-p.damage);solved=voltage!(v,p,g,den,r,z,d,q,b,pinned)
+ snapshot===nothing||snapshot((stage=:final,step=steps,time=w.time,process=p,potential=v,dose=dose,temperature=temperature,solver=solved))
  energy=Interior.mechanical_energy(p);energy_residual=energy.total-initialenergy-energy.external_work
  open(io->JSON3.write(io,(dims=dims,position=p.position,reference=p.reference,bonds=p.bonds,damage=p.damage,strain=p.peak_strain,potential=v,dose=dose,temperature=temperature)),joinpath(out,"state.json"),"w")
  report=(title="The voltage between the pieces",family="branches",shape=dims,nodes=n,bonds=m,steps=steps,dt=dt,weakening=weakening,pitch_ratio=ratio,physical_duration=duration,electrical_cadence=cadence,scaling=scaled,history=history,broken=count(==(1),p.damage),solver=solved,elapsed_seconds=elapsed,energy=energy,mechanical_energy_residual=energy_residual,source_sha256=Dict(f=>bytes2hex(sha256(read(joinpath(@__DIR__,"..",f)))) for f in ("studies/voltage_between_pieces.jl","src/mechanics.jl")),model="Shared BondNetwork; graph conductivity vanishes on failed bonds. Independently checked PCG potential; local Joule dose weakens tensile thresholds. External electrodes/grips power exploratory law; not calibrated electromechanics.",authored="Quenched geometry/conductivity grains, two small weak notches, distributed load and grip motion. Optical contours are computed potential observations, not added matter.")

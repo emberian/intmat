@@ -1,0 +1,1866 @@
+{
+  "schema": "temporal-single-resident-authority-v1",
+  "checkpoint": 12.0,
+  "replay_error": 0.0,
+  "selection": "minimum, median, maximum native raw balance, sorted before interventions; stable ID tie-break",
+  "selected": [
+    {
+      "id": 5,
+      "usable": 0.34638410602963254,
+      "balance": -0.05974999,
+      "total": 0.05974999,
+      "trend": -0.018920464,
+      "mass": 0.9032118319118994,
+      "energy": 0.34440110645138144,
+      "stores": [
+        1.3510862591339717e-10,
+        0.0007626920383479505
+      ],
+      "position": [
+        0.7284869,
+        0.18860112,
+        0.5436162
+      ],
+      "uptake_a": 0.03329010793895015,
+      "uptake_b": 0.033802512361183756
+    },
+    {
+      "id": 19,
+      "usable": 0.7200657333819132,
+      "balance": -0.0009093718,
+      "total": 0.00439054,
+      "trend": 3.909605e-05,
+      "mass": 1.7223569930323426,
+      "energy": 0.7196379499175127,
+      "stores": [
+        2.01860724784056e-10,
+        0.0001645319058667614
+      ],
+      "position": [
+        1.0233065,
+        1.4355787,
+        0.73695827
+      ],
+      "uptake_a": 0.02954360597091321,
+      "uptake_b": 0.026942553669299596
+    },
+    {
+      "id": 6,
+      "usable": 0.7328362159984967,
+      "balance": 0.0463594,
+      "total": 0.0463594,
+      "trend": 0.014026085,
+      "mass": 1.752674494127835,
+      "energy": 0.7141449858533118,
+      "stores": [
+        8.541062200214961e-11,
+        0.007188934849502905
+      ],
+      "position": [
+        1.3575184,
+        0.94051695,
+        0.6345462
+      ],
+      "uptake_a": 0.02945078404859519,
+      "uptake_b": 0.03452918019731044
+    }
+  ],
+  "pulse_time": 1.0,
+  "amplitude": 0.3,
+  "noise_seed": 6201,
+  "recipe": {
+    "cellular": {
+      "hidden": 8,
+      "capacity": 512,
+      "energy": 1.0,
+      "metabolites": 0.12,
+      "adaptation_strength": 0.3,
+      "growth_rate": 0.1,
+      "founders": 24,
+      "adaptation_time": 8.0,
+      "biomass": 1.6,
+      "exchange_radius": 0.18,
+      "mutation": 0.08,
+      "mutation_probability": 0.03,
+      "density": 128.0,
+      "speed": 0.06,
+      "junction_rate": 0.8,
+      "basal_rate": 0.008
+    },
+    "catalysis": {
+      "secretion_work": 0.2,
+      "investment_bias": -0.8,
+      "allocation_exponent": 1.0,
+      "half_saturation": 0.2,
+      "catalytic_rate": 6.0,
+      "allocation_bias_scale": 1.2,
+      "secretion_rate": 0.12,
+      "decay_rate": 0.2,
+      "mutation": 0.08,
+      "mutation_probability": 0.03,
+      "regulation": true
+    },
+    "temporal_policy": {
+      "reserve": 0.02,
+      "critic_scale": 4.0,
+      "decision_time": 1.0,
+      "phase_time": 8.0,
+      "observation_time": 0.2
+    },
+    "native": {
+      "support_strategy": "materialized",
+      "mechanical_substeps": 16,
+      "energy_type": "Float64",
+      "inventory_type": "Float64",
+      "radius_bound": 2.0,
+      "bin_width": 0.25,
+      "dt": 0.02
+    },
+    "feedstock": {
+      "potentials": [
+        4.0,
+        4.0
+      ],
+      "diffusion": [
+        0.006,
+        0.006
+      ],
+      "sink_rates": [
+        0.96,
+        0.96
+      ],
+      "initial": [
+        0.08,
+        0.08
+      ],
+      "source_rates": [
+        0.8,
+        0.8
+      ],
+      "sink_budgets": [
+        30.72,
+        30.72
+      ],
+      "source_budgets": [
+        25.6,
+        25.6
+      ],
+      "niche_contrast": 0.95
+    },
+    "matrix": {
+      "capacity_per_enzyme": 6.0,
+      "transport_barrier": 20.0,
+      "desorption_rate": 0.12,
+      "cross_binding": 0.0,
+      "adsorption_rate": 4.0
+    },
+    "seed": 211,
+    "grid": {
+      "shape": [
+        16,
+        16,
+        16
+      ],
+      "extent": [
+        2.0,
+        2.0,
+        2.0
+      ]
+    },
+    "material_sensing": {
+      "channels": [
+        "raw_balance",
+        "raw_total",
+        "catalyst_total"
+      ],
+      "scales": [
+        1.0,
+        1.0,
+        0.5
+      ]
+    },
+    "resources": {
+      "diffusion": [
+        0.006,
+        0.006,
+        0.001
+      ],
+      "sink_rates": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "initial": [
+        0.15,
+        0.15,
+        0.0
+      ],
+      "source_rates": [
+        0.1,
+        0.1,
+        0.0
+      ],
+      "sink_budgets": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "source_budgets": [
+        3.2,
+        3.2,
+        0.0
+      ],
+      "potentials": [
+        4.0,
+        4.0,
+        0.0
+      ]
+    }
+  },
+  "source": {
+    "model": "1a938948fb14c400876c6848e4389fc432f4cc2a3962903374d2d76fb34f1c99",
+    "initialization": "766dfedbdbf5b4dbbb99ed5e9336a16747fa08752a84af3268fc7c98c613613a",
+    "founder_initialization": "d76e4c791a2c56bc7fd651b1836e6879b9e27013566ce6d94a1d2f677f62e633",
+    "support": "5a767b83c2c912d8706468ec7c5b86e56cf99430b2a23dfd3a7f3ee8f21bf55b",
+    "lifecycle": "8826c577e960db6596cd923a591d806b185908a254c6cc0fb6b0eebb033a9629",
+    "resource": "ac72b2db1dfa448446df0ae44840ba05933f1d8fb13c639f9e2cd3b3a7e41223",
+    "kernels": "8f9f5d153ff1e4f4636388072063aa6e53fbb20d9c5175d64d6fcb15993207ae",
+    "checkpoint": "81c8538519e5d0c58eb8bc0b6e49be7eec87119f81b7fcd998b6944f02c68503",
+    "protocol": "52632744615956c0e4c613e010b8fa4ba08c396e46e03d7ef5ec15f037e8199d"
+  },
+  "habitat_source": {
+    "helper": "5753f0cf5065345cf08fb9a2501d87aad4f6eff13183fd344e8f53dfe736aa41",
+    "kernels": "b9774fc4b57b8d6dd844dc996979b007cf4f3e8160660a2961525514dad52c9c",
+    "sorption": "3811fd3627906823a01f2afb2e6693bb6aec99c37bb10bfb72d43c85f8b4ad08"
+  },
+  "scope": "exact CPU replay of completed history checkpoint; frozen coefficients and critic, unchanged peer policy with common future innovations; source clocks/masks/remaining budgets preserved; collective interventions separately labeled",
+  "results": [
+    {
+      "producer": 5,
+      "amplitude": -0.3,
+      "collective": false,
+      "samples": [
+        {
+          "lag": 0.2,
+          "own": {
+            "mass": 1.1613070427518579e-07,
+            "energy": -5.762237187401098e-08,
+            "uptake_a": 9.294287983685479e-08,
+            "uptake_b": 2.30946773122076e-06,
+            "return_difference": 5.56384891092776e-06,
+            "neutral_return": -0.0016005087775459725
+          },
+          "other_count": 25,
+          "others_sum_return_difference": 1.0526218724438152e-07,
+          "others_rms_return_difference": 2.1041160278217412e-08,
+          "initial_count": 26,
+          "survivors": 26,
+          "neutral_survivors": 26,
+          "global_differences": {
+            "catalyst": [
+              -2.368641165167995e-05,
+              2.3752854985903404e-05
+            ],
+            "bound": [
+              -7.420019585424598e-07,
+              6.433005523831525e-07
+            ],
+            "converted": [
+              -7.505107646466058e-14,
+              3.034727411144189e-06
+            ],
+            "funded": [
+              -2.4208829103145035e-05,
+              2.4276117244204087e-05
+            ],
+            "requested": [
+              -0.00024807760200928897,
+              0.0002480777766322717
+            ]
+          },
+          "material_residual": -1.4210854715202004e-14,
+          "potential_residual": 0.0
+        },
+        {
+          "lag": 0.5,
+          "own": {
+            "mass": 1.2422466308947833e-06,
+            "energy": -6.420084561198358e-07,
+            "uptake_a": 9.93693002437901e-07,
+            "uptake_b": 1.5111295159020433e-05,
+            "return_difference": 3.1600512070906195e-05,
+            "neutral_return": -0.006879295482825287
+          },
+          "other_count": 25,
+          "others_sum_return_difference": -1.2049926076951323e-06,
+          "others_rms_return_difference": 7.094494853771767e-07,
+          "initial_count": 26,
+          "survivors": 26,
+          "neutral_survivors": 26,
+          "global_differences": {
+            "catalyst": [
+              -9.513939019889506e-05,
+              9.643388278579579e-05
+            ],
+            "bound": [
+              -4.407730294309076e-06,
+              4.068358546049922e-06
+            ],
+            "converted": [
+              -1.8203216711754067e-12,
+              1.9427014207040738e-05
+            ],
+            "funded": [
+              -9.911197733680766e-05,
+              0.00010043982999041745
+            ],
+            "requested": [
+              -0.0006206620164448395,
+              0.0006206670368555933
+            ]
+          },
+          "material_residual": -7.105427357601002e-15,
+          "potential_residual": -1.4210854715202004e-14
+        },
+        {
+          "lag": 1.0,
+          "own": {
+            "mass": 6.055426064643932e-05,
+            "energy": -3.05023696977047e-05,
+            "uptake_a": 5.730537809035818e-06,
+            "uptake_b": 5.136185302861973e-05,
+            "return_difference": -0.00011868447067503451,
+            "neutral_return": -0.014151533208495826
+          },
+          "other_count": 25,
+          "others_sum_return_difference": -7.819531057606799e-06,
+          "others_rms_return_difference": 4.919301185962322e-06,
+          "initial_count": 26,
+          "survivors": 26,
+          "neutral_survivors": 26,
+          "global_differences": {
+            "catalyst": [
+              -0.00018685034697607517,
+              0.00021568443230546297
+            ],
+            "bound": [
+              -1.3374578931801828e-05,
+              1.7194056609159958e-05
+            ],
+            "converted": [
+              -1.6071910469150907e-10,
+              6.756393843843078e-05
+            ],
+            "funded": [
+              -0.00020580221414157052,
+              0.00023606122685548847
+            ],
+            "requested": [
+              -0.0012435922544682398,
+              0.0012438463600119576
+            ]
+          },
+          "material_residual": -7.105427357601002e-15,
+          "potential_residual": -1.4210854715202004e-14
+        },
+        {
+          "lag": 2.0,
+          "own": {
+            "mass": 0.00010690391021439538,
+            "energy": -5.5164768521021035e-05,
+            "uptake_a": 1.3088534001892693e-05,
+            "uptake_b": 8.28831123237117e-05,
+            "return_difference": -0.00013933592008730233,
+            "neutral_return": -0.026823521912391957
+          },
+          "other_count": 25,
+          "others_sum_return_difference": -1.1613945422095373e-05,
+          "others_rms_return_difference": 1.2870835288998403e-05,
+          "initial_count": 26,
+          "survivors": 26,
+          "neutral_survivors": 26,
+          "global_differences": {
+            "catalyst": [
+              -0.00014803314189865135,
+              0.0001801507833174565
+            ],
+            "bound": [
+              -2.1773073369923956e-05,
+              3.778571232193606e-05
+            ],
+            "converted": [
+              -4.2335169814222695e-09,
+              0.00010689200911051522
+            ],
+            "funded": [
+              -0.0002000067748952894,
+              0.00024028310801105235
+            ],
+            "requested": [
+              -0.001243565755430609,
+              0.001245353720150888
+            ]
+          },
+          "material_residual": -2.4868995751603507e-14,
+          "potential_residual": -1.4210854715202004e-14
+        },
+        {
+          "lag": 4.0,
+          "own": {
+            "mass": 5.5960340740957015e-05,
+            "energy": -3.1565006977651855e-05,
+            "uptake_a": 1.3437747981792647e-05,
+            "uptake_b": 7.710913098857297e-05,
+            "return_difference": -5.037733984469828e-06,
+            "neutral_return": -0.04217564148209574
+          },
+          "other_count": 25,
+          "others_sum_return_difference": 2.1172274262015733e-05,
+          "others_rms_return_difference": 8.088398230511312e-06,
+          "initial_count": 26,
+          "survivors": 26,
+          "neutral_survivors": 26,
+          "global_differences": {
+            "catalyst": [
+              -0.00011080468220470152,
+              0.00010819445184306886
+            ],
+            "bound": [
+              -3.5655976027060277e-05,
+              6.640571296800957e-05
+            ],
+            "converted": [
+              -1.5004886333436218e-08,
+              8.764638372782407e-05
+            ],
+            "funded": [
+              -0.00021580886238203867,
+              0.00022329285561806245
+            ],
+            "requested": [
+              -0.001243781931407284,
+              0.0012470580113586038
+            ]
+          },
+          "material_residual": -2.1316282072803006e-14,
+          "potential_residual": 0.0
+        }
+      ]
+    },
+    {
+      "producer": 5,
+      "amplitude": 0.3,
+      "collective": false,
+      "samples": [
+        {
+          "lag": 0.2,
+          "own": {
+            "mass": -1.1694509671755782e-07,
+            "energy": 5.8955358483991915e-08,
+            "uptake_a": -9.360966035654172e-08,
+            "uptake_b": -2.3497235108055348e-06,
+            "return_difference": -5.663259718236002e-06,
+            "neutral_return": -0.0016005087775459725
+          },
+          "other_count": 25,
+          "others_sum_return_difference": -1.0566506208897763e-07,
+          "others_rms_return_difference": 2.1123084254879923e-08,
+          "initial_count": 26,
+          "survivors": 26,
+          "neutral_survivors": 26,
+          "global_differences": {
+            "catalyst": [
+              2.39924371784328e-05,
+              -2.4059640743590016e-05
+            ],
+            "bound": [
+              7.508763246732997e-07,
+              -6.491553072862644e-07
+            ],
+            "converted": [
+              4.85722573273506e-14,
+              -3.083372443979382e-06
+            ],
+            "funded": [
+              2.4521396298604614e-05,
+              -2.4589261052199163e-05
+            ],
+            "requested": [
+              0.0002513858489692211,
+              -0.0002513858344173059
+            ]
+          },
+          "material_residual": -7.105427357601002e-15,
+          "potential_residual": 0.0
+        },
+        {
+          "lag": 0.5,
+          "own": {
+            "mass": -1.246211846717138e-06,
+            "energy": 6.506820118268308e-07,
+            "uptake_a": -9.987472249228802e-07,
+            "uptake_b": -1.571900694935513e-05,
+            "return_difference": -3.3002605577370225e-05,
+            "neutral_return": -0.006879295482825287
+          },
+          "other_count": 25,
+          "others_sum_return_difference": 1.2717057935041076e-06,
+          "others_rms_return_difference": 7.326740285713838e-07,
+          "initial_count": 26,
+          "survivors": 26,
+          "neutral_survivors": 26,
+          "global_differences": {
+            "catalyst": [
+              9.63103721183245e-05,
+              -9.763352410807613e-05
+            ],
+            "bound": [
+              4.4356045980631365e-06,
+              -4.0756484800397175e-06
+            ],
+            "converted": [
+              2.0751733664781113e-12,
+              -2.0052867980902e-05
+            ],
+            "funded": [
+              0.00010033254681784953,
+              -0.00010168858021963878
+            ],
+            "requested": [
+              0.000628938534646295,
+              -0.0006289431039476767
+            ]
+          },
+          "material_residual": -2.1316282072803006e-14,
+          "potential_residual": -1.4210854715202004e-14
+        },
+        {
+          "lag": 1.0,
+          "own": {
+            "mass": -6.673473237983618e-05,
+            "energy": 3.359699999971877e-05,
+            "uptake_a": -5.644156201793649e-06,
+            "uptake_b": -5.5955010421659956e-05,
+            "return_difference": 0.0001314625855555196,
+            "neutral_return": -0.014151533208495826
+          },
+          "other_count": 25,
+          "others_sum_return_difference": 8.072992358776343e-06,
+          "others_rms_return_difference": 5.2939240131193664e-06,
+          "initial_count": 26,
+          "survivors": 26,
+          "neutral_survivors": 26,
+          "global_differences": {
+            "catalyst": [
+              0.00018391473122980617,
+              -0.00021527581382008165
+            ],
+            "bound": [
+              1.314687313946905e-05,
+              -1.7115211963347754e-05
+            ],
+            "converted": [
+              1.9512924609443871e-10,
+              -7.19308265781371e-05
+            ],
+            "funded": [
+              0.00020285381184748097,
+              -0.00023579693367326016
+            ],
+            "requested": [
+              0.0012601281487150118,
+              -0.0012604111252585426
+            ]
+          },
+          "material_residual": -2.1316282072803006e-14,
+          "potential_residual": 0.0
+        },
+        {
+          "lag": 2.0,
+          "own": {
+            "mass": -0.00012083564545728454,
+            "energy": 6.224382030944886e-05,
+            "uptake_a": -1.2541839840063407e-05,
+            "uptake_b": -9.29095981548056e-05,
+            "return_difference": 0.00016076352478711087,
+            "neutral_return": -0.026823521912391957
+          },
+          "other_count": 25,
+          "others_sum_return_difference": 1.2956264735908274e-05,
+          "others_rms_return_difference": 1.4684718731666185e-05,
+          "initial_count": 26,
+          "survivors": 26,
+          "neutral_survivors": 26,
+          "global_differences": {
+            "catalyst": [
+              0.00014455169965055248,
+              -0.0001806532481040124
+            ],
+            "bound": [
+              2.121845878816364e-05,
+              -3.780902938238517e-05
+            ],
+            "converted": [
+              4.826876509600453e-09,
+              -0.00011642908383047157
+            ],
+            "funded": [
+              0.00019580991316159313,
+              -0.00024098948032946765
+            ],
+            "requested": [
+              0.0012600695190485567,
+              -0.0012620607449207455
+            ]
+          },
+          "material_residual": -1.4210854715202004e-14,
+          "potential_residual": -1.4210854715202004e-14
+        },
+        {
+          "lag": 4.0,
+          "own": {
+            "mass": -6.280057770968739e-05,
+            "energy": 3.53484819766714e-05,
+            "uptake_a": -1.317438936630777e-05,
+            "uptake_b": -8.567621029806349e-05,
+            "return_difference": 4.315187652315089e-06,
+            "neutral_return": -0.04217564148209574
+          },
+          "other_count": 25,
+          "others_sum_return_difference": -3.133454449522066e-05,
+          "others_rms_return_difference": 9.095847386163593e-06,
+          "initial_count": 26,
+          "survivors": 26,
+          "neutral_survivors": 26,
+          "global_differences": {
+            "catalyst": [
+              0.00011076462984860314,
+              -0.00010619743771655976
+            ],
+            "bound": [
+              3.4707085495799816e-05,
+              -6.690432641853761e-05
+            ],
+            "converted": [
+              2.255200703960014e-08,
+              -9.350398429730511e-05
+            ],
+            "funded": [
+              0.00021458685162745184,
+              -0.00022098947232640498
+            ],
+            "requested": [
+              0.0012603082868736237,
+              -0.0012639214110095054
+            ]
+          },
+          "material_residual": -2.1316282072803006e-14,
+          "potential_residual": -2.842170943040401e-14
+        }
+      ]
+    },
+    {
+      "producer": 19,
+      "amplitude": -0.3,
+      "collective": false,
+      "samples": [
+        {
+          "lag": 0.2,
+          "own": {
+            "mass": -6.145416486802446e-08,
+            "energy": 4.5058503594930244e-08,
+            "uptake_a": -7.785168383567243e-08,
+            "uptake_b": 1.8115946017610574e-08,
+            "return_difference": 2.845571900333965e-07,
+            "neutral_return": -0.003405046943023793
+          },
+          "other_count": 25,
+          "others_sum_return_difference": -3.3329692894490393e-09,
+          "others_rms_return_difference": 1.2178986216266552e-09,
+          "initial_count": 26,
+          "survivors": 26,
+          "neutral_survivors": 26,
+          "global_differences": {
+            "catalyst": [
+              -3.399609039433926e-05,
+              3.3905956541957494e-05
+            ],
+            "bound": [
+              -2.8670633867022843e-07,
+              5.076092435274404e-07
+            ],
+            "converted": [
+              -1.618018471427618e-07,
+              2.4560504546800033e-07
+            ],
+            "funded": [
+              -3.475551343967709e-05,
+              3.466391169104632e-05
+            ],
+            "requested": [
+              -0.0003995665319962427,
+              0.00039956666296347976
+            ]
+          },
+          "material_residual": -7.105427357601002e-15,
+          "potential_residual": 0.0
+        },
+        {
+          "lag": 0.5,
+          "own": {
+            "mass": -9.369729703223584e-08,
+            "energy": 7.937588852868771e-08,
+            "uptake_a": -1.2464090531905114e-07,
+            "uptake_b": -6.477131925253232e-08,
+            "return_difference": 1.8746513796852327e-07,
+            "neutral_return": -0.008663704212691137
+          },
+          "other_count": 25,
+          "others_sum_return_difference": -1.7733744306358545e-08,
+          "others_rms_return_difference": 4.9124533037691115e-09,
+          "initial_count": 26,
+          "survivors": 26,
+          "neutral_survivors": 26,
+          "global_differences": {
+            "catalyst": [
+              -7.72474654695543e-05,
+              7.711380652608568e-05
+            ],
+            "bound": [
+              -1.153357942484945e-06,
+              1.9882500623680244e-06
+            ],
+            "converted": [
+              -7.822546768121441e-07,
+              1.062772615523233e-06
+            ],
+            "funded": [
+              -8.146418312549031e-05,
+              8.132043697628433e-05
+            ],
+            "requested": [
+              -0.000999071737169288,
+              0.000999071606202051
+            ]
+          },
+          "material_residual": -1.4210854715202004e-14,
+          "potential_residual": 0.0
+        },
+        {
+          "lag": 1.0,
+          "own": {
+            "mass": -7.300755753281152e-07,
+            "energy": 5.204081702236962e-07,
+            "uptake_a": -9.183288941227996e-07,
+            "uptake_b": -1.8908926130434267e-07,
+            "return_difference": 2.405588351295229e-06,
+            "neutral_return": -0.017057663646724786
+          },
+          "other_count": 25,
+          "others_sum_return_difference": -4.9127180712371654e-08,
+          "others_rms_return_difference": 1.3730367877359719e-08,
+          "initial_count": 26,
+          "survivors": 26,
+          "neutral_survivors": 26,
+          "global_differences": {
+            "catalyst": [
+              -0.00012226990332653287,
+              0.00012122140978654272
+            ],
+            "bound": [
+              -2.0934226314661686e-06,
+              3.8796254144823905e-06
+            ],
+            "converted": [
+              -2.3620983951588848e-06,
+              2.8583091102873937e-06
+            ],
+            "funded": [
+              -0.0001368203222473774,
+              0.00013572800200445378
+            ],
+            "requested": [
+              -0.0019985854160040617,
+              0.001998583960812539
+            ]
+          },
+          "material_residual": -7.105427357601002e-15,
+          "potential_residual": -1.4210854715202004e-14
+        },
+        {
+          "lag": 2.0,
+          "own": {
+            "mass": -1.5348867472564365e-06,
+            "energy": 1.0469661188006185e-06,
+            "uptake_a": -1.90691368640028e-06,
+            "uptake_b": 1.146404750324015e-06,
+            "return_difference": 7.363982829522442e-06,
+            "neutral_return": -0.03452207093638082
+          },
+          "other_count": 25,
+          "others_sum_return_difference": -4.1979815101900186e-07,
+          "others_rms_return_difference": 2.043038753863212e-07,
+          "initial_count": 26,
+          "survivors": 26,
+          "neutral_survivors": 26,
+          "global_differences": {
+            "catalyst": [
+              -0.00010869145008907122,
+              0.00010710734827956703
+            ],
+            "bound": [
+              -2.9954931167197607e-06,
+              5.351694603028534e-06
+            ],
+            "converted": [
+              -3.672966040313419e-06,
+              5.047221638632138e-06
+            ],
+            "funded": [
+              -0.00014628408129313542,
+              0.00014432401833297526
+            ],
+            "requested": [
+              -0.0021582372719421983,
+              0.002158214832888916
+            ]
+          },
+          "material_residual": -3.552713678800501e-14,
+          "potential_residual": -1.4210854715202004e-14
+        },
+        {
+          "lag": 4.0,
+          "own": {
+            "mass": -1.2699040425889763e-06,
+            "energy": 8.632388767138011e-07,
+            "uptake_a": -1.5042293994710354e-06,
+            "uptake_b": 1.4109432692199775e-06,
+            "return_difference": 4.056416006870123e-06,
+            "neutral_return": -0.07118261019419514
+          },
+          "other_count": 25,
+          "others_sum_return_difference": -2.124633545930177e-06,
+          "others_rms_return_difference": 2.872688152256559e-07,
+          "initial_count": 26,
+          "survivors": 26,
+          "neutral_survivors": 26,
+          "global_differences": {
+            "catalyst": [
+              -7.229614641701687e-05,
+              7.229114419082805e-05
+            ],
+            "bound": [
+              -8.793764648684643e-06,
+              1.1468453065655027e-05
+            ],
+            "converted": [
+              -3.46332411216288e-06,
+              6.2539057228416794e-06
+            ],
+            "funded": [
+              -0.00014560411105968285,
+              0.00014492581671921023
+            ],
+            "requested": [
+              -0.002158239592972677,
+              0.0021581900073215365
+            ]
+          },
+          "material_residual": -3.552713678800501e-14,
+          "potential_residual": -2.842170943040401e-14
+        }
+      ]
+    },
+    {
+      "producer": 19,
+      "amplitude": 0.3,
+      "collective": false,
+      "samples": [
+        {
+          "lag": 0.2,
+          "own": {
+            "mass": 6.751434855623017e-08,
+            "energy": -4.968469380361995e-08,
+            "uptake_a": 8.525975256357121e-08,
+            "uptake_b": -2.1276424622129753e-08,
+            "return_difference": -3.158025830840572e-07,
+            "neutral_return": -0.003405046943023793
+          },
+          "other_count": 25,
+          "others_sum_return_difference": 2.8494350212682207e-09,
+          "others_rms_return_difference": 1.2787204711294706e-09,
+          "initial_count": 26,
+          "survivors": 26,
+          "neutral_survivors": 26,
+          "global_differences": {
+            "catalyst": [
+              3.7695816800464854e-05,
+              -3.759764800292942e-05
+            ],
+            "bound": [
+              3.1786814247425355e-07,
+              -5.630466120010169e-07
+            ],
+            "converted": [
+              1.784745652932962e-07,
+              -2.738583151917773e-07
+            ],
+            "funded": [
+              3.853803177378268e-05,
+              -3.84376648696616e-05
+            ],
+            "requested": [
+              0.0004428982938406989,
+              -0.00044289836660027504
+            ]
+          },
+          "material_residual": -2.1316282072803006e-14,
+          "potential_residual": -1.4210854715202004e-14
+        },
+        {
+          "lag": 0.5,
+          "own": {
+            "mass": 8.95118643651216e-08,
+            "energy": -8.107806281909546e-08,
+            "uptake_a": 1.207483865117709e-07,
+            "uptake_b": 4.545501883224112e-08,
+            "return_difference": -2.233379641225497e-07,
+            "neutral_return": -0.008663704212691137
+          },
+          "other_count": 25,
+          "others_sum_return_difference": 1.751884193268438e-08,
+          "others_rms_return_difference": 5.681446829748421e-09,
+          "initial_count": 26,
+          "survivors": 26,
+          "neutral_survivors": 26,
+          "global_differences": {
+            "catalyst": [
+              8.563849092979581e-05,
+              -8.551038388304733e-05
+            ],
+            "bound": [
+              1.275147013757305e-06,
+              -2.2115640376796364e-06
+            ],
+            "converted": [
+              8.501936765159535e-07,
+              -1.206115675833619e-06
+            ],
+            "funded": [
+              9.031406094095473e-05,
+              -9.017458239668485e-05
+            ],
+            "requested": [
+              0.0011074180656578392,
+              -0.0011074180074501783
+            ]
+          },
+          "material_residual": -1.7763568394002505e-14,
+          "potential_residual": -1.4210854715202004e-14
+        },
+        {
+          "lag": 1.0,
+          "own": {
+            "mass": 6.995013450694643e-07,
+            "energy": -5.049800684275851e-07,
+            "uptake_a": 8.813905914284437e-07,
+            "uptake_b": 7.743184441202922e-08,
+            "return_difference": -2.581344253793638e-06,
+            "neutral_return": -0.017057663646724786
+          },
+          "other_count": 25,
+          "others_sum_return_difference": 5.48155484336732e-08,
+          "others_rms_return_difference": 1.3973979768169938e-08,
+          "initial_count": 26,
+          "survivors": 26,
+          "neutral_survivors": 26,
+          "global_differences": {
+            "catalyst": [
+              0.00013562408055900477,
+              -0.00013461334567865801
+            ],
+            "bound": [
+              2.31579954590444e-06,
+              -4.320530421431101e-06
+            ],
+            "converted": [
+              2.4899888905749457e-06,
+              -3.314871239834538e-06
+            ],
+            "funded": [
+              0.00015175659489186089,
+              -0.0001507040617634292
+            ],
+            "requested": [
+              0.0022153262107167393,
+              -0.00221532498835586
+            ]
+          },
+          "material_residual": 0.0,
+          "potential_residual": 1.4210854715202004e-14
+        },
+        {
+          "lag": 2.0,
+          "own": {
+            "mass": 1.3549127764189706e-06,
+            "energy": -9.213308266309284e-07,
+            "uptake_a": 1.681118878438248e-06,
+            "uptake_b": -1.3993003052104047e-06,
+            "return_difference": -7.230465378316175e-06,
+            "neutral_return": -0.03452207093638082
+          },
+          "other_count": 25,
+          "others_sum_return_difference": 4.439794719646173e-07,
+          "others_rms_return_difference": 2.1215097629859626e-07,
+          "initial_count": 26,
+          "survivors": 26,
+          "neutral_survivors": 26,
+          "global_differences": {
+            "catalyst": [
+              0.0001113202580658168,
+              -0.00010997444111282562
+            ],
+            "bound": [
+              3.232114194062774e-06,
+              -5.812460300624878e-06
+            ],
+            "converted": [
+              3.643354771709628e-06,
+              -5.6286176142172906e-06
+            ],
+            "funded": [
+              0.0001520946684729907,
+              -0.0001504100502067729
+            ],
+            "requested": [
+              0.0022153292666189373,
+              -0.0022153073514346033
+            ]
+          },
+          "material_residual": -2.842170943040401e-14,
+          "potential_residual": 2.842170943040401e-14
+        },
+        {
+          "lag": 4.0,
+          "own": {
+            "mass": 1.1560008990052495e-06,
+            "energy": -7.742459361415044e-07,
+            "uptake_a": 1.3541052048676727e-06,
+            "uptake_b": -1.6911518654350033e-06,
+            "return_difference": -4.131073208291092e-06,
+            "neutral_return": -0.07118261019419514
+          },
+          "other_count": 25,
+          "others_sum_return_difference": 2.1538338444426763e-06,
+          "others_rms_return_difference": 2.9307570793776126e-07,
+          "initial_count": 26,
+          "survivors": 26,
+          "neutral_survivors": 26,
+          "global_differences": {
+            "catalyst": [
+              7.407877958875986e-05,
+              -7.418655990765188e-05
+            ],
+            "bound": [
+              9.062330560416498e-06,
+              -1.2196881326698161e-05
+            ],
+            "converted": [
+              3.439070499378083e-06,
+              -6.79259809399646e-06
+            ],
+            "funded": [
+              0.0001514383737886149,
+              -0.00015097679801612252
+            ],
+            "requested": [
+              0.0022153280515340157,
+              -0.0022152835153974593
+            ]
+          },
+          "material_residual": -2.842170943040401e-14,
+          "potential_residual": 1.4210854715202004e-14
+        }
+      ]
+    },
+    {
+      "producer": 6,
+      "amplitude": -0.3,
+      "collective": false,
+      "samples": [
+        {
+          "lag": 0.2,
+          "own": {
+            "mass": -2.2094086560286996e-06,
+            "energy": 1.2023693481966191e-06,
+            "uptake_a": -1.925821159098895e-06,
+            "uptake_b": -3.1881818962631314e-08,
+            "return_difference": 5.9689872462520555e-06,
+            "neutral_return": -0.004519843697674886
+          },
+          "other_count": 25,
+          "others_sum_return_difference": 1.669511300317339e-07,
+          "others_rms_return_difference": 2.3554049318670864e-08,
+          "initial_count": 26,
+          "survivors": 26,
+          "neutral_survivors": 26,
+          "global_differences": {
+            "catalyst": [
+              -3.93413225765471e-05,
+              3.7745441659353673e-05
+            ],
+            "bound": [
+              -1.8219043340650387e-06,
+              8.143742888933048e-07
+            ],
+            "converted": [
+              -3.918462698537795e-06,
+              -1.1657341758564144e-15
+            ],
+            "funded": [
+              -4.020486323952355e-05,
+              3.858406466861197e-05
+            ],
+            "requested": [
+              -0.0004873154975939542,
+              0.0004873131401836872
+            ]
+          },
+          "material_residual": -2.842170943040401e-14,
+          "potential_residual": 0.0
+        },
+        {
+          "lag": 0.5,
+          "own": {
+            "mass": -9.549445503020948e-06,
+            "energy": 5.15366665532202e-06,
+            "uptake_a": -8.354861938758562e-06,
+            "uptake_b": -5.56352469205379e-07,
+            "return_difference": 2.3738450987575987e-05,
+            "neutral_return": -0.011701072755874953
+          },
+          "other_count": 25,
+          "others_sum_return_difference": 1.6241566163088805e-06,
+          "others_rms_return_difference": 2.268215742990335e-07,
+          "initial_count": 26,
+          "survivors": 26,
+          "neutral_survivors": 26,
+          "global_differences": {
+            "catalyst": [
+              -9.64321665342105e-05,
+              8.96691165230834e-05
+            ],
+            "bound": [
+              -9.659443972354076e-06,
+              3.963980864329919e-06
+            ],
+            "converted": [
+              -1.7984040160679005e-05,
+              -2.16382467499443e-13
+            ],
+            "funded": [
+              -0.00010151712212413955,
+              9.446977878990737e-05
+            ],
+            "requested": [
+              -0.0012186801177449524,
+              0.0012186466192360967
+            ]
+          },
+          "material_residual": -7.105427357601002e-15,
+          "potential_residual": 0.0
+        },
+        {
+          "lag": 1.0,
+          "own": {
+            "mass": -1.830459755791658e-05,
+            "energy": 9.63971680700837e-06,
+            "uptake_a": -1.6130162266453363e-05,
+            "uptake_b": -3.2499195394830593e-06,
+            "return_difference": 3.640634770596396e-05,
+            "neutral_return": -0.02379525479665534
+          },
+          "other_count": 25,
+          "others_sum_return_difference": 5.041764662927495e-06,
+          "others_rms_return_difference": 6.920373250331413e-07,
+          "initial_count": 26,
+          "survivors": 26,
+          "neutral_survivors": 26,
+          "global_differences": {
+            "catalyst": [
+              -0.00017880392197078265,
+              0.00016662065655559388
+            ],
+            "bound": [
+              -3.125527104708148e-05,
+              1.0626404836067138e-05
+            ],
+            "converted": [
+              -4.70815585016382e-05,
+              1.1152190282359697e-12
+            ],
+            "funded": [
+              -0.00019797682494360203,
+              0.00018449553027521937
+            ],
+            "requested": [
+              -0.0024386264267377555,
+              0.0024384602438658476
+            ]
+          },
+          "material_residual": -2.1316282072803006e-14,
+          "potential_residual": -1.4210854715202004e-14
+        },
+        {
+          "lag": 2.0,
+          "own": {
+            "mass": -1.0772011531212655e-05,
+            "energy": 4.565114654631053e-06,
+            "uptake_a": -9.626317785206562e-06,
+            "uptake_b": -8.822391493801263e-06,
+            "return_difference": -3.603931094553481e-06,
+            "neutral_return": -0.04830363353471212
+          },
+          "other_count": 25,
+          "others_sum_return_difference": -3.138765317878267e-06,
+          "others_rms_return_difference": 4.49176475186474e-07,
+          "initial_count": 26,
+          "survivors": 26,
+          "neutral_survivors": 26,
+          "global_differences": {
+            "catalyst": [
+              -0.00014242521910290407,
+              0.000139293959463771
+            ],
+            "bound": [
+              -6.404020820538481e-05,
+              1.8062896526505057e-05
+            ],
+            "converted": [
+              -6.834539551137109e-05,
+              8.107070570417818e-11
+            ],
+            "funded": [
+              -0.00019371519992272823,
+              0.00018759265675649672
+            ],
+            "requested": [
+              -0.002438656927552074,
+              0.002438242605421692
+            ]
+          },
+          "material_residual": -1.4210854715202004e-14,
+          "potential_residual": -4.263256414560601e-14
+        },
+        {
+          "lag": 4.0,
+          "own": {
+            "mass": -1.4804001537971345e-06,
+            "energy": -5.12864795632062e-07,
+            "uptake_a": -1.3809541670184444e-06,
+            "uptake_b": -1.2384081494010157e-05,
+            "return_difference": -2.63507783799799e-05,
+            "neutral_return": -0.09746549493422407
+          },
+          "other_count": 25,
+          "others_sum_return_difference": -9.703881507228118e-07,
+          "others_rms_return_difference": 4.176428807664021e-06,
+          "initial_count": 26,
+          "survivors": 26,
+          "neutral_survivors": 26,
+          "global_differences": {
+            "catalyst": [
+              -9.304275454269373e-05,
+              9.537933542969057e-05
+            ],
+            "bound": [
+              -8.141592532684427e-05,
+              2.1605801793667112e-05
+            ],
+            "converted": [
+              -6.440647410121958e-05,
+              6.173477284932005e-09
+            ],
+            "funded": [
+              -0.0001903415941741926,
+              0.00019048286504363965
+            ],
+            "requested": [
+              -0.002438294905005023,
+              0.002437949806335382
+            ]
+          },
+          "material_residual": -1.4210854715202004e-14,
+          "potential_residual": -7.105427357601002e-14
+        }
+      ]
+    },
+    {
+      "producer": 6,
+      "amplitude": 0.3,
+      "collective": false,
+      "samples": [
+        {
+          "lag": 0.2,
+          "own": {
+            "mass": 2.1256283657677955e-06,
+            "energy": -1.1586452984824192e-06,
+            "uptake_a": 1.852995390377865e-06,
+            "uptake_b": 3.094897216976422e-08,
+            "return_difference": -5.744012750108496e-06,
+            "neutral_return": -0.004519843697674886
+          },
+          "other_count": 25,
+          "others_sum_return_difference": -1.6237371536220735e-07,
+          "others_rms_return_difference": 2.2929037747533683e-08,
+          "initial_count": 26,
+          "survivors": 26,
+          "neutral_survivors": 26,
+          "global_differences": {
+            "catalyst": [
+              3.821028587935871e-05,
+              -3.667489625058806e-05
+            ],
+            "bound": [
+              1.770763446984347e-06,
+              -7.906837709015235e-07
+            ],
+            "converted": [
+              3.7850049284249287e-06,
+              0.0
+            ],
+            "funded": [
+              3.904752759353869e-05,
+              -3.748808569525863e-05
+            ],
+            "requested": [
+              0.00047056065523065627,
+              -0.00047055829782038927
+            ]
+          },
+          "material_residual": -2.842170943040401e-14,
+          "potential_residual": -1.4210854715202004e-14
+        },
+        {
+          "lag": 0.5,
+          "own": {
+            "mass": 8.912183960596565e-06,
+            "energy": -4.819719360393826e-06,
+            "uptake_a": 7.79846739668022e-06,
+            "uptake_b": 5.435652899316024e-07,
+            "return_difference": -2.2083552331908507e-05,
+            "neutral_return": -0.011701072755874953
+          },
+          "other_count": 25,
+          "others_sum_return_difference": -1.5428992355959181e-06,
+          "others_rms_return_difference": 2.154819774046407e-07,
+          "initial_count": 26,
+          "survivors": 26,
+          "neutral_survivors": 26,
+          "global_differences": {
+            "catalyst": [
+              9.393331969764773e-05,
+              -8.762280073693063e-05
+            ],
+            "bound": [
+              9.42153093830278e-06,
+              -3.88098281428606e-06
+            ],
+            "converted": [
+              1.7152640316375756e-05,
+              9.325873406851315e-15
+            ],
+            "funded": [
+              9.887983626333252e-05,
+              -9.230048008790348e-05
+            ],
+            "requested": [
+              0.001176783029222861,
+              -0.0011767512041842565
+            ]
+          },
+          "material_residual": -1.4210854715202004e-14,
+          "potential_residual": -1.4210854715202004e-14
+        },
+        {
+          "lag": 1.0,
+          "own": {
+            "mass": 1.556087142851048e-05,
+            "energy": -8.162442621917343e-06,
+            "uptake_a": 1.371920176013175e-05,
+            "uptake_b": 3.219384491243149e-06,
+            "return_difference": -2.951842520426684e-05,
+            "neutral_return": -0.02379525479665534
+          },
+          "other_count": 25,
+          "others_sum_return_difference": -4.324113839715427e-06,
+          "others_rms_return_difference": 5.93007817250024e-07,
+          "initial_count": 26,
+          "survivors": 26,
+          "neutral_survivors": 26,
+          "global_differences": {
+            "catalyst": [
+              0.00017347326439853816,
+              -0.00016319819590382423
+            ],
+            "bound": [
+              3.0426879149114683e-05,
+              -1.0521095180071605e-05
+            ],
+            "converted": [
+              4.360486705351496e-05,
+              -2.9273250490291503e-12
+            ],
+            "funded": [
+              0.00019211594442536395,
+              -0.00018067510665842335
+            ],
+            "requested": [
+              0.002354797092266381,
+              -0.0023546470765722916
+            ]
+          },
+          "material_residual": -1.7763568394002505e-14,
+          "potential_residual": 1.4210854715202004e-14
+        },
+        {
+          "lag": 2.0,
+          "own": {
+            "mass": 6.9998027527606865e-06,
+            "energy": -2.6450085672813373e-06,
+            "uptake_a": 6.279119039637182e-06,
+            "uptake_b": 8.839908072877378e-06,
+            "return_difference": 1.1131527402064023e-05,
+            "neutral_return": -0.04830363353471212
+          },
+          "other_count": 25,
+          "others_sum_return_difference": 5.45109376803854e-06,
+          "others_rms_return_difference": 7.474420767120751e-07,
+          "initial_count": 26,
+          "survivors": 26,
+          "neutral_survivors": 26,
+          "global_differences": {
+            "catalyst": [
+              0.00013767754859106418,
+              -0.00013669822246953345
+            ],
+            "bound": [
+              6.19225974971549e-05,
+              -1.7992267607569445e-05
+            ],
+            "converted": [
+              6.280257243601595e-05,
+              -8.01136934569513e-11
+            ],
+            "funded": [
+              0.00018739623802410676,
+              -0.00018402517416715725
+            ],
+            "requested": [
+              0.0023547927557956427,
+              -0.002354457203182392
+            ]
+          },
+          "material_residual": -1.0658141036401503e-14,
+          "potential_residual": 1.4210854715202004e-14
+        },
+        {
+          "lag": 4.0,
+          "own": {
+            "mass": -2.04609620602092e-06,
+            "energy": 2.2436757988186784e-06,
+            "uptake_a": -1.7593132357607288e-06,
+            "uptake_b": 1.2540349673628715e-05,
+            "return_difference": 3.115168885070574e-05,
+            "neutral_return": -0.09746549493422407
+          },
+          "other_count": 25,
+          "others_sum_return_difference": 3.3988610564916755e-07,
+          "others_rms_return_difference": 4.631724995834108e-06,
+          "initial_count": 26,
+          "survivors": 26,
+          "neutral_survivors": 26,
+          "global_differences": {
+            "catalyst": [
+              9.036717218879886e-05,
+              -9.321837033926528e-05
+            ],
+            "bound": [
+              7.869014731154422e-05,
+              -2.1521065283192087e-05
+            ],
+            "converted": [
+              5.980175067610283e-05,
+              -6.728727575122662e-09
+            ],
+            "funded": [
+              0.00018459078604182722,
+              -0.00018643788147265639
+            ],
+            "requested": [
+              0.0023543942006654106,
+              -0.002354243988520466
+            ]
+          },
+          "material_residual": -2.1316282072803006e-14,
+          "potential_residual": 1.4210854715202004e-14
+        }
+      ]
+    },
+    {
+      "producer": 0,
+      "amplitude": -0.3,
+      "collective": true,
+      "samples": [
+        {
+          "lag": 0.2,
+          "own": null,
+          "other_count": 26,
+          "others_sum_return_difference": -4.8614377488598315e-06,
+          "others_rms_return_difference": 5.072392767535978e-06,
+          "initial_count": 26,
+          "survivors": 26,
+          "neutral_survivors": 26,
+          "global_differences": {
+            "catalyst": [
+              -0.000982406923973167,
+              0.0009840962340501025
+            ],
+            "bound": [
+              -2.7676156578226863e-05,
+              2.2651534239359616e-05
+            ],
+            "converted": [
+              -2.17164352601662e-05,
+              3.1954053023086626e-05
+            ],
+            "funded": [
+              -0.0010045793643564949,
+              0.0010062953782496997
+            ],
+            "requested": [
+              -0.011296060314634815,
+              0.01129607149050571
+            ]
+          },
+          "material_residual": -2.842170943040401e-14,
+          "potential_residual": -1.4210854715202004e-14
+        },
+        {
+          "lag": 0.5,
+          "own": null,
+          "other_count": 26,
+          "others_sum_return_difference": 2.7758136673050604e-05,
+          "others_rms_return_difference": 2.225496012134937e-05,
+          "initial_count": 26,
+          "survivors": 26,
+          "neutral_survivors": 26,
+          "global_differences": {
+            "catalyst": [
+              -0.0023552796360687966,
+              0.002350087820218394
+            ],
+            "bound": [
+              -0.00012214785279063278,
+              0.00010100855393235797
+            ],
+            "converted": [
+              -9.901784914034817e-05,
+              0.0001396716880155413
+            ],
+            "funded": [
+              -0.0024807620437181654,
+              0.0024755498514781316
+            ],
+            "requested": [
+              -0.028248430928215384,
+              0.028248551883734763
+            ]
+          },
+          "material_residual": -1.4210854715202004e-14,
+          "potential_residual": 1.4210854715202004e-14
+        },
+        {
+          "lag": 1.0,
+          "own": null,
+          "other_count": 26,
+          "others_sum_return_difference": -0.00012856115765025322,
+          "others_rms_return_difference": 5.165498898717619e-05,
+          "initial_count": 26,
+          "survivors": 26,
+          "neutral_survivors": 26,
+          "global_differences": {
+            "catalyst": [
+              -0.004448064197809576,
+              0.004467133096417886
+            ],
+            "bound": [
+              -0.0003558893701336996,
+              0.0003021342865813792
+            ],
+            "converted": [
+              -0.00027890977589306587,
+              0.00037007653141740704
+            ],
+            "funded": [
+              -0.004920863645641926,
+              0.0049404392475640435
+            ],
+            "requested": [
+              -0.05652431592170615,
+              0.05652516445843503
+            ]
+          },
+          "material_residual": -1.4210854715202004e-14,
+          "potential_residual": 1.4210854715202004e-14
+        },
+        {
+          "lag": 2.0,
+          "own": null,
+          "other_count": 26,
+          "others_sum_return_difference": 0.0004276423847286992,
+          "others_rms_return_difference": 8.44069526813842e-05,
+          "initial_count": 26,
+          "survivors": 26,
+          "neutral_survivors": 26,
+          "global_differences": {
+            "catalyst": [
+              -0.0034851933339899444,
+              0.003847417665696018
+            ],
+            "bound": [
+              -0.0006299141912471939,
+              0.000619243340407527
+            ],
+            "converted": [
+              -0.00042875132397529603,
+              0.0006029305476029645
+            ],
+            "funded": [
+              -0.004754930385182821,
+              0.005141691795542247
+            ],
+            "requested": [
+              -0.05679955563391559,
+              0.05680452528758906
+            ]
+          },
+          "material_residual": -2.4868995751603507e-14,
+          "potential_residual": 1.4210854715202004e-14
+        },
+        {
+          "lag": 4.0,
+          "own": null,
+          "other_count": 26,
+          "others_sum_return_difference": -0.002028666604859064,
+          "others_rms_return_difference": 0.0002833985979408895,
+          "initial_count": 26,
+          "survivors": 26,
+          "neutral_survivors": 26,
+          "global_differences": {
+            "catalyst": [
+              -0.0020879832087723205,
+              0.002913382433842232
+            ],
+            "bound": [
+              -0.000577690682711185,
+              0.0016100284326611702
+            ],
+            "converted": [
+              -0.0004635386296255595,
+              0.0012203163040245268
+            ],
+            "funded": [
+              -0.004404776166833324,
+              0.005600951419932443
+            ],
+            "requested": [
+              -0.05662660593225155,
+              0.056690853627515025
+            ]
+          },
+          "material_residual": -2.842170943040401e-14,
+          "potential_residual": -5.684341886080802e-14
+        }
+      ]
+    },
+    {
+      "producer": 0,
+      "amplitude": 0.3,
+      "collective": true,
+      "samples": [
+        {
+          "lag": 0.2,
+          "own": null,
+          "other_count": 26,
+          "others_sum_return_difference": 8.630290815436759e-06,
+          "others_rms_return_difference": 5.259598750564711e-06,
+          "initial_count": 26,
+          "survivors": 26,
+          "neutral_survivors": 26,
+          "global_differences": {
+            "catalyst": [
+              0.000984288663644306,
+              -0.000987062012470119
+            ],
+            "bound": [
+              2.7957237304310212e-05,
+              -2.2994330297287924e-05
+            ],
+            "converted": [
+              2.086327101452623e-05,
+              -3.3379177440340246e-05
+            ],
+            "funded": [
+              0.0010065209287213328,
+              -0.0010093332858267523
+            ],
+            "requested": [
+              0.011280809922027402,
+              -0.011280820894171484
+            ]
+          },
+          "material_residual": -1.4210854715202004e-14,
+          "potential_residual": 0.0
+        },
+        {
+          "lag": 0.5,
+          "own": null,
+          "other_count": 26,
+          "others_sum_return_difference": -1.3580259429768482e-06,
+          "others_rms_return_difference": 2.340056822842401e-05,
+          "initial_count": 26,
+          "survivors": 26,
+          "neutral_survivors": 26,
+          "global_differences": {
+            "catalyst": [
+              0.002355543022074136,
+              -0.0023580702936863984
+            ],
+            "bound": [
+              0.00012240737561663995,
+              -0.00010216629033710234
+            ],
+            "converted": [
+              9.401545164550162e-05,
+              -0.00014818108884123715
+            ],
+            "funded": [
+              0.0024811670957229914,
+              -0.0024839247266619235
+            ],
+            "requested": [
+              0.028210312346345745,
+              -0.028210459495312534
+            ]
+          },
+          "material_residual": -2.1316282072803006e-14,
+          "potential_residual": 1.4210854715202004e-14
+        },
+        {
+          "lag": 1.0,
+          "own": null,
+          "other_count": 26,
+          "others_sum_return_difference": 0.0002618920929217672,
+          "others_rms_return_difference": 5.6875714625307945e-05,
+          "initial_count": 26,
+          "survivors": 26,
+          "neutral_survivors": 26,
+          "global_differences": {
+            "catalyst": [
+              0.004422483166065083,
+              -0.004477264471338449
+            ],
+            "bound": [
+              0.00035239377181478515,
+              -0.00030574227886237537
+            ],
+            "converted": [
+              0.00025776502029672965,
+              -0.0004041281099894656
+            ],
+            "funded": [
+              0.004894246636613975,
+              -0.004951913404909414
+            ],
+            "requested": [
+              0.05644791966187768,
+              -0.056449058596626855
+            ]
+          },
+          "material_residual": 0.0,
+          "potential_residual": 2.842170943040401e-14
+        },
+        {
+          "lag": 2.0,
+          "own": null,
+          "other_count": 26,
+          "others_sum_return_difference": -2.9379918954575146e-05,
+          "others_rms_return_difference": 3.6654779371025845e-05,
+          "initial_count": 26,
+          "survivors": 26,
+          "neutral_survivors": 26,
+          "global_differences": {
+            "catalyst": [
+              0.003840921721309065,
+              -0.0034623258254665723
+            ],
+            "bound": [
+              0.0007439793540501838,
+              -0.00034552900133055786
+            ],
+            "converted": [
+              0.0003923372254427404,
+              -0.0004945289554276755
+            ],
+            "funded": [
+              0.005115786600389249,
+              -0.004754385601661415
+            ],
+            "requested": [
+              0.05642149277264252,
+              -0.05642933752096724
+            ]
+          },
+          "material_residual": -2.1316282072803006e-14,
+          "potential_residual": 2.842170943040401e-14
+        },
+        {
+          "lag": 4.0,
+          "own": null,
+          "other_count": 26,
+          "others_sum_return_difference": -0.002674031443318181,
+          "others_rms_return_difference": 0.0006431509541723863,
+          "initial_count": 26,
+          "survivors": 26,
+          "neutral_survivors": 26,
+          "global_differences": {
+            "catalyst": [
+              0.003294745188890863,
+              -0.00150574508776527
+            ],
+            "bound": [
+              0.0020089691740071136,
+              0.00118775979995972
+            ],
+            "converted": [
+              0.00042772976035021504,
+              0.0010065124875295872
+            ],
+            "funded": [
+              0.0060061258797632355,
+              -0.0037409759888273886
+            ],
+            "requested": [
+              0.05625577432510909,
+              -0.0561984621162992
+            ]
+          },
+          "material_residual": -1.7763568394002505e-14,
+          "potential_residual": 1.4210854715202004e-14
+        }
+      ]
+    }
+  ],
+  "raw_report_sha256": "f79e0b4f1156b4151b56dcb36fa10a2290b6660345463c3dc08226e631809173"
+}

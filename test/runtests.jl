@@ -198,3 +198,11 @@ end
 module MaterialMemoryTransferTests
 include("material_memory_transfer.jl")
 end
+
+module LocalFlowBaselineTests
+include("local_flow_baseline.jl")
+end
+
+module TemporalLocalAuthorityTests
+include("temporal_local_authority.jl")
+end
