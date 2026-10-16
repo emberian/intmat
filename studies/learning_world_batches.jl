@@ -1,59 +1,99 @@
-# Independent paid learners share launches; all evolution remains in production
-# kernels and the original NativeLifetimeCredit sidecar kernels.
+# Independent policies share the existing constructive batch engine and execute
+# their original host hooks through a narrow execution-only launch seam.
 using Interior, SHA, TOML
 using Interior: KernelAbstractions
 isdefined(@__MODULE__,:ConstructiveBatchCells)||include("constructive_world_batches.jl")
 isdefined(@__MODULE__,:NativeLifetimeCredit)||include("native_lifetime_credit.jl")
 
-const LEARNING_MEMBER_OPTIONS=(:rate,:sigma,:kappa,:seed,:learning,:critic,:critic_learning)
-@inline learning_batch_scalar(x,w)=x
-@inline learning_batch_scalar(x::WorldBatchArray,w)=batch_world(x,w)[1]
-const LEARNING_BATCH_KERNELS=IdDict()
-function install_learning_batch_kernels!()
-    path=joinpath(@__DIR__,"native_lifetime_credit.jl")
-    source=Meta.parseall(read(path,String))
-    function findmodule(ex)
-        ex isa Expr||return nothing
-        ex.head==:module&&ex.args[2]==:NativeLifetimeCredit&&return ex
-        for child in ex.args
-            found=findmodule(child);found===nothing||return found
-        end
-        nothing
-    end
-    moduleexpr=findmodule(source);moduleexpr===nothing&&error("native learning module changed")
-    for ex in moduleexpr.args[end].args
-        ex isa Expr&&ex.head==:macrocall&&ex.args[1]==Symbol("@kernel")||continue
-        old,new,generated=batch_kernel_ast(deepcopy(ex))
-        old in (:choose!,:reward!)||continue
-        fn=generated.args[end];sig=fn.args[1];body=fn.args[2]
-        sig.args[1]=Symbol("learning_",new)
-        insertions=Expr[]
-        for j in 2:length(sig.args)
-            arg=sig.args[j]
-            if arg===:z || arg in (:rate,:sigma,:kappa,:seed,:learning,:critic_mode,:critic_learning)
-                packed=Symbol("packed_",arg);sig.args[j]=packed
-                projection=arg===:z ? GlobalRef(@__MODULE__,:batch_world) : GlobalRef(@__MODULE__,:learning_batch_scalar)
-                push!(insertions,:($arg=$projection($packed,batch_world_id)))
-            end
-        end
-        indexpos=findfirst(x->x isa Expr&&x.head==:(=)&&x.args[2] isa Expr&&x.args[2].head==:macrocall&&x.args[2].args[1]==Symbol("@index"),body.args)
-        splice!(body.args,indexpos+1:indexpos,insertions)
-        Core.eval(NativeLifetimeCredit,generated)
-        LEARNING_BATCH_KERNELS[getproperty(NativeLifetimeCredit,old)]=Base.invokelatest(getproperty,NativeLifetimeCredit,sig.args[1])
-    end
-    length(LEARNING_BATCH_KERNELS)==2||error("learning kernel vocabulary changed")
-    (;adapter=bytes2hex(sha256(read(@__FILE__))),lifetime=bytes2hex(sha256(read(path))),constructive=CONSTRUCTIVE_BATCH_SOURCE)
+struct WorldBatchScalar{A}
+    values::A
 end
-const LEARNING_BATCH_SOURCE=install_learning_batch_kernels!()
+WorldBatchAdapt.adapt_structure(to,x::WorldBatchScalar)=WorldBatchScalar(WorldBatchAdapt.adapt(to,x.values))
+@inline batch_world(x::WorldBatchScalar,w)=batch_world(x.values,w)[1]
 
-mutable struct LearningBatchHabitat{H,Z,B,Q,R}
-    habitat::H
-    state::Z
-    backend::B
-    options::Q
-    member_options::R
-    steps::Int
+struct SidecarBatchPolicy{T,L,K,O,P,C,N,R,F,S}
+    name::Symbol
+    sidecar_type::T
+    launch_module::L
+    kernels::K
+    member_options::O
+    member_properties::P
+    cohort_properties::C
+    cache_names::N
+    repack::R
+    restore::F
+    source::S
 end
+const WORLD_SIDECAR_POLICIES=Dict{Symbol,Any}()
+const WORLD_SIDECAR_KERNELS=IdDict()
+const LEARNING_MEMBER_OPTIONS=(:rate,:sigma,:kappa,:seed,:learning,:critic,:critic_learning)
+function sidecar_module_ast(ex,name)
+    ex isa Expr||return nothing
+    ex.head==:module&&ex.args[2]==name&&return ex
+    for child in ex.args
+        found=sidecar_module_ast(child,name);found===nothing||return found
+    end
+    nothing
+end
+function project_sidecar_kernel!(kernel,scope,path)
+    haskey(WORLD_SIDECAR_KERNELS,kernel)&&return WORLD_SIDECAR_KERNELS[kernel]
+    moduleexpr=sidecar_module_ast(Meta.parseall(read(path,String)),nameof(scope))
+    moduleexpr===nothing&&error("sidecar module changed")
+    candidates=filter(moduleexpr.args[end].args) do ex
+        ex isa Expr&&ex.head==:macrocall&&ex.args[1]==Symbol("@kernel")&&ex.args[end].args[1].args[1]==nameof(kernel)
+    end
+    ex=only(candidates);original_args=copy(ex.args[end].args[1].args[2:end])
+    old,new,generated=batch_kernel_ast(deepcopy(ex))
+    fn=generated.args[end];sig=fn.args[1];body=fn.args[2]
+    sig.args[1]=Symbol("policybatch_",new,"_",string(objectid(@__MODULE__);base=16))
+    insertions=Expr[]
+    for arg in original_args
+        j=findfirst(==(arg),sig.args);j===nothing&&continue
+        packed=Symbol("policy_packed_",arg);sig.args[j]=packed
+        push!(insertions,:($arg=$(GlobalRef(@__MODULE__,:batch_world))($packed,batch_world_id)))
+    end
+    indexpos=findfirst(x->x isa Expr&&x.head==:(=)&&x.args[2] isa Expr&&x.args[2].head==:macrocall&&x.args[2].args[1]==Symbol("@index"),body.args)
+    splice!(body.args,indexpos+1:indexpos,insertions)
+    Core.eval(scope,generated)
+    result=Base.invokelatest(getproperty,scope,sig.args[1]);WORLD_SIDECAR_KERNELS[kernel]=result
+    result
+end
+struct BatchedPolicyLaunch{B,R,K}
+    backend::B
+    worlds::Int
+    seeds::R
+    kernels::K
+end
+function batched_policy_launch!(launch,h,kernel,args...;ndrange)
+    dims=ndrange isa Tuple ? ndrange : (ndrange,)
+    launch.kernels[kernel](launch.backend,64)(args...,launch.seeds;ndrange=(dims...,launch.worlds))
+end
+function register_sidecar_batch_policy!(policy)
+    map=IdDict()
+    for (kernel,scope,path) in policy.kernels;map[kernel]=project_sidecar_kernel!(kernel,scope,path);end
+    scope=policy.launch_module
+    Core.eval(scope,:(policy_launch!(x::$(BatchedPolicyLaunch),h,kernel,args...;ndrange)=$(GlobalRef(@__MODULE__,:batched_policy_launch!))(x,h,kernel,args...;ndrange)))
+    WORLD_SIDECAR_POLICIES[policy.name]=(policy=policy,kernels=map)
+    policy
+end
+function sidecar_batch_policy(h)
+    matches=[entry for entry in values(WORLD_SIDECAR_POLICIES) if h isa entry.policy.sidecar_type]
+    length(matches)==1||throw(ArgumentError("register exactly one batch policy for this sidecar type"))
+    only(matches)
+end
+function restore_lifetime_sidecar(p,x)
+    q=x.options
+    NativeLifetimeCredit.sidecar(p;dt=Float64(q.dt),decision_time=Float64(q.dt)*q.decision_stride,
+        reward_time=Float64(q.dt)*q.reward_stride,rate=q.rate,sigma=q.sigma,kappa=q.kappa,seed=q.seed,
+        learning=q.learning,critic=q.critic,critic_learning=q.critic_learning)
+end
+const LIFETIME_BATCH_POLICY=register_sidecar_batch_policy!(SidecarBatchPolicy(:lifetime,NativeLifetimeCredit.CreditHabitat,
+    NativeLifetimeCredit,((NativeLifetimeCredit.choose!,NativeLifetimeCredit,joinpath(@__DIR__,"native_lifetime_credit.jl")),
+    (NativeLifetimeCredit.reward!,NativeLifetimeCredit,joinpath(@__DIR__,"native_lifetime_credit.jl"))),
+    LEARNING_MEMBER_OPTIONS,(),(),(),
+    (h,physical,state,backend,options,cache,properties,launcher)->NativeLifetimeCredit.CreditHabitat(physical,state,backend,options,h.steps,launcher),
+    restore_lifetime_sidecar,(lifetime=bytes2hex(sha256(read(joinpath(@__DIR__,"native_lifetime_credit.jl")))),)))
+const LEARNING_BATCH_SOURCE=(adapter=bytes2hex(sha256(read(@__FILE__))),lifetime=LIFETIME_BATCH_POLICY.source,constructive=CONSTRUCTIVE_BATCH_SOURCE)
 struct LearningWorldBatch{P,H,O}
     physical::P
     learner::H
@@ -63,55 +103,38 @@ function learning_world_batch(ps,learners;backend=nothing,identities=["world-$i"
     length(ps)==length(learners)>0||throw(DimensionMismatch("one paid learner per physical world required"))
     backend===nothing&&(backend=first(ps).cells.backend)
     length(identities)==length(ps)&&length(unique(identities))==length(ps)||throw(ArgumentError("unique experiment identities required"))
-    reference=first(learners);common=reference.options
-    invariant(q)=NamedTuple{Tuple(k for k in keys(q) if !(k in LEARNING_MEMBER_OPTIONS))}(Tuple(q[k] for k in keys(q) if !(k in LEARNING_MEMBER_OPTIONS)))
+    reference=first(learners);entry=sidecar_batch_policy(reference);policy=entry.policy;common=reference.options
+    common_properties=NamedTuple{policy.cohort_properties}(Tuple(getproperty(reference,k) for k in policy.cohort_properties))
+    invariant(q)=NamedTuple{Tuple(k for k in keys(q) if !(k in policy.member_options))}(Tuple(q[k] for k in keys(q) if !(k in policy.member_options)))
     for (p,h) in zip(ps,learners)
+        all(k->getproperty(h,k)==common_properties[k],policy.cohort_properties)||throw(ArgumentError("policy cohort clocks differ"))
         h.habitat===p.habitat||throw(ArgumentError("learner does not own this habitat"))
-        h.steps==reference.steps&&invariant(h.options)==invariant(common)||throw(ArgumentError("learning batch requires common physical/decision/reward clocks and action rows"))
+        sidecar_batch_policy(h).policy===policy&&h.steps==reference.steps&&invariant(h.options)==invariant(common)||throw(ArgumentError("batch requires common policy, physical/decision/reward/forcing clocks and action rows"))
     end
     physical=constructive_world_batch(ps;backend)
-    state=pack_world_arrays(getproperty.(learners,:state))
-    if backend!=reference.backend;state=map(a->batch_upload(backend,a),state);end
-    function option(k)
-        values=[h.options[k] for h in learners]
+    upload(group)=backend==reference.backend ? group : map(a->batch_upload(backend,a),group)
+    state=upload(pack_world_arrays(getproperty.(learners,:state)))
+    cache=upload(pack_world_arrays([NamedTuple{policy.cache_names}(Tuple(getproperty(h,k) for k in policy.cache_names)) for h in learners]))
+    function scalar(k,property=false)
+        values=[property ? getproperty(h,k) : h.options[k] for h in learners]
         storage=KernelAbstractions.zeros(backend,eltype(values),1,length(values));copyto!(storage,reshape(values,1,:))
-        WorldBatchArray(storage,(1,))
+        WorldBatchScalar(WorldBatchArray(storage,(1,)))
     end
-    opts=NamedTuple{LEARNING_MEMBER_OPTIONS}(map(option,LEARNING_MEMBER_OPTIONS))
-    h=LearningBatchHabitat(physical.habitat,state,backend,common,opts,reference.steps)
-    own=(physical=physical,habitat=h.habitat,state=h.state,member_options=opts,shapes=map(size,state),options=common,identities=Tuple(String.(identities)))
+    opts=NamedTuple{policy.member_options}(Tuple(scalar(k) for k in policy.member_options))
+    properties=NamedTuple{policy.member_properties}(Tuple(scalar(k,true) for k in policy.member_properties))
+    launcher=BatchedPolicyLaunch(backend,length(ps),(cells=physical.cells.seeds,habitat=physical.cells.habitat_seeds),entry.kernels)
+    mixed=merge(common,opts)
+    h=policy.repack(reference,physical.habitat,state,backend,mixed,cache,merge(common_properties,properties),launcher)
+    own=(physical=physical,habitat=h.habitat,state=h.state,member_options=opts,properties=properties,common_properties=common_properties,cache=cache,
+        shapes=map(size,state),cache_shapes=map(size,cache),options=mixed,common_options=common,policy=policy,launcher=launcher,identities=Tuple(String.(identities)))
     LearningWorldBatch(physical,h,own)
-end
-Interior.device_anabolic_argument(h::LearningBatchHabitat)=Interior.device_anabolic_argument(h.habitat)
-Interior.device_anabolic_begin!(h::LearningBatchHabitat,w,p,dt)=Interior.device_anabolic_begin!(h.habitat,w,p,dt)
-Interior.device_anabolic_prepare!(h::LearningBatchHabitat,w,p,dt)=Interior.device_anabolic_prepare!(h.habitat,w,p,dt)
-Interior.device_anabolic_inherit!(h::LearningBatchHabitat,w,p,step)=Interior.device_anabolic_inherit!(h.habitat,w,p,step)
-function learning_batch_launch(h,p,kernel,args...)
-    seeds=(cells=p.seeds,habitat=p.habitat_seeds)
-    LEARNING_BATCH_KERNELS[kernel](h.backend,128)(args...,seeds;ndrange=(Int(p.geometry.capacity),p.worlds))
-end
-function Interior.device_anabolic_sense!(h::LearningBatchHabitat,w,p,dt)
-    dt==h.options.dt||throw(ArgumentError("paid learning physical clock changed"))
-    Interior.device_anabolic_sense!(h.habitat,w,p,dt)
-    q=h.options;o=h.member_options;s=p.state
-    v=(active=s.active,ids=s.ids,energy=s.energy,metabolites=s.metabolites,weights=s.weights,marks=s.marks,inputs=s.inputs)
-    chemistry=(efficiency=p.parameters.efficiency,potentials=p.parameters.potentials)
-    learning_batch_launch(h,p,NativeLifetimeCredit.choose!,v,p.environment.status,chemistry,h.state,q.rows,q.hidden,
-        h.steps%q.decision_stride==0,o.sigma,o.seed,UInt32(h.steps÷q.decision_stride+1),h.steps%q.reward_stride==0,o.critic)
-end
-function Interior.device_anabolic_finish!(h::LearningBatchHabitat,w,p,dt)
-    Interior.device_anabolic_finish!(h.habitat,w,p,dt);h.steps+=1
-    q=h.options;o=h.member_options
-    if h.steps%q.reward_stride==0
-        s=p.state;v=(active=s.active,ids=s.ids,energy=s.energy,metabolites=s.metabolites,ledger=s.ledger,ledger_low=s.ledger_low)
-        chemistry=(efficiency=p.parameters.efficiency,potentials=p.parameters.potentials)
-        learning_batch_launch(h,p,NativeLifetimeCredit.reward!,v,p.environment.status,chemistry,h.state,o.rate,.3f0,o.kappa,o.learning,o.critic,o.critic_learning)
-    end
 end
 function learning_batch_validate(worlds,b)
     p=b.physical;h=b.learner;o=b.contract
-    p===o.physical&&h.habitat===p.habitat===o.habitat&&h.state===o.state&&h.member_options===o.member_options&&h.options===o.options||throw(ArgumentError("learning batch ownership changed"))
-    map(size,h.state)==o.shapes||throw(ArgumentError("learning state shapes changed"))
+    p===o.physical&&h.habitat===p.habitat===o.habitat&&h.state===o.state&&h.options===o.options&&h.launcher===o.launcher||throw(ArgumentError("learning batch ownership changed"))
+    map(size,h.state)==o.shapes&&map(size,o.cache)==o.cache_shapes||throw(ArgumentError("learning state/cache shapes changed"))
+    all(k->getproperty(h,k)===o.cache[k],o.policy.cache_names)||throw(ArgumentError("policy cache ownership changed"))
+    all(k->getproperty(h,k)==o.common_properties[k],o.policy.cohort_properties)||throw(ArgumentError("policy cohort clocks changed"))
     constructive_batch_validate_worlds(worlds,p);constructive_batch_validate_ownership(p)
     nothing
 end
@@ -145,13 +168,15 @@ function learning_world_batch_snapshot(b;check_status=true)
     check_status&&Interior.device_cellular_status!(c)
     host(group)=map(a->Array(a.storage),group)
     state=host(c.state);environment=host(c.environment);arrays=host(h.arrays);feed=host(h.feedstock.arrays);learning=host(b.learner.state)
-    opts=host(b.learner.member_options);seeds=Array(c.seeds);habitat_seeds=Array(c.habitat_seeds)
+    opts=map(a->Array(a.values.storage),b.contract.member_options)
+    properties=map(a->Array(a.values.storage),b.contract.properties);cache=host(b.contract.cache)
+    seeds=Array(c.seeds);habitat_seeds=Array(c.habitat_seeds)
     slice(group,i)=map(a->copy(selectdim(a,ndims(a),i)),group)
     map(1:c.worlds) do i
         cells=(state=slice(state,i),environment=slice(environment,i),parameters=merge(c.parameters,(seed=seeds[i],)),geometry=c.geometry,attempted_steps=c.attempted_steps)
         physical=(;cells,arrays=slice(arrays,i),feedstock=slice(feed,i),parameters=merge(h.parameters,(seed=habitat_seeds[i],)),feed_parameters=h.feedstock.parameters)
-        options=merge(b.learner.options,map(a->a[1,i],opts))
-        (;physical,state=slice(learning,i),options,steps=b.learner.steps)
+        options=merge(b.contract.common_options,map(a->a[1,i],opts))
+        (;physical,state=slice(learning,i),options,steps=b.learner.steps,cache=slice(cache,i),properties=merge(b.contract.common_properties,map(a->a[1,i],properties)))
     end
 end
 function learning_world_batch_checkpoint(worlds,b;members=collect(eachindex(worlds)))
@@ -170,16 +195,21 @@ function learning_world_batch_checkpoint(worlds,b;members=collect(eachindex(worl
         (;identity=b.contract.identities[i],completed_steps=Int(metadata[6]),attempted_steps=x.physical.cells.attempted_steps,
             learning_steps=x.steps,time=worlds[i].time,seed=worlds[i].seed,status=only(x.physical.cells.environment.status))
     end
-    (;format="Interior.ExperimentalLearningWorldBatch",version=1,julia_version=VERSION,source=LEARNING_BATCH_SOURCE,
-        physical=physical_payload,learners=[(;state=snapshots[i].state,options=snapshots[i].options,steps=snapshots[i].steps) for i in indices],journal)
+    (;format="Interior.ExperimentalLearningWorldBatch",version=2,julia_version=VERSION,source=LEARNING_BATCH_SOURCE,policy=b.contract.policy.name,policy_source=b.contract.policy.source,
+        physical=physical_payload,learners=[(;state=snapshots[i].state,options=snapshots[i].options,steps=snapshots[i].steps,cache=snapshots[i].cache,properties=snapshots[i].properties) for i in indices],journal)
 end
 
-function learning_sidecar_restore(physical,x)
-    q=x.options
-    h=NativeLifetimeCredit.sidecar(physical;dt=Float64(q.dt),decision_time=Float64(q.dt)*q.decision_stride,
-        reward_time=Float64(q.dt)*q.reward_stride,rate=q.rate,sigma=q.sigma,kappa=q.kappa,seed=q.seed,
-        learning=q.learning,critic=q.critic,critic_learning=q.critic_learning)
-    h.options==q||throw(ArgumentError("learner options differ from current contract"))
+function learning_sidecar_restore(policy,physical,x)
+    h=policy.restore(physical,x);q=x.options
+    invariant(options)=NamedTuple{Tuple(k for k in keys(options) if !(k in policy.member_options))}(Tuple(options[k] for k in keys(options) if !(k in policy.member_options)))
+    invariant(h.options)==invariant(q)||throw(ArgumentError("learner options differ from current clock/schema contract"))
+    h.options=q
+    keys(x.cache)==policy.cache_names&&keys(x.properties)==(policy.cohort_properties...,policy.member_properties...)||throw(ArgumentError("policy cache/property roles differ"))
+    for key in policy.cache_names
+        a=getproperty(h,key);v=x.cache[key]
+        size(a)==size(v)&&eltype(a)===eltype(v)&&all(isfinite,v)||throw(ArgumentError("invalid policy cache $key"))
+        copyto!(a,v)
+    end
     keys(h.state)==keys(x.state)||throw(ArgumentError("learner state roles differ"))
     for k in keys(h.state)
         a=h.state[k];v=x.state[k]
@@ -191,8 +221,11 @@ function learning_sidecar_restore(physical,x)
     h
 end
 function learning_world_batch_restore(worlds,x)
-    x.format=="Interior.ExperimentalLearningWorldBatch"&&x.version==1&&x.julia_version==VERSION&&x.source==LEARNING_BATCH_SOURCE||throw(ArgumentError("learning batch source/schema differs"))
+    x.format=="Interior.ExperimentalLearningWorldBatch"&&x.version==2&&x.julia_version==VERSION&&x.source==LEARNING_BATCH_SOURCE||throw(ArgumentError("learning batch source/schema differs"))
     length(worlds)==length(x.learners)==length(x.journal)>0||throw(DimensionMismatch("learning checkpoint member count differs"))
+    haskey(WORLD_SIDECAR_POLICIES,x.policy)||throw(ArgumentError("register the checkpoint policy before restoring"))
+    policy=WORLD_SIDECAR_POLICIES[x.policy].policy
+    policy.source==x.policy_source||throw(ArgumentError("policy source differs"))
     xp=x.physical
     xp.format=="Interior.ExperimentalConstructiveWorldBatch"&&xp.version==1&&xp.julia_version==VERSION&&xp.adapter_source==CONSTRUCTIVE_BATCH_SOURCE||throw(ArgumentError("physical batch source/schema differs"))
     length(xp.members)==length(worlds)==length(xp.member_indices)&&length(unique(xp.member_indices))==length(worlds)&&all(i->1<=i<=xp.source_member_count,xp.member_indices)||throw(ArgumentError("invalid physical member journal"))
@@ -205,7 +238,7 @@ function learning_world_batch_restore(worlds,x)
         Interior.device_habitat_restore(w,cp)
     end
     learners=map(eachindex(hosts)) do i
-        h=learning_sidecar_restore(hosts[i],x.learners[i]);j=x.journal[i];cp=x.physical.members[i]
+        h=learning_sidecar_restore(policy,hosts[i],x.learners[i]);j=x.journal[i];cp=x.physical.members[i]
         metadata=hosts[i].cells.environment.metadata
         j.status==0&&j.completed_steps==metadata[6]&&j.attempted_steps==hosts[i].cells.attempted_steps&&
             j.learning_steps==h.steps&&j.time==cp.cells.world_time&&j.seed==cp.cells.world_seed||throw(ArgumentError("member journal differs from complete physical/learning state"))
@@ -391,16 +424,37 @@ end
 function learning_world_batch_memory(b)
     c=b.physical.cells;h=b.physical.habitat;work=Interior.device_resource_workspace(c)
     groups=(cells=values(c.state),environment=values(c.environment),habitat=values(h.arrays),feedstock=values(h.feedstock.arrays),
-        learning=values(b.learner.state),options=values(b.learner.member_options),
+        learning=values(b.learner.state),options=values(b.contract.member_options),properties=values(b.contract.properties),cache=values(b.contract.cache),
         workspace=(work.grants,(a for level in work.levels for a in (level.high,level.low))...,Interior.device_lifecycle_workspace(c).highwater,c.seeds,c.habitat_seeds))
     seen=Set{UInt}()
     map(groups) do arrays
         bytes=0
         for a in arrays
-            parent=a isa WorldBatchArray ? a.storage : a
+            parent=a isa WorldBatchScalar ? a.values.storage : a isa WorldBatchArray ? a.storage : a
             key=objectid(parent);key in seen&&continue;push!(seen,key)
             bytes+=length(parent)*sizeof(eltype(parent))
         end
         bytes
     end
+end
+
+construction_sidecar_keywords(q)=(dt=parse(Float64,string(q.dt)),rate=q.rate,sigma=q.sigma,seed=q.seed,
+    learning=q.learning,critic=q.critic,enabled=q.enabled,phase_offset=q.phase_offset)
+function register_construction_world_batches!(C;name=:construction)
+    path=joinpath(@__DIR__,"native_construction_credit.jl");lifetime=joinpath(@__DIR__,"native_lifetime_credit.jl")
+    kernels=((C.choose!,C,path),(C.actuate!,C,path),(C.feed_phase!,C,path),(C.L.reward!,C.L,lifetime))
+    policy=SidecarBatchPolicy(name,C.ConstructionHabitat,C.L,kernels,(LEARNING_MEMBER_OPTIONS...,:enabled),(),(),(:original_masks,),
+        (h,physical,state,backend,options,cache,properties,launcher)->C.ConstructionHabitat(physical,state,backend,options,cache.original_masks,h.steps,launcher),
+        (p,x)->C.sidecar(p;construction_sidecar_keywords(x.options)...),
+        (construction=bytes2hex(sha256(read(path))),lifetime=bytes2hex(sha256(read(lifetime)))))
+    register_sidecar_batch_policy!(policy)
+end
+function register_joint_construction_world_batches!(J;name=:joint_construction)
+    C=J.C;path=joinpath(@__DIR__,"native_construction_credit.jl");joint=joinpath(@__DIR__,"native_joint_construction_credit.jl");lifetime=joinpath(@__DIR__,"native_lifetime_credit.jl")
+    kernels=((J.choose_joint!,J,joint),(J.reserve!,J,joint),(C.actuate!,C,path),(C.feed_phase!,C,path),(J.L.reward!,J.L,lifetime))
+    policy=SidecarBatchPolicy(name,J.JointHabitat,J.L,kernels,(LEARNING_MEMBER_OPTIONS...,:enabled),(:memory,),(),(:original_masks,),
+        (h,physical,state,backend,options,cache,properties,launcher)->J.JointHabitat(C.ConstructionHabitat(physical,state,backend,options,cache.original_masks,h.steps,launcher),properties.memory),
+        (p,x)->J.sidecar(p;memory=x.properties.memory,construction_sidecar_keywords(x.options)...),
+        (joint=bytes2hex(sha256(read(joint))),construction=bytes2hex(sha256(read(path))),lifetime=bytes2hex(sha256(read(lifetime)))))
+    register_sidecar_batch_policy!(policy)
 end

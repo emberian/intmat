@@ -122,3 +122,11 @@ end
 module LearningWorldBatchTests
 include("learning_world_batches.jl")
 end
+
+module NativeConstructionCreditTests
+include("native_construction_credit.jl")
+end
+
+module NativeJointConstructionCreditTests
+include("native_joint_construction_credit.jl")
+end

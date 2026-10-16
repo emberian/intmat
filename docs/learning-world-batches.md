@@ -79,7 +79,7 @@ throughput, not a faster single trajectory or evidence of useful learning.
 ## Native throughput and end-to-end cost
 
 The RX 6750 XT gate used the documented Julia 1.12.4/AMDGPU environment, device
-opt-level 1, CPUs 10–11, two Julia threads, 8 GiB/no-swap/nice15. Production sources
+opt-level 1, CPUs 10–11, two Julia threads, 8 GiB/no-swap/nice 15. Production sources
 were frozen before the parallel lane's subsequent request-helper extraction.
 Three alternating serial/batch samples follow each exact cohort's warm-up.
 The serial baseline queues all independent owners before one backend barrier;
@@ -132,3 +132,68 @@ The main remaining short-assay cost is setup, now larger than the native batched
 stepping. Reusing validated resident cohort storage and retaining the Julia
 process are natural follow-ups; they must preserve explicit experiment identity,
 source pins and independent branch state rather than silently resetting runs.
+
+## Original host hooks and policy registration
+
+The current adapter executes the sidecar's original begin/sense/prepare/finish
+hooks. `NativeLifetimeCredit.policy_launch!` is an execution seam: its native
+launcher calls the same kernel/backend/workgroup as before, while a batch
+launcher appends the independent world axis. Kernel equations remain in their
+original study modules. Registration lists original kernel functions, member
+options, member properties, cohort-common properties, private array caches,
+constructor/restart functions and source fingerprints. It does not implement a
+second host schedule or a pretend device backend.
+
+`register_construction_world_batches!(C)` handles the two-actuator construction
+policy; `register_joint_construction_world_batches!(J)` handles the investment,
+allocation and reserve policy. Memory ablation is private to each world. Original
+source masks are private cached state because the current masks may already have
+been permuted. Strict checkpoint schema version 2 records the policy identity,
+source, caches and properties, and rejects the prior schema rather than silently
+changing the continuation.
+
+The separate WIP extension `studies/construction_lag_world_batches.jl` supplies
+`register_construction_lag_world_batches!(P)`, which composes the joint policy with a
+held-command intervention. Axis, amplitude, producer and memory can differ per
+member. Pulse origin and duration must agree across the cohort. Saved commands
+and original source masks survive restart. The pulse's original prepare hook
+restores the exact sampled drive after submitting the perturbed requests/reserve;
+the batch adapter does not add/subtract commands itself.
+
+The refactored lifetime CPU gate retains all 125 checks. The joint cohort adds
+30 checks through 60 steps at dt=.1, crossing three reward windows and a source
+permutation, comparing original serial hooks against original batched hooks and
+strictly restarting between blocks. Construction's launch seam separately passes
+16 actuator/forcing boundary checks and 8 full coupled equivalence/count checks.
+
+The original-hook joint native gate is recorded in
+`benchmarks/2026-10-16-joint-world-batches-gpu.json`; its replay driver is
+`scripts/probe_joint_world_batches.jl`. Eight actual independent construction
+worlds (capacity 256 each, memory enabled/disabled, noise 6201/6277) ran 300 steps
+at dt=.02, crossing three paid rewards and the four-unit source exchange.
+Every compared physical/private floating array matched exactly (maximum error 0).
+Strict restart matched every member, and material/potential accounting residuals
+were below 1e-8 with positive paid updates in every member.
+
+Warm 100-step blocks including the same full snapshot/observation schedule took
+3.492/3.481 seconds for serial owners versus .462/.455 seconds for the cohort
+(7.56–7.65× aggregate throughput). The serial baseline enqueued every owner's
+trajectory before a common synchronization. Owned packed arrays totaled about
+19.1 MiB. Loading took 22.18 seconds; the first one-step serial and batch calls
+took 15.37 and 19.98 seconds respectively, including separate compilation. That
+cold difference is not a measured incremental compilation cost: specializations
+and the order of loading differ. Initialization was not separately timed in
+this gate; use the earlier lifetime end-to-end evidence for that narrower claim.
+
+The immutable native source/environment are
+`source-joint-world-batches-20261016-v2` and its environment sibling under the
+standard hbox probe root. It used optlevel 1, CPU 10–11, two Julia threads,
+8 GiB/no-swap and nice 15. Version 1 stopped before numerical execution because a
+script dependency was absent; its source/log remain preserved. The subsequent
+cohort-common pulse-property schema extension was validated on CPU, separate
+from this frozen native joint gate; it does not change joint numerical kernels.
+
+The pulse cohort CPU gate adds 25 assertions: distinct axes, signs, producers and
+memory flags match serial hooks exactly; saved commands match, and checkpoints
+restart exactly halfway through the pulse and after it. Mixed pulse origins are
+rejected. Native pulse cohorts still require their own gate before scientific use.

@@ -113,14 +113,21 @@ end
         for a in 1:size(z.trace,3),c in 1:size(z.trace,2);z.trace[i,c,a]=0f0;end
     end
 end
-mutable struct CreditHabitat{H,Z,B,Q}
+# Execution-only seam: default launch preserves the original backend/workgroup.
+# A batch adapter may dispatch on launcher without changing a policy equation.
+struct NativePolicyLaunch end
+policy_launch!(h,kernel,args...;ndrange)=policy_launch!(h.launcher,h,kernel,args...;ndrange)
+policy_launch!(::NativePolicyLaunch,h,kernel,args...;ndrange)=kernel(h.backend,64)(args...;ndrange)
+
+mutable struct CreditHabitat{H,Z,B,Q,P}
     habitat::H
     state::Z
     backend::B
     options::Q
     steps::Int
+    launcher::P
 end
-function sidecar(p;dt=.02,decision_time=.2,reward_time=2.,rate=.003,sigma=.15,kappa=.001,seed=6201,learning=true,critic=false,critic_learning=critic)
+function sidecar(p;dt=.02,decision_time=.2,reward_time=2.,rate=.003,sigma=.15,kappa=.001,seed=6201,learning=true,critic=false,critic_learning=critic,launcher=NativePolicyLaunch())
     all(x->isfinite(x)&&x>0,(dt,decision_time,reward_time))||error("positive clocks required")
     for t in (decision_time,reward_time);isapprox(t/dt,round(t/dt);atol=1e-8)||error("clocks must divide physics dt");end
     isapprox(reward_time/decision_time,round(reward_time/decision_time);atol=1e-8)||error("reward clock must divide decision clock")
@@ -132,7 +139,7 @@ function sidecar(p;dt=.02,decision_time=.2,reward_time=2.,rate=.003,sigma=.15,ka
        prediction_error=alloc(Float64,C),ema_error=alloc(Float64,C),credit_moment=alloc(Float64,C),clipped=alloc(Int32,C))
     opts=(dt=Float32(dt),decision_stride=round(Int,decision_time/dt),reward_stride=round(Int,reward_time/dt),
           rate=Float32(rate),sigma=Float32(sigma),kappa=Float64(kappa),seed=UInt32(seed),rows=(4,5,7),hidden=h,learning,critic,critic_learning)
-    CreditHabitat(p.habitat,z,p.cells.backend,opts,0)
+    CreditHabitat(p.habitat,z,p.cells.backend,opts,0,launcher)
 end
 Interior.device_anabolic_argument(h::CreditHabitat)=Interior.device_anabolic_argument(h.habitat)
 Interior.device_anabolic_begin!(h::CreditHabitat,w,p,dt)=Interior.device_anabolic_begin!(h.habitat,w,p,dt)
@@ -144,7 +151,7 @@ function Interior.device_anabolic_sense!(h::CreditHabitat,w,p,dt)
     q=h.options
     s=p.state;v=(active=s.active,ids=s.ids,energy=s.energy,metabolites=s.metabolites,weights=s.weights,marks=s.marks,inputs=s.inputs)
     chemistry=(efficiency=p.parameters.efficiency,potentials=p.parameters.potentials)
-    choose!(h.backend,64)(v,p.environment.status,chemistry,h.state,q.rows,q.hidden,
+    policy_launch!(h,choose!,v,p.environment.status,chemistry,h.state,q.rows,q.hidden,
         h.steps%q.decision_stride==0,q.sigma,q.seed,UInt32(h.steps÷q.decision_stride+1),h.steps%q.reward_stride==0,q.critic;ndrange=Int(p.geometry.capacity))
 end
 function Interior.device_anabolic_finish!(h::CreditHabitat,w,p,dt)
@@ -153,7 +160,7 @@ function Interior.device_anabolic_finish!(h::CreditHabitat,w,p,dt)
     if h.steps%q.reward_stride==0
         s=p.state;v=(active=s.active,ids=s.ids,energy=s.energy,metabolites=s.metabolites,ledger=s.ledger,ledger_low=s.ledger_low)
         chemistry=(efficiency=p.parameters.efficiency,potentials=p.parameters.potentials)
-        reward!(h.backend,64)(v,p.environment.status,chemistry,h.state,q.rate,.3f0,q.kappa,q.learning,q.critic,q.critic_learning;ndrange=Int(p.geometry.capacity))
+        policy_launch!(h,reward!,v,p.environment.status,chemistry,h.state,q.rate,.3f0,q.kappa,q.learning,q.critic,q.critic_learning;ndrange=Int(p.geometry.capacity))
     end
 end
 function advance!(w,p,h,time;dt=.02)

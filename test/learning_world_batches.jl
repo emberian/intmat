@@ -73,3 +73,38 @@ include(joinpath(@__DIR__,"..","studies","constructive_batch_fixture.jl"))
     @test only(learning_world_batch_snapshot(selected))==first(learning_world_batch_snapshot(batch;check_status=false))
 
 end
+
+using Interior, Test, KernelAbstractions
+include(joinpath(@__DIR__,"..","studies","native_joint_construction_credit.jl"))
+const J=NativeJointConstructionCredit
+register_joint_construction_world_batches!(J)
+f=J.C.fixture(joinpath(@__DIR__,"..","experiments","native","constructed-garden-workbench-16.toml");reserve_fraction=.2)
+worlds=[World(f.grid,CPU(),NamedTuple(),NamedTuple(),0.,f.seed) for _ in 1:2]
+ps=[Interior.device_habitat_restore(w,f.checkpoint) for w in worlds]
+hs=[J.sidecar(p;dt=.1,seed=6201,memory=i==1) for (i,p) in enumerate(ps)]
+b=learning_world_batch(ps,hs;identities=["memory","no_memory"])
+bw=[World(f.grid,CPU(),NamedTuple(),NamedTuple(),0.,f.seed) for _ in 1:2]
+origin=[Interior.device_habitat_audit(x.physical) for x in learning_world_batch_snapshot(b)]
+@testset "Joint policy uses original hooks in independent cohorts" begin
+    for n in (19,20,21)
+        learning_serial_advance!(worlds,ps,hs,n,.1)
+        learning_world_batch_advance!(bw,b,n,.1)
+        serial=learning_serial_snapshot(ps,hs);snapshot=learning_world_batch_snapshot(b)
+        @test learning_batch_parity(serial,snapshot)==0
+        for i in 1:2
+            @test snapshot[i].properties.memory==(i==1)
+            @test snapshot[i].cache.original_masks==hs[i].original_masks
+            @test snapshot[i].physical==serial[i].physical
+        end
+        checkpoint=learning_world_batch_checkpoint(bw,b)
+        rw=[World(f.grid,CPU(),NamedTuple(),NamedTuple(),0.,f.seed) for _ in 1:2]
+        restored=learning_world_batch_restore(rw,checkpoint)
+        @test learning_world_batch_snapshot(restored)==snapshot
+    end
+    for (a,x) in zip(origin,learning_world_batch_snapshot(b))
+        z=Interior.device_habitat_audit(x.physical)
+        @test abs(z.material-a.material-z.supplied+a.supplied+z.removed-a.removed)<1e-8
+        @test abs(z.potential-a.potential+z.work-a.work+z.heat-a.heat-z.supplied_potential+a.supplied_potential+z.removed_potential-a.removed_potential)<1e-8
+        @test sum(x.state.paid)>0
+    end
+end
