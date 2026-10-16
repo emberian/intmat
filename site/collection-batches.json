@@ -687,7 +687,8 @@
       "photograph.webp",
       "recipe.toml",
       "render-job.json",
-      "run.json"
+      "run.json",
+      "viewer.html"
     ]
   },
   {

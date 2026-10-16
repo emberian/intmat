@@ -87,7 +87,8 @@ A separate native 384³ epoch now completes with Float64 chemical inventories in
 **The chamber the brine kept:** a section through the new native 384³ mineral.
 Saved phase and remaining reagents select copper, petrol-dark metal and thin-film
 reflections. The cut exposes computed passages; its open ends are photographic
-boundaries. [Photograph and optical mapping](docs/brine-interior-384.md).
+boundaries. [Open the native surface](https://emberian.github.io/intmat/laboratory/brine-interior/) to rotate, cut and compare its saved reagent fields.
+[Photograph and optical mapping](docs/brine-interior-384.md).
 
 **A chord held in salt:** three pressure packets write an interference structure
 that changes subsequent wave propagation. An exact cutaway reveals its interior.
@@ -171,8 +172,9 @@ for later simulation and rendering.
 recorded controller regimes. [Material receptors](docs/native-material-sensing.md)
 connect retained food and construction to recurrent control; their native GPU
 pilot costs 1.1% per complete step. The local [Julia workbench](docs/native-workbench-control.md)
-now forks complete states, changes receptor scales and compares independent
-futures. Browser controls submit finite commands; the worker pauses between them.
+now forks complete states, changes receptor scales or material decay, release and
+diffusion, and compares independent futures. Browser controls submit finite
+commands; the worker pauses between them.
 
 ## Compose
 

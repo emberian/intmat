@@ -75,6 +75,44 @@ Active work remains continuous paid temporal allocation in the new fed habitat,
 and review of a separate homeostatic sensory-memory prototype. Short failed
 funding regimes remain recorded as design evidence, not ecological verdicts.
 
+### 05:30 UTC — native controls and explorable interiors
+
+The native 384³ brine surface is now an interactive instrument: 275,297 display
+vertices from the original Float64 contour, uncapped movable sections and saved
+phase/reagent colors. Root reviewed desktop and portrait views. The 7.25 MB
+exhibit links from its photograph and the redesigned visual laboratory entrance;
+all previous laboratory routes and the controller atlas remain. Publication
+staging contains 79 photographs and uses 128.02 MB of the 160 MB budget.
+
+The resident Julia workbench now changes catalyst decay, bound-food release and
+raw diffusion in an explicit child branch. Source clocks, physical/private
+state, pending credit and finite budgets survive the edit; strict checkpoints
+retain the edited law. CPU composition/regression (48+238 checks), gateway (10),
+actual browser and bounded AMD gates passed. The interface compares actual
+material totals only at equal clocks. All test workers stopped.
+
+Continuous temporal allocation now runs through motion, paid updates and births
+on Julia CPU/AMD. Filters observe every .2 time while actions can persist for 1;
+the default shared decision cadence stays unchanged. A separately designed
+slow-growth phenotype restores more construction, reaching 33 residents after
+9 births at time 24. Its frozen history benefit is still small (4.82e-6 mean
+usable return versus erasure), with all 33 initial probe residents surviving.
+This is working machinery and a design constraint, not rich learned ecology.
+Preserved funding/authority pilots explain the precursor priorities; the next
+lever targets individual action authority and noisy credit amid physiological
+drift. See `docs/research/temporal-living-allocation.md`.
+
+The homeostatic representation was also tested on actual identity-indexed
+material signals. Its synthetic scale-shift benefit does not transfer to this
+early-trained readout and native window; newborn-relative coordinates and
+meaningful changing concentrations differ from that synthetic nuisance.
+The prototype remains separate. Compact actual histories and held-out groups
+are in `docs/research/material-memory-transfer.md`.
+
+Active work: electrical-fracture film; representation-level resource staging and
+GPU whole-step profiling; conditional individual-action effects and a causal
+local-flow baseline. No new soaks or changes to old experiments.
+
 ## Active goal — an instrument for discovering rich living materials
 
 Fresh ten-hour session: **2026-10-16 00:50:31–10:50:31 UTC**

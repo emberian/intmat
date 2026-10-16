@@ -1,0 +1,166 @@
+{
+  "schema": "interior-native-material-workbench-evidence-1",
+  "scope": "Bounded four-founder 8 cubed control fixture; material rate intervention and composition result, not an ecological outcome.",
+  "controls": {
+    "fields": [
+      "decay_rate",
+      "desorption_rate",
+      "raw_diffusion"
+    ],
+    "fork_only": true,
+    "unchanged_dt": 0.02,
+    "before": {
+      "decay_rate": 0.05,
+      "desorption_rate": 0.12,
+      "raw_diffusion": [
+        0.006,
+        0.006
+      ]
+    },
+    "after": {
+      "decay_rate": 2,
+      "desorption_rate": 1,
+      "raw_diffusion": [
+        0.03,
+        0.03
+      ]
+    }
+  },
+  "checks": {
+    "material_julia": 48,
+    "existing_workbench_julia": 238,
+    "gateway_python": 10,
+    "same_time_inventory_binary_identical": true,
+    "private_state_preserved": true,
+    "strict_restore": true,
+    "parent_checkpoint_immutable": true,
+    "unsafe_and_original_edits_http": 400,
+    "checkpoint_download_http": 404,
+    "unequal_time_differences_suppressed": true,
+    "browser_page_errors": [],
+    "final_viewer_steps": [
+      12,
+      12
+    ],
+    "read_only_final_review": {
+      "writes": 0,
+      "page_errors": []
+    }
+  },
+  "browser": {
+    "fixture": "8 cubed, four founders, capacity 256, 4 cubed display",
+    "wall_seconds": 900,
+    "idle_seconds": 180,
+    "clocks": {
+      "off": {
+        "step": 0,
+        "time": 0
+      },
+      "sensing": {
+        "step": 12,
+        "time": 0.23999999463558197
+      },
+      "fork1": {
+        "step": 12,
+        "time": 0.23999999463558197
+      }
+    },
+    "left_summary": {
+      "catalyst": 0.03561059827916324,
+      "bound_food": 0.00167029593285406,
+      "converted_raw": 0.017956186341555436,
+      "work": 0.15180048299159787
+    },
+    "right_summary": {
+      "catalyst": 0.0286425796803087,
+      "bound_food": 0.0012937124629388563,
+      "converted_raw": 0.016969198659424374,
+      "work": 0.15174435893625093
+    },
+    "same_time_binary_sha256": "693862e1056e0431ddc67bb8d01f1f1d8c75ad5915090fb494c729dace7d9e3a",
+    "parent_checkpoint_sha256": "96c403c606ec7fb8c5af7613838d8abecf71fdec550867998f32cc53b6248cb9",
+    "stopped": true
+  },
+  "native": {
+    "runtime": {
+      "julia": "1.12.4",
+      "kernel": "Linux",
+      "architecture": "x86_64",
+      "launch_threads": 2,
+      "backend": "amd",
+      "device": "HIPDevice(id=1, name=AMD Radeon RX 6750 XT, gcn_arch=gfx1030)",
+      "backend_version": "2.8.0",
+      "actual_device_optlevel": 1,
+      "project_sha256": "e3282c59248d94eed4fb66ca803351d06e54463ae86f0ef61d744e82de811fee",
+      "manifest_sha256": "3ab1d9647d16cc7315681a8a4bf97604d46a767a10ce6936167c42759dd671d2"
+    },
+    "clocks": {
+      "off": {
+        "step": 0,
+        "time": 0.0
+      },
+      "sensing": {
+        "step": 12,
+        "time": 0.23999999463558197
+      },
+      "fork1": {
+        "step": 12,
+        "time": 0.23999999463558197
+      }
+    },
+    "left_summary": {
+      "catalyst": 0.03561059874482453,
+      "bound_food": 0.0016702959765098058,
+      "converted_raw": 0.017956186603001332,
+      "work": 0.1518004838942937
+    },
+    "right_summary": {
+      "catalyst": 0.028642579913139343,
+      "bound_food": 0.0012937124920426868,
+      "converted_raw": 0.016969198783814025,
+      "work": 0.15174435965650812
+    },
+    "max_material_error": 0.0,
+    "max_potential_error": 1.4432899320127035e-14,
+    "stopped": "stop command",
+    "host_controls": {
+      "cpus": "10-11",
+      "threads": 2,
+      "memory": "8 GiB",
+      "timeout_seconds": 900,
+      "device_optlevel": 1
+    },
+    "source_stage": "/othersys/tmp/intmat-probe-20261014/source-material-workbench-20261016-v3",
+    "session": "/othersys/tmp/intmat-probe-20261014/material-workbench-native-session-20261016-v3"
+  },
+  "source": {
+    "driver_sha256": "92e04a10758e59af3314ec0c378ed82cf2e041411e44c5c75c6719ee6df0e87a",
+    "cellular": {
+      "model": "1a938948fb14c400876c6848e4389fc432f4cc2a3962903374d2d76fb34f1c99",
+      "initialization": "766dfedbdbf5b4dbbb99ed5e9336a16747fa08752a84af3268fc7c98c613613a",
+      "founder_initialization": "d76e4c791a2c56bc7fd651b1836e6879b9e27013566ce6d94a1d2f677f62e633",
+      "support": "5a767b83c2c912d8706468ec7c5b86e56cf99430b2a23dfd3a7f3ee8f21bf55b",
+      "lifecycle": "8826c577e960db6596cd923a591d806b185908a254c6cc0fb6b0eebb033a9629",
+      "resource": "ac72b2db1dfa448446df0ae44840ba05933f1d8fb13c639f9e2cd3b3a7e41223",
+      "kernels": "8f9f5d153ff1e4f4636388072063aa6e53fbb20d9c5175d64d6fcb15993207ae",
+      "checkpoint": "81c8538519e5d0c58eb8bc0b6e49be7eec87119f81b7fcd998b6944f02c68503",
+      "protocol": "52632744615956c0e4c613e010b8fa4ba08c396e46e03d7ef5ec15f037e8199d"
+    },
+    "habitat": {
+      "helper": "5753f0cf5065345cf08fb9a2501d87aad4f6eff13183fd344e8f53dfe736aa41",
+      "kernels": "b9774fc4b57b8d6dd844dc996979b007cf4f3e8160660a2961525514dad52c9c",
+      "sorption": "3811fd3627906823a01f2afb2e6693bb6aec99c37bb10bfb72d43c85f8b4ad08"
+    },
+    "gate_harness_sha256": "3271d93a799041dadd6795ae03dc04df6ea09553ef7934f73b7a2a593708ad9d",
+    "browser_test_sha256": "fb51e8b552e36d7079b3895c736e2858337ddb59af6db9b18a6bd25a41ac6418"
+  },
+  "evidence": {
+    "local_session": "outputs/native-material-workbench-20261016/session",
+    "full_browser_receipt": "outputs/native-material-workbench-20261016/browser/receipt.json",
+    "native_receipt": "outputs/native-material-workbench-20261016/native-gate.json",
+    "desktop": "outputs/native-material-workbench-20261016/browser/material-comparison.png",
+    "mobile": "outputs/native-material-workbench-20261016/browser/material-mobile.png",
+    "native_source_pins_sha256": "09b701b9e02512c5c89e88a7e9d4e7a9e9190b47b662ffa10ebb88658de16c7c"
+  },
+  "retained_attempts": "Native v1 failed before initialization because JSON3 was not a direct copied-environment dependency; v2 gate harness captured its child variable in a request helper. Both retained. v3 completed from a fresh output; no numerical failure or checkpoint migration."
+}

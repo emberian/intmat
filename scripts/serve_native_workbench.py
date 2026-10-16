@@ -15,7 +15,7 @@ from urllib.parse import urlsplit, unquote
 import uuid
 
 REPO = Path(__file__).resolve().parent.parent
-ACTIONS = {'describe', 'observe', 'step', 'pause', 'checkpoint', 'receptor_scales', 'fork', 'stop'}
+ACTIONS = {'describe', 'observe', 'step', 'pause', 'checkpoint', 'receptor_scales', 'material_rates', 'fork', 'stop'}
 BRANCHES = {'off', 'sensing', 'fork1', 'fork2', 'both'}
 
 def valid_scale(value):
@@ -104,8 +104,8 @@ class NativeWorkbenchHandler(BaseHTTPRequestHandler):
             if not 0 < length <= 2048:
                 raise ValueError('Request size must be 1–2048 bytes')
             body = json.loads(self.rfile.read(length))
-            if not isinstance(body, dict) or set(body) - {'action', 'branch', 'steps', 'scales'}:
-                raise ValueError('Only action, branch, steps and scales are accepted')
+            if not isinstance(body, dict) or set(body) - {'action', 'branch', 'steps', 'scales', 'rates'}:
+                raise ValueError('Only action, branch, steps, scales and rates are accepted')
             action, branch = body.get('action'), body.get('branch', 'both')
             if action not in ACTIONS or branch not in BRANCHES:
                 raise ValueError('Unknown action or branch')
@@ -129,6 +129,17 @@ class NativeWorkbenchHandler(BaseHTTPRequestHandler):
                     raise ValueError('Three positive finite scales for sensing are required')
             elif 'scales' in body:
                 raise ValueError('Scales apply only to receptor_scales')
+            if action == 'material_rates':
+                selected = worker.get('branches', {}).get(branch, {})
+                controls = selected.get('material_controls', {})
+                rates = body.get('rates')
+                if branch == 'both' or not selected.get('parent') or not controls.get('enabled') or not isinstance(rates, dict) or set(rates) != {'decay_rate', 'desorption_rate', 'raw_diffusion'}:
+                    raise ValueError('Material rates require one explicit fork and three rates')
+                caps = {'decay_rate': controls['max_decay_rate'], 'desorption_rate': controls['max_desorption_rate'], 'raw_diffusion': controls['max_raw_diffusion']}
+                if not all(type(v) in (int, float) and math.isfinite(v) and 0 <= v <= caps[k] and (v == 0 or valid_scale(v)) for k, v in rates.items()):
+                    raise ValueError('Material rates outside branch bounds')
+            elif 'rates' in body:
+                raise ValueError('Rates apply only to material_rates')
             command = dict(body, branch=branch, id=str(uuid.uuid4()), requested_at=time.time())
             with self.command_lock:
                 previous = self.root / 'command.json'

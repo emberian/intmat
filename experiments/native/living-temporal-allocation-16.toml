@@ -1,0 +1,70 @@
+# Separate continuously acting allocation-learning law; fixed total request.
+# Separate patch recruitment law: mobile raw stock and longer material memory.
+# Same founders, inventories, source budgets, motor law and paid learning.
+seed = 211
+[grid]
+shape = [16,16,16]
+extent = [2.0,2.0,2.0]
+[cellular]
+founders = 24
+capacity = 512
+hidden = 8
+biomass = 1.6
+energy = 1.0
+metabolites = 0.12
+density = 128.0
+exchange_radius = 0.18
+speed = 0.06
+growth_rate = 0.8
+basal_rate = 0.008
+adaptation_strength = 0.3
+adaptation_time = 8.0
+junction_rate = 0.8
+mutation = 0.08
+mutation_probability = 0.03
+[resources]
+initial = [0.15,0.15,0.0]
+potentials = [4.0,4.0,0.0]
+diffusion = [0.006,0.006,0.001]
+source_rates = [0.0,0.0,0.0]
+source_budgets = [0.0,0.0,0.0]
+sink_rates = [0.0,0.0,0.0]
+sink_budgets = [0.0,0.0,0.0]
+[feedstock]
+niche_contrast = 0.85
+initial = [0.8,0.8]
+potentials = [4.0,4.0]
+diffusion = [0.006,0.006]
+source_rates = [0.4,0.4]
+source_budgets = [12.8,12.8]
+sink_rates = [0.0,0.0]
+sink_budgets = [0.0,0.0]
+[catalysis]
+secretion_rate = 0.12
+secretion_work = 0.2
+allocation_exponent = 1.0
+catalytic_rate = 6.0
+half_saturation = 0.2
+decay_rate = 0.05
+investment_bias = -0.8
+allocation_bias_scale = 1.2
+mutation = 0.08
+mutation_probability = 0.03
+regulation = true
+[matrix]
+capacity_per_enzyme = 6.0
+adsorption_rate = 4.0
+desorption_rate = 0.12
+cross_binding = 0.0
+transport_barrier = 20.0
+[material_sensing]
+channels = ["raw_balance","raw_total","catalyst_total"]
+scales = [1.0,1.0,0.5]
+[native]
+energy_type = "Float64"
+inventory_type = "Float64"
+support_strategy = "materialized"
+mechanical_substeps = 16
+radius_bound = 2.0
+bin_width = 0.25
+dt = 0.02

@@ -100,5 +100,8 @@
     ],
     "original_retained": true,
     "reviewed_by": "optical_interior_art and root"
-  }
+  },
+  "viewer": "viewer.html",
+  "viewer_label": "Open the native surface",
+  "viewer_context": "384\u00b3 mineral \u00b7 rotate, section and color"
 }

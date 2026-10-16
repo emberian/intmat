@@ -56,6 +56,19 @@ class GatewayTests(unittest.TestCase):
                 self.assertEqual(self.request('POST', '/api/control', body)[0], 400)
         self.assertFalse((self.root / 'command.json').exists())
 
+    def test_material_rates_require_fork_and_finite_bounded_schema(self):
+        limits = {'max_decay_rate': 10, 'max_desorption_rate': 10, 'max_raw_diffusion': .1, 'enabled': True}
+        worker = {'status': 'ready', 'actions': ['material_rates', 'observe'], 'branches': {'sensing': {'parent': None}, 'fork1': {'parent': {'branch': 'sensing'}, 'material_controls': limits}}}
+        (self.root / 'worker.json').write_text(json.dumps(worker))
+        rates = {'decay_rate': .05, 'desorption_rate': .12, 'raw_diffusion': .006}
+        for branch in ('both', 'sensing'):
+            self.assertEqual(self.request('POST', '/api/control', {'action': 'material_rates', 'branch': branch, 'rates': rates})[0], 400)
+        for bad in ({**rates, 'decay_rate': True}, {**rates, 'desorption_rate': -1}, {**rates, 'raw_diffusion': .2}, {**rates, 'decay_rate': 11}, {**rates, 'decay_rate': 1e-100}, {**rates, 'capacity': 4}, {'decay_rate': .05}):
+            self.assertEqual(self.request('POST', '/api/control', {'action': 'material_rates', 'branch': 'fork1', 'rates': bad})[0], 400)
+        self.assertEqual(self.request('POST', '/api/control', {'action': 'observe', 'rates': rates})[0], 400)
+        self.assertFalse((self.root / 'command.json').exists())
+        self.assertEqual(self.request('POST', '/api/control', {'action': 'material_rates', 'branch': 'fork1', 'rates': {k: 0 for k in rates}})[0], 202)
+
     def test_receptor_scale_contract_and_event_paths(self):
         for scales in ([0, 1, 1], [True, 1, 1], [1, 2], [float("inf"), 1, 1], [1e100, 1, 1], [1e-100, 1, 1]):
             self.assertEqual(self.request('POST', '/api/control', {'action': 'receptor_scales', 'branch': 'sensing', 'scales': scales})[0], 400)

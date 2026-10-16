@@ -65,8 +65,8 @@ mutable struct ConstructionHabitat{H,Z,B,Q,M,P}
     steps::Int
     launcher::P
 end
-function sidecar(p;dt=.02,rate=.003,sigma=.3,seed=6201,learning=true,critic=true,enabled=true,phase_offset=0,launcher=L.NativePolicyLaunch())
-    old=L.sidecar(p;dt,rate,sigma,seed,learning,critic,critic_learning=learning || rate==0,launcher)
+function sidecar(p;dt=.02,decision_time=.2,rate=.003,sigma=.3,seed=6201,learning=true,critic=true,enabled=true,phase_offset=0,launcher=L.NativePolicyLaunch())
+    old=L.sidecar(p;dt,decision_time,rate,sigma,seed,learning,critic,critic_learning=learning || rate==0,launcher)
     C=Int(p.cells.geometry.capacity)
     alloc(dims...)=fill!(similar(p.cells.state.inputs,Float32,dims...),0f0)
     z=merge(old.state,(learned=alloc(C,4,2),trace=alloc(C,4,2),drive=alloc(C,2),requested=fill!(similar(p.cells.state.inputs,Float64,C,2),0.)))

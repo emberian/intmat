@@ -27,7 +27,7 @@ checkpoint `.jls` files. Public Pages can display recordings without this worker
 ```
 
 IDs contain1–80 ASCII letters, digits, underscores or hyphens. Allowed keys are
-`id`, `action`, `branch`, `steps`, `scales`, `requested_at`. Branch is an existing `off`, `sensing`, `fork1` or `fork2`; `both` (default)
+`id`, `action`, `branch`, `steps`, `scales`, `rates`, `requested_at`. Branch is an existing `off`, `sensing`, `fork1` or `fork2`; `both` (default)
 always means the original `off`/`sensing` pair. `steps` is a positive integer only for the step action; booleans,
 unknown fields and arbitrary expressions are rejected. The `receptor_scales` action
 also accepts `scales`: exactly three positive finite numbers representable as
@@ -42,6 +42,7 @@ reject that field.
 | `pause` | Acknowledge paused state; all branches are already paused between finite commands |
 | `checkpoint` | Write a strict complete native checkpoint with source and content hash |
 | `receptor_scales` | Apply three half-response scales to the sensing branch, preserving physical state and recording a timed intervention |
+| `material_rates` | Change catalyst decay, food release and raw diffusion in an explicit fork, preserving state and the timestep |
 | `fork` | Strictly clone one current complete branch into an independent generated child, preserving the immutable parent checkpoint |
 | `stop` | Stop accepting new work and let the worker exit |
 
@@ -110,7 +111,7 @@ strict checkpoint restoration, actual viewer-compatible arrays, file hashes,
 artifact and total-step limits, pause and stop. A separate blockmean reference
 checks both inventory precisions against direct concentration averages.
 
-The native RX6750XT protocol gate executed nine commands: describe, paired16-step
+The native RX 6750 XT protocol gate executed nine commands: describe, paired16-step
 advance, checkpoint, pause, observation, sensing-only8-step advance, checkpoint,
 rejected over-budget257-step request, stop. The final clocks are16 and24 steps;
 six immutable8³ observations have verified binary hashes. Final checkpoint
@@ -252,7 +253,7 @@ child on the right. Commands are gated by the worker's advertised actions, so
 older frozen paired workers remain usable without gaining unsupported forks.
 
 
-The fresh CPU browser gate forked sensing at step4, advanced parent and child
+The fresh CPU browser gate forked sensing at step 4, advanced parent and child
 independently to step8, and obtained identical actual exported arrays. It applied
 new receptor scales only to the child, selected the two futures in the browser,
 created the fourth branch and verified refusal of a fifth. The parent checkpoint
@@ -378,7 +379,7 @@ session retain its declared inheritance and learning law.
 A frozen-source four-founder 16³ fixture exercised the actual loopback gateway:
 advance sensing two steps, fork it, change only the child's receptor scales,
 advance the child two steps, then stop. The parent remained at step2 and the
-child reached step4; the parent's exported binary and immutable complete
+child reached step 4; the parent's exported binary and immutable complete
 checkpoint hashes remained unchanged. The receptor edit preserved identical
 before/after binaries at the same time. The original off branch stayed at step0.
 
@@ -395,3 +396,84 @@ servers were untouched.
 records the frozen source, finite 600s wall/180s idle limits, commands, clocks and
 hashes. Full receipts, actual checkpoint/observation state and reviewed comparison
 remain in `outputs/native-living-workbench-http-20261016`.
+
+## Fork-only material timescales and raw transport
+
+A fresh worker advertises `material_rates`. Select a current complete branch,
+**fork it**, then edit the generated child. The original `off` and `sensing`
+branches reject physical rate edits, as does `both`. Changes are acknowledged
+at a complete step boundary and affect the next finite advance.
+
+```json
+{"id":"material-study-1","action":"material_rates","branch":"fork1","rates":{"decay_rate":0.05,"desorption_rate":0.12,"raw_diffusion":0.006}}
+```
+
+The three required fields form a typed Float32 law vocabulary:
+
+| Field | Meaning | Accepted range |
+|---|---|---|
+| `decay_rate` | Catalyst's exponential decay rate; lifetime `1/k` | 0…10 per model time |
+| `desorption_rate` | Bound-food release rate; release clock `1/k` without rebinding | 0…10 per model time |
+| `raw_diffusion` | Same diffusion coefficient for raw A and raw B | 0…min(1, diffusion stability ceiling) in length²/time |
+
+Zero stops the named kinetic process. Catalyst loss can still reduce binding
+capacity and release bound food through the existing accounted collapse law, even
+with zero desorption. Positive inputs must remain positive finite
+Float32 numbers. Booleans, negative/nonfinite values, underflow, missing or extra
+fields, and rates attached to another action are rejected. The finite rate caps
+bound this interactive vocabulary; they are not claims about all possible
+material laws. Adsorption, binding capacity, chemical potentials, source budgets,
+cell capacity and array schema are fixed. The diffusion edit changes both raw
+coefficients together; a profile's other feed parameter roles remain unchanged.
+
+For actual grid spacing, the raw ceiling is conservatively rounded down from
+`.45 / (dt × sum(1/spacing²))`, capped at 1. The worker also calls the native
+`check_dt` on the candidate coupled process, covering the cellular bound and
+raw diffusion at the unchanged submitted Float32 timestep. A rate edit never
+silently reduces `dt`, advances a step, redistributes a field, or changes an
+inventory or funding ledger. Decay and sorption already use the existing native
+exponential and closed-form finite-capacity laws.
+
+The adapter replaces same-type feed/habitat parameter wrappers around the
+existing arrays and rebinds the existing living wrapper. It does not reconstruct
+or reset the actor, critic, cohort queues, private recurrent/adaptation state, noise clock,
+birth records or physiological state. Complete before/after checkpoints and
+observations carry the event, old/new rates, unchanged `dt`, native stability
+limit and original fork provenance. Before/after binaries at the edit time are
+identical; metadata and effective parameters differ. Native checkpoints include
+both habitat rates and feed diffusion, so a later strict fork inherits the
+edited law and independent complete state. Source identities remain pinned to
+the actual code; parameter changes are declared provenance, not source edits.
+
+The local interface displays proposed catalyst/release times and nominal
+`R²/(6D)` transport time over the actual exchange radius. The latter is an
+analytic diffusion scale, not a measured arrival time. Its physical comparison
+table uses actual completed observations: total catalyst, bound food, cumulative
+raw conversion and cumulative total work. Differences appear only when the
+selected latest captures have exactly equal model times. Unequal clocks show an
+explicit mismatch instead. The existing volume viewers retain the corresponding
+actual fields and cells. Frozen older workers do not acquire new controls.
+
+The CPU composition gate passes 48 material-control checks; the existing
+workbench/receptor suite passes 238 and the gateway suite 10. A real loopback
+browser forked a four-founder 8³ living fixture at step 4, applied rates 2 / 1 / .03,
+then advanced both futures to step 12. It verified identical edit-time binaries,
+unchanged parent checkpoint, actual unequal-clock refusal and equal-clock
+material differences, native viewer decoding, event labels and HTTP rejection
+of unsafe/original-branch edits. Desktop/mobile views were reviewed at the
+actual final 12/12 steps; the final review made zero write requests.
+
+The same frozen physical adapter passed the bounded RX 6750 XT gate. At shared
+time .24 the catalyst totals were .035610599 versus .028642580; these are short
+control-fixture results, not ecological claims. Final material residual was 0
+and maximum potential residual 1.45e−14. The edited strict checkpoint restored
+and retained complete private state; the parent's immutable checkpoint hash
+stayed unchanged. Both actual sessions stopped; the local gateway and read-only review server exited.
+The device gate used CPU 10–11, two Julia threads, 8 GiB and a 900s timeout.
+
+[Compact material-control evidence](../benchmarks/2026-10-16-native-material-workbench.json)
+links actual source pins, finite bounds and retained receipts in
+`outputs/native-material-workbench-20261016`. Reproduce the host gate with
+`scripts/check_native_material_workbench.jl PROFILE FRESH_OUTPUT`, or exercise
+a fresh local worker through `scripts/test_native_material_workbench_browser.cjs
+LOOPBACK_URL REVIEW_DIRECTORY`. Neither script changes an existing recording.

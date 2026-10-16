@@ -171,6 +171,10 @@ module NativeLivingWorkbenchTests
 include("native_living_workbench.jl")
 end
 
+module NativeMaterialWorkbenchTests
+include("native_material_workbench.jl")
+end
+
 module NativeHistoryConstructionTests
 include("native_history_construction.jl")
 end
@@ -183,6 +187,14 @@ module NativeRampConstructionTests
 include("native_ramp_construction.jl")
 end
 
+module NativeTemporalLivingTests
+include("native_temporal_living.jl")
+end
+
 module HomeostaticTemporalMemoryTests
 include("homeostatic_temporal_memory.jl")
+end
+
+module MaterialMemoryTransferTests
+include("material_memory_transfer.jl")
 end

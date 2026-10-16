@@ -1,0 +1,1859 @@
+{
+  "schema": "temporal-living-learning-v1",
+  "duration": 24.0,
+  "probe_time": 4.0,
+  "horizon": 4.0,
+  "rate": 0.1,
+  "noise_seed": 6201,
+  "recipe": {
+    "cellular": {
+      "hidden": 8,
+      "capacity": 512,
+      "energy": 1.0,
+      "metabolites": 0.12,
+      "adaptation_strength": 0.3,
+      "growth_rate": 0.1,
+      "founders": 24,
+      "adaptation_time": 8.0,
+      "biomass": 1.6,
+      "exchange_radius": 0.18,
+      "mutation": 0.08,
+      "mutation_probability": 0.03,
+      "density": 128.0,
+      "speed": 0.06,
+      "junction_rate": 0.8,
+      "basal_rate": 0.008
+    },
+    "catalysis": {
+      "secretion_work": 0.2,
+      "investment_bias": -0.8,
+      "allocation_exponent": 1.0,
+      "half_saturation": 0.2,
+      "catalytic_rate": 6.0,
+      "allocation_bias_scale": 1.2,
+      "secretion_rate": 0.12,
+      "decay_rate": 0.2,
+      "mutation": 0.08,
+      "mutation_probability": 0.03,
+      "regulation": true
+    },
+    "temporal_policy": {
+      "reserve": 0.02,
+      "critic_scale": 4.0,
+      "decision_time": 1.0,
+      "phase_time": 8.0,
+      "observation_time": 0.2
+    },
+    "native": {
+      "support_strategy": "materialized",
+      "mechanical_substeps": 16,
+      "energy_type": "Float64",
+      "inventory_type": "Float64",
+      "radius_bound": 2.0,
+      "bin_width": 0.25,
+      "dt": 0.02
+    },
+    "feedstock": {
+      "potentials": [
+        4.0,
+        4.0
+      ],
+      "diffusion": [
+        0.006,
+        0.006
+      ],
+      "sink_rates": [
+        0.96,
+        0.96
+      ],
+      "initial": [
+        0.08,
+        0.08
+      ],
+      "source_rates": [
+        0.8,
+        0.8
+      ],
+      "sink_budgets": [
+        30.72,
+        30.72
+      ],
+      "source_budgets": [
+        25.6,
+        25.6
+      ],
+      "niche_contrast": 0.95
+    },
+    "matrix": {
+      "capacity_per_enzyme": 6.0,
+      "transport_barrier": 20.0,
+      "desorption_rate": 0.12,
+      "cross_binding": 0.0,
+      "adsorption_rate": 4.0
+    },
+    "seed": 211,
+    "grid": {
+      "shape": [
+        16,
+        16,
+        16
+      ],
+      "extent": [
+        2.0,
+        2.0,
+        2.0
+      ]
+    },
+    "material_sensing": {
+      "channels": [
+        "raw_balance",
+        "raw_total",
+        "catalyst_total"
+      ],
+      "scales": [
+        1.0,
+        1.0,
+        0.5
+      ]
+    },
+    "resources": {
+      "diffusion": [
+        0.006,
+        0.006,
+        0.001
+      ],
+      "sink_rates": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "initial": [
+        0.15,
+        0.15,
+        0.0
+      ],
+      "source_rates": [
+        0.1,
+        0.1,
+        0.0
+      ],
+      "sink_budgets": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "source_budgets": [
+        3.2,
+        3.2,
+        0.0
+      ],
+      "potentials": [
+        4.0,
+        4.0,
+        0.0
+      ]
+    }
+  },
+  "source": {
+    "model": "1a938948fb14c400876c6848e4389fc432f4cc2a3962903374d2d76fb34f1c99",
+    "initialization": "766dfedbdbf5b4dbbb99ed5e9336a16747fa08752a84af3268fc7c98c613613a",
+    "founder_initialization": "d76e4c791a2c56bc7fd651b1836e6879b9e27013566ce6d94a1d2f677f62e633",
+    "support": "5a767b83c2c912d8706468ec7c5b86e56cf99430b2a23dfd3a7f3ee8f21bf55b",
+    "lifecycle": "8826c577e960db6596cd923a591d806b185908a254c6cc0fb6b0eebb033a9629",
+    "resource": "ac72b2db1dfa448446df0ae44840ba05933f1d8fb13c639f9e2cd3b3a7e41223",
+    "kernels": "8f9f5d153ff1e4f4636388072063aa6e53fbb20d9c5175d64d6fcb15993207ae",
+    "checkpoint": "81c8538519e5d0c58eb8bc0b6e49be7eec87119f81b7fcd998b6944f02c68503",
+    "protocol": "52632744615956c0e4c613e010b8fa4ba08c396e46e03d7ef5ec15f037e8199d"
+  },
+  "habitat_source": {
+    "helper": "5753f0cf5065345cf08fb9a2501d87aad4f6eff13183fd344e8f53dfe736aa41",
+    "kernels": "b9774fc4b57b8d6dd844dc996979b007cf4f3e8160660a2961525514dad52c9c",
+    "sorption": "3811fd3627906823a01f2afb2e6693bb6aec99c37bb10bfb72d43c85f8b4ad08"
+  },
+  "driver_sha256": "ff707d1800ab0b3d43c5d5cdda8c9aff0dc3a3db9ebe6eeb8819af9c8364553e",
+  "scope": "uninterrupted moving/dividing lives; fixed-total paid allocation; finite external sources/sinks; frozen probes share each arm's exact physical state",
+  "arms": {
+    "history": {
+      "options": {
+        "dt": 0.02,
+        "decision_stride": 50,
+        "reward_stride": 100,
+        "rate": 0.1,
+        "sigma": 0.3,
+        "kappa": 0.001,
+        "seed": 6201,
+        "rows": [
+          4,
+          5,
+          7
+        ],
+        "hidden": 8,
+        "learning": true,
+        "critic": true,
+        "critic_learning": true,
+        "phase_stride": 400,
+        "phase_offset": 0,
+        "enabled": true,
+        "horizon_stride": 200,
+        "queue_length": 4,
+        "act_stride": 1200,
+        "critic_gain": 0.3,
+        "observation_stride": 10,
+        "af": 0.917915,
+        "as": 0.39346933,
+        "critic_scale": 4.0,
+        "investment_logit": -1.6958141,
+        "reserve_logit": -1.9459101
+      },
+      "learning_work": 0.011672535269106082,
+      "actor_updates": 423,
+      "critic_updates": 543,
+      "pending": 99,
+      "matured": 543,
+      "invalidated": 0,
+      "calibration_skips": 120,
+      "clipping": 464,
+      "critic_max": 0.024045058,
+      "learned_max": 0.09652746,
+      "samples": [
+        {
+          "time": 0.0,
+          "ledger": {
+            "material": 47.84000005511569,
+            "potential": 61.76000022046269,
+            "work": 0.0,
+            "heat": 0.0,
+            "supplied": 0.0,
+            "removed": 0.0,
+            "supplied_potential": 0.0,
+            "removed_potential": 0.0,
+            "material_residual": 0.0,
+            "potential_residual": 0.0
+          },
+          "funded": [
+            0.0,
+            0.0
+          ],
+          "requested": [
+            0.0,
+            0.0
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 1.6239999771118163
+        },
+        {
+          "time": 2.0,
+          "ledger": {
+            "material": 48.11843774756312,
+            "potential": 47.97668087779299,
+            "work": 1.738031666878944,
+            "heat": 13.159038445580526,
+            "supplied": 3.6000001877255268,
+            "removed": 3.321562495278081,
+            "supplied_potential": 14.400000750902107,
+            "removed_potential": 13.286249981112324,
+            "material_residual": -1.2878587085651816e-14,
+            "potential_residual": -1.9539925233402755e-14
+          },
+          "funded": [
+            0.7370482495301818,
+            0.72482643851684
+          ],
+          "requested": [
+            0.7370496322400868,
+            0.7248278223269153
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 1.235117447216401
+        },
+        {
+          "time": 4.0,
+          "ledger": {
+            "material": 48.64140802859496,
+            "potential": 38.021803535720004,
+            "work": 3.2962281249983754,
+            "heat": 23.647600453661468,
+            "supplied": 7.200000375451054,
+            "removed": 6.3985924019717615,
+            "supplied_potential": 28.800001501804218,
+            "removed_potential": 25.594369607887046,
+            "material_residual": -2.1316282072803006e-14,
+            "potential_residual": -1.7763568394002505e-14
+          },
+          "funded": [
+            1.358123172966681,
+            1.340278437786758
+          ],
+          "requested": [
+            1.5012989130773349,
+            1.4874494968244107
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 0.9076795131378999
+        },
+        {
+          "time": 6.0,
+          "ledger": {
+            "material": 49.22915236071654,
+            "potential": 37.573382961542244,
+            "work": 4.204927178517231,
+            "heat": 25.538299302806692,
+            "supplied": 10.800000563176582,
+            "removed": 9.410848257575708,
+            "supplied_potential": 43.20000225270633,
+            "removed_potential": 37.64339303030283,
+            "material_residual": -2.1316282072803006e-14,
+            "potential_residual": -2.1316282072803006e-14
+          },
+          "funded": [
+            1.4942133136568843,
+            1.4829975819756611
+          ],
+          "requested": [
+            2.269770052327658,
+            2.2716195502871415
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 0.8443068229589217
+        },
+        {
+          "time": 8.0,
+          "ledger": {
+            "material": 49.82230112568991,
+            "potential": 38.36186601567752,
+            "work": 5.039958076478628,
+            "heat": 26.287380410603518,
+            "supplied": 14.400000750902109,
+            "removed": 12.41769968032786,
+            "supplied_potential": 57.600003003608435,
+            "removed_potential": 49.67079872131144,
+            "material_residual": -2.4868995751603507e-14,
+            "potential_residual": -2.1316282072803006e-14
+          },
+          "funded": [
+            1.5414302096112171,
+            1.5288241270870389
+          ],
+          "requested": [
+            3.063977305733715,
+            3.0345328994008014
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 0.8160216962141131
+        },
+        {
+          "time": 10.0,
+          "ledger": {
+            "material": 49.71535407228804,
+            "potential": 36.147105437007795,
+            "work": 5.891819123595695,
+            "heat": 27.22249172854859,
+            "supplied": 18.000000938627636,
+            "removed": 16.124646921455287,
+            "supplied_potential": 72.00000375451054,
+            "removed_potential": 64.49858768582115,
+            "material_residual": 0.0,
+            "potential_residual": 0.0
+          },
+          "funded": [
+            1.5971075617075883,
+            1.5877210338156575
+          ],
+          "requested": [
+            3.818750999547774,
+            3.840737559788977
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 0.780582840743556
+        },
+        {
+          "time": 12.0,
+          "ledger": {
+            "material": 50.301655430529266,
+            "potential": 36.499535901789855,
+            "work": 6.782108556695194,
+            "heat": 28.324977263631986,
+            "supplied": 21.600001126353163,
+            "removed": 19.138345750939575,
+            "supplied_potential": 86.40000450541265,
+            "removed_potential": 76.5533830037583,
+            "material_residual": -1.0658141036401503e-14,
+            "potential_residual": -1.4210854715202004e-14
+          },
+          "funded": [
+            1.6626131929605097,
+            1.652621070196166
+          ],
+          "requested": [
+            4.6167096229910385,
+            4.608707117877202
+          ],
+          "births": 2,
+          "deaths": 0,
+          "population": 26,
+          "mean_usable": 0.6823339153782055
+        },
+        {
+          "time": 14.0,
+          "ledger": {
+            "material": 50.972287038881326,
+            "potential": 37.06930036139333,
+            "work": 7.697407088981612,
+            "heat": 29.522440705150363,
+            "supplied": 25.20000131407869,
+            "removed": 22.06771433031303,
+            "supplied_potential": 100.80000525631476,
+            "removed_potential": 88.27085732125212,
+            "material_residual": -2.1316282072803006e-14,
+            "potential_residual": -2.842170943040401e-14
+          },
+          "funded": [
+            1.7286941120995791,
+            1.7230969160162966
+          ],
+          "requested": [
+            5.379300984102883,
+            5.417834840380237
+          ],
+          "births": 3,
+          "deaths": 0,
+          "population": 27,
+          "mean_usable": 0.6189334539135447
+        },
+        {
+          "time": 16.0,
+          "ledger": {
+            "material": 51.625189524400376,
+            "potential": 37.57661250205316,
+            "work": 8.622152427401803,
+            "heat": 30.701993168146522,
+            "supplied": 28.800001501804218,
+            "removed": 25.0148120325195,
+            "supplied_potential": 115.20000600721687,
+            "removed_potential": 100.059248130078,
+            "material_residual": -2.842170943040401e-14,
+            "potential_residual": -7.105427357601002e-14
+          },
+          "funded": [
+            1.7975070259708077,
+            1.7887963478023376
+          ],
+          "requested": [
+            6.195380789977207,
+            6.179488370209583
+          ],
+          "births": 4,
+          "deaths": 0,
+          "population": 28,
+          "mean_usable": 0.56135020666034
+        },
+        {
+          "time": 18.0,
+          "ledger": {
+            "material": 51.70258107294049,
+            "potential": 35.943755463378736,
+            "work": 9.540602852367767,
+            "heat": 31.725965976015406,
+            "supplied": 32.400001689529745,
+            "removed": 28.537420671704922,
+            "supplied_potential": 129.60000675811898,
+            "removed_potential": 114.14968268681969,
+            "material_residual": -2.1316282072803006e-14,
+            "potential_residual": -7.105427357601002e-14
+          },
+          "funded": [
+            1.8552306959314486,
+            1.8444518052418002
+          ],
+          "requested": [
+            7.003059684204345,
+            6.9551846242757165
+          ],
+          "births": 5,
+          "deaths": 0,
+          "population": 29,
+          "mean_usable": 0.5099270316152001
+        },
+        {
+          "time": 20.0,
+          "ledger": {
+            "material": 52.39357766127767,
+            "potential": 36.5405371238977,
+            "work": 10.50497561587206,
+            "heat": 32.928797905340836,
+            "supplied": 36.00000187725527,
+            "removed": 31.446424271093278,
+            "supplied_potential": 144.0000075090211,
+            "removed_potential": 125.78569708437311,
+            "material_residual": -1.4210854715202004e-14,
+            "potential_residual": -7.105427357601002e-14
+          },
+          "funded": [
+            1.919362808803401,
+            1.91152737302594
+          ],
+          "requested": [
+            7.779108250972058,
+            7.768153534787416
+          ],
+          "births": 8,
+          "deaths": 0,
+          "population": 32,
+          "mean_usable": 0.4322610888435333
+        },
+        {
+          "time": 22.0,
+          "ledger": {
+            "material": 53.06963499530333,
+            "potential": 37.115273230685645,
+            "work": 11.471465692148684,
+            "heat": 34.091801058379,
+            "supplied": 39.6000020649808,
+            "removed": 34.37036712479312,
+            "supplied_potential": 158.4000082599232,
+            "removed_potential": 137.48146849917248,
+            "material_residual": -3.552713678800501e-14,
+            "potential_residual": -8.526512829121202e-14
+          },
+          "funded": [
+            1.9852928483025427,
+            1.9740895083438381
+          ],
+          "requested": [
+            8.592437627194158,
+            8.550166138345958
+          ],
+          "births": 9,
+          "deaths": 0,
+          "population": 33,
+          "mean_usable": 0.39195475225008325
+        },
+        {
+          "time": 24.0,
+          "ledger": {
+            "material": 53.72621646672527,
+            "potential": 37.53905504590109,
+            "work": 12.441985792536851,
+            "heat": 35.32382502846307,
+            "supplied": 43.20000225270633,
+            "removed": 37.31378584109673,
+            "supplied_potential": 172.8000090108253,
+            "removed_potential": 149.25514336438692,
+            "material_residual": -1.4210854715202004e-14,
+            "potential_residual": -5.684341886080802e-14
+          },
+          "funded": [
+            2.0554651087069242,
+            2.0428091126215198
+          ],
+          "requested": [
+            9.39732613828528,
+            9.346774122692295
+          ],
+          "births": 9,
+          "deaths": 0,
+          "population": 33,
+          "mean_usable": 0.36430500789891224
+        }
+      ],
+      "probes": {
+        "learned": {
+          "initial_count": 33,
+          "survivors": 33,
+          "survivor_conditional_mean_return": -0.0608183686477503,
+          "all_initial_mean_return": -0.0608183686477503,
+          "all_initial_metric_note": "legacy report: whole-cohort mean withheld if any death"
+        },
+        "erased": {
+          "initial_count": 33,
+          "survivors": 33,
+          "survivor_conditional_mean_return": -0.06082319117997705,
+          "all_initial_mean_return": -0.06082319117997705,
+          "all_initial_metric_note": "legacy report: whole-cohort mean withheld if any death"
+        },
+        "swapped": {
+          "initial_count": 33,
+          "survivors": 33,
+          "survivor_conditional_mean_return": -0.06082354127763558,
+          "all_initial_mean_return": -0.06082354127763558,
+          "all_initial_metric_note": "legacy report: whole-cohort mean withheld if any death"
+        }
+      },
+      "birth_count": 9
+    },
+    "instantaneous": {
+      "options": {
+        "dt": 0.02,
+        "decision_stride": 50,
+        "reward_stride": 100,
+        "rate": 0.1,
+        "sigma": 0.3,
+        "kappa": 0.001,
+        "seed": 6201,
+        "rows": [
+          4,
+          5,
+          7
+        ],
+        "hidden": 8,
+        "learning": true,
+        "critic": true,
+        "critic_learning": true,
+        "phase_stride": 400,
+        "phase_offset": 0,
+        "enabled": true,
+        "horizon_stride": 200,
+        "queue_length": 4,
+        "act_stride": 1200,
+        "critic_gain": 0.3,
+        "observation_stride": 10,
+        "af": 0.917915,
+        "as": 0.39346933,
+        "critic_scale": 4.0,
+        "investment_logit": -1.6958141,
+        "reserve_logit": -1.9459101
+      },
+      "learning_work": 0.011672837544950049,
+      "actor_updates": 423,
+      "critic_updates": 543,
+      "pending": 99,
+      "matured": 543,
+      "invalidated": 0,
+      "calibration_skips": 120,
+      "clipping": 464,
+      "critic_max": 0.024043113,
+      "learned_max": 0.07710424,
+      "samples": [
+        {
+          "time": 0.0,
+          "ledger": {
+            "material": 47.84000005511569,
+            "potential": 61.76000022046269,
+            "work": 0.0,
+            "heat": 0.0,
+            "supplied": 0.0,
+            "removed": 0.0,
+            "supplied_potential": 0.0,
+            "removed_potential": 0.0,
+            "material_residual": 0.0,
+            "potential_residual": 0.0
+          },
+          "funded": [
+            0.0,
+            0.0
+          ],
+          "requested": [
+            0.0,
+            0.0
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 1.6239999771118163
+        },
+        {
+          "time": 2.0,
+          "ledger": {
+            "material": 48.11843774756312,
+            "potential": 47.97668087779299,
+            "work": 1.738031666878944,
+            "heat": 13.159038445580526,
+            "supplied": 3.6000001877255268,
+            "removed": 3.321562495278081,
+            "supplied_potential": 14.400000750902107,
+            "removed_potential": 13.286249981112324,
+            "material_residual": -1.2878587085651816e-14,
+            "potential_residual": -1.9539925233402755e-14
+          },
+          "funded": [
+            0.7370482495301818,
+            0.72482643851684
+          ],
+          "requested": [
+            0.7370496322400868,
+            0.7248278223269153
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 1.235117447216401
+        },
+        {
+          "time": 4.0,
+          "ledger": {
+            "material": 48.64140802859496,
+            "potential": 38.021803535720004,
+            "work": 3.2962281249983754,
+            "heat": 23.647600453661468,
+            "supplied": 7.200000375451054,
+            "removed": 6.3985924019717615,
+            "supplied_potential": 28.800001501804218,
+            "removed_potential": 25.594369607887046,
+            "material_residual": -2.1316282072803006e-14,
+            "potential_residual": -1.7763568394002505e-14
+          },
+          "funded": [
+            1.358123172966681,
+            1.340278437786758
+          ],
+          "requested": [
+            1.5012989130773349,
+            1.4874494968244107
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 0.9076795131378999
+        },
+        {
+          "time": 6.0,
+          "ledger": {
+            "material": 49.22915236071654,
+            "potential": 37.573382961542244,
+            "work": 4.204927178517231,
+            "heat": 25.538299302806692,
+            "supplied": 10.800000563176582,
+            "removed": 9.410848257575708,
+            "supplied_potential": 43.20000225270633,
+            "removed_potential": 37.64339303030283,
+            "material_residual": -2.1316282072803006e-14,
+            "potential_residual": -2.1316282072803006e-14
+          },
+          "funded": [
+            1.4942133136568843,
+            1.4829975819756611
+          ],
+          "requested": [
+            2.269770052327658,
+            2.2716195502871415
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 0.8443068229589217
+        },
+        {
+          "time": 8.0,
+          "ledger": {
+            "material": 49.82230112568991,
+            "potential": 38.36186601567752,
+            "work": 5.039958076478628,
+            "heat": 26.287380410603518,
+            "supplied": 14.400000750902109,
+            "removed": 12.41769968032786,
+            "supplied_potential": 57.600003003608435,
+            "removed_potential": 49.67079872131144,
+            "material_residual": -2.4868995751603507e-14,
+            "potential_residual": -2.1316282072803006e-14
+          },
+          "funded": [
+            1.5414302096112171,
+            1.5288241270870389
+          ],
+          "requested": [
+            3.063977305733715,
+            3.0345328994008014
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 0.8160216962141131
+        },
+        {
+          "time": 10.0,
+          "ledger": {
+            "material": 49.71535689431531,
+            "potential": 36.147167012972226,
+            "work": 5.891815605784238,
+            "heat": 27.22244495850484,
+            "supplied": 18.000000938627636,
+            "removed": 16.12464409942798,
+            "supplied_potential": 72.00000375451054,
+            "removed_potential": 64.49857639771191,
+            "material_residual": -3.197442310920451e-14,
+            "potential_residual": -1.4210854715202004e-14
+          },
+          "funded": [
+            1.5970831422149923,
+            1.587739451663344
+          ],
+          "requested": [
+            3.818270227551693,
+            3.841218270928948
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 0.7805838152895945
+        },
+        {
+          "time": 12.0,
+          "ledger": {
+            "material": 50.30165988656347,
+            "potential": 36.49961516742671,
+            "work": 6.782103485341983,
+            "heat": 28.324920893485128,
+            "supplied": 21.600001126353163,
+            "removed": 19.13834129490537,
+            "supplied_potential": 86.40000450541265,
+            "removed_potential": 76.55336517962148,
+            "material_residual": -1.0658141036401503e-14,
+            "potential_residual": -4.263256414560601e-14
+          },
+          "funded": [
+            1.6624538542538951,
+            1.6527758661740644
+          ],
+          "requested": [
+            4.616033064041403,
+            4.609383310278645
+          ],
+          "births": 2,
+          "deaths": 0,
+          "population": 26,
+          "mean_usable": 0.6823348341640478
+        },
+        {
+          "time": 14.0,
+          "ledger": {
+            "material": 50.97229024344008,
+            "potential": 37.06925670576298,
+            "work": 7.697409975616059,
+            "heat": 29.522494292381232,
+            "supplied": 25.20000131407869,
+            "removed": 22.067711125754286,
+            "supplied_potential": 100.80000525631476,
+            "removed_potential": 88.27084450301714,
+            "material_residual": -1.4210854715202004e-14,
+            "potential_residual": -2.842170943040401e-14
+          },
+          "funded": [
+            1.728288740461411,
+            1.7235150175944556
+          ],
+          "requested": [
+            5.375814086684841,
+            5.421321228190209
+          ],
+          "births": 3,
+          "deaths": 0,
+          "population": 27,
+          "mean_usable": 0.6189325752417147
+        },
+        {
+          "time": 16.0,
+          "ledger": {
+            "material": 51.625191345562875,
+            "potential": 37.57643231549965,
+            "work": 8.622162298441248,
+            "heat": 30.702170768310577,
+            "supplied": 28.800001501804218,
+            "removed": 25.014810211357013,
+            "supplied_potential": 115.20000600721687,
+            "removed_potential": 100.05924084542805,
+            "material_residual": -1.7763568394002505e-14,
+            "potential_residual": -4.263256414560601e-14
+          },
+          "funded": [
+            1.7969668271704222,
+            1.7893706305111157
+          ],
+          "requested": [
+            6.189757999592985,
+            6.185110718768556
+          ],
+          "births": 4,
+          "deaths": 0,
+          "population": 28,
+          "mean_usable": 0.5613479940121405
+        },
+        {
+          "time": 18.0,
+          "ledger": {
+            "material": 51.702549134521675,
+            "potential": 35.94354913418856,
+            "work": 9.540605610122515,
+            "heat": 31.726041793775575,
+            "supplied": 32.400001689529745,
+            "removed": 28.537452610123747,
+            "supplied_potential": 129.60000675811898,
+            "removed_potential": 114.14981044049499,
+            "material_residual": -1.0658141036401503e-14,
+            "potential_residual": -4.263256414560601e-14
+          },
+          "funded": [
+            1.854730695505044,
+            1.8449734255933632
+          ],
+          "requested": [
+            6.998637731470808,
+            6.959606435040769
+          ],
+          "births": 5,
+          "deaths": 0,
+          "population": 29,
+          "mean_usable": 0.509926357199452
+        },
+        {
+          "time": 20.0,
+          "ledger": {
+            "material": 52.39354915658691,
+            "potential": 36.54022719493271,
+            "work": 10.50498959321581,
+            "heat": 32.92897983819908,
+            "supplied": 36.00000187725527,
+            "removed": 31.446452775784035,
+            "supplied_potential": 144.0000075090211,
+            "removed_potential": 125.78581110313614,
+            "material_residual": -1.7763568394002505e-14,
+            "potential_residual": -4.263256414560601e-14
+          },
+          "funded": [
+            1.9189376491906747,
+            1.9119831960635643
+          ],
+          "requested": [
+            7.775281387548603,
+            7.771980267796607
+          ],
+          "births": 8,
+          "deaths": 0,
+          "population": 32,
+          "mean_usable": 0.4322582466071202
+        },
+        {
+          "time": 22.0,
+          "ledger": {
+            "material": 53.06960841380846,
+            "potential": 37.11493672153444,
+            "work": 11.471486903859685,
+            "heat": 34.09201002983969,
+            "supplied": 39.6000020649808,
+            "removed": 34.37039370628801,
+            "supplied_potential": 158.4000082599232,
+            "removed_potential": 137.48157482515205,
+            "material_residual": -1.4210854715202004e-14,
+            "potential_residual": -2.842170943040401e-14
+          },
+          "funded": [
+            1.9851311511652898,
+            1.9742719993913216
+          ],
+          "requested": [
+            8.588812509005948,
+            8.553791848069523
+          ],
+          "births": 9,
+          "deaths": 0,
+          "population": 33,
+          "mean_usable": 0.3919524161621427
+        },
+        {
+          "time": 24.0,
+          "ledger": {
+            "material": 53.72619455090723,
+            "potential": 37.538564092381414,
+            "work": 12.44202545735275,
+            "heat": 35.324188653894716,
+            "supplied": 43.20000225270633,
+            "removed": 37.313807756914755,
+            "supplied_potential": 172.8000090108253,
+            "removed_potential": 149.25523102765902,
+            "material_residual": -2.842170943040401e-14,
+            "potential_residual": -1.1368683772161603e-13
+          },
+          "funded": [
+            2.0555889283590774,
+            2.0427047967120484
+          ],
+          "requested": [
+            9.395243750645022,
+            9.348858883866342
+          ],
+          "births": 9,
+          "deaths": 0,
+          "population": 33,
+          "mean_usable": 0.3643008756809637
+        }
+      ],
+      "probes": {
+        "learned": {
+          "initial_count": 33,
+          "survivors": 33,
+          "survivor_conditional_mean_return": -0.06075323593788692,
+          "all_initial_mean_return": -0.06075323593788692,
+          "all_initial_metric_note": "legacy report: whole-cohort mean withheld if any death"
+        },
+        "erased": {
+          "initial_count": 33,
+          "survivors": 33,
+          "survivor_conditional_mean_return": -0.06075634909392167,
+          "all_initial_mean_return": -0.06075634909392167,
+          "all_initial_metric_note": "legacy report: whole-cohort mean withheld if any death"
+        },
+        "swapped": {
+          "initial_count": 33,
+          "survivors": 33,
+          "survivor_conditional_mean_return": -0.06075323593788692,
+          "all_initial_mean_return": -0.06075323593788692,
+          "all_initial_metric_note": "legacy report: whole-cohort mean withheld if any death"
+        }
+      },
+      "birth_count": 9
+    },
+    "reversed_credit": {
+      "options": {
+        "dt": 0.02,
+        "decision_stride": 50,
+        "reward_stride": 100,
+        "rate": -0.1,
+        "sigma": 0.3,
+        "kappa": 0.001,
+        "seed": 6201,
+        "rows": [
+          4,
+          5,
+          7
+        ],
+        "hidden": 8,
+        "learning": true,
+        "critic": true,
+        "critic_learning": true,
+        "phase_stride": 400,
+        "phase_offset": 0,
+        "enabled": true,
+        "horizon_stride": 200,
+        "queue_length": 4,
+        "act_stride": 1200,
+        "critic_gain": 0.3,
+        "observation_stride": 10,
+        "af": 0.917915,
+        "as": 0.39346933,
+        "critic_scale": 4.0,
+        "investment_logit": -1.6958141,
+        "reserve_logit": -1.9459101
+      },
+      "learning_work": 0.011704454530406777,
+      "actor_updates": 423,
+      "critic_updates": 543,
+      "pending": 99,
+      "matured": 543,
+      "invalidated": 0,
+      "calibration_skips": 120,
+      "clipping": 468,
+      "critic_max": 0.024047652,
+      "learned_max": 0.09653037,
+      "samples": [
+        {
+          "time": 0.0,
+          "ledger": {
+            "material": 47.84000005511569,
+            "potential": 61.76000022046269,
+            "work": 0.0,
+            "heat": 0.0,
+            "supplied": 0.0,
+            "removed": 0.0,
+            "supplied_potential": 0.0,
+            "removed_potential": 0.0,
+            "material_residual": 0.0,
+            "potential_residual": 0.0
+          },
+          "funded": [
+            0.0,
+            0.0
+          ],
+          "requested": [
+            0.0,
+            0.0
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 1.6239999771118163
+        },
+        {
+          "time": 2.0,
+          "ledger": {
+            "material": 48.11843774756312,
+            "potential": 47.97668087779299,
+            "work": 1.738031666878944,
+            "heat": 13.159038445580526,
+            "supplied": 3.6000001877255268,
+            "removed": 3.321562495278081,
+            "supplied_potential": 14.400000750902107,
+            "removed_potential": 13.286249981112324,
+            "material_residual": -1.2878587085651816e-14,
+            "potential_residual": -1.9539925233402755e-14
+          },
+          "funded": [
+            0.7370482495301818,
+            0.72482643851684
+          ],
+          "requested": [
+            0.7370496322400868,
+            0.7248278223269153
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 1.235117447216401
+        },
+        {
+          "time": 4.0,
+          "ledger": {
+            "material": 48.64140802859496,
+            "potential": 38.021803535720004,
+            "work": 3.2962281249983754,
+            "heat": 23.647600453661468,
+            "supplied": 7.200000375451054,
+            "removed": 6.3985924019717615,
+            "supplied_potential": 28.800001501804218,
+            "removed_potential": 25.594369607887046,
+            "material_residual": -2.1316282072803006e-14,
+            "potential_residual": -1.7763568394002505e-14
+          },
+          "funded": [
+            1.358123172966681,
+            1.340278437786758
+          ],
+          "requested": [
+            1.5012989130773349,
+            1.4874494968244107
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 0.9076795131378999
+        },
+        {
+          "time": 6.0,
+          "ledger": {
+            "material": 49.22915236071654,
+            "potential": 37.573382961542244,
+            "work": 4.204927178517231,
+            "heat": 25.538299302806692,
+            "supplied": 10.800000563176582,
+            "removed": 9.410848257575708,
+            "supplied_potential": 43.20000225270633,
+            "removed_potential": 37.64339303030283,
+            "material_residual": -2.1316282072803006e-14,
+            "potential_residual": -2.1316282072803006e-14
+          },
+          "funded": [
+            1.4942133136568843,
+            1.4829975819756611
+          ],
+          "requested": [
+            2.269770052327658,
+            2.2716195502871415
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 0.8443068229589217
+        },
+        {
+          "time": 8.0,
+          "ledger": {
+            "material": 49.82230112568991,
+            "potential": 38.36186601567752,
+            "work": 5.039958076478628,
+            "heat": 26.287380410603518,
+            "supplied": 14.400000750902109,
+            "removed": 12.41769968032786,
+            "supplied_potential": 57.600003003608435,
+            "removed_potential": 49.67079872131144,
+            "material_residual": -2.4868995751603507e-14,
+            "potential_residual": -2.1316282072803006e-14
+          },
+          "funded": [
+            1.5414302096112171,
+            1.5288241270870389
+          ],
+          "requested": [
+            3.063977305733715,
+            3.0345328994008014
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 0.8160216962141131
+        },
+        {
+          "time": 10.0,
+          "ledger": {
+            "material": 49.71535092158444,
+            "potential": 36.147108298469576,
+            "work": 5.891818633255459,
+            "heat": 27.222476754612714,
+            "supplied": 18.000000938627636,
+            "removed": 16.12465007215887,
+            "supplied_potential": 72.00000375451054,
+            "removed_potential": 64.49860028863549,
+            "material_residual": -1.4210854715202004e-14,
+            "potential_residual": 0.0
+          },
+          "funded": [
+            1.5970277803148978,
+            1.5877953376564393
+          ],
+          "requested": [
+            3.8191651147499215,
+            3.8403234573925147
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 0.7805824659078279
+        },
+        {
+          "time": 12.0,
+          "ledger": {
+            "material": 50.301650869401044,
+            "potential": 36.49961879379932,
+            "work": 6.782100443633916,
+            "heat": 28.324884240170896,
+            "supplied": 21.600001126353163,
+            "removed": 19.138350312067804,
+            "supplied_potential": 86.40000450541265,
+            "removed_potential": 76.55340124827121,
+            "material_residual": -3.552713678800501e-15,
+            "potential_residual": 0.0
+          },
+          "funded": [
+            1.6621535052036411,
+            1.6530717194914648
+          ],
+          "requested": [
+            4.614690549846273,
+            4.610726091850665
+          ],
+          "births": 2,
+          "deaths": 0,
+          "population": 26,
+          "mean_usable": 0.6823349523095598
+        },
+        {
+          "time": 14.0,
+          "ledger": {
+            "material": 50.97228206593823,
+            "potential": 37.0691755674577,
+            "work": 7.697413529131984,
+            "heat": 29.522539167163224,
+            "supplied": 25.20000131407869,
+            "removed": 22.06771930325614,
+            "supplied_potential": 100.80000525631476,
+            "removed_potential": 88.27087721302456,
+            "material_residual": -7.105427357601002e-15,
+            "potential_residual": 1.4210854715202004e-14
+          },
+          "funded": [
+            1.7279129730650022,
+            1.7238989710868755
+          ],
+          "requested": [
+            5.374246209292323,
+            5.422889298541122
+          ],
+          "births": 3,
+          "deaths": 0,
+          "population": 27,
+          "mean_usable": 0.6189307169649426
+        },
+        {
+          "time": 16.0,
+          "ledger": {
+            "material": 51.62518377603573,
+            "potential": 37.57652750218296,
+            "work": 8.622152016284026,
+            "heat": 30.7020555856759,
+            "supplied": 28.800001501804218,
+            "removed": 25.01481778088417,
+            "supplied_potential": 115.20000600721687,
+            "removed_potential": 100.05927112353667,
+            "material_residual": -3.552713678800501e-15,
+            "potential_residual": 0.0
+          },
+          "funded": [
+            1.7963036782332293,
+            1.790027478901743
+          ],
+          "requested": [
+            6.184604250542179,
+            6.190264217533695
+          ],
+          "births": 4,
+          "deaths": 0,
+          "population": 28,
+          "mean_usable": 0.5613490060342485
+        },
+        {
+          "time": 18.0,
+          "ledger": {
+            "material": 51.70255967361208,
+            "potential": 35.93816259214023,
+            "work": 9.541167157393286,
+            "heat": 31.730908944914745,
+            "supplied": 32.400001689529745,
+            "removed": 28.537442071033347,
+            "supplied_potential": 129.60000675811898,
+            "removed_potential": 114.14976828413339,
+            "material_residual": -7.105427357601002e-15,
+            "potential_residual": -2.842170943040401e-14
+          },
+          "funded": [
+            1.8541281735640698,
+            1.8459778544539698
+          ],
+          "requested": [
+            6.989621182794508,
+            6.968637869489612
+          ],
+          "births": 5,
+          "deaths": 0,
+          "population": 29,
+          "mean_usable": 0.5098775492938212
+        },
+        {
+          "time": 20.0,
+          "ledger": {
+            "material": 52.39364694706105,
+            "potential": 36.53552717774077,
+            "work": 10.505400516273161,
+            "heat": 32.93366009423021,
+            "supplied": 36.00000187725527,
+            "removed": 31.4463549853099,
+            "supplied_potential": 144.0000075090211,
+            "removed_potential": 125.7854199412396,
+            "material_residual": -1.0658141036401503e-14,
+            "potential_residual": -4.263256414560601e-14
+          },
+          "funded": [
+            1.9184948099767172,
+            1.9130367911479897
+          ],
+          "requested": [
+            7.766434530378319,
+            7.780854712545988
+          ],
+          "births": 8,
+          "deaths": 0,
+          "population": 32,
+          "mean_usable": 0.43220177467136156
+        },
+        {
+          "time": 22.0,
+          "ledger": {
+            "material": 53.069706185432196,
+            "potential": 37.10026885003338,
+            "work": 11.470428018000499,
+            "heat": 34.10812787369488,
+            "supplied": 39.6000020649808,
+            "removed": 34.370295934664284,
+            "supplied_potential": 158.4000082599232,
+            "removed_potential": 137.48118373865714,
+            "material_residual": -7.105427357601002e-15,
+            "potential_residual": 0.0
+          },
+          "funded": [
+            1.98537791062942,
+            1.9763850556996516
+          ],
+          "requested": [
+            8.578050627736957,
+            8.564634427639248
+          ],
+          "births": 9,
+          "deaths": 0,
+          "population": 33,
+          "mean_usable": 0.39183850567087186
+        },
+        {
+          "time": 24.0,
+          "ledger": {
+            "material": 53.7263307946136,
+            "potential": 37.51164962879739,
+            "work": 12.443410134368458,
+            "heat": 35.35026341528865,
+            "supplied": 43.20000225270633,
+            "removed": 37.31367151320839,
+            "supplied_potential": 172.8000090108253,
+            "removed_potential": 149.25468605283356,
+            "material_residual": -2.1316282072803006e-14,
+            "potential_residual": 5.684341886080802e-14
+          },
+          "funded": [
+            2.05624521793747,
+            2.0452746633638723
+          ],
+          "requested": [
+            9.383023724119994,
+            9.361238884586783
+          ],
+          "births": 9,
+          "deaths": 0,
+          "population": 33,
+          "mean_usable": 0.3640797185967109
+        }
+      ],
+      "probes": {
+        "learned": {
+          "initial_count": 33,
+          "survivors": 33,
+          "survivor_conditional_mean_return": -0.06072783458688032,
+          "all_initial_mean_return": -0.06072783458688032,
+          "all_initial_metric_note": "legacy report: whole-cohort mean withheld if any death"
+        },
+        "erased": {
+          "initial_count": 33,
+          "survivors": 33,
+          "survivor_conditional_mean_return": -0.06072324001790601,
+          "all_initial_mean_return": -0.06072324001790601,
+          "all_initial_metric_note": "legacy report: whole-cohort mean withheld if any death"
+        },
+        "swapped": {
+          "initial_count": 33,
+          "survivors": 33,
+          "survivor_conditional_mean_return": -0.060721776400521794,
+          "all_initial_mean_return": -0.060721776400521794,
+          "all_initial_metric_note": "legacy report: whole-cohort mean withheld if any death"
+        }
+      },
+      "birth_count": 9
+    },
+    "no_credit": {
+      "options": {
+        "dt": 0.02,
+        "decision_stride": 50,
+        "reward_stride": 100,
+        "rate": 0.0,
+        "sigma": 0.3,
+        "kappa": 0.001,
+        "seed": 6201,
+        "rows": [
+          4,
+          5,
+          7
+        ],
+        "hidden": 8,
+        "learning": false,
+        "critic": true,
+        "critic_learning": true,
+        "phase_stride": 400,
+        "phase_offset": 0,
+        "enabled": true,
+        "horizon_stride": 200,
+        "queue_length": 4,
+        "act_stride": 1200,
+        "critic_gain": 0.3,
+        "observation_stride": 10,
+        "af": 0.917915,
+        "as": 0.39346933,
+        "critic_scale": 4.0,
+        "investment_logit": -1.6958141,
+        "reserve_logit": -1.9459101
+      },
+      "learning_work": 0.005019391734098155,
+      "actor_updates": 0,
+      "critic_updates": 543,
+      "pending": 99,
+      "matured": 543,
+      "invalidated": 0,
+      "calibration_skips": 120,
+      "clipping": 0,
+      "critic_max": 0.024036964,
+      "learned_max": 0.0,
+      "samples": [
+        {
+          "time": 0.0,
+          "ledger": {
+            "material": 47.84000005511569,
+            "potential": 61.76000022046269,
+            "work": 0.0,
+            "heat": 0.0,
+            "supplied": 0.0,
+            "removed": 0.0,
+            "supplied_potential": 0.0,
+            "removed_potential": 0.0,
+            "material_residual": 0.0,
+            "potential_residual": 0.0
+          },
+          "funded": [
+            0.0,
+            0.0
+          ],
+          "requested": [
+            0.0,
+            0.0
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 1.6239999771118163
+        },
+        {
+          "time": 2.0,
+          "ledger": {
+            "material": 48.11843774756312,
+            "potential": 47.97668087779299,
+            "work": 1.738031666878944,
+            "heat": 13.159038445580526,
+            "supplied": 3.6000001877255268,
+            "removed": 3.321562495278081,
+            "supplied_potential": 14.400000750902107,
+            "removed_potential": 13.286249981112324,
+            "material_residual": -1.2878587085651816e-14,
+            "potential_residual": -1.9539925233402755e-14
+          },
+          "funded": [
+            0.7370482495301818,
+            0.72482643851684
+          ],
+          "requested": [
+            0.7370496322400868,
+            0.7248278223269153
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 1.235117447216401
+        },
+        {
+          "time": 4.0,
+          "ledger": {
+            "material": 48.64140802859496,
+            "potential": 38.021803535720004,
+            "work": 3.2962281249983754,
+            "heat": 23.647600453661468,
+            "supplied": 7.200000375451054,
+            "removed": 6.3985924019717615,
+            "supplied_potential": 28.800001501804218,
+            "removed_potential": 25.594369607887046,
+            "material_residual": -2.1316282072803006e-14,
+            "potential_residual": -1.7763568394002505e-14
+          },
+          "funded": [
+            1.358123172966681,
+            1.340278437786758
+          ],
+          "requested": [
+            1.5012989130773349,
+            1.4874494968244107
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 0.9076795131378999
+        },
+        {
+          "time": 6.0,
+          "ledger": {
+            "material": 49.22915236071654,
+            "potential": 37.573382961542244,
+            "work": 4.204927178517231,
+            "heat": 25.538299302806692,
+            "supplied": 10.800000563176582,
+            "removed": 9.410848257575708,
+            "supplied_potential": 43.20000225270633,
+            "removed_potential": 37.64339303030283,
+            "material_residual": -2.1316282072803006e-14,
+            "potential_residual": -2.1316282072803006e-14
+          },
+          "funded": [
+            1.4942133136568843,
+            1.4829975819756611
+          ],
+          "requested": [
+            2.269770052327658,
+            2.2716195502871415
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 0.8443068229589217
+        },
+        {
+          "time": 8.0,
+          "ledger": {
+            "material": 49.82230112568991,
+            "potential": 38.362235853252436,
+            "work": 5.039588238903703,
+            "heat": 26.287380410603518,
+            "supplied": 14.400000750902109,
+            "removed": 12.41769968032786,
+            "supplied_potential": 57.600003003608435,
+            "removed_potential": 49.67079872131144,
+            "material_residual": -2.4868995751603507e-14,
+            "potential_residual": -2.842170943040401e-14
+          },
+          "funded": [
+            1.5414302096112171,
+            1.5288241270870389
+          ],
+          "requested": [
+            3.063977305733715,
+            3.0345328994008014
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 0.8160371061130683
+        },
+        {
+          "time": 10.0,
+          "ledger": {
+            "material": 49.7153525129801,
+            "potential": 36.148452372541456,
+            "work": 5.890472905978657,
+            "heat": 27.2224847734002,
+            "supplied": 18.000000938627636,
+            "removed": 16.124648480763216,
+            "supplied_potential": 72.00000375451054,
+            "removed_potential": 64.49859392305287,
+            "material_residual": -1.0658141036401503e-14,
+            "potential_residual": -5.684341886080802e-14
+          },
+          "funded": [
+            1.597067455539294,
+            1.587758463118199
+          ],
+          "requested": [
+            3.8189553724369034,
+            3.8405331909743836
+          ],
+          "births": 0,
+          "deaths": 0,
+          "population": 24,
+          "mean_usable": 0.780638729634426
+        },
+        {
+          "time": 12.0,
+          "ledger": {
+            "material": 50.30165319202412,
+            "potential": 36.50188471035983,
+            "work": 6.779791955700484,
+            "heat": 28.324936102036137,
+            "supplied": 21.600001126353163,
+            "removed": 19.138347989444696,
+            "supplied_potential": 86.40000450541265,
+            "removed_potential": 76.55339195777879,
+            "material_residual": -3.552713678800501e-14,
+            "potential_residual": -1.1368683772161603e-13
+          },
+          "funded": [
+            1.6623834827474757,
+            1.652847005248767
+          ],
+          "requested": [
+            4.615697503119009,
+            4.609719206899172
+          ],
+          "births": 2,
+          "deaths": 0,
+          "population": 26,
+          "mean_usable": 0.6824233223781814
+        },
+        {
+          "time": 14.0,
+          "ledger": {
+            "material": 50.97228469482832,
+            "potential": 37.07234975911968,
+            "work": 7.69429011983617,
+            "heat": 29.522498900357352,
+            "supplied": 25.20000131407869,
+            "removed": 22.067716674366036,
+            "supplied_potential": 100.80000525631476,
+            "removed_potential": 88.27086669746414,
+            "material_residual": -2.4868995751603507e-14,
+            "potential_residual": -1.1368683772161603e-13
+          },
+          "funded": [
+            1.7283042190937032,
+            1.7234983496437546
+          ],
+          "requested": [
+            5.376772346207872,
+            5.420363368612016
+          ],
+          "births": 3,
+          "deaths": 0,
+          "population": 27,
+          "mean_usable": 0.6190475863248489
+        },
+        {
+          "time": 16.0,
+          "ledger": {
+            "material": 51.62518701171275,
+            "potential": 37.58059082876322,
+            "work": 8.61811812044155,
+            "heat": 30.702039097646043,
+            "supplied": 28.800001501804218,
+            "removed": 25.01481454520715,
+            "supplied_potential": 115.20000600721687,
+            "removed_potential": 100.0592581808286,
+            "material_residual": -7.105427357601002e-15,
+            "potential_residual": -1.4210854715202004e-13
+          },
+          "funded": [
+            1.7969071567977837,
+            1.7894120367075779
+          ],
+          "requested": [
+            6.190004297888663,
+            6.184864624017791
+          ],
+          "births": 4,
+          "deaths": 0,
+          "population": 28,
+          "mean_usable": 0.5614935851107741
+        },
+        {
+          "time": 18.0,
+          "ledger": {
+            "material": 51.70256277547716,
+            "potential": 35.94857054987972,
+            "work": 9.53579108943102,
+            "heat": 31.72588946259784,
+            "supplied": 32.400001689529745,
+            "removed": 28.53743896916824,
+            "supplied_potential": 129.60000675811898,
+            "removed_potential": 114.14975587667296,
+            "material_residual": -3.197442310920451e-14,
+            "potential_residual": -1.2789769243681803e-13
+          },
+          "funded": [
+            1.8544869511456534,
+            1.8451963762829569
+          ],
+          "requested": [
+            6.996264574139786,
+            6.96197904238943
+          ],
+          "births": 5,
+          "deaths": 0,
+          "population": 29,
+          "mean_usable": 0.5100940348412486
+        },
+        {
+          "time": 20.0,
+          "ledger": {
+            "material": 52.393557759540144,
+            "potential": 36.54587377883584,
+            "work": 10.49950281822764,
+            "heat": 32.92885444109701,
+            "supplied": 36.00000187725527,
+            "removed": 31.446444172830798,
+            "supplied_potential": 144.0000075090211,
+            "removed_potential": 125.78577669132319,
+            "material_residual": -1.7763568394002505e-14,
+            "potential_residual": -9.947598300641403e-14
+          },
+          "funded": [
+            1.9186677012842654,
+            1.9122318051881155
+          ],
+          "requested": [
+            7.772676211534417,
+            7.774584454746218
+          ],
+          "births": 8,
+          "deaths": 0,
+          "population": 32,
+          "mean_usable": 0.43243163041471305
+        },
+        {
+          "time": 22.0,
+          "ledger": {
+            "material": 53.069618015228706,
+            "potential": 37.121160236820735,
+            "work": 11.465393365161692,
+            "heat": 34.091918458932284,
+            "supplied": 39.6000020649808,
+            "removed": 34.37038410486776,
+            "supplied_potential": 158.4000082599232,
+            "removed_potential": 137.48153641947104,
+            "material_residual": -2.1316282072803006e-14,
+            "potential_residual": -1.4210854715202004e-13
+          },
+          "funded": [
+            1.9846445804013209,
+            1.9747478625090054
+          ],
+          "requested": [
+            8.585091992397793,
+            8.557511129503837
+          ],
+          "births": 9,
+          "deaths": 0,
+          "population": 33,
+          "mean_usable": 0.3921372750849568
+        },
+        {
+          "time": 24.0,
+          "ledger": {
+            "material": 53.726206756189484,
+            "potential": 37.54541047432639,
+            "work": 12.435359821246404,
+            "heat": 35.32405672918491,
+            "supplied": 43.20000225270633,
+            "removed": 37.31379555163252,
+            "supplied_potential": 172.8000090108253,
+            "removed_potential": 149.2551822065301,
+            "material_residual": -7.105427357601002e-15,
+            "potential_residual": -1.9895196601282805e-13
+          },
+          "funded": [
+            2.054927012283379,
+            2.043365911977067
+          ],
+          "requested": [
+            9.389849781422527,
+            9.354251063312404
+          ],
+          "births": 9,
+          "deaths": 0,
+          "population": 33,
+          "mean_usable": 0.3645020135665313
+        }
+      ],
+      "probes": {
+        "learned": {
+          "initial_count": 33,
+          "survivors": 33,
+          "survivor_conditional_mean_return": -0.06076030428780328,
+          "all_initial_mean_return": -0.06076030428780328,
+          "all_initial_metric_note": "legacy report: whole-cohort mean withheld if any death"
+        },
+        "erased": {
+          "initial_count": 33,
+          "survivors": 33,
+          "survivor_conditional_mean_return": -0.06076030428780328,
+          "all_initial_mean_return": -0.06076030428780328,
+          "all_initial_metric_note": "legacy report: whole-cohort mean withheld if any death"
+        },
+        "swapped": {
+          "initial_count": 33,
+          "survivors": 33,
+          "survivor_conditional_mean_return": -0.06076030428780328,
+          "all_initial_mean_return": -0.06076030428780328,
+          "all_initial_metric_note": "legacy report: whole-cohort mean withheld if any death"
+        }
+      },
+      "birth_count": 9
+    }
+  },
+  "raw_report_sha256": "d869838db40c6b1679c77eff14ecf19009ca1a8626a3ff1557176a166ea2b786",
+  "summary_scope": "same-arm physical-state frozen comparisons; matched noise across arms; no independent-noise statistical claim"
+}

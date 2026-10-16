@@ -22,7 +22,7 @@ const LOADED_CODE_PINS=(
     capture=bytes2hex(sha256(read(joinpath(@__DIR__,"device_habitat_capture.jl")))),
     startup=bytes2hex(sha256(read(joinpath(@__DIR__,"native_workbench_startup.jl")))))
 const FIELD_NAMES=(:free_a,:free_b,:raw_a,:raw_b,:enzyme_a,:enzyme_b,:bound_a,:bound_b,:permeability)
-const ACTIONS=("describe","observe","step","pause","checkpoint","receptor_scales","fork","stop")
+const ACTIONS=("describe","observe","step","pause","checkpoint","receptor_scales","material_rates","fork","stop")
 Base.@kwdef struct Limits
     max_steps::Int=4096
     max_steps_per_command::Int=256
@@ -73,6 +73,7 @@ function branches_state(s)
     Dict(name=>(step=b.process.cells.attempted_steps,time=b.world.time,paused=true,failed=b.failed,
         latest_observation=b.observation,latest_checkpoint=b.checkpoint,
         living=b.policy===nothing ? nothing : (steps=b.policy.steps,options=b.policy.options,memory=b.policy.memory),
+        material_controls=material_controls(b,s.dt),feed_parameters=b.process.habitat.feedstock.parameters,
         material_parameters=b.process.habitat.parameters,interventions=b.interventions,parent=b.parent) for (name,b) in s.branches)
 end
 function manifest!(s)
@@ -131,13 +132,14 @@ function observe!(s,name;event=nothing)
         source_sha256=hashfile(binary),source=Interior.DEVICE_CELLULAR_SOURCE_PIN,habitat_source=Interior.DEVICE_HABITAT_SOURCE_PIN,
         binary="state.bin",binary_sha256=hashfile(binary),order="column-major",endian=ENDIAN_BOM==0x04030201 ? "little" : "big",arrays=arrays,
         secretion_note="Actual final completed step secretion, not an interval total.",accounting=audit,
-        material_parameters=p.habitat.parameters,intervention=event,
+        material_parameters=p.habitat.parameters,feed_parameters=p.habitat.feedstock.parameters,intervention=event,
         living=b.policy===nothing ? nothing : (options=b.policy.options,memory=b.policy.memory,policy_steps=b.policy.steps,inheritance_fraction=b.policy.inheritance_fraction),
         material_input_note="Receptor inputs are from the last completed step; new scales first act on the next physical step.")
     atomic_json(joinpath(folder,"frame.json"),meta)
     b.observation=(file=relpath(joinpath(folder,"frame.json"),s.root),sha256=hashfile(joinpath(folder,"frame.json")),
         step=c.attempted_steps,time=b.world.time,population=length(active),binary_bytes=filesize(binary),
         source_sha256=hashfile(joinpath(folder,"frame.json")),side=side,native_shape=c.geometry.dims,
+        material_summary=(catalyst=sum(audit.audit.enzyme),bound_food=sum(audit.audit.bound),converted_raw=sum(audit.audit.solubilized),work=audit.audit.work),
         observation_event=event===nothing ? "" : event.id*"-"*event.phase)
     push!(b.history,merge(b.observation,(file=relpath(joinpath(folder,"frame.json"),joinpath(s.root,"branches",name)),)))
     observation_index!(s,name)
@@ -196,7 +198,7 @@ function create_session(profile,root;backend=CPU(),side=8,limits=Limits(),startu
 end
 function validate_command(c,s)
     c isa AbstractDict || throw(ArgumentError("command must be an object"))
-    Set(keys(c))<=Set(("id","action","branch","steps","scales","requested_at")) || throw(ArgumentError("unknown command fields"))
+    Set(keys(c))<=Set(("id","action","branch","steps","scales","rates","requested_at")) || throw(ArgumentError("unknown command fields"))
     id=get(c,"id",nothing);id isa String && occursin(r"^[A-Za-z0-9_-]{1,80}$",id) || throw(ArgumentError("invalid command id"))
     action=get(c,"action",nothing);action in ACTIONS || throw(ArgumentError("unknown action"))
     branch=get(c,"branch","both");(branch=="both" || haskey(s.branches,branch)) || throw(ArgumentError("unknown branch"))
@@ -211,6 +213,13 @@ function validate_command(c,s)
     else
         haskey(c,"scales") && throw(ArgumentError("scales only applies to receptor_scales"))
     end
+    if action=="material_rates"
+        branch!="both" && s.branches[branch].parent!==nothing || throw(ArgumentError("material rates require an explicit fork"))
+        material_rates(get(c,"rates",nothing))
+        material_process(s.branches[branch],material_rates(c["rates"]),s.dt)
+    else
+        haskey(c,"rates") && throw(ArgumentError("rates only applies to material_rates"))
+    end
     action=="fork" && branch=="both" && throw(ArgumentError("fork requires one complete branch"))
     id,action,branch=="both" ? ["off","sensing"] : [branch]
 end
@@ -221,34 +230,82 @@ function receptor_scales(values)
     all(x->isfinite(x)&&x>0,scales) || throw(ArgumentError("receptor scales must remain positive and finite in Float32"))
     scales
 end
-function receptor_process(b,scales)
+# Small declared law vocabulary: no source funding, capacities or potentials.
+struct MaterialRates
+    decay_rate::Float32
+    desorption_rate::Float32
+    raw_diffusion::Float32
+end
+function material_rates(values)
+    values isa AbstractDict && Set(keys(values))==Set(("decay_rate","desorption_rate","raw_diffusion")) || throw(ArgumentError("exactly decay_rate, desorption_rate and raw_diffusion required"))
+    raw=Tuple(values[k] for k in ("decay_rate","desorption_rate","raw_diffusion"))
+    all(x->x isa Real && !(x isa Bool) && isfinite(x) && x>=0,raw) || throw(ArgumentError("finite nonnegative numeric material rates required"))
+    raw[1]<=10 && raw[2]<=10 && raw[3]<=1 || throw(ArgumentError("material rate vocabulary exceeds declared caps"))
+    converted=Tuple(Float32.(raw))
+    all(i->isfinite(converted[i]) && (raw[i]==0 || converted[i]>0),1:3) || throw(ArgumentError("positive rates must remain finite and positive in Float32"))
+    converted[1]<=10 && converted[2]<=10 && converted[3]<=1 || throw(ArgumentError("material rate vocabulary exceeds declared caps"))
+    MaterialRates(converted...)
+end
+material_values(b)=(decay_rate=b.process.habitat.parameters.decay_rate,desorption_rate=b.process.habitat.parameters.desorption_rate,raw_diffusion=Tuple(b.process.habitat.feedstock.parameters.diffusion[1:2]))
+function raw_diffusion_limit(b,dt)
+    g=b.process.cells.geometry;S=sum(inv(Float64(g.spacing[d])^2) for d in 1:Int(g.nd))
+    limit=min(1.,.45/(Float64(dt)*S));rounded=Float32(limit)
+    Float64(rounded)>limit ? prevfloat(rounded) : rounded
+end
+material_controls(b,dt)=(enabled=b.parent!==nothing && !b.failed,values=material_values(b),max_decay_rate=10,max_desorption_rate=10,max_raw_diffusion=raw_diffusion_limit(b,dt),exchange_radius=b.process.cells.parameters.exchange_radius)
+function parameter_process(b,q,fq=b.process.habitat.feedstock.parameters)
     p=b.process;h=p.habitat;c=p.cells
-    hasproperty(h.parameters,:material_scales) || error("branch lacks material receptors")
-    q=merge(h.parameters,(material_scales=scales,))
-    Interior.dh_validate_parameters(q,h.feedstock.parameters)
+    Interior.dh_validate_parameters(q,fq)
+    feed=merge(h.feedstock,(parameters=fq,))
     argument=Interior.device_habitat_argument(c,h.arrays,q)
-    ownership=merge(h.ownership,(parameters=q,argument=argument))
-    habitat=typeof(h)(c,h.arrays,h.feedstock,q,argument,ownership)
+    ownership=merge(h.ownership,(feedstock=feed,parameters=q,argument=argument))
+    habitat=typeof(h)(c,h.arrays,feed,q,argument,ownership)
     candidate=typeof(p)(c,habitat)
     Interior.validate(b.world,candidate)
     candidate
 end
-function intervene_receptors!(s,name,id,scales)
-    b=s.branches[name];b.failed&&error("branch has a partial failed state")
-    candidate=receptor_process(b,scales)
-    candidate.habitat.parameters.material_channels==b.process.habitat.parameters.material_channels || error("fixed receptor channels changed")
+function receptor_process(b,scales)
+    hasproperty(b.process.habitat.parameters,:material_scales) || error("branch lacks material receptors")
+    parameter_process(b,merge(b.process.habitat.parameters,(material_scales=scales,)))
+end
+function material_process(b,r::MaterialRates,dt)
+    b.parent!==nothing || throw(ArgumentError("material rates require an explicit fork"))
+    b.failed && error("branch has a partial failed state")
+    r.raw_diffusion<=raw_diffusion_limit(b,dt) || throw(ArgumentError("raw diffusion exceeds unchanged timestep limit"))
+    h=b.process.habitat
+    q=merge(h.parameters,(decay_rate=r.decay_rate,desorption_rate=r.desorption_rate))
+    fq=merge(h.feedstock.parameters,(diffusion=(r.raw_diffusion,r.raw_diffusion,h.feedstock.parameters.diffusion[3]),))
+    candidate=parameter_process(b,q,fq)
+    Interior.check_dt(b.world,candidate,dt)
+    candidate
+end
+function apply_intervention!(s,name,event,candidate)
+    b=s.branches[name]
     reserve!(s,4branch_resident_bytes(b)+4_000_000+4s.side^3*9*4)
-    event=(id=id,action="receptor_scales",sequence=s.sequence,time=b.world.time,step=b.process.cells.attempted_steps,
-        channels=candidate.habitat.parameters.material_channels,before=b.process.habitat.parameters.material_scales,after=scales)
     before=merge(event,(phase="before",));after=merge(event,(phase="after",))
     checkpoint!(s,name;event=before);observe!(s,name;event=before)
     before_checkpoint=b.checkpoint;before_observation=b.observation
-    # Single host-wrapper swap; physical arrays, cells, and controller state are shared unchanged.
+    # Only concrete parameter wrappers change; all physical/private arrays survive.
     b.process=candidate
     b.policy===nothing || living_rebind!(b.policy,candidate)
     push!(b.interventions,merge(event,(before_checkpoint=before_checkpoint,before_observation=before_observation)))
     manifest!(s)
     checkpoint!(s,name;event=after);observe!(s,name;event=after)
+end
+function intervene_material!(s,name,id,r::MaterialRates)
+    b=s.branches[name];candidate=material_process(b,r,s.dt)
+    event=(id=id,action="material_rates",sequence=s.sequence,time=b.world.time,step=b.process.cells.attempted_steps,
+        before=material_values(b),after=(decay_rate=r.decay_rate,desorption_rate=r.desorption_rate,raw_diffusion=(r.raw_diffusion,r.raw_diffusion)),
+        unchanged_dt=s.dt,stability_limit=Interior.stability_limit(b.world,candidate))
+    apply_intervention!(s,name,event,candidate)
+end
+function intervene_receptors!(s,name,id,scales)
+    b=s.branches[name];b.failed&&error("branch has a partial failed state")
+    candidate=receptor_process(b,scales)
+    candidate.habitat.parameters.material_channels==b.process.habitat.parameters.material_channels || error("fixed receptor channels changed")
+    event=(id=id,action="receptor_scales",sequence=s.sequence,time=b.world.time,step=b.process.cells.attempted_steps,
+        channels=candidate.habitat.parameters.material_channels,before=b.process.habitat.parameters.material_scales,after=scales)
+    apply_intervention!(s,name,event,candidate)
 end
 function fork_current!(s,name)
     length(s.branches)<s.limits.max_branches || error("branch budget exhausted")
@@ -263,7 +320,7 @@ function fork_current!(s,name)
     process=Interior.device_habitat_restore(w,payload)
     Interior.device_habitat_snapshot(process)==Interior.device_habitat_snapshot(b.process) || error("strict fork differs from parent state")
     provenance=(branch=name,checkpoint=parent_checkpoint,step=b.process.cells.attempted_steps,time=b.world.time,
-        source=payload.source,cellular_source=payload.cells.source,parameters=payload.parameters,sequence=s.sequence)
+        source=payload.source,cellular_source=payload.cells.source,parameters=payload.parameters,feed_parameters=payload.feed_parameters,sequence=s.sequence)
     buffer=Interior.KernelAbstractions.zeros(w.backend,Float32,s.side^3,9)
     policy=b.policy===nothing ? nothing : living_restore(process,payload.living)
     policy===nothing || living_snapshot(policy)==payload.living || error("strict living fork differs from parent state")
@@ -317,6 +374,9 @@ function process_command!(s,c)
         elseif action=="receptor_scales"
             accepted=true;s.busy=true;manifest!(s)
             intervene_receptors!(s,only(names),id,receptor_scales(c["scales"]))
+        elseif action=="material_rates"
+            accepted=true;s.busy=true;manifest!(s)
+            intervene_material!(s,only(names),id,material_rates(c["rates"]))
         elseif action=="observe"
             accepted=true;
             for name in names;observe!(s,name);end
