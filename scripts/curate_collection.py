@@ -74,8 +74,14 @@ def main():
             raise ValueError(f'{slug}: final hash/review mismatch')
         job = read(origin / 'render-job.json')
         size, samples = job.get('size', 0), job.get('samples', 0)
-        if size < 1600 or samples < 96:
-            raise ValueError(f'{slug}: expected at least 1600px / 96-sample recipe')
+        minimum_samples = record.get('minimum_samples', 96)
+        if type(minimum_samples) is not int or minimum_samples < 1:
+            raise ValueError(f'{slug}: minimum_samples must be a positive integer')
+        sampling_review = review.get('sampling_review')
+        if minimum_samples < 96 and (not isinstance(sampling_review, str) or not sampling_review.strip()):
+            raise ValueError(f'{slug}: a lower sample budget needs a recorded visual sampling review')
+        if size < 1600 or samples < minimum_samples:
+            raise ValueError(f'{slug}: expected at least 1600px / {minimum_samples}-sample recipe')
         for key in ('size','samples'):
             if key in record and record[key] != job[key]:raise ValueError(f'{slug}: selection and job {key} differ')
         run = public(read(origin / 'run.json'))
@@ -108,6 +114,8 @@ def main():
         run['description'] = re.sub(r'Native(?=\d)', 'Native ', job.get('description', run.get('description', ''))).replace('endtime', 'end time')
         if run.get('comparison_notes'):run['comparison_notes'] = re.sub(r'Native(?=\d)', 'Native ', run['comparison_notes'])
         run['publication'] = dict(source_image_sha256=source_hash, webp_sha256=digest(target / 'photograph.webp'), quality=95, width=size, samples=samples, native_shape=native, original_retained=True, reviewed_by=review.get('reviewed_by', 'visual review'))
+        if minimum_samples < 96:
+            run['publication']['sampling_review'] = sampling_review.strip()
         for name, data in [('run.json', run), ('optical.json', optical)]:
             (target / name).write_text(json.dumps(data, indent=2) + '\n')
         recipe = public(read(origin / 'render-job.json'))

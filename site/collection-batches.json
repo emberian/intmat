@@ -597,5 +597,31 @@
       "run.json",
       "viewer.html"
     ]
+  },
+  {
+    "id": "collection-20261016/illuminated-memory",
+    "source_image_sha256": "5a6834ac5199ad8657bd8cb2c1af0f744a078c2f4f94797ea64182a315cd6031",
+    "files": [
+      "feedback-summary.json",
+      "native-ray-refinement.json",
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json",
+      "viewer.html"
+    ]
+  },
+  {
+    "id": "collection-20261016/weather-lens-129",
+    "source_image_sha256": "4b0c130cac929e30d80ab4f42c83912dbb7ef4d58fe0ae024271a405e4ddf5da",
+    "files": [
+      "control-summary.json",
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
   }
 ]

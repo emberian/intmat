@@ -1,0 +1,50 @@
+{
+  "scope": "Owned study prototype; constant and heterogeneous discrete manufactured solutions plus independent constant-field edge power closure",
+  "solver_sha256": "60fddbf45b730ef2995572750a0a9194be6e43f5d24207bd5874acfab38fc5cf",
+  "checks": [
+    {
+      "n": 17,
+      "heterogeneous": false,
+      "solved": {
+        "residual": 5.51423511296889e-07,
+        "cycles": 6
+      },
+      "error": 1.555428208455112e-08
+    },
+    {
+      "n": 17,
+      "heterogeneous": true,
+      "solved": {
+        "residual": 2.945167948110907e-07,
+        "cycles": 7
+      },
+      "error": 4.592769170530531e-08
+    },
+    {
+      "n": 33,
+      "heterogeneous": false,
+      "solved": {
+        "residual": 2.8308818400546443e-07,
+        "cycles": 7
+      },
+      "error": 1.8258808687221517e-08
+    },
+    {
+      "n": 33,
+      "heterogeneous": true,
+      "solved": {
+        "residual": 6.328573871068434e-07,
+        "cycles": 8
+      },
+      "error": 3.267900611225727e-08
+    },
+    {
+      "independent_constant_field": {
+        "independent_residual": 0.0,
+        "independent_edge_power": 2.2578125,
+        "independent_input_power": 2.2578125,
+        "independent_power_defect": 0.0
+      }
+    }
+  ]
+}

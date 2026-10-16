@@ -15,7 +15,7 @@ Six families: phase surfaces, written inclusions, dielectric branches, fractured
 networks, acoustic/neural contours and 3D metabolic inhabitants. Each photograph
 observes a saved simulation through chosen optics. The first series adds 36
 specimens at 1600². Refinement now evolves native 384³ phase, writing and waves;
-768³ writing is complete. Refined 2400² photographs, recurrent matter, coupled optics and a repairing weave bring the gallery to 71
+768³ writing is complete. Refined 2400² photographs, recurrent matter, coupled optics and a repairing weave bring the gallery to 73
 studies, with corrected crop geometry and resin, wax, frost, bronze and copper
 optics. Native 1152³ Julia writing completed in 56.9 minutes with 18.35 GB of state.
 Constructive ecology now has actual 64³ trajectories and a 128³ GPU pilot;
@@ -54,6 +54,11 @@ This is a measured opportunity for learning, not learned cooperation.
 **The light takes the long way:** a changing 256³ mineral bends light through
 three fixed apertures. [Rotate, cut and compare actual paths](https://emberian.github.io/intmat/collection-20261016/refractive-memory/viewer.html)
 across five saved states; the 2000² photograph reveals its amber and copper interior.
+
+**What the light persuades** closes that loop: absorbed light changes recurrent
+activity, growth and subsequent illumination. [Explore mineral and absorbed power](https://emberian.github.io/intmat/collection-20261016/illuminated-memory/viewer.html).
+**Weather inside a lens** photographs finite mineral growth and thermal erosion
+that redirect current through opaline folds.
 
 ## Run
 

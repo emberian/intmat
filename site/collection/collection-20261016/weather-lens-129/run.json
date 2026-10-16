@@ -1,0 +1,602 @@
+{
+  "title": "Weather inside a lens",
+  "recipe": {
+    "steps": 500,
+    "erosion_gain": 9,
+    "dt": 0.01,
+    "joule_gain": 8,
+    "conductivity_gain": 6,
+    "potential_tolerance": 0.0001,
+    "cooling": 0.8,
+    "continuous_texture": true,
+    "capture_every": 25,
+    "id": "weather-lens-129",
+    "immutable_conductivity": false,
+    "damage_threshold": 0.27,
+    "deposition_threshold": 0.035,
+    "erosion_threshold": 0.3,
+    "max_sweeps": 60,
+    "damage_gain": 2,
+    "voltage": 1,
+    "thermal_diffusion": 0.0008,
+    "damage_recovery": 0.12,
+    "nodal_grid": true,
+    "deposition_gain": 6,
+    "title": "Weather inside a lens",
+    "seed": 8127,
+    "n": 129
+  },
+  "sourcehash": "1a480050df55931cddd30b23c0f1da9eb49bf156c2a534122c0c947cce16a12c",
+  "solverhash": "60fddbf45b730ef2995572750a0a9194be6e43f5d24207bd5874acfab38fc5cf",
+  "frames": [
+    {
+      "step": 0,
+      "time": 0
+    },
+    {
+      "step": 25,
+      "time": 0.25
+    },
+    {
+      "step": 50,
+      "time": 0.5
+    },
+    {
+      "step": 75,
+      "time": 0.75
+    },
+    {
+      "step": 100,
+      "time": 1
+    },
+    {
+      "step": 125,
+      "time": 1.25
+    },
+    {
+      "step": 150,
+      "time": 1.5
+    },
+    {
+      "step": 175,
+      "time": 1.75
+    },
+    {
+      "step": 200,
+      "time": 2
+    },
+    {
+      "step": 225,
+      "time": 2.25
+    },
+    {
+      "step": 250,
+      "time": 2.5
+    },
+    {
+      "step": 275,
+      "time": 2.75
+    },
+    {
+      "step": 300,
+      "time": 3
+    },
+    {
+      "step": 325,
+      "time": 3.25
+    },
+    {
+      "step": 350,
+      "time": 3.5
+    },
+    {
+      "step": 375,
+      "time": 3.75
+    },
+    {
+      "step": 400,
+      "time": 4
+    },
+    {
+      "step": 425,
+      "time": 4.25
+    },
+    {
+      "step": 450,
+      "time": 4.5
+    },
+    {
+      "step": 475,
+      "time": 4.75
+    },
+    {
+      "step": 500,
+      "time": 5
+    }
+  ],
+  "history": [
+    {
+      "step": 0,
+      "time": 0,
+      "independent": {
+        "independent_residual": 6.722123533596579e-05,
+        "independent_edge_power": 0.024726519314841246,
+        "independent_input_power": 0.024726519282276083,
+        "independent_power_defect": 1.317013607960961e-09
+      },
+      "input_power": 0.024726519282275986,
+      "power_relative_defect": 1.3170472830309978e-09,
+      "temperature_max": 0,
+      "mineral": 8242.176993565248,
+      "damage_mean": 0,
+      "joule_power": 0.02472651931484198,
+      "active_voxels": 0,
+      "residual": 6.722123488221468e-05,
+      "sweeps": 7,
+      "mass_residual": 0
+    },
+    {
+      "step": 25,
+      "time": 0.25,
+      "independent": {
+        "independent_residual": 8.080891371904942e-12,
+        "independent_edge_power": 0.024726519313706903,
+        "independent_input_power": 0.02472651931370949,
+        "independent_power_defect": -1.0467334254855588e-13
+      },
+      "input_power": 0.024726519313709356,
+      "power_relative_defect": 1.6697222202785814e-14,
+      "temperature_max": 0.017443336332981188,
+      "mineral": 8242.176993565248,
+      "damage_mean": 0,
+      "joule_power": 0.02472651931370977,
+      "active_voxels": 0,
+      "residual": 7.77709846318671e-12,
+      "sweeps": 1,
+      "mass_residual": 0
+    },
+    {
+      "step": 50,
+      "time": 0.5,
+      "independent": {
+        "independent_residual": 8.7658890021489e-12,
+        "independent_edge_power": 0.024726519313706896,
+        "independent_input_power": 0.024726519313709443,
+        "independent_power_defect": -1.0298958904911549e-13
+      },
+      "input_power": 0.024726519313709307,
+      "power_relative_defect": 1.8661601285466533e-14,
+      "temperature_max": 0.030736650217386887,
+      "mineral": 8242.176993565248,
+      "damage_mean": 0,
+      "joule_power": 0.02472651931370977,
+      "active_voxels": 0,
+      "residual": 7.77709846318671e-12,
+      "sweeps": 1,
+      "mass_residual": 0
+    },
+    {
+      "step": 75,
+      "time": 0.75,
+      "independent": {
+        "independent_residual": 5.272931321844608e-05,
+        "independent_edge_power": 0.024728211961856254,
+        "independent_input_power": 0.024728211934572933,
+        "independent_power_defect": 1.103327709565511e-09
+      },
+      "input_power": 0.0247282119345728,
+      "power_relative_defect": 1.10333444411851e-09,
+      "temperature_max": 0.041035340138175655,
+      "mineral": 8248.850540607003,
+      "damage_mean": 0,
+      "joule_power": 0.02472821196185629,
+      "active_voxels": 0,
+      "residual": 5.2729314650178135e-05,
+      "sweeps": 2,
+      "mass_residual": 5.820766091346741e-11
+    },
+    {
+      "step": 100,
+      "time": 1,
+      "independent": {
+        "independent_residual": 2.9009844752335753e-05,
+        "independent_edge_power": 0.024782950889844727,
+        "independent_input_power": 0.02478295500024403,
+        "independent_power_defect": -1.6585589983663356e-07
+      },
+      "input_power": 0.024782955000244068,
+      "power_relative_defect": -1.6585585153895459e-07,
+      "temperature_max": 0.04986449433084628,
+      "mineral": 8466.652752193913,
+      "damage_mean": 0,
+      "joule_power": 0.024782950889845962,
+      "active_voxels": 0,
+      "residual": 2.9009844752335753e-05,
+      "sweeps": 3,
+      "mass_residual": 0
+    },
+    {
+      "step": 125,
+      "time": 1.25,
+      "independent": {
+        "independent_residual": 5.800710655260948e-05,
+        "independent_edge_power": 0.025038997137037364,
+        "independent_input_power": 0.02503900661476969,
+        "independent_power_defect": -3.785187036558589e-07
+      },
+      "input_power": 0.02503900661476964,
+      "power_relative_defect": -3.785186730337272e-07,
+      "temperature_max": 0.05940778846166004,
+      "mineral": 9384.901996201252,
+      "damage_mean": 0,
+      "joule_power": 0.025038997137038083,
+      "active_voxels": 0,
+      "residual": 5.800710665918796e-05,
+      "sweeps": 3,
+      "mass_residual": 5.820766091346741e-11
+    },
+    {
+      "step": 150,
+      "time": 1.5,
+      "independent": {
+        "independent_residual": 9.331501948661813e-05,
+        "independent_edge_power": 0.02572190971731949,
+        "independent_input_power": 0.025721931410965834,
+        "independent_power_defect": -8.433910345989719e-07
+      },
+      "input_power": 0.02572193141096584,
+      "power_relative_defect": -8.433910309571351e-07,
+      "temperature_max": 0.0728123173559112,
+      "mineral": 11413.49503874771,
+      "damage_mean": 0,
+      "joule_power": 0.02572190971731959,
+      "active_voxels": 150,
+      "residual": 9.33150191277837e-05,
+      "sweeps": 3,
+      "mass_residual": 5.820766091346741e-11
+    },
+    {
+      "step": 175,
+      "time": 1.75,
+      "independent": {
+        "independent_residual": 4.7693870412674464e-05,
+        "independent_edge_power": 0.027197320117243726,
+        "independent_input_power": 0.02719734212025527,
+        "independent_power_defect": -8.090133016459545e-07
+      },
+      "input_power": 0.027197342120255128,
+      "power_relative_defect": -8.090133066210196e-07,
+      "temperature_max": 0.09504895201798015,
+      "mineral": 14852.823072307818,
+      "damage_mean": 0,
+      "joule_power": 0.027197320117243448,
+      "active_voxels": 6660,
+      "residual": 4.769387069543974e-05,
+      "sweeps": 4,
+      "mass_residual": 0
+    },
+    {
+      "step": 200,
+      "time": 2,
+      "independent": {
+        "independent_residual": 5.0660308552907386e-05,
+        "independent_edge_power": 0.030190806658212818,
+        "independent_input_power": 0.030190825260547272,
+        "independent_power_defect": -6.161585280807519e-07
+      },
+      "input_power": 0.030190825260547168,
+      "power_relative_defect": -6.161586275991022e-07,
+      "temperature_max": 0.1355616690566917,
+      "mineral": 20187.230719152885,
+      "damage_mean": 0,
+      "joule_power": 0.03019080665820971,
+      "active_voxels": 26686,
+      "residual": 5.066031013220391e-05,
+      "sweeps": 6,
+      "mass_residual": 5.820766091346741e-11
+    },
+    {
+      "step": 225,
+      "time": 2.25,
+      "independent": {
+        "independent_residual": 4.760370676207298e-05,
+        "independent_edge_power": 0.03638078584883412,
+        "independent_input_power": 0.03638082023105071,
+        "independent_power_defect": -9.450643599933675e-07
+      },
+      "input_power": 0.03638082023105026,
+      "power_relative_defect": -9.450644570746701e-07,
+      "temperature_max": 0.25096162953361634,
+      "mineral": 28379.175063984396,
+      "damage_mean": 0,
+      "joule_power": 0.036380785848830144,
+      "active_voxels": 74335,
+      "residual": 4.760370682738383e-05,
+      "sweeps": 8,
+      "mass_residual": 5.820766091346741e-11
+    },
+    {
+      "step": 250,
+      "time": 2.5,
+      "independent": {
+        "independent_residual": 7.342645826312074e-05,
+        "independent_edge_power": 0.04999558657775206,
+        "independent_input_power": 0.04999579199737814,
+        "independent_power_defect": -4.108738313233115e-06
+      },
+      "input_power": 0.04999579199737802,
+      "power_relative_defect": -4.108738260493093e-06,
+      "temperature_max": 0.46404052081470326,
+      "mineral": 41285.71633253259,
+      "damage_mean": 5.579720623685999e-06,
+      "joule_power": 0.049995586577754575,
+      "active_voxels": 132051,
+      "residual": 7.342645865470063e-05,
+      "sweeps": 8,
+      "mass_residual": 5.820766091346741e-11
+    },
+    {
+      "step": 275,
+      "time": 2.75,
+      "independent": {
+        "independent_residual": 7.888140737266764e-05,
+        "independent_edge_power": 0.0795828313892996,
+        "independent_input_power": 0.07958234334752981,
+        "independent_power_defect": 6.132538315159357e-06
+      },
+      "input_power": 0.0795823433475294,
+      "power_relative_defect": 6.132538165713373e-06,
+      "temperature_max": 0.6606654243845679,
+      "mineral": 61843.54712372054,
+      "damage_mean": 0.0001670637043433316,
+      "joule_power": 0.07958283138928729,
+      "active_voxels": 181103,
+      "residual": 7.888140737766427e-05,
+      "sweeps": 12,
+      "mass_residual": 0
+    },
+    {
+      "step": 300,
+      "time": 3,
+      "independent": {
+        "independent_residual": 9.494816796936544e-05,
+        "independent_edge_power": 0.11911736387734931,
+        "independent_input_power": 0.119116846952511,
+        "independent_power_defect": 4.339645075689453e-06
+      },
+      "input_power": 0.1191168469525108,
+      "power_relative_defect": 4.339645058679632e-06,
+      "temperature_max": 0.9494500622931686,
+      "mineral": 90604.54043906451,
+      "damage_mean": 0.0015794320174212784,
+      "joule_power": 0.11911736387734709,
+      "active_voxels": 219875,
+      "residual": 9.494816814432733e-05,
+      "sweeps": 13,
+      "mass_residual": 5.820766091346741e-11
+    },
+    {
+      "step": 325,
+      "time": 3.25,
+      "independent": {
+        "independent_residual": 8.856042959212615e-05,
+        "independent_edge_power": 0.13240942211655438,
+        "independent_input_power": 0.1324089736747589,
+        "independent_power_defect": 3.3867930777625593e-06
+      },
+      "input_power": 0.13240897367475976,
+      "power_relative_defect": 3.3867931513391746e-06,
+      "temperature_max": 1.3067680163245767,
+      "mineral": 119916.11786378155,
+      "damage_mean": 0.006248725367383671,
+      "joule_power": 0.13240942211656498,
+      "active_voxels": 256791,
+      "residual": 8.85604280276549e-05,
+      "sweeps": 9,
+      "mass_residual": 5.820766091346741e-11
+    },
+    {
+      "step": 350,
+      "time": 3.5,
+      "independent": {
+        "independent_residual": 8.794402358399822e-05,
+        "independent_edge_power": 0.1169144163841968,
+        "independent_input_power": 0.11691394280244306,
+        "independent_power_defect": 4.05068670503634e-06
+      },
+      "input_power": 0.1169139428024434,
+      "power_relative_defect": 4.050686788839149e-06,
+      "temperature_max": 1.2933061474330774,
+      "mineral": 143199.41964817006,
+      "damage_mean": 0.01398279073187606,
+      "joule_power": 0.11691441638420694,
+      "active_voxels": 290043,
+      "residual": 8.794402404766407e-05,
+      "sweeps": 10,
+      "mass_residual": 5.820766091346741e-11
+    },
+    {
+      "step": 375,
+      "time": 3.75,
+      "independent": {
+        "independent_residual": 9.974514208463201e-05,
+        "independent_edge_power": 0.0971216909286169,
+        "independent_input_power": 0.09712115213922656,
+        "independent_power_defect": 5.547600893024421e-06
+      },
+      "input_power": 0.09712115213922674,
+      "power_relative_defect": 5.5476008441555145e-06,
+      "temperature_max": 1.151858158972133,
+      "mineral": 161752.9121854133,
+      "damage_mean": 0.022450133036982626,
+      "joule_power": 0.09712169092861234,
+      "active_voxels": 314195,
+      "residual": 9.974514203908376e-05,
+      "sweeps": 8,
+      "mass_residual": 5.820766091346741e-11
+    },
+    {
+      "step": 400,
+      "time": 4,
+      "independent": {
+        "independent_residual": 9.924638426677921e-05,
+        "independent_edge_power": 0.08485074252711185,
+        "independent_input_power": 0.08484975961966137,
+        "independent_power_defect": 1.1584092340135644e-05
+      },
+      "input_power": 0.08484975961966133,
+      "power_relative_defect": 1.1584092481776172e-05,
+      "temperature_max": 1.0046786908527139,
+      "mineral": 178902.77478359616,
+      "damage_mean": 0.029763032668474545,
+      "joule_power": 0.08485074252712382,
+      "active_voxels": 316979,
+      "residual": 9.924638572067445e-05,
+      "sweeps": 6,
+      "mass_residual": 5.820766091346741e-11
+    },
+    {
+      "step": 425,
+      "time": 4.25,
+      "independent": {
+        "independent_residual": 9.584659561911074e-05,
+        "independent_edge_power": 0.07818730886229801,
+        "independent_input_power": 0.07818596075177432,
+        "independent_power_defect": 1.7242360530244817e-05
+      },
+      "input_power": 0.07818596075177456,
+      "power_relative_defect": 1.7242360611538472e-05,
+      "temperature_max": 0.9076840976884485,
+      "mineral": 195705.69869855576,
+      "damage_mean": 0.03533991544156626,
+      "joule_power": 0.0781873088623046,
+      "active_voxels": 304101,
+      "residual": 9.584659468770139e-05,
+      "sweeps": 6,
+      "mass_residual": 0
+    },
+    {
+      "step": 450,
+      "time": 4.5,
+      "independent": {
+        "independent_residual": 8.817044869127023e-05,
+        "independent_edge_power": 0.07454903301042573,
+        "independent_input_power": 0.0745472314383103,
+        "independent_power_defect": 2.4166854766765234e-05
+      },
+      "input_power": 0.07454723143831048,
+      "power_relative_defect": 2.4166854709055263e-05,
+      "temperature_max": 0.8504103622537733,
+      "mineral": 211636.59630818813,
+      "damage_mean": 0.03932727298409089,
+      "joule_power": 0.07454903301042161,
+      "active_voxels": 292023,
+      "residual": 8.817044952694684e-05,
+      "sweeps": 6,
+      "mass_residual": 5.820766091346741e-11
+    },
+    {
+      "step": 475,
+      "time": 4.75,
+      "independent": {
+        "independent_residual": 8.474652524890259e-05,
+        "independent_edge_power": 0.07240455316527349,
+        "independent_input_power": 0.07240243034161552,
+        "independent_power_defect": 2.9319784542485107e-05
+      },
+      "input_power": 0.07240243034161534,
+      "power_relative_defect": 2.931978464330661e-05,
+      "temperature_max": 0.8164903792805098,
+      "mineral": 225673.24448290517,
+      "damage_mean": 0.04213719096471788,
+      "joule_power": 0.0724045531652806,
+      "active_voxels": 291151,
+      "residual": 8.474652512337934e-05,
+      "sweeps": 6,
+      "mass_residual": 5.820766091346741e-11
+    },
+    {
+      "step": 500,
+      "time": 5,
+      "independent": {
+        "independent_residual": 9.747751792127129e-05,
+        "independent_edge_power": 0.07097034111435375,
+        "independent_input_power": 0.07096809310956158,
+        "independent_power_defect": 3.167627441682e-05
+      },
+      "input_power": 0.07096809310956174,
+      "power_relative_defect": 3.167627436187047e-05,
+      "temperature_max": 0.7974210295634181,
+      "mineral": 237382.22385940474,
+      "damage_mean": 0.04416331729334807,
+      "joule_power": 0.07097034111435002,
+      "active_voxels": 284887,
+      "residual": 9.747751813208329e-05,
+      "sweeps": 6,
+      "mass_residual": 5.820766091346741e-11
+    }
+  ],
+  "elapsed": 562.593689084,
+  "thermal_positivity_factor": 0.20460800000000004,
+  "maximum_local_material_error": 3.774758283725532e-15,
+  "initial_material": 329638.52976073447,
+  "final_material": 329638.5297607345,
+  "total_deposition": 496222.80989010853,
+  "total_erosion": 267082.7630242732,
+  "electrical_dissipation": 0.2989104638570965,
+  "unconverged_solves": 0,
+  "model_description": "Designed folded precursor lamellae and fixed opposing electrodes. Variable-conductivity potential uses nodal multigrid or the pilot weighted red-black SOR. Thermal diffusion is periodic; electrical boundaries are fixed x electrodes and no-flux y/z. Joule heating deposits conductive mineral at moderate temperature; high temperature erodes it and creates recovering insulating damage. Precursor and mineral exchange conservatively. Electrical supply/cooling and damage law are open and phenomenological. Temperature is nondimensional; conversion does not debit latent heat or chemical free energy.",
+  "id": "weather-lens-129",
+  "family": "branches",
+  "subtitle": "Conductive mineral \u00b7 129\u00b3",
+  "description": "Conductive mineral forms along three designed folds inside a violet optical prism. Heating erodes deposits and leaves insulating scars, redirecting later activity.",
+  "native_shape": [
+    129,
+    129,
+    129
+  ],
+  "source_shape": [
+    129,
+    129,
+    129
+  ],
+  "backend": "Julia \u00b7 CPU \u00b7 Float64",
+  "variant_of": "electrical-tree",
+  "time": 4.0,
+  "selected_snapshot": {
+    "step": 400,
+    "time": 4.0,
+    "fields_sha256": {
+      "deposit": "4829888e2aef68c806817e981de97dfde675d54ca9b767750dff7b1a6a03ef63",
+      "density": "2e99200d4217ca2965380d1c4c5b59ef7da1ef8a6c657ce22e99e83b17dcf309",
+      "potential": "e3c8e2dfb72c47666472b985c08ec3c154fb2560af7dfe389bf4588d26d84357",
+      "temperature": "32bb7355522241838d7858cc61040d90dc181a74fe69d1d1758d7c1406d1cf05",
+      "structure": "4829888e2aef68c806817e981de97dfde675d54ca9b767750dff7b1a6a03ef63",
+      "damage": "7fc69d65aaf3053611131c69e8f4e9fc4ab53d6b369c73bd6bf7e7e2a31d920a",
+      "activity": "b911cd8da49a8d26fcc6bd0a8e5a5f6236b0864f65d2a5db45fb1cda85d95b21",
+      "mask": "a4780373b348424ecc92f7cb4ea188f3d16ceefdbb695d452d10887115eeb386"
+    }
+  },
+  "comparison_notes": "Fixed electrode forcing. Material feedback redirects activity; the matched frozen-conductivity control keeps hotspots fixed.",
+  "publication": {
+    "source_image_sha256": "4b0c130cac929e30d80ab4f42c83912dbb7ef4d58fe0ae024271a405e4ddf5da",
+    "webp_sha256": "ca825be1e446daf960236c3f832bf9ab226a6fad9a37d1507099bca0e258cbe9",
+    "quality": 95,
+    "width": 1600,
+    "samples": 64,
+    "native_shape": [
+      129,
+      129,
+      129
+    ],
+    "original_retained": true,
+    "reviewed_by": "fracture_electric_art and root",
+    "sampling_review": "Root inspected the actual 1600px/64-sample final: the transparent prism, fine lamellae and lighting are clean and legible at delivery size. Preserve the actual 64-sample count."
+  },
+  "boundary_approximation": "Electrical/optical nodal span2; periodic thermal graph ring length n*2/(n-1). Local rates and sheet widths fixed; this is not a strict periodic-domain convergence study.",
+  "shape": [
+    129,
+    129,
+    129
+  ]
+}

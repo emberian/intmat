@@ -1,0 +1,29 @@
+{
+  "source_frame": "00400",
+  "fields": "Actual deposit level set; actual local Joule power drives pink emission; actual damage drives roughness and thin-film optics.",
+  "source_shape": [
+    129,
+    129,
+    129
+  ],
+  "node_centered": true,
+  "isovalue": 0.22,
+  "vertices": 24362,
+  "polygons": 28614,
+  "carrier": "Designed blue absorbing polished prism; optical staging, not simulated material geometry.",
+  "renderer_sha256": "0d4a077166bc844ededa8e2136e28bc1565e676014e67500887854189b321143",
+  "size": 1600,
+  "samples": 64,
+  "device": "CPU",
+  "threads": 2,
+  "settings": {
+    "size": 1600,
+    "samples": 64,
+    "device": "CPU",
+    "threads": 2,
+    "iso": 0.22
+  },
+  "recorded_renderer_sha256": "0d4a077166bc844ededa8e2136e28bc1565e676014e67500887854189b321143",
+  "recorded_renderer_scope": "Exact render source retained with the reviewed original output; canonical source now offers optional backend selection.",
+  "native_source_fields": "Rounded Float32 samples of the native Float64 computation; no temporal interpolation."
+}

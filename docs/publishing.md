@@ -17,6 +17,12 @@ Review <http://localhost:8770>, then commit the updated `site/collection/` asset
 
 `python3 scripts/build_pages.py` stages the checked-in collection into `_site/` without reading simulation outputs. This is the command used by CI and requires only Python's standard library. No simulations, cloud GPU runtimes, external image services or frontend dependencies are required.
 
+Collection finals default to at least 1600px and 96 Cycles samples. A selected
+specimen may declare a lower `minimum_samples` when its matching visual review
+records a `sampling_review` reason. Actual job/optical sample counts must still
+agree; publication retains the actual count and review. This accommodates a
+clean reviewed photograph without relabeling it or rerendering solely for a count.
+
 The curated bundle has a 160 MB budget, expanded for the reviewed material films and constructive motion exhibit. `site/arena/` also contains a recorded neural arena: 25 measured frames, agent inspection, field selection and playback, with no live backend. Its compact `replay.json` and `latest.json`, HTML viewer and preview image are curated from `outputs/arena/replay-fairshare-20261014/`; JSON paths are sanitized through the publication builder’s `public` helper. Refresh this explicit arena snapshot separately when publishing a new recording. Raw `.f32` fields, VDB volumes, Blender scenes, browser captures and third-party reference footage are outside the publication manifest. Metadata and embedded viewer data are sanitized; staging fails if a local filesystem or localhost reference remains.
 
 ## Repository setup

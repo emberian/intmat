@@ -776,3 +776,26 @@ credit with pre-action baselines. Carrying old scores while subtracting later
 state-conditioned baselines can erase the niche consequences being learned.
 The design note separates eligibility, useful memory, consolidation and optimizer
 stability; current tasks do not establish a universal critical regime.
+
+### Light and electrical interiors published
+
+Two new reviewed photographs bring the gallery to73. What the light persuades
+uses native256³ light/activity/mineral feedback; final mineral differs15.4%L2
+from the matched dark epoch. Halving ray step changes final mineral0.249%L2
+and integrated absorption0.0166%; outgoing endpoints retain sensitive tails.
+Energy closes across absorbed, transmitted and unresolved parts. Five actual
+states expose solid and absorbed-power layers with their separate capture clocks.
+
+Weather inside a lens uses native129³ variable-conductivity solves plus
+conservative mineral/precursor exchange, heating, erosion and recovering damage.
+At equal resolution its fixed-conductivity control retains100% of hotspots;
+the coupled run retains32.7% late membership and40.4% prior-hotspot power.
+501 electrical solves converge, independent flux/power checks pass, and material
+residual is5.82e-11. The periodic thermal boundary approximation is documented;
+no oscillation or grid-convergence claim. Actual1600²/64spp final was reviewed;
+curation records that sample-budget exception without relabeling its metadata.
+
+Local Blender Metal is available. New optical finals use it; CPU2 electrical
+photography was a lane reservation, not a hardware limitation. Render slots now
+coordinate with Julia Metal producers rather than serializing all work behind
+one CPU render. The earlier CPU final and its exact source remain preserved.

@@ -1,0 +1,824 @@
+{
+  "native_shape": [
+    256,
+    256,
+    256
+  ],
+  "time": 12.000000178813934,
+  "steps": 480,
+  "dt": 0.025,
+  "elapsed_seconds": 303.933648083,
+  "refresh_count": 48,
+  "rays_per_refresh": 5655,
+  "ray_ds": 0.0005,
+  "energy": {
+    "incident": 12000.000178813934,
+    "absorbed": 6475.344378239885,
+    "emergent": 5486.247764616812,
+    "unresolved": 38.40803592573203,
+    "residual": 3.1505159370226465e-08
+  },
+  "relative_material_mass_residual": -1.407526953311659e-10,
+  "final_vs_dark_relative_solid": 0.15398913045847812,
+  "same_initial_fields": true,
+  "same_recurrent_process_source": true,
+  "dark_run_sha256": "873d2a1d14a91c81b267735da4a0630ad7d3c50fb26c6936e67caee84dda1556",
+  "raw_run_sha256": "10ca950798a0b8c0fa826bf5ebacc0ff3c10d408875a3bed6c56d7b6ba5e1eae",
+  "final_dose_integral": 586.1080537393391,
+  "final_deposited_power": 586.1080537457735,
+  "float32_dose_power_error": -6.434447641368024e-09,
+  "maximum_unresolved_power": 12.826273191837409,
+  "power": [
+    {
+      "step": 0,
+      "time": 0,
+      "power": {
+        "incident": 1000,
+        "absorbed": 381.6201719422117,
+        "emergent": 618.3798280557374,
+        "unresolved": 0,
+        "residual": 2.0507968656602316e-09,
+        "deposited": 381.620171944262,
+        "voxel_volume": 0.015625,
+        "max_density": 35.334663,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 10,
+      "time": 0.2500000037252903,
+      "power": {
+        "incident": 1000,
+        "absorbed": 391.72520936530856,
+        "emergent": 608.2747906328625,
+        "unresolved": 0,
+        "residual": 1.8289938452653587e-09,
+        "deposited": 391.7252093671389,
+        "voxel_volume": 0.015625,
+        "max_density": 30.449785,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 20,
+      "time": 0.5000000074505806,
+      "power": {
+        "incident": 1000,
+        "absorbed": 404.3779333355702,
+        "emergent": 595.6220666624685,
+        "unresolved": 0,
+        "residual": 1.9613253243733197e-09,
+        "deposited": 404.37793333753245,
+        "voxel_volume": 0.015625,
+        "max_density": 27.614164,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 30,
+      "time": 0.7500000111758709,
+      "power": {
+        "incident": 1000,
+        "absorbed": 421.9655415988132,
+        "emergent": 578.0344583992596,
+        "unresolved": 0,
+        "residual": 1.927219273056835e-09,
+        "deposited": 421.9655416007399,
+        "voxel_volume": 0.015625,
+        "max_density": 30.114244,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 40,
+      "time": 1.0000000149011612,
+      "power": {
+        "incident": 1000,
+        "absorbed": 440.4738910745706,
+        "emergent": 559.5261089237499,
+        "unresolved": 0,
+        "residual": 1.6794956536614336e-09,
+        "deposited": 440.4738910762496,
+        "voxel_volume": 0.015625,
+        "max_density": 29.232582,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 50,
+      "time": 1.2500000186264515,
+      "power": {
+        "incident": 1000,
+        "absorbed": 457.8432829933459,
+        "emergent": 542.1567170045763,
+        "unresolved": 0,
+        "residual": 2.077854333037976e-09,
+        "deposited": 457.843282995424,
+        "voxel_volume": 0.015625,
+        "max_density": 26.207014,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 60,
+      "time": 1.5000000223517418,
+      "power": {
+        "incident": 1000,
+        "absorbed": 472.8318698565845,
+        "emergent": 527.1681301409207,
+        "unresolved": 0,
+        "residual": 2.4948576538008638e-09,
+        "deposited": 472.8318698590794,
+        "voxel_volume": 0.015625,
+        "max_density": 25.736898,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 70,
+      "time": 1.750000026077032,
+      "power": {
+        "incident": 1000,
+        "absorbed": 485.3171632563313,
+        "emergent": 514.6828367409315,
+        "unresolved": 0,
+        "residual": 2.737237991823349e-09,
+        "deposited": 485.3171632590683,
+        "voxel_volume": 0.015625,
+        "max_density": 27.43542,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 80,
+      "time": 2.0000000298023224,
+      "power": {
+        "incident": 1000,
+        "absorbed": 495.7452785098016,
+        "emergent": 504.25472148739004,
+        "unresolved": 0,
+        "residual": 2.80834910881822e-09,
+        "deposited": 495.7452785126098,
+        "voxel_volume": 0.015625,
+        "max_density": 26.66645,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 90,
+      "time": 2.2500000335276127,
+      "power": {
+        "incident": 1000,
+        "absorbed": 504.35243951395836,
+        "emergent": 495.64756048321357,
+        "unresolved": 0,
+        "residual": 2.8280737751629204e-09,
+        "deposited": 504.352439516788,
+        "voxel_volume": 0.015625,
+        "max_density": 25.733715,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 100,
+      "time": 2.500000037252903,
+      "power": {
+        "incident": 1000,
+        "absorbed": 512.5390218663945,
+        "emergent": 487.460978130913,
+        "unresolved": 0,
+        "residual": 2.6925022211798932e-09,
+        "deposited": 512.5390218690864,
+        "voxel_volume": 0.015625,
+        "max_density": 24.193459,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 110,
+      "time": 2.7500000409781933,
+      "power": {
+        "incident": 1000,
+        "absorbed": 520.5402838389356,
+        "emergent": 479.45971615836237,
+        "unresolved": 0,
+        "residual": 2.702051915548509e-09,
+        "deposited": 520.5402838416372,
+        "voxel_volume": 0.015625,
+        "max_density": 22.487661,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 120,
+      "time": 3.0000000447034836,
+      "power": {
+        "incident": 1000,
+        "absorbed": 526.7751895032864,
+        "emergent": 473.22481049401307,
+        "unresolved": 0,
+        "residual": 2.700573986658128e-09,
+        "deposited": 526.7751895059882,
+        "voxel_volume": 0.015625,
+        "max_density": 20.843323,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 130,
+      "time": 3.250000048428774,
+      "power": {
+        "incident": 1000,
+        "absorbed": 531.4445253824395,
+        "emergent": 468.5554746148017,
+        "unresolved": 0,
+        "residual": 2.758838490990456e-09,
+        "deposited": 531.4445253851983,
+        "voxel_volume": 0.015625,
+        "max_density": 19.726208,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 140,
+      "time": 3.500000052154064,
+      "power": {
+        "incident": 1000,
+        "absorbed": 536.0267445802369,
+        "emergent": 463.9732554170851,
+        "unresolved": 0,
+        "residual": 2.6779503059515264e-09,
+        "deposited": 536.0267445829168,
+        "voxel_volume": 0.015625,
+        "max_density": 18.91821,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 150,
+      "time": 3.7500000558793545,
+      "power": {
+        "incident": 1000,
+        "absorbed": 540.8736770879871,
+        "emergent": 459.12632290906197,
+        "unresolved": 0,
+        "residual": 2.9509692467399873e-09,
+        "deposited": 540.8736770909387,
+        "voxel_volume": 0.015625,
+        "max_density": 17.631926,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 160,
+      "time": 4.000000059604645,
+      "power": {
+        "incident": 1000,
+        "absorbed": 544.9092227225375,
+        "emergent": 455.09077727448897,
+        "unresolved": 0,
+        "residual": 2.973536084027728e-09,
+        "deposited": 544.9092227255107,
+        "voxel_volume": 0.015625,
+        "max_density": 16.343353,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 170,
+      "time": 4.250000063329935,
+      "power": {
+        "incident": 1000,
+        "absorbed": 547.489885753735,
+        "emergent": 451.8612277271317,
+        "unresolved": 0.6488865161769954,
+        "residual": 2.956275224619276e-09,
+        "deposited": 547.4898857566903,
+        "voxel_volume": 0.015625,
+        "max_density": 15.258693,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 180,
+      "time": 4.500000067055225,
+      "power": {
+        "incident": 1000,
+        "absorbed": 550.2160262504019,
+        "emergent": 449.2287984037417,
+        "unresolved": 0.5551753429072376,
+        "residual": 2.9491745712206807e-09,
+        "deposited": 550.2160262533521,
+        "voxel_volume": 0.015625,
+        "max_density": 14.613286,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 190,
+      "time": 4.750000070780516,
+      "power": {
+        "incident": 1000,
+        "absorbed": 553.2968883715741,
+        "emergent": 445.7857058398213,
+        "unresolved": 0.9174057856333372,
+        "residual": 2.971245804950229e-09,
+        "deposited": 553.2968883745455,
+        "voxel_volume": 0.015625,
+        "max_density": 14.056365,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 200,
+      "time": 5.000000074505806,
+      "power": {
+        "incident": 1000,
+        "absorbed": 556.0729427725371,
+        "emergent": 442.8355421647461,
+        "unresolved": 1.091515059766671,
+        "residual": 2.9501663334485784e-09,
+        "deposited": 556.0729427754877,
+        "voxel_volume": 0.015625,
+        "max_density": 14.251196,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 210,
+      "time": 5.250000078231096,
+      "power": {
+        "incident": 1000,
+        "absorbed": 558.6056787015108,
+        "emergent": 440.30621297016006,
+        "unresolved": 1.0881083254616433,
+        "residual": 2.8675126717558896e-09,
+        "deposited": 558.6056787043784,
+        "voxel_volume": 0.015625,
+        "max_density": 14.886492,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 220,
+      "time": 5.500000081956387,
+      "power": {
+        "incident": 1000,
+        "absorbed": 560.4148827355646,
+        "emergent": 438.67472909552953,
+        "unresolved": 0.910388165893891,
+        "residual": 3.01201974473031e-09,
+        "deposited": 560.4148827385759,
+        "voxel_volume": 0.015625,
+        "max_density": 15.463414,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 230,
+      "time": 5.750000085681677,
+      "power": {
+        "incident": 1000,
+        "absorbed": 562.6353909799576,
+        "emergent": 435.8326493336149,
+        "unresolved": 1.531959683513077,
+        "residual": 2.914435581757857e-09,
+        "deposited": 562.6353909828721,
+        "voxel_volume": 0.015625,
+        "max_density": 15.975341,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 240,
+      "time": 6.000000089406967,
+      "power": {
+        "incident": 1000,
+        "absorbed": 563.3141619731445,
+        "emergent": 434.7942345740554,
+        "unresolved": 1.8916034498545504,
+        "residual": 2.9456042049957887e-09,
+        "deposited": 563.3141619760883,
+        "voxel_volume": 0.015625,
+        "max_density": 16.245802,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 250,
+      "time": 6.2500000931322575,
+      "power": {
+        "incident": 1000,
+        "absorbed": 564.3908733043852,
+        "emergent": 434.8022298754954,
+        "unresolved": 0.8068968171626271,
+        "residual": 2.9567640558170183e-09,
+        "deposited": 564.390873307341,
+        "voxel_volume": 0.015625,
+        "max_density": 16.525253,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 260,
+      "time": 6.500000096857548,
+      "power": {
+        "incident": 1000,
+        "absorbed": 565.3536727334716,
+        "emergent": 433.7904620264293,
+        "unresolved": 0.8558652371136397,
+        "residual": 2.9854525518402397e-09,
+        "deposited": 565.3536727364569,
+        "voxel_volume": 0.015625,
+        "max_density": 16.632572,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 270,
+      "time": 6.750000100582838,
+      "power": {
+        "incident": 1000,
+        "absorbed": 566.7208948990688,
+        "emergent": 431.9862483803306,
+        "unresolved": 1.292856717863211,
+        "residual": 2.737428062005165e-09,
+        "deposited": 566.7208949018076,
+        "voxel_volume": 0.015625,
+        "max_density": 16.475676,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 280,
+      "time": 7.000000104308128,
+      "power": {
+        "incident": 1000,
+        "absorbed": 567.7802781606642,
+        "emergent": 429.863343394544,
+        "unresolved": 2.3563784421351617,
+        "residual": 2.6565825095303808e-09,
+        "deposited": 567.7802781633216,
+        "voxel_volume": 0.015625,
+        "max_density": 16.714329,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 290,
+      "time": 7.250000108033419,
+      "power": {
+        "incident": 1000,
+        "absorbed": 568.9013301870391,
+        "emergent": 427.9410852094294,
+        "unresolved": 3.1575846009286743,
+        "residual": 2.6028437183356345e-09,
+        "deposited": 568.901330189642,
+        "voxel_volume": 0.015625,
+        "max_density": 16.76827,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 300,
+      "time": 7.500000111758709,
+      "power": {
+        "incident": 1000,
+        "absorbed": 570.0128863337723,
+        "emergent": 426.4023947776851,
+        "unresolved": 3.584718885957207,
+        "residual": 2.585418101830328e-09,
+        "deposited": 570.0128863363576,
+        "voxel_volume": 0.015625,
+        "max_density": 16.64955,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 310,
+      "time": 7.750000115483999,
+      "power": {
+        "incident": 1000,
+        "absorbed": 571.5381598421344,
+        "emergent": 423.61464524370797,
+        "unresolved": 4.847194911629433,
+        "residual": 2.528192766249049e-09,
+        "deposited": 571.5381598446638,
+        "voxel_volume": 0.015625,
+        "max_density": 16.284498,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 320,
+      "time": 8.00000011920929,
+      "power": {
+        "incident": 1000,
+        "absorbed": 572.7972099766644,
+        "emergent": 420.8471375030911,
+        "unresolved": 6.35565251774328,
+        "residual": 2.5012383275679895e-09,
+        "deposited": 572.7972099791666,
+        "voxel_volume": 0.015625,
+        "max_density": 16.412523,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 330,
+      "time": 8.25000012293458,
+      "power": {
+        "incident": 1000,
+        "absorbed": 574.5309802796551,
+        "emergent": 419.8099003346514,
+        "unresolved": 5.659119383037219,
+        "residual": 2.656324049610248e-09,
+        "deposited": 574.5309802823123,
+        "voxel_volume": 0.015625,
+        "max_density": 16.561966,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 340,
+      "time": 8.50000012665987,
+      "power": {
+        "incident": 1000,
+        "absorbed": 575.6230405024567,
+        "emergent": 417.60836525858616,
+        "unresolved": 6.768594236394452,
+        "residual": 2.5627260313854094e-09,
+        "deposited": 575.6230405050193,
+        "voxel_volume": 0.015625,
+        "max_density": 16.437412,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 350,
+      "time": 8.75000013038516,
+      "power": {
+        "incident": 1000,
+        "absorbed": 576.9190570277628,
+        "emergent": 416.75716450536584,
+        "unresolved": 6.3237784643266615,
+        "residual": 2.5446560414366104e-09,
+        "deposited": 576.9190570303069,
+        "voxel_volume": 0.015625,
+        "max_density": 15.9256935,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 360,
+      "time": 9.00000013411045,
+      "power": {
+        "incident": 1000,
+        "absorbed": 578.0983252235335,
+        "emergent": 414.53873974045314,
+        "unresolved": 7.362935033511632,
+        "residual": 2.5017365956614412e-09,
+        "deposited": 578.0983252260355,
+        "voxel_volume": 0.015625,
+        "max_density": 15.34776,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 370,
+      "time": 9.250000137835741,
+      "power": {
+        "incident": 1000,
+        "absorbed": 579.7287481413656,
+        "emergent": 412.36832764259947,
+        "unresolved": 7.902924213569544,
+        "residual": 2.4653887820136333e-09,
+        "deposited": 579.7287481438307,
+        "voxel_volume": 0.015625,
+        "max_density": 14.7486,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 380,
+      "time": 9.500000141561031,
+      "power": {
+        "incident": 1000,
+        "absorbed": 581.8664262014939,
+        "emergent": 409.9288137992085,
+        "unresolved": 8.204759996715287,
+        "residual": 2.582263292083553e-09,
+        "deposited": 581.8664262040766,
+        "voxel_volume": 0.015625,
+        "max_density": 14.384019,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 390,
+      "time": 9.750000145286322,
+      "power": {
+        "incident": 1000,
+        "absorbed": 583.0013257101375,
+        "emergent": 409.1153961870388,
+        "unresolved": 7.883278100346411,
+        "residual": 2.477269944733962e-09,
+        "deposited": 583.0013257126132,
+        "voxel_volume": 0.015625,
+        "max_density": 14.561361,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 400,
+      "time": 10.000000149011612,
+      "power": {
+        "incident": 1000,
+        "absorbed": 584.0465415093734,
+        "emergent": 409.2291665213554,
+        "unresolved": 6.724291966699203,
+        "residual": 2.5720314766886077e-09,
+        "deposited": 584.0465415119435,
+        "voxel_volume": 0.015625,
+        "max_density": 14.902874,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 410,
+      "time": 10.250000152736902,
+      "power": {
+        "incident": 1000,
+        "absorbed": 584.5796471364824,
+        "emergent": 408.4837864776466,
+        "unresolved": 6.936566383228994,
+        "residual": 2.6419524346010803e-09,
+        "deposited": 584.5796471391247,
+        "voxel_volume": 0.015625,
+        "max_density": 15.523231,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 420,
+      "time": 10.500000156462193,
+      "power": {
+        "incident": 1000,
+        "absorbed": 584.9622223142196,
+        "emergent": 407.8866919344974,
+        "unresolved": 7.151085748720329,
+        "residual": 2.5626762933939062e-09,
+        "deposited": 584.9622223167818,
+        "voxel_volume": 0.015625,
+        "max_density": 15.985,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 430,
+      "time": 10.750000160187483,
+      "power": {
+        "incident": 1000,
+        "absorbed": 585.6310210447581,
+        "emergent": 406.4842448125727,
+        "unresolved": 7.884734139941525,
+        "residual": 2.7277060610231274e-09,
+        "deposited": 585.6310210474862,
+        "voxel_volume": 0.015625,
+        "max_density": 16.374823,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 440,
+      "time": 11.000000163912773,
+      "power": {
+        "incident": 1000,
+        "absorbed": 585.9596827352237,
+        "emergent": 403.59904730638254,
+        "unresolved": 10.441269955729052,
+        "residual": 2.6646667095064913e-09,
+        "deposited": 585.959682737889,
+        "voxel_volume": 0.015625,
+        "max_density": 16.509628,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 450,
+      "time": 11.250000167638063,
+      "power": {
+        "incident": 1000,
+        "absorbed": 585.5740042950068,
+        "emergent": 404.9902320108803,
+        "unresolved": 9.435763691436735,
+        "residual": 2.6761579619005715e-09,
+        "deposited": 585.5740042976834,
+        "voxel_volume": 0.015625,
+        "max_density": 16.25864,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 460,
+      "time": 11.500000171363354,
+      "power": {
+        "incident": 1000,
+        "absorbed": 585.8454417304769,
+        "emergent": 403.91998181845696,
+        "unresolved": 10.23457644839591,
+        "residual": 2.670265786264281e-09,
+        "deposited": 585.8454417331469,
+        "voxel_volume": 0.015625,
+        "max_density": 16.321993,
+        "rays": 5655
+      }
+    },
+    {
+      "step": 470,
+      "time": 11.750000175088644,
+      "power": {
+        "incident": 1000,
+        "absorbed": 586.1080537429879,
+        "emergent": 401.065673062389,
+        "unresolved": 12.826273191837409,
+        "residual": 2.7857183226842608e-09,
+        "deposited": 586.1080537457735,
+        "voxel_volume": 0.015625,
+        "max_density": 16.118364,
+        "rays": 5655
+      }
+    }
+  ],
+  "native_half_ds_control": {
+    "ray_ds": 0.00025,
+    "raw_run_sha256": "863c50705f2185d5caef45961878a236f5cb558d2775ed1d85d050921246cec1",
+    "elapsed_seconds": 531.352158208,
+    "relative_final_solid": 0.002493087408719765,
+    "relative_absorbed_energy": 0.00016577597802652457,
+    "energy": {
+      "incident": 12000.000178813934,
+      "absorbed": 6474.270921692524,
+      "emergent": 5487.255769297191,
+      "unresolved": 38.47348775443543,
+      "residual": 6.978343236596629e-08
+    }
+  },
+  "pilot_mechanism_checks": {
+    "coupled_vs_dark_relative_solid": 0.1421591034227626,
+    "half_refresh_relative_solid": 0.006429748477312415,
+    "ray_halfstep_max_endpoint": 0.22831275482910626,
+    "coupled_vs_frozen_relative_solid": 0.07320008080480075,
+    "ray_halfstep_absorbed_power_relative": 0.0003428049447792796,
+    "ray_halfstep_relative_dose": 0.005637251512069949,
+    "coupled_first_last_mean_endpoint_change": 0.9152264135858585
+  },
+  "native_ray_refinement": {
+    "grid": 49,
+    "records": [
+      {
+        "ds": 0.0005,
+        "relative_dose": 0.053097088,
+        "relative_absorption": 0.0008290028277916175,
+        "max_endpoint": 6.07010161051318,
+        "mean_endpoint": 0.4553836665616234,
+        "p95_endpoint": 1.7959541318592835,
+        "elapsed_seconds": 6.906926959,
+        "energy": {
+          "incident": 1000,
+          "absorbed": 586.9862822826407,
+          "emergent": 399.6741515426364,
+          "unresolved": 13.33956617196268,
+          "residual": 2.7602240493251884e-09,
+          "deposited": 586.986282285402,
+          "voxel_volume": 0.015625,
+          "max_density": 15.860284,
+          "rays": 5655
+        }
+      },
+      {
+        "ds": 0.00025,
+        "relative_dose": 0.03688597,
+        "relative_absorption": 0.00022842852522671791,
+        "max_endpoint": 6.5279818407349195,
+        "mean_endpoint": 0.29252462691981246,
+        "p95_endpoint": 1.2921118936637188,
+        "elapsed_seconds": 11.919432042,
+        "energy": {
+          "incident": 1000,
+          "absorbed": 586.8521978718505,
+          "emergent": 400.1801462557457,
+          "unresolved": 12.967655866537028,
+          "residual": 5.866754193561974e-09,
+          "deposited": 586.8521978777163,
+          "voxel_volume": 0.015625,
+          "max_density": 15.82174,
+          "rays": 5655
+        }
+      }
+    ],
+    "source_sha256": "6d2f859e810843937926bf400e034ce4bd52a7af2ebe9b185455d19bb7b6b749",
+    "producer_sha256": "95934e34ee2d92bfdff9d449364740bbe9b0d3586fb5dd1f69dd771ce99d98b2",
+    "solid_sha256": "bc176657dbb1bbbb6c668ae6980c2ffd1643e7ad9d7c2526883c60e4a36181ec"
+  }
+}

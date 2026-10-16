@@ -1,0 +1,22 @@
+{
+  "id": "weather-lens-129",
+  "title": "Weather inside a lens",
+  "renderer": "scripts/render_weather_lens.py",
+  "input_step": 400,
+  "input_time": 4.0,
+  "source_shape": [
+    129,
+    129,
+    129
+  ],
+  "size": 1600,
+  "samples": 64,
+  "device": "CPU",
+  "threads": 2,
+  "iso": 0.22,
+  "source_renderer_sha256": "0d4a077166bc844ededa8e2136e28bc1565e676014e67500887854189b321143",
+  "family": "branches",
+  "description": "Conductive mineral forms along three designed folds inside a violet optical prism. Heating erodes deposits and leaves insulating scars, redirecting later activity.",
+  "volume": "volume",
+  "recorded_renderer_sha256": "0d4a077166bc844ededa8e2136e28bc1565e676014e67500887854189b321143"
+}

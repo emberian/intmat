@@ -1,0 +1,15 @@
+id = "illuminated-memory"
+title = "What the light persuades"
+description = "A mineral absorbs light, its recurrent interior builds where it is illuminated, and its new structure redirects the light that follows."
+resolution = 256
+steps = 480
+dt = 0.025
+capture_every = 120
+refresh_steps = 10
+mode = "coupled"
+ray_grid = 49
+ray_ds = 0.0005
+alpha = 2.0
+power = 1000.0
+gain = 4.0
+contrast = 0.65

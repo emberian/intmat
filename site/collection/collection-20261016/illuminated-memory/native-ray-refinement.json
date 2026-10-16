@@ -1,0 +1,48 @@
+{
+    "grid": 49,
+    "records": [
+        {
+            "ds": 0.0005,
+            "relative_dose": 0.053097088,
+            "relative_absorption": 0.0008290028277916175,
+            "max_endpoint": 6.07010161051318,
+            "mean_endpoint": 0.4553836665616234,
+            "p95_endpoint": 1.7959541318592835,
+            "elapsed_seconds": 6.906926959,
+            "energy": {
+                "incident": 1000,
+                "absorbed": 586.9862822826407,
+                "emergent": 399.6741515426364,
+                "unresolved": 13.33956617196268,
+                "residual": 2.7602240493251884e-9,
+                "deposited": 586.986282285402,
+                "voxel_volume": 0.015625,
+                "max_density": 15.860284,
+                "rays": 5655
+            }
+        },
+        {
+            "ds": 0.00025,
+            "relative_dose": 0.03688597,
+            "relative_absorption": 0.00022842852522671791,
+            "max_endpoint": 6.5279818407349195,
+            "mean_endpoint": 0.29252462691981246,
+            "p95_endpoint": 1.2921118936637188,
+            "elapsed_seconds": 11.919432042,
+            "energy": {
+                "incident": 1000,
+                "absorbed": 586.8521978718505,
+                "emergent": 400.1801462557457,
+                "unresolved": 12.967655866537028,
+                "residual": 5.866754193561974e-9,
+                "deposited": 586.8521978777163,
+                "voxel_volume": 0.015625,
+                "max_density": 15.82174,
+                "rays": 5655
+            }
+        }
+    ],
+    "source_sha256": "6d2f859e810843937926bf400e034ce4bd52a7af2ebe9b185455d19bb7b6b749",
+    "producer_sha256": "95934e34ee2d92bfdff9d449364740bbe9b0d3586fb5dd1f69dd771ce99d98b2",
+    "solid_sha256": "bc176657dbb1bbbb6c668ae6980c2ffd1643e7ad9d7c2526883c60e4a36181ec"
+}
