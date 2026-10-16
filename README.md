@@ -1,5 +1,12 @@
 # Interior
 
+> **Archived 2026-10-16.** Development continues in [emberian/intmat2](https://github.com/emberian/intmat2),
+> which replaces the agent-based ecology with a single continuous field (see its
+> [DESIGN.md](https://github.com/emberian/intmat2/blob/dev/DESIGN.md)). This repository
+> and its [gallery](https://emberian.github.io/intmat/) are kept as the historical
+> record of the 14–16 October 2026 build.
+
+
 **Evolving matter. Julia computes it; renderers observe it.**
 
 The material has state: phase boundaries, permeability, deposits, signals, heat,
