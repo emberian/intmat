@@ -98,6 +98,12 @@ for later simulation and rendering.
 
 [Operating map](docs/garden-operating-map.md) · [Causal windows](docs/native-memory-interventions.md) · [Inventory repair](docs/native-inventory-precision.md) · [Research and PDFs](docs/research/learning-materials.md)
 
+[Explore memory and feedback](https://emberian.github.io/intmat/laboratory/) across
+recorded controller regimes. [Material receptors](docs/native-material-sensing.md)
+connect retained food and construction to recurrent control; their native GPU
+pilot costs1.1% per complete step. [The workbench design](docs/exploratory-instrument.md)
+extends recorded exploration toward bounded Julia branch/change/compare sessions.
+
 ## Compose
 
 A `World` owns grid fields. Processes own additional state. An ordered tuple defines

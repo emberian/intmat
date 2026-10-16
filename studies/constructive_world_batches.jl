@@ -1,6 +1,6 @@
 # Opt-in ensemble composition. No numerical kernel or biological law is copied.
 using Interior, SHA
-isdefined(Main,:CellularWorldBatch) || include("cellular_world_batches.jl")
+isdefined(@__MODULE__,:CellularWorldBatch) || include("cellular_world_batches.jl")
 isdefined(Interior,:DeviceCatalyticHabitat) || error("Device habitat implementation required")
 
 struct ConstructiveBatchCells{B,R}

@@ -168,7 +168,24 @@ end
 include("device_habitat_sorption.jl")
 include("device_habitat_kernels.jl")
 
-function DeviceConstructiveEcology(w::World,c::DeviceCellular,reference::CatalyticHabitat;matrix=nothing)
+# These names are an observation vocabulary, not extra physical species. Codes
+# and positive physical concentration scales travel with strict checkpoints.
+const DEVICE_MATERIAL_CHANNELS=(:raw_a,:raw_b,:raw_total,:raw_balance,
+    :bound_a,:bound_b,:bound_total,:bound_balance,
+    :catalyst_a,:catalyst_b,:catalyst_total,:catalyst_balance)
+function device_material_sensing_parameters(sensing)
+    keys(sensing)==(:channels,:scales) || throw(ArgumentError("material sensing requires channels and scales"))
+    length(sensing.channels)==3 && length(sensing.scales)==3 || throw(ArgumentError("exactly three material channels/scales required"))
+    codes=ntuple(j->begin
+        k=findfirst(==(Symbol(sensing.channels[j])),DEVICE_MATERIAL_CHANNELS)
+        k===nothing && throw(ArgumentError("unknown material sensing channel $(sensing.channels[j])"))
+        Int32(k)
+    end,3)
+    scales=Tuple(Float32.(sensing.scales))
+    all(x->isfinite(x)&&x>0,scales) || throw(ArgumentError("material sensing concentration scales must be finite and positive"))
+    (material_channels=codes,material_scales=scales)
+end
+function DeviceConstructiveEcology(w::World,c::DeviceCellular,reference::CatalyticHabitat;matrix=nothing,material_sensing=nothing)
     (w.backend isa CPU || nameof(typeof(w.backend))===:ROCBackend) ||
         throw(ArgumentError("device habitat currently requires CPU or AMD ROCBackend; scalar Float64 rounding is not Metal compatible"))
     device_cellular_validate(w,c)
@@ -182,6 +199,7 @@ function DeviceConstructiveEcology(w::World,c::DeviceCellular,reference::Catalyt
     mq=matrix===nothing ? (capacity_per_enzyme=0.,adsorption_rate=0.,desorption_rate=0.,cross_binding=0.,transport_barrier=0.) : matrix.parameters
     q=merge(map(x->x isa Bool ? x : Float32(x),reference.parameters),map(Float32,mq),
         (seed=UInt32(reference.seed),food_potentials=c.parameters.potentials))
+    material_sensing===nothing || (q=merge(q,device_material_sensing_parameters(material_sensing)))
     fq=(potentials=(Float32(f.potentials[1]),Float32(f.potentials[2]),0f0),
         diffusion=(Float32(f.diffusion[1]),Float32(f.diffusion[2]),0f0),
         source_rates=(Float32(f.source_rates[1]),Float32(f.source_rates[2]),0f0),
@@ -263,6 +281,17 @@ function device_anabolic_begin!(h::DeviceCatalyticHabitat,w,p,dt)
     device_cellular_launch!(p,dc_commit_resources!,f.argument;ndrange=(V,3))
     nothing
 end
+function device_anabolic_sense!(h::DeviceCatalyticHabitat,w,p,dt)
+    if hasproperty(h.parameters,:material_channels)
+        s=p.state
+        # A narrow descriptor avoids sending the entire carrier ABI to the GPU.
+        cell=(active=s.active,inputs=s.inputs)
+        field=(bound=h.arrays.bound,enzyme_bits=h.arrays.enzyme_bits,raw=h.feedstock.arrays.fields)
+        device_cellular_launch!(p,dh_material_sense!,cell,field,device_support_descriptor(p),p.environment.status,
+            h.parameters.material_channels,h.parameters.material_scales,p.geometry;ndrange=Int(p.geometry.capacity))
+    end
+    nothing
+end
 function device_anabolic_prepare!(h::DeviceCatalyticHabitat,w,p,dt)
     device_cellular_launch!(p,dh_prepare!,h.arrays,h.feedstock.arrays,p.state,device_support_descriptor(p),p.environment,h.parameters,p.parameters,p.geometry,dt;ndrange=Int(p.geometry.capacity))
     nothing
@@ -312,12 +341,17 @@ function dh_validate_parameters(q,fq)
     expected=(:secretion_rate,:secretion_work,:allocation_exponent,:catalytic_rate,:half_saturation,
         :decay_rate,:investment_bias,:allocation_bias_scale,:mutation,:mutation_probability,:regulation,
         :capacity_per_enzyme,:adsorption_rate,:desorption_rate,:cross_binding,:transport_barrier,:seed,:food_potentials)
-    keys(q)==expected && keys(fq)==(:potentials,:diffusion,:source_rates,:sink_rates,:source_totals,:sink_totals) ||
+    keys(q) in (expected,(expected...,:material_channels,:material_scales)) && keys(fq)==(:potentials,:diffusion,:source_rates,:sink_rates,:source_totals,:sink_totals) ||
         throw(ArgumentError("device habitat parameter roles differ"))
     all(k->k===:regulation ? q[k] isa Bool : k===:seed ? q[k] isa UInt32 :
-        k===:food_potentials ? q[k] isa NTuple{3,Float32} : q[k] isa Float32,keys(q)) &&
+        k===:material_channels ? q[k] isa NTuple{3,Int32} :
+        k in (:food_potentials,:material_scales) ? q[k] isa NTuple{3,Float32} : q[k] isa Float32,keys(q)) &&
         all(v->v isa NTuple{3,Float32},values(fq)) || throw(ArgumentError("device habitat parameter types differ"))
     all(isfinite,Iterators.flatten(v isa Tuple ? v : (v,) for v in values(q))) || throw(ArgumentError("nonfinite device habitat parameters"))
+    if hasproperty(q,:material_channels)
+        all(k->1<=k<=length(DEVICE_MATERIAL_CHANNELS),q.material_channels) && all(>(0),q.material_scales) ||
+            throw(ArgumentError("invalid material sensory channels/scales"))
+    end
     nonnegative=(:secretion_rate,:secretion_work,:allocation_exponent,:catalytic_rate,:half_saturation,
         :decay_rate,:allocation_bias_scale,:mutation,:mutation_probability,:capacity_per_enzyme,
         :adsorption_rate,:desorption_rate,:cross_binding,:transport_barrier)

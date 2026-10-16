@@ -15,6 +15,7 @@ function device_graph_enqueue_prototype!(w,p,delta,execution,anabolism,step_inde
     device_cellular_launch!(p,dc_geometry!,s,e,q,g;ndrange=C)
     device_cellular_launch!(p,dc_support!,s,e,q,g;ndrange=C)
     device_cellular_launch!(p,dc_sense!,s,e,q,g;ndrange=C)
+    device_anabolic_sense!(anabolism,w,p,delta)
     if execution===:staged
         device_cellular_launch!(p,dc_controller!,s,e,g;ndrange=(C,Int(g.hidden)+CELLULAR_ACTIONS))
     else

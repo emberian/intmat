@@ -206,6 +206,7 @@ end
 # the base physiology. Every custom launched kernel must honor the shared latch.
 device_anabolic_argument(::Nothing)=nothing
 device_anabolic_begin!(::Nothing,w,p,dt)=nothing
+device_anabolic_sense!(::Nothing,w,p,dt)=nothing
 device_anabolic_prepare!(::Nothing,w,p,dt)=nothing
 device_anabolic_inherit!(::Nothing,w,p,step)=nothing
 device_anabolic_finish!(::Nothing,w,p,dt)=nothing
@@ -236,6 +237,7 @@ function device_cellular_enqueue!(w,p,delta::Float32,execution::Symbol,anabolism
     device_cellular_launch!(p,dc_geometry!,s,e,q,g;ndrange=C)
     device_cellular_launch!(p,dc_support!,s,e,q,g;ndrange=C)
     device_cellular_launch!(p,dc_sense!,s,e,q,g;ndrange=C)
+    device_anabolic_sense!(anabolism,w,p,delta)
     if execution===:staged
         device_cellular_launch!(p,dc_controller!,s,e,g;ndrange=(C,Int(g.hidden)+CELLULAR_ACTIONS))
     else

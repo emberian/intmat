@@ -1,3 +1,30 @@
+# Support-average concentration first, then one fixed saturating receptor law.
+# Balances are signed; total/species channels are nonnegative. No inventory writes.
+@inline function dh_material_channel(code,a,b)
+    choice=(code-1)%4+1
+    choice==1 ? a : choice==2 ? b : choice==3 ? a+b : a-b
+end
+@kernel function dh_material_sense!(s,feed,descriptor,status,channels,scales,g)
+    i=@index(Global,Linear)
+    if status[1]==0 && s.active[i]==1
+        raw1=0f0;raw2=0f0;bound1=0f0;bound2=0f0;enzyme1=0f0;enzyme2=0f0
+        for (site,weight) in device_support_edges(descriptor,i)
+            concentration_weight=weight/g.volume
+            raw1+=concentration_weight*Float32(feed.raw[site,1]);raw2+=concentration_weight*Float32(feed.raw[site,2])
+            bound1+=concentration_weight*feed.bound[site,1];bound2+=concentration_weight*feed.bound[site,2]
+            enzyme1+=concentration_weight*reinterpret(Float32,feed.enzyme_bits[site,1])
+            enzyme2+=concentration_weight*reinterpret(Float32,feed.enzyme_bits[site,2])
+        end
+        for j in 1:3
+            code=channels[j]
+            value=code<=4 ? dh_material_channel(code,raw1,raw2) :
+                code<=8 ? dh_material_channel(code,bound1,bound2) : dh_material_channel(code,enzyme1,enzyme2)
+            s.inputs[i,2Int(g.hidden)+15+j]=value/(scales[j]+abs(value))
+            !isfinite(value) && dh_fail!(status,8)
+        end
+    end
+end
+
 # Normalize imported scaffold after Float64→Float32 conversion without losing
 # unsupported bound material. This is the same compulsory collapse as a step.
 @kernel function dh_initial_collapse!(a,e,q)

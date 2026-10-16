@@ -4,6 +4,44 @@
 
 **Destination:** composable Julia simulations of phenomena inside—and constituting—materials, with evolving inhabitants and light transport revealing their structure.
 
+## Active goal — an instrument for discovering rich living materials
+
+Fresh ten-hour session: **2026-10-16 00:50:31–10:50:31 UTC**
+(October15 20:50–October16 06:50 Eastern). Confirmed active by goal tool after
+harness restart. No soaks; use bounded development experiments and renders.
+
+- Material feedback lane: optional, physically scaled material sensors in the
+  native controller; exact disabled-path checks, matched short AMD trajectories
+  and complete-step timings. Existing long histories remain untouched.
+- Root: prescribed-input controller capability atlas using actual production
+  kernels, held-out delayed/nonlinear readouts and same-input perturbed twins.
+  Readability is not utility; no ecological claim from a clamped controller bank.
+- Astra artist: rebuild Memory rings as Resonant reliquary using existing Julia
+  recurrent/acoustic dynamics, nested fissured shells and reviewed ceramic optics.
+- User requests an exploratory interface. Reuse existing WebGL field viewer and
+  arena command/ack contracts; develop toward branch/change/compare with native
+  Julia compute. GitHub Pages hosts static exploration; live compute requires a
+  separate Julia process. Avoid duplicating simulation algorithms in JavaScript.
+- Goal deliverables: working feedback mechanisms, an explorable capability map,
+  compelling material art, measured throughput and pushed working snapshots.
+
+First integration: optional receptors pass27serial+10batch CPU assertions and
+nativeparity/restart;64³ cost8.300→8.392ms (+1.11%). Matched4-cell32-time windows
+change deposition with material residual≤1.8e−15. Catalyst saturation in46.7% of
+totals-arm observations makes scale exploration a real nextdesign variable.
+Controller atlas9regimes×8founders completed independenttrain/testsignals and
+fullhalfstep replication: maxmedianR²change.01094;10measurementchecks pass.
+Interactive static atlas under site/laboratory reviewed in browser. Rebuilt
+Memory rings becomes What the bell kept: native128³ recurrent/acoustic shells,
+1600² photograph and actual64³ averaged/quantized three-time WebGL exploration.
+Fullgallery68specimens/159.42MB passes existing160MB cap; originals preserved.
+
+Next active lanes: Astra researches and prototypes local eligibility-based action
+credit with frozen-policy transfer controls (study-only); material-feedback agent
+builds a bounded warm Julia native worker/API for branch/step/observe. Root owns
+workbench integration and further capability comparisons. No readout-plasticity
+law has yet been integrated into production. All old long runs remain completed.
+
 ## Current work — accounting and dynamical capabilities
 
 2026-10-15 evening: user chose architecture and feedback studies before another

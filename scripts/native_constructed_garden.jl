@@ -48,7 +48,9 @@ function native_constructed_garden(backend,cfg)
     q=cfg["native"];w=World(grid,backend,NamedTuple(),NamedTuple(),0.,seed)
     device=DeviceCellular(w,cells;capacity,support_strategy=Symbol(q["support_strategy"]),
         mechanical_substeps=Int(q["mechanical_substeps"]),radius_bound=q["radius_bound"],bin_width=q["bin_width"],energy_type,inventory_type)
-    p=DeviceConstructiveEcology(w,device,habitat;matrix)
+    sensing=get(cfg,"material_sensing",nothing)
+    material_sensing=sensing===nothing ? nothing : (channels=Tuple(sensing["channels"]),scales=Tuple(sensing["scales"]))
+    p=DeviceConstructiveEcology(w,device,habitat;matrix,material_sensing)
     dt=Float32(q["dt"]);0<dt<=Interior.stability_limit(w,p) || error("submitted Float32 dt exceeds coupled limit")
     # Waste and residue are counted too: this deliberately loose bound cannot
     # mistake a desired population ceiling for an ecological carrying capacity.

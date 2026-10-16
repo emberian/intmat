@@ -165,13 +165,13 @@ function batch_kernel_ast(ex;habitat=false)
             packed=Symbol("packed_",arg)
             sig.args[j]=packed
             if arg===:anabolism
-                push!(insertions,:($arg=Main.batch_anabolic_argument($packed,batch_world_id,batch_seeds)))
+                push!(insertions,:($arg=$(GlobalRef(@__MODULE__,:batch_anabolic_argument))($packed,batch_world_id,batch_seeds)))
             elseif arg===:q && habitat
-                push!(insertions,:($arg=Main.batch_habitat_parameters($packed,batch_world_id,batch_seeds)))
+                push!(insertions,:($arg=$(GlobalRef(@__MODULE__,:batch_habitat_parameters))($packed,batch_world_id,batch_seeds)))
             elseif arg in (:q,:cq)
-                push!(insertions,:($arg=Main.batch_parameters($packed,batch_world_id,batch_seeds)))
+                push!(insertions,:($arg=$(GlobalRef(@__MODULE__,:batch_parameters))($packed,batch_world_id,batch_seeds)))
             else
-                push!(insertions,:($arg=Main.batch_world($packed,batch_world_id)))
+                push!(insertions,:($arg=$(GlobalRef(@__MODULE__,:batch_world))($packed,batch_world_id)))
             end
         end
     end

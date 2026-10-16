@@ -1,0 +1,86 @@
+# Fresh audited inventory study: Float64 physical accounts, Float32 controller/geometry.
+# A bounded diagnostic window; no historical checkpoint is resumed.
+# No CPU trajectory conversion or MatrixDrag.
+seed = 211
+[grid]
+shape = [64, 64, 64]
+extent = [4.0, 4.0, 4.0]
+[cellular]
+founders = 256
+capacity = 16384
+hidden = 8
+biomass = 1.6
+energy = 1.0
+metabolites = 0.12
+density = 128.0
+exchange_radius = 0.18
+speed = 0.06
+basal_rate = 0.008
+adaptation_strength = 1.5
+adaptation_time = 8.0
+junction_rate = 0.8
+mutation = 0.08
+mutation_probability = 0.03
+[resources]
+# Initial values are concentrations; rates and finite budgets are WORLD TOTALS.
+initial = [0.3, 0.3, 0.0]
+potentials = [4.0, 4.0, 0.0]
+diffusion = [0.006, 0.006, 0.001]
+source_rates = [0.0, 0.0, 0.0]
+source_budgets = [0.0, 0.0, 0.0]
+sink_rates = [0.0, 0.0, 0.0]
+sink_budgets = [0.0, 0.0, 0.0]
+[feedstock]
+# Opposed smooth A/B supply patches; each world-total rate remains1.
+niche_contrast = 0.7
+initial = [2.0, 2.0]
+potentials = [4.0, 4.0]
+diffusion = [0.0, 0.0]
+source_rates = [1.0, 1.0]
+source_budgets = [1500.0, 1500.0]
+sink_rates = [0.0, 0.0]
+sink_budgets = [0.0, 0.0]
+[catalysis]
+secretion_rate = 0.12
+secretion_work = 0.2
+allocation_exponent = 2.0
+catalytic_rate = 6.0
+half_saturation = 0.2
+decay_rate = 0.008
+investment_bias = -0.8
+allocation_bias_scale = 1.2
+mutation = 0.08
+mutation_probability = 0.03
+regulation = true
+[matrix]
+capacity_per_enzyme = 6.0
+adsorption_rate = 4.0
+desorption_rate = 0.12
+cross_binding = 0.0
+transport_barrier = 20.0
+[native]
+energy_type = "Float64"
+inventory_type = "Float64"
+support_strategy = "materialized"
+mechanical_substeps = 16
+radius_bound = 2.0
+bin_width = 0.25
+dt = 0.001
+check_every = 8
+[run]
+target_time = 64.0
+wall_seconds = 900.0
+metrics_seconds = 5.0
+checkpoint_seconds = 120.0
+capture_time = 0.2
+native_capture_time = 16.0
+coarse_side = 32
+artifact_budget_bytes = 4000000000
+ledger_relative_tolerance = 0.0001
+
+# Fixed concentration half-response scales: raw total4 is initial rawA+rawB;
+# bound .02 and catalyst .004 are explicit study choices near supply matching.
+# Three independently selectable channels preserve other receptor designs.
+[material_sensing]
+channels = ["raw_total", "bound_total", "catalyst_total"]
+scales = [4.0, 0.02, 0.004]

@@ -18,6 +18,7 @@ end
 end
 Interior.device_anabolic_argument(h::SlowMaterialHook)=Interior.device_anabolic_argument(h.habitat)
 Interior.device_anabolic_begin!(::SlowMaterialHook,w,p,dt)=nothing
+Interior.device_anabolic_sense!(h::SlowMaterialHook,w,p,dt)=Interior.device_anabolic_sense!(h.habitat,w,p,dt)
 Interior.device_anabolic_prepare!(h::SlowMaterialHook,w,p,dt)=Interior.device_anabolic_prepare!(h.habitat,w,p,dt)
 Interior.device_anabolic_inherit!(h::SlowMaterialHook,w,p,step)=Interior.device_anabolic_inherit!(h.habitat,w,p,step)
 function Interior.device_anabolic_finish!(h::SlowMaterialHook,w,p,dt)
