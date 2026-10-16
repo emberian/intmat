@@ -81,6 +81,12 @@ class GatewayTests(unittest.TestCase):
         self.assertEqual(self.request(path='/branches/fork1/frames/00001-after/frame.json')[0], 200)
         self.assertEqual(self.request(path='/branches/fork3/frames/00001-after/frame.json')[0], 404)
 
+    def test_read_only_inspector_helper_route(self):
+        code, body = self.request(path='/native_cell_compare.js')
+        self.assertEqual(code, 200)
+        self.assertIn(b'NativeCellCompare', body)
+        self.assertEqual(self.request(path='/arbitrary.js')[0], 404)
+
     def test_origin_and_host_checks(self):
         body = {'action': 'step', 'steps': 1}
         self.assertEqual(self.request('POST', '/api/control', body, {'Origin': 'https://example.invalid'})[0], 403)

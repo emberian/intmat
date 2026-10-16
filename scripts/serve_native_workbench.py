@@ -71,6 +71,8 @@ class NativeWorkbenchHandler(BaseHTTPRequestHandler):
                 return self.reply(200, self.read_json('control.json') if ack.exists() else {})
             if path in {'/', '/index.html'}:
                 target = REPO / 'web/native_workbench.html'
+            elif path == '/native_cell_compare.js':
+                target = REPO / 'web/native_cell_compare.js'
             elif re.fullmatch(r'/branches/(off|sensing|fork1|fork2)/index.html', path):
                 target = REPO / 'web/native_observatory.html'
             elif re.fullmatch(r'/branches/(off|sensing|fork1|fork2)/(observatory\.json|frames/[0-9]+(?:-(?:before|after))?/(frame\.json|state\.bin))', path):
@@ -79,7 +81,7 @@ class NativeWorkbenchHandler(BaseHTTPRequestHandler):
                     return self.reply(403, {'error': 'Observation path leaves the session'})
             else:
                 return self.reply(404, {'error': 'Unknown observation or page'})
-            mime = {'.html': 'text/html; charset=utf-8', '.json': 'application/json', '.bin': 'application/octet-stream'}[target.suffix]
+            mime = {'.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.json': 'application/json', '.bin': 'application/octet-stream'}[target.suffix]
             data = target.read_bytes()
             if re.fullmatch(r'/branches/(off|sensing|fork1|fork2)/index.html', path):
                 # Keep the native status/error nodes; only compress embedded chrome.

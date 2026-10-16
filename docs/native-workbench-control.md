@@ -271,3 +271,45 @@ the source pins and checkpoint hash. Full browser results and the reviewed
 comparison are in `outputs/native-workbench-fork-review-20261016`; port8810 serves
 the stopped actual session. This is a control/independence result, not an ecology
 or long-horizon organization claim.
+
+## Inspect a numeric resident ID
+
+The optional **Inside one cell** panel reads existing completed exports. It
+follows the left/right comparison branches, offers only exact shared capture
+times, and keeps same-time before/after intervention phases selectable. The
+newest event at a shared time is the initial default. If the latest branch
+captures have different times, the panel explicitly labels its older shared
+comparison; it never substitutes a nearest frame or interpolates state.
+
+It displays energy, biomass, radius, metabolites and the three material receptor
+readings, with expandable hidden state, adaptation, controller commands, catalytic
+expression and last-step secretion. Differences are right minus left. Effective
+scales and intervention phase come from each frame's metadata. Controller commands
+are not measured forces, flows or successful births. Inputs remain those of the
+last completed physical step, so an immediate receptor-scale change can correctly
+show changed scales and zero state differences.
+
+A numeric ID must be resident in both selected captures. Missing or dead residents
+are reported without zero filling; incompatible ancestry metadata suppresses
+all differences. Even matching numeric IDs and ancestry do not establish that
+descendants born after independent forks are the same individual. The UI calls
+cross-branch correspondence unverified. Missing older optional fields remain
+unavailable, rather than fabricated.
+
+Optional energy dots cover up to eight exact shared capture times, using the
+newest event at each time. Dots are actual observations, with gaps for missing
+pairs and no connecting/interpolated curve. Full binaries are hash-checked, capped
+at32MiB each, then discarded after extracting compact cell arrays. The cache is
+bounded by20 captures and16MiB of cell records. This is read-only browser work;
+there are no simulation, checkpoint or publication writes.
+
+Nineteen decoding/comparison checks cover column-major arrays, exact times,
+missing IDs/fields, ancestry mismatch, empty populations, nonfinite values and
+invalid binary metadata. Nine HTTP tests pass. The read-only browser gate used
+preserved `sensing`/`fork1` histories at steps4/8, selected both intervention
+phases, plotted four actual energy dots, and verified explicit absent-ID and
+empty-history fixtures. It made zero write requests and produced no JS errors.
+Reviewed evidence is in `outputs/native-cell-inspector-review-20261016`.
+
+[Compact inspector evidence](../benchmarks/2026-10-16-native-cell-inspector.json)
+links the compared immutable frame hashes to the read-only review.

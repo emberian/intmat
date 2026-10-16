@@ -1,0 +1,49 @@
+{
+  "schema": "interior-native-cell-inspector-evidence-1",
+  "mode": "read-only completed-frame browser interpretation",
+  "observation_schema_unchanged": true,
+  "comparison_frames": [
+    {
+      "branch": "sensing",
+      "file": "outputs/native-workbench-fork-20261016/branches/sensing/frames/00003/frame.json",
+      "time": 0.07999999821186066,
+      "step": 8,
+      "metadata_sha256": "b75a580a4235c3e2f1680d91dab5edc8323990d35b4524c55dcade90ec432e79",
+      "binary_sha256": "c6562e7209f3df6f3a7d541460f59c0e146f35f61d16b9916750838431877bd4",
+      "scales": [
+        4.0,
+        0.02,
+        0.004
+      ]
+    },
+    {
+      "branch": "fork1",
+      "file": "outputs/native-workbench-fork-20261016/branches/fork1/frames/00005-after/frame.json",
+      "time": 0.07999999821186066,
+      "step": 8,
+      "metadata_sha256": "2bf7045fe196fd065ca60bcf2a7c314de66a638754dde711bf0ff9fbf885507d",
+      "binary_sha256": "c6562e7209f3df6f3a7d541460f59c0e146f35f61d16b9916750838431877bd4",
+      "scales": [
+        0.5,
+        0.03,
+        0.006
+      ]
+    }
+  ],
+  "pure_js_edge_checks": 19,
+  "http_checks": 9,
+  "actual_matched_energy_dots": 4,
+  "browser_errors": [],
+  "write_requests": [],
+  "synthetic_ui_fixtures": [
+    "absent numeric ID99",
+    "empty history/no exact match"
+  ],
+  "report_sha256": "33a5e1842e45957c9b1368446eef08f4daac61255b4908690934f3c6b91e5024",
+  "limitations": [
+    "Exact shared capture times only; no interpolation.",
+    "Numeric IDs and matching ancestry do not prove same descendant across divergent branches.",
+    "Immediate scale change preserves physical/controller state until subsequent steps.",
+    "Up to8 matched-time energy samples; full binary transfers capped32MiB and compact cache16MiB/20frames."
+  ]
+}

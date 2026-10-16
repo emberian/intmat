@@ -71,6 +71,11 @@ The current-state fork preserves its parent checkpoint and allocates independent
 state, so the parent trajectory can remain a comparison future. The immutable
 fork point is retained even when either future subsequently advances.
 
-Still open: choosing an older complete checkpoint from the timeline, same-ID
-response plots alongside material optics, and broader mechanism adapters. Display
+The optional cell inspector now compares numeric resident IDs at exact shared
+capture times, with explicit ancestry/identity limits, component differences and
+actual energy dots alongside the volume views. It uses existing exports and
+never interpolates missing states.
+
+Still open: choosing an older complete checkpoint from the timeline, stronger
+cross-branch genealogical identity, and broader mechanism adapters. Display
 frames alone remain insufficient for a restart.
