@@ -106,10 +106,15 @@ baseline/utility metadata. The tiny four-resident fixtures can afford that;
 larger populations should test factorized storage of 23 features plus three
 Gaussian innovations per decision, reconstructing the outer product only when
 the target matures. Queue processing occurs at decisions, not every physics step.
-Because maturation increases update frequency, compare both actual paid work
-and raw/clipped proposal magnitudes; a gain caused by tenfold effective update
-size is not evidence for better credit. Predeclare a matched per-time update
-scale and retain an equal-cadence control if that explanation remains plausible.
+Because maturation increases update frequency, compare actual paid work and
+raw/clipped proposal magnitudes. Keep actor eta unchanged initially: for equal
+targets without clipping or policy drift, ten separate `eta R g_j` contributions
+sum to the old `eta R sum(g_j)`. Dividing actor eta by ten would suppress that
+aggregate gradient. The critic's repeated regression has a different cadence;
+reduce its gain accordingly and fit current coefficients to stored pre-action
+features, while the actor retains its stored pre-action baseline. Sequential
+clipping, policy drift and charging the sum of absolute updates rather than the
+absolute sum break exact equivalence; retain a matched-gain control when needed.
 
 Before coupled runs, use a tiny delayed-return fixture where an action at 1.8
 causes reward at 2.4: verify correct sign and no update from a reward preceding
@@ -163,6 +168,12 @@ erased in a matched branch. If simple filters work, they establish a useful
 temporal basis to compress into recurrent motifs or train with local recurrent
 eligibility later. If they do not, lengthening neural retention is not yet the
 priority; inspect actuator saturation and marginal construction value first.
+
+The smaller implementation-ready successor is now
+[paired local trend filters](local-temporal-features.md): six state floats,
+three bounded contrast features, explicit descendant handling and a CPU-tested
+same-current-input/opposite-history fixture. It precedes the broader three-clock
+experiment above and can be integrated into the next mobile/dividing study.
 
 ## Modern learning dynamics: two useful translations, no criticality transplant
 

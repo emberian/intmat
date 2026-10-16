@@ -142,3 +142,15 @@ end
 module ConstructionLagWorldBatchTests
 include("construction_lag_world_batches.jl")
 end
+
+module LocalTemporalFeatureTests
+include("local_temporal_features.jl")
+end
+
+module NativeCohortConstructionCreditTests
+include("native_cohort_construction_credit.jl")
+end
+
+module NativeLivingConstructionTests
+include("native_living_construction.jl")
+end

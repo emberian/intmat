@@ -79,7 +79,14 @@ end
         z.credit_moment[i]=advantage^2*moment;z.clipped[i]=clipped
         norm=1f-4
         for c in 1:8;norm+=z.features[i,c]^2;end
-        criticstep=.3f0*Float32(r-z.prediction[i])/norm
+        criticgain=hasproperty(q,:critic_gain) ? q.critic_gain : .3f0
+        criticprediction=z.prediction[i]
+        if hasproperty(q,:critic_current) && q.critic_current
+            current=0f0
+            for c in 1:8;current+=z.critic[i,c]*z.features[i,c];end
+            criticprediction=Float64(current)
+        end
+        criticstep=criticgain*Float32(r-criticprediction)/norm
         if critic_mode && critic_learning
             for c in 1:8
                 old=z.critic[i,c];proposed=critic_proposal(old,z.features[i,c],criticstep)
