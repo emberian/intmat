@@ -1,0 +1,31 @@
+{
+  "source_frame": "volume",
+  "fields": "Actual wave-written mineral levelset, exactly plane-clipped at y=-.04 without caps. Assigned matte navy optics; no field smoothing or emission.",
+  "source_shape": [
+    128,
+    128,
+    128
+  ],
+  "node_centered": false,
+  "isovalue": 0.55,
+  "vertices": 97705,
+  "polygons": 69060,
+  "cut": "Exact bmesh plane clipping, open without caps",
+  "floor": false,
+  "carrier": "Actual precursor support exactly plane-clipped at y=.12 as an open amber back shell. No polygon selection cuts or field smoothing.",
+  "renderer_sha256": "f427bc719022b907e7446dbfaa11d517491b03489c09422843ac0f50adeaf4b9",
+  "size": 1600,
+  "samples": 96,
+  "device": "METAL",
+  "threads": 2,
+  "settings": {
+    "size": 1600,
+    "samples": 96,
+    "device": "METAL",
+    "threads": 2,
+    "iso": 0.55,
+    "no_floor": true
+  },
+  "source_step": 600,
+  "source_time": 3.6
+}

@@ -1,0 +1,49 @@
+{
+  "id": "inner-shore",
+  "title": "Inner shore",
+  "description": "A close interior of the light-remodeled mineral: pale absorption sheets cross translucent green walls. A new macro photograph of a saved state.",
+  "family": "Optical interiors",
+  "shape": [
+    256,
+    256,
+    256
+  ],
+  "native_shape": [
+    256,
+    256,
+    256
+  ],
+  "backend": "Metal",
+  "kind": "observation of saved fields",
+  "frames": [
+    {
+      "step": 480,
+      "time": 12.000000178813934
+    }
+  ],
+  "time": 12.000000178813934,
+  "source_recording": {
+    "id": "illuminated-memory",
+    "manifest_sha256": "10ca950798a0b8c0fa826bf5ebacc0ff3c10d408875a3bed6c56d7b6ba5e1eae",
+    "solid_sha256": "bc176657dbb1bbbb6c668ae6980c2ffd1643e7ad9d7c2526883c60e4a36181ec",
+    "absorbed_power_sha256": "9c8fe838ef26dac5aeb0fb15d91b94268fac6b88f4a2dee48e52594683bafdff",
+    "optical_observation_sha256": "6c689d1dd18ed87230304f5e05c96be7e4838dd4f42bb4032ddd482111498cef",
+    "dose_held_from_time": 11.75,
+    "original_states_retained": true
+  },
+  "interpretation": "Camera, lens, lighting, contours and surface optical materials change; fields are unchanged. This is a new artwork from an existing state, not a new simulation or evidence of additional evolution.",
+  "publication": {
+    "source_image_sha256": "e3e5de1f8b95302c4dfda58e8e941ce097d14fcc1a0e8b00b6f67f864930ede8",
+    "webp_sha256": "b93a4287279ba119688382d0b8d83677b37b1bea85cf266857ce08f42e6f8db9",
+    "quality": 95,
+    "width": 2000,
+    "samples": 128,
+    "native_shape": [
+      256,
+      256,
+      256
+    ],
+    "original_retained": true,
+    "reviewed_by": "gallery_reinvention; native2000px macro inspected, diagonal composition and foreground transmission reviewed"
+  }
+}

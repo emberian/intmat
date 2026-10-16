@@ -1,0 +1,87 @@
+{
+  "id": "chord-salt-128",
+  "title": "A chord held in salt",
+  "shape": [
+    128,
+    128,
+    128
+  ],
+  "steps": 600,
+  "dt": 0.006,
+  "time": 3.5999999999999437,
+  "feedback": 12,
+  "amplitude": 1,
+  "elapsed_seconds": 293.828964958,
+  "local_inventory_error": 5.9604645e-08,
+  "history": [
+    {
+      "step": 100,
+      "time": 0.6000000000000004,
+      "peak_pressure": 3.3937273,
+      "converted": 36689.93,
+      "peak_envelope": 5.7669687
+    },
+    {
+      "step": 200,
+      "time": 1.2000000000000008,
+      "peak_pressure": 3.2290752,
+      "converted": 79287.29,
+      "peak_envelope": 7.9177465
+    },
+    {
+      "step": 300,
+      "time": 1.8000000000000014,
+      "peak_pressure": 2.9034436,
+      "converted": 120543.61,
+      "peak_envelope": 5.933685
+    },
+    {
+      "step": 400,
+      "time": 2.399999999999987,
+      "peak_pressure": 2.7592006,
+      "converted": 157853.31,
+      "peak_envelope": 4.573036
+    },
+    {
+      "step": 500,
+      "time": 2.9999999999999654,
+      "peak_pressure": 2.8335679,
+      "converted": 188209.84,
+      "peak_envelope": 5.0014997
+    },
+    {
+      "step": 600,
+      "time": 3.5999999999999437,
+      "peak_pressure": 2.830113,
+      "converted": 210224.06,
+      "peak_envelope": 6.5726466
+    }
+  ],
+  "source_sha256": "312307559da68029f608a5153b6f0e7167b64f2bb5f0fe8c58a34e6820f97f51",
+  "acoustic_sha256": "71d352545d1e1f884fabe52b18f3ef7b10def97340a4b55ad22e594bd8db3fd9",
+  "model": "Existing periodic symmetric-face AcousticField; finite local exponential precursor-to-mineral conversion. Wave speed decreases with mineral; externally prepared packets, no ongoing forcing; conversion has no latent-energy debit.",
+  "authored": "Three angled Gaussian-enveloped coherent packets; ellipsoidal support and open diagonal cut. Internal converted fringes computed.",
+  "family": "waves",
+  "native_shape": [
+    128,
+    128,
+    128
+  ],
+  "variant_of": "waves-oblique-fronts",
+  "description": "Three prepared pressure packets write intersecting mineral sheets in a finite salt precursor. Conversion slows later waves, preserving a spatial memory of their interference.",
+  "comparison_notes": "Native 128\u00b3 Julia dynamics; authored packets and finite support, evolved mineral interfaces; explicit open optical cutaway.",
+  "publication": {
+    "source_image_sha256": "7913bbdf6bf9ed16248afcc5306989fe4f70fc0d3c5eaa1dbea03f29ef98b0a9",
+    "webp_sha256": "f6aebd8c61d8d349fa19fc6450f0f2e169f936b07a02e77934c6f8f7289bd905",
+    "quality": 95,
+    "width": 1600,
+    "samples": 96,
+    "native_shape": [
+      128,
+      128,
+      128
+    ],
+    "original_retained": true,
+    "reviewed_by": "fracture_electric_art full1600px review; root approved exact-cut floorless preview and requested this closer final"
+  }
+}

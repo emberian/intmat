@@ -817,3 +817,52 @@ at 192³. Explicit FFT resources support reuse without changing physical state;
 plan reuse alone was not a convincing speedup. Native Float64 rocFFT passed
 capability checks. A complete GPU phase/brine comparison is the next gate,
 not yet a measured application speedup. Details: `docs/implicit-phase-runtime.md`.
+
+### Native GPU composition and three new observations
+
+The full phase/brine gate now passes at 96³ and 192³, using physical Float32
+fields and Float64 FFTs. At 192³, warm five-step blocks plus identical eight-field
+readback take 2.640 s on CPU2 versus 0.0876 s on hbox GPU (median ratio 30.1×).
+Numerical, clock, conservation and alias-preserving restart checks pass; derived
+chemical potential uses an explicit Laplacian error bound. Native transport
+shares the scalar face-flux law. Snapshot aae69fe contains source and measurements.
+Memory accounting admits a plausible single 384³ producer with streamed output;
+576³ and 1152³ exceed this GPU in the current representation. A separately bounded
+384³ experiment is being prepared; no large allocation is included in the gate.
+
+Three reviewed photographs bring the gallery to 76: What the brine left open
+(native 128³ reactive interfaces), A chord held in salt (native 128³ acoustic
+feedback), and Inner shore (a new macro observation of the existing 256³
+light-remodeled state). Brine includes four actual states in a 64³ display,
+with fixed channel scales and lossless transport compression. Its surface
+intersection is refined in the renderer; no simulation detail is invented.
+Rejected optical variants remain private and preserved.
+
+A separate local trend sensor passes 30 CPU checks: identical instantaneous
+inputs and equal feature norms can produce opposite history-dependent actions.
+This is a controllable memory component, not yet an integrated learning benefit.
+The mobile/dividing learning study retains its existing 23-feature policy first.
+
+### Decision cohorts and living construction
+
+Decision-aligned H=2/H=8 credit now stores pre-action features, innovations and
+baseline predictions. The actor uses the saved baseline; the critic fits its
+current prediction on those saved features. Initial delayed-gradient and revised
+pilots are preserved separately. No robust horizon benefit emerged in these
+small comparisons. Native gates match queue/payment counts and physical state;
+the old lifetime law still passes its default-preserving regression.
+
+The new finite-funded 16³ scene restores motion, growth and native division.
+Three matched 16-time CPU laws reach 30 cells from 24 through six births; later
+offspring receive nonzero learned readouts paid from their actual battery into
+work. Parent credit optionally cancels the resource partition to newborns,
+without changing physical accounting. Native parity uses an explicitly seeded
+readout to exercise nonzero paid copies at early births. Actual learned copies
+come from the separate 16-time scenes. No inheritance advantage is established.
+
+The public living-construction viewer preserves all 17 actual captures, eight
+native fields and ID/parent histories in 1.14 MB. Its compact source is rebuildable
+from `docs/figures/native-living-construction.json`. Root reviewed desktop/mobile;
+seven packaging tests and native/lifetime/cohort checks pass. A fresh bounded
+32-time copy/reset pair uses the same finite budgets; analysis remains separate
+from this preserved first exhibit. No new long soak is running.

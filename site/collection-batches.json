@@ -623,5 +623,43 @@
       "render-job.json",
       "run.json"
     ]
+  },
+  {
+    "id": "collection-20261016/brine-left-open",
+    "source_image_sha256": "f77ab81d8df5143c7e157137d798f6af8c7fec36cd879947fbdc017890b7004d",
+    "files": [
+      "checks.json",
+      "gallery-preview.webp",
+      "native-audit.json",
+      "optical.json",
+      "photograph.webp",
+      "publication.json",
+      "recipe.toml",
+      "render-job.json",
+      "run.json",
+      "viewer.html"
+    ]
+  },
+  {
+    "id": "collection-20261016/chord-salt-128",
+    "source_image_sha256": "7913bbdf6bf9ed16248afcc5306989fe4f70fc0d3c5eaa1dbea03f29ef98b0a9",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
+  },
+  {
+    "id": "collection-20261016/inner-shore",
+    "source_image_sha256": "e3e5de1f8b95302c4dfda58e8e941ce097d14fcc1a0e8b00b6f67f864930ede8",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
   }
 ]

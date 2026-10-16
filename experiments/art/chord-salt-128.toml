@@ -1,0 +1,16 @@
+id = "chord-salt-128"
+title = "A chord held in salt"
+variant_of = "waves-oblique-fronts"
+study = "studies/chord_salt.jl"
+resolution = 128
+steps = 600
+dt = 0.006
+speed = 0.44
+material_feedback = 12.0
+damping = 0.065
+envelope_time = 0.18
+conversion_gain = 5.0
+conversion_threshold = 0.018
+packet_amplitude = 1.0
+mineral_isovalue = 0.55
+boundary = "periodic acoustic domain of length 2; finite local material support"

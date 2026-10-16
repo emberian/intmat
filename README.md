@@ -15,7 +15,7 @@ Six families: phase surfaces, written inclusions, dielectric branches, fractured
 networks, acoustic/neural contours and 3D metabolic inhabitants. Each photograph
 observes a saved simulation through chosen optics. The first series adds 36
 specimens at 1600². Refinement now evolves native 384³ phase, writing and waves;
-768³ writing is complete. Refined 2400² photographs, recurrent matter, coupled optics and a repairing weave bring the gallery to 73
+768³ writing is complete. Refined 2400² photographs, recurrent matter, coupled optics and a repairing weave bring the gallery to 76
 studies, with corrected crop geometry and resin, wax, frost, bronze and copper
 optics. Native 1152³ Julia writing completed in 56.9 minutes with 18.35 GB of state.
 Constructive ecology now has actual 64³ trajectories and a 128³ GPU pilot;
@@ -51,6 +51,11 @@ This is a measured opportunity for learning, not learned cooperation.
 
 [Construction credit](https://emberian.github.io/intmat/laboratory/construction-credit/) exposes the next constraint: reserve demand can consume precursor before construction. Joint reserve/material control restores an action the learner can change.
 
+[Learning, held in matter](https://emberian.github.io/intmat/laboratory/living-construction/)
+follows 24→30 moving cells through six births. Later offspring receive paid copies
+of learned readouts; 17 actual captures expose bodies, ancestry and material.
+The mechanism works; an advantage from inheritance remains unestablished.
+
 **The light takes the long way:** a changing 256³ mineral bends light through
 three fixed apertures. [Rotate, cut and compare actual paths](https://emberian.github.io/intmat/collection-20261016/refractive-memory/viewer.html)
 across five saved states; the 2000² photograph reveals its amber and copper interior.
@@ -59,6 +64,17 @@ across five saved states; the 2000² photograph reveals its amber and copper int
 activity, growth and subsequent illumination. [Explore mineral and absorbed power](https://emberian.github.io/intmat/collection-20261016/illuminated-memory/viewer.html).
 **Weather inside a lens** photographs finite mineral growth and thermal erosion
 that redirect current through opaline folds.
+
+**What the brine left open:** finite reagents precipitate a porous 128³ mineral.
+Its deposits redirect diffusion and reshape the interfaces where reaction occurs.
+[Explore four recorded states](https://emberian.github.io/intmat/collection-20261016/brine-left-open/viewer.html) · [Process](docs/brine-memory.md).
+
+**A chord held in salt:** three pressure packets write an interference structure
+that changes subsequent wave propagation. An exact cutaway reveals its interior.
+[Study](docs/chord-salt.md).
+
+**Inner shore** enters the light-remodeled mineral: a macro view of its actual
+mineral walls and absorbed-power sheets. [Photographic study](docs/inner-shore.md).
 
 ## Run
 

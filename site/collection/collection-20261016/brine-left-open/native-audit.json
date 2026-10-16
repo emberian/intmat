@@ -1,0 +1,112 @@
+{
+    "schema": "independent-brine-field-audit",
+    "shape": [
+        128,
+        128,
+        128
+    ],
+    "cell_volume": 0.006591796875,
+    "initial_a_inventory": 1677.5422348719444,
+    "initial_b_inventory": 11183.443093480953,
+    "source_run_sha256": "e4aa5301fc227e07c7d9e69d8e5347a72e4fbe67695a6383ebc7a612a558ddb5",
+    "auditor_sha256": "9c319e6e74889e0920654799754b94c63daefc276a0a28bc26516634438c534c",
+    "history": [
+        {
+            "step": 0,
+            "time": 0,
+            "a_mass": 1677.5422348719444,
+            "b_mass": 11183.443093480953,
+            "mineral_mass": 0,
+            "a_plus_half_m_absolute_error": 0,
+            "b_plus_half_m_absolute_error": 0,
+            "total_mass_absolute_error": 0,
+            "a_invariant_relative_error": 0,
+            "b_invariant_relative_error": 0,
+            "phase_mean_error": 0,
+            "minimum_mineral_increment": 0,
+            "phase_range": [
+                -0.4191048,
+                0.44232798
+            ],
+            "source_sha256": {
+                "a": "5058aa73aef5a291245d676df9a64fd134d8ec62dad4ddb9791e82bb43835f69",
+                "b": "1a54f4989f85c4851217c77155f144f558e38349ace785a02f0c8a2a683d1ce7",
+                "mineral": "2daeb1f36095b44b318410b3f4e8b5d989dcc7bb023d1426c492dab0a3053e74",
+                "phi": "bf7bcf86867644cc78406b74f2688e4428e75597a0e838213b2dc09f54e5b8ab"
+            }
+        },
+        {
+            "step": 240,
+            "time": 4.799999892711639,
+            "a_mass": 1622.8721434591225,
+            "b_mass": 11128.770916229018,
+            "mineral_mass": 109.3401173950524,
+            "a_plus_half_m_absolute_error": -3.271529567427933e-5,
+            "b_plus_half_m_absolute_error": -0.0021185544101172127,
+            "total_mass_absolute_error": -0.002151269705791492,
+            "a_invariant_relative_error": -1.9501920723192203e-8,
+            "b_invariant_relative_error": -1.8943668711044447e-7,
+            "phase_mean_error": -1.7669395596187423e-11,
+            "minimum_mineral_increment": 0,
+            "phase_range": [
+                -0.76743054,
+                0.7838894
+            ],
+            "source_sha256": {
+                "a": "fa38abc2c0d7477e09e557545ecfbf66faea395655c71275f521c3d277b80224",
+                "b": "2806ffd3bf3e096278d95e8b8f87cc14b23bd48686266f1b5773480ba83702a0",
+                "mineral": "ea271eb1604b6a8a8558cf59a65451d24062e83e415ee29eb8aa72100e22802b",
+                "phi": "24678be357159bac4107affea03dc7698df02220e33a31d302184fc2b3594a10"
+            }
+        },
+        {
+            "step": 480,
+            "time": 9.599999785423279,
+            "a_mass": 1381.5662627859053,
+            "b_mass": 10887.4634779881,
+            "mineral_mass": 591.9518822952315,
+            "a_plus_half_m_absolute_error": -3.093842337875685e-5,
+            "b_plus_half_m_absolute_error": -0.00367434523832344,
+            "total_mass_absolute_error": -0.0037052836617021967,
+            "a_invariant_relative_error": -1.84427090630708e-8,
+            "b_invariant_relative_error": -3.285522363381352e-7,
+            "phase_mean_error": 1.2106494249480328e-10,
+            "minimum_mineral_increment": 0,
+            "phase_range": [
+                -0.90833694,
+                0.88731694
+            ],
+            "source_sha256": {
+                "a": "d43704464d00ddc876f691928e612fe46d1f1c4da66ea7cd820bac9d6670c909",
+                "b": "6be1483dedcf4753b5a127d4deac114999559b11255c2600b2ea6ae445fce3cd",
+                "mineral": "7b81ac4f52b6f7719dffa67347da1228d3f057ac2d91cd061b130c33d53b6382",
+                "phi": "a44596a257805f59a1fc5efa27ca9c63ff1aa8c82f9a6f1eeb916ce541ff56dd"
+            }
+        },
+        {
+            "step": 720,
+            "time": 14.399999678134918,
+            "a_mass": 1315.7029001591127,
+            "b_mass": 10821.597274227792,
+            "mineral_mass": 723.6785856713825,
+            "a_plus_half_m_absolute_error": -4.187714057479752e-5,
+            "b_plus_half_m_absolute_error": -0.006526417470013257,
+            "total_mass_absolute_error": -0.006568294610588055,
+            "a_invariant_relative_error": -2.4963389716381253e-8,
+            "b_invariant_relative_error": -5.835785469161669e-7,
+            "phase_mean_error": 8.572818878936107e-11,
+            "minimum_mineral_increment": 0,
+            "phase_range": [
+                -0.9213104,
+                0.9066975
+            ],
+            "source_sha256": {
+                "a": "ed6addac63f867c8f8cc0672b95ad43dd76acad02743fe8a6664ae3eb35a7039",
+                "b": "7548753204e7ea96b34adda564f4a38bf28f30526a6508f45b7a28886844b77e",
+                "mineral": "ca537c20a2be58ded56730341f2ce5dcfcb95a68341f5454fb84627338ec21bc",
+                "phi": "645bb061f9ec7ea5d98af25446b1c4201b20ea548185905e0a6ce6189638f510"
+            }
+        }
+    ],
+    "interpretation": "Direct sums of independently saved fields verify A+M/2 and B+M/2 separately, signed phase mean and nondecreasing mineral. No hidden mean adjustment or budget correction is applied. Floating-point residuals are reported against each inventory scale; no chemical free-energy closure is asserted."
+}

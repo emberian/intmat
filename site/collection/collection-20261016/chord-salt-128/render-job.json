@@ -1,0 +1,28 @@
+{
+  "id": "chord-salt-128",
+  "title": "A chord held in salt",
+  "family": "waves",
+  "description": "Three prepared pressure packets write intersecting mineral sheets in a finite salt precursor. Conversion slows later waves, preserving a spatial memory of their interference.",
+  "volume": "volume",
+  "renderer": "scripts/render_chord_salt_section.py",
+  "size": 1600,
+  "samples": 96,
+  "device": "METAL",
+  "threads": 2,
+  "iso": 0.55,
+  "source_shape": [
+    128,
+    128,
+    128
+  ],
+  "input_step": 600,
+  "input_time": 3.6,
+  "args": [
+    "--no-floor",
+    "--device",
+    "METAL",
+    "--iso",
+    ".55"
+  ],
+  "renderer_sha256": "f427bc719022b907e7446dbfaa11d517491b03489c09422843ac0f50adeaf4b9"
+}

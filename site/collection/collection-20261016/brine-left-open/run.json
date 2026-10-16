@@ -1,0 +1,180 @@
+{
+  "execution_base_commit": "365d5d5",
+  "id": "brine-porous-memory",
+  "title": "What the brine left open",
+  "family": "interfaces",
+  "arm": "closed",
+  "shape": [
+    128,
+    128,
+    128
+  ],
+  "extent": [
+    24,
+    24,
+    24
+  ],
+  "spacing": [
+    0.1875,
+    0.1875,
+    0.1875
+  ],
+  "dt": 0.02,
+  "steps": 720,
+  "time": 14.399999678134918,
+  "frames": [
+    {
+      "step": 0,
+      "time": 0,
+      "directory": "frames/00000"
+    },
+    {
+      "step": 240,
+      "time": 4.799999892711639,
+      "directory": "frames/00240"
+    },
+    {
+      "step": 480,
+      "time": 9.599999785423279,
+      "directory": "frames/00480"
+    },
+    {
+      "step": 720,
+      "time": 14.399999678134918,
+      "directory": "frames/00720"
+    }
+  ],
+  "history": [
+    {
+      "step": 0,
+      "time": 0,
+      "mineral_mass": 0,
+      "mineral_max": 0,
+      "phase_mass": -3.3775204172345474e-05,
+      "phase_mass_error": 0,
+      "initial_chemical_mass": 12860.9853283529,
+      "chemical_mass": 12860.9853283529,
+      "chemical_mass_absolute_error": 0,
+      "chemical_mass_relative_error": 0,
+      "phase_range": [
+        -0.4191048,
+        0.44232798
+      ],
+      "interface_integral": 1564.9634969913598,
+      "min_a": 0,
+      "min_b": 0
+    },
+    {
+      "step": 240,
+      "time": 4.799999892711639,
+      "mineral_mass": 109.3401173950524,
+      "mineral_max": 0.42071125,
+      "phase_mass": -3.401946589706717e-05,
+      "phase_mass_error": -1.7669395596187423e-11,
+      "initial_chemical_mass": 12860.9853283529,
+      "chemical_mass": 12860.983177083193,
+      "chemical_mass_absolute_error": -0.002151269705791492,
+      "chemical_mass_relative_error": -1.6727098669873097e-07,
+      "phase_range": [
+        -0.76743054,
+        0.7838894
+      ],
+      "interface_integral": 4178.345254426481,
+      "min_a": 1.0627115e-19,
+      "min_b": 6.701751e-05
+    },
+    {
+      "step": 480,
+      "time": 9.599999785423279,
+      "mineral_mass": 591.9518822952315,
+      "mineral_max": 0.51687926,
+      "phase_mass": -3.2101602407297314e-05,
+      "phase_mass_error": 1.2106494249480328e-10,
+      "initial_chemical_mass": 12860.9853283529,
+      "chemical_mass": 12860.981623069238,
+      "chemical_mass_absolute_error": -0.003705283661474823,
+      "chemical_mass_relative_error": -2.881026271996655e-07,
+      "phase_range": [
+        -0.90833694,
+        0.88731694
+      ],
+      "interface_integral": 5517.8995935406965,
+      "min_a": 7.0064973e-15,
+      "min_b": 9.593051e-06
+    },
+    {
+      "step": 720,
+      "time": 14.399999678134918,
+      "mineral_mass": 723.6785856713825,
+      "mineral_max": 0.6691853,
+      "phase_mass": -3.259009769052135e-05,
+      "phase_mass_error": 8.572818878936107e-11,
+      "initial_chemical_mass": 12860.9853283529,
+      "chemical_mass": 12860.978760058286,
+      "chemical_mass_absolute_error": -0.006568294613316539,
+      "chemical_mass_relative_error": -5.10714727186283e-07,
+      "phase_range": [
+        -0.9213104,
+        0.9066975
+      ],
+      "interface_integral": 5562.629590323672,
+      "min_a": 4.8418425e-13,
+      "min_b": 1.752622e-05
+    }
+  ],
+  "median_step_seconds": 0.168606542,
+  "evolution_seconds": 119.61477409399998,
+  "estimated_working_bytes": 268435456,
+  "recipe": {
+    "nucleation_gradient": 0.35,
+    "steps": 720,
+    "phase_initialization": "spinodal",
+    "reaction_rate": 3,
+    "dt": 0.02,
+    "reservoir_shape": "lens",
+    "stabilization": 5,
+    "kappa": 0.55,
+    "id": "brine-porous-memory",
+    "mobility": 0.7,
+    "saturation_gradient": 0.8333333333333334,
+    "extent": 24,
+    "mineral_transport_barrier": 14,
+    "resolution": 128,
+    "a_inventory": 1.2,
+    "diffusion_a": 0.16,
+    "b_inventory": 0.9,
+    "basal_reaction": 0,
+    "interface_reaction_gain": 1.2,
+    "diffusion_b": 0.1,
+    "phase_transport_barrier": 3,
+    "mineral_phase_feedback": 4,
+    "title": "What the brine left open",
+    "memory_budget_mb": 1024,
+    "phase_perturbation_rms": 0.12,
+    "reservoir_thickness": 4
+  },
+  "source_sha256": {
+    "src/implicit_phase.jl": "fe989d2aaab5a8dc38f2526ecbebb234a9b0056f6f77a382d5eb3d35dd39e910",
+    "studies/brine_memory.jl": "5ab3ad1ba93f07383af119a59b76d8ccf5b390c807d0dc141bb9d517b5287639",
+    "src/phase.jl": "2815bbd2ee63bacfd0ff36956d16c22d6bc3eaf4798f4fb385026222349848ec",
+    "src/fields.jl": "9279a5783d7bb788ab6f03c1f6c514a2859a9daca2707d8f51cf7755c1596b12",
+    "src/compartments.jl": "e7c55ce4e0f4a8548c078c9d160815b5eaeb846a3765aad89a875f166b5005e5"
+  },
+  "simulation": "Existing stabilized semi-implicit periodic conserved Cahn\u2013Hilliard phase. Existing conservative harmonic-face solute diffusion. Study-local bounded A+B\u21922 mineral reaction, gated by actual phase gradient and recipe nucleation threshold. New mineral lowers later permeability and supplies chemical-potential derivative feedback*mineral*phi, pinning mixing interfaces. Finite chemical inventory and signed phase composition are separately conserved; no thermodynamic energy closure or calibrated chemistry is claimed.",
+  "initialization": "Recipe-selected physical Fourier perturbation or corrugated lamellar nodal field; A in one finite bent lens/sheet reservoir and B outside it. No pre-existing mineral. Optical boundaries are observations, not added simulation walls.",
+  "description": "Finite brine deposits an open mineral cage. Each deposit changes transport and phase interfaces encountered by later reaction. Copper interiors show through a pale verdigris skin.",
+  "publication": {
+    "source_image_sha256": "f77ab81d8df5143c7e157137d798f6af8c7fec36cd879947fbdc017890b7004d",
+    "webp_sha256": "c2e35ce21f2defe81ffc2597801ba7b982ee70e94dc28532a6d7a828145596d5",
+    "quality": 95,
+    "width": 1800,
+    "samples": 96,
+    "native_shape": [
+      128,
+      128,
+      128
+    ],
+    "original_retained": true,
+    "reviewed_by": "optical_interior_art and root"
+  }
+}

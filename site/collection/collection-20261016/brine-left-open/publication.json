@@ -1,0 +1,22 @@
+{
+  "id": "brine-left-open",
+  "title": "What the brine left open",
+  "family": "interfaces",
+  "description": "Finite brine deposits a porous mineral cage. Each deposit changes the transport and phase interfaces encountered by later reaction. Copper interiors open through a pale verdigris skin.",
+  "native_run": "outputs/art/runtime-brine-porous-128-20261016/closed",
+  "native_source_stage": "outputs/art/runtime-source-brine-128-20261016",
+  "native_photograph": "outputs/art/brine-porous-final.png",
+  "native_photograph_sha256": "f77ab81d8df5143c7e157137d798f6af8c7fec36cd879947fbdc017890b7004d",
+  "published_photograph_sha256": "c2e35ce21f2defe81ffc2597801ba7b982ee70e94dc28532a6d7a828145596d5",
+  "webp_quality": 95,
+  "native_shape": [
+    128,
+    128,
+    128
+  ],
+  "photograph_size": [
+    1800,
+    1800
+  ],
+  "published_bytes": 133884
+}

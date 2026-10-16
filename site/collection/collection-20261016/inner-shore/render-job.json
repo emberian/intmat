@@ -1,0 +1,58 @@
+{
+  "run": "outputs/collection-20261016/illuminated-memory",
+  "optics": "outputs/collection-20261016/illuminated-memory/optics/000480-feedback-final",
+  "output": "outputs/collection-20261016/inner-shore/final.png",
+  "size": 2000,
+  "samples": 128,
+  "device": "METAL",
+  "radius": 0.0005,
+  "gain": 0.12,
+  "orbit": 0.5,
+  "elevation": 0.2,
+  "distance": 5.6,
+  "material": "surface",
+  "screen": false,
+  "save_scene": true,
+  "wavelength": 550,
+  "ray_stride": 5,
+  "display_zmin": -0.65,
+  "display_zmax": 0.5,
+  "no_plate": true,
+  "launch_radius": 10.0,
+  "ray_palette": "gold",
+  "no_floor": true,
+  "surface_style": "glass",
+  "skin_iso": 0.32,
+  "core_iso": 0.0,
+  "cut_y": -2.0,
+  "rays_in_material": 0.3,
+  "skin_absorption": 0.3,
+  "slate": false,
+  "title": "Inner shore",
+  "description": "A close interior of the light-remodeled mineral: pale absorption sheets cross translucent green walls. A new macro photograph of a saved state.",
+  "family": "Optical interiors",
+  "native_shape": [
+    256,
+    256,
+    256
+  ],
+  "renderer": "scripts/render_inner_shore.py",
+  "macro_observation": {
+    "camera": [
+      0.45,
+      -1.05,
+      -0.1
+    ],
+    "target": [
+      0.0,
+      0.04,
+      -0.42
+    ],
+    "lens_mm": 48,
+    "camera_roll": -0.22,
+    "fstop": 11,
+    "absorbed_power_isovalue": 0.25,
+    "absorbed_power_sha256": "9c8fe838ef26dac5aeb0fb15d91b94268fac6b88f4a2dee48e52594683bafdff",
+    "meaning": "Macro photograph of native saved mineral and absorbed-power contours; color, surface refraction, area lights and depth of field are observation choices, not new material dynamics or solved luminescence."
+  }
+}

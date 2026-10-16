@@ -1,0 +1,50 @@
+{
+  "native128": {
+    "elapsed_seconds": 293.828964958,
+    "local_inventory_error": 5.9604645e-08,
+    "shape": [
+      128,
+      128,
+      128
+    ],
+    "steps": 600
+  },
+  "matched48_coupled_vs_no_feedback": {
+    "shape": [
+      48,
+      48,
+      48
+    ],
+    "mineral_quantiles_inside": [
+      0.014915292151272297,
+      0.09287144839763642,
+      0.2529052644968033,
+      0.5508915483951569,
+      0.8628194630146027,
+      0.9839878678321838,
+      0.9999999403953552
+    ],
+    "fraction_support_above_isovalue": 0.5010479983232027,
+    "inventory_error": 5.9604645e-08,
+    "mineral_mean_absolute_difference": 0.30301547050476074,
+    "dose_relative_l2": 0.86765456199646,
+    "mineral_correlation": 0.5881021824338079
+  },
+  "zero_pressure24": {
+    "steps": 100,
+    "final": {
+      "step": 100,
+      "time": 0.6000000000000004,
+      "peak_pressure": 0,
+      "converted": 0,
+      "peak_envelope": 0
+    },
+    "local_inventory_error": 5.9604645e-08
+  },
+  "fourier_mode32": {
+    "steps": 160,
+    "max_discrete_solution_error": 3.6358833e-06,
+    "cfl_fraction": 0.08129091824
+  },
+  "qualification": "No-feedback control removes all mineral-induced slowing including the small initial mineral contribution; it demonstrates coupling effect, not an isolated attribution to late remodeling. All wave packet/support geometry identical on matched grid. No calibrated crystallization or thermodynamic closure claim."
+}

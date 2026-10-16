@@ -1,0 +1,41 @@
+{
+  "title": "What the brine left open",
+  "shape": [
+    128,
+    128,
+    128
+  ],
+  "step": 720,
+  "time": 14.399999678134918,
+  "renderer_sha256": "05581c60ad0b1addf87bf672a380ed9c317fa9e49b4dd8d6166b2ff690750ddb",
+  "source_run_sha256": "e4aa5301fc227e07c7d9e69d8e5347a72e4fbe67695a6383ebc7a612a558ddb5",
+  "source_fields_sha256": {
+    "mineral": "ca537c20a2be58ded56730341f2ce5dcfcb95a68341f5454fb84627338ec21bc",
+    "a": "ed6addac63f867c8f8cc0672b95ad43dd76acad02743fe8a6664ae3eb35a7039",
+    "b": "7548753204e7ea96b34adda564f4a38bf28f30526a6508f45b7a28886844b77e",
+    "phi": "645bb061f9ec7ea5d98af25446b1c4201b20ea548185905e0a6ce6189638f510"
+  },
+  "image_sha256": "f77ab81d8df5143c7e157137d798f6af8c7fec36cd879947fbdc017890b7004d",
+  "geometry": [
+    {
+      "native_mineral_isovalue": 0.3,
+      "vertices": 78330,
+      "faces": 83728
+    }
+  ],
+  "settings": {
+    "run": "outputs/art/runtime-brine-porous-128-20261016/closed",
+    "output": "outputs/art/brine-porous-final.png",
+    "size": 1800,
+    "samples": 96,
+    "device": "METAL",
+    "step": null,
+    "mineral_iso": 0.3,
+    "wet_iso": 0.1,
+    "no_wet": true,
+    "orbit": 0.45,
+    "elevation": 0.63
+  },
+  "render_seconds": 18.109580039978027,
+  "interpretation": "All displayed surfaces are native mineral concentration isosurfaces; no render mask, surface deformation or invented internal mesh. Coordinates are uniformly divided by physical half-extent for photographic staging. Residual A/(A+B) trilinearly sampled at native mineral vertices selects copper-to-verdigris color; saved absolute phase sets roughness 0.40\u20130.62 and residual ratio sets metallic response 0.12\u20130.62. These are chosen optical mappings, not an oxidation solve. The selected surface shaders and photographic floor/lights are optical choices, not calibrated material optics. A lower-concentration clear film is included only when no_wet is false."
+}

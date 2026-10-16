@@ -1,0 +1,128 @@
+{
+    "schema": "brine-causal-and-timestep-checks",
+    "zero_interface_reaction_exactly_disabled": true,
+    "large_reaction_step_mass_error": 0,
+    "physical_nucleation_gradient": 0.35,
+    "physical_saturation_gradient": 0.8333333333333334,
+    "dt": 0.04,
+    "half_dt": 0.02,
+    "time": 14.399999678134918,
+    "phase_half_dt_rms": 0.01333872,
+    "mineral_half_dt_rms": 0.0034408842,
+    "mineral_mass_half_dt_relative_change": 0.0027623339721943654,
+    "ablations": {
+        "no-mineral-feedback": {
+            "phase_max_difference": 0.59246504,
+            "mineral_max_difference": 1.2558094,
+            "mineral_mass": 1360.9850149166896
+        },
+        "transport-only": {
+            "phase_max_difference": 0.59246504,
+            "mineral_max_difference": 0.9681815,
+            "mineral_mass": 1172.736047209703
+        },
+        "phase-only": {
+            "phase_max_difference": 0.0789316,
+            "mineral_max_difference": 0.16271925,
+            "mineral_mass": 812.0518110810184
+        }
+    },
+    "history": {
+        "no-mineral-feedback": {
+            "step": 360,
+            "time": 14.399999678134918,
+            "mineral_mass": 1360.9850149166896,
+            "mineral_max": 1.6831702,
+            "phase_mass": -1.7551521933012645e-7,
+            "phase_mass_error": -9.89248176508035e-10,
+            "initial_chemical_mass": 12860.986858041022,
+            "chemical_mass": 12860.986987094475,
+            "chemical_mass_absolute_error": 0.00012905345283797942,
+            "chemical_mass_relative_error": 1.0034490685859916e-8,
+            "phase_range": [
+                -0.9195031,
+                0.90524226
+            ],
+            "interface_integral": 6184.316859184097,
+            "min_a": 5.536378e-12,
+            "min_b": 3.2202508e-5
+        },
+        "transport-only": {
+            "step": 360,
+            "time": 14.399999678134918,
+            "mineral_mass": 1172.736047209703,
+            "mineral_max": 1.16686,
+            "phase_mass": -1.7551521933012645e-7,
+            "phase_mass_error": -9.89248176508035e-10,
+            "initial_chemical_mass": 12860.986858041022,
+            "chemical_mass": 12860.98697431454,
+            "chemical_mass_absolute_error": 0.00011627351705101319,
+            "chemical_mass_relative_error": 9.040792773869914e-9,
+            "phase_range": [
+                -0.9195031,
+                0.90524226
+            ],
+            "interface_integral": 6184.316859184097,
+            "min_a": 5.5342874e-12,
+            "min_b": 1.5289308e-5
+        },
+        "closed": {
+            "step": 360,
+            "time": 14.399999678134918,
+            "mineral_mass": 758.7758245003573,
+            "mineral_max": 0.76478124,
+            "phase_mass": 1.0255871701481291e-5,
+            "phase_mass_error": -2.3466289577804233e-10,
+            "initial_chemical_mass": 12860.986858041022,
+            "chemical_mass": 12860.986954424487,
+            "chemical_mass_absolute_error": 9.638346455176361e-5,
+            "chemical_mass_relative_error": 7.494251072304158e-9,
+            "phase_range": [
+                -0.91419727,
+                0.89940834
+            ],
+            "interface_integral": 5559.039425556866,
+            "min_a": 5.5719648e-12,
+            "min_b": 4.615242e-5
+        },
+        "half-dt": {
+            "step": 720,
+            "time": 14.399999678134918,
+            "mineral_mass": 756.6856061442346,
+            "mineral_max": 0.7608915,
+            "phase_mass": 4.1119458413603955e-5,
+            "phase_mass_error": 1.9979460967076827e-9,
+            "initial_chemical_mass": 12860.986858041022,
+            "chemical_mass": 12860.98605495409,
+            "chemical_mass_absolute_error": -0.0008030869321373757,
+            "chemical_mass_relative_error": -6.244364767663726e-8,
+            "phase_range": [
+                -0.9155004,
+                0.89973766
+            ],
+            "interface_integral": 5567.428978928295,
+            "min_a": 5.755782e-12,
+            "min_b": 4.997716e-5
+        },
+        "phase-only": {
+            "step": 360,
+            "time": 14.399999678134918,
+            "mineral_mass": 812.0518110810184,
+            "mineral_max": 0.85355043,
+            "phase_mass": 1.7442635644548278e-5,
+            "phase_mass_error": 2.8521296815909506e-10,
+            "initial_chemical_mass": 12860.986858041022,
+            "chemical_mass": 12860.986989568702,
+            "chemical_mass_absolute_error": 0.00013152768042345997,
+            "chemical_mass_relative_error": 1.022687309109763e-8,
+            "phase_range": [
+                -0.9139349,
+                0.8989005
+            ],
+            "interface_integral": 5535.60674761609,
+            "min_a": 5.5744337e-12,
+            "min_b": 7.732779e-5
+        }
+    },
+    "interpretation": "Independent removals of mineral→phase and mineral→transport edges, same initial finite inventories. Global signed-phase and A+B+mineral conservation are checked independently of local update identities. Same-grid half-dt comparison is a temporal sensitivity check, not spatial convergence or a thermodynamic calibration."
+}
