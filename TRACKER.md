@@ -679,3 +679,22 @@ interaction and CPU/Metal fixtures pass; final material relative residual
 −1.28e−10. The paths are designed; thermal exposure, deposition and pressure are
 computed. Reviewed publication brings the gallery to70 specimens/148.67MB.
 Full-resolution photograph takes precedence over the retained320px thumbnail.
+
+### Live exploration and exact transport work avoidance
+
+Native browser controls now apply paused receptor-scale interventions, with
+unchanged physical arrays and separately reachable before/after records.204Julia
+checks,7gatewaychecks and the actual browser gate pass. Fresh bounded user
+workbench on loopback8809 starts paused atstep0; frozen source and original
+wall/idle limits are retained in outputs/native-workbench-live-20261016.
+
+The shared native diffusion kernel skips neighbor arithmetic at exactlyD=0.
+Complete native gains:1.038× sparse64³,1.030× dense64³,1.075× sparse128³;
+CPUreference snapshots and native stenciloracles pass. Sensingfusion gained
+only~0.1% and remains an explicit study; no duplicate production schedule.
+
+Paid uninterrupted-learning mechanics and cadence pass CPU/AMD gates. Current
+EMA-learning pilots hurt late frozen-policy probes; source, alternative credit
+and failed outcomes are preserved. A local predictive baseline is being tested
+as a variance-reduction mechanism, with independent exploration-seed comparison.
+This is engineering work on learnability, not a verdict on possible ecology.

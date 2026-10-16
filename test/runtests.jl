@@ -110,3 +110,7 @@ end
 module NativeLifetimeCreditTests
 include("native_lifetime_credit.jl")
 end
+
+module FeedbackFactorizationTests
+include("feedback_factorization.jl")
+end

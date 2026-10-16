@@ -1,0 +1,83 @@
+{
+    "source": {
+        "kernel_sha256": "38b3a7e0cdaa62a258c22e5cc6c84c99a1ad316ef56ecc418d1c2e533d934eb9",
+        "host_sha256": "1a938948fb14c400876c6848e4389fc432f4cc2a3962903374d2d76fb34f1c99"
+    },
+    "julia": "1.12.4",
+    "threads": 2,
+    "backend": "ROCBackend",
+    "results": {
+        "2048": {
+            "founders": 2048,
+            "grid": [
+                64,
+                64,
+                64
+            ],
+            "capacity": 32768,
+            "steps": 20,
+            "repeats": 5,
+            "ordinary_ms": [
+                12.066217349999999,
+                11.3892994,
+                11.3426638,
+                11.376088450000001,
+                11.387486149999999
+            ],
+            "fused_ms": [
+                11.38222655,
+                11.3738006,
+                11.3536111,
+                11.3133852,
+                11.3693812
+            ],
+            "speedup": 1.0015924305537403,
+            "exact_all_snapshots": false,
+            "physical_max_errors": [
+                9.094947017729282e-13,
+                7.220579689715123e-11,
+                1.7512724603818697e-10,
+                1.7549095510105417e-10,
+                5.960464477539063e-8
+            ],
+            "parity_tolerance": 2.0e-5
+        },
+        "256": {
+            "founders": 256,
+            "grid": [
+                64,
+                64,
+                64
+            ],
+            "capacity": 16384,
+            "steps": 20,
+            "repeats": 5,
+            "ordinary_ms": [
+                8.61896705,
+                8.57879915,
+                8.584602049999999,
+                8.621685,
+                8.60799805
+            ],
+            "fused_ms": [
+                8.57839335,
+                8.60627395,
+                8.5854624,
+                8.597129800000001,
+                8.61720755
+            ],
+            "speedup": 1.001264171910025,
+            "exact_all_snapshots": true,
+            "physical_max_errors": [
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "parity_tolerance": 2.0e-5
+        }
+    },
+    "same_state_exact_sensor_checks": 8,
+    "device_optlevel": "1"
+}

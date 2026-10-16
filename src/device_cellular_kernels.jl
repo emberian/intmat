@@ -64,14 +64,17 @@ end
 @kernel function dc_diffuse!(e,q,g,dt)
     site,k=@index(Global,NTuple)
     if e.status[1]==0
-        pos=dc_coords(site,g.dims);value=e.fields[site,k];flux=zero(value)
-        for d in 1:3
-            if g.dims[d]>1
-                for direction in (-1,1)
-                    neighbor=ntuple(a->a==d ? dc_period(pos[a]+direction,g.dims[a]) : pos[a],3)
-                    j=dc_index(neighbor...,g.dims)
-                    face=(e.permeability[site]+e.permeability[j])*.5f0
-                    flux+=q.diffusion[k]*face*(e.fields[j,k]-value)/g.spacing[d]^2
+        value=e.fields[site,k];flux=zero(value)
+        if q.diffusion[k]!=0
+            pos=dc_coords(site,g.dims)
+            for d in 1:3
+                if g.dims[d]>1
+                    for direction in (-1,1)
+                        neighbor=ntuple(a->a==d ? dc_period(pos[a]+direction,g.dims[a]) : pos[a],3)
+                        j=dc_index(neighbor...,g.dims)
+                        face=(e.permeability[site]+e.permeability[j])*.5f0
+                        flux+=q.diffusion[k]*face*(e.fields[j,k]-value)/g.spacing[d]^2
+                    end
                 end
             end
         end

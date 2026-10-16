@@ -1,0 +1,133 @@
+{
+    "grid64": {
+        "source": {
+            "kernel_sha256": "38b3a7e0cdaa62a258c22e5cc6c84c99a1ad316ef56ecc418d1c2e533d934eb9",
+            "host_sha256": "1a938948fb14c400876c6848e4389fc432f4cc2a3962903374d2d76fb34f1c99"
+        },
+        "julia": "1.12.4",
+        "threads": 2,
+        "backend": "ROCBackend",
+        "optimization": "zero_diffusion_stencil",
+        "results": {
+            "2048": {
+                "founders": 2048,
+                "grid": [
+                    64,
+                    64,
+                    64
+                ],
+                "capacity": 32768,
+                "steps": 20,
+                "repeats": 5,
+                "ordinary_ms": [
+                    12.219981749999999,
+                    11.41181,
+                    11.3905603,
+                    11.39939875,
+                    11.43988695
+                ],
+                "fused_ms": [
+                    11.10697315,
+                    11.0891397,
+                    11.065815,
+                    11.08081895,
+                    11.072239849999999
+                ],
+                "speedup": 1.0298706306360146,
+                "exact_all_snapshots": false,
+                "physical_max_errors": [
+                    9.094947017729282e-13,
+                    1.9198642675632982e-11,
+                    1.9296786391009846e-11,
+                    1.9373169735104057e-11,
+                    1.4901161193847656e-8
+                ],
+                "parity_tolerance": 2.0e-5
+            },
+            "256": {
+                "founders": 256,
+                "grid": [
+                    64,
+                    64,
+                    64
+                ],
+                "capacity": 16384,
+                "steps": 20,
+                "repeats": 5,
+                "ordinary_ms": [
+                    8.6066773,
+                    8.543917449999999,
+                    8.602242200000001,
+                    8.58413595,
+                    8.60408235
+                ],
+                "fused_ms": [
+                    8.27457145,
+                    8.51566265,
+                    8.26603455,
+                    8.28740305,
+                    8.33735525
+                ],
+                "speedup": 1.0379900854466106,
+                "exact_all_snapshots": true,
+                "physical_max_errors": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "parity_tolerance": 2.0e-5
+            }
+        }
+    },
+    "grid128": {
+        "source": {
+            "kernel_sha256": "38b3a7e0cdaa62a258c22e5cc6c84c99a1ad316ef56ecc418d1c2e533d934eb9",
+            "host_sha256": "1a938948fb14c400876c6848e4389fc432f4cc2a3962903374d2d76fb34f1c99"
+        },
+        "julia": "1.12.4",
+        "threads": 2,
+        "backend": "ROCBackend",
+        "optimization": "zero_diffusion_stencil",
+        "results": {
+            "256": {
+                "founders": 256,
+                "grid": [
+                    128,
+                    128,
+                    128
+                ],
+                "capacity": 16384,
+                "steps": 20,
+                "repeats": 5,
+                "ordinary_ms": [
+                    33.8863293,
+                    33.74637955,
+                    33.9039692,
+                    33.6241824,
+                    33.87864245
+                ],
+                "fused_ms": [
+                    31.52747505,
+                    32.40339915,
+                    31.49900245,
+                    32.79931805,
+                    31.483597250000003
+                ],
+                "speedup": 1.0745751886654813,
+                "exact_all_snapshots": true,
+                "physical_max_errors": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "parity_tolerance": 2.0e-5
+            }
+        }
+    },
+    "exact_stencil_checks": 4,
+    "device_optlevel": "1"
+}
