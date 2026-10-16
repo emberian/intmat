@@ -94,3 +94,15 @@ module ConstructiveBatchTests
 include("constructive_world_batches.jl")
 include("device_material_sensing_batches.jl")
 end
+
+module ProportionalDebitTests
+include("cellular_proportional_debit.jl")
+end
+
+module NativeActionCreditTests
+include("native_action_credit.jl")
+end
+
+module NativeWorkbenchTests
+include("native_workbench_worker.jl")
+end

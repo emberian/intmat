@@ -4,7 +4,10 @@ using Serialization
 @kernel function habitat_coarse!(dst,cells,habitat,raw,g,ncoarse)
     site=@index(Global,Linear)
     pos=Interior.dc_coords(Int32(site),(ncoarse,ncoarse,ncoarse));block=div(g.dims[1],ncoarse)
-    sums=ntuple(_->0f0,Val(9))
+    # A uniform accumulator type is required when wide food inventories mix
+    # with Float32 catalysts/bound fields; tuple widening in the loop is not
+    # GPU-compilable. Only the final display observations round to Float32.
+    sums=ntuple(_->0.0,Val(9))
     for z in 1:block,y in 1:block,x in 1:block
         fine=ntuple(d->(pos[d]-Int32(1))*block+(d==1 ? x : d==2 ? y : z),3)
         j=Interior.dc_index(fine...,g.dims)

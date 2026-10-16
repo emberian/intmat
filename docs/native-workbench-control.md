@@ -1,0 +1,165 @@
+# Native workbench control, version1
+
+A fresh resident Julia worker owns two initially identical physical states. The
+`off` branch leaves native sensory slots16–18 zero; `sensing` uses the profile's
+explicit receptor channels/scales. This is a declared law edit at branch creation.
+The worker starts paused and never advances without a finite `step` command. It
+does not resume historical checkpoints, execute browser-supplied code, mutate a
+running law or run a background soak.
+
+```sh
+DEVICE_BACKEND=cpu WORKBENCH_SIDE=8 julia --project=. \
+  scripts/native_workbench_worker.jl \
+  experiments/native/constructed-garden-material-sensing-64.toml FRESH_DIRECTORY
+```
+
+Native AMD uses the existing pinned environment and host resource wrapper in
+`hbox-runtime.md`, including the compiler workaround when needed. The script's
+network interface is intentionally empty. A separate loopback, same-origin HTTP
+gateway writes only one in-flight `command.json` atomically. The worker reads at
+most4096bytes. Expose observation JSON/binary files through the gateway, never
+checkpoint `.jls` files. Public Pages can display recordings without this worker.
+
+## Request and acknowledgement
+
+```json
+{"id":"a-unique-command-id","action":"step","branch":"both","steps":100,"requested_at":1792110000}
+```
+
+IDs contain1–80 ASCII letters, digits, underscores or hyphens. Allowed keys are
+`id`, `action`, `branch`, `steps`, `requested_at`. Branch is `off`, `sensing` or
+`both` (default). `steps` is a positive integer only for the step action; booleans,
+unknown fields and arbitrary expressions are rejected.
+
+| Action | Effect at a complete step boundary |
+|---|---|
+| `describe` | Acknowledge current branches; physical configuration is in `worker.json` |
+| `observe` | Publish immutable actual blockmean fields and cell state |
+| `step` | Advance selected branches by the requested bounded count; publish actual observations afterward |
+| `pause` | Acknowledge paused state; all branches are already paused between finite commands |
+| `checkpoint` | Write a strict complete native checkpoint with source and content hash |
+| `stop` | Stop accepting new work and let the worker exit |
+
+`control.json` contains `id`, `ok`, `accepted`, `status` (`completed`, `rejected`
+or `failed`), `message`, `sequence`, and actual branch clocks and pointers. An
+acknowledgement appears after completion or failure, never merely after a request
+was queued. Duplicate identical IDs return the original acknowledgement without
+repeating steps. Reusing an ID with different content is rejected. This guarantee
+is scoped to the resident session; a crashed worker cannot be restarted over its
+output directory. `commands.jsonl` preserves requests and acknowledgements.
+
+Preflight errors do not change physics. A runtime failure may leave a partial
+state; that branch is flagged failed and cannot be observed or checkpointed. A
+wall deadline can interrupt a requested pair between complete steps; the
+acknowledgement reports actual clocks, not the requested target. Previously
+published observations and checkpoints remain immutable. Pause does not promise
+interrupting a command in mid-kernel: keep commands small enough for interaction.
+
+## Bounds and publication
+
+The CLI publishes `worker.json` with `status: "starting"` before loading Interior
+and compiling the native factory. This initial manifest has no branch state or
+limits yet; the gateway and browser reject/disable commands until `ready`. Its
+fresh directory can be adopted only with the startup token from the same process,
+before any state exists. Initialization counts toward the wall deadline; the idle
+clock starts after initial observations are complete. Initialization failures
+caught by the CLI publish a stopped reason and preserve any existing evidence.
+
+After initialization, `worker.json` reports `status` (`ready`, `running`, `stopped`), `stop_reason`, source
+pins, recipe, receptor parameters, step size, branches and finite `limits`. Driver,
+factory and observation-helper hashes are frozen when the worker loads, so later
+source edits cannot relabel a resident process. Limits are:
+`max_steps` per branch4096, `max_steps_per_command`256, `max_model_time`64,
+`wall_seconds`900, `idle_seconds`120, `artifact_bytes`512000000 and
+`max_commands`128. Display side defaults8 and must divide the simulation grid.
+The Julia constructor accepts other explicit positive finite limits for tests or
+a separately bounded launch; browser commands cannot increase them. Device and
+host memory controls remain the launcher's responsibility.
+
+Each branch has `branches/NAME/observatory.json`, schema
+`native-garden-observatory-1`. Entries point to immutable
+`frames/00001/frame.json` and `state.bin`, with the existing
+`native-garden-observatory-frame-1` schema. Arrays are column-major with explicit
+shape/type/offset and little/big endianness; the binary has a SHA256 hash. All nine
+existing habitat channels are Float32 blockmean concentration observations,
+including dimensionless permeability. Cells, bonds, identities, hidden state,
+actions and final-step secretion are separate arrays; `material_inputs` adds the
+three actual receptor values. Display interpolation never becomes simulation
+resolution. The existing native observatory renderer can consume these indices.
+
+Strict checkpoints live in `checkpoints/`, and observation export is never used
+as restart state. The worker keeps native state resident, transfers only display
+blockmeans plus cell records, and synchronizes observation after complete steps.
+There is no racing GPU write during export. Artifact reservations precede new
+files; command count, step/model-time caps, idle and wall deadlines bound the
+session independently. Stopping does not automatically create a final checkpoint:
+request one explicitly at a desired complete boundary.
+
+## Exercised vertical slice
+
+The [16³ miniature profile](../experiments/native/constructed-garden-workbench-16.toml)
+uses four founders and matching per-volume concentrations/source funding; it
+changes domain size and uses a study timestep.01. A CPU integration test covers
+paired state identity, bounded steps, rejected commands, duplicate acknowledgements,
+strict checkpoint restoration, actual viewer-compatible arrays, file hashes,
+artifact and total-step limits, pause and stop. A separate blockmean reference
+checks both inventory precisions against direct concentration averages.
+
+The native RX6750XT protocol gate executed nine commands: describe, paired16-step
+advance, checkpoint, pause, observation, sensing-only8-step advance, checkpoint,
+rejected over-budget257-step request, stop. The final clocks are16 and24 steps;
+six immutable8³ observations have verified binary hashes. Final checkpoint
+material error≤1.78e−15 and potential≤3.11e−15. The first paired advance took12.67s
+including compilation; the warm8-step command acknowledged in.151s including
+polling/export. These are protocol latencies, not sustained throughput measures.
+No worker remains running from this test.
+
+[Compact native evidence](../benchmarks/2026-10-16-native-workbench-protocol.json)
+records the exact source pins and bounded host controls. Full protocol report,
+logs and source list are in `outputs/native-workbench-20261016`; the immutable
+host stage is `/othersys/tmp/intmat-probe-20261014/workbench-v2-20261016`. The
+first failed stage is retained. It exposed a pre-existing capture helper issue:
+Float32 tuple accumulators widened heterogeneously when reading Float64 inventory
+fields, producing unsupported dynamic tuple operations on AMD. Uniform Float64
+accumulation now rounds only the final Float32 display observations. This repair
+changes observation rounding, never physical simulation state. The gate pins its
+own source, independent of later physiological changes in concurrent work.
+
+The native v2 gate predates the metadata-only loaded-hash correction; its exact
+executed driver is retained as `outputs/native-workbench-20261016/worker-v2-executed.jl`.
+The repaired manifest's four loaded-pin assertions pass independently. Native
+physics and command semantics are unchanged by this correction.
+
+
+## Browser control gate
+
+The loopback gateway serves the paired workbench and each branch through the
+existing native observatory viewer. Embedded headers are compact; status and
+errors remain visible. Standalone observatories retain their original layout.
+
+```sh
+python3 scripts/serve_native_workbench.py FRESH_DIRECTORY --port 8807
+```
+
+An isolated browser controlled a fresh CPU pair from the frozen source in
+`outputs/native-workbench-ui-source-v2-20261016`: advance both 16 steps, advance
+sensing 8 more, checkpoint sensing, stop. Actual viewer clocks ended at 16/24
+steps with four cells each; each 8³ field export contained 4,608 values, and each
+hidden-state array contained 32 values. Checkpoint downloads returned HTTP404,
+257-step requests HTTP400, and there were no browser or observer errors. This
+checks end-to-end control and export, not ecological usefulness.
+
+Full source hashes, command acknowledgements and checkpoints remain in the source
+stage and `outputs/native-workbench-ui-v2-20261016`. Browser results and reviewed
+screenshots are in `outputs/native-workbench-ui-review-20261016`. The worker was
+stopped; port 8807 serves the preserved observations.
+
+`test_native_workbench_browser.cjs` exercises a fresh live pair.
+`test_native_workbench_display.cjs` is read-only: it uses an explicitly synthetic
+starting-status fixture, then displays the actual stopped session. This checks
+disabled controls and compact embedded status without another simulation.
+
+The final isolated Julia module gate passed 179 checks; six HTTP gateway checks
+and five lightweight startup ownership/failure checks also pass.
+[Compact browser evidence](../benchmarks/2026-10-16-native-workbench-browser.json)
+keeps the actual run source pins distinct from the later startup/layout-only gates.

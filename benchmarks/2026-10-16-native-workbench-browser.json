@@ -1,0 +1,62 @@
+{
+  "schema": "interior-native-workbench-browser-evidence-1",
+  "backend": "Julia CPU, two threads",
+  "source_stage": "outputs/native-workbench-ui-source-v2-20261016",
+  "session": "outputs/native-workbench-ui-v2-20261016",
+  "source_pins": {
+    "model": "1a938948fb14c400876c6848e4389fc432f4cc2a3962903374d2d76fb34f1c99",
+    "initialization": "766dfedbdbf5b4dbbb99ed5e9336a16747fa08752a84af3268fc7c98c613613a",
+    "founder_initialization": "d76e4c791a2c56bc7fd651b1836e6879b9e27013566ce6d94a1d2f677f62e633",
+    "support": "5a767b83c2c912d8706468ec7c5b86e56cf99430b2a23dfd3a7f3ee8f21bf55b",
+    "lifecycle": "8826c577e960db6596cd923a591d806b185908a254c6cc0fb6b0eebb033a9629",
+    "resource": "ac72b2db1dfa448446df0ae44840ba05933f1d8fb13c639f9e2cd3b3a7e41223",
+    "kernels": "38b3a7e0cdaa62a258c22e5cc6c84c99a1ad316ef56ecc418d1c2e533d934eb9",
+    "checkpoint": "81c8538519e5d0c58eb8bc0b6e49be7eec87119f81b7fcd998b6944f02c68503",
+    "protocol": "52632744615956c0e4c613e010b8fa4ba08c396e46e03d7ef5ec15f037e8199d"
+  },
+  "driver_sha256": "1735316a9d9cf50af59053a3410bcf3cded6ae705e2e324609b684bceb522b3b",
+  "browser_report_sha256": "e5352b4363ff66dbacfa8d01b9f14c3ed0e4c37ef71d0607553d28c454cc329d",
+  "final_steps": {
+    "off": 16,
+    "sensing": 24
+  },
+  "views": [
+    {
+      "step": 16,
+      "population": 4,
+      "shape": [
+        8,
+        8,
+        8
+      ],
+      "fieldValues": 4608,
+      "hiddenValues": 32,
+      "error": "",
+      "stamp": "t 0.16 \u00b7 4 cells \u00b7 8 \u00d7 8 \u00d7 8"
+    },
+    {
+      "step": 24,
+      "population": 4,
+      "shape": [
+        8,
+        8,
+        8
+      ],
+      "fieldValues": 4608,
+      "hiddenValues": 32,
+      "error": "",
+      "stamp": "t 0.24 \u00b7 4 cells \u00b7 8 \u00d7 8 \u00d7 8"
+    }
+  ],
+  "browser_errors": [],
+  "checkpoint_http_status": 404,
+  "oversized_http_status": 400,
+  "status": "stopped",
+  "later_metadata_only_gates": {
+    "isolated_julia_checks": 179,
+    "gateway_checks": 6,
+    "startup_ownership_and_failure_checks": 5,
+    "display": "synthetic starting fixture then actual stopped frames; no commands; compact header status visible"
+  },
+  "scope": "Finite protocol/export/control integration. No ecological conclusion or throughput claim. Actual frozen browser run predates early-starting publication and compact-header changes."
+}

@@ -1,0 +1,559 @@
+{
+  "schema": "interior-native-workbench-protocol-evidence-1",
+  "stage": "/othersys/tmp/intmat-probe-20261014/workbench-v2-20261016",
+  "backend": "AMDGPU ROCBackend, RX6750XT, Julia1.12.4, process-local optlevel1",
+  "controls": {
+    "cpus": "10-11",
+    "memory": "8GiB",
+    "swap": false,
+    "nice": 15,
+    "external_wall_seconds": 600
+  },
+  "source": {
+    "model": "1a938948fb14c400876c6848e4389fc432f4cc2a3962903374d2d76fb34f1c99",
+    "initialization": "766dfedbdbf5b4dbbb99ed5e9336a16747fa08752a84af3268fc7c98c613613a",
+    "founder_initialization": "d76e4c791a2c56bc7fd651b1836e6879b9e27013566ce6d94a1d2f677f62e633",
+    "support": "5a767b83c2c912d8706468ec7c5b86e56cf99430b2a23dfd3a7f3ee8f21bf55b",
+    "lifecycle": "8826c577e960db6596cd923a591d806b185908a254c6cc0fb6b0eebb033a9629",
+    "resource": "ac72b2db1dfa448446df0ae44840ba05933f1d8fb13c639f9e2cd3b3a7e41223",
+    "kernels": "3a0d576ab8ea091c075c38b0625026222f48e1c5fb6e919334c2d6eb42511782",
+    "checkpoint": "81c8538519e5d0c58eb8bc0b6e49be7eec87119f81b7fcd998b6944f02c68503",
+    "protocol": "52632744615956c0e4c613e010b8fa4ba08c396e46e03d7ef5ec15f037e8199d"
+  },
+  "habitat_source": {
+    "helper": "5753f0cf5065345cf08fb9a2501d87aad4f6eff13183fd344e8f53dfe736aa41",
+    "kernels": "b89543752488d8cab09412d928b2a452e4474b9fe42e63ef1058152ab6351759",
+    "sorption": "3811fd3627906823a01f2afb2e6693bb6aec99c37bb10bfb72d43c85f8b4ad08"
+  },
+  "driver_sha256": "cdef94856e63ec0b27772317abbe7b465f4a072133a1828670e8c521738c3fdf",
+  "capture_helper_sha256": "c67e10e49986cc376dc7db38daaa542edc1ab0354bf1b97b50abfdd063982aac",
+  "protocol_driver_sha256": "a0fff0940fb7047562d0240093d57bc9d86c994a9d105ae6f325269a84e6ec7e",
+  "report_sha256": "7e03a361c829d56f141e1aad6490bb748e08b14758437c28bfe0928703125bff",
+  "commands": [
+    {
+      "action": "describe",
+      "branch": "both",
+      "steps": null,
+      "status": "completed",
+      "ack_seconds": 1.6569558307528496
+    },
+    {
+      "action": "step",
+      "branch": "both",
+      "steps": 16,
+      "status": "completed",
+      "ack_seconds": 12.666267330758274
+    },
+    {
+      "action": "checkpoint",
+      "branch": "both",
+      "steps": null,
+      "status": "completed",
+      "ack_seconds": 0.15092521999031305
+    },
+    {
+      "action": "pause",
+      "branch": "both",
+      "steps": null,
+      "status": "completed",
+      "ack_seconds": 0.10055895056575537
+    },
+    {
+      "action": "observe",
+      "branch": "off",
+      "steps": null,
+      "status": "completed",
+      "ack_seconds": 0.15080165397375822
+    },
+    {
+      "action": "step",
+      "branch": "sensing",
+      "steps": 8,
+      "status": "completed",
+      "ack_seconds": 0.1508785542100668
+    },
+    {
+      "action": "checkpoint",
+      "branch": "sensing",
+      "steps": null,
+      "status": "completed",
+      "ack_seconds": 0.10054574348032475
+    },
+    {
+      "action": "step",
+      "branch": "both",
+      "steps": 257,
+      "status": "rejected",
+      "ack_seconds": 0.1507996628060937
+    },
+    {
+      "action": "stop",
+      "branch": "both",
+      "steps": null,
+      "status": "completed",
+      "ack_seconds": 0.10054548643529415
+    }
+  ],
+  "frames": {
+    "off": [
+      {
+        "time": 0.0,
+        "step": 0,
+        "population": 4,
+        "shape": [
+          8,
+          8,
+          8
+        ],
+        "binary_bytes": 19296,
+        "binary_sha256": "048d993e6dc369eca88e52bc9bab582b0311a50ade8c688d3336e804aebde135"
+      },
+      {
+        "time": 0.1599999964237213,
+        "step": 16,
+        "population": 4,
+        "shape": [
+          8,
+          8,
+          8
+        ],
+        "binary_bytes": 19296,
+        "binary_sha256": "0d279703bfa2927d1115030ee0da3bd68e3889e772c0950ba456d5daa4ab6db0"
+      },
+      {
+        "time": 0.1599999964237213,
+        "step": 16,
+        "population": 4,
+        "shape": [
+          8,
+          8,
+          8
+        ],
+        "binary_bytes": 19296,
+        "binary_sha256": "0d279703bfa2927d1115030ee0da3bd68e3889e772c0950ba456d5daa4ab6db0"
+      }
+    ],
+    "sensing": [
+      {
+        "time": 0.0,
+        "step": 0,
+        "population": 4,
+        "shape": [
+          8,
+          8,
+          8
+        ],
+        "binary_bytes": 19296,
+        "binary_sha256": "048d993e6dc369eca88e52bc9bab582b0311a50ade8c688d3336e804aebde135"
+      },
+      {
+        "time": 0.1599999964237213,
+        "step": 16,
+        "population": 4,
+        "shape": [
+          8,
+          8,
+          8
+        ],
+        "binary_bytes": 19296,
+        "binary_sha256": "7c21a5683f9612afe20ffb917cc2959ef88278baec8a3e651d14c27df8115be8"
+      },
+      {
+        "time": 0.23999999463558197,
+        "step": 24,
+        "population": 4,
+        "shape": [
+          8,
+          8,
+          8
+        ],
+        "binary_bytes": 19296,
+        "binary_sha256": "6bc9582b2ee8fb39cdd424491c8b6204d7b83ac2b8b06b5de3e2f5133266f9dc"
+      }
+    ]
+  },
+  "final": {
+    "schema": "interior-native-workbench-1",
+    "status": "stopped",
+    "stop_reason": "stop command",
+    "actions": [
+      "describe",
+      "observe",
+      "step",
+      "pause",
+      "checkpoint",
+      "stop"
+    ],
+    "limits": {
+      "max_steps": 4096,
+      "max_steps_per_command": 256,
+      "max_model_time": 64.0,
+      "wall_seconds": 900.0,
+      "idle_seconds": 120.0,
+      "artifact_bytes": 512000000,
+      "max_commands": 128
+    },
+    "dt": 0.01,
+    "side": 8,
+    "source": {
+      "model": "1a938948fb14c400876c6848e4389fc432f4cc2a3962903374d2d76fb34f1c99",
+      "initialization": "766dfedbdbf5b4dbbb99ed5e9336a16747fa08752a84af3268fc7c98c613613a",
+      "founder_initialization": "d76e4c791a2c56bc7fd651b1836e6879b9e27013566ce6d94a1d2f677f62e633",
+      "support": "5a767b83c2c912d8706468ec7c5b86e56cf99430b2a23dfd3a7f3ee8f21bf55b",
+      "lifecycle": "8826c577e960db6596cd923a591d806b185908a254c6cc0fb6b0eebb033a9629",
+      "resource": "ac72b2db1dfa448446df0ae44840ba05933f1d8fb13c639f9e2cd3b3a7e41223",
+      "kernels": "3a0d576ab8ea091c075c38b0625026222f48e1c5fb6e919334c2d6eb42511782",
+      "checkpoint": "81c8538519e5d0c58eb8bc0b6e49be7eec87119f81b7fcd998b6944f02c68503",
+      "protocol": "52632744615956c0e4c613e010b8fa4ba08c396e46e03d7ef5ec15f037e8199d"
+    },
+    "habitat_source": {
+      "helper": "5753f0cf5065345cf08fb9a2501d87aad4f6eff13183fd344e8f53dfe736aa41",
+      "kernels": "b89543752488d8cab09412d928b2a452e4474b9fe42e63ef1058152ab6351759",
+      "sorption": "3811fd3627906823a01f2afb2e6693bb6aec99c37bb10bfb72d43c85f8b4ad08"
+    },
+    "driver_sha256": "cdef94856e63ec0b27772317abbe7b465f4a072133a1828670e8c521738c3fdf",
+    "config": {
+      "cellular": {
+        "hidden": 8,
+        "capacity": 256,
+        "energy": 1.0,
+        "metabolites": 0.12,
+        "adaptation_strength": 1.5,
+        "founders": 4,
+        "adaptation_time": 8.0,
+        "biomass": 1.6,
+        "exchange_radius": 0.18,
+        "mutation": 0.08,
+        "mutation_probability": 0.03,
+        "density": 128.0,
+        "speed": 0.06,
+        "junction_rate": 0.8,
+        "basal_rate": 0.008
+      },
+      "catalysis": {
+        "secretion_work": 0.2,
+        "investment_bias": -0.8,
+        "allocation_exponent": 2.0,
+        "half_saturation": 0.2,
+        "catalytic_rate": 6.0,
+        "allocation_bias_scale": 1.2,
+        "secretion_rate": 0.12,
+        "decay_rate": 0.008,
+        "mutation": 0.08,
+        "mutation_probability": 0.03,
+        "regulation": true
+      },
+      "native": {
+        "support_strategy": "materialized",
+        "mechanical_substeps": 16,
+        "energy_type": "Float64",
+        "inventory_type": "Float64",
+        "radius_bound": 2.0,
+        "check_every": 8,
+        "bin_width": 0.25,
+        "dt": 0.01
+      },
+      "run": {
+        "metrics_seconds": 5.0,
+        "target_time": 64.0,
+        "checkpoint_seconds": 120.0,
+        "capture_time": 0.2,
+        "native_capture_time": 16.0,
+        "artifact_budget_bytes": 4000000000,
+        "ledger_relative_tolerance": 0.0001,
+        "wall_seconds": 900.0,
+        "coarse_side": 8
+      },
+      "feedstock": {
+        "potentials": [
+          4.0,
+          4.0
+        ],
+        "diffusion": [
+          0.0,
+          0.0
+        ],
+        "sink_rates": [
+          0.0,
+          0.0
+        ],
+        "initial": [
+          2.0,
+          2.0
+        ],
+        "source_rates": [
+          0.015625,
+          0.015625
+        ],
+        "sink_budgets": [
+          0.0,
+          0.0
+        ],
+        "source_budgets": [
+          23.4375,
+          23.4375
+        ],
+        "niche_contrast": 0.7
+      },
+      "matrix": {
+        "capacity_per_enzyme": 6.0,
+        "transport_barrier": 20.0,
+        "desorption_rate": 0.12,
+        "cross_binding": 0.0,
+        "adsorption_rate": 4.0
+      },
+      "seed": 211,
+      "grid": {
+        "shape": [
+          16,
+          16,
+          16
+        ],
+        "extent": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "material_sensing": {
+        "channels": [
+          "raw_total",
+          "bound_total",
+          "catalyst_total"
+        ],
+        "scales": [
+          4.0,
+          0.02,
+          0.004
+        ]
+      },
+      "resources": {
+        "diffusion": [
+          0.006,
+          0.006,
+          0.001
+        ],
+        "sink_rates": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "initial": [
+          0.3,
+          0.3,
+          0.0
+        ],
+        "source_rates": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "sink_budgets": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "source_budgets": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "potentials": [
+          4.0,
+          4.0,
+          0.0
+        ]
+      }
+    },
+    "branches": {
+      "off": {
+        "step": 16,
+        "time": 0.1599999964237213,
+        "paused": true,
+        "failed": false,
+        "latest_observation": {
+          "file": "branches/off/frames/00005/frame.json",
+          "sha256": "859fd68882bc8d4c22553729949752859d078617c5564763e9ad506ad15a6e4d",
+          "step": 16,
+          "time": 0.1599999964237213,
+          "population": 4,
+          "binary_bytes": 19296,
+          "source_sha256": "0d279703bfa2927d1115030ee0da3bd68e3889e772c0950ba456d5daa4ab6db0",
+          "side": 8,
+          "native_shape": [
+            16,
+            16,
+            16
+          ]
+        },
+        "latest_checkpoint": {
+          "file": "checkpoints/off-00003.jls",
+          "sha256": "f9a49a5dbf985d93250007bd4922266796d478d48643ca1c8a8041b242907b63",
+          "bytes": 4105683,
+          "step": 16,
+          "time": 0.1599999964237213,
+          "accounting": {
+            "audit": {
+              "material": 11.965000023733738,
+              "potential": 24.694085930148482,
+              "work": 0.09126040373250768,
+              "heat": 1.4746537610539594,
+              "supplied": 0.00499999989187927,
+              "removed": 0.0,
+              "supplied_potential": 0.01999999956751708,
+              "removed_potential": 0.0,
+              "population": 4,
+              "completed_steps": 16,
+              "secreted": [
+                0.0007464581507777602,
+                0.032642378541569386
+              ],
+              "solubilized": [
+                0.00034288170895981594,
+                0.013047377967499892
+              ],
+              "bound": [
+                5.857076622390627e-05,
+                0.003455915813893105
+              ],
+              "enzyme": [
+                0.0007459507876539809,
+                0.032620289208303024
+              ],
+              "inert": 4.2345718132084237e-16,
+              "finite": true
+            },
+            "material_error": 1.7763568394002505e-15,
+            "potential_error": 6.661338147750939e-16
+          }
+        },
+        "material_parameters": {
+          "secretion_rate": 0.12,
+          "secretion_work": 0.2,
+          "allocation_exponent": 2.0,
+          "catalytic_rate": 6.0,
+          "half_saturation": 0.2,
+          "decay_rate": 0.008,
+          "investment_bias": -0.8,
+          "allocation_bias_scale": 1.2,
+          "mutation": 0.08,
+          "mutation_probability": 0.03,
+          "regulation": true,
+          "capacity_per_enzyme": 6.0,
+          "adsorption_rate": 4.0,
+          "desorption_rate": 0.12,
+          "cross_binding": 0.0,
+          "transport_barrier": 20.0,
+          "seed": 211,
+          "food_potentials": [
+            4.0,
+            4.0,
+            0.0
+          ]
+        }
+      },
+      "sensing": {
+        "step": 24,
+        "time": 0.23999999463558197,
+        "paused": true,
+        "failed": false,
+        "latest_observation": {
+          "file": "branches/sensing/frames/00006/frame.json",
+          "sha256": "d438e8ae6e13ec68b310ad706b6592913cfee44e521295d8e2d65f48a86c8a2b",
+          "step": 24,
+          "time": 0.23999999463558197,
+          "population": 4,
+          "binary_bytes": 19296,
+          "source_sha256": "6bc9582b2ee8fb39cdd424491c8b6204d7b83ac2b8b06b5de3e2f5133266f9dc",
+          "side": 8,
+          "native_shape": [
+            16,
+            16,
+            16
+          ]
+        },
+        "latest_checkpoint": {
+          "file": "checkpoints/sensing-00007.jls",
+          "sha256": "9477fa9d855d34812030da3f4de0ba7b95a9d354df595039b99ee3147324b318",
+          "bytes": 4105747,
+          "step": 24,
+          "time": 0.23999999463558197,
+          "accounting": {
+            "audit": {
+              "material": 11.967500023679676,
+              "potential": 24.122101793747436,
+              "work": 0.1359399148184904,
+              "heat": 2.0119583861527834,
+              "supplied": 0.007499999837818905,
+              "removed": 0.0,
+              "supplied_potential": 0.02999999935127562,
+              "removed_potential": 0.0,
+              "population": 4,
+              "completed_steps": 24,
+              "secreted": [
+                0.0009432210108800492,
+                0.04648437561730204
+              ],
+              "solubilized": [
+                0.0007189733745486273,
+                0.025634552419620756
+              ],
+              "bound": [
+                0.00010523742689065238,
+                0.007038910285405542
+              ],
+              "enzyme": [
+                0.0009421541445190692,
+                0.04643628254670584
+              ],
+              "inert": 3.9514764615770914e-16,
+              "finite": true
+            },
+            "material_error": 0.0,
+            "potential_error": 3.1086244689504383e-15
+          }
+        },
+        "material_parameters": {
+          "secretion_rate": 0.12,
+          "secretion_work": 0.2,
+          "allocation_exponent": 2.0,
+          "catalytic_rate": 6.0,
+          "half_saturation": 0.2,
+          "decay_rate": 0.008,
+          "investment_bias": -0.8,
+          "allocation_bias_scale": 1.2,
+          "mutation": 0.08,
+          "mutation_probability": 0.03,
+          "regulation": true,
+          "capacity_per_enzyme": 6.0,
+          "adsorption_rate": 4.0,
+          "desorption_rate": 0.12,
+          "cross_binding": 0.0,
+          "transport_barrier": 20.0,
+          "seed": 211,
+          "food_potentials": [
+            4.0,
+            4.0,
+            0.0
+          ],
+          "material_channels": [
+            3,
+            7,
+            11
+          ],
+          "material_scales": [
+            4.0,
+            0.02,
+            0.004
+          ]
+        }
+      }
+    },
+    "commands_completed": 9,
+    "started_unix": 1792113245.801054,
+    "wall_deadline_unix": 1792114145.801054,
+    "wall_elapsed": 36.20718502998352,
+    "note": "Paused between finite commands; observations are block means, never restart state."
+  },
+  "limits": "Protocol completion and observation/accounting checks, not ecological inference or throughput benchmark. First step includes compilation; later acknowledgement latency includes .1s polling and exports."
+}
