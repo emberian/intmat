@@ -115,3 +115,62 @@ policy can therefore contribute to the observed loss alongside estimator noise.
 The next comparison includes another matched exploration seed and measures
 baseline prediction error and update magnitude, rather than attributing the
 terminal outcome to one mechanism in advance.
+
+## Local predictive baseline
+
+The opt-in `critic=true` mode adds eight private Float32 coefficients. At the
+start of each reward window, before sampling its first action noise, the resident
+records features `x=(1,f_A,f_B,U/2,r_previous/.1,Δr_previous/.1,Δf_A,Δf_B)`.
+Food values are the existing bounded native sensors. It freezes the prediction
+`b=θ⋅x` for that whole window. No evaluator context, future observation, or
+counterfactual simulation enters this baseline.
+
+After observing the return, it proposes normalized LMS regression:
+`θ'=clip(θ+clip(.3(r−b)x/(1e−4+||x||²),−.05,.05),−.3,.3)`.
+This predicts a finite-window local return; it is not a bootstrapped long-horizon
+value function. Actor credit uses the previously frozen prediction. The first
+window still calibrates without actor learning, but can train the predictor.
+The exact coefficient changes cost another `κ sum(abs(θ'−θ))`, using the same
+explicit κ=.001 work price. Actor and predictor changes are committed together
+only if the battery can pay their combined representable cost. The no-credit
+control trains and pays its predictor with zero actor rate; reversed credit
+reverses only actor credit. Frozen learned/erased probes train neither component.
+
+The bounded comparison uses exploration seeds6201 and6277 in founder bank211,
+with matched controls. Besides same-state transfer, it records prediction error
+against the simultaneously maintained EMA, squared credit-estimator norm
+`(r−b)²||E||²`, and the count of actor components exceeding the .01 proposal cap.
+Lower return-prediction error alone need not imply lower policy-gradient
+variance or better late transfer. These separate measurements distinguish
+prediction quality, noisy credit, clipping, and changing task preferences.
+
+The [bounded predictive comparison](../figures/native-lifetime-credit-predictive.json)
+completed both exploration seeds. Excluding the calibration window, the no-actor-
+credit predictor's return MSE was.000121 versus simultaneous EMA.000951 for
+seed6201, and.000117 versus.000814 forseed6277. Forseed6277, mean squared
+credit-estimator norm fell from6.71 in the EMA run to.979 with prediction. No
+actor component reached the update cap. Total predictor turnover in the no-credit
+arm cost about.00021 across all four residents over24 time units.
+
+| Baseline / exploration seed | Frozen learned−erased, sham | Food displacement |
+|---|---:|---:|
+| EMA /6201 |−.000299|−.000348|
+| EMA /6277 |−.00000168|−.000161|
+| Predictor /6201 |−.000165|−.000284|
+| Predictor /6277 |+.00000501|−.0000194|
+
+The predictor improves return prediction and reduces observed squared credit
+magnitude in these runs; this is not an independent gradient-variance estimate. Useful late learned behavior is still unestablished. The alternate noise
+sequence produces materially different results, and the late depleted state
+need not reward the same policy as earlier feeding windows. A constructive next
+task should establish an actual delayed material payoff—such as paid catalyst
+secretion followed by locally harvestable release—then match eligibility to its
+measured payback lag. This avoids interpreting short intake gains as cooperation
+or tuning a baseline to an arbitrary terminal curve.
+
+The [predictive CPU/AMD gate](../figures/native-lifetime-credit-predictive-gpu.json)
+passes both baseline modes at both physics timesteps. Maximum predictor
+coefficient discrepancy is9.32e−10, learned actor discrepancy1.40e−9, and
+potential residual2.18e−14. All four cases retain20 decisions and2 reward windows.
+These sources are frozen before the separate zero-diffusion fastpath work;
+their physical source pins are retained rather than relabeled as current code.

@@ -1,0 +1,158 @@
+{
+    "schema": "native-lifetime-credit-gpu-v2",
+    "results": [
+        {
+            "critic": false,
+            "dt": 0.02,
+            "errors": {
+                "hidden": 2.086162567138672e-7,
+                "metabolites": 0,
+                "actions": 1.862645149230957e-7,
+                "energy": 1.0961722640701055e-8
+            },
+            "sidecar": {
+                "paid": 1.1942447031287884e-11,
+                "trace": 0,
+                "previous": 1.0949780193669767e-8,
+                "prediction": 0,
+                "critic": 0,
+                "learned": 1.3969838619232178e-9,
+                "baseline": 9.747691508132927e-10,
+                "drive": 1.1920928955078125e-7
+            },
+            "cpu_residual": {
+                "material": 0,
+                "potential": -6.661338147750939e-16
+            },
+            "gpu_residual": {
+                "material": 0,
+                "potential": -6.217248937900877e-15
+            },
+            "decisions": 20,
+            "reward_windows": 2,
+            "cpu_seconds": 9.933740854263306,
+            "gpu_seconds": 14.755006074905396
+        },
+        {
+            "critic": true,
+            "dt": 0.02,
+            "errors": {
+                "hidden": 2.086162567138672e-7,
+                "metabolites": 0,
+                "actions": 2.0116567611694336e-7,
+                "energy": 2.0426937918927024e-9
+            },
+            "sidecar": {
+                "paid": 4.6211923176997516e-12,
+                "trace": 0,
+                "previous": 2.047314984210402e-9,
+                "prediction": 4.656612873077393e-10,
+                "critic": 4.656612873077393e-10,
+                "learned": 4.0745362639427185e-10,
+                "baseline": 1.6130165640670935e-9,
+                "drive": 1.1920928955078125e-7
+            },
+            "cpu_residual": {
+                "material": 1.7763568394002505e-15,
+                "potential": 2.220446049250313e-16
+            },
+            "gpu_residual": {
+                "material": 1.7763568394002505e-15,
+                "potential": 8.881784197001252e-15
+            },
+            "decisions": 20,
+            "reward_windows": 2,
+            "cpu_seconds": 1.226302146911621,
+            "gpu_seconds": 0.8451719284057617
+        },
+        {
+            "critic": false,
+            "dt": 0.01,
+            "errors": {
+                "hidden": 1.7881393432617188e-7,
+                "metabolites": 0,
+                "actions": 5.960464477539063e-8,
+                "energy": 1.227655088698043e-9
+            },
+            "sidecar": {
+                "paid": 2.1864732246967833e-12,
+                "trace": 0,
+                "previous": 1.2254686154733463e-9,
+                "prediction": 0,
+                "critic": 0,
+                "learned": 9.313225746154785e-10,
+                "baseline": 9.56987322719982e-10,
+                "drive": 5.960464477539063e-8
+            },
+            "cpu_residual": {
+                "material": 1.7763568394002505e-15,
+                "potential": -4.440892098500626e-16
+            },
+            "gpu_residual": {
+                "material": 0,
+                "potential": -1.4210854715202004e-14
+            },
+            "decisions": 20,
+            "reward_windows": 2,
+            "cpu_seconds": 2.173849105834961,
+            "gpu_seconds": 1.6925468444824219
+        },
+        {
+            "critic": true,
+            "dt": 0.01,
+            "errors": {
+                "hidden": 4.3213367462158203e-7,
+                "metabolites": 0,
+                "actions": 2.5779008865356445e-6,
+                "energy": 1.3047831703971724e-9
+            },
+            "sidecar": {
+                "paid": 5.307310146918098e-12,
+                "trace": 0,
+                "previous": 1.2994758602502543e-9,
+                "prediction": 2.3283064365386963e-10,
+                "critic": 9.313225746154785e-10,
+                "learned": 9.529230737825856e-10,
+                "baseline": 9.717887744509213e-10,
+                "drive": 5.364418029785156e-7
+            },
+            "cpu_residual": {
+                "material": 0,
+                "potential": -2.1760371282653068e-14
+            },
+            "gpu_residual": {
+                "material": 0,
+                "potential": -1.532107773982716e-14
+            },
+            "decisions": 20,
+            "reward_windows": 2,
+            "cpu_seconds": 1.9340569972991943,
+            "gpu_seconds": 1.6815710067749023
+        }
+    ],
+    "runtime": {
+        "julia": "1.12.4",
+        "kernel": "Linux",
+        "architecture": "x86_64",
+        "launch_threads": 2,
+        "backend": "amd",
+        "device": "HIPDevice(id=1, name=AMD Radeon RX 6750 XT, gcn_arch=gfx1030)",
+        "backend_version": "2.8.0",
+        "actual_device_optlevel": 1,
+        "project_sha256": "284c920aebff70f466a40df21f7c83ae4c561857b046f940274b43a8feeaec6d",
+        "manifest_sha256": "de822b0edc58e0e9a579494fcef16417845427d33ab0371a787b0f41fe2ec886"
+    },
+    "source": {
+        "model": "1a938948fb14c400876c6848e4389fc432f4cc2a3962903374d2d76fb34f1c99",
+        "initialization": "766dfedbdbf5b4dbbb99ed5e9336a16747fa08752a84af3268fc7c98c613613a",
+        "founder_initialization": "d76e4c791a2c56bc7fd651b1836e6879b9e27013566ce6d94a1d2f677f62e633",
+        "support": "5a767b83c2c912d8706468ec7c5b86e56cf99430b2a23dfd3a7f3ee8f21bf55b",
+        "lifecycle": "8826c577e960db6596cd923a591d806b185908a254c6cc0fb6b0eebb033a9629",
+        "resource": "ac72b2db1dfa448446df0ae44840ba05933f1d8fb13c639f9e2cd3b3a7e41223",
+        "kernels": "38b3a7e0cdaa62a258c22e5cc6c84c99a1ad316ef56ecc418d1c2e533d934eb9",
+        "checkpoint": "81c8538519e5d0c58eb8bc0b6e49be7eec87119f81b7fcd998b6944f02c68503",
+        "protocol": "52632744615956c0e4c613e010b8fa4ba08c396e46e03d7ef5ec15f037e8199d"
+    },
+    "study_sha256": "2112f7b80d3df70845ea692810d1d791afb0800211c6b5bf3915375dc35b8786",
+    "scope": "bounded paid lifetime credit on shared coupled schedule; fixed physical decision cadence at two timesteps; timings include first compilation and are not a throughput claim"
+}
