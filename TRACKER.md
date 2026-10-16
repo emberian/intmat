@@ -8,14 +8,45 @@
 
 ### Current direction: stateful programs in a learnable material
 
-The next separate Julia mechanism expands the restricted allocation learner into
-frequent local program decisions: preserve/harvest, build A, build B and balanced
-construction, with retained memory and explicit dwell. Local material forecasts
-learn observed outcomes; an authored chemistry-based planner evaluates actions.
-The forecast is not a causal oracle. Matched persistence/current-observation
-controls and actual paid outcomes will establish whether this helps. A per-cell
-viewer will connect actual decision IDs, predictions, state and later outcomes.
-No long soak is underway.
+Ember supplied the ten-page *Big Blob of Compute Hypothesis*. Root read every
+page. Its seven design levers are compute, parameter/memory capacity, experience
+quantity and distribution, conditioning, computational shape/symmetries, and the
+training target. The private PDF is not copied into this repository. Its claims
+are design hypotheses, not proof that this particular ecology will learn.
+
+This corrects the emphasis of the next mechanism: the authored Harvest/Build-A/
+Build-B/Balanced controller is a bounded physical-affordance baseline, not the
+organism's final cognitive architecture. It exposes species-resolved sensing,
+frequent prediction, paid actions and visible state transitions. Preserve it as
+a reference without layering increasingly specific strategy rules onto it.
+
+The main architecture should permit a simple scalable recurrent computation to
+map local observations and retained state to multiple actions. Persistent learned
+parameters and transient state have distinct roles. Frequent predictive targets
+should train a shared representation that action learning can also use; a sealed
+tiny predictor feeding a fixed planner is insufficient. Design must account for
+credit through memory, sequence training, initialization and actual computational
+cost. Capacity and varied experience are experimental axes, not fixed tiny
+constants. Environment families should vary resource timing, spatial structure,
+transport and material memory while retaining comparable physical laws. Physical
+constraints remain explicit; cognitive strategies should remain learnable.
+
+A per-cell observatory now connects actual decision IDs, predictions, state and
+later outcomes. Its three eight-time authored-baseline runs contain 120 captures.
+Forecasting modestly improves the measured next-reading error but changes none of
+the planner's decisions in this run. The fixed Balanced controller creates a
+different material trajectory. These are useful reference points, not the final
+learned architecture. Root reran all 42 baseline/recorder checks and reviewed the
+actual desktop presentation; the complete publication stage is 131.88 MB.
+See `docs/research/predictive-programs-baseline.md` and
+`docs/cell-program-observatory.md`.
+
+The shared recurrent learner is being connected to native material dynamics.
+Julia forward, recurrent reverse-mode derivatives and Adam pass CPU finite-
+difference and AMD comparison gates through width 128 / horizon 32. Runtime-only
+timings are not yet complete simulation/training throughput. No long soak is
+underway. Initial checks establish executable mechanisms and action authority;
+their limited scale does not bound potential organization.
 
 Ordered parallel support is now integrated as an explicit constructor/recipe
 choice. Serial remains the default without extra scratch. CPU tests pass 160
@@ -33,8 +64,10 @@ targets a denser observation signal instead.
 
 The usage pause preserved the running jobs and their source epochs. No soaks
 were restarted. The 96×72×40 electrical fracture producer completed all 3,160
-steps and 32 actual observations in 31.30 minutes, within its 45-minute bound;
-numerical review and a new material photograph are underway.
+steps and 32 actual observations in 31.30 minutes, within its 45-minute bound.
+Its reviewed photograph, *Before the field gives way*, is published as the 80th
+gallery specimen. See snapshot `3cc793c`; source fields and all actual captures
+remain preserved.
 
 Developmental valuation now counts retained body construction alongside stored
 resources, using the replacement coefficient derived from native stoichiometry.
@@ -45,12 +78,6 @@ Native comparison includes 24 paid-copy births and a maximum ledger residual
 of 3.55e-14. The four-arm experiment shows small learned benefits, not rich
 organization yet. See `docs/research/developmental-value-accounting.md`.
 
-Parallel support construction measured 1.19–1.20× complete-step GPU throughput
-with all existing arrays bitwise equal across ten paired blocks. It requires
-11.24 MB extra scratch at the tested 64³/capacity-512 shape. An explicit native
-execution option is being integrated; the old default and historical sources
-remain intact. The next learning design investigates whether local communication
-can share useful experience while retaining different local specializations.
 
 ## Latest integration — 2026-10-16, 04:45 UTC
 

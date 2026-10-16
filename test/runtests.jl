@@ -222,3 +222,11 @@ end
 module LocalActionEvidenceTests
 include("local_action_evidence.jl")
 end
+
+module NativePredictiveProgramsTests
+include("native_predictive_programs.jl")
+end
+
+module CellProgramObservatoryTests
+include("cell_program_observatory.jl")
+end

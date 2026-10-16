@@ -1,0 +1,125 @@
+{
+  "schema": "predictive-programs-baseline-v1",
+  "duration": 8,
+  "arms": {
+    "predictive": {
+      "population": 46,
+      "births": 22,
+      "funded": [
+        0.007416512970528075,
+        0.0066811566211749975
+      ],
+      "prediction_work": 0.0010379140323852898,
+      "updates": 1241,
+      "ledger": {
+        "material": 49.63415607258859,
+        "potential": 37.0793468901419,
+        "work": 5.9325691647120395,
+        "heat": 25.924708235500376,
+        "supplied": 14.400000750902109,
+        "removed": 12.605844733429194,
+        "supplied_potential": 57.600003003608435,
+        "removed_potential": 50.423378933716776,
+        "material_residual": -1.4210854715202004e-14,
+        "potential_residual": -4.263256414560601e-14
+      },
+      "prediction_mse": 2.146957074086364e-05,
+      "persistence_mse": 2.4538078332039268e-05,
+      "prediction_coordinates": 2446,
+      "program_observations": {
+        "0": 1243,
+        "1": 24,
+        "2": 4
+      },
+      "phase_observations": {
+        "0": 1243,
+        "1": 10,
+        "2": 18
+      }
+    },
+    "persistence": {
+      "population": 46,
+      "births": 22,
+      "funded": [
+        0.007416512970528075,
+        0.0066811566211749975
+      ],
+      "prediction_work": 0.0010379140323852898,
+      "updates": 1241,
+      "ledger": {
+        "material": 49.63415607258859,
+        "potential": 37.0793468901419,
+        "work": 5.9325691647120395,
+        "heat": 25.924708235500376,
+        "supplied": 14.400000750902109,
+        "removed": 12.605844733429194,
+        "supplied_potential": 57.600003003608435,
+        "removed_potential": 50.423378933716776,
+        "material_residual": -1.4210854715202004e-14,
+        "potential_residual": -4.263256414560601e-14
+      },
+      "prediction_mse": 2.146957074086364e-05,
+      "persistence_mse": 2.4538078332039268e-05,
+      "prediction_coordinates": 2446,
+      "program_observations": {
+        "0": 1243,
+        "1": 24,
+        "2": 4
+      },
+      "phase_observations": {
+        "0": 1243,
+        "1": 10,
+        "2": 18
+      }
+    },
+    "balanced": {
+      "population": 26,
+      "births": 2,
+      "funded": [
+        1.2466775755054138,
+        1.2466775755054138
+      ],
+      "prediction_work": 0.0013315255216853616,
+      "updates": 943,
+      "ledger": {
+        "material": 49.82237066394612,
+        "potential": 38.133851840044635,
+        "work": 5.192885988184186,
+        "heat": 26.362744827555606,
+        "supplied": 14.400000750902109,
+        "removed": 12.417630142071662,
+        "supplied_potential": 57.600003003608435,
+        "removed_potential": 49.67052056828665,
+        "material_residual": -1.7763568394002505e-14,
+        "potential_residual": -5.684341886080802e-14
+      },
+      "prediction_mse": 6.988138415788784e-05,
+      "persistence_mse": 7.40815774466446e-05,
+      "prediction_coordinates": 1884,
+      "program_observations": {
+        "3": 967
+      },
+      "phase_observations": {
+        "1": 339,
+        "2": 628
+      }
+    }
+  },
+  "source": {
+    "founder_initialization": "d76e4c791a2c56bc7fd651b1836e6879b9e27013566ce6d94a1d2f677f62e633",
+    "support": "b3a8a9aaf8c158da6e81ce7ef90f99803b9c02efb6f482a36581114ef63360d2",
+    "protocol": "52632744615956c0e4c613e010b8fa4ba08c396e46e03d7ef5ec15f037e8199d",
+    "initialization": "6c20c7c4fcb1f829dfdf21f2bb4921d35948cfba3c5d1f2897b7864005f59fbd",
+    "model": "8ef3014ddf4ebdfa95088ee61d69c1568f05532236870f94096cd72a0451b2ed",
+    "kernels": "8f9f5d153ff1e4f4636388072063aa6e53fbb20d9c5175d64d6fcb15993207ae",
+    "checkpoint": "1d0e0e1cf9cb788e6c3403c28d80a303bfaf9b0f60cdaebd3a0262a9a71df8cd",
+    "lifecycle": "8826c577e960db6596cd923a591d806b185908a254c6cc0fb6b0eebb033a9629",
+    "resource": "ac72b2db1dfa448446df0ae44840ba05933f1d8fb13c639f9e2cd3b3a7e41223"
+  },
+  "habitat_source": {
+    "sorption": "3811fd3627906823a01f2afb2e6693bb6aec99c37bb10bfb72d43c85f8b4ad08",
+    "helper": "5753f0cf5065345cf08fb9a2501d87aad4f6eff13183fd344e8f53dfe736aa41",
+    "kernels": "b9774fc4b57b8d6dd844dc996979b007cf4f3e8160660a2961525514dad52c9c"
+  },
+  "scope": "Authored finite-program baseline, not final recurrent architecture; predictive and persistence actions/outcomes identical in this run; no learned-benefit claim."
+}

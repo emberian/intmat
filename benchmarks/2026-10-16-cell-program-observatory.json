@@ -1,0 +1,54 @@
+{
+  "schema": "cell-program-observatory-review-1",
+  "source_epoch": "outputs/predictive-programs-epoch-v2",
+  "scope": "Authored controller baseline; no prediction-control benefit demonstrated",
+  "runs": 3,
+  "captures_per_run": 40,
+  "capture_time_range": [
+    0.02,
+    7.82
+  ],
+  "measured_run_time": 8,
+  "page_bytes": 2871450,
+  "julia_recorder_checks": 21,
+  "python_checks": 4,
+  "browser": {
+    "schema": "cell-program-observatory-browser-1",
+    "mode": "actual-recording",
+    "runs": 3,
+    "captures": 40,
+    "scope": "authored finite program scaffold; learned local prediction; chemistry/capture heuristic is not a counterfactual oracle",
+    "states_checked": 72,
+    "page_errors": [],
+    "write_requests": 0,
+    "mobile_no_page_overflow": true,
+    "exact_sensor_target_contract": false
+  },
+  "source_sha256": {
+    "scripts/cell_program_observatory.jl": "90811dc414c7edac46935e2a57d4f837a69afb4df9ab3428d2369109bf358d53",
+    "scripts/build_cell_program_observatory.py": "3df59c394beea29e697c47951372ea3c41741cfe1176e8b699cbeaaa4aed436e",
+    "scripts/cell_program_observatory.html": "de939ae7f4003715feab9f38ed028e582c9d4930790fd2aa1a71ba22284d3f4e",
+    "scripts/test_cell_program_observatory.py": "f3b5ee1cbe28701dc28606fc2128fc655e34adde56ab45a96c605ef094393263",
+    "scripts/test_cell_program_observatory_browser.cjs": "b351e2cb2b8bd9ae477cf73d0aece1c36d9fa1c220b91c715cb5786d080eb86e",
+    "test/cell_program_observatory.jl": "3907beee6e03f9e924eafe3c00a6437a87eb73b62367f76ca6f2c92d0192ab1c",
+    "docs/cell-program-observatory.md": "02a6bd95cd275df208a213acc946d07a16084c0fcb6f883486cca42220beb2a3",
+    "site/laboratory/cell-observatory/index.html": "930e8f3e6bc9d5e96efa63479c3af8efc86de57b9e04affd5ca52cfd6d3578ae"
+  },
+  "recording_sha256": {
+    "predictive": "180046eb7ac688fa564ceeb581be45f13446971aa4faf8871e9c0ef8e67d7140",
+    "persistence": "edf7511ec2d41dab38eee6b34de0790ad5d6c70120792a8f083ac5c17974dfa4",
+    "balanced": "b02408e3ae4db243c19936ee26693e2e15e0f6a27dfbeab38e9773256033510d"
+  },
+  "clock_fixture": {
+    "schema": "cell-program-observatory-browser-1",
+    "mode": "--contract-fixture",
+    "runs": 1,
+    "captures": 4,
+    "scope": "Explicitly synthetic UI decoding fixture; no simulation or learning result.",
+    "states_checked": 6,
+    "page_errors": [],
+    "write_requests": 0,
+    "mobile_no_page_overflow": true,
+    "exact_sensor_target_contract": true
+  }
+}
