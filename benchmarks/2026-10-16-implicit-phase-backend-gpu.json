@@ -1,0 +1,408 @@
+{
+    "elapsed_seconds": 64.970140775,
+    "baseline_memory": {
+        "device_free": 11880366080,
+        "device_total": 12868124672,
+        "device_used": 987758592,
+        "host_cgroup_peak": 740339712
+    },
+    "boundary_checks": 21,
+    "transport_checks": 120,
+    "reports": [
+        {
+            "n": 96,
+            "dt": 0.04,
+            "setup_cpu": 1.922339455,
+            "setup_gpu": 2.009332603,
+            "memory_after_setup": {
+                "device_free": 11481907200,
+                "device_total": 12868124672,
+                "device_used": 1386217472,
+                "host_cgroup_peak": 1184149504
+            },
+            "memory_after_run": {
+                "device_free": 11356078080,
+                "device_total": 12868124672,
+                "device_used": 1512046592,
+                "host_cgroup_peak": 1557180416
+            },
+            "runtime_bytes": {
+                "forward_buffer": 7225344,
+                "forward_workspace": 0,
+                "inverse_buffer": 7225344,
+                "inverse_workspace": 0
+            },
+            "trials": [
+                {
+                    "mode": "phase",
+                    "trial": 1,
+                    "count": 1,
+                    "cpu_seconds": 0.126151436,
+                    "gpu_seconds": 0.074411949,
+                    "speedup": 1.6953115419675406,
+                    "errors": {
+                        "phi": 0,
+                        "interface": 0,
+                        "chemical_potential": 0,
+                        "a": 0,
+                        "b": 0,
+                        "mineral": 0,
+                        "nutrient": 0,
+                        "activity": 0
+                    },
+                    "chemical_potential_bound": 1.9073486328125e-6
+                },
+                {
+                    "mode": "phase",
+                    "trial": 2,
+                    "count": 5,
+                    "cpu_seconds": 0.168828349,
+                    "gpu_seconds": 0.021064048,
+                    "speedup": 8.015000203189814,
+                    "errors": {
+                        "phi": 0,
+                        "interface": 0,
+                        "chemical_potential": 0,
+                        "a": 0,
+                        "b": 0,
+                        "mineral": 0,
+                        "nutrient": 0,
+                        "activity": 0
+                    },
+                    "chemical_potential_bound": 1.9073486328125e-6
+                },
+                {
+                    "mode": "phase",
+                    "trial": 3,
+                    "count": 5,
+                    "cpu_seconds": 0.161982304,
+                    "gpu_seconds": 0.049462394,
+                    "speedup": 3.2748577434404003,
+                    "errors": {
+                        "phi": 0,
+                        "interface": 0,
+                        "chemical_potential": 0,
+                        "a": 0,
+                        "b": 0,
+                        "mineral": 0,
+                        "nutrient": 0,
+                        "activity": 0
+                    },
+                    "chemical_potential_bound": 1.9073486328125e-6
+                },
+                {
+                    "mode": "phase",
+                    "trial": 4,
+                    "count": 5,
+                    "cpu_seconds": 0.158754448,
+                    "gpu_seconds": 0.01491577,
+                    "speedup": 10.643396083474068,
+                    "errors": {
+                        "phi": 0,
+                        "interface": 0,
+                        "chemical_potential": 0,
+                        "a": 0,
+                        "b": 0,
+                        "mineral": 0,
+                        "nutrient": 0,
+                        "activity": 0
+                    },
+                    "chemical_potential_bound": 1.9073486328125e-6
+                },
+                {
+                    "mode": "brine",
+                    "trial": 1,
+                    "count": 1,
+                    "cpu_seconds": 0.548237982,
+                    "gpu_seconds": 1.114485083,
+                    "speedup": 0.491920430665827,
+                    "errors": {
+                        "phi": 4.656612873077393e-10,
+                        "interface": 0,
+                        "chemical_potential": 2.9802322387695312e-8,
+                        "a": 5.960464477539063e-8,
+                        "b": 5.960464477539063e-8,
+                        "mineral": 7.450580596923828e-9,
+                        "nutrient": 0,
+                        "activity": 0
+                    },
+                    "chemical_potential_bound": 1.958434305589903e-6
+                },
+                {
+                    "mode": "brine",
+                    "trial": 2,
+                    "count": 5,
+                    "cpu_seconds": 0.325748061,
+                    "gpu_seconds": 0.016493633,
+                    "speedup": 19.749927805474996,
+                    "errors": {
+                        "phi": 5.960464477539063e-8,
+                        "interface": 1.1920928955078125e-7,
+                        "chemical_potential": 3.2186508178710938e-6,
+                        "a": 1.1920928955078125e-7,
+                        "b": 5.960464477539063e-8,
+                        "mineral": 4.470348358154297e-8,
+                        "nutrient": 0,
+                        "activity": 0
+                    },
+                    "chemical_potential_bound": 8.446272935523568e-6
+                },
+                {
+                    "mode": "brine",
+                    "trial": 3,
+                    "count": 5,
+                    "cpu_seconds": 0.333618411,
+                    "gpu_seconds": 0.019776365,
+                    "speedup": 16.869551659265998,
+                    "errors": {
+                        "phi": 5.960464477539063e-8,
+                        "interface": 1.1920928955078125e-7,
+                        "chemical_potential": 3.2782554626464844e-6,
+                        "a": 1.1920928955078125e-7,
+                        "b": 5.960464477539063e-8,
+                        "mineral": 5.960464477539063e-8,
+                        "nutrient": 0,
+                        "activity": 0
+                    },
+                    "chemical_potential_bound": 8.44792569248388e-6
+                },
+                {
+                    "mode": "brine",
+                    "trial": 4,
+                    "count": 5,
+                    "cpu_seconds": 0.348876296,
+                    "gpu_seconds": 0.014344596,
+                    "speedup": 24.321095972309013,
+                    "errors": {
+                        "phi": 5.960464477539063e-8,
+                        "interface": 1.4901161193847656e-7,
+                        "chemical_potential": 3.2782554626464844e-6,
+                        "a": 1.1920928955078125e-7,
+                        "b": 5.960464477539063e-8,
+                        "mineral": 8.940696716308594e-8,
+                        "nutrient": 0,
+                        "activity": 0
+                    },
+                    "chemical_potential_bound": 8.450665324293026e-6
+                }
+            ],
+            "restarts": [
+                {
+                    "mode": "phase",
+                    "seconds": 1.025404622
+                },
+                {
+                    "mode": "brine",
+                    "seconds": 0.262254858
+                }
+            ],
+            "maxerror": 3.2782554626464844e-6,
+            "phase_error": 4.429267981194058e-10,
+            "mass_error": 2.7234993352500166e-9,
+            "time": 1.2799999713897705,
+            "cpu_owned_bytes": 69343008,
+            "physical_bytes": 69341184
+        },
+        {
+            "n": 192,
+            "dt": 0.01,
+            "setup_cpu": 10.363811258,
+            "setup_gpu": 1.872071974,
+            "memory_after_setup": {
+                "device_free": 10829692928,
+                "device_total": 12868124672,
+                "device_used": 2038431744,
+                "host_cgroup_peak": 1832656896
+            },
+            "memory_after_run": {
+                "device_free": 10129244160,
+                "device_total": 12868124672,
+                "device_used": 2738880512,
+                "host_cgroup_peak": 4798988288
+            },
+            "runtime_bytes": {
+                "forward_buffer": 57212928,
+                "forward_workspace": 0,
+                "inverse_buffer": 57212928,
+                "inverse_workspace": 0
+            },
+            "trials": [
+                {
+                    "mode": "phase",
+                    "trial": 1,
+                    "count": 1,
+                    "cpu_seconds": 0.325748911,
+                    "gpu_seconds": 0.22254377,
+                    "speedup": 1.463752101440539,
+                    "errors": {
+                        "phi": 0,
+                        "interface": 0,
+                        "chemical_potential": 0,
+                        "a": 0,
+                        "b": 0,
+                        "mineral": 0,
+                        "nutrient": 0,
+                        "activity": 0
+                    },
+                    "chemical_potential_bound": 1.9073486328125e-6
+                },
+                {
+                    "mode": "phase",
+                    "trial": 2,
+                    "count": 5,
+                    "cpu_seconds": 1.402254568,
+                    "gpu_seconds": 0.094983699,
+                    "speedup": 14.763107593861974,
+                    "errors": {
+                        "phi": 2.9103830456733704e-11,
+                        "interface": 0,
+                        "chemical_potential": 0,
+                        "a": 0,
+                        "b": 0,
+                        "mineral": 0,
+                        "nutrient": 0,
+                        "activity": 0
+                    },
+                    "chemical_potential_bound": 1.9197584026973905e-6
+                },
+                {
+                    "mode": "phase",
+                    "trial": 3,
+                    "count": 5,
+                    "cpu_seconds": 1.352171607,
+                    "gpu_seconds": 0.088938232,
+                    "speedup": 15.203490968878265,
+                    "errors": {
+                        "phi": 0,
+                        "interface": 0,
+                        "chemical_potential": 0,
+                        "a": 0,
+                        "b": 0,
+                        "mineral": 0,
+                        "nutrient": 0,
+                        "activity": 0
+                    },
+                    "chemical_potential_bound": 1.9073486328125e-6
+                },
+                {
+                    "mode": "phase",
+                    "trial": 4,
+                    "count": 5,
+                    "cpu_seconds": 1.49478909,
+                    "gpu_seconds": 0.068427248,
+                    "speedup": 21.844939460374032,
+                    "errors": {
+                        "phi": 0,
+                        "interface": 0,
+                        "chemical_potential": 0,
+                        "a": 0,
+                        "b": 0,
+                        "mineral": 0,
+                        "nutrient": 0,
+                        "activity": 0
+                    },
+                    "chemical_potential_bound": 1.9073486328125e-6
+                },
+                {
+                    "mode": "brine",
+                    "trial": 1,
+                    "count": 1,
+                    "cpu_seconds": 0.573265537,
+                    "gpu_seconds": 0.343615118,
+                    "speedup": 1.6683361906096346,
+                    "errors": {
+                        "phi": 1.862645149230957e-9,
+                        "interface": 0,
+                        "chemical_potential": 3.8743019104003906e-7,
+                        "a": 1.1920928955078125e-7,
+                        "b": 5.960464477539063e-8,
+                        "mineral": 2.7939677238464355e-9,
+                        "nutrient": 0,
+                        "activity": 0
+                    },
+                    "chemical_potential_bound": 2.7016940901740588e-6
+                },
+                {
+                    "mode": "brine",
+                    "trial": 2,
+                    "count": 5,
+                    "cpu_seconds": 2.632724496,
+                    "gpu_seconds": 0.123248731,
+                    "speedup": 21.36106777440167,
+                    "errors": {
+                        "phi": 5.960464477539063e-8,
+                        "interface": 2.086162567138672e-7,
+                        "chemical_potential": 1.2665987014770508e-5,
+                        "a": 1.1920928955078125e-7,
+                        "b": 5.960464477539063e-8,
+                        "mineral": 1.4901161193847656e-8,
+                        "nutrient": 0,
+                        "activity": 0
+                    },
+                    "chemical_potential_bound": 2.7327686095925395e-5
+                },
+                {
+                    "mode": "brine",
+                    "trial": 3,
+                    "count": 5,
+                    "cpu_seconds": 2.639774626,
+                    "gpu_seconds": 0.087606026,
+                    "speedup": 30.132340736469427,
+                    "errors": {
+                        "phi": 5.960464477539063e-8,
+                        "interface": 2.384185791015625e-7,
+                        "chemical_potential": 1.271069049835205e-5,
+                        "a": 1.1920928955078125e-7,
+                        "b": 5.960464477539063e-8,
+                        "mineral": 2.9802322387695312e-8,
+                        "nutrient": 0,
+                        "activity": 0
+                    },
+                    "chemical_potential_bound": 2.7328676741103704e-5
+                },
+                {
+                    "mode": "brine",
+                    "trial": 4,
+                    "count": 5,
+                    "cpu_seconds": 2.891637546,
+                    "gpu_seconds": 0.084682538,
+                    "speedup": 34.146798316318765,
+                    "errors": {
+                        "phi": 1.1920928955078125e-7,
+                        "interface": 3.5762786865234375e-7,
+                        "chemical_potential": 2.5413930416107178e-5,
+                        "a": 1.1920928955078125e-7,
+                        "b": 1.1920928955078125e-7,
+                        "mineral": 4.470348358154297e-8,
+                        "nutrient": 0,
+                        "activity": 0
+                    },
+                    "chemical_potential_bound": 5.275168340201384e-5
+                }
+            ],
+            "restarts": [
+                {
+                    "mode": "phase",
+                    "seconds": 0.905684121
+                },
+                {
+                    "mode": "brine",
+                    "seconds": 1.892203695
+                }
+            ],
+            "maxerror": 2.5413930416107178e-5,
+            "phase_error": 4.6317896020666554e-11,
+            "mass_error": 1.0675290003078109e-9,
+            "time": 0.3199999928474426,
+            "cpu_owned_bytes": 553404192,
+            "physical_bytes": 553402368
+        }
+    ],
+    "precision": "physical Float32; FFT Float64/ComplexF64",
+    "source": {
+        "src/implicit_phase.jl": "e724d19ad8827aa45958880182e3bfbbf0300aca19db0e9616180be5300d9d32",
+        "studies/brine_memory.jl": "5ab3ad1ba93f07383af119a59b76d8ccf5b390c807d0dc141bb9d517b5287639",
+        "src/phase.jl": "2815bbd2ee63bacfd0ff36956d16c22d6bc3eaf4798f4fb385026222349848ec",
+        "src/compartments.jl": "b0e82216232acde9f4692d0053be43887378e4a80b07f76ab61dd19f3de34cea"
+    }
+}

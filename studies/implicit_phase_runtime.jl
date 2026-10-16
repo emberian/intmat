@@ -24,9 +24,10 @@ function phase_runtime_fixture(c,n)
 end
 function coupled_runtime_step!(x,c,dt,cached;reference=false)
  (;w,p,a,b,scratch,permeability)=x
- @. p.chemical_forcing=Float32(c["mineral_phase_feedback"])*w.fields.deposit*p.phi
+ feedback=Float32(c["mineral_phase_feedback"]);phase_barrier=Float32(c["phase_transport_barrier"]);mineral_barrier=Float32(c["mineral_transport_barrier"])
+ @. p.chemical_forcing=feedback*w.fields.deposit*p.phi
  step!(w,reference ? ReferenceImplicitPhase(p,x.runtime) : cached ? ReusableImplicitPhase(p,x.runtime) : p,dt)
- @. permeability=1f0/(1f0+Float32(c["phase_transport_barrier"])*(1f0+tanh(2f0*p.phi))/2f0+Float32(c["mineral_transport_barrier"])*w.fields.deposit)
+ @. permeability=1f0/(1f0+phase_barrier*(1f0+tanh(2f0*p.phi))/2f0+mineral_barrier*w.fields.deposit)
  Interior.medium_diffuse!(scratch,a,permeability,w.grid,Float32(c["diffusion_a"]),dt)
  Interior.medium_diffuse!(scratch,b,permeability,w.grid,Float32(c["diffusion_b"]),dt)
  Interior.launch!(w,brine_react!,a,b,w.fields.deposit,p.interface,dt,Float32(c["reaction_rate"]),Float32(c["basal_reaction"]),Float32(c["nucleation_gradient"]),Float32(c["saturation_gradient"]))
@@ -68,9 +69,10 @@ function install_phase_coupling_reference!()
  kernel=unguard(deepcopy(kernel));kernel.args[end].args[1].args[1]=:phase_couple_reference_kernel!
  Core.eval(Interior,kernel)
  source=Meta.parseall(read(joinpath(@__DIR__,"..","src","implicit_phase.jl"),String))
- fn=only(filter(ex->ex isa Expr&&ex.head==:function&&ex.args[1] isa Expr&&ex.args[1].head==:call&&ex.args[1].args[1]==:advance!&&length(ex.args[1].args)==5,source.args))
+ fn=only(filter(ex->ex isa Expr&&ex.head==:function&&ex.args[1] isa Expr&&ex.args[1].head==:call&&ex.args[1].args[1]==:implicit_phase_advance!&&length(ex.args[1].args)==5,source.args))
  replace_symbol(ex)=ex isa Expr ? Expr(ex.head,map(replace_symbol,ex.args)...) : ex===:phase_couple_kernel! ? :phase_couple_reference_kernel! : ex
  fn=replace_symbol(deepcopy(fn));fn.args[1].args[1]=:phase_runtime_reference_advance!
+ insert!(fn.args[2].args,1,:(check_dt(w,p,dt)))
  Core.eval(Interior,fn)
  nothing
 end

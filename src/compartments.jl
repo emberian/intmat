@@ -64,21 +64,19 @@ end
 # Each directed face has the same coefficient at either end. Updating into a
 # scratch field makes exchanges equal and opposite, including periodic faces.
 function medium_diffuse!(out,field,permeability,grid,D,dt)
-    dims=grid.size; h=grid.spacing
+    backend=KernelAbstractions.get_backend(field)
+    if !(backend isa CPU)
+        size(out)==size(field)==size(permeability)==grid.size || throw(DimensionMismatch("medium diffusion grid"))
+        KernelAbstractions.get_backend(out)==backend==KernelAbstractions.get_backend(permeability) || throw(ArgumentError("medium diffusion backends differ"))
+        (Base.mightalias(out,field)||Base.mightalias(out,permeability)) && throw(ArgumentError("device medium diffusion requires scratch distinct from both inputs"))
+        medium_diffuse_kernel!(backend,256)(out,field,permeability,grid.spacing,D,dt;ndrange=grid.size)
+        copyto!(field,out)
+        KernelAbstractions.synchronize(backend)
+        return field
+    end
+    dims=grid.size;h=grid.spacing
     for k in 1:dims[3],j in 1:dims[2],i in 1:dims[1]
-        pos=(i,j,k); flux=0f0
-        for axis in 1:3
-            if dims[axis]>1
-                for side in (-1,1)
-                    q=phase_neighbor(pos,axis,side,dims)
-                    # Harmonic mean makes a narrow membrane resist both faces.
-                    a=permeability[pos...]; b=permeability[q...]
-                    face=(a+b)==0f0 ? 0f0 : 2f0*a*b/(a+b)
-                    flux+=D*face*(field[q...]-field[pos...])/h[axis]^2
-                end
-            end
-        end
-        out[pos...]=field[pos...]+dt*flux
+        out[i,j,k]=_medium_diffused_value(field,permeability,(i,j,k),dims,h,D,dt)
     end
     copyto!(field,out)
 end
@@ -86,6 +84,23 @@ end
 @inline function _medium_face_flux(center,neighbor,a,b,D,h2)
     face=(a+b)==0f0 ? 0f0 : 2f0*a*b/(a+b)
     D*face*(neighbor-center)/h2
+end
+
+@inline function _medium_diffused_value(field,permeability,pos,dims,h,D,dt)
+    flux=0f0
+    for axis in 1:3
+        if dims[axis]>1
+            for side in (-1,1)
+                q=phase_neighbor(pos,axis,side,dims)
+                flux+=_medium_face_flux(field[pos...],field[q...],permeability[pos...],permeability[q...],D,h[axis]^2)
+            end
+        end
+    end
+    field[pos...]+dt*flux
+end
+@kernel function medium_diffuse_kernel!(out,field,permeability,h,D,dt)
+    i,j,k=@index(Global,NTuple)
+    out[i,j,k]=_medium_diffused_value(field,permeability,(i,j,k),size(field),h,D,dt)
 end
 
 # Concrete CPU fields use direct periodic neighbors. The order of the six face

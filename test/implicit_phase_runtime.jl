@@ -49,3 +49,49 @@ install_phase_coupling_reference!()
  @test a.a==b.a&&a.b==b.b
  @test a.p.interface==b.p.interface
 end
+
+@testset "Implicit runtime layout contract" begin
+ w=World(Grid(9,7,5));p=ImplicitPhaseSeparation(w)
+ v=World(Grid(8,7,5));q=ImplicitPhaseSeparation(v)
+ r=Interior.ImplicitPhaseRuntime(p)
+ @test_throws ArgumentError Interior.advance!(v,q,.001,r)
+ @test_throws ArgumentError Interior.advance!(w,p,-1)
+ @test fieldnames(typeof(p))==(:reference,:chemical_forcing,:stabilization,:eigenvalues,:real_buffer,:spectrum,:nonlinear_spectrum)
+ @test eltype(p.phi)===Float32&&eltype(p.real_buffer)===Float64&&eltype(p.spectrum)===ComplexF64
+end
+
+struct NoImplicitFloat64Backend <: Interior.KernelAbstractions.Backend end
+Interior.KernelAbstractions.supports_float64(::NoImplicitFloat64Backend)=false
+@testset "No silent implicit phase precision downgrade" begin
+ cpu=World(Grid(3,3))
+ unsupported=World(cpu.grid,NoImplicitFloat64Backend(),cpu.fields,cpu.scratch,cpu.time,cpu.seed)
+ @test_throws ArgumentError ImplicitPhaseSeparation(unsupported)
+end
+
+@testset "Alias-preserving physical implicit phase checkpoints" begin
+ w=World(Grid(7,5,3));p=ImplicitPhaseSeparation(w;noise=0,mean=.3,nutrient_diffusion=0,activity_relaxation=0)
+ p=ImplicitPhaseSeparation(p.reference,p.phi,p.stabilization,p.eigenvalues,p.real_buffer,p.spectrum,p.nonlinear_spectrum)
+ w=World(w.grid,w.backend,w.fields,(nutrient=w.fields.nutrient,),w.time,w.seed)
+ cp=Interior.implicit_phase_checkpoint(w,p)
+ @test cp.phase.chemical_forcing===cp.phase.phi
+ @test cp.world.scratch.nutrient===cp.world.fields.nutrient
+ @test cp.phase.phi!==p.phi
+ io=IOBuffer();Interior.Serialization.serialize(io,(cp,cp.phase));seekstart(io)
+ payload,alias=Interior.Serialization.deserialize(io)
+ @test payload.phase===alias
+ v,q=Interior.implicit_phase_restore(payload)
+ @test q.chemical_forcing===q.phi
+ @test v.scratch.nutrient===v.fields.nutrient
+ @test q.real_buffer!==p.real_buffer
+ q.chemical_forcing[1]=.4f0;p.chemical_forcing[1]=.4f0
+ @test q.phi[1]==.4f0
+ step!(w,p,.01);step!(v,q,.01)
+ @test p.phi==q.phi&&w.fields==v.fields
+ @test_throws ArgumentError Interior.implicit_phase_restore(merge(payload,(version=2,)))
+end
+
+@testset "Forcing shape is checked before transfer" begin
+ w=World(Grid(9,7,5))
+ @test_throws DimensionMismatch ImplicitPhaseSeparation(w;chemical_forcing=zeros(Float32,9,35))
+ @test_throws DimensionMismatch ImplicitPhaseSeparation(w;chemical_forcing=zeros(Float32,15,7,3))
+end

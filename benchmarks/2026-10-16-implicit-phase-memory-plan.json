@@ -1,0 +1,66 @@
+{
+  "formula": "N=n^3; H=(n/2+1)n^2. Carried28N +derived8N +nonFFT scratch16N +FFT(8N+36H) +native plan buffers32H. Workspace observed0 at96/192, unmeasured higher sizes. No384+allocation.",
+  "unit": "bytes",
+  "rows": [
+    {
+      "n": 96,
+      "carried_fields": 24772608,
+      "derived_observables": 7077888,
+      "nonfft_scratch": 14155776,
+      "fft_buffers": 23334912,
+      "native_plan_buffers": 14450688,
+      "native_active_total": 83791872,
+      "full_host_observation": 28311552,
+      "streamed_field": 3538944,
+      "physical_checkpoint_arrays": 69341184
+    },
+    {
+      "n": 192,
+      "carried_fields": 198180864,
+      "derived_observables": 56623104,
+      "nonfft_scratch": 113246208,
+      "fft_buffers": 185352192,
+      "native_plan_buffers": 114425856,
+      "native_active_total": 667828224,
+      "full_host_observation": 226492416,
+      "streamed_field": 28311552,
+      "physical_checkpoint_arrays": 553402368
+    },
+    {
+      "n": 384,
+      "carried_fields": 1585446912,
+      "derived_observables": 452984832,
+      "nonfft_scratch": 905969664,
+      "fft_buffers": 1477509120,
+      "native_plan_buffers": 910688256,
+      "native_active_total": 5332598784,
+      "full_host_observation": 1811939328,
+      "streamed_field": 226492416,
+      "physical_checkpoint_arrays": 4421910528
+    },
+    {
+      "n": 576,
+      "carried_fields": 5350883328,
+      "derived_observables": 1528823808,
+      "nonfft_scratch": 3057647616,
+      "fft_buffers": 4980621312,
+      "native_plan_buffers": 3068264448,
+      "native_active_total": 17986240512,
+      "full_host_observation": 6115295232,
+      "streamed_field": 764411904,
+      "physical_checkpoint_arrays": 14917976064
+    },
+    {
+      "n": 1152,
+      "carried_fields": 42807066624,
+      "derived_observables": 12230590464,
+      "nonfft_scratch": 24461180928,
+      "fft_buffers": 39797194752,
+      "native_plan_buffers": 24503648256,
+      "native_active_total": 143799681024,
+      "full_host_observation": 48922361856,
+      "streamed_field": 6115295232,
+      "physical_checkpoint_arrays": 119296032768
+    }
+  ]
+}
