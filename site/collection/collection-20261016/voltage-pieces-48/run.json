@@ -1,0 +1,279 @@
+{
+  "title": "The field inside the fracture",
+  "family": "branches",
+  "shape": [
+    48,
+    36,
+    20
+  ],
+  "nodes": 34560,
+  "bonds": 419228,
+  "steps": 1554,
+  "dt": 0.00033783783783783786,
+  "weakening": 80,
+  "pitch_ratio": 0.4828733693246631,
+  "physical_duration": 0.525,
+  "electrical_cadence": 52,
+  "scaling": true,
+  "history": [
+    {
+      "step": 100,
+      "broken": 0,
+      "maxdose": 0.0001043873314063649,
+      "solver": {
+        "iterations": 0,
+        "residual": 7.005389000823717e-08,
+        "joule_power": 246.10934140969442,
+        "electrode_power": 246.1093190754074,
+        "relative_power_defect": 9.07494485837939e-08,
+        "floating_components": 0
+      }
+    },
+    {
+      "step": 200,
+      "broken": 0,
+      "maxdose": 0.0006280670333199041,
+      "solver": {
+        "iterations": 0,
+        "residual": 7.005389000823717e-08,
+        "joule_power": 246.10934140969442,
+        "electrode_power": 246.1093190754074,
+        "relative_power_defect": 9.07494485837939e-08,
+        "floating_components": 0
+      }
+    },
+    {
+      "step": 300,
+      "broken": 0,
+      "maxdose": 0.0015426584923905924,
+      "solver": {
+        "iterations": 0,
+        "residual": 7.005389000823717e-08,
+        "joule_power": 246.10934140969442,
+        "electrode_power": 246.1093190754074,
+        "relative_power_defect": 9.07494485837939e-08,
+        "floating_components": 0
+      }
+    },
+    {
+      "step": 400,
+      "broken": 6,
+      "maxdose": 0.0028216390606565804,
+      "solver": {
+        "iterations": 41,
+        "residual": 1.743140588654177e-07,
+        "joule_power": 246.10833662510305,
+        "electrode_power": 246.10933009459072,
+        "relative_power_defect": 4.03671611165698e-06,
+        "floating_components": 0
+      }
+    },
+    {
+      "step": 500,
+      "broken": 29,
+      "maxdose": 0.004443439472097211,
+      "solver": {
+        "iterations": 86,
+        "residual": 6.210825681744212e-08,
+        "joule_power": 246.03863537756777,
+        "electrode_power": 246.0384744240512,
+        "relative_power_defect": 6.541798458720292e-07,
+        "floating_components": 0
+      }
+    },
+    {
+      "step": 600,
+      "broken": 74,
+      "maxdose": 0.0063983894898200985,
+      "solver": {
+        "iterations": 87,
+        "residual": 5.183909015808121e-08,
+        "joule_power": 245.92294013034623,
+        "electrode_power": 245.92285362876854,
+        "relative_power_defect": 3.517426135692113e-07,
+        "floating_components": 0
+      }
+    },
+    {
+      "step": 700,
+      "broken": 178,
+      "maxdose": 0.008661439336211944,
+      "solver": {
+        "iterations": 88,
+        "residual": 9.536139468903511e-08,
+        "joule_power": 245.6945688584094,
+        "electrode_power": 245.6944791269363,
+        "relative_power_defect": 3.6521553377211043e-07,
+        "floating_components": 0
+      }
+    },
+    {
+      "step": 800,
+      "broken": 674,
+      "maxdose": 0.011163768877338175,
+      "solver": {
+        "iterations": 97,
+        "residual": 5.4691355044306256e-08,
+        "joule_power": 244.8326904270595,
+        "electrode_power": 244.83275426712416,
+        "relative_power_defect": 2.607497574925171e-07,
+        "floating_components": 0
+      }
+    },
+    {
+      "step": 900,
+      "broken": 1528,
+      "maxdose": 0.013836817629900092,
+      "solver": {
+        "iterations": 101,
+        "residual": 6.015046614507476e-08,
+        "joule_power": 243.19418998935768,
+        "electrode_power": 243.19441979395125,
+        "relative_power_defect": 9.449427783747284e-07,
+        "floating_components": 0
+      }
+    },
+    {
+      "step": 1000,
+      "broken": 3314,
+      "maxdose": 0.016748787970617973,
+      "solver": {
+        "iterations": 106,
+        "residual": 7.727435668602121e-08,
+        "joule_power": 239.65798032024358,
+        "electrode_power": 239.6582224901318,
+        "relative_power_defect": 1.0104812195314866e-06,
+        "floating_components": 0
+      }
+    },
+    {
+      "step": 1100,
+      "broken": 6663,
+      "maxdose": 0.019803650047430007,
+      "solver": {
+        "iterations": 114,
+        "residual": 1.2403109406722242e-07,
+        "joule_power": 231.80256057724563,
+        "electrode_power": 231.80256772177574,
+        "relative_power_defect": 3.0821618614453456e-08,
+        "floating_components": 0
+      }
+    },
+    {
+      "step": 1200,
+      "broken": 11451,
+      "maxdose": 0.023151749743696496,
+      "solver": {
+        "iterations": 115,
+        "residual": 8.28954910719511e-08,
+        "joule_power": 216.82059152528265,
+        "electrode_power": 216.82064118386515,
+        "relative_power_defect": 2.2903074910125948e-07,
+        "floating_components": 0
+      }
+    },
+    {
+      "step": 1300,
+      "broken": 16922,
+      "maxdose": 0.026674316900775676,
+      "solver": {
+        "iterations": 126,
+        "residual": 1.4405631462187891e-07,
+        "joule_power": 191.57060687582918,
+        "electrode_power": 191.57079129561882,
+        "relative_power_defect": 9.626726805369195e-07,
+        "floating_components": 0
+      }
+    },
+    {
+      "step": 1400,
+      "broken": 21496,
+      "maxdose": 0.028506728815886007,
+      "solver": {
+        "iterations": 126,
+        "residual": 7.267295573050525e-08,
+        "joule_power": 180.69523221734528,
+        "electrode_power": 180.69543887024795,
+        "relative_power_defect": 1.1436544292863718e-06,
+        "floating_components": 0
+      }
+    },
+    {
+      "step": 1500,
+      "broken": 26213,
+      "maxdose": 0.03484910477944747,
+      "solver": {
+        "iterations": 131,
+        "residual": 1.3454520258131533e-07,
+        "joule_power": 159.9137865309505,
+        "electrode_power": 159.91398139449302,
+        "relative_power_defect": 1.2185537392328621e-06,
+        "floating_components": 0
+      }
+    },
+    {
+      "step": 1554,
+      "broken": 28606,
+      "maxdose": 0.042048605636785405,
+      "solver": {
+        "iterations": 131,
+        "residual": 6.742530056554393e-08,
+        "joule_power": 150.34419998484287,
+        "electrode_power": 150.3443672672496,
+        "relative_power_defect": 1.1126628545579703e-06,
+        "floating_components": 0
+      }
+    }
+  ],
+  "broken": 28606,
+  "solver": {
+    "iterations": 131,
+    "residual": 1.4731200007310394e-07,
+    "joule_power": 142.72349154199833,
+    "electrode_power": 142.72348206222458,
+    "relative_power_defect": 6.642055662556598e-08,
+    "floating_components": 1
+  },
+  "elapsed_seconds": 106.019764375,
+  "energy": {
+    "elastic": 0.5249489365917603,
+    "kinetic": 0.25167989662747636,
+    "damage": 0.28109491123133945,
+    "damping": 0.9756765659567457,
+    "external_work": 2.0320342131622455,
+    "total": 2.0334003104073215
+  },
+  "mechanical_energy_residual": 0.00136609724507597,
+  "source_sha256": {
+    "src/mechanics.jl": "a0370e4028aa859fb344829f0d387a62dd8defb77b25f4651f7c08b386324e45",
+    "studies/voltage_between_pieces.jl": "e952444f2dcf35b5f25d8af75b035c19ad6c4902299469d62076385f7227c4c3"
+  },
+  "model": "Shared BondNetwork; graph conductivity vanishes on failed bonds. Independently checked PCG potential; local Joule dose weakens tensile thresholds. External electrodes/grips power exploratory law; not calibrated electromechanics.",
+  "authored": "Quenched geometry/conductivity grains, two small weak notches, distributed load and grip motion. Optical contours are computed potential observations, not added matter.",
+  "id": "voltage-pieces-48",
+  "native_shape": [
+    48,
+    36,
+    20
+  ],
+  "variant_of": "branch-fault-script",
+  "also_reinterprets": "fracture-ice-cleavage",
+  "description": "Gold potential iso-surfaces reveal a computed electrical interior inside fractured violet support. Actual bond failure redirects conduction; accumulated Joule dose weakens later fractures. The contour foils are optical observations, not additional physical sheets.",
+  "initialization_detail": "Shared lower-half-plane weak seam plus two added small notches, quenched node disorder and fixed sinusoidal conductivity grains; prescribed grip motion and distributed load.",
+  "native_state_sha256": "da6ae7adf0d18edab3fadd2c6407878c750e2d6df793685a612bd392779c8966",
+  "comparison_notes": "Fresh34560-node/419228-bond 3D spring material, scaled physical parameters and fixedduration; quenched disorder resampled, so no continuum-convergence claim. Independent graph solver and matched small no-weakening control pass.",
+  "publication": {
+    "source_image_sha256": "75e1095439dcd78247b19b09a426d20455989a856dda53043e4c96b1ce173cd7",
+    "webp_sha256": "dcd0c08833f61a6ae409f6573e29dd34f355f441d387ea3469d305c6f2714d9d",
+    "quality": 95,
+    "width": 1600,
+    "samples": 96,
+    "native_shape": [
+      48,
+      36,
+      20
+    ],
+    "original_retained": true,
+    "reviewed_by": "GPT-6.1-sol artist and root: exact 1600px final visually reviewed"
+  }
+}

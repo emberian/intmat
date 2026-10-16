@@ -1,0 +1,31 @@
+{
+    "direct_linear_system_max_error": 3.414935001444519e-12,
+    "solver": {
+        "iterations": 17,
+        "residual": 3.375740728146089e-12,
+        "joule_power": 17.324379504858822,
+        "electrode_power": 17.324379504858825,
+        "relative_power_defect": 2.050701831949653e-16,
+        "floating_components": 1
+    },
+    "isolated_gauge_checked": true,
+    "maximum_principle": true,
+    "empty_free_set_fixtures": {
+        "fully_isolated": {
+            "iterations": 0,
+            "residual": 0,
+            "joule_power": 0,
+            "electrode_power": 0,
+            "relative_power_defect": 0,
+            "floating_components": 8
+        },
+        "all_electrode": {
+            "iterations": 0,
+            "residual": 0,
+            "joule_power": 16,
+            "electrode_power": 16,
+            "relative_power_defect": 0,
+            "floating_components": 0
+        }
+    }
+}

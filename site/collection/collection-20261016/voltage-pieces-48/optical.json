@@ -1,0 +1,29 @@
+{
+  "size": 1600,
+  "samples": 96,
+  "device": "METAL",
+  "source_nodes": 34560,
+  "source_tetrahedra_surviving": 89230,
+  "source_tetrahedra_removed": 98300,
+  "contour_faces": 10370,
+  "levels": [
+    0.12,
+    0.22,
+    0.32,
+    0.42,
+    0.52,
+    0.62,
+    0.72,
+    0.82,
+    0.9
+  ],
+  "interpretation": "Computed voltage iso-surfaces inside surviving six-edge tetrahedra, actual deformed coordinates. Foil thickness.004 and dose color are optical staging, not added material. Violet back observation surface is the actual surviving tetrahedral boundary exactly plane-clipped at y=.18.",
+  "renderer_sha256": "6667bab9b983faa30fcab86181aeaa82061ff5358a38b6f8afbfc3334fe3f522",
+  "settings": {
+    "size": 1600,
+    "samples": 96,
+    "device": "METAL",
+    "threads": 2
+  },
+  "native_state_sha256": "da6ae7adf0d18edab3fadd2c6407878c750e2d6df793685a612bd392779c8966"
+}

@@ -1,0 +1,103 @@
+{
+  "coupled_pilot": {
+    "shape": [
+      24,
+      18,
+      10
+    ],
+    "nodes": 4320,
+    "bonds": 48800,
+    "steps": 750,
+    "dt": 0.0007,
+    "weakening": 80,
+    "elapsed_seconds": 5.054374333,
+    "broken": 3570,
+    "solver": {
+      "iterations": 60,
+      "residual": 4.011850892767533e-08,
+      "joule_power": 166.67157686088635,
+      "electrode_power": 166.67165206022048,
+      "relative_power_defect": 4.511827124349983e-07,
+      "floating_components": 0
+    },
+    "mechanical_energy_residual": 0.0009047022326917897,
+    "source_sha256": {
+      "src/mechanics.jl": "a0370e4028aa859fb344829f0d387a62dd8defb77b25f4651f7c08b386324e45",
+      "studies/voltage_between_pieces.jl": "9ebeb56ab7c33e04337586fe8e32ece8713ae7435b04a6d6c0f00f3c3b70dd67"
+    },
+    "mechanical_work_relative_residual": 0.00042114535127315807,
+    "maximum_recorded_power_defect": 5.800811457766414e-07
+  },
+  "no_weakening": {
+    "shape": [
+      24,
+      18,
+      10
+    ],
+    "nodes": 4320,
+    "bonds": 48800,
+    "steps": 750,
+    "dt": 0.0007,
+    "weakening": 0,
+    "elapsed_seconds": 5.017437917,
+    "broken": 220,
+    "solver": {
+      "iterations": 0,
+      "residual": 7.20520303136556e-08,
+      "joule_power": 245.94032978005504,
+      "electrode_power": 245.94035164033627,
+      "relative_power_defect": 8.888449184519868e-08,
+      "floating_components": 0
+    },
+    "mechanical_energy_residual": 1.3506913326910563e-05,
+    "source_sha256": {
+      "src/mechanics.jl": "a0370e4028aa859fb344829f0d387a62dd8defb77b25f4651f7c08b386324e45",
+      "studies/voltage_between_pieces.jl": "9ebeb56ab7c33e04337586fe8e32ece8713ae7435b04a6d6c0f00f3c3b70dd67"
+    },
+    "mechanical_work_relative_residual": 5.748870193097399e-06,
+    "maximum_recorded_power_defect": 8.329669433197098e-07
+  },
+  "scaled_selected": {
+    "shape": [
+      48,
+      36,
+      20
+    ],
+    "nodes": 34560,
+    "bonds": 419228,
+    "steps": 1554,
+    "dt": 0.00033783783783783786,
+    "weakening": 80,
+    "elapsed_seconds": 106.019764375,
+    "broken": 28606,
+    "solver": {
+      "iterations": 131,
+      "residual": 1.4731200007310394e-07,
+      "joule_power": 142.72349154199833,
+      "electrode_power": 142.72348206222458,
+      "relative_power_defect": 6.642055662556598e-08,
+      "floating_components": 1
+    },
+    "mechanical_energy_residual": 0.00136609724507597,
+    "source_sha256": {
+      "src/mechanics.jl": "a0370e4028aa859fb344829f0d387a62dd8defb77b25f4651f7c08b386324e45",
+      "studies/voltage_between_pieces.jl": "e952444f2dcf35b5f25d8af75b035c19ad6c4902299469d62076385f7227c4c3"
+    },
+    "mechanical_work_relative_residual": 0.0006722806320027721,
+    "maximum_recorded_power_defect": 4.03671611165698e-06
+  },
+  "independent_solver_fixture": {
+    "direct_linear_system_max_error": 3.414935001444519e-12,
+    "solver": {
+      "iterations": 17,
+      "residual": 3.375740728146089e-12,
+      "joule_power": 17.324379504858822,
+      "electrode_power": 17.324379504858825,
+      "relative_power_defect": 2.050701831949653e-16,
+      "floating_components": 1
+    },
+    "isolated_gauge_checked": true,
+    "maximum_principle": true
+  },
+  "qualification": "All solves enforce independent normalized edge-current residual<2e-6. Recorded power defect maximum covers history observations only. Finer realization rescales physical parameters but changes quenched disorder; no continuum convergence claim. Potential contours and optical thickness are observations, not extra material."
+}

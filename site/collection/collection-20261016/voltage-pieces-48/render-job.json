@@ -1,0 +1,21 @@
+{
+  "id": "voltage-pieces-48",
+  "title": "The field inside the fracture",
+  "family": "branches",
+  "description": "Gold potential iso-surfaces reveal a computed electrical interior inside fractured violet support. Actual bond failure redirects conduction; accumulated Joule dose weakens later fractures. The contour foils are optical observations, not additional physical sheets.",
+  "renderer": "scripts/render_voltage_pieces.py",
+  "source_state": "native-state.json",
+  "source_state_sha256": "da6ae7adf0d18edab3fadd2c6407878c750e2d6df793685a612bd392779c8966",
+  "size": 1600,
+  "samples": 96,
+  "device": "METAL",
+  "threads": 2,
+  "source_shape": [
+    48,
+    36,
+    20
+  ],
+  "source_nodes": 34560,
+  "source_bonds": 419228,
+  "renderer_sha256": "6667bab9b983faa30fcab86181aeaa82061ff5358a38b6f8afbfc3334fe3f522"
+}

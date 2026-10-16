@@ -15,7 +15,7 @@ Six families: phase surfaces, written inclusions, dielectric branches, fractured
 networks, acoustic/neural contours and 3D metabolic inhabitants. Each photograph
 observes a saved simulation through chosen optics. The first series adds 36
 specimens at 1600². Refinement now evolves native 384³ phase, writing and waves;
-768³ writing is complete. Refined 2400² photographs, recurrent matter, coupled optics and a repairing weave bring the gallery to 78
+768³ writing is complete. Refined 2400² photographs, recurrent matter, coupled optics and a repairing weave bring the gallery to 79
 studies, with corrected crop geometry and resin, wax, frost, bronze and copper
 optics. Native 1152³ Julia writing completed in 56.9 minutes with 18.35 GB of state.
 Constructive ecology now has actual 64³ trajectories and a 128³ GPU pilot;
@@ -97,6 +97,10 @@ records 40 actual states of wave-written mineral growing and receding.
 
 **Inner shore** enters the light-remodeled mineral: a macro view of its actual
 mineral walls and absorbed-power sheets. [Photographic study](docs/inner-shore.md).
+
+**The field inside the fracture:** surviving mechanical bonds conduct voltage;
+electrical dose weakens later bonds. Gold potential contours reveal the resulting
+field inside fractured violet support. [Model and photograph](docs/voltage-pieces.md).
 
 **After the last feeding:** actual cell bonds become a gold scaffold inside
 optically stained catalyst and stored food. The photograph observes a native

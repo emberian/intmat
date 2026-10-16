@@ -1,0 +1,52 @@
+{
+    "runtime": {
+        "julia": "1.12.4",
+        "kernel": "Linux",
+        "architecture": "x86_64",
+        "launch_threads": 2,
+        "backend": "amd",
+        "device": "HIPDevice(id=1, name=AMD Radeon RX 6750 XT, gcn_arch=gfx1030)",
+        "backend_version": "2.8.0",
+        "actual_device_optlevel": 1,
+        "project_sha256": "ea2724f6aee424afa18192edf284c4121c9b9aba20bdf30d709b4156f0318435",
+        "manifest_sha256": "bca5d4812fe0a190bd213737291476fd273efd59812d8a0106e43ac8b18c174b"
+    },
+    "source": {
+        "src/implicit_phase.jl": "4771f39417af155e1efa59880e8448d7a9d74adf81c4d3bf280be5cf5402987c",
+        "studies/implicit_phase_runtime.jl": "a6f772ee39b66cf1d5e12742ff9a94a3a0c187a99fdae113d377be14b80baf75",
+        "studies/brine_memory.jl": "5d8ec28796fe1ebae2438152db6ec8c5802a32ff64d88a205d9c86c84ae597bd",
+        "studies/compact_brine_runtime.jl": "ea93d3e36af960479b7f8ef261e49b18a8fdc11c625c60f8cd3e7787f770c7f4",
+        "src/phase.jl": "7233bbdcb4d8ba0278cef6ad55fdf62d234e93613ff86628183aae8e240dd252",
+        "src/core.jl": "b4302b90eaeba213360e8a15ce8b7e4cb4c491606657e3e500d2fb8507753a52",
+        "src/compartments.jl": "b0e82216232acde9f4692d0053be43887378e4a80b07f76ab61dd19f3de34cea"
+    },
+    "script_sha": "c25b986c0d3810887a273d709605e9da7db5dde39c1c1cd630ef3a699df3f5e6",
+    "rows": [
+        {
+            "n": 16,
+            "host_seed_bytes": 131072,
+            "initialized_and_future_exact": true,
+            "checkpoint_and_future_exact": true,
+            "time": 0.019999999552965164,
+            "plan_bytes": [
+                36864,
+                0,
+                36864,
+                0
+            ]
+        },
+        {
+            "n": 32,
+            "host_seed_bytes": 1048576,
+            "initialized_and_future_exact": true,
+            "checkpoint_and_future_exact": true,
+            "time": 0.019999999552965164,
+            "plan_bytes": [
+                278528,
+                0,
+                278528,
+                0
+            ]
+        }
+    ]
+}

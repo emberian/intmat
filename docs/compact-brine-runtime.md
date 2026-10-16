@@ -120,6 +120,10 @@ five-step future parity with the existing compact fixture, independent target
 arrays, scratch alias, serialized seed reconstruction, recipe/time rejection
 and exact array-byte accounting. The seed is 4 GiB at 512³; target GPU
 headroom, large-size FFT workspace and output budgets still require a measured
-preflight. Native validation of this constructor is pending. Existing compact
-native v2/v3 evidence concerns the preceding complete-fixture upload path; no
-new large allocation or producer has been launched.
+preflight. The native v4 seed gate now passes at 16³/32³: exact initial fields,
+five-step future, serialized checkpoint and three-step restart future; the
+workspace alias is preserved and target plan buffers match 32H with zero extra
+workarea at these sizes. Host seed array bytes are exactly 131072 and 1048576.
+Evidence: `benchmarks/2026-10-16-compact-brine-seed-native-v4.json`. Existing
+compact v2/v3 timing and active-coupling evidence concerns the preceding
+complete-fixture upload path. No new large allocation or producer was launched.

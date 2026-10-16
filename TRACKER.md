@@ -56,6 +56,25 @@ voxel; 43 CPU checks pass, native initialization validation is queued. This does
 not yet authorize or establish a larger producer under host/device/output budgets.
 Published snapshots through `ccc4b0c`; Pages deployment succeeded.
 
+### 05:05 UTC — art and capture convergence
+
+A second reviewed still, **The field inside the fracture**, observes computed
+potential contours in a fractured 34,560-node network. The gold surfaces visualize
+voltage, not added physical sheets. Dense-solver, power and mechanical-ledger
+checks accompany it; earlier pieces are preserved. Staging contains 79 stills
+and uses 120.76 MB.
+
+Living-frame extraction now borrows synchronized CPU state during the unchanged
+full audit, copying only returned observations. CPU 16³/32³/64³ and AMD 16³ gates
+preserve complete records, exact JSON and independent returned arrays. Local 64³
+capture+JSON allocation falls 213.38→109.25 MB (43.64→39.18 ms, not an isolated
+hbox speed claim). Data-only brine initialization also passed its 16³/32³ AMD
+initialization, continuation and restart gate; no larger producer was launched.
+
+Active work remains continuous paid temporal allocation in the new fed habitat,
+and review of a separate homeostatic sensory-memory prototype. Short failed
+funding regimes remain recorded as design evidence, not ecological verdicts.
+
 ## Active goal — an instrument for discovering rich living materials
 
 Fresh ten-hour session: **2026-10-16 00:50:31–10:50:31 UTC**

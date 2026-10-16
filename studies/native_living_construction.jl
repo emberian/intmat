@@ -118,7 +118,20 @@ function fixture(profile;backend=CPU(),seed=nothing)
     (;w,p,cfg,capacity)
 end
 function frame(w,p,h,origin)
-    x=Interior.device_habitat_snapshot(p);s=x.cells.state;a=Interior.device_habitat_audit(x);z=map(Array,h.state)
+    # Callers serialize stepping and observation (the workbench command loop does too).
+    # Synchronize/status-check before borrowing CPU storage; no borrowed array escapes.
+    if p.cells.backend isa CPU
+        Interior.device_cellular_status!(p.cells)
+        c=p.cells;b=p.habitat
+        x=(cells=(state=c.state,environment=c.environment,parameters=c.parameters,
+            geometry=c.geometry,attempted_steps=c.attempted_steps),arrays=b.arrays,
+            feedstock=b.feedstock.arrays,parameters=b.parameters,feed_parameters=b.feedstock.parameters)
+        z=(learned=h.state.learned,paid=h.state.paid,requested=h.state.requested)
+    else
+        x=Interior.device_habitat_snapshot(p)
+        z=(learned=Array(h.state.learned),paid=Array(h.state.paid),requested=Array(h.state.requested))
+    end
+    s=x.cells.state;a=Interior.device_habitat_audit(x)
     material_residual=a.material-origin.material-a.supplied+origin.supplied+a.removed-origin.removed
     potential_residual=a.potential-origin.potential+a.work-origin.work+a.heat-origin.heat-a.supplied_potential+origin.supplied_potential+a.removed_potential-origin.removed_potential
     a.finite && abs(material_residual)<1e-8 && abs(potential_residual)<1e-8||error("living physical closure")
