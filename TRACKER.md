@@ -866,3 +866,29 @@ from `docs/figures/native-living-construction.json`. Root reviewed desktop/mobil
 seven packaging tests and native/lifetime/cohort checks pass. A fresh bounded
 32-time copy/reset pair uses the same finite budgets; analysis remains separate
 from this preserved first exhibit. No new long soak is running.
+
+### Productive patches and finite-feed material memory
+
+A matched four-arm experiment varies raw transport and catalyst lifetime while
+holding founders, funding and learning fixed. Mobile raw stock (D=.006) and
+slower catalyst decay (.05) together increase conversion 7.17× and retained
+catalyst 20.6× at time32 relative to the original living recipe. This is a
+physical feedback improvement, not evidence of a learning advantage. Actual
+inventories, spatial overlap and conservative ledgers are retained in
+`docs/figures/living-patch-recruitment.json`; mechanisms and timescales are in
+`docs/research/living-patch-recruitment.md`.
+
+A fresh64-time copy/reset pair exhausts the same25.6 funding at32. Both reach48
+cells through24 founder-to-child births; no second generation appears. Material
+activity persists after feed exhaustion: funded secretion grows1.525→2.121,
+retained catalyst declines.698→.385, and actual native bonds grow81→101.
+Nineteen offspring receive nonzero paid readouts, with no demonstrated benefit
+relative to reset. All66 actual captures validate bond identities and endpoints;
+maximum material/potential residual is1.48e-12. Separate art and exploratory
+views are being prepared from this transient. Published16-time data is preserved.
+
+The native384³ brine producer stopped on its original conservation guard at
+step3240; its earlier replay and log are preserved. This exposed cumulative
+Float32 chemical drift rather than a memory failure. A separate explicit
+Float64 chemical-storage variant and reliable failure export are being gated;
+no old experiment is resumed or its guard loosened.

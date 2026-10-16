@@ -130,3 +130,33 @@ activity and material persistence but does not yet demonstrate learning-state
 transmission through multiple descendant generations. The next question is
 physical flux and actuator authority, not whether a longer unattended run can
 produce a favorable scalar. See `native-living-construction-32-comparison.json`.
+
+A matched diagnostic replay (`studies/living_construction_authority.jl`) explains
+why simply waiting did not produce a second generation. At time 32, descendants'
+mean mass was 0.914 versus division mass 1.8. Median precursor stores were zero,
+23 of 35 residents were below their current reserve targets, and cumulative
+funding met only 1.83% of growth requests and 2.25% of secretion requests. Total
+biomass grew from 38.4 to 43.33. Uptake totaled 4.48, while oxidation totaled 4.71
+including consumption of initial precursor stores. These are actual primitive
+requests and native ledger allocations, not inferred commands.
+
+Raw access was initially local: at time 2 the median sensed raw concentration
+was about 0.156 versus world mean 1.71. By time 32 those values were 4.02 and
+4.30, respectively. The sensed concentration is reconstructed from the last
+pre-action fixed-scale raw-total receptor, not an instantaneous spatial census.
+Consequently, late raw abundance is not the missing resource; conversion,
+precursor supply and reserve competition deserve attention. The measured
+funding ratios do not by themselves establish which single change will help.
+A separate spatial-law experiment tests raw recruitment and longer catalyst
+persistence without modifying these scene histories. The compact authority
+record is `docs/figures/native-living-construction-authority.json`.
+
+### Finite-feed patch recruitment through time 64
+
+A separate fresh pair uses the transport/retention recipe (`living-patch-recruitment-16.toml`): raw diffusion .006 and catalyst decay .05, with all other founder, learning, motor and funding parameters unchanged. Both arms retain the original 12.8-per-channel budgets; supply ends at time32. Captures every2 include actual native bond IDs, rest lengths and endpoint positions. The published16-time scene remains unchanged.
+
+Copy and reset both reach48 residents from24 founders, with24 births and no deaths. All births are founder-to-child; the last occurs at17.4. The copy arm records19 nonzero paid readout transfers, total work .000220963. This demonstrates executed inheritance, not a benefit or a second-generation ratchet. At64 the mean child mass is1.116 (maximum1.228), below the native1.8 division threshold.
+
+Material activity persists after feed exhaustion. In the copy arm, cumulative funded secretion rises from1.52482 at32 to2.12093 at64, while retained catalyst falls from.69842 to.38527 and bound precursor from2.24026 to1.16186. Raw inventory falls from9.77765 to.45297. Total cellular mass rises49.916→54.081 and battery energy falls32.620→28.059. Native live bonds grow81→101; these are actual graph edges, not inferred proximity links. The reset arm closely matches this trajectory. Maximum absolute material/potential residual across both runs is1.48e−12; total supplied material remains25.6.
+
+Compact measured histories are in `docs/figures/native-living-patch-64-comparison.json`; the exact executed observer and recipe are in `studies/outputs/native-living-patch-64/`. All66 captured frames passed ID-pair uniqueness, positive rest length and exact endpoint/cell-position checks. The new optional `bonds` field is observational only and should be rendered with periodic minimum-image segments.

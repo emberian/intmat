@@ -124,12 +124,20 @@ function frame(w,p,h,origin)
     a.finite && abs(material_residual)<1e-8 && abs(potential_residual)<1e-8||error("living physical closure")
     cells=[(;id=s.ids[i],parent_id=s.parents[i],lineage=s.lineages[i],generation=s.generations[i],position=vec(s.position[i,:]),radius=s.radii[i],
         mass=s.mass[i],energy=s.energy[i],stores=vec(s.metabolites[i,:]),learned_l2=sqrt(sum(abs2,z.learned[i,:,:])),learning_work=z.paid[i]) for i in eachindex(s.active) if s.active[i]==1]
+    # Native ID-validated edges only; periodic endpoint wrapping is a renderer concern.
+    bonds=NamedTuple[]
+    for i in eachindex(s.active),k in axes(s.bonds,2)
+        j=Int(s.bonds[i,k])
+        if s.active[i]==1 && 0<j<=length(s.active) && s.active[j]==1 && s.ids[j]==s.bond_ids[i,k] && s.ids[i]<s.ids[j]
+            push!(bonds,(;a_id=s.ids[i],b_id=s.ids[j],rest_length=s.rest[i,k],a_position=vec(s.position[i,:]),b_position=vec(s.position[j,:])))
+        end
+    end
     material=(raw_a=x.feedstock.fields[:,1],raw_b=x.feedstock.fields[:,2],
         catalyst_a=reinterpret(Float32,x.arrays.enzyme_bits[:,1]),catalyst_b=reinterpret(Float32,x.arrays.enzyme_bits[:,2]),
         bound_a=x.arrays.bound[:,1],bound_b=x.arrays.bound[:,2],free_a=x.cells.environment.fields[:,1],free_b=x.cells.environment.fields[:,2])
     ledger=(material=a.material,potential=a.potential,work=a.work-origin.work,heat=a.heat-origin.heat,supplied=a.supplied-origin.supplied,
         removed=a.removed-origin.removed,supplied_potential=a.supplied_potential-origin.supplied_potential,removed_potential=a.removed_potential-origin.removed_potential,material_residual,potential_residual)
-    (;time=w.time,cells,material,ledger,funded_secretion=a.secreted,cumulative_requests=vec(sum(z.requested;dims=1)),births=x.cells.environment.metadata[3],deaths=x.cells.environment.metadata[4])
+    (;time=w.time,cells,bonds,material,ledger,funded_secretion=a.secreted,cumulative_requests=vec(sum(z.requested;dims=1)),births=x.cells.environment.metadata[3],deaths=x.cells.environment.metadata[4])
 end
 function birth_events(h)
     e=map(Array,h.events)
