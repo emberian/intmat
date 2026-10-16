@@ -44,6 +44,18 @@
   continuously acting temporal allocation in a designed replenishing environment,
   and computed voltage surfaces in a fractured material. No new soaks.
 
+### 05:00 UTC — compact brine integrated
+
+The separate compact Julia adapter removes unused volume fields and shares the
+FFT real workspace with later solute transport. CPU and AMD compare all seven
+physical fields and restart futures exactly, including a funded positive-mineral
+reaction fixture. Early 96³ AMD complete-step time improves 2.460→2.181 ms;
+later 384³ timing is unmeasured. Native plan-storage reduction is about 27.2%.
+The data-only initialization path additionally keeps host state at 32 bytes per
+voxel; 43 CPU checks pass, native initialization validation is queued. This does
+not yet authorize or establish a larger producer under host/device/output budgets.
+Published snapshots through `ccc4b0c`; Pages deployment succeeded.
+
 ## Active goal — an instrument for discovering rich living materials
 
 Fresh ten-hour session: **2026-10-16 00:50:31–10:50:31 UTC**

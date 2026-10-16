@@ -139,6 +139,10 @@ module CompactBrineRuntimeTests
 include("compact_brine_runtime.jl")
 end
 
+module CompactBrineInitializationTests
+include("compact_brine_initialization.jl")
+end
+
 module NativeConstructionLagTests
 include("native_construction_lag.jl")
 end

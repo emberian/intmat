@@ -134,6 +134,9 @@ function compact_brine_seed_upload(seed,c,backend)
  seed.recipe==c || throw(ArgumentError("compact brine seed recipe differs"))
  seed.w.time==0 || throw(ArgumentError("compact brine seed is initialization-only"))
  Interior.KernelAbstractions.supports_float64(backend) || throw(ArgumentError("compact brine requires Float64 arithmetic and FFT support"))
+ seed.w.backend isa Interior.CPU || throw(ArgumentError("compact brine seed must be host-resident"))
+ all(eltype(a)==Float64 for a in (seed.a,seed.b,seed.w.fields.deposit)) || throw(ArgumentError("compact brine seed chemicals must remain Float64"))
+ all(eltype(a)==Float32 for a in (seed.p.phi,seed.p.interface)) || throw(ArgumentError("compact brine seed phase must remain Float32"))
  dims=seed.w.grid.size
  all(size(a)==dims for a in (seed.p.phi,seed.p.interface,seed.a,seed.b,seed.w.fields.deposit)) || throw(DimensionMismatch("compact seed grid differs"))
  upload(a)=begin b=Interior.KernelAbstractions.zeros(backend,eltype(a),size(a)...);copyto!(b,a);b end

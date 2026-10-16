@@ -8,7 +8,8 @@
       "compact_owned_bytes": 3628604936,
       "compact_native_active_estimate_bytes": 4539293192,
       "compact_native_active_estimate_gib": 4.227546222507954,
-      "full_four_field_bytes": 1585446912
+      "full_four_field_bytes": 1585446912,
+      "data_only_host_seed_bytes": 1811939328
     },
     {
       "resolution": 480,
@@ -16,7 +17,8 @@
       "compact_owned_bytes": 7085270408,
       "compact_native_active_estimate_bytes": 8862115208,
       "compact_native_active_estimate_gib": 8.253487952053547,
-      "full_four_field_bytes": 3096576000
+      "full_four_field_bytes": 3096576000,
+      "data_only_host_seed_bytes": 3538944000
     },
     {
       "resolution": 512,
@@ -24,7 +26,8 @@
       "compact_owned_bytes": 8598333448,
       "compact_native_active_estimate_bytes": 10754205704,
       "compact_native_active_estimate_gib": 10.015634544193745,
-      "full_four_field_bytes": 3758096384
+      "full_four_field_bytes": 3758096384,
+      "data_only_host_seed_bytes": 4294967296
     },
     {
       "resolution": 576,
@@ -32,7 +35,8 @@
       "compact_owned_bytes": 12241218824,
       "compact_native_active_estimate_bytes": 15309483272,
       "compact_native_active_estimate_gib": 14.25806737691164,
-      "full_four_field_bytes": 5350883328
+      "full_four_field_bytes": 5350883328,
+      "data_only_host_seed_bytes": 6115295232
     },
     {
       "resolution": 1152,
@@ -40,7 +44,9 @@
       "compact_owned_bytes": 97887214088,
       "compact_native_active_estimate_bytes": 122390862344,
       "compact_native_active_estimate_gib": 113.9853730276227,
-      "full_four_field_bytes": 42807066624
+      "full_four_field_bytes": 42807066624,
+      "data_only_host_seed_bytes": 48922361856
     }
-  ]
+  ],
+  "host_seed_formula": "32N; phi/interface Float32, A/B/mineral Float64; FFT resources constructed only on target; excludes metadata and initializer transients"
 }

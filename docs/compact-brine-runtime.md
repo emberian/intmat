@@ -98,8 +98,28 @@ bitwise equal. This verifies active coupling and workspace reuse; it does not
 change the ordinary recipe or establish later-state 384³ performance. Evidence:
 `benchmarks/2026-10-16-compact-brine-native-v3.json`.
 
-The current CPU constructor still allocates full FFT resources before upload.
+The complete-fixture CPU constructor allocates full FFT resources before upload.
 At 512³ its owned arrays alone are 8.598 GB, exceeding the 8-GiB host limit before
 baseline/initialization/planning temporaries. Thus the device forecast alone is
 insufficient: a data-only host initializer followed by native resource creation,
 or native initialization, is also needed before that resolution is executable.
+
+## Data-only host seed and target resource construction
+
+The additional explicit constructor pair `compact_brine_seed(c,n)` and
+`compact_brine_seed_upload(seed,c,backend)` now provides that host-side path.
+The seed contains only phi, interface, A, B and mineral (32N bytes), plus its
+recipe and small grid/clock metadata. It runs the shared physical initializer;
+it contains no Fourier spectra, real workspace or FFT plan. Upload allocates
+all FFT arrays/plans directly on the requested target and creates the shared
+real-workspace/transport-scratch alias there. Recipe mismatches, changed chemical/phase precision and nonzero
+seed clocks are rejected; this is initialization, not long-run migration.
+
+The new CPU suite passes 43 checks at 9³/16³/24³: exact initialization and
+five-step future parity with the existing compact fixture, independent target
+arrays, scratch alias, serialized seed reconstruction, recipe/time rejection
+and exact array-byte accounting. The seed is 4 GiB at 512³; target GPU
+headroom, large-size FFT workspace and output budgets still require a measured
+preflight. Native validation of this constructor is pending. Existing compact
+native v2/v3 evidence concerns the preceding complete-fixture upload path; no
+new large allocation or producer has been launched.
