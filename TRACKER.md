@@ -754,3 +754,25 @@ phenotype restores ongoing funded secretion. This is being separated from
 learning effects, with paid joint reserve/investment/allocation policy next;
 the original zero-authority pilot remains preserved. No new soaks were launched;
 development runs remain bounded.
+
+### Joint budget control and useful credit
+
+Native two-action construction passes four CPU/AMD cases (6 physical time,
+feed on/off, dt .02/.01), max difference6.27e-8 and residual1.10e-13. The original
+zero-authority pilot and a declared fixed-reserve phenotype remain separate.
+A small public exhibit exposes requested/funded construction, actual inventory
+and frozen learned/erased probes; it does not invent field maps or probe histories.
+
+Joint reserve/investment/allocation now has physical authority. Four CPU pilots
+(one founder bank, two exploration seeds, recurrence readout on/ablated) retain
+all four identities. Training-credit outcomes differ; frozen benefits remain
+small and phase sensitive. Reserve logit changes reach0.59 noise sigma while
+construction changes remain much smaller. Extra recurrent features also change
+update gain; this is not yet a temporal-memory advantage. Joint CPU/AMD checks
+pass through6time with max difference1.22e-7, residual1.51e-14 and strict restore.
+
+Research now targets a three-action marginal lag map, then decision-aligned
+credit with pre-action baselines. Carrying old scores while subtracting later
+state-conditioned baselines can erase the niche consequences being learned.
+The design note separates eligibility, useful memory, consolidation and optimizer
+stability; current tasks do not establish a universal critical regime.

@@ -49,6 +49,8 @@ in three matched founder banks; without raw substrate it stays costly. Explore
 [who gains and what remains](https://emberian.github.io/intmat/laboratory/secretion-payback/).
 This is a measured opportunity for learning, not learned cooperation.
 
+[Construction credit](https://emberian.github.io/intmat/laboratory/construction-credit/) exposes the next constraint: reserve demand can consume precursor before construction. Joint reserve/material control restores an action the learner can change.
+
 **The light takes the long way:** a changing 256³ mineral bends light through
 three fixed apertures. [Rotate, cut and compare actual paths](https://emberian.github.io/intmat/collection-20261016/refractive-memory/viewer.html)
 across five saved states; the 2000² photograph reveals its amber and copper interior.

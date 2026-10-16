@@ -93,15 +93,25 @@ def main():
     text = index.read_text()
     # Documentation lives in the repository, independent of the Pages base path.
     text = text.replace('../docs/', GITHUB + 'docs/').replace('local collection', 'recorded material collection')
-    text = text.replace('</header>', '<a href="https://github.com/emberian/intmat">Source &amp; simulation code ↗</a></header>')
-    text = text.replace('</header>', '<a class="primary" href="arena/arena.html">Recorded neural arena ↗</a></header>')
-    text = text.replace('</header>', '<a class="primary" href="metabolic/arena.html">Metabolic arena · 96² ↗</a></header>')
-    if recurrent.exists():text = text.replace('</header>', '<a class="primary" href="recurrent/">Recurrent matter · rhythms &amp; memory ↗</a></header>')
-    if films:text = text.replace('</header>', '<a class="primary" href="animations/">Material films ↗</a></header>')
-    if cellular.exists():text = text.replace('</header>', '<a class="primary" href="cellular/">Living cells · motion &amp; material ↗</a></header>')
-    if constructed.exists():text = text.replace('</header>', '<a class="primary" href="constructed/">Constructed life · cells &amp; shared material ↗</a></header>')
-    if laboratory.exists():text = text.replace('</header>', '<a class="primary" href="laboratory/">Laboratory · explore memory &amp; feedback ↗</a></header>')
-    text = text.replace('</header>', '<a href="https://github.com/emberian/intmat/blob/dev/docs/alife-adaptation-results.md">Alife results ↗</a></header>')
+    # Assemble navigation once: two creative entry points, then the full project menu.
+    primary = []
+    if films:primary.append('<a class="primary" href="animations/">Material films ↗</a>')
+    if laboratory.exists():primary.append('<a class="primary" href="laboratory/">Laboratory ↗</a>')
+    project_links = [
+        '<a href="arena/arena.html">Recorded neural arena ↗</a>',
+        '<a href="metabolic/arena.html">Metabolic arena · 96² ↗</a>',
+    ]
+    if recurrent.exists():project_links.append('<a href="recurrent/">Recurrent matter · rhythms &amp; memory ↗</a>')
+    if cellular.exists():project_links.append('<a href="cellular/">Living cells · motion &amp; material ↗</a>')
+    if constructed.exists():project_links.append('<a href="constructed/">Constructed life · cells &amp; shared material ↗</a>')
+    project_links.extend([
+        '<a href="https://github.com/emberian/intmat">Source &amp; simulation code ↗</a>',
+        '<a href="https://github.com/emberian/intmat/blob/dev/docs/alife-adaptation-results.md">Alife results ↗</a>',
+    ])
+    navigation = ('<div class="header-actions">' + ''.join(primary)
+        + '<details class="project-menu"><summary>Living systems &amp; project</summary>'
+        + '<div class="project-links">' + ''.join(project_links) + '</div></details></div>')
+    text = text.replace('</header>', navigation + '</header>', 1)
     index.write_text(text)
     for file in destination.rglob('*'):
         if file.is_file() and file.suffix in ('.html', '.json', '.toml'):
