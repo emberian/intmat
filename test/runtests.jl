@@ -134,3 +134,11 @@ end
 module ImplicitPhaseRuntimeTests
 include("implicit_phase_runtime.jl")
 end
+
+module NativeConstructionLagTests
+include("native_construction_lag.jl")
+end
+
+module ConstructionLagWorldBatchTests
+include("construction_lag_world_batches.jl")
+end

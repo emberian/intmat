@@ -799,3 +799,21 @@ Local Blender Metal is available. New optical finals use it; CPU2 electrical
 photography was a lane reservation, not a hardware limitation. Render slots now
 coordinate with Julia Metal producers rather than serializing all work behind
 one CPU render. The earlier CPU final and its exact source remain preserved.
+
+### Delayed consequences and phase throughput
+
+The construction lag map now branches six learned checkpoints from each of two
+founder banks into matched actuator pulses. Reserve changes can hurt at lag 2
+and help at lag 8; allocation effects depend on physical history. The recorded
+late reserve benefit is battery, not established secretion-mediated payback.
+All four original residents survive, paired supply matches, and the native
+CPU/AMD pulse gate differs by at most 2.98e-8. See
+`docs/research/construction-lag-map.md` for measured traces and limits.
+Decision-aligned credit cohorts are in development; no new soak is running.
+
+Skipping inactive phase diffusion preserves complete fields while reducing
+measured coupled-brine CPU steps from 226 to 122 ms at 96³ and 1370 to 566 ms
+at 192³. Explicit FFT resources support reuse without changing physical state;
+plan reuse alone was not a convincing speedup. Native Float64 rocFFT passed
+capability checks. A complete GPU phase/brine comparison is the next gate,
+not yet a measured application speedup. Details: `docs/implicit-phase-runtime.md`.
