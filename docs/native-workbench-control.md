@@ -313,3 +313,62 @@ Reviewed evidence is in `outputs/native-cell-inspector-review-20261016`.
 
 [Compact inspector evidence](../benchmarks/2026-10-16-native-cell-inspector.json)
 links the compared immutable frame hashes to the read-only review.
+
+## Living construction adapter (bounded local session)
+
+A fresh worker can select the existing moving/dividing, paid cohort-policy law:
+
+```sh
+JULIA_NUM_THREADS=2 DEVICE_BACKEND=cpu WORKBENCH_LIVING=1 WORKBENCH_SIDE=4 \
+  julia --project=. scripts/native_workbench_worker.jl \
+  experiments/native/living-patch-recruitment-16.toml FRESH_DIRECTORY
+python3 scripts/serve_native_workbench.py FRESH_DIRECTORY --port 8811
+```
+
+This optional mode passes the existing `NativeLivingConstruction.LivingHabitat`
+into the native step. It adds no numerical implementation. The original finite
+session limits, paused command boundaries, loopback gateway and immutable export
+protocol apply. Use short finite advances; the default 64 model-time cap allows
+separate continued experiments within the original deadline. The initial pair
+shares policy initialization and differs in declared material receptor access.
+Fork a current completed branch, then change its receptor scales to compare a
+causal change in what the learned policy observes. This edit preserves existing
+learned weights, critic, hidden/adaptation state, delayed cohorts and private
+history; it only affects future physical sensing steps.
+
+Native physical checkpoints alone are insufficient for this law. Living-mode
+checkpoints therefore also contain a source-pinned sidecar: all actor/critic and
+cohort arrays, ID and invalidation records, cumulative paid work, pending births,
+birth event arrays, original feed masks, policy options, private-memory mode,
+inheritance law and policy step/noise clock. Fork restore allocates every sidecar
+array independently and binds the new wrapper to the restored native habitat.
+Native checkpoint state retains actual current feed masks, finite budgets and
+all physical/controller arrays. No external restore or source migration is
+accepted. The original branch clocks, source funding and session deadline apply
+to the child.
+
+Observations additionally export learned weights, critic, cumulative learning
+work, pending cohort IDs and enqueue/maturity counts for active residents. These
+are actual completed-state arrays; the existing viewer may ignore optional
+arrays. `living` frame metadata and worker branch metadata identify policy
+options and clocks. Complete checkpoint files remain inaccessible over HTTP.
+
+The effective `config.living_policy` table is always explicit in the worker
+manifest. Its optional recipe overrides are:
+
+```toml
+[living_policy]
+inheritance_fraction = 0.5
+horizon = 2.0
+actor_rate = 0.003
+noise_seed = 6201
+sigma = 0.3
+```
+
+These are this workbench adapter's declared defaults, including the half-copy
+inheritance used by the copy-law scene. They differ from the standalone study
+runner's default zero inheritance. The policy acts throughout the finite session
+model-time allowance; birth-transfer adjustment and private recurrent features
+remain enabled. The stored checkpoint carries all effective policy options.
+Changing this table requires a fresh session; receptor edits within a resident
+session retain its declared inheritance and learning law.

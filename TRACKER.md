@@ -892,3 +892,31 @@ step3240; its earlier replay and log are preserved. This exposed cumulative
 Float32 chemical drift rather than a memory failure. A separate explicit
 Float64 chemical-storage variant and reliable failure export are being gated;
 no old experiment is resumed or its guard loosened.
+
+### Explore the scaffold; preserve its learning state
+
+The separate living-patch exhibit retains all33 actual captures and exposes
+native bonds, selected-ID history, fixed-scale reference comparisons and finite
+funding. It preserves the original16-time exhibit. Root reviewed the actual
+browser at time64 against time32; packaging and periodic geometry checks pass.
+The photograph now in curation observes a distinct32³ refinement, not the
+16³ recording used by this exhibit.
+
+Static publication now losslessly compresses eight legacy recordings, preserving
+all411 frames and exact decoded bytes. Root verified staged loading; three loader
+comparisons preserve rendered canvas hashes. The76-specimen stage plus new
+living-patch exhibit is119.58MB, within the original160MB cap. Source recordings
+and images remain unchanged; this is a storage reduction, not a network-speed claim.
+
+Optional WORKBENCH_LIVING mode reuses the native law with explicit policy
+parameters. Complete forks preserve independent actor/critic arrays, pending
+cohorts, birth-copy events, private memory, masks, clocks and finite budgets.
+Receptor interventions then change future sensing without resetting that history.
+The living composition gate passes73 checks including a funded birth-copy fixture;
+all238 existing workbench checks pass. No unbounded worker or new soak was started.
+
+Full-step CPU equality gates support an empty-material chemistry shortcut, but
+contended local timings do not establish its throughput benefit. Isolated hbox
+CPU/native gates are queued behind the independently frozen384³ brine producer.
+That Float64 chemical epoch has passed the old failure horizon with inventory
+error below1e-15; target completion and export remain pending.

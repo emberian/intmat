@@ -56,6 +56,13 @@ follows 24→30 moving cells through six births. Later offspring receive paid co
 of learned readouts; 17 actual captures expose bodies, ancestry and material.
 The mechanism works; an advantage from inheritance remains unestablished.
 
+[After the feed](https://emberian.github.io/intmat/laboratory/living-patch/)
+follows a more productive material recipe through 33 captures. Compare actual
+bonds, retained catalyst and stored food before and after the finite feed ends.
+The local Julia workbench can now fork the complete living state—including
+pending learning credit—and change what a branch senses.
+[Run it](docs/native-workbench-control.md#living-construction-adapter-bounded-local-session).
+
 **The light takes the long way:** a changing 256³ mineral bends light through
 three fixed apertures. [Rotate, cut and compare actual paths](https://emberian.github.io/intmat/collection-20261016/refractive-memory/viewer.html)
 across five saved states; the 2000² photograph reveals its amber and copper interior.

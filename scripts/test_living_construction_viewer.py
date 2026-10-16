@@ -49,6 +49,16 @@ class LivingViewerTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'radius'):pack(f,'a'*64)
         f=fixture();f['birth_events'][0]['copy_funded']='yes'
         with self.assertRaisesRegex(ValueError,'Boolean'):pack(f,'a'*64)
+    def test_native_bonds_match_actual_residents(self):
+        f=fixture();a,b=f['frames'][1]['cells'];bond=dict(a_id=a['id'],b_id=b['id'],rest_length=.3,a_position=a['position'],b_position=b['position'])
+        f['frames'][1]['bonds']=[bond];p=pack(f,'a'*64);self.assertEqual(validate_packed(p)['frames'][1]['bonds'],[bond])
+        for change in ('missing','duplicate','endpoint','length'):
+            q=copy.deepcopy(f)
+            if change=='missing':q['frames'][1]['bonds'][0]['b_id']=99
+            elif change=='duplicate':q['frames'][1]['bonds']*=2
+            elif change=='endpoint':q['frames'][1]['bonds'][0]['a_position']=[0,0,0]
+            else:q['frames'][1]['bonds'][0]['rest_length']=-1
+            with self.assertRaises(ValueError):pack(q,'a'*64)
     def test_packed_rebuild_and_corruption(self):
         p=pack(fixture(),'a'*64);self.assertEqual(validate_packed(p),p)
         for change in ('hash','offset','bytes','scale'):

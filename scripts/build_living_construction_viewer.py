@@ -50,6 +50,13 @@ def pack(record, source_sha256):
             require(len(c['position'])==3 and len(c['stores'])==2, 'Wrong cell vector size')
             require(all(finite(v) for v in c['position']+c['stores']+[c[k] for k in ('radius','mass','energy','learned_l2','learning_work')]), 'Nonfinite cell observation')
             require(c['radius']>=0, 'Negative physical radius')
+        cells_by_id={c['id']:c for c in f['cells']};seen_bonds=set()
+        for bond in f.get('bonds',[]):
+            a,b=bond['a_id'],bond['b_id'];pair=tuple(sorted((a,b)))
+            require(type(a) is int and type(b) is int and a in cells_by_id and b in cells_by_id and a!=b and pair not in seen_bonds, 'Invalid or duplicate live bond IDs')
+            seen_bonds.add(pair)
+            require(finite(bond['rest_length']) and bond['rest_length']>0, 'Invalid physical bond rest length')
+            require(bond['a_position']==cells_by_id[a]['position'] and bond['b_position']==cells_by_id[b]['position'], 'Bond endpoint differs from its recorded cell')
         require(all(finite(f['ledger'][key]) for key in LEDGERS), 'Missing/nonfinite ledger observation')
         require(type(f['births']) is int and type(f['deaths']) is int and min(f['births'],f['deaths'])>=0, 'Invalid cumulative births/deaths')
         row={k:public(v) for k,v in f.items() if k!='material'}; row['field_offset']=len(binary)//4
@@ -97,13 +104,16 @@ def validate_packed(payload):
     require(len(field['maximum'])==len(FIELDS) and all(finite(v) and math.isclose(v,w,rel_tol=1e-6,abs_tol=1e-30) for v,w in zip(field['maximum'],checked['fields']['maximum'])), 'Invalid fixed field scales')
     return public(payload)
 
-def build(source, destination, max_bytes=1_000_000, packed_output=None):
+def build(source, destination, max_bytes=1_000_000, packed_output=None, title=None, description=None):
     raw=source.read_bytes();record=json.loads(raw)
     payload=validate_packed(record) if record.get('schema')=='living-construction-viewer-v1' else pack(record,hashlib.sha256(raw).hexdigest())
+    if title is not None:payload['title']=title
+    if description is not None:payload['description']=description
     encoded=json.dumps(payload,separators=(',',':'),allow_nan=False).replace('</','<\\/')
     require(not re.search(r'/Users/|/home/|file://|localhost:|127\.0\.0\.1:',encoded), 'Private/local reference in public payload')
     template=Path(__file__).resolve().parent.parent/'web/living_construction_viewer.html'
-    html=template.read_text().replace('__DATA__',encoded)
+    geometry=template.with_name('living_construction_geometry.js').read_text()
+    html=template.read_text().replace('__DATA__',encoded).replace('__GEOMETRY__',geometry)
     size=len(html.encode());require(size<=max_bytes,f'Viewer is {size} bytes, above explicit {max_bytes} byte budget; select fewer actual captures upstream or explicitly change budget')
     destination.mkdir(parents=True,exist_ok=True);(destination/'index.html').write_text(html)
     if packed_output:
@@ -112,5 +122,5 @@ def build(source, destination, max_bytes=1_000_000, packed_output=None):
     return payload,size
 
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('source',type=Path);p.add_argument('destination',type=Path);p.add_argument('--max-bytes',type=int,default=1_000_000);p.add_argument('--packed-output',type=Path);a=p.parse_args();build(a.source,a.destination,a.max_bytes,a.packed_output)
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('source',type=Path);p.add_argument('destination',type=Path);p.add_argument('--max-bytes',type=int,default=1_000_000);p.add_argument('--packed-output',type=Path);p.add_argument('--title');p.add_argument('--description');a=p.parse_args();build(a.source,a.destination,a.max_bytes,a.packed_output,a.title,a.description)
 if __name__=='__main__':main()

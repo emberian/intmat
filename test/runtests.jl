@@ -158,3 +158,7 @@ end
 module CohortConstructionWorldBatchTests
 include("cohort_construction_world_batches.jl")
 end
+
+module NativeLivingWorkbenchTests
+include("native_living_workbench.jl")
+end

@@ -1,0 +1,12 @@
+const assert=require('node:assert/strict');
+const {periodicSegments,positions,network}=require('../web/living_construction_geometry.js');
+const length=segments=>segments.reduce((sum,[a,b])=>sum+Math.hypot(...b.map((v,i)=>v-a[i])),0);
+const close=(a,b)=>assert.ok(Math.abs(a-b)<1e-10,`${a} != ${b}`);
+const seam=periodicSegments([.1,.5,.5],[1.9,.5,.5],[2,2,2]);assert.equal(seam.length,2);close(length(seam),.2);
+for(const segment of seam)for(const p of segment)for(const v of p)assert.ok(v>=-1e-10&&v<=2+1e-10);
+const diagonal=periodicSegments([.1,.1,.1],[1.9,1.9,1.9],[2,2,2]);close(length(diagonal),Math.sqrt(.12));assert.equal(diagonal.length,2);
+const shifted=periodicSegments([10.1,-.5,2.5],[11.9,-.5,2.5],[2,2,2],[10,-1,2]);close(length(shifted),.2);
+const plain=periodicSegments([.4,.5,.6],[1.1,.7,.8],[2,2,2]);assert.equal(plain.length,1);close(length(plain),Math.sqrt(.57));
+const cells=[{id:1,position:[.1,.2,.3],radius:.1},{id:2,position:[1.9,.2,.3],radius:.1},{id:3,position:[1,1,1],radius:.1}];const frame={time:0,cells,bonds:[{a_id:1,b_id:2}]};const graph=network(frame);assert.equal(graph.bonds,1);assert.equal(graph.components,2);assert.equal(graph.largest,2);assert.equal(graph.degree(1),1);
+const frames=[frame,{time:2,cells:cells.slice(1),bonds:[]},{time:4,cells:[cells[0]],bonds:[]}];assert.deepEqual(positions(frames,1).map(v=>v.time),[0,4]);assert.deepEqual(positions(frames,1,2).map(v=>v.time),[0]);assert.deepEqual(positions(frames,99),[]);
+console.log('Periodic seam, shifted domain, physical edge length, actual-time ID positions and native network checks passed.');
