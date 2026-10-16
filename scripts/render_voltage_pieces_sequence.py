@@ -2,7 +2,7 @@
 import argparse,hashlib,json,subprocess
 from pathlib import Path
 p=argparse.ArgumentParser();p.add_argument('capture',type=Path);p.add_argument('output',type=Path);p.add_argument('--indices');p.add_argument('--size',type=int,default=640);p.add_argument('--samples',type=int,default=24);a=p.parse_args()
-root=Path(__file__).resolve().parents[1];renderer=root/'scripts/render_voltage_pieces.py';pin=hashlib.sha256(renderer.read_bytes()).hexdigest();capture=json.loads((a.capture/'capture.json').read_text());states=capture['frames'];assert len(states)==40;indices=list(map(int,a.indices.split(','))) if a.indices else range(40);a.output.mkdir(parents=True,exist_ok=True);path=a.output/'frames.json';dose=capture['global_dose_optical_max']
+root=Path(__file__).resolve().parents[1];renderer=root/'scripts/render_voltage_pieces.py';pin=hashlib.sha256(renderer.read_bytes()).hexdigest();capture=json.loads((a.capture/'capture.json').read_text());states=capture['frames'];indices=list(map(int,a.indices.split(','))) if a.indices else range(len(states));a.output.mkdir(parents=True,exist_ok=True);path=a.output/'frames.json';dose=capture['global_dose_optical_max']
 record=json.loads(path.read_text()) if path.exists() else {'renderer_sha256':pin,'base_sha256':capture['base_sha256'],'size':a.size,'samples':a.samples,'global_dose_optical_max':dose,'camera':'fixed','frames':{}}
 assert (record['renderer_sha256'],record['size'],record['samples'],record['global_dose_optical_max'])==(pin,a.size,a.samples,dose)
 assert hashlib.sha256((a.capture/'base.json').read_bytes()).hexdigest()==record['base_sha256']

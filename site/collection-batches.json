@@ -701,5 +701,16 @@
       "render-job.json",
       "run.json"
     ]
+  },
+  {
+    "id": "collection-20261016/voltage-pieces-96",
+    "source_image_sha256": "b44e5993f266dc91d4668b164f93bc1e81d7c5483fe864d92c1fee5aa75f60a8",
+    "files": [
+      "optical.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
   }
 ]

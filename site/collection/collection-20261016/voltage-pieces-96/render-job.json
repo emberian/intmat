@@ -1,0 +1,26 @@
+{
+  "id": "voltage-pieces-96",
+  "title": "Before the field gives way",
+  "description": "Copper potential iso-surfaces open inside a fractured violet support. Native 3D spring failure redirects the electrical interior; accumulated Joule dose weakens later bonds. This finer realization has 276,480 nodes. The contour foils observe computed voltage, not extra physical sheets.",
+  "family": "branches",
+  "renderer": "scripts/render_voltage_pieces.py",
+  "renderer_sha256": "f76802f6be93b2b01db9ae7e6f65e47c6bf4049b1cb82f6765a55bc1ddb1fa77",
+  "source_state": "native-observation.json",
+  "source_state_sha256": "1086b0420160c8bd9505269653a113c49695ef5b3ccf6b03725ade9399ffdce8",
+  "source_base_sha256": "c346a02b3ca3b1b9d1d56dc024bfd7920425a8a7413b3b425216de078c21f884",
+  "source_shape": [
+    96,
+    72,
+    40
+  ],
+  "source_nodes": 276480,
+  "source_bonds": 3472796,
+  "observation_index": 24,
+  "observation_time": 0.4533940003311727,
+  "dose_optical_max": 0.04,
+  "size": 2400,
+  "samples": 128,
+  "device": "METAL",
+  "threads": 2,
+  "source_base": "native-base.json"
+}

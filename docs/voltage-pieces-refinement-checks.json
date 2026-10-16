@@ -1,0 +1,26 @@
+{
+  "actual_captures": 32,
+  "native_nodes": 276480,
+  "native_bonds": 3472796,
+  "physical_time_interval": [
+    0.19421677771606483,
+    0.5250000150408596
+  ],
+  "maximum_independent_residual": 1.5296400588393766e-06,
+  "maximum_relative_power_defect": 3.5194456367075055e-06,
+  "maximum_mechanical_relative_work_residual": 0.0009723612883798976,
+  "broken_bonds_interval": [
+    508,
+    210109
+  ],
+  "global_dose_optical_max": 0.16541406518173868,
+  "temporal_interpolation": false,
+  "restart_checkpoints": false,
+  "source_sha256": {
+    "src/mechanics.jl": "a0370e4028aa859fb344829f0d387a62dd8defb77b25f4651f7c08b386324e45",
+    "studies/voltage_between_pieces.jl": "652619a2d598ee13504178efd07af88918988a2e31ee875aa5d2b77f0016e905",
+    "scripts/run_voltage_pieces_refinement.jl": "a1cd80b5adba793e71fc15cfe78f1edf52f6153402dbffecd4de94eb461517fd"
+  },
+  "capture_sha256": "ad0761322435c316e355f5e32cf44800164c91a66a8222cf4a004969d76233ec",
+  "irreversible_damage_and_nondecreasing_dose": true
+}

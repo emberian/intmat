@@ -1,0 +1,537 @@
+{
+  "title": "Before the field gives way",
+  "family": "branches",
+  "shape": [
+    96,
+    72,
+    40
+  ],
+  "nodes": 276480,
+  "bonds": 3472796,
+  "steps": 3160,
+  "dt": 0.00016613924050632912,
+  "weakening": 80,
+  "pitch_ratio": 0.23738734794349572,
+  "physical_duration": 0.525,
+  "electrical_cadence": 65,
+  "scaling": true,
+  "history": [
+    {
+      "step": 100,
+      "broken": 0,
+      "maxdose": 4.48909215117258e-05,
+      "solver": {
+        "iterations": 0,
+        "residual": 1.2816548548747442e-07,
+        "joule_power": 244.51877000734865,
+        "electrode_power": 244.51740282030752,
+        "relative_power_defect": 5.591337798258711e-06,
+        "floating_components": 0
+      }
+    },
+    {
+      "step": 200,
+      "broken": 0,
+      "maxdose": 0.00027107593445920887,
+      "solver": {
+        "iterations": 0,
+        "residual": 1.2816548548747442e-07,
+        "joule_power": 244.51877000734865,
+        "electrode_power": 244.51740282030752,
+        "relative_power_defect": 5.591337798258711e-06,
+        "floating_components": 0
+      }
+    },
+    {
+      "step": 300,
+      "broken": 0,
+      "maxdose": 0.0004497525097167212,
+      "solver": {
+        "iterations": 0,
+        "residual": 1.2816548548747442e-07,
+        "joule_power": 244.51877000734865,
+        "electrode_power": 244.51740282030752,
+        "relative_power_defect": 5.591337798258711e-06,
+        "floating_components": 0
+      }
+    },
+    {
+      "step": 400,
+      "broken": 0,
+      "maxdose": 0.000933636099887483,
+      "solver": {
+        "iterations": 0,
+        "residual": 1.2816548548747442e-07,
+        "joule_power": 244.51877000734865,
+        "electrode_power": 244.51740282030752,
+        "relative_power_defect": 5.591337798258711e-06,
+        "floating_components": 0
+      }
+    },
+    {
+      "step": 500,
+      "broken": 8,
+      "maxdose": 0.0012370469998314083,
+      "solver": {
+        "iterations": 37,
+        "residual": 2.1540376753338196e-07,
+        "joule_power": 244.51811361509652,
+        "electrode_power": 244.51772832537614,
+        "relative_power_defect": 1.5757103418142019e-06,
+        "floating_components": 0
+      }
+    },
+    {
+      "step": 600,
+      "broken": 26,
+      "maxdose": 0.001962455486942488,
+      "solver": {
+        "iterations": 81,
+        "residual": 1.6423675214282666e-07,
+        "joule_power": 244.51189380738072,
+        "electrode_power": 244.51403716270184,
+        "relative_power_defect": 8.765853013319407e-06,
+        "floating_components": 0
+      }
+    },
+    {
+      "step": 700,
+      "broken": 46,
+      "maxdose": 0.002382763596256514,
+      "solver": {
+        "iterations": 130,
+        "residual": 1.0724168641908935e-07,
+        "joule_power": 244.5044299183384,
+        "electrode_power": 244.50440805813233,
+        "relative_power_defect": 8.940617586609938e-08,
+        "floating_components": 0
+      }
+    },
+    {
+      "step": 800,
+      "broken": 75,
+      "maxdose": 0.00333450015895249,
+      "solver": {
+        "iterations": 109,
+        "residual": 1.3849537363842207e-07,
+        "joule_power": 244.4927323219421,
+        "electrode_power": 244.49376208242634,
+        "relative_power_defect": 4.211824517088554e-06,
+        "floating_components": 0
+      }
+    },
+    {
+      "step": 900,
+      "broken": 126,
+      "maxdose": 0.0038643408949715014,
+      "solver": {
+        "iterations": 140,
+        "residual": 1.1111481012350092e-07,
+        "joule_power": 244.48007153102787,
+        "electrode_power": 244.47993861581617,
+        "relative_power_defect": 5.436648102875205e-07,
+        "floating_components": 0
+      }
+    },
+    {
+      "step": 1000,
+      "broken": 244,
+      "maxdose": 0.005028104384888099,
+      "solver": {
+        "iterations": 153,
+        "residual": 1.1176097792366397e-07,
+        "joule_power": 244.4327631162942,
+        "electrode_power": 244.43257398885132,
+        "relative_power_defect": 7.737401503915861e-07,
+        "floating_components": 0
+      }
+    },
+    {
+      "step": 1100,
+      "broken": 376,
+      "maxdose": 0.005660519386459493,
+      "solver": {
+        "iterations": 155,
+        "residual": 1.3723142088100263e-07,
+        "joule_power": 244.39737894091448,
+        "electrode_power": 244.39716977777564,
+        "relative_power_defect": 8.558321686603207e-07,
+        "floating_components": 0
+      }
+    },
+    {
+      "step": 1200,
+      "broken": 618,
+      "maxdose": 0.0070228673156970955,
+      "solver": {
+        "iterations": 159,
+        "residual": 8.590845586318362e-08,
+        "joule_power": 244.30738844774336,
+        "electrode_power": 244.30734383879857,
+        "relative_power_defect": 1.825935149729082e-07,
+        "floating_components": 0
+      }
+    },
+    {
+      "step": 1300,
+      "broken": 1010,
+      "maxdose": 0.008510729808031362,
+      "solver": {
+        "iterations": 165,
+        "residual": 7.897564447381458e-08,
+        "joule_power": 244.14500792175863,
+        "electrode_power": 244.14493738083038,
+        "relative_power_defect": 2.889304550985568e-07,
+        "floating_components": 0
+      }
+    },
+    {
+      "step": 1400,
+      "broken": 1678,
+      "maxdose": 0.009300996064858812,
+      "solver": {
+        "iterations": 172,
+        "residual": 1.0026056742446656e-07,
+        "joule_power": 243.99739263833777,
+        "electrode_power": 243.99699414081076,
+        "relative_power_defect": 1.6332040383987822e-06,
+        "floating_components": 0
+      }
+    },
+    {
+      "step": 1500,
+      "broken": 3238,
+      "maxdose": 0.010971524387572934,
+      "solver": {
+        "iterations": 170,
+        "residual": 9.370592594478813e-08,
+        "joule_power": 243.45546183455127,
+        "electrode_power": 243.45617055696096,
+        "relative_power_defect": 2.9110967745106375e-06,
+        "floating_components": 0
+      }
+    },
+    {
+      "step": 1600,
+      "broken": 5245,
+      "maxdose": 0.011848955415257538,
+      "solver": {
+        "iterations": 180,
+        "residual": 6.981871357491697e-08,
+        "joule_power": 243.02967978579744,
+        "electrode_power": 243.0304114698499,
+        "relative_power_defect": 3.0106777620689136e-06,
+        "floating_components": 0
+      }
+    },
+    {
+      "step": 1700,
+      "broken": 7958,
+      "maxdose": 0.013682588117472813,
+      "solver": {
+        "iterations": 195,
+        "residual": 9.494741240309675e-08,
+        "joule_power": 241.86317823110895,
+        "electrode_power": 241.8628958487701,
+        "relative_power_defect": 1.1675292655272818e-06,
+        "floating_components": 0
+      }
+    },
+    {
+      "step": 1800,
+      "broken": 11552,
+      "maxdose": 0.014635754126167567,
+      "solver": {
+        "iterations": 183,
+        "residual": 9.655006717870993e-08,
+        "joule_power": 240.9521183040511,
+        "electrode_power": 240.95169384642008,
+        "relative_power_defect": 1.761584973872034e-06,
+        "floating_components": 0
+      }
+    },
+    {
+      "step": 1900,
+      "broken": 17196,
+      "maxdose": 0.01708821791158202,
+      "solver": {
+        "iterations": 208,
+        "residual": 3.075601377089045e-07,
+        "joule_power": 238.46266789182783,
+        "electrode_power": 238.46308010740333,
+        "relative_power_defect": 1.728637774367231e-06,
+        "floating_components": 0
+      }
+    },
+    {
+      "step": 2000,
+      "broken": 24315,
+      "maxdose": 0.018526103419376078,
+      "solver": {
+        "iterations": 164,
+        "residual": 1.416780293973471e-07,
+        "joule_power": 236.7854659384897,
+        "electrode_power": 236.78463258491476,
+        "relative_power_defect": 3.5194456367075055e-06,
+        "floating_components": 0
+      }
+    },
+    {
+      "step": 2100,
+      "broken": 35420,
+      "maxdose": 0.021475279301581586,
+      "solver": {
+        "iterations": 224,
+        "residual": 9.228320296736357e-08,
+        "joule_power": 231.4012103112664,
+        "electrode_power": 231.40147600034757,
+        "relative_power_defect": 1.1481749849863825e-06,
+        "floating_components": 0
+      }
+    },
+    {
+      "step": 2200,
+      "broken": 48044,
+      "maxdose": 0.023034585746033898,
+      "solver": {
+        "iterations": 228,
+        "residual": 4.821809444971188e-07,
+        "joule_power": 227.57847816949823,
+        "electrode_power": 227.57854581489224,
+        "relative_power_defect": 2.9723985570034684e-07,
+        "floating_components": 0
+      }
+    },
+    {
+      "step": 2300,
+      "broken": 66145,
+      "maxdose": 0.026053975532435984,
+      "solver": {
+        "iterations": 244,
+        "residual": 5.330171950100346e-07,
+        "joule_power": 214.84756093629676,
+        "electrode_power": 214.84756720677132,
+        "relative_power_defect": 2.918569114790887e-08,
+        "floating_components": 0
+      }
+    },
+    {
+      "step": 2400,
+      "broken": 83779,
+      "maxdose": 0.02751546526224543,
+      "solver": {
+        "iterations": 250,
+        "residual": 1.0066816844804128e-06,
+        "joule_power": 205.44418194040853,
+        "electrode_power": 205.44414947314598,
+        "relative_power_defect": 1.580344706567828e-07,
+        "floating_components": 1
+      }
+    },
+    {
+      "step": 2500,
+      "broken": 104314,
+      "maxdose": 0.03034543886462938,
+      "solver": {
+        "iterations": 261,
+        "residual": 4.547610217141811e-07,
+        "joule_power": 182.83848517465594,
+        "electrode_power": 182.83832438503606,
+        "relative_power_defect": 8.794079634264256e-07,
+        "floating_components": 1
+      }
+    },
+    {
+      "step": 2600,
+      "broken": 124246,
+      "maxdose": 0.04417131086255949,
+      "solver": {
+        "iterations": 263,
+        "residual": 8.399704362781873e-07,
+        "joule_power": 167.18869579072327,
+        "electrode_power": 167.18857803072757,
+        "relative_power_defect": 7.043538149887029e-07,
+        "floating_components": 1
+      }
+    },
+    {
+      "step": 2700,
+      "broken": 142031,
+      "maxdose": 0.05588319869474495,
+      "solver": {
+        "iterations": 264,
+        "residual": 4.548212774940982e-07,
+        "joule_power": 159.9027663521716,
+        "electrode_power": 159.9027233369776,
+        "relative_power_defect": 2.6900844167042897e-07,
+        "floating_components": 1
+      }
+    },
+    {
+      "step": 2800,
+      "broken": 159835,
+      "maxdose": 0.08442603213283985,
+      "solver": {
+        "iterations": 273,
+        "residual": 8.140563983326819e-07,
+        "joule_power": 147.0733629729537,
+        "electrode_power": 147.07328811235584,
+        "relative_power_defect": 5.090017413734318e-07,
+        "floating_components": 3
+      }
+    },
+    {
+      "step": 2900,
+      "broken": 174965,
+      "maxdose": 0.10133074692079692,
+      "solver": {
+        "iterations": 273,
+        "residual": 6.849509627474965e-07,
+        "joule_power": 141.43989739387905,
+        "electrode_power": 141.439716387794,
+        "relative_power_defect": 1.2797385206896144e-06,
+        "floating_components": 7
+      }
+    },
+    {
+      "step": 3000,
+      "broken": 189526,
+      "maxdose": 0.13406433746298307,
+      "solver": {
+        "iterations": 284,
+        "residual": 9.457598874607064e-07,
+        "joule_power": 130.44148265667647,
+        "electrode_power": 130.44132308340346,
+        "relative_power_defect": 1.2233322541229203e-06,
+        "floating_components": 12
+      }
+    },
+    {
+      "step": 3100,
+      "broken": 202254,
+      "maxdose": 0.1499084683909468,
+      "solver": {
+        "iterations": 288,
+        "residual": 1.5166001112176808e-06,
+        "joule_power": 124.92907714359283,
+        "electrode_power": 124.92898574731234,
+        "relative_power_defect": 7.315853329386576e-07,
+        "floating_components": 16
+      }
+    },
+    {
+      "step": 3160,
+      "broken": 210109,
+      "maxdose": 0.16541406518173868,
+      "solver": {
+        "iterations": 291,
+        "residual": 1.5296400588393766e-06,
+        "joule_power": 118.91922345325862,
+        "electrode_power": 118.91930522735252,
+        "relative_power_defect": 6.876440286545279e-07,
+        "floating_components": 24
+      }
+    }
+  ],
+  "broken": 210109,
+  "solver": {
+    "iterations": 295,
+    "residual": 4.2889815999336125e-07,
+    "joule_power": 114.83663535547143,
+    "electrode_power": 114.83661285489939,
+    "relative_power_defect": 1.959354867384665e-07,
+    "floating_components": 26
+  },
+  "elapsed_seconds": 1863.068808709,
+  "energy": {
+    "elastic": 0.3811141872994509,
+    "kinetic": 0.25535012739109686,
+    "damage": 0.27117273054267327,
+    "damping": 0.9781377275980853,
+    "external_work": 1.8839428996861332,
+    "total": 1.8857747728313061
+  },
+  "mechanical_energy_residual": 0.0018318731451729686,
+  "source_sha256": {
+    "src/mechanics.jl": "a0370e4028aa859fb344829f0d387a62dd8defb77b25f4651f7c08b386324e45",
+    "studies/voltage_between_pieces.jl": "652619a2d598ee13504178efd07af88918988a2e31ee875aa5d2b77f0016e905",
+    "scripts/run_voltage_pieces_refinement.jl": "a1cd80b5adba793e71fc15cfe78f1edf52f6153402dbffecd4de94eb461517fd"
+  },
+  "model": "Shared BondNetwork; graph conductivity vanishes on failed bonds. Independently checked PCG potential; local Joule dose weakens tensile thresholds. External electrodes/grips power exploratory law; not calibrated electromechanics.",
+  "authored": "Quenched geometry/conductivity grains, two small weak notches, distributed load and grip motion. Optical contours are computed potential observations, not added matter.",
+  "native_shape": [
+    96,
+    72,
+    40
+  ],
+  "comparison_notes": "Fresh native96\u00d772\u00d740 distinct disorder realization: twice each axis and eight times the node count of48\u00d736\u00d720. Physical extent/transport/load duration preserved with scaling. Not a continuum-convergence result; observed state is earlier than final.",
+  "description": "Copper potential iso-surfaces open inside a fractured violet support. Native 3D spring failure redirects the electrical interior; accumulated Joule dose weakens later bonds. This finer realization has 276,480 nodes. The contour foils observe computed voltage, not extra physical sheets.",
+  "observation": {
+    "index": 24,
+    "step": 2729,
+    "time": 0.4533940003311727,
+    "broken": 146370,
+    "maxdose": 0.06925921393421354,
+    "solver": {
+      "iterations": 265,
+      "residual": 2.8992025134051153e-07,
+      "joule_power": 152.85762334997833,
+      "electrode_power": 152.85726122175362,
+      "relative_power_defect": 2.369055705380424e-06,
+      "floating_components": 1
+    },
+    "mechanical_relative_work_residual": 0.000628791294525027
+  },
+  "capture_verification": {
+    "actual_captures": 32,
+    "native_nodes": 276480,
+    "native_bonds": 3472796,
+    "physical_time_interval": [
+      0.19421677771606483,
+      0.5250000150408596
+    ],
+    "maximum_independent_residual": 1.5296400588393766e-06,
+    "maximum_relative_power_defect": 3.5194456367075055e-06,
+    "maximum_mechanical_relative_work_residual": 0.0009723612883798976,
+    "broken_bonds_interval": [
+      508,
+      210109
+    ],
+    "global_dose_optical_max": 0.16541406518173868,
+    "temporal_interpolation": false,
+    "restart_checkpoints": false,
+    "source_sha256": {
+      "src/mechanics.jl": "a0370e4028aa859fb344829f0d387a62dd8defb77b25f4651f7c08b386324e45",
+      "studies/voltage_between_pieces.jl": "652619a2d598ee13504178efd07af88918988a2e31ee875aa5d2b77f0016e905",
+      "scripts/run_voltage_pieces_refinement.jl": "a1cd80b5adba793e71fc15cfe78f1edf52f6153402dbffecd4de94eb461517fd"
+    },
+    "capture_sha256": "ad0761322435c316e355f5e32cf44800164c91a66a8222cf4a004969d76233ec",
+    "irreversible_damage_and_nondecreasing_dose": true
+  },
+  "capture_recipe_sha256": "c6cc2aa3181f3345b238d6d9a78c2c61fc10682d9a317fa3706529b0c6e01579",
+  "performance": {
+    "wall_seconds": 1878.2,
+    "evolution_capture_seconds": 1863.068808709,
+    "maximum_resident_bytes": 2385952768,
+    "swaps": 0,
+    "cpu_threads": 2,
+    "nice": 15,
+    "hard_wall_limit_seconds": 2700
+  },
+  "observation_source_sha256": "1086b0420160c8bd9505269653a113c49695ef5b3ccf6b03725ade9399ffdce8",
+  "base_sha256": "c346a02b3ca3b1b9d1d56dc024bfd7920425a8a7413b3b425216de078c21f884",
+  "publication": {
+    "source_image_sha256": "b44e5993f266dc91d4668b164f93bc1e81d7c5483fe864d92c1fee5aa75f60a8",
+    "webp_sha256": "d34d94dbb46396c249feb62e74c4d785e4226e1c06b5a7e2e137794fae124e10",
+    "quality": 95,
+    "width": 2400,
+    "samples": 128,
+    "native_shape": [
+      96,
+      72,
+      40
+    ],
+    "original_retained": true,
+    "reviewed_by": "ChatGPT root: exact final image visually reviewed"
+  }
+}

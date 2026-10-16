@@ -1,0 +1,40 @@
+{
+  "size": 2400,
+  "samples": 128,
+  "device": "METAL",
+  "source_nodes": 276480,
+  "source_tetrahedra_surviving": 1002173,
+  "source_tetrahedra_removed": 576157,
+  "contour_faces": 67025,
+  "levels": [
+    0.12,
+    0.22,
+    0.32,
+    0.42,
+    0.52,
+    0.62,
+    0.72,
+    0.82,
+    0.9
+  ],
+  "dose_optical_max": 0.04,
+  "camera": "fixed (2.8,-4,2.6), ortho2.85",
+  "interpretation": "Computed voltage iso-surfaces inside surviving six-edge tetrahedra, actual deformed coordinates. Foil thickness.004 and dose color are optical staging, not added material. Violet back observation surface is the actual surviving tetrahedral boundary exactly plane-clipped at y=.18.",
+  "renderer_sha256": "f76802f6be93b2b01db9ae7e6f65e47c6bf4049b1cb82f6765a55bc1ddb1fa77",
+  "settings": {
+    "size": 2400,
+    "samples": 128,
+    "device": "METAL",
+    "threads": 2,
+    "dose_optical_max": 0.04
+  },
+  "observation": {
+    "index": 24,
+    "step": 2729,
+    "time": 0.4533940003311727,
+    "state_sha256": "1086b0420160c8bd9505269653a113c49695ef5b3ccf6b03725ade9399ffdce8",
+    "base_sha256": "c346a02b3ca3b1b9d1d56dc024bfd7920425a8a7413b3b425216de078c21f884",
+    "global_computed_dose_max": 0.16541406518173868,
+    "color_saturation": "dose>=.04 uses the upper palette color; this fixed optical range does not change computed dose"
+  }
+}

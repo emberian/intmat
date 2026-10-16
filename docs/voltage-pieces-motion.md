@@ -17,3 +17,12 @@ Root reviewed all 32 decoded frames and published through the shared
 matching review hash. The public encoding uses the curator's CRF18 setting;
 the earlier CRF20 candidate remains private. Native observations and renders
 are unchanged. The film is at `/animations/#voltage-pieces-motion-48`.
+
+For subsequent films, `prepare_voltage_pieces_film.py` now only writes the shared
+curator's `sequence.json` and a pending review candidate beside actual rendered
+frames. It neither encodes video nor publishes or grants visual approval. Existing
+sequence/review files are protected from overwrite. The executed earlier preparer
+is retained privately as `outputs/voltage-pieces-motion-48/source-prepare-recorded.py`.
+The replacement was checked against the approved sequence: all 32 source-frame
+records and numerical closure agree. Encoding and publication remain the shared
+curator's responsibility.
