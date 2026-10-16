@@ -1028,3 +1028,13 @@ Complete Metal 64³ steps measured 3.05–3.45 ms; CPU timings were variable and
 remain explicitly inconclusive about general CPU speedup. The local living
 workbench also passed an actual HTTP/viewer session through advance, independent
 fork, receptor change, child advance and clean stop, preserving the parent.
+
+### Sensory homeostasis prototype
+
+A separate scalar Julia component adapts sensory center/scale while keeping its
+fast/slow memory poles fixed. Root reviewed the mechanism and reran all 29 checks.
+It preserves calibrated temporal prediction under a synthetic offset/amplitude
+change; work is explicitly a toy account and readout fitting is offline. This is
+a design lever for future native integration, not evidence of ecological payoff.
+See `docs/research/homeostatic-temporal-memory.md` for primary references,
+conditional contraction statement, costs and recovery tradeoffs.

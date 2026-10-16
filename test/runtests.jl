@@ -182,3 +182,7 @@ end
 module NativeRampConstructionTests
 include("native_ramp_construction.jl")
 end
+
+module HomeostaticTemporalMemoryTests
+include("homeostatic_temporal_memory.jl")
+end
