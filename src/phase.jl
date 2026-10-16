@@ -93,15 +93,17 @@ end
 @kernel function phase_couple_kernel!(nout,n,a,phi,interface,h,dt,D,barrier,gain,relax)
     i,j,k=@index(Global,NTuple)
     pos=(i,j,k); dims=size(phi); flux=0f0
-    for axis in 1:3
-        if dims[axis]>1
-            for side in (-1,1)
-                q=phase_neighbor(pos,axis,side,dims)
-                # Dense positive phase has smaller permeability. Face arithmetic
-                # mean keeps equal and opposite nutrient transfers.
-                left=1f0/(1f0+barrier*(1f0+tanh(phi[pos...]))/2f0)
-                right=1f0/(1f0+barrier*(1f0+tanh(phi[q...]))/2f0)
-                flux+=D*(left+right)/2f0*(n[q...]-n[pos...])/h[axis]^2
+    if D!=0
+        for axis in 1:3
+            if dims[axis]>1
+                for side in (-1,1)
+                    q=phase_neighbor(pos,axis,side,dims)
+                    # Dense positive phase has smaller permeability. Face arithmetic
+                    # mean keeps equal and opposite nutrient transfers.
+                    left=1f0/(1f0+barrier*(1f0+tanh(phi[pos...]))/2f0)
+                    right=1f0/(1f0+barrier*(1f0+tanh(phi[q...]))/2f0)
+                    flux+=D*(left+right)/2f0*(n[q...]-n[pos...])/h[axis]^2
+                end
             end
         end
     end

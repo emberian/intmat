@@ -1,0 +1,94 @@
+[
+    {
+        "n": 96,
+        "dt": 0.04,
+        "times": [
+            {
+                "reference": true,
+                "seconds": 0.226221458
+            },
+            {
+                "reference": false,
+                "seconds": 0.149145042
+            },
+            {
+                "reference": true,
+                "seconds": 0.31138575
+            },
+            {
+                "reference": false,
+                "seconds": 0.125156167
+            },
+            {
+                "reference": true,
+                "seconds": 0.259030084
+            },
+            {
+                "reference": false,
+                "seconds": 0.122213791
+            },
+            {
+                "reference": true,
+                "seconds": 0.163413
+            },
+            {
+                "reference": false,
+                "seconds": 0.115368
+            },
+            {
+                "reference": true,
+                "seconds": 0.170833375
+            },
+            {
+                "reference": false,
+                "seconds": 0.097416708
+            }
+        ]
+    },
+    {
+        "n": 192,
+        "dt": 0.01,
+        "times": [
+            {
+                "reference": true,
+                "seconds": 1.588562041
+            },
+            {
+                "reference": false,
+                "seconds": 0.75865225
+            },
+            {
+                "reference": true,
+                "seconds": 1.370225583
+            },
+            {
+                "reference": false,
+                "seconds": 0.551813583
+            },
+            {
+                "reference": true,
+                "seconds": 1.308373291
+            },
+            {
+                "reference": false,
+                "seconds": 0.506645875
+            },
+            {
+                "reference": true,
+                "seconds": 1.27405825
+            },
+            {
+                "reference": false,
+                "seconds": 0.602378125
+            },
+            {
+                "reference": true,
+                "seconds": 1.618226708
+            },
+            {
+                "reference": false,
+                "seconds": 0.565518708
+            }
+        ]
+    }
+]

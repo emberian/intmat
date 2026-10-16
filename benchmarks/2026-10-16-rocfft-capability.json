@@ -1,0 +1,54 @@
+{
+    "version": "1.0.32",
+    "library": "/othersys/tmp/intmat-probe-20261014/rocfft-standalone-6.4.3/opt/rocm-6.4.3/lib/librocfft.so.0",
+    "rows": [
+        {
+            "shape": [
+                9,
+                7,
+                5
+            ],
+            "setup_seconds": 4.033533667,
+            "forward_error": 2.1683198553528097e-14,
+            "roundtrip_error": 7.216449660063518e-16,
+            "roundtrip_seconds": [
+                0.004929703,
+                0.000213912,
+                7.9303e-5
+            ],
+            "element_type": "Float64"
+        },
+        {
+            "shape": [
+                16,
+                16,
+                16
+            ],
+            "setup_seconds": 1.384975635,
+            "forward_error": 2.3013249603851656e-13,
+            "roundtrip_error": 7.771561172376096e-16,
+            "roundtrip_seconds": [
+                5.4598e-5,
+                4.7123e-5,
+                4.5325e-5
+            ],
+            "element_type": "Float64"
+        },
+        {
+            "shape": [
+                96,
+                96,
+                96
+            ],
+            "setup_seconds": 1.314738278,
+            "forward_error": 7.499885442698834e-11,
+            "roundtrip_error": 1.7486012637846216e-15,
+            "roundtrip_seconds": [
+                0.000676232,
+                0.000453808,
+                0.000438586
+            ],
+            "element_type": "Float64"
+        }
+    ]
+}

@@ -54,17 +54,25 @@ end
 function stability_limit(w::World,p::ImplicitPhaseSeparation)
     min(diffusion_limit(w,p.nutrient_diffusion),p.activity_relaxation==0 ? Inf : inv(Float64(p.activity_relaxation)))
 end
-function advance!(w::World,p::ImplicitPhaseSeparation,dt::Real)
+# Optional worker-owned native resources stay outside the physical state.
+# FFTW plans retain dimensions/strides/native handles, not these Julia arrays.
+struct ImplicitPhaseRuntime{F,C,R}
+    forward::F
+    inverse_complex::C
+    inverse_real::R
+    threads::Int
+end
+function ImplicitPhaseRuntime(p::ImplicitPhaseSeparation)
+    forward=FFTW.plan_rfft(p.real_buffer;flags=FFTW.ESTIMATE)
+    inverse_complex=FFTW.plan_ifft!(p.spectrum,(2,3);flags=FFTW.ESTIMATE)
+    inverse_real=FFTW.plan_irfft(p.spectrum,size(p.real_buffer,1),(1,);flags=FFTW.ESTIMATE)
+    ImplicitPhaseRuntime(forward,inverse_complex,inverse_real,Int(FFTW.get_num_threads()))
+end
+advance!(w::World,p::ImplicitPhaseSeparation,dt::Real)=advance!(w,p,dt,ImplicitPhaseRuntime(p))
+function advance!(w::World,p::ImplicitPhaseSeparation,dt::Real,runtime::ImplicitPhaseRuntime)
     check_dt(w,p,dt)
     m=implicit_mobility(w,p); s=p.stabilization
-    # The real material needs only its Hermitian half-spectrum. Plans remain
-    # local, so serialization never captures native FFTW resources.
-    forward=FFTW.plan_rfft(p.real_buffer;flags=FFTW.ESTIMATE)
-    # FFTW.jl copies multidimensional real-inverse input when planning. Split
-    # the separable inverse into in-place complex axes and the real first axis:
-    # the one-dimensional real planner needs no full-grid planning copy.
-    inverse_complex=FFTW.plan_ifft!(p.spectrum,(2,3);flags=FFTW.ESTIMATE)
-    inverse_real=FFTW.plan_irfft(p.spectrum,w.grid.size[1],(1,);flags=FFTW.ESTIMATE)
+    forward=runtime.forward; inverse_complex=runtime.inverse_complex; inverse_real=runtime.inverse_real
     for I in eachindex(p.phi); p.real_buffer[I]=p.phi[I]; end
     mul!(p.spectrum,forward,p.real_buffer)
     for I in eachindex(p.phi)

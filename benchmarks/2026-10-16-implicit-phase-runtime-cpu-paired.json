@@ -1,0 +1,92 @@
+[
+    {
+        "n": 96,
+        "t": [
+            {
+                "cached": true,
+                "seconds": 0.089412958
+            },
+            {
+                "cached": false,
+                "seconds": 0.083792708
+            },
+            {
+                "cached": true,
+                "seconds": 0.083625583
+            },
+            {
+                "cached": false,
+                "seconds": 0.083923125
+            },
+            {
+                "cached": true,
+                "seconds": 0.084096791
+            },
+            {
+                "cached": false,
+                "seconds": 0.086338125
+            },
+            {
+                "cached": true,
+                "seconds": 0.085294542
+            },
+            {
+                "cached": false,
+                "seconds": 0.08608325
+            },
+            {
+                "cached": true,
+                "seconds": 0.08459
+            },
+            {
+                "cached": false,
+                "seconds": 0.084748375
+            }
+        ]
+    },
+    {
+        "n": 192,
+        "t": [
+            {
+                "cached": true,
+                "seconds": 0.682198417
+            },
+            {
+                "cached": false,
+                "seconds": 0.656423333
+            },
+            {
+                "cached": true,
+                "seconds": 0.711537041
+            },
+            {
+                "cached": false,
+                "seconds": 0.676567125
+            },
+            {
+                "cached": true,
+                "seconds": 0.749294958
+            },
+            {
+                "cached": false,
+                "seconds": 0.839275458
+            },
+            {
+                "cached": true,
+                "seconds": 0.654101291
+            },
+            {
+                "cached": false,
+                "seconds": 0.653380833
+            },
+            {
+                "cached": true,
+                "seconds": 0.647778167
+            },
+            {
+                "cached": false,
+                "seconds": 0.65313125
+            }
+        ]
+    }
+]

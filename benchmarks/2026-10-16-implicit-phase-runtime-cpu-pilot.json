@@ -1,0 +1,86 @@
+{
+    "threads": 2,
+    "fftw_threads": 2,
+    "results": [
+        {
+            "resolution": 96,
+            "dt": 0.04,
+            "steps": 5,
+            "modes": [
+                {
+                    "cached": false,
+                    "setup_seconds": 1.756238334,
+                    "cold_seconds": 0.547809333,
+                    "step_seconds": [
+                        0.08863975,
+                        0.085342666,
+                        0.0877615,
+                        0.08439475,
+                        0.08501625
+                    ],
+                    "median_seconds": 0.085342666,
+                    "phase_error": 1.227266025430843e-10,
+                    "mass_error": 1.106385505699695e-9,
+                    "owned_bytes": 69342392
+                },
+                {
+                    "cached": true,
+                    "setup_seconds": 1.488564833,
+                    "cold_seconds": 0.097315458,
+                    "step_seconds": [
+                        0.094455959,
+                        0.095363958,
+                        0.093023709,
+                        0.093090333,
+                        0.09313
+                    ],
+                    "median_seconds": 0.09313,
+                    "phase_error": 1.227266025430843e-10,
+                    "mass_error": 1.106385505699695e-9,
+                    "owned_bytes": 69342392
+                }
+            ],
+            "speedup": 0.9163821110275958
+        },
+        {
+            "resolution": 192,
+            "dt": 0.01,
+            "steps": 5,
+            "modes": [
+                {
+                    "cached": false,
+                    "setup_seconds": 11.730074,
+                    "cold_seconds": 0.6841715,
+                    "step_seconds": [
+                        0.66934325,
+                        0.68888925,
+                        0.67003375,
+                        0.66414375,
+                        0.656892708
+                    ],
+                    "median_seconds": 0.66934325,
+                    "phase_error": -7.0841275232767116e-12,
+                    "mass_error": 6.545649500419082e-10,
+                    "owned_bytes": 553403576
+                },
+                {
+                    "cached": true,
+                    "setup_seconds": 12.8188415,
+                    "cold_seconds": 1.021114042,
+                    "step_seconds": [
+                        1.017986042,
+                        1.091597042,
+                        0.814438792,
+                        1.061694,
+                        0.707845709
+                    ],
+                    "median_seconds": 1.017986042,
+                    "phase_error": -7.0841275232767116e-12,
+                    "mass_error": 6.545649500419082e-10,
+                    "owned_bytes": 553403576
+                }
+            ],
+            "speedup": 0.6575171194734318
+        }
+    ]
+}

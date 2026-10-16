@@ -130,3 +130,7 @@ end
 module NativeJointConstructionCreditTests
 include("native_joint_construction_credit.jl")
 end
+
+module ImplicitPhaseRuntimeTests
+include("implicit_phase_runtime.jl")
+end
