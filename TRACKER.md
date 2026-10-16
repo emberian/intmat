@@ -698,3 +698,34 @@ EMA-learning pilots hurt late frozen-policy probes; source, alternative credit
 and failed outcomes are preserved. A local predictive baseline is being tested
 as a variance-reduction mechanism, with independent exploration-seed comparison.
 This is engineering work on learnability, not a verdict on possible ecology.
+
+### Continuing lanes after17dfb56
+
+Paid predictive local baseline passes26mechanism checks and CPU/AMD parity.
+It reduces measured return prediction error and squared credit updates, but
+late frozen-policy benefits are not established; see retained predictive JSONs.
+Learning Astra now maps actual paid secretion through the separate habitat
+investment regulator, with matched no-secretion branches and private/neighbor
+payback lags, before choosing an eligibility horizon for construction. HboxGPU
+is reserved to that bounded lane. Artist Astra owns localMetal for a refractive
+memory chamber: evolved index fields and actual Julia GRIN trajectories, with
+ray-step/constant-index controls and a higher-resolution final after the pilot.
+Completed amber knots and fracture film are deployed; gallery70/149.33MB.
+
+### Construction payback and independent browser futures
+
+Paid secretion now has a measured causal opportunity: three founder banks first
+show positive private gain at sampled times 0.4/0.6/0.5; the gain persists through
+time16. Matched no-raw branches stay costly. Neighbors gain much less than the
+producer. Native CPU/AMD pulse and half-step gates agree within7.78e-10 with
+closure2.14e-14. This programmed intervention is not learned cooperation.
+The new laboratory secretion exhibit exposes paired gains, funded deposition and
+actual8³ fields;768 independently checked browser voxel values agree with exports.
+
+The Julia workbench now forks current complete states into independent arrays,
+retaining source, clock, accounting baseline and parent checkpoint. Matched
+futures agree; child-only receptor changes leave parent state untouched.
+233 composition checks,5 ownership checks,8 gateway checks and actual browser
+fork/intervene/compare pass. Session budgets remain shared, max4 branches.
+The unused8809 session stopped at its original idle deadline with0commands;
+its evidence remains. The reviewed8810 session is stopped and available read-only.

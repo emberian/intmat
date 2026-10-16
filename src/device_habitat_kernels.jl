@@ -42,6 +42,14 @@ end
         end
     end
 end
+# Shared actuator conversion. Study policies can replace the two bounded
+# commands without copying secretion payment, deposition, or the step schedule.
+@inline function dh_set_requests!(a,s,i,q,dt,investment,allocation)
+    a.expression[i,1]=investment;a.expression[i,2]=allocation;a.expression[i,3]=1f0-allocation
+    a.requests[i,1]=dt*q.secretion_rate*s.mass[i]*investment*allocation^q.allocation_exponent
+    a.requests[i,2]=dt*q.secretion_rate*s.mass[i]*investment*(1f0-allocation)^q.allocation_exponent
+    nothing
+end
 # Site-local chemistry and capacity-major inherited regulation kernels.
 @kernel function dh_prepare!(a,feed,s,descriptor,e,q,cq,g,dt)
     i=@index(Global,Linear)
@@ -67,9 +75,7 @@ end
             end
             investment=inv(1f0+exp(-clamp(q.regulation ? x : q.investment_bias,-40f0,40f0)))
             allocation=q.regulation ? inv(1f0+exp(-clamp(y-z,-40f0,40f0))) : .5f0
-            a.expression[i,1]=investment;a.expression[i,2]=allocation;a.expression[i,3]=1f0-allocation
-            a.requests[i,1]=dt*q.secretion_rate*s.mass[i]*investment*allocation^q.allocation_exponent
-            a.requests[i,2]=dt*q.secretion_rate*s.mass[i]*investment*(1f0-allocation)^q.allocation_exponent
+            dh_set_requests!(a,s,i,q,dt,investment,allocation)
             !(isfinite(a.requests[i,1])&&isfinite(a.requests[i,2])) && dh_fail!(e.status,8)
         end
     end

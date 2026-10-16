@@ -44,6 +44,11 @@ memory and action-credit learning. Three founder banks improve frozen resource-u
 tests after episodic training; autonomous learning remains under development.
 [Mechanism and limits](docs/research/action-credit-materials.md)
 
+**Paid construction:** a brief secretion pulse unlocks food and repays its maker
+in three matched founder banks; without raw substrate it stays costly. Explore
+[who gains and what remains](https://emberian.github.io/intmat/laboratory/secretion-payback/).
+This is a measured opportunity for learning, not learned cooperation.
+
 ## Run
 
 ```sh
@@ -108,8 +113,9 @@ for later simulation and rendering.
 [Explore memory and feedback](https://emberian.github.io/intmat/laboratory/) across
 recorded controller regimes. [Material receptors](docs/native-material-sensing.md)
 connect retained food and construction to recurrent control; their native GPU
-pilot costs1.1% per complete step. [The workbench design](docs/exploratory-instrument.md)
-extends recorded exploration toward bounded Julia branch/change/compare sessions.
+pilot costs 1.1% per complete step. The local [Julia workbench](docs/native-workbench-control.md)
+now forks complete states, changes receptor scales and compares independent
+futures. Browser controls submit finite commands; the worker pauses between them.
 
 ## Compose
 

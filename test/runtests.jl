@@ -114,3 +114,7 @@ end
 module FeedbackFactorizationTests
 include("feedback_factorization.jl")
 end
+
+module HabitatActuatorRequestTests
+include("habitat_actuator_requests.jl")
+end
