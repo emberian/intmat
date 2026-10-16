@@ -20,3 +20,18 @@ All three short trajectories close material/potential accounting within3.56e−1
 The subsequent32³ scene runs64 model time with captures every4, preserving the same25.6 total external material. It ends with48 residents, no deaths and maximum generation1, just as the16³ candidate;18 nonzero paid copies occur. Its actual graph has83 bonds at32 and105 at64. Retained catalyst is.659812→.346971 and bound precursor2.156775→1.195493 over that interval; cumulative funded secretion is1.488238→2.009731. Maximum closure residual is6.54e−13. These distinct measured trajectories support the qualitative finite-feed persistence observation, not a convergence rate or inheritance advantage. Compact cell/ledger/event histories are in `docs/figures/native-living-patch-grid32-comparison.json`; exact observer/recipe are in `studies/outputs/native-living-patch-grid32/`. The raw64.9MB field report remains outside Git for rendering.
 
 The native graph also organizes beyond the population count. In32³ the largest connected component contains16 residents at16,26 at32 and46 of48 at64 (final component sizes46,1,1). In16³ the corresponding largest component is11,34,40 (final sizes40,6,1,1). These counts use only the recorded ID-validated bonds. They describe formation of a bonded assembly while material memory persists and decays; they do not attribute organization to learned policy or establish resolution-independent topology.
+
+The 64³ scene subsequently completed 64 model time, captured every 8, using the
+exact-gated empty-chemistry kernel
+(`856670a8279e22c456012c8984036a3c6f0c981c95ca686be9d29653f0ecf39a`).
+That optimization changes no state or physical law. The scene again has 48
+residents, no deaths and maximum generation 1; 18 nonzero paid copies occur.
+Native bonds grow from 89 at time 32 to 108 at time 64, with the largest component
+38→46. Catalyst falls .642630→.325291 and bound precursor 2.093079→1.119267,
+while cumulative funded secretion grows 1.458003→1.946225. Supply remains 25.6
+and the maximum closure residual is 1.08e−12. These are separately measured finer
+fields, not resampled 32³ images. Raw 266.4 MB capture data remain outside Git;
+compact histories and executed sources are
+`docs/figures/native-living-patch-grid64-comparison.json` and
+`studies/outputs/native-living-patch-grid64/`. Its 389-second local run is not an
+isolated performance benchmark.

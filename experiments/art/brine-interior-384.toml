@@ -1,0 +1,42 @@
+id = "brine-interior-384"
+title = "The chamber the brine kept"
+native_shape = [384, 384, 384]
+source_recipe_sha256 = "cb23920f1f50695a43665ed7074324439ed8cc17a6cea6166e92fe2a2784fd70"
+source_brine_study_sha256 = "5ab3ad1ba93f07383af119a59b76d8ccf5b390c807d0dc141bb9d517b5287639"
+source_base_commit = "aae69fe"
+physical_time = 14.4
+source_dt = 0.0025
+source_steps = 5760
+field_order = "Julia column-major, little endian"
+phase_dtype = "Float32"
+chemical_dtype = "Float64"
+geometry_grid = "native OpenVDB DoubleGrid, no downsampling"
+mineral_isovalue = 0.30
+mesh_adaptivity = 0.005
+low_concentration_wet_film = false
+baseline_comparison = "Original128 patina is preserved in renderer; selected final uses phase-metal transfer below"
+# Final camera is also captured in the actual optical.json and render-job.json.
+
+[photograph]
+size = 2000
+samples = 128
+device = "METAL"
+mode = "interior"
+camera_distance = 2.45
+camera_orbit = 1.1
+camera_elevation = 0.48
+camera_target = [-0.12, 0.0, 0.0]
+coordinate_mapping = "native physical coordinates centered and divided by half-extent12"
+observational_cut = "retain normalized x<=0.10; uncapped; no scalar modification"
+cut_plane_model_x = 13.2
+optics = "phase-metal"
+phase_weight = "p=clip(0.5+0.7*phi,0,1)"
+carrier_rgb = "(1-p)*[.018,.045,.07]+p*[.22,.075,.025]"
+residual_ratio = "r=A/(A+B+1e-8)"
+base_rgb = "((1-.7*r)*carrier_rgb+.7*r*[.55,.18,.06])*(.55+.45*clip(A+B,0,1))"
+roughness = ".22+.30*min(1,abs(phi))+.08*(A+B)/(A+B+.3)"
+metallic = ".45+.45*p"
+film_thickness_nm = "180+220*p"
+film_ior = 1.38
+coat_weight = 0.04
+interpretation = "Film thickness, metallic response, color and roughness are chosen optical transfers of saved fields, not a simulated oxide or calibrated material law. Black open ends are uncapped observation boundaries, not claimed natural pores."

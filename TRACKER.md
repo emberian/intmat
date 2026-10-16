@@ -25,6 +25,25 @@
 - New art lane explores electrical/fracture memory inside optical media. Existing
   artworks, old soaks and their sources remain preserved. No new soaks.
 
+### 04:55 UTC integration
+
+- Published candidate: **The chamber the brine kept**, a reviewed 2000² photograph
+  of actual 384³ Float64 mineral geometry. Saved fields drive metallic/film optics;
+  the open planar section is an explicit observation cut. Gallery now has 78 stills.
+- **Build for what arrives next** adds a 64 KB laboratory explorer of measured
+  temporal allocation, source-persistence controls and predictor saturation.
+  Ninety-six control combinations plus desktop/mobile review passed. Combined
+  publication staging is 120.56 MB, below the unchanged 160 MB limit.
+- Isolated hbox initialization: 192³ 18.80–19.14 s → .7365–.7373 s with bitwise
+  physical parity; 25.75× preparation speedup, no sustained-step claim.
+- Empty-chemistry bypass: complete living CPU steps gain 7.4–7.6%, including paid
+  learning and births. AMD differences are negligible. All six valid matched cases
+  compare 832,659,048 array elements exactly; boundary fixtures preserve NaN/Inf,
+  signed-zero diagnostics, compensated ledgers and release resets on CPU and AMD.
+- Active lanes: compact implicit brine native gate, exact observer optimization,
+  continuously acting temporal allocation in a designed replenishing environment,
+  and computed voltage surfaces in a fractured material. No new soaks.
+
 ## Active goal — an instrument for discovering rich living materials
 
 Fresh ten-hour session: **2026-10-16 00:50:31–10:50:31 UTC**

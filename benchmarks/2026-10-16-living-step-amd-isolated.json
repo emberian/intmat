@@ -1,0 +1,308 @@
+{
+  "schema": "living-step-native-gate-v1",
+  "runtime": {
+    "julia": "1.12.4",
+    "kernel": "Linux",
+    "architecture": "x86_64",
+    "launch_threads": 2,
+    "backend": "amd",
+    "device": "HIPDevice(id=1, name=AMD Radeon RX 6750 XT, gcn_arch=gfx1030)",
+    "backend_version": "2.8.0",
+    "actual_device_optlevel": 1,
+    "project_sha256": "ea2724f6aee424afa18192edf284c4121c9b9aba20bdf30d709b4156f0318435",
+    "manifest_sha256": "9ed7d186580f4667dc864aa683f238b96b8c3853c8103f6d95e2ada121f56a5a"
+  },
+  "baseline": "9c9f1a51f277f66949da00fdb63c7a20c2fcaed5",
+  "cellular_source": {
+    "model": "1a938948fb14c400876c6848e4389fc432f4cc2a3962903374d2d76fb34f1c99",
+    "initialization": "766dfedbdbf5b4dbbb99ed5e9336a16747fa08752a84af3268fc7c98c613613a",
+    "founder_initialization": "d76e4c791a2c56bc7fd651b1836e6879b9e27013566ce6d94a1d2f677f62e633",
+    "support": "5a767b83c2c912d8706468ec7c5b86e56cf99430b2a23dfd3a7f3ee8f21bf55b",
+    "lifecycle": "8826c577e960db6596cd923a591d806b185908a254c6cc0fb6b0eebb033a9629",
+    "resource": "ac72b2db1dfa448446df0ae44840ba05933f1d8fb13c639f9e2cd3b3a7e41223",
+    "kernels": "8f9f5d153ff1e4f4636388072063aa6e53fbb20d9c5175d64d6fcb15993207ae",
+    "checkpoint": "81c8538519e5d0c58eb8bc0b6e49be7eec87119f81b7fcd998b6944f02c68503",
+    "protocol": "52632744615956c0e4c613e010b8fa4ba08c396e46e03d7ef5ec15f037e8199d"
+  },
+  "habitat_source": {
+    "helper": "5753f0cf5065345cf08fb9a2501d87aad4f6eff13183fd344e8f53dfe736aa41",
+    "kernels": "856670a8279e22c456012c8984036a3c6f0c981c95ca686be9d29653f0ecf39a",
+    "sorption": "3811fd3627906823a01f2afb2e6693bb6aec99c37bb10bfb72d43c85f8b4ad08"
+  },
+  "kernel_sha256": "856670a8279e22c456012c8984036a3c6f0c981c95ca686be9d29653f0ecf39a",
+  "resource_pin": "CPUs10\u201311;Julia2threads;OpenBLAS1;8GiB;no swap;nice15",
+  "cpu_affinity": "Cpus_allowed_list:\t10-11",
+  "nice": 15,
+  "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/swarm.slice/run-u23965.scope\n",
+  "rows": [
+    {
+      "resolution": 64,
+      "founders": 24,
+      "coverage": "native",
+      "actor_updates": 152,
+      "learning_work": 0.001737261877012397,
+      "births": 9,
+      "population": 33,
+      "occupied_fraction": 0.1218414306640625,
+      "baseline_step_seconds": 0.021091405533333333,
+      "optimized_step_seconds": 0.021039392966666667,
+      "speedup": 1.0024721514897825,
+      "samples": [
+        {
+          "baseline": {
+            "seconds": 0.631461214,
+            "gc_seconds": 0.0,
+            "bytes": 19299728
+          },
+          "optimized": {
+            "seconds": 0.630986762,
+            "gc_seconds": 0.0,
+            "bytes": 19299728
+          },
+          "order": [
+            true,
+            false
+          ]
+        },
+        {
+          "baseline": {
+            "seconds": 0.633096731,
+            "gc_seconds": 0.0,
+            "bytes": 19299728
+          },
+          "optimized": {
+            "seconds": 0.630128186,
+            "gc_seconds": 0.0,
+            "bytes": 19299728
+          },
+          "order": [
+            false,
+            true
+          ]
+        },
+        {
+          "baseline": {
+            "seconds": 0.632414049,
+            "gc_seconds": 0.0,
+            "bytes": 19299728
+          },
+          "optimized": {
+            "seconds": 0.631388947,
+            "gc_seconds": 0.0,
+            "bytes": 19299728
+          },
+          "order": [
+            true,
+            false
+          ]
+        },
+        {
+          "baseline": {
+            "seconds": 0.632742166,
+            "gc_seconds": 0.0,
+            "bytes": 19299728
+          },
+          "optimized": {
+            "seconds": 0.631181789,
+            "gc_seconds": 0.0,
+            "bytes": 19299728
+          },
+          "order": [
+            false,
+            true
+          ]
+        },
+        {
+          "baseline": {
+            "seconds": 0.633473229,
+            "gc_seconds": 0.0,
+            "bytes": 19299728
+          },
+          "optimized": {
+            "seconds": 0.631401008,
+            "gc_seconds": 0.0,
+            "bytes": 19299728
+          },
+          "order": [
+            true,
+            false
+          ]
+        }
+      ],
+      "checks": [
+        {
+          "checked_array_elements": 23129418,
+          "errors": {}
+        },
+        {
+          "checked_array_elements": 23129418,
+          "errors": {}
+        },
+        {
+          "checked_array_elements": 23129418,
+          "errors": {}
+        },
+        {
+          "checked_array_elements": 23129418,
+          "errors": {}
+        },
+        {
+          "checked_array_elements": 23129418,
+          "errors": {}
+        },
+        {
+          "checked_array_elements": 23129418,
+          "errors": {}
+        }
+      ],
+      "transfer_seconds": 0.044180809,
+      "observer_seconds": 0.122743806,
+      "observer_origin_included": true
+    },
+    {
+      "resolution": 64,
+      "founders": 46,
+      "coverage": "native",
+      "actor_updates": 293,
+      "learning_work": 0.002954727180681016,
+      "births": 13,
+      "population": 59,
+      "occupied_fraction": 0.22428131103515625,
+      "baseline_step_seconds": 0.023311782733333335,
+      "optimized_step_seconds": 0.023299203566666666,
+      "speedup": 1.000539896852297,
+      "samples": [
+        {
+          "baseline": {
+            "seconds": 0.700176628,
+            "gc_seconds": 0.0,
+            "bytes": 19299728
+          },
+          "optimized": {
+            "seconds": 0.698976107,
+            "gc_seconds": 0.0,
+            "bytes": 19299728
+          },
+          "order": [
+            true,
+            false
+          ]
+        },
+        {
+          "baseline": {
+            "seconds": 0.699353482,
+            "gc_seconds": 0.0,
+            "bytes": 19299728
+          },
+          "optimized": {
+            "seconds": 0.695026693,
+            "gc_seconds": 0.0,
+            "bytes": 19299728
+          },
+          "order": [
+            false,
+            true
+          ]
+        },
+        {
+          "baseline": {
+            "seconds": 0.695399348,
+            "gc_seconds": 0.0,
+            "bytes": 19299840
+          },
+          "optimized": {
+            "seconds": 0.701452173,
+            "gc_seconds": 0.0,
+            "bytes": 19299728
+          },
+          "order": [
+            true,
+            false
+          ]
+        },
+        {
+          "baseline": {
+            "seconds": 0.699652934,
+            "gc_seconds": 0.0,
+            "bytes": 19299728
+          },
+          "optimized": {
+            "seconds": 0.695392567,
+            "gc_seconds": 0.0,
+            "bytes": 19299728
+          },
+          "order": [
+            false,
+            true
+          ]
+        },
+        {
+          "baseline": {
+            "seconds": 0.694730205,
+            "gc_seconds": 0.0,
+            "bytes": 19299728
+          },
+          "optimized": {
+            "seconds": 0.702430276,
+            "gc_seconds": 0.0,
+            "bytes": 19299728
+          },
+          "order": [
+            true,
+            false
+          ]
+        }
+      ],
+      "checks": [
+        {
+          "checked_array_elements": 23129418,
+          "errors": {}
+        },
+        {
+          "checked_array_elements": 23129418,
+          "errors": {}
+        },
+        {
+          "checked_array_elements": 23129418,
+          "errors": {}
+        },
+        {
+          "checked_array_elements": 23129418,
+          "errors": {}
+        },
+        {
+          "checked_array_elements": 23129418,
+          "errors": {}
+        },
+        {
+          "checked_array_elements": 23129418,
+          "errors": {}
+        }
+      ],
+      "transfer_seconds": 0.043734346,
+      "observer_seconds": 0.057745734,
+      "observer_origin_included": true
+    }
+  ],
+  "cpu_topology": {
+    "logical_cpus": [
+      10,
+      11
+    ],
+    "thread_siblings_list": "10-11",
+    "physical_cores": 1,
+    "julia_threads": 2,
+    "description": "Two SMT threads of one Intel i9-12900 P-core, not two physical cores."
+  },
+  "execution_cost": {
+    "elapsed_seconds": 84.23,
+    "user_cpu_seconds": 93.97,
+    "system_cpu_seconds": 20.39,
+    "peak_rss_kib": 1760064,
+    "swaps": 0,
+    "exit_status": 1
+  },
+  "status": "native_cases_passed; original_full_coverage_fixture_rejected_before_timing",
+  "fixture_failure": "bound food exceeds catalyst capacity after fill!(catalyst,1e-7) lowered existing catalyst; core kernel unchanged; corrected v2 control passes.",
+  "corrected_control_report": "2026-10-16-living-step-amd-control.json"
+}

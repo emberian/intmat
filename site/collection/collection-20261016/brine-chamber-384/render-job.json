@@ -1,0 +1,48 @@
+{
+  "id": "brine-chamber-384",
+  "title": "The chamber the brine kept",
+  "renderer": "scripts/render_brine_interior.py",
+  "source_renderer_sha256": "9dab5321d23a7bd13866d848230d7ff7b1039217795e8d88e5088c6ec779e045",
+  "source_run_sha256": "b7ee0859ab2356dfb6efe6f9f6b94d47ceda7e3333c3583a21c0a8bda4839249",
+  "source_shape": [
+    384,
+    384,
+    384
+  ],
+  "source_field_dtypes": {
+    "mineral": "<f8",
+    "a": "<f8",
+    "b": "<f8",
+    "phi": "<f4"
+  },
+  "input_step": 5760,
+  "input_time": 14.399999678134918,
+  "size": 2000,
+  "samples": 128,
+  "device": "METAL",
+  "threads": 2,
+  "family": "interfaces",
+  "description": "An observational section opens a mineral cage into copper-lined chambers and petrol edges. Saved phase and residual brine select the metal and interference colors; dark open ends mark the declared viewing cut.",
+  "mineral_iso": 0.3,
+  "adaptivity": 0.005,
+  "no_wet": true,
+  "mode": "interior",
+  "distance": 2.45,
+  "elevation": 0.48,
+  "orbit": 1.1,
+  "target": [
+    -0.12,
+    0,
+    0
+  ],
+  "cut_x": 0.1,
+  "optics": "phase-metal",
+  "optical_recipe": "experiments/art/brine-interior-384.toml",
+  "optical_recipe_sha256": "d6a9dbfa95688d6dd8e181c73f50944432843f307d36ceb64a0beaa0cf9e199a",
+  "source_fields_sha256": {
+    "mineral": "254e9be2e097fe08e0f451b27964cf06f34d8df7b10228a5bc09664553fa46eb",
+    "a": "7a31862f8bba0e116afe2c7f04cc5cbc50042d79c693116fa2f9ce7ab382de32",
+    "b": "c33e9dee8911fdd4740b4ae0913dbdb76d735a99f4a78bf6495f0ff760d5d425",
+    "phi": "5a20c2b1658e0c959669b2d50118e980a12b0e625e07e641a6d4a30516e6444d"
+  }
+}

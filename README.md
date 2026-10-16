@@ -15,7 +15,7 @@ Six families: phase surfaces, written inclusions, dielectric branches, fractured
 networks, acoustic/neural contours and 3D metabolic inhabitants. Each photograph
 observes a saved simulation through chosen optics. The first series adds 36
 specimens at 1600². Refinement now evolves native 384³ phase, writing and waves;
-768³ writing is complete. Refined 2400² photographs, recurrent matter, coupled optics and a repairing weave bring the gallery to 77
+768³ writing is complete. Refined 2400² photographs, recurrent matter, coupled optics and a repairing weave bring the gallery to 78
 studies, with corrected crop geometry and resin, wax, frost, bronze and copper
 optics. Native 1152³ Julia writing completed in 56.9 minutes with 18.35 GB of state.
 Constructive ecology now has actual 64³ trajectories and a 128³ GPU pilot;
@@ -63,6 +63,12 @@ The local Julia workbench can now fork the complete living state—including
 pending learning credit—and change what a branch senses.
 [Run it](docs/native-workbench-control.md#living-construction-adapter-bounded-local-session).
 
+**Memory that changes construction:** continuously visible resource ramps can
+reach the same current balance while predicting opposite future arrivals. A paid
+controller learns to allocate from that history; swapping its history reverses
+the benefit. Correcting a saturated predictor enables the learning.
+[Explore the experiment](https://emberian.github.io/intmat/laboratory/continuous-ramp/) · [Mechanism and transfer](docs/research/continuous-ramp-construction.md).
+
 **The light takes the long way:** a changing 256³ mineral bends light through
 three fixed apertures. [Rotate, cut and compare actual paths](https://emberian.github.io/intmat/collection-20261016/refractive-memory/viewer.html)
 across five saved states; the 2000² photograph reveals its amber and copper interior.
@@ -74,7 +80,14 @@ that redirect current through opaline folds.
 
 **What the brine left open:** finite reagents precipitate a porous 128³ mineral.
 Its deposits redirect diffusion and reshape the interfaces where reaction occurs.
-[Explore four recorded states](https://emberian.github.io/intmat/collection-20261016/brine-left-open/viewer.html) · [Process](docs/brine-memory.md).
+A separate native 384³ epoch now completes with Float64 chemical inventories in
+17.3 minutes; its full fields are preserved for photography.
+[Execution record](docs/native-brine-producer.md) · [Explore four recorded states](https://emberian.github.io/intmat/collection-20261016/brine-left-open/viewer.html) · [Process](docs/brine-memory.md).
+
+**The chamber the brine kept:** a section through the new native 384³ mineral.
+Saved phase and remaining reagents select copper, petrol-dark metal and thin-film
+reflections. The cut exposes computed passages; its open ends are photographic
+boundaries. [Photograph and optical mapping](docs/brine-interior-384.md).
 
 **A chord held in salt:** three pressure packets write an interference structure
 that changes subsequent wave propagation. An exact cutaway reveals its interior.
@@ -212,6 +225,12 @@ contacts, transport and paid habitat construction. Their Float32 synchronous law
 differs from the serial CPU ecology. Checkpoints retain complete future state;
 generic recording copies only explicitly requested observations.
 [Device model and measurements](docs/device-cellular.md)
+
+Concrete slab work reduces matched 192³ brine initialization **19.0→0.737 s**
+with bit-identical fields. This improves preparation, not sustained stepping.
+An exact empty-chemistry branch improves complete living CPU steps **7.4–7.6%**;
+GPU whole-step gain is below measurement resolution.
+[Initialization](docs/brine-initialization.md) · [Living steps](docs/living-step-performance.md)
 
 Recent decomposition experiments distinguish storage, submission and simulation:
 

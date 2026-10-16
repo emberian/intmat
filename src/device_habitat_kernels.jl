@@ -110,6 +110,29 @@ end
 @kernel function dh_react_sorb!(a,feed,e,q,fq,g,dt)
     site=@index(Global,Linear)
     if e.status[1]==0
+        # With no catalyst or bound inventory this site's chemistry is the
+        # identity. Preserve release resets and compensated-ledger normalization
+        # exactly, while avoiding soluble-field writes and sorption arithmetic.
+        empty=a.enzyme_bits[site,1]==0 && a.enzyme_bits[site,2]==0 &&
+            a.bound[site,1]==0 && a.bound[site,2]==0
+        # Retain the ordinary path for nonfinite or signed-zero soluble inputs:
+        # its endpoint arithmetic is also responsible for those diagnostics.
+        for k in 1:2
+            raw=feed.fields[site,k];food=e.fields[site,k]
+            empty &= isfinite(raw) && !signbit(raw) && isfinite(food) && !signbit(food)
+        end
+        waste=e.fields[site,3]
+        empty &= isfinite(waste) && !signbit(waste)
+        if empty
+            for k in 1:2
+                a.release[site,k]=0f0
+                dh_add!(a.grid_ledger,a.grid_ledger_low,site,k,0.)
+                dh_add!(a.grid_ledger,a.grid_ledger_low,site,k+2,0.)
+                dh_add!(a.grid_ledger,a.grid_ledger_low,site,k+8,0.)
+            end
+            dh_inert_add!(a.grid_inert,a.grid_inert_low,site,0.)
+            dh_add!(a.grid_ledger,a.grid_ledger_low,site,11,0.)
+        else
         inert=0.;heat=0.
         for k in 1:2
             enzyme=reinterpret(Float32,a.enzyme_bits[site,k]);raw=feed.fields[site,k]
@@ -149,6 +172,7 @@ end
         else
             dh_inert_add!(a.grid_inert,a.grid_inert_low,site,inert)
             dh_add!(a.grid_ledger,a.grid_ledger_low,site,11,heat)
+        end
         end
     end
 end

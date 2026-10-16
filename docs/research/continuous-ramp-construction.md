@@ -145,3 +145,21 @@ returns. A continuously acting garden policy must train on those actual
 histories, retain multiple overlapping decision scores, and reset newborn
 filter state from its first real observation. This episodic crossing experiment
 does not establish those properties or descendant learning.
+
+## Explore the mechanism
+
+The [laboratory explorer](../../site/laboratory/continuous-ramp/index.html)
+connects the physical crossing to forced allocation outcomes and frozen learned
+probes. Select A/B supply, continued/exhausted source, predictor range,
+exploration seed, slower ramps and a frozen history-sign swap. All allocation,
+return, prediction and work outcomes come from the recorded reports; the
+source-only stock reference and predictor bias ceiling are explicitly analytic.
+Missing prediction values in the saturated-predictor compact report remain
+unavailable. The static explorer neither advances Julia nor infers a training
+trajectory.
+
+Rebuild with `python3 scripts/build_ramp_construction_viewer.py`.
+[Compact browser evidence](../../benchmarks/2026-10-16-continuous-ramp-explorer.json)
+records 96 exercised control combinations, exact staged-page identity and the
+reviewed desktop/mobile layouts. The route adds about 64 KB including measured
+data and requires no external libraries.

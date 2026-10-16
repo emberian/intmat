@@ -1,0 +1,94 @@
+{
+  "title": "The chamber the brine kept",
+  "source_title": "What the brine left open",
+  "shape": [
+    384,
+    384,
+    384
+  ],
+  "step": 5760,
+  "time": 14.399999678134918,
+  "renderer_sha256": "9dab5321d23a7bd13866d848230d7ff7b1039217795e8d88e5088c6ec779e045",
+  "source_run_sha256": "b7ee0859ab2356dfb6efe6f9f6b94d47ceda7e3333c3583a21c0a8bda4839249",
+  "source_fields_sha256": {
+    "mineral": "254e9be2e097fe08e0f451b27964cf06f34d8df7b10228a5bc09664553fa46eb",
+    "a": "7a31862f8bba0e116afe2c7f04cc5cbc50042d79c693116fa2f9ce7ab382de32",
+    "b": "c33e9dee8911fdd4740b4ae0913dbdb76d735a99f4a78bf6495f0ff760d5d425",
+    "phi": "5a20c2b1658e0c959669b2d50118e980a12b0e625e07e641a6d4a30516e6444d"
+  },
+  "source_field_dtypes": {
+    "mineral": "<f8",
+    "a": "<f8",
+    "b": "<f8",
+    "phi": "<f4"
+  },
+  "native_grid_used_directly": true,
+  "image_sha256": "2a1ed7dadf20fdae130625b8adc31273a931b3da8d2405a11e09cc0459c5b140",
+  "geometry": [
+    {
+      "native_mineral_isovalue": 0.3,
+      "vertices": 297467,
+      "faces": 328078,
+      "adaptivity": 0.005,
+      "scalar_grid_type": "DoubleGrid"
+    }
+  ],
+  "surface_field_statistics": [
+    {
+      "quantiles": [
+        0,
+        0.1,
+        0.5,
+        0.9,
+        1
+      ],
+      "phase": [
+        -0.5453779541127743,
+        -0.3262553123338449,
+        -0.010921623676659286,
+        0.3226821752341495,
+        0.48852232386434835
+      ],
+      "residual_ratio": [
+        0.008764786412190447,
+        0.057408590269843136,
+        0.28945142989337813,
+        0.8146499761553995,
+        0.9813347563057059
+      ],
+      "remaining_reagents": [
+        0.6891363043059267,
+        0.7329563668008715,
+        0.7898661861082937,
+        0.8872818667488308,
+        1.006765713235146
+      ]
+    }
+  ],
+  "settings": {
+    "run": "outputs/art/native-brine-384-f64-20261016",
+    "output": "outputs/art/brine-interior-384/final.png",
+    "size": 2000,
+    "samples": 128,
+    "device": "METAL",
+    "step": null,
+    "mineral_iso": 0.3,
+    "wet_iso": 0.1,
+    "no_wet": true,
+    "orbit": 1.1,
+    "elevation": 0.48,
+    "mode": "interior",
+    "distance": 2.45,
+    "target": [
+      -0.12,
+      0.0,
+      0.0
+    ],
+    "adaptivity": 0.005,
+    "cut_x": 0.1,
+    "optics": "phase-metal",
+    "title": "The chamber the brine kept"
+  },
+  "render_seconds": 39.342127084732056,
+  "interpretation": "All displayed surfaces are native mineral concentration isosurfaces; full native scalar precision retained in OpenVDB DoubleGrid for Float64 mineral, with no downsampling or invented internal mesh. An optional recorded planar observational cut removes the x-greater portion without inventing cap geometry. Without cut_x the entire extracted surface is retained. Camera cropping is photographic framing. Coordinates are uniformly divided by physical half-extent for photographic staging. Residual A/(A+B) trilinearly sampled at native mineral vertices selects copper-to-verdigris color; saved absolute phase sets roughness 0.40\u20130.62 and residual ratio sets metallic response 0.12\u20130.62. These are chosen optical mappings, not an oxidation solve. The optional phase-metal transfer maps actual signed phase to navy/umber base, metallic response and 180\u2013400nm chosen thin-film interference; actual remaining reagents modulate brightness and roughness, while residual A ratio adds copper. These film/metal assignments are artistic optics, not simulated oxide or film thickness. The selected surface shaders and photographic floor/lights are optical choices, not calibrated material optics. A lower-concentration clear film is included only when no_wet is false."
+}

@@ -1,0 +1,44 @@
+{
+    "reference_commit": "9c9f1a5",
+    "reference_file": "/othersys/tmp/intmat-probe-20261014/source-native-brine-producer-20261016-v4/studies/brine_memory.jl",
+    "reference_sha": "5ab3ad1ba93f07383af119a59b76d8ccf5b390c807d0dc141bb9d517b5287639",
+    "current_sha": "5d8ec28796fe1ebae2438152db6ec8c5802a32ff64d88a205d9c86c84ae597bd",
+    "threads": 2,
+    "rows": [
+        {
+            "n": 96,
+            "chemical_storage": "Float64",
+            "allocation_and_specialized_seconds": 0.432022161,
+            "times": [
+                {
+                    "reference_seconds": 3.931021395,
+                    "specialized_seconds": 0.182414781
+                },
+                {
+                    "reference_seconds": 2.147818207,
+                    "specialized_seconds": 0.150759243
+                }
+            ],
+            "speedup": 18.24523871644928,
+            "bitwise_physical_parity": true
+        },
+        {
+            "n": 192,
+            "chemical_storage": "Float64",
+            "allocation_and_specialized_seconds": 1.142201711,
+            "times": [
+                {
+                    "reference_seconds": 19.142198983,
+                    "specialized_seconds": 0.737255104
+                },
+                {
+                    "reference_seconds": 18.800765515,
+                    "specialized_seconds": 0.736489295
+                }
+            ],
+            "speedup": 25.745960102542853,
+            "bitwise_physical_parity": true
+        }
+    ],
+    "timing": "Complete brine_initialize! including all chemical/phase fields and phase_observe!; planning/allocation excluded from paired medians and reported separately for specialized factory."
+}

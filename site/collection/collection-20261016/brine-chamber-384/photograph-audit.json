@@ -1,0 +1,47 @@
+{
+  "schema": "native-brine-photograph-input-audit",
+  "native_shape": [
+    384,
+    384,
+    384
+  ],
+  "source_report_sha256": "b7ee0859ab2356dfb6efe6f9f6b94d47ceda7e3333c3583a21c0a8bda4839249",
+  "source_report_reference": "benchmarks/2026-10-16-native-brine-384-f64-complete.json",
+  "full_field_inventory_matches": true,
+  "source_fields": {
+    "mineral": {
+      "path": "final/005760/mineral.f64",
+      "bytes": 452984832,
+      "sha256": "254e9be2e097fe08e0f451b27964cf06f34d8df7b10228a5bc09664553fa46eb"
+    },
+    "a": {
+      "path": "final/005760/a.f64",
+      "bytes": 452984832,
+      "sha256": "7a31862f8bba0e116afe2c7f04cc5cbc50042d79c693116fa2f9ce7ab382de32"
+    },
+    "b": {
+      "path": "final/005760/b.f64",
+      "bytes": 452984832,
+      "sha256": "c33e9dee8911fdd4740b4ae0913dbdb76d735a99f4a78bf6495f0ff760d5d425"
+    },
+    "phi": {
+      "path": "final/005760/phi.f32",
+      "bytes": 226492416,
+      "sha256": "5a20c2b1658e0c959669b2d50118e980a12b0e625e07e641a6d4a30516e6444d"
+    }
+  },
+  "source_field_dtypes": {
+    "mineral": "<f8",
+    "a": "<f8",
+    "b": "<f8",
+    "phi": "<f4"
+  },
+  "native_grid_used_directly": true,
+  "scalar_geometry_grid": "DoubleGrid",
+  "mineral_iso": 0.3,
+  "mesh_adaptivity": 0.005,
+  "observational_cut_x": 0.1,
+  "image_sha256": "2a1ed7dadf20fdae130625b8adc31273a931b3da8d2405a11e09cc0459c5b140",
+  "renderer_sha256": "9dab5321d23a7bd13866d848230d7ff7b1039217795e8d88e5088c6ec779e045",
+  "interpretation": "All four actual rendered field digests/byte counts match the independently copied immutable producer epoch. Mineral was read as Float64 directly into DoubleGrid; no scalar downsample or Float32 cast. Recorded optical cut/camera/material choices are distinct from the Julia physical state."
+}

@@ -1,0 +1,28 @@
+{
+  "schema": "continuous-ramp-explorer-browser-1",
+  "combinations": 96,
+  "page_errors": [],
+  "instantaneous_swap_invariant": true,
+  "history_swap_changes_gain_sign": true,
+  "exhausted_balanced_best": true,
+  "saturated_predictions_explicitly_unavailable": true,
+  "mobile_no_page_overflow": true,
+  "html_bytes": 64251,
+  "source_hashes": {
+    "scripts/build_ramp_construction_viewer.py": "264958756baafb5bab9c26d31947e5c2e2bc9a6359553807013e957becaf9c96",
+    "scripts/ramp_construction_viewer.html": "1e1fb4acdb930641f0f247c3e516568d28326944e22a3b48f1a08c28d06daa3e",
+    "site/laboratory/continuous-ramp/index.html": "e714671bce630fff1bc2a58d7d165520d2bf93dc80c6942969d21bf9dafde262"
+  },
+  "route": "laboratory/continuous-ramp/",
+  "review": "outputs/continuous-ramp-explorer-review-20261016",
+  "stage": "outputs/continuous-ramp-site-stage-20261016",
+  "scope": "Static recorded component explanation. Only the source-boundary stock diagram and predictor bias reference are analytic; no simulation is duplicated or run.",
+  "source_reports": {
+    "continuous-ramp-construction-noise9403.json": "9fb8a5027a86aea1780fb3405690cd2da6e93b61ad52e91152c1b4a6480e30df",
+    "continuous-ramp-saturated-critic.json": "31fd1b932c270ed6e7f827ed1747228071b3d0fed40278d41433b728cad3a907",
+    "continuous-ramp-authority.json": "f11a871c2de8c01710ddacb439cdb6bd93111d57bf82cb51c34bc75a239cb471",
+    "continuous-ramp-construction.json": "490160cfd14869df2d7fabe86db24556e35435bf0547c684ab6dfd559a375491"
+  },
+  "build_pages_passed": true,
+  "final_copy_review": "Clarified source rate sentence after layout/control review; no behavior change."
+}

@@ -11,22 +11,29 @@ BLAS.set_num_threads(1);FFTW.set_num_threads(min(2,Threads.nthreads()))
 end
 function brine_initialize!(w,p,a,b,c)
  L=Float32(c["extent"]);h=L/size(a,1)
- @inbounds for I in CartesianIndices(a)
-  x,y,z=ntuple(d->(I[d]-.5f0)*h-L/2,3);u,v,s=2f0*Float32(pi).*(x,y,z)./L
-  if get(c,"phase_initialization","lamellar")=="spinodal"
-   modes=((3,2,1),(2,3,-1),(1,-2,3),(-3,1,2),(2,-2,2),(3,1,-2),(1,3,2),(-2,2,3),(4,1,0),(0,3,3),(3,0,-3),(2,2,-3))
-   perturbation=0f0
-   for (q,mode) in enumerate(modes)
-    perturbation+=sin(mode[1]*u+mode[2]*v+mode[3]*s+Float32(.37q+.113q*q))
+ # Resolve the dynamically typed recipe once, before the concrete voxel loop.
+ spinodal=Bool(get(c,"phase_initialization","lamellar")=="spinodal")
+ perturbation_rms=spinodal ? Float32(c["phase_perturbation_rms"]) : 0f0
+ exponent=get(c,"reservoir_shape","sheet")=="lens" ? 6 : 8
+ thickness=Float32(c["reservoir_thickness"])
+ a_inventory=Float32(c["a_inventory"]);b_inventory=Float32(c["b_inventory"])
+ modes=((3,2,1),(2,3,-1),(1,-2,3),(-3,1,2),(2,-2,2),(3,1,-2),(1,3,2),(-2,2,3),(4,1,0),(0,3,3),(3,0,-3),(2,2,-3))
+ Threads.@threads for k in axes(a,3)
+  @inbounds for I in CartesianIndices((axes(a,1),axes(a,2),k:k))
+   x,y,z=ntuple(d->(I[d]-.5f0)*h-L/2,3);u,v,s=2f0*Float32(pi).*(x,y,z)./L
+   if spinodal
+    perturbation=0f0
+    for (q,mode) in enumerate(modes)
+     perturbation+=sin(mode[1]*u+mode[2]*v+mode[3]*s+Float32(.37q+.113q*q))
+    end
+    p.phi[I]=perturbation_rms*perturbation/sqrt(6f0)
+   else
+    nodal=.8f0*sin(2s+.45f0*sin(2u)+.5f0*cos(v))+.5f0*cos(2u)*cos(2v)+.15f0*sin(3u)
+    p.phi[I]=tanh(2.2f0*nodal)
    end
-   p.phi[I]=Float32(c["phase_perturbation_rms"])*perturbation/sqrt(6f0)
-  else
-   nodal=.8f0*sin(2s+.45f0*sin(2u)+.5f0*cos(v))+.5f0*cos(2u)*cos(2v)+.15f0*sin(3u)
-   p.phi[I]=tanh(2.2f0*nodal)
+   sheet=exp(-((z-.9f0*sin(.35f0*x)-.6f0*cos(.4f0*y))/thickness)^4-(x/8f0)^exponent-(y/7f0)^exponent)
+   a[I]=a_inventory*sheet;b[I]=b_inventory*(1f0-sheet)
   end
-  exponent=get(c,"reservoir_shape","sheet")=="lens" ? 6 : 8
-  sheet=exp(-((z-.9f0*sin(.35f0*x)-.6f0*cos(.4f0*y))/Float32(c["reservoir_thickness"]))^4-(x/8f0)^exponent-(y/7f0)^exponent)
-  a[I]=Float32(c["a_inventory"])*sheet;b[I]=Float32(c["b_inventory"])*(1f0-sheet)
  end
  Interior.phase_observe!(w,p)
 end

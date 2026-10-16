@@ -1,0 +1,104 @@
+{
+  "schema": "native-brine-photograph-source",
+  "title": "The chamber the brine kept",
+  "family": "interfaces",
+  "shape": [
+    384,
+    384,
+    384
+  ],
+  "native_shape": [
+    384,
+    384,
+    384
+  ],
+  "extent": [
+    24,
+    24,
+    24
+  ],
+  "time": 14.399999678134918,
+  "dt": 0.0025,
+  "steps": 5760,
+  "base_commit": "aae69fe",
+  "backend": "Julia shared GPU phase and brine",
+  "precision": "phase/forcing/permeability Float32; chemical Float64; FFT Float64/ComplexF64",
+  "source_report": "benchmarks/2026-10-16-native-brine-384-f64-complete.json",
+  "source_report_sha256": "b7ee0859ab2356dfb6efe6f9f6b94d47ceda7e3333c3583a21c0a8bda4839249",
+  "recipe_sha256": "cb23920f1f50695a43665ed7074324439ed8cc17a6cea6166e92fe2a2784fd70",
+  "sources": {
+    "src/implicit_phase.jl": "e724d19ad8827aa45958880182e3bfbbf0300aca19db0e9616180be5300d9d32",
+    "studies/implicit_phase_runtime.jl": "a6f772ee39b66cf1d5e12742ff9a94a3a0c187a99fdae113d377be14b80baf75",
+    "scripts/device_cellular_setup.jl": "a4c64eb5a43c67cfd746acf2c03bb47d71dbfb12aebd63273fbf5a04172be1e4",
+    "studies/brine_memory.jl": "5ab3ad1ba93f07383af119a59b76d8ccf5b390c807d0dc141bb9d517b5287639",
+    "src/phase.jl": "2815bbd2ee63bacfd0ff36956d16c22d6bc3eaf4798f4fb385026222349848ec",
+    "src/core.jl": "b4302b90eaeba213360e8a15ce8b7e4cb4c491606657e3e500d2fb8507753a52",
+    "src/compartments.jl": "b0e82216232acde9f4692d0053be43887378e4a80b07f76ab61dd19f3de34cea",
+    "studies/native_brine_producer.jl": "d15b6e3ef28621adb5c628e92abd8d4eddac72155c320d3d20bd40d71c3baa7f"
+  },
+  "final_history": {
+    "step": 5760,
+    "valid": true,
+    "time": 14.399999678134918,
+    "mineral_sum": 2936276.945732902,
+    "mineral_max": 0.6428205190701006,
+    "phase_mean": -2.7881874895305554e-09,
+    "phase_mean_error": -9.36221399914646e-11,
+    "chemical_relative_error": -9.900427924737612e-16,
+    "phase_range": [
+      -0.92120737,
+      0.90758675
+    ],
+    "a_range": [
+      3.5886297186416834e-13,
+      1.1586126674565103
+    ],
+    "b_range": [
+      1.6404326114970847e-05,
+      0.8999999761566357
+    ],
+    "mineral_range": [
+      0,
+      0.6428205190701006
+    ]
+  },
+  "mineral_mass": 716.8644887043217,
+  "source_fields": {
+    "mineral": {
+      "path": "final/005760/mineral.f64",
+      "bytes": 452984832,
+      "sha256": "254e9be2e097fe08e0f451b27964cf06f34d8df7b10228a5bc09664553fa46eb"
+    },
+    "a": {
+      "path": "final/005760/a.f64",
+      "bytes": 452984832,
+      "sha256": "7a31862f8bba0e116afe2c7f04cc5cbc50042d79c693116fa2f9ce7ab382de32"
+    },
+    "b": {
+      "path": "final/005760/b.f64",
+      "bytes": 452984832,
+      "sha256": "c33e9dee8911fdd4740b4ae0913dbdb76d735a99f4a78bf6495f0ff760d5d425"
+    },
+    "phi": {
+      "path": "final/005760/phi.f32",
+      "bytes": 226492416,
+      "sha256": "5a20c2b1658e0c959669b2d50118e980a12b0e625e07e641a6d4a30516e6444d"
+    }
+  },
+  "comparison_notes": "Native 384\u00b3 full Float64 chemical fields, Float32 phase; fixed physical mineral isovalue .30. Deliberate uncapped viewing cut at normalized x=.10. Field-driven metal and thin-film colors are chosen optics. Earlier128\u00b3 artwork preserved; no claim of spatial convergence.",
+  "description": "An observational section opens a mineral cage into copper-lined chambers and petrol edges. Saved phase and residual brine select the metal and interference colors; dark open ends mark the declared viewing cut.",
+  "publication": {
+    "source_image_sha256": "2a1ed7dadf20fdae130625b8adc31273a931b3da8d2405a11e09cc0459c5b140",
+    "webp_sha256": "dc9c338321f86f80798ebb3e90a50b8628131ad245f97f4909b36ff493cc735d",
+    "quality": 95,
+    "width": 2000,
+    "samples": 128,
+    "native_shape": [
+      384,
+      384,
+      384
+    ],
+    "original_retained": true,
+    "reviewed_by": "optical_interior_art and root"
+  }
+}

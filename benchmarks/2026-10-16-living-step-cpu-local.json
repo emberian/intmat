@@ -1,0 +1,461 @@
+{
+  "schema": "living-step-performance-local-inconclusive-v1",
+  "status": "correctness_passed_timing_inconclusive",
+  "reason": "Concurrent local Julia/CPU workers confirmed by coordinator; full-coverage identity controls show large spurious speedups. Do not treat local ratios as isolated throughput evidence.",
+  "kernel_sha256": "856670a8279e22c456012c8984036a3c6f0c981c95ca686be9d29653f0ecf39a",
+  "baseline": "9c9f1a51f277f66949da00fdb63c7a20c2fcaed5",
+  "threads": 2,
+  "initial_ten_step_samples": [
+    {
+      "resolution": 16,
+      "founders": 24,
+      "coverage": "native",
+      "occupied_fraction": 0.091552734375,
+      "baseline_step_seconds": 0.016358425,
+      "optimized_step_seconds": 0.020907425,
+      "speedup": 0.7824217951278074,
+      "checked_array_elements": 6615540,
+      "observer_seconds": 0.663107083,
+      "population": 27,
+      "baseline_samples": [
+        0.435058875,
+        0.16358425,
+        0.09510925
+      ],
+      "optimized_samples": [
+        0.31994625,
+        0.20907425,
+        0.07239675
+      ]
+    },
+    {
+      "resolution": 16,
+      "founders": 24,
+      "coverage": "full",
+      "occupied_fraction": 1.0,
+      "baseline_step_seconds": 0.0157100542,
+      "optimized_step_seconds": 0.0117880708,
+      "speedup": 1.3327078252702724,
+      "checked_array_elements": 6615540,
+      "observer_seconds": 0.002797166,
+      "population": 27,
+      "baseline_samples": [
+        0.100360292,
+        0.157100542,
+        0.208622792
+      ],
+      "optimized_samples": [
+        0.100471375,
+        0.117880708,
+        0.14681375
+      ]
+    },
+    {
+      "resolution": 16,
+      "founders": 46,
+      "coverage": "native",
+      "occupied_fraction": 0.13671875,
+      "baseline_step_seconds": 0.0166798292,
+      "optimized_step_seconds": 0.0157822042,
+      "speedup": 1.0568757689752868,
+      "checked_array_elements": 6615540,
+      "observer_seconds": 0.007687625,
+      "population": 55,
+      "baseline_samples": [
+        0.166798292,
+        0.269935792,
+        0.147616875
+      ],
+      "optimized_samples": [
+        0.157822042,
+        0.475010375,
+        0.141573625
+      ]
+    },
+    {
+      "resolution": 16,
+      "founders": 46,
+      "coverage": "full",
+      "occupied_fraction": 1.0,
+      "baseline_step_seconds": 0.0124572084,
+      "optimized_step_seconds": 0.011178125,
+      "speedup": 1.1144273659491193,
+      "checked_array_elements": 6615540,
+      "observer_seconds": 0.003258292,
+      "population": 55,
+      "baseline_samples": [
+        0.119991458,
+        0.164102083,
+        0.124572084
+      ],
+      "optimized_samples": [
+        0.11178125,
+        0.132152,
+        0.105121875
+      ]
+    },
+    {
+      "resolution": 32,
+      "founders": 24,
+      "coverage": "native",
+      "occupied_fraction": 0.092529296875,
+      "baseline_step_seconds": 0.0186412292,
+      "optimized_step_seconds": 0.0191308584,
+      "speedup": 0.9744063131009323,
+      "checked_array_elements": 15512052,
+      "observer_seconds": 0.132268458,
+      "population": 27,
+      "baseline_samples": [
+        0.264779292,
+        0.180394583,
+        0.186412292
+      ],
+      "optimized_samples": [
+        0.191308584,
+        0.17940575,
+        0.209761167
+      ]
+    },
+    {
+      "resolution": 32,
+      "founders": 24,
+      "coverage": "full",
+      "occupied_fraction": 1.0,
+      "baseline_step_seconds": 0.0333048209,
+      "optimized_step_seconds": 0.033448225,
+      "speedup": 0.9957126544084178,
+      "checked_array_elements": 15512052,
+      "observer_seconds": 0.09039825,
+      "population": 27,
+      "baseline_samples": [
+        0.247963333,
+        0.333048209,
+        0.435895042
+      ],
+      "optimized_samples": [
+        0.33448225,
+        0.499108416,
+        0.212101791
+      ]
+    },
+    {
+      "resolution": 32,
+      "founders": 46,
+      "coverage": "native",
+      "occupied_fraction": 0.176177978515625,
+      "baseline_step_seconds": 0.019641070899999998,
+      "optimized_step_seconds": 0.0276903458,
+      "speedup": 0.7093111455473409,
+      "checked_array_elements": 15512052,
+      "observer_seconds": 0.006373334,
+      "population": 54,
+      "baseline_samples": [
+        0.196410709,
+        0.300677084,
+        0.192769291
+      ],
+      "optimized_samples": [
+        0.216651542,
+        0.276903458,
+        0.305821417
+      ]
+    },
+    {
+      "resolution": 32,
+      "founders": 46,
+      "coverage": "full",
+      "occupied_fraction": 1.0,
+      "baseline_step_seconds": 0.019950454200000002,
+      "optimized_step_seconds": 0.019303375,
+      "speedup": 1.033521557758682,
+      "checked_array_elements": 15512052,
+      "observer_seconds": 0.00592725,
+      "population": 56,
+      "baseline_samples": [
+        0.228260666,
+        0.198056292,
+        0.199504542
+      ],
+      "optimized_samples": [
+        0.20773675,
+        0.19303375,
+        0.189001875
+      ]
+    },
+    {
+      "resolution": 64,
+      "founders": 24,
+      "coverage": "native",
+      "occupied_fraction": 0.09310531616210938,
+      "baseline_step_seconds": 0.18930641669999998,
+      "optimized_step_seconds": 0.1283869583,
+      "speedup": 1.4744988058495034,
+      "checked_array_elements": 86127092,
+      "observer_seconds": 0.140857834,
+      "population": 27,
+      "baseline_samples": [
+        1.083389584,
+        1.893064167,
+        2.746384375
+      ],
+      "optimized_samples": [
+        1.283869583,
+        1.019929958,
+        1.840630708
+      ]
+    },
+    {
+      "resolution": 64,
+      "founders": 24,
+      "coverage": "full",
+      "occupied_fraction": 1.0,
+      "baseline_step_seconds": 0.155440525,
+      "optimized_step_seconds": 0.1551526667,
+      "speedup": 1.0018553229288454,
+      "checked_array_elements": 86127092,
+      "observer_seconds": 0.14167675,
+      "population": 27,
+      "baseline_samples": [
+        2.293874,
+        1.48976575,
+        1.55440525
+      ],
+      "optimized_samples": [
+        3.13354475,
+        1.551526667,
+        1.497052666
+      ]
+    },
+    {
+      "resolution": 64,
+      "founders": 46,
+      "coverage": "native",
+      "occupied_fraction": 0.17899703979492188,
+      "baseline_step_seconds": 0.10845958330000001,
+      "optimized_step_seconds": 0.1027383417,
+      "speedup": 1.0556875019134166,
+      "checked_array_elements": 86127092,
+      "observer_seconds": 0.093221209,
+      "population": 54,
+      "baseline_samples": [
+        1.190019834,
+        1.053510333,
+        1.084595833
+      ],
+      "optimized_samples": [
+        1.069166416,
+        1.012176584,
+        1.027383417
+      ]
+    },
+    {
+      "resolution": 64,
+      "founders": 46,
+      "coverage": "full",
+      "occupied_fraction": 1.0,
+      "baseline_step_seconds": 0.1605626542,
+      "optimized_step_seconds": 0.15653982500000002,
+      "speedup": 1.025698439358802,
+      "checked_array_elements": 86127092,
+      "observer_seconds": 0.104675333,
+      "population": 56,
+      "baseline_samples": [
+        1.605626542,
+        2.283022167,
+        1.438794375
+      ],
+      "optimized_samples": [
+        1.56539825,
+        2.564163167,
+        0.981559167
+      ]
+    }
+  ],
+  "partial_thirty_step_samples": [
+    {
+      "resolution": 16,
+      "founders": 24,
+      "coverage": "native",
+      "occupied_fraction": 0.091552734375,
+      "baseline_step_seconds": 0.036591034700000004,
+      "optimized_step_seconds": 0.0286940375,
+      "speedup": 1.2752138732654825,
+      "checked_array_elements": 9923310,
+      "observer_seconds": 0.0028485,
+      "population": 27,
+      "baseline_samples": [
+        1.042138708,
+        1.252376,
+        1.097731041,
+        1.204525542,
+        0.999195
+      ],
+      "optimized_samples": [
+        0.832127333,
+        1.169267041,
+        0.860821125,
+        1.40163875,
+        0.640236417
+      ]
+    },
+    {
+      "resolution": 16,
+      "founders": 24,
+      "coverage": "full",
+      "occupied_fraction": 1.0,
+      "baseline_step_seconds": 0.017842068033333332,
+      "optimized_step_seconds": 0.013111901399999999,
+      "speedup": 1.3607536763000165,
+      "checked_array_elements": 9923310,
+      "observer_seconds": 0.0040205,
+      "population": 27,
+      "baseline_samples": [
+        0.655023542,
+        0.370759917,
+        0.372807833,
+        0.535262041,
+        0.715520875
+      ],
+      "optimized_samples": [
+        0.340199209,
+        0.354547208,
+        0.393357042,
+        1.598537125,
+        0.8184385
+      ]
+    },
+    {
+      "resolution": 16,
+      "founders": 46,
+      "coverage": "native",
+      "occupied_fraction": 0.13671875,
+      "baseline_step_seconds": 0.026550098600000002,
+      "optimized_step_seconds": 0.0133268861,
+      "speedup": 1.9922207183867207,
+      "checked_array_elements": 9923310,
+      "observer_seconds": 0.002774625,
+      "population": 55,
+      "baseline_samples": [
+        0.838700291,
+        0.305813583,
+        0.959557584,
+        0.590543209,
+        0.796502958
+      ],
+      "optimized_samples": [
+        0.364419042,
+        0.383263167,
+        1.36452125,
+        0.616916667,
+        0.399806583
+      ]
+    },
+    {
+      "resolution": 16,
+      "founders": 46,
+      "coverage": "full",
+      "occupied_fraction": 1.0,
+      "baseline_step_seconds": 0.04590853193333333,
+      "optimized_step_seconds": 0.04716377223333333,
+      "speedup": 0.9733854982211781,
+      "checked_array_elements": 9923310,
+      "observer_seconds": 0.005042875,
+      "population": 55,
+      "baseline_samples": [
+        0.630976792,
+        1.346604084,
+        1.377255958,
+        1.440888083,
+        1.4486745
+      ],
+      "optimized_samples": [
+        0.523743375,
+        0.717082417,
+        1.464029833,
+        1.414913167,
+        1.517037334
+      ]
+    },
+    {
+      "resolution": 32,
+      "founders": 24,
+      "coverage": "native",
+      "occupied_fraction": 0.092529296875,
+      "baseline_step_seconds": 0.06161124166666666,
+      "optimized_step_seconds": 0.05510956386666667,
+      "speedup": 1.1179773045515349,
+      "checked_array_elements": 23268078,
+      "observer_seconds": 0.006673208,
+      "population": 27,
+      "baseline_samples": [
+        1.133681875,
+        2.357425709,
+        1.928696917,
+        1.84833725,
+        0.693278333
+      ],
+      "optimized_samples": [
+        0.636812334,
+        1.951606709,
+        2.404125125,
+        1.653286916,
+        0.600104417
+      ]
+    },
+    {
+      "resolution": 32,
+      "founders": 24,
+      "coverage": "full",
+      "occupied_fraction": 1.0,
+      "baseline_step_seconds": 0.020834719433333333,
+      "optimized_step_seconds": 0.022751797233333333,
+      "speedup": 0.9157395004737773,
+      "checked_array_elements": 23268078,
+      "observer_seconds": 0.007115375,
+      "population": 27,
+      "baseline_samples": [
+        0.625866292,
+        0.625041583,
+        0.568796959,
+        0.670360584,
+        0.493690083
+      ],
+      "optimized_samples": [
+        0.600257584,
+        0.701466875,
+        0.682553917,
+        0.760889458,
+        0.450514583
+      ]
+    },
+    {
+      "resolution": 32,
+      "founders": 46,
+      "coverage": "native",
+      "occupied_fraction": 0.176177978515625,
+      "baseline_step_seconds": 0.014897905566666668,
+      "optimized_step_seconds": 0.013076168066666666,
+      "speedup": 1.139317381874581,
+      "checked_array_elements": 23268078,
+      "observer_seconds": 0.005086333,
+      "population": 56,
+      "baseline_samples": [
+        0.394467791,
+        0.39488275,
+        0.466483334,
+        0.460134458,
+        0.446937167
+      ],
+      "optimized_samples": [
+        0.390674792,
+        0.428126916,
+        0.392285042,
+        0.394951875,
+        0.374355625
+      ]
+    }
+  ],
+  "initial_observer_warmed": false,
+  "partial_observer_warmed": true,
+  "amd_gate": "pending; GPU reserved to frozen brine producer"
+}

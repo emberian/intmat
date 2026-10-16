@@ -1,0 +1,122 @@
+{
+  "schema": "living-chemistry-edge-gate-v1",
+  "runtime": {
+    "julia": "1.12.4",
+    "kernel": "Linux",
+    "architecture": "x86_64",
+    "launch_threads": 2,
+    "backend": "amd",
+    "device": "HIPDevice(id=1, name=AMD Radeon RX 6750 XT, gcn_arch=gfx1030)",
+    "backend_version": "2.8.0",
+    "actual_device_optlevel": 1,
+    "project_sha256": "ea2724f6aee424afa18192edf284c4121c9b9aba20bdf30d709b4156f0318435",
+    "manifest_sha256": "ec7933a7abe3cf4c245acb8deac18791972f93a25c8a94886ea6381176b2431c"
+  },
+  "baseline": "9c9f1a51f277f66949da00fdb63c7a20c2fcaed5",
+  "kernel_sha256": "b9774fc4b57b8d6dd844dc996979b007cf4f3e8160660a2961525514dad52c9c",
+  "checks": 140,
+  "cases": [
+    {
+      "case": "empty_compensated",
+      "status": 0,
+      "normalized": true,
+      "release_finite": true
+    },
+    {
+      "case": "raw_nan",
+      "status": 64,
+      "normalized": true,
+      "release_finite": false
+    },
+    {
+      "case": "raw_inf",
+      "status": 64,
+      "normalized": true,
+      "release_finite": false
+    },
+    {
+      "case": "raw_negative_zero",
+      "status": 0,
+      "normalized": true,
+      "release_finite": true
+    },
+    {
+      "case": "food_nan",
+      "status": 64,
+      "normalized": true,
+      "release_finite": false
+    },
+    {
+      "case": "food_inf",
+      "status": 64,
+      "normalized": true,
+      "release_finite": false
+    },
+    {
+      "case": "food_negative_zero",
+      "status": 0,
+      "normalized": true,
+      "release_finite": true
+    },
+    {
+      "case": "waste_nan",
+      "status": 64,
+      "normalized": true,
+      "release_finite": true
+    },
+    {
+      "case": "waste_inf",
+      "status": 64,
+      "normalized": true,
+      "release_finite": true
+    },
+    {
+      "case": "waste_negative_zero",
+      "status": 0,
+      "normalized": true,
+      "release_finite": true
+    },
+    {
+      "case": "bound_negative_zero",
+      "status": 0,
+      "normalized": true,
+      "release_finite": true
+    },
+    {
+      "case": "enzyme_negative_zero",
+      "status": 0,
+      "normalized": true,
+      "release_finite": true
+    },
+    {
+      "case": "positive_bound",
+      "status": 0,
+      "normalized": true,
+      "release_finite": true
+    },
+    {
+      "case": "positive_enzyme",
+      "status": 0,
+      "normalized": true,
+      "release_finite": true
+    }
+  ],
+  "cpu_topology": {
+    "logical_cpus": [
+      10,
+      11
+    ],
+    "thread_siblings_list": "10-11",
+    "physical_cores": 1,
+    "julia_threads": 2,
+    "description": "Two SMT threads of one Intel i9-12900 P-core, not two physical cores."
+  },
+  "execution_cost": {
+    "elapsed_seconds": 10.92,
+    "user_cpu_seconds": 10.52,
+    "system_cpu_seconds": 0.68,
+    "peak_rss_kib": 875536,
+    "swaps": 0,
+    "exit_status": 0
+  }
+}

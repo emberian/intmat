@@ -100,3 +100,13 @@ bytes 1,639,983,706 (before its compact run report). Final chemical relative err
 was -9.90e-16, signed phase mean drift -9.36e-11, and all fields passed the finite,
 positivity and unchanged conservation guards. Source-pinned complete evidence:
 `benchmarks/2026-10-16-native-brine-384-f64-complete.json`.
+
+All 64 original output files (1,640,032,730 bytes including the completed run
+report) were copied to private local art storage and verified against remote
+SHA256 hashes. The actual eight executed source files were separately verified
+against the run's fingerprints. Compact inventory:
+`benchmarks/2026-10-16-native-brine-384-f64-inventory.json`.
+
+A later exact initializer specialization is measured separately in
+`docs/brine-initialization.md`. It does not alter the frozen source or fields of
+the completed 384³ epoch.

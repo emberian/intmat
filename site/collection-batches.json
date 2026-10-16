@@ -675,5 +675,19 @@
       "render-job.json",
       "run.json"
     ]
+  },
+  {
+    "id": "collection-20261016/brine-chamber-384",
+    "source_image_sha256": "2a1ed7dadf20fdae130625b8adc31273a931b3da8d2405a11e09cc0459c5b140",
+    "files": [
+      "gallery-preview.webp",
+      "optical-recipe.toml",
+      "optical.json",
+      "photograph-audit.json",
+      "photograph.webp",
+      "recipe.toml",
+      "render-job.json",
+      "run.json"
+    ]
   }
 ]
