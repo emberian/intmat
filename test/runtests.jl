@@ -106,3 +106,7 @@ end
 module NativeWorkbenchTests
 include("native_workbench_worker.jl")
 end
+
+module NativeLifetimeCreditTests
+include("native_lifetime_credit.jl")
+end
