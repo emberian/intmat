@@ -84,6 +84,18 @@ function seed_acoustic!(w::World,p::AcousticField; amplitude=1f0,radius=0.12f0,c
         distance=sum((((i,j,k)[d]-0.5f0)*w.grid.spacing[d]-w.grid.extent[d]/2-center[d])^2 for d in 1:(w.grid.size[3]==1 ? 2 : 3))
         host[i,j,k]=amplitude*exp(-distance/(2radius^2))
     end
+    seed_acoustic_field!(w,p,host;dt)
+end
+
+"""Initialize any finite 3D pressure field at zero velocity using the shared face operator.
+The input may be host or device resident; initialization stages its values on host
+and never mutates the caller's array. This is a one-time setup, not a timestep path.
+"""
+function seed_acoustic_field!(w::World,p::AcousticField,pressure::AbstractArray;dt=0.01f0)
+    validate(w,p); check_dt(w,p,dt)
+    size(pressure)==w.grid.size || throw(DimensionMismatch("initial acoustic pressure grid mismatch"))
+    host=Float32.(Array(pressure))
+    all(isfinite,host) || throw(ArgumentError("initial acoustic pressure must be finite in Float32"))
     prev=copy(host); deposit=Array(w.fields.deposit)
     for k in axes(host,3),j in axes(host,2),i in axes(host,1)
         divergence=0f0

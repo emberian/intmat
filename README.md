@@ -78,7 +78,9 @@ Its deposits redirect diffusion and reshape the interfaces where reaction occurs
 
 **A chord held in salt:** three pressure packets write an interference structure
 that changes subsequent wave propagation. An exact cutaway reveals its interior.
-[Study](docs/chord-salt.md).
+[Study](docs/chord-salt.md). Its moving relative,
+[Where the note goes](https://emberian.github.io/intmat/animations/#wave-memory-motion-128),
+records 40 actual states of wave-written mineral growing and receding.
 
 **Inner shore** enters the light-remodeled mineral: a macro view of its actual
 mineral walls and absorbed-power sheets. [Photographic study](docs/inner-shore.md).

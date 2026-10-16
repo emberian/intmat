@@ -1,0 +1,146 @@
+{
+  "cpu48": {
+    "backend": "cpu",
+    "n": 48,
+    "steps_per_repeat": 20,
+    "repeats": 3,
+    "complete_step_seconds": [
+      0.01021766455,
+      0.008106939550000001,
+      0.007971718749999999
+    ],
+    "scalar_complete_step_seconds": 0.01647988335,
+    "cpu_exact_errors": {
+      "envelope": 0,
+      "nutrient": 0,
+      "pressure": 0,
+      "dose": 0,
+      "previous": 0,
+      "deposit": 0
+    },
+    "cpu_device_errors": {
+      "envelope": 0,
+      "nutrient": 0,
+      "pressure": 0,
+      "dose": 0,
+      "previous": 0,
+      "deposit": 0
+    },
+    "field_bytes": 4423680,
+    "qualification": "Full acoustic validation/reduction, production wave kernel, pressure mirror copy, material/dose kernel and clock update; warmed simulation excludes initialization, export and rendering; no asynchronous unsynchronized timing.",
+    "persistent_state_arrays": 10,
+    "allocation_qualification": "State arrays only; runtime/reduction temporary allocations and peak memory are not instrumented."
+  },
+  "cpu64": {
+    "backend": "cpu",
+    "n": 64,
+    "steps_per_repeat": 40,
+    "repeats": 3,
+    "complete_step_seconds": [
+      0.042730138550000005,
+      0.0360105677,
+      0.028658036475
+    ],
+    "scalar_complete_step_seconds": 0.01785622395,
+    "cpu_exact_errors": {
+      "envelope": 0,
+      "nutrient": 0,
+      "pressure": 0,
+      "dose": 0,
+      "previous": 0,
+      "deposit": 0
+    },
+    "cpu_device_errors": {
+      "envelope": 0,
+      "nutrient": 0,
+      "pressure": 0,
+      "dose": 0,
+      "previous": 0,
+      "deposit": 0
+    },
+    "field_bytes": 10485760,
+    "qualification": "Full acoustic validation/reduction, production wave kernel, pressure mirror copy, material/dose kernel and clock update; warmed simulation excludes initialization, export and rendering; no asynchronous unsynchronized timing.",
+    "persistent_state_arrays": 10,
+    "allocation_qualification": "State arrays only; runtime/reduction temporary allocations and peak memory are not instrumented."
+  },
+  "metal64": {
+    "backend": "metal",
+    "n": 64,
+    "steps_per_repeat": 40,
+    "repeats": 3,
+    "complete_step_seconds": [
+      0.003445947925,
+      0.003267582275,
+      0.003049129175
+    ],
+    "scalar_complete_step_seconds": null,
+    "cpu_exact_errors": {
+      "envelope": 0,
+      "nutrient": 0,
+      "pressure": 0,
+      "dose": 0,
+      "previous": 0,
+      "deposit": 0
+    },
+    "cpu_device_errors": {
+      "envelope": 3.4924597e-08,
+      "nutrient": 5.9604645e-08,
+      "pressure": 3.501773e-07,
+      "dose": 3.7252903e-09,
+      "previous": 3.427267e-07,
+      "deposit": 5.9604645e-08
+    },
+    "field_bytes": 10485760,
+    "qualification": "Full acoustic validation/reduction, production wave kernel, pressure mirror copy, material/dose kernel and clock update; warmed simulation excludes initialization, export and rendering; no asynchronous unsynchronized timing.",
+    "persistent_state_arrays": 10,
+    "allocation_qualification": "State arrays only; runtime/reduction temporary allocations and peak memory are not instrumented."
+  },
+  "initializer_cpu": {
+    "fourier_previous_error": 1.4009925e-18,
+    "device_host_initialization_and_20step_error": 0,
+    "input_unchanged": true,
+    "gaussian_route_exact": true,
+    "validation_cases": 4,
+    "backend": "cpu"
+  },
+  "initializer_metal": {
+    "fourier_previous_error": 1.4009925e-18,
+    "device_host_initialization_and_20step_error": 0,
+    "input_unchanged": true,
+    "gaussian_route_exact": true,
+    "validation_cases": 4,
+    "backend": "metal"
+  },
+  "reversible_metal": {
+    "backend": "metal",
+    "steps": 100,
+    "errors": {
+      "envelope": 0,
+      "nutrient": 5.9604645e-08,
+      "pressure": 0,
+      "dose": 0,
+      "previous": 0,
+      "deposit": 5.9604645e-08
+    },
+    "local_inventory_error": 5.9604645e-08,
+    "zero_wave_decay_error": 3.7252903e-09,
+    "nonnegative_donors": true,
+    "qualification": "16\u00b3 portability and finite-donor fixture; not artwork-resolution convergence."
+  },
+  "capture": {
+    "native_shape": [
+      128,
+      128,
+      128
+    ],
+    "captured_states": 41,
+    "movie_states": 40,
+    "actual_stored_observations": true,
+    "restart_checkpoints": false,
+    "temporal_interpolation": false,
+    "pressure_channel": "activity is instantaneous absolute pressure, not a simulation activity reservoir",
+    "isovalue": 0.3,
+    "total_receding_threshold_crossings": 27008,
+    "maximum_reported_local_inventory_error": 5.9604645e-08
+  }
+}

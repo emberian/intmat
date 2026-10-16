@@ -938,3 +938,22 @@ The reviewed 1600²/96-sample photograph After the last feeding observes the
 separate native 32³ state at time 64: actual body radii and 105 ID-validated bonds,
 with concentration-based optical fluorescence. It is the 77th gallery specimen.
 Its related interactive link explicitly opens the distinct 16³ trajectory.
+
+### Native 384³ completion and wave motion
+
+The separate Float64-chemical brine epoch completed all 5760 steps to time
+14.399999678 in 1036.94 seconds. Full native fields and 64³ observation replay
+fit the 2 GiB artifact budget (1,639,983,706 bytes). Relative chemical inventory
+error is -9.90e-16; phase-mean drift -9.36e-11. Its source remains frozen and
+independent of the failed Float32 epoch. Full fields are being transferred for
+photography. GPU resources released for bounded native performance gates.
+
+Where the note goes adds a five-second film from 40 actual native 128³ wave/
+mineral observations. Root reviewed decoded contact sheets: interfaces appear,
+merge and recede under a fixed camera and fixed pressure-to-light transfer.
+The shared acoustic initializer now accepts arbitrary finite fields through its
+original face operator; CPU and Metal initialization/parity checks pass.
+Complete Metal64³ steps measured 3.05–3.45 ms; CPU timings were variable and
+remain explicitly inconclusive about general CPU speedup. The local living
+workbench also passed an actual HTTP/viewer session through advance, independent
+fork, receptor change, child advance and clean stop, preserving the parent.

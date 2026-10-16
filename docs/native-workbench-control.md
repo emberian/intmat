@@ -372,3 +372,26 @@ model-time allowance; birth-transfer adjustment and private recurrent features
 remain enabled. The stored checkpoint carries all effective policy options.
 Changing this table requires a fresh session; receptor edits within a resident
 session retain its declared inheritance and learning law.
+
+### Living HTTP and viewer gate
+
+A frozen-source four-founder 16³ fixture exercised the actual loopback gateway:
+advance sensing two steps, fork it, change only the child's receptor scales,
+advance the child two steps, then stop. The parent remained at step2 and the
+child reached step4; the parent's exported binary and immutable complete
+checkpoint hashes remained unchanged. The receptor edit preserved identical
+before/after binaries at the same time. The original off branch stayed at step0.
+
+The embedded native viewer decoded all six optional living arrays directly from
+the served, hash-verified binary: learned weights `[4,23,3]`, critic `[4,8]`,
+Float64 paid work `[4]`, pending cohort IDs `[4,10]`, and enqueue/maturity counts
+`[4]`. Values were finite, metadata lengths agreed, and the browser reported no
+page errors. Complete checkpoint downloads returned HTTP404. This short fixture
+checks the user-facing instrument; it establishes no ecological outcome or paid
+learning progress. The owned worker and gateway both stopped. Existing local
+servers were untouched.
+
+[Compact living HTTP evidence](../benchmarks/2026-10-16-native-living-workbench-http.json)
+records the frozen source, finite 600s wall/180s idle limits, commands, clocks and
+hashes. Full receipts, actual checkpoint/observation state and reviewed comparison
+remain in `outputs/native-living-workbench-http-20261016`.
