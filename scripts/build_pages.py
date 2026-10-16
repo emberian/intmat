@@ -8,6 +8,7 @@ import shutil
 import subprocess
 import sys
 from viewer_storage import RECORDING, compress_html
+from static_recording_transport import stage_recordings
 
 REPO = pathlib.Path(__file__).resolve().parent.parent
 SOURCE = REPO / 'site' / 'collection'
@@ -113,6 +114,7 @@ def main():
         + '<div class="project-links">' + ''.join(project_links) + '</div></details></div>')
     text = text.replace('</header>', navigation + '</header>', 1)
     index.write_text(text)
+    stage_recordings(destination)
     for file in destination.rglob('*'):
         if file.is_file() and file.suffix in ('.html', '.json', '.toml'):
             if re.search(r'/Users/|/home/|file://|localhost:|127\.0\.0\.1:', file.read_text()):
