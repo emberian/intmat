@@ -223,6 +223,7 @@ end
 device_anabolic_argument(::Nothing)=nothing
 device_anabolic_begin!(::Nothing,w,p,dt)=nothing
 device_anabolic_sense!(::Nothing,w,p,dt)=nothing
+device_controller_override!(anabolism,w,p,dt)=nothing
 device_anabolic_prepare!(::Nothing,w,p,dt)=nothing
 device_anabolic_inherit!(::Nothing,w,p,step)=nothing
 device_anabolic_finish!(::Nothing,w,p,dt)=nothing
@@ -260,6 +261,7 @@ function device_cellular_enqueue!(w,p,delta::Float32,execution::Symbol,anabolism
         controller=p.ownership.stages.controller
         device_cellular_launch!(p,dc_controller!,controller.state,controller.environment,controller.geometry;ndrange=(C,Int(g.hidden)+CELLULAR_ACTIONS))
     end
+    device_controller_override!(anabolism,w,p,delta)
     device_cellular_launch!(p,dc_regulate!,s,e,q,g,delta;ndrange=C)
     device_cellular_launch!(p,dc_allocate_sites!,e;ndrange=(V,2))
     device_cellular_launch!(p,dc_gather!,s,e,g;ndrange=C)

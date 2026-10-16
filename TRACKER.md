@@ -6,6 +6,34 @@
 
 ## Resumed — 2026-10-16, 20:05 UTC
 
+### Wound down at Ember's request — 2026-10-16
+
+Usage is nearly exhausted; stop new development/runs until Ember resumes. All
+peer work is saved. No new soak or substantive training allocation was launched;
+the old observatory heartbeat remains PAUSED. hbox GPU reservation is released.
+The static per-cell observatory remains available, and snapshot `1e0d944` deployed
+successfully through Pages (run 38968192525).
+
+The new shared recurrent learner now has 127 runtime checks, 72 objective/trainer
+checks and 26 native-adapter checks. Its forward/BPTT/Adam GPU components match a
+Float64 CPU oracle through width128/horizon32. The first CPU material rollout,
+update and held-out comparison completed. These establish implementation, not
+learned ecological organization. See `docs/recurrent-runtime.md`,
+`docs/research/stateful-material-programs.md` and
+`docs/research/native-recurrent-agent.md` for source, results and commands.
+
+The final adapter fixes newborn/reused slots inheriting old command/funded
+features. Its focused regression passes; an integrated GPU physics-plus-training
+gate on that revision remains outstanding. The older staged pipeline attempt
+was deliberately stopped before evidence collection; no replacement launched.
+Do not describe runtime-only timing as full learning throughput. Next: freeze a
+fresh source epoch, run the bounded complete-pipeline gate, then choose a useful
+training allocation from those timings. Proposed finite experience: fresh
+25.6-time epochs crossing source switches, rather than mostly depleted tails
+past the current finite feed budget near32. Memory-reset assessment and compact
+learned-material replay remain unimplemented. Preserve all existing source
+epochs, reports and parameter files when continuing.
+
 ### Current direction: stateful programs in a learnable material
 
 Ember supplied the ten-page *Big Blob of Compute Hypothesis*. Root read every

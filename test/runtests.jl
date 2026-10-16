@@ -230,3 +230,19 @@ end
 module CellProgramObservatoryTests
 include("cell_program_observatory.jl")
 end
+
+module SharedRecurrentRuntimeTests
+include("shared_recurrent_runtime.jl")
+end
+
+module RecurrentTrainingObjectiveTests
+include("recurrent_training_objective.jl")
+end
+
+module RecurrentTrainingTests
+include("recurrent_training.jl")
+end
+
+module NativeRecurrentAgentTests
+include("native_recurrent_agent.jl")
+end
