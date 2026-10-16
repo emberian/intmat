@@ -1,0 +1,199 @@
+{
+    "schema": "Interior.LearningWorldBatchBenchmark.v1",
+    "julia": "1.12.4",
+    "threads": 2,
+    "backend": "CPU",
+    "source": {
+        "adapter": "f75fc093bb67621e075bdca8870802fbb448a27f7360f78bac026c943a74be1f",
+        "lifetime": "2112f7b80d3df70845ea692810d1d791afb0800211c6b5bf3915375dc35b8786",
+        "constructive": {
+            "base": "eab5b2c36daa5fc7a9d7c0d030fbcdd400694903b34213a9e380fe76de31ae61",
+            "composition": "9e7ff79aa0008cd21ec087223c4a440ce759241dce2486544c589137741f4ac6",
+            "habitat": {
+                "helper": "5753f0cf5065345cf08fb9a2501d87aad4f6eff13183fd344e8f53dfe736aa41",
+                "kernels": "16ccc6b379522d61cd9a3d259143376e118328f9d6194f4d74eec53a77640e5a",
+                "sorption": "3811fd3627906823a01f2afb2e6693bb6aec99c37bb10bfb72d43c85f8b4ad08"
+            }
+        }
+    },
+    "serial_sync_policy": "all independent owners enqueue before one backend barrier; one status read per standalone owner",
+    "profile_sha256": "37ec328db0fd069c2485022f82174a9be4266876a27953f71e9dc6b13d967442",
+    "counts": [
+        2,
+        4
+    ],
+    "steps": 12,
+    "repeats": 3,
+    "tolerance": 0,
+    "scope": "independent coupled 8^3 worlds, production physics + paid lifetime actor/critic, .02 physics/.04 decision/.08 reward clocks; aggregate throughput, not faster single-world dynamics",
+    "results": {
+        "4": {
+            "worlds": 4,
+            "capacity_per_world": 64,
+            "population_per_world": 2,
+            "total_capacity": 256,
+            "total_population": 8,
+            "total_voxels": 2048,
+            "owned_bytes": {
+                "cells": 2028544,
+                "environment": 267888,
+                "habitat": 355584,
+                "feedstock": 156896,
+                "learning": 262144,
+                "options": 92,
+                "workspace": 100272
+            },
+            "total_owned_bytes": 3171420,
+            "steps": 12,
+            "repeats": 3,
+            "samples": [
+                {
+                    "serial": {
+                        "setup": 0.022503375,
+                        "stepping": 0.117124458,
+                        "observing": 0.003887208,
+                        "total": 0.143515041,
+                        "paid": 0.00010501386691741388,
+                        "finite": true
+                    },
+                    "batch": {
+                        "setup": 0.058608125,
+                        "stepping": 0.138095959,
+                        "observing": 0.001393917,
+                        "total": 0.198098001,
+                        "paid": 0.00010501386691741388,
+                        "finite": true
+                    },
+                    "maxerror": 0
+                },
+                {
+                    "serial": {
+                        "setup": 0.029868125,
+                        "stepping": 0.215315792,
+                        "observing": 0.0008595,
+                        "total": 0.24604341700000001,
+                        "paid": 0.00010501386691741388,
+                        "finite": true
+                    },
+                    "batch": {
+                        "setup": 0.035342458,
+                        "stepping": 0.4249905,
+                        "observing": 0.001623708,
+                        "total": 0.461956666,
+                        "paid": 0.00010501386691741388,
+                        "finite": true
+                    },
+                    "maxerror": 0
+                },
+                {
+                    "serial": {
+                        "setup": 0.020754166,
+                        "stepping": 0.274149209,
+                        "observing": 0.001081541,
+                        "total": 0.29598491600000004,
+                        "paid": 0.00010501386691741388,
+                        "finite": true
+                    },
+                    "batch": {
+                        "setup": 0.030534375,
+                        "stepping": 0.173218417,
+                        "observing": 0.001307666,
+                        "total": 0.20506045800000003,
+                        "paid": 0.00010501386691741388,
+                        "finite": true
+                    },
+                    "maxerror": 0
+                }
+            ],
+            "aggregate_step_speedup": 1.2430305952974965,
+            "end_to_end_speedup": 1.1998579316544782,
+            "batch_world_steps_per_second": 277.10679286487186,
+            "batch_wall_ms_per_shared_step": 14.434868083333335,
+            "batch_amortized_ms_per_world_step": 3.6087170208333337
+        },
+        "2": {
+            "worlds": 2,
+            "capacity_per_world": 128,
+            "population_per_world": 4,
+            "total_capacity": 256,
+            "total_population": 8,
+            "total_voxels": 1024,
+            "owned_bytes": {
+                "cells": 2028544,
+                "environment": 135480,
+                "habitat": 220288,
+                "feedstock": 78448,
+                "learning": 262144,
+                "options": 46,
+                "workspace": 50136
+            },
+            "total_owned_bytes": 2775086,
+            "steps": 12,
+            "repeats": 3,
+            "samples": [
+                {
+                    "serial": {
+                        "setup": 0.009932667,
+                        "stepping": 0.129735125,
+                        "observing": 0.00061525,
+                        "total": 0.14028304200000002,
+                        "paid": 0.00010099045567391052,
+                        "finite": true
+                    },
+                    "batch": {
+                        "setup": 0.043264208,
+                        "stepping": 0.21716425,
+                        "observing": 0.001068583,
+                        "total": 0.26149704100000004,
+                        "paid": 0.00010099045567391052,
+                        "finite": true
+                    },
+                    "maxerror": 0
+                },
+                {
+                    "serial": {
+                        "setup": 0.056703583,
+                        "stepping": 0.202324667,
+                        "observing": 0.001104708,
+                        "total": 0.260132958,
+                        "paid": 0.00010099045567391052,
+                        "finite": true
+                    },
+                    "batch": {
+                        "setup": 0.0081905,
+                        "stepping": 0.173300209,
+                        "observing": 0.001031125,
+                        "total": 0.182521834,
+                        "paid": 0.00010099045567391052,
+                        "finite": true
+                    },
+                    "maxerror": 0
+                },
+                {
+                    "serial": {
+                        "setup": 0.026017833,
+                        "stepping": 0.170541958,
+                        "observing": 0.000862625,
+                        "total": 0.197422416,
+                        "paid": 0.00010099045567391052,
+                        "finite": true
+                    },
+                    "batch": {
+                        "setup": 0.018588375,
+                        "stepping": 0.19748975,
+                        "observing": 0.001305625,
+                        "total": 0.21738375,
+                        "paid": 0.00010099045567391052,
+                        "finite": true
+                    },
+                    "maxerror": 0
+                }
+            ],
+            "aggregate_step_speedup": 0.8635484018790849,
+            "end_to_end_speedup": 0.9081746726698753,
+            "batch_world_steps_per_second": 121.52529435071948,
+            "batch_wall_ms_per_shared_step": 16.457479166666666,
+            "batch_amortized_ms_per_world_step": 8.228739583333333
+        }
+    }
+}

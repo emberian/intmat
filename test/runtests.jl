@@ -118,3 +118,7 @@ end
 module HabitatActuatorRequestTests
 include("habitat_actuator_requests.jl")
 end
+
+module LearningWorldBatchTests
+include("learning_world_batches.jl")
+end
